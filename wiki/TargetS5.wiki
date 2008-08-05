@@ -1,0 +1,9 @@
+#summary Comments for the new target S5
+
+= Target S5 =
+Please add here your own comments, links and ideas about the adding of the new target [http://en.wikipedia.org/wiki/S5_(file_format) S5], for HTML/CSS/Javascript presentations. 
+----
+ * [http://ladoservidor.com/node/13 Gerando apresentações S5 com o Txt2tags] by Paulo Jerônimo Neves Ribeiro
+
+A complete guide (in portuguese) to generate S5 presentations with txt2tags, with the necessary .t2t files available for download.
+----
