@@ -1415,6 +1415,10 @@ def getRegexes():
 		re.compile(r'^"""\s*$'),
 	'blockRawClose':
 		re.compile(r'^"""\s*$'),
+	'blockTaggedOpen':
+		re.compile(r"^'''\s*$"),
+	'blockTaggedClose':
+		re.compile(r"^'''\s*$"),
 	'blockCommentOpen':
 		re.compile(r'^%%%\s*$'),
 	'blockCommentClose':
@@ -1425,6 +1429,8 @@ def getRegexes():
 		re.compile(r'^``` (?=.)'),
 	'1lineRaw':
 		re.compile(r'^""" (?=.)'),
+	'1lineTagged':
+		re.compile(r"^''' (?=.)"),
 	# mono, raw, bold, italic, underline:
 	# - marks must be glued with the contents, no boundary spaces
 	# - they are greedy, so in ****bold****, turns to <b>**bold**</b>
@@ -1432,6 +1438,8 @@ def getRegexes():
 		re.compile(  r'``([^\s](|.*?[^\s])`*)``'),
 	'raw':
 		re.compile(  r'""([^\s](|.*?[^\s])"*)""'),
+	'tagged':
+		re.compile(  r"''([^\s](|.*?[^\s])'*)''"),
 	'fontBold':
 		re.compile(r'\*\*([^\s](|.*?[^\s])\**)\*\*'),
 	'fontItalic':
@@ -2371,6 +2379,7 @@ class MaskMaster:
 		self.monomask  = 'vvvMONOvvv'
 		self.macromask = 'vvvMACROvvv'
 		self.rawmask   = 'vvvRAWvvv'
+		self.taggedmask= 'vvvTAGGEDvvv'
 		self.tocmask   = 'vvvTOCvvv'
 		self.macroman  = MacroMaster()
 		self.reset()
@@ -2380,9 +2389,16 @@ class MaskMaster:
 		self.monobank = []
 		self.macrobank = []
 		self.rawbank = []
+		self.taggedbank = []
 	
 	def mask(self, line=''):
 		global AUTOTOC
+
+		# Protect tagged text
+		while regex['tagged'].search(line):
+			txt = regex['tagged'].search(line).group(1)
+			self.taggedbank.append(txt)
+			line = regex['tagged'].sub(self.taggedmask,line,1)
 		
 		# Protect raw text
 		while regex['raw'].search(line):
@@ -2457,12 +2473,15 @@ class MaskMaster:
 		# Expand verb
 		for mono in self.monobank:
 			open,close = TAGS['fontMonoOpen'],TAGS['fontMonoClose']
-			tagged = open+mono+close
-			line = line.replace(self.monomask, tagged, 1)
+			line = line.replace(self.monomask, open+mono+close, 1)
 		
 		# Expand raw
 		for raw in self.rawbank:
 			line = line.replace(self.rawmask, raw, 1)
+
+		# Expand tagged
+		for tagged in self.taggedbank:
+			line = line.replace(self.taggedmask, tagged, 1)
 		
 		return line
 
@@ -2928,17 +2947,14 @@ class BlockMaster:
 		  'raw'     :[],
 		  'tagged'  :[],
 		  'comment' :[],
-		  'quote'   :['quote','comment','raw'],
-		  'list'    :['list' ,'numlist' ,'deflist','para','verb',
-		              'comment', 'raw'],
-		  'numlist' :['list' ,'numlist' ,'deflist','para','verb',
-		              'comment', 'raw'],
-		  'deflist' :['list' ,'numlist' ,'deflist','para','verb',
-		              'comment', 'raw']
+		  'quote'   :['quote','comment','raw','tagged'],
+		  'list'    :['list','numlist','deflist','para','verb','comment','raw','tagged'],
+		  'numlist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
+		  'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged']
 		}
 		self.allblocks = self.contains.keys()
 		# If one found inside another, ignore the marks
-		self.exclusive = ['comment','verb','raw']
+		self.exclusive = ['comment','verb','raw','tagged']
 	
 	def block(self):
 		if not self.BLK: return ''
@@ -3037,15 +3053,15 @@ class BlockMaster:
 			return lastitem[:-2]
 		return lastitem
 	
-	def tagged(self):
-		return self.hold()
-	
 	def comment(self):
 		return ''
 	
 	def raw(self):
 		lines = self.hold()
 		return map(lambda x: doEscape(TARGET, x), lines)
+
+	def tagged(self):
+		return self.hold()
 	
 	def para(self):
 		result = []
@@ -4110,6 +4126,35 @@ def convert(bodylines, config, firstlinenr=1):
 		if regex['blockCommentOpen'].search(line) \
 		   and BLOCK.block() not in BLOCK.exclusive:
 			ret.extend(BLOCK.blockin('comment'))
+			continue
+
+		#-------------------------[ Tagged Text ]----------------------
+
+		# We're already on a tagged block
+		if BLOCK.block() == 'tagged':
+		
+			# Closing tagged
+			if regex['blockTaggedClose'].search(line):
+				ret.extend(BLOCK.blockout())
+				continue
+			
+			# Normal tagged-inside line
+			BLOCK.holdadd(line)
+			continue
+		
+		# Detecting tagged block init
+		if regex['blockTaggedOpen'].search(line) \
+		   and BLOCK.block() not in BLOCK.exclusive:
+			ret.extend(BLOCK.blockin('tagged'))
+			continue
+		
+		# One line tagged text
+		if regex['1lineTagged'].search(line) \
+		   and BLOCK.block() not in BLOCK.exclusive:
+			ret.extend(BLOCK.blockin('tagged'))
+			line = regex['1lineTagged'].sub('',line)
+			BLOCK.holdadd(line)
+			ret.extend(BLOCK.blockout())
 			continue
 		
 		#-------------------------[ Raw Text ]----------------------
