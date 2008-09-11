@@ -2941,7 +2941,7 @@ class BlockMaster:
 		self.last = ''
 		self.tableparser = None
 		self.contains = {
-		  'para'    :['comment','raw'],
+		  'para'    :['comment'],
 		  'verb'    :[],
 		  'table'   :['comment'],
 		  'raw'     :[],
