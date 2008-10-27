@@ -1,0 +1,28 @@
+# From: Leandro Lisboa Penz @ .br
+# Subject: txt2tags + ctags + taglist.vim
+# Date: May 1, 2006
+#
+# Hi
+#
+# To make ctags work with txt2tags files, create a ~/.ctags with the
+# following:
+
+--langdef=txt2tags
+--langmap=txt2tags:.t2t
+--regex-txt2tags=/^ *(={1,5})([^=].*[^=])\1$/\1 \2/d,definition/
+--regex-txt2tags=/^%!include:\s*(.*)$/\1/m,modules/
+
+# (For that to work, you should name your files .t2t)
+#
+# ----------------------------------------------------------------------
+#
+# To have that work with the taglist.vim plugin, put this line into your
+# ~/.vimrc:
+#
+#
+#     let tlist_txt2tags_settings='txt2tags;d:Titles'
+#
+#
+# Happy tagging, happy vimming!
+#
+# Leandro Penz
