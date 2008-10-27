@@ -1,0 +1,70 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Crossing: Title closes it
+| Line 1. |
+= Closed =
+| Line 3. |
+%%% Crossing: Paragraph closes it
+| Line 1. |
+Closed
+| Line 3. |
+%%% Crossing: Macro closes it
+| Line 1. |
+%%date(Closed)
+| Line 3. |
+%%% Crossing: Line closes it
+| Line 1. |
+-------------------------------------------
+| Line 3. |
+%%% Crossing: Comment Line is ignored
+| Line 1. |
+% Don't close
+| Line 3. |
+%%% Crossing: Comment Block is ignored
+| Line 1. |
+%%%
+Don't close
+%%%
+| Line 3. |
+%%% Crossing: Raw Line closes it
+| Line 1. |
+""" Closed
+| Line 3. |
+%%% Crossing: Raw Block closes it
+| Line 1. |
+"""
+Closed
+"""
+| Line 3. |
+%%% Crossing: Verbatim Line closes it
+| Line 1. |
+``` Closed
+| Line 3. |
+%%% Crossing: Verbatim Block closes it
+| Line 1. |
+```
+Closed
+```
+| Line 3. |
+%%% Crossing: Quote closes it
+| Line 1. |
+	Closed
+| Line 3. |
+%%% Crossing: List closes it
+| Line 1. |
+- Closed
+-
+| Line 3. |
+%%% Crossing: Numbered List closes it
+| Line 1. |
++ Closed
++
+| Line 3. |
+%%% Crossing: Definition List closes it
+| Line 1. |
+: Closed
+  Closed
+:
+| Line 3. |

@@ -1,0 +1,12 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Bug: Table empty "| |" (until v2.3.1)
+%
+% The empty table was parsed, but no align or colspan were detected.
+% On the table dump, calign.pop() and cspan.pop() were poping empty lists.
+%
+% Solution: First check if we've got something to pop.
+%
+| |
