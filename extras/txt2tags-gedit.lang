@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language _name="txt2tags" version="1.0" _section="Markup" mimetypes="text/x-txt2tags" >
+
+	<escape-char>\</escape-char>
+	
+	<string _name="Italic" style="Character" end-at-line-end="FALSE">
+		<start-regex>(^//)|(\ //)</start-regex>
+		<end-regex>//</end-regex>
+	</string>
+	
+	<string _name="Bold" style="Character" end-at-line-end="FALSE">
+		<start-regex>\*\*</start-regex>
+		<end-regex>\*\*</end-regex>
+	</string>
+	
+	<string _name="Underline" style="Character" end-at-line-end="FALSE">
+		<start-regex>__</start-regex>
+		<end-regex>__</end-regex>
+	</string>
+
+	<string _name="Monospace" style="String" end-at-line-end="FALSE">
+		<start-regex>``</start-regex>
+		<end-regex>``</end-regex>
+	</string>
+
+	<string _name="Title" style="Data Type" end-at-line-end="True">
+		<start-regex>=[^=]</start-regex>
+		<end-regex>[^=]=</end-regex>
+	</string>
+	
+	<string _name="Title2" style="Others 2" end-at-line-end="True">
+		<start-regex>==[^=]</start-regex>
+		<end-regex>[^=]==</end-regex>
+	</string>
+
+	<string _name="Title3" style="Others 3" end-at-line-end="True">
+		<start-regex>===[^=]</start-regex>
+		<end-regex>[^=]===</end-regex>
+	</string>
+
+	<string _name="Title4" style="Character" end-at-line-end="TRUE">
+		<start-regex>====[^=]</start-regex>
+		<end-regex>[^=]====</end-regex>
+	</string>
+
+	<string _name="Title5" style="Character" end-at-line-end="TRUE">
+		<start-regex>=====[^=]</start-regex>
+		<end-regex>[^=]=====</end-regex>
+	</string>
+
+	<line-comment _name="Quote" style="Comment">
+		<start-regex>\t</start-regex>
+	</line-comment>
+
+	<line-comment _name="Table" style="String">
+		<start-regex>\|</start-regex>
+	</line-comment>
+	
+	<line-comment _name="DefList" style="Comment">
+		<start-regex>^ : </start-regex>
+	</line-comment>
+	<line-comment _name="List" style="Comment">
+		<start-regex>^ - </start-regex>
+	</line-comment>
+	<line-comment _name="NumList" style="Comment">
+		<start-regex>^ \+ </start-regex>
+	</line-comment>
+
+	<line-comment _name="Line Comment" style="Comment">
+		<start-regex>%[^%!]</start-regex>
+	</line-comment>	
+	
+	<block-comment _name="Block Comment" style="Comment">
+		<start-regex>%%%</start-regex>
+       	<end-regex>%%%</end-regex>
+	</block-comment>
+
+	<block-comment _name="VerbatimArea" style="Comment">
+		<start-regex>^```\n</start-regex>
+       	<end-regex>```</end-regex>
+	</block-comment>
+
+	<line-comment _name="Verbatim Line" style="Comment">
+		<start-regex>^```</start-regex>
+	</line-comment>	
+	
+	<syntax-item _name="Class" style="Character">
+		<start-regex>"""</start-regex>
+		<end-regex>"""</end-regex>
+	</syntax-item>
+
+	<syntax-item _name="Link" style="Comment">
+		<start-regex>\[</start-regex>
+		<end-regex>\]</end-regex>
+	</syntax-item>
+
+	<line-comment _name="Preprocessor" style="Character">
+		<start-regex>^\%\!</start-regex>
+	</line-comment>
+	
+</language>
