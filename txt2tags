@@ -2941,7 +2941,7 @@ class BlockMaster:
 		self.last = ''
 		self.tableparser = None
 		self.contains = {
-		  'para'    :['comment'],
+		  'para'    :['comment','raw','tagged'],
 		  'verb'    :[],
 		  'table'   :['comment'],
 		  'raw'     :[],
@@ -2953,7 +2953,7 @@ class BlockMaster:
 		  'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged']
 		}
 		self.allblocks = self.contains.keys()
-		# If one found inside another, ignore the marks
+		# If one is found inside another, ignore the marks
 		self.exclusive = ['comment','verb','raw','tagged']
 	
 	def block(self):
