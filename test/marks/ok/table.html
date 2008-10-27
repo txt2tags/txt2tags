@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<H2>Syntax: Lines starting with a pipe |</H2>
+<TABLE CELLPADDING="4">
+<TR>
+<TD>Cell 1</TD>
+</TR>
+</TABLE>
+
+<H2>Syntax: Extra pipes separate cells</H2>
+<TABLE CELLPADDING="4">
+<TR>
+<TD>Cell 1</TD>
+<TD>Cell 2</TD>
+<TD>Cell 3</TD>
+</TR>
+</TABLE>
+
+<H2>Syntax: With a trailing pipe, make border</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD>Cell 1</TD>
+<TD>Cell 2</TD>
+<TD>Cell 3</TD>
+</TR>
+</TABLE>
+
+<H2>Syntax: Table lines starting with double pipe are heading</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Cell 1</TH>
+<TH>Cell 2</TH>
+<TH>Cell 3</TH>
+</TR>
+</TABLE>
+
+<H2>Align: Spaces before the leading pipe centralize the table</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD>Cell 1</TD>
+<TD>Cell 2</TD>
+<TD>Cell 3</TD>
+</TR>
+</TABLE>
+
+<H2>Align: Spaces inside the cell denote its alignment</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Heading</TH>
+<TH>Heading</TH>
+<TH>Heading</TH>
+</TR>
+<TR>
+<TD>&lt;-</TD>
+<TD ALIGN="center">--</TD>
+<TD ALIGN="right">-&gt;</TD>
+</TR>
+<TR>
+<TD ALIGN="center">--</TD>
+<TD ALIGN="center">--</TD>
+<TD ALIGN="center">--</TD>
+</TR>
+<TR>
+<TD ALIGN="right">-&gt;</TD>
+<TD ALIGN="center">--</TD>
+<TD>&lt;-</TD>
+</TR>
+</TABLE>
+
+<H2>Span: Column span is defined by extra pipes at cell closing</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>1</TH>
+<TH>2</TH>
+<TH COLSPAN="2">3+4</TH>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center" COLSPAN="3">1+2+3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center" COLSPAN="2">2+3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center" COLSPAN="4">1+2+3+4</TD>
+</TR>
+</TABLE>
+
+<H2>Test: Empty cells are placed as expected</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD>0</TD>
+<TD>1</TD>
+<TD>2</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD>4</TD>
+<TD>5</TD>
+<TD></TD>
+<TD>7</TD>
+</TR>
+<TR>
+<TD>8</TD>
+<TD></TD>
+<TD>A</TD>
+<TD>B</TD>
+</TR>
+<TR>
+<TD></TD>
+<TD>D</TD>
+<TD>E</TD>
+<TD>F</TD>
+</TR>
+</TABLE>
+
+<H2>Test: Lines with different number of cells</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD>1</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>2</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>2</TD>
+<TD>3</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>2</TD>
+<TD>3</TD>
+<TD>4</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>2</TD>
+<TD>3</TD>
+<TD>4</TD>
+<TD>5</TD>
+</TR>
+</TABLE>
+
+<H2>Test: Empty cells + Span + Messy cell number = Fun!</H2>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD ALIGN="right">Jan</TD>
+</TR>
+<TR>
+<TD ALIGN="right" COLSPAN="2">Fev</TD>
+</TR>
+<TR>
+<TD ALIGN="right" COLSPAN="3">Mar</TD>
+</TR>
+<TR>
+<TD ALIGN="right" COLSPAN="4">Apr</TD>
+</TR>
+<TR>
+<TD ALIGN="right" COLSPAN="5">May</TD>
+</TR>
+<TR>
+<TD ALIGN="center">20%</TD>
+<TD ALIGN="center">40%</TD>
+<TD ALIGN="center">60%</TD>
+<TD ALIGN="center">80%</TD>
+<TD ALIGN="center">100%</TD>
+</TR>
+</TABLE>
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD></TD>
+<TD></TD>
+<TD ALIGN="center">/</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+<TD ALIGN="center" COLSPAN="3">/ / / / /</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN="center" COLSPAN="5">/ / / / / / / / /</TD>
+</TR>
+<TR>
+<TD></TD>
+<TD ALIGN="center">o</TD>
+<TD></TD>
+<TD ALIGN="center">o</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+<TD></TD>
+<TD ALIGN="right">.</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+<TD ALIGN="center" COLSPAN="3">= = = =</TD>
+<TD></TD>
+</TR>
+</TABLE>
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TD>01</TD>
+<TD>02</TD>
+<TD></TD>
+<TD></TD>
+<TD>05</TD>
+<TD></TD>
+<TD>07</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+<TD></TD>
+<TD>11</TD>
+<TD></TD>
+<TD>13</TD>
+<TD></TD>
+<TD></TD>
+<TD>16</TD>
+</TR>
+<TR>
+<TD>17</TD>
+<TD></TD>
+<TD>19</TD>
+<TD>20</TD>
+<TD></TD>
+<TD></TD>
+<TD>23</TD>
+<TD></TD>
+</TR>
+<TR>
+<TD>25</TD>
+<TD>26</TD>
+<TD></TD>
+<TD></TD>
+<TD>29</TD>
+<TD>30</TD>
+<TD></TD>
+<TD>32</TD>
+</TR>
+<TR>
+<TD></TD>
+<TD></TD>
+<TD>35</TD>
+<TD></TD>
+<TD>37</TD>
+<TD></TD>
+<TD>39</TD>
+<TD>40</TD>
+</TR>
+</TABLE>
+
+<H2>Test: Lots of cells at the same line</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD>0</TD>
+<TD>1</TD>
+<TD>2</TD>
+<TD>3</TD>
+<TD>4</TD>
+<TD>5</TD>
+<TD>6</TD>
+<TD>7</TD>
+<TD>8</TD>
+<TD>9</TD>
+<TD>A</TD>
+<TD>B</TD>
+<TD>C</TD>
+<TD>D</TD>
+<TD>E</TD>
+<TD>F</TD>
+<TD>0</TD>
+<TD>1</TD>
+<TD>2</TD>
+<TD>3</TD>
+<TD>4</TD>
+<TD>5</TD>
+<TD>6</TD>
+<TD>7</TD>
+<TD>8</TD>
+<TD>9</TD>
+<TD>A</TD>
+<TD>B</TD>
+<TD>C</TD>
+<TD>D</TD>
+<TD>E</TD>
+<TD>F</TD>
+</TR>
+</TABLE>
+
+<H2>Test: Empty lines</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+</TR>
+<TR>
+<TD></TD>
+</TR>
+</TABLE>
+
+<H2>Invalid: There must be at least one space around the pipe</H2>
+<P>
+|this|is|not|a|table|
+</P>
+<P>
+|this| is| not| a| table|
+</P>
+<P>
+|this |is |not |a |table |
+</P>
+<H2>Invalid: You must use spaces, not TABs</H2>
+<P>
+|	this	|	is	|	not	|	a	|	table	|
+</P>
+
+<!-- html code generated by txt2tags (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -q -\-no-rc table.t2t -->
+</BODY></HTML>

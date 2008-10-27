@@ -1,0 +1,39 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Syntax: Balanced equal signs (from 1 to 5)
+= Title Level 1 =
+== Title Level 2 ==
+=== Title Level 3 ===
+==== Title Level 4 ====
+===== Title Level 5 =====
+%%% Label: Between brackets, alphanumeric [A-Za-z0-9_-]
+= Title Level 1 =[lab_el-1]
+== Title Level 2 ==[lab_el-2]
+=== Title Level 3 ===[lab_el-3]
+==== Title Level 4 ====[lab_el-4]
+===== Title Level 5 =====[lab_el-5]
+%%% Syntax: Spaces around and/or inside are allowed (and ignored)
+     ===Title Level 3===    
+    === Title Level 3 ===    
+   ===  Title Level 3  ===   
+===     Title Level 3      ===
+===          Title Level 3 ===
+   ===  Title Level 3  ===[lab_el-9]   
+%%% Invalid: Unbalanced equal signs
+      =Not Title
+
+     ==Not Title=
+
+    ===Not Title====
+%%% Invalid: Level deeper than 5
+ ======Not Title 6======
+
+=======Not Title 7=======
+%%% Invalid: Space between title and label
+=Not Title= [label1]
+%%% Invalid: Space inside label
+=Not Title=[ label ]
+%%% Invalid: Strange chars inside label
+=Not Title=[la/bel]
