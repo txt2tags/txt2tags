@@ -1,0 +1,113 @@
+<?xml version="1.01" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!--
+Autor: Juliano Dorneles dos Santos
+e-mail: juliano_dorneles@yahoo.com.br
+site: http://www.bughead.cjb.net
+
+Updated by: Nicolas Dumoulin
+e-mail: contact@bobuse.fr.st
+
+Todo: links
+
+Bugs:
+Is detected as monospace:
+```Not a verbatim line, need one space after mark
+Lists without two empty lines should not be detected
+
+-->
+
+<language name="txt2tags" extensions="*.t2t" section="Markup" mimetype="text/txt2tags" version="1.01" kateversion="2.4">
+	<general>
+		<comments>
+			<comment name="singleLine" start="%%"/>
+		</comments>
+		<keywords casesensitive="1"/>
+	</general>
+	<highlighting>
+		<contexts>
+			<context attribute="Normal Text" lineEndContext="#stay" name="Context" >
+				<RegExpr attribute="Command" context="Context" String="%%[dD][aA][tT][eE](\(.*\))?"/>
+				<RegExpr attribute="Command" context="Context" String="%%[mM][tT][iI][mM][eE](\(.*\))?"/>
+				<RegExpr attribute="Command" context="Context" String="%%[iI][nN][fF][iI][lL][eE](\(.*\))?"/>
+				<RegExpr attribute="Command" context="Context" String="%%[oO][uU][tT][fF][iI][lL][eE](\(.*\))?"/>
+				<RegExpr attribute="Command" context="Context" String="^%!.*"/>
+				<RegExpr attribute="Comment" context="Context" String="^%.*"/>
+				<RegExpr attribute="Italic" context="Context" String="//\S//"/>
+				<RegExpr attribute="Italic" context="Italic" String="//\S"/>
+				<RegExpr attribute="Bold" context="Context" String="\*\*\S\*\*"/>
+				<RegExpr attribute="Bold" context="Bold" String="\*\*\S"/>
+				<RegExpr attribute="Underline" context="Context" String="__\S__"/>
+				<RegExpr attribute="Underline" context="Underline" String="__\S"/>
+				<RegExpr attribute="Verbatim Area" context="Verbatim Area" String="^```\s*$" beginRegion="Verbatim Area"/>
+				<RegExpr attribute="Verbatim Line" context="Context" String="^```\s.*$"/>
+				<RegExpr attribute="Monospaced" context="Monospaced" String="``\S"/>
+				<RegExpr attribute="Raw Area" context="Raw Area" String='^"""\s*$' beginRegion="Raw Area"/>
+				<RegExpr attribute="Raw Line" context="Context" String='^"""\s.*$'/>
+				<RegExpr attribute="Raw Chars" context="Raw Chars" String='""\S'/>
+				<RegExpr attribute="Bar" context="Context" String="(\s*)([_=-]{20,})\s*$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *=[^=].*[^=]=(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *==[^=].*[^=]==(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *===[^=].*[^=]===(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *====[^=].*[^=]====(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *=====[^=].*[^=]=====(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *\+[^=].*[^=]\+(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *\+\+[^=].*[^=]\+\+(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *\+\+\+[^=].*[^=]\+\+\+(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *\+\+\+\+[^=].*[^=]\+\+\+\+(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Title" context="Context" String="^ *\+\+\+\+\+[^=].*[^=]\+\+\+\+\+(\s*|\[\S*\]\s*)$"/>
+				<RegExpr attribute="Link" context="Context" String="\[\S+\]"/>
+				<RegExpr attribute="Table" context="Context" String="^ *\|\| .*"/>
+				<RegExpr attribute="Table" context="Context" String="^ *\| .*"/>
+				<RegExpr attribute="DefList" context="Context" String="^ *\: "/>
+				<RegExpr attribute="List" context="Context" String="^ *\- "/>
+				<RegExpr attribute="NumList" context="Context" String="^ *\+ "/>
+				<RegExpr attribute="Quote" context="Context" String="\t.*"/>
+			</context>
+			<context attribute="Italic" lineEndContext="#pop" name="Italic">
+				<RegExpr attribute="Italic" context="#pop" String="\S//"/>
+			</context>
+			<context attribute="Bold" lineEndContext="#pop" name="Bold">
+				<RegExpr attribute="Bold" context="#pop" String="\S\*\*"/>
+			</context>
+			<context attribute="Underline" lineEndContext="#pop" name="Underline">
+				<RegExpr attribute="Underline" context="#pop" String="\S__"/>
+			</context>
+			<context attribute="Verbatim Area" lineEndContext="#stay" name="Verbatim Area">
+				<RegExpr attribute="Verbatim Area" context="#pop" String="^```" endRegion="Verbatim Area"/>
+			</context>
+			<context attribute="Monospaced" lineEndContext="#pop" name="Monospaced">
+				<RegExpr attribute="Monospaced" context="#pop" String="\S``"/>
+			</context>
+			<context attribute="Raw Chars" lineEndContext="#pop" name="Raw Chars">
+				<RegExpr attribute="Raw Chars" context="#pop" String='\S""'/>
+			</context>
+			<context attribute="Raw Area" lineEndContext="#pop" name="Raw Area">
+				<RegExpr attribute="Raw Area" context="#pop" String='^"""' endRegion="Raw Area"/>
+			</context>
+		</contexts>
+		<itemDatas>
+			<itemData name="Normal" defStyleNum="dsNormal" />
+			<itemData name="Date" defStyleNum="dsNormal" color="#FF0000" italic="1" />
+			<itemData name="Command" defStyleNum="dsNormal" color="#9966CC" italic="1" />
+			<itemData name="Comment" defStyleNum="dsNormal" color="#666666" italic="1" />
+			<itemData name="Bold" defStyleNum="dsNormal" bold="1" />
+			<itemData name="Italic" defStyleNum="dsNormal" italic="1" />
+			<itemData name="Underline" defStyleNum="dsNormal" bold="1" italic="1" />
+			<itemData name="Monospaced" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Verbatim Line" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Verbatim Area" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Raw Chars" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Raw Line" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Raw Area" defStyleNum="dsNormal" color="#006600" />
+			<itemData name="Title" defStyleNum="dsNormal" color="#990000" />
+			<itemData name="Link" defStyleNum="dsNormal" color="#000099" />
+			<itemData name="Table" defStyleNum="dsNormal" color="#FF0000" />
+			<itemData name="DefList" defStyleNum="dsNormal" color="#FFCC66" />
+			<itemData name="List" defStyleNum="dsNormal" color="#FFCC66" />
+			<itemData name="NumList" defStyleNum="dsNormal" color="#FFCC66" />
+			<itemData name="Quote" defStyleNum="dsNormal" color="brown" />
+			<itemData name="Bar" defStyleNum="dsNormal" color="#FFCC66" />
+		</itemDatas>
+	</highlighting>
+</language>
