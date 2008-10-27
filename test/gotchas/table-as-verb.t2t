@@ -1,0 +1,15 @@
+
+%!includeconf: test.conf
+%!target: pm6
+BODYINIT
+
+%%% Table as Verbatim on not tableable targets
+|| Heading
+| Line 1
+| Line 2
+Closed
+|| Heading
+| Line 1
+| Line 2
+
+Closed

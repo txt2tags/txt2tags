@@ -1,0 +1,9 @@
+
+%!includeconf: test.conf
+%!options: -n --toc-only -o subtitle-before-title-toc.html
+
+%!postproc: title$	title on TOC
+
+BODYINIT
+
+%!include: subtitle-before-title.t2t
