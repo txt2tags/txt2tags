@@ -1,0 +1,8 @@
+
+"""
+       Eine "raw" Block entsteht
+     zwischen drei Gänsefüsschen.
+
+**Markierungen** werden ignoriert
+               sowie Leerzeichen.
+"""

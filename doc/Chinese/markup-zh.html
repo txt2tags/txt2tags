@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<STYLE TYPE="text/css">
+body { margin:1em; }             
+div.header {text-align:center; } 
+th { padding:.5em; }             
+td { width:45%; padding:.5em; }  
+td {background-color:silver; }   
+td.t2t {background-color:#ef4; } 
+</STYLE>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Txt2tags 标记示例</TITLE>
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>Txt2tags 标记示例</H1>
+<H2>展示结构化标记与HTML的检出效果</H2>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<P>
+<table align="center" border=1>
+<tr><th colspan="2">基础 BASIC</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+= 第一级标题 =
+
+== 第二级标题 ==
+
+=== 第三级标题 ===
+
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>第一级标题</H1>
+<H2>第二级标题</H2>
+<H3>第三级标题</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
++ 数字式 第一级标题 +
+
+++ 数字式 第二级标题 ++
+
++++ 数字式 第三级标题 +++
+
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>1. 数字式 第一级标题</H1>
+<H2>1.1. 数字式 第二级标题</H2>
+<H3>1.1.1. 数字式 第三级标题</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+自然段由一行
+或是多行文字组成
+
+一个空行另起自然段
+
+</PRE>
+<P>
+</td><td>
+自然段由一行
+或是多行文字组成
+</P>
+<P>
+一个空行另起自然段
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+% 若一行文字由
+百分号 加一空格 起头,
+% 将被隐匿,类似注释
+一般用作 TODOs 列表在文中组织!
+
+
+</PRE>
+<P>
+</td><td>
+百分号 加一空格 起头,
+一般用作 TODOs 列表在文中组织!
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+对文本的美化，我们一般使用 **加重**
+和 //斜体// (不过中文一般来说斜体效果不如意)
+
+也可以使用 __下划线__ 和
+``等宽字体``.
+
+
+</PRE>
+<P>
+</td><td>
+对文本的美化，我们一般使用 <B>加重</B>
+和 <I>斜体</I> (不过中文一般来说斜体效果不如意)
+</P>
+<P>
+也可以使用 <U>下划线</U> 和
+<CODE>等宽字体</CODE>.
+</P>
+<P>
+</td></tr><tr><th colspan="2">列表 LISTS</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+- 此为列表的一个条目
+- 使用 连字符，或是减号引导即可实现
+  - 增加缩进将引发子列表
+
+
+连续两个空行结束当前列表
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<UL>
+<LI>此为列表的一个条目
+<LI>使用 连字符，或是减号引导即可实现
+  <UL>
+  <LI>增加缩进将引发子列表
+  </UL>
+</UL>
+
+<P>
+连续两个空行结束当前列表
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
++ 使用加号引导文字
++ 我们就获得了数字式列表效果
+  + 其它约定同普通列表
+  +
++
+使用一个空的条目也可以结束当前列表
+
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<OL>
+<LI>使用加号引导文字
+<LI>我们就获得了数字式列表效果
+  <OL>
+  <LI>其它约定同普通列表
+  </OL>
+</OL>
+
+<P>
+使用一个空的条目也可以结束当前列表
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+: 定义式列表
+  即，每个条目跟解释内容
+: 以冒号引导条目
+  其定义内容跟在下一行
+  可以多行
+  - 可以混合其它列表模式
+   + 数字式
+   + 
+  -
+:
+
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<DL>
+<DT>定义式列表</DT><DD>
+  即，每个条目跟解释内容
+<DT>以冒号引导条目</DT><DD>
+  其定义内容跟在下一行
+  可以多行
+  <UL>
+  <LI>可以混合其它列表模式
+   <OL>
+   <LI>数字式
+   </OL>
+  </UL>
+</DL>
+
+<P></P>
+<P>
+</td></tr><tr><th colspan="2">区域 AREAS</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+	引用语 段落由一个制表符
+	引导.
+		增加引导的 制表符 就产生更大的深度
+空行或是没有制表符引导，都可以关闭当前 引用段
+
+</PRE>
+<P>
+</td><td>
+</P>
+	<BLOCKQUOTE>
+	引用语 段落由一个制表符
+	引导.
+		<BLOCKQUOTE>
+		增加引导的 制表符 就产生更大的深度
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+空行或是没有制表符引导，都可以关闭当前 引用段
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+
+```
+  完全引用(verbatim)域
+     由连续三个 反引号包
+**标记** 将不解析
+     且空格会被忠实的保留
+```
+
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<PRE>
+  完全引用(verbatim)域
+     由连续三个 反引号包
+**标记** 将不解析
+     且空格会被忠实的保留
+</PRE>
+<P></P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+完全引用行来记录命令行非常恰当:
+``` $ cat /etc/passwd | tr : ,
+前缀连续三个反引号即可
+
+</PRE>
+<P>
+</td><td>
+完全引用行来记录命令行非常恰当:
+</P>
+<PRE>
+$ cat /etc/passwd | tr : ,
+</PRE>
+<P>
+前缀连续三个反引号即可
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+"""
+    原文域(raw)由
+    连续三个双引号包围
+
+**标记** 将不解析,
+     但空格不会保留
+"""
+
+
+
+</PRE>
+<P>
+</td><td>
+    原文域(raw)由
+    连续三个双引号包围
+
+**标记** 将不解析,
+     但空格不会保留
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+
+""" 同理 可得原文行
+
+
+
+</PRE>
+<P>
+</td><td>
+同理 可得原文行
+</P>
+<P>
+</td></tr><tr><th colspan="2">其它 OTHER</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+
+|| 表头    | 表头 |
+|     表格 |     行     |
+|   表单元 |     对齐     |
+|      是 |    非常好的用的   |
+
+
+</PRE>
+<P>
+</td><td>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>表头</TH>
+<TH>表头</TH>
+</TR>
+<TR>
+<TD ALIGN="right">表格</TD>
+<TD ALIGN="center">行</TD>
+</TR>
+<TR>
+<TD ALIGN="right">表单元</TD>
+<TD ALIGN="center">对齐</TD>
+</TR>
+<TR>
+<TD ALIGN="right">是</TD>
+<TD ALIGN="center">非常好的用的</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+
+[t2t.png] 左对齐图片
+
+居中 [t2t.png] 对齐
+
+右对齐 [t2t.png]
+
+
+
+</PRE>
+<P>
+</td><td>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> 左对齐图片
+</P>
+<P>
+居中 <IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> 对齐
+</P>
+<P>
+右对齐 <IMG ALIGN="right" SRC="../img/t2tpowered.png" BORDER="0" ALT="">
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+邮件链接 recognized@automaticaly.see?
+
+普通 [文字链接 www.myurl.com] 非常简单.
+
+图片链接 [[t2t.png] as-a-link.html].
+
+
+
+</PRE>
+<P>
+</td><td>
+邮件链接 <A HREF="mailto:recognized@automaticaly.see">recognized@automaticaly.see</A>?
+</P>
+<P>
+普通 <A HREF="http://www.myurl.com">文字链接</A> 非常简单.
+</P>
+<P>
+图片链接 <A HREF="as-a-link.html"><IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""></A>.
+</P>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+　
+
+
+
+隔离行:
+--------------------
+粗的:
+====================
+(使用字符至少要连续20个以上)
+
+
+
+</PRE>
+<P>
+</td><td>
+隔离行:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+粗的:
+</P>
+<HR NOSHADE SIZE=5>
+<P>
+(使用字符至少要连续20个以上)
+</P>
+<P>
+</td></tr>
+</table>
+</P>
+<PRE>
+
+</PRE>
+<P>
+Translated to Chinese by 周琦(<A HREF="http://wiki.woodpecker.org.cn/moin/ZoomQuiet">Zoom Quiet</A>).
+</P>
+<P>
+动力源自:<B><A HREF="http://txt2tags.sf.net">txt2tags</A></B>
+</P>
+</DIV>
+
+<!-- html code generated by txt2tags 2.4-dev (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags Chinese/markup-zh/markup-zh.t2t -->
+</BODY></HTML>

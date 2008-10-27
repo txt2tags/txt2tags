@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script generates the PDF version of the User Guide.
+# The HTMLDOC software is required.
+
+t2t=txt2tags
+html=userguide-pdf.html
+out=../userguide.pdf
+in=userguide.t2t
+
+cp $in $in.tmp
+sed 's/^%pdf//' $in.tmp > $in
+$t2t $in
+htmldoc --batch pdf.book
+rm $html
+echo saved $out
+mv $in.tmp $in
+exit 0

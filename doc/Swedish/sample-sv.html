@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>TXT2TAGS EXEMPEL</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>TXT2TAGS EXEMPEL</H1>
+<FONT SIZE="4">
+<I>Aurelio Jargas</I><BR>
+07/26/2008
+</FONT></CENTER>
+
+<H1>Introduktion</H1>
+<P>
+Välkommen till txt2tags exempelfil.
+</P>
+<P>
+Här kommer exempel och en kortfattad föklaring av alla
+markeringar.
+</P>
+<P>
+De första 3 raderna i denna fil är rubriker på följande
+format:
+</P>
+<PRE>
+  rad1: dokumentets titel
+  rad2: författarens namn, epost
+  rad3: datum, version
+</PRE>
+<P></P>
+<P>
+Rader med balanserade likamedtecken = runt sig är
+titlar.
+</P>
+<H1>Typsnitt och Förvackrare</H1>
+<P>
+Vi har två uppsättningar med typsnitt:              
+</P>
+<P>
+Den NORMALA typen som kan förbättras med förvackrare.
+</P>
+<P>
+SKRIVMASKINSTYPEN som använder ett typsnitt där alla
+tecken är like stora för preformatterad text.
+</P>
+<P>
+Vi kommer nu komma till ett underavsnitt...
+</P>
+<H2>Förvackrare</H2>
+<P>
+Textmarkeringarna för förvackrare är enkla, precis som
+de du använder i ett epost meddelande.                  
+</P>
+<P>
+Vi använder dubbla *, / och _ för att representera
+<B>fet</B>, <I>kursiv</I> och <U>understruken</U> text.
+</P>
+<P>
+<B><I>Fet kursiv</I></B> stil stöds också som kombination.
+</P>
+<H2>Pre-Formatterad Text</H2>
+<P>
+Vi kan använda ett stycke kod eller annan preformatterad
+text:              
+</P>
+<PRE>
+    detta      är preformatterat
+  //markeringar// slår **inte**  ``igenom``
+</PRE>
+<P></P>
+<P>
+Det är även enkelt att göra bara en rad preformatterad
+text:
+</P>
+<PRE>
+  prompt$ ls /etc
+</PRE>
+<P></P>
+<P>
+Eller att avända <CODE>preformatterad</CODE> inuti meningar.
+</P>
+<H2>Mer kosmetika</H2>
+<P>
+Speciella inslag som epost (<A HREF="mailto:duh@somewhere.com">duh@somewhere.com</A>) och               
+URL (<A HREF="http://www.duh.com">http://www.duh.com</A>) detekteras automagiskt,
+och horisontella linjer likaså:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+^ tunn eller tjock v
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<P>
+Man kan också specificera en <A HREF="http://duh.org">explicit link</A>
+med ett namn.
+</P>
+<P>
+Kom ihåg,
+</P>
+	<BLOCKQUOTE>
+	TAB framför en rad gör ett citat.
+		<BLOCKQUOTE>
+		Fler TABBAR, mer djup (om det tillåts).
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Trevligt.
+</P>
+<H1>Listor</H1>
+<P>
+En lista med saker är naturligt, stoppa bara ett 
+<B>bindestreck</B> eller ett <B>plus</B> i början av
+varje rad.
+</P>
+<H2>Enkla listor</H2>
+<P>
+Bindestrecket är standard listans identifierare. För
+underlistor lägger du bara till <B>mellanslag</B> i början 
+på varje rad. Mer mellan slag, mer underlistor.                  
+</P>
+<UL>
+<LI>jorden
+  <UL>
+  <LI>amerika
+    <UL>
+    <LI>sydamerica
+      <UL>
+      <LI>brazilien
+        <UL>
+        <LI>hur djupt kan jag gå?
+        </UL>
+      </UL>
+    </UL>
+  <LI>europa
+    <UL>
+    <LI>en massa länder
+    </UL>
+  </UL>
+<LI>mars
+  <UL>
+  <LI>vem vet?
+  </UL>
+</UL>
+
+<P>
+En lista slutar med <B>två</B> på varandra följande tomma rader.
+</P>
+<H2>Numrerad lista</H2>
+<P>
+Samma regler gäller som för en vanlig lista, fast med en 
+annan identifierare (plus).                 
+</P>
+<OL>
+<LI>ett
+<LI>två
+<LI>tre
+  <UL>
+  <LI>mixad lista!
+  <LI>vilken röra
+    <OL>
+    <LI>räknar igen
+    <LI>...
+    </OL>
+  </UL>
+<LI>fyra
+</OL>
+
+<H2>Definitionslista</H2>
+<P>
+Identifieraren för en definitionslista är ett kolon,
+följt av termen. Termens definition placeras på
+nästa rad.                
+</P>
+<DL>
+<DT>apelsin</DT><DD>
+  en gul frukt
+<DT>äpple</DT><DD>
+  en grön eller röd frukt
+<DT>andra frukter</DT><DD>
+  <UL>
+  <LI>wee!
+  <LI>mixar listor
+    <OL>
+    <LI>igen!
+    <LI>och igen!
+    </OL>
+  </UL>
+</DL>
+
+<H1>Tabeller</H1>
+<P>
+Använd "pipe" för att bygga listor och celler.
+Dubbla pipes i början på en rad är en rad med rubriker.
+Dubbla mellanslag specificerar varje cells gruppering.
+</P>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>rubrik 1</TH>
+<TH>rubrik 2</TH>
+<TH>rubrik 3</TH>
+</TR>
+<TR>
+<TD>cell 1.1</TD>
+<TD ALIGN="center">cell 1.2</TD>
+<TD ALIGN="right">cell 1.3</TD>
+</TR>
+<TR>
+<TD>cell 2.1</TD>
+<TD ALIGN="center">cell 2.2</TD>
+<TD ALIGN="right">cell 2.3</TD>
+</TR>
+</TABLE>
+
+<P>
+Utan den sista pipen, inga ramar:
+</P>
+<TABLE ALIGN="center" CELLPADDING="4">
+<TR>
+<TH>rubrik 1</TH>
+<TH>rubrik 2</TH>
+<TH>rubrik 3</TH>
+</TR>
+<TR>
+<TD>cell 1.1</TD>
+<TD ALIGN="center">cell 1.2</TD>
+<TD ALIGN="center">cell 1.3</TD>
+</TR>
+<TR>
+<TD>cell 2.1</TD>
+<TD ALIGN="center">cell 2.2</TD>
+<TD ALIGN="center">cell 2.3</TD>
+</TR>
+</TABLE>
+
+<H1>Speciella Entiteter</H1>
+<P>
+Eftersom att saker var för enkla.                
+</P>
+<H2>Bilder</H2>
+<P>
+Bildmarkeringen är så enkel som den kan vara: <CODE>[filnamn]</CODE>.
+</P>
+                      <center><IMG ALIGN="middle" SRC="../img/photo.jpg" BORDER="0" ALT=""></center>  
+<UL>
+<LI>Filnamnet måste sluta på PNG, JPG, GIF, eller något liknande.
+<LI>Inga mellanslag inom hakparenteserna!
+</UL>
+
+<H2>Annat</H2>
+<P>
+Det bekväma <CODE>%%date</CODE> macrot expanderar till dagens datum.
+</P>
+<P>
+Så idag är det 20080726 på ISO <CODE>YYYYMMDD</CODE> format.
+</P>
+<P>
+Du kan också specifiecera datumformatet med %? flaggorna,
+så här: <CODE>%%date(%m-%d-%Y)</CODE> deom ger: 07-26-2008.
+</P>
+<P>
+Det var det för den här gången.
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+Översatt av Per Erik Strandberg.
+<A HREF="http://www.pererikstrandberg.se">www.pererikstrandberg.se</A>
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> (<A HREF="sample-sv.t2t">sample-sv.t2t</A>)
+</P>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html ./Swedish/sample-sv.t2t -->
+</BODY></HTML>

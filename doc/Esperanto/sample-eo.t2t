@@ -1,0 +1,208 @@
+TXT2TAGS EKZEMPLARO
+Aurelio Jargas
+%%mtime(%d/%m/%Y)
+
+%!target: html
+%!encoding: utf-8
+%!postproc: ĉ &#265;
+%!postproc: ĝ &#285;
+%!postproc: ĥ &#293;
+%!postproc: ĵ &#309;
+%!postproc: ŝ &#349;
+%!postproc: ŭ &#365;
+%!postproc: Ĉ &#264;
+%!postproc: Ĝ &#284;
+%!postproc: Ĥ &#292;
+%!postproc: Ĵ &#308;
+%!postproc: Ŝ &#348;
+%!postproc: Ŭ &#364;
+
+                  =  Enigo  =
+
+Saluton al la txt2tags ekzempara dosiero.
+
+Ĉi tie vi havas ekzemplojn kaj rapidan klarigon de ĉiuj
+markoj.
+
+La unuaj tri linioj de tiu ĉi dosiero estas kapoj, laŭ
+la jena formato:
+```
+linio1: dokumenta titolo
+linio2: aŭtora nomo, retpoŝta adreso
+linio3: dato, versio
+```
+
+Linioj kun egalsignoj = ĉirkaŭekvilibre estas titoloj.
+
+% sekreta komento!
+%TODO: ligi al la programa hejmpaĝo
+%http://txt2tags.sf.net
+
+
+              =  Tiparo kaj beligoj  =
+
+Ni havas du arojn de tiparoj:
+
+La NORMALA tiparo, kiun oni povas eligi per beligoj.
+
+La TAJPESKA tiparo, kiu uzas unuspaca signaro
+antaŭformati tekston.
+
+Ni nun eniros subtitolen...
+
+
+                  ==  Beligoj  ==
+
+La tekstaj markoj de beligoj estas simplaj, nur kiel vi
+tajpas plattekstan retpoŝtan mesaĝon.
+
+Ni uzas duoblan *, / kaj _ figuri **dikan**, //kursivan//
+kaj __substrekitan__.
+
+La **//dika kursiva//** stilo estas ankaŭ elportata
+kiel kombinaĵo.
+
+
+              ==  Antaŭformatita Teksto  ==
+
+Ni povas enmeti kodan ekzemplon aŭ aliajn antaŭformatitan
+tekston:
+```
+  cxi tie  estas  antawformatita
+//markoj// estas  **ne** ``interpretitaj``
+```
+
+Kaj ankaŭ, facile estas enmeti unulinian
+antaŭformatitan tekston:
+``` prompt$ ls /etc
+
+Aŭ uzi ``antaŭformatita`` ene de sentencoj.
+
+
+                ==  Plu Ŝminkoj  ==
+
+Specialaj estaĵoj kiel retpoŝta adreso (duh@ie.com) kaj
+retadreso (http://www.duh.com) estas aŭtomate
+identigitaj same, kiel la horizontala linio:
+
+--------------------------------------------------------
+^ malgrasa or grasa v
+========================================================
+
+Vi povas ankaŭ specifi [formala ligilo http://duh.org]
+per etikedo.
+
+Kaj memoru,
+	Linikomenca TABO faras citaĵo.
+		Des pliaj TABOj, ju pli profunda (se permesata).
+
+
+                      =  Listoj  =
+
+Era listo estas naturala, nur metante **ĝis-strekon**
+aŭ **plusignon** linikomence.
+
+
+                  ==  Plata Listo  ==
+
+La ĝis-strekon estas la baza listidentigilo.
+Alsublistige, nur aldonu **spacojn** linikomence. Des
+pliaj spacoj, ju pli profunde.
+
+- tero
+  - ameriko
+    - sudameriko
+      - brazilo
+        - kiom da profundi mi povas iri?
+  - eŭropo
+    - multe da landoj
+- marso
+  - kiu scias?
+
+
+La listo finas per **du** kunsekvantaj vakuaj linioj.
+
+
+                 ==  Nombra Listo  ==
+
+La sama normo de la plata listo, nur malsama identigilo
+(plusigno).
+
++ unu
++ du
++ tri
+  - miksaj listoj!
+  - kiu malordo
+    + rekalkulante
+    + ...
++ kvar
+
+
+                ==  Difina Listo  ==
+
+La difinlista idenfigilo estas dupunkto, sekvata de la
+termo. La terma enhavo estas apudlinia.
+
+: oranĝo
+  flava frukto
+: pomo
+  verda aŭ ruĝa frukto
+: aliaj fruktoj
+  - ho!
+  - miksaj listok
+    + ree!
+    + kaj ree!
+
+
+                     =  Tabeloj  =
+
+Uzu duktoj komponi tabelajn horizontalojn kaj ĉelojn.
+Linikomenca duobla dukto komencas kapan horizontalon.
+Naturalaj spacoj specifas ĉiuĉelajn niveladojn.
+
+ || kapo    1 |  kapo    2  |  kapo    3 |
+  | ĉelo 1.1  |  ĉelo 1.2   |   ĉelo 1.3 |
+  | ĉelo 2.1  |  ĉelo 2.2   |   ĉelo 2.3 |
+
+Sen la lasta dukto, sen bordo:
+
+ || kapo    1 |  kapo    2  |  kapo    3
+  | ĉelo 1.1  |  ĉelo 1.2   |   ĉelo 1.3
+  | ĉelo 2.1  |  ĉelo 2.2   |   ĉelo 2.3
+
+
+                =  Specialaj Estaĵoj  =
+
+Ĉar aferoj estis tro simplaj.
+
+
+                    ==  Bildoj  ==
+
+La bilda marko estas tiom da simpla, kiel eble:
+``[dosiernomo]``.
+
+                      [../img/photo.jpg]  
+
+- La dosiernomo devas finis per PNG, JPG, GIF, aŭ
+  simila.
+- Ne spacoj ene de la krampoj!
+
+
+                     ==  Aliaj  ==
+
+La ``%%date`` makroo malvolviĝas al la nuna dato.
+
+Do hodiaŭ estas %%date laŭ la ``YYYYMMDD`` ISO-formato.
+
+Vi povas ankaŭ specifi la datan formaton per la %?
+flago, kiel ``%%date(%d-%m-%Y)``, kiu reportas:
+%%date(%d-%m-%Y).
+
+Estas ĉio ĉimomente.
+
+----------------------------------------------------------
+Tradukita de Rodrigo Cacilhas
+-------------------------------------------------------
+[../img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55

@@ -1,0 +1,3 @@
+#HTMLDOC 1.8.23
+-t pdf13 -f ../userguide-fr.pdf --book --toclevels 2 --no-numbered --toctitle "Ce guide contient" --titleimage pdf-cover.html --linkstyle plain --size A4 --left 3cm --right 2cm --top 2cm --bottom 2cm --header .c. --footer t.1 --nup 1 --tocheader ... --tocfooter .i. --portrait --color --no-pscommands --no-xrxcomments --compression=1 --jpeg=0 --fontsize 10 --fontspacing 1.2 --headingfont Helvetica --bodyfont Helvetica --headfootsize 8 --headfootfont Helvetica-oblique --charset iso-8859-1 --links --no-embedfonts --pagemode document --pagelayout one --firstpage p1 --pageeffect none --no-encryption --permissions all --owner-password "" --user-password "" --browserwidth 800 --duplex --linkcolor blue 
+userguide-pdf.html
