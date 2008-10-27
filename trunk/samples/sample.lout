@@ -1,0 +1,309 @@
+@SysInclude { doc }
+@Document
+  @InitialFont { Times Base 12p }  # Times, Courier, Helvetica, ...
+  @PageOrientation { Portrait }    # Portrait, Landscape
+  @ColumnNumber { 1 }              # Number of columns (2, 3, ...)
+  @PageHeaders { Simple }          # None, Simple, Titles, NoTitles
+  @InitialLanguage { English }     # German, French, Portuguese, ...
+  @OptimizePages { Yes }           # Yes/No smart page break feature
+//
+@Text @Begin
+@Display @Heading { TXT2TAGS SAMPLE }
+@Display @I { Aurelio Jargas }
+@Display { 07"/"26"/"2008 }
+#@NP                               # Break page after Headers
+
+@BeginSections
+
+@Section @Title { Introduction } @Begin
+@LP
+Welcome to the txt2tags sample file.
+
+@LP
+Here you have examples and a brief explanation of all
+marks.
+
+@LP
+The first 3 lines of the this file are used as headers,
+on the following format:
+
+@LP @ID @F @RawVerbatim @Begin
+line1: document title
+line2: author name, email
+line3: date, version
+@End @RawVerbatim
+
+@LP
+Lines with balanced equal signs = around are titles.
+
+@End @Section
+
+@Section @Title { Fonts and Beautifiers } @Begin
+@LP
+We have two sets of fonts:
+
+@LP
+The NORMAL type that can be improved with beautifiers.
+
+@LP
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+
+@LP
+We will now enter on a subtitle...
+
+ @BeginSubSections
+
+ @SubSection @Title { Beautifiers } @Begin
+@LP
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+
+@LP
+We use double *, "/", - and _ to represent {@B {bold}},
+{@II {italic}}, strike and {@Underline{underline}}.
+
+@LP
+The {@B {{@II {bold italic}}}} style is also supported as a
+combination.
+
+ @End @SubSection
+
+ @SubSection @Title { Pre-Formatted Text } @Begin
+@LP
+We can put a code sample or other pre-formatted text:
+
+@LP @ID @F @RawVerbatim @Begin
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+@End @RawVerbatim
+
+@LP
+And also, it's easy to put a one line pre-formatted
+text:
+
+@LP @ID @F @RawVerbatim @Begin
+prompt$ ls /etc
+@End @RawVerbatim
+
+@LP
+Or use {@F {pre-formatted}} inside sentences.
+
+ @End @SubSection
+
+ @SubSection @Title { More Cosmetics } @Begin
+@LP
+Special entities like email ({blue @Colour { duh"@"somewhere.com }}) and
+URL ({blue @Colour { http:"/""/"www.duh.com }}) are detected automagically,
+as long as the horizontal line:
+
+
+@DP @FullWidthRule
+
+@LP
+"^" thin or large v
+
+
+@NP
+
+
+@LP
+You can also specify an explicit link ({blue @Colour { http:"/""/"duh.org }})
+with label.
+
+@LP
+And remember,
+
+	@QD {
+	A TAB in front of the line does a quotation.
+		@QD {
+		More TABs, more depth (if allowed).
+		}
+	}
+@LP
+Nice.
+
+ @End @SubSection
+ @EndSubSections
+@End @Section
+
+@Section @Title { Lists } @Begin
+@LP
+A list of items is natural, just putting a {@B {dash}} or
+a {@B {plus}} at the beginning of the line.
+
+ @BeginSubSections
+
+ @SubSection @Title { Plain List } @Begin
+@LP
+The dash is the default list identifier. For sublists,
+just add {@B {spaces}} at the beginning of the line. More
+spaces, more sublists.
+
+@BulletList
+@ListItem{earth
+  @BulletList
+  @ListItem{america
+    @BulletList
+    @ListItem{south america
+      @BulletList
+      @ListItem{brazil
+        @BulletList
+        @ListItem{how deep can i go?
+        }
+        @EndList
+      }
+      @EndList
+    }
+    @EndList
+  }
+  @ListItem{europe
+    @BulletList
+    @ListItem{lots of countries
+    }
+    @EndList
+  }
+  @EndList
+}
+@ListItem{mars
+  @BulletList
+  @ListItem{who knows?
+  }
+  @EndList
+}
+@EndList
+@LP
+The list ends with {@B {two}} consecutive blank lines.
+
+ @End @SubSection
+
+ @SubSection @Title { Numbered List } @Begin
+@LP
+The same rules as the plain list, just a different
+identifier (plus).
+
+@NumberedList
+@ListItem{one
+}
+@ListItem{two
+}
+@ListItem{three
+  @BulletList
+  @ListItem{mixed lists!
+  }
+  @ListItem{what a mess
+    @NumberedList
+    @ListItem{counting again
+    }
+    @ListItem{...
+    }
+    @EndList
+  }
+  @EndList
+}
+@ListItem{four
+}
+@EndList
+ @End @SubSection
+
+ @SubSection @Title { Definition List } @Begin
+@LP
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+@TaggedList
+@DropTagItem {orange}{
+a yellow fruit
+}
+@DropTagItem {apple}{
+a green or red fruit
+}
+@DropTagItem {other fruits}{
+  @BulletList
+  @ListItem{wee!
+  }
+  @ListItem{mixing lists
+    @NumberedList
+    @ListItem{again!
+    }
+    @ListItem{and again!
+    }
+    @EndList
+  }
+  @EndList
+}
+@EndList
+ @End @SubSection
+ @EndSubSections
+@End @Section
+
+@Section @Title { Tables } @Begin
+@LP
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+@LP @ID @F @RawVerbatim @Begin
+ || heading 1 |  heading 2  |  heading 3 |
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+@End @RawVerbatim
+@LP
+Without the last pipe, no border:
+
+@LP @ID @F @RawVerbatim @Begin
+ || heading 1 |  heading 2  |  heading 3
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+@End @RawVerbatim
+@End @Section
+
+@Section @Title { Special Entities } @Begin
+@LP
+Because things were too simple.
+
+ @BeginSubSections
+
+ @SubSection @Title { Images } @Begin
+@LP
+The image mark is as simple as it can be: {@F {[filename]}}.
+
+@LP
+                      @CentredDisplay @IncludeGraphic { img"/"photo.jpg }  
+
+@BulletList
+@ListItem{The filename must end in PNG, JPG, GIF, or similar.
+}
+@ListItem{No spaces inside the brackets!
+}
+@EndList
+ @End @SubSection
+
+ @SubSection @Title { Other } @Begin
+@LP
+The handy {@F {%%date}} macro expands to the current date.
+
+@LP
+So today is 20080726 on the ISO {@F {YYYYMMDD}} format.
+
+@LP
+You can also specify the date format with the %? flags,
+as {@F {%%date(%m-%d-%Y)}} which gives: 07-26-2008.
+
+@LP
+That's all for now.
+
+
+@DP @FullWidthRule
+
+@LP
+@LeftDisplay @IncludeGraphic { img"/"t2tpowered.png } (sample.t2t ({blue @Colour { sample.t2t }}))
+
+ @End @SubSection
+ @EndSubSections
+@End @Section
+@EndSections
+
+# lout code generated by txt2tags 2.5 (http://txt2tags.sf.net)
+# cmdline: txt2tags -t lout samples/sample.t2t
+@End @Text
