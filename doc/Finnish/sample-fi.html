@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<TITLE>TXT2TAGS-ESIMERKKI</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>TXT2TAGS-ESIMERKKI</H1>
+<FONT SIZE="4">
+<I>Aurelio Jargas</I><BR>
+07/26/2008
+</FONT></CENTER>
+
+<H1>Johdanto</H1>
+<P>
+Tervetuloa txt2tags-esimerkkitiedoston pariin!
+</P>
+<P>
+Tässä on esimerkkejä ja lyhyt selitys kaikista merkintätavoista.
+</P>
+<P>
+Tämän tiedoston kolmea ensimmäistä riviä käytetään otsikkotietoina seuraavasti:
+</P>
+<PRE>
+  rivi 1: asiakirjan nimi
+  rivi 2: kirjoittaja, sähköpostiosoite
+  rivi 3: päivämäärä, versio
+</PRE>
+<P></P>
+<P>
+Otsikot on merkitty molemmin puolisilla yhtäsuuruusmerkeillä =.
+</P>
+<H1>Kirjasimet ja muotoilu</H1>
+<P>
+Käytössä on kaksi kirjasintyyppiä: 
+</P>
+<P>
+Tavallinen kirjasintyyppi, jota voi parantaa muotoilumerkinnöillä.
+</P>
+<P>
+Kirjoituskonekirjasin, joka käyttää tasavälistä kirjasinta valmiiksi muotoiltua tekstiä varten.
+</P>
+<P>
+Seuraavaksi alaotsikko...
+</P>
+<H2>Muotoilumerkinnät</H2>
+<P>
+Muotoiluun käytetään yksinkertaisia merkintöjä aivan kuten muotoilematonta tekstiä käyttävissä sähköpostiviesteissä.
+</P>
+<P>
+Kaksinkertaiset *, / ja _ kuvaavat <B>lihavoitua</B>,
+<I>kursivoitua</I> and <U>alleviivattua</U> tekstiä.
+</P>
+<P>
+Lisäksi ohjelma tukee yhdistelmää <B><I>lihavoitu kursiivi</I></B>.
+</P>
+<H2>Valmiiksi muotoiltu teksti</H2>
+<P>
+Tekstiin voidaan sisällyttää myös vaikkapa ohjelmakoodia tai muuta valmiiksi muotoiltua tekstiä:
+</P>
+<PRE>
+    tämä    on     valmiiksi muotoiltua
+  //merkintöjä// siis  **ei**  ``tulkita``
+</PRE>
+<P></P>
+<P>
+On myös helppoa lisätä yksi valmiiksi muotoiltu tekstirivi:
+</P>
+<PRE>
+  prompt$ ls /etc
+</PRE>
+<P></P>
+<P>
+Tai käytä <CODE>valmiiksi muotoiltua</CODE> virkkeiden sisällä.
+</P>
+<H2>Kosmetiikkaa</H2>
+<P>
+Sähköpostiosoitteet  (<A HREF="mailto:matti@meikalainen.com">matti@meikalainen.com</A>) ja verkko-osoitteet
+(<A HREF="http://www.duh.com">http://www.duh.com</A>) tunnistetaan automaagisesti. Samoin vaakaviivat:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+ olivatpa sitten ohuita tai paksuja 
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<P>
+Voit myös määrittää <A HREF="http://duh.org">itse linkin</A>
+nimen avulla.
+</P>
+<P>
+Muista vielä, että
+</P>
+	<BLOCKQUOTE>
+	Sarkain rivin alussa alkaa sitaatin.
+		<BLOCKQUOTE>
+		Useat sarkaimet lisäävät syvyyttä, mikäli mahdollista.
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+Hienoa.
+</P>
+<H1>Luetelmat</H1>
+<P>
+Luetelmat alkavat luonnollisesti rivin aloittavalla <B>miinuksella</B> tai
+ <B>plussalla</B>.
+</P>
+<H2>Yksinkertainen luetelma</H2>
+<P>
+Miinusmerkkiä käytetään tavallisena  luetelmamerkkinä. Jos haluat useampia tasoja, lisää <B>välilyöntejä</B> rivin alkuun. Mitä enemmän välilyöntejä, sitä enemmän tasoja.
+</P>
+<UL>
+<LI>Maapallo
+  <UL>
+  <LI>Amerikka
+    <UL>
+    <LI>Etelä-Amerikka
+      <UL>
+      <LI>Brasilia
+        <UL>
+        <LI>Kuinka syvälle pääsemme?
+        </UL>
+      </UL>
+    </UL>
+  <LI>Eurooppa
+    <UL>
+    <LI>paljon maita
+    </UL>
+  </UL>
+<LI>Mars
+  <UL>
+  <LI>Ken tietää?
+  </UL>
+</UL>
+
+<P>
+Luettelo päättyy <B>kahdeen</B> peräkkäiseen tyhjään riviin.
+</P>
+<H2>Numeroitu luettelo</H2>
+<P>
+Kuten tavallisessa luettelossa, mutta nyt rivit alkavat + merkillä.
+</P>
+<OL>
+<LI>yksi
+<LI>kaksi
+<LI>kolme
+  <UL>
+  <LI>sekoitetaan tyylejä
+  <LI>mikä sotku!
+    <OL>
+    <LI>taas lasketaan
+    <LI>...
+    </OL>
+  </UL>
+<LI>neljä
+</OL>
+
+<H2>Määrittelyluettelo</H2>
+<P>
+Määrittelyluettelon tunnisteena käytetään kaksoispistettä, jota termi seuraa. Termin merkitys annetaan seuraavalla rivillä.
+</P>
+<DL>
+<DT>appelsiini</DT><DD>
+  oranssi hedelmä
+<DT>omena</DT><DD>
+  vihreä tai punainen hedelmä
+<DT>muut hedelmät</DT><DD>
+  <UL>
+  <LI>ooh!
+  <LI>sekoitetaan taas
+    <OL>
+    <LI>lisää!
+    <LI>uudestaan!!
+    </OL>
+  </UL>
+</DL>
+
+<H1>Taulukot</H1>
+<P>
+Taulukon rivit ja sarakkeet merkitään putkimerkeillä. Kaksi putkea rivin alussa alkaa otsikkorivin. Välilyönnit määrittävät solun tasauksen.
+</P>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>otsikko 1</TH>
+<TH>otsikko 2</TH>
+<TH>otsikko 3</TH>
+</TR>
+<TR>
+<TD>solu 1.1</TD>
+<TD ALIGN="center">solu 1.2</TD>
+<TD ALIGN="right">solu 1.3</TD>
+</TR>
+<TR>
+<TD>solu 2.1</TD>
+<TD ALIGN="center">solu 2.2</TD>
+<TD ALIGN="right">solu 2.3</TD>
+</TR>
+</TABLE>
+
+<P>
+Ilman viimeistä putkimerkkiä jätetään reunukset poius:
+</P>
+<TABLE ALIGN="center" CELLPADDING="4">
+<TR>
+<TH>otsikko 1</TH>
+<TH>otsikko 2</TH>
+<TH>otsikko 3</TH>
+</TR>
+<TR>
+<TD>solu 1.1</TD>
+<TD ALIGN="center">solu 1.2</TD>
+<TD ALIGN="right">solu 1.3</TD>
+</TR>
+<TR>
+<TD>solu 2.1</TD>
+<TD ALIGN="center">solu 2.2</TD>
+<TD ALIGN="right">solu 2.3</TD>
+</TR>
+</TABLE>
+
+<H1>Erikoisuudet</H1>
+<P>
+Ilman erikoisuuksia kaikki olisi liian yksinkertaista
+</P>
+<H2>Kuvat</H2>
+<P>
+Kuva merkitään mahdollisimman yksinkertaisesti: <CODE>[tiedostonimi]</CODE>.
+</P>
+                      <center><IMG ALIGN="middle" SRC="img/photo.jpg" BORDER="0" ALT=""></center>  
+<UL>
+<LI>Tiedostonimen täytyy loppua esimerkiksi tarkeenteeseen PNG, JPG, GIF tms.
+<LI>Älä käytä välilyöntejä hakasulkujen sisällä!
+</UL>
+
+<H2>Muuta</H2>
+<P>
+Kätevä <CODE>%%date</CODE> -makro avataan täksi päiväksi.
+</P>
+<P>
+Eli tänään on 20080726 ISO-muodossa <CODE>VVVVKKPP</CODE>.
+</P>
+<P>
+Voit myös määrittää päivän muotoilun  %?-lipuilla,
+esim. <CODE>%%date(%m-%d-%Y)</CODE> antaa tuloksen: 07-26-2008.
+</P>
+<P>
+Tämä riittänee tältä erää...
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+Kääntänyt: Mikko Piippo
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+<IMG ALIGN="left" SRC="img/t2tpowered.png" BORDER="0" ALT=""> (<A HREF="sample-fi.t2t">sample-fi.t2t</A>)
+</P>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html ./Finnish/sample-fi.t2t -->
+</BODY></HTML>

@@ -1,0 +1,467 @@
+.TH "TXT2TAGS" 1 "Maggio, 2005" ""
+
+.SH NOME
+.P
+txt2tags \- utility per la formattazione e la conversione del testo
+
+.SH SINOPSI
+.P
+\fBtxt2tags\fR [\fIOPTION\fR]... [\fIFILE\fR]...
+
+.SH DESCRIZIONE
+.P
+\fBtxt2tags\fR è un'utility GPL scritta in Python per la formattazione e la
+conversione del testo che genera documenti \fIHTML\fR, \fIXHTML\fR, \fISGML\fR,
+\fILaTeX\fR, \fILout\fR, \fIMan Page\fR, \fIMoinMoin\fR, \fIMagicPoint\fR e
+\fIPageMaker\fR da un singolo file di testo contenente un markup minimale.
+
+.P
+L'utente deve soltanto conoscere i pochi simboli \fBtxt2tags\fR,
+e scrivere semplici file di testo. Il programma fa tutto il lavoro sporco,
+aggiungendo i simboli necessari e gestendo i problemi di conversione.
+
+.P
+Uno stesso file può essere convertito in tutti i formati di destinazione, senza
+ulteriori modifiche. Questo è lo scopo di \fBtxt2tags\fR: MONO sorgente,
+MULTI destinazione.
+
+.P
+Visita l'home page \fIhttp://txt2tags.sourceforge.net\fR.
+
+.SH OPZIONI
+.TP
+ \fB\-C\fR, \fB\-\-config\-file\fR
+legge le configurazioni da un file esterno (come %!includeconf)
+
+.TP
+     \fB\-\-css\-sugar\fR
+inserisce tag compatibili con CSS, per HTML e XHTML
+
+.TP
+     \fB\-\-css\-inside\fR
+inserisce il contenuto del file CSS nell'intestazione HTML/XHTML
+
+.TP
+     \fB\-\-dump\-config\fR
+visualizza tutte le configurazioni trovate ed esce
+
+.TP
+     \fB\-\-dump\-source\fR
+visualizza il documento sorgente, espandendo le inclusioni
+
+.TP
+     \fB\-\-encoding\fR
+imposta la codifica del file di destinazione (utf\-8, iso\-8859\-1, etc)
+
+.TP
+     \fB\-\-gui\fR
+avvia l'interfaccia grafica Tk
+
+.TP
+ \fB\-h\fR, \fB\-\-help\fR
+visualizza le informazioni di aiuto ed esce
+
+.TP
+ \fB\-H\fR, \fB\-\-no\-headers\fR
+sopprime intestazione, titoli e pié di pagina
+
+.TP
+     \fB\-\-headers\fR
+mostra intestazioni, titoli e pié di pagina (predefinito SI)
+
+.TP
+ \fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
+setta FILE come file sorgente ('\-' per STDIN)
+
+.TP
+     \fB\-\-mask\-email\fR
+nasconde l'email agli spam robot. x@y.z diventa <x (a) y z>
+
+.TP
+ \fB\-n\fR, \fB\-\-enum\-title\fR
+enumera le righe di titolo come 1, 1.1, 1.1.1, etc
+
+.TP
+     \fB\-\-no\-dump\-config\fR
+disattiva la visualizzazione delle configurazioni
+
+.TP
+     \fB\-\-no\-dump\-source\fR
+disattiva la visualizzazione del documento sorgente
+
+.TP
+     \fB\-\-no\-encoding\fR
+cancella l'impostazione della codifica
+
+.TP
+     \fB\-\-no\-enum\-title\fR
+disattiva la numerazione automatica dei titoli
+
+.TP
+     \fB\-\-no\-infile\fR
+cancella le precedenti impostazioni del nome del file sorgente
+
+.TP
+     \fB\-\-no\-mask\-email\fR
+mostra le email, disattivando l'opzione \-\-mask\-email
+
+.TP
+     \fB\-\-no\-outfile\fR
+cancella le precedenti impostazioni del nome del file destinazione
+
+.TP
+     \fB\-\-no\-quiet\fR
+mostra i messaggi, disattivando l'opzione \-\-quiet
+
+.TP
+     \fB\-\-no\-rc\fR
+non legge il file di configurazione utente ~/.txt2tagsrc
+
+.TP
+     \fB\-\-no\-style\fR
+cancella le impostazioni dello stile
+
+.TP
+     \fB\-\-no\-toc\fR
+non aggiunge l'indice al documento di destinazione
+
+.TP
+     \fB\-\-no\-toc\-only\fR
+disattiva l'opzione \-\-toc\-only
+
+.TP
+ \fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
+setta FILE come file destinazione ('\-' per STDOUT)
+
+.TP
+ \fB\-q\fR, \fB\-\-quiet\fR
+sopprime tutti i messaggi (esclusi gli errori)
+
+.TP
+     \fB\-\-rc\fR
+legge il file di configurazione utente ~/.txt2tagsrc (predefinito SI)
+
+.TP
+     \fB\-\-style\fR=\fIFILE\fR
+usa FILE come stile del documento (come HTML CSS)
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR
+setta il formato del documento di destinazione. formati supportati:
+html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
+
+.TP
+     \fB\-\-toc\fR
+aggiunge l'indice al documento di destinazione
+
+.TP
+     \fB\-\-toc\-level\fR=\fIN\fR
+setta la profondità massima dell'indice ad N
+
+.TP
+     \fB\-\-toc\-only\fR
+stampa l'indice del documento ed esce
+
+.TP
+ \fB\-v\fR, \fB\-\-verbose\fR
+stampa messaggi informativi durante la conversione
+
+.TP
+ \fB\-V\fR, \fB\-\-version\fR
+visualizza la versione del programma ed esce
+
+.P
+Come opzione predefinita, il documento di destinazione convertito è salvato in 'file.<type>'.
+Usa \-\-outfile per forzare un nome del file di destinazione.
+Se il file sorgente è '\-', legge da STDIN.
+Se il file di destinazione è '\-', indirizza l'output su STDOUT.
+
+.SH STRUTTURA
+.P
+Il file sorgente Txt2tags può avere tre aree:
+
+.TP
+\fBIntestazione\fR
+Le prime tre linee. Sono usate per l'identificazione del documento.
+Se non necessiti dell'intestazione, devi lasciare vuota la prima riga o utilizzare
+l'opzione no\-header.
+
+.TP
+\fBConfigurazioni\fR
+Inizia dopo l'area di Intestazione (alla quarta riga o alla seconda riga). Tutti i
+settaggi hanno il formato %!keyword: value.
+I settaggi possono anche essere importati da un file di configurazione o dalla
+riga di comando.
+
+.TP
+\fBCorpo\fR
+Il documento sorgente vero e proprio! Questa è l'unica area richiesta per avere
+un file txt2tags valido ed inizia alla prima linea di testo valida (non commento
+o configurazione) dopo l'area di Intestazione.
+
+.SH SETTAGGI
+.P
+La conversione di un file sorgente può essere personalizzata in due diversi
+modi. Le configurazione esterne sono prese dal file ~/.txt2tagsrc o da un
+altro file scelto dall'utente. La configurazione interna è fatta con i settaggi
+nell'area di Configurazione. Entrambe le configurazioni usano la stessa sintassi:
+
+.TP
+\fB%!target:\fR
+definisce il formato di destinazione principale
+
+.TP
+\fB%!options(target):\fR
+definisce le opzioni per ogni formato di destinazione
+
+.TP
+\fB%!include: file.t2t\fR
+inserisce un file txt2tags nel documento
+
+.TP
+\fB%!include: ``file.txt``\fR
+inserisce un file di testo nel documento, preservando spazi e formattazione
+
+.TP
+\fB%!include: file.html\fR
+inserisce un file nel documento senza alcuna elaborazione da parte di txt2tags
+
+.TP
+\fB%!style:\fR
+definisce un file CSS (Cascading Style Sheets) per i formati di destinazione
+XHTML and HTML o per caricare moduli \eusepackage nel formato di destinazione
+TEX
+
+.TP
+\fB%!encoding:\fR
+imposta la codifica (come iso\-8859\-1) per la traduzione i18n
+
+.TP
+\fB%!includeconf:\fR
+include una configurazione da un file esterno
+
+.TP
+\fB%!guicolors:\fR
+imposta i colori per l'interfaccia grafica Tk/Tcl
+
+.TP
+\fB%!preproc:\fR
+i tuoi filtri personalizzati (macro) che verranno elaborati \fBPRIMA\fR
+dell'elaborazione del documento
+
+.TP
+\fB%!postproc:\fR
+i tuoi filtri personalizzati (macro) che verranno elaborati \fBDOPO\fR
+l'elaborazione del documento
+
+.SS REGOLE DEI SETTAGGI
+.RS
+.IP \(bu 3
+I settaggi sono validi soltanto nell'area di Configurazione, e sono considerati
+semplici commenti se sono trovati nel Corpo del documento. Eccetto include,
+che è un comando valido all'interno del Corpo del documento.
+
+.IP \(bu 3
+Se la stesso settaggio compare più di una volta nell'area di Configurazione,
+verrà usato solo l'ultimo trovato. Fanno eccezione: options, preproc
+e postproc, che sono settaggi cumulativi.
+
+.IP \(bu 3
+Una riga di settaggio con un settaggio invalido verrà considerato una semplice
+riga di commento.
+
+.IP \(bu 3
+I settaggi nell'area di Configurazione hanno la precedenza sul file txt2tagsrc,
+ma non sulle opzioni da riga di comando.
+.RE
+
+.SH SINTASSI
+.P
+Nel documento sorgente (il file contenente solo testo) è usata una sintassi molto
+semplice per identificare la struttura e la formattazione.
+Ecco la lista completa della sintassi:
+
+.SS Base
+.nf
+  Intestazione        Le prime tre righe del file sorgente
+  Titolo              = testo =
+  Titolo numerato     + testo +
+  Paragrafo           testo
+.fi
+
+
+.SS Formattazione
+.nf
+  Grassetto           **testo**
+  Italico             //testo//
+  Sottolineato        __testo__
+  Monospazio          ``testo``
+.fi
+
+
+.SS Blocchi di testo
+.nf
+  Citazione           <TAB>testo
+  Lista               - testo
+  Lista numerata      + testo
+  Lista di definiz.   : testo
+  Linea 'letterale'   ``` testo
+  Area 'letterale'    ```<RitornoACapo> linee <RitornoACapo>```
+  Linea 'grezza'      """ testo
+  Area 'grezza'       """<RitornoACapo> linee <RitornoACapo>"""
+  Tabella             | cella1 | cella2 | cella3...
+.fi
+
+
+.SS Altro
+.nf
+  Linea separatrice   -----------------------...
+  Linea più spessa    =======================...
+  Colleg.ipertest.    [etichetta url]
+  Immagine            [nomefile.jpg]
+  Testo 'grezzo'      ""testo""
+  Commento            % commento
+.fi
+
+
+.P
+Per una descrizione dettagliata della sintassi leggi la Guida
+dell'Utente Txt2tags (nella directory dei documenti).
+
+.SH ESEMPI
+.P
+Supponendo di avere scritto il file file.t2t, procediamo con
+la conversione.
+
+.TP
+\fBConversione in HTML, salvando in file.html\fR
+$ txt2tags \-t html file.t2t
+
+.TP
+\fBLo stesso, usando il reindirizzamento\fR
+$ txt2tags \-t html \-o \- file.t2t > file.html
+
+.TP
+\fBIncludendo l'indice\fR
+$ txt2tags \-t html \-\-toc file.t2t
+
+.TP
+\fBIncludendo l'indice ed i titoli numerati\fR
+$ txt2tags \-t html \-\-toc \-\-enum\-title file.t2t
+
+.TP
+\fBVisualizzando solo l'indice\fR
+$ txt2tags \-\-toc\-only file.t2t
+
+.TP
+\fBTest su un'unica riga, leggendo il testo da STDIN\fR
+$ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+.SH MACRO
+.TP
+%%date
+Permette di includere la data corrente, nel formato AAAAMMGG.
+Formattazione opzionale si può ottenere usando la sintassi
+%%date(format\-string).
+
+.TP
+%%infile
+Usato per ottenere informazioni circa il file sorgente. Formattazione
+opzionale si può ottenere usando la sintassi
+%%infile(format\-string).
+
+Utile per collegamenti nel pié di pagina come [Vedi sorgente %%infile],
+in quanto se il nome del file sorgente viene cambiato, esso verrà aggiornato
+nel documento convertito.
+
+.TP
+%%mtime
+
+Restituisce informazioni circa la data e l'ora di modifica del documento
+sorgente. Usa la stessa formattazione della macro %%date.
+
+.TP
+%%outfile
+Usato per ottenere informazioni circa il file convertito. Formattazione
+opzionale si può ottenere usando la sintassi %%outfile(format\-string).
+
+Utile per riferirsi al documento corrente, come "Questo è il file manpage\-it.man";
+se il nome del file convertito viene cambiato, esso verrà aggiornato.
+
+.TP
+%%toc
+La macro %%toc specifica dove verrà inserito l'indice del documento.
+Esso può essere inserito in qualunque punto all'interno del documento.
+
+NOTA: %%toc sarà convertito nell'indice solo se si utilizza l'opzione \-\-toc.
+
+.SH ALTRE INFORMAZIONI UTILI (*)
+.nf
+  (*) Questa sezione non è presente nella versione originale
+      inglese, ma è stata aggiunta dal traduttore nella versione italiana
+      (ispirato dalla sezione 'TRUCS' della versione francese).
+      
+      This section is not present in the original english version, but it
+      has been added by the italian translator (inspired by the 'TRUCS'
+      section of the french version).
+.fi
+
+
+.P
+Elenchiamo di seguito alcune caratteristiche che rendono txt2tags
+un'eccellente utility per scrivere i nostri documenti.
+
+.SS COLLEGAMENTI IPERTESTUALI NEL DOCUMENTO
+.P
+I titoli possono essere usati come destinazione di collegamenti ipertestuali,
+per essere raggiunti direttamente (se il formato lo consente) come se fossero
+collegamenti a pagine web.
+
+.P
+Definizione del collegamento (all'interno del titolo):
+
+.nf
+    Titolo            = testo =[NomeCollegamento]
+    Titolo numerato   + testo +[NomeCollegamento]
+.fi
+
+
+.P
+Richiamo del collegamento (all'interno di un paragrafo di testo):
+
+.nf
+    testo testo [DescrizioneCollegamento #NomeCollegamento] testo testo
+.fi
+
+
+.SS FILE MULTIPLI
+.P
+txt2tags può elaborare più file contemporaneamente, come segue:
+
+.P
+   txt2tags *.t2t 
+
+.SH AUTORE
+.P
+Scritto e mantenuto da Aurelio Jargas <verde@aurelio.net>
+
+.P
+Questa pagina di manuale è stata scritta da Jose Inacio Coelho <jic@technologist.com>
+come file di testo, e convertita nel formato man da \fBtxt2tags\fR!
+
+.P
+Tradotto da Spinucci Stefano <virgo977@tin.it>
+
+.SH COPYRIGHT
+.P
+Copyright (C) 2001, 2002, 2003, 2004, 2005 Aurelio Jargas
+
+.P
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+
+
+.\" man code generated by txt2tags 2.6b (http://txt2tags.sf.net)
+.\" cmdline: txt2tags -t man doc/Italian/manpage-it.t2t
+

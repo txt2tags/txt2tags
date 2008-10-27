@@ -1,0 +1,171 @@
+TXT2TAGS - ARCHIVO DE EJEMPLO
+Aurélio Jargas
+%%mtime(%d.%m.%Y)
+
+%!target: html
+%!encoding: iso-8859-1
+
+                   =  Introducción  =
+
+Bienvenido(a) al archivo de ejemplo de txt2tags.
+
+Aquí encontrará ejemplos y explicaciones breves de todas las etiquetas. Utilice el contenido como modelo para escribir sus primeros documentos en txt2tags.
+
+Las primeras 3 líneas de este archivo son usadas como encabezados, según el siguiente esquema:
+```
+línea 1: título del documento
+línea 2: nombre del autor, domicilio electrónico
+línea 3: fecha, versión
+```
+
+Las líneas encerradas entre signos de igualdad (=) son títulos dentro del documento.
+
+% aquí un comentario secreto!
+%TODO hacer un enlace hacia la página electrónica del programa http://txt2tags.sf.net
+
+
+             =  Fuentes y atributos  =
+
+Están disponibles dos tipos de fuentes:
+
+Un tipo NORMAL, que puede ser modificado con atributos.
+
+Un tipo MONOESPACIADO, que usa letras monoespaciadas (tipo Courier) para textos sin formato.
+
+Ahora vamos a crear un subtítulo...
+
+
+                 ==  Atributos  ==
+
+Las etiquetas para modificar un texto son simples, iguales a las que se usan en algunos mensajes electrónicos sin formato.
+
+Basta con duplicar *, / y _ para crear **negrita**, //cursiva// y __subrayado__.
+
+También es posible hacer **//negrita cursiva//** combinando las etiquetas.
+
+
+              ==  Texto preformateado  ==
+
+Es posible insertar un código u otro texto sin formato:
+```
+  aquí    es      zona de preformato
+las //marcas// **no**  son ``interpretadas``
+```
+
+Así es fácil insertar una línea especial de texto:
+``` prompt$ ls /etc
+
+También es posible usar ``sentencias`` monoespaciadas dentro de un texto.
+
+
+                ==  Más atributos  ==
+
+Entidades especiales como domicilios electrónicos (abc@algunlugar.com) y URL (http://abc.com) son reconocidas automáticamente. Pasa lo mismo con una línea horizontal:
+
+--------------------------------------------------------
+^ delgada o gruesa v
+========================================================
+
+También es posible especificar un [enlace con un texto alternativo http://abc.org].
+
+Y recuerde:
+	Un TAB (tabulación) al inicio de una línea indica una cita.
+		Más TAB y más profundidad también se permiten.
+Bien.
+
+
+                     =  Listas  =
+
+Para hacer una lista de elementos, basta con colocar un **signo de sustracción** o un **signo de adición** al inicio de la línea.
+
+
+                 ==  Lista simple (con viñetas)  ==
+
+El signo de sustracción es el signo predeterminado para hacer listas. Para hacer sublistados, basta con agregar **espacios en blanco** al inicio de la línea. A más espacios, más subelementos.
+
+- tierra
+  - américa
+    - américa del sur
+      - brasil
+        - ¿cuánto puede descender?
+  - europa
+    - muchos países
+- marte
+  - ¿alguien sabe?
+
+
+Una lista debe finalizarse con **dos** líneas consecutivas en blanco.
+
+
+                ==  Lista numerada  ==
+
+Las reglas de una lista simple son las mismas para hacer una numerada, solamente hay que cambiar el signo por uno de adición.
+
++ uno
++ dos
++ tres
+  - ¡combinando listas!
+  - qué desorden...
+    + contando de nuevo
+    + ...
++ cuatro
+
+
+                ==  Lista de definición  ==
+
+Los dos puntos se usan como signo para este tipo de lista, seguidos del término a definir. La definición debe colocarse en la siguiente línea.
+
+: naranja
+  una fruta amarilla (o anaranjada ;-))
+: manzana
+  una fruta verde o roja
+  - ¡yepa!
+  - combinando listas
+    + ¡de nuevo!
+    + ¡y nuevamente!
+
+
+                     =  Cuadros  =
+
+Utilice barras verticales para separar las celdas. Dos barras al inicio indican un título. Espacios en blanco indican la alinación de la celda.
+
+ || título 1  |  título 2   |   título 3 |
+  | celda 1.1 |  celda 1.2  |  celda 1.3 |
+  | celda 2.1 |  celda 2.2  |  celda 2.3 |
+
+Quite la última barra para hacer una tabla sin bordes:
+
+ || título 1  |  título 2   |   título 3
+  | celda 1.1 |  celda 1.2  |  celda 1.3
+  | celda 2.1 |  celda 2.2  |  celda 2.3
+
+
+               =  Entidades especiales  =
+
+Todo esto es muy sencillo, vamos a enriquecerlo un poco...
+
+                    == Imágenes  ==
+
+La etiqueta para una imagen es muy sencilla: ``[archivo]``.
+
+               [../img/photo.jpg]  
+
+- El nombre del archivo debe terminar en PNG, JPG, GIF, ...
+- ¡No están permitidos espacios en blanco!
+
+
+                    ==  Otros  ==
+
+El macro ``%%date`` informa de la fecha actual.
+
+Hoy es %%date en el formato ISO (``YYYYMMDD``).
+
+El formato de la fecha puede cambiarse usando los modificadores %?, como en ``%%date(%d-%m-%Y)``, que devolverá lo siguiente: %%date(%d-%m-%Y).
+
+Es todo.
+
+----------------------------------------------------------
+Traducido por Luis Cortázar.
+----------------------------------------------------------
+[../img/t2tpowered.png] ([%%infile %%infile])
+

@@ -1,0 +1,371 @@
+TXT2TAGS
+
+Jul, 2008
+
+%!target: man
+%!options(html): --mask-email
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%%!encoding: iso-8859-1
+
+%!postproc(html): <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
+%!postproc(html): (</STYLE>)  'body { margin:3em               ;} \n\1'
+%!postproc(html): (</STYLE>)  'a    { text-decoration:none     ;} \n\1'
+%!postproc(html): (</STYLE>)  'pre  { background-color:#ffffcc ;} \n\1'
+
+%% LOG
+%%    sep 2003 jic    : creation
+%% 25 sep 2003 anamim : text revision. misspellings, rewording phrases, etc
+%% 01 jun 2004 aurelio: updated to v2.0
+%% 20 jul 2004 jic    : included: settings area, few marks, areas; reorganizing
+%% 22 jul 2004 anamim : revision
+%% 30 ago 2004 aurelio: little typos
+%% 13 nov 2004 jic    : updated to v2.1
+%% 28 dec 2004 aurelio: updated to v2.2
+%% 21 may 2005 aurelio: updated to v2.3
+
+= NAME =
+
+txt2tags - text formatting and conversion tool
+
+= SYNOPSIS =
+
+**txt2tags** [//OPTION//]... [//FILE//]...
+
+= DESCRIPTION =
+
+**txt2tags** is a GPL format conversion tool written in Python that
+generates //HTML//, //XHTML//, //SGML//, //LaTeX//, //Lout//,
+//Man Page//, //MoinMoin//, //Wikipedia//, //DokuWiki//,
+//Google Code Wiki//, //MagicPoint// and //PageMaker//
+documents from a single text file with minimal markup.
+
+The user just need to know the very few and simple **txt2tags** marks,
+and write plain text files. The program does all the dirty work, adding
+the complicated tags and dealing with the target document's gotchas.
+
+The same text file can be converted to all target formats, with no
+further editing. This is the **txt2tags** purpose: ONE source, MULTI
+targets.
+
+Please visit the program site at
+//""http://txt2tags.sourceforge.net""//.
+
+
+= OPTIONS =
+
+:  **-C**, **--config-file**
+read config from an external file (works like %!includeconf)
+
+:      **--css-sugar**
+insert CSS-friendly tags for HTML and XHTML targets
+
+:      **--css-inside**
+insert CSS file contents inside HTML/XHTML headers
+
+:      **--dump-config**
+print all the config found and exit
+
+:      **--dump-source**
+print the document source, with includes expanded
+
+:      **--encoding**
+set target file encoding (utf-8, iso-8859-1, etc)
+
+:      **--gui**
+invoke Graphical Tk Interface
+
+:  **-h**, **--help**
+print help information and exit
+
+:  **-H**, **--no-headers**
+suppress header, title and footer information
+
+:      **--headers**
+show header, title and footer information (default ON)
+
+:  **-i**, **--infile**=//FILE//
+set FILE as the input file name ('-' for STDIN)
+
+:      **--mask-email**
+hide email from spam robots. x@y.z turns <x (a) y z>
+
+:  **-n**, **--enum-title**
+enumerate all title lines as 1, 1.1, 1.1.1, etc
+
+:      **--no-dump-config**
+turn off the dump config action
+
+:      **--no-dump-source**
+turn off the dump source action
+
+:      **--no-encoding**
+clear the encoding setting
+
+:      **--no-enum-title**
+turn off the title auto numbering
+
+:      **--no-infile**
+clear all the previous infile declarations
+
+:      **--no-mask-email**
+unhide emails, turning off the --mask-email option
+
+:      **--no-outfile**
+clear the previous outfile declaration
+
+:      **--no-quiet**
+show messages, turning off the --quiet option
+
+:      **--no-rc**
+do not read the user config file ~/.txt2tagsrc
+
+:      **--no-style**
+clear the style setting
+
+:      **--no-toc**
+do not add TOC (Table of Contents) to target document
+
+:      **--no-toc-only**
+turn off the --toc-only option
+
+:  **-o**, **--outfile**=//FILE//
+set FILE as the output file name ('-' for STDOUT)
+
+:  **-q**, **--quiet**
+quiet mode, suppress all output (except errors)
+
+:      **--rc**
+read user config file ~/.txt2tagsrc (default ON)
+
+:      **--style**=//FILE//
+use FILE as the document style (like Html CSS)
+
+: **-t**, **--target**=//TYPE//
+set target document type. currently supported:
+html, xhtml, sgml, tex, lout, man, mgp, wiki,
+gwiki, doku, moin, pm6, txt
+
+:      **--toc**
+add TOC (Table of Contents) to target document
+
+:      **--toc-level**=//N//
+set maximum TOC level (deepness) to N
+
+:      **--toc-only**
+print document TOC and exit
+
+:  **-v**, **--verbose**
+print informative messages during conversion
+
+:  **-V**, **--version**
+print program version and exit
+
+
+By default, converted output is saved to 'file.<type>'.
+Use --outfile to force an output file name.
+If input file is '-', reads from STDIN.
+If output file is '-', dumps output to STDOUT.
+
+
+=   STRUCTURE =
+
+Txt2tags source file can have three areas:
+
+: **Header**
+The first three lines. They are used for document identification.
+If you don't need headers, you must left the first line blank or specify
+the ``no-header`` setting.
+
+: **Settings**
+Starts at the fourth line. All settings have the ""%!keyword: value""
+format. Settings can also be made by a configuration file or command line.
+
+: **Body**
+Your real document source! Your only request area to have a valid
+txt2tags file.
+
+
+=  SETTINGS  =
+
+The conversion of a source file can be customized in two different
+ways. External configurations are taken from the RC file
+(``~/.txt2tagsrc``) or other user-selected file. Internal
+configurations are made with settings. Both use the same syntax:
+
+: **%!target:**
+defines the main target
+
+: **%!options(target):**
+defines the options to each target
+
+: **%!include: file.t2t**
+includes a txt2tags file in the document
+
+: **%!include: ""``file.txt``""**
+includes a text file (verbatim) in the document
+
+: **%!include: ''file.html''**
+includes a literal file in the document, as it is
+
+: **%!style:**
+to set a CSS (Cascading Style Sheets) file for XHTML and HTML
+targets or to load \usepackage modules in TEX target
+
+: **%!encoding:**
+to set a character set (like iso-8859-1) for i18n issues
+
+: **%!includeconf:**
+used to include configurations from an external file into the current
+
+: **%!guicolors:**
+color settings for the GUI interface (Tk)
+
+: **%!preproc:**
+your customized filter (macro) which will be processed **BEFORE** the
+document parsing
+
+: **%!postproc:**
+your customized filter (macro) which will be processed **AFTER** the
+document parsing
+
+
+== SETTINGS RULES ==
+
+- Settings are valid only inside the Config Area, and are considered
+  plain comments if found on the document Body. Except include,
+  which is a valid Body command.
+
+- If the same keyword appears more than once on the Config Area,
+  the last found will be the one used. Except: options, preproc
+  and postproc, which are cumulative.
+
+- A setting line with an invalid keyword will be considered a
+  plain comment line.
+
+- This settings have precedence over txt2tagsrc file, but not on
+  command line options.
+
+
+= SYNTAX =
+
+A very simple markup syntax is used on the document source
+(the plain text file) to identify structures and formatting.
+Here's the complete list:
+
+== Basic ==
+```
+Headers           The first 3 lines of the source file
+Title             = words =
+Numbered title    + words +
+Paragraph         words
+```
+
+== Beautifiers ==
+```
+Bold              **words**
+Italic            //words//
+Underline         __words__
+Strike            --words--
+Monospaced        ``words``
+```
+
+== Text Blocks ==
+```
+Quote             <TAB>words
+List              - words
+Numbered list     + words
+Definition list   : words
+Verbatim line     ``` words
+Verbatim area     ```<LineBreak> lines <LineBreak>```
+Raw line          """ words
+Raw area          """<LineBreak> lines <LineBreak>"""
+Table             | cell1 | cell2 | cell3...
+```
+
+== Other ==
+```
+Separator line    -----------------------...
+Strong line       =======================...
+Links             [label url]
+Image             [filename.jpg]
+Raw Text          ""words""
+Comment           % comments
+```
+
+Please read the Txt2tags User Guide (on the program documentation
+directory) for a detailed description of each mark.
+
+
+= EXAMPLES =
+
+Assuming you have written a ``file.t2t`` marked file, let's have some
+converting fun.
+
+: **Convert to HTML, saving to file.html**
+``$ txt2tags -t html file.t2t``
+
+: **The same, using redirection**
+``$ txt2tags -t html -o - file.t2t > file.html``
+
+: **Including Table Of Contents**
+``$ txt2tags -t html --toc file.t2t``
+
+: **Including TOC and numbering titles**
+``$ txt2tags -t html --toc --enum-title file.t2t``
+
+: **Contents quick view**
+``$ txt2tags --toc-only file.t2t``
+
+: **Quick one-liner test from STDIN**
+``$ (echo ; echo "**bold**") | txt2tags -t html -H -``
+
+
+= MACROS =
+
+: ""%%date""
+Allows to include the current date, in the format YYYYMMDD.
+Optional  formatting can be specified using the
+""%%date(format-string)"" syntax.
+
+: ""%%infile""
+Used to get information about the source file. Optional formatting can
+be specified using the ""%%infile(format-string)"" syntax.
+
+Useful for footer link like ""[See source %%infile]"", so you can
+change the filename and its references will be updated.
+
+: ""%%mtime""
+Gets information about the source file modification time. It uses the
+same formatters accepted by the ""%%date"" macro.
+
+: ""%%outfile""
+Used to get information about the converted file. Optional formatting
+can be specified using the ""%%outfile(format-string)"" syntax.
+
+Useful for self mentioning like "This is the %%outfile file", so you
+can change the filename and its references will be updated.
+
+: ""%%toc""
+The ""%%toc"" macro specifies where the TOC of the document will be
+placed. You can place it wherever needed inside the document, one or
+more times.
+
+NOTE: ""%%toc"" will be expanded only with the ""--toc"" option.
+
+
+= AUTHOR =
+
+Written and maintained by Aurelio Jargas <verde@aurelio.net>
+
+This Manual Page was written by Jose Inacio Coelho <jic@technologist.com>
+as a text file, then converted to man format by **txt2tags**!
+
+
+= COPYRIGHT =
+
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.

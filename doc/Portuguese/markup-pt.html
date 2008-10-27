@@ -1,0 +1,333 @@
+<table align="center" border=1>
+<tr><th colspan="2">BÁSICO</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+= Título de Nível 1 =
+
+== Título de Nível 2 ==
+
+=== Título de Nível 3 ===
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>Título de Nível 1</H1>
+<H2>Título de Nível 2</H2>
+<H3>Título de Nível 3</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
++ Título Numerado 1 +
+
+++ Título Numerado 2 ++
+
++++ Título Numerado 3 +++
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>1. Título Numerado 1</H1>
+<H2>1.1. Título Numerado 2</H2>
+<H3>1.1.1. Título Numerado 3</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Parágrafos são feitos com uma ou
+mais linhas.
+
+E separados por linhas em branco.
+</PRE>
+<P>
+</td><td>
+Parágrafos são feitos com uma ou
+mais linhas.
+</P>
+<P>
+E separados por linhas em branco.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+% inicie uma linha com um
+sinal de porcentagem,
+% e ela será ignorada
+útil para comentários.
+</PRE>
+<P>
+</td><td>
+sinal de porcentagem,
+útil para comentários.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Como embelezadores temos **negrito**
+e //itálico//.
+
+Também tem o __sublinhado__, --riscado-- e o
+``monoespaçado``.
+</PRE>
+<P>
+</td><td>
+Como embelezadores temos <B>negrito</B>
+e <I>itálico</I>.
+</P>
+<P>
+Também tem o <U>sublinhado</U>, <S>riscado</S> e o
+<CODE>monoespaçado</CODE>.
+</td></tr><tr><th colspan="2">LISTAS</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+- Esta é uma lista de itens
+- Basta usar os hífens
+  - Espaços antes abre uma sublista
+
+
+Duas linhas em branco fecham as listas.
+</PRE>
+<P>
+</td><td>
+</P>
+<UL>
+<LI>Esta é uma lista de itens
+<LI>Basta usar os hífens
+  <UL>
+  <LI>Espaços antes abre uma sublista
+  </UL>
+</UL>
+
+<P>
+Duas linhas em branco fecham as listas.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
++ Troque o hífen por um mais
++ E você tem uma lista numerada
+  + As mesmas regras se aplicam
+  +
++
+Um item vazio fecha a lista atual.
+</PRE>
+<P>
+</td><td>
+</P>
+<OL>
+<LI>Troque o hífen por um mais
+<LI>E você tem uma lista numerada
+  <OL>
+  <LI>As mesmas regras se aplicam
+  </OL>
+</OL>
+
+<P>
+Um item vazio fecha a lista atual.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+: Lista de termos
+  Possui termos e suas definições.
+: Inicie os termos com dois-pontos
+  E a definição é o que se segue.
+:
+</PRE>
+<P>
+</td><td>
+</P>
+<DL>
+<DT>Lista de termos</DT><DD>
+  Possui termos e suas definições.
+<DT>Inicie os termos com dois-pontos</DT><DD>
+  E a definição é o que se segue.
+</DL>
+
+<P>
+</td></tr><tr><th colspan="2">ÁREAS</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+	Citações são linhas que se
+	iniciam com um TAB.
+		Mais TABs, mais fundo.
+Uma linha sem TAB fecha a citação.
+</PRE>
+<P>
+</td><td>
+</P>
+	<BLOCKQUOTE>
+	Citações são linhas que se
+	iniciam com um TAB.
+		<BLOCKQUOTE>
+		Mais TABs, mais fundo.
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Uma linha sem TAB fecha a citação.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+```
+   Uma área formatada é composta
+       com três crases ao redor.
+
+**Marcas** não são interpretadas
+      e o espaçamento é mantido.
+```
+</PRE>
+<P>
+</td><td>
+</P>
+<PRE>
+   Uma área formatada é composta
+       com três crases ao redor.
+
+**Marcas** não são interpretadas
+      e o espaçamento é mantido.
+</PRE>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Uma linha formatada para comandos:
+``` $ cat /etc/passwd | tr : ,
+Basta colocar 3 crases no início.
+</PRE>
+<P>
+</td><td>
+Uma linha formatada para comandos:
+</P>
+<PRE>
+$ cat /etc/passwd | tr : ,
+</PRE>
+<P>
+Basta colocar 3 crases no início.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+"""
+   Uma área protegida é composta
+ com três aspas duplas ao redor.
+
+**Marcas** não são interpretadas
+     e o espaçamento é ignorado.
+"""
+</PRE>
+<P>
+</td><td>
+   Uma área protegida é composta
+ com três aspas duplas ao redor.
+
+**Marcas** não são interpretadas
+     e o espaçamento é ignorado.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+""" Esta é uma **linha** protegida.
+</PRE>
+<P>
+</td><td>
+Esta é uma **linha** protegida.
+</td></tr><tr><th colspan="2">OUTROS</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+|| Linha Título | Linha Título |
+|       Alinhar |      é       |
+|    as células |    muito     |
+|     da tabela |    fácil!    |
+</PRE>
+<P>
+</td><td>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Linha Título</TH>
+<TH>Linha Título</TH>
+</TR>
+<TR>
+<TD ALIGN="right">Alinhar</TD>
+<TD ALIGN="center">é</TD>
+</TR>
+<TR>
+<TD ALIGN="right">as células</TD>
+<TD ALIGN="center">muito</TD>
+</TR>
+<TR>
+<TD ALIGN="right">da tabela</TD>
+<TD ALIGN="center">fácil!</TD>
+</TR>
+</TABLE>
+
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+[t2t.png] Imagem à esquerda
+
+Imagem [t2t.png] centralizada
+
+Imagem à direita [t2t.png]
+</PRE>
+<P>
+</td><td>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> Imagem à esquerda
+</P>
+<P>
+Imagem <IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> centralizada
+</P>
+<P>
+Imagem à direita <IMG ALIGN="right" SRC="../img/t2tpowered.png" BORDER="0" ALT="">
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Links são reconhecidos@automaticamen.te
+
+Um [link com nome www.url.com] é fácil.
+
+Imagem [[t2t.png] como-um-link.html].
+</PRE>
+<P>
+</td><td>
+Links são <A HREF="mailto:reconhecidos@automaticamen.te">reconhecidos@automaticamen.te</A>
+</P>
+<P>
+Um <A HREF="http://www.url.com">link com nome</A> é fácil.
+</P>
+<P>
+Imagem <A HREF="como-um-link.html"><IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""></A>.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Uma linha separadora:
+--------------------
+E uma linha forte:
+====================
+(Pelo menos 20 caracteres)
+</PRE>
+<P>
+</td><td>
+Uma linha separadora:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+E uma linha forte:
+</P>
+<HR NOSHADE SIZE=5>
+<P>
+(Pelo menos 20 caracteres)
+</td></tr>
+</table>

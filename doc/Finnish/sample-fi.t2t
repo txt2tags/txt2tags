@@ -1,0 +1,187 @@
+TXT2TAGS-ESIMERKKI
+Aurelio Jargas
+%%mtime(%m/%d/%Y)
+
+%!encoding: utf-8
+
+                  =  Johdanto  =
+
+Tervetuloa txt2tags-esimerkkitiedoston pariin!
+
+Tässä on esimerkkejä ja lyhyt selitys kaikista merkintätavoista.
+
+
+Tämän tiedoston kolmea ensimmäistä riviä käytetään otsikkotietoina seuraavasti:
+
+```
+rivi 1: asiakirjan nimi
+rivi 2: kirjoittaja, sähköpostiosoite
+rivi 3: päivämäärä, versio
+```
+
+Otsikot on merkitty molemmin puolisilla yhtäsuuruusmerkeillä =.
+
+% salainen kommentti!
+
+%TODO link to program site http://txt2tags.sf.net
+
+
+              =  Kirjasimet ja muotoilu  =
+
+Käytössä on kaksi kirjasintyyppiä: 
+
+Tavallinen kirjasintyyppi, jota voi parantaa muotoilumerkinnöillä.
+
+Kirjoituskonekirjasin, joka käyttää tasavälistä kirjasinta valmiiksi muotoiltua tekstiä varten.
+
+Seuraavaksi alaotsikko...
+
+
+                  ==  Muotoilumerkinnät  ==
+
+Muotoiluun käytetään yksinkertaisia merkintöjä aivan kuten muotoilematonta tekstiä käyttävissä sähköpostiviesteissä.
+
+
+Kaksinkertaiset *, / ja _ kuvaavat **lihavoitua**,
+//kursivoitua// and __alleviivattua__ tekstiä.
+
+Lisäksi ohjelma tukee yhdistelmää **//lihavoitu kursiivi//**.
+
+
+              ==  Valmiiksi muotoiltu teksti  ==
+
+Tekstiin voidaan sisällyttää myös vaikkapa ohjelmakoodia tai muuta valmiiksi muotoiltua tekstiä:
+
+```
+  tämä    on     valmiiksi muotoiltua
+//merkintöjä// siis  **ei**  ``tulkita``
+```
+
+On myös helppoa lisätä yksi valmiiksi muotoiltu tekstirivi:
+
+``` prompt$ ls /etc
+
+Tai käytä ``valmiiksi muotoiltua`` virkkeiden sisällä.
+
+
+                ==  Kosmetiikkaa  ==
+
+Sähköpostiosoitteet  (matti@meikalainen.com) ja verkko-osoitteet
+(http://www.duh.com) tunnistetaan automaagisesti. Samoin vaakaviivat:
+
+--------------------------------------------------------
+ olivatpa sitten ohuita tai paksuja 
+========================================================
+
+Voit myös määrittää [itse linkin http://duh.org]
+nimen avulla.
+
+Muista vielä, että
+	Sarkain rivin alussa alkaa sitaatin.
+		Useat sarkaimet lisäävät syvyyttä, mikäli mahdollista.
+
+Hienoa.
+
+
+                      =  Luetelmat  =
+
+Luetelmat alkavat luonnollisesti rivin aloittavalla **miinuksella** tai
+ **plussalla**.
+
+
+                  ==  Yksinkertainen luetelma  ==
+
+Miinusmerkkiä käytetään tavallisena  luetelmamerkkinä. Jos haluat useampia tasoja, lisää **välilyöntejä** rivin alkuun. Mitä enemmän välilyöntejä, sitä enemmän tasoja.
+
+- Maapallo
+  - Amerikka
+    - Etelä-Amerikka
+      - Brasilia
+        - Kuinka syvälle pääsemme?
+  - Eurooppa
+    - paljon maita
+- Mars
+  - Ken tietää?
+
+
+Luettelo päättyy **kahdeen** peräkkäiseen tyhjään riviin.
+
+
+                 ==  Numeroitu luettelo ==
+
+Kuten tavallisessa luettelossa, mutta nyt rivit alkavat + merkillä.
+
++ yksi
++ kaksi
++ kolme
+  - sekoitetaan tyylejä
+  - mikä sotku!
+    + taas lasketaan
+    + ...
++ neljä
+
+
+                ==  Määrittelyluettelo  ==
+
+Määrittelyluettelon tunnisteena käytetään kaksoispistettä, jota termi seuraa. Termin merkitys annetaan seuraavalla rivillä.
+
+
+: appelsiini
+  oranssi hedelmä
+: omena
+  vihreä tai punainen hedelmä
+: muut hedelmät
+  - ooh!
+  - sekoitetaan taas
+    + lisää!
+    + uudestaan!!
+
+
+                     =  Taulukot  =
+
+Taulukon rivit ja sarakkeet merkitään putkimerkeillä. Kaksi putkea rivin alussa alkaa otsikkorivin. Välilyönnit määrittävät solun tasauksen.
+
+ || otsikko 1 |  otsikko 2  |  otsikko 3 |
+  | solu 1.1  |  solu 1.2   |   solu 1.3 |
+  | solu 2.1  |  solu 2.2   |   solu 2.3 |
+
+Ilman viimeistä putkimerkkiä jätetään reunukset poius:
+
+ || otsikko 1 |  otsikko 2  |  otsikko 3
+  | solu 1.1  |  solu 1.2   |   solu 1.3
+  | solu 2.1  |  solu 2.2   |   solu 2.3
+
+
+                =  Erikoisuudet  =
+
+Ilman erikoisuuksia kaikki olisi liian yksinkertaista
+
+
+                    ==  Kuvat  ==
+
+Kuva merkitään mahdollisimman yksinkertaisesti: ``[tiedostonimi]``.
+
+                      [img/photo.jpg]  
+
+- Tiedostonimen täytyy loppua esimerkiksi tarkeenteeseen PNG, JPG, GIF tms.
+- Älä käytä välilyöntejä hakasulkujen sisällä!
+
+
+                     ==  Muuta  ==
+
+Kätevä ``%%date`` -makro avataan täksi päiväksi.
+
+Eli tänään on %%date ISO-muodossa ``VVVVKKPP``.
+
+Voit myös määrittää päivän muotoilun  %?-lipuilla,
+esim. ``%%date(%m-%d-%Y)`` antaa tuloksen: %%date(%m-%d-%Y).
+
+Tämä riittänee tältä erää...
+
+-------------------------------------------------------
+%%% TRANSLATOR: Uncomment and translate the next two lines
+Kääntänyt: Mikko Piippo
+-------------------------------------------------------
+[img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55

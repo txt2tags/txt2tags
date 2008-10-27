@@ -1,0 +1,202 @@
+TXT2TAGS BEISPIEL
+Aurelio Jargas
+%%mtime(%m/%d/%Y)
+
+%!target: html
+%!encoding: iso-8859-15
+
+                  =  Einleitung  =
+
+Willkommen in der txt2tags-Beispieldatei.
+
+Hier erhalten Sie Beispiele und kurze Erklärungen
+zu allen Markierungen.
+
+Die ersten 3  Zeilen dieser Datei enhalten die Kopfdaten
+(//headers//), und zwar in folgendem Format:
+```
+Zeile1: Titel des Dokuments
+Zeile2: Name des Autors, Email-Adresse
+Zeile3: Datum, Version
+```
+
+Zeilen, die mit Gleichheitszeichen '=' beginnen und
+enden, sind Überschriften. (Es müssen gleich viele
+Gleichheitszeichen am Beginn und Ende der Zeile sein.)
+
+% Ein geheimer Kommentar!
+%TODO Link zur Programmhomepage http://txt2tags.sf.net
+
+
+              =  Schriften und Textauszeichnungen =
+
+Es gibt zwei Schriftarten:
+
+Die Schrift NORMAL, die mit Textauszeichnungen versehen werden kann.
+
+Die Schrift TYPEWRITER, die Zeichen fester
+Breite hat und sich für vorformatierten Text eignet.
+
+Jetzt kommen wir zu einem Unterabschnitt ...
+
+
+                  ==  Textauszeichnungen  ==
+
+Die Markierungen für Textauszeichnungen sind einfach,
+ähnlich wie sie bei Text-Emails verwendet werden.
+
+Wir benutzen die Zeichen *, / und _ doppelt, um
+**fette Schrift**, //kursive Schrift// und __Unterstreichen__ zu 
+kennzeichnen.
+
+**//Fette kursive Schrift//** wird ebenfalls unterstützt.
+
+
+              ==  Vorformatierte Texte  ==
+
+Wir können Programmcode oder anderen vorformatierten Text setzen:
+```
+  Dieser      Text  is     vorformatiert
+//Markierungen// werden  **einfach**  ``ignoriert``
+```
+
+Ein  Einzeiler ist ebenso einfach:
+``` prompt$ ls /etc
+
+Innerhalb eines Satzes wird so ``vorformatiert``.
+
+
+                ==  Mehr Kosmetik  ==
+
+Spezielle Elemente wie Emailadressen
+(max@irgendwo.de) und URLs (http://www.irgendwo.de) werden
+automagisch erkannt, ebenso wie horizontale Linien:
+
+--------------------------------------------------------
+^ dünn oder dick v
+========================================================
+
+Man kann auch einen [expliziten Link http://irgendwo.de] 
+mit Beschriftung setzen.
+
+Und merken Sie sich,
+	ein TAB am Beginn einer Zeile erzeugt ein Zitat.
+		Weitere TABs erzeugen tiefere Einrückung (wenn erlaubt).
+Schön.
+
+
+                      =  Listen  =
+
+Listen werden ganz natürlich mit dem **Bindestrich**
+oder **Pluszeichen** am Anfang der Zeile erzeugt.
+
+
+                  ==  Standard-Liste  ==
+
+Der Bindestrich ist das Standard-Listenzeichen. Für
+Unterlisten fügen Sie einfach Leerzeichen am Zeilenanfang hinzu.
+Weitere Leerzeichen erzeugen weitere Unterlisten.
+
+- Erde
+  - Europa
+    - Benelux
+      - Luxembourg
+        - Wie tief kann ich gehen?
+  - Amerika
+    - Süd-Amerika
+      - Brasilien
+      - und viele mehr ...
+- Mars
+  - Wo sind die kleinen grünen Männchen?
+
+
+Die Liste endet mit **zwei** aufeinanderfolgenden Leerzeilen.
+
+
+                 ==  Numerierte Listen  ==
+
+Die Regeln bleiben dieselben, nur das Startzeichen
+ändert sich (Pluszeichen).
+
++ Eins
++ Zwei
++ Drei
+  - Gemischt geht es auch!
+  - Welch Durcheinander
+    + Zähle wieder
+    + ...
++ Vier
+
+
+                ==  Definitionslisten  ==
+
+Das Zeichen für Definitionslisten ist der Doppelpunkt,
+gefolgt vom zu erklärenden Ausdruck. Die Erklärung
+beginnt in der nächsten Zeile.
+
+: Apfelsine (Orange)
+  Eine gelbe Frucht
+: Apfel
+  Eine grüne oder rote Frucht
+: Weitere Füchte
+  - Oops!
+  - Gemischtes
+    + wieder!
+    + und wieder!
+
+
+                     =  Tabellen  =
+
+Das //pipe (|)//-Zeichen trennt Zeilen und Zellen einer
+Tabelle.
+Doppelte //pipes// am Zeilenbeginn erzeugen eine
+Titelzeile.
+Rechte, linke oder zentrierte Zellenausrichtung werden ganz natürlich mit
+Leerzeichen markiert
+
+ || Titel 1    |   Titel 2     |     Titel 3 |
+  | Zelle 1.1  |   Zelle 1.2   |   Zelle 1.3 |
+  | Zelle 2.1  |   Zelle 2.2   |   Zelle 2.3 |
+
+Keine Schluss-//pipe//, kein Rahmen um die Tabelle:
+
+ || Titel 1    |    Titel 2    |     Titel 3
+  | Zelle 1.1  |   Zelle 1.2   |   Zelle 1.3
+  | Zelle 2.1  |   Zelle 2.2   |   Zelle 2.3
+
+
+                =  Spezielle Elemente  =
+
+Sonst wär's doch zu einfach.
+
+
+                    ==  Bilder  ==
+
+Die Markierung für Bilder: ``[Dateiname]``, einfacher geht's
+nicht.
+
+                      [../img/photo.jpg]  
+
+- Der Dateiname muss mit PNG, JPG, GIF, or ähnlich enden.
+- Keine Leerzeichen innerhalb der eckigen Klammern!
+
+
+                     ==  Sonstiges  ==
+
+Das ``%%date``-macro erzeugt das Datum.
+
+Heute ist also %%date im ISO ``YYYYMMDD``-Format.
+
+Das Format zur Datumsanzeige kann auch mit %?
+spezifiert werden: ``%%date(%m-%d-%Y)`` wird zu: %%date(%m-%d-%Y).
+
+So, das war's für's Erste.
+
+-------------------------------------------------------
+Übersetzung von Pascal Steichen.
+
+Revised by Thomas Bauer.
+-------------------------------------------------------
+[../img/t2tpowered.png] ([%%infile %%infile])
+
+% vim: tw=55

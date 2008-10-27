@@ -1,0 +1,4 @@
+
+Babilema linio estas bone al komandoj:
+``` $ cat /etc/passwd | tr : ,
+Nur komencu ĝin per 3 malapostrofoj.

@@ -1,0 +1,193 @@
+TXT2TAGS - ARQUIVO DE EXEMPLO
+Aurélio Jargas
+%%mtime(%d.%m.%Y)
+
+%!target: html
+%!encoding: iso-8859-1
+
+                   =  Introdução  =
+
+Bem-vindo(a) ao arquivo de exemplo do txt2tags.
+
+Aqui você encontra exemplos e uma rápida explicação
+de todas as marcas. Use-o como esqueleto do seu
+primeiro documento escrito no txt2tags.
+
+As primeiras 3 linhas deste arquivo são usadas como
+cabeçalho, no seguinte formato:
+```
+linha 1: título do documento
+linha 2: nome do autor, email
+linha 3: data, versão
+```
+
+As linhas que possuem sinais de igual = balanceados no
+início e final são títulos.
+
+% aqui um comentário secreto!
+%TODO fazer um link para a página do programa http://txt2tags.sf.net
+
+
+             =  Fontes e Embelezadores  =
+
+Há dois tipos de fontes disponíveis:
+
+O tipo NORMAL, que pode ser destacado com
+embelezadores.
+
+O tipo MONOESPAÇADO, usa letras monoespaçadas
+(tipo Courier) para textos já formatados.
+
+Agora vamos entrar num subtítulo...
+
+
+                 ==  Embelezadores  ==
+
+As marcações para embelezar o texto são simples,
+iguais as usadas numa mensagem de e-mail.
+
+Basta duplicar *, /, - e _ para representar **negrito**,
+//itálico//, --riscado-- e __sublinhado__.
+
+Também é possível fazer **//negrito itálico//**
+combinando as marcas.
+
+
+              ==  Texto Pré-Formatado  ==
+
+É possível inserir um trecho de código ou outro texto
+já formatado:
+```
+  aqui    é      pré-formatado
+//marcas// **não**  são ``interpretadas``
+```
+
+Se for apenas uma linha, há uma marca especial:
+``` prompt$ ls /etc
+
+Ou então use ``as crases`` para incluir texto
+monoespaçado dentro de parágrafos.
+
+
+                ==  Mais Perfumaria  ==
+
+Entidades especiais como e-mail (abc@algumlugar.com)
+e URL (http://www.abc.com) são reconhecidas
+automagicamente. A linha horizontal também:
+
+--------------------------------------------------------
+^ fina ou grossa v
+========================================================
+
+Você também pode especificar um
+[link com nome http://abc.org].
+
+E lembre-se:
+	Um TAB no início da linha indica uma citação.
+		Mais TABs, mais profundidade (se permitido).
+Legal.
+
+
+                     =  Listas  =
+
+A lista de itens é natural, basta colocar um **hífen**
+ou **sinal de mais** no início da linha.
+
+
+                 ==  Lista Normal  ==
+
+O hífen é o marcador de listas. Para fazer sublistas
+(aninhadas), basta adicionar **espaços em branco** no
+início da linha. Mais espaços, mais sublistas.
+
+- terra
+  - américa
+    - américa do sul
+      - brasil
+        - quanto posso descer?
+  - europa
+    - muitos países
+- marte
+  - quem sabe?
+
+
+A lista acaba com **duas** linhas em branco
+consecutivas.
+
+
+                ==  Lista Numerada  ==
+
+As mesmas regras as lista normal são válidas para a
+numerada, mudando apenas o marcador (sinal de mais).
+
++ um
++ dois
++ três
+  - misturando listas!
+  - que bagunça...
+    + contando de novo
+    + ...
++ quatro
+
+
+                ==  Lista de Termos  ==
+
+O marcador da lista é o dois-pontos, seguido do termo.
+O conteúdo do termo é colocado na linha seguinte.
+
+: laranja
+  uma fruta amarela
+: maçã
+  uma fruta verde ou vermelha
+: outras frutas
+  - êpa!
+  - misturando listas
+    + de novo!
+    + e de novo!
+
+
+                     =  Tabelas  =
+
+Utilize barras verticais para separar os campos.
+Duas barras no início indicam uma linha de título.
+Espaços em branco indicam o alinhamento do campo.
+
+ || título 1  |  título 2   |   título 3 |
+  | campo 1.1 |  campo 1.2  |  campo 1.3 |
+  | campo 2.1 |  campo 2.2  |  campo 2.3 |
+
+Tire a última barra para a tabela ficar sem borda:
+
+ || título 1  |  título 2   |   título 3
+  | campo 1.1 |  campo 1.2  |  campo 1.3
+  | campo 2.1 |  campo 2.2  |  campo 2.3
+
+
+               =  Entidades Especiais  =
+
+Está tudo muito simples, vamos complicar um pouco...
+
+                    == Imagens  ==
+
+A marca da imagem é simplérrima: ``[arquivo]``.
+
+               [../img/photo.jpg]  
+
+- O nome do arquivo deve terminar em PNG, JPG, GIF, ...
+- Não é permitido espaços em branco!
+
+
+                    ==  Outros  ==
+
+A macro ``%%date`` informa a data atual.
+
+Hoje é %%date no formato ISO (``AAAAMMDD``).
+
+O formato da data pode ser mudado usando os
+formatadores %?, como em ``%%date(%d-%m-%Y)``,
+que fica: %%date(%d-%m-%Y).
+
+É isso.
+
+-------------------------------------------------------
+[../img/t2tpowered.png] ([%%infile %%infile])

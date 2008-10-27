@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<STYLE TYPE="text/css">
+body { margin:1em; }              
+div.header { text-align:center; } 
+th { padding:.5em; }              
+td { width:45%; padding:.5em; }   
+td { background-color:silver; }   
+td.t2t { background-color:#ef4; } 
+</STYLE>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<TITLE>Txt2tags Markup Demo</TITLE>
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>Txt2tags Markup Demo</H1>
+<H2>Markierungen werden ins HTML umgewandelt</H2>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<P>
+<table align="center" border=1>
+<tr><th colspan="2">
+</P>
+<P>
+BASIS
+</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+= Titel Niveau 1 =
+
+== Titel Niveau 2 ==
+
+=== Titel Niveau 3 ===
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>Titel Niveau 1</H1>
+<H2>Titel Niveau 2</H2>
+<H3>Titel Niveau 3</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
++ Numerierter Title Niveau 1 +
+
+++ Numerierter Title Niveau 2 ++
+
++++ Numerierter Title Niveau 3 +++
+</PRE>
+<P>
+</td><td>
+</P>
+<H1>1. Numerierter Title Niveau 1</H1>
+<H2>1.1. Numerierter Title Niveau 2</H2>
+<H3>1.1.1. Numerierter Title Niveau 3</H3>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Ein Paragraf besteht aus einer oder
+mehrerer Zeilen.
+
+Eine leer Zeile trennt sie.
+</PRE>
+<P>
+</td><td>
+Ein Paragraf besteht aus einer oder
+mehrerer Zeilen.
+</P>
+<P>
+Eine leer Zeile trennt sie.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+% beginne eine Zeile mit dem 
+Prozent Zeichen,
+% und sie wird ignorier
+sehr nützlich für TODOs!
+</PRE>
+<P>
+</td><td>
+Prozent Zeichen,
+sehr nützlich für TODOs!
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Zum verschönern gibts **fett**
+und //kursiv//.
+
+Ebenfalls haben wir __unterstrichen__ und
+``mono``.
+</PRE>
+<P>
+</td><td>
+Zum verschönern gibts <B>fett</B>
+und <I>kursiv</I>.
+</P>
+<P>
+Ebenfalls haben wir <U>unterstrichen</U> und
+<CODE>mono</CODE>.
+</td></tr><tr><th colspan="2">
+</P>
+<P>
+LISTEN
+</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+- Dies ist ein Listen Eintrag
+- Einfach ein Bindestrich setzen
+  - Mit Leerzeichen (Einbrüchen) macht man Unterlisten
+
+
+Zwei leere Zeilen, schliessen die Listen.
+</PRE>
+<P>
+</td><td>
+</P>
+<UL>
+<LI>Dies ist ein Listen Eintrag
+<LI>Einfach ein Bindestrich setzen
+  <UL>
+  <LI>Mit Leerzeichen (Einbrüchen) macht man Unterlisten
+  </UL>
+</UL>
+
+<P>
+Zwei leere Zeilen, schliessen die Listen.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
++ Benutze das Pluszeichen
++ und man erhaelt eine Nummerierteliste
+  + Die selben Regel sind zu beachten
+  +
++
+Ein leeres Listenfeld beendet die Liste.
+</PRE>
+<P>
+</td><td>
+</P>
+<OL>
+<LI>Benutze das Pluszeichen
+<LI>und man erhaelt eine Nummerierteliste
+  <OL>
+  <LI>Die selben Regel sind zu beachten
+  </OL>
+</OL>
+
+<P>
+Ein leeres Listenfeld beendet die Liste.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+: Definitionenliste
+  Eine Liste mit Begriffen
+: Beginne den Begriff mit einem Doppelpunkt
+  Und die Erklärung folgt zugleich
+:
+</PRE>
+<P>
+</td><td>
+</P>
+<DL>
+<DT>Definitionenliste</DT><DD>
+  Eine Liste mit Begriffen
+<DT>Beginne den Begriff mit einem Doppelpunkt</DT><DD>
+  Und die Erklärung folgt zugleich
+</DL>
+
+<P>
+</td></tr><tr><th colspan="2">
+</P>
+<P>
+BLÖCKE
+</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+	Ein zitierter Paragraf wird
+	mit einem TAB vorausgesetzt.
+		Mehr TABs, tiefer.
+Kein TAB oder eine leere Zeile, schliessen das Zitat.
+</PRE>
+<P>
+</td><td>
+</P>
+	<BLOCKQUOTE>
+	Ein zitierter Paragraf wird
+	mit einem TAB vorausgesetzt.
+		<BLOCKQUOTE>
+		Mehr TABs, tiefer.
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Kein TAB oder eine leere Zeile, schliessen das Zitat.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+```
+         Ein verbatim Block steht
+      zwischen drei "backquotes".
+**Markierungen** werden ignoriert
+              Leerzeichen, nicht.
+```
+</PRE>
+<P>
+</td><td>
+</P>
+<PRE>
+         Ein verbatim Block steht
+      zwischen drei "backquotes".
+**Markierungen** werden ignoriert
+              Leerzeichen, nicht.
+</PRE>
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Verbatime Zeilen sind super für Kommandos:
+``` $ cat /etc/passwd | tr : ,
+Einfach 3 "backquotes" davor setzen.
+</PRE>
+<P>
+</td><td>
+Verbatime Zeilen sind super für Kommandos:
+</P>
+<PRE>
+$ cat /etc/passwd | tr : ,
+</PRE>
+<P>
+Einfach 3 "backquotes" davor setzen.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+"""
+       Eine "raw" Block entsteht
+     zwischen drei Gänsefüsschen.
+
+**Markierungen** werden ignoriert
+               sowie Leerzeichen.
+"""
+</PRE>
+<P>
+</td><td>
+       Eine "raw" Block entsteht
+     zwischen drei Gänsefüsschen.
+
+**Markierungen** werden ignoriert
+               sowie Leerzeichen.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+""" Einzelne **raw** Zeilen sind auch möglich.
+</PRE>
+<P>
+</td><td>
+Einzelne **raw** Zeilen sind auch möglich.
+</td></tr><tr><th colspan="2">
+</P>
+<P>
+VERSCHIEDENES
+</th></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+|| Tabellen Kopfdaten | Tabellen Kopfdaten |
+|            Tabellen |     zentrieren     |
+|              Zeilen |        ist         |
+|          und Zellen |       toll!        |
+</PRE>
+<P>
+</td><td>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Tabellen Kopfdaten</TH>
+<TH>Tabellen Kopfdaten</TH>
+</TR>
+<TR>
+<TD ALIGN="right">Tabellen</TD>
+<TD ALIGN="center">zentrieren</TD>
+</TR>
+<TR>
+<TD ALIGN="right">Zeilen</TD>
+<TD ALIGN="center">ist</TD>
+</TR>
+<TR>
+<TD ALIGN="right">und Zellen</TD>
+<TD ALIGN="center">toll!</TD>
+</TR>
+</TABLE>
+
+<P>
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+[t2t.png] Linksbündisches Bild
+
+Zentriertes [t2t.png] Bild
+
+Rechtsbündisches Bild [t2t.png]
+</PRE>
+<P>
+</td><td>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> Linksbündisches Bild
+</P>
+<P>
+Zentriertes <IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> Bild
+</P>
+<P>
+Rechtsbündisches Bild <IMG ALIGN="right" SRC="../img/t2tpowered.png" BORDER="0" ALT="">
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Ein Link wird automatisch@erkannt.ok?
+
+Ein [benannter Link www.meine-seite.de] is so einfach.
+
+Ein Bild [[t2t.png] als-Link.html].
+</PRE>
+<P>
+</td><td>
+Ein Link wird <A HREF="mailto:automatisch@erkannt.ok">automatisch@erkannt.ok</A>?
+</P>
+<P>
+Ein <A HREF="http://www.meine-seite.de">benannter Link</A> is so einfach.
+</P>
+<P>
+Ein Bild <A HREF="als-Link.html"><IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""></A>.
+</td></tr><tr><td class="t2t">
+</P>
+<PRE>
+
+Eine Linie:
+--------------------
+Eine breitere Linie:
+====================
+(Mindestens 20 Zeichen erforderlich)
+</PRE>
+<P>
+</td><td>
+Eine Linie:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+Eine breitere Linie:
+</P>
+<HR NOSHADE SIZE=5>
+<P>
+(Mindestens 20 Zeichen erforderlich)
+</td></tr>
+</table>
+</P>
+<PRE>
+
+</PRE>
+<P></P>
+<P>
+Übersetzung von Pascal Steichen.
+</P>
+<P>
+<A HREF="http://txt2tags.sf.net">Zur txt2tags Startseite</A>
+</P>
+</DIV>
+
+<!-- html code generated by txt2tags 2.4-dev (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags German/markup-de/markup-de.t2t -->
+</BODY></HTML>

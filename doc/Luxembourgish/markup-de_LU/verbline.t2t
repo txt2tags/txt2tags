@@ -1,0 +1,4 @@
+
+"Verbatim" Linnen sinn flott fier Commanden:
+``` $ cat /etc/passwd | tr : ,
+Setzt einfach 3 "backquoten" fierdrun.
