@@ -1,0 +1,378 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: txt2tags 2.3.1\n"
+"POT-Creation-Date: 2006-07-31 16:16-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "HTML page"
+msgstr ""
+
+msgid "XHTML page"
+msgstr ""
+
+msgid "SGML document"
+msgstr ""
+
+msgid "LaTeX document"
+msgstr ""
+
+msgid "Lout document"
+msgstr ""
+
+msgid "UNIX Manual page"
+msgstr ""
+
+msgid "MagicPoint presentation"
+msgstr ""
+
+msgid "MoinMoin page"
+msgstr ""
+
+msgid "PageMaker document"
+msgstr ""
+
+msgid "Plain Text"
+msgstr ""
+
+msgid "%s version %s <%s>"
+msgstr ""
+
+msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
+msgstr ""
+
+msgid "  -t, --target=TYPE   set target document type. currently supported:"
+msgstr ""
+
+msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
+msgstr ""
+
+msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
+msgstr ""
+
+msgid "  -H, --no-headers    suppress header, title and footer contents"
+msgstr ""
+
+msgid "      --headers       show header, title and footer contents (default ON)"
+msgstr ""
+
+msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgstr ""
+
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr ""
+
+msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+msgstr ""
+
+msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+
+msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+
+msgid "      --toc           add TOC (Table of Contents) to target document"
+msgstr ""
+
+msgid "      --toc-only      print document TOC and exit"
+msgstr ""
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr ""
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr ""
+
+msgid "  -C, --config-file=F read config from file F"
+msgstr ""
+
+msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+msgstr ""
+
+msgid "      --gui           invoke Graphical Tk Interface"
+msgstr ""
+
+msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
+msgstr ""
+
+msgid "  -v, --verbose       print informative messages during conversion"
+msgstr ""
+
+msgid "  -h, --help          print this help information and exit"
+msgstr ""
+
+msgid "  -V, --version       print program version and exit"
+msgstr ""
+
+msgid "      --dump-config   print all the config found and exit"
+msgstr ""
+
+msgid "      --dump-source   print the document source, with includes expanded"
+msgstr ""
+
+msgid "Turn OFF options:"
+msgstr ""
+
+msgid "Example:\n     %s -t html --toc myfile.t2t"
+msgstr ""
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr ""
+
+msgid "Use --outfile to force an output file name."
+msgstr ""
+
+msgid "If  input file is '-', reads from STDIN."
+msgstr ""
+
+msgid "If output file is '-', dumps output to STDOUT."
+msgstr ""
+
+msgid "%s: Error: "
+msgstr ""
+
+msgid "Sorry! Txt2tags aborted by an unknown error."
+msgstr ""
+
+msgid "Please send the following Error Traceback to the author"
+msgstr ""
+
+msgid "You must feed me with data on STDIN!"
+msgstr ""
+
+msgid "Cannot read file:"
+msgstr ""
+
+msgid "File read (%d lines): %s"
+msgstr ""
+
+msgid "Cannot open file for writing:"
+msgstr ""
+
+msgid "%s (try --help)"
+msgstr ""
+
+msgid "Loading source document"
+msgstr ""
+
+msgid "The input file is empty: %s"
+msgstr ""
+
+msgid "Areas found: %s"
+msgstr ""
+
+msgid "Scanning source document CONF area"
+msgstr ""
+
+msgid "Added config %s : %s"
+msgstr ""
+
+msgid "No target specified (try --help)"
+msgstr ""
+
+msgid "Maybe trying to convert an old v1.x file?"
+msgstr ""
+
+msgid "Missing input file (try --help)"
+msgstr ""
+
+msgid "Invalid target '%s' (try --help)"
+msgstr ""
+
+msgid "--%s value must be a number"
+msgstr ""
+
+msgid "Option --split must be 0, 1 or 2"
+msgstr ""
+
+msgid "Input and Output files are the same: %s"
+msgstr ""
+
+msgid "Added the following keys: %s"
+msgstr ""
+
+msgid "Invalid CONFIG line on %s"
+msgstr ""
+
+msgid "Processing line %03d: %s"
+msgstr ""
+
+msgid "A file cannot include itself (loop!)"
+msgstr ""
+
+msgid "Finished Config file inclusion: %s"
+msgstr ""
+
+msgid "Added %s"
+msgstr ""
+
+msgid "OFF"
+msgstr ""
+
+msgid "RC file"
+msgstr ""
+
+msgid "source document"
+msgstr ""
+
+msgid "command line"
+msgstr ""
+
+msgid "RAW config for %s"
+msgstr ""
+
+msgid "ON"
+msgstr ""
+
+msgid "Full PARSED config"
+msgstr ""
+
+msgid "Active filters"
+msgstr ""
+
+msgid "Invalid PostProc filter regex"
+msgstr ""
+
+msgid "Invalid PostProc filter replacement"
+msgstr ""
+
+msgid "%s wrote %s"
+msgstr ""
+
+msgid "Source document contents stored"
+msgstr ""
+
+msgid "Parsing and saving all config found (%03d items)"
+msgstr ""
+
+msgid "Composing target Headers"
+msgstr ""
+
+msgid "Composing target Body"
+msgstr ""
+
+msgid "Composing target TOC"
+msgstr ""
+
+msgid "Composing target Footer"
+msgstr ""
+
+msgid "Saving results to the output file"
+msgstr ""
+
+msgid "Invalid PreProc filter regex"
+msgstr ""
+
+msgid "Invalid PreProc filter replacement"
+msgstr ""
+
+msgid "txt2tags files"
+msgstr ""
+
+msgid "All files"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "You must select a target type!"
+msgstr ""
+
+msgid "You must provide the source file location!"
+msgstr ""
+
+msgid "%s: %s converted to %s"
+msgstr ""
+
+msgid "Conversion done!"
+msgstr ""
+
+msgid "FROM:"
+msgstr ""
+
+msgid "TO:"
+msgstr ""
+
+msgid "%s FATAL ERROR!"
+msgstr ""
+
+msgid "-- select one --"
+msgstr ""
+
+msgid "Enter the source file location:"
+msgstr ""
+
+msgid "Choose the target document type:"
+msgstr ""
+
+msgid "Some options you may check:"
+msgstr ""
+
+msgid "Some extra options:"
+msgstr ""
+
+msgid "Include headers on output"
+msgstr ""
+
+msgid "Number titles (1, 1.1, 1.1.1, etc)"
+msgstr ""
+
+msgid "Do TOC also (Table of Contents)"
+msgstr ""
+
+msgid "Hide e-mails from SPAM robots"
+msgstr ""
+
+msgid "Just do TOC, nothing more"
+msgstr ""
+
+msgid "Dump to screen (Don't save target file)"
+msgstr ""
+
+msgid "ONE source, MULTI targets"
+msgstr ""
+
+msgid "Browse"
+msgstr ""
+
+msgid "<screen>"
+msgstr ""
+
+msgid "Output: "
+msgstr ""
+
+msgid "Quit"
+msgstr ""
+
+msgid "Convert!"
+msgstr ""
+
+msgid "Txt2tags %s processing begins"
+msgstr ""
+
+msgid "Option --%s can't be used with multiple input files"
+msgstr ""
+
+msgid "Ignoring user configuration file"
+msgstr ""
+
+msgid "Loading user configuration file"
+msgstr ""
+
+msgid "We are on GUI interface"
+msgstr ""
+
+msgid "txt2tags ERROR!"
+msgstr ""
+
+msgid "We are on Command Line interface"
+msgstr ""
+
+msgid "Txt2tags finished sucessfuly"
+msgstr ""
+
