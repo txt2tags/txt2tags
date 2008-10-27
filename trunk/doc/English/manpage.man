@@ -1,0 +1,416 @@
+.TH "TXT2TAGS" 1 "Jul, 2008" ""
+
+.SH NAME
+.P
+txt2tags \- text formatting and conversion tool
+
+.SH SYNOPSIS
+.P
+\fBtxt2tags\fR [\fIOPTION\fR]... [\fIFILE\fR]...
+
+.SH DESCRIPTION
+.P
+\fBtxt2tags\fR is a GPL format conversion tool written in Python that
+generates \fIHTML\fR, \fIXHTML\fR, \fISGML\fR, \fILaTeX\fR, \fILout\fR,
+\fIMan Page\fR, \fIMoinMoin\fR, \fIWikipedia\fR, \fIDokuWiki\fR,
+\fIGoogle Code Wiki\fR, \fIMagicPoint\fR and \fIPageMaker\fR
+documents from a single text file with minimal markup.
+
+.P
+The user just need to know the very few and simple \fBtxt2tags\fR marks,
+and write plain text files. The program does all the dirty work, adding
+the complicated tags and dealing with the target document's gotchas.
+
+.P
+The same text file can be converted to all target formats, with no
+further editing. This is the \fBtxt2tags\fR purpose: ONE source, MULTI
+targets.
+
+.P
+Please visit the program site at
+\fIhttp://txt2tags.sourceforge.net\fR.
+
+.SH OPTIONS
+.TP
+ \fB\-C\fR, \fB\-\-config\-file\fR
+read config from an external file (works like %!includeconf)
+
+.TP
+     \fB\-\-css\-sugar\fR
+insert CSS\-friendly tags for HTML and XHTML targets
+
+.TP
+     \fB\-\-css\-inside\fR
+insert CSS file contents inside HTML/XHTML headers
+
+.TP
+     \fB\-\-dump\-config\fR
+print all the config found and exit
+
+.TP
+     \fB\-\-dump\-source\fR
+print the document source, with includes expanded
+
+.TP
+     \fB\-\-encoding\fR
+set target file encoding (utf\-8, iso\-8859\-1, etc)
+
+.TP
+     \fB\-\-gui\fR
+invoke Graphical Tk Interface
+
+.TP
+ \fB\-h\fR, \fB\-\-help\fR
+print help information and exit
+
+.TP
+ \fB\-H\fR, \fB\-\-no\-headers\fR
+suppress header, title and footer information
+
+.TP
+     \fB\-\-headers\fR
+show header, title and footer information (default ON)
+
+.TP
+ \fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
+set FILE as the input file name ('\-' for STDIN)
+
+.TP
+     \fB\-\-mask\-email\fR
+hide email from spam robots. x@y.z turns <x (a) y z>
+
+.TP
+ \fB\-n\fR, \fB\-\-enum\-title\fR
+enumerate all title lines as 1, 1.1, 1.1.1, etc
+
+.TP
+     \fB\-\-no\-dump\-config\fR
+turn off the dump config action
+
+.TP
+     \fB\-\-no\-dump\-source\fR
+turn off the dump source action
+
+.TP
+     \fB\-\-no\-encoding\fR
+clear the encoding setting
+
+.TP
+     \fB\-\-no\-enum\-title\fR
+turn off the title auto numbering
+
+.TP
+     \fB\-\-no\-infile\fR
+clear all the previous infile declarations
+
+.TP
+     \fB\-\-no\-mask\-email\fR
+unhide emails, turning off the \-\-mask\-email option
+
+.TP
+     \fB\-\-no\-outfile\fR
+clear the previous outfile declaration
+
+.TP
+     \fB\-\-no\-quiet\fR
+show messages, turning off the \-\-quiet option
+
+.TP
+     \fB\-\-no\-rc\fR
+do not read the user config file ~/.txt2tagsrc
+
+.TP
+     \fB\-\-no\-style\fR
+clear the style setting
+
+.TP
+     \fB\-\-no\-toc\fR
+do not add TOC (Table of Contents) to target document
+
+.TP
+     \fB\-\-no\-toc\-only\fR
+turn off the \-\-toc\-only option
+
+.TP
+ \fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
+set FILE as the output file name ('\-' for STDOUT)
+
+.TP
+ \fB\-q\fR, \fB\-\-quiet\fR
+quiet mode, suppress all output (except errors)
+
+.TP
+     \fB\-\-rc\fR
+read user config file ~/.txt2tagsrc (default ON)
+
+.TP
+     \fB\-\-style\fR=\fIFILE\fR
+use FILE as the document style (like Html CSS)
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR=\fITYPE\fR
+set target document type. currently supported:
+html, xhtml, sgml, tex, lout, man, mgp, wiki,
+gwiki, doku, moin, pm6, txt
+
+.TP
+     \fB\-\-toc\fR
+add TOC (Table of Contents) to target document
+
+.TP
+     \fB\-\-toc\-level\fR=\fIN\fR
+set maximum TOC level (deepness) to N
+
+.TP
+     \fB\-\-toc\-only\fR
+print document TOC and exit
+
+.TP
+ \fB\-v\fR, \fB\-\-verbose\fR
+print informative messages during conversion
+
+.TP
+ \fB\-V\fR, \fB\-\-version\fR
+print program version and exit
+
+.P
+By default, converted output is saved to 'file.<type>'.
+Use \-\-outfile to force an output file name.
+If input file is '\-', reads from STDIN.
+If output file is '\-', dumps output to STDOUT.
+
+.SH STRUCTURE
+.P
+Txt2tags source file can have three areas:
+
+.TP
+\fBHeader\fR
+The first three lines. They are used for document identification.
+If you don't need headers, you must left the first line blank or specify
+the no\-header setting.
+
+.TP
+\fBSettings\fR
+Starts at the fourth line. All settings have the %!keyword: value
+format. Settings can also be made by a configuration file or command line.
+
+.TP
+\fBBody\fR
+Your real document source! Your only request area to have a valid
+txt2tags file.
+
+.SH SETTINGS
+.P
+The conversion of a source file can be customized in two different
+ways. External configurations are taken from the RC file
+(~/.txt2tagsrc) or other user\-selected file. Internal
+configurations are made with settings. Both use the same syntax:
+
+.TP
+\fB%!target:\fR
+defines the main target
+
+.TP
+\fB%!options(target):\fR
+defines the options to each target
+
+.TP
+\fB%!include: file.t2t\fR
+includes a txt2tags file in the document
+
+.TP
+\fB%!include: ``file.txt``\fR
+includes a text file (verbatim) in the document
+
+.TP
+\fB%!include: file.html\fR
+includes a literal file in the document, as it is
+
+.TP
+\fB%!style:\fR
+to set a CSS (Cascading Style Sheets) file for XHTML and HTML
+targets or to load \eusepackage modules in TEX target
+
+.TP
+\fB%!encoding:\fR
+to set a character set (like iso\-8859\-1) for i18n issues
+
+.TP
+\fB%!includeconf:\fR
+used to include configurations from an external file into the current
+
+.TP
+\fB%!guicolors:\fR
+color settings for the GUI interface (Tk)
+
+.TP
+\fB%!preproc:\fR
+your customized filter (macro) which will be processed \fBBEFORE\fR the
+document parsing
+
+.TP
+\fB%!postproc:\fR
+your customized filter (macro) which will be processed \fBAFTER\fR the
+document parsing
+
+.SS SETTINGS RULES
+.RS
+.IP \(bu 3
+Settings are valid only inside the Config Area, and are considered
+plain comments if found on the document Body. Except include,
+which is a valid Body command.
+
+.IP \(bu 3
+If the same keyword appears more than once on the Config Area,
+the last found will be the one used. Except: options, preproc
+and postproc, which are cumulative.
+
+.IP \(bu 3
+A setting line with an invalid keyword will be considered a
+plain comment line.
+
+.IP \(bu 3
+This settings have precedence over txt2tagsrc file, but not on
+command line options.
+.RE
+
+.SH SYNTAX
+.P
+A very simple markup syntax is used on the document source
+(the plain text file) to identify structures and formatting.
+Here's the complete list:
+
+.SS Basic
+.nf
+  Headers           The first 3 lines of the source file
+  Title             = words =
+  Numbered title    + words +
+  Paragraph         words
+.fi
+
+
+.SS Beautifiers
+.nf
+  Bold              **words**
+  Italic            //words//
+  Underline         __words__
+  Strike            --words--
+  Monospaced        ``words``
+.fi
+
+
+.SS Text Blocks
+.nf
+  Quote             <TAB>words
+  List              - words
+  Numbered list     + words
+  Definition list   : words
+  Verbatim line     ``` words
+  Verbatim area     ```<LineBreak> lines <LineBreak>```
+  Raw line          """ words
+  Raw area          """<LineBreak> lines <LineBreak>"""
+  Table             | cell1 | cell2 | cell3...
+.fi
+
+
+.SS Other
+.nf
+  Separator line    -----------------------...
+  Strong line       =======================...
+  Links             [label url]
+  Image             [filename.jpg]
+  Raw Text          ""words""
+  Comment           % comments
+.fi
+
+
+.P
+Please read the Txt2tags User Guide (on the program documentation
+directory) for a detailed description of each mark.
+
+.SH EXAMPLES
+.P
+Assuming you have written a file.t2t marked file, let's have some
+converting fun.
+
+.TP
+\fBConvert to HTML, saving to file.html\fR
+$ txt2tags \-t html file.t2t
+
+.TP
+\fBThe same, using redirection\fR
+$ txt2tags \-t html \-o \- file.t2t > file.html
+
+.TP
+\fBIncluding Table Of Contents\fR
+$ txt2tags \-t html \-\-toc file.t2t
+
+.TP
+\fBIncluding TOC and numbering titles\fR
+$ txt2tags \-t html \-\-toc \-\-enum\-title file.t2t
+
+.TP
+\fBContents quick view\fR
+$ txt2tags \-\-toc\-only file.t2t
+
+.TP
+\fBQuick one\-liner test from STDIN\fR
+$ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+.SH MACROS
+.TP
+%%date
+Allows to include the current date, in the format YYYYMMDD.
+Optional  formatting can be specified using the
+%%date(format\-string) syntax.
+
+.TP
+%%infile
+Used to get information about the source file. Optional formatting can
+be specified using the %%infile(format\-string) syntax.
+
+Useful for footer link like [See source %%infile], so you can
+change the filename and its references will be updated.
+
+.TP
+%%mtime
+Gets information about the source file modification time. It uses the
+same formatters accepted by the %%date macro.
+
+.TP
+%%outfile
+Used to get information about the converted file. Optional formatting
+can be specified using the %%outfile(format\-string) syntax.
+
+Useful for self mentioning like "This is the manpage.man file", so you
+can change the filename and its references will be updated.
+
+.TP
+%%toc
+The %%toc macro specifies where the TOC of the document will be
+placed. You can place it wherever needed inside the document, one or
+more times.
+
+NOTE: %%toc will be expanded only with the \-\-toc option.
+
+.SH AUTHOR
+.P
+Written and maintained by Aurelio Jargas <verde@aurelio.net>
+
+.P
+This Manual Page was written by Jose Inacio Coelho <jic@technologist.com>
+as a text file, then converted to man format by \fBtxt2tags\fR!
+
+.SH COPYRIGHT
+.P
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+
+.P
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+
+
+.\" man code generated by txt2tags 2.6b (http://txt2tags.sf.net)
+.\" cmdline: txt2tags -t man doc/manpage.t2t
+

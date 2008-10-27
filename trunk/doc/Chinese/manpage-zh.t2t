@@ -1,0 +1,373 @@
+TXT2TAGS
+
+2008年7月
+
+%!target: man
+%!options(html): --mask-email
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%!encoding: utf-8 
+
+%!postproc(html): <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
+%!postproc(html): (</STYLE>)  'body { margin:3em               ;} \n\1'
+%!postproc(html): (</STYLE>)  'a    { text-decoration:none     ;} \n\1'
+%!postproc(html): (</STYLE>)  'pre  { background-color:#ffffcc ;} \n\1'
+
+%% LOG
+%%    sep 2003 jic    : creation
+%% 25 sep 2003 anamim : text revision. misspellings, rewording phrases, etc
+%% 01 jun 2004 aurelio: updated to v2.0
+%% 20 jul 2004 jic    : included: settings area, few marks, areas; reorganizing
+%% 22 jul 2004 anamim : revision
+%% 30 ago 2004 aurelio: little typos
+%% 13 nov 2004 jic    : updated to v2.1
+%% 28 dec 2004 aurelio: updated to v2.2
+%% 21 may 2005 aurelio: updated to v2.3
+
+= 名称 =
+
+txt2tags - 文本格式化及转换工具
+
+= 总览 =
+
+**txt2tags** [//选项//]... [//文件//]...
+
+= 描述 =
+
+**txt2tags**是一个用Python开发的GPL文本格式化及转换工具。
+它以最小的开销将单一的文本文件转换为
+//HTML//, //XHTML//, //SGML//, //LaTeX//, //Lout//, //Man Page//, //MoinMoin//,
+//Wikipedia//, //DokuWiki//, //Google Code Wiki//, //MagicPoint// 及 //PageMaker//
+格式的文档。
+
+用户只要知道少量简单的**txt2tags**标记，编写纯文本文件即可。
+程序会做所有辛苦的工作，加入复杂的标签，
+并处理目标文档中的错误。
+
+同一个文本文件可以转换为支持的任一目标格式，不用另外进行编辑。
+这也是**txt2tags**的目的：
+单源，多目标。
+
+请访问程序主页
+//""http://txt2tags.sourceforge.net""//.
+
+
+= 选项 =
+
+:  **-C**, **--config-file**
+从外部文件中读入配置(效果同 %!includeconf)
+
+:      **--css-sugar**
+在HTML/XHTML格式的目标文件中插入CSS-friendly标签
+
+:      **--css-inside**
+在HTML/XHTML头部插入CSS文件内容
+
+:      **--dump-config**
+打印找到的所有配置并退出
+
+:      **--dump-source**
+查看文档源文件，源文件中includes命令包含的文件内容全部展开
+
+:      **--encoding**
+指定目标文件的编码(utf-8, iso-8859-1, 等)
+
+:      **--gui**
+调用Tk图形界面
+
+:  **-h**, **--help**
+打印帮助信息并退出
+
+:  **-H**, **--no-headers**
+不显示头部、标题和尾部信息
+
+:      **--headers**
+显示头部、标题和尾部信息(默认 打开)
+
+:  **-i**, **--infile**=//FILE//
+指定输入文件名 FILE ('-' 表示 标准输入)
+
+:      **--mask-email**
+隐藏邮件地址(防止垃圾邮件地址收割)：将x@y.z转换为<x (a) y z>
+
+:  **-n**, **--enum-title**
+对所有标题行进行编号：1, 1.1, 1.1.1, 等
+
+:      **--no-dump-config**
+不输出配置信息
+
+:      **--no-dump-source**
+不输出源文件内容
+
+:      **--no-encoding**
+清除编码设置
+
+:      **--no-enum-title**
+关闭标题自动编号效果
+
+:      **--no-infile**
+清除所有预设的infile声明
+
+:      **--no-mask-email**
+不隐藏邮件地址，关闭 --mask-email 选项
+
+:      **--no-outfile**
+清除预设的 outfile 声明
+
+:      **--no-quiet**
+显示信息，关闭 --quiet 选项
+
+:      **--no-rc**
+不使用用户配置文件：~/.txt2tagsrc
+
+:      **--no-style**
+清除文档样式设置
+
+:      **--no-toc**
+目标文档中不生成目录信息
+
+:      **--no-toc-only**
+关闭 --toc-only 选项
+
+:  **-o**, **--outfile**=//FILE//
+设置输出文件名为 FILE ('-' 是 标准输出)
+
+:  **-q**, **--quiet**
+安静模式，除了出错的信息其他都不显示
+
+:      **--rc**
+使用用户配置文件：~/.txt2tagsrc (默认 打开)
+
+:      **--style**=//FILE//
+使用 FILE 指定文档样式 (类似 Html CSS)
+
+: **-t**, **--target**=//TYPE//
+指定目标文档类型。目前支持：
+html, xhtml, sgml, tex, lout, man, mgp, wiki,
+gwiki, doku, moin, pm6, txt
+
+:      **--toc**
+生成目标文档时添加目录信息
+
+:      **--toc-level**=//N//
+显示的最大目录层次设为 N
+
+:      **--toc-only**
+打印文档目录并退出
+
+:  **-v**, **--verbose**
+文件转换时显示详细的信息
+
+:  **-V**, **--version**
+打印程序版本并退出
+
+
+默认情况下，转换生成的文件以'file.<type>'保存。
+使用 --outfile 可以强制指定输出文件名。
+如果输入文件置'-'，则从标准输入(STDIN)中读入。
+如果输出文件置'-'，则输出到标准输出(STDOUT)。
+
+
+= 结构 =
+
+Txt2tags的源文件可以包含以下三个部分：
+
+: **头部**
+头三行。用于文档声明。
+如果不需要指定头部信息，则放空或指定
+``no-header``选项。
+
+: **设置**
+从第四行开始。所有设置的格式均为""%!keyword: value""。
+也可以在配置文件或命令行中进行设置。
+
+: **主体**
+真正的文档来源！只要有这部分内容就是一个可用的
+ txt2tags 文件。
+
+
+=  设置  =
+
+源文件转换的定制有两种不同的方法。
+一种是采用外部的配置文件，比如RC文件(``~/.txt2tagsrc``) 或 用户指定的其它文件。
+另一种是在源文件内部使用设置选项直接进行配置。
+两种方法采用同样的语法：
+
+: **%!target:**
+设置输出文档类型
+
+: **%!options(target):**
+设置该类型输出文档的相关选项
+
+: **%!include: file.t2t**
+把一个 txt2tags 文件内容直接加入源文档
+
+: **%!include: ""``file.txt``""**
+把一个文本文件的内容作为原文引用块加入源文档
+
+: **%!include: ''file.html''**
+把一个文件内容不作修改直接加入目标文档
+
+: **%!style:**
+为XHTML和HTML格式的目标文档设置CSS(级联样式表) 或
+为TEX格式的目标文件载入 \usepackage 模块
+
+: **%!encoding:**
+设置字符集(例如 iso-8859-1) 解决i18n国际化问题
+
+: **%!includeconf:**
+将外部文件中的配置信息读入当前源文件
+
+: **%!guicolors:**
+设置Tk图形界面的颜色
+
+: **%!preproc:**
+用户定制的宏，
+在文本解析之**前**被执行
+
+: **%!postproc:**
+用户定制的宏，
+在文本解析之**后**被执行
+
+
+== 设置规则 ==
+
+ - 设置只在文档中配置部分才起作用，
+在文档的主体部分则被视为普通的注释行。
+唯一的例外是include命令，它在主体部分仍可用。
+
+ - 如果在文档中的配置部分出现多个相同关键词的配置，
+那么只有最后一个起作用。
+有三个例外：options, preproc 和postproc，它们的选项是累加的。
+
+ - 如果设置行里的关键词不是可用的，
+则将此行视为普通的注释行。
+
+ - 这些设置的优先级高于txt2tagsrc文件，
+但低于命令行选项。
+
+
+= 语法 =
+
+只需在源文档(纯文本文件)中使用非常简单的标记语法来
+标识文档结构及格式。
+以下是全部标记列表：
+
+== 基础 ==
+```
+头部                源文件的头三行
+标题                = 文字 =
+带数字编号的标题    + 文字 +
+段落                文字
+```
+
+== 美化 ==
+```
+粗体                **文字**
+斜体                //文字//
+下划线              __文字__
+删除线              --文字--
+等宽                ``文字``
+```
+
+== 文本块 ==
+```
+引用                <TAB>文字
+列表                - 条目
+带编号的列表        + 条目
+定义式列表          : 条目
+完全引用行          ``` 内容
+完全引用域          ```<LineBreak> 内容 <LineBreak>```
+原文行              """ 内容
+原文域              """<LineBreak> 内容 <LineBreak>"""
+表格                | 单元1 | 单元2 | 单元3...
+```
+
+== 其他 ==
+```
+隔离行              -----------------------...
+粗隔离行            =======================...
+链接                [标签 url地址]
+图片                [filename.jpg]
+原始文字            ""内容""
+注释                % 注释内容
+```
+
+请阅读Txt2tags用户指南(在程序文档目录下)
+获知每个标记的详细说明。
+
+
+= 例子 =
+
+假设你已经写了一个带标记的``file.t2t``文件，
+现在我们开始进行转换。
+
+: **转换为HTML文件，保存为 file.html**
+``$ txt2tags -t html file.t2t``
+
+: **同上，使用重定向**
+``$ txt2tags -t html -o - file.t2t > file.html``
+
+: **包含目录信息**
+``$ txt2tags -t html --toc file.t2t``
+
+: **包含目录信息，且对每个条目进行编号**
+``$ txt2tags -t html --toc --enum-title file.t2t``
+
+: **快速浏览目录信息**
+``$ txt2tags --toc-only file.t2t``
+
+: **从标准输入(STDIN)读入一行进行快速测试**
+``$ (echo ; echo "**bold**") | txt2tags -t html -H -``
+
+
+= 宏 =
+
+: ""%%date""
+用于显示当前日期，默认格式为YYYYMMDD(年月日)。
+格式是可调的，调整时使用的语法：
+""%%date(format-string)""
+
+: ""%%infile""
+用于得到源文件的信息。
+格式是可调的，调整时使用的语法：""%%infile(format-string)""
+
+有用的例子：使用尾部链接""[查看源文件 %%infile]""， 
+文件名被改掉的话该链接也会自动更新。
+
+: ""%%mtime""
+用于得到源文件的最近修改时间。
+采用的格式与""%%date""宏相同。
+
+: ""%%outfile""
+用于得到目标文件的信息。
+格式是可调的，调整时使用的语法：""%%outfile(format-string)""
+
+有用的例子：使用引用自身的链接"This is the %%outfile file"，
+文件名改掉的话该链接也会自动更新。
+
+: ""%%toc""
+""%%toc""宏指定目录在文档中存放的位置。
+你想把它放在文档中哪个位置都可以，
+出现一次或多次均可。
+
+注意: ""%%toc""宏只有在设置了""--toc""选项的情况下才会被展开。
+
+
+= 作者 =
+
+程序由 Aurelio Marinho Jargas <verde@aurelio.net> 编写并维护。
+
+此手册页原始文本由Jose Inacio Coelho <jic@technologist.com> 编写，
+使用**txt2tags**转换为man格式。
+
+中文版由 Abby Pan <abbypan@mail.ustc.edu.cn>翻译。
+
+
+= 版权 =
+
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.

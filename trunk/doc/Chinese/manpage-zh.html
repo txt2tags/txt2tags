@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<STYLE TYPE="text/css">
+body { margin:3em               ;} 
+a    { text-decoration:none     ;} 
+pre  { background-color:#ffffcc ;} 
+</STYLE>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<TITLE>TXT2TAGS</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
+<FONT SIZE="4">
+2008年7月
+</FONT></CENTER>
+
+<H1>名称</H1>
+<P>
+txt2tags - 文本格式化及转换工具
+</P>
+<H1>总览</H1>
+<P>
+<B>txt2tags</B> [<I>选项</I>]... [<I>文件</I>]...
+</P>
+<H1>描述</H1>
+<P>
+<B>txt2tags</B>是一个用Python开发的GPL文本格式化及转换工具。
+它以最小的开销将单一的文本文件转换为
+<I>HTML</I>, <I>XHTML</I>, <I>SGML</I>, <I>LaTeX</I>, <I>Lout</I>, <I>Man Page</I>, <I>MoinMoin</I>,
+<I>Wikipedia</I>, <I>DokuWiki</I>, <I>Google Code Wiki</I>, <I>MagicPoint</I> 及 <I>PageMaker</I>
+格式的文档。
+</P>
+<P>
+用户只要知道少量简单的<B>txt2tags</B>标记，编写纯文本文件即可。
+程序会做所有辛苦的工作，加入复杂的标签，
+并处理目标文档中的错误。
+</P>
+<P>
+同一个文本文件可以转换为支持的任一目标格式，不用另外进行编辑。
+这也是<B>txt2tags</B>的目的：
+单源，多目标。
+</P>
+<P>
+请访问程序主页
+<I>http://txt2tags.sourceforge.net</I>.
+</P>
+<H1>选项</H1>
+<DL>
+<DT> <B>-C</B>, <B>--config-file</B></DT><DD>
+从外部文件中读入配置(效果同 %!includeconf)
+<P></P>
+<DT>     <B>--css-sugar</B></DT><DD>
+在HTML/XHTML格式的目标文件中插入CSS-friendly标签
+<P></P>
+<DT>     <B>--css-inside</B></DT><DD>
+在HTML/XHTML头部插入CSS文件内容
+<P></P>
+<DT>     <B>--dump-config</B></DT><DD>
+打印找到的所有配置并退出
+<P></P>
+<DT>     <B>--dump-source</B></DT><DD>
+查看文档源文件，源文件中includes命令包含的文件内容全部展开
+<P></P>
+<DT>     <B>--encoding</B></DT><DD>
+指定目标文件的编码(utf-8, iso-8859-1, 等)
+<P></P>
+<DT>     <B>--gui</B></DT><DD>
+调用Tk图形界面
+<P></P>
+<DT> <B>-h</B>, <B>--help</B></DT><DD>
+打印帮助信息并退出
+<P></P>
+<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
+不显示头部、标题和尾部信息
+<P></P>
+<DT>     <B>--headers</B></DT><DD>
+显示头部、标题和尾部信息(默认 打开)
+<P></P>
+<DT> <B>-i</B>, <B>--infile</B>=<I>FILE</I></DT><DD>
+指定输入文件名 FILE ('-' 表示 标准输入)
+<P></P>
+<DT>     <B>--mask-email</B></DT><DD>
+隐藏邮件地址(防止垃圾邮件地址收割)：将x@y.z转换为&lt;x (a) y z&gt;
+<P></P>
+<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
+对所有标题行进行编号：1, 1.1, 1.1.1, 等
+<P></P>
+<DT>     <B>--no-dump-config</B></DT><DD>
+不输出配置信息
+<P></P>
+<DT>     <B>--no-dump-source</B></DT><DD>
+不输出源文件内容
+<P></P>
+<DT>     <B>--no-encoding</B></DT><DD>
+清除编码设置
+<P></P>
+<DT>     <B>--no-enum-title</B></DT><DD>
+关闭标题自动编号效果
+<P></P>
+<DT>     <B>--no-infile</B></DT><DD>
+清除所有预设的infile声明
+<P></P>
+<DT>     <B>--no-mask-email</B></DT><DD>
+不隐藏邮件地址，关闭 --mask-email 选项
+<P></P>
+<DT>     <B>--no-outfile</B></DT><DD>
+清除预设的 outfile 声明
+<P></P>
+<DT>     <B>--no-quiet</B></DT><DD>
+显示信息，关闭 --quiet 选项
+<P></P>
+<DT>     <B>--no-rc</B></DT><DD>
+不使用用户配置文件：~/.txt2tagsrc
+<P></P>
+<DT>     <B>--no-style</B></DT><DD>
+清除文档样式设置
+<P></P>
+<DT>     <B>--no-toc</B></DT><DD>
+目标文档中不生成目录信息
+<P></P>
+<DT>     <B>--no-toc-only</B></DT><DD>
+关闭 --toc-only 选项
+<P></P>
+<DT> <B>-o</B>, <B>--outfile</B>=<I>FILE</I></DT><DD>
+设置输出文件名为 FILE ('-' 是 标准输出)
+<P></P>
+<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
+安静模式，除了出错的信息其他都不显示
+<P></P>
+<DT>     <B>--rc</B></DT><DD>
+使用用户配置文件：~/.txt2tagsrc (默认 打开)
+<P></P>
+<DT>     <B>--style</B>=<I>FILE</I></DT><DD>
+使用 FILE 指定文档样式 (类似 Html CSS)
+<P></P>
+<DT><B>-t</B>, <B>--target</B>=<I>TYPE</I></DT><DD>
+指定目标文档类型。目前支持：
+html, xhtml, sgml, tex, lout, man, mgp, wiki,
+gwiki, doku, moin, pm6, txt
+<P></P>
+<DT>     <B>--toc</B></DT><DD>
+生成目标文档时添加目录信息
+<P></P>
+<DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
+显示的最大目录层次设为 N
+<P></P>
+<DT>     <B>--toc-only</B></DT><DD>
+打印文档目录并退出
+<P></P>
+<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
+文件转换时显示详细的信息
+<P></P>
+<DT> <B>-V</B>, <B>--version</B></DT><DD>
+打印程序版本并退出
+</DL>
+
+<P>
+默认情况下，转换生成的文件以'file.&lt;type&gt;'保存。
+使用 --outfile 可以强制指定输出文件名。
+如果输入文件置'-'，则从标准输入(STDIN)中读入。
+如果输出文件置'-'，则输出到标准输出(STDOUT)。
+</P>
+<H1>结构</H1>
+<P>
+Txt2tags的源文件可以包含以下三个部分：
+</P>
+<DL>
+<DT><B>头部</B></DT><DD>
+头三行。用于文档声明。
+如果不需要指定头部信息，则放空或指定
+<CODE>no-header</CODE>选项。
+<P></P>
+<DT><B>设置</B></DT><DD>
+从第四行开始。所有设置的格式均为%!keyword: value。
+也可以在配置文件或命令行中进行设置。
+<P></P>
+<DT><B>主体</B></DT><DD>
+真正的文档来源！只要有这部分内容就是一个可用的
+ txt2tags 文件。
+</DL>
+
+<H1>设置</H1>
+<P>
+源文件转换的定制有两种不同的方法。
+一种是采用外部的配置文件，比如RC文件(<CODE>~/.txt2tagsrc</CODE>) 或 用户指定的其它文件。
+另一种是在源文件内部使用设置选项直接进行配置。
+两种方法采用同样的语法：
+</P>
+<DL>
+<DT><B>%!target:</B></DT><DD>
+设置输出文档类型
+<P></P>
+<DT><B>%!options(target):</B></DT><DD>
+设置该类型输出文档的相关选项
+<P></P>
+<DT><B>%!include: file.t2t</B></DT><DD>
+把一个 txt2tags 文件内容直接加入源文档
+<P></P>
+<DT><B>%!include: ``file.txt``</B></DT><DD>
+把一个文本文件的内容作为原文引用块加入源文档
+<P></P>
+<DT><B>%!include: file.html</B></DT><DD>
+把一个文件内容不作修改直接加入目标文档
+<P></P>
+<DT><B>%!style:</B></DT><DD>
+为XHTML和HTML格式的目标文档设置CSS(级联样式表) 或
+为TEX格式的目标文件载入 \usepackage 模块
+<P></P>
+<DT><B>%!encoding:</B></DT><DD>
+设置字符集(例如 iso-8859-1) 解决i18n国际化问题
+<P></P>
+<DT><B>%!includeconf:</B></DT><DD>
+将外部文件中的配置信息读入当前源文件
+<P></P>
+<DT><B>%!guicolors:</B></DT><DD>
+设置Tk图形界面的颜色
+<P></P>
+<DT><B>%!preproc:</B></DT><DD>
+用户定制的宏，
+在文本解析之<B>前</B>被执行
+<P></P>
+<DT><B>%!postproc:</B></DT><DD>
+用户定制的宏，
+在文本解析之<B>后</B>被执行
+</DL>
+
+<H2>设置规则</H2>
+ <UL>
+ <LI>设置只在文档中配置部分才起作用，
+在文档的主体部分则被视为普通的注释行。
+唯一的例外是include命令，它在主体部分仍可用。
+ <P></P>
+ <LI>如果在文档中的配置部分出现多个相同关键词的配置，
+那么只有最后一个起作用。
+有三个例外：options, preproc 和postproc，它们的选项是累加的。
+ <P></P>
+ <LI>如果设置行里的关键词不是可用的，
+则将此行视为普通的注释行。
+ <P></P>
+ <LI>这些设置的优先级高于txt2tagsrc文件，
+但低于命令行选项。
+ </UL>
+
+<H1>语法</H1>
+<P>
+只需在源文档(纯文本文件)中使用非常简单的标记语法来
+标识文档结构及格式。
+以下是全部标记列表：
+</P>
+<H2>基础</H2>
+<PRE>
+  头部                源文件的头三行
+  标题                = 文字 =
+  带数字编号的标题    + 文字 +
+  段落                文字
+</PRE>
+<P></P>
+<H2>美化</H2>
+<PRE>
+  粗体                **文字**
+  斜体                //文字//
+  下划线              __文字__
+  删除线              --文字--
+  等宽                ``文字``
+</PRE>
+<P></P>
+<H2>文本块</H2>
+<PRE>
+  引用                &lt;TAB&gt;文字
+  列表                - 条目
+  带编号的列表        + 条目
+  定义式列表          : 条目
+  完全引用行          ``` 内容
+  完全引用域          ```&lt;LineBreak&gt; 内容 &lt;LineBreak&gt;```
+  原文行              """ 内容
+  原文域              """&lt;LineBreak&gt; 内容 &lt;LineBreak&gt;"""
+  表格                | 单元1 | 单元2 | 单元3...
+</PRE>
+<P></P>
+<H2>其他</H2>
+<PRE>
+  隔离行              -----------------------...
+  粗隔离行            =======================...
+  链接                [标签 url地址]
+  图片                [filename.jpg]
+  原始文字            ""内容""
+  注释                % 注释内容
+</PRE>
+<P></P>
+<P>
+请阅读Txt2tags用户指南(在程序文档目录下)
+获知每个标记的详细说明。
+</P>
+<H1>例子</H1>
+<P>
+假设你已经写了一个带标记的<CODE>file.t2t</CODE>文件，
+现在我们开始进行转换。
+</P>
+<DL>
+<DT><B>转换为HTML文件，保存为 file.html</B></DT><DD>
+<CODE>$ txt2tags -t html file.t2t</CODE>
+<P></P>
+<DT><B>同上，使用重定向</B></DT><DD>
+<CODE>$ txt2tags -t html -o - file.t2t &gt; file.html</CODE>
+<P></P>
+<DT><B>包含目录信息</B></DT><DD>
+<CODE>$ txt2tags -t html --toc file.t2t</CODE>
+<P></P>
+<DT><B>包含目录信息，且对每个条目进行编号</B></DT><DD>
+<CODE>$ txt2tags -t html --toc --enum-title file.t2t</CODE>
+<P></P>
+<DT><B>快速浏览目录信息</B></DT><DD>
+<CODE>$ txt2tags --toc-only file.t2t</CODE>
+<P></P>
+<DT><B>从标准输入(STDIN)读入一行进行快速测试</B></DT><DD>
+<CODE>$ (echo ; echo "**bold**") | txt2tags -t html -H -</CODE>
+</DL>
+
+<H1>宏</H1>
+<DL>
+<DT>%%date</DT><DD>
+用于显示当前日期，默认格式为YYYYMMDD(年月日)。
+格式是可调的，调整时使用的语法：
+%%date(format-string)
+<P></P>
+<DT>%%infile</DT><DD>
+用于得到源文件的信息。
+格式是可调的，调整时使用的语法：%%infile(format-string)
+<P></P>
+有用的例子：使用尾部链接[查看源文件 %%infile]， 
+文件名被改掉的话该链接也会自动更新。
+<P></P>
+<DT>%%mtime</DT><DD>
+用于得到源文件的最近修改时间。
+采用的格式与%%date宏相同。
+<P></P>
+<DT>%%outfile</DT><DD>
+用于得到目标文件的信息。
+格式是可调的，调整时使用的语法：%%outfile(format-string)
+<P></P>
+有用的例子：使用引用自身的链接"This is the manpage-zh.html file"，
+文件名改掉的话该链接也会自动更新。
+<P></P>
+<DT>%%toc</DT><DD>
+%%toc宏指定目录在文档中存放的位置。
+你想把它放在文档中哪个位置都可以，
+出现一次或多次均可。
+<P></P>
+注意: %%toc宏只有在设置了--toc选项的情况下才会被展开。
+</DL>
+
+<H1>作者</H1>
+<P>
+程序由 Aurelio Marinho Jargas &lt;&lt;verde (a) aurelio net&gt;&gt; 编写并维护。
+</P>
+<P>
+此手册页原始文本由Jose Inacio Coelho &lt;&lt;jic (a) technologist com&gt;&gt; 编写，
+使用<B>txt2tags</B>转换为man格式。
+</P>
+<P>
+中文版由 Abby Pan &lt;&lt;abbypan (a) mail ustc edu cn&gt;&gt;翻译。
+</P>
+<H1>版权</H1>
+<P>
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+</P>
+<P>
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+</P>
+
+<!-- html code generated by txt2tags 2.6b (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html manpage-zh.t2t -->
+</BODY></HTML>

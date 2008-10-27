@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<STYLE TYPE="text/css">
+body { margin:3em               ;} 
+a    { text-decoration:none     ;} 
+pre  { background-color:#ffffcc ;} 
+</STYLE>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<TITLE>TXT2TAGS</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
+<FONT SIZE="4">
+<I>Version 2.2</I><BR>
+Janvier 2005
+</FONT></CENTER>
+
+<H1>NOM</H1>
+<P>
+<B>txt2tags</B> - outil de conversion et de mise au format
+</P>
+<H1>SYNOPSIS</H1>
+<P>
+<B>txt2tags</B> [<I>OPTION</I>]... [<I>FILE</I>]...
+</P>
+<H1>DESCRIPTION</H1>
+<P>
+<B>txt2tags</B> est un outil de conversion GPL écrit en Python qui génère des documents en <I>HTML</I>, <I>XHTML</I>, <I>SGML</I>, <I>LaTeX</I>, <I>Man Page</I>, <I>MoinMoin</I>, <I>MagicPoint</I> et <I>PageMaker</I> à partir d'un simple fichier texte avec un minimum de marques.
+</P>
+<P>
+L'utilisateur a juste besoin de savoir un minimum de marques simples de <B>txt2tags</B>, et comment écrire des fichiers texte. Le programme fait tout le travail, ajoutant les marques compliquées et se débrouillant avec les problèmes du fichier de sortie.
+</P>
+<P>
+Le même fichier texte peut être converti dans tous les formats cible, sans aucune édition supplémentaire. C'est le rôle de <B>txt2tags</B> : UNE source, des sorties MULTIPLES.
+</P>
+<P>
+<B>NOTE:</B> le noyau de la version 2.0 de <B>txt2tags</B> a été complètement réécrit. Si vous êtes utilisateur d'une version précédente, vous pouvez être obligé de réécrire une partie de vos vieux documents.
+</P>
+<P>
+Visitez la page de base du programme à :
+<I>http://txt2tags.sourceforge.net</I>.
+</P>
+<H1>OPTIONS</H1>
+<DL>
+<DT>     <B>--css-sugar</B></DT><DD>
+insérer CSS-friendly tags pour les cibles HTML and XHTML
+<P></P>
+<DT>     <B>--css-inside</B></DT><DD>
+insérer le contenu du fichier CSS dans l'entête HTML/XHTML
+<P></P>
+<DT>     <B>--dump-config</B></DT><DD>
+imprimer toute la configuration trouvée et sortir
+<P></P>
+<DT>     <B>--encoding</B></DT><DD>
+choisir l'encodage de la sortie (utf-8, iso-8859-1, etc)
+<P></P>
+<DT>     <B>--gui</B></DT><DD>
+appeler l'interface graphique Tk
+<P></P>
+<DT> <B>-h</B>, <B>--help</B></DT><DD>
+imprimer les informations d'aide et sortir
+<P></P>
+<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
+suppression des informations d'entête, de titre, de pied et sortir
+<P></P>
+<DT>     <B>--headers</B></DT><DD>
+montrer les informations d'entête, de titre et de pied (actif par défaut)
+<P></P>
+<DT> <B>-i</B>, <B>--infile</B>=<I>FILE</I></DT><DD>
+choisir FILE comme fichier d'entrée ('-' pour STDIN)
+<P></P>
+<DT>     <B>--mask-email</B></DT><DD>
+masquer les email des robots scanneurs. x@y.z devient &lt;x (a) y z&gt;
+<P></P>
+<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
+numéroter les titres : 1, 1.1, 1.1.1, etc
+<P></P>
+<DT>     <B>--no-encoding</B></DT><DD>
+supprimer la configuration d'encodage
+<P></P>
+<DT>     <B>--no-enum-title</B></DT><DD>
+supprimer la numérotation automatique des titres
+<P></P>
+<DT>     <B>--no-infile</B></DT><DD>
+supprimer la déclaration de fichier d'entrée
+<P></P>
+<DT>     <B>--no-mask-email</B></DT><DD>
+démasque les emails, supprime l'option --mask-email
+<P></P>
+<DT>     <B>--no-outfile</B></DT><DD>
+supprime la déclaration précédente de fichier de sortie
+<P></P>
+<DT>     <B>--no-quiet</B></DT><DD>
+imprime les messages supprime l'option --quiet
+<P></P>
+<DT>     <B>--no-rc</B></DT><DD>
+ne pas lire le fichier de configuration utilisateur ~/.txt2tagsrc
+<P></P>
+<DT>     <B>--no-style</B></DT><DD>
+supprimer la déclaration de style
+<P></P>
+<DT>     <B>--no-toc</B></DT><DD>
+ne pas ajouter de table des matières au document de sortie
+<P></P>
+<DT>     <B>--no-toc-only</B></DT><DD>
+supprimer l'option --toc-only
+<P></P>
+<DT> <B>-o</B>, <B>--outfile</B>=<I>FILE</I></DT><DD>
+générer le fichier de sortie FILE ('-' pour STDOUT)
+<P></P>
+<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
+mode silencieux, supprime toutes les sorties (sauf les erreurs)
+<P></P>
+<DT>     <B>--rc</B></DT><DD>
+lire la configuration utilisateur ~/.txt2tagsrc (actif par défaut)
+<P></P>
+<DT>     <B>--style</B>=<I>FILE</I></DT><DD>
+utiliser FILE comme style de document (comme Html CSS)
+<P></P>
+<DT><B>-t</B>, <B>--target</B></DT><DD>
+choisit le type de document de sortie, options actuelles :
+html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
+<P></P>
+<DT>     <B>--toc</B></DT><DD>
+ajouter la table des matières au document de sortie
+<P></P>
+<DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
+mettre le niveau maximum de la table des matières à N
+<P></P>
+<DT>     <B>--toc-only</B></DT><DD>
+imprime la table des matières et sort
+<P></P>
+<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
+imprime les message d'information pendant la conversion
+<P></P>
+<DT> <B>-V</B>, <B>--version</B></DT><DD>
+imprime la version du programme et sort
+<P></P>
+Par défaut la sortie convertie est sauvée dans 'file.&lt;type&gt;'.
+Utiliser <CODE>--outfile</CODE> pour forcer le nom du fichier de  sortie.
+Si le fichier d'entrée est '-', on lit à partir de STDIN.
+Si le fichier de sortie est '-', la sortie se fait sur STDOUT.
+</DL>
+
+<H1>STRUCTURE</H1>
+<P>
+Le fichier source <B>txt2tags</B> peut comporter trois zones.
+</P>
+<DL>
+<DT><B>Entête</B></DT><DD>
+Les trois premières lignes. Elles sont utilisées pour l'identification du document. Si vous n'avez pas besoin de l'entête, vous devez laisser ces trois lignes libres ou utiliser l'option <CODE>no-header</CODE>.
+<P></P>
+<DT><B>Configuration</B></DT><DD>
+Démarre à la quatrième ligne. Toutes les lignes ont la forme <CODE>%!keyword: valeur</CODE>. Les configurations peuvent aussi être faites par un fichier de configuration ou à la ligne de commande.
+<P></P>
+<DT><B>Corps</B></DT><DD>
+La vraie partie du document. Seule cette partie est obligatoire pour avoir un fichier <B>txt2tags</B> valide.
+</DL>
+
+<H1>CONFIGURATION</H1>
+<P>
+<B>txt2tags</B> peut être personnalisé de l'extérieur ou de l'intérieur. De l'extérieur par un fichier <CODE>.txt2tagsrc</CODE> ou par un fichier importé d'un autre fichier <B>txt2tags</B>. La personnalisation interne est faite par des commandes de configuration spéciales dans le document source. Tous les deux utilisent la même syntaxe :
+</P>
+<DL>
+<DT><B>%!target:</B></DT><DD>
+définit la cible principale
+<P></P>
+<DT><B>%!options(target):</B></DT><DD>
+définit les options de chaque cible
+<P></P>
+<DT><B>%!include: file.t2t</B></DT><DD>
+inclut un fichier <B>txt2tags</B>
+<P></P>
+<DT><B>%!include: ``file.txt``</B></DT><DD>
+inclut un fichier texte dans le document
+<P></P>
+<DT><B>%!include: ''file.html''</B></DT><DD>
+inclut un fichier tel qu'il est
+<P></P>
+<DT><B>%!style:</B></DT><DD>
+définit un fichier CSS (Cascading Style Sheet) pour les cibles XHTML et HTML ou pour charger des modules dans la cible TEX (par \usepackage)
+<P></P>
+<DT><B>%!encoding:</B></DT><DD>
+choisit l'encodage de la cible (comme iso-8859-1) pour les traductions i18n
+<P></P>
+<DT><B>%!includeconf:</B></DT><DD>
+inclut une configuration à partir d'un fichier externe
+<P></P>
+<DT><B>%!guicolors:</B></DT><DD>
+configuration des couleurs pour l'interface GUI (Tk/Tcl)
+<P></P>
+<DT><B>%!preproc:</B></DT><DD>
+vos filtres personnels (macro) qui seront effectués <B>AVANT</B> le traitement
+<P></P>
+<DT><B>%!postproc:</B></DT><DD>
+vos filtres personnels (macro) qui seront effectués <B>APRES</B> le traitement
+</DL>
+
+<H2>REGLES POUR LA CONFIGURATION</H2>
+ <UL>
+ <LI>les configurations ne sont valides que dans la zone de configuration et sont considérés comme des commentaires dans le corps du document. Une exception est <CODE>include</CODE> qui est valide dans le corps.
+ <P></P>
+ <LI>si le même mot clef apparaît plus d'une fois dans la zone de configuration, le dernier trouvé est celui utilisé. Exceptions : <CODE>options, preproc</CODE> et <CODE>postproc</CODE>, qui peuvent être cumulatifs.
+ <P></P>
+ <LI>Une ligne de configuration avec un mot clef invalide est considérée comme du commentaire.
+ <P></P>
+ <LI>Ces configurations ont priorité sur le fichier <CODE>.txt2tagsrc</CODE>, mais pas sur les options de la ligne de commande.
+ </UL>
+
+<H1>SYNTAXE</H1>
+<P>
+Un syntaxe simple de marques est utilisée dans le document source (le fichier texte)
+pour identifier les structures et la mise au format. Voici la liste complète :
+</P>
+<H2>Basique</H2>
+<PRE>
+  Entête            Les 3 premières lignes su fichier source
+  Titre             = mots =
+  Titre numéroté    + mots +
+  Paragraphe        mots
+</PRE>
+<P></P>
+<H2>Enjoliveurs</H2>
+<PRE>
+  Gras              **mots**
+  Italique          //mots//
+  Souligné          __mots__
+  Machine à écrire  ``mots``
+</PRE>
+<P></P>
+<H2>Blocs de texte</H2>
+<PRE>
+  Quote                   &lt;TAB&gt;mots
+  Liste                   - mots
+  Liste numérotée         + mots
+  Liste de définitions    : mots
+  Ligne verbatim          ``` mots
+  Zone verbatim           ```&lt;retour à la ligne&gt; lignes &lt;retour à la ligne&gt;```
+  Ligne brute             """ mots
+  Zone brute              """&lt;retour à la ligne&gt; lignes &lt;retour à la ligne&gt;"""
+  Table                   | cellule1 | cellule2 | cellule3...
+</PRE>
+<P></P>
+<H2>Autres</H2>
+<PRE>
+  Ligne de séparation    -----------------------...
+  Ligne plus épaisse     =======================...
+  Liens                 [label url]
+  Image                 [&lt;nom de fichier&gt;.jpg]
+  Texte brut            ""mots""
+  Commentaire           % commentaires
+</PRE>
+<P></P>
+<P>
+Lire le User Guide de <B>tx2tags</B> (dans le répertoire de la documentation)
+pour une description détaillée de chaque marque.
+</P>
+<H1>EXEMPLES</H1>
+<P>
+Considérons que vous avez écrit un fichier marqué <CODE>`file.t2t`</CODE>,
+voyons comment opérer pour la conversion.
+</P>
+<DL>
+<DT><B>Conversion vers HTML dans le fichier file.html</B></DT><DD>
+<CODE>$ txt2tags -t html file.t2t</CODE>
+<P></P>
+<DT><B>Même travail, mais en utilisant une redirection</B></DT><DD>
+<CODE>$ txt2tags -t html -o - file.t2t &gt; file.html</CODE>
+<P></P>
+<DT><B>Et en ajoutant une table des matières (TDM)</B></DT><DD>
+<CODE>$ txt2tags -t html --toc file.t2t</CODE>
+<P></P>
+<DT><B>Avec une TDM et des titres numérotés</B></DT><DD>
+<CODE>$ txt2tags -t html --toc --enum-title file.t2t</CODE>
+<P></P>
+<DT><B>Que la TDM</B></DT><DD>
+<CODE>$ txt2tags --toc-only file.t2t</CODE>
+<P></P>
+<DT><B>Utilisation de l'interface graphique</B></DT><DD>
+<CODE>$ txt2tags --gui file.t2t</CODE>
+<P></P>
+<DT><B>Post-conversion avec un filtre externe</B></DT><DD>
+<CODE>$ txt2tags -t html -o- file.t2t | sed -f myfilter.sed &gt; file.html</CODE>
+<P></P>
+<DT><B>Test sur une ligne avec entrée à partir de STDIN</B></DT><DD>
+<CODE>$ echo -e "\n**bold**" | txt2tags -t html -H -</CODE>
+</DL>
+
+<H1>TRUCS</H1>
+<P>
+Il y a quelques trucs agréables qui font de <B>txt2tags</B> un excellent outil pour la documentation.
+</P>
+<DL>
+<DT>Ancres</DT><DD>
+Les titres peuvent avoir des liens avec des ancres pour vous permettre d'y aller directement, si la cible l'autorise.
+<P></P>
+<PRE>
+  Titre             = mots =[ancre]
+  Titre numérotés   + mots +[ancre]
+</PRE>
+<P></P>
+<DT>Fichiers multiples</DT><DD>
+<B>txt2tags</B> peut traiter plus d'un fichier à la fois comme :
+<CODE>txt2tags *.t2t</CODE>
+</DL>
+
+<H1>MACROS</H1>
+<DL>
+<DT>%%date</DT><DD>
+Permet d'inclure la date courante, dans le format YYYYMMDD.
+Un format optionnel peut être défini en utilisant la syntaxe :
+<CODE>%%date(format-string)</CODE>.
+<P></P>
+<DT>%%infile</DT><DD>
+Utilisé pour obtenir des informations sur le fichier source. Une mise au format optionnelle
+peut être spécifiée par la syntaxe :  <CODE>%%infile(format-string)</CODE>.
+Un lien utile dans le pied de page comme <CODE>[voir le fichier source %%infile]</CODE>, ainsi vous pouvez 
+changer le nom du fichier et la référence sera mise à jour.
+<P></P>
+<DT>%%mtime</DT><DD>
+Donne les informations sur la date de modification du fichier.
+Il utilise le même format que la macro <CODE>%%date</CODE>.
+<P></P>
+<DT>%%outfile</DT><DD>
+Utilisé pour obtenir des informations sur le fichier converti.
+Une mise au format optionnelle est spécifiée par la syntaxe <CODE>%%outfile(format-string)</CODE>.
+Ainsi pour indiquer "Ceci est le fichier de sortie manpage-fr.html ".
+Vous pouvez changer le nom du ficher et sa référence sera mise à jour.
+<P></P>
+<DT>%%toc</DT><DD>
+La macro <CODE>%%toc</CODE> spécifie où la TDM va être insérée. Vous pouvez la mettre n'importe où dans le document.
+<P></P>
+NOTE: <CODE>%%toc</CODE> ne sera développée qu'avec l'option <CODE>--toc</CODE>.
+</DL>
+
+<H1>AUTEUR</H1>
+<P>
+Ecrit et maintenu par Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
+</P>
+<P>
+Cette page de manuel a été écrite par Jose Inacio Coelho &lt;&lt;jic (a) technologist com&gt;&gt;
+comme un fichier texte, puis converti au format man par <B>txt2tags</B>!
+</P>
+<P>
+Traduit par Claude Hiebel &lt;&lt;chiebel (a) free fr&gt;&gt;.
+</P>
+<H1>COPYRIGHT</H1>
+<P>
+Copyright (C) 2001, 2002, 2003, 2004, 2005 Aurelio Jargas
+</P>
+<P>
+This is free software; see the source for copying condpuis converti au format man par
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+</P>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html ./French/manpage-fr.t2t -->
+</BODY></HTML>
