@@ -18,15 +18,17 @@ ALIASES = {
 	'numlist' : 'list',
 	'deflist' : 'list',
 	'numtitle': 'title',
-	'raw'     : 'verbatim'
+	'raw'     : 'verbatim',
+	'tagged'  : 'verbatim'
 }
 
 # smart filters to allow source inheritance and macros normalization
 FILTERS = {
-  'deflist' : [ ('pre', 'hyphen'  , 'colon'), ('pre', '^( *)-', r'\1:') ],
-  'numlist' : [ ('pre', 'hyphen'  , 'plus' ), ('pre', '^( *)-', r'\1+') ],
-  'numtitle': [ ('pre', 'equal'   , 'plus' ), ('pre', '='     ,  '+'  ) ],
-  'raw'     : [ ('pre', 'verbatim', 'raw'  ), ('pre', '`'     ,  '"'  ) ],
+  'deflist' : [ ('pre', 'hyphen'  , 'colon' ), ('pre', '^( *)-', r'\1:') ],
+  'numlist' : [ ('pre', 'hyphen'  , 'plus'  ), ('pre', '^( *)-', r'\1+') ],
+  'numtitle': [ ('pre', 'equal'   , 'plus'  ), ('pre', '='     ,  '+'  ) ],
+  'raw'     : [ ('pre', 'verbatim', 'raw'   ), ('pre', '`'     ,  '"'  ) ],
+  'tagged'  : [ ('pre', 'verbatim', 'tagged'), ('pre', '`'     ,  "\'"  ) ],
   'macro'   : [ ('post', os.path.abspath(""), '@DIRNAME@'),
                 ('post', lib.getFileMtime('marks/macro.t2t'), '@MTIME@'),
                 ('post', lib.getCurrentDate(), '@DATE@'),
@@ -40,7 +42,7 @@ def addFilters(filters):
 	config = []
 	cmdline = []
 	for filter in filters:
-		config.append("%%!%sproc: '%s' '%s'"%filter)
+		config.append("%%!%sproc: '%s' %s"%filter) # don't quote 2nd -- breaks tagged filter
 	if config:
 		lib.WriteFile(lib.CONFIG_FILE, string.join(config, '\n'))
 		cmdline = ['-C', lib.CONFIG_FILE]

@@ -38,6 +38,24 @@ You're not seeing this.
 Line 2.
 """
 	Line 3.
+%%% Crossing: Raw Line at end is parsed inside
+	Line 1.
+	Line 2.
+""" Line 3.
+%%% Crossing: Tagged Line is parsed
+	Line 1.
+''' Line 2.
+	Line 3.
+%%% Crossing: Tagged Block is parsed
+	Line 1.
+'''
+Line 2.
+'''
+	Line 3.
+%%% Crossing: Tagged Line at end is parsed inside
+	Line 1.
+	Line 2.
+''' Line 3.
 %%% Crossing: Verbatim Line closes it
 	Line 1.
 ``` Closed
