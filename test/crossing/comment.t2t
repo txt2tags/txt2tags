@@ -46,6 +46,18 @@ You're not seeing this.
 """
 %%%
 
+%%% Crossing: Tagged Line is ignored
+%%%
+''' You're not seeing this.
+%%%
+
+%%% Crossing: Tagged Block is ignored
+%%%
+'''
+You're not seeing this.
+'''
+%%%
+
 %%% Crossing: Quote is ignored
 %%%
 	You're not seeing this.

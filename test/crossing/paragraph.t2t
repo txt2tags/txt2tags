@@ -41,17 +41,59 @@ Closed
 ```
 Line 3.
 
-%%% Crossing: Raw Line is parsed
+%%% Crossing: Raw Line is parsed inside
 Line 1.
 """ Line 2.
 Line 3.
 
-%%% Crossing: Raw Block is parsed
+%%% Crossing: Raw Block is parsed inside
 Line 1.
 """
 Line 2.
 """
 Line 3.
+
+%%% Crossing: Raw Line at end is parsed inside
+Line 1.
+Line 2.
+""" Line 3.
+
+%%% Crossing: Raw Line at start doesn't open new para
+""" Line 1.
+Line 2.
+Line 3.
+
+%%% Crossing: Raw Line alone doesn't open new para
+""" Line 1.
+
+""" Line 2.
+
+%%% Crossing: Tagged Line is parsed inside
+Line 1.
+''' Line 2.
+Line 3.
+
+%%% Crossing: Tagged Block is parsed inside
+Line 1.
+'''
+Line 2.
+'''
+Line 3.
+
+%%% Crossing: Tagged Line at end is parsed inside
+Line 1.
+Line 2.
+''' Line 3.
+
+%%% Crossing: Tagged Line at start doesn't open new para
+''' Line 1.
+Line 2.
+Line 3.
+
+%%% Crossing: Tagged Line alone doesn't open new para
+''' Line 1.
+
+''' Line 2.
 
 %%% Crossing: Quote closes it
 Line 1.
