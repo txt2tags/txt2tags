@@ -67,3 +67,4 @@ if ERRORS:
 	print
 	print "Check out the files with errors:"
 	print string.join(ERRORS, '\n')
+	sys.exit(1)
