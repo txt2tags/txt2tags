@@ -38,6 +38,16 @@ Don't close
 Closed
 """
 | Line 3. |
+%%% Crossing: Tagged Line closes it
+| Line 1. |
+''' Closed
+| Line 3. |
+%%% Crossing: Tagged Block closes it
+| Line 1. |
+'''
+Closed
+'''
+| Line 3. |
 %%% Crossing: Verbatim Line closes it
 | Line 1. |
 ``` Closed

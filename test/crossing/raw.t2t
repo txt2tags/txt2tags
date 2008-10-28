@@ -28,6 +28,16 @@ No paragraph tags here.
 You're seeing this.
 %%%
 """
+%%% Crossing: Tagged Line is ignored
+"""
+''' No Tagged here.
+"""
+%%% Crossing: Tagged Block is ignored
+"""
+'''
+No Tagged here.
+'''
+"""
 %%% Crossing: Verbatim Line is ignored
 """
 ``` No verbatim here.

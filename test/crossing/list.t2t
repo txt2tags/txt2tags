@@ -46,6 +46,18 @@ Raw block
 """
 - Line 3.
 -
+%%% Crossing: Tagged Line is parsed inside
+- Line 1.
+''' Tagged line
+- Line 3.
+-
+%%% Crossing: Tagged Block is parsed inside
+- Line 1.
+'''
+Tagged block
+'''
+- Line 3.
+-
 %%% Crossing: Verbatim Line is parsed inside
 - Line 1.
 ``` Verbatim line
