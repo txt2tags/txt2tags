@@ -139,7 +139,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml sgml tex lout man mgp wiki gwiki doku moin pm6 txt'.split()
+TARGETS  = 'html xhtml sgml tex lout man mgp wiki gwiki doku moin pm6 txt art'.split()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -148,7 +148,7 @@ FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
 OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
-            'show-config-value':'' }
+            'show-config-value':'', 'ascii-art' :''} 
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 }
@@ -175,6 +175,7 @@ TARGET_NAMES = {
   'moin' : _('MoinMoin page'),
   'pm6'  : _('PageMaker document'),
   'txt'  : _('Plain Text'),
+  'art'  : _('Ascii Art'),
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -182,6 +183,9 @@ VERBOSE = 0   # do not edit here, please use -v, -vv or -vvv
 QUIET = 0     # do not edit here, please use --quiet
 GUI = 0       # do not edit here, please use --gui
 AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
+
+AA_LCHARS = ['coin','line','border','bar1','bar2','level2','level3','level4','level5']
+AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --ascii-art or -a
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -226,6 +230,8 @@ _("      --toc           add TOC (Table of Contents) to target document"),
 _("      --toc-only      print document TOC and exit"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
+_("  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"),
+'                      %s' % ', '.join(AA_LCHARS),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -266,6 +272,9 @@ _("If output file is '-', dumps output to STDOUT."),
 #  - use %% to represent a literal %
 #
 HEADER_TEMPLATE = {
+  'art':"""
+Fake template to respect the general process.
+""",
   'txt': """\
 %(HEADER1)s
 %(HEADER2)s
@@ -560,6 +569,24 @@ def getTags(config):
 	# TIP: ~A~, ~B~ and ~C~ are expanded to other tags parts
 	
 	alltags = {
+	
+	'art': {
+	   'title1'              : '\a'                     ,
+	   'title2'              : '\a'                     ,
+	   'title3'              : '\a'                     ,
+	   'title4'              : '\a'                     ,
+	   'title5'              : '\a'                     ,
+	   'blockQuoteLine'      : '\t'                     ,
+	   'listItemOpen'        : '- '                     ,
+	   'numlistItemOpen'     : '\a. '                   ,
+	   'bar1'                : aa_line(AA_CHARS['bar1']),
+	   'bar2'                : aa_line(AA_CHARS['bar2']),
+	   'url'                 : '\a'                     ,
+	   'urlMark'             : '\a (\a)'                ,
+	   'email'               : '\a'                     ,
+	   'emailMark'           : '\a (\a)'                ,
+	   'img'                 : '[\a]'                   ,
+	},
 	
 	'txt': {
 	   'title1'              : '  \a'      ,
@@ -1209,6 +1236,15 @@ def getRules(config):
 	]
 	
 	rules_bank = {
+	  'art' : {
+	    'indentverbblock':1,
+	    'spacedlistitem':1,
+	    'parainsidelist':1,
+	    'keeplistindent':1,
+	    'barinsidequote':1,
+	    'autotocwithbars':1,
+	    'blankendmotherlist':1,
+	    },
 	  'txt' : {
 	    'indentverbblock':1,
 	    'spacedlistitem':1,
@@ -1560,6 +1596,33 @@ def getRegexes():
 	return bank
 ### END OF regex nightmares
 
+################# functions for the Ascii Art backend ########################
+
+def aa_line(char):
+	return char*72 + LB
+
+def aa_box(txt):
+	len_txt = len(txt)
+	nspace = (72-len_txt-4)/2
+	line_box = " "*nspace + AA_CHARS['coin'] + AA_CHARS['line']*(len_txt+2) + AA_CHARS['coin'] + LB
+	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
+	#                           +-------------------------------+
+	#                           | all theeeeeeeeeeeeeeeeee text |
+	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
+	line_txt = " "*nspace + AA_CHARS['border'] + ' ' + txt + ' ' + AA_CHARS['border'] + LB
+	return line_box + line_txt + line_box
+
+def aa_header(header_data):
+	header= aa_line(AA_CHARS['bar2'])+\
+		LB+\
+		LB
+	for h in 'HEADER1', 'HEADER2', 'HEADER3' :
+		if header_data[h]: header +=\
+		aa_box(header_data[h])+\
+		LB+\
+		LB
+	header+=aa_line(AA_CHARS['bar2'])
+	return header
 
 ##############################################################################
 
@@ -1706,11 +1769,12 @@ class CommandLine:
 		
 		# short:long options equivalence
 		self.short_long = {
-		  'h':'help'     ,   'V':'version',
-		  'n':'enum-title',  'i':'infile' ,
-		  'H':'no-headers',  'o':'outfile',
-		  'v':'verbose'   ,  't':'target' ,
-		  'q':'quiet'     ,  'C':'config-file'
+		  'h':'help'      ,  'V':'version'    ,
+		  'n':'enum-title',  'i':'infile'     ,
+		  'H':'no-headers',  'o':'outfile'    ,
+		  'v':'verbose'   ,  't':'target'     ,
+		  'q':'quiet'     ,  'C':'config-file',
+		  'a':'ascii-art' ,
 		}
 		
 		# Compose valid short and long options data for getopt
@@ -2690,6 +2754,16 @@ class TitleMaster:
 				i = len(full_title)
 			ret.append(regex['x'].sub('='*i, self.tag))
 			ret.append('') # blank line after
+		elif TARGET == 'art' and self.level == 1:
+			ret.append('') # blank line before
+			ret.append(aa_box(tagged))
+			ret.append('') # blank line after
+		elif TARGET == 'art':
+			level = 'level'+str(self.level)
+			ret.append('') # blank line before
+			ret.append(tagged)
+			ret.append(AA_CHARS[level]*len(full_title))
+			ret.append('') # blank line after
 		else:
 			ret.append(tagged)
 		return ret
@@ -2718,7 +2792,7 @@ class TitleMaster:
 			# No links on TOC, just text
 			else:
 				# man don't reformat TOC lines, cool!
-				if TARGET == 'txt' or TARGET == 'man':
+				if TARGET in ['txt', 'man', 'art']:
 					tocitem = '%s""%s""' %(
 					          indent, id_txt)
 				else:
@@ -3505,6 +3579,13 @@ def doHeader(headers, config):
 			contents = doFinalEscape(target, contents)
 		
 		head_data['HEADER%d'%(i+1)] = contents
+	
+	if target == 'art':
+		if not [v for v in head_data.values() if v]:
+			return []
+		template = aa_header(head_data)
+		return template.split('\n')
+	
 	# css-inside removes STYLE line
 	#XXX In tex, this also removes the modules call (%!style:amsfonts)
 	if target in ('html','xhtml') and config.get('css-inside') and \
@@ -4907,7 +4988,7 @@ class Gui:
 ##############################################################################
 
 def exec_command_line(user_cmdline=[]):
-	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, Error
+	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, Error
 	
 	# Extract command line data
 	cmdline_data = user_cmdline or sys.argv[1:]
@@ -4918,6 +4999,14 @@ def exec_command_line(user_cmdline=[]):
 	QUIET   = cmdline_parsed.get('quiet'  ) or 0
 	GUI     = cmdline_parsed.get('gui'    ) or 0
 	infiles = cmdline_parsed.get('infile' ) or []
+	
+	if 'ascii-art' in cmdline_parsed:
+		lascii = cmdline_parsed['ascii-art']
+		diff = len(AA_LCHARS)-len(lascii)
+		if not diff:
+			AA_CHARS = dict(zip(AA_LCHARS, lascii))
+		else:
+			Error(_("%i char(s) to the right number")%diff)
 	
 	Message(_("Txt2tags %s processing begins")%my_version,1)
 	
