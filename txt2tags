@@ -4055,8 +4055,6 @@ def convert_this_files(configs):
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
-		else:
-			target_foot = []
 		# Finally, we have our document
 		outlist = target_head + target_toc + target_body + target_foot
 		# If on GUI, abort before finish_him
