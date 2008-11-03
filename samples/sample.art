@@ -12,7 +12,7 @@
 
 
                              +------------+
-                             | 10/28/2008 |
+                             | 11/03/2008 |
                              +------------+
 
 
@@ -221,18 +221,14 @@ Other
 
 The handy %%date macro expands to the current date.
 
-So today is 20081029 on the ISO YYYYMMDD format.
+So today is 20081103 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 10-29-2008.
+as %%date(%m-%d-%Y) which gives: 11-03-2008.
 
 That's all for now.
 
 ------------------------------------------------------------------------
 
 [img/t2tpowered.png] (sample.t2t (sample.t2t))
-
-
-
-
 
