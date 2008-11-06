@@ -1,3 +1,6 @@
-#summary One-sentence summary of this page.
+#summary Comments for the new target ODT
 
-ODT is the open standard for word processing
+= Target ODT =
+
+ODT is the open standard for word processing.
+It's widely used and supported by all major office suites.
