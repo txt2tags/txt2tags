@@ -169,7 +169,7 @@ Gauzak sinpleegiak zirelako.
 
 Irudientzako marka ahal bezain sinplea da: ``[fitxategia]``.
 
-                      [img/photo.jpg]  
+                      [../img/photo.jpg]  
 
 - Fitxategi izenaren bukaera PNG, JPG, GIF edo antzera izan behar du.
 - Hutsunerik ez kakotxen artean!
@@ -191,6 +191,6 @@ Nahikoa behingoz.
 %%% TRANSLATOR: Uncomment and translate the next two lines
 Maider Likona eta Ales Zabalak euskaratuta.
 %-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
+[../img/t2tpowered.png] ([%%infile %%infile])
 
 % vim: tw=55
