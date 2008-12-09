@@ -3319,7 +3319,7 @@ class BlockMaster:
 		if self._should_add_blank_line('before', 'bar'): result.append('')
 
 		# Get the original bar chars
-		bar_chars = self.hold()[0]
+		bar_chars = self.hold()[0].strip()
 
 		# Set bar type
 		if bar_chars.startswith('='): bar_tag = TAGS['bar2']
