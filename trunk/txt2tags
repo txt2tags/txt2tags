@@ -1167,11 +1167,15 @@ def getTags(config):
 	for key in keys: tags[key] = ''     # create empty keys
 	for key in target_tags.keys():
 		tags[key] = maskEscapeChar(target_tags[key]) # populate
-	
+
+	# Map strong line to pagebreak
+	if rules['mapbar2pagebreak'] and tags['pageBreak']:
+		tags['bar2'] = tags['pageBreak']
+
 	# Map strong line to separator if not defined
 	if not tags['bar2'] and tags['bar1']:
 		tags['bar2'] = tags['bar1']
-	
+
 	return tags
 
 
@@ -3036,11 +3040,17 @@ class BlockMaster:
 		  'quote'   :['quote','comment','raw','tagged'],
 		  'list'    :['list','numlist','deflist','para','verb','comment','raw','tagged'],
 		  'numlist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
-		  'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged']
+		  'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
+		  'bar'     :[],
 		}
 		self.allblocks = self.contains.keys()
+
 		# If one is found inside another, ignore the marks
 		self.exclusive = ['comment','verb','raw','tagged']
+		
+		# May we include bars inside quotes?
+		if rules['barinsidequote']:
+			self.contains['quote'].append('bar')
 	
 	def block(self):
 		if not self.BLK: return ''
@@ -3144,7 +3154,7 @@ class BlockMaster:
 		"Validates the blanksaround* rules"
 
 		# Nestable blocks: only mother blocks (level 1) are spaced
-		if (blockname == 'quote' or blockname.endswith('list')) and self.depth > 1:
+		if blockname.endswith('list') and self.depth > 1:
 			return False
 
 		# The blank line after the block is always added
@@ -3158,6 +3168,14 @@ class BlockMaster:
 		elif where == 'before' \
 			and rules['blanksaround'+blockname] \
 			and not rules.get('blanksaround'+self.last):
+			return True
+
+		# Nested quotes are handled here,
+		# because the mother quote isn't closed yet
+		elif where == 'before' \
+			and blockname == 'quote' \
+			and rules['blanksaround'+blockname] \
+			and self.depth > 1:
 			return True
 
 		return False
@@ -3260,7 +3278,6 @@ class BlockMaster:
 
 	def quote(self):
 		result = []
-		myre   = regex['quote']
 		open   = TAGS['blockQuoteOpen']            # block based
 		close  = TAGS['blockQuoteClose']
 		qline  = TAGS['blockQuoteLine']            # line based
@@ -3281,12 +3298,7 @@ class BlockMaster:
 			if type(item) == type([]):
 				result.extend(item)        # subquotes
 			else:
-				item = myre.sub('', item)  # del TABs
-				
-				# XXX check the new schema
-				if rules['barinsidequote']:
-					item = get_tagged_bar(item)
-					
+				item = regex['quote'].sub('', item)  # del TABs
 				item = self._last_escapes(item)
 				item = qline*self.depth + item
 				result.append(indent+item) # quote line
@@ -3299,6 +3311,33 @@ class BlockMaster:
 		
 		return result
 	
+	def bar(self):
+		result = []
+		bar_tag = ''
+
+		# Blank line before?
+		if self._should_add_blank_line('before', 'bar'): result.append('')
+
+		# Get the original bar chars
+		bar_chars = self.hold()[0]
+
+		# Set bar type
+		if bar_chars.startswith('='): bar_tag = TAGS['bar2']
+		else                        : bar_tag = TAGS['bar1']
+
+		# # To avoid comment tag confusion like <!-- ------ -->
+		# # Note: Not used. Activate when source comments are sent to targets. 
+		# if TAGS['comment'].count('--'):
+		# 	bar_chars = bar_chars.replace('--', '__')
+
+		# Get the bar tag (may contain \a)
+		result.append(regex['x'].sub(bar_chars, bar_tag))
+
+		# Blank line after?
+		if self._should_add_blank_line('after', 'bar'): result.append('')
+
+		return result
+
 	def deflist(self): return self.list('deflist')
 	def numlist(self): return self.list('numlist')
 	def list(self, name='list'):
@@ -3960,27 +3999,6 @@ def parse_deflist_term(line):
 	return term
 
 
-def get_tagged_bar(line):
-	m = regex['bar'].search(line)
-	if not m: return line
-	txt = m.group(2)
-	
-	# Map strong bar to pagebreak
-	if rules['mapbar2pagebreak'] and TAGS['pageBreak']:
-		TAGS['bar2'] = TAGS['pageBreak']
-	
-	# Set bar type
-	if txt[0] == '=': bar = TAGS['bar2']
-	else            : bar = TAGS['bar1']
-	
-	# To avoid comment tag confusion like <!-- ------ -->
-	if TAGS['comment'].count('--'):
-		txt = txt.replace('--', '__')
-	
-	# Tag line
-	return regex['x'].sub(txt, bar)
-
-
 def get_image_align(line):
 	"Return the image (first found) align for the given line"
 	
@@ -4232,8 +4250,8 @@ def get_include_contents(file, path=''):
 def set_global_config(config):
 	global CONF, TAGS, regex, rules, TARGET
 	CONF   = config
-	TAGS   = getTags(CONF)
 	rules  = getRules(CONF)
+	TAGS   = getTags(CONF)
 	regex  = getRegexes()
 	TARGET = config['target']  # save for buggy functions that need global
 
@@ -4513,38 +4531,31 @@ def convert(bodylines, config, firstlinenr=1):
 		
 		
 		#---------------------[ Horizontal Bar ]--------------------
-		
+
 		if regex['bar'].search(line):
-			
-			# A bar closes a paragraph
-			if BLOCK.isblock('para'):
+
+			# Bars inside quotes are handled on the Quote processing
+			# Otherwise we parse the bars right here
+			#
+			if not (BLOCK.isblock('quote') or regex['quote'].search(line)) \
+				or (BLOCK.isblock('quote') and not rules['barinsidequote']):
+
+				# Close all the opened blocks
+				ret.extend(BLOCK.blockin('bar'))
+
+				# Extract the bar chars (- or =)
+				m = regex['bar'].search(line)
+				bar_chars = m.group(2)
+
+				# Process and dump the tagged bar
+				BLOCK.holdadd(bar_chars)
 				ret.extend(BLOCK.blockout())
-			
-			# We need to close all opened quote blocks
-			# if bar isn't allowed inside or if not a quote line
-			if BLOCK.isblock('quote'):
-				if not rules['barinsidequote'] or \
-				   not regex['quote'].search(line):
-					while BLOCK.isblock('quote'):
-						ret.extend(BLOCK.blockout())
-			
-			# Quote + bar: continue processing for quoting
-			if rules['barinsidequote'] and \
-			   regex['quote'].search(line):
-				pass
-			
-			# Just bar: save tagged line and we're done
-			else:
-				line = get_tagged_bar(line)
-				if BLOCK.block()[-4:] == 'list':
-					BLOCK.holdaddsub(line)
-				elif BLOCK.block():
-					BLOCK.holdadd(line)
-				else:
-					ret.append(line)
-					Debug("BAR: %s"%line, 6)
+				Debug("BAR: %s"%line, 6)
+
+				# We're done, nothing more to process
 				continue
-		
+
+
 		#---------------------[ Title ]-----------------------------
 		
 		#TODO set next blank and set f_lastwasblank or f_lasttitle
@@ -4602,7 +4613,17 @@ def convert(bodylines, config, firstlinenr=1):
 			# Closing quotes
 			while quotedepth < BLOCK.depth:
 				ret.extend(BLOCK.blockout())
-		
+			
+			# Bar inside quote
+			if regex['bar'].search(line) and rules['barinsidequote']:
+				tempBlock = BlockMaster()
+				tagged_bar = []
+				tagged_bar.extend(tempBlock.blockin('bar'))
+				tempBlock.holdadd(line)
+				tagged_bar.extend(tempBlock.blockout())
+				BLOCK.holdextend(tagged_bar)
+				continue
+
 		#---------------------[ Lists ]-----------------------------
 		
 		# An empty item also closes the current list
