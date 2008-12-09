@@ -3086,24 +3086,25 @@ class BlockMaster:
 	
 	def blockout(self):
 		if not self.BLK: Error('No block to pop')
-		self.last = self.BLK.pop()
-		result = getattr(self, self.last)()
+		blockname = self.BLK.pop()
+		result = getattr(self, blockname)()
 		parsed = self.HLD.pop()
 		self.PRP.pop()
 		self.depth = len(self.BLK)
-		if self.last == 'table': del self.tableparser
+		if blockname == 'table': del self.tableparser
 		# Inserting a nested block into mother
 		if self.block():
-			if self.last != 'comment': # ignore comment blocks
+			if blockname != 'comment': # ignore comment blocks
 				if self.block()[-4:] == 'list':
 					self.HLD[-1][-1].append(result)
 				else:
 					self.HLD[-1].append(result)
 			# Reset now. Mother block will have it all
 			result = []
-		Debug('block -- (%s): %s' % (self.last,self.BLK), 3)
-		Debug('RELEASED (%s): %s' % (self.last,parsed), 3)
+		Debug('block -- (%s): %s' % (blockname,self.BLK), 3)
+		Debug('RELEASED (%s): %s' % (blockname,parsed), 3)
 		if result: Debug('BLOCK: %s'%result, 6)
+		self.last = blockname # we're out
 		return result
 	
 	def _last_escapes(self, line):
