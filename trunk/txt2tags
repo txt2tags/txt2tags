@@ -1218,7 +1218,6 @@ def getRules(config):
 	  'breaktablelineopen',   # break line after opening table line
 	  'breaktitleopen',       # break line after any title
 	  'notbreaklistopen',     # don't break line after opening a new list
-	  'notbreakparaopen',     # don't break line after opening a new para
 	  'keepquoteindent',      # don't remove the leading TABs on quotes
 	  'keeplistindent',       # don't remove the leading spaces on lists
 	  'blankendmotherlist',   # append a blank line at the mother list end
@@ -1228,6 +1227,16 @@ def getRules(config):
 	  'spacedlistitemopen',   # append a space after the list item open tag
 	  'spacednumlistitemopen',# append a space after the numlist item open tag
 	  'deflisttextstrip',     # strip the contents of the deflist text
+	  'blanksaroundpara',     # put a blank line before and after paragraphs
+	  'blanksaroundverb',     # put a blank line before and after verb blocks
+	  'blanksaroundquote',    # put a blank line before and after quotes
+	  'blanksaroundlist',     # put a blank line before and after lists
+	  'blanksaroundnumlist',  # put a blank line before and after numlists
+	  'blanksarounddeflist',  # put a blank line before and after deflists
+	  'blanksaroundtable',    # put a blank line before and after tables
+	  'blanksaroundbar',      # put a blank line before and after bars
+	  'blanksaroundtitle',    # put a blank line before and after titles
+	  'blanksaroundnumtitle', # put a blank line before and after numtitles
 	
 	# Value settings
 	  'listmaxdepth',         # maximum depth for lists
@@ -1236,15 +1245,6 @@ def getRules(config):
 	]
 	
 	rules_bank = {
-	  'art' : {
-	    'indentverbblock':1,
-	    'spacedlistitem':1,
-	    'parainsidelist':1,
-	    'keeplistindent':1,
-	    'barinsidequote':1,
-	    'autotocwithbars':1,
-	    'blankendmotherlist':1,
-	    },
 	  'txt' : {
 	    'indentverbblock':1,
 	    'spacedlistitem':1,
@@ -1252,7 +1252,19 @@ def getRules(config):
 	    'keeplistindent':1,
 	    'barinsidequote':1,
 	    'autotocwithbars':1,
-	    'blankendmotherlist':1,
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
+	    },
+	  #TIP art inherits all TXT rules
+	  'art': {
 	    },
 	  'html': {
 	    'indentverbblock':1,
@@ -1336,7 +1348,6 @@ def getRules(config):
 	    'mapbar2pagebreak':1,
 	    'titleblocks':1,
 	    'autonumberlist':1,
-	    'notbreakparaopen':1,
 	    },
 	  'moin': {
 	    'spacedlistitem':1,
@@ -1410,7 +1421,6 @@ def getRules(config):
 	    #TODO add support for these - maybe set a JOINNEXT char and
 	    #     do it on addLineBreaks()
 	    'notbreaklistopen':1,
-	    'notbreakparaopen':1,
 	    'barinsidequote':1,
 	    'autotocwithbars':1,
 	    'onelinepara':1,
@@ -1426,6 +1436,8 @@ def getRules(config):
 	if config['target'] == 'xhtml':
 		myrules = rules_bank['html'].copy()   # inheritance
 		myrules.update(rules_bank['xhtml'])   # get XHTML specific
+	elif config['target'] == 'art':
+		myrules = rules_bank['txt'].copy()    # inheritance
 	else:
 		myrules = rules_bank[config['target']].copy()
 	
@@ -3128,6 +3140,28 @@ class BlockMaster:
 			return lastitem[:-2]
 		return lastitem
 	
+	def _should_add_blank_line(self, where, blockname):
+		"Validates the blanksaround* rules"
+
+		# Nestable blocks: only mother blocks (level 1) are spaced
+		if (blockname == 'quote' or blockname.endswith('list')) and self.depth > 1:
+			return False
+
+		# The blank line after the block is always added
+		if where == 'after' \
+			and rules['blanksaround'+blockname]:
+			return True
+
+		# The blank line before the block is only added if
+		# the previous block haven't added a blank line
+		# (to avoid consecutive blanks)
+		elif where == 'before' \
+			and rules['blanksaround'+blockname] \
+			and not rules.get('blanksaround'+self.last):
+			return True
+
+		return False
+
 	def comment(self):
 		return ''
 	
@@ -3143,19 +3177,26 @@ class BlockMaster:
 		open  = TAGS['paragraphOpen']
 		close = TAGS['paragraphClose']
 		lines = self._get_escaped_hold()
-		# Open (or not) paragraph
-		if not open+close and self.last == 'para':
-			pass # avoids multiple blank lines
-		else:
-			result.append(open)
+
+		# Blank line before?
+		if self._should_add_blank_line('before', 'para'): result.append('')
+
+		# Open tag
+		if open: result.append(open)
+
 		# Pagemaker likes a paragraph as a single long line
 		if rules['onelinepara']:
 			result.append(' '.join(lines))
 		# Others are normal :)
 		else:
 			result.extend(lines)
-		result.append(close)
-		
+
+		# Close tag
+		if close: result.append(close)
+
+		# Blank line after?
+		if self._should_add_blank_line('after', 'para'): result.append('')
+	
 		# Very very very very very very very very very UGLY fix
 		# Needed because <center> can't appear inside <p>
 		try:
@@ -3170,7 +3211,16 @@ class BlockMaster:
 	def verb(self):
 		"Verbatim lines are not masked, so there's no need to unmask"
 		result = []
-		result.append(TAGS['blockVerbOpen'])
+		open  = TAGS['blockVerbOpen']
+		close = TAGS['blockVerbClose']
+
+		# Blank line before?
+		if self._should_add_blank_line('before', 'verb'): result.append('')
+
+		# Open tag
+		if open: result.append(open)
+
+		# Get contents
 		for line in self.hold():
 			if self.prop('mapped') == 'table':
 				line = MacroMaster().expand(line)
@@ -3181,20 +3231,33 @@ class BlockMaster:
 			if rules['verbblockfinalescape']:
 				line = doFinalEscape(TARGET, line)
 			result.append(line)
-		#TODO maybe use if not TAGS['blockVerbClose']
-		if TARGET != 'pm6':
-			result.append(TAGS['blockVerbClose'])
+
+		# Close tag
+		if close: result.append(close)
+
+		# Blank line after?
+		if self._should_add_blank_line('after', 'verb'): result.append('')
+
 		return result
-	
+
 	def table(self):
+		result = []
+
+		# Blank line before?
+		if self._should_add_blank_line('before', 'table'): result.append('')
+
 		# Rewrite all table cells by the unmasked and escaped data
 		lines = self._get_escaped_hold()
 		for i in xrange(len(lines)):
 			cells = lines[i].split(SEPARATOR)
 			self.tableparser.rows[i]['cells'] = cells
-		
-		return self.tableparser.dump()
-	
+		result.extend(self.tableparser.dump())
+
+		# Blank line after?
+		if self._should_add_blank_line('after', 'table'): result.append('')
+
+		return result
+
 	def quote(self):
 		result = []
 		myre   = regex['quote']
@@ -3202,21 +3265,38 @@ class BlockMaster:
 		close  = TAGS['blockQuoteClose']
 		qline  = TAGS['blockQuoteLine']            # line based
 		indent = tagindent = '\t'*self.depth
+		
+		# Apply rules
 		if rules['tagnotindentable']: tagindent = ''
 		if not rules['keepquoteindent']: indent = ''
 		
-		if open: result.append(tagindent+open)     # open block
+		# Blank line before?
+		if self._should_add_blank_line('before', 'quote'): result.append('')
+
+		# Open tag
+		if open: result.append(tagindent+open)
+		
+		# Get contents
 		for item in self.hold():
 			if type(item) == type([]):
 				result.extend(item)        # subquotes
 			else:
 				item = myre.sub('', item)  # del TABs
+				
+				# XXX check the new schema
 				if rules['barinsidequote']:
 					item = get_tagged_bar(item)
+					
 				item = self._last_escapes(item)
 				item = qline*self.depth + item
 				result.append(indent+item) # quote line
-		if close: result.append(tagindent+close)   # close block
+
+		# Close tag
+		if close: result.append(tagindent+close)
+
+		# Blank line after?
+		if self._should_add_blank_line('after', 'quote'): result.append('')
+		
 		return result
 	
 	def deflist(self): return self.list('deflist')
@@ -3230,9 +3310,7 @@ class BlockMaster:
 		listclose = TAGS.get(name+'Close')
 		listline  = TAGS.get(name+'ItemLine')
 		itemcount = 0
-		if rules['tagnotindentable']: tagindent = ''
-		if not rules['keeplistindent']: indent = tagindent = ''
-		
+
 		if name == 'deflist':
 			itemopen  = TAGS[name+'Item1Open']
 			itemclose = TAGS[name+'Item2Close']
@@ -3243,6 +3321,10 @@ class BlockMaster:
 			itemclose = TAGS[name+'ItemClose']
 			itemsep   = ''
 		
+		# Apply rules
+		if rules['tagnotindentable']: tagindent = ''
+		if not rules['keeplistindent']: indent = tagindent = ''
+
 		# ItemLine: number of leading chars identifies list depth
 		if listline:
 			itemopen  = listline*self.depth + itemopen
@@ -3254,10 +3336,13 @@ class BlockMaster:
 			
 		# Remove two-blanks from list ending mark, to avoid <p>
 		items[-1] = self._remove_twoblanks(items[-1])
-		
+
+		# Blank line before?
+		if self._should_add_blank_line('before', name): result.append('')
+
 		# Open list (not nestable lists are only opened at mother)
 		if listopen and not \
-		   (rules['listnotnested'] and BLOCK.depth != 1):
+		   (rules['listnotnested'] and self.depth != 1):
 			result.append(tagindent+listopen)
 		
 		# Tag each list item (multiline items)
@@ -3310,10 +3395,15 @@ class BlockMaster:
 		
 		# Close list (not nestable lists are only closed at mother)
 		if listclose and not \
-		   (rules['listnotnested'] and BLOCK.depth != 1):
+		   (rules['listnotnested'] and self.depth != 1):
 			result.append(tagindent+listclose)
-		
-		if rules['blankendmotherlist'] and BLOCK.depth == 1:
+
+		# Blank line after?
+		if self._should_add_blank_line('after', name): result.append('')
+
+		# Blank line after? (mother list only)
+		#XXX consider obsoleting this with the blanksaround*list rule
+		if rules['blankendmotherlist'] and self.depth == 1:
 			result.append('')
 		
 		return result
@@ -4352,9 +4442,6 @@ def convert(bodylines, config, firstlinenr=1):
 				if target in ('html','xhtml'):
 					ret.append(TAGS['paragraphOpen']+\
 					           TAGS['paragraphClose'])
-				# Otherwise we just show a blank line
-				else:
-					ret.append('')
 			
 			f_lastwasblank = 1
 			continue
