@@ -3,7 +3,7 @@
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, string, glob
+import os, sys, re, glob
 
 sys.path.insert(0, '..')
 import lib
@@ -14,16 +14,15 @@ lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
 def run():
-	# test all .t2t files found
-	for infile in glob.glob("*.t2t"):
-		basename = string.replace(infile, '.t2t', '')
-		outfile = glob.glob("ok/%s.*" % basename)
-		if outfile:
-			outfile = string.replace(outfile[0], 'ok/', '')
-		else:
-			outfile = basename + '.html'
+	# test all OK files found
+	for outfile in glob.glob("ok/*"):
+		basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
+		target = re.sub('.*\.', '', outfile)
+		infile = basename + ".t2t"
+		outfile = outfile.replace('ok/', '')
 		if lib.initTest(basename, infile, outfile):
 			cmdline = ['-H']
+			cmdline.extend(['-t', target])
 			cmdline.append(infile)
 			lib.convert(cmdline)
 			lib.diff(outfile)
