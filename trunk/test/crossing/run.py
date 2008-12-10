@@ -17,12 +17,14 @@ lib.ERROR_FILES = []
 ALIASES = {
 	'numlist' : 'list',
 	'deflist' : 'list',
+	'bar2'    : 'bar',
 }
 
 # smart filters to allow source inheritance and macros normalization
 FILTERS = {
   'deflist' : [ ('pre', '^-( |$)', r':\1') ],
   'numlist' : [ ('pre', '^-( |$)', r'+\1') ],
+  'bar2'    : [ ('pre', '--'     , r'==' ) ],
 }
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
@@ -46,6 +48,16 @@ def run():
 			cmdline = [infile]
 			lib.convert(cmdline)
 			lib.diff(outfile)
+
+	# extra: bar.t2t as TXT
+	infile = 'bar.t2t'
+	basename = 'bar'
+	outfile = basename + '.txt'
+	if lib.initTest(basename, infile, outfile):
+		cmdline = ['-t', 'txt', infile]
+		lib.convert(cmdline)
+		lib.diff(outfile)
+	
 	# using smart filters, same files generate more than one output
 	for alias in ALIASES.keys():
 		infile = ALIASES[alias] + '.t2t'
@@ -56,6 +68,18 @@ def run():
 			cmdline.extend(['-o', outfile, infile])
 			lib.convert(cmdline)
 			lib.diff(outfile)
+
+	# extra: bar2.t2t as TXT
+	alias = 'bar2'
+	infile = ALIASES[alias] + '.t2t'
+	outfile = alias + '.txt'
+	if lib.initTest(alias, infile, outfile):
+		cmdline = addFilters(FILTERS.get(alias))
+		cmdline.append('-H')
+		cmdline.extend(['-t', 'txt', '-o', outfile, infile])
+		lib.convert(cmdline)
+		lib.diff(outfile)
+
 	# clean up
 	if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
 	
