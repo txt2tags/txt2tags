@@ -1729,7 +1729,7 @@ def get_rc_path():
 		# Compose path and return it if the file exists
 		rc_path = os.path.join(rc_dir, rc_file)
 		# On windows, prefix with the drive (%homedrive%: 2k/XP/NT)
-		if sys.platform[:3] == 'win':
+		if sys.platform.startswith('win'):
 			rc_drive = os.environ.get('HOMEDRIVE')
 			rc_path = os.path.join(rc_drive,rc_path)
 		return rc_path
@@ -2183,7 +2183,7 @@ class ConfigMaster:
 				self.add(key, val)
 			return
 		# The no- prefix turns OFF this key
-		if key[:3] == 'no-':
+		if key.startswith('no-'):
 			key = key[3:]              # remove prefix
 			val = self.off.get(key)    # turn key OFF
 		# Is this key valid?
@@ -3068,7 +3068,7 @@ class BlockMaster:
 		return self.HLD[-1]
 	
 	def holdadd(self, line):
-		if self.block()[-4:] == 'list': line = [line]
+		if self.block().endswith('list'): line = [line]
 		self.HLD[-1].append(line)
 		Debug('HOLD add: %s'%repr(line), 4)
 		Debug('FULL HOLD: %s'%self.HLD, 4)
@@ -3079,7 +3079,7 @@ class BlockMaster:
 		Debug('FULL HOLD: %s'%self.HLD, 4)
 	
 	def holdextend(self, lines):
-		if self.block()[-4:] == 'list': lines = [lines]
+		if self.block().endswith('list'): lines = [lines]
 		self.HLD[-1].extend(lines)
 		Debug('HOLD extend: %s'%repr(lines), 4)
 		Debug('FULL HOLD: %s'%self.HLD, 4)
@@ -3112,7 +3112,7 @@ class BlockMaster:
 		# Inserting a nested block into mother
 		if self.block():
 			if blockname != 'comment': # ignore comment blocks
-				if self.block()[-4:] == 'list':
+				if self.block().endswith('list'):
 					self.HLD[-1][-1].append(result)
 				else:
 					self.HLD[-1].append(result)
@@ -4456,14 +4456,14 @@ def convert(bodylines, config, firstlinenr=1):
 			
 			# Closing all open lists
 			if f_lastwasblank:          # 2nd consecutive blank
-				if BLOCK.block()[-4:] == 'list':
+				if BLOCK.block().endswith('list'):
 					BLOCK.holdaddsub('')   # helps parser
 				while BLOCK.depth:  # closes list (if any)
 					ret.extend(BLOCK.blockout())
 				continue            # ignore consecutive blanks
 			
 			# Paragraph (if any) is wanted inside lists also
-			if BLOCK.block()[-4:] == 'list':
+			if BLOCK.block().endswith('list'):
 				BLOCK.holdaddsub('')
 			else:
 				# html: show blank line (needs tag)
@@ -4638,7 +4638,7 @@ def convert(bodylines, config, firstlinenr=1):
 		#---------------------[ Lists ]-----------------------------
 		
 		# An empty item also closes the current list
-		if BLOCK.block()[-4:] == 'list':
+		if BLOCK.block().endswith('list'):
 			m = regex['listclose'].match(line)
 			if m:
 				listindent = m.group(1)
@@ -4678,14 +4678,14 @@ def convert(bodylines, config, firstlinenr=1):
 			
 			# List bumping (same indent, diff mark)
 			# Close the currently open list to clear the mess
-			if BLOCK.block()[-4:] == 'list' \
+			if BLOCK.block().endswith('list') \
 			   and listname != BLOCK.block() \
 			   and len(listitemindent) == len(listindent):
 				ret.extend(BLOCK.blockout())
 				listindent = BLOCK.prop('indent')
 			
 			# Open mother list or sublist
-			if BLOCK.block()[-4:] != 'list' or \
+			if not BLOCK.block().endswith('list') or \
 			   len(listitemindent) > len(listindent):
 				ret.extend(BLOCK.blockin(listname))
 				BLOCK.propset('indent',listitemindent)
@@ -4697,7 +4697,7 @@ def convert(bodylines, config, firstlinenr=1):
 			
 			# O-oh, sublist before list ("\n\n  - foo\n- foo")
 			# Fix: close sublist (as mother), open another list
-			if BLOCK.block()[-4:] != 'list':
+			if not BLOCK.block().endswith('list'):
 				ret.extend(BLOCK.blockin(listname))
 				BLOCK.propset('indent',listitemindent)
 				BLOCK.propset('type',listtype)
@@ -4747,7 +4747,7 @@ def convert(bodylines, config, firstlinenr=1):
 		#
 		if not results_box:
 			# List item extra lines
-			if BLOCK.block()[-4:] == 'list':
+			if BLOCK.block().endswith('list'):
 				results_box = BLOCK.holdaddsub
 			# Other blocks
 			elif BLOCK.block():
@@ -5097,7 +5097,7 @@ class Gui:
 			b_conv.focus_set()
 		
 		# As documentation told me
-		if sys.platform[:3] == 'win':
+		if sys.platform.startswith('win'):
 			self.root.iconify()
 			self.root.update()
 			self.root.deiconify()
