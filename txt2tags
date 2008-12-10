@@ -2699,7 +2699,7 @@ class TitleMaster:
 		
 		# Section -> subsection, more depth
 		while curr > last:
-			last = last + 1
+			last += 1
 			
 			# Open the new block of subsections
 			tag = TAGS.get('blockTitle%dOpen'%last)
@@ -2722,7 +2722,7 @@ class TitleMaster:
 			tag = TAGS.get('blockTitle%dClose'%last)
 			if tag: self.tag_hold.append(tag)
 			
-			last = last - 1
+			last -= 1
 			
 			# Close the previous section of the same level
 			# The subsections were under it
@@ -2748,7 +2748,7 @@ class TitleMaster:
 			if tag: ret.append(tag)
 			tag = TAGS.get('blockTitle%dClose'%self.level)
 			if tag: ret.append(tag)
-			self.level = self.level - 1
+			self.level -= 1
 		return ret
 	
 	def _save_toc_info(self):
@@ -2787,7 +2787,7 @@ class TitleMaster:
 		count_id = ''
 		if self.kind == 'numtitle' and not rules['autonumbertitle']:
 			# Manually increase title count
-			self.count[self.level] = self.count[self.level] +1
+			self.count[self.level] += 1
 			# Reset sublevels count (if any)
 			max_levels = len(self.count)
 			if self.level < max_levels-1:
@@ -2816,7 +2816,7 @@ class TitleMaster:
 			# This count is needed bcos self.toc stores all
 			# titles, regardless of the 'toc-level' setting,
 			# so we can't use self.toc length to number anchors
-			self.anchor_count = self.anchor_count + 1
+			self.anchor_count += 1
 			# Autonumber label (if needed)
 			label = label or '%s%s'%(
 			        self.anchor_prefix, self.anchor_count)
@@ -2886,7 +2886,7 @@ class TitleMaster:
 			indent = '  '*level
 			id_txt = ('%s %s'%(count_id, txt)).lstrip()
 			label = label or self.anchor_prefix+`toc_count`
-			toc_count = toc_count + 1
+			toc_count += 1
 			# TOC will have links
 			if TAGS['anchor']:
 				# TOC is more readable with master topics
@@ -3512,7 +3512,7 @@ class BlockMaster:
 		for item in items:
 			
 			# Add "manual" item count for noautonum targets
-			itemcount = itemcount + 1
+			itemcount += 1
 			if name == 'numlist' and not rules['autonumberlist']:
 				n = str(itemcount)
 				itemopen = regex['x'].sub(n, itemopenorig)
@@ -3584,12 +3584,12 @@ class MacroMaster:
 		"Walks the %%{in/out}file format string, expanding the % flags"
 		i = 0; ret = ''                                 # counter/hold
 		while i < len(fmt):                             # char by char
-			c = fmt[i]; i = i + 1
+			c = fmt[i]; i += 1
 			if c == '%':                            # hot char!
 				if i == len(fmt):               # % at the end
 					ret = ret + c
 					break
-				c = fmt[i]; i = i + 1           # read next
+				c = fmt[i]; i += 1              # read next
 				ret = ret + self.expand_file_flag(c)
 			else:
 				ret = ret +c                    # common char
@@ -4413,8 +4413,8 @@ def convert(bodylines, config, firstlinenr=1):
 				except: Error("%s: '%s'"%(errmsg, repl))
 		
 		line = maskEscapeChar(line)                  # protect \ char
-		linenr  = linenr  +1
-		lineref = lineref +1
+		linenr  += 1
+		lineref += 1
 		
 		Debug(repr(line), 2, linenr)  # heavy debug: show each line
 		
@@ -4984,7 +4984,7 @@ class Gui:
 		     padx=self.frame_margin)
 		self.window = self.root
 		self.label('').grid()
-		self.row = self.row + 2   # update row count
+		self.row += 2   # update row count
 	def target_name2key(self):
 		name = self.target_name.get()
 		target = filter(lambda x: TARGET_NAMES[x] == name, TARGETS)
@@ -5191,7 +5191,7 @@ class Gui:
 			self.check(txt,checked,variable=var)
 		self.frame_close()
 		# Spacer and buttons
-		self.label('').grid() ; self.row = self.row + 1
+		self.label('').grid() ; self.row += 1
 		b_quit = self.button(_("Quit"), self.exit)
 		b_quit.grid(row=self.row, column=0, sticky='w', padx=30)
 		b_conv = self.button(_("Convert!"), self.runprogram)
