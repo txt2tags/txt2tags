@@ -2757,7 +2757,7 @@ class TitleMaster:
 
 		# Adds "underline" on TXT target
 		if TARGET == 'txt':
-			ret.append('') # blank line before
+			if BLOCK.count > 1: ret.append('') # blank line before
 			ret.append(tagged)
 			# Get the right letter count for UTF
 			if CONF['encoding'].lower() == 'utf-8':
@@ -2766,11 +2766,11 @@ class TitleMaster:
 				i = len(full_title)
 			ret.append(regex['x'].sub('='*i, self.tag))
 		elif TARGET == 'art' and self.level == 1:
-			ret.append('') # blank line before
+			if BLOCK.count > 1: ret.append('') # blank line before
 			ret.append(aa_box(tagged))
 		elif TARGET == 'art':
 			level = 'level'+str(self.level)
-			ret.append('') # blank line before
+			if BLOCK.count > 1: ret.append('') # blank line before
 			ret.append(tagged)
 			ret.append(AA_CHARS[level]*len(full_title))
 		else:
@@ -3021,6 +3021,7 @@ class BlockMaster:
 		self.HLD = []
 		self.PRP = []
 		self.depth = 0
+		self.count = 0
 		self.last = ''
 		self.tableparser = None
 		self.contains = {
@@ -3088,13 +3089,16 @@ class BlockMaster:
 		ret = []
 		if block not in self.allblocks:
 			Error("Invalid block '%s'"%block)
+
 		# First, let's close other possible open blocks
 		while self.block() and block not in self.contains[self.block()]:
 			ret.extend(self.blockout())
+
 		# Now we can gladly add this new one
 		self.BLK.append(block)
 		self.HLD.append([])
 		self.PRP.append({})
+		self.count += 1
 		if block == 'table': self.tableparser = TableMaster()
 		# Deeper and deeper
 		self.depth = len(self.BLK)
@@ -3109,6 +3113,7 @@ class BlockMaster:
 		self.PRP.pop()
 		self.depth = len(self.BLK)
 		if blockname == 'table': del self.tableparser
+
 		# Inserting a nested block into mother
 		if self.block():
 			if blockname != 'comment': # ignore comment blocks
@@ -3118,10 +3123,16 @@ class BlockMaster:
 					self.HLD[-1].append(result)
 			# Reset now. Mother block will have it all
 			result = []
+
 		Debug('block -- (%s): %s' % (blockname,self.BLK), 3)
 		Debug('RELEASED (%s): %s' % (blockname,parsed), 3)
-		if result: Debug('BLOCK: %s'%result, 6)
-		self.last = blockname # we're out
+
+		# Save this top level block name (produced output)
+		# The next block will use it
+		if result:
+			self.last = blockname
+			Debug('BLOCK: %s'%result, 6)
+
 		return result
 	
 	def _last_escapes(self, line):
