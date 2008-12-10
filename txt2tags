@@ -1220,7 +1220,6 @@ def getRules(config):
 	  'indentverbblock',      # add leading spaces to verb block lines
 	  'breaktablecell',       # break lines after any table cell
 	  'breaktablelineopen',   # break line after opening table line
-	  'breaktitleopen',       # break line after any title
 	  'notbreaklistopen',     # don't break line after opening a new list
 	  'keepquoteindent',      # don't remove the leading TABs on quotes
 	  'keeplistindent',       # don't remove the leading spaces on lists
@@ -1370,13 +1369,13 @@ def getRules(config):
 	  'gwiki': {
 	    'spacedlistitem':1,
 	    'linkable':1,
-	    'blankendmotherlist':1,
 	    'keeplistindent':1,
 	    'tableable':1,
 	    'tabletitlerowinbold':1,
 	    'tablecellstrip':1,
 	    'autonumberlist':1,
-	    'breaktitleopen':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'doku': {
 	    'indentverbblock':1,           # DokuWiki uses '  ' to mark verb blocks
@@ -2756,9 +2755,6 @@ class TitleMaster:
 		
 		tagged = regex['x'].sub(full_title, self.tag)
 
-		if rules['breaktitleopen']:
-			tagged = tagged + LB
-		
 		# Adds "underline" on TXT target
 		if TARGET == 'txt':
 			ret.append('') # blank line before
@@ -2769,17 +2765,14 @@ class TitleMaster:
 			else:
 				i = len(full_title)
 			ret.append(regex['x'].sub('='*i, self.tag))
-			ret.append('') # blank line after
 		elif TARGET == 'art' and self.level == 1:
 			ret.append('') # blank line before
 			ret.append(aa_box(tagged))
-			ret.append('') # blank line after
 		elif TARGET == 'art':
 			level = 'level'+str(self.level)
 			ret.append('') # blank line before
 			ret.append(tagged)
 			ret.append(AA_CHARS[level]*len(full_title))
-			ret.append('') # blank line after
 		else:
 			ret.append(tagged)
 		return ret
@@ -3042,6 +3035,8 @@ class BlockMaster:
 		  'numlist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
 		  'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
 		  'bar'     :[],
+		  'title'   :[],
+		  'numtitle':[],
 		}
 		self.allblocks = self.contains.keys()
 
@@ -3255,6 +3250,21 @@ class BlockMaster:
 
 		# Blank line after?
 		if self._should_add_blank_line('after', 'verb'): result.append('')
+
+		return result
+
+	def numtitle(self): return self.title('numtitle')
+	def title(self, name='title'):
+		result = []
+
+		# Blank line before?
+		if self._should_add_blank_line('before', name): result.append('')
+
+		# Get contents
+		result.extend(TITLE.get())
+
+		# Blank line after?
+		if self._should_add_blank_line('after', name): result.append('')
 
 		return result
 
@@ -4257,7 +4267,7 @@ def set_global_config(config):
 
 
 def convert(bodylines, config, firstlinenr=1):
-	global BLOCK
+	global BLOCK, TITLE
 	
 	set_global_config(config)
 	
@@ -4558,21 +4568,22 @@ def convert(bodylines, config, firstlinenr=1):
 
 		#---------------------[ Title ]-----------------------------
 		
-		#TODO set next blank and set f_lastwasblank or f_lasttitle
-		if (regex['title'].search(line) or
-		    regex['numtitle'].search(line)) and \
-		    BLOCK.block()[-4:] != 'list':
+		if (regex['title'].search(line) or regex['numtitle'].search(line)) \
+			and not BLOCK.block().endswith('list'):
+
+			if regex['title'].search(line):
+				name = 'title'
+			else:
+				name = 'numtitle'
 			
-			# A title closes a paragraph
-			if BLOCK.isblock('para'):
-				ret.extend(BLOCK.blockout())
+			# Close all the opened blocks
+			ret.extend(BLOCK.blockin(name))
 			
+			# Process title
 			TITLE.add(line)
-			tagged_title = TITLE.get()
-			ret.extend(tagged_title)
-			Debug("TITLE: %s"%tagged_title, 6)
+			ret.extend(BLOCK.blockout())
 			
-			f_lastwasblank = 1
+			# We're done, nothing more to process
 			continue
 		
 		#---------------------[ %%toc ]-----------------------
