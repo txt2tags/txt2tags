@@ -442,7 +442,6 @@ Fake template to respect the general process.
 %(HEADER2)s
 
 _%(HEADER3)s_
-
 """,
 
   'doku': """\
@@ -459,7 +458,6 @@ _%(HEADER3)s_
 %(HEADER2)s
 
 ''%(HEADER3)s''
-
 """,
 
   'tex': \
@@ -731,7 +729,7 @@ def getTags(config):
 	},
 	
 	'tex': {
-	   'title1'              : '\n~A~\section*{\a}'     ,
+	   'title1'              : '~A~\section*{\a}'     ,
 	   'title2'              : '~A~\\subsection*{\a}'   ,
 	   'title3'              : '~A~\\subsubsection*{\a}',
 	   # title 4/5: DIRTY: para+BF+\\+\n
@@ -765,8 +763,8 @@ def getTags(config):
 	   'deflistClose'        : '\\end{description}'  ,
 	   'deflistItem1Open'    : '\\item['             ,
 	   'deflistItem1Close'   : ']'                   ,
-	   'bar1'                : '\n\\hrulefill{}\n'   ,
-	   'bar2'                : '\n\\rule{\linewidth}{1mm}\n',
+	   'bar1'                : '\\hrulefill{}'       ,
+	   'bar2'                : '\\rule{\linewidth}{1mm}',
 	   'url'                 : '\\htmladdnormallink{\a}{\a}',
 	   'urlMark'             : '\\htmladdnormallink{\a}{\a}',
 	   'email'               : '\\htmladdnormallink{\a}{mailto:\a}',
@@ -795,14 +793,14 @@ def getTags(config):
 	   'blockTitle2Close'    : ' @EndSubSections'        ,
 	   'blockTitle3Open'     : '  @BeginSubSubSections'  ,
 	   'blockTitle3Close'    : '  @EndSubSubSections'    ,
-	   'title1Open'          : '\n~A~@Section @Title { \a } @Begin',
+	   'title1Open'          : '~A~@Section @Title { \a } @Begin',
 	   'title1Close'         : '@End @Section'           ,
-	   'title2Open'          : '\n~A~ @SubSection @Title { \a } @Begin',
+	   'title2Open'          : '~A~ @SubSection @Title { \a } @Begin',
 	   'title2Close'         : ' @End @SubSection'       ,
-	   'title3Open'          : '\n~A~  @SubSubSection @Title { \a } @Begin',
+	   'title3Open'          : '~A~  @SubSubSection @Title { \a } @Begin',
 	   'title3Close'         : '  @End @SubSubSection'   ,
-	   'title4Open'          : '\n~A~@LP @LeftDisplay @B { \a }',
-	   'title5Open'          : '\n~A~@LP @LeftDisplay @B { \a }',
+	   'title4Open'          : '~A~@LP @LeftDisplay @B { \a }',
+	   'title5Open'          : '~A~@LP @LeftDisplay @B { \a }',
 	   'anchor'              : '@Tag { \a }\n'       ,
 	   'blockVerbOpen'       : '@LP @ID @F @RawVerbatim @Begin',
 	   'blockVerbClose'      : '@End @RawVerbatim'   ,
@@ -832,7 +830,7 @@ def getTags(config):
 	   'deflistItem1Close'   : '}'                   ,
 	   'deflistItem2Open'    : '{'                   ,
 	   'deflistItem2Close'   : '}'                   ,
-	   'bar1'                : '\n@DP @FullWidthRule\n'     ,
+	   'bar1'                : '@DP @FullWidthRule'  ,
 	   'url'                 : '{blue @Colour { \a }}'      ,
 	   'urlMark'             : '\a ({blue @Colour { \a }})' ,
 	   'email'               : '{blue @Colour { \a }}'      ,
@@ -853,7 +851,7 @@ def getTags(config):
 	   'comment'             : '# \a'                     ,
 	   # @MakeContents must be on the config file
 	   'TOC'                 : '@DP @ContentsGoesHere @DP',
-	   'pageBreak'           : '\n@NP\n'                  ,
+	   'pageBreak'           : '@NP'                      ,
 	   'EOD'                 : '@End @Text'
 	},
 	
@@ -1112,11 +1110,11 @@ def getTags(config):
 	
 	'pm6': {
 	   'paragraphOpen'       : '<@Normal:>'    ,
-	   'title1'              : '\n<@Title1:>\a',
-	   'title2'              : '\n<@Title2:>\a',
-	   'title3'              : '\n<@Title3:>\a',
-	   'title4'              : '\n<@Title4:>\a',
-	   'title5'              : '\n<@Title5:>\a',
+	   'title1'              : '<@Title1:>\a',
+	   'title2'              : '<@Title2:>\a',
+	   'title3'              : '<@Title3:>\a',
+	   'title4'              : '<@Title4:>\a',
+	   'title5'              : '<@Title5:>\a',
 	   'blockVerbOpen'       : '<@PreFormat:>' ,
 	   'blockQuoteLine'      : '<@Quote:>'     ,
 	   'fontMonoOpen'        : '<FONT "Lucida Console"><SIZE 9>' ,
@@ -1223,8 +1221,6 @@ def getRules(config):
 	  'notbreaklistopen',     # don't break line after opening a new list
 	  'keepquoteindent',      # don't remove the leading TABs on quotes
 	  'keeplistindent',       # don't remove the leading spaces on lists
-	  'blankendmotherlist',   # append a blank line at the mother list end
-	  'blankendtable',        # append a blank line at the table end
 	  'blankendautotoc',      # append a blank line at the auto TOC end
 	  'tagnotindentable',     # tags must be placed at the line begining
 	  'spacedlistitemopen',   # append a space after the list item open tag
@@ -1255,6 +1251,7 @@ def getRules(config):
 	    'keeplistindent':1,
 	    'barinsidequote':1,
 	    'autotocwithbars':1,
+
 	    'blanksaroundpara':1,
 	    'blanksaroundverb':1,
 	    'blanksaroundquote':1,
@@ -1280,10 +1277,8 @@ def getRules(config):
 	    'autonumberlist':1,
 	    'spacedlistitem':1,
 	    'parainsidelist':1,
-	    'blankendmotherlist':1,
 	    'tableable':1,
 	    'tablecellstrip':1,
-	    'blankendtable':1,
 	    'breaktablecell':1,
 	    'breaktablelineopen':1,
 	    'keeplistindent':1,
@@ -1292,6 +1287,17 @@ def getRules(config):
 	    'autotocwithbars':1,
 	    'tablecellspannable':1,
 	    'tablecellaligntype':'cell',
+
+	    # 'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  #TIP xhtml inherits all HTML rules
 	  'xhtml': {
@@ -1301,10 +1307,8 @@ def getRules(config):
 	    'escapeurl':1,
 	    'autonumberlist':1,
 	    'spacedlistitem':1,
-	    'blankendmotherlist':1,
 	    'tableable':1,
 	    'tablecellstrip':1,
-	    'blankendtable':1,
 	    'blankendautotoc':1,
 	    'quotenotnested':1,
 	    'keeplistindent':1,
@@ -1312,13 +1316,34 @@ def getRules(config):
 	    'barinsidequote':1,
 	    'finalescapetitle':1,
 	    'tablecellaligntype':'column',
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'mgp' : {
-	    'blankendmotherlist':1,
 	    'tagnotindentable':1,
 	    'spacedlistitem':1,
 	    'imgalignable':1,
 	    'autotocnewpagebefore':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    # 'blanksaroundtitle':1,
+	    # 'blanksaroundnumtitle':1,
 	    },
 	  'tex' : {
 	    'stylable':1,
@@ -1326,11 +1351,9 @@ def getRules(config):
 	    'autonumberlist':1,
 	    'autonumbertitle':1,
 	    'spacedlistitem':1,
-	    'blankendmotherlist':1,
 	    'tableable':1,
 	    'tablecellstrip':1,
 	    'tabletitlerowinbold':1,
-	    'blankendtable':1,
 	    'verbblocknotescaped':1,
 	    'keeplistindent':1,
 	    'listmaxdepth':4,  # deflist is 6
@@ -1340,6 +1363,17 @@ def getRules(config):
 	    'autotocnewpageafter':1,
 	    'mapbar2pagebreak':1,
 	    'tablecellaligntype':'column',
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'lout': {
 	    'keepquoteindent':1,
@@ -1351,20 +1385,40 @@ def getRules(config):
 	    'mapbar2pagebreak':1,
 	    'titleblocks':1,
 	    'autonumberlist':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,	
 	    },
 	  'moin': {
 	    'spacedlistitem':1,
 	    'linkable':1,
-	    'blankendmotherlist':1,
 	    'keeplistindent':1,
 	    'tableable':1,
 	    'barinsidequote':1,
-	    'blankendtable':1,
 	    'tabletitlerowinbold':1,
 	    'tablecellstrip':1,
 	    'autotocwithbars':1,
 	    'tablecellaligntype':'cell',
 	    'deflisttextstrip':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    # 'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'gwiki': {
 	    'spacedlistitem':1,
@@ -1374,6 +1428,15 @@ def getRules(config):
 	    'tabletitlerowinbold':1,
 	    'tablecellstrip':1,
 	    'autonumberlist':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    # 'blanksaroundbar':1,
 	    'blanksaroundtitle':1,
 	    'blanksaroundnumtitle':1,
 	    },
@@ -1381,22 +1444,29 @@ def getRules(config):
 	    'indentverbblock':1,           # DokuWiki uses '  ' to mark verb blocks
 	    'spacedlistitem':1,
 	    'linkable':1,
-	    'blankendmotherlist':1,
 	    'keeplistindent':1,
 	    'tableable':1,
 	    'barinsidequote':1,
-	    'blankendtable':1,
 	    'tablecellstrip':1,
 	    'autotocwithbars':1,
 	    'autonumberlist':1,
 	    'imgalignable':1,
 	    'tablecellaligntype':'cell',
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'wiki': {
 	    'linkable':1,
-	    'blankendmotherlist':1,
 	    'tableable':1,
-	    'blankendtable':1,
 	    'tablecellstrip':1,
 	    'autotocwithbars':1,
 	    'spacedlistitemopen':1,
@@ -1404,29 +1474,59 @@ def getRules(config):
 	    'deflisttextstrip':1,
 	    'autonumberlist':1,
 	    'imgalignable':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'man' : {
 	    'spacedlistitem':1,
 	    'indentverbblock':1,
-	    'blankendmotherlist':1,
 	    'tagnotindentable':1,
 	    'tableable':1,
 	    'tablecellaligntype':'column',
 	    'tabletitlerowinbold':1,
 	    'tablecellstrip':1,
-	    'blankendtable':1,
 	    'barinsidequote':1,
 	    'parainsidelist':0,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    'blanksaroundtable':1,
+	    # 'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    },
 	  'pm6' : {
 	    'keeplistindent':1,
 	    'verbblockfinalescape':1,
-	    #TODO add support for these - maybe set a JOINNEXT char and
-	    #     do it on addLineBreaks()
+	    #TODO add support for these - maybe set a JOINNEXT char and do it on addLineBreaks()
 	    'notbreaklistopen':1,
 	    'barinsidequote':1,
 	    'autotocwithbars':1,
 	    'onelinepara':1,
+
+	    'blanksaroundpara':1,
+	    'blanksaroundverb':1,
+	    # 'blanksaroundquote':1,
+	    'blanksaroundlist':1,
+	    'blanksaroundnumlist':1,
+	    'blanksarounddeflist':1,
+	    # 'blanksaroundtable':1,
+	    # 'blanksaroundbar':1,
+	    'blanksaroundtitle':1,
+	    'blanksaroundnumtitle':1,
 	    }
 	}
 	
@@ -3005,9 +3105,12 @@ class TableMaster:
 				row = tagged_cells.pop(0)
 				tagged_rows.append(o + row + c)
 		
-		fulltable = [open] + tagged_rows + [close]
-		
-		if rules['blankendtable']: fulltable.append('')
+		# Join the pieces together
+		fulltable = []
+		if open: fulltable.append(open)
+		fulltable.extend(tagged_rows)
+		if close: fulltable.append(close)
+
 		return fulltable
 
 
@@ -3346,10 +3449,9 @@ class BlockMaster:
 		if bar_chars.startswith('='): bar_tag = TAGS['bar2']
 		else                        : bar_tag = TAGS['bar1']
 
-		# # To avoid comment tag confusion like <!-- ------ -->
-		# # Note: Not used. Activate when source comments are sent to targets. 
-		# if TAGS['comment'].count('--'):
-		# 	bar_chars = bar_chars.replace('--', '__')
+		# To avoid comment tag confusion like <!-- ------ --> (sgml)
+		if TAGS['comment'].count('--'):
+			bar_chars = bar_chars.replace('--', '__')
 
 		# Get the bar tag (may contain \a)
 		result.append(regex['x'].sub(bar_chars, bar_tag))
@@ -3461,11 +3563,6 @@ class BlockMaster:
 		# Blank line after?
 		if self._should_add_blank_line('after', name): result.append('')
 
-		# Blank line after? (mother list only)
-		#XXX consider obsoleting this with the blanksaround*list rule
-		if rules['blankendmotherlist'] and self.depth == 1:
-			result.append('')
-		
 		return result
 
 
