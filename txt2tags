@@ -2573,26 +2573,51 @@ class MaskMaster:
 	def mask(self, line=''):
 		global AUTOTOC
 
-		# Protect tagged text
-		while regex['tagged'].search(line):
-			txt = regex['tagged'].search(line).group(1)
-			self.taggedbank.append(txt)
-			line = regex['tagged'].sub(self.taggedmask,line,1)
-		
-		# Protect raw text
-		while regex['raw'].search(line):
-			txt = regex['raw'].search(line).group(1)
-			txt = doEscape(TARGET,txt)
-			self.rawbank.append(txt)
-			line = regex['raw'].sub(self.rawmask,line,1)
-		
-		# Protect pre-formatted font text
-		while regex['fontMono'].search(line):
-			txt = regex['fontMono'].search(line).group(1)
-			txt = doEscape(TARGET,txt)
-			self.monobank.append(txt)
-			line = regex['fontMono'].sub(self.monomask,line,1)
-		
+		# The verbatim, raw and tagged inline marks are mutually exclusive.
+		# This means that one can't appear inside the other.
+		# If found, the inner marks must be ignored.
+		# Example: ``foo ""bar"" ''baz''``
+		# In HTML: <code>foo ""bar"" ''baz''</code> 		
+		#
+		# The trick here is to protect the mark who appears first on the line.
+		# The three regexes are tried and the one with the lowest index wins.
+		# If none is found (else), we get out of the loop.
+		#
+		while True:
+			
+			# Try to match the line for the three marks
+			# Note: 'z' > 999999
+			#
+			t = r = v = 'z'
+			try: t = regex['tagged'].search(line).start()
+			except: pass
+			try: r = regex['raw'].search(line).start()
+			except: pass
+			try: v = regex['fontMono'].search(line).start()
+			except: pass
+
+			# Protect tagged text
+			if t >= 0 and t < r and t < v:
+				txt = regex['tagged'].search(line).group(1)
+				self.taggedbank.append(txt)
+				line = regex['tagged'].sub(self.taggedmask,line,1)
+
+			# Protect raw text
+			elif r >= 0 and r < t and r < v:
+				txt = regex['raw'].search(line).group(1)
+				txt = doEscape(TARGET,txt)
+				self.rawbank.append(txt)
+				line = regex['raw'].sub(self.rawmask,line,1)
+
+			# Protect verbatim text
+			elif v >= 0 and v < t and v < r:
+				txt = regex['fontMono'].search(line).group(1)
+				txt = doEscape(TARGET,txt)
+				self.monobank.append(txt)
+				line = regex['fontMono'].sub(self.monomask,line,1)
+			else:
+				break
+			
 		# Protect macros
 		while regex['macros'].search(line):
 			txt = regex['macros'].search(line).group()
