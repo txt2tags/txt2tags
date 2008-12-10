@@ -4476,11 +4476,6 @@ def convert(bodylines, config, firstlinenr=1):
 			# Paragraph (if any) is wanted inside lists also
 			if BLOCK.block().endswith('list'):
 				BLOCK.holdaddsub('')
-			else:
-				# html: show blank line (needs tag)
-				if target in ('html','xhtml'):
-					ret.append(TAGS['paragraphOpen']+\
-					           TAGS['paragraphClose'])
 			
 			f_lastwasblank = 1
 			continue
