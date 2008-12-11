@@ -34,7 +34,7 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
  # Improve the module interface
  # Improve the PHP interface with Javascript and buttons for formatting (bold, quote, etc)
  # New Mac interface
- # Code compatible with Python3
+ # Code compatible with [http://docs.python.org/dev/3.0/whatsnew/3.0.html Python3]
  # New {{{%!exec}}} command to execute external commands and insert the results on the document: {{{%!exec: cat -n myapp.py}}} (security implications)
  # {{{$HOME/txt2tags}}} folder to store things: file history, command history, style files, includes, config, run count, allowed files for %!exec, alternative header templates, --split templates, plugins
 
@@ -42,7 +42,7 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
 
 Maybe it's a good opportunity to improve the program name?
 
-txt2tags is hard to pronounce and it is common to see it referred as text2tags.
+txt2tags is hard to pronounce and it is common to see it referred as t*e*xt2tags.
 
 A new, simple name, could help the project to spread. [http://daringfireball.net/projects/markdown/ Markdown] is a killer name, maybe we could find something as strong and simple?
 
@@ -103,6 +103,4 @@ Settings:
 %!meta: description This page is about surf.
 %!meta: verify-v1 d1EROlU9dwR+0/W9nLC+A6GgiD7VAyCxZtfnXsTRwQc=
 }}}
-
-
 
