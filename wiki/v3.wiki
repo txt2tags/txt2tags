@@ -16,7 +16,7 @@ This time we'll jump from 2.5 to 3.0 and lots of cool ideas are waiting to be ma
 
 Please read this *list of ideas* and leave a comment, telling your preferences. New ideas are also very welcome!
 
-= New Features =
+= Proposed New Features =
 
  # Tagged mark, with optional target specification: {{{'''html}}}
  # New mark for footnotes
@@ -38,7 +38,7 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
  # New {{{%!exec}}} command to execute external commands and insert the results on the document: {{{%!exec: cat -n myapp.py}}} (security implications)
  # {{{$HOME/txt2tags}}} folder to store things: file history, command history, style files, includes, config, run count, allowed files for %!exec, alternative header templates, --split templates, plugins
 
-= New Name =
+= New Name? =
 
 Maybe it's a good opportunity to improve the program name?
 
@@ -46,7 +46,7 @@ txt2tags is hard to pronounce and it is common to see it referred as text2tags.
 
 A new, simple name, could help the project to spread. [http://daringfireball.net/projects/markdown/ Markdown] is a killer name, maybe we could find something as strong and simple?
 
-= New HTML Features =
+= Proposed New HTML Features =
 
 Style:
 
@@ -103,8 +103,6 @@ Settings:
 %!meta: description This page is about surf.
 %!meta: verify-v1 d1EROlU9dwR+0/W9nLC+A6GgiD7VAyCxZtfnXsTRwQc=
 }}}
-
-
 
 
 
