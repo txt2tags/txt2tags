@@ -463,6 +463,7 @@ _%(HEADER3)s_
   'tex': \
 r"""\documentclass{article}
 \usepackage{graphicx}
+\usepackage{paralist} %% needed for compact lists
 \usepackage[normalem]{ulem} %% needed by strike
 \usepackage[urlcolor=blue,colorlinks=true]{hyperref}
 \usepackage[%(ENCODING)s]{inputenc}  %% char encoding
@@ -531,10 +532,13 @@ def getTags(config):
 	fontStrikeOpen      fontStrikeClose
 
 	listOpen            listClose
+	listOpenCompact     listCloseCompact
 	listItemOpen        listItemClose     listItemLine
 	numlistOpen         numlistClose
+	numlistOpenCompact  numlistCloseCompact
 	numlistItemOpen     numlistItemClose  numlistItemLine
 	deflistOpen         deflistClose
+	deflistOpenCompact  deflistCloseCompact
 	deflistItem1Open    deflistItem1Close
 	deflistItem2Open    deflistItem2Close deflistItem2LinePrefix
 
@@ -755,12 +759,18 @@ def getTags(config):
 	   'fontStrikeClose'     : '}'                   ,
 	   'listOpen'            : '\\begin{itemize}'    ,
 	   'listClose'           : '\\end{itemize}'      ,
+	   'listOpenCompact'     : '\\begin{compactitem}',
+	   'listCloseCompact'    : '\\end{compactitem}'  ,
 	   'listItemOpen'        : '\\item '             ,
 	   'numlistOpen'         : '\\begin{enumerate}'  ,
 	   'numlistClose'        : '\\end{enumerate}'    ,
+	   'numlistOpenCompact'  : '\\begin{compactenum}',
+	   'numlistCloseCompact' : '\\end{compactenum}'  ,
 	   'numlistItemOpen'     : '\\item '             ,
 	   'deflistOpen'         : '\\begin{description}',
 	   'deflistClose'        : '\\end{description}'  ,
+	   'deflistOpenCompact'  : '\\begin{compactdesc}',
+	   'deflistCloseCompact' : '\\end{compactdesc}'  ,
 	   'deflistItem1Open'    : '\\item['             ,
 	   'deflistItem1Close'   : ']'                   ,
 	   'bar1'                : '\\hrulefill{}'       ,
@@ -1196,6 +1206,7 @@ def getRules(config):
 	  'autonumbertitle',      # target supports numbered titles natively
 	  'stylable',             # target supports external style files
 	  'parainsidelist',       # lists items supports paragraph
+	  'compactlist',          # separate enclosing tags for compact lists
 	  'spacedlistitem',       # lists support blank lines between items
 	  'listnotnested',        # lists cannot be nested
 	  'quotenotnested',       # quotes cannot be nested
@@ -1351,6 +1362,8 @@ def getRules(config):
 	    'autonumberlist':1,
 	    'autonumbertitle':1,
 	    'spacedlistitem':1,
+	    'compactlist':1,
+	    'parainsidelist':1,
 	    'tableable':1,
 	    'tablecellstrip':1,
 	    'tabletitlerowinbold':1,
@@ -3493,8 +3506,6 @@ class BlockMaster:
 		items     = self.hold()
 		indent    = self.prop('indent')
 		tagindent = indent
-		listopen  = TAGS.get(name+'Open')
-		listclose = TAGS.get(name+'Close')
 		listline  = TAGS.get(name+'ItemLine')
 		itemcount = 0
 
@@ -3527,13 +3538,10 @@ class BlockMaster:
 		# Blank line before?
 		if self._should_add_blank_line('before', name): result.append('')
 
-		# Open list (not nestable lists are only opened at mother)
-		if listopen and not \
-		   (rules['listnotnested'] and self.depth != 1):
-			result.append(tagindent+listopen)
-		
-		# Tag each list item (multiline items)
+		# Tag each list item (multiline items), store in listbody
 		itemopenorig = itemopen
+		listbody = []
+		widelist = 0
 		for item in items:
 			
 			# Add "manual" item count for noautonum targets
@@ -3549,16 +3557,16 @@ class BlockMaster:
 				z,term,rest = item[0].split(SEPARATOR, 2)
 				item[0] = rest
 				if not item[0]: del item[0]      # to avoid <p>
-				result.append(tagindent+itemopen+term+itemsep)
+				listbody.append(tagindent+itemopen+term+itemsep)
 			else:
 				fullitem = tagindent+itemopen
-				result.append(item[0].replace(SEPARATOR, fullitem))
+				listbody.append(item[0].replace(SEPARATOR, fullitem))
 				del item[0]
 			
 			# Process next lines for this item (if any)
 			for line in item:
 				if type(line) == type([]): # sublist inside
-					result.extend(line)
+					listbody.extend(line)
 				else:
 					line = self._last_escapes(line)
 					
@@ -3566,6 +3574,7 @@ class BlockMaster:
 					if not line and rules['parainsidelist']:
 						line = indent + TAGS['paragraphOpen'] + TAGS['paragraphClose']
 						line = line.rstrip()
+						widelist = 1
 						
 					# Some targets don't like identation here (wiki)
 					if not rules['keeplistindent'] or (name == 'deflist' and rules['deflisttextstrip']):
@@ -3575,10 +3584,24 @@ class BlockMaster:
 					if name == 'deflist' and TAGS['deflistItem2LinePrefix']:
 						line = TAGS['deflistItem2LinePrefix'] + line
 						
-					result.append(line)
+					listbody.append(line)
 			
 			# Close item (if needed)
-			if itemclose: result.append(tagindent+itemclose)
+			if itemclose: listbody.append(tagindent+itemclose)
+		
+		if not widelist and rules['compactlist']:
+			listopen = TAGS.get(name+'OpenCompact')
+			listclose = TAGS.get(name+'CloseCompact')
+		else:
+			listopen  = TAGS.get(name+'Open')
+			listclose = TAGS.get(name+'Close')
+
+		# Open list (not nestable lists are only opened at mother)
+		if listopen and not \
+		   (rules['listnotnested'] and BLOCK.depth != 1):
+			result.append(tagindent+listopen)
+
+		result.extend(listbody)
 		
 		# Close list (not nestable lists are only closed at mother)
 		if listclose and not \
