@@ -19,7 +19,7 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
 = Proposed New Features =
 
  # Tagged mark, with optional target specification: {{{'''html}}}
- # New mark for footnotes
+ # New mark for FootNotes
  # Extended table syntax, allowing rowspan and blocks (such as lists) inside cells
  # Improve the resulting code legibility, adding line breaks and spacing (breaks compatibility)
  # Multiple target on the -t option: {{{txt2tags -t txt,html,tex input.t2t}}}
@@ -103,4 +103,3 @@ Settings:
 %!meta: description This page is about surf.
 %!meta: verify-v1 d1EROlU9dwR+0/W9nLC+A6GgiD7VAyCxZtfnXsTRwQc=
 }}}
-
