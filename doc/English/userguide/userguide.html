@@ -13,12 +13,14 @@
 </DIV>
 
 <DIV CLASS="body" ID="body">
-<P></P>
+
 <H1>About</H1>
+
 <P>
 This is the <A HREF="http://txt2tags.sf.net">txt2tags</A> User Guide, the
 complete manual about the program.
 </P>
+
 <UL>
 <LI>User Guide official address:
   http://txt2tags.sf.net/userguide
@@ -27,17 +29,19 @@ complete manual about the program.
   http://txt2tags.sf.net/userguide/userguide.pdf
 </UL>
 
-<P></P>
-<P></P>
 <A NAME="intro"></A>
 <H1>Part I - Introducing Txt2tags</H1>
+
 <A NAME="1st-questions"></A>
 <H2>The First Questions You May Have</H2>
+
 <P>
 This chapter is a txt2tags overview, that will introduce the program
 purpose and features.
 </P>
+
 <H3>What is it?</H3>
+
 <P>
 Txt2tags is a text formatting and conversion tool.
 </P>
@@ -45,6 +49,7 @@ Txt2tags is a text formatting and conversion tool.
 Txt2tags converts a plain text file with little marks, to any
 of the supported targets:
 </P>
+
 <UL>
 <LI>HTML document
 <LI>XHTML document
@@ -60,11 +65,12 @@ of the supported targets:
 <LI>Plain Text (no marks)
 </UL>
 
-<P></P>
 <H3>Why should I use it?</H3>
+
 <P>
 You'll find txt2tags really useful if you:
 </P>
+
 <UL>
 <LI>Need to publish documents on different formats
 <LI>Need to maintain updated documents on different formats
@@ -77,15 +83,18 @@ You'll find txt2tags really useful if you:
 <P>
 And the main motivation is:
 </P>
+
 <UL>
 <LI>Save time, writing <B>contents</B> and forgetting about <B>formatting</B>
 </UL>
 
 <H3>Why is it a good choice among other tools?</H3>
+
 <P>
 Txt2tags has a very straight way of growing, following basic concepts.
 These are the highlights:
 </P>
+
 <TABLE>
 <TR>
 <TD><I>Source File Readable</I></TD>
@@ -138,6 +147,7 @@ These are the highlights:
 </TABLE>
 
 <H3>Do I have to pay for it?</H3>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Absolutely NO!</TH>
@@ -147,11 +157,14 @@ These are the highlights:
 <P>
 It's free, GPL licensed.
 </P>
+
 <A NAME="structures"></A>
 <H2>Supported Formatting Structures</H2>
+
 <P>
 The following is a list of all the structures supported by txt2tags.
 </P>
+
 <UL>
 <LI>header (document title, author name, date)
 <LI>section title (numbered or not)
@@ -194,6 +207,7 @@ The following is a list of all the structures supported by txt2tags.
 
 <A NAME="targets"></A>
 <H2>Supported Targets</H2>
+
 <DL>
 <DT><B>HTML</B></DT><DD>
   Everybody knows what HTML is. (hint: Internet)
@@ -217,14 +231,14 @@ The following is a list of all the structures supported by txt2tags.
   by the <A HREF="http://validator.w3.org/">w3c validator</A>.
 <P></P>
 <DT><B>SGML</B></DT><DD>
-  It is a common document format which has powerful
-  <A HREF="http://www.sgmltools.org">sgmltools</A> conversion applications. From a
-  single sgml file you can generate html, pdf, ps, info, latex, lyx, rtf
-  and xml documents. The sgml2* tools also does automatic TOC and break
-  sections into subpages (sgml2html).
+  It is a common document format which has powerful conversion applications
+  (<A HREF="http://packages.debian.org/etch/linuxdoc-tools">linuxdoc-tools</A>). From a
+  single SGML file you can generate HTML, PDF, PostScripty, Info, LaTeX, LyX, RTF
+  and XML documents. The tools also does automatic TOC and break
+  sections into subpages.
 <P></P>
-  Txt2tags generates SGML files in the linuxdoc system type, ready to
-  be converted with sgml2* tools without any extra catalog files or any
+  Txt2tags generates SGML files in the LinuxDoc system type, ready to
+  be converted with linuxdoc-tools without any extra catalog files or any
   SGML annoying requirements.
 <P></P>
 <DT><B>LATEX</B></DT><DD>
@@ -329,6 +343,7 @@ The following is a list of all the structures supported by txt2tags.
 
 <A NAME="struct-support"></A>
 <H2>Status of Supported Structures by Target</H2>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Structure</TH>
@@ -769,6 +784,7 @@ The following is a list of all the structures supported by txt2tags.
 
 <A NAME="interfaces"></A>
 <H2>The Three User Interfaces: Gui, Web and Command Line</H2>
+
 <P>
 As different users have different needs and environments, txt2tags is
 very flexible on how it runs.
@@ -777,6 +793,7 @@ very flexible on how it runs.
 There are three User Interfaces for the program, each one with its own
 purpose and features.
 </P>
+
 <UL>
 <LI><B>Gui</B>: Written in Tk, brings the windowing and clicking to txt2tags.
 <LI><B>Web</B>: Written in PHP, allows users to run txt2tags on the browser,
@@ -787,6 +804,7 @@ purpose and features.
 
 <A NAME="gui"></A>
 <H3>Graphical Tk Interface</H3>
+
 <P>
 Since version 1.0, there is a nice Graphical Interface, that works on
 Linux, Windows, Mac and others.
@@ -801,11 +819,11 @@ resources are missing, the program will tell.
 	<B>Note:</B> The Tkinter module is needed. As it comes with the
 	standard Python distribution, you may already have it.
 	</BLOCKQUOTE>
-<P></P>
 <P>
 The interface is pretty simple and intuitive:
 </P>
                      <center><IMG ALIGN="middle" SRC="./gui.png" BORDER="0" ALT=""></center>  
+
 <OL>
 <LI>You locate the source .t2t file on the disk and its options are
   loaded.
@@ -827,12 +845,14 @@ the code is OK, you uncheck it and the file will be saved.
 The default interface colors can be changed on the <CODE>~/.txt2tagsrc</CODE>
 file, using the <CODE>%!guicolors</CODE> settings. For example:
 </P>
+
 <PRE>
 % set my own colors for the graphical interface (bg1, fg1, bg2, fg2)
 %!guicolors: blue white brown yellow
 </PRE>
-<P></P>
+
 <H3>Web Interface</H3>
+
 <P>
 The Web Interface is up and running on the Internet at
 http://txt2tags.sf.net/online.php, so you can use and test the program
@@ -843,11 +863,14 @@ instantly, before download.
 One can also put this interface on the local intranet avoiding to
 install txt2tags in all machines.
 </P>
+
 <A NAME="cmdline"></A>
 <H3>Command Line Interface</H3>
+
 <P>
 For command line power users, the --help should be enough:
 </P>
+
 <PRE>
 Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
@@ -888,12 +911,14 @@ Use --outfile to force an output file name.
 If  input file is '-', reads from STDIN.
 If output file is '-', dumps output to STDOUT.
 </PRE>
-<P></P>
+
 <H4>Examples</H4>
+
 <P>
 Assuming you have written a <CODE>file.t2t</CODE> marked file, let's have some
 converting fun.
 </P>
+
 <TABLE>
 <TR>
 <TD><B>Convert to HTML</B></TD>
@@ -950,14 +975,17 @@ converting fun.
 	with the <CODE>%!preproc</CODE> and <CODE>%!postproc</CODE> configuration
 	filters.
 	</BLOCKQUOTE>
-<P></P>
+
 <A NAME="install"></A>
 <H1>Part II - OK, I want it. Now what?</H1>
+
 <P>
 Just download the program and run it on your machine.
 </P>
+
 <A NAME="download-python"></A>
 <H2>Download &amp; Install Python</H2>
+
 <P>
 First of all, you must download and install the Python interpreter on
 your system. If you already have it, just skip this step.
@@ -973,8 +1001,10 @@ If you are not sure if you have Python or not, open a console (tty,
 xterm, MSDOS) and type <CODE>python</CODE>. If it is not installed, the system
 will tell you.
 </P>
+
 <A NAME="download-txt2tags"></A>
 <H2>Download txt2tags</H2>
+
 <P>
 The official location for txt2tags distribution is on the program
 site, at http://txt2tags.sf.net.
@@ -987,8 +1017,10 @@ expanded by most of the compression utilities (including Winzip).
 Just get the <B>latest</B> one (more recent date, higher version number).
 The previous versions remains for historical purposes only.
 </P>
+
 <A NAME="install-txt2tags"></A>
 <H2>Install txt2tags</H2>
+
 <P>
 As a single Python script, txt2tags needs no installation at all.
 </P>
@@ -999,15 +1031,17 @@ other files of the tarball are documentation, tools and sample files.
 <P>
 The fail-proof way to run txt2tags, is calling Python with it:
 </P>
+
 <PRE>
 prompt$ python txt2tags
 </PRE>
-<P></P>
+
 <P>
 If you want to "install" txt2tags on the system as a stand alone
 program, just copy (or link) the txt2tags script to a System PATH
 directory and make sure the system knows how to run it.
 </P>
+
 <DL>
 <DT><B>UNIX/Linux/Mac</B></DT><DD>
   Make the script executable (<CODE>chmod +x txt2tags</CODE>) and copy it to a
@@ -1023,11 +1057,14 @@ directory and make sure the system knows how to run it.
 After that, you can create an icon on your desktop for it, if you want to
 use the program's Graphical Interface.
 </P>
+
 <H3>Special Packages for Windows Users</H3>
+
 <P>
 There is also two .EXE distribution files for txt2tags, which install
 the program on Windows machines with just a few clicks:
 </P>
+
 <UL>
 <LI>The single txt2tags script for those who already have the Python
   interpreted installed
@@ -1039,12 +1076,15 @@ the program on Windows machines with just a few clicks:
 Please visit the <I>Txt2tags-Win</I> site to download this packages:
 <A HREF="http://txt2tags-win.sf.net">http://txt2tags-win.sf.net</A>
 </P>
+
 <A NAME="editor-syntax"></A>
 <H2>Install Text Editor Syntax Highlighting File</H2>
+
 <P>
 Txt2tags comes with handy syntax highlighting files to be used by the
 following text editors:
 </P>
+
 <UL>
 <LI>Vim (<A HREF="http://www.vim.org">www.vim.org</A>)
 <LI>Emacs (<A HREF="http://www.emacs.org">www.emacs.org</A>)
@@ -1059,6 +1099,7 @@ This syntax highlighting files have all the txt2tags rules and marks
 registered, helping the user to write error-free documents. Showing the
 marks in colors, you see on-the-fly if you wrote it right.
 </P>
+
 <TABLE ALIGN="center">
 <TR>
 <TD ALIGN="center"><center><IMG ALIGN="middle" SRC="./vim.png" BORDER="0" ALT=""></center></TD>
@@ -1072,13 +1113,17 @@ marks in colors, you see on-the-fly if you wrote it right.
 Each editor has a different install procedure for a syntax highlighting
 file, please read the syntax file headers and the editor documentation.
 </P>
+
 <A NAME="your-1st-doc"></A>
 <H1>Part III - Writing and Converting Your First Document</H1>
+
 <H2>Check the Tools</H2>
+
 <P>
 To make the first conversion you will need three things: txt2tags, a
 text editor and a web browser.
 </P>
+
 <OL>
 <LI>Make sure txt2tags is installed and running on your system.
 <P></P>
@@ -1101,6 +1146,7 @@ text editor and a web browser.
 </OL>
 
 <H2>Write the Document Header</H2>
+
 <OL>
 <LI>Go to the text editor and on the very first line type the document
   main title: <I>My First Document</I>
@@ -1114,12 +1160,13 @@ text editor and a web browser.
 If everything went right, you should be seeing a three line document
 with this contents:
 </P>
+
 <PRE>
 My First Document
 A txt2tags test
 Sunday, 2004
 </PRE>
-<P></P>
+
 <P>
 This is just a part of the document, but we can already convert it and
 check the results.
@@ -1128,7 +1175,9 @@ check the results.
 Now save this document with the name <CODE>test.txt</CODE>. Pay attention to
 which folder you are saving the file, you will need to remember it soon.
 </P>
+
 <H2>The First Conversion - Gui Interface</H2>
+
 <P>
 If you are in the Command Line Interface, please skip this step and read
 the next one.
@@ -1137,6 +1186,7 @@ the next one.
 If you are in the Gui Interface, follow this steps:
 </P>
     <center><IMG ALIGN="middle" SRC="./firstdoc.png" BORDER="0" ALT=""></center> 
+
 <OL>
 <LI>Press the "Browse" button and choose the <CODE>test.txt</CODE> you just saved
   (remember the folder!).
@@ -1151,7 +1201,9 @@ A dialog box will appear, telling you that the file was converted
 successfully. Note that the generated HTML page was saved on the same
 folder as the text file, with the "html" extension.
 </P>
+
 <H2>The First Conversion - Command Line Interface</H2>
+
 <P>
 If you are in the Gui Interface, please skip this step and read the next
 one.
@@ -1160,10 +1212,11 @@ one.
 If you are in the Command Line Interface, move to the folder where the
 file was saved and type this command:
 </P>
+
 <PRE>
 txt2tags  --target  html  test.txt
 </PRE>
-<P></P>
+
 <P>
 Note that there are spaces between the command parts, but no spaces
 inside the "--target" string, it is an option. This option is followed
@@ -1180,13 +1233,15 @@ attention.
 <P>
 Here is a sample of how it will be shown on your screen:
 </P>
+
 <PRE>
 prompt$ txt2tags --target html test.txt
 txt2tags wrote test.html
 prompt$
 </PRE>
-<P></P>
+
 <H2>Check the Results</H2>
+
 <P>
 Open the <CODE>test.html</CODE> file on the Web browser to check if everything
 is ok.
@@ -1198,6 +1253,7 @@ all the work to set the HTML page heading information. Text alignment,
 sizes, spacing and appearance. See that the main title is placed at the
 browser title bar also.
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>You write text, txt2tags does the rest ;)</TH>
@@ -1208,7 +1264,9 @@ browser title bar also.
 Tip: You can also use CSS on HTML pages generated by txt2tags, so the
 page appearance is 100% configurable.
 </P>
+
 <H2>Writing the Document Body</H2>
+
 <P>
 Now back to the text editor, the next step is to type the document
 contents. You can write plain text as you normally do on email messages.
@@ -1225,6 +1283,7 @@ mouse clickings, no menus, windows, distraction.
 Considering the following contents for the <CODE>test.txt</CODE> file, which is
 only plain text, compare the generated HTML page:
 </P>
+
 <PRE>
 My First Document
 A txt2tags test
@@ -1238,7 +1297,7 @@ Mmmmmm, I know what I need to do now:
 - Eat a pizza
 - Sleep
 </PRE>
-<P></P>
+
    <center><IMG ALIGN="middle" SRC="./firstdoc-fullhtml.png" BORDER="0" ALT=""></center> 
 <P>
 You can write a full homepage with 0% of HTML knowledge. You don't need
@@ -1252,14 +1311,18 @@ title, images, table and other. As a quick sample,
 <CODE>**starts for bold**</CODE> and <CODE>== equals for title ==</CODE>. You can learn the
 marks on the <A HREF="http://txt2tags.sf.net/markup.html">Txt2tags Markup Demo</A>.
 </P>
+
 <A NAME="concepts"></A>
 <H1>Part IV - Mastering Txt2tags Concepts</H1>
+
 <A NAME="areas"></A>
 <H2>The .t2t document Areas</H2>
+
 <P>
 Txt2tags marked files are divided in 3 areas. Each area have its own
 rules and purpose. They are:
 </P>
+
 <DL>
 <DT><I>Header Area</I></DT><DD>
   Place for Document Title, Author, Version and Date information.
@@ -1280,6 +1343,7 @@ The areas are delimited by special rules, which will be seen in detail
 on the next chapter. For now, this is a graphical representation of the
 areas on a document:
 </P>
+
 <PRE>
              ____________
             |            |
@@ -1294,10 +1358,11 @@ areas on a document:
             |____________|
 
 </PRE>
-<P></P>
+
 <P>
 In short, this is how the areas are defined:
 </P>
+
 <TABLE ALIGN="center">
 <TR>
 <TD ALIGN="center"><B>Headers</B></TD>
@@ -1314,6 +1379,7 @@ In short, this is how the areas are defined:
 </TABLE>
 
 <H3>Full Example</H3>
+
 <PRE>
 My nice doc Title
 Mr. John Doe
@@ -1327,12 +1393,14 @@ Last Updated: %%mtime(%c)
 Hi! This is my test document.
 Its content will end here.
 </PRE>
-<P></P>
+
 <A NAME="headers-area"></A>
 <H2>Header Area</H2>
+
 <P>
 Location:
 </P>
+
 <UL>
 <LI>Fixed position: <B>First 3 lines</B> of the file. Period.
 <LI>Fixed position: <B>First line</B> of the file if it is blank. This
@@ -1347,6 +1415,7 @@ oriented. They are located at the first three lines of the source file.
 These lines are content-free, with no static information type needed.
 But the following is recommended for most documents:
 </P>
+
    <UL>
    <LI><I>line 1</I>: document title
    <LI><I>line 2</I>: author name and/or email
@@ -1360,7 +1429,9 @@ first 3 lines on the target document, separated and with high contrast
 to the text body (i.e. big letters, bold). If paging is allowed, the
 headers will be alone and centralized on the first page.
 </P>
+
 <H4>Less (or None) Header lines</H4>
+
 <P>
 Sometimes the user wants to specify less than three lines for headers,
 giving just the document title and/or date information.
@@ -1381,7 +1452,9 @@ No headers on the document is often useful if you want to specify your
 own customized headers after converting. The command line option
 <CODE>--no-headers</CODE> is usually required for this kind of operation.
 </P>
+
 <H4>Straight to the point</H4>
+
 <P>
 In short: <B>"Headers are just <U>positions</U>, not contents"</B>
 </P>
@@ -1389,11 +1462,14 @@ In short: <B>"Headers are just <U>positions</U>, not contents"</B>
 Place one text on the first line, and it will appear on the target's
 first line. The same for 2nd and 3rd header lines.
 </P>
+
 <A NAME="config-area"></A>
 <H2>Config Area</H2>
+
 <P>
 Location:
 </P>
+
 <UL>
 <LI>Begins right after the Header Area
   <UL>
@@ -1420,11 +1496,14 @@ example, you can set the default document target type and encoding.
 Please read the <A HREF="#settings-overview">Settings section</A> for more
 information about them.
 </P>
+
 <A NAME="body-area"></A>
 <H2>Body Area</H2>
+
 <P>
 Location:
 </P>
+
 <UL>
 <LI>Begins on the first valid text line of the file
   <UL>
@@ -1446,19 +1525,23 @@ You can use the <CODE>--no-headers</CODE> command line option to convert only th
 document body, suppressing the headers. This is useful to set your own
 headers on a separate file, then join the converted body.
 </P>
+
 <A NAME="settings-overview"></A>
 <H2>Settings</H2>
+
 <P>
 Settings are special configurations placed at the source document's
 Config Area that can affect the conversion process. Their syntax is:
 </P>
+
 <PRE>
 %! keyword : value
 </PRE>
-<P></P>
+
 <P>
 List of valid keywords:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Keyword</TH>
@@ -1493,6 +1576,7 @@ List of valid keywords:
 <P>
 Example:
 </P>
+
 <PRE>
 %! Target  : html
 %! Options : --toc --toc-level 3
@@ -1501,9 +1585,10 @@ Example:
 %! PreProc : "AMJ"        "Aurelio Marinho Jargas"
 %! PostProc: '&lt;BODY.*?&gt;'  '&lt;BODY bgcolor="yellow"&gt;'
 </PRE>
-<P></P>
+
 <A NAME="options"></A>
 <H2>Command Line Options</H2>
+
 <P>
 The fastest way of changing the txt2tags default behavior is to use
 command line options. This options are available on the Command Line
@@ -1534,8 +1619,10 @@ specification, that has its own setting: <CODE>%!target: html</CODE>.
 Do use the <CODE>--help</CODE> option to get a complete list of all the options
 available in txt2tags.
 </P>
+
 <A NAME="rc"></A>
 <H2>User Configuration File (RC File)</H2>
+
 <P>
 The user configuration file (also called RC file) is a central place to
 store the settings that will be shared by ALL converted files. If you
@@ -1547,6 +1634,7 @@ source files.
 The default location of this file depends on your system. It can also be
 specified by the user, using an environment variable.
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH COLSPAN="2">RC file location</TH>
@@ -1570,6 +1658,7 @@ The format of the settings is exactly the same as the ones used on the
 .t2t files Config Area. There is a sample RC file on the tarball on
 <CODE>doc/txt2tagsrc</CODE>. Example:
 </P>
+
 <PRE>
 % my configs
 
@@ -1582,7 +1671,7 @@ The format of the settings is exactly the same as the ones used on the
 %%% Set the default encoding for all documents
 %!options: --encoding iso-8859-1
 </PRE>
-<P></P>
+
 <P>
 Any line that is not blank, a comment or a valid config line will raise
 error when txt2tags runs. So be careful when editing this file.
@@ -1592,12 +1681,15 @@ Txt2tags automatically apply the RC file contents into any source file it
 is converting. If you want to disable this behavior for a specific
 file, do use the <CODE>--no-rc</CODE> command line option.
 </P>
+
 <A NAME="config-loading"></A>
 <H2>Configuration Loading Order and Precedence</H2>
+
 <P>
 There are three ways of telling txt2tags which options and settings to
 use, and this is the order that they are read and applied:
 </P>
+
 <OL>
 <LI>The user configuration file (RC) settings
 <LI>The source document Config Area settings
@@ -1615,8 +1707,10 @@ line options, stronger than the other two.
 So, if the document encoding was defined on the three resources, the
 command line will be the one used.
 </P>
+
 <A NAME="include"></A>
 <H2>%!include command</H2>
+
 <P>
 The <CODE>include</CODE> command is used to paste the contents of an external
 file into the source document body. It is not a config, but a command,
@@ -1627,6 +1721,7 @@ The <CODE>include</CODE> command is useful to split a large document into smalle
 pieces (like chapters in a book) or to include the full contents of an
 external file into the document source. Sample:
 </P>
+
 <PRE>
 My first book
 Dr. John Doe
@@ -1639,16 +1734,17 @@ Dr. John Doe
 %!include: chapter9.t2t
 %!include: ending.t2t
 </PRE>
-<P></P>
+
 <P>
 You just inform the filename after the <CODE>%!include</CODE> string. The
 optional target specification is also supported, so this is valid
 either:
 </P>
+
 <PRE>
 %!include(html): file.t2t
 </PRE>
-<P></P>
+
 <P>
 Note that include will insert the file Body Area into the source
 document. The included file Header and Config Areas are ignored. This
@@ -1657,6 +1753,7 @@ way you can convert the included file alone or inside the main document.
 <P>
 But there's another three types of include:
 </P>
+
 <UL>
 <LI>Verbatim include
 <LI>Raw include
@@ -1669,20 +1766,22 @@ spaces and formatting, just like if the text was inside the txt2tags
 VERB area (```). To specify this type, enclose the filename with
 backquotes:
 </P>
+
 <PRE>
 %!include: ``/etc/fstab``
 </PRE>
-<P></P>
+
 <P>
 The <B>Raw</B> type includes a text file as is, not trying to find and
 parse txt2tags marks on it, just like if the text was inside the RAW
 area ("""). To specify this type, enclose the filename with double
 quotes:
 </P>
+
 <PRE>
 %!include: ""nice_text.txt""
 </PRE>
-<P></P>
+
 <P>
 And the <B>Tagged</B> type is passed directly to the resulting document,
 with NO parsing or escaping performed by txt2tags. This way you can
@@ -1690,17 +1789,20 @@ include additional tagged parts to your document. Useful for default
 header or footer information, or more complicated tagged code,
 unsupported by txt2tags:
 </P>
+
 <PRE>
 %!include(html): ''footer.html''
 </PRE>
-<P></P>
+
 <P>
 Note that the filename is enclosed with single quotes, and as the text
 inserted is already parsed, you must specify the target to avoid
 mistakes.
 </P>
+
 <A NAME="includeconf"></A>
 <H2>%!includeconf command</H2>
+
 <P>
 The <CODE>includeconf</CODE> command is used to include configurations from an
 external file into the current one. This command is valid inside the
@@ -1711,6 +1813,7 @@ It is useful to share the same config for multiple files, so you can
 centralize it. On any file do you want to include that central
 configuration, put a <CODE>includeconf</CODE> call. Example:
 </P>
+
 <PRE>
 My First Document
 John Doe
@@ -1720,16 +1823,19 @@ July, 2004
 
 Hi, this is my first document.
 </PRE>
-<P></P>
+
 <P>
 The format inside the included file is the same as in the
 <A HREF="#rc">RC file</A>.
 </P>
+
 <A NAME="marks"></A>
 <H1>Part V - Mastering Marks</H1>
+
 <P>
 Overview of all txt2tags marks:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH COLSPAN="2">Basic</TH>
@@ -1821,6 +1927,7 @@ Overview of all txt2tags marks:
 <P>
 General Rules:
 </P>
+
 <UL>
 <LI><B>Headers</B> are the first three document lines, marks are not interpreted.
 <LI><B>Titles</B> are balanced "=" or "+" chars around the title text. The more chars, more deep is the title.
@@ -1836,6 +1943,7 @@ General Rules:
 
 <A NAME="mark-headers"></A>
 <H2>Headers</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies the document headers
 <LI><B>Properties:</B> Multiline, FreeSpaces, !Align, !Nesting
@@ -1865,6 +1973,7 @@ General Rules:
 
 <A NAME="mark-title"></A>
 <H2>Title, Numbered Title</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies a (numbered or not) section title
 <LI><B>Properties:</B> !Multiline, FreeSpaces, !Align, !Nesting
@@ -1892,6 +2001,7 @@ General Rules:
 
 <A NAME="mark-paragraph"></A>
 <H2>Paragraph</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies a paragraph of text
 <LI><B>Properties:</B> Multiline, FreeSpaces, !Align, !Nesting
@@ -1906,6 +2016,7 @@ General Rules:
 
 <A NAME="mark-comment"></A>
 <H2>Comment</H2>
+
 <UL>
 <LI><B>Description:</B> Used to insert text that will not appear on the target
   document
@@ -1926,6 +2037,7 @@ General Rules:
 
 <A NAME="mark-beautifiers"></A>
 <H2>Bold, Italic, Underline, Strike</H2>
+
 <UL>
 <LI><B>Description:</B> Used to insert a bold/italic/underline/strike text inside a
   paragraph, table, list or quote
@@ -1946,12 +2058,13 @@ General Rules:
     no line breaks inside
   <LI>Macros are allowed inside beautifiers: <CODE>**%%date**</CODE>
   <LI>You can mix beautifiers one inside another,
-    <CODE>**__like__ //this//**</CODE>
+    <CODE>""**__like__ //this//**""</CODE>
   </UL>
 </UL>
 
 <A NAME="mark-monospaced"></A>
 <H2>Monospaced</H2>
+
 <UL>
 <LI><B>Description:</B> Used to insert a monospaced text inside a paragraph, table,
   list or quote
@@ -1972,13 +2085,14 @@ General Rules:
   <LI>In some targets, the internal spacing is maintained, in others the
     consecutive spaces are squeezed to one
   <LI>You can make a bold monospaced text enclosing it inside bold marks:
-    <CODE>**``monobold``**</CODE>. The same applies to the other beautifiers
-    such as <CODE>//``italic``//</CODE> and <CODE>__``underline``__</CODE>.
+    <CODE>""**</CODE>monobold<CODE>**""</CODE>. The same applies to the other beautifiers
+    such as <CODE>""//</CODE>italic<CODE>//""</CODE> and <CODE>""__</CODE>underline<CODE>__""</CODE>.
   </UL>
 </UL>
 
 <A NAME="mark-verbatim"></A>
 <H2>Verbatim Line, Verbatim Area</H2>
+
 <UL>
 <LI><B>Description:</B> Used to insert programming codes or other pre-formatted text,
   preserving spacing and line breaks, and using a monospaced font
@@ -1987,7 +2101,7 @@ General Rules:
 <LI><B>Syntax:</B> <B>Verbatim Line:</B>
   <UL>
   <LI>A line beginning with 3 consecutive backquotes, followed by a space,
-    followed by the text, <CODE>``` like this</CODE>
+    followed by the text, <CODE>""`</CODE>"" like this``
   <LI>The backquotes must be at the start of the line, no spaces before
   </UL>
 <LI><B>Syntax:</B> <B>Verbatim Area:</B>
@@ -2008,6 +2122,7 @@ General Rules:
 
 <A NAME="mark-separator"></A>
 <H2>Separator Line, Strong Line</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies a separator or strong line
 <LI><B>Properties:</B> !Multiline, FreeSpaces, !Align, !Nesting
@@ -2035,6 +2150,7 @@ General Rules:
 
 <A NAME="mark-link"></A>
 <H2>Links, Named Links</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies a remote (Internet) or local link
 <LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting
@@ -2059,6 +2175,7 @@ General Rules:
 
 <A NAME="mark-quote"></A>
 <H2>Quote</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies a quoted (indented) line
 <LI><B>Properties:</B> Multiline, !FreeSpaces, !Align, Nesting
@@ -2083,6 +2200,7 @@ General Rules:
 
 <A NAME="mark-lists"></A>
 <H2>List, Numbered List, Definition List</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies the start of a list item
 <LI><B>Properties:</B> Multiline, !FreeSpaces, !Align, Nesting
@@ -2114,6 +2232,7 @@ General Rules:
 
 <A NAME="mark-image"></A>
 <H2>Image</H2>
+
 <UL>
 <LI><B>Description:</B> Identifies an image
 <LI><B>Properties:</B> !Multiline, !FreeSpaces, Align, !Nesting
@@ -2143,6 +2262,7 @@ General Rules:
 
 <A NAME="mark-table"></A>
 <H2>Table</H2>
+
 <UL>
 <LI><B>Description:</B> Delimits a table row, with any number of columns
 <LI><B>Properties:</B> Multiline, FreeSpaces, Align, !Nesting
@@ -2177,6 +2297,7 @@ General Rules:
 
 <A NAME="mark-raw"></A>
 <H2>Raw, Raw Line, Raw Area</H2>
+
 <UL>
 <LI><B>Description:</B> Used to "protect" some text from parsing, so marks and macros inside
   it will not be expanded.
@@ -2184,7 +2305,7 @@ General Rules:
 <LI><B>Contains:</B> -
 <LI><B>Syntax:</B> <B>Raw:</B>
   <UL>
-  <LI>Two double quotes around, <CODE>""like this""</CODE>
+  <LI>Two double quotes around, <CODE>""""like this""""</CODE>
   <LI>Marks glued with the contents (no spaces)
   </UL>
 <LI><B>Syntax:</B> <B>Raw Line:</B>
@@ -2211,6 +2332,7 @@ General Rules:
 
 <A NAME="macros"></A>
 <H1>Part VI - Mastering Macros</H1>
+
 <P>
 Macros are special purpose keywords, that are expanded on conversion
 time. They are used to insert dynamic information, for example the
@@ -2224,6 +2346,7 @@ format string mixes common text with special directives, identified by a
 percent sign % followed by an identification character. If not format
 string is given, the default format is used.
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Macro Name</TH>
@@ -2260,6 +2383,7 @@ string is given, the default format is used.
 <P>
 General rules:
 </P>
+
 <UL>
 <LI>The macro name is case-insensitive, so <CODE>%%date</CODE>, <CODE>%%DaTe</CODE> and
   <CODE>%%DATE</CODE> are identical
@@ -2278,13 +2402,15 @@ Full example (bold text are expanded macros):
 <P>
 This is the Txt2tags User Guide, converted to <B>html</B>
 by txt2tags from the <B>userguide.t2t</B> source file. The conversion
-was done at <B>2008-07-26 16:36:06</B>, but the last change on the
-source document was made on <B>2008-07-26 12:33:10</B>. Both
+was done at <B>2009-02-10 17:06:58</B>, but the last change on the
+source document was made on <B>2009-02-10 17:06:26</B>. Both
 source and converted file reside on the <B>userguide</B>
 directory.
 </P>
+
 <A NAME="macro-date"></A>
 <H2>%%date</H2>
+
 <P>
 The <CODE>%%date</CODE> macro expands to the current date and time. It is very
 useful on the document headers or footer, to register the date when the
@@ -2297,6 +2423,7 @@ found in the
 <A HREF="http://www.python.org/doc/current/lib/module-time.html">Python site</A>.
 Here are the most commonly used:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Directive</TH>
@@ -2375,36 +2502,38 @@ Here are the most commonly used:
 <P>
 Examples:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Macro</TH>
 <TH>--&gt;</TH>
-<TH>Results for on 2008, Jul 26 at 16:36</TH>
+<TH>Results for on 2009, Feb 10 at 17:06</TH>
 </TR>
 <TR>
 <TD>%%date(Converted on: %c)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Converted on: Sat Jul 26 16:36:06 2008</TD>
+<TD>Converted on: Tue Feb 10 17:06:58 2009</TD>
 </TR>
 <TR>
 <TD>%%date(%Y-%m-%d)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>2008-07-26</TD>
+<TD>2009-02-10</TD>
 </TR>
 <TR>
 <TD>%%date(%I:%M %p)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>04:36 PM</TD>
+<TD>05:06 PM</TD>
 </TR>
 <TR>
 <TD>%%date(Today is %A, on %B.)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Today is Saturday, on July.</TD>
+<TD>Today is Tuesday, on February.</TD>
 </TR>
 </TABLE>
 
 <A NAME="macro-mtime"></A>
 <H2>%%mtime</H2>
+
 <P>
 The <CODE>%%mtime</CODE> macro expands to last modification time of the source
 document. It is useful to register when the file was last changed.
@@ -2413,10 +2542,12 @@ accepts exactly the same formatting directives.
 </P>
 <P>
 As an example, this User Guide source file was last edited on
-<B>Sat Jul 26 12:33:10 2008</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
+<B>Tue Feb 10 17:06:26 2009</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
 </P>
+
 <A NAME="macro-infile"></A>
 <H2>%%infile</H2>
+
 <P>
 The <CODE>%%infile</CODE> macro expands to the source file location on the
 system. It is useful to make those "<I>see the source of this file</I>"
@@ -2426,6 +2557,7 @@ beginners, so they can use your source as a sample for their own page.
 <P>
 This macro accept the following formatting directives:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>%&lt;char&gt;</TH>
@@ -2450,12 +2582,12 @@ This macro accept the following formatting directives:
 <TR>
 <TD ALIGN="center">%p</TD>
 <TD>Absolute file path</TD>
-<TD>/a/txt2tags/src/doc/userguide/userguide.t2t</TD>
+<TD>/a/txt2tags/svn/doc/English/userguide/userguide.t2t</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%d</TD>
 <TD>File path (directories only)</TD>
-<TD>/a/txt2tags/src/doc/userguide</TD>
+<TD>/a/txt2tags/svn/doc/English/userguide</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%D</TD>
@@ -2472,6 +2604,7 @@ This macro accept the following formatting directives:
 <P>
 Examples:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Source</TH>
@@ -2503,9 +2636,10 @@ Examples:
 	<BLOCKQUOTE>
 	<B>Note:</B> The macro is expanded to "-" if the source file is STDIN.
 	</BLOCKQUOTE>
-<P></P>
+
 <A NAME="macro-outfile"></A>
 <H2>%%outfile</H2>
+
 <P>
 The <CODE>%%outfile</CODE> macro expands to the converted file location on the
 system. It is useful to its name inside the document Body or Headers.
@@ -2515,6 +2649,7 @@ do accept exactly the same formatting directives.
 <P>
 Examples:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>Source</TH>
@@ -2536,9 +2671,10 @@ Examples:
 	<BLOCKQUOTE>
 	<B>Note:</B> The macro is expanded to "-" if the output file is STDOUT.
 	</BLOCKQUOTE>
-<P></P>
+
 <A NAME="macro-toc"></A>
 <H2>%%toc</H2>
+
 <P>
 The <CODE>%%toc</CODE> macro expands to the document's Table of Contents. It is
 useful for you to specify exactly where you want the TOC to be placed.
@@ -2550,6 +2686,7 @@ to position the TOC.
 Different from the other macros, this one does not accept a format
 string and has its own special rules:
 </P>
+
 <UL>
 <LI>Valid at the document Body Area only
 <LI>Must be alone on the line (leading and trailing spaces are allowed)
@@ -2561,6 +2698,7 @@ string and has its own special rules:
 
 <A NAME="settings"></A>
 <H1>Part VII - Mastering Settings</H1>
+
 <P>
 Settings are special configurations placed at the source document's
 Config Area that can affect the conversion process. The Settings are all
@@ -2573,6 +2711,7 @@ identifier ("!") that makes them different from plain comments. The
 syntax is just as simple as variable setting, composed by a keyword
 and a value, separated from each by a colon (":").
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>%! keyword : value</TH>
@@ -2582,6 +2721,7 @@ and a value, separated from each by a colon (":").
 <P>
 Syntax details:
 </P>
+
 <UL>
 <LI>The exclamation mark must be placed together with the comment char
   ("%!"), no spaces between them.
@@ -2594,6 +2734,7 @@ Syntax details:
 <P>
 Rules:
 </P>
+
 <UL>
 <LI>Settings are valid only inside the Config Area, and are considered
   plain comments if found on the document Body.
@@ -2611,21 +2752,24 @@ Rules:
 
 <A NAME="setting-target"></A>
 <H2>%!Target</H2>
+
 <P>
 Using the target setting, a default target format is defined for the
 document:
 </P>
+
 <PRE>
 %!target: html
 </PRE>
-<P></P>
+
 <P>
 This way the user can just call
 </P>
+
 <PRE>
 $ txt2tags file.t2t
 </PRE>
-<P></P>
+
 <P>
 And the conversion will be done, to the specified target.
 </P>
@@ -2633,8 +2777,10 @@ And the conversion will be done, to the specified target.
 The target setting does not support optional target specification.
 That doesn't make sense, such as <CODE>%!target(tex): html</CODE>.
 </P>
+
 <A NAME="setting-options"></A>
 <H2>%!Options</H2>
+
 <P>
 Writing long command lines every time you need to convert a document
 is boring and error prone. The Options setting let the user save
@@ -2650,30 +2796,34 @@ specification and the source filename from the ending.
 <P>
 For example, if you do use this command line to convert your document:
 </P>
+
 <PRE>
 $ txt2tags -t html --toc --toc-level 2 --enum-title file.t2t
 </PRE>
-<P></P>
+
 <P>
 You can save yourself from typing pain using this Options setting inside
 the document source:
 </P>
+
 <PRE>
 %!target: html
 %!options(html): --toc --toc-level 2 --enum-title
 </PRE>
-<P></P>
+
 <P>
 As the real command line is now just "<CODE>txt2tags file.t2t</CODE>", you can run
 the conversion right inside your favorite text editor, while editing the
 document source. In Vi, this is:
 </P>
+
 <PRE>
 :!txt2tags %
 </PRE>
-<P></P>
+
 <A NAME="setting-encoding"></A>
 <H2>%!Encoding</H2>
+
 <P>
 The Encoding setting is needed by non-english writers, who uses
 accented letters and other locale specific details, so the target
@@ -2691,6 +2841,7 @@ The LateX target use alias names for encoding. This is not a problem
 for the user, because txt2tags translate the names internally. Some
 examples:
 </P>
+
 <TABLE ALIGN="center" BORDER="1">
 <TR>
 <TH>txt2tags/HTML</TH>
@@ -2738,8 +2889,10 @@ examples:
 If the value is unknown to txt2tags, it will be passed "as is",
 allowing user to specify custom encodings.
 </P>
+
 <A NAME="setting-preproc"></A>
 <H2>%!PreProc</H2>
+
 <P>
 The PreProc is an input filter used on the Body Area of the source document. It is a "find
 and replace" feature, applied right after the line is read from the
@@ -2748,36 +2901,40 @@ document source, before any parsing by txt2tags.
 <P>
 It is useful to define some abbreviations for common typed text, as:
 </P>
+
 <PRE>
 %!preproc JJS          "John J. Smith"
 %!preproc RELEASE_DATE "2003-05-01"
 %!preproc BULLET       "[images/tiny/bullet_blue.png]"
 </PRE>
-<P></P>
+
 <P>
 So the user can write a line like:
 </P>
+
 <PRE>
 Hi, I'm JJS. Today is RELEASE_DATE.
 </PRE>
-<P></P>
+
 <P>
 And txt2tags will "see" this line as:
 </P>
+
 <PRE>
 Hi, I'm John J. Smith. Today is 2003-05-01.
 </PRE>
-<P></P>
+
 <P>
 This filter is a component that acts between the document author
 and the txt2tags conversion. It's like a first conversion before the
 "real" one. Its behavior is similar to an external Sed/Perl filter,
 called this way:
 </P>
+
 <PRE>
 $ cat file.t2t | preproc-script.sh | txt2tags -
 </PRE>
-<P></P>
+
 <P>
 So the txt2tags parsing will begin after all the PreProc substitutions
 were applied.
@@ -2785,9 +2942,10 @@ were applied.
 	<BLOCKQUOTE>
 	<B>Note:</B> Remember that the preprocessing is applied only to the BODY of the source document, not including the Header Area and Config Area.
 	</BLOCKQUOTE>
-<P></P>
+
 <A NAME="setting-postproc"></A>
 <H2>%!PostProc</H2>
+
 <P>
 The PostProc is an output filter used on the converted document. It is a
 "find and replace" feature, applied after all txt2tags parsing and
@@ -2797,11 +2955,12 @@ processing is done.
 It is useful to do some refinements on the generated document, change
 tags and add extra text or tags. Quick samples:
 </P>
+
 <PRE>
 %!postproc(html): '&lt;BODY.*?&gt;' '&lt;BODY BGCOLOR="green"&gt;'
 %!postproc(tex) : "\\newpage" ""
 </PRE>
-<P></P>
+
 <P>
 These filters change the background color of the HTML page and remove
 the page breaks on the LaTeX target.
@@ -2810,10 +2969,11 @@ the page breaks on the LaTeX target.
 The PostProc rules are just like an external Sed/Perl filter, called
 this way:
 </P>
+
 <PRE>
 $ txt2tags -t html -o- file.t2t | postproc-script.sh &gt; file.html
 </PRE>
-<P></P>
+
 <P>
 Before this feature was introduced, it was very common to have little
 scripts to "adjust" the txt2tags results. These scripts were in fact
@@ -2822,8 +2982,10 @@ actions. Now this replacement strings can be saved together with the
 document text, and the plus is to use the Python powerful Regular
 Expression machine to find patterns.
 </P>
+
 <A NAME="setting-style"></A>
 <H2>%!Style</H2>
+
 <UL>
 <LI>Useful in HTML and XHTML targets, it defines a CSS file for the target
   document.
@@ -2838,6 +3000,7 @@ Expression machine to find patterns.
 
 <A NAME="setting-specific"></A>
 <H2>Defining a Setting for a Specific Target</H2>
+
 <P>
 All the settings (except %!target) can be glued with a specific target
 using the <CODE>%!key(target): value</CODE> syntax. This way user can define
@@ -2848,30 +3011,34 @@ This is specially useful in the pre/postproc filters, but is applicable
 to all settings. For example, defining different styles for HTML and
 LaTeX:
 </P>
+
 <PRE>
 %!style(html): fancy.css
 %!style(tex) : amssymb
 </PRE>
-<P></P>
+
 <P>
 For the options setting it's very useful to adjust the converted
 document:
 </P>
+
 <PRE>
 %!target: sgml
 %!options(sgml): --toc
 %!options(html): --style foo.css
 %!options(txt ): --toc-only --toc-level 2
 </PRE>
-<P></P>
+
 <P>
 In this example, the default target is Sgml and it will use TOC. If the
 user run <CODE>txt2tags -t html file.t2t</CODE>, only the HTML options will be
 used, so the converted file will use "foo.css" style file and will
 have no TOC.
 </P>
+
 <A NAME="filters-details"></A>
 <H2>Details for PreProc and PostProc Filters</H2>
+
 <UL>
 <LI>Filters are a "find and replace" feature (think SED)
 <P></P>
@@ -2886,6 +3053,7 @@ have no TOC.
 %!postproc      :   this   that
 %!postproc(html):   that   other
 </PRE>
+
 <P></P>
 <LI>The filters must receive exactly TWO arguments
 <P></P>
@@ -2896,6 +3064,7 @@ have no TOC.
 <PRE>
 %!postproc: "undesired string" ""
 </PRE>
+
 <P></P>
 <LI>To avoid problems, always use the explicit target form when using
   PostProc to change tags: <CODE>%!PostProc(target): &lt;this&gt; &lt;that&gt;</CODE>
@@ -2906,6 +3075,7 @@ have no TOC.
 <PRE>
 $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 </PRE>
+
 <P></P>
 <LI>The first part of a filter (the "search for" part) is not read as a
   regular string, but a Regular Expression pattern. If you don't know
@@ -2916,6 +3086,7 @@ $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 <PRE>
 \*  \+  \.  \^  \$  \?  \(  \)  \{  \[  \|  \\
 </PRE>
+
 <P></P>
 <LI>Python Regular Expressions are available! They're similar to Perl
   Regexes (PCRE). Example: Change all opening and closing "B" tags to
@@ -2923,6 +3094,7 @@ $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 <PRE>
 %!postproc(html):   '(&lt;/?)B&gt;'   '\1STRONG&gt;'
 </PRE>
+
 <P></P>
 <LI>The filter arguments can be passed on 3 ways:
     <OL>
@@ -2940,10 +3112,12 @@ $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 %!postproc:   PATT   "REPLACEMENT"
 %!postproc:  "PATT"  'REPLACEMENT'
 </PRE>
+
 </UL>
 
 <A NAME="black-magic"></A>
 <H1>Part VIII - Black Magic</H1>
+
 <P>
 This chapter is really not recommended for newbies. It demonstrates how
 to do strange things with txt2tags filters, abusing of complex
@@ -2956,20 +3130,19 @@ patterns and Regular Expressions.
 	document. Just use these tactics if you really need them and
 	know what you are doing.
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
 	<B>Note:</B> Filters are a powerful feature, but can be dangerous!
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
 	<B>Note:</B> Bad filters do generate unexpected results.
 	</BLOCKQUOTE>
-<P></P>
 <P>
 Keep that in mind, please.
 </P>
+
 <A NAME="postproc-multiline"></A>
 <H2>Inserting Multiple Lines with %!PostProc (like CSS rules)</H2>
+
 <P>
 In filters, the replacement pattern can include multiple lines using the
 <CODE>\n</CODE> line break char.
@@ -2978,6 +3151,7 @@ In filters, the replacement pattern can include multiple lines using the
 This can be handy for including really short CSS rules on HTML target,
 with no need to create a separate file:
 </P>
+
 <PRE>
 %!postproc: &lt;HEAD&gt;      '&lt;HEAD&gt;\n&lt;STYLE TYPE="text/css"&gt;\n&lt;/STYLE&gt;'
 %!postproc: (&lt;/STYLE&gt;)  'body     { margin:3em               ;} \n\1'
@@ -2985,11 +3159,12 @@ with no need to create a separate file:
 %!postproc: (&lt;/STYLE&gt;)  'pre,code { background-color:#ffffcc ;} \n\1'
 %!postproc: (&lt;/STYLE&gt;)  'th       { background-color:yellow  ;} \n\1'
 </PRE>
-<P></P>
+
 <P>
 All the filters are tied to the first one, by replacing a string that it
 has inserted. So a single "&lt;HEAD&gt;" turns to:
 </P>
+
 <PRE>
 &lt;HEAD&gt;
 &lt;STYLE TYPE="text/css"&gt;
@@ -2999,9 +3174,10 @@ pre,code { background-color:#ffffcc ;}
 th       { background-color:yellow  ;}
 &lt;/STYLE&gt;
 </PRE>
-<P></P>
+
 <A NAME="target-specific-contents"></A>
 <H2>Creating "Target-Specific" Contents with %!PreProc</H2>
+
 <P>
 Sometimes you need to insert some text on a specific target, but not on
 the others. This kind of strange behavior can be done using some
@@ -3016,26 +3192,30 @@ comments, but mark it in a way that a target-specific filter will
 For example, if an extra paragraph must be added only in HTML target.
 Place the text as special comments, like this:
 </P>
+
 <PRE>
 %html% This HTML page is Powered by [txt2tags http://txt2tags.sf.net].
 %html% See the source TXT file [here source.t2t].
 </PRE>
-<P></P>
+
 <P>
 As those lines start with <CODE>%</CODE>, they are plain comments lines and will be
 ignored. But when adding this special filter:
 </P>
+
 <PRE>
 %preproc(html): '^%html% ' ''
 </PRE>
-<P></P>
+
 <P>
 The leading string is removed and those lines will be "activated", not
 being comments anymore. As a explicit target config, this filter will be
 processed for HTML targets only.
 </P>
+
 <A NAME="creating-marks"></A>
 <H2>Changing Txt2tags Marks with %!PreProc</H2>
+
 <P>
 Being a Regular Expressions guru, the user can customize the document
 source syntax, changing the txt2tags default marks to some he find more
@@ -3047,19 +3227,21 @@ like it, or his text editor has some strange relationship with TABs, he
 can define a new mark for Quoted text. Say a leading "&gt;&gt;&gt; " was his
 choice. Then he will do this simple filter:
 </P>
+
 <PRE>
 %!PreProc: '&gt;&gt;&gt; ' '\t'
 </PRE>
-<P></P>
+
 <P>
 And on the document source, the quoted text will be something like:
 </P>
+
 <PRE>
 &gt;&gt;&gt; This is a quoted text.
 &gt;&gt;&gt; The user defined this strange mark.
 &gt;&gt;&gt; But they will be converted to TABs by PreProc.
 </PRE>
-<P></P>
+
 <P>
 Before the parsing begins, the strange "&gt;&gt;&gt; " will be converted to
 TABs and txt2tags will recognize the Quote mark.
@@ -3069,9 +3251,10 @@ TABs and txt2tags will recognize the Quote mark.
 	change the entire marks syntax, even generating conflicts
 	between marks. Be really really careful when doing this.
 	</BLOCKQUOTE>
-<P></P>
+
 <A NAME="history"></A>
 <H1>Part IX - Txt2tags HISTORY</H1>
+
 <P>
 On July 2001, it was launched the first public release of txt2tags,
 version 0.1. But its origins date more than a year before that...
@@ -3080,8 +3263,10 @@ version 0.1. But its origins date more than a year before that...
 This chapter gives an overview about the tool development since its very
 first draw until the current series.
 </P>
+
 <A NAME="history-1999-1"></A>
 <H2>1999 January: Pre-History</H2>
+
 <DL>
 <DT>From the author:</DT><DD>
 <P></P>
@@ -3096,6 +3281,7 @@ special characters. Not impressive, but hey! I was young ;)"
 
 <A NAME="history-1999-2"></A>
 <H2>1999 June: Still Pre-History</H2>
+
 <DL>
 <DT>The author wants to speak some more:</DT><DD>
 <P></P>
@@ -3106,17 +3292,16 @@ that moment so txt2sgml was a 110 lines Bourne Shell script
 with lots of SED code."
 </DL>
 
-<P></P>
 	<BLOCKQUOTE>
 	<B>Note:</B> SED is the UNIX Stream EDitor, an automatic text
 	editing tool.
 	</BLOCKQUOTE>
-<P></P>
 <P>
 This improved Sgml version has more supported structures as lists
 and verbatim text. On the following sample file, you can see
 the txt2tags marks origins:
 </P>
+
 <PRE>
 * This was a bold line (BOLD line oriented? Well...)
 
@@ -3130,12 +3315,14 @@ Verbatim text was delimited by the =-- pattern.
 The other ------- were just cosmetic.
 =----------------------
 </PRE>
-<P></P>
+
 <P>
 Still not impressive, but the big step is coming...
 </P>
+
 <A NAME="history-2000"></A>
 <H2>2000 August: Not Pre-History Anymore</H2>
+
 <DL>
 <DT>The author once again:</DT><DD>
 <P></P>
@@ -3146,10 +3333,10 @@ added such as subsections, URL recognition and sublists. I have
 used and improved this script a lot, for almost a year."
 </DL>
 
-<P></P>
 <P>
 A txt2sgml.sed sample file:
 </P>
+
 <PRE>
 * Hey, here are the first 3 magic lines
 * The document title / author / date
@@ -3171,9 +3358,10 @@ were recognized automagically by regular expressions. And there was a
 strange image mark:
 %%image: path/to/image.jpg
 </PRE>
-<P></P>
+
 <A NAME="history-2001-1"></A>
 <H2>2001 May: Pythonization and Multi-target Idea</H2>
+
 <DL>
 <DT>Guess who will speak:</DT><DD>
 <P></P>
@@ -3193,9 +3381,9 @@ book writing, I had the idea to join it all in a single tool, and
 choose Python as the language. TXT2TAGS was born."
 </DL>
 
-<P></P>
 <A NAME="history-2001-2"></A>
 <H2>2001 July: 0.x series: Debut of txt2tags (World Release)</H2>
+
 <DL>
 <DT>Yes, him:</DT><DD>
 <P></P>
@@ -3215,9 +3403,9 @@ because I was a shell wizard and a Python newbie. Only
 in version 0.9 txt2tags came back to a 100% Python code."
 </DL>
 
-<P></P>
 <A NAME="history-2002"></A>
 <H2>2002 September: 1.x series: Growing</H2>
+
 <DL>
 <DT>Won't you release the microphone?</DT><DD>
 <P></P>
@@ -3233,9 +3421,9 @@ compatibility, LaTeX target, %!style, include command and
 the powerful Pre and Post processing filters."
 </DL>
 
-<P></P>
 <A NAME="history-2004"></A>
 <H2>2004 July: 2.x series: Maturing</H2>
+
 <DL>
 <DT>Ok, talk, I give up:</DT><DD>
 <P></P>
@@ -3252,14 +3440,13 @@ languages. The Lout target was added, and new macros:
 Continues..."
 </DL>
 
-<P></P>
 <P>
 The End.
 (<A HREF="userguide.t2t">see source</A>)
-<IMG ALIGN="middle" SRC="./t2tpowered.png" BORDER="0" ALT="">
+<IMG ALIGN="middle" SRC="../../img/t2tpowered.png" BORDER="0" ALT="">
 </P>
 </DIV>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- html code generated by txt2tags 2.6b (http://txt2tags.sf.net) -->
 <!-- cmdline: txt2tags userguide.t2t -->
 </BODY></HTML>
