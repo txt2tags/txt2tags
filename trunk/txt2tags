@@ -139,7 +139,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml sgml tex lout man mgp wiki gwiki doku moin pm6 txt art'.split()
+TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku moin pm6 txt art'.split()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -165,6 +165,7 @@ TARGET_NAMES = {
   'html' : _('HTML page'),
   'xhtml': _('XHTML page'),
   'sgml' : _('SGML document'),
+  'dbk'  : _('DocBook document'),
   'tex'  : _('LaTeX document'),
   'lout' : _('Lout document'),
   'man'  : _('UNIX Manual page'),
@@ -362,6 +363,22 @@ Fake template to respect the general process.
 <h2>%(HEADER2)s</h2>
 <h3>%(HEADER3)s</h3>
 </div>
+""",
+
+  'dbk': """\
+<?xml version="1.0"
+      encoding="%(ENCODING)s"
+?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"\
+ "docbook/dtd/xml/4.5/docbookx.dtd">
+<article lang="en">
+  <articleinfo>
+    <title>%(HEADER1)s</title>
+    <authorgroup>
+      <author><othername>%(HEADER2)s</othername></author>
+    </authorgroup>
+    <date>%(HEADER3)s</date>
+  </articleinfo>
 """,
 
   'man': """\
@@ -732,6 +749,78 @@ def getTags(config):
 	   'comment'             : '<!-- \a -->'        ,
 	   'TOC'                 : '<toc>'              ,
 	   'EOD'                 : '</article>'
+	},
+	
+	'dbk': {
+	   'paragraphOpen'        : '<para>'                            ,
+	   'paragraphClose'       : '</para>'                           ,
+	   'title1Open'           : '<sect1><title>\a</title>'          ,
+	   'title1Close'          : '</sect1>'                          ,
+	   'title2Open'           : '  <sect2><title>\a</title>'        ,
+	   'title2Close'          : '  </sect2>'                        ,
+	   'title3Open'           : '    <sect3><title>\a</title>'      ,
+	   'title3Close'          : '    </sect3>'                      ,
+	   'title4Open'           : '      <sect4><title>\a</title>'    ,
+	   'title4Close'          : '      </sect4>'                    ,
+	   'title5Open'           : '        <sect5><title>\a</title>'  ,
+	   'title5Close'          : '        </sect5>'                  ,
+	   'anchor'               : '<anchor id="\a"/>\n'               ,
+	   'blockVerbOpen'        : '<programlisting>'                  ,
+	   'blockVerbClose'       : '</programlisting>'                 ,
+	   'blockQuoteOpen'       : '<blockquote><para>'                ,
+	   'blockQuoteClose'      : '</para></blockquote>'              ,
+	   'fontMonoOpen'         : '<code>'                            ,
+	   'fontMonoClose'        : '</code>'                           ,
+	   'fontBoldOpen'         : '<emphasis role="bold">'            ,
+	   'fontBoldClose'        : '</emphasis>'                       ,
+	   'fontItalicOpen'       : '<emphasis>'                        ,
+	   'fontItalicClose'      : '</emphasis>'                       ,
+	   'fontUnderlineOpen'    : '<emphasis role="underline">'       ,
+	   'fontUnderlineClose'   : '</emphasis>'                       ,
+	   # 'fontStrikeOpen'       : '<emphasis role="strikethrough">'   , # Don't know
+	   # 'fontStrikeClose'      : '</emphasis>'                       ,
+	   'listOpen'             : '<itemizedlist>'                    ,
+	   'listClose'            : '</itemizedlist>'                   ,
+	   'listItemOpen'         : '<listitem><para>'                  ,
+	   'listItemClose'        : '</para></listitem>'                ,
+	   'numlistOpen'          : '<orderedlist numeration="arabic">' ,
+	   'numlistClose'         : '</orderedlist>'                    ,
+	   'numlistItemOpen'      : '<listitem><para>'                  ,
+	   'numlistItemClose'     : '</para></listitem>'                ,
+	   'deflistOpen'          : '<variablelist>'                    ,
+	   'deflistClose'         : '</variablelist>'                   ,
+	   'deflistItem1Open'     : '<varlistentry><term>'              ,
+	   'deflistItem1Close'    : '</term>'                           ,
+	   'deflistItem2Open'     : '<listitem><para>'                  ,
+	   'deflistItem2Close'    : '</para></listitem></varlistentry>' ,
+	   # 'bar1'                 : '<>'                                , # Don't know
+	   # 'bar2'                 : '<>'                                , # Don't know
+	   'url'                  : '<ulink url="\a">\a</ulink>'        ,
+	   'urlMark'              : '<ulink url="\a">\a</ulink>'        ,
+	   'email'                : '<email>\a</email>'                 ,
+	   'emailMark'            : '<email>\a</email>'                 ,
+	   'img'                  : '<mediaobject><imageobject><imagedata fileref="\a"/></imageobject></mediaobject>',
+	   # '_imgAlignLeft'        : ''                                 , # Don't know
+	   # '_imgAlignCenter'      : ''                                 , # Don't know
+	   # '_imgAlignRight'       : ''                                 , # Don't know
+	   'tableOpen'            : '<para>', # just to have something...
+	   'tableClose'           : '</para>' ,
+	   # 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>', # Don't work, need to know number of cols
+	   # 'tableClose'           : '</tbody></tgroup></informaltable>' ,
+	   # 'tableRowOpen'         : '<row>'                             ,
+	   # 'tableRowClose'        : '</row>'                            ,
+	   # 'tableCellOpen'        : '<entry>'                           ,
+	   # 'tableCellClose'       : '</entry>'                          ,
+	   # 'tableTitleRowOpen'    : '<thead>'                           ,
+	   # 'tableTitleRowClose'   : '</thead>'                          ,
+	   # '_tableBorder'         : ' frame="all"'                      ,
+	   # '_tableAlignCenter'    : ' align="center"'                   ,
+	   # '_tableCellAlignRight' : ' align="right"'                    ,
+	   # '_tableCellAlignCenter': ' align="center"'                   ,
+	   # '_tableCellColSpan'    : ' COLSPAN="\a"'                     ,
+	   'TOC'                  : '</index>'                          ,
+	   'comment'              : '<!-- \a -->'                       ,
+	   'EOD'                  : '</article>'
 	},
 	
 	'tex': {
@@ -1348,6 +1437,18 @@ def getRules(config):
 	    'blanksaroundtitle':1,
 	    'blanksaroundnumtitle':1,
 	    },
+	  'dbk': {
+	    'linkable':1,
+	    'tableable':1,
+	    'imglinkable':1,
+	    'imgalignable':1,
+	    'imgasdefterm':1,
+	    'autonumberlist':1,
+	    'autonumbertitle':1,
+	    'parainsidelist':1,
+	    'spacedlistitem':1,
+	    'titleblocks':1,
+	  },
 	  'mgp' : {
 	    'tagnotindentable':1,
 	    'spacedlistitem':1,
