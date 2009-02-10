@@ -256,7 +256,7 @@ The following is a list of all the structures supported by txt2tags.
 : **SGML**
   It is a common document format which has powerful conversion applications
   ([linuxdoc-tools http://packages.debian.org/etch/linuxdoc-tools]). From a
-  single SGML file you can generate HTML, PDF, PostScripty, Info, LaTeX, LyX, RTF
+  single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
   and XML documents. The tools also does automatic TOC and break
   sections into subpages.
 
