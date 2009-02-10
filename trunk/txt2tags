@@ -1400,7 +1400,6 @@ def getRules(config):
 	    },
 	  'lout': {
 	    'keepquoteindent':1,
-	    'keeplistindent':1,
 	    'deflisttextstrip':1,
 	    'escapeurl':1,
 	    'verbblocknotescaped':1,
