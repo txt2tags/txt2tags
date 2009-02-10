@@ -299,11 +299,11 @@ Fake template to respect the general process.
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
 <TITLE>%(HEADER1)s</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>%(HEADER1)s</H1>
-<FONT SIZE="4">
-<I>%(HEADER2)s</I><BR>
-%(HEADER3)s
-</FONT></CENTER>
+<CENTER>
+<H1>%(HEADER1)s</H1>
+<FONT SIZE="4"><I>%(HEADER2)s</I></FONT><BR>
+<FONT SIZE="4">%(HEADER3)s</FONT>
+</CENTER>
 """,
 
 	'htmlcss': """\
