@@ -1410,6 +1410,7 @@ def getRules(config):
 		'verbblocknotescaped',  # don't escape specials in verb block
 		'verbblockfinalescape', # do final escapes in verb block
 		'escapeurl',            # escape special in link URL
+		'labelbeforelink',      # label comes before the link on the tag
 		'onelinepara',          # dump paragraph as a single long line
 		'tabletitlerowinbold',  # manually bold any cell on table titles
 		'tablecellstrip',       # strip extra spaces from each table cell
@@ -1707,6 +1708,7 @@ def getRules(config):
 			'indentverbblock':1, 
 			'spacedlistitem':1,
 			'linkable':1,
+			'labelbeforelink':1,
 			'keeplistindent':1,
 			'tableable':1,
 			'barinsidequote':1,
@@ -4422,10 +4424,10 @@ def get_tagged_link(label, url):
 				label = "(%s)"%image_re.match(label).group(1)
 		
 		# Putting data on the right appearance order
-		if rules['linkable']:
-			urlorder = [url, label]   # link before label
-		else:
+		if rules['labelbeforelink'] or not rules['linkable']:
 			urlorder = [label, url]   # label before link
+		else:
+			urlorder = [url, label]   # link before label
 		
 		# Add link data to tag (replace \a's)
 		ret = TAGS["%sMark"%linktype]
