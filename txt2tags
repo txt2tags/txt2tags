@@ -139,7 +139,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku moin pm6 txt art adoc'.split()
+TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc'.split()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -173,6 +173,7 @@ TARGET_NAMES = {
   'wiki' : _('Wikipedia page'),
   'gwiki': _('Google Wiki page'),
   'doku' : _('DokuWiki page'),
+  'pmw'  : _('pmWiki page'),
   'moin' : _('MoinMoin page'),
   'pm6'  : _('PageMaker document'),
   'txt'  : _('Plain Text'),
@@ -474,6 +475,14 @@ _%(HEADER3)s_
 **//%(HEADER2)s//**
 
 //%(HEADER3)s//
+""",
+
+	'pmw': """\
+(:Title %(HEADER1)s:)
+
+(:Description %(HEADER2)s:)
+
+(:Summary %(HEADER3)s:)
 """,
 
 	'wiki': """\
@@ -1111,6 +1120,66 @@ def getTags(config):
 		# TOC is automatic
 	},
 	
+	# http://www.pmwiki.org/wiki/PmWiki/TextFormattingRules 
+	'pmw': {
+		'title1'               : '! \a '       	 ,
+		'title2'               : '!! \a '  	     ,
+		'title3'               : '!!! \a '     	 ,
+		'title4'               : '!!!! \a '    	 ,
+		'title5'               : '!!!!! \a '   	 ,
+		'blockQuoteOpen'       : '->'            ,
+		'blockQuoteClose'      : '\n'            ,
+		# In-text font 
+		'fontLargeOpen'        : "[+"            ,
+		'fontLargeClose'       : "+]"            ,
+		'fontLargerOpen'       : "[++"           ,
+		'fontLargerClose'      : "++]"           ,
+		'fontSmallOpen'        : "[-"            ,
+		'fontSmallClose'       : "-]"            ,
+		'fontLargerOpen'       : "[--"           ,
+		'fontLargerClose'      : "--]"           ,
+		'fontMonoOpen'         : "@@"            ,
+		'fontMonoClose'        : "@@"            ,
+		'fontBoldOpen'         : "'''"           ,
+		'fontBoldClose'        : "'''"           ,
+		'fontItalicOpen'       : "''"            ,
+		'fontItalicClose'      : "''"            ,
+		'fontUnderlineOpen'    : "{+"            ,
+		'fontUnderlineClose'   : "+}"            ,
+		'fontStrikeOpen'       : '{-'         	 ,
+		'fontStrikeClose'      : '-}'        	 ,
+		# Lists 
+		'listItemOpen'         	: '* '           ,
+		'numlistItemOpen'      	: '# '           ,
+		'deflistItem1Open'      : ': '           ,
+		'deflistItem1Close'     : ':'            ,
+		'deflistItem2LineOpen'  : '::'           ,
+		'deflistItem2LineClose' : ':'            ,
+		# Verbatim block 
+		'blockVerbOpen'        : '[@'          	 ,
+		'blockVerbClose'       : '@]'            ,
+		'bar1'                 : '----'          ,
+		# URL, email and anchor
+		'url'                   : '\a'           ,
+		'urlMark'               : '[[\a | \a]]'  , # [[ url | text ]]
+		# 'urlMark'               : '[[\a -> \a]]' , # [[ text -> url ]] needs rule in get_tagged_link()
+		'email'                 : '\a'           ,
+		'emailMark'             : '[[\a -> mailto:\a]]',
+		'anchor'                : '[[#\a]]'      ,
+		# Image markup 
+		'img'                   : '\a'           ,
+		#'imgAlignLeft'         : '{{\a }}'       ,
+		#'imgAlignRight'        : '{{ \a}}'       ,
+		#'imgAlignCenter'       : '{{ \a }}'      ,
+		# Table attributes
+		'tableTitleRowOpen'    : '||! '          ,
+		'tableTitleRowClose'   : '||'            ,
+		'tableTitleCellSep'    : ' ||!'          ,
+		'tableRowOpen'         : '||'            ,
+		'tableRowClose'        : '||'            ,
+		'tableCellSep'         : ' ||'           ,
+	},
+	
 	# http://en.wikipedia.org/wiki/Help:Editing
 	'wiki': {
 		'title1'                : '== \a =='        ,
@@ -1626,6 +1695,31 @@ def getRules(config):
 			'blanksaroundpara':1,
 			'blanksaroundverb':1,
 			# 'blanksaroundquote':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+			'blanksaroundnumtitle':1,
+		},
+		'pmw': {
+			'indentverbblock':1, 
+			'spacedlistitem':1,
+			'linkable':1,
+			'keeplistindent':1,
+			'tableable':1,
+			'barinsidequote':1,
+			'tablecellstrip':1,
+			'autotocwithbars':1,
+			'autonumberlist':1,
+			'imgalignable':1,
+			'tabletitlerowinbold':1,
+			'tablecellaligntype':'cell',
+
+			'blanksaroundpara':1,
+			'blanksaroundverb':1,
+			'blanksaroundquote':1,
 			'blanksaroundlist':1,
 			'blanksaroundnumlist':1,
 			'blanksarounddeflist':1,
