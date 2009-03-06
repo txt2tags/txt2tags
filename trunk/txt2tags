@@ -769,15 +769,15 @@ def getTags(config):
 	'dbk': {
 		'paragraphOpen'        : '<para>'                            ,
 		'paragraphClose'       : '</para>'                           ,
-		'title1Open'           : '<sect1><title>\a</title>'          ,
+		'title1Open'           : '~A~<sect1><title>\a</title>'       ,
 		'title1Close'          : '</sect1>'                          ,
-		'title2Open'           : '  <sect2><title>\a</title>'        ,
+		'title2Open'           : '~A~  <sect2><title>\a</title>'     ,
 		'title2Close'          : '  </sect2>'                        ,
-		'title3Open'           : '    <sect3><title>\a</title>'      ,
+		'title3Open'           : '~A~    <sect3><title>\a</title>'   ,
 		'title3Close'          : '    </sect3>'                      ,
-		'title4Open'           : '      <sect4><title>\a</title>'    ,
+		'title4Open'           : '~A~      <sect4><title>\a</title>' ,
 		'title4Close'          : '      </sect4>'                    ,
-		'title5Open'           : '        <sect5><title>\a</title>'  ,
+		'title5Open'           : '~A~        <sect5><title>\a</title>',
 		'title5Close'          : '        </sect5>'                  ,
 		'anchor'               : '<anchor id="\a"/>\n'               ,
 		'blockVerbOpen'        : '<programlisting>'                  ,
@@ -1120,13 +1120,13 @@ def getTags(config):
 		# TOC is automatic
 	},
 	
-	# http://www.pmwiki.org/wiki/PmWiki/TextFormattingRules 
+	# http://www.pmwiki.org/wiki/PmWiki/TextFormattingRules
 	'pmw': {
-		'title1'               : '! \a '       	 ,
-		'title2'               : '!! \a '  	     ,
-		'title3'               : '!!! \a '     	 ,
-		'title4'               : '!!!! \a '    	 ,
-		'title5'               : '!!!!! \a '   	 ,
+		'title1'               : '~A~! \a '      ,
+		'title2'               : '~A~!! \a '  	 ,
+		'title3'               : '~A~!!! \a '    ,
+		'title4'               : '~A~!!!! \a '   ,
+		'title5'               : '~A~!!!!! \a '  ,
 		'blockQuoteOpen'       : '->'            ,
 		'blockQuoteClose'      : '\n'            ,
 		# In-text font 
@@ -1164,7 +1164,7 @@ def getTags(config):
 		'urlMark'               : '[[\a -> \a]]' ,
 		'email'                 : '\a'           ,
 		'emailMark'             : '[[\a -> mailto:\a]]',
-		'anchor'                : '[[#\a]]'      ,
+		'anchor'                : '[[#\a]]\n'    ,
 		# Image markup 
 		'img'                   : '\a'           ,
 		#'imgAlignLeft'         : '{{\a }}'       ,
