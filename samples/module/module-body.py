@@ -5,13 +5,14 @@
 # Details:
 #   The document body is a string.
 #   Headers and config are set with Python code.
+#   This way you can fully control txt2tags behavior.
 #
 
 # Remember to place the 'txt2tags.py' file on the same dir
 import txt2tags
 
 # Here is the marked body text, it must be a list.
-txt = "Hi!\n\nHave a **nice** day.\n\nBye."
+txt = "=Hi!=\nHave a **nice** day.\n\nBye."
 txt = txt.split('\n')
 
 # Set the three header fields
@@ -21,8 +22,9 @@ headers = ['Header 1', 'Header 2', 'Header 3']
 config = txt2tags.ConfigMaster()._get_defaults()
 config['outfile'] = txt2tags.MODULEOUT  # results as list
 config['target'] = 'html'               # target type: HTML
-config['encoding'] = 'iso-8859-1'       # document encoding
-config['css-sugar'] = 1                 # CSS flag
+config['encoding'] = 'UTF-8'            # document encoding
+config['css-sugar'] = 1                 # CSS friendly
+config['toc'] = 1                       # show Table Of Contents
 
 # The Pre (and Post) processing config is a list of lists:
 # [ [this, that], [foo, bar], [patt, replace] ]
@@ -35,6 +37,8 @@ try:
 	headers   = txt2tags.doHeader(headers, config)
 	body, toc = txt2tags.convert(txt, config)
 	footer    = txt2tags.doFooter(config)
+	toc       = txt2tags.toc_tagger(toc, config)
+	toc       = txt2tags.toc_formatter(toc, config)
 	full_doc  = headers + toc + body + footer
 	finished  = txt2tags.finish_him(full_doc, config)
 	print '\n'.join(finished)
