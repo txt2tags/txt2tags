@@ -1161,8 +1161,7 @@ def getTags(config):
 		'bar1'                 : '----'          ,
 		# URL, email and anchor
 		'url'                   : '\a'           ,
-		'urlMark'               : '[[\a | \a]]'  , # [[ url | text ]]
-		# 'urlMark'               : '[[\a -> \a]]' , # [[ text -> url ]] needs rule in get_tagged_link()
+		'urlMark'               : '[[\a -> \a]]' ,
 		'email'                 : '\a'           ,
 		'emailMark'             : '[[\a -> mailto:\a]]',
 		'anchor'                : '[[#\a]]'      ,
