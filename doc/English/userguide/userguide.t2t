@@ -130,7 +130,7 @@ of the supported targets:
 - LaTeX document
 - UNIX man page
 - MagicPoint presentation
-- Wikipedia page
+- Wikipedia page (MediaWiki)
 - Google Wiki page
 - DokuWiki page
 - MoinMoin page
@@ -313,7 +313,8 @@ The following is a list of all the structures supported by txt2tags.
 
   You've heard about the [Wikipedia http://wikipedia.org], right? So you
   don't need to learn yet-another markup syntax. Just stick with txt2tags
-  and let it convert your text to the Wikipedia format.
+  and let it convert your text to the Wikipedia format, called
+  [MediaWiki http://en.wikipedia.org/wiki/MediaWiki].
 
 : **GWIKI**
   Now you can easily paste your project's current documentation into the

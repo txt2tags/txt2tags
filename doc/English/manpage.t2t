@@ -36,7 +36,7 @@ txt2tags - text formatting and conversion tool
 
 **txt2tags** is a GPL format conversion tool written in Python that
 generates //HTML//, //XHTML//, //SGML//, //LaTeX//, //Lout//,
-//Man Page//, //MoinMoin//, //Wikipedia//, //DokuWiki//,
+//Man Page//, //MoinMoin//, //Wikipedia (MediaWiki)//, //DokuWiki//,
 //Google Code Wiki//, //MagicPoint// and //PageMaker//
 documents from a single text file with minimal markup.
 
