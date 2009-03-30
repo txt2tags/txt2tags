@@ -1,0 +1,29 @@
+body {
+	padding		: 3em;
+	line-height	: 140%;
+	font-family	: sans-serif;
+}
+pre {
+	border		: 1px solid #666;
+	background	: #eee;
+	margin		: 2em 4em;
+	padding		: 1em 2em;
+}
+img {
+	border		: 1px dashed #aaa;
+	padding		: 5px;
+}
+table {
+	font-family	: sans-serif;
+	font-size	: smaller;
+}
+td {
+	padding		: .5em 1em;
+}
+th {
+	background-color: #eee;
+}
+blockquote {
+	margin		: 2em 4em;
+	color		: red;
+}
