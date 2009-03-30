@@ -193,64 +193,68 @@ syn region t2tTopAreaNoHead start='\%^\s*$'  end='^[^%]'me=e-1 end='^%!include[^
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " color groups
-hi link t2t_Link       PreProc
-hi link t2t_Component  Statement
-hi link t2t_Delim      Identifier
-hi link t2t_Verb       Type
-hi link t2t_Raw        String
-hi link t2t_Passthru   Special
+hi default link t2t_Link       PreProc
+hi default link t2t_Component  Statement
+hi default link t2t_Delim      Identifier
+hi default link t2t_Verb       Type
+hi default link t2t_Raw        String
+hi default link t2t_Passthru   Special
 "
 " color definitions (specific)
-hi t2tBar         term=bold        cterm=bold        gui=bold
-hi t2tBold        term=bold        cterm=bold        gui=bold
-hi t2tItalic      term=italic      cterm=italic      gui=italic
-hi t2tStrike      term=italic      cterm=italic      gui=italic
-hi t2tUnderline   term=underline   cterm=underline   gui=underline
-hi t2tQuote       term=reverse     cterm=reverse     gui=reverse
-hi t2tTableAlign  term=reverse     cterm=reverse     gui=reverse
-hi t2tComment     ctermfg=brown    guifg=brown
-hi t2tCommentArea ctermfg=brown    guifg=brown
+hi default t2tBar         term=bold        cterm=bold        gui=bold
+hi default t2tBold        term=bold        cterm=bold        gui=bold
+hi default t2tItalic      term=italic      cterm=italic      gui=italic
+hi default t2tStrike      term=italic      cterm=italic      gui=italic
+hi default t2tUnderline   term=underline   cterm=underline   gui=underline
+hi default t2tQuote       term=reverse     cterm=reverse     gui=reverse
+hi default t2tTableAlign  term=reverse     cterm=reverse     gui=reverse
+if &background == "light"
+    hi default t2tComment     ctermfg=brown    guifg=brown
+else
+    hi default t2tComment     ctermfg=brown    guifg=bisque
+endif
+hi default link t2tCommentArea t2tComment 
 "
 " color definitions (using Vim defaults)
-hi link t2tTitle         Error
-hi link t2tNumTitle      Error
+hi default link t2tTitle         Error
+hi default link t2tNumTitle      Error
 " comment the following line to avoid having trailing whitespaces in red
-hi link t2tBlank         Error
-hi link t2tNumber        Number
-hi link t2tPercent       Number
-hi link t2tFoldMark      Special
-hi link t2tTodo          Todo
-hi link t2tCommand       Special
-hi      t2tIncluded      cterm=bold
-hi link t2tTargets       Type
-hi link t2tConfigKey     Special
-hi link t2tConfigValue   NONE
-hi link t2tConfigString  String
-hi link t2tHeaderArea    t2t_Raw
-hi link t2tUrlMark       t2t_Delim
-hi link t2tUrlMarkImg    t2t_Delim
-hi link t2tUrlLabel      t2t_Delim
-hi link t2tTableTit      t2t_Delim
-hi link t2tTableMark     t2t_Delim
-hi link t2tTableBar      t2t_Delim
-hi link t2tEmail         t2t_Link
-hi link t2tUrl           t2t_Link
-hi link t2tUrlLocal      t2t_Link
-hi link t2tTitleRef      t2t_Link
-hi link t2tMacro         t2t_Component
-hi link t2tImg           t2t_Component
-hi link t2tList          t2t_Component
-hi link t2tMacro         t2t_Component
-hi link t2tTitleMark     NONE
-hi link t2tVerbArea      t2t_Verb
-hi link t2tVerb1Line     t2t_Verb
-hi link t2tMonospace     t2t_Verb
-hi link t2tRaw           t2t_Raw
-hi link t2tRaw1Line      t2t_Raw
-hi link t2tRawArea       t2t_Raw
-hi link t2tPassthru      t2t_Passthru
-hi link t2tPassthru1Line t2t_Passthru
-hi link t2tPassthruArea  t2t_Passthru
+hi default link t2tBlank         Error
+hi default link t2tNumber        Number
+hi default link t2tPercent       Number
+hi default link t2tFoldMark      Special
+hi default link t2tTodo          Todo
+hi default link t2tCommand       Special
+hi default      t2tIncluded      cterm=bold
+hi default link t2tTargets       Type
+hi default link t2tConfigKey     Special
+hi default link t2tConfigValue   NONE
+hi default link t2tConfigString  String
+hi default link t2tHeaderArea    t2t_Raw
+hi default link t2tUrlMark       t2t_Delim
+hi default link t2tUrlMarkImg    t2t_Delim
+hi default link t2tUrlLabel      t2t_Delim
+hi default link t2tTableTit      t2t_Delim
+hi default link t2tTableMark     t2t_Delim
+hi default link t2tTableBar      t2t_Delim
+hi default link t2tEmail         t2t_Link
+hi default link t2tUrl           t2t_Link
+hi default link t2tUrlLocal      t2t_Link
+hi default link t2tTitleRef      t2t_Link
+hi default link t2tMacro         t2t_Component
+hi default link t2tImg           t2t_Component
+hi default link t2tList          t2t_Component
+hi default link t2tMacro         t2t_Component
+hi default link t2tTitleMark     NONE
+hi default link t2tVerbArea      t2t_Verb
+hi default link t2tVerb1Line     t2t_Verb
+hi default link t2tMonospace     t2t_Verb
+hi default link t2tRaw           t2t_Raw
+hi default link t2tRaw1Line      t2t_Raw
+hi default link t2tRawArea       t2t_Raw
+hi default link t2tPassthru      t2t_Passthru
+hi default link t2tPassthru1Line t2t_Passthru
+hi default link t2tPassthruArea  t2t_Passthru
 
 "
 let b:current_syntax = 'txt2tags'
