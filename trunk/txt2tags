@@ -4485,6 +4485,7 @@ def get_encoding_string(enc, target):
 	translate = {
 		'tex': {
 			# missing: ansinew , applemac , cp437 , cp437de , cp865
+			'utf-8'       : 'utf8',
 			'us-ascii'    : 'ascii',
 			'windows-1250': 'cp1250',
 			'windows-1252': 'cp1252',
