@@ -1,0 +1,372 @@
+TXT2TAGS
+
+Uzt, 2008
+
+%!target: man
+%!options(html): --mask-email
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%!encoding: utf-8
+
+%!postproc(html): <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
+%!postproc(html): (</STYLE>)  'body { margin:3em               ;} \n\1'
+%!postproc(html): (</STYLE>)  'a    { text-decoration:none     ;} \n\1'
+%!postproc(html): (</STYLE>)  'pre  { background-color:#ffffcc ;} \n\1'
+
+%% LOG
+%%    sep 2003 jic    : creation
+%% 25 sep 2003 anamim : text revision. misspellings, rewording phrases, etc
+%% 01 jun 2004 aurelio: updated to v2.0
+%% 20 jul 2004 jic    : included: settings area, few marks, areas; reorganizing
+%% 22 jul 2004 anamim : revision
+%% 30 ago 2004 aurelio: little typos
+%% 13 nov 2004 jic    : updated to v2.1
+%% 28 dec 2004 aurelio: updated to v2.2
+%% 21 may 2005 aurelio: updated to v2.3
+
+= IZENA =
+
+txt2tags - testu formateatze eta bihurtze tresna
+
+= SINOPSIA =
+
+**txt2tags** [//AUKERA//]... [//FITXATEGIA//]...
+
+= DESCRIBAPENA =
+
+**txt2tags** markatze minimoa duen testu fitxategi bakarretik //HTML//,
+//XHTML//, //SGML//, //LaTeX//, //Lout//, //Man Page//, //MoinMoin//,
+//Wikipedia//, //(MediaWiki)//, //DokuWiki//, //Google Code Wiki//,
+//MagicPoint// eta //PageMaker// dokumentuak sortzen dituen formatuen
+bihurtzailea da, Python-en idatzitakoa.
+
+Erabiltzaileak **txt2tags** marka gutxi batzuk bakarrik jakin behar ditu, oso
+sinpleak, eta testu fitxategi soilak idatzi. Programak lan zakar guztia egiten
+du, etiketa konplikatuak gehituz eta helburuko dokumentuen berezitazunekin
+lehiatuz.
+
+Testu fitxategi berdina helburuko formatu guztietara pasa daiteke, edizio
+gehiagorik gabe. Hau da **txt2tags**en helburua: iturburu BAT, helburu ASKO.
+
+Mesedez, programaren webgunea bisitatu
+//""http://txt2tags.sourceforge.net""// helbidean.
+
+
+= AUKERAK =
+
+:  **-C**, **--config-file**
+konfigurazioa kanpoko fitxategi batetik irakurri (%!includeconf bezala
+dabil)
+
+:      **--css-sugar**
+CSS-rekin jatorrak diren etiketak txertatu HTML eta XHTML helburuentzat
+
+:      **--css-inside**
+CSS fitxategiaren edukiak HTML/XHTML goiburuetan txertatu
+
+:      **--dump-config**
+topatutako konfigurazio guztia inprimatu eta irten
+
+:      **--dump-source**
+dokumentuaren iturburua inprimatu, barneratzeko guztiak txertatuta
+
+:      **--encoding**
+ezarri irteera fitxategiaren kodeketa (utf-8, iso-8859-1, etab.)
+
+:      **--gui**
+Tk Interfaze Grafikoa abiatu
+
+:  **-h**, **--help**
+laguntza mezua inprimatu eta irten
+
+:  **-H**, **--no-headers**
+Goiburukoa, izenburua eta oinaren informazioa kendu
+
+:      **--headers**
+goiburukoa, izenburua eta oinaren informazioa erakutsi (lehenetsiz gaituta)
+
+:  **-i**, **--infile**=//FITX//
+FITX zehaztu sarrera fitxategi bezela ('-' STDIN-entzako)
+
+:      **--mask-email**
+epostak spam robotengandik ezkutatu. x@y.z <x (a) y z> bihurtzen da
+
+:  **-n**, **--enum-title**
+izenburu lerro guztiak zenbakitu: 1, 1.1, 1.1.1, etab.
+
+:      **--no-dump-config**
+konfigurazio inprimatzeko ekintza atzera bota
+
+:      **--no-dump-source**
+iturburua inprimatzeko ekintza atzera bota
+
+:      **--no-encoding**
+kodeketaren ezarpena garbitu
+
+:      **--no-enum-title**
+izenburuen zenbakitze automatikoa ezgaitu
+
+:      **--no-infile**
+aurreko infile guztiak kendu
+
+:      **--no-mask-email**
+epostak erakutzi, --mask-email aukera ezgaituz
+
+:      **--no-outfile**
+aurreko outfile guztiak kendu
+
+:      **--no-quiet**
+mezuak erakutsi, --quiet aukera ezgaituz
+
+:      **--no-rc**
+ez irakurri ~/.txt2tagsrc erabiltzailearen konfigurazio fitxategia
+
+:      **--no-style**
+estilo ezarpena garbitu
+
+:      **--no-toc**
+do not add TOC (Table of Contents) to target document
+ez gehitu TOC-a (Edukien Taula) helburuko dokumentura
+
+:      **--no-toc-only**
+--toc-only aukera ezgaitu
+
+:  **-o**, **--outfile**=//FITX//
+FITX zehaztu irteera fitxategiaren izen bezala ('-' STDOUT-entzako)
+
+:  **-q**, **--quiet**
+modu geldia, irteera mezurik ez (erroreak ezik)
+
+:      **--rc**
+erabiltzailearen ~/.txt2tagsrc konfigurazio fitxategia irakurri (lehenetsiz gaituta)
+
+:      **--style**=//FILE//
+FITX erabili dokumentuaren estilo moduan (HTML-ko CSS-ak bezala)
+
+: **-t**, **--target**=//TYPE//
+helburuko dokumentuaren mota ezarri. Momentuz
+jasandakoak: html, xhtml, sgml, tex, lout, man,
+mgp, wiki, gwiki, doku, moin, pm6, txt
+
+:      **--toc**
+TOC (Edukien Taula) helburu dokumentura gehitu
+
+:      **--toc-level**=//N//
+TOC-aren maila (sakonera) maximoa N-n ezarri
+
+:      **--toc-only**
+dokumentuaren TOC-a inprimatu eta irten
+
+:  **-v**, **--verbose**
+bihurketaren bitartean mezu informatiboak inprimatu
+
+:  **-V**, **--version**
+programaren bertsioa inprimatu eta irten
+
+
+Lehenetsiz, bihurtutako irteera 'infile.<helburua>'-n gordetzen da.
+--outfile erabili irteera fitxategi izen bat derrigortzeko.
+Sarrera fitxategia '-' bada, STDIN-etik irakurri.
+Irteera fitxategia '-' bada, STDOUT-en idatzi.
+
+
+=  EGITURA  =
+
+Txt2tags iturburu fitxategiak hiru area eduki ditzake:
+
+: **Goiburukoa**
+Lehenbiziko hiru lerroak. Dokumentuaren identifikaziorako erabiltzen dira.
+Ez badituzu goiburukoak behar lehenbizko hiru lerroak zuriz hutsi behar
+dituzu edo ``no-header`` aukera zehaztu.
+
+: **Ezarpenak**
+Laugarren lerroan hasten da. Ezarpen guztiak ""%!gako-hitza: balioa"" formatua
+dute. Ezarpenak konfigurazio fitxategi batean edo komando lerroan zehaz
+daitezke batia ere.
+
+: **Gorputza**
+Zure benetako dokumentuaren iturburua! txt2tags fitxategi egoki bat
+edukitzeko eskatzen den area bakarra.
+
+
+=  EZARPENAK  =
+
+Iturburu fitxategi baten eraldaketa bi modu ezberdinetan pertsonalizatu
+daiteke. Kanpoko konfigurazioak RC fitxategitik (``~/.txt2tagsrc``) edo
+erabiltzaileak zehaztutako beste fitxategitik har daitzeke. Barruko
+konfigurazioak ezarpenekin egiten dira. Biek sintaxi berdina erabiltzen
+dute:
+
+: **%!target:**
+helburu naguzia zehazten du
+
+: **%!options(target):**
+helburu bakoitzerako aukerak zehazten ditu
+
+: **%!include: file.t2t**
+includes a txt2tags file in the document
+
+: **%!include: ""``fitxategia.txt``""**
+testu fitxategi bat dokumentuan txertatzen dut (hitzez hitz)
+
+: **%!include: ''fitxategia.html''**
+dokumentuan fitxategi literala txertatzen du, dagoen bezala
+
+: **%!style:**
+XHTML eta HTML helburuentzat CSS (Cascading Style Sheets) zehazteko edo TEX
+helburuentzako \usepackage moduluak kargatzeko
+
+: **%!encoding:**
+karaktere biilduma ezartzeko (iso-8859-1 bezala) i18n-rentzako
+
+: **%!includeconf:**
+kanpoko fitxategi batetik unekoan ezarpenak txertatzeko erabiltzen da
+
+: **%!guicolors:**
+GUI interfazerako (Tk) koloreen ezarpenak
+
+: **%!preproc:**
+dokumentua parseatu baino **LEHEN** zure pertsonalizatutako filtroa (makroa)
+exekutatuko da
+
+: **%!postproc:**
+dokumentua parseatu **ONDOREN** zure pertsonalizatutako filtroa (makroa)
+exekutatuko da
+
+
+== EZARPENEN ERREGELAK ==
+
+- Ezarpenak Ezarpen Arean bakarrik jar daitezke, eta dokumentuaren
+  Gorputzan topatzen badira iruzkin soil bezela antzemango dira. Salbuespena
+  include da, Gorputzean agertu daitekeelarik.
+
+- Gako-hitza Konfigurazio Arean behin baino gehiagotan agertzen bada, agertzen
+  den azkena izango da kontutan hartzen dena. Salbuespena: option, preproc eta
+  postproc, metakorrak direnak.
+
+- Gako-hitz okerra duten ezarpenak iruzkin soil bezela antzemango dira.
+
+- Ezarpen hauek txt2tagsrc fitxategiarekiko lehentasuna dute, baina ez komando
+  lerroko ezarpenekiko.
+
+
+= SINTAXIA =
+
+Dokumentuaren iturburuak (testu soileko fitxategia) markatze sintaxi oso sinple
+bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
+
+
+== Oinarrizkoa ==
+```
+Goiburukoak               Iturburu fitxategiaren lehenbizko 3 lerroak
+Izenburua                = hitzak =
+Zenbakitutako izenburua  + hitzak +
+Paragrafoa                hitzak
+```
+
+== Beautifiers ==
+```
+Lodia             **hitzak**
+Etzana            //hitzak//
+Azpimarratuta     __hitzak
+Marratua          --hitzak--
+Tarte bakarrekoa  ``hitzak``
+```
+
+== Text Blocks ==
+```
+Aipamena                <TAB>hitzak
+Zerrenda                - hitzak
+Zenbakitutako zerrenda  + hitzak
+Definizioen zerrenda    : hitzak
+Hitzez hitzeko lerroa   ``` hitzak
+Hitzez hitzeko area     ```<LerroJauzia> lerroak <LerroJauzia>```
+Lerro gordina           """ hitzak
+Area gordina            """<LerroJauzia> lerroak <LerroJauzia>"""
+Taula                   | gelaxka1 | gelaxka2 | gelaxka3...
+```
+
+== Other ==
+```
+Lerro bereizlea   -----------------------...
+Lerro lodia       =======================...
+Estekak           [etiketa url]
+Irudia            [fitxategia.jpg]
+Testu gordina     ""hitzak""
+Iruzkina          % iruzkinak
+```
+
+Mesedez, irakurri Txt2tags Erabiltzaile Gida (programaren dokumentazio
+direktorioan) marka bakoitzaren deskribapen zehatzerako.
+
+
+= ADIBIDEAK =
+
+``fitx.t2t`` markadun fitxategia idatzi duzula kontutan hartuta, bihurketa
+dibertigarri batzuk egin ditzagun.
+
+: **HTMLra bihurtu, fitx.html-n gordez**
+``$ txt2tags -t html fitx.t2t``
+
+: **Berdina, berbideraketak erabiliz**
+``$ txt2tags -t html -o - fitx.t2t > fitx.html``
+
+: **Edukien Taula txertatuz**
+``$ txt2tags -t html --toc fitx.t2t``
+
+: **Edukien Taula txertatuz eta izenburuak zenbakituz**
+``$ txt2tags -t html --toc --enum-title fitx.t2t``
+
+: **Edukiei begirada azkarra**
+``$ txt2tags --toc-only fitx.t2t``
+
+: **Lerro bakarreko froga azkarra STDIN-etik**
+``$ (echo ; echo "**lodia**") | txt2tags -t html -H -``
+
+
+= MAKROAK =
+
+: ""%%date""
+Uneko data txertatzea ahalbidetzen du, UUUUHHEE formatuan.
+Formatu berezia zehaztu ahal da ""%%date(formatu-katea)"" sintaxia erabiliz.
+
+: ""%%infile""
+Iturburu fitxategiari buruzko informazioa lortzeko. Formatu berezia zehaztu
+daiteke ""%%infile(format-string)"" sintaxia erabiliz.
+
+Erabilgarria Oinean ""[Ikusi iturburua %%infile]"" bezalako estekak jartzeko,
+fitxategiaren izena aldatuta ere erreferentzia mantentzeko.
+
+: ""%%mtime""
+Iturburu fitxategia noiz aldatu den jakiteko. ""%%date"" makroaren formatu
+berdina erabiltzen du.
+
+: ""%%outfile""
+Helburuko fitxategiari buruzko informazioa eskuratzeko. Formatu berezia
+zehaztu daiteke ""%%outfile(formatu-katea)"" sintaxia erabiliz.
+
+Erabilgarria bere buruari buruz aipamena egiteko, "Hau %%outfile fitxategia
+da" modukoa, fitxategi izena aldatuta ere erreferentziak mantenduko direlarik.
+
+: ""%%toc""
+Makro honek TOC-a non agertu behar duen zehazten du. Dokumentuan nahi duzun
+lekuan jar dezakezu, nahi beste aldiz.
+
+OHARRA: ""%%toc"" bakarrik ""--toc"" aukera erabilita hedatuko da.
+
+
+= EGILEA =
+
+Aurelio Jargas-ek <verde@aurelio.net> idatzia eta mantendua
+
+Man orri hau Jose Inacio Coelho-k <jic@technologist.com> idatzi du testu
+fitxategi moduan, ondoren **txt2tags**ekin man formatura pasatuz.
+
+
+= COPYRIGHT =
+
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+
+Hau software librea da; begiratu iturburua kopiatzeko balditzetarako. EZ dago
+bermerik, ez SALTZEARI DAGOZKIONAK ezta HELBURU ZEHATZ BATERAKO
+ERABILGARRITASUNA ere.
