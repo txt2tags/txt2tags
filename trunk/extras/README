@@ -31,6 +31,10 @@ html-update.sh
 	that has changed since the last conversion. There some
 	options to use, as an interactive mode.
 
+markitup
+	A Txt2tags markup set for markItUp!, the jQuery universal
+	markup editor.
+
 nanorc
 	The nano editor syntax highlight rules for txt2tags
 	marks.
