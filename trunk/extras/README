@@ -34,6 +34,7 @@ html-update.sh
 markitup
 	A Txt2tags markup set for markItUp!, the jQuery universal
 	markup editor.
+	Demo : http://etxt2tags.appspot.com/
 
 nanorc
 	The nano editor syntax highlight rules for txt2tags
