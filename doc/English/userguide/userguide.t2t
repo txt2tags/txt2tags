@@ -1538,7 +1538,7 @@ General Rules:
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN **Raw:**
-  - Two double quotes around, ``""""like this""""``
+  - Two double quotes around, ``""like this""``
   - Marks glued with the contents (no spaces)
 - MARKSYN **Raw Line:**
   - A line beginning with 3 consecutive double quotes, ``""" like this``
