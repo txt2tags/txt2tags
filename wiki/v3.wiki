@@ -41,6 +41,7 @@ Updates:
  # %%header1, %%header2, %%header3 macros
  # multiline-aware pre/postprocs (expand internal \n)
  # Templates (see patch from Emmanuel Godard)
+ # Clean the code. I love the project but it's pretty hackish and quite difficult to reuse in other applications. (by griff.rees)
 
 = New Name? =
 
