@@ -39,7 +39,7 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
  # {{{$HOME/txt2tags}}} folder to store things: file history, command history, style files, includes, config, run count, allowed files for %!exec, alternative header templates, --split templates, plugins
 Updates:
  # %%header1, %%header2, %%header3 macros
- # multiline-aware pre/postprocs (expand internal \n)
+ # multiline-aware pre/postprocs (expand internal \n) (see issue #25)
  # Templates (see patch from Emmanuel Godard)
  # Clean the code. I love the project but it's pretty hackish and quite difficult to reuse in other applications. (by griff.rees)
 
