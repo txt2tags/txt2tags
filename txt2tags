@@ -1351,7 +1351,7 @@ def getTags(config):
 		# Table with no cellpadding
 		htmltags['tableOpen'] = htmltags['tableOpen'].replace(' CELLPADDING="4"', '')
 		# DIVs
-		htmltags['tocOpen' ] = '<DIV CLASS="toc" ID="toc">'
+		htmltags['tocOpen' ] = '<DIV CLASS="toc">'
 		htmltags['tocClose'] = '</DIV>'
 		htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
 		htmltags['bodyClose']= '</DIV>'
