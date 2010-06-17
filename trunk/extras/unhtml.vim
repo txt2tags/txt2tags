@@ -71,7 +71,7 @@ g/<\s*a\s[^>]*>[^<]*$/join
 %s,<\s*a\s\+name=[^>]*>,,ge
 %s,</\=\s*\(html\|body\|head\|title\)\(\s[^>]*\)\=\s*>,,ge
 " mmmmm, dangerous! it removes all remaining HTML tags
-%s,<[^>]*>,,ge
+"%s,<[^>]*>,,ge
 " clear just-blanks lines
 %s,^\s*$,,
 " special entities
