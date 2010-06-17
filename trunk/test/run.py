@@ -13,7 +13,7 @@
 # it will be stored on the "error" subdir.
 #
 # TIP: to quickly check the errors: diff -u marks/{ok,error}
-# TIP: for f in */error/*.html; do diff -u ${f/error/ok} $f; done
+# TIP: for f in */error/*; do diff -u ${f/error/ok} $f; done
 
 import os, sys, string
 import lib
