@@ -6,7 +6,9 @@
 <CENTER>
 </CENTER>
 
+
 <H2>Syntax: Marks are greedy and must be "glued" with contents</H2>
+
 <P>
 <br> <B>b</B>         <I>i</I>         <U>u</U>         <S>s</S>         <CODE>m</CODE>         r        t
 <br> <B>bo</B>        <I>it</I>        <U>un</U>        <S>st</S>        <CODE>mo</CODE>        ra       tg
@@ -18,7 +20,9 @@
 <br> <B>**bold**</B>  <I>//ital//</I>  <U>__undr__</U>  <S>--strk--</S>  <CODE>``mono``</CODE>  ""raw""  ''tggd''
 <br> <B>*bold*</B>    <I>/ital/</I>    <U>_undr_</U>    <S>-strk-</S>    <CODE>`mono`</CODE>    "raw"    'tggd'
 </P>
+
 <H2>Syntax: Repetition is greedy</H2>
+
 <P>
 <br>  <B>*</B>         <I>/</I>         <U>_</U>         <S>-</S>         <CODE>`</CODE>        "        '
 <br>  <B>**</B>        <I>//</I>        <U>__</U>        <S>--</S>        <CODE>``</CODE>       ""       ''
@@ -27,12 +31,16 @@
 <br>  <B>*****</B>     <I>/////</I>     <U>_____</U>     <S>-----</S>     <CODE>`````</CODE>    """""    '''''
 <br>  <B>******</B>    <I>//////</I>    <U>______</U>    <S>------</S>    <CODE>``````</CODE>   """"""   ''''''
 </P>
+
 <H2>Invalid: No contents</H2>
+
 <P>
 <br>     ****          ////          ____          ----          ````         """"         ''''
 <br>     ** **         // //         __ __         -- --         `` ``        "" ""        '' ''
 </P>
+
 <H2>Invalid: Contents not "glued" with marks</H2>
+
 <P>
 <br>  ** bold**     // ital//     __ undr__     -- strk--     `` mono``    "" raw""     '' tggd''
 <br>  **bold **     //ital //     __undr __     --strk --     ``mono ``    ""raw ""     ''tggd ''

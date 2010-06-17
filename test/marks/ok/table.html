@@ -6,7 +6,9 @@
 <CENTER>
 </CENTER>
 
+
 <H2>Syntax: Lines starting with a pipe |</H2>
+
 <TABLE CELLPADDING="4">
 <TR>
 <TD>Cell 1</TD>
@@ -14,6 +16,7 @@
 </TABLE>
 
 <H2>Syntax: Extra pipes separate cells</H2>
+
 <TABLE CELLPADDING="4">
 <TR>
 <TD>Cell 1</TD>
@@ -23,6 +26,7 @@
 </TABLE>
 
 <H2>Syntax: With a trailing pipe, make border</H2>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD>Cell 1</TD>
@@ -32,6 +36,7 @@
 </TABLE>
 
 <H2>Syntax: Table lines starting with double pipe are heading</H2>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Cell 1</TH>
@@ -41,6 +46,7 @@
 </TABLE>
 
 <H2>Align: Spaces before the leading pipe centralize the table</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TD>Cell 1</TD>
@@ -50,6 +56,7 @@
 </TABLE>
 
 <H2>Align: Spaces inside the cell denote its alignment</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Heading</TH>
@@ -74,6 +81,7 @@
 </TABLE>
 
 <H2>Span: Column span is defined by extra pipes at cell closing</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>1</TH>
@@ -101,6 +109,7 @@
 </TABLE>
 
 <H2>Test: Empty cells are placed as expected</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TD>0</TD>
@@ -129,6 +138,7 @@
 </TABLE>
 
 <H2>Test: Lines with different number of cells</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TD>1</TD>
@@ -158,6 +168,7 @@
 </TABLE>
 
 <H2>Test: Empty cells + Span + Messy cell number = Fun!</H2>
+
 <TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TD ALIGN="right">Jan</TD>
@@ -274,6 +285,7 @@
 </TABLE>
 
 <H2>Test: Lots of cells at the same line</H2>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD>0</TD>
@@ -312,6 +324,7 @@
 </TABLE>
 
 <H2>Test: Empty lines</H2>
+
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TD></TD>
@@ -325,6 +338,7 @@
 </TABLE>
 
 <H2>Invalid: There must be at least one space around the pipe</H2>
+
 <P>
 |this|is|not|a|table|
 </P>
@@ -334,7 +348,9 @@
 <P>
 |this |is |not |a |table |
 </P>
+
 <H2>Invalid: You must use spaces, not TABs</H2>
+
 <P>
 |	this	|	is	|	not	|	a	|	table	|
 </P>
