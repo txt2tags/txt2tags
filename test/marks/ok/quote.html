@@ -6,7 +6,9 @@
 <CENTER>
 </CENTER>
 
+
 <H2>Syntax: TAB defines quote</H2>
+
 	<BLOCKQUOTE>
 	To quote a paragraph, just prefix it by a TAB
 	character. All the lines of the paragraph must
@@ -15,7 +17,9 @@
 <P>
 Any non-tabbed line closes the quote block.
 </P>
+
 <H2>Nesting: Creating deeper quotes</H2>
+
 	<BLOCKQUOTE>
 	The number of leading TABs identifies the quote
 	block depth. This is quote level 1.
@@ -31,7 +35,9 @@ Any non-tabbed line closes the quote block.
 			</BLOCKQUOTE>
 		</BLOCKQUOTE>
 	</BLOCKQUOTE>
+
 <H2>Nesting: Reverse nesting works</H2>
+
 	<BLOCKQUOTE>
 		<BLOCKQUOTE>
 			<BLOCKQUOTE>
@@ -45,7 +51,9 @@ Any non-tabbed line closes the quote block.
 		</BLOCKQUOTE>
 	Until the level 1.
 	</BLOCKQUOTE>
+
 <H2>Nesting: Random count</H2>
+
 	<BLOCKQUOTE>
 		<BLOCKQUOTE>
 			<BLOCKQUOTE>
@@ -73,7 +81,9 @@ Any non-tabbed line closes the quote block.
 			</BLOCKQUOTE>
 		</BLOCKQUOTE>
 	</BLOCKQUOTE>
+
 <H2>Nesting: When not supported</H2>
+
 	<BLOCKQUOTE>
 	Some targets (as sgml) don't support the
 	nesting of quotes. There is only one quote
@@ -84,17 +94,23 @@ Any non-tabbed line closes the quote block.
 		block, it always will be level 1.
 		</BLOCKQUOTE>
 	</BLOCKQUOTE>
+
 <H2>Syntax: Spaces after TAB</H2>
+
 	<BLOCKQUOTE>
 	  Spaces AFTER the TAB character are allowed.
 	  But be careful, it can be confusing.
 	</BLOCKQUOTE>
+
 <H2>Invalid: Spaces before TAB</H2>
+
 <P>
   	Spaces BEFORE the TAB character
   	invalidate the mark. It's not quote.
 </P>
+
 <H2>Invalid: Paragraphs inside</H2>
+
 	<BLOCKQUOTE>
 	Paragraph breaks inside a quote aren't
 	possible.
@@ -105,7 +121,9 @@ Any non-tabbed line closes the quote block.
 	paragraphs, not a quote block with
 	two paragraphs inside.
 	</BLOCKQUOTE>
+
 <H2>Closing: EOF closes the open block</H2>
+
 	<BLOCKQUOTE>
 	The end of the file (EOF) closes the
 	currently open quote block.
