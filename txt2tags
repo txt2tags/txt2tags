@@ -4609,16 +4609,16 @@ def convert_this_files(configs):
 			for line in source_head+source_conf+target_body:
 				print line
 			return
+		# Compose the target file Footer
+		Message(_("Composing target Footer"),1)
+		if TARGET not in ['txt', 'art']: 
+			target_foot = doFooter(myconf)
 		# Make TOC (if needed)
 		Message(_("Composing target TOC"),1)
 		tagged_toc  = toc_tagger(marked_toc, myconf)
 		target_toc  = toc_formatter(tagged_toc, myconf)
 		target_body = toc_inside_body(target_body, target_toc, myconf)
 		if not AUTOTOC and not myconf['toc-only']: target_toc = []
-		# Compose the target file Footer
-		Message(_("Composing target Footer"),1)
-		if TARGET not in ['txt', 'art']: 
-			target_foot = doFooter(myconf)
 		# Finally, we have our document
 		outlist = target_head + target_toc + target_body + target_foot
 		# If on GUI, abort before finish_him
