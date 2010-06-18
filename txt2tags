@@ -234,7 +234,7 @@ _("      --toc-only      print document TOC and exit"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
 _("  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"),
-'                      %s' % ', '.join(AA_LCHARS),
+'                      %s' % ','.join(AA_LCHARS),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -251,7 +251,8 @@ _("Turn OFF options:"),
 "     --no-css-sugar, --no-css-inside, --no-quiet, --no-dump-config",
 "     --no-dump-source",
 '',
-_("Example:\n     %s -t html --toc myfile.t2t") % my_name,
+_("Example:"),
+"     %s -t html --toc %s" % (my_name, _("file.t2t")),
 '',
 _("By default, converted output is saved to 'infile.<target>'."),
 _("Use --outfile to force an output file name."),
@@ -2615,8 +2616,10 @@ class ConfigMaster:
 			# We *need* a target
 			if not target:
 				Error(_('No target specified (try --help)') + '\n\n' +
-				_('Maybe trying to convert an old v1.x file?'))
+				_('Please inform a target using the -t option or the %!target command.') + '\n' +
+				_('Example:') + ' %s -t html %s' % (my_name, _('file.t2t')))
 			# And of course, an infile also
+			# TODO#1: It seems that this checking is never reached
 			if not config.get('infile'):
 				Error(_('Missing input file (try --help)'))
 			# Is the target valid?
@@ -5669,7 +5672,11 @@ def exec_command_line(user_cmdline=[]):
 		Message(_("We are on Command Line interface"),1)
 		
 		# Called with no arguments, show error
-		if not infiles: Error(_('Missing input file (try --help)'))
+		# TODO#1: this checking should be only in ConfigMaster.sanity()
+		if not infiles:
+			Error(_('Missing input file (try --help)') + '\n\n' +
+			_('Please inform an input file (.t2t) at the end of the command.') + '\n' +
+			_('Example:') + ' %s -t html %s' % (my_name, _('file.t2t')))
 		
 		convert_this_files(infiles_config)
 	
