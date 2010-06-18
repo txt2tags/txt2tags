@@ -4279,7 +4279,7 @@ def doFooter(config):
 def doEscape(target,txt):
 	"Target-specific special escapes. Apply *before* insert any tag."
 	tmpmask = 'vvvvThisEscapingSuxvvvv'
-	if target in ('html','sgml','xhtml'):
+	if target in ('html','sgml','xhtml','dbk'):
 		txt = re.sub('&','&amp;',txt)
 		txt = re.sub('<','&lt;',txt)
 		txt = re.sub('>','&gt;',txt)
