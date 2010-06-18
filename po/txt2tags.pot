@@ -1,14 +1,17 @@
+# txt2tags messages
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2006-07-31 16:16-0300\n"
+"Project-Id-Version: txt2tags 2.6b\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
 
 msgid "HTML page"
 msgstr ""
@@ -17,6 +20,9 @@ msgid "XHTML page"
 msgstr ""
 
 msgid "SGML document"
+msgstr ""
+
+msgid "DocBook document"
 msgstr ""
 
 msgid "LaTeX document"
@@ -31,6 +37,18 @@ msgstr ""
 msgid "MagicPoint presentation"
 msgstr ""
 
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
+
 msgid "MoinMoin page"
 msgstr ""
 
@@ -38,6 +56,12 @@ msgid "PageMaker document"
 msgstr ""
 
 msgid "Plain Text"
+msgstr ""
+
+msgid "Ascii Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -88,6 +112,9 @@ msgstr ""
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr ""
 
+msgid "  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"
+msgstr ""
+
 msgid "  -C, --config-file=F read config from file F"
 msgstr ""
 
@@ -118,7 +145,10 @@ msgstr ""
 msgid "Turn OFF options:"
 msgstr ""
 
-msgid "Example:\n     %s -t html --toc myfile.t2t"
+msgid "Example:"
+msgstr ""
+
+msgid "file.t2t"
 msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
@@ -175,7 +205,7 @@ msgstr ""
 msgid "No target specified (try --help)"
 msgstr ""
 
-msgid "Maybe trying to convert an old v1.x file?"
+msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
 msgid "Missing input file (try --help)"
@@ -214,6 +244,9 @@ msgstr ""
 msgid "OFF"
 msgstr ""
 
+msgid "ON"
+msgstr ""
+
 msgid "RC file"
 msgstr ""
 
@@ -224,9 +257,6 @@ msgid "command line"
 msgstr ""
 
 msgid "RAW config for %s"
-msgstr ""
-
-msgid "ON"
 msgstr ""
 
 msgid "Full PARSED config"
@@ -256,10 +286,10 @@ msgstr ""
 msgid "Composing target Body"
 msgstr ""
 
-msgid "Composing target TOC"
+msgid "Composing target Footer"
 msgstr ""
 
-msgid "Composing target Footer"
+msgid "Composing target TOC"
 msgstr ""
 
 msgid "Saving results to the output file"
@@ -271,10 +301,10 @@ msgstr ""
 msgid "Invalid PreProc filter replacement"
 msgstr ""
 
-msgid "txt2tags files"
+msgid "All files"
 msgstr ""
 
-msgid "All files"
+msgid "txt2tags files"
 msgstr ""
 
 msgid "Close"
@@ -352,6 +382,9 @@ msgstr ""
 msgid "Convert!"
 msgstr ""
 
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
+
 msgid "Txt2tags %s processing begins"
 msgstr ""
 
@@ -371,6 +404,9 @@ msgid "txt2tags ERROR!"
 msgstr ""
 
 msgid "We are on Command Line interface"
+msgstr ""
+
+msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
