@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2005-05-21 13:09-0300\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
 "PO-Revision-Date: 2005-09-05 12:00-0200\n"
 "Last-Translator: manne <manne@somedomain>\n"
 "Language-Team: de team <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "HTML page"
@@ -18,6 +18,9 @@ msgstr "XHTML Seite"
 msgid "SGML document"
 msgstr "SGML Dokument"
 
+msgid "DocBook document"
+msgstr ""
+
 msgid "LaTeX document"
 msgstr "LaTeX Dokument"
 
@@ -28,7 +31,19 @@ msgid "UNIX Manual page"
 msgstr "UNIX Manual page"
 
 msgid "MagicPoint presentation"
-msgstr "MagicPoint Präsentation"
+msgstr "MagicPoint PrÃ¤sentation"
+
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
 
 msgid "MoinMoin page"
 msgstr "MoinMoin Seite"
@@ -39,6 +54,12 @@ msgstr "PageMaker Dokument"
 msgid "Plain Text"
 msgstr "Normaler Text"
 
+msgid "Ascii Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s Version %s <%s>"
 
@@ -47,31 +68,27 @@ msgstr "Eingabezeile: %s [OPTIONS] [infile.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
-"  -t, --target=TYPE     wähle das Zielformat. Zur Zeit werden unterstützt:"
+"  -t, --target=TYPE     wÃ¤hle das Zielformat. Zur Zeit werden unterstÃ¼tzt:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
 msgstr ""
-"  -i, --infile=FILE   nimm FILE als Bezeichner für die Quelldatei ('-' für "
+"  -i, --infile=FILE   nimm FILE als Bezeichner fÃ¼r die Quelldatei ('-' fÃ¼r "
 "STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
-"  -o, --outfile=FILE  nimm FILE als Bezeichner für die Ausgabedatei ('-' für "
+"  -o, --outfile=FILE  nimm FILE als Bezeichner fÃ¼r die Ausgabedatei ('-' fÃ¼r "
 "STDOUT)"
-
-msgid "  -n, --enum-title    enumerate all title lines as 1, 1.1, 1.1.1, etc"
-msgstr ""
-"  -n, --enum-title    Nummerierung der Überschriften (1, 1.1, 1.1.1, usw)"
 
 msgid "  -H, --no-headers    suppress header, title and footer contents"
 msgstr ""
-"  -H, --no-headers    unterdrücke Kopfzeilen, Überschriften und Fusszeilen"
+"  -H, --no-headers    unterdrÃ¼cke Kopfzeilen, Ãœberschriften und Fusszeilen"
 
 msgid ""
 "      --headers       show header, title and footer contents (default ON)"
 msgstr ""
 "      --headers       zeige Kopfzeilen, Titel und Fusszeilen an "
-"(standardmässig eingeschaltet)"
+"(standardmÃ¤ssig eingeschaltet)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
@@ -79,18 +96,18 @@ msgstr ""
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr ""
-"      --style=FILE    benutze die Datei FILE für die Ausgabeformatierung "
+"      --style=FILE    benutze die Datei FILE fÃ¼r die Ausgabeformatierung "
 "(wie HTML CSS)"
 
 msgid ""
 "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
 msgstr ""
-"      --css-sugar     CSS freundliche Tags für HTML und XHTML Zielformate "
-"einfügen"
+"      --css-sugar     CSS freundliche Tags fÃ¼r HTML und XHTML Zielformate "
+"einfÃ¼gen"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr "      --css-inside     CSS Datei Inhalte in HTML/XHTML Header einfügen"
+msgstr "      --css-inside     CSS Datei Inhalte in HTML/XHTML Header einfÃ¼gen"
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
@@ -100,7 +117,7 @@ msgstr ""
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
 msgstr ""
-"      --toc           Füge ein Inhaltsverzeichnis (TOC) der Zieldatei hinzu"
+"      --toc           FÃ¼ge ein Inhaltsverzeichnis (TOC) der Zieldatei hinzu"
 
 msgid "      --toc-only      print document TOC and exit"
 msgstr ""
@@ -112,13 +129,22 @@ msgstr ""
 "      --toc-level=N   Setze die maximale Tiefe der Gliederungsebenen im "
 "Inhaltsverzeichnis auf den Wert N"
 
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr ""
+"  -n, --enum-title    Nummerierung der Ãœberschriften (1, 1.1, 1.1.1, usw)"
+
+msgid ""
+"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
+"order:"
+msgstr ""
+
 msgid "  -C, --config-file=F read config from file F"
 msgstr "  -C, --config-file=F Konfiguration von der Datei F einlesen"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 msgstr ""
 "      --rc            Einlesen der Benutzerkonfigurationsdatei ~/.txt2tagsrc "
-"(standardmässig eingeschaltet)"
+"(standardmÃ¤ssig eingeschaltet)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           Das grafische Eingabeinterface aktivieren"
@@ -126,11 +152,11 @@ msgstr "      --gui           Das grafische Eingabeinterface aktivieren"
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr ""
 "  -q, --quiet         Ausser den Fehlermeldungen werden jegliche Meldungen "
-"unterdrückt"
+"unterdrÃ¼ckt"
 
 msgid "  -v, --verbose       print informative messages during conversion"
 msgstr ""
-"  -v, --verbose       Programmeldungen während der Verarbeitung anzeigen"
+"  -v, --verbose       Programmeldungen wÃ¤hrend der Verarbeitung anzeigen"
 
 msgid "  -h, --help          print this help information and exit"
 msgstr ""
@@ -147,21 +173,22 @@ msgstr ""
 "dann das Programm beendet."
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr "      --dump-source   Anzeige des Quelldokuments, eingefügte Dokumente werden expandiert"
+msgstr ""
+"      --dump-source   Anzeige des Quelldokuments, eingefÃ¼gte Dokumente "
+"werden expandiert"
 
 msgid "Turn OFF options:"
 msgstr "Schalten Sie Optionen aus:"
 
-msgid ""
-"Example:\n"
-"     %s -t html --toc myfile.t2t"
+msgid "Example:"
+msgstr "Beispiel:"
+
+msgid "file.t2t"
 msgstr ""
-"Beispiel:\n"
-"     %s -t html --toc myfile.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr ""
-"Standardmässig wird die gewandelte Ausgabe in die Datei 'infile.<target> "
+"StandardmÃ¤ssig wird die gewandelte Ausgabe in die Datei 'infile.<target> "
 "gespeichert'"
 
 msgid "Use --outfile to force an output file name."
@@ -210,13 +237,13 @@ msgid "Scanning source document CONF area"
 msgstr "CONF Bereich der Quelldatei wird bearbeitet"
 
 msgid "Added config %s : %s"
-msgstr "Konfiguration hinzugefügt %s : %s"
+msgstr "Konfiguration hinzugefÃ¼gt %s : %s"
 
 msgid "No target specified (try --help)"
 msgstr "Kein Ziel angegeben (Hilfefunktion --help benutzen)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Kann es sein, dass Sie versuchen, eine alte v1.x Datei zu wandeln?"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr ""
 
 msgid "Missing input file (try --help)"
 msgstr "Keine Quelldatei angegeben (Hilfefunktion --help benutzen)"
@@ -234,7 +261,7 @@ msgid "Input and Output files are the same: %s"
 msgstr "Quell- und Zieldatei sind identisch: %s"
 
 msgid "Added the following keys: %s"
-msgstr "Folgende Schlüssel hinzugefügt: %s"
+msgstr "Folgende SchlÃ¼ssel hinzugefÃ¼gt: %s"
 
 msgid "Invalid CONFIG line on %s"
 msgstr "Fehlerhafte Konfigurationszeile in %s"
@@ -246,13 +273,16 @@ msgid "A file cannot include itself (loop!)"
 msgstr "Eine Datei darf nicht sich selbst beinhalten (Schleife!)"
 
 msgid "Finished Config file inclusion: %s"
-msgstr "Einfügen der Konfigurationsdatei abgeschlossen: %s"
+msgstr "EinfÃ¼gen der Konfigurationsdatei abgeschlossen: %s"
 
 msgid "Added %s"
-msgstr "Hinzufügen von %s "
+msgstr "HinzufÃ¼gen von %s "
 
 msgid "OFF"
 msgstr "ausgeschaltet"
+
+msgid "ON"
+msgstr "eingeschaltet"
 
 msgid "RC file"
 msgstr "RC Datei"
@@ -264,22 +294,20 @@ msgid "command line"
 msgstr "Kommandozeile"
 
 msgid "RAW config for %s"
-msgstr "RAW Konfiguration für %s"
-
-msgid "ON"
-msgstr "eingeschaltet"
+msgstr "RAW Konfiguration fÃ¼r %s"
 
 msgid "Full PARSED config"
-msgstr "Vollständig geprüfte Konfiguration"
+msgstr "VollstÃ¤ndig geprÃ¼fte Konfiguration"
 
 msgid "Active filters"
 msgstr "Aktivierte Filter"
 
 msgid "Invalid PostProc filter regex"
-msgstr "Ungültiger regulärer Ausdruck in den PostProc Filtern"
+msgstr "UngÃ¼ltiger regulÃ¤rer Ausdruck in den PostProc Filtern"
 
 msgid "Invalid PostProc filter replacement"
-msgstr "Ungültige Ersetzung durch einen regulären Ausdruck in den PostProc Filtern"
+msgstr ""
+"UngÃ¼ltige Ersetzung durch einen regulÃ¤ren Ausdruck in den PostProc Filtern"
 
 msgid "%s wrote %s"
 msgstr "%s erzeugte %s"
@@ -289,7 +317,7 @@ msgstr "Inhalte der Quelldatei gespeichert"
 
 msgid "Parsing and saving all config found (%03d items)"
 msgstr ""
-"Alle Konfigurationseinstellungen werden geprüft und gespeichert (%03d "
+"Alle Konfigurationseinstellungen werden geprÃ¼ft und gespeichert (%03d "
 "Einstellungen)"
 
 msgid "Composing target Headers"
@@ -298,35 +326,36 @@ msgstr "Ziel Kopfzeilen werden erzeugt"
 msgid "Composing target Body"
 msgstr "Ziel Hauptteil wird erzeugt"
 
-msgid "Composing target TOC"
-msgstr "Ziel Inhaltsverzeichnis wird erzeugt"
-
 msgid "Composing target Footer"
 msgstr "Ziel Fusszeilen werden erzeugt"
+
+msgid "Composing target TOC"
+msgstr "Ziel Inhaltsverzeichnis wird erzeugt"
 
 msgid "Saving results to the output file"
 msgstr "Ergebnisse werden in der Ausgabedatei gespeichert"
 
 msgid "Invalid PreProc filter regex"
-msgstr "Ungültiger regulärer Ausdruck in den PreProc Filtern"
+msgstr "UngÃ¼ltiger regulÃ¤rer Ausdruck in den PreProc Filtern"
 
 msgid "Invalid PreProc filter replacement"
-msgstr "Ungültige Ersetzung durch einen regulären Ausdruck in den PreProc Filtern"
-
-msgid "txt2tags files"
-msgstr "txt2tags Dateien"
+msgstr ""
+"UngÃ¼ltige Ersetzung durch einen regulÃ¤ren Ausdruck in den PreProc Filtern"
 
 msgid "All files"
 msgstr "Alle Dateien"
+
+msgid "txt2tags files"
+msgstr "txt2tags Dateien"
 
 msgid "Close"
 msgstr "Schliessen"
 
 msgid "You must select a target type!"
-msgstr "Sie müssen ein Zielformat angeben!"
+msgstr "Sie mÃ¼ssen ein Zielformat angeben!"
 
 msgid "You must provide the source file location!"
-msgstr "Sie müssen den Pfad zur Quelldatei angeben!"
+msgstr "Sie mÃ¼ssen den Pfad zur Quelldatei angeben!"
 
 msgid "%s: %s converted to %s"
 msgstr "%s: %s gewandelt nach %s"
@@ -344,16 +373,16 @@ msgid "%s FATAL ERROR!"
 msgstr "%s KRITISCHER FEHLER!"
 
 msgid "-- select one --"
-msgstr "-- Wählen Sie eines aus --"
+msgstr "-- WÃ¤hlen Sie eines aus --"
 
 msgid "Enter the source file location:"
 msgstr "Geben Sie den Pfad zur Quelldatei an:"
 
 msgid "Choose the target document type:"
-msgstr "Wählen Sie das Format des Zieldokuments:"
+msgstr "WÃ¤hlen Sie das Format des Zieldokuments:"
 
 msgid "Some options you may check:"
-msgstr "Einige Optionen, die Sie überprüfen können:"
+msgstr "Einige Optionen, die Sie Ã¼berprÃ¼fen kÃ¶nnen:"
 
 msgid "Some extra options:"
 msgstr "Einige extra Optionen:"
@@ -380,7 +409,7 @@ msgid "ONE source, MULTI targets"
 msgstr "EINE Quelle, VIELE Zielformate"
 
 msgid "Browse"
-msgstr "Blättern"
+msgstr "BlÃ¤ttern"
 
 msgid "<screen>"
 msgstr "<Schirm>"
@@ -393,6 +422,9 @@ msgstr "Verlassen"
 
 msgid "Convert!"
 msgstr "Wandlung starten!"
+
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s Verarbeitung beginnt"
@@ -415,8 +447,8 @@ msgstr "txt2tags FEHLER!"
 msgid "We are on Command Line interface"
 msgstr "Wir benutzen die Kommandozeilen Eingabe"
 
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr ""
+
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags wurde erfolgreich beendet"
-
-#~ msgid "Unknown error occurred."
-#~ msgstr "Unbekannter Fehler aufgetreten."

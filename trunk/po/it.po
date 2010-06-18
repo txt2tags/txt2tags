@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2005-05-21 13:09-0300\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
 "PO-Revision-Date: 2005-08-13 18:56+02:00\n"
 "Last-Translator: Stefano Spinucci <virgo977@tin.it>\n"
 "Language-Team: it_IT team\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "HTML page"
@@ -17,6 +17,9 @@ msgstr "Pagina XHTML"
 
 msgid "SGML document"
 msgstr "Documento SGML"
+
+msgid "DocBook document"
+msgstr ""
 
 msgid "LaTeX document"
 msgstr "Documento LaTeX"
@@ -30,6 +33,18 @@ msgstr "Pagina di Manuale UNIX"
 msgid "MagicPoint presentation"
 msgstr "Presentazione MagicPoint"
 
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
+
 msgid "MoinMoin page"
 msgstr "Pagina MoinMoin"
 
@@ -38,6 +53,12 @@ msgstr "Documento PageMaker"
 
 msgid "Plain Text"
 msgstr "Solo Testo"
+
+msgid "Ascii Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
+msgstr ""
 
 msgid "%s version %s <%s>"
 msgstr "%s versione %s <%s>"
@@ -55,17 +76,13 @@ msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 "  -o, --outfile=FILE  setta FILE come file destinazione ('-' per STDOUT)"
 
-msgid "  -n, --enum-title    enumerate all title lines as 1, 1.1, 1.1.1, etc"
-msgstr ""
-"  -n, --enum-title    enumera le righe di titolo come 1, 1.1, 1.1.1, etc"
-
 msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    sopprime intestazione, titoli e piÈ di pagina"
+msgstr "  -H, --no-headers    sopprime intestazione, titoli e pi√© di pagina"
 
 msgid ""
 "      --headers       show header, title and footer contents (default ON)"
 msgstr ""
-"      --headers       mostra intestaz.,titoli e piÈ di pagina (predef.SI)"
+"      --headers       mostra intestaz.,titoli e pi√© di pagina (predef.SI)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
@@ -89,7 +106,8 @@ msgstr ""
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
-"      --mask-email    nasconde l'email agli spam robot. x@y.z diventa <x (a) y z>"
+"      --mask-email    nasconde l'email agli spam robot. x@y.z diventa <x (a) "
+"y z>"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
 msgstr "      --toc           aggiunge l'indice al documento di destinazione"
@@ -98,7 +116,16 @@ msgid "      --toc-only      print document TOC and exit"
 msgstr "      --toc-only      stampa l'indice del documento ed esce"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   setta la profondit‡ massima dell'indice ad N"
+msgstr "      --toc-level=N   setta la profondit√† massima dell'indice ad N"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr ""
+"  -n, --enum-title    enumera le righe di titolo come 1, 1.1, 1.1.1, etc"
+
+msgid ""
+"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
+"order:"
+msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
 msgstr "  -C, --config-file=F legge le configurazioni dal file F"
@@ -129,29 +156,29 @@ msgstr ""
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
-"      --dump-source   visualizza il documento sorgente, espandendo le inclusioni"
+"      --dump-source   visualizza il documento sorgente, espandendo le "
+"inclusioni"
 
 msgid "Turn OFF options:"
-msgstr "Opzioni per DISATTIVARE le funzionalit‡:"
+msgstr "Opzioni per DISATTIVARE le funzionalit√†:"
 
-msgid ""
-"Example:\n"
-"     %s -t html --toc myfile.t2t"
+msgid "Example:"
+msgstr "Esempio:"
+
+msgid "file.t2t"
 msgstr ""
-"Esempio:\n"
-"     %s -t html --toc myfile.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
-msgstr "Normalmente, il risultato convertito Ë salvato in 'infile.<target>'."
+msgstr "Normalmente, il risultato convertito √® salvato in 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Usa --outfile per forzare il nome del file di destinazione."
 
 msgid "If  input file is '-', reads from STDIN."
-msgstr "Se il file sorgente Ë '-', legge da STDIN."
+msgstr "Se il file sorgente √® '-', legge da STDIN."
 
 msgid "If output file is '-', dumps output to STDOUT."
-msgstr "Se file destinazione Ë '-', invia il risultato convertito su STDOUT."
+msgstr "Se file destinazione √® '-', invia il risultato convertito su STDOUT."
 
 msgid "%s: Error: "
 msgstr "%s: Errore: "
@@ -181,7 +208,7 @@ msgid "Loading source document"
 msgstr "Sto caricando il documento sorgente"
 
 msgid "The input file is empty: %s"
-msgstr "Il file sorgente Ë vuoto: %s"
+msgstr "Il file sorgente √® vuoto: %s"
 
 msgid "Areas found: %s"
 msgstr "Aree trovate: %s"
@@ -195,8 +222,8 @@ msgstr "Aggiunta configurazione %s : %s"
 msgid "No target specified (try --help)"
 msgstr "Nessun formato di destinazione specificato (prova --help)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Stai tentando forse di convertire un vecchio file nel formato v1.x?"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr ""
 
 msgid "Missing input file (try --help)"
 msgstr "Manca il file sorgente (prova --help)"
@@ -223,7 +250,7 @@ msgid "Processing line %03d: %s"
 msgstr "Sto elaborando la linea %03d: %s"
 
 msgid "A file cannot include itself (loop!)"
-msgstr "Un file non puÚ includere se stesso (loop!)"
+msgstr "Un file non pu√≤ includere se stesso (loop!)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "Terminata l'inclusione del file di configurazione: %s"
@@ -233,6 +260,9 @@ msgstr "Aggiunto %s"
 
 msgid "OFF"
 msgstr "DISATTIVATO"
+
+msgid "ON"
+msgstr "ATTIVATO"
 
 msgid "RC file"
 msgstr "file RC"
@@ -245,9 +275,6 @@ msgstr "riga di comando"
 
 msgid "RAW config for %s"
 msgstr "Configurazione RAW (grezza) per %s"
-
-msgid "ON"
-msgstr "ATTIVATO"
 
 msgid "Full PARSED config"
 msgstr "Configurazione completa e pronta"
@@ -276,11 +303,11 @@ msgstr "Componendo le Intestazioni"
 msgid "Composing target Body"
 msgstr "Componendo il Corpo"
 
+msgid "Composing target Footer"
+msgstr "Componendo i pi√© di pagina"
+
 msgid "Composing target TOC"
 msgstr "Componendo l'indice (TOC)"
-
-msgid "Composing target Footer"
-msgstr "Componendo i piÈ di pagina"
 
 msgid "Saving results to the output file"
 msgstr "Salvando i risultati nel file di destinazione"
@@ -291,11 +318,11 @@ msgstr "Espressione regolare del filtro PreProc invalida"
 msgid "Invalid PreProc filter replacement"
 msgstr "Sostituzione del filtro PreProc invalida"
 
-msgid "txt2tags files"
-msgstr "files txt2tags"
-
 msgid "All files"
 msgstr "Tutti i files"
+
+msgid "txt2tags files"
+msgstr "files txt2tags"
 
 msgid "Close"
 msgstr "Chiudere"
@@ -372,11 +399,14 @@ msgstr "Esci"
 msgid "Convert!"
 msgstr "Converti!"
 
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
+
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s: Inizio dell'elaborazione"
 
 msgid "Option --%s can't be used with multiple input files"
-msgstr "L'opzione --%s non puÚ essere utilizzata con file sorgente multipli"
+msgstr "L'opzione --%s non pu√≤ essere utilizzata con file sorgente multipli"
 
 msgid "Ignoring user configuration file"
 msgstr "Ignorando il file di configurazione dell'utente"
@@ -393,6 +423,8 @@ msgstr "ERRORE txt2tags!"
 msgid "We are on Command Line interface"
 msgstr "Siamo nell'interfaccia a Riga di Comando"
 
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr ""
+
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: terminato con successo"
-
