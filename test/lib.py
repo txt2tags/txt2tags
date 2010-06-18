@@ -5,8 +5,8 @@
 
 import os, string, time
 
-# default program call to all tests
-TXT2TAGS = "txt2tags -q --no-rc"
+# Path for txt2tags (change here if your txt2tags is in a different location)
+TXT2TAGS = '../txt2tags'
 
 CONFIG_FILE = 'config'
 CSS_FILE = 'css'
@@ -17,6 +17,9 @@ OK = FAILED = 0
 ERROR_FILES = []
 
 MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be runned alone."
+
+# force absolute path to avoid problems, set default options
+TXT2TAGS = os.path.abspath(TXT2TAGS) + ' -q --no-rc'
 
 #
 # file tools

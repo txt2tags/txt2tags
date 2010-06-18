@@ -12,8 +12,8 @@
 # are on the module's "ok" subdir. If any error is found,
 # it will be stored on the "error" subdir.
 #
-# TIP: to quickly check the errors: diff -u marks/{ok,error}
-# TIP: for f in */error/*; do diff -u ${f/error/ok} $f; done
+# TIP: To quickly check the errors, run:
+#      for f in */error/*; do diff -u ${f/error/ok} $f; done
 
 import os, sys, string
 import lib
@@ -28,6 +28,8 @@ if len(sys.argv) > 1:
 
 # Show which version is being tested
 os.system(lib.TXT2TAGS + " -V")
+print
+print 'Base command used for all tests:\n  ' + lib.TXT2TAGS
 print
 
 for module in MODULES:
