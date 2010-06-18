@@ -41,6 +41,26 @@ To translate txt2tags to your language:
 
 -----------------------------------------------------------
 
+To update your translation when txt2tags.pot is updated:
+
+1. Download http://txt2tags.sourceforge.net/po/txt2tags.pot
+
+2. Run:
+   msgmerge --no-fuzzy-matching <ID>.po txt2tags.pot > new.po
+
+3. Edit new.po and fill the new messages that are empty.
+
+4. Use the "msgfmt -c --statistics new.po" command to check
+   the file syntax.
+
+5. When everything is OK, rename new.po to <ID>.po.
+
+6. Send the .po file to the txt2tags author, or commit the
+   changes to the repository if you have access to txt2tags
+   SVN.
+
+-----------------------------------------------------------
+
 To install the translation file in your system:
 
 Linux (as root):
