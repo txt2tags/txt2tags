@@ -4672,9 +4672,12 @@ def parse_images(line):
 			tag = re.sub(r'\\b',r'\\\\b',tag)
 			txt = txt.replace('_', 'vvvvTexUndervvvv')
 		
+		# Ugly hack to avoid infinite loop when target's image tag contains []
+		tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
+		
 		line = regex['img'].sub(tag,line,1)
 		line = regex['x'].sub(txt,line,1)
-	return line
+	return line.replace('vvvvEscapeSquareBracketvvvv','[')
 
 
 def add_inline_tags(line):
