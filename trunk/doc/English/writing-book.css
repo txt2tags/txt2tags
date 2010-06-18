@@ -6,7 +6,7 @@ body
 	padding: 3em 4em 2em 4em;
 	border: 1px solid black;
 	}
-#toc ol
+.toc ol
 	{
 	padding: 2em;
 	}
