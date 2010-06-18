@@ -408,6 +408,18 @@ tests = [
   'cmdline': ["-H -o- --dump-source --no-dump-source"],
   'redir'  : ["> no-dump-source.out"],
   'extra'  : ['notarget']
+  }, {
+  'name'   : 'list-targets',
+  'content': EMPTY_HEADER+SIMPLE_BODY,
+  'cmdline': ["--list-targets"],
+  'redir'  : ["> list-targets.out"],
+  'extra'  : ['notarget']
+  }, {
+  'name'   : 'no-list-targets',
+  'content': EMPTY_HEADER+CONFIG_FILE_TXT+SIMPLE_BODY,
+  'cmdline': ["-H -o- --list-targets --no-list-targets"],
+  'redir'  : ["> no-list-targets.out"],
+  'extra'  : ['notarget']
   }
 ]
 
