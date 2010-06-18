@@ -5582,11 +5582,11 @@ def exec_command_line(user_cmdline=[]):
 	
 	if 'ascii-art' in cmdline_parsed:
 		lascii = cmdline_parsed['ascii-art']
-		diff = len(AA_LCHARS)-len(lascii)
+		diff = len(AA_LCHARS) - len(lascii)
 		if not diff:
 			AA_CHARS = dict(zip(AA_LCHARS, lascii))
 		else:
-			Error(_("%i char(s) to the right number")%diff)
+			Error(_("--ascii-art: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
 	
 	Message(_("Txt2tags %s processing begins")%my_version,1)
 	
