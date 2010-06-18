@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2005-05-27 09:34-0300\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
 "PO-Revision-Date: 2004-07-27 11:00\n"
-"Last-Translator: IVÁN, Tamás <taivan@freemail.hu>\n"
+"Last-Translator: IVÃN, TamÃ¡s <taivan@freemail.hu>\n"
 "Language-Team: hu_HU team\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "HTML page"
@@ -18,6 +18,9 @@ msgstr "XHTML oldal"
 msgid "SGML document"
 msgstr "SGML dolumentum"
 
+msgid "DocBook document"
+msgstr ""
+
 msgid "LaTeX document"
 msgstr "LaTeX dokumentum"
 
@@ -25,10 +28,22 @@ msgid "Lout document"
 msgstr "Lout dokumentum"
 
 msgid "UNIX Manual page"
-msgstr "UNIX Kézikönyv oldal"
+msgstr "UNIX KÃ©zikÃ¶nyv oldal"
 
 msgid "MagicPoint presentation"
-msgstr "MagicPoint prezentáció"
+msgstr "MagicPoint prezentÃ¡ciÃ³"
+
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
 
 msgid "MoinMoin page"
 msgstr "MoinMoin oldal"
@@ -37,282 +52,294 @@ msgid "PageMaker document"
 msgstr "PageMaker dokumentum"
 
 msgid "Plain Text"
-msgstr "Közönséges szöveg"
+msgstr "KÃ¶zÃ¶nsÃ©ges szÃ¶veg"
+
+msgid "Ascii Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
+msgstr ""
 
 msgid "%s version %s <%s>"
-msgstr "%s %s-es verzió <%s>"
+msgstr "%s %s-es verziÃ³ <%s>"
 
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
-msgstr "Használat: %s [OPCIÓK] [bemenöfájl.t2t ...]"
+msgstr "HasznÃ¡lat: %s [OPCIÃ“K] [bemenÃ¶fÃ¡jl.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
-"  -t, --target=TIPUS  beállitja a kimenö dokumentum formátumát. Jelenlegi "
-"lehetöségek:"
+"  -t, --target=TIPUS  beÃ¡llitja a kimenÃ¶ dokumentum formÃ¡tumÃ¡t. Jelenlegi "
+"lehetÃ¶sÃ©gek:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=FÁJL   FÁJL lesz a bemenö fájl ('-', ha STDIN)"
+msgstr "  -i, --infile=FÃJL   FÃJL lesz a bemenÃ¶ fÃ¡jl ('-', ha STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr "  -o, --outfile=FÁJL  FÁJL lesz a kimenö fájl ('-', ha STDOUT)"
-
-msgid "  -n, --enum-title    enumerate all title lines as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    sorszámoz minden cimsort: 1, 1.1, 1.1.1, stb."
+msgstr "  -o, --outfile=FÃJL  FÃJL lesz a kimenÃ¶ fÃ¡jl ('-', ha STDOUT)"
 
 msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    nem hoz létre fejléc, cim és láb tartalmakat"
+msgstr "  -H, --no-headers    nem hoz lÃ©tre fejlÃ©c, cim Ã©s lÃ¡b tartalmakat"
 
 msgid ""
 "      --headers       show header, title and footer contents (default ON)"
 msgstr ""
-"      --headers       hozzon létre fejléc, cim és láb tartalmakat "
-"(alapértelmezés: létrehoz)"
+"      --headers       hozzon lÃ©tre fejlÃ©c, cim Ã©s lÃ¡b tartalmakat "
+"(alapÃ©rtelmezÃ©s: lÃ©trehoz)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  beállitja a kimenö fájl karakter kódolását (utf-8, iso-"
+"      --encoding=ENC  beÃ¡llitja a kimenÃ¶ fÃ¡jl karakter kÃ³dolÃ¡sÃ¡t (utf-8, iso-"
 "8859-2, stb.)"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr "      --style=FÁJL    megadja a dokumentum stilusát (mint HTML CSS)"
+msgstr "      --style=FÃJL    megadja a dokumentum stilusÃ¡t (mint HTML CSS)"
 
 msgid ""
 "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
 msgstr ""
-"      --css-sugar     CSS-barát cimkéket illeszt a HTML és XHTML "
+"      --css-sugar     CSS-barÃ¡t cimkÃ©ket illeszt a HTML Ã©s XHTML "
 "dokumentumokba"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
-"      --css-inside    CSS file tartalmat illeszt a HTML/XHTML fejlécekbe"
+"      --css-inside    CSS file tartalmat illeszt a HTML/XHTML fejlÃ©cekbe"
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
-"      --mask-email    elrejti az email cimeket a spam robotok elöl. x@y.z-"
-"böl <x (a) y z> lesz"
+"      --mask-email    elrejti az email cimeket a spam robotok elÃ¶l. x@y.z-"
+"bÃ¶l <x (a) y z> lesz"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           tartalomjegyzéket készit a kimenö dokumentumban"
+msgstr "      --toc           tartalomjegyzÃ©ket kÃ©szit a kimenÃ¶ dokumentumban"
 
 msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      csak tartalomjegyzéket készit"
+msgstr "      --toc-only      csak tartalomjegyzÃ©ket kÃ©szit"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   beállitja a tartalomjegyzék mélységét N-re"
+msgstr "      --toc-level=N   beÃ¡llitja a tartalomjegyzÃ©k mÃ©lysÃ©gÃ©t N-re"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    sorszÃ¡moz minden cimsort: 1, 1.1, 1.1.1, stb."
+
+msgid ""
+"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
+"order:"
+msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
-msgstr "  -C, --config-file=F beolvassa a konfigurációt az F nevü fájlból"
+msgstr "  -C, --config-file=F beolvassa a konfigurÃ¡ciÃ³t az F nevÃ¼ fÃ¡jlbÃ³l"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 msgstr ""
-"      --rc            olvassa a felhasználói beállitásokat tartalmazó ~/."
-"txt2tagsrc fájlt (alapértelmezés: olvassa)"
+"      --rc            olvassa a felhasznÃ¡lÃ³i beÃ¡llitÃ¡sokat tartalmazÃ³ ~/."
+"txt2tagsrc fÃ¡jlt (alapÃ©rtelmezÃ©s: olvassa)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           elinditja a grafikus Tk felhasználói felületet"
+msgstr "      --gui           elinditja a grafikus Tk felhasznÃ¡lÃ³i felÃ¼letet"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr ""
-"  -q, --quiet         csended mód, a kimenetre csak a hibaüzeneteket irja"
+"  -q, --quiet         csended mÃ³d, a kimenetre csak a hibaÃ¼zeneteket irja"
 
 msgid "  -v, --verbose       print informative messages during conversion"
-msgstr "  -v, --verbose       tájékoztató üzeneteket ir ki a futás folyamán"
+msgstr "  -v, --verbose       tÃ¡jÃ©koztatÃ³ Ã¼zeneteket ir ki a futÃ¡s folyamÃ¡n"
 
 msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          kiirja ezt az oldalt és kilép"
+msgstr "  -h, --help          kiirja ezt az oldalt Ã©s kilÃ©p"
 
 msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       kiirja a program verzióját és kilép"
+msgstr "  -V, --version       kiirja a program verziÃ³jÃ¡t Ã©s kilÃ©p"
 
 msgid "      --dump-config   print all the config found and exit"
-msgstr "      --dump-config   kiirja a talált beállitásokat és kilép"
+msgstr "      --dump-config   kiirja a talÃ¡lt beÃ¡llitÃ¡sokat Ã©s kilÃ©p"
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr "      --dump-source   kinyomtatja a dokumentum forrását kibontva az include fájlokat"
+msgstr ""
+"      --dump-source   kinyomtatja a dokumentum forrÃ¡sÃ¡t kibontva az include "
+"fÃ¡jlokat"
 
 msgid "Turn OFF options:"
-msgstr "Kikapcsoló opciók:"
+msgstr "KikapcsolÃ³ opciÃ³k:"
 
-msgid ""
-"Example:\n"
-"     %s -t html --toc myfile.t2t"
+msgid "Example:"
+msgstr "PÃ©lda:"
+
+msgid "file.t2t"
 msgstr ""
-"Példa:\n"
-"     %s -t html --toc myfile.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr ""
-"Alapértelmezés szerint a kimenet a 'bemenet.<célformátum>' fájlba iródik."
+"AlapÃ©rtelmezÃ©s szerint a kimenet a 'bemenet.<cÃ©lformÃ¡tum>' fÃ¡jlba irÃ³dik."
 
 msgid "Use --outfile to force an output file name."
-msgstr "Használja az --outfile kapcsolót másik fájlnév megadásához."
+msgstr "HasznÃ¡lja az --outfile kapcsolÃ³t mÃ¡sik fÃ¡jlnÃ©v megadÃ¡sÃ¡hoz."
 
 msgid "If  input file is '-', reads from STDIN."
-msgstr "Ha a bemenö fájl '-', a standard bemenetröl olvas."
+msgstr "Ha a bemenÃ¶ fÃ¡jl '-', a standard bemenetrÃ¶l olvas."
 
 msgid "If output file is '-', dumps output to STDOUT."
-msgstr "Ha a kimenö fájl '-', a standard bemenetre ir."
+msgstr "Ha a kimenÃ¶ fÃ¡jl '-', a standard bemenetre ir."
 
 msgid "%s: Error: "
 msgstr "%s: Hiba: "
 
 msgid "Sorry! Txt2tags aborted by an unknown error."
-msgstr "Sajnálom, a Txt2tags program azonositatlan hiba miatt leállt."
+msgstr "SajnÃ¡lom, a Txt2tags program azonositatlan hiba miatt leÃ¡llt."
 
 msgid "Please send the following Error Traceback to the author"
-msgstr "Kérem, küldje el az alábbi hiba naplót a szerzönek"
+msgstr "KÃ©rem, kÃ¼ldje el az alÃ¡bbi hiba naplÃ³t a szerzÃ¶nek"
 
 msgid "You must feed me with data on STDIN!"
-msgstr "A standard bemenetröl (STDIN) várom az adatokat!"
+msgstr "A standard bemenetrÃ¶l (STDIN) vÃ¡rom az adatokat!"
 
 msgid "Cannot read file:"
-msgstr "Ez a fájl nem olvasható:"
+msgstr "Ez a fÃ¡jl nem olvashatÃ³:"
 
 msgid "File read (%d lines): %s"
-msgstr "A beolvasott fájl (%d sor): %s"
+msgstr "A beolvasott fÃ¡jl (%d sor): %s"
 
 msgid "Cannot open file for writing:"
-msgstr "Nem sikerült irásra megnyitni:"
+msgstr "Nem sikerÃ¼lt irÃ¡sra megnyitni:"
 
 msgid "%s (try --help)"
-msgstr "%s (próbálja a ki --help kapcsolót)"
+msgstr "%s (prÃ³bÃ¡lja a ki --help kapcsolÃ³t)"
 
 msgid "Loading source document"
-msgstr "A forrás dokumentum betöltése"
+msgstr "A forrÃ¡s dokumentum betÃ¶ltÃ©se"
 
 msgid "The input file is empty: %s"
-msgstr "A bemenö fájl üres: %s"
+msgstr "A bemenÃ¶ fÃ¡jl Ã¼res: %s"
 
 msgid "Areas found: %s"
-msgstr "Talált tartományok: %s"
+msgstr "TalÃ¡lt tartomÃ¡nyok: %s"
 
 msgid "Scanning source document CONF area"
-msgstr "A forrás dokumentum CONF tartományának feldogozása"
+msgstr "A forrÃ¡s dokumentum CONF tartomÃ¡nyÃ¡nak feldogozÃ¡sa"
 
 msgid "Added config %s : %s"
-msgstr "Hozzáadott paraméter %s : %s"
+msgstr "HozzÃ¡adott paramÃ©ter %s : %s"
 
 msgid "No target specified (try --help)"
-msgstr "Cél formátum megadása hiányzik (próbálja ki a --help kapcsolót)"
+msgstr "CÃ©l formÃ¡tum megadÃ¡sa hiÃ¡nyzik (prÃ³bÃ¡lja ki a --help kapcsolÃ³t)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Lehet, hogy egy régi v1.x fájlt akar konvertálni?"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr ""
 
 msgid "Missing input file (try --help)"
-msgstr "Hiányzó bemenö fájl (próbálja ki a  --help kapcsolót)"
+msgstr "HiÃ¡nyzÃ³ bemenÃ¶ fÃ¡jl (prÃ³bÃ¡lja ki a  --help kapcsolÃ³t)"
 
 msgid "Invalid target '%s' (try --help)"
-msgstr "A '%s' ismeretlen cél formátum '%s' (próbálja ki a --help kapcsolót)"
+msgstr "A '%s' ismeretlen cÃ©l formÃ¡tum '%s' (prÃ³bÃ¡lja ki a --help kapcsolÃ³t)"
 
 msgid "--%s value must be a number"
-msgstr "A --%s kapcsoló után számot kell megadni"
+msgstr "A --%s kapcsolÃ³ utÃ¡n szÃ¡mot kell megadni"
 
 msgid "Option --split must be 0, 1 or 2"
-msgstr "A --split kapcsoló értéke 0, 1 vagy 2 lehet"
+msgstr "A --split kapcsolÃ³ Ã©rtÃ©ke 0, 1 vagy 2 lehet"
 
 msgid "Input and Output files are the same: %s"
-msgstr "A bemenö és kimenö fájlok azonosak: %s"
+msgstr "A bemenÃ¶ Ã©s kimenÃ¶ fÃ¡jlok azonosak: %s"
 
 msgid "Added the following keys: %s"
-msgstr "A következö kulcsok adódtak hozzá: %s"
+msgstr "A kÃ¶vetkezÃ¶ kulcsok adÃ³dtak hozzÃ¡: %s"
 
 msgid "Invalid CONFIG line on %s"
-msgstr "Hibás sor a %s konfigurációs fájlban"
+msgstr "HibÃ¡s sor a %s konfigurÃ¡ciÃ³s fÃ¡jlban"
 
 msgid "Processing line %03d: %s"
-msgstr "A %03d sor feldolgozása: %s"
+msgstr "A %03d sor feldolgozÃ¡sa: %s"
 
 msgid "A file cannot include itself (loop!)"
-msgstr "Egy fájl nem olvastathatja önmagát (hurok!)"
+msgstr "Egy fÃ¡jl nem olvastathatja Ã¶nmagÃ¡t (hurok!)"
 
 msgid "Finished Config file inclusion: %s"
-msgstr "A konfigurációs fájl beolvasása befejezödött: %s"
+msgstr "A konfigurÃ¡ciÃ³s fÃ¡jl beolvasÃ¡sa befejezÃ¶dÃ¶tt: %s"
 
 msgid "Added %s"
-msgstr "%s hozzáadva"
+msgstr "%s hozzÃ¡adva"
 
 msgid "OFF"
 msgstr "KI"
 
+msgid "ON"
+msgstr "BE"
+
 msgid "RC file"
-msgstr "RC fájl"
+msgstr "RC fÃ¡jl"
 
 msgid "source document"
-msgstr "forrás dokumentu"
+msgstr "forrÃ¡s dokumentu"
 
 msgid "command line"
 msgstr "parancssor"
 
 msgid "RAW config for %s"
-msgstr "NYERS konfiguráció %s számára"
-
-msgid "ON"
-msgstr "BE"
+msgstr "NYERS konfigurÃ¡ciÃ³ %s szÃ¡mÃ¡ra"
 
 msgid "Full PARSED config"
-msgstr "A teljes ÉRTELMEZETT konfiguráció"
+msgstr "A teljes Ã‰RTELMEZETT konfigurÃ¡ciÃ³"
 
 msgid "Active filters"
-msgstr "Aktiv szürök"
+msgstr "Aktiv szÃ¼rÃ¶k"
 
 msgid "Invalid PostProc filter regex"
-msgstr "Hibás reguláris kifejezés a PostProc szüröben"
+msgstr "HibÃ¡s regulÃ¡ris kifejezÃ©s a PostProc szÃ¼rÃ¶ben"
 
 msgid "Invalid PostProc filter replacement"
-msgstr "Hibás PostProc szürö behelyettesités"
+msgstr "HibÃ¡s PostProc szÃ¼rÃ¶ behelyettesitÃ©s"
 
 msgid "%s wrote %s"
-msgstr "A %s kimenete a %s fájlba iródott."
+msgstr "A %s kimenete a %s fÃ¡jlba irÃ³dott."
 
 msgid "Source document contents stored"
-msgstr "A bemenö dokumentum tartalma tárolva"
+msgstr "A bemenÃ¶ dokumentum tartalma tÃ¡rolva"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr "A talált %03d konfigurációs paraméter értelmezése és mentése"
+msgstr "A talÃ¡lt %03d konfigurÃ¡ciÃ³s paramÃ©ter Ã©rtelmezÃ©se Ã©s mentÃ©se"
 
 msgid "Composing target Headers"
-msgstr "A fejlécek létrehozása"
+msgstr "A fejlÃ©cek lÃ©trehozÃ¡sa"
 
 msgid "Composing target Body"
-msgstr "A dokumentumtörzs létrehozása"
-
-msgid "Composing target TOC"
-msgstr "A tartalomjegyzék létrehozása"
+msgstr "A dokumentumtÃ¶rzs lÃ©trehozÃ¡sa"
 
 msgid "Composing target Footer"
-msgstr "A láb létrehozása"
+msgstr "A lÃ¡b lÃ©trehozÃ¡sa"
+
+msgid "Composing target TOC"
+msgstr "A tartalomjegyzÃ©k lÃ©trehozÃ¡sa"
 
 msgid "Saving results to the output file"
-msgstr "Az eredmények kiirása a kimenö fájlba"
+msgstr "Az eredmÃ©nyek kiirÃ¡sa a kimenÃ¶ fÃ¡jlba"
 
 msgid "Invalid PreProc filter regex"
-msgstr "Hibás reguláris kifejezés a PreProc szüröben"
+msgstr "HibÃ¡s regulÃ¡ris kifejezÃ©s a PreProc szÃ¼rÃ¶ben"
 
 msgid "Invalid PreProc filter replacement"
-msgstr "Hibás PreProc szürö behelyettesités"
-
-msgid "txt2tags files"
-msgstr "txt2tags fájlok"
+msgstr "HibÃ¡s PreProc szÃ¼rÃ¶ behelyettesitÃ©s"
 
 msgid "All files"
-msgstr "Minden fájl"
+msgstr "Minden fÃ¡jl"
+
+msgid "txt2tags files"
+msgstr "txt2tags fÃ¡jlok"
 
 msgid "Close"
-msgstr "Bezár"
+msgstr "BezÃ¡r"
 
 msgid "You must select a target type!"
-msgstr "A cél formátum kiválasztása kötelezö"
+msgstr "A cÃ©l formÃ¡tum kivÃ¡lasztÃ¡sa kÃ¶telezÃ¶"
 
 msgid "You must provide the source file location!"
-msgstr "A forrás fájl megadása kötelezö"
+msgstr "A forrÃ¡s fÃ¡jl megadÃ¡sa kÃ¶telezÃ¶"
 
 msgid "%s: %s converted to %s"
-msgstr "%s: %s átalakitva %s-ra"
+msgstr "%s: %s Ã¡talakitva %s-ra"
 
 msgid "Conversion done!"
-msgstr "Az átalakitás kész."
+msgstr "Az Ã¡talakitÃ¡s kÃ©sz."
 
 msgid "FROM:"
 msgstr "MIROL:"
@@ -321,82 +348,85 @@ msgid "TO:"
 msgstr "MIRE:"
 
 msgid "%s FATAL ERROR!"
-msgstr "%s VÉGZETES HIBA!"
+msgstr "%s VÃ‰GZETES HIBA!"
 
 msgid "-- select one --"
-msgstr "-- válasszon egyet --"
+msgstr "-- vÃ¡lasszon egyet --"
 
 msgid "Enter the source file location:"
-msgstr "Adja meg a bemenö fájlt:"
+msgstr "Adja meg a bemenÃ¶ fÃ¡jlt:"
 
 msgid "Choose the target document type:"
-msgstr "Adja meg a cél formátumot:"
+msgstr "Adja meg a cÃ©l formÃ¡tumot:"
 
 msgid "Some options you may check:"
-msgstr "Néhány hasznos kapcsoló:"
+msgstr "NÃ©hÃ¡ny hasznos kapcsolÃ³:"
 
 msgid "Some extra options:"
-msgstr "Néhány különleges kapcsoló:"
+msgstr "NÃ©hÃ¡ny kÃ¼lÃ¶nleges kapcsolÃ³:"
 
 msgid "Include headers on output"
-msgstr "A fejléc, cim és láb generálás"
+msgstr "A fejlÃ©c, cim Ã©s lÃ¡b generÃ¡lÃ¡s"
 
 msgid "Number titles (1, 1.1, 1.1.1, etc)"
-msgstr "Cimsorok számozása (1, 1.1, 1.1.1, stb.)"
+msgstr "Cimsorok szÃ¡mozÃ¡sa (1, 1.1, 1.1.1, stb.)"
 
 msgid "Do TOC also (Table of Contents)"
-msgstr "Készüljön tartalomjegyzék"
+msgstr "KÃ©szÃ¼ljÃ¶n tartalomjegyzÃ©k"
 
 msgid "Hide e-mails from SPAM robots"
-msgstr "Email cimek elrejtése a SPAM robotok elöl"
+msgstr "Email cimek elrejtÃ©se a SPAM robotok elÃ¶l"
 
 msgid "Just do TOC, nothing more"
-msgstr "Csak tartalomjegyzék készüljön, semmi más."
+msgstr "Csak tartalomjegyzÃ©k kÃ©szÃ¼ljÃ¶n, semmi mÃ¡s."
 
 msgid "Dump to screen (Don't save target file)"
-msgstr "Képernyöre irjon, ne fájlba."
+msgstr "KÃ©pernyÃ¶re irjon, ne fÃ¡jlba."
 
 msgid "ONE source, MULTI targets"
-msgstr "EGY forrás SOK kimenö formátum"
+msgstr "EGY forrÃ¡s SOK kimenÃ¶ formÃ¡tum"
 
 msgid "Browse"
-msgstr "Böngészés"
+msgstr "BÃ¶ngÃ©szÃ©s"
 
 msgid "<screen>"
-msgstr "<képernyö>"
+msgstr "<kÃ©pernyÃ¶>"
 
 msgid "Output: "
 msgstr "Kimenet: "
 
 msgid "Quit"
-msgstr "Kilép"
+msgstr "KilÃ©p"
 
 msgid "Convert!"
-msgstr "Konvertálj!"
+msgstr "KonvertÃ¡lj!"
+
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Txt2tags %s processing begins"
-msgstr "Txt2tags %s feldolgozás megkezdödik"
+msgstr "Txt2tags %s feldolgozÃ¡s megkezdÃ¶dik"
 
 msgid "Option --%s can't be used with multiple input files"
-msgstr "A --%s kapcsoló nem használható több bemenö fájl esetén"
+msgstr "A --%s kapcsolÃ³ nem hasznÃ¡lhatÃ³ tÃ¶bb bemenÃ¶ fÃ¡jl esetÃ©n"
 
 msgid "Ignoring user configuration file"
-msgstr "A felhasználói beállitások fájlját figyelmen kivül hagyom"
+msgstr "A felhasznÃ¡lÃ³i beÃ¡llitÃ¡sok fÃ¡jljÃ¡t figyelmen kivÃ¼l hagyom"
 
 msgid "Loading user configuration file"
-msgstr "A felhasználói beállitások fájljának betöltése"
+msgstr "A felhasznÃ¡lÃ³i beÃ¡llitÃ¡sok fÃ¡jljÃ¡nak betÃ¶ltÃ©se"
 
 msgid "We are on GUI interface"
-msgstr "A GUI felületet használjuk"
+msgstr "A GUI felÃ¼letet hasznÃ¡ljuk"
 
 msgid "txt2tags ERROR!"
 msgstr "txt2tags HIBA!"
 
 msgid "We are on Command Line interface"
-msgstr "A parancssor felületét használjuk"
+msgstr "A parancssor felÃ¼letÃ©t hasznÃ¡ljuk"
+
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "A txt2tags sikeresen lefutott"
-
-#~ msgid "Unknown error occurred."
-#~ msgstr "Azonositatlan hiba történt."
