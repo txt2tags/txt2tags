@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags\n"
-"POT-Creation-Date: 2006-07-31 16:16-0300\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
 "PO-Revision-Date: 2008-06-07 20:52+0300\n"
 "Last-Translator: Mikko Piippo <mikko.piippo@helsinki.fi>\n"
 "Language-Team:  <fi@li.org>\n"
@@ -21,6 +21,9 @@ msgstr "XHTML-sivu"
 msgid "SGML document"
 msgstr "SGML-asiakirja"
 
+msgid "DocBook document"
+msgstr ""
+
 msgid "LaTeX document"
 msgstr "LaTeX-asiakirja"
 
@@ -33,6 +36,18 @@ msgstr "UNIX man-sivu"
 msgid "MagicPoint presentation"
 msgstr "MagicPoint-esitys"
 
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
+
 msgid "MoinMoin page"
 msgstr "MoinMoin-sivu"
 
@@ -42,6 +57,12 @@ msgstr "PageMaker-asiakirja"
 msgid "Plain Text"
 msgstr "Muotoilematon teksti"
 
+msgid "Ascii Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s versio %s z%s>"
 
@@ -49,34 +70,54 @@ msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Käyttö: %s [VALINNAT] [tiedosto.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr "  -t, --target=TYYPPI   aseta asiakirjan kohdetyyppi. Tällä hetkellä tuetaan seuraavia:"
+msgstr ""
+"  -t, --target=TYYPPI   aseta asiakirjan kohdetyyppi. Tällä hetkellä tuetaan "
+"seuraavia:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=TIEDOSTO   aseta TIEDOSTO syötetiedostoksi ('-' on vakiosyöte STDIN)"
+msgstr ""
+"  -i, --infile=TIEDOSTO   aseta TIEDOSTO syötetiedostoksi ('-' on vakiosyöte "
+"STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr "  -o, --outfile=TIEDOSTO  aseta TIEDOSTO tulostetiedostoksi ('-' on vakiotuloste STDOUT)"
+msgstr ""
+"  -o, --outfile=TIEDOSTO  aseta TIEDOSTO tulostetiedostoksi ('-' on "
+"vakiotuloste STDOUT)"
 
 msgid "  -H, --no-headers    suppress header, title and footer contents"
 msgstr "  -H, --no-headers    sivuuttaa otsikot, ylä- ja alatunnisteet"
 
-msgid "      --headers       show header, title and footer contents (default ON)"
-msgstr "      --headers       näyttää otsikot, ylä- ja alatunnisteet (oletusarvo ON)"
+msgid ""
+"      --headers       show header, title and footer contents (default ON)"
+msgstr ""
+"      --headers       näyttää otsikot, ylä- ja alatunnisteet (oletusarvo ON)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-msgstr "      --encoding=KOODAUS  aseta kohdetiedoston merkkikoodaus (utf-8, iso-8859-1 jne.)"
+msgstr ""
+"      --encoding=KOODAUS  aseta kohdetiedoston merkkikoodaus (utf-8, iso-"
+"8859-1 jne.)"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr "      --style=TIEDOSTO    käytä TIEDOSTOa asiakirjatyylinä (kuten HTML CSS)"
+msgstr ""
+"      --style=TIEDOSTO    käytä TIEDOSTOa asiakirjatyylinä (kuten HTML CSS)"
 
-msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr "      --css-sugar     lisää HTML- ja XHTML-kohdetiedostoihin CSS-ystävälliset tagit"
+msgid ""
+"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+msgstr ""
+"      --css-sugar     lisää HTML- ja XHTML-kohdetiedostoihin CSS-"
+"ystävälliset tagit"
 
-msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr "      --css-inside    lisää CSS-tiedoston sisältö HTML/XHTML-otsakkeiden sisään"
+msgid ""
+"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+"      --css-inside    lisää CSS-tiedoston sisältö HTML/XHTML-otsakkeiden "
+"sisään"
 
-msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr "      --mask-email    naamioi sähköpostiosoite roskapostiroboteilta. x@y.z muutetaan muotoon <x (a) y z>"
+msgid ""
+"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"      --mask-email    naamioi sähköpostiosoite roskapostiroboteilta. x@y.z "
+"muutetaan muotoon <x (a) y z>"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
 msgstr "      --toc           lisää kohdeasiakirjaan sisällysluettelo"
@@ -85,16 +126,24 @@ msgid "      --toc-only      print document TOC and exit"
 msgstr "      --toc-only      tulosta asiakirjan sisällysluettelo ja lopeta"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   aseta sisällysluettelon tasojen määräksi enintään N"
+msgstr ""
+"      --toc-level=N   aseta sisällysluettelon tasojen määräksi enintään N"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    numeroi kaikki otsikot, esim. 1, 1.1, 1.1.1, jne"
+
+msgid ""
+"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
+"order:"
+msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
 msgstr "  -C, --config-file=TIEDOSTO lue määritykset TIEDOSTOsta"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr "      --rc            lue käyttäjän määritystiedosto ~/.txt2tagsrc (oletusarvo ON)"
+msgstr ""
+"      --rc            lue käyttäjän määritystiedosto ~/.txt2tagsrc "
+"(oletusarvo ON)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           käynnistä graafinen TK-käyttöliittymä"
@@ -103,7 +152,8 @@ msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr "  -q, --quiet         hiljainen tila, tulostaa vain virheilmoitukset"
 
 msgid "  -v, --verbose       print informative messages during conversion"
-msgstr "  -v, --verbose       tulostaa muunnoksen aikana informatiivisia viestejä"
+msgstr ""
+"  -v, --verbose       tulostaa muunnoksen aikana informatiivisia viestejä"
 
 msgid "  -h, --help          print this help information and exit"
 msgstr "  -h, --help          tulosta tämä ohje ja lopeta"
@@ -115,16 +165,21 @@ msgid "      --dump-config   print all the config found and exit"
 msgstr "      --dump-config   tulosta kaikki löytyvät määritykset ja lopeta"
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr "      --dump-source   tulosta asiakirjan lähdekoodi, myös sisällytetyt osat"
+msgstr ""
+"      --dump-source   tulosta asiakirjan lähdekoodi, myös sisällytetyt osat"
 
 msgid "Turn OFF options:"
 msgstr "Estovalinnat:"
 
-msgid "Example:\n     %s -t html --toc myfile.t2t"
-msgstr "Esimerkki:\n     %s -t html --toc omatiedosto.t2t"
+msgid "Example:"
+msgstr "Esimerkki:"
+
+msgid "file.t2t"
+msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
-msgstr "Oletuksena muunnettu tuloste tallennetaan tiedostoon 'infile.<target>'."
+msgstr ""
+"Oletuksena muunnettu tuloste tallennetaan tiedostoon 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Käytä valintaa --outfile pakottaaksesi tulostetiedoston nimen."
@@ -177,8 +232,8 @@ msgstr "Lisätään määritys %s: %s"
 msgid "No target specified (try --help)"
 msgstr "Kohdetta ei määritetty (kokeile --help)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Kenties kyseessä on vanha v1.x-tiedosto?"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr ""
 
 msgid "Missing input file (try --help)"
 msgstr "Puuttuu syötetiedosto (kokeile --help)"
@@ -216,6 +271,9 @@ msgstr "Lisätty %s"
 msgid "OFF"
 msgstr "OFF"
 
+msgid "ON"
+msgstr "ON"
+
 msgid "RC file"
 msgstr "RC-tiedosto"
 
@@ -227,9 +285,6 @@ msgstr "komentorivi"
 
 msgid "RAW config for %s"
 msgstr "RAW-määritys %s"
-
-msgid "ON"
-msgstr "ON"
 
 msgid "Full PARSED config"
 msgstr "Asetukset tulkittu"
@@ -250,7 +305,8 @@ msgid "Source document contents stored"
 msgstr "Lähdeasiakirjan sisältö tallennettu"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr "Tulkitaan ja tallennetaan kaikki löydetyt määritykset (%03d kappaletta)"
+msgstr ""
+"Tulkitaan ja tallennetaan kaikki löydetyt määritykset (%03d kappaletta)"
 
 msgid "Composing target Headers"
 msgstr "Luodaan kohdetiedoston ylätunnisteita"
@@ -258,11 +314,11 @@ msgstr "Luodaan kohdetiedoston ylätunnisteita"
 msgid "Composing target Body"
 msgstr "Luodaan kohdeasiakirjan runkoa"
 
-msgid "Composing target TOC"
-msgstr "Luodaan kohdeasiakirjan sisällysluetteloa"
-
 msgid "Composing target Footer"
 msgstr "Luodaan kohdeasiakirjan alatunnisteita"
+
+msgid "Composing target TOC"
+msgstr "Luodaan kohdeasiakirjan sisällysluetteloa"
 
 msgid "Saving results to the output file"
 msgstr "Tallennetaan tulokset tulostetiedostoon"
@@ -273,11 +329,11 @@ msgstr "Virheellinen PostProc-suotimen säännöllinen lauseke"
 msgid "Invalid PreProc filter replacement"
 msgstr "Virheellinen PostProc-suotimen korvaus"
 
-msgid "txt2tags files"
-msgstr "txt2tags-tiedostot"
-
 msgid "All files"
 msgstr "Kaikki tiedostot"
+
+msgid "txt2tags files"
+msgstr "txt2tags-tiedostot"
 
 msgid "Close"
 msgstr "Sulje"
@@ -354,6 +410,9 @@ msgstr "Lopeta"
 msgid "Convert!"
 msgstr "Muunna!"
 
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
+
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s muunnos alkaa"
 
@@ -375,6 +434,8 @@ msgstr "txt2tags VIRHE!"
 msgid "We are on Command Line interface"
 msgstr "Komentorivikäyttöliittymä"
 
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr ""
+
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags suoritettiin loppuun"
-

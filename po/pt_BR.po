@@ -1,22 +1,25 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2005-05-21 13:09-0300\n"
-"PO-Revision-Date: 2004-05-30 21:03 BRT\n"
-"Last-Translator: Aurelio Marinho Jargas\n"
+"Project-Id-Version: txt2tags 2.6b\n"
+"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"PO-Revision-Date: 2010-06-18 17:00+BRT\n"
+"Last-Translator: Aurelio Jargas\n"
 "Language-Team: pt_BR team\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "HTML page"
-msgstr "P·gina HTML"
+msgstr "P√°gina HTML"
 
 msgid "XHTML page"
-msgstr "P·gina XHTML"
+msgstr "P√°gina XHTML"
 
 msgid "SGML document"
 msgstr "Documento SGML"
+
+msgid "DocBook document"
+msgstr "Documento DocBook"
 
 msgid "LaTeX document"
 msgstr "Documento LaTeX"
@@ -25,13 +28,25 @@ msgid "Lout document"
 msgstr "Documento Lout"
 
 msgid "UNIX Manual page"
-msgstr "P·gina de Manual UNIX"
+msgstr "P√°gina de Manual UNIX"
 
 msgid "MagicPoint presentation"
-msgstr "ApresentaÁ„o do MagicPoint"
+msgstr "Apresenta√ß√£o do MagicPoint"
+
+msgid "Wikipedia page"
+msgstr "P√°gina da Wikipedia"
+
+msgid "Google Wiki page"
+msgstr "P√°gina Wiki do Google"
+
+msgid "DokuWiki page"
+msgstr "P√°gina do DokuWiki"
+
+msgid "pmWiki page"
+msgstr "P√°gina do pmWiki"
 
 msgid "MoinMoin page"
-msgstr "P·gina do MoinMoin"
+msgstr "P√°gina do MoinMoin"
 
 msgid "PageMaker document"
 msgstr "Documento do PageMaker"
@@ -39,11 +54,17 @@ msgstr "Documento do PageMaker"
 msgid "Plain Text"
 msgstr "Texto Puro"
 
+msgid "Ascii Art text"
+msgstr "Texto Ascii Art"
+
+msgid "AsciiDoc document"
+msgstr "Documento AsciiDoc"
+
 msgid "%s version %s <%s>"
-msgstr "%s vers„o %s <%s>"
+msgstr "%s vers√£o %s <%s>"
 
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
-msgstr "Uso: %s [OP«’ES] [arquivo.t2t ...]"
+msgstr "Uso: %s [OP√á√ïES] [arquivo.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr "  -t, --target=TIPO   define o formato do destino. tipos suportados:"
@@ -55,20 +76,17 @@ msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 "  -o, --outfile=ARQ   define ARQ como o arquivo destino ('-' para STDOUT)"
 
-msgid "  -n, --enum-title    enumerate all title lines as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numera todos os tÌtulos como 1, 1.1, 1.1.1, etc"
-
 msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    suprime os cabeÁalhos, tÌtulo e rodapÈ"
+msgstr "  -H, --no-headers    suprime os cabe√ßalhos, t√≠tulo e rodap√©"
 
 msgid ""
 "      --headers       show header, title and footer contents (default ON)"
 msgstr ""
-"      --headers       exibe os cabeÁalhos, tÌtulo e rodapÈ (padr„o LIGADO)"
+"      --headers       exibe os cabe√ßalhos, t√≠tulo e rodap√© (padr√£o LIGADO)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  informa a codificaÁ„o de destino (utf-8, iso-8859-1, "
+"      --encoding=ENC  informa a codifica√ß√£o de destino (utf-8, iso-8859-1, "
 "etc)"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
@@ -78,81 +96,88 @@ msgstr ""
 msgid ""
 "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
 msgstr ""
-"      --css-sugar     insere tags compatÌveis com CSS em destinos HTML e "
+"      --css-sugar     insere tags compat√≠veis com CSS em destinos HTML e "
 "XHTML"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
-"      --css-inside    insere o conte˙do do arquivo CSS no documento HTML/"
+"      --css-inside    insere o conte√∫do do arquivo CSS no documento HTML/"
 "XHTML"
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
-"      --mask-email    esconde e-mails dos robÙs de SPAM. x@y.z vira <x (a) y "
+"      --mask-email    esconde e-mails dos rob√¥s de SPAM. x@y.z vira <x (a) y "
 "z>"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
 msgstr ""
-"      --toc           inclui o Õndice (Table of Contents) no documento "
+"      --toc           inclui o √çndice (Table of Contents) no documento "
 "destino"
 
 msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      exibe o Õndice do documento e sai"
+msgstr "      --toc-only      exibe o √çndice do documento e sai"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   define o nÌvel m·ximo do Õndice para N"
+msgstr "      --toc-level=N   define o n√≠vel m√°ximo do √çndice para N"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    numera todos os t√≠tulos como 1, 1.1, 1.1.1, etc"
+
+msgid ""
+"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
+"order:"
+msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
-msgstr "  -C, --config-file=F carrega arquivo de configuraÁ„o F"
+msgstr "  -C, --config-file=F carrega arquivo de configura√ß√£o F"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 msgstr ""
-"      --rc            lÍ a config do usu·rio em ~/.txt2tagsrc (padr„o LIGADO)"
+"      --rc            l√™ a config do usu√°rio em ~/.txt2tagsrc (padr√£o LIGADO)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           carrega a interface gr·fica escrita em TK"
+msgstr "      --gui           carrega a interface gr√°fica escrita em TK"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr "  -q, --quiet         modo silencioso, sem mensagens (exceto erros)"
 
 msgid "  -v, --verbose       print informative messages during conversion"
-msgstr "  -v, --verbose       exibe mensagens informativas durante a convers„o"
+msgstr "  -v, --verbose       exibe mensagens informativas durante a convers√£o"
 
 msgid "  -h, --help          print this help information and exit"
 msgstr "  -h, --help          exibe este texto de ajuda e sai"
 
 msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       exibe a vers„o do programa e sai"
+msgstr "  -V, --version       exibe a vers√£o do programa e sai"
 
 msgid "      --dump-config   print all the config found and exit"
-msgstr "      --dump-config   exibe todas as configuraÁıes encontradas e sai"
+msgstr "      --dump-config   exibe todas as configura√ß√µes encontradas e sai"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   mostra os fontes com os includes expandidos"
 
 msgid "Turn OFF options:"
-msgstr "OpÁıes para DESLIGAR funcionalidades:"
+msgstr "Op√ß√µes para DESLIGAR funcionalidades:"
 
-msgid ""
-"Example:\n"
-"     %s -t html --toc myfile.t2t"
-msgstr ""
-"Exemplo:\n"
-"     %s -t html --toc meuarquivo.t2t"
+msgid "Example:"
+msgstr "Exemplo:"
+
+msgid "file.t2t"
+msgstr "arquivo.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
-msgstr "Normalmente a saÌda convertida È gravada em 'arquivo.<tipo>'."
+msgstr "Normalmente a sa√≠da convertida √© gravada em 'arquivo.<tipo>'."
 
 msgid "Use --outfile to force an output file name."
-msgstr "Utilize --outfile para forÁar um nome para o arquivo de saÌda."
+msgstr "Utilize --outfile para for√ßar um nome para o arquivo de sa√≠da."
 
 msgid "If  input file is '-', reads from STDIN."
-msgstr "Se o arquivo de entrada È '-', lÍ de STDIN."
+msgstr "Se o arquivo de entrada √© '-', l√™ de STDIN."
 
 msgid "If output file is '-', dumps output to STDOUT."
-msgstr "Se o arquivo de saÌda È '-', envia a saÌda para STDOUT."
+msgstr "Se o arquivo de sa√≠da √© '-', envia a sa√≠da para STDOUT."
 
 msgid "%s: Error: "
 msgstr "%s: Erro: "
@@ -164,16 +189,16 @@ msgid "Please send the following Error Traceback to the author"
 msgstr "Por favor, envie as mensagens seguintes de erro para o autor"
 
 msgid "You must feed me with data on STDIN!"
-msgstr "VocÍ deve me mandar dados pela Entrada Padr„o (STDIN)!"
+msgstr "Voc√™ deve me mandar dados pela Entrada Padr√£o (STDIN)!"
 
 msgid "Cannot read file:"
-msgstr "N„o foi possÌvel ler o arquivo:"
+msgstr "N√£o foi poss√≠vel ler o arquivo:"
 
 msgid "File read (%d lines): %s"
 msgstr "Arquivo lido (%d linhas): %s"
 
 msgid "Cannot open file for writing:"
-msgstr "N„o foi possÌvel gravar o arquivo:"
+msgstr "N√£o foi poss√≠vel gravar o arquivo:"
 
 msgid "%s (try --help)"
 msgstr "%s (tente o --help)"
@@ -182,58 +207,61 @@ msgid "Loading source document"
 msgstr "Carregando o documento fonte"
 
 msgid "The input file is empty: %s"
-msgstr "O arquivo fonte est· vazio: %s"
+msgstr "O arquivo fonte est√° vazio: %s"
 
 msgid "Areas found: %s"
-msgstr "¡reas encontradas: %s"
+msgstr "√Åreas encontradas: %s"
 
 msgid "Scanning source document CONF area"
-msgstr "Varrendo a ·rea CONF do documento fonte"
+msgstr "Varrendo a √°rea CONF do documento fonte"
 
 msgid "Added config %s : %s"
 msgstr "Adicionada config %s : %s"
 
 msgid "No target specified (try --help)"
-msgstr "Nenhum formato de saÌda especificado (tente o --help)"
+msgstr "Nenhum formato de sa√≠da especificado (tente o --help)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Talvez vocÍ est· tentando converter um arquivo antigo da v1.x?"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr "Informe o formato usando a op√ß√£o -t ou o comando %!target."
 
 msgid "Missing input file (try --help)"
 msgstr "Falta o arquivo fonte (tente o --help)"
 
 msgid "Invalid target '%s' (try --help)"
-msgstr "Formato inv·lido '%s' (tente o --help)"
+msgstr "Formato inv√°lido '%s' (tente o --help)"
 
 msgid "--%s value must be a number"
-msgstr "o valor de --%s deve ser um n˙mero"
+msgstr "o valor de --%s deve ser um n√∫mero"
 
 msgid "Option --split must be 0, 1 or 2"
-msgstr "A opÁ„o --split deve ser 0, 1 ou 2"
+msgstr "A op√ß√£o --split deve ser 0, 1 ou 2"
 
 msgid "Input and Output files are the same: %s"
-msgstr "Os arquivos de entrada e saÌda s„o o mesmo: %s"
+msgstr "Os arquivos de entrada e sa√≠da s√£o o mesmo: %s"
 
 msgid "Added the following keys: %s"
 msgstr "Adicionadas as seguintes chaves: %s"
 
 msgid "Invalid CONFIG line on %s"
-msgstr "CONFIG: Linha inv·lida em %s"
+msgstr "CONFIG: Linha inv√°lida em %s"
 
 msgid "Processing line %03d: %s"
 msgstr "Processando a linha %03d: %s"
 
 msgid "A file cannot include itself (loop!)"
-msgstr "Um arquivo n„o pode se incluir (loop!)"
+msgstr "Um arquivo n√£o pode se incluir (loop!)"
 
 msgid "Finished Config file inclusion: %s"
-msgstr "Finalizada a inclus„o do arquivo de configuraÁ„o: %s"
+msgstr "Finalizada a inclus√£o do arquivo de configura√ß√£o: %s"
 
 msgid "Added %s"
 msgstr "Adicionado %s"
 
 msgid "OFF"
 msgstr "DESLIGADO"
+
+msgid "ON"
+msgstr "LIGADO"
 
 msgid "RC file"
 msgstr "arquivo RC"
@@ -245,73 +273,70 @@ msgid "command line"
 msgstr "linha de comando"
 
 msgid "RAW config for %s"
-msgstr "ConfiguraÁ„o CRUA para %s"
-
-msgid "ON"
-msgstr "LIGADO"
+msgstr "Configura√ß√£o CRUA para %s"
 
 msgid "Full PARSED config"
-msgstr "ConfiguraÁ„o completa e pronta"
+msgstr "Configura√ß√£o completa e pronta"
 
 msgid "Active filters"
 msgstr "Filtros ativos"
 
 msgid "Invalid PostProc filter regex"
-msgstr "Filtro de PostProc inv·lido (regex quebrada)"
+msgstr "Filtro de PostProc inv√°lido (regex quebrada)"
 
 msgid "Invalid PostProc filter replacement"
-msgstr "Segunda parte do PostProc inv·lida"
+msgstr "Segunda parte do PostProc inv√°lida"
 
 msgid "%s wrote %s"
 msgstr "%s gravou %s"
 
 msgid "Source document contents stored"
-msgstr "Conte˙do do documento fonte guardado"
+msgstr "Conte√∫do do documento fonte guardado"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr "Processando e salvando a configuraÁ„o encontrada (%03d itens)"
+msgstr "Processando e salvando a configura√ß√£o encontrada (%03d itens)"
 
 msgid "Composing target Headers"
-msgstr "Compondo o CabeÁalho"
+msgstr "Compondo o Cabe√ßalho"
 
 msgid "Composing target Body"
 msgstr "Compondo o Corpo"
 
-msgid "Composing target TOC"
-msgstr "Compondo o Õndice (TOC)"
-
 msgid "Composing target Footer"
-msgstr "Compondo o RodapÈ"
+msgstr "Compondo o Rodap√©"
+
+msgid "Composing target TOC"
+msgstr "Compondo o √çndice (TOC)"
 
 msgid "Saving results to the output file"
-msgstr "Salvando o resultado no arquivo de saÌda"
+msgstr "Salvando o resultado no arquivo de sa√≠da"
 
 msgid "Invalid PreProc filter regex"
-msgstr "Filtro de PreProc inv·lido (regex quebrada)"
+msgstr "Filtro de PreProc inv√°lido (regex quebrada)"
 
 msgid "Invalid PreProc filter replacement"
-msgstr "Segunda parte do PreProc inv·lida"
-
-msgid "txt2tags files"
-msgstr "Arquivos txt2tags"
+msgstr "Segunda parte do PreProc inv√°lida"
 
 msgid "All files"
 msgstr "Todos os arquivos"
+
+msgid "txt2tags files"
+msgstr "Arquivos txt2tags"
 
 msgid "Close"
 msgstr "Fechar"
 
 msgid "You must select a target type!"
-msgstr "VocÍ deve escolher o formato de saÌda!"
+msgstr "Voc√™ deve escolher o formato de sa√≠da!"
 
 msgid "You must provide the source file location!"
-msgstr "VocÍ deve informar qual o arquivo fonte!"
+msgstr "Voc√™ deve informar qual o arquivo fonte!"
 
 msgid "%s: %s converted to %s"
 msgstr "%s: %s convertido para %s"
 
 msgid "Conversion done!"
-msgstr "Convers„o feita!"
+msgstr "Convers√£o feita!"
 
 msgid "FROM:"
 msgstr "DE:"
@@ -329,34 +354,34 @@ msgid "Enter the source file location:"
 msgstr "Informe o local do arquivo fonte:"
 
 msgid "Choose the target document type:"
-msgstr "Escolha o formato de saÌda:"
+msgstr "Escolha o formato de sa√≠da:"
 
 msgid "Some options you may check:"
-msgstr "OpÁıes que vocÍ pode escolher:"
+msgstr "Op√ß√µes que voc√™ pode escolher:"
 
 msgid "Some extra options:"
-msgstr "Algumas opÁıes extras:"
+msgstr "Algumas op√ß√µes extras:"
 
 msgid "Include headers on output"
-msgstr "Incluir os cabeÁalhos na saÌda"
+msgstr "Incluir os cabe√ßalhos na sa√≠da"
 
 msgid "Number titles (1, 1.1, 1.1.1, etc)"
-msgstr "Numerar tÌtulos (1, 1.1, 1.1.1, etc)"
+msgstr "Numerar t√≠tulos (1, 1.1, 1.1.1, etc)"
 
 msgid "Do TOC also (Table of Contents)"
-msgstr "Gerar Ìndice (TOC)"
+msgstr "Gerar √≠ndice (TOC)"
 
 msgid "Hide e-mails from SPAM robots"
-msgstr "Esconder e-mails de robÙs de SPAM"
+msgstr "Esconder e-mails de rob√¥s de SPAM"
 
 msgid "Just do TOC, nothing more"
-msgstr "Gerar apenas o Ìndice, nada mais"
+msgstr "Gerar apenas o √≠ndice, nada mais"
 
 msgid "Dump to screen (Don't save target file)"
-msgstr "Mostrar na tela (N„o grava em arquivo)"
+msgstr "Mostrar na tela (N√£o grava em arquivo)"
 
 msgid "ONE source, MULTI targets"
-msgstr "UM arquivo fonte, V¡RIOS destinos"
+msgstr "UM arquivo fonte, V√ÅRIOS destinos"
 
 msgid "Browse"
 msgstr "Procurar"
@@ -365,7 +390,7 @@ msgid "<screen>"
 msgstr "<tela>"
 
 msgid "Output: "
-msgstr "SaÌda: "
+msgstr "Sa√≠da: "
 
 msgid "Quit"
 msgstr "Sair"
@@ -373,26 +398,32 @@ msgstr "Sair"
 msgid "Convert!"
 msgstr "Converter!"
 
+msgid "--ascii-art: Expected %i chars, got %i"
+msgstr ""
+
 msgid "Txt2tags %s processing begins"
-msgstr "Txt2tags %s: InÌcio do processamento"
+msgstr "Txt2tags %s: In√≠cio do processamento"
 
 msgid "Option --%s can't be used with multiple input files"
-msgstr "A opÁ„o --%s n„o pode ser usada com m˙ltiplos arquivos"
+msgstr "A op√ß√£o --%s n√£o pode ser usada com m√∫ltiplos arquivos"
 
 msgid "Ignoring user configuration file"
-msgstr "Ignorando o arquivo de configuraÁ„o do usu·rio"
+msgstr "Ignorando o arquivo de configura√ß√£o do usu√°rio"
 
 msgid "Loading user configuration file"
-msgstr "Carregando o arquivo de configuraÁ„o do usu·rio"
+msgstr "Carregando o arquivo de configura√ß√£o do usu√°rio"
 
 msgid "We are on GUI interface"
-msgstr "Estamos na interface Gr·fica"
+msgstr "Estamos na interface Gr√°fica"
 
 msgid "txt2tags ERROR!"
 msgstr "ERRO no txt2tags!"
 
 msgid "We are on Command Line interface"
 msgstr "Estamos na interface de Linha de Comando"
+
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr "Informe o arquivo de entrada (.t2t) no final do comando."
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: finalizado com sucesso"
