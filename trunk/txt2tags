@@ -5621,8 +5621,7 @@ def exec_command_line(user_cmdline=[]):
 	
 	# Is GUI available?
 	# Try to load and start GUI interface for --gui
-	# If program was called with no arguments, try GUI also
-	if GUI or not infiles:
+	if GUI:
 		try:
 			load_GUI_resources()
 			Debug("GUI resources OK (Tk module is installed)")
