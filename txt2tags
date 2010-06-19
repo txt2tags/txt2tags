@@ -2536,7 +2536,7 @@ class ConfigMaster:
 			elif kind == type([]):
 				off[key] = []
 			else:
-				Error('ConfigMaster: %s: Unknown type'+key)
+				Error('ConfigMaster: %s: Unknown type' % key)
 		return off
 	
 	def _check_target(self):
