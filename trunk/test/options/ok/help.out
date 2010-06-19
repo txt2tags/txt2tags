@@ -1,0 +1,50 @@
+
+Usage: txt2tags [OPTIONS] [infile.t2t ...]
+
+  -t, --target=TYPE   set target document type. currently supported:
+                      html, xhtml, sgml, dbk, tex, lout, man, mgp,
+                      wiki, gwiki, doku, pmw, moin, pm6, txt, art, adoc
+  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
+  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
+  -H, --no-headers    suppress header, title and footer contents
+      --headers       show header, title and footer contents (default ON)
+      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)
+      --style=FILE    use FILE as the document style (like HTML CSS)
+      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets
+      --css-inside    insert CSS file contents inside HTML/XHTML headers
+      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>
+      --toc           add TOC (Table of Contents) to target document
+      --toc-only      print document TOC and exit
+      --toc-level=N   set maximum TOC level (depth) to N
+  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc
+  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:
+                      coin,line,border,bar1,bar2,level2,level3,level4,level5
+  -C, --config-file=F read config from file F
+      --rc            read user config file ~/.txt2tagsrc (default ON)
+      --gui           invoke Graphical Tk Interface
+  -q, --quiet         quiet mode, suppress all output (except errors)
+  -v, --verbose       print informative messages during conversion
+  -h, --help          print this help information and exit
+  -V, --version       print program version and exit
+      --dump-config   print all the config found and exit
+      --dump-source   print the document source, with includes expanded
+      --list-targets  print a list of all the available targets and exit
+
+Turn OFF options:
+     --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers,
+     --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc,
+     --no-css-sugar, --no-css-inside, --no-quiet, --no-dump-config,
+     --no-dump-source, --no-list-targets
+
+Example:
+     txt2tags -t html --toc file.t2t
+
+By default, converted output is saved to 'infile.<target>'.
+Use --outfile to force an output file name.
+If  input file is '-', reads from STDIN.
+If output file is '-', dumps output to STDOUT.
+
+Site: http://txt2tags.sf.net
+Bugs: http://code.google.com/p/txt2tags/issues/list
+SVN : http://code.google.com/p/txt2tags/source/browse/trunk
+
