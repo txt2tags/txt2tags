@@ -2050,28 +2050,39 @@ def Debug(msg,id=0,linenr=None):
 		else       : color = colors_bgdark[id]
 		msg = '\033[3%sm%s\033[m'%(color,msg)
 	print "++ %s: %s"%(ids[id],msg)
-def Readfile(file, remove_linebreaks=0, ignore_error=0):
+
+def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
 	data = []
-	if file == '-':
-		try: data = sys.stdin.readlines()
+	if file_path == '-':
+		try:
+			data = sys.stdin.readlines()
 		except:
 			if not ignore_error:
 				Error(_('You must feed me with data on STDIN!'))
 	else:
-		try: f = open(file); data = f.readlines() ; f.close()
+		try:
+			f = open(file_path)
+			data = f.readlines()
+			f.close()
 		except:
 			if not ignore_error:
-				Error(_("Cannot read file:")+" %s"%file)
+				Error(_("Cannot read file:") + ' ' + file_path)
 	if remove_linebreaks:
-		data = map(lambda x:re.sub('[\n\r]+$','',x), data)
-	Message(_("File read (%d lines): %s")%(len(data),file),2)
+		data = map(lambda x:re.sub('[\n\r]+$', '', x), data)
+	Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
 	return data
-def Savefile(file, contents):
-	try: f = open(file, 'wb')
-	except: Error(_("Cannot open file for writing:")+" %s"%file)
-	if type(contents) == type([]): doit = f.writelines
-	else: doit = f.write
-	doit(contents) ; f.close()
+
+def Savefile(file_path, contents):
+	try:
+		f = open(file_path, 'wb')
+	except:
+		Error(_("Cannot open file for writing:") + ' ' + file_path)
+	if type(contents) == type([]):
+		doit = f.writelines
+	else:
+		doit = f.write
+	doit(contents)
+	f.close()
 
 def showdic(dic):
 	for k in dic.keys(): print "%15s : %s" % (k,dic[k])
