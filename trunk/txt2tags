@@ -2967,8 +2967,8 @@ class MaskMaster:
 		
 		# Expand verb
 		for mono in self.monobank:
-			open,close = TAGS['fontMonoOpen'],TAGS['fontMonoClose']
-			line = line.replace(self.monomask, open+mono+close, 1)
+			open_,close = TAGS['fontMonoOpen'],TAGS['fontMonoClose']
+			line = line.replace(self.monomask, open_+mono+close, 1)
 		
 		# Expand raw
 		for raw in self.rawbank:
@@ -3297,7 +3297,7 @@ class TableMaster:
 	def _tag_cells(self, rowdata):
 		row = []
 		cells  = rowdata['cells']
-		open   = TAGS['tableCellOpen']
+		open_   = TAGS['tableCellOpen']
 		close  = TAGS['tableCellClose']
 		sep    = TAGS['tableCellSep']
 		calign    = map(lambda x: TAGS['_tableCellAlign'+x], rowdata['cellalign'])
@@ -3335,7 +3335,7 @@ class TableMaster:
 		
 		# Maybe is it a title row?
 		if rowdata['title']:
-			open  = TAGS['tableTitleCellOpen']  or open
+			open_ = TAGS['tableTitleCellOpen']  or open_
 			close = TAGS['tableTitleCellClose'] or close
 			sep   = TAGS['tableTitleCellSep']   or sep
 		
@@ -3350,7 +3350,7 @@ class TableMaster:
 	
 		# Add cell BEGIN/END tags
 		for cell in cells:
-			copen = open
+			copen = open_
 			cclose = close
 			# Make sure we will pop from some filled lists
 			# Fixes empty line bug '| |'
@@ -3416,7 +3416,7 @@ class TableMaster:
 		return ret
 	
 	def dump(self):
-		open  = self._get_open_tag()
+		open_ = self._get_open_tag()
 		rows  = self.rows
 		close = TAGS['tableClose']
 		
@@ -3463,7 +3463,7 @@ class TableMaster:
 		
 		# Join the pieces together
 		fulltable = []
-		if open: fulltable.append(open)
+		if open_: fulltable.append(open_)
 		fulltable.extend(tagged_rows)
 		if close: fulltable.append(close)
 
@@ -3666,7 +3666,7 @@ class BlockMaster:
 	
 	def para(self):
 		result = []
-		open  = TAGS['paragraphOpen']
+		open_ = TAGS['paragraphOpen']
 		close = TAGS['paragraphClose']
 		lines = self._get_escaped_hold()
 
@@ -3674,7 +3674,7 @@ class BlockMaster:
 		if self._should_add_blank_line('before', 'para'): result.append('')
 
 		# Open tag
-		if open: result.append(open)
+		if open_: result.append(open_)
 
 		# Pagemaker likes a paragraph as a single long line
 		if rules['onelinepara']:
@@ -3703,14 +3703,14 @@ class BlockMaster:
 	def verb(self):
 		"Verbatim lines are not masked, so there's no need to unmask"
 		result = []
-		open  = TAGS['blockVerbOpen']
+		open_ = TAGS['blockVerbOpen']
 		close = TAGS['blockVerbClose']
 
 		# Blank line before?
 		if self._should_add_blank_line('before', 'verb'): result.append('')
 
 		# Open tag
-		if open: result.append(open)
+		if open_: result.append(open_)
 
 		# Get contents
 		for line in self.hold():
@@ -3767,7 +3767,7 @@ class BlockMaster:
 
 	def quote(self):
 		result = []
-		open   = TAGS['blockQuoteOpen']            # block based
+		open_  = TAGS['blockQuoteOpen']            # block based
 		close  = TAGS['blockQuoteClose']
 		qline  = TAGS['blockQuoteLine']            # line based
 		indent = tagindent = '\t'*self.depth
@@ -3780,7 +3780,7 @@ class BlockMaster:
 		if self._should_add_blank_line('before', 'quote'): result.append('')
 
 		# Open tag
-		if open: result.append(tagindent+open)
+		if open_: result.append(tagindent+open_)
 		
 		# Get contents
 		for item in self.hold():
@@ -4411,9 +4411,9 @@ def beautify_me(name, line):
 	if name == 'strike' and regex['bar'].search(line): return line
 	
 	name  = 'font%s' % name.capitalize()
-	open  = TAGS['%sOpen'%name]
+	open_ = TAGS['%sOpen'%name]
 	close = TAGS['%sClose'%name]
-	txt = r'%s\1%s'%(open, close)
+	txt = r'%s\1%s'%(open_, close)
 	line = regex[name].sub(txt,line)
 	return line
 
