@@ -1,0 +1,6 @@
+
+Folder - Level 0.
+%!include: folder/_folder.inc
+
+% This test is OK, but the txt2tags behavior is WRONG
+% See folder/_foder.inc for details
