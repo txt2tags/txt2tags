@@ -14,6 +14,10 @@ No paragraph tags here.
 """
 %%date(No macros here.)
 """
+%%% Crossing: Command is ignored
+"""
+%!include: ''include.txt''
+"""
 %%% Crossing: Line is ignored
 """
 -------------------------------------------
