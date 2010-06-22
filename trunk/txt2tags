@@ -104,6 +104,12 @@ HTML_LOWER  = 0   # use lowercased HTML tags instead upper? (default is 0)
 # These are all the core Python modules used by txt2tags (KISS!)
 import re, os, sys, time, getopt
 
+# The CSV module is new in Python version 2.3
+try:
+	import csv
+except ImportError:
+	csv = None
+
 # Program information
 my_url = 'http://txt2tags.sf.net'
 my_name = 'txt2tags'
@@ -2431,7 +2437,9 @@ class SourceDocument:
 			   buf[i][0] != '%' or            # ... not comment or
 			   rgx['macros'].match(buf[i]) or # ... %%macro
 			   rgx['toc'].match(buf[i])    or # ... %%toc
-			   cfg_parser(buf[i],'include')[1]): # ... %!include
+			   cfg_parser(buf[i],'include')[1] or # ... %!include
+			   cfg_parser(buf[i],'csv')[1]        # ... %!csv
+			):
 				ref[2] = i ; break
 		if ref[1] == ref[2]: ref[1] = 0           # no conf area
 		for i in 0,1,2:                           # del !existent
@@ -4995,9 +5003,53 @@ def convert(bodylines, config, firstlinenr=1):
 					if CONF['dump-source']:
 						dump_source.pop()
 				
-				# this line is done, go to next
+				# This line is done, go to next
 				continue
-		
+				
+			# %!csv command
+			elif key == 'csv':
+
+				if not csv:
+					Error("Python module 'csv' not found, but needed for %!csv")
+
+				table = []
+				filename = val
+				reader = csv.reader(Readfile(filename))
+				
+				# Convert each CSV line to a txt2tags' table line
+				# foo,bar,baz -> | foo | bar | baz |
+				try:
+					for row in reader:
+						table.append('| %s |' % ' | '.join(row))
+				except csv.Error, e:
+					Error('CSV: file %s: %s' % (filename, e))
+
+				# Parse and convert the new table
+				# Note: cell contents is raw, no t2t marks are parsed
+				if rules['tableable']:
+					ret.extend(BLOCK.blockin('table'))
+					if table:
+						BLOCK.tableparser.__init__(table[0])
+						for row in table:
+							tablerow = TableMaster().parse_row(row)
+							BLOCK.tableparser.add_row(tablerow)
+							
+							# Very ugly, but necessary for escapes
+							line = SEPARATOR.join(tablerow['cells'])
+							BLOCK.holdadd(doEscape(target, line))
+						ret.extend(BLOCK.blockout())
+
+				# Tables are mapped to verb when target is not table-aware
+				else:
+					ret.extend(BLOCK.blockin('verb'))
+					BLOCK.propset('mapped', 'table')
+					for row in table:
+						BLOCK.holdadd(row)
+					ret.extend(BLOCK.blockout())
+					
+				# This line is done, go to next
+				continue
+					
 		#---------------------[ dump-source ]-----------------------
 		
 		# We don't need to go any further
