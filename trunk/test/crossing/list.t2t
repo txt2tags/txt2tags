@@ -17,6 +17,11 @@ Line 2.
 %%date(Line 2.)
 - Line 3.
 -
+%%% Crossing: Command is parsed inside
+- Line 1.
+%!include: ''include.txt''
+- Line 3.
+-
 %%% Crossing: Line closes it (since r42)
 - Line 1.
 -------------------------------------------
