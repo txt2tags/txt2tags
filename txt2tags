@@ -199,6 +199,12 @@ regex = {}
 TAGS = {}
 rules = {}
 
+# Gui globals
+askopenfilename = None
+showinfo = None
+showwarning = None
+showerror = None
+
 lang = 'english'
 TARGET = ''
 
