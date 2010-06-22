@@ -2193,8 +2193,8 @@ class CommandLine:
 		"Returns a string like 'hVt:o' with all short options/flags"
 		ret = []
 		for opt in self.short_long.keys():
-			long = self.short_long[opt]
-			if long in self.all_options: # is flag or option?
+			long_ = self.short_long[opt]
+			if long_ in self.all_options: # is flag or option?
 				opt = opt+':'        # option: have param
 			ret.append(opt)
 		#Debug('Valid SHORT options: %s'%ret)
@@ -2221,10 +2221,10 @@ class CommandLine:
 	def parse(self, cmdline=[]):
 		"Check/Parse a command line list     TIP: no program name!"
 		# Get the valid options
-		short, long = self.short_opts, self.long_opts
+		short, long_ = self.short_opts, self.long_opts
 		# Parse it!
 		try:
-			opts, args = getopt.getopt(cmdline, short, long)
+			opts, args = getopt.getopt(cmdline, short, long_)
 		except getopt.error, errmsg:
 			Error(_("%s (try --help)")%errmsg)
 		return (opts, args)
