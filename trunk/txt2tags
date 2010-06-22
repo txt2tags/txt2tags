@@ -1996,25 +1996,21 @@ def aa_line(char):
 
 def aa_box(txt):
 	len_txt = len(txt)
-	nspace = (72-len_txt-4)/2
-	line_box = " "*nspace + AA_CHARS['coin'] + AA_CHARS['line']*(len_txt+2) + AA_CHARS['coin'] + LB
+	nspace = (72 - len_txt - 4) / 2
+	line_box = " " * nspace + AA_CHARS['coin'] + AA_CHARS['line'] * (len_txt + 2) + AA_CHARS['coin'] + LB
 	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
 	#                           +-------------------------------+
 	#                           | all theeeeeeeeeeeeeeeeee text |
 	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
-	line_txt = " "*nspace + AA_CHARS['border'] + ' ' + txt + ' ' + AA_CHARS['border'] + LB
+	line_txt = " " * nspace + AA_CHARS['border'] + ' ' + txt + ' ' + AA_CHARS['border'] + LB
 	return line_box + line_txt + line_box
 
 def aa_header(header_data):
-	header= aa_line(AA_CHARS['bar2'])+\
-		LB+\
-		LB
-	for h in 'HEADER1', 'HEADER2', 'HEADER3' :
-		if header_data[h]: header +=\
-		aa_box(header_data[h])+\
-		LB+\
-		LB
-	header+=aa_line(AA_CHARS['bar2'])
+	header = aa_line(AA_CHARS['bar2']) + LB + LB
+	for h in 'HEADER1', 'HEADER2', 'HEADER3':
+		if header_data[h]:
+			header += aa_box(header_data[h]) + LB + LB
+	header += aa_line(AA_CHARS['bar2'])
 	return header
 
 ##############################################################################
