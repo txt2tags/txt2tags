@@ -2151,7 +2151,7 @@ class CommandLine:
 	get_raw_config() -> [RAW config]
 		Scans command line and convert the data to the RAW config
 		format. See ConfigMaster class to the RAW format description.
-		Optional 'ignore' and 'filter' arguments are used to filter
+		Optional 'ignore' and 'filter_' arguments are used to filter
 		in or out specified keys.
 
 	compose_cmdline(dict) -> [Command line]
@@ -2229,7 +2229,7 @@ class CommandLine:
 			Error(_("%s (try --help)")%errmsg)
 		return (opts, args)
 	
-	def get_raw_config(self, cmdline=[], ignore=[], filter=[], relative=0):
+	def get_raw_config(self, cmdline=[], ignore=[], filter_=[], relative=0):
 		"Returns the options/arguments found as RAW config"
 		if not cmdline: return []
 		ret = []
@@ -2263,11 +2263,11 @@ class CommandLine:
 		while args:
 			infile = args.pop(0)
 			ret.append(['infile', infile])
-		# Apply 'ignore' and 'filter' rules (filter is stronger)
+		# Apply 'ignore' and 'filter_' rules (filter_ is stronger)
 		temp = ret[:] ; ret = []
 		for name,value in temp:
-			if (not filter and not ignore) or \
-			   (filter and name in filter) or \
+			if (not filter_ and not ignore) or \
+			   (filter_ and name in filter_) or \
 			   (ignore and name not in ignore):
 				ret.append( ['all', name, value] )
 		# Add the original command line string as 'realcmdline'
@@ -4067,10 +4067,10 @@ def dumpConfig(source_raw, parsed_config):
 		print "%25s: %s"%(dotted_spaces("%-14s"%key),val)
 	print
 	print _('Active filters')
-	for filter in ['preproc', 'postproc']:
-		for rule in parsed_config.get(filter) or []:
+	for filter_ in ['preproc', 'postproc']:
+		for rule in parsed_config.get(filter_) or []:
 			print "%25s: %s  ->  %s" % (
-				dotted_spaces("%-14s"%filter), rule[0], rule[1])
+				dotted_spaces("%-14s"%filter_), rule[0], rule[1])
 
 
 def get_file_body(file_):
