@@ -2045,20 +2045,20 @@ def Message(msg,level):
 	if level <= VERBOSE and not QUIET:
 		prefix = '-'*5
 		print "%s %s"%(prefix*level, msg)
-def Debug(msg,id=0,linenr=None):
+def Debug(msg,id_=0,linenr=None):
 	"Show debug messages, categorized (colored or not)"
 	if QUIET or not DEBUG: return
-	if int(id) not in range(8): id = 0
+	if int(id_) not in range(8): id_ = 0
 	# 0:black 1:red 2:green 3:yellow 4:blue 5:pink 6:cyan 7:white ;1:light
 	ids            = ['INI','CFG','SRC','BLK','HLD','GUI','OUT','DET']
 	colors_bgdark  = ['7;1','1;1','3;1','6;1','4;1','5;1','2;1','7;1']
 	colors_bglight = ['0'  ,'1'  ,'3'  ,'6'  ,'4'  ,'5'  ,'2'  ,'0'  ]
 	if linenr is not None: msg = "LINE %04d: %s"%(linenr,msg)
 	if COLOR_DEBUG:
-		if BG_LIGHT: color = colors_bglight[id]
-		else       : color = colors_bgdark[id]
+		if BG_LIGHT: color = colors_bglight[id_]
+		else       : color = colors_bgdark[id_]
 		msg = '\033[3%sm%s\033[m'%(color,msg)
-	print "++ %s: %s"%(ids[id],msg)
+	print "++ %s: %s"%(ids[id_],msg)
 
 def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
 	data = []
@@ -3074,10 +3074,10 @@ class TitleMaster:
 	def _set_prop(self, line=''):
 		"Extract info from original line and set data holders."
 		# Detect title type (numbered or not)
-		id = line.lstrip()[0]
-		if   id == '=': kind = 'title'
-		elif id == '+': kind = 'numtitle'
-		else: Error("Unknown Title ID '%s'"%id)
+		id_ = line.lstrip()[0]
+		if   id_ == '=': kind = 'title'
+		elif id_ == '+': kind = 'numtitle'
+		else: Error("Unknown Title ID '%s'"%id_)
 		# Extract line info
 		match = regex[kind].search(line)
 		level = len(match.group('id'))
@@ -4729,26 +4729,26 @@ def add_inline_tags(line):
 def get_include_contents(file_, path=''):
 	"Parses %!include: value and extract file contents"
 	ids = {'`':'verb', '"':'raw', "'":'tagged' }
-	id = 't2t'
+	id_ = 't2t'
 	# Set include type and remove identifier marks
 	mark = file_[0]
 	if mark in ids.keys():
 		if file_[:2] == file_[-2:] == mark*2:
-			id = ids[mark]     # set type
+			id_ = ids[mark]      # set type
 			file_ = file_[2:-2]  # remove marks
 	# Handle remote dir execution
 	filepath = os.path.join(path, file_)
 	# Read included file contents
 	lines = Readfile(filepath, remove_linebreaks=1)
 	# Default txt2tags marked text, just BODY matters
-	if id == 't2t':
+	if id_ == 't2t':
 		lines = get_file_body(filepath)
 		#TODO fix images relative path if file has a path, ie.: chapter1/index.t2t (wait until tree parsing)
 		#TODO for the images path fix, also respect outfile path, if different from infile (wait until tree parsing)
-		lines.insert(0, '%%INCLUDED(%s) starts here: %s'%(id,file_))
+		lines.insert(0, '%%INCLUDED(%s) starts here: %s'%(id_,file_))
 		# This appears when included hit EOF with verbatim area open
-		#lines.append('%%INCLUDED(%s) ends here: %s'%(id,file_))
-	return id, lines
+		#lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
+	return id_, lines
 
 
 def set_global_config(config):
