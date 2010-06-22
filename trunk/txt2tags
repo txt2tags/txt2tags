@@ -4967,17 +4967,24 @@ def convert(bodylines, config, firstlinenr=1):
 		#---------------------[ special ]---------------------------
 		
 		if regex['special'].search(line):
-			# Include command
-			targ, key, val = ConfigLines().parse_line(line, 'include', target)
+			
+			targ, key, val = ConfigLines().parse_line(line, None, target)
+			
 			if key:
 				Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
+			else:
+				Debug('Bogus Special Line', 1, linenr)
 				
+			# %!include command
+			if key == 'include':
+						
 				incpath = os.path.dirname(CONF['sourcefile'])
 				incfile = val
 				err = _('A file cannot include itself (loop!)')
 				if CONF['sourcefile'] == incfile:
 					Error("%s: %s"%(err,incfile))
 				inctype, inclines = get_include_contents(incfile, incpath)
+				
 				# Verb, raw and tagged are easy
 				if inctype != 't2t':
 					ret.extend(BLOCK.blockin(inctype))
@@ -4991,9 +4998,9 @@ def convert(bodylines, config, firstlinenr=1):
 					# Remove %!include call
 					if CONF['dump-source']:
 						dump_source.pop()
+				
+				# this line is done, go to next
 				continue
-			else:
-				Debug('Bogus Special Line',1,linenr)
 		
 		#---------------------[ dump-source ]-----------------------
 		
