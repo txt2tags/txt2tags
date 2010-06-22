@@ -18,7 +18,7 @@
 import os, sys, string
 import lib
 
-MODULES = string.split('headers marks options nesting crossing include gotchas bugs')
+MODULES = string.split('headers marks options nesting crossing include csv gotchas bugs')
 SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
 TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
