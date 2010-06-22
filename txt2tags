@@ -194,6 +194,7 @@ RC_RAW = []
 CMDLINE_RAW = []
 CONF = {}
 BLOCK = None
+TITLE = None
 regex = {}
 TAGS = {}
 rules = {}
