@@ -1,5 +1,5 @@
 #
-# txt2tags marks gotchas tester (http://txt2tags.sf.net)
+# txt2tags %!include command tester (http://txt2tags.sf.net)
 # See also: ../run.py ../lib.py
 #
 
@@ -16,7 +16,7 @@ lib.ERROR_FILES = []
 def run():
 	# test all OK files found
 	for outfile in glob.glob("ok/*"):
-		strerr = 0
+		stderr = 0
 		basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
 		target = re.sub('.*\.', '', outfile)
 		if target == 'out':
