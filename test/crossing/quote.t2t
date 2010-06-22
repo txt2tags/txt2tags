@@ -14,6 +14,14 @@ Closed
 	Line 1.
 %%date(Closed)
 	Line 3.
+%%% Crossing: Command is parsed
+	Line 1.
+%!include: ''include.txt''
+	Line 3.
+%%% Crossing: Command at end is parsed inside
+	Line 1.
+	Line 3.
+%!include: ''include.txt''
 %%% Crossing: Line closes it
 	Line 1.
 -------------------------------------------

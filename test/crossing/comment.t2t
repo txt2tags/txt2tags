@@ -17,6 +17,11 @@ You're not seeing this.
 %%date(You're not seeing this.)
 %%%
 
+%%% Crossing: Command is ignored
+%%%
+%!include: ''include.txt''
+%%%
+
 %%% Crossing: Line is ignored
 %%%
 ----------------------------------------------
