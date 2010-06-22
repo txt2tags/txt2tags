@@ -2455,7 +2455,7 @@ class SourceDocument:
 		if not self.areas.count('conf'): return []
 		Message(_("Scanning source document CONF area"),1)
 		raw = ConfigLines(
-			file=self.filename, lines=self.get('conf'),
+			file_=self.filename, lines=self.get('conf'),
 			first_line=self.arearef[1]).get_raw_config()
 		Debug("document raw config: %s"%raw, 1)
 		return raw
@@ -2726,8 +2726,8 @@ class ConfigLines:
 	
 		target, key, value = ConfigLines().parse_line(body_line)
 	"""
-	def __init__(self, file='', lines=[], first_line=1):
-		self.file = file or 'NOFILE'
+	def __init__(self, file_='', lines=[], first_line=1):
+		self.file = file_ or 'NOFILE'
 		self.lines = lines
 		self.first_line = first_line
 	
@@ -2750,15 +2750,15 @@ class ConfigLines:
 			if line[0] != '%': Error(errormsg%(filename,i+1,line))
 		return lines
 	
-	def include_config_file(self, file=''):
+	def include_config_file(self, file_=''):
 		"Perform the %!includeconf action, returning RAW config"
-		if not file: return []
+		if not file_: return []
 		# Current dir relative to the current file (self.file)
 		current_dir = os.path.dirname(self.file)
-		file = os.path.join(current_dir, file)
+		file_ = os.path.join(current_dir, file_)
 		# Read and parse included config file contents
-		lines = self.read_config_file(file)
-		return ConfigLines(file=file, lines=lines).get_raw_config()
+		lines = self.read_config_file(file_)
+		return ConfigLines(file_=file_, lines=lines).get_raw_config()
 	
 	def get_raw_config(self):
 		"Scan buffer and extract all config as RAW (including includes)"
@@ -3988,11 +3988,11 @@ class MacroMaster:
 	
 	def set_file_info(self, macroname):
 		if self.fileinfo.get(macroname): return   # already done
-		file = getattr(self, self.name)           # self.infile
-		if file == STDOUT or file == MODULEOUT:
-			dir = ''; path = name = file
+		file_ = getattr(self, self.name)           # self.infile
+		if file_ == STDOUT or file_ == MODULEOUT:
+			dir = ''; path = name = file_
 		else:
-			path = os.path.abspath(file)
+			path = os.path.abspath(file_)
 			dir  = os.path.dirname(path)
 			name = os.path.basename(path)
 		self.fileinfo[macroname] = {'path':path,'dir':dir,'name':name}
@@ -4072,9 +4072,9 @@ def dumpConfig(source_raw, parsed_config):
 				dotted_spaces("%-14s"%filter), rule[0], rule[1])
 
 
-def get_file_body(file):
+def get_file_body(file_):
 	"Returns all the document BODY lines"
-	return process_source_file(file, noconf=1)[1][2]
+	return process_source_file(file_, noconf=1)[1][2]
 
 
 def finish_him(outlist, config):
@@ -4564,7 +4564,7 @@ def get_encoding_string(enc, target):
 ##############################################################################
 
 
-def process_source_file(file='', noconf=0, contents=[]):
+def process_source_file(file_='', noconf=0, contents=[]):
 	"""
 	Find and Join all the configuration available for a source file.
 	No sanity checking is done on this step.
@@ -4586,7 +4586,7 @@ def process_source_file(file='', noconf=0, contents=[]):
 	if contents:
 		source = SourceDocument(contents=contents)
 	else:
-		source = SourceDocument(file)
+		source = SourceDocument(file_)
 	head, conf, body = source.split()
 	Message(_("Source document contents stored"),2)
 	if not noconf:
@@ -4602,7 +4602,7 @@ def process_source_file(file='', noconf=0, contents=[]):
 			full_parsed['infile'] = MODULEIN
 			full_parsed['outfile'] = MODULEOUT
 		else:
-			full_parsed['sourcefile'] = file
+			full_parsed['sourcefile'] = file_
 		# Maybe should we dump the config found?
 		if full_parsed.get('dump-config'):
 			dumpConfig(source_raw, full_parsed)
@@ -4725,18 +4725,18 @@ def add_inline_tags(line):
 	return line
 
 
-def get_include_contents(file, path=''):
+def get_include_contents(file_, path=''):
 	"Parses %!include: value and extract file contents"
 	ids = {'`':'verb', '"':'raw', "'":'tagged' }
 	id = 't2t'
 	# Set include type and remove identifier marks
-	mark = file[0]
+	mark = file_[0]
 	if mark in ids.keys():
-		if file[:2] == file[-2:] == mark*2:
+		if file_[:2] == file_[-2:] == mark*2:
 			id = ids[mark]     # set type
-			file = file[2:-2]  # remove marks
+			file_ = file_[2:-2]  # remove marks
 	# Handle remote dir execution
-	filepath = os.path.join(path, file)
+	filepath = os.path.join(path, file_)
 	# Read included file contents
 	lines = Readfile(filepath, remove_linebreaks=1)
 	# Default txt2tags marked text, just BODY matters
@@ -4744,9 +4744,9 @@ def get_include_contents(file, path=''):
 		lines = get_file_body(filepath)
 		#TODO fix images relative path if file has a path, ie.: chapter1/index.t2t (wait until tree parsing)
 		#TODO for the images path fix, also respect outfile path, if different from infile (wait until tree parsing)
-		lines.insert(0, '%%INCLUDED(%s) starts here: %s'%(id,file))
+		lines.insert(0, '%%INCLUDED(%s) starts here: %s'%(id,file_))
 		# This appears when included hit EOF with verbatim area open
-		#lines.append('%%INCLUDED(%s) ends here: %s'%(id,file))
+		#lines.append('%%INCLUDED(%s) ends here: %s'%(id,file_))
 	return id, lines
 
 
@@ -5649,7 +5649,7 @@ def exec_command_line(user_cmdline=[]):
 		rc_file = get_rc_path()
 		if os.path.isfile(rc_file):
 			Message(_("Loading user configuration file"),1)
-			RC_RAW = ConfigLines(file=rc_file).get_raw_config()
+			RC_RAW = ConfigLines(file_=rc_file).get_raw_config()
 		
 		Debug("rc file: %s"%rc_file)
 		Debug("rc file raw config: %s"%RC_RAW,1)
