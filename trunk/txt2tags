@@ -3990,12 +3990,13 @@ class MacroMaster:
 		if self.fileinfo.get(macroname): return   # already done
 		file_ = getattr(self, self.name)           # self.infile
 		if file_ == STDOUT or file_ == MODULEOUT:
-			dir = ''; path = name = file_
+			dir_ = ''
+			path = name = file_
 		else:
 			path = os.path.abspath(file_)
-			dir  = os.path.dirname(path)
+			dir_ = os.path.dirname(path)
 			name = os.path.basename(path)
-		self.fileinfo[macroname] = {'path':path,'dir':dir,'name':name}
+		self.fileinfo[macroname] = {'path':path,'dir':dir_,'name':name}
 	
 	def expand(self, line=''):
 		"Expand all macros found on the line"
