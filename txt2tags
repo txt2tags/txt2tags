@@ -2019,6 +2019,28 @@ def aa_header(header_data):
 	header += aa_line(AA_CHARS['bar2'])
 	return header
 
+def aa_table(table):
+    data = [row[2:-2].split(' | ') for row in table]
+    n = max(len(line) for line in data)
+    size = max(max(len(el) for el in line) for line in data if line != [])
+    data = [line + (n - len(line)) * [''] for line in data]
+    tab = []
+    for i in range(n):
+        tab.append([line[i] for line in data])
+    length = [max(len(el) for el in line) for line in tab]
+    res = "+"
+    for i in range(n):    
+	res = res + (length[i] + 2) * "-" + '+'
+    res = res + "\n"
+    ret = ""
+    for i,line in enumerate(data):
+        aff = "|"
+	ret = ret + res
+        for j,el in enumerate(line):
+            aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
+        ret = ret + aff + '\n'
+    return ret + res
+
 ##############################################################################
 
 class error(Exception):
@@ -5041,10 +5063,15 @@ def convert(bodylines, config, firstlinenr=1):
 
 				# Tables are mapped to verb when target is not table-aware
 				else:
-					ret.extend(BLOCK.blockin('verb'))
-					BLOCK.propset('mapped', 'table')
-					for row in table:
-						BLOCK.holdadd(row)
+					if target == 'art' and table:		
+						ret.extend(BLOCK.blockin('raw'))
+						BLOCK.propset('mapped', 'table')
+						BLOCK.holdadd(aa_table(table))
+					else:
+						ret.extend(BLOCK.blockin('verb'))
+						BLOCK.propset('mapped', 'table')
+						for row in table:
+							BLOCK.holdadd(row)
 					ret.extend(BLOCK.blockout())
 					
 				# This line is done, go to next
