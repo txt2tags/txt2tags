@@ -2031,7 +2031,7 @@ def aa_table(table):
     for i in range(n):    
         res = res + (length[i] + 2) * "-" + '+'
     ret = ""
-    for data:
+    for line in data:
         aff = "  |"
         ret = ret + res + '\n'
         for j,el in enumerate(line):
