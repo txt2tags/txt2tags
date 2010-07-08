@@ -2030,17 +2030,18 @@ def aa_table(table):
     for i in range(n):
         tab.append([line[i] for line in data])
     length = [max(len(el) for el in line) for line in tab]
-    res = "  +"
+    res = "+"
     for i in range(n):    
         res = res + (length[i] + 2) * "-" + '+'
-    ret = ""
+    ret = []
     for line in data:
-        aff = "  |"
-        ret = ret + res + '\n'
+        aff = "|"
+        ret.append(res)
         for j,el in enumerate(line):
             aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
-        ret = ret + aff + '\n'
-    return ret + res
+        ret.append(aff)
+    ret.append(res)
+    return ret
 
 ##############################################################################
 
@@ -5065,14 +5066,11 @@ def convert(bodylines, config, firstlinenr=1):
 				# Tables are mapped to verb when target is not table-aware
 				else:
 					if target == 'art' and table:		
-						ret.extend(BLOCK.blockin('raw'))
-						BLOCK.propset('mapped', 'table')
-						BLOCK.holdadd('\n' + aa_table(table) + '\n')
-					else:
-						ret.extend(BLOCK.blockin('verb'))
-						BLOCK.propset('mapped', 'table')
-						for row in table:
-							BLOCK.holdadd(row)
+						table = aa_table(table)
+					ret.extend(BLOCK.blockin('verb'))
+					BLOCK.propset('mapped', 'table')
+					for row in table:
+						BLOCK.holdadd(row)
 					ret.extend(BLOCK.blockout())
 					
 				# This line is done, go to next
