@@ -1998,25 +1998,28 @@ def getRegexes():
 ################# functions for the Ascii Art backend ########################
 
 def aa_line(char):
-	return char*72 + LB
+	return char * 72
 
 def aa_box(txt):
 	len_txt = len(txt)
 	nspace = (72 - len_txt - 4) / 2
-	line_box = " " * nspace + AA_CHARS['corner'] + AA_CHARS['border'] * (len_txt + 2) + AA_CHARS['corner'] + LB
+	line_box = " " * nspace + AA_CHARS['corner'] + AA_CHARS['border'] * (len_txt + 2) + AA_CHARS['corner']
 	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
 	#                           +-------------------------------+
 	#                           | all theeeeeeeeeeeeeeeeee text |
 	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
-	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side'] + LB
-	return line_box + line_txt + line_box
+	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side']
+	return line_box, line_txt, line_box
 
 def aa_header(header_data):
-	header = aa_line(AA_CHARS['bar2']) + LB + LB
+	header = [aa_line(AA_CHARS['bar2'])]
+	header.extend(['',''])
 	for h in 'HEADER1', 'HEADER2', 'HEADER3':
 		if header_data[h]:
-			header += aa_box(header_data[h]) + LB + LB
-	header += aa_line(AA_CHARS['bar2'])
+			header.extend(aa_box(header_data[h]))
+			header.extend(['',''])
+	header.append(aa_line(AA_CHARS['bar2']))
+	header.append('')
 	return header
 
 def aa_table(table):
@@ -3205,7 +3208,7 @@ class TitleMaster:
 			ret.append(regex['x'].sub('='*i, self.tag))
 		elif TARGET == 'art' and self.level == 1:
 			if BLOCK.count > 1: ret.append('') # blank line before
-			ret.append(aa_box(tagged))
+			ret.extend(aa_box(tagged))
 		elif TARGET == 'art':
 			level = 'level'+str(self.level)
 			if BLOCK.count > 1: ret.append('') # blank line before
@@ -4238,7 +4241,7 @@ def doHeader(headers, config):
 		if not [v for v in head_data.values() if v]:
 			return []
 		template = aa_header(head_data)
-		return template.split('\n')
+		return template
 	
 	# css-inside removes STYLE line
 	#XXX In tex, this also removes the modules call (%!style:amsfonts)
