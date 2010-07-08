@@ -193,7 +193,7 @@ QUIET = 0     # do not edit here, please use --quiet
 GUI = 0       # do not edit here, please use --gui
 AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
-AA_LCHARS = ['coin','line','border','bar1','bar2','level2','level3','level4','level5']
+AA_LCHARS = ['corner','border','side','bar1','bar2','level2','level3','level4','level5']
 AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --ascii-art or -a
 
 RC_RAW = []
@@ -2003,12 +2003,12 @@ def aa_line(char):
 def aa_box(txt):
 	len_txt = len(txt)
 	nspace = (72 - len_txt - 4) / 2
-	line_box = " " * nspace + AA_CHARS['coin'] + AA_CHARS['line'] * (len_txt + 2) + AA_CHARS['coin'] + LB
+	line_box = " " * nspace + AA_CHARS['corner'] + AA_CHARS['border'] * (len_txt + 2) + AA_CHARS['corner'] + LB
 	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
 	#                           +-------------------------------+
 	#                           | all theeeeeeeeeeeeeeeeee text |
 	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
-	line_txt = " " * nspace + AA_CHARS['border'] + ' ' + txt + ' ' + AA_CHARS['border'] + LB
+	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side'] + LB
 	return line_box + line_txt + line_box
 
 def aa_header(header_data):
@@ -2029,11 +2029,11 @@ def aa_table(table):
     length = [max(len(el) for el in line) for line in tab]
     res = "  +"
     for i in range(n):    
-	res = res + (length[i] + 2) * "-" + '+'
+        res = res + (length[i] + 2) * "-" + '+'
     ret = ""
-    for i,line in enumerate(data):
+    for data:
         aff = "  |"
-	ret = ret + res + '\n'
+        ret = ret + res + '\n'
         for j,el in enumerate(line):
             aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
         ret = ret + aff + '\n'
