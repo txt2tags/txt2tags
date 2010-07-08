@@ -4239,7 +4239,7 @@ def doHeader(headers, config):
 		head_data['HEADER%d'%(i+1)] = contents
 	
 	if target == 'art':
-		if not [v for v in head_data.values() if v]:
+		if not [v for v in head_data if v.startswith("HEADER") and head_data[v]]:
 			return []
 		template = aa_header(head_data)
 		return template
