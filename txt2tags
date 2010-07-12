@@ -150,7 +150,7 @@ TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 tx
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
             'css-sugar'  :0 , 'css-suggar' :0 , 'css-inside' :0 ,
-            'quiet'      :0 }
+            'quiet'      :0 , 'aa-present' :0 }
 OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
@@ -195,6 +195,7 @@ AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
 AA_LCHARS = ['corner','border','side','bar1','bar2','level2','level3','level4','level5']
 AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --ascii-art or -a
+
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -248,6 +249,8 @@ _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
 _("  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"),
 '                      %s' % ','.join(AA_LCHARS),
+'                      default: +-|-==-^"',
+_("  -p, --aa-present    ascii art in presentation slides"),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -633,8 +636,8 @@ def getTags(config):
 		'blockQuoteLine'       : '\t'                     ,
 		'listItemOpen'         : '- '                     ,
 		'numlistItemOpen'      : '\a. '                   ,
-		'bar1'                 : aa_line(AA_CHARS['bar1']),
-		'bar2'                 : aa_line(AA_CHARS['bar2']),
+		'bar1'                 : aa_line(AA_CHARS['bar1'], AA_COLUMNS),
+		'bar2'                 : aa_line(AA_CHARS['bar2'], AA_COLUMNS),
 		'url'                  : '\a'                     ,
 		'urlMark'              : '\a (\a)'                ,
 		'email'                : '\a'                     ,
@@ -1380,7 +1383,7 @@ def getTags(config):
 	if HTML_LOWER: alltags['html'] = xhtml.copy()
 	xhtml.update(alltags['xhtml'])
 	alltags['xhtml'] = xhtml.copy()
-	
+
 	# Compose the target tags dictionary
 	tags = {}
 	target_tags = alltags[config['target']].copy()
@@ -1825,6 +1828,9 @@ def getRules(config):
 		myrules.update(rules_bank['xhtml'])   # get XHTML specific
 	elif config['target'] == 'art':
 		myrules = rules_bank['txt'].copy()    # inheritance
+		if AA_PRESENT:
+			myrules['blanksaroundtitle'] = 0
+			myrules['blanksaroundnumtitle'] = 0
 	else:
 		myrules = rules_bank[config['target']].copy()
 	
@@ -1997,12 +2003,12 @@ def getRegexes():
 
 ################# functions for the Ascii Art backend ########################
 
-def aa_line(char):
-	return char * 72
+def aa_line(char, length):
+	return char * length
 
-def aa_box(txt):
+def aa_box(txt, length):
 	len_txt = len(txt)
-	nspace = (72 - len_txt - 4) / 2
+	nspace = (length - len_txt - 4) / 2
 	line_box = " " * nspace + AA_CHARS['corner'] + AA_CHARS['border'] * (len_txt + 2) + AA_CHARS['corner']
 	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
 	#                           +-------------------------------+
@@ -2011,16 +2017,24 @@ def aa_box(txt):
 	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side']
 	return line_box, line_txt, line_box
 
-def aa_header(header_data):
-	header = [aa_line(AA_CHARS['bar2'])]
-	header.extend(['',''])
-	for h in 'HEADER1', 'HEADER2', 'HEADER3':
-		if header_data[h]:
-			header.extend(aa_box(header_data[h]))
-			header.extend(['',''])
-	header.append(aa_line(AA_CHARS['bar2']))
-	header.append('')
+def aa_header(header_data, length, n, end):
+	header = [aa_line(AA_CHARS['bar2'], length)]
+	header.extend(['']*n)
+ 	for h in 'HEADER1', 'HEADER2', 'HEADER3':
+ 		if header_data[h]:
+			header.extend(aa_box(header_data[h], length))
+			header.extend(['']*n)
+	header.extend(['']*end)	
+	header.append(aa_line(AA_CHARS['bar2'], length))
 	return header
+
+def aa_slide(title, length):
+	res = [aa_line(AA_CHARS['bar2'], length)]
+	res.append('')
+	res.append(title.center(length))
+	res.append('')
+	res.append(aa_line(AA_CHARS['bar2'], length))
+	return res
 
 def aa_table(table):
     data = [row[2:-2].split(' | ') for row in table]
@@ -2205,6 +2219,7 @@ class CommandLine:
 			'i':'infile',
 			'n':'enum-title',
 			'o':'outfile',
+			'p':'aa-present',
 			'q':'quiet',
 			't':'target',
 			'v':'verbose',
@@ -2647,7 +2662,10 @@ class ConfigMaster:
 		if infile == MODULEIN and not outfile: outfile = MODULEOUT
 		if not outfile and (infile and config.get('target')):
 			basename = re.sub('\.(txt|t2t)$','',infile)
-			outfile = "%s.%s"%(basename, config['target'])
+			if config['target'] == 'art' and AA_PRESENT :
+				outfile = "%s.p%s"%(basename, config['target'])
+			else :
+				outfile = "%s.%s"%(basename, config['target'])
 		Debug(" infile: '%s'"%infile , 1)
 		Debug("outfile: '%s'"%outfile, 1)
 		return outfile
@@ -3182,6 +3200,7 @@ class TitleMaster:
 	
 	def get(self):
 		"Returns the tagged title as a list."
+		global AA_TITLE
 		ret = []
 		
 		# Maybe some anchoring before?
@@ -3208,8 +3227,11 @@ class TitleMaster:
 				i = len(full_title)
 			ret.append(regex['x'].sub('='*i, self.tag))
 		elif TARGET == 'art' and self.level == 1:
-			if BLOCK.count > 1: ret.append('') # blank line before
-			ret.extend(aa_box(tagged))
+			if AA_PRESENT :
+				AA_TITLE = tagged
+			else :
+				if BLOCK.count > 1: ret.append('') # blank line before
+				ret.extend(aa_box(tagged, AA_COLUMNS))
 		elif TARGET == 'art':
 			level = 'level'+str(self.level)
 			if BLOCK.count > 1: ret.append('') # blank line before
@@ -3619,6 +3641,17 @@ class BlockMaster:
 		if result:
 			self.last = blockname
 			Debug('BLOCK: %s'%result, 6)
+                if TARGET == 'art' and AA_PRESENT:
+                        global AA_COUNT
+                        n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
+                        if n<len(result) and not (TITLE.level==1 and blockname =="title"):
+                                result=['']*n + [aa_line(AA_CHARS['bar1'], AA_COLUMNS)] + aa_slide(AA_TITLE, AA_COLUMNS) + [''] + result
+                        if blockname == "title" and TITLE.level == 1:
+                                aa_title = aa_slide(AA_TITLE, AA_COLUMNS) + ['']
+                                if AA_COUNT:
+					aa_title = ['']*n + [aa_line(AA_CHARS['bar2'], AA_COLUMNS)] + aa_title
+                                result=aa_title+result
+                        AA_COUNT+=len(result)
 
 		return result
 	
@@ -4237,12 +4270,20 @@ def doHeader(headers, config):
 			contents = doFinalEscape(target, contents)
 		
 		head_data['HEADER%d'%(i+1)] = contents
-	
+
 	if target == 'art':
-		if not [v for v in head_data if v.startswith("HEADER") and head_data[v]]:
-			return []
-		template = aa_header(head_data)
-		return template
+                n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
+                if not n_h :
+                        return []
+                if AA_PRESENT:
+                        x = AA_LINES - 3 - n_h*3
+                        n = x / (n_h+1)
+                        end = x % (n_h+1)
+                        template = aa_header(head_data, AA_COLUMNS, n, end)
+                else:
+                        template = aa_header(head_data, 72, 2, 0)
+                return template
+
 	
 	# css-inside removes STYLE line
 	#XXX In tex, this also removes the modules call (%!style:amsfonts)
@@ -4687,6 +4728,10 @@ def convert_this_files(configs):
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
+		if TARGET == 'art' and AA_PRESENT:
+			n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
+			target_body=target_body+['']*n+[aa_line(AA_CHARS['bar2'], AA_COLUMNS)]
+
 		# Make TOC (if needed)
 		Message(_("Composing target TOC"),1)
 		tagged_toc  = toc_tagger(marked_toc, myconf)
@@ -5682,7 +5727,7 @@ class Gui:
 ##############################################################################
 
 def exec_command_line(user_cmdline=[]):
-	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, Error
+	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, Error
 	
 	# Extract command line data
 	cmdline_data = user_cmdline or sys.argv[1:]
@@ -5703,6 +5748,7 @@ def exec_command_line(user_cmdline=[]):
 		listTargets()
 		Quit()
 
+	# Ascii Art stuff
 	if 'ascii-art' in cmdline_parsed:
 		lascii = cmdline_parsed['ascii-art']
 		diff = len(AA_LCHARS) - len(lascii)
@@ -5710,7 +5756,19 @@ def exec_command_line(user_cmdline=[]):
 			AA_CHARS = dict(zip(AA_LCHARS, lascii))
 		else:
 			Error(_("--ascii-art: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
-	
+
+	AA_PRESENT = True if 'aa-present' in cmdline_parsed else False
+
+	if AA_PRESENT:
+		try:
+			AA_LINES_S, AA_COLUMNS_S = os.popen('stty size', 'r').read().split()
+		except:
+			Error(_("dynamic --aa-present option not available on your system."))
+		AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
+		AA_COUNT = 0
+
+	AA_COLUMNS = AA_COLUMNS if AA_PRESENT else 72
+
 	# Multifile haters
 	if len(infiles) > 1:
 		errmsg=_("Option --%s can't be used with multiple input files")
