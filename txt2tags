@@ -150,11 +150,11 @@ TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 tx
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
             'css-sugar'  :0 , 'css-suggar' :0 , 'css-inside' :0 ,
-            'quiet'      :0 , 'aa-present' :0 }
+            'quiet'      :0 , 'art-present' :0 }
 OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
-            'show-config-value':'', 'ascii-art' :''} 
+            'show-config-value':'', 'art-chars':''} 
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'list-targets':0}
@@ -194,7 +194,7 @@ GUI = 0       # do not edit here, please use --gui
 AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
 AA_LCHARS = ['corner','border','side','bar1','bar2','level2','level3','level4','level5']
-AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --ascii-art or -a
+AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --art-chars or -c
 
 
 RC_RAW = []
@@ -247,10 +247,10 @@ _("      --toc           add TOC (Table of Contents) to target document"),
 _("      --toc-only      print document TOC and exit"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
-_("  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"),
+_("  -c, --art-chars=S   set the ascii art chars with the string S. in the order:"),
 '                      %s' % ','.join(AA_LCHARS),
 '                      default: +-|-==-^"',
-_("  -p, --aa-present    ascii art in presentation slides"),
+_("  -p, --art-present    ascii art in presentation slides"),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -2212,14 +2212,14 @@ class CommandLine:
 		
 		# short:long options equivalence
 		self.short_long = {
-			'a':'ascii-art',
+			'c':'art-chars',
 			'C':'config-file',
 			'h':'help',
 			'H':'no-headers',
 			'i':'infile',
 			'n':'enum-title',
 			'o':'outfile',
-			'p':'aa-present',
+			'p':'art-present',
 			'q':'quiet',
 			't':'target',
 			'v':'verbose',
@@ -5749,21 +5749,21 @@ def exec_command_line(user_cmdline=[]):
 		Quit()
 
 	# Ascii Art stuff
-	if 'ascii-art' in cmdline_parsed:
-		lascii = cmdline_parsed['ascii-art']
+	if 'art-chars' in cmdline_parsed:
+		lascii = cmdline_parsed['art-chars']
 		diff = len(AA_LCHARS) - len(lascii)
 		if not diff:
 			AA_CHARS = dict(zip(AA_LCHARS, lascii))
 		else:
-			Error(_("--ascii-art: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
+			Error(_("--art-chars: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
 
-	AA_PRESENT = True if 'aa-present' in cmdline_parsed else False
+	AA_PRESENT = True if 'art-present' in cmdline_parsed else False
 
 	if AA_PRESENT:
 		try:
 			AA_LINES_S, AA_COLUMNS_S = os.popen('stty size', 'r').read().split()
 		except:
-			Error(_("dynamic --aa-present option not available on your system."))
+			Error(_("dynamic --art-present option not available on your system."))
 		AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
 		AA_COUNT = 0
 
