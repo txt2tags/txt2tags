@@ -3644,9 +3644,9 @@ class BlockMaster:
                 if TARGET == 'art' and AA_PRESENT:
                         global AA_COUNT
                         n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
-                        if n<len(result) and not (TITLE.level==1 and blockname =="title"):
+                        if n<len(result) and not (TITLE.level==1 and blockname in ["title","numtitle"]):
                                 result=['']*n + [aa_line(AA_CHARS['bar1'], AA_COLUMNS)] + aa_slide(AA_TITLE, AA_COLUMNS) + [''] + result
-                        if blockname == "title" and TITLE.level == 1:
+                        if blockname in ["title","numtitle"]  and TITLE.level == 1:
                                 aa_title = aa_slide(AA_TITLE, AA_COLUMNS) + ['']
                                 if AA_COUNT:
 					aa_title = ['']*n + [aa_line(AA_CHARS['bar2'], AA_COLUMNS)] + aa_title
