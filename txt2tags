@@ -251,7 +251,8 @@ _("  -c, --art-chars=S   set the ascii art chars with the string S. in the order
 '                      %s' % ','.join(AA_LCHARS),
 '                      default: +-|-==-^"',
 _("  -p, --art-present   ascii art in presentation slides"),
-_("  -s, --art-size=S    set the size"),
+_("  -s, --art-size=S    set the size of the ascii art output with the string S"),
+'                      default: dynamic with --art-present and 72 without',
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -4283,7 +4284,7 @@ def doHeader(headers, config):
                         end = x % (n_h+1)
                         template = aa_header(head_data, AA_COLUMNS, n, end)
                 else:
-                        template = aa_header(head_data, 72, 2, 0)
+                        template = aa_header(head_data, AA_COLUMNS, 2, 0)
                 return template
 
 	
@@ -5765,7 +5766,7 @@ def exec_command_line(user_cmdline=[]):
 	if 'art-size' in cmdline_parsed:
 		if AA_PRESENT:
 			try:
-				AA_LINES_S, AA_COLUMNS_S = cmdline_parsed['art-size'].split()
+				AA_COLUMNS_S, AA_LINES_S = cmdline_parsed['art-size'].split()
 				AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
 			except:
 				Error(_("with --art-present, --art-size needs a string of two integers separated by a space as '80 25'."))
