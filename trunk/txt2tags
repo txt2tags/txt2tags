@@ -154,7 +154,7 @@ FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
 OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
-            'show-config-value':'', 'art-chars':''} 
+            'show-config-value':'', 'art-chars':'', 'art-size':''} 
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'list-targets':0}
@@ -251,6 +251,7 @@ _("  -c, --art-chars=S   set the ascii art chars with the string S. in the order
 '                      %s' % ','.join(AA_LCHARS),
 '                      default: +-|-==-^"',
 _("  -p, --art-present   ascii art in presentation slides"),
+_("  -s, --art-size=S    set the size"),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -2221,6 +2222,7 @@ class CommandLine:
 			'o':'outfile',
 			'p':'art-present',
 			'q':'quiet',
+			's':'art-size',
 			't':'target',
 			'v':'verbose',
 			'V':'version',
@@ -5758,16 +5760,29 @@ def exec_command_line(user_cmdline=[]):
 			Error(_("--art-chars: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
 
 	AA_PRESENT = True if 'art-present' in cmdline_parsed else False
+	AA_COUNT = 0
 
-	if AA_PRESENT:
-		try:
-			AA_LINES_S, AA_COLUMNS_S = os.popen('stty size', 'r').read().split()
-		except:
-			Error(_("dynamic --art-present option not available on your system."))
-		AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
-		AA_COUNT = 0
-
-	AA_COLUMNS = AA_COLUMNS if AA_PRESENT else 72
+	if 'art-size' in cmdline_parsed:
+		if AA_PRESENT:
+			try:
+				AA_LINES_S, AA_COLUMNS_S = cmdline_parsed['art-size'].split()
+				AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
+			except:
+				Error(_("with --art-present, --art-size needs a string of two integers separated by a space as '80 25'."))
+		else:
+			try:
+				AA_COLUMNS = int(cmdline_parsed['art-size'])
+			except:
+				Error(_("--art-size needs one integer."))
+	else:
+		if AA_PRESENT:
+			try:
+				AA_LINES_S, AA_COLUMNS_S = os.popen('stty size', 'r').read().split()
+				AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
+			except:
+				Error(_("dynamic --art-present option not available on your system, use --art-size."))
+		else:
+			AA_COLUMNS = 72
 
 	# Multifile haters
 	if len(infiles) > 1:
