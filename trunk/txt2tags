@@ -194,7 +194,7 @@ GUI = 0       # do not edit here, please use --gui
 AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
 AA_LCHARS = ['corner','border','side','bar1','bar2','level2','level3','level4','level5']
-AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --art-chars or -c
+AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --art-chars
 
 
 RC_RAW = []
@@ -247,11 +247,11 @@ _("      --toc           add TOC (Table of Contents) to target document"),
 _("      --toc-only      print document TOC and exit"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
-_("  -c, --art-chars=S   set the ascii art chars with the string S. in the order:"),
+_("      --art-chars=S   set the ascii art chars with the string S. in the order:"),
 '                      %s' % ','.join(AA_LCHARS),
 '                      default: +-|-==-^"',
 _("  -p, --art-present   ascii art in presentation slides"),
-_("  -s, --art-size=S    set the size of the ascii art output with the string S"),
+_("      --art-size=S    set the size of the ascii art output with the string S"),
 '                      default: dynamic with --art-present and 72 without',
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
@@ -2214,7 +2214,6 @@ class CommandLine:
 		
 		# short:long options equivalence
 		self.short_long = {
-			'c':'art-chars',
 			'C':'config-file',
 			'h':'help',
 			'H':'no-headers',
@@ -2223,7 +2222,6 @@ class CommandLine:
 			'o':'outfile',
 			'p':'art-present',
 			'q':'quiet',
-			's':'art-size',
 			't':'target',
 			'v':'verbose',
 			'V':'version',
