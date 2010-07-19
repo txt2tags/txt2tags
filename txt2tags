@@ -3642,7 +3642,7 @@ class BlockMaster:
 		if result:
 			self.last = blockname
 			Debug('BLOCK: %s'%result, 6)
-                if TARGET == 'art' and AA_PRESENT:
+                if TARGET == 'art' and AA_PRESENT and not AA_TOC:
                         global AA_COUNT
                         n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
                         if n<len(result) and not (TITLE.level==1 and blockname in ["title","numtitle"]):
@@ -4197,6 +4197,8 @@ def toc_inside_body(body, toc, config):
 def toc_tagger(toc, config):
 	"Convert t2t-marked TOC (it is a list) to target-tagged TOC"
 	ret = []
+	global AA_TOC
+	AA_TOC = True
 	# Tag if TOC-only TOC "by hand" (target don't have a TOC tag)
 	if config['toc-only'] or (config['toc'] and not TAGS['TOC']):
 		fakeconf = config.copy()
@@ -4221,6 +4223,12 @@ def toc_formatter(toc, config):
 	# TOC open/close tags (if any)
 	if TAGS['tocOpen' ]: ret.insert(0, TAGS['tocOpen'])
 	if TAGS['tocClose']: ret.append(TAGS['tocClose'])
+	if TARGET == 'art':
+		if AA_PRESENT:
+			n = (AA_LINES-1) - (len(ret)+6)%(AA_LINES-1)
+			ret = aa_slide(_("Table of Contents"),AA_COLUMNS)+ret+['']*n
+		ret.append(aa_line(AA_CHARS['bar2'],AA_COLUMNS))
+		return ret	
 	# Autotoc specific formatting
 	if AUTOTOC:
 		if rules['autotocwithbars']:           # TOC between bars
@@ -5728,7 +5736,7 @@ class Gui:
 ##############################################################################
 
 def exec_command_line(user_cmdline=[]):
-	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, Error
+	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, AA_TOC, Error
 	
 	# Extract command line data
 	cmdline_data = user_cmdline or sys.argv[1:]
@@ -5760,6 +5768,7 @@ def exec_command_line(user_cmdline=[]):
 
 	AA_PRESENT = True if 'art-present' in cmdline_parsed else False
 	AA_COUNT = 0
+	AA_TOC = False
 
 	if 'art-size' in cmdline_parsed:
 		if AA_PRESENT:
