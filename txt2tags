@@ -2017,7 +2017,7 @@ def aa_box(txt, length):
 	#                           | all theeeeeeeeeeeeeeeeee text |
 	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
 	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side']
-	return line_box, line_txt, line_box
+	return [line_box, line_txt, line_box]
 
 def aa_header(header_data, length, n, end):
 	header = [aa_line(AA_CHARS['bar2'], length)]
@@ -4227,6 +4227,8 @@ def toc_formatter(toc, config):
 		if AA_PRESENT:
 			n = (AA_LINES-1) - (len(ret)+6)%(AA_LINES-1)
 			ret = aa_slide(_("Table of Contents"),AA_COLUMNS)+ret+['']*n
+		else:
+			ret = ['',aa_line(AA_CHARS['bar2'],AA_COLUMNS),'']+aa_box(_("Table of Contents"),AA_COLUMNS)+ret
 		ret.append(aa_line(AA_CHARS['bar2'],AA_COLUMNS))
 		return ret	
 	# Autotoc specific formatting
