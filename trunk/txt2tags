@@ -2710,6 +2710,8 @@ class ConfigMaster:
 			Error(_('Option --split must be 0, 1 or 2'))
 		# --toc-only is stronger than others
 		if config['toc-only']:
+			global AA_TOC
+			AA_TOC = True
 			config['headers'] = 0
 			config['toc']     = 0
 			config['split']   = 0
@@ -4739,7 +4741,7 @@ def convert_this_files(configs):
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
-		if TARGET == 'art' and AA_PRESENT:
+		if TARGET == 'art' and AA_PRESENT and not AA_TOC:
 			n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
 			target_body=target_body+['']*n+[aa_line(AA_CHARS['bar2'], AA_COLUMNS)]
 
