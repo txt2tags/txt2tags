@@ -4292,7 +4292,7 @@ def doHeader(headers, config):
                         end = x % (n_h+1)
                         template = aa_header(head_data, AA_COLUMNS, n, end)
                 else:
-                        template = aa_header(head_data, AA_COLUMNS, 2, 0)
+                        template = [''] + aa_header(head_data, AA_COLUMNS, 2, 0)
                 return template
 
 	
