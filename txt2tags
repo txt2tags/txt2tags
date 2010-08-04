@@ -146,6 +146,7 @@ else:
 # --version and --help inside %!options are also odd
 #
 TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
+TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -233,8 +234,8 @@ USAGE =  '\n'.join([
 _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
 '',
 _("  -t, --target=TYPE   set target document type. currently supported:"),
-'                      %s,' % ', '.join(TARGETS[:8]),
-'                      %s'  % ', '.join(TARGETS[8:]),
+'                      %s,' % ', '.join(TARGETS[:9]),
+'                      %s' % ', '.join(TARGETS[9:]),
 _("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
 _("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
 _("  -H, --no-headers    suppress header, title and footer contents"),
