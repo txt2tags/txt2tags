@@ -10,6 +10,15 @@ Make sure you have the newest code:
 svn update
 }}}
 
+= Good Practices =
+
+ * Feel free to add a new target.
+ * Feel free to add a new rule.
+ * Do not submit two or more different issues in a single commit. If you want to fix two bugs, make two separated commits.
+ * Do not use short options (like -s, -c) for new features. Talk to Aurelio if you think the feature is important enough to deserve a short option.
+ * Talk to Aurelio before adding a new mark, %%macro or %!command, they may violate the KISS principle.
+ * If your patch is complex or may alter txt2tags in a substancial way, talk to Aurelio first -- KISS principle under attack! :)
+
 = Coding style =
 
 The current code is a mess, it will be reformatted in the future. For now just try to maintain the current style.
@@ -54,8 +63,6 @@ python run.py
 == 3. Make a diff to review your changes ==
 
 Make sure you're changing just what you meant to.
-
-Do not submit two or more different issues in a single commit. If you want to fix two bugs, make two separated commits.
 
 {{{
 svn diff
