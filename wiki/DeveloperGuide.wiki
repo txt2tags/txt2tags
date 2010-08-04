@@ -100,6 +100,17 @@ If you're adding a new target, follow this format:
 
  * New target !AsciiDoc (-t adoc). See http://www.methods.co.nz/asciidoc/
 
+If you're adding a new translation, follow this format:
+
+ * New translation: Markup Demo in French
+ * New translation: Sample File in French
+ * New translation: Manual Page in French
+ * New translation: program messages in French
+
+If you're adding an extra, like text editor syntax files, add the prefix extra:
+
+ * *extra:* Added syntax file for "le" text editor
+
 == 5. Everything is ok? Make the commit ==
 
 {{{
