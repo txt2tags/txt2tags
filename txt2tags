@@ -5834,7 +5834,11 @@ def exec_command_line(user_cmdline=[]):
 		else:
 			Error(_("--art-chars: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
 
-	AA_PRESENT = True if 'art-present' in cmdline_parsed else False
+	if 'art-present' in cmdline_parsed:
+		AA_PRESENT = True
+	else:
+		AA_PRESENT = False
+
 	AA_COUNT = 0
 	AA_TOC = False
 
