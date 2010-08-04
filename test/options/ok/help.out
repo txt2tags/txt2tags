@@ -2,8 +2,8 @@
 Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
   -t, --target=TYPE   set target document type. currently supported:
-                      html, xhtml, sgml, dbk, tex, lout, man, mgp,
-                      wiki, gwiki, doku, pmw, moin, pm6, txt, art, adoc
+                      adoc, art, creole, dbk, doku, gwiki, html, lout, man,
+                      mgp, moin, pm6, pmw, sgml, tex, txt, wiki, xhtml
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
   -H, --no-headers    suppress header, title and footer contents
