@@ -79,11 +79,11 @@ It's very important that you write an *informative* message that describes what 
 
 If you're changing a specific target, prefix the message with it. Example:
 
- * *DocBook:* Now special chars are escaped: &, <, >
+ * *!DocBook:* Now special chars are escaped: &, <, >
 
 If you're closing an issue, append this to the end of your message: (closes issue N), where N is the issue number. Example:
 
- * DocBook: Now special chars are escaped: &, <, > *(closes issue 86)*
+ * !DocBook: Now special chars are escaped: &, <, > *(closes issue 86)*
 
 If you're referring to changes made in another commit, use rNN where NN is the revision number. Example:
 
@@ -91,7 +91,7 @@ If you're referring to changes made in another commit, use rNN where NN is the r
 
 If you're adding a new target, follow this format:
 
- * New target AsciiDoc (-t adoc). See http://www.methods.co.nz/asciidoc/
+ * New target !AsciiDoc (-t adoc). See http://www.methods.co.nz/asciidoc/
 
 == 5. Everything is ok? Make the commit ==
 
@@ -100,5 +100,3 @@ svn commit -m "Your nice detailed log message"
 }}}
 
 Happy coding! :)
-
-
