@@ -17,8 +17,12 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --toc-only      print document TOC and exit
       --toc-level=N   set maximum TOC level (depth) to N
   -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc
-  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:
-                      coin,line,border,bar1,bar2,level2,level3,level4,level5
+      --art-chars=S   set the ascii art chars with the string S. in the order:
+                      corner,border,side,bar1,bar2,level2,level3,level4,level5
+                      default: +-|-==-^"
+  -p, --art-present   ascii art in presentation slides
+      --art-size=S    set the size of the ascii art output with the string S
+                      default: dynamic with --art-present and 72 without
   -C, --config-file=F read config from file F
       --rc            read user config file ~/.txt2tagsrc (default ON)
       --gui           invoke Graphical Tk Interface
