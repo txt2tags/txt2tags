@@ -145,7 +145,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc'.split()
+TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -168,23 +168,24 @@ CONFIG_KEYWORDS = [
             'guicolors']
 
 TARGET_NAMES = {
-  'html' : _('HTML page'),
-  'xhtml': _('XHTML page'),
-  'sgml' : _('SGML document'),
-  'dbk'  : _('DocBook document'),
-  'tex'  : _('LaTeX document'),
-  'lout' : _('Lout document'),
-  'man'  : _('UNIX Manual page'),
-  'mgp'  : _('MagicPoint presentation'),
-  'wiki' : _('Wikipedia page'),
-  'gwiki': _('Google Wiki page'),
-  'doku' : _('DokuWiki page'),
-  'pmw'  : _('pmWiki page'),
-  'moin' : _('MoinMoin page'),
-  'pm6'  : _('PageMaker document'),
-  'txt'  : _('Plain Text'),
-  'art'  : _('Ascii Art text'),
-  'adoc' : _('AsciiDoc document')
+  'html'   : _('HTML page'),
+  'xhtml'  : _('XHTML page'),
+  'sgml'   : _('SGML document'),
+  'dbk'    : _('DocBook document'),
+  'tex'    : _('LaTeX document'),
+  'lout'   : _('Lout document'),
+  'man'    : _('UNIX Manual page'),
+  'mgp'    : _('MagicPoint presentation'),
+  'wiki'   : _('Wikipedia page'),
+  'gwiki'  : _('Google Wiki page'),
+  'doku'   : _('DokuWiki page'),
+  'pmw'    : _('pmWiki page'),
+  'moin'   : _('MoinMoin page'),
+  'pm6'    : _('PageMaker document'),
+  'txt'    : _('Plain Text'),
+  'art'    : _('Ascii Art text'),
+  'adoc'   : _('AsciiDoc document'),
+  'creole' : _('Creole 1.0 document')
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -547,6 +548,11 @@ r"""\documentclass{article}
 @Display @I { %(HEADER2)s }
 @Display { %(HEADER3)s }
 #@NP                               # Break page after Headers
+""",
+	'creole': """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
 """
 # @SysInclude { tbl }                   # Tables support
 # setup: @MakeContents { Yes }          # show TOC
@@ -1363,6 +1369,42 @@ def getTags(config):
 		'email'                 : '\a'            ,
 		'emailMark'             : '\a \a'         ,
 		'img'                   : '\a'
+	},
+	# http://www.wikicreole.org/wiki/AllMarkup
+	'creole': {
+		'title1'               : '= \a ='        ,
+		'title2'               : '== \a =='      ,
+		'title3'               : '=== \a ==='    ,
+		'title4'               : '==== \a ===='  ,
+		'title5'               : '===== \a =====',  
+		'blockVerbOpen'        : '{{{'           ,
+		'blockVerbClose'       : '}}}'           ,
+		'blockQuoteLine'       : '  '            ,
+	#	'fontMonoOpen'         : '##'            ,  # planned for 2.0,
+	#	'fontMonoClose'        : '##'            ,  # meanwhile we disable it
+		'fontBoldOpen'         : '**'            ,
+		'fontBoldClose'        : '**'            ,
+		'fontItalicOpen'       : '//'            , 
+		'fontItalicClose'      : '//'            ,
+		'fontUnderlineOpen'    : '//'            ,  # no underline in 1.0, planned for 2.0,
+		'fontUnderlineClose'   : '//'            ,  # meanwhile we can use italic (emphasized)
+	#	'fontStrikeOpen'       : '--'            ,  # planned for 2.0, 
+	#	'fontStrikeClose'      : '--'            ,  # meanwhile we disable it
+		'listItemLine'          : '*'            ,
+		'numlistItemLine'       : '#'            ,
+		'deflistItem2LinePrefix': ':'            ,
+		'bar1'                  : '----'         ,
+		'url'                  : '[[\a]]'        ,
+		'urlMark'              : '[[\a|\a]]'     ,
+		'img'                  : '{{\a}}'        ,
+		'tableTitleRowOpen'    : '|= '           ,
+		'tableTitleRowClose'   : '|'             ,
+		'tableTitleCellSep'    : ' |= '          ,
+		'tableRowOpen'         : '| '            ,
+		'tableRowClose'        : ' |'            ,
+		'tableCellSep'         : ' | '           ,
+		# TODO: placeholder (mark for unknown syntax)
+		# if possible: http://www.wikicreole.org/wiki/Placeholder 
 	}
 	}
 	
@@ -1816,7 +1858,27 @@ def getRules(config):
 			# 'blanksaroundbar':1,
 			'blanksaroundtitle':1,
 			'blanksaroundnumtitle':1,
-		}
+		},
+		'creole': {
+			'linkable':1,
+			'tableable':1,
+			'imglinkable':1,
+			'tablecellstrip':1,
+			'autotocwithbars':1,
+			'spacedlistitemopen':1,
+			'spacednumlistitemopen':1,
+			'deflisttextstrip':1,
+			'verbblocknotescaped':1,
+			'blanksaroundpara':1,
+			'blanksaroundverb':1,
+			'blanksaroundquote':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+		},
 	}
 	
 	# Exceptions for --css-sugar
