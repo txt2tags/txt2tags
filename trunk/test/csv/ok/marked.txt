@@ -10,7 +10,7 @@ Line 1.
   | ''tagged'' |
   | [image.png] |
   | [link www.abc.com] |
-  | 20100622 |
+  | date-macro |
   | -------------------- |
   | = title = |
   | - list |

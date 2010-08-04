@@ -1,0 +1,43 @@
+
+%!target: txt
+%!options: -H -o-
+
+%%%
+See also: issue 31 http://code.google.com/p/txt2tags/issues/detail?id=31
+
+In targets that do not support tables (ie.: txt), txt2tags embed the full marked table inside a verbatim block, so it can still look pretty at output:
+
+  | one | two  |
+  | um  | dois |
+
+Macros and other formatting are not allowed inside verbatim, but in this case the original mark was for a table, where user expect marks to be expanded. So macros and formatting is expanded on this table -> verbatim mapping. So
+
+  | one | two | %%date |
+
+Will turn to 
+
+  | one | two | 20001231 |
+
+on the txt target.
+
+But this is not desired when the table comes from a CSV file, using the %!csv command. Macros and formatting should NEVER be expanded.
+
+For table aware targets it's working ok (see test/csv/marked.t2t). But the table -> verbatim mapping is expanding the macros on txt target. So
+
+  one,two,%%date
+
+inside a CSV file, gives
+
+  | one | two | 20001231 |
+
+as output on txt target. The error is that the %%date macro should not be expanded.
+
+This is tricky to fix, since at this point we're inside an exception inside the exception: csv -> table -> verbatim mapping.
+
+For now, I'm just removing the %%date macro from the txt output.
+
+This bug affects:
+test/csv/marked.t2t
+
+2010-08-04
+%%%
