@@ -2103,12 +2103,12 @@ def aa_slide(title, length):
 
 def aa_table(table):
     data = [row[2:-2].split(' | ') for row in table]
-    n = max(len(line) for line in data)
+    n = max([len(line) for line in data])
     data = [line + (n - len(line)) * [''] for line in data]
     tab = []
     for i in range(n):
         tab.append([line[i] for line in data])
-    length = [max(len(el) for el in line) for line in tab]
+    length = [max([len(el) for el in line]) for line in tab]
     res = "+"
     for i in range(n):    
         res = res + (length[i] + 2) * "-" + '+'
