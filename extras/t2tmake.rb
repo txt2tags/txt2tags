@@ -341,7 +341,7 @@ def parse_args
         exit
       end
       opts.on_head("specific options:")  
-      opts.on("-t", "--type=TARGET", String, "set target (txt2tags) document type",$tipos.join(",")) do |@type|
+      opts.on("-t", "--type=TARGET", String, "set target (txt2tags) document type",$tipos.join(",")) do |x|@type=x
         if !@type.nil?
           if !$tipos.include?(@type)
             puts "'#{@type}' is not a valid target type. Valid types are:"
@@ -350,15 +350,16 @@ def parse_args
           end
         end
       end
-      opts.on("-e", "--ext=EXT", String, "set output file extension") {|@ext|}
-      opts.on("-r", "--recusive", "recursive directory processing.") {|@recursive|}
-      opts.on("-s", "--sdir=DIR", String, "especify source directory","default => actual_directory (pwd)") {|@src_dir|}
-      opts.on("-d", "--ddir=DIR", String, "set target directory","default => actual_directory./_<type>") {|@dst_dir|}
-      opts.on("-l", "--log[=FILE]", "log changes (processed files)","default => target_directory/t2tmake.log") {|@log_fn| @log_fn ||= ''}
-      opts.on("--L10N", "Apache localization", "index-en.t2t => index.html.en") {|@l10n|}
-      opts.on("-a", "--all", "force to process all files") {|@all|}
-      opts.on("-c", "--clean", "erase all target files before processing") {|@clean|}
-      opts.on("-b", "--batch=FILE[,LABEL]",Array,"use options from an specified 'label'","stored in a batch file;","without LABEL, list all labels") do |@batch,@label|
+      # formal argument cannot be an instance variable: {|@ext|}
+      opts.on("-e", "--ext=EXT", String, "set output file extension") {|x|@ext=x}
+      opts.on("-r", "--recusive", "recursive directory processing.") {|x|@recursive=x}
+      opts.on("-s", "--sdir=DIR", String, "especify source directory","default => actual_directory (pwd)") {|x|@src_dir=x}
+      opts.on("-d", "--ddir=DIR", String, "set target directory","default => actual_directory./_<type>") {|x|@dst_dir=x}
+      opts.on("-l", "--log[=FILE]", "log changes (processed files)","default => target_directory/t2tmake.log") {|x|@log_fn=x;@log_fn ||= ''}
+      opts.on("--L10N", "Apache localization", "index-en.t2t => index.html.en") {|x|@l10n=x}
+      opts.on("-a", "--all", "force to process all files") {|x|@all=x}
+      opts.on("-c", "--clean", "erase all target files before processing") {|x|@clean=x}
+      opts.on("-b", "--batch=FILE[,LABEL]",Array,"use options from an specified 'label'","stored in a batch file;","without LABEL, list all labels") do |x,y|@batch,@label=x,y
         if @label.nil?
           batch(@batch,@label,"No label specified.")
           exit
@@ -375,6 +376,17 @@ end
 # usuário.
 # ---
 def main
+  # warning: instance variable @foo not initialized
+  @batch = nil
+  @type = nil
+  @src_dir = nil
+  @dst_dir = nil
+  @ext = nil
+  @recursive = nil
+  @clean = nil
+  @log_fn = nil
+  @log_fn = nil
+
 #  if ARGV.empty?
 #    ARGV.push("--help")
 #  end
