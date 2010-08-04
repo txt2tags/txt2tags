@@ -1,0 +1,104 @@
+#summary Coding style and SVN instructions for developers
+
+If you have any doubt, please contact Aurelio: mailto:verde@aurelio.net or aureliojargas (Google Talk).
+
+= Before you start =
+
+Make sure you have the newest code:
+
+{{{
+svn update
+}}}
+
+= Coding style =
+
+The current code is a mess, it will be reformatted in the future. For now just try to maintain the current style.
+
+Indentation:
+
+ * Use TABs for indentation, not spaces.
+ * Do not change the indentation of old code.
+ * Use just one command per line.
+ * Avoid global variables.
+ * Use Unix line breaks (LF), not Windows (CR+LF).
+
+Other:
+
+ * Comment your code.
+ * Avoid Python's new commands and features, to make txt2tags compatible with old Python versions. Stick with 2.x features, do not use Python 3 features.
+
+Useful reading:
+
+ * For the future, we will follow [http://www.python.org/dev/peps/pep-0008/ PEP-8].
+ * For a quick reference, the [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html Google Python Style Guide] is a good read.
+
+= Commits =
+
+== 1. TEST your code ==
+
+ * You really fixed that bug?
+ * Your new target is really working?
+ * Your new feature is working for all targets?
+
+Make extensive tests to make sure your code really do want you want it to do.
+
+== 2. ALWAYS run the test suite ==
+
+The test suite must be 100% for you to commit. If you find any error, fix it before the commit.
+
+{{{
+cd test
+python run.py
+}}}
+
+== 3. Make a diff to review your changes ==
+
+Make sure you're changing just what you meant to.
+
+Do not submit two or more different issues in a single commit. If you want to fix two bugs, make two separated commits.
+
+{{{
+svn diff
+}}}
+
+Tip: Use your text editor to review the changes with nice colors:
+
+{{{
+svn diff | vim -     # Vim
+
+svn diff | mate      # TextMate
+}}}
+
+== 4. Compose the log message ==
+
+It's very important that you write an *informative* message that describes what changes you are committing.
+
+ * Explain what your commit does.
+ * Write long messages if necessary.
+ * It's best to write more than less.
+
+If you're changing a specific target, prefix the message with it. Example:
+
+ * *DocBook:* Now special chars are escaped: &, <, >
+
+If you're closing an issue, append this to the end of your message: (closes issue N), where N is the issue number. Example:
+
+ * DocBook: Now special chars are escaped: &, <, > *(closes issue 86)*
+
+If you're referring to changes made in another commit, use rNN where NN is the revision number. Example:
+
+ * HTML: Fixing bold tag to respect changes made in *r78*.
+
+If you're adding a new target, follow this format:
+
+ * New target AsciiDoc (-t adoc). See http://www.methods.co.nz/asciidoc/
+
+== 5. Everything is ok? Make the commit ==
+
+{{{
+svn commit -m "Your nice detailed log message"
+}}}
+
+Happy coding! :)
+
+
