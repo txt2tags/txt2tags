@@ -1,0 +1,377 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: txt2tags 2.3.1\n"
+"POT-Creation-Date: 2006-07-31 16:16-0300\n"
+"PO-Revision-Date: 2010-07-20 20:00-0200\n"
+"Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
+"Language-Team: Ukrainian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "HTML page"
+msgstr "НTML документ"
+
+msgid "XHTML page"
+msgstr "XHTML документ"
+
+msgid "SGML document"
+msgstr "SGML документ"
+
+msgid "LaTeX document"
+msgstr "Документ LaTeX"
+
+msgid "Lout document"
+msgstr "Документ Lout"
+
+msgid "UNIX Manual page"
+msgstr "Документація UNIX"
+
+msgid "MagicPoint presentation"
+msgstr "Презентація MagicPoint"
+
+msgid "MoinMoin page"
+msgstr "Сторінка MoinMoin"
+
+msgid "PageMaker document"
+msgstr "Документ PageMaker"
+
+msgid "Plain Text"
+msgstr "Простий текст"
+
+msgid "%s version %s <%s>"
+msgstr "%s версія %s <%s>"
+
+msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
+msgstr "Використання: %s [ОПЦІЇ] [вхідний_файл.t2t ...]"
+
+msgid "  -t, --target=TYPE   set target document type. currently supported:"
+msgstr "  -t, --target=TYPE   встановлює тип вихідного документа. Підтримуються:"
+
+msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
+msgstr "  -i, --infile=FILE   використати FILE як ім'я вхідного файлу ('-' для STDIN)"
+
+msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
+msgstr "  -o, --outfile=FILE  використати FILE як ім'я вихідного файлу ('-' для STDOUT)"
+
+msgid "  -H, --no-headers    suppress header, title and footer contents"
+msgstr "  -H, --no-headers    не вставляти заголовки та закінчення документа (генерувати тільки тіло)"
+
+msgid "      --headers       show header, title and footer contents (default ON)"
+msgstr "      --headers       генерувати заголовки та футер (ввімкнено за замовчуванням)"
+
+msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgstr "      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
+
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr "      --style=FILE    використати FILE в якості стилю документа (Як CSS HTML)"
+
+msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+msgstr "      --css-sugar     вставити теги, що краще підходять для CSS (в HTML та XHTML документах)"
+
+msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr "      --css-inside    ставити зміст CSS файлу в заголовки документа HTML/XHTML"
+
+msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "      --mask-email    cховати адреси email від спам-роботів. x@y.z стане <x (a) y z"
+
+msgid "      --toc           add TOC (Table of Contents) to target document"
+msgstr "      --toc           додати зміст до вихідного документа"
+
+msgid "      --toc-only      print document TOC and exit"
+msgstr "      --toc-only      тільки надрукувати зміст"
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr "      --toc-level=N   встановити максимальну глибину змісту (кількість вкладених підрозділів що потрапляють в зміст) в N"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    пронумерувати всі заголоки як 1, 1.1, 1.1.1, і т.д."
+
+msgid "  -C, --config-file=F read config from file F"
+msgstr "  -С, --config-file=F читати конфігурацію з файла F"
+
+msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+msgstr "      --rc            читати файл конфігурації користувача ~/txt2tagsrc (за замовчуванням так)"
+
+msgid "      --gui           invoke Graphical Tk Interface"
+msgstr "      --gui           запустити графічний інтерфейс"
+
+msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
+msgstr "  -q, --quiet         тихий режим, ввесь вивід припиняється (крім помилок)"
+
+msgid "  -v, --verbose       print informative messages during conversion"
+msgstr "  -v, --verbose       друкувати інформативні повідомлення протягом трансляції"
+
+msgid "  -h, --help          print this help information and exit"
+msgstr "  -h, --help          надрукувати цю довідку та вийти"
+
+msgid "  -V, --version       print program version and exit"
+msgstr "  -V, --version       надрукувати версію програми та вийти"
+
+msgid "      --dump-config   print all the config found and exit"
+msgstr "      --dump-config   надрукувати всі знайдені опції та вийти"
+
+msgid "      --dump-source   print the document source, with includes expanded"
+msgstr "      --dump-source   надрукувати код, з розкритими включеннями"
+
+msgid "Turn OFF options:"
+msgstr "Опції ВИМКНЕННЯ:"
+
+msgid "Example:\n     %s -t html --toc myfile.t2t"
+msgstr "Приклад:\n     %s -t html --toc myfile.t2t"
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "За замовчуванням, згенерований документ зберігається в 'infile.<target>'."
+
+msgid "Use --outfile to force an output file name."
+msgstr "Використайте --outfile щоб задати ім'я вихідного файлу."
+
+msgid "If  input file is '-', reads from STDIN."
+msgstr "Якщо вхідний файл '-', читає зі стандартного потоку вводу."
+
+msgid "If output file is '-', dumps output to STDOUT."
+msgstr "Якщо вихідний файл '-', виводить документ в стандартний потік виводу."
+
+msgid "%s: Error: "
+msgstr "%s: Помилка:"
+
+msgid "Sorry! Txt2tags aborted by an unknown error."
+msgstr "Вибачте! Txt2tags припинив роботу через невідому помилку."
+
+msgid "Please send the following Error Traceback to the author"
+msgstr "Будь ласка, надішліть наступний звіт про помилку авторові"
+
+msgid "You must feed me with data on STDIN!"
+msgstr "Ви маєте передати мені дані з стандартного входу"
+
+msgid "Cannot read file:"
+msgstr "Не можу прочитати файл:"
+
+msgid "File read (%d lines): %s"
+msgstr "Прочитаний файл (рядків: %d): %s"
+
+msgid "Cannot open file for writing:"
+msgstr "Не можу відкрити файл для запису:"
+
+msgid "%s (try --help)"
+msgstr "%s (спробуйте --help)"
+
+msgid "Loading source document"
+msgstr "Завантаження вхідного файлу"
+
+msgid "The input file is empty: %s"
+msgstr "Вхідний файл порожній: %s"
+
+msgid "Areas found: %s"
+msgstr "Знайдені області: %s"
+
+msgid "Scanning source document CONF area"
+msgstr "Сканування області налаштувань вхідного документа"
+
+msgid "Added config %s : %s"
+msgstr "Додане налаштування: %s : %s"
+
+msgid "No target specified (try --help)"
+msgstr "Не зазначений тип вихідного документа (спробуйте --help)"
+
+msgid "Maybe trying to convert an old v1.x file?"
+msgstr "Можливо ви стараєтесь перетворити старий файл (версії 1 з чимось)"
+
+msgid "Missing input file (try --help)"
+msgstr "Пропущений вхідний файл (спробуйте --help)"
+
+msgid "Invalid target '%s' (try --help)"
+msgstr "Невідомий тип файлу '%s' (спробуйте --help)"
+
+msgid "--%s value must be a number"
+msgstr "Значення --%s має бути числовим"
+
+msgid "Option --split must be 0, 1 or 2"
+msgstr "Опція --split має приймати значення 0, 1 чи 2"
+
+msgid "Input and Output files are the same: %s"
+msgstr "Вхідний та вихідний файли - це один і той самий: %s"
+
+msgid "Added the following keys: %s"
+msgstr "Додані такі ключі: %s"
+
+msgid "Invalid CONFIG line on %s"
+msgstr "Неправильний рядок налаштування в %s"
+
+msgid "Processing line %03d: %s"
+msgstr "Обробляється рядок %03d: %s"
+
+msgid "A file cannot include itself (loop!)"
+msgstr "Файл не може включати себе (рекурсія!)"
+
+msgid "Finished Config file inclusion: %s"
+msgstr "Включення файлу конфігурації завершене: %s"
+
+msgid "Added %s"
+msgstr "Додано %s"
+
+msgid "OFF"
+msgstr "ВИКЛ"
+
+msgid "RC file"
+msgstr "файлy налаштувань користувача"
+
+msgid "source document"
+msgstr "вхідного документа"
+
+msgid "command line"
+msgstr "командного рядка"
+
+msgid "RAW config for %s"
+msgstr "Конфігурація %s"
+
+msgid "ON"
+msgstr "ВКЛ"
+
+msgid "Full PARSED config"
+msgstr "Повністю проаналізовані налаштування"
+
+msgid "Active filters"
+msgstr "Активні фільтри"
+
+msgid "Invalid PostProc filter regex"
+msgstr "Невірний регулярний вираз постпроцесора"
+
+msgid "Invalid PostProc filter replacement"
+msgstr "Невірна заміна в постпроцесорі"
+
+msgid "%s wrote %s"
+msgstr "%s записав %s"
+
+msgid "Source document contents stored"
+msgstr "Зміст вхідного файлу збережений"
+
+msgid "Parsing and saving all config found (%03d items)"
+msgstr "Аналіз та збереження всіх %03d знайдених нашатувань"
+
+msgid "Composing target Headers"
+msgstr "Створюються заголовки"
+
+msgid "Composing target Body"
+msgstr "Створюється тіло"
+
+msgid "Composing target TOC"
+msgstr "Створюється зміст"
+
+msgid "Composing target Footer"
+msgstr "Створюється закінчення"
+
+msgid "Saving results to the output file"
+msgstr "Збереження результатів у вихідному файлі"
+
+msgid "Invalid PreProc filter regex"
+msgstr "Неправильний регулярний вираз препроцесора"
+
+msgid "Invalid PreProc filter replacement"
+msgstr "Неправильна заміна в препроцесорі"
+
+msgid "txt2tags files"
+msgstr "Файли txt2tags"
+
+msgid "All files"
+msgstr "Всі файли"
+
+msgid "Close"
+msgstr "Закрити"
+
+msgid "You must select a target type!"
+msgstr "Ви маєте вибрати тип вихідного файлу!"
+
+msgid "You must provide the source file location!"
+msgstr "Ви маєте задати адресу вихідного файлу!"
+
+msgid "%s: %s converted to %s"
+msgstr "%s: %s трансльований в %s"
+
+msgid "Conversion done!"
+msgstr "Трансляція завершена!"
+
+msgid "FROM:"
+msgstr "З:"
+
+msgid "TO:"
+msgstr "В:"
+
+msgid "%s FATAL ERROR!"
+msgstr "%s КРИТИЧНА ПОМИЛКА!"
+
+msgid "-- select one --"
+msgstr "-- виберіть щось --"
+
+msgid "Enter the source file location:"
+msgstr "Введіть ім'я вхідного файлу:"
+
+msgid "Choose the target document type:"
+msgstr "Виберіть тип вихідного документа:"
+
+msgid "Some options you may check:"
+msgstr "Деякі налаштування які ви можете обрати:"
+
+msgid "Some extra options:"
+msgstr "Деякі додаткові налаштування:"
+
+msgid "Include headers on output"
+msgstr "Додавати заголовки в вихідний документ"
+
+msgid "Number titles (1, 1.1, 1.1.1, etc)"
+msgstr "Нумерувати заголовки розділів (1, 1.1, 1.1.1, і т.д)"
+
+msgid "Do TOC also (Table of Contents)"
+msgstr "Також створити зміст"
+
+msgid "Hide e-mails from SPAM robots"
+msgstr "Зховати e-мейли від спам ботів"
+
+msgid "Just do TOC, nothing more"
+msgstr "Тільки створити зміст, і не більше"
+
+msgid "Dump to screen (Don't save target file)"
+msgstr "Показати на екрані (Не створювати вихідний документ)"
+
+msgid "ONE source, MULTI targets"
+msgstr "ОДНА розмітка, БАГАТО документів"
+
+msgid "Browse"
+msgstr "Пошук"
+
+msgid "<screen>"
+msgstr "<екран>"
+
+msgid "Output: "
+msgstr "Вивід:"
+
+msgid "Quit"
+msgstr "Вихід"
+
+msgid "Convert!"
+msgstr "Перетворити!"
+
+msgid "Txt2tags %s processing begins"
+msgstr "Робота Txt2tags %s почалась"
+
+msgid "Option --%s can't be used with multiple input files"
+msgstr "Опція --%s не може використовуватись з багатьма вхідними файлами"
+
+msgid "Ignoring user configuration file"
+msgstr "Файл конфігурації користувача ігнорується"
+
+msgid "Loading user configuration file"
+msgstr "Завантаження файлу конфігурації користувача"
+
+msgid "We are on GUI interface"
+msgstr "Зараз ми у графічному режимі"
+
+msgid "txt2tags ERROR!"
+msgstr "ПОМИЛКА txt2tags!"
+
+msgid "We are on Command Line interface"
+msgstr "Ми в режимі командного рядка"
+
+msgid "Txt2tags finished sucessfuly"
+msgstr "Txt2tags успішно завершив роботу"
+
