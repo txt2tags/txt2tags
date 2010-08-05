@@ -2775,8 +2775,6 @@ class ConfigMaster:
 			Error(_('Option --split must be 0, 1 or 2'))
 		# --toc-only is stronger than others
 		if config['toc-only']:
-			global AA_TOC
-			AA_TOC = True
 			config['headers'] = 0
 			config['toc']     = 0
 			config['split']   = 0
@@ -3709,7 +3707,9 @@ class BlockMaster:
 		if result:
 			self.last = blockname
 			Debug('BLOCK: %s'%result, 6)
-                if TARGET == 'art' and AA_PRESENT and not AA_TOC:
+		
+		# Ascii Art processing
+                if TARGET == 'art' and AA_PRESENT and not CONF['toc-only'] and not CONF.get('art-no-title'):
                         global AA_COUNT
                         n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
                         if n<len(result) and not (TITLE.level==1 and blockname in ["title","numtitle"]):
@@ -4264,8 +4264,6 @@ def toc_inside_body(body, toc, config):
 def toc_tagger(toc, config):
 	"Returns the tagged TOC, as a single tag or a tagged list"
 	ret = []
-	global AA_TOC
-	AA_TOC = True
 	# Convert the TOC list (t2t-marked) to the target's list format
 	if config['toc-only'] or (config['toc'] and not TAGS['TOC']):
 		fakeconf = config.copy()
@@ -4275,6 +4273,7 @@ def toc_tagger(toc, config):
 		fakeconf['preproc']    = []
 		fakeconf['postproc']   = []
 		fakeconf['css-sugar']  = 0
+		fakeconf['art-no-title']  = 1  # needed for --toc and --art-present together, avoids slide title before TOC
 		ret,foo = convert(toc, fakeconf)
 		set_global_config(config)   # restore config
 	# Our TOC list is not needed, the target already knows how to do a TOC
@@ -4283,19 +4282,15 @@ def toc_tagger(toc, config):
 	return ret
 
 def toc_formatter(toc, config):
-	if TARGET == 'art':
-		if not toc: return []
-		if AA_PRESENT:
-			n = (AA_LINES-1) - (len(toc)+6)%(AA_LINES-1)
-			toc = aa_slide(_("Table of Contents"),AA_COLUMNS)+toc+['']*n
-		else:
-			toc = ['',aa_line(AA_CHARS['bar2'],AA_COLUMNS),'']+aa_box(_("Table of Contents"),AA_COLUMNS)+toc
-		toc.append(aa_line(AA_CHARS['bar2'],AA_COLUMNS))
-		return toc	
 	"Formats TOC for automatic placement between headers and body"
 	if config['toc-only']: return toc              # no formatting needed
 	if not config['toc'] : return []               # TOC disabled
 	ret = toc
+	if TARGET == 'art' and AA_PRESENT:
+			n = (AA_LINES-1) - (len(toc)+6)%(AA_LINES-1)
+			toc = aa_slide(_("Table of Contents"),AA_COLUMNS)+toc+['']*n
+			toc.append(aa_line(AA_CHARS['bar2'],AA_COLUMNS))
+			return toc	
 	# TOC open/close tags (if any)
 	if TAGS['tocOpen' ]: ret.insert(0, TAGS['tocOpen'])
 	if TAGS['tocClose']: ret.append(TAGS['tocClose'])
@@ -4305,7 +4300,11 @@ def toc_formatter(toc, config):
 			para = TAGS['paragraphOpen']+TAGS['paragraphClose']
 			bar  = regex['x'].sub('-'*72,TAGS['bar1'])
 			tocbar = [para, bar, para]
-			ret = tocbar + ret + tocbar
+			if TARGET == 'art' and config['headers']:
+				# exception: header already printed a bar
+				ret = [para] + ret + tocbar
+			else:
+				ret = tocbar + ret + tocbar
 		if rules['blankendautotoc']:           # blank line after TOC
 			ret.append('')
 		if rules['autotocnewpagebefore']:      # page break before TOC
@@ -4807,7 +4806,7 @@ def convert_this_files(configs):
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
-		if TARGET == 'art' and AA_PRESENT and not AA_TOC:
+		if TARGET == 'art' and AA_PRESENT and not myconf['toc-only']:
 			n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
 			target_body=target_body+['']*n+[aa_line(AA_CHARS['bar2'], AA_COLUMNS)]
 
@@ -5806,7 +5805,7 @@ class Gui:
 ##############################################################################
 
 def exec_command_line(user_cmdline=[]):
-	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, AA_TOC, Error
+	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, Error
 	
 	# Extract command line data
 	cmdline_data = user_cmdline or sys.argv[1:]
@@ -5842,7 +5841,6 @@ def exec_command_line(user_cmdline=[]):
 		AA_PRESENT = False
 
 	AA_COUNT = 0
-	AA_TOC = False
 
 	if 'art-size' in cmdline_parsed:
 		if AA_PRESENT:
