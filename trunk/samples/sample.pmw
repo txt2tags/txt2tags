@@ -105,14 +105,14 @@ just add '''spaces''' at the beginning of the line. More
 spaces, more sublists.
 
 * earth
-  * america
-    * south america
-      * brazil
-        * how deep can i go?
-  * europe
-    * lots of countries
+** america
+*** south america
+**** brazil
+***** how deep can i go?
+** europe
+*** lots of countries
 * mars
-  * who knows?
+** who knows?
 
 The list ends with '''two''' consecutive blank lines.
 
@@ -124,10 +124,10 @@ identifier (plus).
 # one
 # two
 # three
-  * mixed lists!
-  * what a mess
-    # counting again
-    # ...
+** mixed lists!
+** what a mess
+### counting again
+### ...
 # four
 
 !! Definition List 
@@ -136,14 +136,14 @@ The definition list identifier is a colon, followed by
 the term. The term contents is placed on the next line.
 
 : orange:
-  a yellow fruit
+a yellow fruit
 : apple:
-  a green or red fruit
+a green or red fruit
 : other fruits:
-  * wee!
-  * mixing lists
-    # again!
-    # and again!
+** wee!
+** mixing lists
+### again!
+### and again!
 
 ! Tables 
 
