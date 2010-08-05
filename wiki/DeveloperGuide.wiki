@@ -41,6 +41,10 @@ Useful reading:
  * For the future, we will follow [http://www.python.org/dev/peps/pep-0008/ PEP-8].
  * For a quick reference, the [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html Google Python Style Guide] is a good read.
 
+= Debug =
+
+You can use the {{{--debug}}} option to see what's going on behind the curtain when converting a file.
+
 = Commits =
 
 == 1. TEST your code ==
