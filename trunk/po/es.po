@@ -1,5 +1,3 @@
-# translation of es_mjp.po to spanish
-# Tomás Martín Jimarez Ponce <mjp_ttc@yahoo.com>, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: es_mjp\n"
