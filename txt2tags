@@ -4262,11 +4262,11 @@ def toc_inside_body(body, toc, config):
 	return ret
 
 def toc_tagger(toc, config):
-	"Convert t2t-marked TOC (it is a list) to target-tagged TOC"
+	"Returns the tagged TOC, as a single tag or a tagged list"
 	ret = []
 	global AA_TOC
 	AA_TOC = True
-	# Tag if TOC-only TOC "by hand" (target don't have a TOC tag)
+	# Convert the TOC list (t2t-marked) to the target's list format
 	if config['toc-only'] or (config['toc'] and not TAGS['TOC']):
 		fakeconf = config.copy()
 		fakeconf['headers']    = 0
@@ -4277,7 +4277,7 @@ def toc_tagger(toc, config):
 		fakeconf['css-sugar']  = 0
 		ret,foo = convert(toc, fakeconf)
 		set_global_config(config)   # restore config
-	# Target TOC is a tag
+	# Our TOC list is not needed, the target already knows how to do a TOC
 	elif config['toc'] and TAGS['TOC']:
 		ret = [TAGS['TOC']]
 	return ret
