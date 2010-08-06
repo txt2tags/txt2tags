@@ -1,6 +1,6 @@
 TXT2TAGS SAMPLE
 Aurelio Jargas
-11/03/2008
+07/26/2008
 
 
   Introduction
@@ -14,11 +14,9 @@ marks.
 The first 3 lines of the this file are used as headers,
 on the following format:
 
-
   line1: document title
   line2: author name, email
   line3: date, version
-
 
 Lines with balanced equal signs = around are titles.
 
@@ -54,17 +52,13 @@ combination.
 
 We can put a code sample or other pre-formatted text:
 
-
     here    is     pre-formatted
   //marks// are  **not**  ``interpreted``
-
 
 And also, it's easy to put a one line pre-formatted
 text:
 
-
   prompt$ ls /etc
-
 
 Or use pre-formatted inside sentences.
 
@@ -77,6 +71,7 @@ URL (http://www.duh.com) are detected automagically,
 as long as the horizontal line:
 
 --------------------------------------------------------
+
 ^ thin or large v
 
 ========================================================
@@ -87,7 +82,10 @@ with label.
 And remember,
 
 	A TAB in front of the line does a quotation.
+
 		More TABs, more depth (if allowed).
+
+
 Nice.
 
 
@@ -158,13 +156,11 @@ Use pipes to compose table rows and cells.
 Double pipe at the line beginning starts a heading row.
 Natural spaces specify each cell alignment.
 
-
    || heading 1 |  heading 2  |  heading 3 |
     | cell 1.1  |  cell 1.2   |   cell 1.3 |
     | cell 2.1  |  cell 2.2   |   cell 2.3 |
 
 Without the last pipe, no border:
-
 
    || heading 1 |  heading 2  |  heading 3
     | cell 1.1  |  cell 1.2   |   cell 1.3
@@ -193,13 +189,14 @@ The image mark is as simple as it can be: [filename].
 
 The handy %%date macro expands to the current date.
 
-So today is 20081103 on the ISO YYYYMMDD format.
+So today is 20100806 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 11-03-2008.
+as %%date(%m-%d-%Y) which gives: 08-06-2010.
 
 That's all for now.
 
 -------------------------------------------------------
+
 [img/t2tpowered.png] (sample.t2t (sample.t2t))
 

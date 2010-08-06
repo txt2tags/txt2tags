@@ -25,6 +25,7 @@ Aurelio Jargas
 
 
 <@Title1:>Introduction
+
 <@Normal:>
 Welcome to the txt2tags sample file.
 
@@ -42,8 +43,8 @@ line3: date, version
 <@Normal:>
 Lines with balanced equal signs = around are titles.
 
-
 <@Title1:>Fonts and Beautifiers
+
 <@Normal:>
 We have two sets of fonts:
 
@@ -56,8 +57,8 @@ The TYPEWRITER type that uses monospaced font for pre-formatted text.
 <@Normal:>
 We will now enter on a subtitle...
 
-
 <@Title2:>Beautifiers
+
 <@Normal:>
 The text marks for beautifiers are simple, just as you type on a plain text email message.
 
@@ -67,8 +68,8 @@ We use double *, /, - and _ to represent <B>bold<P>, <I>italic<P>, strike and <U
 <@Normal:>
 The <B><I>bold italic<P><P> style is also supported as a combination.
 
-
 <@Title2:>Pre-Formatted Text
+
 <@Normal:>
 We can put a code sample or other pre-formatted text:
 
@@ -85,12 +86,13 @@ prompt$ ls /etc
 <@Normal:>
 Or use <FONT "Lucida Console"><SIZE 9>pre-formatted<SIZE$><FONT$> inside sentences.
 
-
 <@Title2:>More Cosmetics
+
 <@Normal:>
 Special entities like email (duh@somewhere.com) and URL (<U>http://www.duh.com<P>) are detected automagically, as long as the horizontal line:
 
 --------------------------------------------------------
+
 <@Normal:>
 ^ thin or large v
 
@@ -104,16 +106,17 @@ And remember,
 
 <@Quote:>A TAB in front of the line does a quotation.
 <@Quote:><@Quote:>More TABs, more depth (if allowed).
+
 <@Normal:>
 Nice.
 
-
 <@Title1:>Lists
+
 <@Normal:>
 A list of items is natural, just putting a <B>dash<P> or a <B>plus<P> at the beginning of the line.
 
-
 <@Title2:>Plain List
+
 <@Normal:>
 The dash is the default list identifier. For sublists, just add <B>spaces<P> at the beginning of the line. More spaces, more sublists.
 
@@ -133,11 +136,12 @@ The dash is the default list identifier. For sublists, just add <B>spaces<P> at 
 •	mars
   <@Bullet:>
   •	who knows?
+
 <@Normal:>
 The list ends with <B>two<P> consecutive blank lines.
 
-
 <@Title2:>Numbered List
+
 <@Normal:>
 The same rules as the plain list, just a different identifier (plus).
 
@@ -154,6 +158,7 @@ The same rules as the plain list, just a different identifier (plus).
 •	four
 
 <@Title2:>Definition List
+
 <@Normal:>
 The definition list identifier is a colon, followed by the term. The term contents is placed on the next line.
 
@@ -170,6 +175,7 @@ other fruits
     •	and again!
 
 <@Title1:>Tables
+
 <@Normal:>
 Use pipes to compose table rows and cells. Double pipe at the line beginning starts a heading row. Natural spaces specify each cell alignment.
 
@@ -177,6 +183,7 @@ Use pipes to compose table rows and cells. Double pipe at the line beginning sta
  || heading 1 |  heading 2  |  heading 3 |
   | cell 1.1  |  cell 1.2   |   cell 1.3 |
   | cell 2.1  |  cell 2.2   |   cell 2.3 |
+
 <@Normal:>
 Without the last pipe, no border:
 
@@ -186,11 +193,12 @@ Without the last pipe, no border:
   | cell 2.1  |  cell 2.2   |   cell 2.3
 
 <@Title1:>Special Entities
+
 <@Normal:>
 Because things were too simple.
 
-
 <@Title2:>Images
+
 <@Normal:>
 The image mark is as simple as it can be: <FONT "Lucida Console"><SIZE 9>[filename]<SIZE$><FONT$>.
 
@@ -202,22 +210,23 @@ The image mark is as simple as it can be: <FONT "Lucida Console"><SIZE 9>[filena
 •	No spaces inside the brackets!
 
 <@Title2:>Other
+
 <@Normal:>
 The handy <FONT "Lucida Console"><SIZE 9>%%date<SIZE$><FONT$> macro expands to the current date.
 
 <@Normal:>
-So today is 20080726 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
+So today is 20100806 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
 
 <@Normal:>
-You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 07-26-2008.
+You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 08-06-2010.
 
 <@Normal:>
 That's all for now.
 
 -------------------------------------------------------
+
 <@Normal:>
 img/t2tpowered.png (sample.t2t <U>sample.t2t<P>)
-
 
 
 
