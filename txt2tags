@@ -4320,7 +4320,7 @@ def toc_formatter(toc, config):
 	if AUTOTOC:
 		if rules['autotocwithbars']:           # TOC between bars
 			para = TAGS['paragraphOpen']+TAGS['paragraphClose']
-			bar  = regex['x'].sub('-'*72,TAGS['bar1'])
+			bar  = regex['x'].sub('-' * DFT_TEXT_WIDTH, TAGS['bar1'])
 			tocbar = [para, bar, para]
 			if TARGET == 'art' and config['headers']:
 				# exception: header already printed a bar
