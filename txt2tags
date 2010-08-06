@@ -3329,7 +3329,7 @@ class TitleMaster:
 		return ret
 	
 	def dump_marked_toc(self, max_level=99):
-		"Dumps all toc itens as a valid t2t markup list"
+		"Dumps all toc itens as a valid t2t-marked list"
 		ret = []
 		toc_count = 1
 		for level, count_id, txt, label in self.toc:
@@ -3338,19 +3338,20 @@ class TitleMaster:
 			id_txt = ('%s %s'%(count_id, txt)).lstrip()
 			label = label or self.anchor_prefix+`toc_count`
 			toc_count += 1
-			# TOC will have links
+			
+			# TOC will have crosslinks to anchors
 			if TAGS['anchor']:
-				# TOC is more readable with master topics
-				# not linked at number. This is a stoled
-				# idea from Windows .CHM help files
 				if CONF['enum-title'] and level == 1:
+					# 1. [Foo #anchor] is more readable than [1. Foo #anchor] in level 1.
+					# This is a stoled idea from Windows .CHM help files.
 					tocitem = '%s+ [""%s"" #%s]' % (indent, txt, label)
 				else:
 					tocitem = '%s- [""%s"" #%s]' % (indent, id_txt, label)
-			# No links on TOC, just text
+
+			# TOC will be plain text (no links)
 			else:
-				# man don't reformat TOC lines, cool!
 				if TARGET in ['txt', 'man', 'art']:
+					# For these, the list is not necessary, just dump the text
 					tocitem = '%s""%s""' % (indent, id_txt)
 				else:
 					tocitem = '%s- ""%s""' % (indent, id_txt)
