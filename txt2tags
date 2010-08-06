@@ -2733,10 +2733,7 @@ class ConfigMaster:
 		if infile == MODULEIN and not outfile: outfile = MODULEOUT
 		if not outfile and (infile and config.get('target')):
 			basename = re.sub('\.(txt|t2t)$','',infile)
-			if config['target'] == 'art' and config['slides'] :
-				outfile = "%s.p%s"%(basename, config['target'])
-			else :
-				outfile = "%s.%s"%(basename, config['target'])
+			outfile = "%s.%s"%(basename, config['target'])
 		Debug(" infile: '%s'"%infile , 1)
 		Debug("outfile: '%s'"%outfile, 1)
 		return outfile
