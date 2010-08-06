@@ -183,6 +183,3 @@ That's all for now.
 
 image::img/t2tpowered.png[] (sample.t2t[sample.t2t])
 
-
-
-
