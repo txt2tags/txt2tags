@@ -151,11 +151,12 @@ TARGETS.sort()
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
             'css-sugar'  :0 , 'css-suggar' :0 , 'css-inside' :0 ,
-            'quiet'      :0 , 'art-present' :0 }
+            'quiet'      :0 , 'slides'     :0 }
 OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
-            'show-config-value':'', 'art-chars':'', 'art-size':''} 
+            'width'      :0 , 'height'     :0 , 'art-chars'  :'',
+            'show-config-value':''}
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'list-targets':0}
@@ -184,7 +185,7 @@ TARGET_NAMES = {
   'moin'   : _('MoinMoin page'),
   'pm6'    : _('PageMaker document'),
   'txt'    : _('Plain Text'),
-  'art'    : _('Ascii Art text'),
+  'art'    : _('ASCII Art text'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document')
 }
@@ -195,9 +196,15 @@ QUIET = 0     # do not edit here, please use --quiet
 GUI = 0       # do not edit here, please use --gui
 AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
-AA_LCHARS = ['corner','border','side','bar1','bar2','level2','level3','level4','level5']
-AA_CHARS = dict(zip(AA_LCHARS,'+-|-==-^"')) # do not edit here, please use --art-chars
+DFT_TEXT_WIDTH   = 72 # do not edit here, please use --width
+DFT_SLIDE_WIDTH  = 80 # do not edit here, please use --width
+DFT_SLIDE_HEIGHT = 25 # do not edit here, please use --height
 
+# ASCII Art config
+AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
+AA_VALUES = '+-|-==-^"' # do not edit here, please use --art-chars
+AA = {}                 # will use AA_KEYS and AA_VALUES
+AA_COUNT = 0
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -234,8 +241,8 @@ USAGE =  '\n'.join([
 _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
 '',
 _("  -t, --target=TYPE   set target document type. currently supported:"),
-'                      %s,' % ', '.join(TARGETS[:9]),
-'                      %s' % ', '.join(TARGETS[9:]),
+  '                      %s,' % ', '.join(TARGETS[:9]),
+  '                      %s'  % ', '.join(TARGETS[9:]),
 _("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
 _("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
 _("  -H, --no-headers    suppress header, title and footer contents"),
@@ -249,12 +256,11 @@ _("      --toc           add TOC (Table of Contents) to target document"),
 _("      --toc-only      print document TOC and exit"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
 _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
-_("      --art-chars=S   set the ascii art chars with the string S. in the order:"),
-'                      %s' % ','.join(AA_LCHARS),
-'                      default: +-|-==-^"',
-_("  -p, --art-present   ascii art in presentation slides"),
-_("      --art-size=S    set the size of the ascii art output with the string S"),
-'                      default: dynamic with --art-present and 72 without',
+_("      --slides        format output as presentation slides (used by -t art)"),
+_("      --width=N       set the output's width to N columns (used by -t art)"),
+_("      --height=N      set the output's height to N rows (used by -t art)"),
+_("      --art-chars=S   set the ASCII Art chars to S (default %s) for:") % AA_VALUES,
+  '                      %s' % ','.join(AA_KEYS),
 _("  -C, --config-file=F read config from file F"),
 _("      --rc            read user config file ~/.txt2tagsrc (default ON)"),
 _("      --gui           invoke Graphical Tk Interface"),
@@ -645,8 +651,8 @@ def getTags(config):
 		'blockQuoteLine'       : '\t'                     ,
 		'listItemOpen'         : '- '                     ,
 		'numlistItemOpen'      : '\a. '                   ,
-		'bar1'                 : aa_line(AA_CHARS['bar1'], AA_COLUMNS),
-		'bar2'                 : aa_line(AA_CHARS['bar2'], AA_COLUMNS),
+		'bar1'                 : aa_line(AA['bar1'], config['width']),
+		'bar2'                 : aa_line(AA['bar2'], config['width']),
 		'url'                  : '\a'                     ,
 		'urlMark'              : '\a (\a)'                ,
 		'email'                : '\a'                     ,
@@ -1895,7 +1901,7 @@ def getRules(config):
 		myrules.update(rules_bank['xhtml'])   # get XHTML specific
 	elif config['target'] == 'art':
 		myrules = rules_bank['txt'].copy()    # inheritance
-		if AA_PRESENT:
+		if config['slides']:
 			myrules['blanksaroundtitle'] = 0
 			myrules['blanksaroundnumtitle'] = 0
 	else:
@@ -2068,7 +2074,7 @@ def getRegexes():
 	return bank
 ### END OF regex nightmares
 
-################# functions for the Ascii Art backend ########################
+################# functions for the ASCII Art backend ########################
 
 def aa_line(char, length):
 	return char * length
@@ -2076,31 +2082,31 @@ def aa_line(char, length):
 def aa_box(txt, length):
 	len_txt = len(txt)
 	nspace = (length - len_txt - 4) / 2
-	line_box = " " * nspace + AA_CHARS['corner'] + AA_CHARS['border'] * (len_txt + 2) + AA_CHARS['corner']
+	line_box = " " * nspace + AA['corner'] + AA['border'] * (len_txt + 2) + AA['corner']
 	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
 	#                           +-------------------------------+
 	#                           | all theeeeeeeeeeeeeeeeee text |
 	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
-	line_txt = " " * nspace + AA_CHARS['side'] + ' ' + txt + ' ' + AA_CHARS['side']
+	line_txt = " " * nspace + AA['side'] + ' ' + txt + ' ' + AA['side']
 	return [line_box, line_txt, line_box]
 
 def aa_header(header_data, length, n, end):
-	header = [aa_line(AA_CHARS['bar2'], length)]
+	header = [aa_line(AA['bar2'], length)]
 	header.extend(['']*n)
  	for h in 'HEADER1', 'HEADER2', 'HEADER3':
  		if header_data[h]:
 			header.extend(aa_box(header_data[h], length))
 			header.extend(['']*n)
 	header.extend(['']*end)	
-	header.append(aa_line(AA_CHARS['bar2'], length))
+	header.append(aa_line(AA['bar2'], length))
 	return header
 
 def aa_slide(title, length):
-	res = [aa_line(AA_CHARS['bar2'], length)]
+	res = [aa_line(AA['bar2'], length)]
 	res.append('')
 	res.append(title.center(length))
 	res.append('')
-	res.append(aa_line(AA_CHARS['bar2'], length))
+	res.append(aa_line(AA['bar2'], length))
 	return res
 
 def aa_table(table):
@@ -2285,7 +2291,6 @@ class CommandLine:
 			'i':'infile',
 			'n':'enum-title',
 			'o':'outfile',
-			'p':'art-present',
 			'q':'quiet',
 			't':'target',
 			'v':'verbose',
@@ -2627,7 +2632,7 @@ class ConfigMaster:
 		self.defaults     = self._get_defaults()
 		self.off          = self._get_off()
 		self.incremental  = ['verbose']
-		self.numeric      = ['toc-level','split']
+		self.numeric      = ['toc-level', 'split', 'width', 'height']
 		self.multi        = ['infile', 'preproc', 'postproc', 'options', 'style']
 	
 	def _get_defaults(self):
@@ -2728,7 +2733,7 @@ class ConfigMaster:
 		if infile == MODULEIN and not outfile: outfile = MODULEOUT
 		if not outfile and (infile and config.get('target')):
 			basename = re.sub('\.(txt|t2t)$','',infile)
-			if config['target'] == 'art' and AA_PRESENT :
+			if config['target'] == 'art' and config['slides'] :
 				outfile = "%s.p%s"%(basename, config['target'])
 			else :
 				outfile = "%s.%s"%(basename, config['target'])
@@ -2738,6 +2743,7 @@ class ConfigMaster:
 	
 	def sanity(self, config, gui=0):
 		"Basic config sanity checking"
+		global AA
 		if not config: return {}
 		target = config.get('target')
 		# Some actions don't require target specification
@@ -2768,11 +2774,29 @@ class ConfigMaster:
 		# Check integers options
 		for key in config.keys():
 			if key in self.numeric:
-				try: config[key] = int(config[key])
-				except: Error(_('--%s value must be a number') % key)
+				try:
+					config[key] = int(config[key])
+				except ValueError:
+					Error(_('--%s value must be a number') % key)
 		# Check split level value
 		if config['split'] not in (0,1,2):
 			Error(_('Option --split must be 0, 1 or 2'))
+		# ASCII Art needs a width
+		if target == 'art' and not config['width']:
+			config['width'] = DFT_TEXT_WIDTH
+		# Slides needs width and height
+		if config['slides'] and target == 'art':
+			if not config['width']:
+				config['width'] = DFT_SLIDE_WIDTH
+			if not config['height']:
+				config['height'] = DFT_SLIDE_HEIGHT
+		# Check user ASCII Art formatting characters
+		if config['art-chars'] and len(config['art-chars']) != len(AA_VALUES):
+			Error(_("--art-chars: Expected %i chars, got %i") % (
+				len(AA_VALUES), len(config['art-chars'])))
+		# Set ASCII Art formatting dictionary
+		if target == 'art':
+			AA = dict(zip(AA_KEYS, config['art-chars'] or AA_VALUES))
 		# --toc-only is stronger than others
 		if config['toc-only']:
 			config['headers'] = 0
@@ -3293,16 +3317,16 @@ class TitleMaster:
 				i = len(full_title)
 			ret.append(regex['x'].sub('='*i, self.tag))
 		elif TARGET == 'art' and self.level == 1:
-			if AA_PRESENT :
+			if CONF['slides'] :
 				AA_TITLE = tagged
 			else :
 				if BLOCK.count > 1: ret.append('') # blank line before
-				ret.extend(aa_box(tagged, AA_COLUMNS))
+				ret.extend(aa_box(tagged, CONF['width']))
 		elif TARGET == 'art':
 			level = 'level'+str(self.level)
 			if BLOCK.count > 1: ret.append('') # blank line before
 			ret.append(tagged)
-			ret.append(AA_CHARS[level]*len(full_title))
+			ret.append(AA[level] * len(full_title))
 		else:
 			ret.append(tagged)
 		return ret
@@ -3681,6 +3705,8 @@ class BlockMaster:
 		return ret
 	
 	def blockout(self):
+		global AA_COUNT
+                
 		if not self.BLK: Error('No block to pop')
 		blockname = self.BLK.pop()
 		result = getattr(self, blockname)()
@@ -3708,18 +3734,17 @@ class BlockMaster:
 			self.last = blockname
 			Debug('BLOCK: %s'%result, 6)
 		
-		# Ascii Art processing
-                if TARGET == 'art' and AA_PRESENT and not CONF['toc-only'] and not CONF.get('art-no-title'):
-                        global AA_COUNT
-                        n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
-                        if n<len(result) and not (TITLE.level==1 and blockname in ["title","numtitle"]):
-                                result=['']*n + [aa_line(AA_CHARS['bar1'], AA_COLUMNS)] + aa_slide(AA_TITLE, AA_COLUMNS) + [''] + result
-                        if blockname in ["title","numtitle"]  and TITLE.level == 1:
-                                aa_title = aa_slide(AA_TITLE, AA_COLUMNS) + ['']
+		# ASCII Art processing
+                if TARGET == 'art' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
+                        n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
+                        if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
+                                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, CONF['width']) + [''] + result
+                        if blockname in ["title", "numtitle"] and TITLE.level == 1:
+                                aa_title = aa_slide(AA_TITLE, CONF['width']) + ['']
                                 if AA_COUNT:
-					aa_title = ['']*n + [aa_line(AA_CHARS['bar2'], AA_COLUMNS)] + aa_title
-                                result=aa_title+result
-                        AA_COUNT+=len(result)
+					aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
+                                result = aa_title + result
+                        AA_COUNT += len(result)
 
 		return result
 	
@@ -4273,7 +4298,7 @@ def toc_tagger(toc, config):
 		fakeconf['preproc']    = []
 		fakeconf['postproc']   = []
 		fakeconf['css-sugar']  = 0
-		fakeconf['art-no-title']  = 1  # needed for --toc and --art-present together, avoids slide title before TOC
+		fakeconf['art-no-title']  = 1  # needed for --toc and --slides together, avoids slide title before TOC
 		ret,foo = convert(toc, fakeconf)
 		set_global_config(config)   # restore config
 	# Our TOC list is not needed, the target already knows how to do a TOC
@@ -4286,11 +4311,11 @@ def toc_formatter(toc, config):
 	if config['toc-only']: return toc              # no formatting needed
 	if not config['toc'] : return []               # TOC disabled
 	ret = toc
-	if TARGET == 'art' and AA_PRESENT:
-			n = (AA_LINES-1) - (len(toc)+6)%(AA_LINES-1)
-			toc = aa_slide(_("Table of Contents"),AA_COLUMNS)+toc+['']*n
-			toc.append(aa_line(AA_CHARS['bar2'],AA_COLUMNS))
-			return toc	
+	if TARGET == 'art' and config['slides']:
+		n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
+		toc = aa_slide(_("Table of Contents"), config['width']) + toc + ([''] * n)
+		toc.append(aa_line(AA['bar2'], config['width']))
+		return toc
 	# TOC open/close tags (if any)
 	if TAGS['tocOpen' ]: ret.insert(0, TAGS['tocOpen'])
 	if TAGS['tocClose']: ret.append(TAGS['tocClose'])
@@ -4353,13 +4378,13 @@ def doHeader(headers, config):
                 n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
                 if not n_h :
                         return []
-                if AA_PRESENT:
-                        x = AA_LINES - 3 - n_h*3
-                        n = x / (n_h+1)
-                        end = x % (n_h+1)
-                        template = aa_header(head_data, AA_COLUMNS, n, end)
+                if config['slides']:
+                        x = config['height'] - 3 - (n_h * 3)
+                        n = x / (n_h + 1)
+                        end = x % (n_h + 1)
+                        template = aa_header(head_data, config['width'], n, end)
                 else:
-                        template = [''] + aa_header(head_data, AA_COLUMNS, 2, 0)
+                        template = [''] + aa_header(head_data, config['width'], 2, 0)
                 return template
 
 	
@@ -4806,9 +4831,9 @@ def convert_this_files(configs):
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
-		if TARGET == 'art' and AA_PRESENT and not myconf['toc-only']:
-			n= (AA_LINES-1)-(AA_COUNT%(AA_LINES-1)+1)
-			target_body=target_body+['']*n+[aa_line(AA_CHARS['bar2'], AA_COLUMNS)]
+		if TARGET == 'art' and myconf['slides'] and not myconf['toc-only']:
+			n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
+			target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
 
 		# Make TOC (if needed)
 		Message(_("Composing target TOC"),1)
@@ -5805,7 +5830,7 @@ class Gui:
 ##############################################################################
 
 def exec_command_line(user_cmdline=[]):
-	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, AA_CHARS, AA_LCHARS, AA_PRESENT, AA_LINES, AA_COLUMNS, AA_COUNT, Error
+	global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, GUI, Error
 	
 	# Extract command line data
 	cmdline_data = user_cmdline or sys.argv[1:]
@@ -5825,44 +5850,6 @@ def exec_command_line(user_cmdline=[]):
 	if cmdline_parsed.get('list-targets'):
 		listTargets()
 		Quit()
-
-	# Ascii Art stuff
-	if 'art-chars' in cmdline_parsed:
-		lascii = cmdline_parsed['art-chars']
-		diff = len(AA_LCHARS) - len(lascii)
-		if not diff:
-			AA_CHARS = dict(zip(AA_LCHARS, lascii))
-		else:
-			Error(_("--art-chars: Expected %i chars, got %i") % (len(AA_LCHARS), len(lascii)))
-
-	if 'art-present' in cmdline_parsed:
-		AA_PRESENT = True
-	else:
-		AA_PRESENT = False
-
-	AA_COUNT = 0
-
-	if 'art-size' in cmdline_parsed:
-		if AA_PRESENT:
-			try:
-				AA_COLUMNS_S, AA_LINES_S = cmdline_parsed['art-size'].split()
-				AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
-			except:
-				Error(_("with --art-present, --art-size needs a string of two integers separated by a space as '80 25'."))
-		else:
-			try:
-				AA_COLUMNS = int(cmdline_parsed['art-size'])
-			except:
-				Error(_("--art-size needs one integer."))
-	else:
-		if AA_PRESENT:
-			try:
-				AA_LINES_S, AA_COLUMNS_S = os.popen('stty size', 'r').read().split()
-				AA_LINES, AA_COLUMNS = int(AA_LINES_S), int(AA_COLUMNS_S)
-			except:
-				Error(_("dynamic --art-present option not available on your system, use --art-size."))
-		else:
-			AA_COLUMNS = 72
 
 	# Multifile haters
 	if len(infiles) > 1:
