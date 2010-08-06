@@ -2778,15 +2778,15 @@ class ConfigMaster:
 		# Check split level value
 		if config['split'] not in (0,1,2):
 			Error(_('Option --split must be 0, 1 or 2'))
-		# ASCII Art needs a width
-		if target == 'art' and not config['width']:
-			config['width'] = DFT_TEXT_WIDTH
 		# Slides needs width and height
 		if config['slides'] and target == 'art':
 			if not config['width']:
 				config['width'] = DFT_SLIDE_WIDTH
 			if not config['height']:
 				config['height'] = DFT_SLIDE_HEIGHT
+		# ASCII Art needs a width
+		if target == 'art' and not config['width']:
+			config['width'] = DFT_TEXT_WIDTH
 		# Check/set user ASCII Art formatting characters
 		if config['art-chars']:
 			if len(config['art-chars']) != len(AA_VALUES):
