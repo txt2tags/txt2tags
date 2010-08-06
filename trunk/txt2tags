@@ -4306,17 +4306,22 @@ def toc_tagger(toc, config):
 
 def toc_formatter(toc, config):
 	"Formats TOC for automatic placement between headers and body"
+
 	if config['toc-only']: return toc              # no formatting needed
 	if not config['toc'] : return []               # TOC disabled
 	ret = toc
-	if TARGET == 'art' and config['slides']:
+
+	# Art: An automatic "Table of Contents" header is added to the TOC slide 
+	if config['target'] == 'art' and config['slides']:
 		n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
 		toc = aa_slide(_("Table of Contents"), config['width']) + toc + ([''] * n)
 		toc.append(aa_line(AA['bar2'], config['width']))
 		return toc
+
 	# TOC open/close tags (if any)
 	if TAGS['tocOpen' ]: ret.insert(0, TAGS['tocOpen'])
 	if TAGS['tocClose']: ret.append(TAGS['tocClose'])
+
 	# Autotoc specific formatting
 	if AUTOTOC:
 		if rules['autotocwithbars']:           # TOC between bars
