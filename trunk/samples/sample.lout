@@ -13,9 +13,10 @@
 @Display { 07"/"26"/"2008 }
 #@NP                               # Break page after Headers
 
-@BeginSections
 
+@BeginSections
 @Section @Title { Introduction } @Begin
+
 @LP
 Welcome to the txt2tags sample file.
 
@@ -37,8 +38,8 @@ line3: date, version
 Lines with balanced equal signs = around are titles.
 
 @End @Section
-
 @Section @Title { Fonts and Beautifiers } @Begin
+
 @LP
 We have two sets of fonts:
 
@@ -53,8 +54,8 @@ pre-formatted text.
 We will now enter on a subtitle...
 
  @BeginSubSections
-
  @SubSection @Title { Beautifiers } @Begin
+
 @LP
 The text marks for beautifiers are simple, just as you
 type on a plain text email message.
@@ -68,8 +69,8 @@ The {@B {{@II {bold italic}}}} style is also supported as a
 combination.
 
  @End @SubSection
-
  @SubSection @Title { Pre-Formatted Text } @Begin
+
 @LP
 We can put a code sample or other pre-formatted text:
 
@@ -90,22 +91,19 @@ prompt$ ls /etc
 Or use {@F {pre-formatted}} inside sentences.
 
  @End @SubSection
-
  @SubSection @Title { More Cosmetics } @Begin
+
 @LP
 Special entities like email ({blue @Colour { duh"@"somewhere.com }}) and
 URL ({blue @Colour { http:"/""/"www.duh.com }}) are detected automagically,
 as long as the horizontal line:
-
 
 @DP @FullWidthRule
 
 @LP
 "^" thin or large v
 
-
 @NP
-
 
 @LP
 You can also specify an explicit link ({blue @Colour { http:"/""/"duh.org }})
@@ -120,21 +118,22 @@ And remember,
 		More TABs, more depth (if allowed).
 		}
 	}
+
 @LP
 Nice.
 
  @End @SubSection
  @EndSubSections
 @End @Section
-
 @Section @Title { Lists } @Begin
+
 @LP
 A list of items is natural, just putting a {@B {dash}} or
 a {@B {plus}} at the beginning of the line.
 
  @BeginSubSections
-
  @SubSection @Title { Plain List } @Begin
+
 @LP
 The dash is the default list identifier. For sublists,
 just add {@B {spaces}} at the beginning of the line. More
@@ -142,42 +141,43 @@ spaces, more sublists.
 
 @BulletList
 @ListItem{earth
-  @BulletList
-  @ListItem{america
-    @BulletList
-    @ListItem{south america
-      @BulletList
-      @ListItem{brazil
-        @BulletList
-        @ListItem{how deep can i go?
-        }
-        @EndList
-      }
-      @EndList
-    }
-    @EndList
-  }
-  @ListItem{europe
-    @BulletList
-    @ListItem{lots of countries
-    }
-    @EndList
-  }
-  @EndList
-}
-@ListItem{mars
-  @BulletList
-  @ListItem{who knows?
-  }
-  @EndList
+@BulletList
+@ListItem{america
+@BulletList
+@ListItem{south america
+@BulletList
+@ListItem{brazil
+@BulletList
+@ListItem{how deep can i go?
 }
 @EndList
+}
+@EndList
+}
+@EndList
+}
+@ListItem{europe
+@BulletList
+@ListItem{lots of countries
+}
+@EndList
+}
+@EndList
+}
+@ListItem{mars
+@BulletList
+@ListItem{who knows?
+}
+@EndList
+}
+@EndList
+
 @LP
 The list ends with {@B {two}} consecutive blank lines.
 
  @End @SubSection
-
  @SubSection @Title { Numbered List } @Begin
+
 @LP
 The same rules as the plain list, just a different
 identifier (plus).
@@ -188,25 +188,26 @@ identifier (plus).
 @ListItem{two
 }
 @ListItem{three
-  @BulletList
-  @ListItem{mixed lists!
-  }
-  @ListItem{what a mess
-    @NumberedList
-    @ListItem{counting again
-    }
-    @ListItem{...
-    }
-    @EndList
-  }
-  @EndList
+@BulletList
+@ListItem{mixed lists!
+}
+@ListItem{what a mess
+@NumberedList
+@ListItem{counting again
+}
+@ListItem{...
+}
+@EndList
+}
+@EndList
 }
 @ListItem{four
 }
 @EndList
- @End @SubSection
 
+ @End @SubSection
  @SubSection @Title { Definition List } @Begin
+
 @LP
 The definition list identifier is a colon, followed by
 the term. The term contents is placed on the next line.
@@ -219,25 +220,26 @@ a yellow fruit
 a green or red fruit
 }
 @DropTagItem {other fruits}{
-  @BulletList
-  @ListItem{wee!
-  }
-  @ListItem{mixing lists
-    @NumberedList
-    @ListItem{again!
-    }
-    @ListItem{and again!
-    }
-    @EndList
-  }
-  @EndList
+@BulletList
+@ListItem{wee!
+}
+@ListItem{mixing lists
+@NumberedList
+@ListItem{again!
+}
+@ListItem{and again!
 }
 @EndList
+}
+@EndList
+}
+@EndList
+
  @End @SubSection
  @EndSubSections
 @End @Section
-
 @Section @Title { Tables } @Begin
+
 @LP
 Use pipes to compose table rows and cells.
 Double pipe at the line beginning starts a heading row.
@@ -248,6 +250,7 @@ Natural spaces specify each cell alignment.
   | cell 1.1  |  cell 1.2   |   cell 1.3 |
   | cell 2.1  |  cell 2.2   |   cell 2.3 |
 @End @RawVerbatim
+
 @LP
 Without the last pipe, no border:
 
@@ -256,15 +259,16 @@ Without the last pipe, no border:
   | cell 1.1  |  cell 1.2   |   cell 1.3
   | cell 2.1  |  cell 2.2   |   cell 2.3
 @End @RawVerbatim
-@End @Section
 
+@End @Section
 @Section @Title { Special Entities } @Begin
+
 @LP
 Because things were too simple.
 
  @BeginSubSections
-
  @SubSection @Title { Images } @Begin
+
 @LP
 The image mark is as simple as it can be: {@F {[filename]}}.
 
@@ -277,22 +281,22 @@ The image mark is as simple as it can be: {@F {[filename]}}.
 @ListItem{No spaces inside the brackets!
 }
 @EndList
- @End @SubSection
 
+ @End @SubSection
  @SubSection @Title { Other } @Begin
+
 @LP
 The handy {@F {%%date}} macro expands to the current date.
 
 @LP
-So today is 20080726 on the ISO {@F {YYYYMMDD}} format.
+So today is 20100806 on the ISO {@F {YYYYMMDD}} format.
 
 @LP
 You can also specify the date format with the %? flags,
-as {@F {%%date(%m-%d-%Y)}} which gives: 07-26-2008.
+as {@F {%%date(%m-%d-%Y)}} which gives: 08-06-2010.
 
 @LP
 That's all for now.
-
 
 @DP @FullWidthRule
 
@@ -303,7 +307,6 @@ That's all for now.
  @EndSubSections
 @End @Section
 @EndSections
-
-# lout code generated by txt2tags 2.5 (http://txt2tags.sf.net)
+# lout code generated by txt2tags 2.6b (http://txt2tags.sf.net)
 # cmdline: txt2tags -t lout samples/sample.t2t
 @End @Text
