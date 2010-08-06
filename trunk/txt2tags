@@ -4328,7 +4328,7 @@ def toc_formatter(toc, config):
 			para = TAGS['paragraphOpen']+TAGS['paragraphClose']
 			bar  = regex['x'].sub('-' * DFT_TEXT_WIDTH, TAGS['bar1'])
 			tocbar = [para, bar, para]
-			if TARGET == 'art' and config['headers']:
+			if config['target'] == 'art' and config['headers']:
 				# exception: header already printed a bar
 				ret = [para] + ret + tocbar
 			else:
@@ -4849,7 +4849,7 @@ def convert_this_files(configs):
 			return
 
 		# Close the last slide
-		if myconf['slides'] and not myconf['toc-only'] and TARGET == 'art':
+		if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'art':
 			n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
 			target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
 
