@@ -203,7 +203,7 @@ DFT_SLIDE_HEIGHT = 25 # do not edit here, please use --height
 # ASCII Art config
 AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
 AA_VALUES = '+-|-==-^"' # do not edit here, please use --art-chars
-AA = {}                 # will use AA_KEYS and AA_VALUES
+AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 
 RC_RAW = []
@@ -651,8 +651,8 @@ def getTags(config):
 		'blockQuoteLine'       : '\t'                     ,
 		'listItemOpen'         : '- '                     ,
 		'numlistItemOpen'      : '\a. '                   ,
-		'bar1'                 : "aa_line(AA['bar1'], config['width'])",
-		'bar2'                 : "aa_line(AA['bar2'], config['width'])",
+		'bar1'                 : aa_line(AA['bar1'], config['width']),
+		'bar2'                 : aa_line(AA['bar2'], config['width']),
 		'url'                  : '\a'                     ,
 		'urlMark'              : '\a (\a)'                ,
 		'email'                : '\a'                     ,
@@ -2787,13 +2787,13 @@ class ConfigMaster:
 				config['width'] = DFT_SLIDE_WIDTH
 			if not config['height']:
 				config['height'] = DFT_SLIDE_HEIGHT
-		# Check user ASCII Art formatting characters
-		if config['art-chars'] and len(config['art-chars']) != len(AA_VALUES):
-			Error(_("--art-chars: Expected %i chars, got %i") % (
-				len(AA_VALUES), len(config['art-chars'])))
-		# Set ASCII Art formatting dictionary
-		if target == 'art':
-			AA = dict(zip(AA_KEYS, config['art-chars'] or AA_VALUES))
+		# Check/set user ASCII Art formatting characters
+		if config['art-chars']:
+			if len(config['art-chars']) != len(AA_VALUES):
+				Error(_("--art-chars: Expected %i chars, got %i") % (
+					len(AA_VALUES), len(config['art-chars'])))
+			else:
+				AA = dict(zip(AA_KEYS, config['art-chars']))
 		# --toc-only is stronger than others
 		if config['toc-only']:
 			config['headers'] = 0
