@@ -4828,13 +4828,16 @@ def convert_this_files(configs):
 			for line in source_head+source_conf+target_body:
 				print line
 			return
+
+		# Close the last slide
+		if myconf['slides'] and not myconf['toc-only'] and TARGET == 'art':
+			n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
+			target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
+
 		# Compose the target file Footer
 		Message(_("Composing target Footer"),1)
 		if TARGET not in ['txt', 'art']: 
 			target_foot = doFooter(myconf)
-		if TARGET == 'art' and myconf['slides'] and not myconf['toc-only']:
-			n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
-			target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
 
 		# Make TOC (if needed)
 		Message(_("Composing target TOC"),1)
