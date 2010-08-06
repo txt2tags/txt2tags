@@ -228,6 +228,3 @@ That's all for now.
 <@Normal:>
 img/t2tpowered.png (sample.t2t <U>sample.t2t<P>)
 
-
-
-
