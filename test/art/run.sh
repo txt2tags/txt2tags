@@ -1,6 +1,8 @@
-# 2010-08-06
+#!/bin/bash
+# 2010-08-06 Aurelio Jargas
+#
 # Quick and dirty tests for Art target.
-# TODO Rewrite in Python, integrate into test-suite (run.py)
+# NOT integrated into main test suite, you must run it alone.
 
 txt2tags -i sample.t2t -t art                                   -o default.art
 txt2tags -i sample.t2t -t art --slides                          -o slides.art
