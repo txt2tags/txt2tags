@@ -1,9 +1,9 @@
 EXEMPLES TXT2TAGS 
-Aurélio Jargas
+AurÃ©lio Jargas
 %%mtime(%m/%d/%Y)
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: utf-8
 
                   =  Introduction  =
 
@@ -12,16 +12,16 @@ Bienvenue au fichier d'exemples de txt2tags.
 Vous trouverez ici des exemples et une courte
 explication des marques.
 
-Les 3 premières lignes de ce fichier sont utilisées
-comme entête, avec le format suivant :
+Les 3 premiÃ¨res lignes de ce fichier sont utilisÃ©es
+comme entÃªte, avec le format suivant :
 ```
 ligne1: titre du document 
 ligne2: nom de l'auteur et son email
 ligne3: la date et la version
 ```
 
-Les lignes avec des signes = équilibrés devant et
-derrière sont des titres.
+Les lignes avec des signes = Ã©quilibrÃ©s devant et
+derriÃ¨re sont des titres.
 
 % un commentaire secret !
 %TODO link to program homepage http://txt2tags.sf.net
@@ -31,11 +31,11 @@ derrière sont des titres.
 
 Il y a deux jeux de fontes :
 
-La fonte NORMAL qui peut être modifiée par les
+La fonte NORMAL qui peut Ãªtre modifiÃ©e par les
 enjoliveurs.
 
-La fonte TYPEWRITER qui utilise la fonte à espacement
-fixe pour du texte préformatté.
+La fonte TYPEWRITER qui utilise la fonte Ã  espacement
+fixe pour du texte prÃ©formattÃ©.
 
 Nous saisissons maintenant un sous-titre ...
 
@@ -45,50 +45,50 @@ Nous saisissons maintenant un sous-titre ...
 Les marques pour les enjoliveurs sont simples, comme si
 vous tapez un texte en clair dans un message email. 
 
-On utilise des doubles *, / et _ pour représenter du
-**gras**, //de l'italique// et du __souligné__.
+On utilise des doubles *, / et _ pour reprÃ©senter du
+**gras**, //de l'italique//, du --barrÃ©-- et du __soulignÃ©__.
 
-La combinaison **//italique souligné//** est supportée.
+La combinaison **//italique soulignÃ©//** est supportÃ©e.
 
 
-              ==  Texte Pre-Formatté ==
+              ==  Texte Pre-FormattÃ© ==
 
-Nous pouvons inclure une échantillon de texte de code
-préformatté :
+Nous pouvons inclure une Ã©chantillon de texte de code
+prÃ©formattÃ© :
 
 ```
-  cela est préformatté
-les //marques// ne sont **pas** ``interprétées``.
+  cela est prÃ©formattÃ©
+les //marques// ne sont **pas** ``interprÃ©tÃ©es``.
 ```
 
-Il est aisé de mettre une ligne de texte préformatté
+Il est aisÃ© de mettre une ligne de texte prÃ©formattÃ©
 ``` prompt$ ls /etc
 
-Ou d'utiliser du ``préformatté`` dans des phrases.
+Ou d'utiliser du ``prÃ©formattÃ©`` dans des phrases.
 
 
                 ==  Plus d'enjoliveurs  ==
 
 
-Des groupes spéciaux comme les emails
+Des groupes spÃ©ciaux comme les emails
 (duh@somewhere.com)  et des 
-URL (http://www.duh.com) sont détectées
+URL (http://www.duh.com) sont dÃ©tectÃ©es
 autimagiquement.
 
-Des lignes horizontales peuvent être tracées :
+Des lignes horizontales peuvent Ãªtre tracÃ©es :
 
 --------------------------------------------------------
-^ fines ou épaisses v
+^ fines ou Ã©paisses v
 ========================================================
 
-Vous pouvez aussi spécifier un lien explicite [c'est
+Vous pouvez aussi spÃ©cifier un lien explicite [c'est
 ici http://duh.org]
-avec une étiquette.
+avec une Ã©tiquette.
 
 Et souvenez vous :
-	Une tabulation au début de la ligne fait une citation.
-		Plus il y a de tabulations plus c'est indenté
-		(si c'est autorisé).
+	Une tabulation au dÃ©but de la ligne fait une citation.
+		Plus il y a de tabulations plus c'est indentÃ©
+		(si c'est autorisÃ©).
 
 Joli non ?
 
@@ -96,22 +96,22 @@ Joli non ?
                       =  Listes  =
 
 Pour une liste c'est naturel, mettre un **tiret** ou un
-**plus** au début de la ligne.
+**plus** au dÃ©but de la ligne.
 
 
                   ==  Liste simple  ==
 
-Le tiret est l'identificateur par défaut de la liste.
-Pour une sous-liste ajouter un **espace** au début de la
+Le tiret est l'identificateur par dÃ©faut de la liste.
+Pour une sous-liste ajouter un **espace** au dÃ©but de la
 ligne. Plus on met d'espaces, plus le niveau dela
-sous-liste est élevé. 
+sous-liste est Ã©levÃ©. 
 
 - terre
-  - amérique
+  - amÃ©rique
     - europe
       - france
-        - jusqu'où peut-on aller ?
-  - amérique
+        - jusqu'oÃ¹ peut-on aller ?
+  - amÃ©rique
     - un tas de pays
 - mars
   - qui connait ?
@@ -120,26 +120,26 @@ sous-liste est élevé.
 La liste se termine avec **deux** lignes vides.
 
 
-                 ==  Liste numérotée  ==
+                 ==  Liste numÃ©rotÃ©e  ==
 
-Ce sont les mêmes règles que la liste simple avec un
-identificateur différent (le signe plus).
+Ce sont les mÃªmes rÃ¨gles que la liste simple avec un
+identificateur diffÃ©rent (le signe plus).
 
 + un
 + deux
 + trois
-  - avec des listes mélangées
+  - avec des listes mÃ©langÃ©es
   - quel fouillis !
     + et on recompte
     + ...
 + quatre
 
 
-                ==  Liste de définition  ==
+                ==  Liste de dÃ©finition  ==
 
-L'identificateur de liste de définition est le
-caractère deux points, suivi par le terme. La
-définition du terme est sur la ligne suivante.
+L'identificateur de liste de dÃ©finition est le
+caractÃ¨re deux points, suivi par le terme. La
+dÃ©finition du terme est sur la ligne suivante.
 
 : orange
   un fruit orange
@@ -156,23 +156,23 @@ définition du terme est sur la ligne suivante.
 
 Utiliser la barre verticale pour composer les lignes et
 les colonnes.
-Deux barres verticales au début de la ligne commencent
-la ligne d'entête.
+Deux barres verticales au dÃ©but de la ligne commencent
+la ligne d'entÃªte.
 L'alignement dans chaque cellule est fait par les espaces.
 
- || entête 1 |  entête 2  |  entête 3 |
+ || entÃªte 1 |  entÃªte 2  |  entÃªte 3 |
   | cellule 1.1  |  cellule 1.2   |   cellule 1.3 |
   | cellule 2.1  |  cellule 2.2   |   cellule 2.3 |
 
-Si on omet la dernière barre verticale, il n'y a pas de
+Si on omet la derniÃ¨re barre verticale, il n'y a pas de
 bordures :
 
- || entête 1 |  entête 2  |  entête 3
+ || entÃªte 1 |  entÃªte 2  |  entÃªte 3
   | cellule 1.1  |  cellule 1.2   |   cellule 1.3
   | cellule 2.1  |  cellule 2.2   |   cellule 2.3
 
 
-                =  Entités Spéciales =
+                =  EntitÃ©s SpÃ©ciales =
 
 Parce que les choses sont trop simples.
 
@@ -190,13 +190,13 @@ La marque d'une image est aussi simple que possible : ``[filename]``.
 
                      ==  Date  ==
 
-Une macro très utile ``%%date`` qui développe la
+Une macro trÃ¨s utile ``%%date`` qui dÃ©veloppe la
 date du jour.
 
 Ainsi aujourd'hui nous sommes le %%date au format ISO
 ``YYYYMMDD``.
 
-Vous pouvez également spécifier le format de la date
+Vous pouvez Ã©galement spÃ©cifier le format de la date
 avec les indicateurs %?, comme dans
 ``%%date(%d-%m-%Y)`` qui donne: %%date(%d-%m-%Y).
 
