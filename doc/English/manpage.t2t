@@ -7,6 +7,7 @@ Jul, 2008
 
 % TRANSLATOR: uncomment the next line and fill the right encoding
 %%!encoding: iso-8859-1
+%%!encoding: utf-8
 
 %!postproc(html): <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
 %!postproc(html): (</STYLE>)  'body { margin:3em               ;} \n\1'
@@ -35,9 +36,7 @@ txt2tags - text formatting and conversion tool
 = DESCRIPTION =
 
 **txt2tags** is a GPL format conversion tool written in Python that
-generates //HTML//, //XHTML//, //SGML//, //LaTeX//, //Lout//,
-//Man Page//, //MoinMoin//, //Wikipedia (MediaWiki)//, //DokuWiki//,
-//Google Code Wiki//, //MagicPoint// and //PageMaker//
+generates //HTML//, //XHTML//, //SGML//, //DocBook//, //LaTeX//, //Lout//, //UNIX Manual page//, //MagicPoint//, //Wikipedia (MediaWiki)//, //Google Code Wiki//, //DokuWiki//, //pmWiki//, //MoinMoin//, //PageMaker//, //Plain Text//, //ASCII Art//, //AsciiDoc// and //Creole 1.0//
 documents from a single text file with minimal markup.
 
 The user just need to know the very few and simple **txt2tags** marks,
@@ -142,9 +141,10 @@ read user config file ~/.txt2tagsrc (default ON)
 use FILE as the document style (like Html CSS)
 
 : **-t**, **--target**=//TYPE//
-set target document type. currently supported:
-html, xhtml, sgml, tex, lout, man, mgp, wiki,
-gwiki, doku, moin, pm6, txt
+set target document type. Currently supported:
+html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
+
+
 
 :      **--toc**
 add TOC (Table of Contents) to target document
@@ -321,6 +321,32 @@ converting fun.
 ``$ (echo ; echo "**bold**") | txt2tags -t html -H -``
 
 
+: **Use of the graphical GUI**
+``$ txt2tags --gui file.t2t``
+
+: **Post-conversion with and external filter**
+``$ txt2tags -t html -o- file.t2t | sed -f myfilter.sed > file.html``
+
+
+
+
+= TIPS =
+
+A few tips for creating documentation.
+
+: Anchors
+The titles can have links to anchors, if the target allows them.
+
+```
+Titles             = header =[anchor]
+Numbered titles    + header +[anchor]
+```
+
+: Multiples files
+**txt2tags** can handle multiple files:
+``txt2tags *.t2t``
+
+
 = MACROS =
 
 : ""%%date""
@@ -364,7 +390,7 @@ as a text file, then converted to man format by **txt2tags**!
 
 = COPYRIGHT =
 
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Aurelio Jargas
 
 This is free software; see the source for copying conditions. There is
 NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
