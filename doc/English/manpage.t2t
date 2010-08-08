@@ -53,6 +53,11 @@ Please visit the program site at
 
 = OPTIONS =
 
+:  **--art-chars=S**
+set the ASCII Art chars to S (default +-|-==-^") for:
+corner,border,side,bar1,bar2,level2,level3,level4,level5
+
+
 :  **-C**, **--config-file**
 read config from an external file (works like %!includeconf)
 
@@ -83,8 +88,15 @@ suppress header, title and footer information
 :      **--headers**
 show header, title and footer information (default ON)
 
+:      **--height=N**
+set the output's height to N rows (used by -t art)
+
+
 :  **-i**, **--infile**=//FILE//
 set FILE as the input file name ('-' for STDIN)
+
+:   **--list-targets**
+print a list of all the available targets and exit
 
 :      **--mask-email**
 hide email from spam robots. x@y.z turns <x (a) y z>
@@ -107,6 +119,9 @@ turn off the title auto numbering
 :      **--no-infile**
 clear all the previous infile declarations
 
+:      **--no-list-targets**
+don't print the list of all the available targets
+
 :      **--no-mask-email**
 unhide emails, turning off the --mask-email option
 
@@ -118,6 +133,10 @@ show messages, turning off the --quiet option
 
 :      **--no-rc**
 do not read the user config file ~/.txt2tagsrc
+
+:      **--no-slides**
+turn off slides (used by -t art)
+
 
 :      **--no-style**
 clear the style setting
@@ -137,8 +156,13 @@ quiet mode, suppress all output (except errors)
 :      **--rc**
 read user config file ~/.txt2tagsrc (default ON)
 
+:      **--slides**
+format output as presentation slides (used by -t art)
+
+
 :      **--style**=//FILE//
 use FILE as the document style (like Html CSS)
+
 
 : **-t**, **--target**=//TYPE//
 set target document type. Currently supported:
@@ -160,6 +184,10 @@ print informative messages during conversion
 
 :  **-V**, **--version**
 print program version and exit
+
+:      **--width=N**
+set the output's width to N columns (used by -t art)
+
 
 
 By default, converted output is saved to 'file.<type>'.
