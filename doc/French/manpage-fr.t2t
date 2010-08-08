@@ -34,6 +34,10 @@ Visitez la page de base du programme à :
 
 = OPTIONS =
 
+:  **--art-chars=S**
+assigne les caractères S pour le mode ASCII Art (par défaut à +-|-==-^") pour les coins, les bordures, les côtés, les barres 1 et 2, les niveaux 2, niveaux 3, niveaux 4 et niveau 5
+
+
 :  **-C**, **--config-file**
 lire la configuration depuis un fichier externe (fonctionne comme %!includeconf)
 
@@ -64,8 +68,15 @@ suppression des informations d'entête, de titre, de pied et sortir
 :      **--headers**
 montrer les informations d'entête, de titre et de pied (actif par défaut)
 
+:      **--height=N**
+assigne la hauteur de sortie à N lignes (utilisé par -t art)
+
+
 :  **-i**, **--infile**=//FILE//
 choisir FILE comme fichier d'entrée ('-' pour STDIN)
+
+:   **--list-targets**
+afficher une liste avec toutes les cibles disponibles et sortir
 
 :      **--mask-email**
 masquer les email des robots scanneurs. x@y.z devient <x (a) y z>
@@ -88,6 +99,9 @@ supprimer la numérotation automatique des titres
 :      **--no-infile**
 supprimer la déclaration de fichier d'entrée
 
+:      **--no-list-targets**
+ne pas afficher la liste des cibles disponibles
+
 :      **--no-mask-email**
 démasque les emails, supprime l'option --mask-email
 
@@ -99,6 +113,9 @@ imprime les messages supprime l'option --quiet
 
 :      **--no-rc**
 ne pas lire le fichier de configuration utilisateur ~/.txt2tagsrc
+
+:      **--no-slides**
+ne pas utiliser les slides (utilisé par -t art)
 
 :      **--no-style**
 supprimer la déclaration de style
@@ -117,6 +134,10 @@ mode silencieux, supprime toutes les sorties (sauf les erreurs)
 
 :      **--rc**
 lire la configuration utilisateur ~/.txt2tagsrc (actif par défaut)
+
+:      **--slides**
+formatte la sortie en tant que slide de présentation (utilisé par -t art)
+
 
 :      **--style**=//FILE//
 utiliser FILE comme style de document (comme Html CSS)
@@ -141,6 +162,10 @@ imprime les message d'information pendant la conversion
 
 :  **-V**, **--version**
 imprime la version du programme et sort
+
+:      **--width=N**
+assigne la largeur de sortie à N colonnes (utilisé par -t art)
+
 
 Par défaut la sortie convertie est sauvée dans 'file.<type>'.
 Utiliser ``--outfile`` pour forcer le nom du fichier de  sortie.
