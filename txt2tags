@@ -495,7 +495,7 @@ _%(HEADER3)s_
 """,
 
 	'adoc': """\
-%(HEADER1)s
+= %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
 """,
