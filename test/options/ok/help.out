@@ -34,10 +34,10 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --list-targets  print a list of all the available targets and exit
 
 Turn OFF options:
-     --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers,
-     --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc,
-     --no-css-sugar, --no-css-inside, --no-quiet, --no-dump-config,
-     --no-dump-source, --no-list-targets
+     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,
+     --no-encoding, --no-enum-title, --no-headers, --no-infile,
+     --no-list-targets, --no-mask-email, --no-outfile, --no-quiet,
+     --no-rc, --no-slides, --no-style, --no-toc, --no-toc-only
 
 Example:
      txt2tags -t html --toc file.t2t
