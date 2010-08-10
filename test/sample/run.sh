@@ -19,6 +19,8 @@ filter() {
 	sed '
 		# remove date from header
 		s,[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9],DATE,
+		# lout escapes / with "/" in headers
+		s,[0-9][0-9]"/"[0-9][0-9]"/"[0-9][0-9][0-9][0-9],DATE,
 		
 		# avoids macro expansion differences
 		s/today is [0-9]\{8\}/today is TODAY/
