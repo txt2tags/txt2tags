@@ -145,7 +145,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
+TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -172,7 +172,6 @@ CONFIG_KEYWORDS = [
 TARGET_NAMES = {
   'html'   : _('HTML page'),
   'xhtml'  : _('XHTML page'),
-  'xhtmls' : _('XHTML Strict page'),
   'sgml'   : _('SGML document'),
   'dbk'    : _('DocBook document'),
   'tex'    : _('LaTeX document'),
@@ -385,49 +384,6 @@ Fake template to respect the general process.
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
-<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
-</head>
-<body>
-
-<div class="header" id="header">
-<h1>%(HEADER1)s</h1>
-<h2>%(HEADER2)s</h2>
-<h3>%(HEADER3)s</h3>
-</div>
-""",
-
-	'xhtmls': """\
-<?xml version="1.0"
-      encoding="%(ENCODING)s"
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"\
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
-<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
-<style type="text/css">body {background-color:#FFFFFF ; color:#000000}</style>
-</head>
-<body>
-<div style="text-align:center">
-<h1>%(HEADER1)s</h1>
-<h2>%(HEADER2)s</h2>
-<h3>%(HEADER3)s</h3>
-</div>
-""",
-
-	'xhtmlscss': """\
-<?xml version="1.0"
-      encoding="%(ENCODING)s"
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"\
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<body>
 <title>%(HEADER1)s</title>
 <meta name="generator" content="http://txt2tags.sf.net" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
@@ -795,72 +751,6 @@ def getTags(config):
 		'bar2'                 : '<hr class="heavy" />',
 		'anchor'               : '<a id="\a" name="\a"></a>\n',
 		'img'                  : '<img~A~ src="\a" border="0" alt=""/>',
-	},
-	
-	'xhtmls': {
-		'paragraphOpen'        : '<p>'            ,
-		'paragraphClose'       : '</p>'           ,
-		'title1'               : '~a~<h1>\a</h1>' ,
-		'title2'               : '~a~<h2>\a</h2>' ,
-		'title3'               : '~a~<h3>\a</h3>' ,
-		'title4'               : '~a~<h4>\a</h4>' ,
-		'title5'               : '~a~<h5>\a</h5>' ,
-		'anchor'               : '<a id="\a" name="\a"></a>\n',
-		'blockVerbOpen'        : '<pre>'          ,
-		'blockVerbClose'       : '</pre>'         ,
-		'blockQuoteOpen'       : '<blockquote>'   ,
-		'blockQuoteClose'      : '</blockquote>'  ,
-		'fontMonoOpen'         : '<code>'         ,
-		'fontMonoClose'        : '</code>'        ,
-		'fontBoldOpen'         : '<strong>'       ,
-		'fontBoldClose'        : '</strong>'      ,
-		'fontItalicOpen'       : '<em>'           ,
-		'fontItalicClose'      : '</em>'          ,
-		'fontUnderlineOpen'    : '<span style="text-decoration:underline">',
-		'fontUnderlineClose'   : '</span>'        ,
-		'fontStrikeOpen'       : '<span style="text-decoration:line-through">', #use <del> instead ?
-		'fontStrikeClose'      : '</span>'        ,
-		'listOpen'             : '<ul>'           ,
-		'listClose'            : '</ul>'          ,
-		'listItemOpen'         : '<li>'           ,
-		'listItemClose'        : '</li>'          ,
-		'numlistOpen'          : '<ol>'           ,
-		'numlistClose'         : '</ol>'          ,
-		'numlistItemOpen'      : '<li>'           ,
-		'numlistItemClose'     : '</li>'          ,
-		'deflistOpen'          : '<dl>'           ,
-		'deflistClose'         : '</dl>'          ,
-		'deflistItem1Open'     : '<dt>'           ,
-		'deflistItem1Close'    : '</dt>'          ,
-		'deflistItem2Open'     : '<dd>'           ,
-		'deflistItem2Close'    : '</dd>'          ,
-		'bar1'                 : '<hr class="light" />',
-		'bar2'                 : '<hr class="heavy" />',
-		'url'                  : '<a href="\a">\a</a>'        ,
-		'urlMark'              : '<a href="\a">\a</a>'        ,
-		'email'                : '<a href="mailto:\a">\a</a>' ,
-		'emailMark'            : '<a href="mailto:\a">\a</a>' ,
-		'img'                  : '<img~a~ src="\a" style="border:0px" alt=""/>',
-		'_imgAlignLeft'        : ' style="text-align:left"'  ,
-		'_imgAlignCenter'      : ' style="text-align:center"',
-		'_imgAlignRight'       : ' style="text-align:right"' ,
-		'tableOpen'            : '<table~a~~b~ cellpadding="4">',
-		'tableClose'           : '</table>'       ,
-		'tableRowOpen'         : '<tr>'           ,
-		'tableRowClose'        : '</tr>'          ,
-		'tableCellOpen'        : '<td~a~~s~>'     ,
-		'tableCellClose'       : '</td>'          ,
-		'tableTitleCellopen'   : '<th~s~>'        ,
-		'tableTitleCellclose'  : '</th>'          ,
-		'_tableBorder'         : ' border="1"'    ,
-		'_tableAlignCenter'    : ' style="text-align:center"',
-		'_tableCellAlignRight' : ' style="text-align:right"' ,
-		'_tableCellAlignCenter': ' style="text-align:center"',
-		'_tableCellColSpan'    : ' colspan="\a"'  ,
-		'cssOpen'              : '<style type="text/css">',
-		'cssClose'             : '</style>'       ,
-		'comment'              : '<!-- \a -->'    ,
-		'EOD'                  : '</body></html>'
 	},
 	
 	'sgml': {
@@ -1536,17 +1426,6 @@ def getTags(config):
 		htmltags['tocClose'] = '</DIV>'
 		htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
 		htmltags['bodyClose']= '</DIV>'
-
-	if config['css-sugar'] and config['target'] in ('xhtmls'):
-		# load normal xhtmls tags
-		htmltags = alltags['xhtmls']
-		# Table with no cellpadding
-		htmltags['tableOpen'] = htmltags['tableOpen'].replace(' cellpadding="4"', '')
-		# DIVs
-		htmltags['tocOpen' ] = '<div class="toc">'
-		htmltags['tocClose'] = '</div>'
-		htmltags['bodyOpen'] = '<div class="body" id="body">'
-		htmltags['bodyClose']= '</div>'
 	
 	# Make the HTML -> XHTML inheritance
 	xhtml = alltags['html'].copy()
@@ -1555,14 +1434,6 @@ def getTags(config):
 	if HTML_LOWER: alltags['html'] = xhtml.copy()
 	xhtml.update(alltags['xhtml'])
 	alltags['xhtml'] = xhtml.copy()
-
-	## Make the HTML -> XHTMLS inheritance
-	#xhtmls = alltags['html'].copy()
-	#for key in xhtmls.keys(): xhtmls[key] = xhtmls[key].lower()
-	## Some like HTML tags as lowercase, some don't... (headers out)
-	#if HTML_LOWER: alltags['html'] = xhtmls.copy()
-	#xhtmls.update(alltags['xhtmls'])
-	#alltags['xhtmls'] = xhtmls.copy()
 
 	# Compose the target tags dictionary
 	tags = {}
@@ -1711,38 +1582,6 @@ def getRules(config):
 		'xhtml': {
 			#TIP xhtml inherits all HTML rules
 		},
-		
-		'xhtmls': {
-			'indentverbblock':1,
-			'linkable':1,
-			'stylable':1,
-			'escapeurl':1,
-			'imglinkable':1,
-			'imgalignable':1,
-			'imgasdefterm':1,
-			'autonumberlist':1,
-			'spacedlistitem':1,
-			'parainsidelist':1,
-			'tableable':1,
-			'tablecellstrip':1,
-			'breaktablecell':1,
-			'breaktablelineopen':1,
-			'keeplistindent':1,
-			'keepquoteindent':1,
-			'barinsidequote':1,
-			'autotocwithbars':1,
-			'tablecellspannable':1,
-			'tablecellaligntype':'cell',
-			'blanksaroundverb':1,
-			'blanksaroundlist':1,
-			'blanksaroundnumlist':1,
-			'blanksarounddeflist':1,
-			'blanksaroundtable':1,
-			'blanksaroundbar':1,
-			'blanksaroundtitle':1,
-			'blanksaroundnumtitle':1,
-		},
-		
 		'sgml': {
 			'linkable':1,
 			'escapeurl':1,
@@ -2052,7 +1891,7 @@ def getRules(config):
 	}
 	
 	# Exceptions for --css-sugar
-	if config['css-sugar'] and config['target'] in ('html','xhtml','xhtmls'):
+	if config['css-sugar'] and config['target'] in ('html','xhtml'):
 		rules_bank['html']['indentverbblock'] = 0
 		rules_bank['html']['autotocwithbars'] = 0
 	
@@ -4006,7 +3845,7 @@ class BlockMaster:
 		# Needed because <center> can't appear inside <p>
 		try:
 			if len(lines) == 1 and \
-			   TARGET in ('html', 'xhtml', 'xhtmls') and \
+			   TARGET in ('html', 'xhtml') and \
 			   re.match('^\s*<center>.*</center>\s*$', lines[0]):
 				result = [lines[0]]
 		except: pass
@@ -4510,7 +4349,7 @@ def doHeader(headers, config):
 	if not HEADER_TEMPLATE.has_key(target):
 		Error("doHeader: Unknown target '%s'"%target)
 	
-	if target in ('html','xhtml','xhtmls') and config.get('css-sugar'):
+	if target in ('html','xhtml') and config.get('css-sugar'):
 		template = HEADER_TEMPLATE[target+'css'].split('\n')
 	else:
 		template = HEADER_TEMPLATE[target].split('\n')
@@ -4540,7 +4379,7 @@ def doHeader(headers, config):
 
 	# css-inside removes STYLE line
 	#XXX In tex, this also removes the modules call (%!style:amsfonts)
-	if target in ('html','xhtml','xhtmls') and config.get('css-inside') and \
+	if target in ('html','xhtml') and config.get('css-inside') and \
 	   config.get('style'):
 		head_data['STYLE'] = []
 
@@ -4592,7 +4431,7 @@ def doHeader(headers, config):
 	
 	# Adding CSS contents into template (for --css-inside)
 	# This code sux. Dirty++
-	if target in ('html','xhtml','xhtmls') and config.get('css-inside') and \
+	if target in ('html','xhtml') and config.get('css-inside') and \
 	   config.get('style'):
 		set_global_config(config) # usually on convert(), needed here
 		for i in xrange(len(config['style'])):
@@ -4668,7 +4507,7 @@ def doFooter(config):
 def doEscape(target,txt):
 	"Target-specific special escapes. Apply *before* insert any tag."
 	tmpmask = 'vvvvThisEscapingSuxvvvv'
-	if target in ('html','sgml','xhtml','xhtmls','dbk'):
+	if target in ('html','sgml','xhtml','dbk'):
 		txt = re.sub('&','&amp;',txt)
 		txt = re.sub('<','&lt;',txt)
 		txt = re.sub('>','&gt;',txt)
@@ -5062,10 +4901,6 @@ def parse_images(line):
 				rest = regex['img'].sub('',line,1)
 				if re.match('^\s+$', rest):
 					tag = "<center>%s</center>" %tag
-			if align == 'center' and TARGET == 'xhtmls':
-				rest = regex['img'].sub('',line,1)
-				if re.match('^\s+$', rest):
-					tag = '<div style="text-align: center;">%s</div>' %tag
 		
 		if TARGET == 'tex':
 			tag = re.sub(r'\\b',r'\\\\b',tag)
