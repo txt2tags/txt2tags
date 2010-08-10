@@ -205,6 +205,7 @@ AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
 AA_VALUES = '+-|-==-^"' # do not edit here, please use --art-chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
+AA_TITLE = ''
 
 RC_RAW = []
 CMDLINE_RAW = []
