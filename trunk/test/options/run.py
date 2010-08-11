@@ -561,18 +561,19 @@ tests = [
   'content': EMPTY_HEADER+VERSION_GOTCHA+SIMPLE_BODY,
   'cmdline': ["--css-inside --no-css-inside --style", lib.CSS_FILE],
   'extra'  : ['css']
-  }, {
-  'name'   : 'config-file',
-  'target' : 'html',
-  'content': EMPTY_HEADER+SIMPLE_BODY,
-  'cmdline': ["-H --config-file", lib.CONFIG_FILE],
-  'extra'  : ['config', 'notarget']
-  }, {
-  'name'   : 'C',
-  'target' : 'html',
-  'content': EMPTY_HEADER+SIMPLE_BODY,
-  'cmdline': ["-H -C", lib.CONFIG_FILE],
-  'extra'  : ['config', 'notarget']
+  ### Now fully tested in test/includeconf
+  # }, {
+  # 'name'   : 'config-file',
+  # 'target' : 'html',
+  # 'content': EMPTY_HEADER+SIMPLE_BODY,
+  # 'cmdline': ["-H --config-file", lib.CONFIG_FILE],
+  # 'extra'  : ['config', 'notarget']
+  # }, {
+  # 'name'   : 'C',
+  # 'target' : 'html',
+  # 'content': EMPTY_HEADER+SIMPLE_BODY,
+  # 'cmdline': ["-H -C", lib.CONFIG_FILE],
+  # 'extra'  : ['config', 'notarget']
   }, {
   'name'   : 'dump-config',
   'content': EMPTY_HEADER+CONFIG_FILE_TXT+SIMPLE_BODY,
