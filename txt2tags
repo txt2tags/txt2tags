@@ -2948,15 +2948,25 @@ class ConfigLines:
 			\s*$
 			""", re.VERBOSE)
 		guicolors = re.compile("^([^\s]+\s+){3}[^\s]+") # 4 tokens
+		
+		# Give me a match or get out
 		match = cfgregex.match(line)
 		if not match: return empty
 		
+		# Save information about this config
 		name   = (match.group('name') or '').lower()
 		target = (match.group('target') or 'all').lower()
 		value  = match.group('value')
 		
-		# NO target keywords: force all targets
-		if name in no_target: target = 'all'
+		# %!keyword(target) not allowed for these
+		if name in no_target and match.group('target'):
+			Error(
+				_("You can't use (target) with %s") % ('%!' + name)
+			 	+ "\n%s" % line)
+		
+		# Force no_target keywords to be valid for all targets
+		if name in no_target:
+			target = 'all'
 		
 		# Special config for GUI colors
 		if name == 'guicolors':
