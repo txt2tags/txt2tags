@@ -9,7 +9,7 @@
 # may not work on it.
 #
 
-import os, sys, string, glob
+import os, sys, glob
 
 sys.path.insert(0, '..')
 import lib
@@ -23,7 +23,7 @@ def syscommand(cmd):
 	fd = os.popen(cmd)
 	output = []
 	for line in fd.readlines():
-		output.append(string.rstrip(line)) # stripping \s*\n
+		output.append(line.rstrip()) # stripping \s*\n
 	ret = fd.close()
 	if ret: ret = ret/256  # 16bit number
 	return ret, output
@@ -31,7 +31,7 @@ def syscommand(cmd):
 def run():
 	# test all .t2t files found
 	for infile in glob.glob("*.t2t"):
-		basename = string.replace(infile, '.t2t', '')
+		basename = infile.replace('.t2t', '')
 		outfile = basename + '.html'
 		print '  Testing %s ...' % basename,
 		cmdline = lib.TXT2TAGS + ' ' + infile

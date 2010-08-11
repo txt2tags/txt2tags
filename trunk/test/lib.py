@@ -3,7 +3,7 @@
 # See also: run.py, */run.py
 #
 
-import os, string, time
+import os, time
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
@@ -63,7 +63,7 @@ def getCurrentDate():
 #
 def convert(options):
 	if type(options) in [type(()), type([])]:
-		options = string.join(options, ' ')
+		options = ' '.join(options)
 	cmdline = TXT2TAGS + ' ' + options
 	# print "\n**Executing: %s" % cmdline
 	return os.system(cmdline)
