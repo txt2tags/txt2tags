@@ -8,4 +8,6 @@ This is WRONG! It should be:
 
 But txt2tags considers "current path" the path for the mother .t2t file
 (../include-nesting-folder.t2t)
+
+Funny thing is that %!includeconf do not suffer from this bug. See ConfigLines.include_config_file()
 %%%
