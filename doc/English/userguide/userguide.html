@@ -1386,10 +1386,10 @@ My nice doc Title
 Mr. John Doe
 Last Updated: %%mtime(%c)
 
-%! Target  : html
-%! Style   : fancy.css
-%! Encoding: iso-8859-1
-%! Options : --toc --enum-title
+%!target  : html
+%!style   : fancy.css
+%!encoding: iso-8859-1
+%!options : --toc --enum-title
 
 Hi! This is my test document.
 Its content will end here.
@@ -1579,16 +1579,16 @@ Example:
 </P>
 
 <PRE>
-%! Target  : html
-%! Options : --toc --toc-level 3
-%! Style   : fancy.css
-%! Encoding: iso-8859-1
-%! PreProc : "AMJ"        "Aurelio Marinho Jargas"
-%! PostProc: '&lt;BODY.*?&gt;'  '&lt;BODY bgcolor="yellow"&gt;'
+%!target  : html
+%!options : --toc --toc-level 3
+%!style   : fancy.css
+%!encoding: iso-8859-1
+%!preproc : "AMJ"        "Aurelio Marinho Jargas"
+%!postproc: '&lt;BODY.*?&gt;'  '&lt;BODY bgcolor="yellow"&gt;'
 </PRE>
 
 <P>
-Note that the spacing and capitalization of the keyword are ignored. So you can also do <CODE>%!target:html</CODE> and  <CODE>%!TARGET:html</CODE>.
+Note that the spacing and capitalization of the keyword are ignored. So you can also do <CODE>%!Target:html</CODE> and  <CODE>%! TARGET :html</CODE>.
 </P>
 <P>
 Learn more about settings in <A HREF="#settings">Part VII - Mastering Settings</A>.
@@ -2433,8 +2433,8 @@ Full example (bold text are expanded macros):
 <P>
 This is the Txt2tags User Guide, converted to <B>html</B>
 by txt2tags from the <B>userguide.t2t</B> source file. The conversion
-was done at <B>2010-08-11 10:22:25</B>, but the last change on the
-source document was made on <B>2010-08-11 10:21:38</B>. Both
+was done at <B>2010-08-11 10:30:17</B>, but the last change on the
+source document was made on <B>2010-08-11 10:30:16</B>. Both
 source and converted file reside on the <B>userguide</B>
 directory.
 </P>
@@ -2538,12 +2538,12 @@ Examples:
 <TR>
 <TH>Macro</TH>
 <TH>--&gt;</TH>
-<TH>Results for on 2010, Aug 11 at 10:22</TH>
+<TH>Results for on 2010, Aug 11 at 10:30</TH>
 </TR>
 <TR>
 <TD>%%date(Converted on: %c)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Converted on: Wed Aug 11 10:22:25 2010</TD>
+<TD>Converted on: Wed Aug 11 10:30:17 2010</TD>
 </TR>
 <TR>
 <TD>%%date(%Y-%m-%d)</TD>
@@ -2553,7 +2553,7 @@ Examples:
 <TR>
 <TD>%%date(%I:%M %p)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>10:22 AM</TD>
+<TD>10:30 AM</TD>
 </TR>
 <TR>
 <TD>%%date(Today is %A, on %B.)</TD>
@@ -2573,7 +2573,7 @@ accepts exactly the same formatting directives.
 </P>
 <P>
 As an example, this User Guide source file was last edited on
-<B>Wed Aug 11 10:21:38 2010</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
+<B>Wed Aug 11 10:30:16 2010</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
 </P>
 
 <A NAME="macro-infile"></A>
@@ -2782,7 +2782,7 @@ Rules:
 </UL>
 
 <A NAME="setting-target"></A>
-<H2>%!Target</H2>
+<H2>%!target</H2>
 
 <P>
 Using the target setting, a default target format is defined for the
@@ -2810,7 +2810,7 @@ That doesn't make sense, such as <CODE>%!target(tex): html</CODE>.
 </P>
 
 <A NAME="setting-options"></A>
-<H2>%!Options</H2>
+<H2>%!options</H2>
 
 <P>
 Writing long command lines every time you need to convert a document
@@ -2855,7 +2855,7 @@ Tip for Vim users: To convert the document right inside the editor, just run <CO
 </P>
 
 <A NAME="setting-encoding"></A>
-<H2>%!Encoding</H2>
+<H2>%!encoding</H2>
 
 <P>
 The Encoding setting is needed by non-english writers, who uses
@@ -2924,7 +2924,7 @@ allowing user to specify custom encodings.
 </P>
 
 <A NAME="setting-preproc"></A>
-<H2>%!PreProc</H2>
+<H2>%!preproc</H2>
 
 <P>
 The PreProc is an input filter used on the Body Area of the source document. It is a "find
@@ -2977,7 +2977,7 @@ were applied.
 	</BLOCKQUOTE>
 
 <A NAME="setting-postproc"></A>
-<H2>%!PostProc</H2>
+<H2>%!postproc</H2>
 
 <P>
 The PostProc is an output filter used on the converted document. It is a
@@ -3017,7 +3017,7 @@ Expression machine to find patterns.
 </P>
 
 <A NAME="setting-style"></A>
-<H2>%!Style</H2>
+<H2>%!style</H2>
 
 <UL>
 <LI>Useful in HTML and XHTML targets, it defines a CSS file for the target
@@ -3100,7 +3100,7 @@ have no TOC.
 
 <P></P>
 <LI>To avoid problems, always use the explicit target form when using
-  PostProc to change tags: <CODE>%!PostProc(target): &lt;this&gt; &lt;that&gt;</CODE>
+  PostProc to change tags: <CODE>%!postproc(target): &lt;this&gt; &lt;that&gt;</CODE>
 <P></P>
 <LI>PREproc is applied right after the line is read, and POSTproc is
   applied after all the parsing was made. They are exactly the same as
@@ -3174,7 +3174,7 @@ Keep that in mind, please.
 </P>
 
 <A NAME="postproc-multiline"></A>
-<H2>Inserting Multiple Lines with %!PostProc (like CSS rules)</H2>
+<H2>Inserting Multiple Lines with %!postproc (like CSS rules)</H2>
 
 <P>
 In filters, the replacement pattern can include multiple lines using the
@@ -3209,7 +3209,7 @@ th       { background-color:yellow  ;}
 </PRE>
 
 <A NAME="target-specific-contents"></A>
-<H2>Creating "Target-Specific" Contents with %!PreProc</H2>
+<H2>Creating "Target-Specific" Contents with %!preproc</H2>
 
 <P>
 Sometimes you need to insert some text on a specific target, but not on
@@ -3247,7 +3247,7 @@ processed for HTML targets only.
 </P>
 
 <A NAME="creating-marks"></A>
-<H2>Changing Txt2tags Marks with %!PreProc</H2>
+<H2>Changing Txt2tags Marks with %!preproc</H2>
 
 <P>
 Being a Regular Expressions guru, the user can customize the document
@@ -3262,7 +3262,7 @@ choice. Then he will do this simple filter:
 </P>
 
 <PRE>
-%!PreProc: '&gt;&gt;&gt; ' '\t'
+%!preproc: '&gt;&gt;&gt; ' '\t'
 </PRE>
 
 <P>

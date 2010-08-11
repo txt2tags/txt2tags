@@ -873,10 +873,10 @@ My nice doc Title
 Mr. John Doe
 Last Updated: %%mtime(%c)
 
-%! Target  : html
-%! Style   : fancy.css
-%! Encoding: iso-8859-1
-%! Options : --toc --enum-title
+%!target  : html
+%!style   : fancy.css
+%!encoding: iso-8859-1
+%!options : --toc --enum-title
 
 Hi! This is my test document.
 Its content will end here.
@@ -1000,15 +1000,15 @@ List of valid keywords:
 Example:
 
 ```
-%! Target  : html
-%! Options : --toc --toc-level 3
-%! Style   : fancy.css
-%! Encoding: iso-8859-1
-%! PreProc : "AMJ"        "Aurelio Marinho Jargas"
-%! PostProc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
+%!target  : html
+%!options : --toc --toc-level 3
+%!style   : fancy.css
+%!encoding: iso-8859-1
+%!preproc : "AMJ"        "Aurelio Marinho Jargas"
+%!postproc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
 ```
 
-Note that the spacing and capitalization of the keyword are ignored. So you can also do ``%!target:html`` and  ``%!TARGET:html``.
+Note that the spacing and capitalization of the keyword are ignored. So you can also do ``%!Target:html`` and  ``%! TARGET :html``.
 
 Learn more about settings in [Part VII - Mastering Settings #settings].
 
@@ -1787,7 +1787,7 @@ Rules:
 
 -----------------------------------------------------------------------
 
-== %!Target ==[setting-target]
+== %!target ==[setting-target]
 
 Using the target setting, a default target format is defined for the
 document:
@@ -1805,7 +1805,7 @@ That doesn't make sense, such as ``%!target(tex): html``.
 
 -----------------------------------------------------------------------
 
-== %!Options ==[setting-options]
+== %!options ==[setting-options]
 
 Writing long command lines every time you need to convert a document
 is boring and error prone. The Options setting let the user save
@@ -1837,7 +1837,7 @@ Tip for Vim users: To convert the document right inside the editor, just run ``:
 
 -----------------------------------------------------------------------
 
-== %!Encoding ==[setting-encoding]
+== %!encoding ==[setting-encoding]
 
 The Encoding setting is needed by non-english writers, who uses
 accented letters and other locale specific details, so the target
@@ -1868,7 +1868,7 @@ allowing user to specify custom encodings.
 
 -----------------------------------------------------------------------
 
-== %!PreProc ==[setting-preproc]
+== %!preproc ==[setting-preproc]
 
 The PreProc is an input filter used on the BODYAREA of the source document. It is a "find
 and replace" feature, applied right after the line is read from the
@@ -1904,7 +1904,7 @@ were applied.
 
 -----------------------------------------------------------------------
 
-== %!PostProc ==[setting-postproc]
+== %!postproc ==[setting-postproc]
 
 The PostProc is an output filter used on the converted document. It is a
 "find and replace" feature, applied after all txt2tags parsing and
@@ -1935,7 +1935,7 @@ Expression machine to find patterns.
 
 -----------------------------------------------------------------------
 
-== %!Style ==[setting-style]
+== %!style ==[setting-style]
 
 - Useful in HTML and XHTML targets, it defines a CSS file for the target
   document.
@@ -2007,7 +2007,7 @@ have no TOC.
 ``` %!postproc: "undesired string" ""
 
 - To avoid problems, always use the explicit target form when using
-  PostProc to change tags: ``%!PostProc(target): <this> <that>``
+  PostProc to change tags: ``%!postproc(target): <this> <that>``
 
 - PREproc is applied right after the line is read, and POSTproc is
   applied after all the parsing was made. They are exactly the same as
@@ -2067,7 +2067,7 @@ Keep that in mind, please.
 
 -----------------------------------------------------------------------
 
-== Inserting Multiple Lines with %!PostProc (like CSS rules) ==[postproc-multiline]
+== Inserting Multiple Lines with %!postproc (like CSS rules) ==[postproc-multiline]
 
 In filters, the replacement pattern can include multiple lines using the
 ``\n`` line break char.
@@ -2098,7 +2098,7 @@ th       { background-color:yellow  ;}
 
 -----------------------------------------------------------------------
 
-== Creating "Target-Specific" Contents with %!PreProc ==[target-specific-contents]
+== Creating "Target-Specific" Contents with %!preproc ==[target-specific-contents]
 
 Sometimes you need to insert some text on a specific target, but not on
 the others. This kind of strange behavior can be done using some
@@ -2127,7 +2127,7 @@ processed for HTML targets only.
 
 -----------------------------------------------------------------------
 
-== Changing Txt2tags Marks with %!PreProc ==[creating-marks]
+== Changing Txt2tags Marks with %!preproc ==[creating-marks]
 
 Being a Regular Expressions guru, the user can customize the document
 source syntax, changing the txt2tags default marks to some he find more
@@ -2138,7 +2138,7 @@ like it, or his text editor has some strange relationship with TABs, he
 can define a new mark for Quoted text. Say a leading ">>> " was his
 choice. Then he will do this simple filter:
 
-``` %!PreProc: '>>> ' '\t'
+``` %!preproc: '>>> ' '\t'
 
 And on the document source, the quoted text will be something like:
 
