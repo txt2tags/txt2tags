@@ -43,6 +43,9 @@ tests = [
   'cmdline': ["-t html -C _text.inc"],
   'not-numbered': True
   }, {
+  'name'   : 'C-targeted-inside',
+  'cmdline': ["-t html -C _targeted.inc"]
+  }, {
   'name'   : 'C-nesting',
   'cmdline': ["-C _sub_include.inc"]
   }, {
@@ -68,7 +71,7 @@ def run():
 	
 	### First test the %!includeconf command
 	
-	errors = ['includeconf-itself', 'includeconf-not-found', 'includeconf-target', 'includeconf-text']
+	errors = ['includeconf-itself', 'includeconf-not-found', 'includeconf-targeted', 'includeconf-text']
 	unnumbered = ['includeconf-empty']
 
 	# test all t2t files found
