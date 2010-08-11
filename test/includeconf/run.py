@@ -84,7 +84,7 @@ def run():
 		if basename in errors:
 			outfile = basename + '.out'
 			okfile = 'ok/' + outfile
-			cmdline = ['-H', '-i', infile, '>', outfile, '2>&1']			
+			cmdline = ['-H', '-i', infile, '-o- >', outfile, '2>&1']			
 		else:
 			cmdline = ['-H', '-i', infile, '-o', outfile]
 
@@ -120,7 +120,7 @@ def run():
 			if test['name'] in errors:
 				outfile = name + '.out'
 				okfile = 'ok/' + outfile
-				cmdline = default_cmdline + cmdline + ['>', outfile, '2>&1']
+				cmdline = default_cmdline + cmdline + ['-o- >', outfile, '2>&1']
 			else:
 				cmdline = default_cmdline + cmdline + ['-o', outfile]
 		
