@@ -15,7 +15,7 @@
 # TIP: To quickly check the errors, run:
 #      for f in */error/*; do diff -u ${f/error/ok} $f; done
 
-import os, sys, string
+import os, sys
 import lib
 
 MODULES = 'headers marks options nesting crossing gotchas bugs include csv includeconf'.split()
@@ -69,5 +69,5 @@ print "Totals: %d tests (%s)" % (TOTAL_OK+TOTAL_FAILED, stats)
 if ERRORS:
 	print
 	print "Check out the files with errors:"
-	print string.join(ERRORS, '\n')
+	print '\n'.join(ERRORS)
 	sys.exit(1)

@@ -3,7 +3,7 @@
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, string, glob
+import os, sys, glob
 
 sys.path.insert(0, '..')
 import lib
@@ -44,14 +44,14 @@ def addFilters(filters):
 	for filter in filters:
 		config.append("%%!%sproc: '%s' %s"%filter) # don't quote 2nd -- breaks tagged filter
 	if config:
-		lib.WriteFile(lib.CONFIG_FILE, string.join(config, '\n'))
+		lib.WriteFile(lib.CONFIG_FILE, '\n'.join(config))
 		cmdline = ['-C', lib.CONFIG_FILE]
 	return cmdline
 
 def run():
 	# test all .t2t files found
 	for infile in glob.glob("*.t2t"):
-		basename = string.replace(infile, '.t2t', '')
+		basename = infile.replace('.t2t', '')
 		outfile = basename + '.html'
 		if lib.initTest(basename, infile, outfile):
 			cmdline = addFilters(FILTERS.get(basename))
