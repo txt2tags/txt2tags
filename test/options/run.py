@@ -562,18 +562,11 @@ tests = [
   'cmdline': ["--css-inside --no-css-inside --style", lib.CSS_FILE],
   'extra'  : ['css']
   }, {
-  'name'   : 'config-file-1',
+  'name'   : 'config-file',
   'target' : 'html',
   'content': EMPTY_HEADER+SIMPLE_BODY,
   'cmdline': ["-H --config-file", lib.CONFIG_FILE],
   'extra'  : ['config', 'notarget']
-  }, {
-  'name'   : 'config-file-2',
-  'target' : 'html',
-  'content': EMPTY_HEADER+SIMPLE_BODY,
-  'cmdline': ["-H --config-file", lib.CONFIG_FILE],
-  'extra'  : ['config', 'notarget'],
-  'addconfig': '%!postproc(tex): .* FAILED'
   }, {
   'name'   : 'C',
   'target' : 'html',
@@ -624,19 +617,13 @@ def run():
 		infile  = test['name'] + '.t2t'
 		outfile = test['name'] + '.' + (test.get('target') or 'out')
 		extra   = test.get('extra') or []
-		addconfig = test.get('addconfig') or ''
 		cmdline = test['cmdline']
 		if not 'noinfile' in extra:
 			cmdline = test['cmdline'] + [infile]
-		if addconfig:
-			config_contents = CONFIG_FILE_TXT + '\n' + addconfig
-		else:
-			config_contents = CONFIG_FILE_TXT
-			
 		if lib.initTest(test['name'], infile, outfile):
 			# create the extra files (if needed for this test)
 			if 'config' in extra:
-				lib.WriteFile(lib.CONFIG_FILE, config_contents)
+				lib.WriteFile(lib.CONFIG_FILE, CONFIG_FILE_TXT)
 			if 'css' in extra:
 				lib.WriteFile(lib.CSS_FILE, CSS_FILE_TXT)
 			# may I add the -t target automatically?
