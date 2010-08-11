@@ -6,7 +6,7 @@
 #       Each character is expanded to a 'txt' dict text.
 #
 
-import sys, os, string
+import sys, os
 
 sys.path.insert(0, '..')
 import lib
@@ -42,7 +42,7 @@ m     mm    mmm    1mm    12m
 """
 
 def run():
-	for testid in string.split(tests):
+	for testid in tests.split():
 		infile  = testid + '.t2t'
 		outfile = testid + '.html'
 		cmdline = ['-t html --css-sugar -C test.conf', infile]
@@ -51,7 +51,7 @@ def run():
 			infile_txt = []
 			for letter in testid:
 				infile_txt.append(txt[letter])
-			infile_txt = string.join(infile_txt, '\n')
+			infile_txt = '\n'.join(infile_txt)
 			# create the source file
 			lib.WriteFile(infile, infile_txt)
 			# convert and check results
