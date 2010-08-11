@@ -1008,6 +1008,10 @@ Example:
 %! PostProc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
 ```
 
+Note that the spacing and capitalization of the keyword are ignored. So you can also do ``%!target:html`` and  ``%!TARGET:html``.
+
+Learn more about settings in [Part VII - Mastering Settings #settings].
+
 -----------------------------------------------------------------------
 
 == Command Line Options ==[options]
@@ -1031,11 +1035,18 @@ can be turned off prefixing a "no-" before its name, for example:
 You can register the desired options for a source file inside its
 CONFAREA, using the ``%!options`` setting. This way you don't have to
 type them on the command line anymore.
-Example: ``%!options: --toc -o mydoc.html``. The exception is the target
-specification, that has its own setting: ``%!target: html``.
+Example:
+
+``` %!options: --toc -o mydoc.html
+
+The exception is the target specification, that has its own setting:
+
+``` %!target: html
 
 Do use the ``--help`` option to get a complete list of all the options
 available in txt2tags.
+
+Learn more about [%!options #setting-options] and [%!target #setting-target].
 
 -----------------------------------------------------------------------
 
@@ -1190,6 +1201,13 @@ Hi, this is my first document.
 
 The format inside the included file is the same as in the
 [RC file #rc].
+
+Note that the optional target specification is NOT supported for this command.
+
+```
+%!includeconf: config.t2t            <--- OK
+%!includeconf(html): config.t2t      <--- NOT OK
+```
 
 =======================================================================
 
@@ -1744,11 +1762,11 @@ and a value, separated from each by a colon (":").
 Syntax details:
 
 - The exclamation mark must be placed together with the comment char
-  ("%!"), no spaces between them.
+  (%!), no spaces between them.
 
 - The spaces around the keyword and the separator are optional.
 
-- Both keyword and value are case insensitive (case doesn't matter).
+- Keywords are case insensitive (case doesn't matter).
 
 
 Rules:
@@ -1811,11 +1829,11 @@ the document source:
 %!options(html): --toc --toc-level 2 --enum-title
 ```
 
-As the real command line is now just "``txt2tags file.t2t``", you can run
-the conversion right inside your favorite text editor, while editing the
-document source. In Vi, this is:
+Now the options are registered inside the source file, so you can convert it with this simple command:
 
-``` :!txt2tags %
+``` $ txt2tags file.t2t
+
+Tip for Vim users: To convert the document right inside the editor, just run ``:!txt2tags %``
 
 -----------------------------------------------------------------------
 
@@ -1827,7 +1845,7 @@ document //Character Set// must be customized (if allowed).
 
 The valid values for the Encoding setting are the same charset names
 valid for HTML documents, like //iso-8859-1// and //koi8-r//. If
-you're not sure which encoding you should use,
+you're not sure which encoding you should use, try //utf-8//. If that doesn't work,
 [this complete (and long!) list http://www.iana.org/assignments/character-sets]
 should help.
 
