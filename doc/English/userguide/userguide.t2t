@@ -2341,11 +2341,9 @@ The End.
 % TRANSLATOR: You can stop here.
 
 
-% txt2tags is *not* indent oriented as other tools
-% no marks are based on indentation
 
-% htmldoc (html 2 pdf) http://www.easysw.com/htmldoc/
-% vim and emacs syntax screenshots
+%%%% OLD TEXTS, NOT USED ANYMORE
+%
 % ==   Split and language features (only for HTML target)   ==
 %
 % ---
@@ -2379,10 +2377,10 @@ The End.
 % 
 % ==   EXTRA II   ==
 % 
-% For those who have the (¹) package installed, the (²) target
-% is available! The package is found here: (³)
+% For those who have the (1) package installed, the (2) target
+% is available! The package is found here: (3)
 % 
-% | ¹           | ²   | ³                             |
+% | 1           | 2   | 3                             |
 % | sgml-tools  | ps  | http://www.sgmltools.org      |
 % | ghostscript | pdf | http://www.cs.wisc.edu/~ghost |
 % 
@@ -2399,38 +2397,3 @@ The End.
 % 
 % ------------------------------------------------------------------------
 
-
-
-
-
-% ler e sugar! http://www.zope.org/Documentation/Articles/STX
-
-% common chars as ', ", #, ?, ~, ^, {, }, (, ), <, >, $ and & are not used as marks.
-
-% here is the list of all special chars: % ! - + = : * _ / [ ] | ` \t
-
-% pq não usar alinhamento como PRE
-
-% - title line DOESNT support beautifiers, link, macro, etc (like PRE)
-% why not ZIP? windows .ZIP file ? (winzip abre .gz anyway...)
-
-% sgml article not supported:
-% --------------------------
-% image as definition list term (warning)
-% image inside table (warning)
-% image that points to a link (error - tags as link label- <figure><ph vspace=> )
-% TOC level deeper than 3
-% -- string inside comments (warning)
-% open sect3 when inside sect1 (warning)
-
-% how to insert a literal ' | ' on tables?  `|`
-% #TODO what closes quote: pre, blank
-% #TODO what closes lists: 2 blanks
-% #TODO what closes tables: anything not table line
-% #TODO ensure correct link detection (strict regex, no generalizations)
-
-% palm : HTML to PalmDOC format OnLine: http://pilot.screwdriver.net/
-% .CHM: windows help
-% incluir ps e pdf (Dicas de como gerar a partior de sgml/tex)
-% falar sobre os escapes/pegadinhas de cada linguagem
-% TODO conversio natively, without the need to other tex2html or something
