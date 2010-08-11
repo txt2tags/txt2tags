@@ -40,8 +40,9 @@ def MoveFile(orig, target):
 #
 # auxiliar tools
 #
-def initTest(name, infile, outfile):
-		okfile  = os.path.join(DIR_OK, outfile)
+def initTest(name, infile, outfile, okfile=None):
+		if not okfile:
+			okfile  = os.path.join(DIR_OK, outfile)
 		print '  Testing %s ...' % name,
 		if not os.path.isfile(okfile):
 			print 'Skipping test (missing %s)' % okfile
@@ -64,23 +65,25 @@ def convert(options):
 	if type(options) in [type(()), type([])]:
 		options = string.join(options, ' ')
 	cmdline = TXT2TAGS + ' ' + options
-	#print "+ Executing:",cmdline
+	# print "\n**Executing: %s" % cmdline
 	return os.system(cmdline)
 
-def diff(file):
+def diff(outfile, okfile=None):
 	global OK, FAILED, ERROR_FILES
-	okfile = os.path.join(DIR_OK, file)
-	out = ReadFile(file)
+	if not okfile:
+		okfile = os.path.join(DIR_OK, outfile)
+	# print "\n**Diff: %s %s" % (outfile, okfile)
+	out = ReadFile(outfile)
 	ok = ReadFile(okfile)
 	if out != ok:
 		print 'FAILED'
 		FAILED = FAILED + 1
 		if not os.path.isdir(DIR_ERROR):
 			os.mkdir(DIR_ERROR)
-		MoveFile(file, os.path.join(DIR_ERROR, file))
-		ERROR_FILES.append(file)
+		MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
+		ERROR_FILES.append(outfile)
 	else:
 		print 'OK'
 		OK = OK + 1
-		os.remove(file)
+		os.remove(outfile)
 
