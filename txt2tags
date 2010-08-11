@@ -2344,47 +2344,61 @@ class CommandLine:
 	
 	def get_raw_config(self, cmdline=[], ignore=[], filter_=[], relative=0):
 		"Returns the options/arguments found as RAW config"
+		
 		if not cmdline: return []
 		ret = []
-		# We need lists, not strings
+		
+		# We need lists, not strings (such as from %!options)
 		if type(cmdline) in (type(''), type(u'')):
 			cmdline = self._tokenize(cmdline)
-		opts, args = self.parse(cmdline[:])
-		# Parse all options
-		for name,value in opts:
+
+		# Extract name/value pair of all configs, check for invalid names
+		options, arguments = self.parse(cmdline[:])
+
+		# Some cleanup on the raw config
+		for name, value in options:
+			
 			# Remove leading - and --
 			name = re.sub('^--?', '', name)
-			# Alias to old misspelled 'suGGar'
-			if   name ==    'css-suggar': name =    'css-sugar'
-			elif name == 'no-css-suggar': name = 'no-css-sugar'
-			# Translate short opt to long
-			if len(name) == 1: name = self.short_long.get(name)
+
+			# Fix old misspelled --suGGar, --no-suGGar
+			name = name.replace('suggar', 'sugar')
+
+			# Translate short option to long
+			if len(name) == 1:
+				name = self.short_long[name]
+
 			# Outfile exception: path relative to PWD
-			if name == 'outfile' and relative \
-			   and value not in [STDOUT, MODULEOUT]:
+			if name == 'outfile' and relative and value not in [STDOUT, MODULEOUT]:
 				value = os.path.abspath(value)
-			# config-file inclusion, path relative to PWD
+
+			# -C, --config-file inclusion, path relative to PWD
 			if name == 'config-file':
-				configs = ConfigLines().include_config_file(value)
-				# Remove the 'target' item of all configs
-				configs = map(lambda c: [c[1],c[2]], configs)
-				ret.extend(configs)
+				ret.extend(ConfigLines().include_config_file(value))
 				continue
-			# Save it
-			ret.append([name, value])
+			
+			# Save this config
+			ret.append(['all', name, value])
+		
+		# All configuration was read and saved
+		
 		# Get infile, if any
-		while args:
-			infile = args.pop(0)
-			ret.append(['infile', infile])
+		while arguments:
+			infile = arguments.pop(0)
+			ret.append(['all', 'infile', infile])
+		
 		# Apply 'ignore' and 'filter_' rules (filter_ is stronger)
-		temp = ret[:] ; ret = []
-		for name,value in temp:
-			if (not filter_ and not ignore) or \
-			   (filter_ and name in filter_) or \
-			   (ignore and name not in ignore):
-				ret.append( ['all', name, value] )
+		if (ignore or filter_):
+			filtered = []
+			for target, name, value in ret:
+				if (filter_ and name in filter_) or \
+				   (ignore and name not in ignore):
+					filtered.append([target, name, value])
+			ret = filtered[:]
+		
 		# Add the original command line string as 'realcmdline'
 		ret.append( ['all', 'realcmdline', cmdline] )
+		
 		return ret
 	
 	def compose_cmdline(self, conf={}, no_check=0):
