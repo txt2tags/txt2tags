@@ -53,7 +53,7 @@ Please visit the program site at
 
 = OPTIONS =
 
-:  **--art-chars=S**
+:      **--art-chars=S**
 set the ASCII Art chars to S (default +-|-==-^") for:
 corner,border,side,bar1,bar2,level2,level3,level4,level5
 
@@ -94,9 +94,6 @@ set the output's height to N rows (used by -t art)
 
 :  **-i**, **--infile**=//FILE//
 set FILE as the input file name ('-' for STDIN)
-
-:   **--list-targets**
-print a list of all the available targets and exit
 
 :      **--mask-email**
 hide email from spam robots. x@y.z turns <x (a) y z>
@@ -168,7 +165,8 @@ use FILE as the document style (like Html CSS)
 set target document type. Currently supported:
 html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
 
-
+:      **--targets**
+print a list of all the available targets and exit
 
 :      **--toc**
 add TOC (Table of Contents) to target document
