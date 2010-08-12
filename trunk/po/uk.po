@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2006-07-31 16:16-0300\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2010-07-20 20:00-0200\n"
 "Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "HTML page"
@@ -17,6 +17,9 @@ msgstr "XHTML документ"
 
 msgid "SGML document"
 msgstr "SGML документ"
+
+msgid "DocBook document"
+msgstr ""
 
 msgid "LaTeX document"
 msgstr "Документ LaTeX"
@@ -30,6 +33,18 @@ msgstr "Документація UNIX"
 msgid "MagicPoint presentation"
 msgstr "Презентація MagicPoint"
 
+msgid "Wikipedia page"
+msgstr ""
+
+msgid "Google Wiki page"
+msgstr ""
+
+msgid "DokuWiki page"
+msgstr ""
+
+msgid "pmWiki page"
+msgstr ""
+
 msgid "MoinMoin page"
 msgstr "Сторінка MoinMoin"
 
@@ -39,6 +54,15 @@ msgstr "Документ PageMaker"
 msgid "Plain Text"
 msgstr "Простий текст"
 
+msgid "ASCII Art text"
+msgstr ""
+
+msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s версія %s <%s>"
 
@@ -46,34 +70,54 @@ msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Використання: %s [ОПЦІЇ] [вхідний_файл.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr "  -t, --target=TYPE   встановлює тип вихідного документа. Підтримуються:"
+msgstr ""
+"  -t, --target=TYPE   встановлює тип вихідного документа. Підтримуються:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=FILE   використати FILE як ім'я вхідного файлу ('-' для STDIN)"
+msgstr ""
+"  -i, --infile=FILE   використати FILE як ім'я вхідного файлу ('-' для STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr "  -o, --outfile=FILE  використати FILE як ім'я вихідного файлу ('-' для STDOUT)"
+msgstr ""
+"  -o, --outfile=FILE  використати FILE як ім'я вихідного файлу ('-' для "
+"STDOUT)"
 
 msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    не вставляти заголовки та закінчення документа (генерувати тільки тіло)"
+msgstr ""
+"  -H, --no-headers    не вставляти заголовки та закінчення документа "
+"(генерувати тільки тіло)"
 
-msgid "      --headers       show header, title and footer contents (default ON)"
-msgstr "      --headers       генерувати заголовки та футер (ввімкнено за замовчуванням)"
+msgid ""
+"      --headers       show header, title and footer contents (default ON)"
+msgstr ""
+"      --headers       генерувати заголовки та футер (ввімкнено за "
+"замовчуванням)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-msgstr "      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
+msgstr ""
+"      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr "      --style=FILE    використати FILE в якості стилю документа (Як CSS HTML)"
+msgstr ""
+"      --style=FILE    використати FILE в якості стилю документа (Як CSS HTML)"
 
-msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr "      --css-sugar     вставити теги, що краще підходять для CSS (в HTML та XHTML документах)"
+msgid ""
+"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+msgstr ""
+"      --css-sugar     вставити теги, що краще підходять для CSS (в HTML та "
+"XHTML документах)"
 
-msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr "      --css-inside    ставити зміст CSS файлу в заголовки документа HTML/XHTML"
+msgid ""
+"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+"      --css-inside    ставити зміст CSS файлу в заголовки документа HTML/"
+"XHTML"
 
-msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr "      --mask-email    cховати адреси email від спам-роботів. x@y.z стане <x (a) y z"
+msgid ""
+"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"      --mask-email    cховати адреси email від спам-роботів. x@y.z стане <x "
+"(a) y z"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
 msgstr "      --toc           додати зміст до вихідного документа"
@@ -82,25 +126,47 @@ msgid "      --toc-only      print document TOC and exit"
 msgstr "      --toc-only      тільки надрукувати зміст"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   встановити максимальну глибину змісту (кількість вкладених підрозділів що потрапляють в зміст) в N"
+msgstr ""
+"      --toc-level=N   встановити максимальну глибину змісту (кількість "
+"вкладених підрозділів що потрапляють в зміст) в N"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    пронумерувати всі заголоки як 1, 1.1, 1.1.1, і т.д."
+msgstr ""
+"  -n, --enum-title    пронумерувати всі заголоки як 1, 1.1, 1.1.1, і т.д."
+
+msgid ""
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
+msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
 msgstr "  -С, --config-file=F читати конфігурацію з файла F"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr "      --rc            читати файл конфігурації користувача ~/txt2tagsrc (за замовчуванням так)"
+msgstr ""
+"      --rc            читати файл конфігурації користувача ~/txt2tagsrc (за "
+"замовчуванням так)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           запустити графічний інтерфейс"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
-msgstr "  -q, --quiet         тихий режим, ввесь вивід припиняється (крім помилок)"
+msgstr ""
+"  -q, --quiet         тихий режим, ввесь вивід припиняється (крім помилок)"
 
 msgid "  -v, --verbose       print informative messages during conversion"
-msgstr "  -v, --verbose       друкувати інформативні повідомлення протягом трансляції"
+msgstr ""
+"  -v, --verbose       друкувати інформативні повідомлення протягом трансляції"
 
 msgid "  -h, --help          print this help information and exit"
 msgstr "  -h, --help          надрукувати цю довідку та вийти"
@@ -114,14 +180,22 @@ msgstr "      --dump-config   надрукувати всі знайдені о�
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   надрукувати код, з розкритими включеннями"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+
 msgid "Turn OFF options:"
 msgstr "Опції ВИМКНЕННЯ:"
 
-msgid "Example:\n     %s -t html --toc myfile.t2t"
-msgstr "Приклад:\n     %s -t html --toc myfile.t2t"
+msgid "Example:"
+msgstr ""
+
+msgid "file.t2t"
+msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
-msgstr "За замовчуванням, згенерований документ зберігається в 'infile.<target>'."
+msgstr ""
+"За замовчуванням, згенерований документ зберігається в 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Використайте --outfile щоб задати ім'я вихідного файлу."
@@ -174,20 +248,26 @@ msgstr "Додане налаштування: %s : %s"
 msgid "No target specified (try --help)"
 msgstr "Не зазначений тип вихідного документа (спробуйте --help)"
 
-msgid "Maybe trying to convert an old v1.x file?"
-msgstr "Можливо ви стараєтесь перетворити старий файл (версії 1 з чимось)"
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr ""
+
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
 
 msgid "Missing input file (try --help)"
 msgstr "Пропущений вхідний файл (спробуйте --help)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "Невідомий тип файлу '%s' (спробуйте --help)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "Значення --%s має бути числовим"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "Опція --split має приймати значення 0, 1 чи 2"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "Вхідний та вихідний файли - це один і той самий: %s"
@@ -210,8 +290,14 @@ msgstr "Включення файлу конфігурації завершен�
 msgid "Added %s"
 msgstr "Додано %s"
 
+msgid "You can't use (target) with %s"
+msgstr ""
+
 msgid "OFF"
 msgstr "ВИКЛ"
+
+msgid "ON"
+msgstr "ВКЛ"
 
 msgid "RC file"
 msgstr "файлy налаштувань користувача"
@@ -224,9 +310,6 @@ msgstr "командного рядка"
 
 msgid "RAW config for %s"
 msgstr "Конфігурація %s"
-
-msgid "ON"
-msgstr "ВКЛ"
 
 msgid "Full PARSED config"
 msgstr "Повністю проаналізовані налаштування"
@@ -243,6 +326,9 @@ msgstr "Невірна заміна в постпроцесорі"
 msgid "%s wrote %s"
 msgstr "%s записав %s"
 
+msgid "Table of Contents"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr "Зміст вхідного файлу збережений"
 
@@ -255,11 +341,11 @@ msgstr "Створюються заголовки"
 msgid "Composing target Body"
 msgstr "Створюється тіло"
 
-msgid "Composing target TOC"
-msgstr "Створюється зміст"
-
 msgid "Composing target Footer"
 msgstr "Створюється закінчення"
+
+msgid "Composing target TOC"
+msgstr "Створюється зміст"
 
 msgid "Saving results to the output file"
 msgstr "Збереження результатів у вихідному файлі"
@@ -270,11 +356,11 @@ msgstr "Неправильний регулярний вираз препроц�
 msgid "Invalid PreProc filter replacement"
 msgstr "Неправильна заміна в препроцесорі"
 
-msgid "txt2tags files"
-msgstr "Файли txt2tags"
-
 msgid "All files"
 msgstr "Всі файли"
+
+msgid "txt2tags files"
+msgstr "Файли txt2tags"
 
 msgid "Close"
 msgstr "Закрити"
@@ -372,6 +458,21 @@ msgstr "ПОМИЛКА txt2tags!"
 msgid "We are on Command Line interface"
 msgstr "Ми в режимі командного рядка"
 
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr ""
+
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags успішно завершив роботу"
 
+#~ msgid ""
+#~ "Example:\n"
+#~ "     %s -t html --toc myfile.t2t"
+#~ msgstr ""
+#~ "Приклад:\n"
+#~ "     %s -t html --toc myfile.t2t"
+
+#~ msgid "Maybe trying to convert an old v1.x file?"
+#~ msgstr "Можливо ви стараєтесь перетворити старий файл (версії 1 з чимось)"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "Невідомий тип файлу '%s' (спробуйте --help)"
