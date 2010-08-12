@@ -24,7 +24,7 @@ python pygettext.py -a --no-location -o - "$src" |
 		/^.Content-Transfer-Encoding:/ s/ENCODING/8bit/
 	" > "$pot.new" 
 
-diff "$pot" "$pot.new"
+diff -u "$pot" "$pot.new"
 
 echo
 echo "---- Move $pot.new to $pot? [Yn]"

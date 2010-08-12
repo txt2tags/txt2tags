@@ -32,7 +32,7 @@ for po in *.po; do
 	rm -f messages.mo
 
 	becho "--------- Any difference?"
-	diff $po $po.new
+	diff -u $po $po.new
 
 	becho "--------- Update $po? [Yn]"
 	read YN
