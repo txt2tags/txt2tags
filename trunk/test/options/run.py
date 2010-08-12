@@ -599,16 +599,16 @@ tests = [
   'redir'  : ["> no-dump-source.out"],
   'extra'  : ['notarget']
   }, {
-  'name'   : 'list-targets',
+  'name'   : 'targets',
   'content': EMPTY_HEADER+SIMPLE_BODY,
-  'cmdline': ["--list-targets"],
-  'redir'  : ["> list-targets.out"],
+  'cmdline': ["--targets"],
+  'redir'  : ["> targets.out"],
   'extra'  : ['notarget']
   }, {
-  'name'   : 'no-list-targets',
+  'name'   : 'no-targets',
   'content': EMPTY_HEADER+CONFIG_FILE_TXT+SIMPLE_BODY,
-  'cmdline': ["-H -o- --list-targets --no-list-targets"],
-  'redir'  : ["> no-list-targets.out"],
+  'cmdline': ["-H -o- --targets --no-targets"],
+  'redir'  : ["> no-targets.out"],
   'extra'  : ['notarget']
   }
 ]

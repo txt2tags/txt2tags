@@ -34,7 +34,7 @@ Visitez la page de base du programme à :
 
 = OPTIONS =
 
-:  **--art-chars=S**
+:      **--art-chars=S**
 assigne les caractères S pour le mode ASCII Art (par défaut à +-|-==-^") pour les coins, les bordures, les côtés, les barres 1 et 2, les niveaux 2, niveaux 3, niveaux 4 et niveau 5
 
 
@@ -74,9 +74,6 @@ assigne la hauteur de sortie à N lignes (utilisé par -t art)
 
 :  **-i**, **--infile**=//FILE//
 choisir FILE comme fichier d'entrée ('-' pour STDIN)
-
-:   **--list-targets**
-afficher une liste avec toutes les cibles disponibles et sortir
 
 :      **--mask-email**
 masquer les email des robots scanneurs. x@y.z devient <x (a) y z>
@@ -146,7 +143,8 @@ utiliser FILE comme style de document (comme Html CSS)
 choisit le type de document de sortie, options actuelles :
 html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
 
-
+:      **--targets**
+afficher une liste avec toutes les cibles disponibles et sortir
 
 :      **--toc**
 ajouter la table des matières au document de sortie
