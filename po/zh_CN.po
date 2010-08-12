@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2006-08-01 12:25+0800\n"
 "Last-Translator: wwfifi <wwfifi@gmail.com>\n"
 "Language-Team: \n"
@@ -57,10 +57,13 @@ msgstr "PageMaker document"
 msgid "Plain Text"
 msgstr "Plain Text"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -117,8 +120,18 @@ msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    标题行格式为 1, 1.1, 1.1.1, 等"
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -147,6 +160,10 @@ msgstr "      --dump-config   显示所有能找到的配置文件并退出"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   展开显示所有源文件"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "关闭的选项:"
@@ -214,17 +231,23 @@ msgstr "没有指定目标文件(试下 --help获得帮助)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "缺少输入文件 (试下 --help获得帮助)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "无效的目标文件 '%s' (试下--help获得帮助)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "--%s 值必须是数字"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "Option --split 必须是 0, 1 或者 2"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "输入输出文件同名: %s"
@@ -246,6 +269,9 @@ msgstr "完成配置文件包含: %s"
 
 msgid "Added %s"
 msgstr "已添加 %s"
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "关闭"
@@ -279,6 +305,9 @@ msgstr "无效的PostProc替换过滤"
 
 msgid "%s wrote %s"
 msgstr "%s 写了 %s"
+
+msgid "Table of Contents"
+msgstr ""
 
 msgid "Source document contents stored"
 msgstr "源文档内容已保存"
@@ -388,9 +417,6 @@ msgstr "退出"
 msgid "Convert!"
 msgstr "转换!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s 处理开始"
 
@@ -417,3 +443,6 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags 成功完成"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "无效的目标文件 '%s' (试下--help获得帮助)"

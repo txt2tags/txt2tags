@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2004-07-27 11:00\n"
 "Last-Translator: IVÁN, Tamás <taivan@freemail.hu>\n"
 "Language-Team: hu_HU team\n"
@@ -54,10 +54,13 @@ msgstr "PageMaker dokumentum"
 msgid "Plain Text"
 msgstr "Közönséges szöveg"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -124,8 +127,18 @@ msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    sorszámoz minden cimsort: 1, 1.1, 1.1.1, stb."
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -159,6 +172,10 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   kinyomtatja a dokumentum forrását kibontva az include "
 "fájlokat"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Kikapcsoló opciók:"
@@ -227,17 +244,23 @@ msgstr "Cél formátum megadása hiányzik (próbálja ki a --help kapcsolót)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "Hiányzó bemenö fájl (próbálja ki a  --help kapcsolót)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "A '%s' ismeretlen cél formátum '%s' (próbálja ki a --help kapcsolót)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "A --%s kapcsoló után számot kell megadni"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "A --split kapcsoló értéke 0, 1 vagy 2 lehet"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "A bemenö és kimenö fájlok azonosak: %s"
@@ -259,6 +282,9 @@ msgstr "A konfigurációs fájl beolvasása befejezödött: %s"
 
 msgid "Added %s"
 msgstr "%s hozzáadva"
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "KI"
@@ -292,6 +318,9 @@ msgstr "Hibás PostProc szürö behelyettesités"
 
 msgid "%s wrote %s"
 msgstr "A %s kimenete a %s fájlba iródott."
+
+msgid "Table of Contents"
+msgstr ""
 
 msgid "Source document contents stored"
 msgstr "A bemenö dokumentum tartalma tárolva"
@@ -401,9 +430,6 @@ msgstr "Kilép"
 msgid "Convert!"
 msgstr "Konvertálj!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s feldolgozás megkezdödik"
 
@@ -430,3 +456,7 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "A txt2tags sikeresen lefutott"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr ""
+#~ "A '%s' ismeretlen cél formátum '%s' (próbálja ki a --help kapcsolót)"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es_mjp\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2006-11-04 04:55-0700\n"
 "Last-Translator: Tomás Martín Jimarez Ponce <mjp_ttc@yahoo.com>\n"
 "Language-Team: spanish <en@li.org>\n"
@@ -57,10 +57,13 @@ msgstr "Documento PageMaker"
 msgid "Plain Text"
 msgstr "Texto Plano"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -139,8 +142,18 @@ msgstr ""
 "1.1.1, etc"
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -175,6 +188,10 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   imprime el fuente del documento, con inclusiones "
 "expandidas"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Desactiva las opciones::"
@@ -254,17 +271,23 @@ msgstr "El blanco no se ha especificado (intente --help)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "Falta el fichero de entrada (intente --help)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "Blanco inválido '%s' (intente --help)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "el valor de --%s debe ser un número"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "Opción --split debe ser 0, 1 o 2"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "Los archivos de la entrada y de la salida son identicos: %s"
@@ -289,6 +312,9 @@ msgstr "Inclusión de archivo de Configuración terminada: %s"
 
 msgid "Added %s"
 msgstr "Agregado %s"
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "DESACTIVADO"
@@ -326,6 +352,9 @@ msgstr "Es invalido el remplazo del fitro PostProc"
 # i suppost that {someone} wrote {somthing}
 msgid "%s wrote %s"
 msgstr "%s escribió %s"
+
+msgid "Table of Contents"
+msgstr ""
 
 # El contenido del documento de fuente almacenó
 msgid "Source document contents stored"
@@ -444,9 +473,6 @@ msgstr "Salir"
 msgid "Convert!"
 msgstr "Convertir!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s: el proceso comienza"
 
@@ -475,3 +501,6 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: terminado con éxito"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "Blanco inválido '%s' (intente --help)"

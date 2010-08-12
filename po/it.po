@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2005-08-13 18:56+02:00\n"
 "Last-Translator: Stefano Spinucci <virgo977@tin.it>\n"
 "Language-Team: it_IT team\n"
@@ -54,10 +54,13 @@ msgstr "Documento PageMaker"
 msgid "Plain Text"
 msgstr "Solo Testo"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -123,8 +126,18 @@ msgstr ""
 "  -n, --enum-title    enumera le righe di titolo come 1, 1.1, 1.1.1, etc"
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -158,6 +171,10 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   visualizza il documento sorgente, espandendo le "
 "inclusioni"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Opzioni per DISATTIVARE le funzionalità:"
@@ -225,17 +242,23 @@ msgstr "Nessun formato di destinazione specificato (prova --help)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "Manca il file sorgente (prova --help)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "Formato di destinazione non valido '%s' (prova --help)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "il valore di --%s deve essere un numero"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "L'opzione --split deve essere 0, 1 o 2"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "I files sorgente e di destinazione sono uguali: %s"
@@ -257,6 +280,9 @@ msgstr "Terminata l'inclusione del file di configurazione: %s"
 
 msgid "Added %s"
 msgstr "Aggiunto %s"
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "DISATTIVATO"
@@ -290,6 +316,9 @@ msgstr "Sostituzione del filtro PostProc invalida"
 
 msgid "%s wrote %s"
 msgstr "%s scritto %s"
+
+msgid "Table of Contents"
+msgstr ""
 
 msgid "Source document contents stored"
 msgstr "Contenuto del documento sorgente registrato"
@@ -399,9 +428,6 @@ msgstr "Esci"
 msgid "Convert!"
 msgstr "Converti!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s: Inizio dell'elaborazione"
 
@@ -428,3 +454,6 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: terminato con successo"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "Formato di destinazione non valido '%s' (prova --help)"

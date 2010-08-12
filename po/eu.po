@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2009-05-07 10:03+0100\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: Basque\n"
@@ -54,10 +54,13 @@ msgstr "PageMaker dokumentua"
 msgid "Plain Text"
 msgstr "Textu soila"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -131,8 +134,18 @@ msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    izenburu guztiak zenbakitu: 1, 1.1, 1.1.1, etab."
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -167,6 +180,10 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   dokumentuaren iturburua inprimatu, barneratzeko "
 "guztiak txertatuta"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Aukerak EZGAITU:"
@@ -234,17 +251,23 @@ msgstr "Ez da helbururik zehaztu (--help frogatu)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "Sarrera fitxategia faltan (--help frogatu)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "'%s' helburu ezegokia (--help frogatu)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "--%s balioa osokoa izan behar du"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "--split aukerak 0, 1 edo 2 izan behar du"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "Sarrera eta Irteera fitxategiak berdinak dira: %s"
@@ -266,6 +289,9 @@ msgstr "Konfigurazio fitxategiaren barneratzea bukatuta: %s"
 
 msgid "Added %s"
 msgstr "%s gehituta"
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "EZGAITUTA"
@@ -299,6 +325,9 @@ msgstr "PostProc iragazkiaren ordezpen ezegokia"
 
 msgid "%s wrote %s"
 msgstr "%s-(e)k %s idatzi du"
+
+msgid "Table of Contents"
+msgstr ""
 
 msgid "Source document contents stored"
 msgstr "Iturburuko dokumentuaren edukiak gordeta"
@@ -409,9 +438,6 @@ msgstr "Irten"
 msgid "Convert!"
 msgstr "Bihurtu!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s "
 
@@ -438,3 +464,6 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags egoki bukatu da"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "'%s' helburu ezegokia (--help frogatu)"

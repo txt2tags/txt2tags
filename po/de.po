@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: 2005-09-05 12:00-0200\n"
 "Last-Translator: manne <manne@somedomain>\n"
 "Language-Team: de team <LL@li.org>\n"
@@ -54,10 +54,13 @@ msgstr "PageMaker Dokument"
 msgid "Plain Text"
 msgstr "Normaler Text"
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -134,8 +137,18 @@ msgstr ""
 "  -n, --enum-title    Nummerierung der Überschriften (1, 1.1, 1.1.1, usw)"
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -176,6 +189,10 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   Anzeige des Quelldokuments, eingefügte Dokumente "
 "werden expandiert"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Schalten Sie Optionen aus:"
@@ -245,17 +262,23 @@ msgstr "Kein Ziel angegeben (Hilfefunktion --help benutzen)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr "Keine Quelldatei angegeben (Hilfefunktion --help benutzen)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "Falsches Ziel '%s' (Hilfefunktion --help benutzen)"
+msgid "Invalid target '%s'"
+msgstr ""
 
 msgid "--%s value must be a number"
 msgstr "--%s muss ein numerischer Wert sein"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "Option --split muss 0, 1 oder 2 sein"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr ""
 
 msgid "Input and Output files are the same: %s"
 msgstr "Quell- und Zieldatei sind identisch: %s"
@@ -277,6 +300,9 @@ msgstr "Einfügen der Konfigurationsdatei abgeschlossen: %s"
 
 msgid "Added %s"
 msgstr "Hinzufügen von %s "
+
+msgid "You can't use (target) with %s"
+msgstr ""
 
 msgid "OFF"
 msgstr "ausgeschaltet"
@@ -311,6 +337,9 @@ msgstr ""
 
 msgid "%s wrote %s"
 msgstr "%s erzeugte %s"
+
+msgid "Table of Contents"
+msgstr ""
 
 msgid "Source document contents stored"
 msgstr "Inhalte der Quelldatei gespeichert"
@@ -423,9 +452,6 @@ msgstr "Verlassen"
 msgid "Convert!"
 msgstr "Wandlung starten!"
 
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
-
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s Verarbeitung beginnt"
 
@@ -452,3 +478,6 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags wurde erfolgreich beendet"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr "Falsches Ziel '%s' (Hilfefunktion --help benutzen)"
