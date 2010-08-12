@@ -2,12 +2,17 @@
 # 2010-06-18
 #
 
-for po in ../*.po
+output=stats.txt
+
+cd $(dirname "$0")
+cd ..
+for po in *.po
 do
-	echo -n "$po: "
-	LANG=C msgfmt -c --statistics $po
-done
+	printf "%10s" "$po: "
+	LANG=C msgfmt -c --statistics $po 2>&1
+done > $output
 
 # remove temporary files
 rm -f messages messages.mo
 
+echo Saved $output
