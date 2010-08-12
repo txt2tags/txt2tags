@@ -54,137 +54,132 @@ Please visit the program site at
 = OPTIONS =
 
 :      **--art-chars=S**
-set the ASCII Art chars to S (default +-|-==-^") for:
+Set the ASCII Art chars to S (default +-|-==-^") for:
 corner,border,side,bar1,bar2,level2,level3,level4,level5
 
-
 :  **-C**, **--config-file**
-read config from an external file (works like %!includeconf)
+Read config from an external file (works like %!includeconf).
 
 :      **--css-sugar**
-insert CSS-friendly tags for HTML and XHTML targets
+Insert CSS-friendly tags for HTML and XHTML targets.
 
 :      **--css-inside**
-insert CSS file contents inside HTML/XHTML headers
+Insert CSS file contents inside HTML/XHTML headers.
 
 :      **--dump-config**
-print all the config found and exit
+Print all the config found and exit.
 
 :      **--dump-source**
-print the document source, with includes expanded
+Print the document source, with includes expanded.
 
 :      **--encoding**
-set target file encoding (utf-8, iso-8859-1, etc)
+Set target file encoding (utf-8, iso-8859-1, etc).
 
 :      **--gui**
-invoke Graphical Tk Interface
+Invoke Graphical Tk Interface.
 
 :  **-h**, **--help**
-print help information and exit
+Print help information and exit.
 
 :  **-H**, **--no-headers**
-suppress header, title and footer information
+Suppress header, title and footer information.
 
 :      **--headers**
-show header, title and footer information (default ON)
+Show header, title and footer information (default ON).
 
 :      **--height=N**
-set the output's height to N rows (used by -t art)
-
+Set the output's height to N rows (used by -t art).
 
 :  **-i**, **--infile**=//FILE//
-set FILE as the input file name ('-' for STDIN)
+Set FILE as the input file name ('-' for STDIN).
 
 :      **--mask-email**
-hide email from spam robots. x@y.z turns <x (a) y z>
+Hide email from spam robots. x@y.z turns <x (a) y z>.
 
 :  **-n**, **--enum-title**
-enumerate all title lines as 1, 1.1, 1.1.1, etc
+Enumerate all title lines as 1, 1.1, 1.1.1, etc.
 
 :      **--no-dump-config**
-turn off the dump config action
+Turn off the dump config action.
 
 :      **--no-dump-source**
-turn off the dump source action
+Turn off the dump source action.
 
 :      **--no-encoding**
-clear the encoding setting
+Clear the encoding setting.
 
 :      **--no-enum-title**
-turn off the title auto numbering
+Turn off the title auto numbering.
 
 :      **--no-infile**
-clear all the previous infile declarations
+Clear all the previous infile declarations.
 
 :      **--no-list-targets**
-don't print the list of all the available targets
+Don't print the list of all the available targets.
 
 :      **--no-mask-email**
-unhide emails, turning off the --mask-email option
+Unhide emails, turning off the --mask-email option.
 
 :      **--no-outfile**
-clear the previous outfile declaration
+Clear the previous outfile declaration.
 
 :      **--no-quiet**
-show messages, turning off the --quiet option
+Show messages, turning off the --quiet option.
 
 :      **--no-rc**
-do not read the user config file ~/.txt2tagsrc
+Do not read the user config file ~/.txt2tagsrc.
 
 :      **--no-slides**
-turn off slides (used by -t art)
-
+Turn off slides (used by -t art).
 
 :      **--no-style**
-clear the style setting
+Clear the style setting.
 
 :      **--no-toc**
-do not add TOC (Table of Contents) to target document
+Do not add TOC (Table of Contents) to target document.
 
 :      **--no-toc-only**
-turn off the --toc-only option
+Turn off the --toc-only option.
 
 :  **-o**, **--outfile**=//FILE//
-set FILE as the output file name ('-' for STDOUT)
+Set FILE as the output file name ('-' for STDOUT).
 
 :  **-q**, **--quiet**
-quiet mode, suppress all output (except errors)
+Quiet mode, suppress all output (except errors).
 
 :      **--rc**
-read user config file ~/.txt2tagsrc (default ON)
+Read user config file ~/.txt2tagsrc (default ON).
 
 :      **--slides**
-format output as presentation slides (used by -t art)
-
+Format output as presentation slides (used by -t art).
 
 :      **--style**=//FILE//
-use FILE as the document style (like Html CSS)
-
+Use FILE as the document style (like Html CSS).
 
 : **-t**, **--target**=//TYPE//
-set target document type. Currently supported:
+Set target document type. Currently supported:
 html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
 
 :      **--targets**
-print a list of all the available targets and exit
+Print a list of all the available targets and exit.
 
 :      **--toc**
-add TOC (Table of Contents) to target document
+Add TOC (Table of Contents) to target document.
 
 :      **--toc-level**=//N//
-set maximum TOC level (deepness) to N
+Set maximum TOC level (deepness) to N.
 
 :      **--toc-only**
-print document TOC and exit
+Print document TOC and exit.
 
 :  **-v**, **--verbose**
-print informative messages during conversion
+Print informative messages during conversion.
 
 :  **-V**, **--version**
-print program version and exit
+Print program version and exit.
 
 :      **--width=N**
-set the output's width to N columns (used by -t art)
+Set the output's width to N columns (used by -t art).
 
 
 
@@ -220,40 +215,41 @@ ways. External configurations are taken from the RC file
 configurations are made with settings. Both use the same syntax:
 
 : **%!target:**
-defines the main target
+Defines the main target.
 
 : **%!options(target):**
-defines the options to each target
+Defines the options to each target.
 
 : **%!include: file.t2t**
-includes a txt2tags file in the document
+Includes a txt2tags file in the document.
 
 : **%!include: ""``file.txt``""**
-includes a text file (verbatim) in the document
+Includes a text file (verbatim) in the document.
 
 : **%!include: ''file.html''**
-includes a literal file in the document, as it is
+Includes a literal file in the document, as it is.
 
 : **%!style:**
-to set a CSS (Cascading Style Sheets) file for XHTML and HTML
-targets or to load \usepackage modules in TEX target
+To set a CSS (Cascading Style Sheets) file for XHTML and HTML
+targets or to load \usepackage modules in TEX target.
 
 : **%!encoding:**
-to set a character set (like iso-8859-1) for i18n issues
+To set a character set (like iso-8859-1) for i18n issues.
 
 : **%!includeconf:**
-used to include configurations from an external file into the current
+Used to include configurations from an external file into the current.
 
 : **%!guicolors:**
-color settings for the GUI interface (Tk)
+Color settings for the GUI interface (Tk).
 
 : **%!preproc:**
-your customized filter (macro) which will be processed **BEFORE** the
-document parsing
+Your customized filter (macro) which will be processed **BEFORE** the
+document parsing.
 
 : **%!postproc:**
-your customized filter (macro) which will be processed **AFTER** the
-document parsing
+Your customized filter (macro) which will be processed **AFTER** the
+document parsing.
+
 
 
 == SETTINGS RULES ==
