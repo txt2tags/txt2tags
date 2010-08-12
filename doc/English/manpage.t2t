@@ -371,30 +371,30 @@ Numbered titles    + header +[anchor]
 
 = MACROS =
 
-: ""%%date""
+: **""%%date""**
 Allows to include the current date, in the format YYYYMMDD.
 Optional  formatting can be specified using the
 ""%%date(format-string)"" syntax.
 
-: ""%%infile""
+: **""%%infile""**
 Used to get information about the source file. Optional formatting can
 be specified using the ""%%infile(format-string)"" syntax.
 
 Useful for footer link like ""[See source %%infile]"", so you can
 change the filename and its references will be updated.
 
-: ""%%mtime""
+: **""%%mtime""**
 Gets information about the source file modification time. It uses the
 same formatters accepted by the ""%%date"" macro.
 
-: ""%%outfile""
+: **""%%outfile""**
 Used to get information about the converted file. Optional formatting
 can be specified using the ""%%outfile(format-string)"" syntax.
 
 Useful for self mentioning like "This is the %%outfile file", so you
 can change the filename and its references will be updated.
 
-: ""%%toc""
+: **""%%toc""**
 The ""%%toc"" macro specifies where the TOC of the document will be
 placed. You can place it wherever needed inside the document, one or
 more times.
