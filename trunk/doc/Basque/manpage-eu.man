@@ -1,20 +1,25 @@
 .TH "TXT2TAGS" 1 "Uzt, 2008" ""
 
+
 .SH IZENA
+
 .P
 txt2tags \- testu formateatze eta bihurtze tresna
 
 .SH SINOPSIA
+
 .P
 \fBtxt2tags\fR [\fIAUKERA\fR]... [\fIFITXATEGIA\fR]...
 
-.SH DESCRIBAPENA
+.SH DESKRIBAPENA
+
 .P
 \fBtxt2tags\fR markatze minimoa duen testu fitxategi bakarretik \fIHTML\fR,
-\fIXHTML\fR, \fISGML\fR, \fILaTeX\fR, \fILout\fR, \fIMan Page\fR, \fIMoinMoin\fR,
-\fIWikipedia\fR, \fI(MediaWiki)\fR, \fIDokuWiki\fR, \fIGoogle Code Wiki\fR,
-\fIMagicPoint\fR eta \fIPageMaker\fR dokumentuak sortzen dituen formatuen
-bihurtzailea da, Python\-en idatzitakoa.
+\fIXHTML\fR, \fISGML\fR, \fIDocBook\fR, \fILaTeX\fR, \fILout\fR, \fIUNIX Eskuliburu Orria (man)\fR,
+\fIMagicPoint\fR, \fIWikipedia (MediaWiki)\fR, \fIGoogle Code Wiki\fR, \fIDokuWiki\fR,
+\fIpmWiki\fR, \fIMoinMoin\fR, \fIPageMaker\fR, \fITestu Soila\fR, \fIASCII Art\fR,
+\fIAsciiDoc\fR eta \fICreole 1.0\fR dokumentuak sortzen dituen formatuen
+bihurtzailea da, Python\-en idatzitakoa eta GPL lizentziaduna.
 
 .P
 Erabiltzaileak \fBtxt2tags\fR marka gutxi batzuk bakarrik jakin behar ditu, oso
@@ -31,6 +36,12 @@ Mesedez, programaren webgunea bisitatu
 \fIhttp://txt2tags.sourceforge.net\fR helbidean.
 
 .SH AUKERAK
+
+.TP
+     \fB\-\-art\-chars=S\fR
+ASCII Art karaktereak S\-ra ezarri (defektuz +\-|\-==\-^") hauetarako:
+corner,border,side,bar1,bar2,level2,level3,level4,level5
+
 .TP
  \fB\-C\fR, \fB\-\-config\-file\fR
 konfigurazioa kanpoko fitxategi batetik irakurri (%!includeconf bezala
@@ -73,6 +84,10 @@ Goiburukoa, izenburua eta oinaren informazioa kendu
 goiburukoa, izenburua eta oinaren informazioa erakutsi (lehenetsiz gaituta)
 
 .TP
+     \fB\-\-height=N\fR
+irteeraren altuera N zutabeetan finkatu (\-t art\-ekin erabilita)
+
+.TP
  \fB\-i\fR, \fB\-\-infile\fR=\fIFITX\fR
 FITX zehaztu sarrera fitxategi bezela ('\-' STDIN\-entzako)
 
@@ -105,6 +120,10 @@ izenburuen zenbakitze automatikoa ezgaitu
 aurreko infile guztiak kendu
 
 .TP
+     \fB\-\-no\-list\-targets\fR
+ez erakutsi eskuragarri dauden helburu guztiak
+
+.TP
      \fB\-\-no\-mask\-email\fR
 epostak erakutzi, \-\-mask\-email aukera ezgaituz
 
@@ -119,6 +138,10 @@ mezuak erakutsi, \-\-quiet aukera ezgaituz
 .TP
      \fB\-\-no\-rc\fR
 ez irakurri ~/.txt2tagsrc erabiltzailearen konfigurazio fitxategia
+
+.TP
+     \fB\-\-no\-slides\fR
+diapositibak ezgaitu (\-t art\-ekin erabilita)
 
 .TP
      \fB\-\-no\-style\fR
@@ -146,6 +169,10 @@ modu geldia, irteera mezurik ez (erroreak ezik)
 erabiltzailearen ~/.txt2tagsrc konfigurazio fitxategia irakurri (lehenetsiz gaituta)
 
 .TP
+     \fB\-\-slides\fR
+irteera aurkezpen diapositiba bezala formateatu (\-t art\-ekin erabilita)
+
+.TP
      \fB\-\-style\fR=\fIFILE\fR
 FITX erabili dokumentuaren estilo moduan (HTML\-ko CSS\-ak bezala)
 
@@ -154,6 +181,10 @@ FITX erabili dokumentuaren estilo moduan (HTML\-ko CSS\-ak bezala)
 helburuko dokumentuaren mota ezarri. Momentuz
 jasandakoak: html, xhtml, sgml, tex, lout, man,
 mgp, wiki, gwiki, doku, moin, pm6, txt
+
+.TP
+     \fB\-\-targets\fR
+eskuragarri dauden helburu guztiak erakutsi eta irten
 
 .TP
      \fB\-\-toc\fR
@@ -175,6 +206,10 @@ bihurketaren bitartean mezu informatiboak inprimatu
  \fB\-V\fR, \fB\-\-version\fR
 programaren bertsioa inprimatu eta irten
 
+.TP
+     \fB\-\-width=N\fR
+irteeraren zabalera N zutabeetan finkatu (\-t art\-ekin erabilita)
+
 .P
 Lehenetsiz, bihurtutako irteera 'infile.<helburua>'\-n gordetzen da.
 \-\-outfile erabili irteera fitxategi izen bat derrigortzeko.
@@ -182,6 +217,7 @@ Sarrera fitxategia '\-' bada, STDIN\-etik irakurri.
 Irteera fitxategia '\-' bada, STDOUT\-en idatzi.
 
 .SH EGITURA
+
 .P
 Txt2tags iturburu fitxategiak hiru area eduki ditzake:
 
@@ -195,7 +231,7 @@ dituzu edo no\-header aukera zehaztu.
 \fBEzarpenak\fR
 Laugarren lerroan hasten da. Ezarpen guztiak %!gako\-hitza: balioa formatua
 dute. Ezarpenak konfigurazio fitxategi batean edo komando lerroan zehaz
-daitezke batia ere.
+daitezke baita ere.
 
 .TP
 \fBGorputza\fR
@@ -203,6 +239,7 @@ Zure benetako dokumentuaren iturburua! txt2tags fitxategi egoki bat
 edukitzeko eskatzen den area bakarra.
 
 .SH EZARPENAK
+
 .P
 Iturburu fitxategi baten eraldaketa bi modu ezberdinetan pertsonalizatu
 daiteke. Kanpoko konfigurazioak RC fitxategitik (~/.txt2tagsrc) edo
@@ -227,7 +264,7 @@ includes a txt2tags file in the document
 testu fitxategi bat dokumentuan txertatzen dut (hitzez hitz)
 
 .TP
-\fB%!include: ''fitxategia.html''\fR
+\fB%!include: fitxategia.html\fR
 dokumentuan fitxategi literala txertatzen du, dagoen bezala
 
 .TP
@@ -258,6 +295,7 @@ dokumentua parseatu \fBONDOREN\fR zure pertsonalizatutako filtroa (makroa)
 exekutatuko da
 
 .SS EZARPENEN ERREGELAK
+
 .RS
 .IP \(bu 3
 Ezarpenak Ezarpen Arean bakarrik jar daitezke, eta dokumentuaren
@@ -278,11 +316,13 @@ lerroko ezarpenekiko.
 .RE
 
 .SH SINTAXIA
+
 .P
 Dokumentuaren iturburuak (testu soileko fitxategia) markatze sintaxi oso sinple
 bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
 
 .SS Oinarrizkoa
+
 .nf
   Goiburukoak               Iturburu fitxategiaren lehenbizko 3 lerroak
   Izenburua                = hitzak =
@@ -292,6 +332,7 @@ bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
 
 
 .SS Beautifiers
+
 .nf
   Lodia             **hitzak**
   Etzana            //hitzak//
@@ -302,6 +343,7 @@ bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
 
 
 .SS Text Blocks
+
 .nf
   Aipamena                <TAB>hitzak
   Zerrenda                - hitzak
@@ -316,6 +358,7 @@ bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
 
 
 .SS Other
+
 .nf
   Lerro bereizlea   -----------------------...
   Lerro lodia       =======================...
@@ -331,6 +374,7 @@ Mesedez, irakurri Txt2tags Erabiltzaile Gida (programaren dokumentazio
 direktorioan) marka bakoitzaren deskribapen zehatzerako.
 
 .SH ADIBIDEAK
+
 .P
 fitx.t2t markadun fitxategia idatzi duzula kontutan hartuta, bihurketa
 dibertigarri batzuk egin ditzagun.
@@ -359,7 +403,37 @@ $ txt2tags \-\-toc\-only fitx.t2t
 \fBLerro bakarreko froga azkarra STDIN\-etik\fR
 $ (echo ; echo "**lodia**") | txt2tags \-t html \-H \-
 
+.TP
+\fBGUI grafikoa erabili\fR
+$ txt2tags \-\-gui file.t2t
+
+.TP
+\fBKanpoko iragazle bateki post\-bihurketa\fR
+$ txt2tags \-t html \-o\- fitx.t2t | sed \-f nireiragazlea.sed > fitx.html
+
+.SH AHOLKUAK
+
+.P
+Dokumentazioa sortzeko aholku gutxi batzuk.
+
+.TP
+Aingurak
+Izenburueak ainguren estekak izan ditzakete, helburuak onartzen baditu.
+
+.nf
+  Izenburuak             = izenburua =[aingura]
+  Zenbakidun izenburuak  + izenburua +[aingura]
+.fi
+
+
+
+.TP
+Fitxategi anitz
+\fBtxt2tags\fR\-ek fitxategi anitz kudeatu ditzake:
+txt2tags *.t2t
+
 .SH MAKROAK
+
 .TP
 %%date
 Uneko data txertatzea ahalbidetzen du, UUUUHHEE formatuan.
@@ -383,7 +457,7 @@ berdina erabiltzen du.
 Helburuko fitxategiari buruzko informazioa eskuratzeko. Formatu berezia
 zehaztu daiteke %%outfile(formatu\-katea) sintaxia erabiliz.
 
-Erabilgarria bere buruari buruz aipamena egiteko, "Hau manpage.man fitxategia
+Erabilgarria bere buruari buruz aipamena egiteko, "Hau manpage\-eu.man fitxategia
 da" modukoa, fitxategi izena aldatuta ere erreferentziak mantenduko direlarik.
 
 .TP
@@ -394,23 +468,23 @@ lekuan jar dezakezu, nahi beste aldiz.
 OHARRA: %%toc bakarrik \-\-toc aukera erabilita hedatuko da.
 
 .SH EGILEA
+
 .P
 Aurelio Jargas\-ek <verde@aurelio.net> idatzia eta mantendua
 
 .P
 Man orri hau Jose Inacio Coelho\-k <jic@technologist.com> idatzi du testu
-fitxategi moduan, ondoren \fBtxt2tags\fRekin man formatura pasatuz.
+fitxategi moduan, ondoren \fBtxt2tags\fRekin man formatura pasatuz!
 
 .SH COPYRIGHT
+
 .P
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Aurelio Jargas
 
 .P
 Hau software librea da; begiratu iturburua kopiatzeko balditzetarako. EZ dago
 bermerik, ez SALTZEARI DAGOZKIONAK ezta HELBURU ZEHATZ BATERAKO
 ERABILGARRITASUNA ere.
 
-
-.\" man code generated by txt2tags 2.3 (http://txt2tags.sf.net)
-.\" cmdline: txt2tags manpage.t2t
-
+.\" man code generated by txt2tags 2.6b1 (http://txt2tags.sf.net)
+.\" cmdline: txt2tags manpage-eu.t2t
