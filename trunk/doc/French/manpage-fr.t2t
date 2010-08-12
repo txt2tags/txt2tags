@@ -171,7 +171,7 @@ Si le fichier d'entrée est '-', on lit à partir de STDIN.
 Si le fichier de sortie est '-', la sortie se fait sur STDOUT.
 
 
-=  STRUCTURE  =
+= STRUCTURE =
 
 Le fichier source **txt2tags** peut comporter trois zones.
 
@@ -185,7 +185,7 @@ Démarre à la quatrième ligne. Toutes les lignes ont la forme ``%!keyword: val
 La vraie partie du document. Seule cette partie est obligatoire pour avoir un fichier **txt2tags** valide.
 
 
-=  CONFIGURATION  =
+= CONFIGURATION  =
 
 **txt2tags** peut être personnalisé de l'extérieur ou de l'intérieur. De l'extérieur par un fichier ``.txt2tagsrc`` ou par un fichier importé d'un autre fichier **txt2tags**. La personnalisation interne est faite par des commandes de configuration spéciales dans le document source. Tous les deux utilisent la même syntaxe :
 
@@ -223,7 +223,7 @@ vos filtres personnels (macro) qui seront effectués **AVANT** le traitement
 vos filtres personnels (macro) qui seront effectués **APRES** le traitement
 
 
-==  REGLES POUR LA CONFIGURATION  ==
+== RÈGLES POUR LA CONFIGURATION ==
 
  - les configurations ne sont valides que dans la zone de configuration et sont considérés comme des commentaires dans le corps du document. Une exception est ``include`` qui est valide dans le corps.
 
@@ -317,7 +317,7 @@ voyons comment opérer pour la conversion.
 
 
 
-= TRUCS =
+= ASTUCES =
 
 Il y a quelques trucs agréables qui font de **txt2tags** un excellent outil pour la documentation.
 
@@ -365,7 +365,7 @@ NOTE: ``%%toc`` ne sera développée qu'avec l'option ``--toc``.
 
 = AUTEUR =
 
-Ecrit et maintenu par Aurelio Jargas <verde@aurelio.net>
+Écrit et maintenu par Aurelio Jargas <verde@aurelio.net>
 
 Cette page de manuel a été écrite par Jose Inacio Coelho <jic@technologist.com>
 comme un fichier texte, puis converti au format man par **txt2tags**!
