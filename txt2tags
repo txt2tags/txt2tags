@@ -159,11 +159,11 @@ OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'show-config-value':''}
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
-            'dump-source':0 , 'list-targets':0}
+            'dump-source':0 , 'targets'    :0}
 MACROS   = {'date' : '%Y%m%d',  'infile': '%f',
             'mtime': '%Y%m%d', 'outfile': '%f'}
 SETTINGS = {}         # for future use
-NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source','list-targets']
+NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
 NO_MULTI_INPUT = ['gui','dump-config','dump-source']
 CONFIG_KEYWORDS = [
             'target', 'encoding', 'style', 'options', 'preproc','postproc',
@@ -271,13 +271,13 @@ _("  -h, --help          print this help information and exit"),
 _("  -V, --version       print program version and exit"),
 _("      --dump-config   print all the config found and exit"),
 _("      --dump-source   print the document source, with includes expanded"),
-_("      --list-targets  print a list of all the available targets and exit"),
+_("      --targets       print a list of all the available targets and exit"),
 '',
 _("Turn OFF options:"),
 "     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
 "     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
-"     --no-list-targets, --no-mask-email, --no-outfile, --no-quiet,",
-"     --no-rc, --no-slides, --no-style, --no-toc, --no-toc-only",
+"     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
+"     --no-style, --no-targets, --no-toc, --no-toc-only",
 '',
 _("Example:"),
 "     %s -t html --toc %s" % (my_name, _("file.t2t")),
@@ -2322,7 +2322,7 @@ class CommandLine:
 		ret.extend(['no-style','no-encoding'])               # turn OFF
 		ret.extend(['no-outfile','no-infile'])               # turn OFF
 		ret.extend(['no-dump-config', 'no-dump-source'])     # turn OFF
-		ret.extend(['no-list-targets'])                      # turn OFF
+		ret.extend(['no-targets'])                           # turn OFF
 		#Debug('Valid LONG options: %s'%ret)
 		return ret
 	
@@ -2698,7 +2698,7 @@ class ConfigMaster:
 			ignoreme = self.dft_actions.keys() + ['target']
 			ignoreme.remove('dump-config')
 			ignoreme.remove('dump-source')
-			ignoreme.remove('list-targets')
+			ignoreme.remove('targets')
 			raw_opts = CommandLine().get_raw_config(
 				val, ignore=ignoreme)
 			for target, key, val in raw_opts:
@@ -2771,7 +2771,7 @@ class ConfigMaster:
 				Error(_('No target specified (try --help)') + '\n\n' +
 				_('Please inform a target using the -t option or the %!target command.') + '\n' +
 				_('Example:') + ' %s -t html %s' % (my_name, _('file.t2t')) + '\n\n' +
-				_("Run 'txt2tags --list-targets' to see all the available targets."))
+				_("Run 'txt2tags --targets' to see all the available targets."))
 			# And of course, an infile also
 			# TODO#1: It seems that this checking is never reached
 			if not config.get('infile'):
@@ -2779,7 +2779,7 @@ class ConfigMaster:
 			# Is the target valid?
 			if not TARGETS.count(target):
 				Error(_("Invalid target '%s'") % target + '\n\n' +
-				_("Run 'txt2tags --list-targets' to see all the available targets."))
+				_("Run 'txt2tags --targets' to see all the available targets."))
 		# Ensure all keys are present
 		empty = self.defaults.copy() ; empty.update(config)
 		config = empty.copy()
@@ -5894,7 +5894,7 @@ def exec_command_line(user_cmdline=[]):
 	# The easy ones
 	if cmdline_parsed.get('help'   ): Quit(USAGE)
 	if cmdline_parsed.get('version'): Quit(VERSIONSTR)
-	if cmdline_parsed.get('list-targets'):
+	if cmdline_parsed.get('targets'):
 		listTargets()
 		Quit()
 
