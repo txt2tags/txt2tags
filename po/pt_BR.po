@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6b\n"
-"POT-Creation-Date: 2010-06-18 16:19+BRT\n"
-"PO-Revision-Date: 2010-06-18 17:00+BRT\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"PO-Revision-Date: 2010-08-12 11:00+BRT\n"
 "Last-Translator: Aurelio Jargas\n"
 "Language-Team: pt_BR team\n"
 "MIME-Version: 1.0\n"
@@ -54,11 +54,14 @@ msgstr "Documento do PageMaker"
 msgid "Plain Text"
 msgstr "Texto Puro"
 
-msgid "Ascii Art text"
-msgstr "Texto Ascii Art"
+msgid "ASCII Art text"
+msgstr "Texto decorado (ASCII Art)"
 
 msgid "AsciiDoc document"
 msgstr "Documento AsciiDoc"
+
+msgid "Creole 1.0 document"
+msgstr "Documento Creole 1.0"
 
 msgid "%s version %s <%s>"
 msgstr "%s versão %s <%s>"
@@ -126,19 +129,31 @@ msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    numera todos os títulos como 1, 1.1, 1.1.1, etc"
 
 msgid ""
-"  -a, --ascii-art=S   set the ascii art chars with the string S. in the "
-"order:"
+"      --slides        format output as presentation slides (used by -t art)"
 msgstr ""
+"      --slides        cria uma apresentação de slides (usado por -t art)"
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+"      --width=N       define a largura em N colunas (usado por -t art)"
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+"      --height=N      define a altura em N linhas (usado por -t art)"
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
+msgstr "      --art-chars=S   define os caracteres do ASCII Art (padrão %s)"
 
 msgid "  -C, --config-file=F read config from file F"
 msgstr "  -C, --config-file=F carrega arquivo de configuração F"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr ""
-"      --rc            lê a config do usuário em ~/.txt2tagsrc (padrão LIGADO)"
+msgstr "      --rc            lê config do usuário em ~/.txt2tagsrc (padrão LIGADO)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           carrega a interface gráfica escrita em TK"
+msgstr "      --gui           carrega a interface gráfica (Tk)"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr "  -q, --quiet         modo silencioso, sem mensagens (exceto erros)"
@@ -157,6 +172,11 @@ msgstr "      --dump-config   exibe todas as configurações encontradas e sai"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   mostra os fontes com os includes expandidos"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+"      --targets       mostra a lista de todos os formatos disponíveis e sai"
 
 msgid "Turn OFF options:"
 msgstr "Opções para DESLIGAR funcionalidades:"
@@ -224,17 +244,23 @@ msgstr "Nenhum formato de saída especificado (tente o --help)"
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr "Informe o formato usando a opção -t ou o comando %!target."
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr "Use 'txt2tags --targets' para ver quais os formatos disponíveis."
+
 msgid "Missing input file (try --help)"
 msgstr "Falta o arquivo fonte (tente o --help)"
 
-msgid "Invalid target '%s' (try --help)"
-msgstr "Formato inválido '%s' (tente o --help)"
+msgid "Invalid target '%s'"
+msgstr "Formato inválido '%s'"
 
 msgid "--%s value must be a number"
 msgstr "o valor de --%s deve ser um número"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "A opção --split deve ser 0, 1 ou 2"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr "--art-chars: Esperava %i caracteres, recebi %i"
 
 msgid "Input and Output files are the same: %s"
 msgstr "Os arquivos de entrada e saída são o mesmo: %s"
@@ -256,6 +282,9 @@ msgstr "Finalizada a inclusão do arquivo de configuração: %s"
 
 msgid "Added %s"
 msgstr "Adicionado %s"
+
+msgid "You can't use (target) with %s"
+msgstr "Você não pode usar (formato) em %s"
 
 msgid "OFF"
 msgstr "DESLIGADO"
@@ -289,6 +318,9 @@ msgstr "Segunda parte do PostProc inválida"
 
 msgid "%s wrote %s"
 msgstr "%s gravou %s"
+
+msgid "Table of Contents"
+msgstr "Sumário"
 
 msgid "Source document contents stored"
 msgstr "Conteúdo do documento fonte guardado"
@@ -397,9 +429,6 @@ msgstr "Sair"
 
 msgid "Convert!"
 msgstr "Converter!"
-
-msgid "--ascii-art: Expected %i chars, got %i"
-msgstr ""
 
 msgid "Txt2tags %s processing begins"
 msgstr "Txt2tags %s: Início do processamento"

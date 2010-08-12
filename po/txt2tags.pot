@@ -2,8 +2,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6b\n"
-"POT-Creation-Date: 2010-06-18 17:01+BRT\n"
+"Project-Id-Version: txt2tags 2.6b1\n"
+"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,10 +58,13 @@ msgstr ""
 msgid "Plain Text"
 msgstr ""
 
-msgid "Ascii Art text"
+msgid "ASCII Art text"
 msgstr ""
 
 msgid "AsciiDoc document"
+msgstr ""
+
+msgid "Creole 1.0 document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -112,7 +115,16 @@ msgstr ""
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr ""
 
-msgid "  -a, --ascii-art=S   set the ascii art chars with the string S. in the order:"
+msgid "      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+
+msgid "      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+
+msgid "      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+
+msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr ""
 
 msgid "  -C, --config-file=F read config from file F"
@@ -140,6 +152,9 @@ msgid "      --dump-config   print all the config found and exit"
 msgstr ""
 
 msgid "      --dump-source   print the document source, with includes expanded"
+msgstr ""
+
+msgid "      --targets       print a list of all the available targets and exit"
 msgstr ""
 
 msgid "Turn OFF options:"
@@ -208,16 +223,22 @@ msgstr ""
 msgid "Please inform a target using the -t option or the %!target command."
 msgstr ""
 
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr ""
+
 msgid "Missing input file (try --help)"
 msgstr ""
 
-msgid "Invalid target '%s' (try --help)"
+msgid "Invalid target '%s'"
 msgstr ""
 
 msgid "--%s value must be a number"
 msgstr ""
 
 msgid "Option --split must be 0, 1 or 2"
+msgstr ""
+
+msgid "--art-chars: Expected %i chars, got %i"
 msgstr ""
 
 msgid "Input and Output files are the same: %s"
@@ -239,6 +260,9 @@ msgid "Finished Config file inclusion: %s"
 msgstr ""
 
 msgid "Added %s"
+msgstr ""
+
+msgid "You can't use (target) with %s"
 msgstr ""
 
 msgid "OFF"
@@ -272,6 +296,9 @@ msgid "Invalid PostProc filter replacement"
 msgstr ""
 
 msgid "%s wrote %s"
+msgstr ""
+
+msgid "Table of Contents"
 msgstr ""
 
 msgid "Source document contents stored"
@@ -380,9 +407,6 @@ msgid "Quit"
 msgstr ""
 
 msgid "Convert!"
-msgstr ""
-
-msgid "--ascii-art: Expected %i chars, got %i"
 msgstr ""
 
 msgid "Txt2tags %s processing begins"
