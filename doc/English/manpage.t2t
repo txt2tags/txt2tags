@@ -156,9 +156,29 @@ Format output as presentation slides (used by -t art).
 :      **--style**=//FILE//
 Use FILE as the document style (like Html CSS).
 
-: **-t**, **--target**=//TYPE//
+:  **-t**, **--target**=//TYPE//
 Set target document type. Currently supported:
-html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
+
+```
+adoc    AsciiDoc document
+art     ASCII Art text
+creole  Creole 1.0 document
+dbk     DocBook document
+doku    DokuWiki page
+gwiki   Google Wiki page
+html    HTML page
+lout    Lout document
+man     UNIX Manual page
+mgp     MagicPoint presentation
+moin    MoinMoin page
+pm6     PageMaker document
+pmw     pmWiki page
+sgml    SGML document
+tex     LaTeX document
+txt     Plain Text
+wiki    Wikipedia page
+xhtml   XHTML page
+```
 
 :      **--targets**
 Print a list of all the available targets and exit.
