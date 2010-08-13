@@ -166,10 +166,10 @@ msgstr ""
 "conversion"
 
 msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          imprime cette aide et sortir"
+msgstr "  -h, --help          imprime cette aide et sort"
 
 msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       imprime la version et sortir"
+msgstr "  -V, --version       imprime la version et sort"
 
 msgid "      --dump-config   print all the config found and exit"
 msgstr ""
