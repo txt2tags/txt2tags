@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
 "PO-Revision-Date: 2010-08-12 18:03+0100\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: Basque\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 msgid "HTML page"
 msgstr "HTML orria"
@@ -70,65 +70,86 @@ msgstr "%s %s bertsioa <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Erabilpena: %s [AUKERAK] [sarfitx.t2t ...]"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+"      --targets       eskuragarri dauden helburu guztiak erakutsi eta irten"
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr "  -t, --target=MOTA   helburuko dokumentuaren mota ezarri. Momentuz jasandakoak:"
+msgstr ""
+"  -t, --target=MOTA   helburuko dokumentuaren mota ezarri. Momentuz "
+"jasandakoak:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=FITX   FITX zehaztu sarrera fitxategi bezela ('-' STDIN-entzako)"
+msgstr ""
+"  -i, --infile=FITX   FITX zehaztu sarrera fitxategi bezela ('-' STDIN-"
+"entzako)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr "  -o, --outfile=FITX  FITX zehaztu irteera fitxategiaren izen bezala ('-' STDOUT-entzako)"
-
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    Goiburukoa, izenburua eta oinaren edukiak kendu"
-
-msgid "      --headers       show header, title and footer contents (default ON)"
-msgstr "      --headers       goiburukoa, izenburua eta oinaren edukiak erakutsi (lehenetsiz gaituta)"
+msgstr ""
+"  -o, --outfile=FITX  FITX zehaztu irteera fitxategiaren izen bezala ('-' "
+"STDOUT-entzako)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-msgstr "      --encoding=KOD  ezarri irteera fitxategiaren kodeketa (utf-8, iso-8859-1, etab.)"
+msgstr ""
+"      --encoding=KOD  ezarri irteera fitxategiaren kodeketa (utf-8, iso-8859-"
+"1, etab.)"
 
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr "      --style=FITX    FITX erabili dokumentuaren estilo moduan (HTML-ko CSS-ak bezala)"
-
-msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr "      --css-sugar     CSS-rekin jatorrak diren etiketak txertatu HTML eta XHTML helburuentzat"
-
-msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr "      --css-inside    CSS fitxategiaren edukiak HTML/XHTML goiburuetan txertatu"
-
-msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr "      --mask-email    epostak spam robotengandik ezkutatu. x@y.z <x (a) y z> bihurtzen da"
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           TOC (Edukien Taula) helburu dokumentura gehitu"
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      dokumentuaren TOC-a inprimatu eta irten"
+msgid "      --toc           add an automatic Table of Contents to the output"
+msgstr ""
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr "      --toc-level=N   TOC-aren maila (sakonera) maximoa N-n ezarri"
 
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr ""
+
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    izenburu guztiak zenbakitu: 1, 1.1, 1.1.1, etab."
 
-msgid "      --slides        format output as presentation slides (used by -t art)"
-msgstr "      --slides        irteera aurkezpen diapositiba bezala formateatu (-t art-ekin erabilita)"
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr ""
+"      --style=FITX    FITX erabili dokumentuaren estilo moduan (HTML-ko CSS-"
+"ak bezala)"
 
-msgid "      --width=N       set the output's width to N columns (used by -t art)"
-msgstr "      --width=N       irteeraren zabalera N zutabeetan finkatu (-t art-ekin erabilita)"
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr ""
 
-msgid "      --height=N      set the output's height to N rows (used by -t art)"
-msgstr "      --height=N       irteeraren altuera N zutabeetan finkatu (-t art-ekin erabilita)"
+msgid ""
+"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+"      --css-inside    CSS fitxategiaren edukiak HTML/XHTML goiburuetan "
+"txertatu"
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr "      --art-chars=S   ASCII Art karaktereak S-ra ezarri (defektuz %s) hauetarako:"
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
 
-msgid "  -C, --config-file=F read config from file F"
+msgid ""
+"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"      --mask-email    epostak spam robotengandik ezkutatu. x@y.z <x (a) y z> "
+"bihurtzen da"
+
+msgid ""
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+"      --slides        irteera aurkezpen diapositiba bezala formateatu (-t "
+"art-ekin erabilita)"
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+"      --width=N       irteeraren zabalera N zutabeetan finkatu (-t art-ekin "
+"erabilita)"
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+"      --height=N       irteeraren altuera N zutabeetan finkatu (-t art-ekin "
+"erabilita)"
+
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F konfigurazio F fitxategitik irakurri"
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr "      --rc            erabiltzailearen ~/.txt2tagsrc konfigurazio fitxategia irakurri (lehenetsiz gaituta)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           Tk Interfaze Grafikoa abiatu"
@@ -137,7 +158,8 @@ msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr "  -q, --quiet         modu geldia, irteera mezurik ez (erroreak ezik)"
 
 msgid "  -v, --verbose       print informative messages during conversion"
-msgstr "  -v, --verbose       bihurketaren bitartean mezu informatiboak inprimatu"
+msgstr ""
+"  -v, --verbose       bihurketaren bitartean mezu informatiboak inprimatu"
 
 msgid "  -h, --help          print this help information and exit"
 msgstr "  -h, --help          laguntza mezu hau inprimatu eta irten"
@@ -145,14 +167,14 @@ msgstr "  -h, --help          laguntza mezu hau inprimatu eta irten"
 msgid "  -V, --version       print program version and exit"
 msgstr "  -V, --version       programaren bertsioa inprimatu eta irten"
 
-msgid "      --dump-config   print all the config found and exit"
-msgstr "      --dump-config   topatutako konfigurazio guztia inprimatu eta irten"
+msgid "      --dump-config   print all the configuration found and exit"
+msgstr ""
+"      --dump-config   topatutako konfigurazio guztia inprimatu eta irten"
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr "      --dump-source   dokumentuaren iturburua inprimatu, barneratzeko guztiak txertatuta"
-
-msgid "      --targets       print a list of all the available targets and exit"
-msgstr "      --targets       eskuragarri dauden helburu guztiak erakutsi eta irten"
+msgstr ""
+"      --dump-source   dokumentuaren iturburua inprimatu, barneratzeko "
+"guztiak txertatuta"
 
 msgid "Turn OFF options:"
 msgstr "Aukerak EZGAITU:"
@@ -218,10 +240,13 @@ msgid "No target specified (try --help)"
 msgstr "Ez da helbururik zehaztu (--help frogatu)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr "-t aukera erabiliz edo %!target komandoaren bidez helburu bat zehaztu mesedez."
+msgstr ""
+"-t aukera erabiliz edo %!target komandoaren bidez helburu bat zehaztu "
+"mesedez."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr "Exekutatu 'txt2tags --targets'  eskuragarri dauden helburu guztiak ikusteko."
+msgstr ""
+"Exekutatu 'txt2tags --targets'  eskuragarri dauden helburu guztiak ikusteko."
 
 msgid "Missing input file (try --help)"
 msgstr "Sarrera fitxategia faltan (--help frogatu)"
@@ -302,7 +327,8 @@ msgid "Source document contents stored"
 msgstr "Iturburuko dokumentuaren edukiak gordeta"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr "Topatutako konfigurazio guztia parseatzen eta gordetzen (%03d elementu)"
+msgstr ""
+"Topatutako konfigurazio guztia parseatzen eta gordetzen (%03d elementu)"
 
 msgid "Composing target Headers"
 msgstr "Helburuko Goiburuak sortzen"
@@ -433,6 +459,39 @@ msgstr "Mesedez zehaztu sarrerako fitxategia (.t2t) komandoaren bukaeran."
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags egoki bukatu da"
 
+#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
+#~ msgstr ""
+#~ "  -H, --no-headers    Goiburukoa, izenburua eta oinaren edukiak kendu"
+
+#~ msgid ""
+#~ "      --headers       show header, title and footer contents (default ON)"
+#~ msgstr ""
+#~ "      --headers       goiburukoa, izenburua eta oinaren edukiak erakutsi "
+#~ "(lehenetsiz gaituta)"
+
+#~ msgid ""
+#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr ""
+#~ "      --css-sugar     CSS-rekin jatorrak diren etiketak txertatu HTML eta "
+#~ "XHTML helburuentzat"
+
+#~ msgid "      --toc           add TOC (Table of Contents) to target document"
+#~ msgstr ""
+#~ "      --toc           TOC (Edukien Taula) helburu dokumentura gehitu"
+
+#~ msgid "      --toc-only      print document TOC and exit"
+#~ msgstr "      --toc-only      dokumentuaren TOC-a inprimatu eta irten"
+
+#~ msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
+#~ msgstr ""
+#~ "      --art-chars=S   ASCII Art karaktereak S-ra ezarri (defektuz %s) "
+#~ "hauetarako:"
+
+#~ msgid ""
+#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+#~ msgstr ""
+#~ "      --rc            erabiltzailearen ~/.txt2tagsrc konfigurazio "
+#~ "fitxategia irakurri (lehenetsiz gaituta)"
+
 #~ msgid "Invalid target '%s' (try --help)"
 #~ msgstr "'%s' helburu ezegokia (--help frogatu)"
-

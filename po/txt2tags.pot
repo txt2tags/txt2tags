@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6b1\n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,9 @@ msgstr ""
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr ""
 
+msgid "      --targets       print a list of all the available targets and exit"
+msgstr ""
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
 
@@ -82,37 +85,34 @@ msgstr ""
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr ""
-
-msgid "      --headers       show header, title and footer contents (default ON)"
-msgstr ""
-
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
 
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr ""
-
-msgid "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr ""
-
-msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr ""
-
-msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr ""
-
-msgid "      --toc-only      print document TOC and exit"
+msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr ""
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr ""
 
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr ""
+
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr ""
+
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr ""
+
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr ""
+
+msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
+msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
 
 msgid "      --slides        format output as presentation slides (used by -t art)"
@@ -124,13 +124,7 @@ msgstr ""
 msgid "      --height=N      set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr ""
-
-msgid "  -C, --config-file=F read config from file F"
-msgstr ""
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr ""
 
 msgid "      --gui           invoke Graphical Tk Interface"
@@ -148,13 +142,10 @@ msgstr ""
 msgid "  -V, --version       print program version and exit"
 msgstr ""
 
-msgid "      --dump-config   print all the config found and exit"
+msgid "      --dump-config   print all the configuration found and exit"
 msgstr ""
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr ""
-
-msgid "      --targets       print a list of all the available targets and exit"
 msgstr ""
 
 msgid "Turn OFF options:"

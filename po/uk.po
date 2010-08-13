@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
 "PO-Revision-Date: 2010-07-20 20:00-0200\n"
 "Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
 "Language-Team: Ukrainian\n"
@@ -69,6 +69,10 @@ msgstr "%s версія %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Використання: %s [ОПЦІЇ] [вхідний_файл.t2t ...]"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
 "  -t, --target=TYPE   встановлює тип вихідного документа. Підтримуються:"
@@ -82,30 +86,31 @@ msgstr ""
 "  -o, --outfile=FILE  використати FILE як ім'я вихідного файлу ('-' для "
 "STDOUT)"
 
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr ""
-"  -H, --no-headers    не вставляти заголовки та закінчення документа "
-"(генерувати тільки тіло)"
-
-msgid ""
-"      --headers       show header, title and footer contents (default ON)"
-msgstr ""
-"      --headers       генерувати заголовки та футер (ввімкнено за "
-"замовчуванням)"
-
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
 "      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
+
+msgid "      --toc           add an automatic Table of Contents to the output"
+msgstr ""
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr ""
+"      --toc-level=N   встановити максимальну глибину змісту (кількість "
+"вкладених підрозділів що потрапляють в зміст) в N"
+
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr ""
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr ""
+"  -n, --enum-title    пронумерувати всі заголоки як 1, 1.1, 1.1.1, і т.д."
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr ""
 "      --style=FILE    використати FILE в якості стилю документа (Як CSS HTML)"
 
-msgid ""
-"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
 msgstr ""
-"      --css-sugar     вставити теги, що краще підходять для CSS (в HTML та "
-"XHTML документах)"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
@@ -113,26 +118,14 @@ msgstr ""
 "      --css-inside    ставити зміст CSS файлу в заголовки документа HTML/"
 "XHTML"
 
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
 "      --mask-email    cховати адреси email від спам-роботів. x@y.z стане <x "
 "(a) y z"
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           додати зміст до вихідного документа"
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      тільки надрукувати зміст"
-
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr ""
-"      --toc-level=N   встановити максимальну глибину змісту (кількість "
-"вкладених підрозділів що потрапляють в зміст) в N"
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr ""
-"  -n, --enum-title    пронумерувати всі заголоки як 1, 1.1, 1.1.1, і т.д."
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
@@ -146,16 +139,8 @@ msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr ""
-
-msgid "  -C, --config-file=F read config from file F"
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -С, --config-file=F читати конфігурацію з файла F"
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr ""
-"      --rc            читати файл конфігурації користувача ~/txt2tagsrc (за "
-"замовчуванням так)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           запустити графічний інтерфейс"
@@ -174,15 +159,11 @@ msgstr "  -h, --help          надрукувати цю довідку та в
 msgid "  -V, --version       print program version and exit"
 msgstr "  -V, --version       надрукувати версію програми та вийти"
 
-msgid "      --dump-config   print all the config found and exit"
+msgid "      --dump-config   print all the configuration found and exit"
 msgstr "      --dump-config   надрукувати всі знайдені опції та вийти"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   надрукувати код, з розкритими включеннями"
-
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Опції ВИМКНЕННЯ:"
@@ -463,6 +444,35 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags успішно завершив роботу"
+
+#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
+#~ msgstr ""
+#~ "  -H, --no-headers    не вставляти заголовки та закінчення документа "
+#~ "(генерувати тільки тіло)"
+
+#~ msgid ""
+#~ "      --headers       show header, title and footer contents (default ON)"
+#~ msgstr ""
+#~ "      --headers       генерувати заголовки та футер (ввімкнено за "
+#~ "замовчуванням)"
+
+#~ msgid ""
+#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr ""
+#~ "      --css-sugar     вставити теги, що краще підходять для CSS (в HTML "
+#~ "та XHTML документах)"
+
+#~ msgid "      --toc           add TOC (Table of Contents) to target document"
+#~ msgstr "      --toc           додати зміст до вихідного документа"
+
+#~ msgid "      --toc-only      print document TOC and exit"
+#~ msgstr "      --toc-only      тільки надрукувати зміст"
+
+#~ msgid ""
+#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+#~ msgstr ""
+#~ "      --rc            читати файл конфігурації користувача ~/txt2tagsrc "
+#~ "(за замовчуванням так)"
 
 #~ msgid ""
 #~ "Example:\n"
