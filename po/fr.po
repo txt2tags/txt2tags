@@ -71,90 +71,90 @@ msgstr "Utilisation : %s [OPTIONS] [entrée.t2t ...]"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
-"  -t, --target=TYPE      indiquez le type de document de sortie supporté :"
+"  -t, --target=TYPE      indique le type de document de sortie supporté :"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=ENTREE  choisissez le fichier d'entrée ('-' pour STDIN)"
+msgstr "  -i, --infile=ENTREE  choisit le fichier d'entrée ('-' pour STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
-"  -o, --outfile=SORTIE choisissez le fichier de sortie ('-' pour STDOUT)"
+"  -o, --outfile=SORTIE choisit le fichier de sortie ('-' pour STDOUT)"
 
 msgid "  -H, --no-headers    suppress header, title and footer contents"
 msgstr ""
-"  -H, --no-headers    supprimer les entêtes, les titres et les pieds de page"
+"  -H, --no-headers    supprime les entêtes, les titres et les pieds de page"
 
 msgid ""
 "      --headers       show header, title and footer contents (default ON)"
 msgstr ""
-"      --headers       montrer les entêtes, les titres et les pieds de page "
+"      --headers       montre les entêtes, les titres et les pieds de page "
 "(par défaut)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  choisir l'encodage de sortie (utf-8, iso8859-1, etc)"
+"      --encoding=ENC  choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr ""
-"      --style=FILE    utiliser FILE comme feuille de style (comme HTML CSS)"
+"      --style=FILE    utilise FILE comme feuille de style (comme HTML CSS)"
 
 msgid ""
 "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
 msgstr ""
-"      --css-sugar     insérer des marques pour l'inclusion de feuilles CSS pour les sorties HTML et "
+"      --css-sugar     insère des marques pour l'inclusion de feuilles CSS pour les sorties HTML et "
 "XHTML"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
-"      --css-sugar     insérer le contenu du fichier CSS pour des sorties "
+"      --css-sugar     insère le contenu du fichier CSS pour des sorties "
 "HTML et XHTML"
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
-"      --mask-email    cacher l'email des robots spammeurs. Ainsi x@y.z devient x "
+"      --mask-email    cache l'email des robots spammeurs. Ainsi x@y.z devient x "
 "(a) y z"
 
 msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           ajouter la table des matières à la sortie"
+msgstr "      --toc           ajoute la table des matières à la sortie"
 
 msgid "      --toc-only      print document TOC and exit"
 msgstr "      --toc-only      imprime la table des matières et sort"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr ""
-"      --toc-level=N   limiter la profondeur de la table des matières à N"
+"      --toc-level=N   limite la profondeur de la table des matières à N"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numéroter les titres en : 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    numérote les titres en : 1, 1.1, 1.1.1, etc"
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
 msgstr ""
-"      --slides        formater la sortie comme une présentation (utilisé par -t art)"
+"      --slides        formate la sortie comme une présentation (utilisé par -t art)"
 
 msgid ""
 "      --width=N       set the output's width to N columns (used by -t art)"
 msgstr ""
-"      --width=N       fixer la largeur à N colonnes (utilisé par -t art)"
+"      --width=N       fixe la largeur à N colonnes (utilisé par -t art)"
 
 msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
 msgstr ""
-"      --height=N      fixer la hauteur à N lignes (utilisé par -t art)"
+"      --height=N      fixe la hauteur à N lignes (utilisé par -t art)"
 msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr "     --art-chars=S   mettre les caractères ASCII Art à S (par défaut %s) pour : "
+msgstr "     --art-chars=S   met les caractères ASCII Art à S (par défaut %s) pour : "
 msgid "  -C, --config-file=F read config from file F"
-msgstr " -C, --config-file=F lire la configuration à partir du fichier F"
+msgstr " -C, --config-file=F lit la configuration à partir du fichier F"
 
 msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 msgstr ""
-"      --rc            lire le fichier de configuration ~/.txt2tagsrc (option "
+"      --rc            lit le fichier de configuration ~/.txt2tagsrc (option "
 "par défaut)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           appeler l'interface graphique Tk"
+msgstr "      --gui           appelle l'interface graphique Tk"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
 msgstr ""
@@ -162,29 +162,29 @@ msgstr ""
 
 msgid "  -v, --verbose       print informative messages during conversion"
 msgstr ""
-"  -v, --verbose       imprimer des messages d'information pendant la "
+"  -v, --verbose       imprime des messages d'information pendant la "
 "conversion"
 
 msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          imprimer cette aide et sortir"
+msgstr "  -h, --help          imprime cette aide et sortir"
 
 msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       imprimer la version et sortir"
+msgstr "  -V, --version       imprime la version et sortir"
 
 msgid "      --dump-config   print all the config found and exit"
 msgstr ""
-"      --dump-config   imprimer toute la configuration trouvée et sortir"
+"      --dump-config   imprime toute la configuration trouvée et sort"
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr "     --dump-source   imprimer le document source, avec les inclusions"
+msgstr "     --dump-source   imprime le document source, avec les inclusions"
 
 msgid ""
 "      --targets       print a list of all the available targets and exit"
 msgstr ""
-"      --targets       imprimer une liste des cibles disponibles et sortir"
+"      --targets       imprime une liste des cibles disponibles et sort"
 
 msgid "Turn OFF options:"
-msgstr "Désactiver les options (OFF)"
+msgstr "Désactive les options (OFF)"
 
 msgid "Example:"
 msgstr "Exemple :"
@@ -196,7 +196,7 @@ msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr "Par défaut, la sortie convertie est sauvée dans 'infile.<type>'"
 
 msgid "Use --outfile to force an output file name."
-msgstr "Utiliser --outfile pour imposer un fichier de sortie"
+msgstr "Utilise --outfile pour imposer un fichier de sortie"
 
 msgid "If  input file is '-', reads from STDIN."
 msgstr "Si le fichier d'entrée est '-', la lecture est à partir de STDIN"
@@ -208,7 +208,7 @@ msgid "%s: Error: "
 msgstr "%s : Erreur : "
 
 msgid "Sorry! Txt2tags aborted by an unknown error."
-msgstr "Désolé ! txt2tags-erreur Tk inconnue"
+msgstr "Désolé ! Txt2tags s'est arrêté avec une erreur inconnue"
 
 msgid "Please send the following Error Traceback to the author"
 msgstr "SVP envoyez la trace d'erreur à l'auteur."
@@ -253,7 +253,7 @@ msgid "Run 'txt2tags --targets' to see all the available targets."
 msgstr "Lancez 'txt2tags --targets' pour voir les cibles disponibles"
 
 msgid "Missing input file (try --help)"
-msgstr "Manque le fichier d'entrée (essayez --help)"
+msgstr "Il manque le fichier d'entrée (essayez --help)"
 
 msgid "Invalid target '%s'"
 msgstr "Cible invalide '%s'"
@@ -280,7 +280,7 @@ msgid "Processing line %03d: %s"
 msgstr "Traite la ligne %03d : %s"
 
 msgid "A file cannot include itself (loop!)"
-msgstr "Un fichier ne peut pas s'inclure (boucle!)"
+msgstr "Un fichier ne peut pas s'inclure (boucle !)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "Terminé l'inclusion du fichier Config : %s"
@@ -319,7 +319,7 @@ msgid "Invalid PostProc filter regex"
 msgstr "Règle regex invalide dans le filtre PostProc"
 
 msgid "Invalid PostProc filter replacement"
-msgstr "Filre PostProc de remplacement invalide"
+msgstr "Filtre PostProc de remplacement invalide"
 
 msgid "%s wrote %s"
 msgstr "%s écrit %s"
