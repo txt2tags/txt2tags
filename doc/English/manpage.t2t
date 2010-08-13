@@ -60,6 +60,48 @@ This man page was created by **txt2tags** from a simple text file. The same text
 ONE source, MULTI targets - http://txt2tags.sourceforge.net
 
 
+= MARKUP =[markup]
+
+```
+Headers           First 3 lines of the source file
+Title             = words =
+Numbered title    + words +
+Comment           % comments
+Separator line    -----------------------...
+Strong line       =======================...
+Image             [filename.jpg]
+Link              [label url]
+
+Bold              **words**
+Italic            //words//
+Underline         __words__
+Strike            --words--
+Monospaced        ``words``
+Raw               ""words""
+Tagged            ''words''
+
+Paragraph         words
+Quote             <TAB>words
+List              - words
+Numbered list     + words
+Definition list   : words
+Table             | cell1 | cell2 | cell3...
+
+Verbatim line     ``` words
+Raw line          """ words
+Tagged line       ''' words
+
+Verbatim block    ```
+                  lines
+                  ```
+Raw block         """
+                  lines
+                  """
+Tagged block      '''
+                  lines
+                  '''
+```
+
 = OPTIONS =[options]
 
 : **-C**, **--config-file**=//FILE//
@@ -254,47 +296,25 @@ Includes a text file (verbatim) in the document.
 Includes an already tagged file in the document.
 :
 
-= MARKUP =[markup]
+= MACROS =[macros]
 
-```
-Headers           First 3 lines of the source file
-Title             = words =
-Numbered title    + words +
-Comment           % comments
-Separator line    -----------------------...
-Strong line       =======================...
-Image             [filename.jpg]
-Link              [label url]
+Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except ``%%toc``, all macros can be customized with special directives, like ``%Y`` and ``%f``. See the txt2tags User Guide for details.
 
-Bold              **words**
-Italic            //words//
-Underline         __words__
-Strike            --words--
-Monospaced        ``words``
-Raw               ""words""
-Tagged            ''words''
+: **""%%date""**
+Insert the current date. The default format is ``%%date(%Y%m%d)``, which gives YYYYMMDD.
 
-Paragraph         words
-Quote             <TAB>words
-List              - words
-Numbered list     + words
-Definition list   : words
-Table             | cell1 | cell2 | cell3...
+: **""%%infile""**
+Insert the source file path. The default format is ``%%infile(%f)``. Useful for footer links like ``[See source %%infile]``.
 
-Verbatim line     ``` words
-Raw line          """ words
-Tagged line       ''' words
+: **""%%mtime""**
+Insert the source file modification time. The default format is ``%%date(%Y%m%d)``, which gives YYYYMMDD.
 
-Verbatim block    ```
-                  lines
-                  ```
-Raw block         """
-                  lines
-                  """
-Tagged block      '''
-                  lines
-                  '''
-```
+: **""%%outfile""**
+Insert the output file path. The default format is ``%%outfile(%f)``. Useful for self mentioning like "This is the %%outfile file".
+
+: **""%%toc""**
+Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the ``--toc`` option.
+:
 
 = EXAMPLES =[examples]
 
@@ -333,26 +353,6 @@ Handy one-liner for quick tests using STDIN.
 : ``txt2tags -t html -o - file.t2t | tidy > file.html``
 
 Send results to STDOUT, then fine tune the code with an external program before saving the output file.
-:
-
-= MACROS =[macros]
-
-Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except ``%%toc``, all macros can be customized with special directives, like ``%Y`` and ``%f``. See the txt2tags User Guide for details.
-
-: **""%%date""**
-Insert the current date. The default format is ``%%date(%Y%m%d)``, which gives YYYYMMDD.
-
-: **""%%infile""**
-Insert the source file path. The default format is ``%%infile(%f)``. Useful for footer links like ``[See source %%infile]``.
-
-: **""%%mtime""**
-Insert the source file modification time. The default format is ``%%date(%Y%m%d)``, which gives YYYYMMDD.
-
-: **""%%outfile""**
-Insert the output file path. The default format is ``%%outfile(%f)``. Useful for self mentioning like "This is the %%outfile file".
-
-: **""%%toc""**
-Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the ``--toc`` option.
 :
 
 = FILES =[files]
