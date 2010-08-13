@@ -20,8 +20,6 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --slides        format output as presentation slides (used by -t art)
       --width=N       set the output's width to N columns (used by -t art)
       --height=N      set the output's height to N rows (used by -t art)
-      --art-chars=S   set the ASCII Art chars to S (default +-|-==-^") for:
-                      corner,border,side,bar1,bar2,level2,level3,level4,level5
   -C, --config-file=F read config from file F
       --rc            read user config file ~/.txt2tagsrc (default ON)
       --gui           invoke Graphical Tk Interface
