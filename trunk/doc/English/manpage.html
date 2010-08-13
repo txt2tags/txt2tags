@@ -18,13 +18,13 @@
   <LI><A HREF="#name">NAME</A>
   <LI><A HREF="#synopsis">SYNOPSIS</A>
   <LI><A HREF="#description">DESCRIPTION</A>
+  <LI><A HREF="#markup">MARKUP</A>
   <LI><A HREF="#options">OPTIONS</A>
   <LI><A HREF="#source">SOURCE FILES</A>
   <LI><A HREF="#settings">SETTINGS</A>
   <LI><A HREF="#commands">COMMANDS</A>
-  <LI><A HREF="#markup">MARKUP</A>
-  <LI><A HREF="#examples">EXAMPLES</A>
   <LI><A HREF="#macros">MACROS</A>
+  <LI><A HREF="#examples">EXAMPLES</A>
   <LI><A HREF="#files">FILES</A>
   <LI><A HREF="#environment">ENVIRONMENT</A>
   <LI><A HREF="#author">AUTHOR</A>
@@ -80,6 +80,49 @@ This man page was created by <B>txt2tags</B> from a simple text file. The same t
 <P>
 ONE source, MULTI targets - <A HREF="http://txt2tags.sourceforge.net">http://txt2tags.sourceforge.net</A>
 </P>
+
+<A NAME="markup"></A>
+<H1>MARKUP</H1>
+
+<PRE>
+  Headers           First 3 lines of the source file
+  Title             = words =
+  Numbered title    + words +
+  Comment           % comments
+  Separator line    -----------------------...
+  Strong line       =======================...
+  Image             [filename.jpg]
+  Link              [label url]
+  
+  Bold              **words**
+  Italic            //words//
+  Underline         __words__
+  Strike            --words--
+  Monospaced        ``words``
+  Raw               ""words""
+  Tagged            ''words''
+  
+  Paragraph         words
+  Quote             &lt;TAB&gt;words
+  List              - words
+  Numbered list     + words
+  Definition list   : words
+  Table             | cell1 | cell2 | cell3...
+  
+  Verbatim line     ``` words
+  Raw line          """ words
+  Tagged line       ''' words
+  
+  Verbatim block    ```
+                    lines
+                    ```
+  Raw block         """
+                    lines
+                    """
+  Tagged block      '''
+                    lines
+                    '''
+</PRE>
 
 <A NAME="options"></A>
 <H1>OPTIONS</H1>
@@ -318,48 +361,29 @@ Includes a text file (verbatim) in the document.
 Includes an already tagged file in the document.
 </DL>
 
-<A NAME="markup"></A>
-<H1>MARKUP</H1>
+<A NAME="macros"></A>
+<H1>MACROS</H1>
 
-<PRE>
-  Headers           First 3 lines of the source file
-  Title             = words =
-  Numbered title    + words +
-  Comment           % comments
-  Separator line    -----------------------...
-  Strong line       =======================...
-  Image             [filename.jpg]
-  Link              [label url]
-  
-  Bold              **words**
-  Italic            //words//
-  Underline         __words__
-  Strike            --words--
-  Monospaced        ``words``
-  Raw               ""words""
-  Tagged            ''words''
-  
-  Paragraph         words
-  Quote             &lt;TAB&gt;words
-  List              - words
-  Numbered list     + words
-  Definition list   : words
-  Table             | cell1 | cell2 | cell3...
-  
-  Verbatim line     ``` words
-  Raw line          """ words
-  Tagged line       ''' words
-  
-  Verbatim block    ```
-                    lines
-                    ```
-  Raw block         """
-                    lines
-                    """
-  Tagged block      '''
-                    lines
-                    '''
-</PRE>
+<P>
+Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except <CODE>%%toc</CODE>, all macros can be customized with special directives, like <CODE>%Y</CODE> and <CODE>%f</CODE>. See the txt2tags User Guide for details.
+</P>
+
+<DL>
+<DT><B>%%date</B></DT><DD>
+Insert the current date. The default format is <CODE>%%date(%Y%m%d)</CODE>, which gives YYYYMMDD.
+<P></P>
+<DT><B>%%infile</B></DT><DD>
+Insert the source file path. The default format is <CODE>%%infile(%f)</CODE>. Useful for footer links like <CODE>[See source %%infile]</CODE>.
+<P></P>
+<DT><B>%%mtime</B></DT><DD>
+Insert the source file modification time. The default format is <CODE>%%date(%Y%m%d)</CODE>, which gives YYYYMMDD.
+<P></P>
+<DT><B>%%outfile</B></DT><DD>
+Insert the output file path. The default format is <CODE>%%outfile(%f)</CODE>. Useful for self mentioning like "This is the manpage.html file".
+<P></P>
+<DT><B>%%toc</B></DT><DD>
+Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the <CODE>--toc</CODE> option.
+</DL>
 
 <A NAME="examples"></A>
 <H1>EXAMPLES</H1>
@@ -400,30 +424,6 @@ Handy one-liner for quick tests using STDIN.
 <DT><CODE>txt2tags -t html -o - file.t2t | tidy &gt; file.html</CODE></DT><DD>
 <P></P>
 Send results to STDOUT, then fine tune the code with an external program before saving the output file.
-</DL>
-
-<A NAME="macros"></A>
-<H1>MACROS</H1>
-
-<P>
-Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except <CODE>%%toc</CODE>, all macros can be customized with special directives, like <CODE>%Y</CODE> and <CODE>%f</CODE>. See the txt2tags User Guide for details.
-</P>
-
-<DL>
-<DT><B>%%date</B></DT><DD>
-Insert the current date. The default format is <CODE>%%date(%Y%m%d)</CODE>, which gives YYYYMMDD.
-<P></P>
-<DT><B>%%infile</B></DT><DD>
-Insert the source file path. The default format is <CODE>%%infile(%f)</CODE>. Useful for footer links like <CODE>[See source %%infile]</CODE>.
-<P></P>
-<DT><B>%%mtime</B></DT><DD>
-Insert the source file modification time. The default format is <CODE>%%date(%Y%m%d)</CODE>, which gives YYYYMMDD.
-<P></P>
-<DT><B>%%outfile</B></DT><DD>
-Insert the output file path. The default format is <CODE>%%outfile(%f)</CODE>. Useful for self mentioning like "This is the manpage.html file".
-<P></P>
-<DT><B>%%toc</B></DT><DD>
-Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the <CODE>--toc</CODE> option.
 </DL>
 
 <A NAME="files"></A>
