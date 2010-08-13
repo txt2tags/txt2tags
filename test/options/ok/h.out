@@ -7,7 +7,6 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
   -H, --no-headers    suppress header, title and footer contents
-      --headers       show header, title and footer contents (default ON)
       --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)
       --style=FILE    use FILE as the document style (like HTML CSS)
       --css-sugar     insert CSS-friendly tags for HTML and XHTML targets
@@ -21,7 +20,6 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --width=N       set the output's width to N columns (used by -t art)
       --height=N      set the output's height to N rows (used by -t art)
   -C, --config-file=F read config from file F
-      --rc            read user config file ~/.txt2tagsrc (default ON)
       --gui           invoke Graphical Tk Interface
   -q, --quiet         quiet mode, suppress all output (except errors)
   -v, --verbose       print informative messages during conversion
