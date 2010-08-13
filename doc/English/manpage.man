@@ -1,4 +1,4 @@
-.TH "TXT2TAGS" 1 "Jul, 2008" ""
+.TH "TXT2TAGS" 1 "Aug, 2010" ""
 
 
 .SH NAME
@@ -9,478 +9,454 @@ txt2tags \- text formatting and conversion tool
 .SH SYNOPSIS
 
 .P
-\fBtxt2tags\fR [\fIOPTION\fR]... [\fIFILE\fR]...
+\fBtxt2tags\fR [\fIoptions\fR] [\fIFILE\fR...]
 
 .SH DESCRIPTION
 
 .P
-\fBtxt2tags\fR is a GPL format conversion tool written in Python that
-generates \fIHTML\fR, \fIXHTML\fR, \fISGML\fR, \fIDocBook\fR, \fILaTeX\fR, \fILout\fR, \fIUNIX Manual page\fR, \fIMagicPoint\fR, \fIWikipedia (MediaWiki)\fR, \fIGoogle Code Wiki\fR, \fIDokuWiki\fR, \fIpmWiki\fR, \fIMoinMoin\fR, \fIPageMaker\fR, \fIPlain Text\fR, \fIASCII Art\fR, \fIAsciiDoc\fR and \fICreole 1.0\fR
-documents from a single text file with minimal markup.
+\fBtxt2tags\fR reads a text file with minimal markup and convert it to:
+\fIASCII Art\fR,
+\fIAsciiDoc\fR,
+\fICreole\fR,
+\fIDocBook\fR,
+\fIDokuWiki\fR,
+\fIGoogle Code Wiki\fR,
+\fIHTML\fR,
+\fILaTeX\fR,
+\fILout\fR,
+\fIMagicPoint\fR,
+\fIMan page\fR,
+\fIMoinMoin\fR,
+\fIPageMaker\fR,
+\fIPlain Text\fR,
+\fIpmWiki\fR,
+\fISGML\fR,
+\fIWikipedia\fR and
+\fIXHTML\fR.
 
 .P
-The user just need to know the very few and simple \fBtxt2tags\fR marks,
-and write plain text files. The program does all the dirty work, adding
-the complicated tags and dealing with the target document's gotchas.
+This man page was created by \fBtxt2tags\fR from a simple text file. The same text file is also converted to HTML for the online version of this manual.
 
 .P
-The same text file can be converted to all target formats, with no
-further editing. This is the \fBtxt2tags\fR purpose: ONE source, MULTI
-targets.
-
-.P
-Please visit the program site at
-\fIhttp://txt2tags.sourceforge.net\fR.
+ONE source, MULTI targets \- http://txt2tags.sourceforge.net
 
 .SH OPTIONS
 
 .TP
-     \fB\-\-art\-chars=S\fR
-set the ASCII Art chars to S (default +\-|\-==\-^") for:
-corner,border,side,bar1,bar2,level2,level3,level4,level5
+\fB\-C\fR, \fB\-\-config\-file\fR=\fIFILE\fR
+Read configuration from the external file \fIFILE\fR. The configuration must be on the \fI%!keyword:value\fR format. See SETTINGS section for details.
 
 .TP
- \fB\-C\fR, \fB\-\-config\-file\fR
-read config from an external file (works like %!includeconf)
+    \fB\-\-css\-sugar\fR
+Improves the generated HTML/XHTML code to be used with CSS files. Tag attributes are removed, presentation tags are avoided, header is composed by H1, H2 and H3 tags, new DIVs are created: \fI#header\fR, \fI#body\fR, \fI.toc\fR.
 
 .TP
-     \fB\-\-css\-sugar\fR
-insert CSS\-friendly tags for HTML and XHTML targets
+    \fB\-\-css\-inside\fR
+Insert CSS file contents inside HTML/XHTML headers. Use \-\-style to specify a CSS file to be read.
 
 .TP
-     \fB\-\-css\-inside\fR
-insert CSS file contents inside HTML/XHTML headers
+    \fB\-\-dump\-config\fR
+Print all the configuration found and exit.
 
 .TP
-     \fB\-\-dump\-config\fR
-print all the config found and exit
+    \fB\-\-dump\-source\fR
+Print the document source, with includes (%!include) expanded.
 
 .TP
-     \fB\-\-dump\-source\fR
-print the document source, with includes expanded
+    \fB\-\-encoding\fR=\fICODE\fR
+Set the character set (file encoding) used by the source document to \fICODE\fR. Examples are UTF\-8 and iso\-8859\-1.
 
 .TP
-     \fB\-\-encoding\fR
-set target file encoding (utf\-8, iso\-8859\-1, etc)
+    \fB\-\-gui\fR
+Invoke Graphical Tk Interface.
 
 .TP
-     \fB\-\-gui\fR
-invoke Graphical Tk Interface
+\fB\-h\fR, \fB\-\-help\fR
+Print help information and exit.
 
 .TP
- \fB\-h\fR, \fB\-\-help\fR
-print help information and exit
+\fB\-H\fR, \fB\-\-no\-headers\fR
+Suppress header and footer from the output. Only the contents (body) will be shown.
 
 .TP
- \fB\-H\fR, \fB\-\-no\-headers\fR
-suppress header, title and footer information
+    \fB\-\-headers\fR
+Show header and footer in the output. Default is ON.
 
 .TP
-     \fB\-\-headers\fR
-show header, title and footer information (default ON)
+    \fB\-\-height\fR=\fINUM\fR
+Set the output's height to \fINUM\fR rows. This option is only used by the ASCII Art target, when also using \-\-slides.
 
 .TP
-     \fB\-\-height=N\fR
-set the output's height to N rows (used by \-t art)
+\fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
+Set \fIFILE\fR as the input file name, the source document. Use '\-' to read the sources from the STDIN.
 
 .TP
- \fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
-set FILE as the input file name ('\-' for STDIN)
+    \fB\-\-mask\-email\fR
+Hide emails from spam robots. Removes @ and dots. The address foo@bar.com turns to <foo (a) bar com>.
 
 .TP
-     \fB\-\-mask\-email\fR
-hide email from spam robots. x@y.z turns <x (a) y z>
+\fB\-n\fR, \fB\-\-enum\-title\fR
+Turn on automatic numbering for titles. They will be prefixed by 1, 1.1, 1.1.1, ...
 
 .TP
- \fB\-n\fR, \fB\-\-enum\-title\fR
-enumerate all title lines as 1, 1.1, 1.1.1, etc
+    \fB\-\-no\-dump\-config\fR
+Cancel the \-\-dump\-config action.
 
 .TP
-     \fB\-\-no\-dump\-config\fR
-turn off the dump config action
+    \fB\-\-no\-dump\-source\fR
+Cancel the \-\-dump\-source action.
 
 .TP
-     \fB\-\-no\-dump\-source\fR
-turn off the dump source action
+    \fB\-\-no\-encoding\fR
+Clear the encoding setting.
 
 .TP
-     \fB\-\-no\-encoding\fR
-clear the encoding setting
+    \fB\-\-no\-enum\-title\fR
+Turn off the automatic numbering for titles.
 
 .TP
-     \fB\-\-no\-enum\-title\fR
-turn off the title auto numbering
+    \fB\-\-no\-infile\fR
+Clear all the previous infile declarations.
 
 .TP
-     \fB\-\-no\-infile\fR
-clear all the previous infile declarations
+    \fB\-\-no\-targets\fR
+Cancel the \-\-targets action.
 
 .TP
-     \fB\-\-no\-list\-targets\fR
-don't print the list of all the available targets
+    \fB\-\-no\-mask\-email\fR
+Turn off the email masking feature.
 
 .TP
-     \fB\-\-no\-mask\-email\fR
-unhide emails, turning off the \-\-mask\-email option
+    \fB\-\-no\-outfile\fR
+Clear the previous outfile declaration.
 
 .TP
-     \fB\-\-no\-outfile\fR
-clear the previous outfile declaration
+    \fB\-\-no\-quiet\fR
+Show messages, turning off the \-\-quiet option.
 
 .TP
-     \fB\-\-no\-quiet\fR
-show messages, turning off the \-\-quiet option
+    \fB\-\-no\-rc\fR
+Do not read the user configuration file ~/.txt2tagsrc.
 
 .TP
-     \fB\-\-no\-rc\fR
-do not read the user config file ~/.txt2tagsrc
+    \fB\-\-no\-slides\fR
+Turn off the slides feature.
 
 .TP
-     \fB\-\-no\-slides\fR
-turn off slides (used by \-t art)
+    \fB\-\-no\-style\fR
+Clear all the style settings.
 
 .TP
-     \fB\-\-no\-style\fR
-clear the style setting
+    \fB\-\-no\-toc\fR
+Remove the Table of Contents from the output.
 
 .TP
-     \fB\-\-no\-toc\fR
-do not add TOC (Table of Contents) to target document
+    \fB\-\-no\-toc\-only\fR
+Turn off the \-\-toc\-only action.
 
 .TP
-     \fB\-\-no\-toc\-only\fR
-turn off the \-\-toc\-only option
+\fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
+Set \fIFILE\fR as the output file name. Use '\-' to send the results to STDOUT.
 
 .TP
- \fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
-set FILE as the output file name ('\-' for STDOUT)
+\fB\-q\fR, \fB\-\-quiet\fR
+Quiet mode. Suppress all output, except errors.
 
 .TP
- \fB\-q\fR, \fB\-\-quiet\fR
-quiet mode, suppress all output (except errors)
+    \fB\-\-rc\fR
+Read the user configuration file ~/.txt2tagsrc. Default is ON.
 
 .TP
-     \fB\-\-rc\fR
-read user config file ~/.txt2tagsrc (default ON)
+    \fB\-\-slides\fR
+Format output as presentation slides. This option is only used by the ASCII Art target.
 
 .TP
-     \fB\-\-slides\fR
-format output as presentation slides (used by \-t art)
-
-.TP
-     \fB\-\-style\fR=\fIFILE\fR
-use FILE as the document style (like Html CSS)
+    \fB\-\-style\fR=\fIFILE\fR
+Use \fIFILE\fR as the document's style file. Used to define CSS files for HTML/XHTML documents and packages for LaTeX. This option can be used multiple times to include multiple files.
 
 .TP
 \fB\-t\fR, \fB\-\-target\fR=\fITYPE\fR
-set target document type. Currently supported:
-html: (HTML page), xhtml: (XHTML page), sgml: (SGML document), dbk: (DocBook document), tex: (LaTeX document), lout: (Lout document), man: (UNIX Manual page), mgp: (MagicPoint presentation), wiki: (Wikipedia page), gwiki: (Google Wiki page), doku: (DokuWiki page), pmw: (pmWiki page), moin: (MoinMoin page), pm6: (PageMaker document), txt: (Plain Text), art: (ASCII Art text), adoc: (AsciiDoc document), creole: (Creole 1.0 document)
+Set the output document format to \fITYPE\fR. Some popular types are: \fIhtml\fR, \fIxhtml\fR, \fItex\fR, \fIman\fR, \fItxt\fR. Use the \-\-targets option to see all the available formats.
 
 .TP
-     \fB\-\-targets\fR
-print a list of all the available targets and exit
+    \fB\-\-targets\fR
+Print a list of all the available targets and exit.
 
 .TP
-     \fB\-\-toc\fR
-add TOC (Table of Contents) to target document
+    \fB\-\-toc\fR
+Include an automatic Table of Contents (TOC) to the output, between the Header and the Body. You can also specify the TOC position using the %%TOC macro.
 
 .TP
-     \fB\-\-toc\-level\fR=\fIN\fR
-set maximum TOC level (deepness) to N
+    \fB\-\-toc\-level\fR=\fINUM\fR
+Set the maximum TOC level to \fINUM\fR. All titles deeper than \fINUM\fR will not be included in the Table of Contents.
 
 .TP
-     \fB\-\-toc\-only\fR
-print document TOC and exit
+    \fB\-\-toc\-only\fR
+Print the Table of Contents and exit.
 
 .TP
- \fB\-v\fR, \fB\-\-verbose\fR
-print informative messages during conversion
+\fB\-v\fR, \fB\-\-verbose\fR
+Print informative messages during conversion. This option can be used multiple times to increase the number of messages shown.
 
 .TP
- \fB\-V\fR, \fB\-\-version\fR
-print program version and exit
+\fB\-V\fR, \fB\-\-version\fR
+Print program version and exit.
 
 .TP
-     \fB\-\-width=N\fR
-set the output's width to N columns (used by \-t art)
+    \fB\-\-width\fR=\fINUM\fR
+Set the output's width to \fINUM\fR columns. This option is only used by the ASCII Art target.
+
+.SH SOURCE FILES
 
 .P
-By default, converted output is saved to 'file.<type>'.
-Use \-\-outfile to force an output file name.
-If input file is '\-', reads from STDIN.
-If output file is '\-', dumps output to STDOUT.
-
-.SH STRUCTURE
-
-.P
-Txt2tags source file can have three areas:
+The source files are usually identified by the \fI.t2t\fR extension (such as myfile.t2t). You may have three areas inside your sources:
 
 .TP
-\fBHeader\fR
-The first three lines. They are used for document identification.
-If you don't need headers, you must left the first line blank or specify
-the no\-header setting.
+\fBHeader\fR (optional)
+The first three lines of the file. Leave the first line blank if you don't need headers. Used for document title, author, version and date information.
 
 .TP
-\fBSettings\fR
-Starts at the fourth line. All settings have the %!keyword: value
-format. Settings can also be made by a configuration file or command line.
+\fBSettings\fR (optional)
+Begins right after the Header (4th or 2nd line) and ends when the Body area starts.
+Used for settings (configurations) in the %!keyword:value format.
 
 .TP
 \fBBody\fR
-Your real document source! Your only request area to have a valid
-txt2tags file.
+Begins at the first valid text line (not comment or setting) after the Header area and goes until the end of the document. Used for the document contents.
 
 .SH SETTINGS
 
 .P
-The conversion of a source file can be customized in two different
-ways. External configurations are taken from the RC file
-(~/.txt2tagsrc) or other user\-selected file. Internal
-configurations are made with settings. Both use the same syntax:
+Settings let you customize \fBtxt2tags\fR, they're similar to options. They can be used at: source document's Settings area, ~/.txt2tagsrc file, external file called with \-\-config\-file.
 
 .TP
-\fB%!target:\fR
-defines the main target
+\fB%!target\fR
+Set the output format, just like \-\-target. Example:
+.nf
+%!target: html
+.fi
+
+
 
 .TP
-\fB%!options(target):\fR
-defines the options to each target
+\fB%!options(target)\fR
+Set the default options to each target. You must use the command line options. Example:
+.nf
+%!options(html): --toc --toc-level 3 --css-sugar
+.fi
+
+
+
+.TP
+\fB%!includeconf\fR
+Include configurations from an external file into the current, just like \-\-config\-file. Example:
+.nf
+%!includeconf: myconfig.t2t
+.fi
+
+
+
+.TP
+\fB%!style\fR
+Set a style file for the document, just like \-\-style. Can be used multiple times. Example:
+.nf
+%!style: colors.css
+.fi
+
+
+
+.TP
+\fB%!encoding\fR
+Set the character set used by the document, just like \-\-encoding. Example:
+.nf
+%!encoding: UTF-8
+.fi
+
+
+
+.TP
+\fB%!preproc\fR
+Input search/replace filter used to change the Body of the source document BEFORE any parsing by txt2tags. Search uses Python regular expressions. Example:
+.nf
+%!preproc:  "JJS"  "John J. Smith"
+.fi
+
+
+
+.TP
+\fB%!postproc\fR
+Output search/replace filter used to change the generated document AFTER all the txt2tags processing. Search uses Python regular expressions. Example:
+.nf
+%!postproc(html):  "<B>"  "<STRONG>"
+.fi
+
+
+
+.P
+If the same keyword appears more than once, the last found will be the one used (except: options, preproc and postproc, which are cumulative). Invalid keywords are ignored. The parsing order is: ~/.txt2tagsrc, source document's Config area, \-\-config\-file option.
+
+.SH COMMANDS
+
+.P
+Commands perform tasks during conversion time. They must be placed at the source document's Body.
+
+.TP
+\fB%!csv: file.csv\fR
+Includes an external CSV file as a table.
 
 .TP
 \fB%!include: file.t2t\fR
-includes a txt2tags file in the document
+Includes a txt2tags file in the document.
 
 .TP
 \fB%!include: ``file.txt``\fR
-includes a text file (verbatim) in the document
+Includes a text file (verbatim) in the document.
 
 .TP
-\fB%!include: file.html\fR
-includes a literal file in the document, as it is
+\fB%!include: \&''file.html''\fR
+Includes an already tagged file in the document.
 
-.TP
-\fB%!style:\fR
-to set a CSS (Cascading Style Sheets) file for XHTML and HTML
-targets or to load \eusepackage modules in TEX target
-
-.TP
-\fB%!encoding:\fR
-to set a character set (like iso\-8859\-1) for i18n issues
-
-.TP
-\fB%!includeconf:\fR
-used to include configurations from an external file into the current
-
-.TP
-\fB%!guicolors:\fR
-color settings for the GUI interface (Tk)
-
-.TP
-\fB%!preproc:\fR
-your customized filter (macro) which will be processed \fBBEFORE\fR the
-document parsing
-
-.TP
-\fB%!postproc:\fR
-your customized filter (macro) which will be processed \fBAFTER\fR the
-document parsing
-
-.SS SETTINGS RULES
-
-.RS
-.IP \(bu 3
-Settings are valid only inside the Config Area, and are considered
-plain comments if found on the document Body. Except include,
-which is a valid Body command.
-
-.IP \(bu 3
-If the same keyword appears more than once on the Config Area,
-the last found will be the one used. Except: options, preproc
-and postproc, which are cumulative.
-
-.IP \(bu 3
-A setting line with an invalid keyword will be considered a
-plain comment line.
-
-.IP \(bu 3
-This settings have precedence over txt2tagsrc file, but not on
-command line options.
-.RE
-
-.SH SYNTAX
-
-.P
-A very simple markup syntax is used on the document source
-(the plain text file) to identify structures and formatting.
-Here's the complete list:
-
-.SS Basic
+.SH MARKUP
 
 .nf
-  Headers           The first 3 lines of the source file
-  Title             = words =
-  Numbered title    + words +
-  Paragraph         words
+Headers           First 3 lines of the source file
+Title             = words =
+Numbered title    + words +
+Comment           % comments
+Separator line    -----------------------...
+Strong line       =======================...
+Image             [filename.jpg]
+Link              [label url]
+
+Bold              **words**
+Italic            //words//
+Underline         __words__
+Strike            --words--
+Monospaced        ``words``
+Raw               ""words""
+Tagged            ''words''
+
+Paragraph         words
+Quote             <TAB>words
+List              - words
+Numbered list     + words
+Definition list   : words
+Table             | cell1 | cell2 | cell3...
+
+Verbatim line     ``` words
+Raw line          """ words
+Tagged line       ''' words
+
+Verbatim block    ```
+                  lines
+                  ```
+Raw block         """
+                  lines
+                  """
+Tagged block      '''
+                  lines
+                  '''
 .fi
 
-
-.SS Beautifiers
-
-.nf
-  Bold              **words**
-  Italic            //words//
-  Underline         __words__
-  Strike            --words--
-  Monospaced        ``words``
-.fi
-
-
-.SS Text Blocks
-
-.nf
-  Quote             <TAB>words
-  List              - words
-  Numbered list     + words
-  Definition list   : words
-  Verbatim line     ``` words
-  Verbatim area     ```<LineBreak> lines <LineBreak>```
-  Raw line          """ words
-  Raw area          """<LineBreak> lines <LineBreak>"""
-  Table             | cell1 | cell2 | cell3...
-.fi
-
-
-.SS Other
-
-.nf
-  Separator line    -----------------------...
-  Strong line       =======================...
-  Links             [label url]
-  Image             [filename.jpg]
-  Raw Text          ""words""
-  Comment           % comments
-.fi
-
-
-.P
-Please read the Txt2tags User Guide (on the program documentation
-directory) for a detailed description of each mark.
 
 .SH EXAMPLES
 
-.P
-Assuming you have written a file.t2t marked file, let's have some
-converting fun.
+.TP
+txt2tags \-t html file.t2t
+
+Convert to HTML, saving to file.html.
 
 .TP
-\fBConvert to HTML, saving to file.html\fR
-$ txt2tags \-t html file.t2t
+txt2tags \-t html \-o \- file.t2t
+
+Convert to HTML, sending results to STDOUT.
 
 .TP
-\fBThe same, using redirection\fR
-$ txt2tags \-t html \-o \- file.t2t > file.html
+txt2tags \-t html \-\-toc file.t2t
+
+Convert to HTML, including automatic Table Of Contents.
 
 .TP
-\fBIncluding Table Of Contents\fR
-$ txt2tags \-t html \-\-toc file.t2t
+txt2tags \-t html \-\-toc \-\-toc\-level 2 \-n file.t2t
+
+Convert to HTML, with a two level Table of Contents and numbered titles.
 
 .TP
-\fBIncluding TOC and numbering titles\fR
-$ txt2tags \-t html \-\-toc \-\-enum\-title file.t2t
+txt2tags \-\-toc\-only file.t2t
+
+Just show the Table of Contents, no conversion is done.
 
 .TP
-\fBContents quick view\fR
-$ txt2tags \-\-toc\-only file.t2t
+txt2tags \-t html \-\-css\-sugar \-\-style base.css \-\-style ui.css file.t2t
+
+Convert to HTML, preparing the resulting code to be used with CSS, and also include calls to two external CSS files.
 
 .TP
-\fBQuick one\-liner test from STDIN\fR
-$ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
+txt2tags \-t art \-\-slides \-\-width 80 \-\-height 25 \-o \- file.t2t | more
+
+Create ASCII Art presentation slides, ready to be shown in a 80x25 terminal screen/window.
 
 .TP
-\fBUse of the graphical GUI\fR
-$ txt2tags \-\-gui file.t2t
+(echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+Handy one\-liner for quick tests using STDIN.
 
 .TP
-\fBPost\-conversion with and external filter\fR
-$ txt2tags \-t html \-o\- file.t2t | sed \-f myfilter.sed > file.html
+txt2tags \-t html \-o \- file.t2t | tidy > file.html
 
-.SH TIPS
-
-.P
-A few tips for creating documentation.
-
-.TP
-Anchors
-The titles can have links to anchors, if the target allows them.
-
-.nf
-  Titles             = header =[anchor]
-  Numbered titles    + header +[anchor]
-.fi
-
-
-
-.TP
-Multiples files
-\fBtxt2tags\fR can handle multiple files:
-txt2tags *.t2t
+Send results to STDOUT, then fine tune the code with an external program before saving the output file.
 
 .SH MACROS
 
-.TP
-%%date
-Allows to include the current date, in the format YYYYMMDD.
-Optional  formatting can be specified using the
-%%date(format\-string) syntax.
+.P
+Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except %%toc, all macros can be customized with special directives, like %Y and %f. See the txt2tags User Guide for details.
 
 .TP
-%%infile
-Used to get information about the source file. Optional formatting can
-be specified using the %%infile(format\-string) syntax.
-
-Useful for footer link like [See source %%infile], so you can
-change the filename and its references will be updated.
+\fB%%date\fR
+Insert the current date. The default format is %%date(%Y%m%d), which gives YYYYMMDD.
 
 .TP
-%%mtime
-Gets information about the source file modification time. It uses the
-same formatters accepted by the %%date macro.
+\fB%%infile\fR
+Insert the source file path. The default format is %%infile(%f). Useful for footer links like [See source %%infile].
 
 .TP
-%%outfile
-Used to get information about the converted file. Optional formatting
-can be specified using the %%outfile(format\-string) syntax.
-
-Useful for self mentioning like "This is the manpage.man file", so you
-can change the filename and its references will be updated.
+\fB%%mtime\fR
+Insert the source file modification time. The default format is %%date(%Y%m%d), which gives YYYYMMDD.
 
 .TP
-%%toc
-The %%toc macro specifies where the TOC of the document will be
-placed. You can place it wherever needed inside the document, one or
-more times.
+\fB%%outfile\fR
+Insert the output file path. The default format is %%outfile(%f). Useful for self mentioning like "This is the manpage.man file".
 
-NOTE: %%toc will be expanded only with the \-\-toc option.
+.TP
+\fB%%toc\fR
+Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the \-\-toc option.
+
+.SH FILES
+
+.TP
+~/.txt2tagsrc
+Default user configuration file.
+
+.SH ENVIRONMENT
+
+.TP
+T2TCONFIG
+If non\-null, sets the full pathname for the default user configuration file.
 
 .SH AUTHOR
 
 .P
-Written and maintained by Aurelio Jargas <verde@aurelio.net>
+Aurelio Jargas <verde@aurelio.net>
+
+.SH BUGS
 
 .P
-This Manual Page was written by Jose Inacio Coelho <jic@technologist.com>
-as a text file, then converted to man format by \fBtxt2tags\fR!
+http://code.google.com/p/txt2tags/issues
 
 .SH COPYRIGHT
 
 .P
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Aurelio Jargas
+Copyright (C) 2001\-2010 Aurelio Jargas, GNU GPL v2
 
-.P
-This is free software; see the source for copying conditions. There is
-NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.
-
-.\" man code generated by txt2tags 2.6b (http://txt2tags.sf.net)
-.\" cmdline: txt2tags -t man English/manpage.t2t
+.\" man code generated by txt2tags 2.6b1 (http://txt2tags.sf.net)
+.\" cmdline: txt2tags -t man manpage.t2t
