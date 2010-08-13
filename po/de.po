@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
 "PO-Revision-Date: 2005-09-05 12:00-0200\n"
 "Last-Translator: manne <manne@somedomain>\n"
 "Language-Team: de team <LL@li.org>\n"
@@ -69,6 +69,10 @@ msgstr "%s Version %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Eingabezeile: %s [OPTIONS] [infile.t2t ...]"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
 "  -t, --target=TYPE     wähle das Zielformat. Zur Zeit werden unterstützt:"
@@ -83,58 +87,45 @@ msgstr ""
 "  -o, --outfile=FILE  nimm FILE als Bezeichner für die Ausgabedatei ('-' für "
 "STDOUT)"
 
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr ""
-"  -H, --no-headers    unterdrücke Kopfzeilen, Überschriften und Fusszeilen"
-
-msgid ""
-"      --headers       show header, title and footer contents (default ON)"
-msgstr ""
-"      --headers       zeige Kopfzeilen, Titel und Fusszeilen an "
-"(standardmässig eingeschaltet)"
-
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
 "      --encoding=ENC   Zielformatierung einstellen (utf-8, iso-8859-1, usw)"
 
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr ""
-"      --style=FILE    benutze die Datei FILE für die Ausgabeformatierung "
-"(wie HTML CSS)"
-
-msgid ""
-"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr ""
-"      --css-sugar     CSS freundliche Tags für HTML und XHTML Zielformate "
-"einfügen"
-
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr "      --css-inside     CSS Datei Inhalte in HTML/XHTML Header einfügen"
-
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    E-Mailadressen vor Spam Robotern verbergen. x@y.z wird "
-"zu <x (a) y z>"
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr ""
-"      --toc           Füge ein Inhaltsverzeichnis (TOC) der Zieldatei hinzu"
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr ""
-"      --toc-only      Das Inhaltsverzeichnis (TOC) wird angezeigt und dann "
-"das Programm beendet"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr ""
 "      --toc-level=N   Setze die maximale Tiefe der Gliederungsebenen im "
 "Inhaltsverzeichnis auf den Wert N"
 
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr ""
+
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr ""
 "  -n, --enum-title    Nummerierung der Überschriften (1, 1.1, 1.1.1, usw)"
+
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr ""
+"      --style=FILE    benutze die Datei FILE für die Ausgabeformatierung "
+"(wie HTML CSS)"
+
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr ""
+
+msgid ""
+"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr "      --css-inside     CSS Datei Inhalte in HTML/XHTML Header einfügen"
+
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
+msgid ""
+"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"      --mask-email    E-Mailadressen vor Spam Robotern verbergen. x@y.z wird "
+"zu <x (a) y z>"
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
@@ -148,16 +139,8 @@ msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr ""
-
-msgid "  -C, --config-file=F read config from file F"
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F Konfiguration von der Datei F einlesen"
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr ""
-"      --rc            Einlesen der Benutzerkonfigurationsdatei ~/.txt2tagsrc "
-"(standardmässig eingeschaltet)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           Das grafische Eingabeinterface aktivieren"
@@ -180,7 +163,7 @@ msgstr ""
 "  -V, --version       Anzeige der Programmversion und dann das Programm "
 "beenden"
 
-msgid "      --dump-config   print all the config found and exit"
+msgid "      --dump-config   print all the configuration found and exit"
 msgstr ""
 "      --dump-config    Alle gefundenen Konfigurationen werden angezeigt und "
 "dann das Programm beendet."
@@ -189,10 +172,6 @@ msgid "      --dump-source   print the document source, with includes expanded"
 msgstr ""
 "      --dump-source   Anzeige des Quelldokuments, eingefügte Dokumente "
 "werden expandiert"
-
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "Schalten Sie Optionen aus:"
@@ -478,6 +457,38 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags wurde erfolgreich beendet"
+
+#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
+#~ msgstr ""
+#~ "  -H, --no-headers    unterdrücke Kopfzeilen, Überschriften und Fusszeilen"
+
+#~ msgid ""
+#~ "      --headers       show header, title and footer contents (default ON)"
+#~ msgstr ""
+#~ "      --headers       zeige Kopfzeilen, Titel und Fusszeilen an "
+#~ "(standardmässig eingeschaltet)"
+
+#~ msgid ""
+#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr ""
+#~ "      --css-sugar     CSS freundliche Tags für HTML und XHTML Zielformate "
+#~ "einfügen"
+
+#~ msgid "      --toc           add TOC (Table of Contents) to target document"
+#~ msgstr ""
+#~ "      --toc           Füge ein Inhaltsverzeichnis (TOC) der Zieldatei "
+#~ "hinzu"
+
+#~ msgid "      --toc-only      print document TOC and exit"
+#~ msgstr ""
+#~ "      --toc-only      Das Inhaltsverzeichnis (TOC) wird angezeigt und "
+#~ "dann das Programm beendet"
+
+#~ msgid ""
+#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+#~ msgstr ""
+#~ "      --rc            Einlesen der Benutzerkonfigurationsdatei ~/."
+#~ "txt2tagsrc (standardmässig eingeschaltet)"
 
 #~ msgid "Invalid target '%s' (try --help)"
 #~ msgstr "Falsches Ziel '%s' (Hilfefunktion --help benutzen)"

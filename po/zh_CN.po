@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
 "PO-Revision-Date: 2006-08-01 12:25+0800\n"
 "Last-Translator: wwfifi <wwfifi@gmail.com>\n"
 "Language-Team: \n"
@@ -72,6 +72,10 @@ msgstr "%s 版本 %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "用法: %s [OPTIONS] [infile.t2t ...]"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr "  -t, --target=TYPE   设置目标文件类型. 目前支持:"
 
@@ -81,43 +85,38 @@ msgstr "  -i, --infile=FILE   设置 FILE 作为输入文件名 (标准输入用
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr "  -o, --outfile=FILE  设置FILE为输出文件名 (标准输出STDOUT用 '-' 表示)"
 
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    禁用 header, title 和 footer 内容"
-
-msgid ""
-"      --headers       show header, title and footer contents (default ON)"
-msgstr "      --headers       显示 header, title 和 footer 内容 (默认打开)"
-
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr "      --encoding=ENC  设置目标文件编码 (utf-8, iso-8859-1, 等)"
+
+msgid "      --toc           add an automatic Table of Contents to the output"
+msgstr ""
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr "      --toc-level=N   设置目录(TOC)最大深度为N"
+
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr ""
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    标题行格式为 1, 1.1, 1.1.1, 等"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr "      --style=FILE    设置文档样式类型(比如 HTML CSS)"
 
-msgid ""
-"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr "      --css-sugar     为HTML 和 XHTML 标记插入友好的CSS标记"
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr ""
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr "      --css-inside    插入 CSS 文件内容到 HTML/XHTML 文件头部"
 
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
 "      --mask-email    防垃圾邮件,隐藏Email地址. x@y.z turns <x (a) y z>"
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           在目标文件中添加 TOC (目录) "
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      显示目录(TOC)并退出"
-
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   设置目录(TOC)最大深度为N"
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    标题行格式为 1, 1.1, 1.1.1, 等"
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
@@ -131,14 +130,8 @@ msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr ""
-
-msgid "  -C, --config-file=F read config from file F"
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F 读取配置文件为F的配置"
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr "      --rc            读取用户配置文件 ~/.txt2tagsrc (默认打开)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           使用图形Tk界面"
@@ -155,15 +148,11 @@ msgstr "  -h, --help          显示本帮助信息"
 msgid "  -V, --version       print program version and exit"
 msgstr "  -V, --version       显示程序版本并退出"
 
-msgid "      --dump-config   print all the config found and exit"
+msgid "      --dump-config   print all the configuration found and exit"
 msgstr "      --dump-config   显示所有能找到的配置文件并退出"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   展开显示所有源文件"
-
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
 
 msgid "Turn OFF options:"
 msgstr "关闭的选项:"
@@ -443,6 +432,27 @@ msgstr ""
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags 成功完成"
+
+#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
+#~ msgstr "  -H, --no-headers    禁用 header, title 和 footer 内容"
+
+#~ msgid ""
+#~ "      --headers       show header, title and footer contents (default ON)"
+#~ msgstr "      --headers       显示 header, title 和 footer 内容 (默认打开)"
+
+#~ msgid ""
+#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr "      --css-sugar     为HTML 和 XHTML 标记插入友好的CSS标记"
+
+#~ msgid "      --toc           add TOC (Table of Contents) to target document"
+#~ msgstr "      --toc           在目标文件中添加 TOC (目录) "
+
+#~ msgid "      --toc-only      print document TOC and exit"
+#~ msgstr "      --toc-only      显示目录(TOC)并退出"
+
+#~ msgid ""
+#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+#~ msgstr "      --rc            读取用户配置文件 ~/.txt2tagsrc (默认打开)"
 
 #~ msgid "Invalid target '%s' (try --help)"
 #~ msgstr "无效的目标文件 '%s' (试下--help获得帮助)"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6b\n"
-"POT-Creation-Date: 2010-08-12 10:49+BRT\n"
-"PO-Revision-Date: 2010-08-12 11:00+BRT\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"PO-Revision-Date: 2010-08-13 12:03+BRT\n"
 "Last-Translator: Aurelio Jargas\n"
 "Language-Team: pt_BR team\n"
 "MIME-Version: 1.0\n"
@@ -69,6 +69,11 @@ msgstr "%s versão %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Uso: %s [OPÇÕES] [arquivo.t2t ...]"
 
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+"      --targets       mostra a lista de todos os formatos disponíveis e sai"
+
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr "  -t, --target=TIPO   define o formato do destino. tipos suportados:"
 
@@ -79,28 +84,29 @@ msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 "  -o, --outfile=ARQ   define ARQ como o arquivo destino ('-' para STDOUT)"
 
-msgid "  -H, --no-headers    suppress header, title and footer contents"
-msgstr "  -H, --no-headers    suprime os cabeçalhos, título e rodapé"
-
-msgid ""
-"      --headers       show header, title and footer contents (default ON)"
-msgstr ""
-"      --headers       exibe os cabeçalhos, título e rodapé (padrão LIGADO)"
-
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
 "      --encoding=ENC  informa a codificação de destino (utf-8, iso-8859-1, "
 "etc)"
 
+msgid "      --toc           add an automatic Table of Contents to the output"
+msgstr "      --toc           cria um Sumário automático no documento"
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr "      --toc-level=N   define o nível máximo do Sumário para N"
+
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr "      --toc-only      exibe o Sumário do documento e sai"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    numera todos os títulos como 1, 1.1, 1.1.1, etc"
+
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr ""
 "      --style=ARQ     utiliza ARQ como estilo do documento (CSS no Html)"
 
-msgid ""
-"      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-msgstr ""
-"      --css-sugar     insere tags compatíveis com CSS em destinos HTML e "
-"XHTML"
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr "      --css-sugar     usa tags compatíveis com CSS no HTML/XHTML"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
@@ -108,25 +114,14 @@ msgstr ""
 "      --css-inside    insere o conteúdo do arquivo CSS no documento HTML/"
 "XHTML"
 
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr "  -H, --no-headers    remove os cabeçalhos e o rodapé do documento"
+
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
 "      --mask-email    esconde e-mails dos robôs de SPAM. x@y.z vira <x (a) y "
 "z>"
-
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr ""
-"      --toc           inclui o Índice (Table of Contents) no documento "
-"destino"
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      exibe o Índice do documento e sai"
-
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   define o nível máximo do Índice para N"
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numera todos os títulos como 1, 1.1, 1.1.1, etc"
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
@@ -135,22 +130,14 @@ msgstr ""
 
 msgid ""
 "      --width=N       set the output's width to N columns (used by -t art)"
-msgstr ""
-"      --width=N       define a largura em N colunas (usado por -t art)"
+msgstr "      --width=N       define a largura em N colunas (usado por -t art)"
 
 msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
-msgstr ""
-"      --height=N      define a altura em N linhas (usado por -t art)"
+msgstr "      --height=N      define a altura em N linhas (usado por -t art)"
 
-msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-msgstr "      --art-chars=S   define os caracteres do ASCII Art (padrão %s)"
-
-msgid "  -C, --config-file=F read config from file F"
+msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F carrega arquivo de configuração F"
-
-msgid "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-msgstr "      --rc            lê config do usuário em ~/.txt2tagsrc (padrão LIGADO)"
 
 msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           carrega a interface gráfica (Tk)"
@@ -167,16 +154,11 @@ msgstr "  -h, --help          exibe este texto de ajuda e sai"
 msgid "  -V, --version       print program version and exit"
 msgstr "  -V, --version       exibe a versão do programa e sai"
 
-msgid "      --dump-config   print all the config found and exit"
+msgid "      --dump-config   print all the configuration found and exit"
 msgstr "      --dump-config   exibe todas as configurações encontradas e sai"
 
 msgid "      --dump-source   print the document source, with includes expanded"
 msgstr "      --dump-source   mostra os fontes com os includes expandidos"
-
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
-"      --targets       mostra a lista de todos os formatos disponíveis e sai"
 
 msgid "Turn OFF options:"
 msgstr "Opções para DESLIGAR funcionalidades:"
@@ -338,7 +320,7 @@ msgid "Composing target Footer"
 msgstr "Compondo o Rodapé"
 
 msgid "Composing target TOC"
-msgstr "Compondo o Índice (TOC)"
+msgstr "Compondo o Sumário (TOC)"
 
 msgid "Saving results to the output file"
 msgstr "Salvando o resultado no arquivo de saída"
@@ -401,13 +383,13 @@ msgid "Number titles (1, 1.1, 1.1.1, etc)"
 msgstr "Numerar títulos (1, 1.1, 1.1.1, etc)"
 
 msgid "Do TOC also (Table of Contents)"
-msgstr "Gerar índice (TOC)"
+msgstr "Gerar Sumário (TOC)"
 
 msgid "Hide e-mails from SPAM robots"
 msgstr "Esconder e-mails de robôs de SPAM"
 
 msgid "Just do TOC, nothing more"
-msgstr "Gerar apenas o índice, nada mais"
+msgstr "Gerar apenas o Sumário, nada mais"
 
 msgid "Dump to screen (Don't save target file)"
 msgstr "Mostrar na tela (Não grava em arquivo)"
@@ -456,3 +438,4 @@ msgstr "Informe o arquivo de entrada (.t2t) no final do comando."
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: finalizado com sucesso"
+
