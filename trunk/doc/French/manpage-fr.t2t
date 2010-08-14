@@ -111,7 +111,7 @@ Lit la configuration depuis le fichier extérieur //FICHIER//. La configuration 
 Améliore l'utilisation de feuilles CSS par rapport au code HTML/XHTML généré. Les attributs éventuels des balises sont retirés, les balises de présentation sont évités, l'entête est composé de balises H1, H2 et H3, de nouveaux DIVs sont créés : //#header//, //#body//, //.toc//.
 
 :     **--css-inside**
-Insére le contenu du fichier CSS dans l'entête HTML/XHTML. Utilisez ``--style`` pour spécifier le fichier CSS à inclure.
+Insère le contenu du fichier CSS dans l'entête HTML/XHTML. Utilisez ``--style`` pour spécifier le fichier CSS à inclure.
 
 :     **--dump-config**
 Affiche toute la configuration trouvée et sort.
