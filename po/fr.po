@@ -87,19 +87,18 @@ msgstr ""
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr ""
-"  -H, --no-headers    supprime les entêtes, les titres et les pieds de page"
+"      --encoding=ENC  choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr ""
-"      --headers       montre les entêtes, les titres et les pieds de page "
-"(par défaut)"
+"      --toc           ajoute la table des matières à la sortie"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr ""
-"      --encoding=ENC  choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
+"      --toc-level=N   limite la profondeur de la table des matières à N"
 
 msgid "      --toc-only      print the Table of Contents and exit"
-msgstr ""
+msgstr "      --toc-only      affiche la table des matières et sort"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    numéroter les titres en : 1, 1.1, 1.1.1, etc"
@@ -116,11 +115,10 @@ msgstr ""
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
-"      --css-sugar     insère le contenu du fichier CSS pour des sorties "
-"HTML et XHTML"
+"  --css-inside     Insère le contenu du fichier CSS dans l'entête HTML/XHTML."
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
-msgstr ""
+msgstr "  -H, --no-headers    supprime les entêtes, les titres et les pieds de page"
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
@@ -128,18 +126,6 @@ msgstr ""
 "      --mask-email    cache l'email des robots spammeurs. Ainsi x@y.z devient x "
 "(a) y z"
 
-msgid "      --toc           add TOC (Table of Contents) to target document"
-msgstr "      --toc           ajoute la table des matières à la sortie"
-
-msgid "      --toc-only      print document TOC and exit"
-msgstr "      --toc-only      affiche la table des matières et sort"
-
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr ""
-"      --toc-level=N   limite la profondeur de la table des matières à N"
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numérote les titres en : 1, 1.1, 1.1.1, etc"
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
@@ -157,6 +143,7 @@ msgstr ""
 "      --height=N      fixe la hauteur à N lignes (utilisé par -t art)"
 msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 msgstr "     --art-chars=S   met les caractères ASCII Art à S (par défaut %s) pour : "
+
 msgid "  -C, --config-file=F read config from file F"
 msgstr " -C, --config-file=F lit la configuration à partir du fichier F"
 
