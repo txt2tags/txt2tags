@@ -140,7 +140,7 @@ Définit la hauteur de sortie à //NOMBRE// de lignes. Cette option est uniqueme
 Définit //FICHIER// comme fichier d'entrée pour le document source. Utilisez '-' pour lire la source depuis STDIN.
 
 :     **--mask-email**
-Masque les courriels contre robots spammeurs. Retire @ et les points. Ainsi l'adresse ""foo@bar.com"" devient <foo (a) bar com>.
+Masque les courriels contre les robots spammeurs. Retire @ et les points. Ainsi l'adresse ""foo@bar.com"" devient <foo (a) bar com>.
 
 : **-n**, **--enum-title**
 Numérote automatiquement les titres. Ils seront préfixés par 1, 1.1, 1.1.1, ...
@@ -209,7 +209,7 @@ Choisit la cible document de sortie en la définissant à //TYPE//. Des cibles c
 Affiche une liste de toutes les cibles disponibles, et sort.
 
 :     **--toc**
-Ajoute une table des matières (Table of Contents ; TOC), générée automatiquent, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro ``%%TOC``.
+Ajoute une table des matières (Table of Contents ; TOC), générée automatiquement, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro ``%%TOC``.
 
 :     **--toc-level**=//NOMBRE//
 Assigne le niveau maximum de la table des matières à //NOMBRE//. Tous les titres au-delà de //NOMBRE// ne seront pas inclus dans la table des matières.
@@ -343,7 +343,7 @@ Convertion HTML, préparant le code résultant à être utilisé avec des CSS, e
 
 : ``txt2tags -t art --slides --width 80 --height 25 -o - fichier.t2t | more``
 
-Créé une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
+Crée une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
 
 : ``(echo ; echo "**bold**") | txt2tags -t html -H -``
 
