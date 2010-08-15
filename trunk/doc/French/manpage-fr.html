@@ -166,7 +166,7 @@ Définit la hauteur de sortie à <I>NOMBRE</I> de lignes. Cette option est uniqu
 Définit <I>FICHIER</I> comme fichier d'entrée pour le document source. Utilisez '-' pour lire la source depuis STDIN.
 <P></P>
 <DT>    <B>--mask-email</B></DT><DD>
-Masque les courriels contre robots spammeurs. Retire @ et les points. Ainsi l'adresse foo@bar.com devient &lt;foo (a) bar com&gt;.
+Masque les courriels contre les robots spammeurs. Retire @ et les points. Ainsi l'adresse foo@bar.com devient &lt;foo (a) bar com&gt;.
 <P></P>
 <DT><B>-n</B>, <B>--enum-title</B></DT><DD>
 Numérote automatiquement les titres. Ils seront préfixés par 1, 1.1, 1.1.1, ...
@@ -235,7 +235,7 @@ Choisit la cible document de sortie en la définissant à <I>TYPE</I>. Des cible
 Affiche une liste de toutes les cibles disponibles, et sort.
 <P></P>
 <DT>    <B>--toc</B></DT><DD>
-Ajoute une table des matières (Table of Contents ; TOC), générée automatiquent, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro <CODE>%%TOC</CODE>.
+Ajoute une table des matières (Table of Contents ; TOC), générée automatiquement, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro <CODE>%%TOC</CODE>.
 <P></P>
 <DT>    <B>--toc-level</B>=<I>NOMBRE</I></DT><DD>
 Assigne le niveau maximum de la table des matières à <I>NOMBRE</I>. Tous les titres au-delà de <I>NOMBRE</I> ne seront pas inclus dans la table des matières.
@@ -416,7 +416,7 @@ Convertion HTML, préparant le code résultant à être utilisé avec des CSS, e
 <P></P>
 <DT><CODE>txt2tags -t art --slides --width 80 --height 25 -o - fichier.t2t | more</CODE></DT><DD>
 <P></P>
-Créé une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
+Crée une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
 <P></P>
 <DT><CODE>(echo ; echo "**bold**") | txt2tags -t html -H -</CODE></DT><DD>
 <P></P>

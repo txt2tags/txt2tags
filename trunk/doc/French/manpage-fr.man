@@ -135,7 +135,7 @@ Définit \fIFICHIER\fR comme fichier d'entrée pour le document source. Utilisez
 
 .TP
     \fB\-\-mask\-email\fR
-Masque les courriels contre robots spammeurs. Retire @ et les points. Ainsi l'adresse foo@bar.com devient <foo (a) bar com>.
+Masque les courriels contre les robots spammeurs. Retire @ et les points. Ainsi l'adresse foo@bar.com devient <foo (a) bar com>.
 
 .TP
 \fB\-n\fR, \fB\-\-enum\-title\fR
@@ -227,7 +227,7 @@ Affiche une liste de toutes les cibles disponibles, et sort.
 
 .TP
     \fB\-\-toc\fR
-Ajoute une table des matières (Table of Contents ; TOC), générée automatiquent, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro %%TOC.
+Ajoute une table des matières (Table of Contents ; TOC), générée automatiquement, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro %%TOC.
 
 .TP
     \fB\-\-toc\-level\fR=\fINOMBRE\fR
@@ -419,7 +419,7 @@ Convertion HTML, préparant le code résultant à être utilisé avec des CSS, e
 .TP
 txt2tags \-t art \-\-slides \-\-width 80 \-\-height 25 \-o \- fichier.t2t | more
 
-Créé une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
+Crée une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
 
 .TP
 (echo ; echo "**bold**") | txt2tags \-t html \-H \-
