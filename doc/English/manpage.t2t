@@ -371,6 +371,10 @@ If non-null, sets the full pathname for the default user configuration file.
 
 Aurelio Jargas <verde@aurelio.net>
 
+%% TRANSLATOR: Activate the following line and add your language, name and email/site.
+
+% Man page translated to LANGUAGE by YOUR NAME <YOUR EMAIL OR WEBSITE>.
+
 = BUGS =[bugs]
 
 http://code.google.com/p/txt2tags/issues
