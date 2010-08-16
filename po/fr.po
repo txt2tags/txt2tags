@@ -76,7 +76,7 @@ msgstr ""
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr ""
-"  -t, --target=TYPE      indique le type de document de sortie supporté :"
+"  -t, --target=TYPE      définit le type de document de sortie. Formats actuellement supportés :"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
 msgstr "  -i, --infile=ENTREE  choisit le fichier d'entrée ('-' pour STDIN)"
@@ -115,7 +115,7 @@ msgstr ""
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
-"  --css-inside     Insère le contenu du fichier CSS dans l'entête HTML/XHTML."
+"  --css-inside     insère le contenu du fichier CSS dans l'entête HTML/XHTML"
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
 msgstr "  -H, --no-headers    supprime les entêtes, les titres et les pieds de page"
@@ -218,7 +218,7 @@ msgid "File read (%d lines): %s"
 msgstr "Lu %d lignes du fichier %s"
 
 msgid "Cannot open file for writing:"
-msgstr "Impossible d'ouvrir le fichier pour écriture :"
+msgstr "Impossible d'ouvrir le fichier en écriture :"
 
 msgid "%s (try --help)"
 msgstr "%s (essayez --help)"
@@ -242,10 +242,10 @@ msgid "No target specified (try --help)"
 msgstr "Pas de cible spécifiée (essayez --help)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr "Choisissez une cible avec l'option -t ou la commande %!target"
+msgstr "Choisissez une cible avec l'option -t ou la commande %!target."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr "Lancez 'txt2tags --targets' pour voir les cibles disponibles"
+msgstr "Lancez 'txt2tags --targets' pour voir les cibles disponibles."
 
 msgid "Missing input file (try --help)"
 msgstr "Il manque le fichier d'entrée (essayez --help)"
@@ -260,7 +260,7 @@ msgid "Option --split must be 0, 1 or 2"
 msgstr "Option --split doit être 0, 1 ou 2"
 
 msgid "--art-chars: Expected %i chars, got %i"
-msgstr "art-chars : attendu %i caractères, récupéré %i"
+msgstr "--art-chars : attendu %i caractères, récupéré %i"
 
 msgid "Input and Output files are the same: %s"
 msgstr "Les fichiers d'entrée et de sortie (%s) sont les mêmes"
@@ -392,7 +392,7 @@ msgid "Some options you may check:"
 msgstr "Quelques options du document de sortie :"
 
 msgid "Some extra options:"
-msgstr "Quelques options 'extra'"
+msgstr "Quelques options en plus :"
 
 msgid "Include headers on output"
 msgstr "Inclure les entêtes dans la sortie"

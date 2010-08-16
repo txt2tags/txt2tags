@@ -211,7 +211,7 @@ Lit le fichier de configuration utilisateur ~/.txt2tagsrc. ACTIVÉ par défaut.
 
 .TP
     \fB\-\-slides\fR
-Formatte la sortie en tant que slide de présentation. Cette option est uniquement utilisée par la cible ASCII Art.
+Formate la sortie en tant que slide de présentation. Cette option est uniquement utilisée par la cible ASCII Art.
 
 .TP
     \fB\-\-style\fR=\fIFICHIER\fR
