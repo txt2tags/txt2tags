@@ -1,419 +1,472 @@
-.TH "TXT2TAGS" 1 "2008年7月" ""
+.TH "TXT2TAGS" 1 "2010年8月" ""
+
 
 .SH 名称
+
 .P
-txt2tags \- 文本格式化及转换工具
+txt2tags \- 文本格式化及转换工具 
 
 .SH 总览
+
 .P
-\fBtxt2tags\fR [\fI选项\fR]... [\fI文件\fR]...
+\fBtxt2tags\fR [\fI选项\fR] [\fI文件\fR...]
 
 .SH 描述
-.P
-\fBtxt2tags\fR是一个用Python开发的GPL文本格式化及转换工具。
-它以最小的开销将单一的文本文件转换为
-\fIHTML\fR, \fIXHTML\fR, \fISGML\fR, \fILaTeX\fR, \fILout\fR, \fIMan Page\fR, \fIMoinMoin\fR,
-\fIWikipedia\fR, \fIDokuWiki\fR, \fIGoogle Code Wiki\fR, \fIMagicPoint\fR 及 \fIPageMaker\fR
-格式的文档。
 
 .P
-用户只要知道少量简单的\fBtxt2tags\fR标记，编写纯文本文件即可。
-程序会做所有辛苦的工作，加入复杂的标签，
-并处理目标文档中的错误。
+\fBtxt2tags\fR 读入含少量标记的文本，并将其转换为多种格式的文档：
+\fIASCII Art\fR,
+\fIAsciiDoc\fR,
+\fICreole\fR,
+\fIDocBook\fR,
+\fIDokuWiki\fR,
+\fIGoogle Code Wiki\fR,
+\fIHTML\fR,
+\fILaTeX\fR,
+\fILout\fR,
+\fIMagicPoint\fR,
+\fIMan page\fR,
+\fIMoinMoin\fR,
+\fIPageMaker\fR,
+\fIPlain Text\fR,
+\fIpmWiki\fR,
+\fISGML\fR,
+\fIWikipedia\fR 和
+\fIXHTML\fR.
 
 .P
-同一个文本文件可以转换为支持的任一目标格式，不用另外进行编辑。
-这也是\fBtxt2tags\fR的目的：
-单源，多目标。
+此手册页是由\fBtxt2tags\fR转换一个示例文本文件生成。并且该示例文本文件同时被转换成HTML，作为此手册页的在线版本。
 
 .P
-请访问程序主页
-\fIhttp://txt2tags.sourceforge.net\fR.
+单个源文件，多种格式的目标文件 \- http://txt2tags.sourceforge.net
+
+.SH 标记
+
+.nf
+头部                源文件的前3行
+标题                = 文字 =
+带数字编号的标题    + 文字 +
+注释                % 注释内容
+隔离行              -----------------------...
+粗隔离行            =======================...
+图片                [filename.jpg]
+链接                [标签 url地址]
+
+粗体                **文字**
+斜体                //文字//
+下划线              __文字__
+删除线              --文字--
+等宽                ``文字``
+原始文本            ""文字""
+标记文本            ''文字''
+
+段落                文字
+引用                <TAB>文字
+列表                 - 文字
+带编号的列表        + 文字
+定义式列表          : 文字
+表格                | 单元格1 | 单元格2 | 单元格3...
+
+完全引用行          ``` 文字
+原文引用行          """ 文字
+标记引用行          ''' 文字
+
+完全引用块          ```
+                    多行文本
+                    ```
+原文引用块          """
+                    多行文本
+                    """
+标记引用块          '''
+                    多行文本
+                    '''
+.fi
+
 
 .SH 选项
-.TP
- \fB\-C\fR, \fB\-\-config\-file\fR
-从外部文件中读入配置(效果同 %!includeconf)
 
 .TP
-     \fB\-\-css\-sugar\fR
-在HTML/XHTML格式的目标文件中插入CSS\-friendly标签
+\fB\-C\fR, \fB\-\-config\-file\fR=\fIFILE\fR
+从外部文件\fIFILE\fR中读入配置。配置项格式为\fI%!关键字:取值\fR，详情请见
+配置 小节。
 
 .TP
-     \fB\-\-css\-inside\fR
-在HTML/XHTML头部插入CSS文件内容
+    \fB\-\-css\-sugar\fR
+优化生成的嵌入CSS样式HTML/XHTML内容。移除标签属性，禁用样式属性，头部内容由H1、H2和H3组成，新建以下DIV：
+\fI#header\fR, \fI#body\fR, \fI.toc\fR。
 
 .TP
-     \fB\-\-dump\-config\fR
-打印找到的所有配置并退出
+    \fB\-\-css\-inside\fR
+在HTML/XHTML头部嵌入CSS文件的内容。使用\-\-style指定读入的CSS文件。
 
 .TP
-     \fB\-\-dump\-source\fR
-查看文档源文件，源文件中includes命令包含的文件内容全部展开
+    \fB\-\-dump\-config\fR
+输出所有配置项后退出。
 
 .TP
-     \fB\-\-encoding\fR
-指定目标文件的编码(utf\-8, iso\-8859\-1, 等)
+    \fB\-\-dump\-source\fR
+输出文档源文件，并展开 (%!include) 中的内容。
 
 .TP
-     \fB\-\-gui\fR
-调用Tk图形界面
+    \fB\-\-encoding\fR=\fICODE\fR
+设置源文件转换成目标\fICODE\fR时采用的字符集。例如 UTF\-8 and iso\-8859\-1。
 
 .TP
- \fB\-h\fR, \fB\-\-help\fR
-打印帮助信息并退出
+    \fB\-\-gui\fR
+启动TK图形界面。
 
 .TP
- \fB\-H\fR, \fB\-\-no\-headers\fR
-不显示头部、标题和尾部信息
+\fB\-h\fR, \fB\-\-help\fR
+输出帮助信息后退出。
 
 .TP
-     \fB\-\-headers\fR
-显示头部、标题和尾部信息(默认 打开)
+\fB\-H\fR, \fB\-\-no\-headers\fR
+输出内容时不显示头部、尾部信息，只显示主体内容。
 
 .TP
- \fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
-指定输入文件名 FILE ('\-' 表示 标准输入)
+    \fB\-\-headers\fR
+输出内容时显示头部、尾部信息。此选项默认打开。
 
 .TP
-     \fB\-\-mask\-email\fR
-隐藏邮件地址(防止垃圾邮件地址收割)：将x@y.z转换为<x (a) y z>
+    \fB\-\-height\fR=\fINUM\fR
+设置输出内容为\fINUM\fR行。此选项只在目标文档格式为艺术ASCII、且指定\-\-slides时可用。
 
 .TP
- \fB\-n\fR, \fB\-\-enum\-title\fR
-对所有标题行进行编号：1, 1.1, 1.1.1, 等
+\fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
+指定\fIFILE\fR为输入的源文件名。如果指定为'\-'，则从STDIN读入源文本。
 
 .TP
-     \fB\-\-no\-dump\-config\fR
-不输出配置信息
+    \fB\-\-mask\-email\fR
+隐藏邮件地址，以防止垃圾邮件地址收割。移除@和.。邮件地址
+foo@bar.com 被转换为 <foo (a) bar com>。
 
 .TP
-     \fB\-\-no\-dump\-source\fR
-不输出源文件内容
+\fB\-n\fR, \fB\-\-enum\-title\fR
+对所有标题行进行自动编号。显示的前缀为 1, 1.1, 1.1.1, ... 
 
 .TP
-     \fB\-\-no\-encoding\fR
-清除编码设置
+    \fB\-\-no\-dump\-config\fR
+取消\-\-dump\-config动作。
 
 .TP
-     \fB\-\-no\-enum\-title\fR
-关闭标题自动编号效果
+    \fB\-\-no\-dump\-source\fR
+取消\-\-dump\-source动作。
 
 .TP
-     \fB\-\-no\-infile\fR
-清除所有预设的infile声明
+    \fB\-\-no\-encoding\fR
+清除encoding设置。
 
 .TP
-     \fB\-\-no\-mask\-email\fR
-不隐藏邮件地址，关闭 \-\-mask\-email 选项
+    \fB\-\-no\-enum\-title\fR
+关闭标题自动编号的设置。
 
 .TP
-     \fB\-\-no\-outfile\fR
-清除预设的 outfile 声明
+    \fB\-\-no\-infile\fR
+清除之前所有infile的声明。
 
 .TP
-     \fB\-\-no\-quiet\fR
-显示信息，关闭 \-\-quiet 选项
+    \fB\-\-no\-targets\fR
+取消\-\-targets动作。
 
 .TP
-     \fB\-\-no\-rc\fR
-不使用用户配置文件：~/.txt2tagsrc
+    \fB\-\-no\-mask\-email\fR
+关闭隐藏邮件地址的特性。
 
 .TP
-     \fB\-\-no\-style\fR
-清除文档样式设置
+    \fB\-\-no\-outfile\fR
+清除之前所有outfile的声明。
 
 .TP
-     \fB\-\-no\-toc\fR
-目标文档中不生成目录信息
+    \fB\-\-no\-quiet\fR
+输出消息，关闭\-\-quiet选项。
 
 .TP
-     \fB\-\-no\-toc\-only\fR
-关闭 \-\-toc\-only 选项
+    \fB\-\-no\-rc\fR
+不读入用户配置文件~/.txt2tagsrc。
 
 .TP
- \fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
-设置输出文件名为 FILE ('\-' 是 标准输出)
+    \fB\-\-no\-slides\fR
+关闭演示文档特性。
 
 .TP
- \fB\-q\fR, \fB\-\-quiet\fR
-安静模式，除了出错的信息其他都不显示
+    \fB\-\-no\-style\fR
+清除所有样式设置。
 
 .TP
-     \fB\-\-rc\fR
-使用用户配置文件：~/.txt2tagsrc (默认 打开)
+    \fB\-\-no\-toc\fR
+不输出目录。
 
 .TP
-     \fB\-\-style\fR=\fIFILE\fR
-使用 FILE 指定文档样式 (类似 Html CSS)
+    \fB\-\-no\-toc\-only\fR
+关闭\-\-toc\-only动作。
+
+.TP
+\fB\-o\fR, \fB\-\-outfile\fR=\fIFILE\fR
+指定输出的文件名为\fIFILE\fR。指定'\-'则将结果输出到STDOUT。
+
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+安静模式。关闭除了错误之外的所有其他消息输出。
+
+.TP
+    \fB\-\-rc\fR
+读入用户配置文件~/.txt2tagsrc。此选项默认打开。
+
+.TP
+    \fB\-\-slides\fR
+指定输出格式为演示文档，此选项只在输出目标格式为艺术ASCII时可用。
+
+.TP
+    \fB\-\-style\fR=\fIFILE\fR
+指定\fIFILE\fR作为目标文档的样式文件。用于指定HTML/XHTML文档使用的CSS文件，LaTeX文档使用的样式包。此选项可以多次使用，以指定多个样式文件。
 
 .TP
 \fB\-t\fR, \fB\-\-target\fR=\fITYPE\fR
-指定目标文档类型。目前支持：
-html, xhtml, sgml, tex, lout, man, mgp, wiki,
-gwiki, doku, moin, pm6, txt
+指定输出目标文档的类型为\fITYPE\fR。一些常用的类型为：\fIhtml\fR, \fIxhtml\fR, \fItex\fR, \fIman\fR, \fItxt\fR。使用\-\-targets选项查看所有支持的目标文档类型。
 
 .TP
-     \fB\-\-toc\fR
-生成目标文档时添加目录信息
+    \fB\-\-targets\fR
+输出所有可用的目标文档类型后退出。
 
 .TP
-     \fB\-\-toc\-level\fR=\fIN\fR
-显示的最大目录层次设为 N
+    \fB\-\-toc\fR
+在输出内容中包含自动生成的目录信息，置于头部内容和主体内容之间。也可以
+通过`%%TOC``宏显示指定目录输出位置。 
 
 .TP
-     \fB\-\-toc\-only\fR
-打印文档目录并退出
+    \fB\-\-toc\-level\fR=\fINUM\fR
+指定目录最大深度为\fINUM\fR。所有比\fINUM\fR深的标题不会在目录中显示。
 
 .TP
- \fB\-v\fR, \fB\-\-verbose\fR
-文件转换时显示详细的信息
+    \fB\-\-toc\-only\fR
+输出目录后退出。
 
 .TP
- \fB\-V\fR, \fB\-\-version\fR
-打印程序版本并退出
+\fB\-v\fR, \fB\-\-verbose\fR
+在文档转换过程中输出详细的信息。此选项可以多次使用，以提高输出的消息量。
+
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+输出程序版本后退出。
+
+.TP
+    \fB\-\-width\fR=\fINUM\fR
+设置输出的宽度为\fINUM\fR，此选项只在输出目标格式为艺术ASCII时可用。
+
+.SH 源文件
 
 .P
-默认情况下，转换生成的文件以'file.<type>'保存。
-使用 \-\-outfile 可以强制指定输出文件名。
-如果输入文件置'\-'，则从标准输入(STDIN)中读入。
-如果输出文件置'\-'，则输出到标准输出(STDOUT)。
-
-.SH 结构
-.P
-Txt2tags的源文件可以包含以下三个部分：
+源文件扩展名一般为\fI.t2t\fR (例如 myfile.t2t)。可以在以下三个区域指定源文件：
 
 .TP
-\fB头部\fR
-头三行。用于文档声明。
-如果不需要指定头部信息，则放空或指定
-no\-header选项。
+\fB头部\fR (可选)
+源文件的前三行。如果不需要头部信息，则源文件首行留空。
+用于指定文档标题、作者、版本和日期信息。
 
 .TP
-\fB设置\fR
-从第四行开始。所有设置的格式均为%!keyword: value。
-也可以在配置文件或命令行中进行设置。
+\fB配置\fR (可选)
+紧接在头部信息之后（第4行或第2行），在主体内容之前结束。
+用于指定各种配置项，格式为%!关键字:取值。
 
 .TP
 \fB主体\fR
-真正的文档来源！只要有这部分内容就是一个可用的
-txt2tags 文件。
+从头部区域之后的第一个有效文本行开始（非注释或配置），直至源文件结束。
+用于指定文档内容。
 
-.SH 设置
+.SH 配置
+
 .P
-源文件转换的定制有两种不同的方法。
-一种是采用外部的配置文件，比如RC文件(~/.txt2tagsrc) 或 用户指定的其它文件。
-另一种是在源文件内部使用设置选项直接进行配置。
-两种方法采用同样的语法：
+配置用于定制\fBtxt2tags\fR，与选项类似。配置项可以在源文件的配置区域，~/.txt2tagsrc文件，\-\-config\-file指定的外部文件中指定。
 
 .TP
-\fB%!target:\fR
-设置输出文档类型
+\fB%!target\fR
+配置输出目标文档类型，功能与\-\-target相同。举例：
+.nf
+%!target: html
+.fi
+
+
 
 .TP
-\fB%!options(target):\fR
-设置该类型输出文档的相关选项
+\fB%!options(target)\fR
+设置该目标类型（target）文档的默认选项。必须以命令行的形式调用。举例：
+.nf
+%!options(html): --toc --toc-level 3 --css-sugar
+.fi
+
+
+
+.TP
+\fB%!includeconf\fR
+指定读入外部文件中包含的配置项，功能与\-\-config\-file相同。举例：
+.nf
+%!includeconf: myconfig.t2t
+.fi
+
+
+
+.TP
+\fB%!style\fR
+为目标文档指定样式文件，功能与\-\-style相同。可以多次使用。举例：
+.nf
+%!style: colors.css
+.fi
+
+
+
+.TP
+\fB%!encoding\fR
+指定目标文档使用的字符集，功能与\-\-encoding相同。举例：
+.nf
+%!encoding: UTF-8
+.fi
+
+
+
+.TP
+\fB%!preproc\fR
+指定查找/替换的过滤器，在txt2tags解析源文档之前，改变源文档的内容。格式采用Python正则表达式。举例：
+.nf
+%!preproc:  "JJS"  "John J. Smith"
+.fi
+
+
+
+.TP
+\fB%!postproc\fR
+指定查找/替换的过滤器，在txt2tags转换源文档之后，改变目标文档的内容。格式采用Python正则表达式。举例：
+.nf
+%!postproc(html):  "<B>"  "<STRONG>"
+.fi
+
+
+
+.P
+如果同一个关键字多次出现，则以最后的取值为准（options, preproc and postproc是累计的除外）。异常关键字被忽略。解析顺序为：~/.txt2tagsrc，源文档的配置区域，\-\-config\-file命令行选项。
+
+.SH 指令
+
+.P
+指令在文本转换过程中生效。指令必须在源文件主体内容中指定。
+
+.TP
+\fB%!csv: file.csv\fR
+读入一个外部的CSV文件，作为表格。
 
 .TP
 \fB%!include: file.t2t\fR
-把一个 txt2tags 文件内容直接加入源文档
+读入一个txt2tags文件。
 
 .TP
 \fB%!include: ``file.txt``\fR
-把一个文本文件的内容作为原文引用块加入源文档
+读入一个文本文件的内容，作为源文件的“原文引用块”。
 
 .TP
-\fB%!include: file.html\fR
-把一个文件内容不作修改直接加入目标文档
-
-.TP
-\fB%!style:\fR
-为XHTML和HTML格式的目标文档设置CSS(级联样式表) 或
-为TEX格式的目标文件载入 \eusepackage 模块
-
-.TP
-\fB%!encoding:\fR
-设置字符集(例如 iso\-8859\-1) 解决i18n国际化问题
-
-.TP
-\fB%!includeconf:\fR
-将外部文件中的配置信息读入当前源文件
-
-.TP
-\fB%!guicolors:\fR
-设置Tk图形界面的颜色
-
-.TP
-\fB%!preproc:\fR
-用户定制的宏，
-在文本解析之\fB前\fR被执行
-
-.TP
-\fB%!postproc:\fR
-用户定制的宏，
-在文本解析之\fB后\fR被执行
-
-.SS 设置规则
-.RS
-.IP \(bu 3
-设置只在文档中配置部分才起作用，
-在文档的主体部分则被视为普通的注释行。
-唯一的例外是include命令，它在主体部分仍可用。
-
-.IP \(bu 3
-如果在文档中的配置部分出现多个相同关键词的配置，
-那么只有最后一个起作用。
-有三个例外：options, preproc 和postproc，它们的选项是累加的。
-
-.IP \(bu 3
-如果设置行里的关键词不是可用的，
-则将此行视为普通的注释行。
-
-.IP \(bu 3
-这些设置的优先级高于txt2tagsrc文件，
-但低于命令行选项。
-.RE
-
-.SH 语法
-.P
-只需在源文档(纯文本文件)中使用非常简单的标记语法来
-标识文档结构及格式。
-以下是全部标记列表：
-
-.SS 基础
-.nf
-  头部                源文件的头三行
-  标题                = 文字 =
-  带数字编号的标题    + 文字 +
-  段落                文字
-.fi
-
-
-.SS 美化
-.nf
-  粗体                **文字**
-  斜体                //文字//
-  下划线              __文字__
-  删除线              --文字--
-  等宽                ``文字``
-.fi
-
-
-.SS 文本块
-.nf
-  引用                <TAB>文字
-  列表                - 条目
-  带编号的列表        + 条目
-  定义式列表          : 条目
-  完全引用行          ``` 内容
-  完全引用域          ```<LineBreak> 内容 <LineBreak>```
-  原文行              """ 内容
-  原文域              """<LineBreak> 内容 <LineBreak>"""
-  表格                | 单元1 | 单元2 | 单元3...
-.fi
-
-
-.SS 其他
-.nf
-  隔离行              -----------------------...
-  粗隔离行            =======================...
-  链接                [标签 url地址]
-  图片                [filename.jpg]
-  原始文字            ""内容""
-  注释                % 注释内容
-.fi
-
-
-.P
-请阅读Txt2tags用户指南(在程序文档目录下)
-获知每个标记的详细说明。
-
-.SH 例子
-.P
-假设你已经写了一个带标记的file.t2t文件，
-现在我们开始进行转换。
-
-.TP
-\fB转换为HTML文件，保存为 file.html\fR
-$ txt2tags \-t html file.t2t
-
-.TP
-\fB同上，使用重定向\fR
-$ txt2tags \-t html \-o \- file.t2t > file.html
-
-.TP
-\fB包含目录信息\fR
-$ txt2tags \-t html \-\-toc file.t2t
-
-.TP
-\fB包含目录信息，且对每个条目进行编号\fR
-$ txt2tags \-t html \-\-toc \-\-enum\-title file.t2t
-
-.TP
-\fB快速浏览目录信息\fR
-$ txt2tags \-\-toc\-only file.t2t
-
-.TP
-\fB从标准输入(STDIN)读入一行进行快速测试\fR
-$ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
+\fB%!include: \&''file.html''\fR
+读入一个标签文件内容到目标文档。
 
 .SH 宏
-.TP
-%%date
-用于显示当前日期，默认格式为YYYYMMDD(年月日)。
-格式是可调的，调整时使用的语法：
-%%date(format\-string)
+
+.P
+使用宏很容易在文档中插入动态内容。宏必须在源文件的主体内容中指定。
+除了%%toc，所有宏都能够用修饰符指定格式，例如%Y和%f。详情请查看txt2tags用户指南。
 
 .TP
-%%infile
-用于得到源文件的信息。
-格式是可调的，调整时使用的语法：%%infile(format\-string)
-
-有用的例子：使用尾部链接[查看源文件 %%infile]， 
-文件名被改掉的话该链接也会自动更新。
+\fB%%date\fR
+插入当前日期。默认格式是%%date(%Y%m%d)，输出YYYYMMDD。
 
 .TP
-%%mtime
-用于得到源文件的最近修改时间。
-采用的格式与%%date宏相同。
+\fB%%infile\fR
+插入源文件所在路径。默认格式是%%infile(%f)。常用尾部链接举例：[查看源文件 %%infile]。
 
 .TP
-%%outfile
-用于得到目标文件的信息。
-格式是可调的，调整时使用的语法：%%outfile(format\-string)
-
-有用的例子：使用引用自身的链接"This is the manpage\-zh.man file"，
-文件名改掉的话该链接也会自动更新。
+\fB%%mtime\fR
+插入源文件修改时间。默认格式是%%date(%Y%m%d)，输出YYYYMMDD。
 
 .TP
-%%toc
-%%toc宏指定目录在文档中存放的位置。
-你想把它放在文档中哪个位置都可以，
-出现一次或多次均可。
+\fB%%outfile\fR
+输出目标文档所在路径。默认格式是%%outfile(%f)。常用的自引用形式举例："这是 manpage\-zh.man 文件"。
 
-注意: %%toc宏只有在设置了\-\-toc选项的情况下才会被展开。
+.TP
+\fB%%toc\fR
+指定目录信息所在位置。可以多次使用。注意同时指定\-\-toc选项。
+
+.SH 示例
+
+.TP
+txt2tags \-t html file.t2t
+
+转换成HTML，将转换的结果输出到文件file.html。
+
+.TP
+txt2tags \-t html \-o \- file.t2t
+
+转换成HTML，将转换的结果输出到STDOUT。
+
+.TP
+txt2tags \-t html \-\-toc file.t2t
+
+转换成HTML，包含自动生成的目录。
+
+.TP
+txt2tags \-t html \-\-toc \-\-toc\-level 2 \-n file.t2t
+
+转换成HTML，并生成目录，目录深度为2，各项标题采用数字编号。
+
+.TP
+txt2tags \-\-toc\-only file.t2t
+
+只输出目录，不进行实际的转换。
+
+.TP
+txt2tags \-t html \-\-css\-sugar \-\-style base.css \-\-style ui.css file.t2t
+
+转换成HTML，并预先设置采用CSS，同时指定引用两个外部CSS文件。
+
+.TP
+txt2tags \-t art \-\-slides \-\-width 80 \-\-height 25 \-o \- file.t2t | more
+
+生成艺术ASCII演示文档，用于在80x25的屏幕或窗口上演示。
+
+.TP
+(echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+易用的单行指令，从STDIN读取内容做快速的测试。
+
+.TP
+txt2tags \-t html \-o \- file.t2t | tidy > file.html
+
+将转换的结果输出到STDOUT，然后调用外部程序优化结果代码，最终保存到文件。
+
+.SH 文件
+
+.TP
+~/.txt2tagsrc
+用户默认配置文件。
+
+.SH 环境
+
+.TP
+T2TCONFIG
+该值设置用户默认配置文件的绝对路径。
 
 .SH 作者
-.P
-程序由 Aurelio Marinho Jargas <verde@aurelio.net> 编写并维护。
 
 .P
-此手册页原始文本由Jose Inacio Coelho <jic@technologist.com> 编写，
-使用\fBtxt2tags\fR转换为man格式。
+原文由Aurelio Jargas <verde@aurelio.net>编写。
 
 .P
-中文版由 Abby Pan <abbypan@mail.ustc.edu.cn>翻译。
+中文版由Abby Pan <abbypan@gmail.com>翻译。
+
+.SH 缺陷
+
+.P
+http://code.google.com/p/txt2tags/issues
 
 .SH 版权
-.P
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
 
 .P
-This is free software; see the source for copying conditions. There is
-NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.
+Copyright (C) 2001\-2010 Aurelio Jargas, GNU GPL v2
 
-
-.\" man code generated by txt2tags 2.6b (http://txt2tags.sf.net)
-.\" cmdline: txt2tags -t man doc/Chinese/manpage-zh.t2t
-
+.\" man code generated by txt2tags 2.6b1 (http://txt2tags.sf.net)
+.\" cmdline: txt2tags -t man manpage-zh.t2t
