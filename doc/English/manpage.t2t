@@ -104,6 +104,9 @@ Tagged block      '''
 
 = OPTIONS =[options]
 
+:     **--art-chars**=//PATTERN//
+Define //PATTERN// as the pattern of characters used to compose the ASCII Art decorations, in the following order: corner, border, side, bar1, bar2, level2, level3, level4, level5. The default pattern value is +-|-==-^". This option is only used by the ASCII Art target.
+
 : **-C**, **--config-file**=//FILE//
 Read configuration from the external file //FILE//. The configuration must be on the //%!keyword:value// format. See [SETTINGS #settings] section for details.
 
