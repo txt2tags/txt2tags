@@ -2,8 +2,8 @@
    es.po: 114 translated messages, 24 untranslated messages.
    eu.po: 134 translated messages, 4 untranslated messages.
    fi.po: 114 translated messages, 24 untranslated messages.
-   fr.po: 134 translated messages, 4 untranslated messages.
-   hu.po: 114 translated messages, 24 untranslated messages.
+   fr.po: 140 translated messages.
+   hu.po: 138 translated messages.
    it.po: 114 translated messages, 24 untranslated messages.
 pt_BR.po: 138 translated messages.
    uk.po: 113 translated messages, 25 untranslated messages.
