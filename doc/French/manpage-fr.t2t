@@ -20,6 +20,7 @@ Aug, 2010
 %% 21 may 2005 aurelio: updated to v2.3
 %% 12 aug 2010 aurelio: updated to v2.6, rewrite (r250)
 
+
 %!encoding: utf-8
 
 
@@ -102,6 +103,9 @@ Bloc tagged          '''
 ```
 
 = OPTIONS =[options]
+
+:     **--art-chars**=//MOTIF//
+Utilise le //MOTIF// pour définir les caractères du mode ASCII Art, respectivement pour les coins, les bordures, les côtés, les barres 1 et 2, les niveaux 2, niveaux 3, niveaux 4 et niveau 5. Le motif par défaut est +-|-==-^". Cette option est uniquement valable pour la cible ASCII Art.
 
 : **-C**, **--config-file**=//FICHIER//
 Lit la configuration depuis le fichier extérieur //FICHIER//. La configuration doit être de la forme //%!mot-clé:valeur//. Se référer à la section [CONFIGURATIONS #configurations] pour plus de détails.
@@ -370,7 +374,7 @@ Si cette variable d'environnement n'est pas nulle, elle définit alors le chemin
 
 Aurelio Jargas <verde@aurelio.net>
 
-Traduit par Eric Forgeot <http://esclinux.tk>, en réutilisant parfois le travail original de Claude Hiebel <chiebel@free.fr>
+Page de man traduite en français par Eric Forgeot <http://esclinux.tk>, en réutilisant parfois le travail original de Claude Hiebel <chiebel@free.fr>
 
 = BOGUES =[bogues]
 
