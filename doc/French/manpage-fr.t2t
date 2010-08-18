@@ -238,11 +238,11 @@ Les fichiers source sont généralement identifiés par l'extension //.t2t// (pa
 : **Entête** (optionel)
 Les trois premières lignes du fichier. Laissez la première ligne vide si vous n'avez pas besoin d'entêtes. Utilisé dans le document pour le titre, l'auteur, la version, et la date.
 
-: **configurations** (optionel)
+: **Configuration** (optionel)
 Commence juste après l'entête (4ème ou 2nde ligne) et se termine quand le corps du texte débute.
 Utilisé pour les configurations, dans le format ``%!mot-clé:valeur``.
 
-: **Body**
+: **Corps**
 Commence à la première ligne de texte valide (pas de commentaire ou de configuration), après la zone d'entête et continue jusqu'à la fin du document. Utilisé pour le contenu du document proprement dit.
 :
 
