@@ -1,373 +1,476 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:3em               ;} 
-a    { text-decoration:none     ;} 
-pre  { background-color:#ffffcc ;} 
-</STYLE>
+<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.sf.net">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <TITLE>TXT2TAGS</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
-<FONT SIZE="4">
-Uzt, 2008
-</FONT></CENTER>
+<CENTER>
+<H1>TXT2TAGS</H1>
+<FONT SIZE="4">Abu, 2010</FONT>
+</CENTER>
 
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+  <UL>
+  <LI><A HREF="#izena">IZENA</A>
+  <LI><A HREF="#sinopsia">SINOPSIA</A>
+  <LI><A HREF="#deskribapena">DESKRIBAPENA</A>
+  <LI><A HREF="#sintaxia">SINTAXIA</A>
+  <LI><A HREF="#aukerak">AUKERAK</A>
+  <LI><A HREF="#iturburua">ITURBURU FITXATEGIAK</A>
+  <LI><A HREF="#ezarpenak">EZARPENAK</A>
+  <LI><A HREF="#komandoak">KOMANDOAK</A>
+  <LI><A HREF="#makroak">MAKROAK</A>
+  <LI><A HREF="#adibideak">ADIBIDEAK</A>
+  <LI><A HREF="#fitxategiak">FITXATEGIAK</A>
+  <LI><A HREF="#ingurunea">INGURUNEA</A>
+  <LI><A HREF="#egilea">EGILEA</A>
+  <LI><A HREF="#erroreak">ERROREAK</A>
+  <LI><A HREF="#copyright">COPYRIGHT</A>
+  </UL>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+<A NAME="izena"></A>
 <H1>IZENA</H1>
+
 <P>
 txt2tags - testu formateatze eta bihurtze tresna
 </P>
+
+<A NAME="sinopsia"></A>
 <H1>SINOPSIA</H1>
-<P>
-<B>txt2tags</B> [<I>AUKERA</I>]... [<I>FITXATEGIA</I>]...
-</P>
-<H1>DESCRIBAPENA</H1>
-<P>
-<B>txt2tags</B> markatze minimoa duen testu fitxategi bakarretik <I>HTML</I>,
-<I>XHTML</I>, <I>SGML</I>, <I>LaTeX</I>, <I>Lout</I>, <I>Man Page</I>, <I>MoinMoin</I>,
-<I>Wikipedia</I>, <I>(MediaWiki)</I>, <I>DokuWiki</I>, <I>Google Code Wiki</I>,
-<I>MagicPoint</I> eta <I>PageMaker</I> dokumentuak sortzen dituen formatuen
-bihurtzailea da, Python-en idatzitakoa.
-</P>
-<P>
-Erabiltzaileak <B>txt2tags</B> marka gutxi batzuk bakarrik jakin behar ditu, oso
-sinpleak, eta testu fitxategi soilak idatzi. Programak lan zakar guztia egiten
-du, etiketa konplikatuak gehituz eta helburuko dokumentuen berezitazunekin
-lehiatuz.
-</P>
-<P>
-Testu fitxategi berdina helburuko formatu guztietara pasa daiteke, edizio
-gehiagorik gabe. Hau da <B>txt2tags</B>en helburua: iturburu BAT, helburu ASKO.
-</P>
-<P>
-Mesedez, programaren webgunea bisitatu
-<I>http://txt2tags.sourceforge.net</I> helbidean.
-</P>
-<H1>AUKERAK</H1>
-<DL>
-<DT> <B>-C</B>, <B>--config-file</B></DT><DD>
-konfigurazioa kanpoko fitxategi batetik irakurri (%!includeconf bezala
-dabil)
-<P></P>
-<DT>     <B>--css-sugar</B></DT><DD>
-CSS-rekin jatorrak diren etiketak txertatu HTML eta XHTML helburuentzat
-<P></P>
-<DT>     <B>--css-inside</B></DT><DD>
-CSS fitxategiaren edukiak HTML/XHTML goiburuetan txertatu
-<P></P>
-<DT>     <B>--dump-config</B></DT><DD>
-topatutako konfigurazio guztia inprimatu eta irten
-<P></P>
-<DT>     <B>--dump-source</B></DT><DD>
-dokumentuaren iturburua inprimatu, barneratzeko guztiak txertatuta
-<P></P>
-<DT>     <B>--encoding</B></DT><DD>
-ezarri irteera fitxategiaren kodeketa (utf-8, iso-8859-1, etab.)
-<P></P>
-<DT>     <B>--gui</B></DT><DD>
-Tk Interfaze Grafikoa abiatu
-<P></P>
-<DT> <B>-h</B>, <B>--help</B></DT><DD>
-laguntza mezua inprimatu eta irten
-<P></P>
-<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
-Goiburukoa, izenburua eta oinaren informazioa kendu
-<P></P>
-<DT>     <B>--headers</B></DT><DD>
-goiburukoa, izenburua eta oinaren informazioa erakutsi (lehenetsiz gaituta)
-<P></P>
-<DT> <B>-i</B>, <B>--infile</B>=<I>FITX</I></DT><DD>
-FITX zehaztu sarrera fitxategi bezela ('-' STDIN-entzako)
-<P></P>
-<DT>     <B>--mask-email</B></DT><DD>
-epostak spam robotengandik ezkutatu. x@y.z &lt;x (a) y z&gt; bihurtzen da
-<P></P>
-<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
-izenburu lerro guztiak zenbakitu: 1, 1.1, 1.1.1, etab.
-<P></P>
-<DT>     <B>--no-dump-config</B></DT><DD>
-konfigurazio inprimatzeko ekintza atzera bota
-<P></P>
-<DT>     <B>--no-dump-source</B></DT><DD>
-iturburua inprimatzeko ekintza atzera bota
-<P></P>
-<DT>     <B>--no-encoding</B></DT><DD>
-kodeketaren ezarpena garbitu
-<P></P>
-<DT>     <B>--no-enum-title</B></DT><DD>
-izenburuen zenbakitze automatikoa ezgaitu
-<P></P>
-<DT>     <B>--no-infile</B></DT><DD>
-aurreko infile guztiak kendu
-<P></P>
-<DT>     <B>--no-mask-email</B></DT><DD>
-epostak erakutzi, --mask-email aukera ezgaituz
-<P></P>
-<DT>     <B>--no-outfile</B></DT><DD>
-aurreko outfile guztiak kendu
-<P></P>
-<DT>     <B>--no-quiet</B></DT><DD>
-mezuak erakutsi, --quiet aukera ezgaituz
-<P></P>
-<DT>     <B>--no-rc</B></DT><DD>
-ez irakurri ~/.txt2tagsrc erabiltzailearen konfigurazio fitxategia
-<P></P>
-<DT>     <B>--no-style</B></DT><DD>
-estilo ezarpena garbitu
-<P></P>
-<DT>     <B>--no-toc</B></DT><DD>
-do not add TOC (Table of Contents) to target document
-ez gehitu TOC-a (Edukien Taula) helburuko dokumentura
-<P></P>
-<DT>     <B>--no-toc-only</B></DT><DD>
---toc-only aukera ezgaitu
-<P></P>
-<DT> <B>-o</B>, <B>--outfile</B>=<I>FITX</I></DT><DD>
-FITX zehaztu irteera fitxategiaren izen bezala ('-' STDOUT-entzako)
-<P></P>
-<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
-modu geldia, irteera mezurik ez (erroreak ezik)
-<P></P>
-<DT>     <B>--rc</B></DT><DD>
-erabiltzailearen ~/.txt2tagsrc konfigurazio fitxategia irakurri (lehenetsiz gaituta)
-<P></P>
-<DT>     <B>--style</B>=<I>FILE</I></DT><DD>
-FITX erabili dokumentuaren estilo moduan (HTML-ko CSS-ak bezala)
-<P></P>
-<DT><B>-t</B>, <B>--target</B>=<I>TYPE</I></DT><DD>
-helburuko dokumentuaren mota ezarri. Momentuz
-jasandakoak: html, xhtml, sgml, tex, lout, man,
-mgp, wiki, gwiki, doku, moin, pm6, txt
-<P></P>
-<DT>     <B>--toc</B></DT><DD>
-TOC (Edukien Taula) helburu dokumentura gehitu
-<P></P>
-<DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
-TOC-aren maila (sakonera) maximoa N-n ezarri
-<P></P>
-<DT>     <B>--toc-only</B></DT><DD>
-dokumentuaren TOC-a inprimatu eta irten
-<P></P>
-<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
-bihurketaren bitartean mezu informatiboak inprimatu
-<P></P>
-<DT> <B>-V</B>, <B>--version</B></DT><DD>
-programaren bertsioa inprimatu eta irten
-</DL>
 
 <P>
-Lehenetsiz, bihurtutako irteera 'infile.&lt;helburua&gt;'-n gordetzen da.
---outfile erabili irteera fitxategi izen bat derrigortzeko.
-Sarrera fitxategia '-' bada, STDIN-etik irakurri.
-Irteera fitxategia '-' bada, STDOUT-en idatzi.
+<B>txt2tags</B> [<I>aukerak</I>] [<I>FITXATEGIA</I>...]
 </P>
-<H1>EGITURA</H1>
+
+<A NAME="deskribapena"></A>
+<H1>DESKRIBAPENA</H1>
+
 <P>
-Txt2tags iturburu fitxategiak hiru area eduki ditzake:
+<B>txt2tags</B> markatze minimoa duen testu fitxategi bat irakurri eta ondoko
+helburuetara bihurtzen du:
+<I>ASCII Art</I>,
+<I>AsciiDoc</I>,
+<I>Creole</I>,
+<I>DocBook</I>,
+<I>DokuWiki</I>,
+<I>Eskuliburu Orria (man)</I>,
+<I>Google Code Wiki</I>,
+<I>HTML</I>,
+<I>LaTeX</I>,
+<I>Lout</I>,
+<I>MagicPoint</I>,
+<I>MoinMoin</I>,
+<I>PageMaker</I>,
+<I>pmWiki</I>,
+<I>SGML</I>,
+<I>Testu Soila</I>,
+<I>Wikipedia</I> eta
+<I>XHTML</I>.
 </P>
-<DL>
-<DT><B>Goiburukoa</B></DT><DD>
-Lehenbiziko hiru lerroak. Dokumentuaren identifikaziorako erabiltzen dira.
-Ez badituzu goiburukoak behar lehenbizko hiru lerroak zuriz hutsi behar
-dituzu edo <CODE>no-header</CODE> aukera zehaztu.
-<P></P>
-<DT><B>Ezarpenak</B></DT><DD>
-Laugarren lerroan hasten da. Ezarpen guztiak %!gako-hitza: balioa formatua
-dute. Ezarpenak konfigurazio fitxategi batean edo komando lerroan zehaz
-daitezke batia ere.
-<P></P>
-<DT><B>Gorputza</B></DT><DD>
-Zure benetako dokumentuaren iturburua! txt2tags fitxategi egoki bat
-edukitzeko eskatzen den area bakarra.
-</DL>
-
-<H1>EZARPENAK</H1>
 <P>
-Iturburu fitxategi baten eraldaketa bi modu ezberdinetan pertsonalizatu
-daiteke. Kanpoko konfigurazioak RC fitxategitik (<CODE>~/.txt2tagsrc</CODE>) edo
-erabiltzaileak zehaztutako beste fitxategitik har daitzeke. Barruko
-konfigurazioak ezarpenekin egiten dira. Biek sintaxi berdina erabiltzen
-dute:
+Eskuliburu orri hau <B>txt2tags</B>-ek sortua da testu fitxategi soil batetik.
+Testu fitxategi bera HTML-ra bihurtu da eskuliburuaren sareko bertsiorako.
 </P>
-<DL>
-<DT><B>%!target:</B></DT><DD>
-helburu naguzia zehazten du
-<P></P>
-<DT><B>%!options(target):</B></DT><DD>
-helburu bakoitzerako aukerak zehazten ditu
-<P></P>
-<DT><B>%!include: file.t2t</B></DT><DD>
-includes a txt2tags file in the document
-<P></P>
-<DT><B>%!include: ``fitxategia.txt``</B></DT><DD>
-testu fitxategi bat dokumentuan txertatzen dut (hitzez hitz)
-<P></P>
-<DT><B>%!include: ''fitxategia.html''</B></DT><DD>
-dokumentuan fitxategi literala txertatzen du, dagoen bezala
-<P></P>
-<DT><B>%!style:</B></DT><DD>
-XHTML eta HTML helburuentzat CSS (Cascading Style Sheets) zehazteko edo TEX
-helburuentzako \usepackage moduluak kargatzeko
-<P></P>
-<DT><B>%!encoding:</B></DT><DD>
-karaktere biilduma ezartzeko (iso-8859-1 bezala) i18n-rentzako
-<P></P>
-<DT><B>%!includeconf:</B></DT><DD>
-kanpoko fitxategi batetik unekoan ezarpenak txertatzeko erabiltzen da
-<P></P>
-<DT><B>%!guicolors:</B></DT><DD>
-GUI interfazerako (Tk) koloreen ezarpenak
-<P></P>
-<DT><B>%!preproc:</B></DT><DD>
-dokumentua parseatu baino <B>LEHEN</B> zure pertsonalizatutako filtroa (makroa)
-exekutatuko da
-<P></P>
-<DT><B>%!postproc:</B></DT><DD>
-dokumentua parseatu <B>ONDOREN</B> zure pertsonalizatutako filtroa (makroa)
-exekutatuko da
-</DL>
+<P>
+Iturburu BAT, helburu ASKO - <A HREF="http://txt2tags.sourceforge.net">http://txt2tags.sourceforge.net</A>
+</P>
 
-<H2>EZARPENEN ERREGELAK</H2>
-<UL>
-<LI>Ezarpenak Ezarpen Arean bakarrik jar daitezke, eta dokumentuaren
-  Gorputzan topatzen badira iruzkin soil bezela antzemango dira. Salbuespena
-  include da, Gorputzean agertu daitekeelarik.
-<P></P>
-<LI>Gako-hitza Konfigurazio Arean behin baino gehiagotan agertzen bada, agertzen
-  den azkena izango da kontutan hartzen dena. Salbuespena: option, preproc eta
-  postproc, metakorrak direnak.
-<P></P>
-<LI>Gako-hitz okerra duten ezarpenak iruzkin soil bezela antzemango dira.
-<P></P>
-<LI>Ezarpen hauek txt2tagsrc fitxategiarekiko lehentasuna dute, baina ez komando
-  lerroko ezarpenekiko.
-</UL>
-
+<A NAME="sintaxia"></A>
 <H1>SINTAXIA</H1>
-<P>
-Dokumentuaren iturburuak (testu soileko fitxategia) markatze sintaxi oso sinple
-bat erabiltzen du egiturak eta formatua antzemateko. Hona hemen zerrenda osoa:
-</P>
-<H2>Oinarrizkoa</H2>
+
 <PRE>
   Goiburukoak               Iturburu fitxategiaren lehenbizko 3 lerroak
   Izenburua                = hitzak =
   Zenbakitutako izenburua  + hitzak +
+  Iruzkina                 % iruzkinak
+  Lerro bereizlea          -----------------------...
+  Lerro lodia              =======================...
+  Irudia                   [fitxategia.jpg]
+  Estekak                  [etiketa url]
+  
+  Lodia                    **hitzak**
+  Etzana                   //hitzak//
+  Azpimarratuta            __hitzak__
+  Marratua                 --hitzak--
+  Tarte bakarrekoa         ``hitzak``
+  Testu gordina            ""hitzak""
+  Etiketatua               ''hitzak''
+  
   Paragrafoa                hitzak
+  Aipamena                 &lt;TAB&gt;hitzak
+  Zerrenda                 - hitzak
+  Zenbakitutako zerrenda   + hitzak
+  Definizioen zerrenda     : hitzak
+  Taula                    | gelaxka1 | gelaxka2 | gelaxka3...
+  
+  Hitzez hitzeko lerroa    ``` hitzak
+  Lerro gordina            """ hitzak
+  Etiketatutako lerroa     ''' hitzak
+  
+  Hitzez hitzeko area      ```
+                           lerroak
+                           ```
+  Area gordina             """
+                           lerroak
+                           """
+  Area etiketatua          '''
+                           lerroak
+                           '''
 </PRE>
-<P></P>
-<H2>Beautifiers</H2>
-<PRE>
-  Lodia             **hitzak**
-  Etzana            //hitzak//
-  Azpimarratuta     __hitzak
-  Marratua          --hitzak--
-  Tarte bakarrekoa  ``hitzak``
-</PRE>
-<P></P>
-<H2>Text Blocks</H2>
-<PRE>
-  Aipamena                &lt;TAB&gt;hitzak
-  Zerrenda                - hitzak
-  Zenbakitutako zerrenda  + hitzak
-  Definizioen zerrenda    : hitzak
-  Hitzez hitzeko lerroa   ``` hitzak
-  Hitzez hitzeko area     ```&lt;LerroJauzia&gt; lerroak &lt;LerroJauzia&gt;```
-  Lerro gordina           """ hitzak
-  Area gordina            """&lt;LerroJauzia&gt; lerroak &lt;LerroJauzia&gt;"""
-  Taula                   | gelaxka1 | gelaxka2 | gelaxka3...
-</PRE>
-<P></P>
-<H2>Other</H2>
-<PRE>
-  Lerro bereizlea   -----------------------...
-  Lerro lodia       =======================...
-  Estekak           [etiketa url]
-  Irudia            [fitxategia.jpg]
-  Testu gordina     ""hitzak""
-  Iruzkina          % iruzkinak
-</PRE>
-<P></P>
-<P>
-Mesedez, irakurri Txt2tags Erabiltzaile Gida (programaren dokumentazio
-direktorioan) marka bakoitzaren deskribapen zehatzerako.
-</P>
-<H1>ADIBIDEAK</H1>
-<P>
-<CODE>fitx.t2t</CODE> markadun fitxategia idatzi duzula kontutan hartuta, bihurketa
-dibertigarri batzuk egin ditzagun.
-</P>
+
+<A NAME="aukerak"></A>
+<H1>AUKERAK</H1>
+
 <DL>
-<DT><B>HTMLra bihurtu, fitx.html-n gordez</B></DT><DD>
-<CODE>$ txt2tags -t html fitx.t2t</CODE>
+<DT>     <B>--art-chars</B>=<I>PATROIA</I></DT><DD>
+ASCII Art apainketarako erabiliko diren karaktereak definitzeko <I>PATROIA</I> ezarri, ondoko ordenean: Erpina, ertza, aldea, barra1, barra2, maila2, maila3, maila4, maila5. Defektuzko patroia +-|-==-^" da. Aukera hau ASCII Art helbururako erabiltzeen da bakarrik.
 <P></P>
-<DT><B>Berdina, berbideraketak erabiliz</B></DT><DD>
-<CODE>$ txt2tags -t html -o - fitx.t2t &gt; fitx.html</CODE>
+<DT> <B>-C</B>, <B>--config-file</B>=<I>FITXATEGIA</I></DT><DD>
+Konfigurazioa kanpoko <I>FITXATEGIA</I> fitxategitik irakurri. Konfigurazioak <I>%!gakoa:balioa</I> formatua izan behar du. <A HREF="#ezarpenak">EZARPENAK</A> atala ikusi xehetasunentzako.
 <P></P>
-<DT><B>Edukien Taula txertatuz</B></DT><DD>
-<CODE>$ txt2tags -t html --toc fitx.t2t</CODE>
+<DT>     <B>--css-sugar</B></DT><DD>
+CSS-rekin jatorrak diren etiketak txertatu. HTML eta XHTML helburuen kodea CSS fitxategiekin erabiltzeko hobetzen du. Etiketen atributuak kentzen dira, aurkezpen etiketak sahiesten dira, goiburukoak H1, H2 eta H3 etiketekin egiten dira, eta DIV berriak sortzen dira: <I>#header</I>, <I>#body</I>, <I>.toc</I>.
 <P></P>
-<DT><B>Edukien Taula txertatuz eta izenburuak zenbakituz</B></DT><DD>
-<CODE>$ txt2tags -t html --toc --enum-title fitx.t2t</CODE>
+<DT>     <B>--css-inside</B></DT><DD>
+CSS fitxategiaren edukiak HTML/XHTML goiburuetan txertatu. <CODE>--style</CODE> erabili CSS fitxategia zehazteko.
 <P></P>
-<DT><B>Edukiei begirada azkarra</B></DT><DD>
-<CODE>$ txt2tags --toc-only fitx.t2t</CODE>
+<DT>     <B>--dump-config</B></DT><DD>
+Topatutako konfigurazio guztia inprimatu eta irten.
 <P></P>
-<DT><B>Lerro bakarreko froga azkarra STDIN-etik</B></DT><DD>
-<CODE>$ (echo ; echo "**lodia**") | txt2tags -t html -H -</CODE>
+<DT>     <B>--dump-source</B></DT><DD>
+Dokumentuaren iturburua inprimatu, barneratzeko (<CODE>%!include</CODE>) guztiak txertatuta.
+<P></P>
+<DT>     <B>--encoding</B>=<I>KODEKETA</I></DT><DD>
+Iturburu fitxategian erabiltzen den karaktere kodeketa <I>KODEKETA</I>-ra ezarri. Adibidez UTF-8 edo iso-8859-1.
+<P></P>
+<DT>     <B>--gui</B></DT><DD>
+Tk Interfaze Grafikoa abiatu.
+<P></P>
+<DT> <B>-h</B>, <B>--help</B></DT><DD>
+Laguntza mezua inprimatu eta irten.
+<P></P>
+<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
+Goiburukoa eta oinaren informazioa helburutik kendu. Edukia (gorputza) bakarrik ikusiko da.
+<P></P>
+<DT>     <B>--headers</B></DT><DD>
+Goiburukoa eta oinaren informazioa helburuan erakutsi. Defektuz gaituta.
+<P></P>
+<DT>     <B>--height</B>=<I>ZENB</I></DT><DD>
+Irteeraren altuera <I>ZENB</I> zutabeetan finkatu. Aukera hau ASCII ART helburuarekin bakarrik erabiltzen da, <CODE>--slides</CODE> baita erabiltzen bada.
+<P></P>
+<DT> <B>-i</B>, <B>--infile</B>=<I>FITX</I></DT><DD>
+FITX zehaztu sarrera fitxategi bezela, iturburu dokumentua.  '-' erabili iiturburuak STDIN-etik irakurtzeko.
+<P></P>
+<DT>     <B>--mask-email</B></DT><DD>
+Epostak spam robotengandik ezkutatu. @ eta puntuak kentzen ditu.  foo@bar.com helbidea &lt;foo (a) bar com&gt; bihurtzen du.
+<P></P>
+<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
+Gaitu izenburuen zenbakitze automatikoa. Aurrizki moduan 1, 1.1, 1.1.1, ...  erabiliko dira.
+<P></P>
+<DT>     <B>--no-dump-config</B></DT><DD>
+<CODE>--dump-config</CODE> aukera ezgaitzen du.
+<P></P>
+<DT>     <B>--no-dump-source</B></DT><DD>
+<CODE>--dump-source</CODE> aukera ezgaitzen du.
+<P></P>
+<DT>     <B>--no-encoding</B></DT><DD>
+Kodeketaren ezarpena garbitu.
+<P></P>
+<DT>     <B>--no-enum-title</B></DT><DD>
+Izenburuen zenbakitze automatikoa ezgaitu.
+<P></P>
+<DT>     <B>--no-infile</B></DT><DD>
+Aurreko infile guztiak kendu.
+<P></P>
+<DT>     <B>--no-targets</B></DT><DD>
+<CODE>--targets</CODE> aukera ezgaitzen du.
+<P></P>
+<DT>     <B>--no-mask-email</B></DT><DD>
+Epostaz izkutatzea ezgaitu.
+<P></P>
+<DT>     <B>--no-outfile</B></DT><DD>
+Aurreko outfile guztiak kendu.
+<P></P>
+<DT>     <B>--no-quiet</B></DT><DD>
+Mezuak erakutsi, --quiet aukera ezgaituz.
+<P></P>
+<DT>     <B>--no-rc</B></DT><DD>
+Ez irakurri ~/.txt2tagsrc erabiltzailearen konfigurazio fitxategia.
+<P></P>
+<DT>     <B>--no-slides</B></DT><DD>
+Diapositibak ezgaitu.
+<P></P>
+<DT>     <B>--no-style</B></DT><DD>
+Estilo ezarpenak garbitu.
+<P></P>
+<DT>     <B>--no-toc</B></DT><DD>
+Helburuan Edukien Taula kendu.
+<P></P>
+<DT>     <B>--no-toc-only</B></DT><DD>
+<CODE>--toc-only</CODE> aukera ezgaitzen du.
+<P></P>
+<DT> <B>-o</B>, <B>--outfile</B>=<I>FITX</I></DT><DD>
+FITX zehaztu irteera fitxategiaren izen bezala. '-' erabili helbura STDOUT-era bidaltzeko.
+<P></P>
+<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
+Modu geldia. Irteera mezurik ez, erroreak ezik.
+<P></P>
+<DT>     <B>--rc</B></DT><DD>
+Erabiltzailearen ~/.txt2tagsrc konfigurazio fitxategia irakurri. Defektuz gaituta.
+<P></P>
+<DT>     <B>--slides</B></DT><DD>
+Irteera aurkezpen diapositiba bezala formateatu. Aukera hau ASCII Art helburuarekin bakarrik erabiltzen da.
+<P></P>
+<DT>     <B>--style</B>=<I>FITX</I></DT><DD>
+FITX erabili dokumentuaren estilo moduan. HTML/XHTML dokumentuen CSS fitxategiak edo LaTeX paketeak definitzeko erabilia. Aukera hau askotan erabili daiteke fitxategi bat baino gehiago sartzeko.
+<P></P>
+<DT><B>-t</B>, <B>--target</B>=<I>MOTA</I></DT><DD>
+Helburuko dokumentuaren mota <I>MOTA</I>-ra ezarri. Gehien erabilitako helburuak: <I>html</I>, <I>xhtml</I>, <I>tex</I>, <I>man</I>, <I>txt</I>. <CODE>--targtets</CODE> aukera erabili eskuragarri dauden helburu guztiak ikusteko.
+<P></P>
+<DT>     <B>--targets</B></DT><DD>
+Eskuragarri dauden helburu guztiak erakutsi eta irten.
+<P></P>
+<DT>     <B>--toc</B></DT><DD>
+Edukien Taula (TOC) automatiko gehitu helburu dokumentura, Goiburukoa eta Gorputzaren artean. TOC-aren kokapena <CODE>%%TOC</CODE> makroarekin zehaztu dezakezu.
+<P></P>
+<DT>     <B>--toc-level</B>=<I>ZENB</I></DT><DD>
+Edukien Taularen maila (sakonera) maximoa <I>ZENB</I>-en ezarri. <I>ZENB</I> baino sakonago dauden izenburuak ez dira Edukin Taulan sartuko.
+<P></P>
+<DT>     <B>--toc-only</B></DT><DD>
+Dokumentuaren Edukien Taula inprimatu eta irten.
+<P></P>
+<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
+Bihurketaren bitartean mezu informatiboak inprimatu. Aukera hau behin baino gehiago erabili daiteke jasotako mezu kopurua handitzeko.
+<P></P>
+<DT> <B>-V</B>, <B>--version</B></DT><DD>
+Programaren bertsioa inprimatu eta irten.
+<P></P>
+<DT>     <B>--width</B>=<I>ZENB</I></DT><DD>
+Irteeraren zabalera <I>ZENB</I> zutabeetan finkatu. Aukera hau ASCII Art helburuarekin bakarrik erabiltzen da.
 </DL>
 
+<A NAME="iturburua"></A>
+<H1>ITURBURU FITXATEGIAK</H1>
+
+<P>
+Iturburu fitxategiak gehienetan <I>.t2t</I> luzapenarekin identifikatzen dira (<CODE>nirefitx.t2t</CODE> adibidez).
+Zure iturburuak hiru area eduki ditzake:
+</P>
+
+<DL>
+<DT><B>Goiburukoa</B> (aukerakoa)</DT><DD>
+Fitxategiaren lehenbiziko hiru lerroak. Zuriz hutsi behar ez badituzu. Dokumentuaren izenburu, egile, bertsio eta datarentzako erabilita.
+<P></P>
+<DT><B>Ezarpenak</B> (aukerakoa)</DT><DD>
+Goiburukoaren ondoren hasten da (4. edo 2. lerroa) eta Gorputza hasten denean bukatzen da. Konfiguraziorako erabiltzen da, %!gakoa: balioa formatuan.
+<P></P>
+<DT><B>Gorputza</B></DT><DD>
+Goiburukoaren ondoren, baliozko lehenbiziko lerroan hasten da (iruzkin edo
+ezarpena ez dena) eta dokumentu bukaerarekin amaitzen da. Dokumentuaren
+edukientzakoe erabiltzen da.
+</DL>
+
+<A NAME="ezarpenak"></A>
+<H1>EZARPENAK</H1>
+
+<P>
+Ezarpenek, aukeren antzera, <B>txt2tags</B> pertsonalizatzea ahalbidetzen dute. Hiru lekutan erabil daitezke: iturburu dokumentuaren Ezarpenak arean, <CODE>~/.txt2tagsrc</CODE> fitxategian, <CODE>--config--file</CODE> aukerarekin zehaztutako kanpoko fitxategi batean.
+</P>
+
+<DL>
+<DT><B>%!target</B></DT><DD>
+Helburu formatua ezartzen du, <CODE>--target</CODE>-ekin bezala. Adibidez:
+
+<PRE>
+  %!target: html
+</PRE>
+
+<P></P>
+<DT><B>%!options(target)</B></DT><DD>
+Helburu bakoitzerako aukera lehenetsiak zehazten ditu. Komando lerroko aukerak erabili behar dituzu. Adibidez:
+
+<PRE>
+  %!options(html): --toc --toc-level 3 --css-sugar
+</PRE>
+
+<P></P>
+<DT><B>%!includeconf</B></DT><DD>
+Kanpoko fitxategi batetik unekoan ezarpenak txertatzen du, <CODE>--config-file</CODE>-k bezala. Adibidez:
+
+<PRE>
+  %!includeconf: nirekonfigurazioa.t2t
+</PRE>
+
+<P></P>
+<DT><B>%!style</B></DT><DD>
+Dokumentuan erabiltzeko estilo fitxategia ezartzen du, <CODE>--style</CODE>-k bezala. Adibidez:
+
+<PRE>
+  %!style: koloreak.css
+</PRE>
+
+<P></P>
+<DT><B>%!encoding</B></DT><DD>
+Dokumentuko karaktere kodeketa adierazteko, <CODE>--encoding</CODE>-ek bezala.  Adibidez:
+
+<PRE>
+  %!encoding: UTF-8
+</PRE>
+
+<P></P>
+<DT><B>%!preproc</B></DT><DD>
+Iturburu dokumentuko Gorputza aldatzeko erabiltzen den bilatu/ordeztu iragazkia, txt2tags-ek inolako analisia egin BAINO LEHEN. Bilaketak Python-eko adierazpen erregularrak erabiltzen ditu. Adibidez:
+
+<PRE>
+  %!preproc:  "JJS"  "John J. Smith"
+</PRE>
+
+<P></P>
+<DT><B>%!postproc</B></DT><DD>
+Sortutako dokumentua aldatzeko erabiltzen den irteerako bilatu/ordeztu iragazkia, txt2tags-eko prozesu osoaren ONDOREN. Bilaketak Python-eko adierazpen erregularrak erabiltzen ditu. Adibidez:
+
+<PRE>
+  %!postproc(html):  "&lt;B&gt;"  "&lt;STRONG&gt;"
+</PRE>
+
+</DL>
+
+<A NAME="komandoak"></A>
+<H1>KOMANDOAK</H1>
+
+<P>
+Komandoek bihurketa garaian atazak burutzen dituzte. Iturburu dokumentuaren Gorputzean jarri behar dira.
+</P>
+
+<DL>
+<DT><B>%!csv: fitxategia.csv</B></DT><DD>
+Kanpoko CSV fitxategi bat txertatzen du taula moduan.
+<P></P>
+<DT><B>%!include: fitxategia.t2t</B></DT><DD>
+Dokumentuan txt2tags fitxategi bat txertatzen du.
+<P></P>
+<DT><B>%!include: ``fitxategia.txt``</B></DT><DD>
+Dokumentuan testu fitxategi bat txertatzen du (hitzez hitz).
+<P></P>
+<DT><B>%!include: fitxategia.html</B></DT><DD>
+Dokumentuan dagoeneko etiketatutako fitxategia txertatzen du.
+</DL>
+
+<A NAME="makroak"></A>
 <H1>MAKROAK</H1>
+
+<P>
+Makroak zure dokumentuan eduki dinamikoa sartzeko lasterbide baliagarriak dira. Ituruburuko Gorputzean jarri behar dira. <CODE>%%toc</CODE> ezik, makro guztiak <CODE>%Y</CODE> eta <CODE>%f</CODE> bezalako parametro bereziekin pertsonalizatu daitezke. Begiratu txt2tags-en Erabiltzaile Gida xehetasunetarako.
+</P>
+
 <DL>
-<DT>%%date</DT><DD>
-Uneko data txertatzea ahalbidetzen du, UUUUHHEE formatuan.
-Formatu berezia zehaztu ahal da %%date(formatu-katea) sintaxia erabiliz.
+<DT><B>%%date</B></DT><DD>
+Uneko data txertatzen du. Defektuzko formatua <CODE>%%date(%Y%m%d)</CODE> da, UUUUHHEE ematen duena.
 <P></P>
-<DT>%%infile</DT><DD>
-Iturburu fitxategiari buruzko informazioa lortzeko. Formatu berezia zehaztu
-daiteke %%infile(format-string) sintaxia erabiliz.
+<DT><B>%%infile</B></DT><DD>
+Iturburu fitxategiaren bidea txertatzeko. Defektuzko formatua <CODE>%%infile(%f)</CODE> da. Dokumentuaren oinean <CODE>[[Ikusi %%infile iturburua]]</CODE> bezalako estekak jartzeko erabilgarria.
 <P></P>
-Erabilgarria Oinean [Ikusi iturburua %%infile] bezalako estekak jartzeko,
-fitxategiaren izena aldatuta ere erreferentzia mantentzeko.
+<DT><B>%%mtime</B></DT><DD>
+Iturburu fitxategiaren aldaketa data txertatzeko. Defektuzko formatua <CODE>%%mtime(%Y%m%d)</CODE> da, UUUUHHEE ematen duena.
 <P></P>
-<DT>%%mtime</DT><DD>
-Iturburu fitxategia noiz aldatu den jakiteko. %%date makroaren formatu
-berdina erabiltzen du.
+<DT><B>%%outfile</B></DT><DD>
+Irteerako fitxategiaren bidea txertatzeko. Defektuzko formatua <CODE>%%outfile(%f)</CODE> da. "Hau manpage-eu.html fitxategia da" bezalako aipamenentzako erabilgarria.
 <P></P>
-<DT>%%outfile</DT><DD>
-Helburuko fitxategiari buruzko informazioa eskuratzeko. Formatu berezia
-zehaztu daiteke %%outfile(formatu-katea) sintaxia erabiliz.
-<P></P>
-Erabilgarria bere buruari buruz aipamena egiteko, "Hau manpage.html fitxategia
-da" modukoa, fitxategi izena aldatuta ere erreferentziak mantenduko direlarik.
-<P></P>
-<DT>%%toc</DT><DD>
-Makro honek TOC-a non agertu behar duen zehazten du. Dokumentuan nahi duzun
-lekuan jar dezakezu, nahi beste aldiz.
-<P></P>
-OHARRA: %%toc bakarrik --toc aukera erabilita hedatuko da.
+<DT><B>%%toc</B></DT><DD>
+Edukien Taula non agertu behar den zehazten du. Behin baino gehiagotan
+adieraz dezakezu. Ohartu <CODE>--toc</CODE> aukera erabili beharko duzula baita ere.
 </DL>
 
+<A NAME="adibideak"></A>
+<H1>ADIBIDEAK</H1>
+
+<DL>
+<DT><CODE>txt2tags -t html fitx.t2t</CODE></DT><DD>
+<P></P>
+HTMLra bihurtu, fitx.html-n gordez.
+<P></P>
+<DT><CODE>txt2tags -t html -o - fitx.t2t</CODE></DT><DD>
+<P></P>
+HTMLra bihurtu, emaitzak STDOUT-era bidaliz.
+<P></P>
+<DT><CODE>txt2tags -t html --toc fitx.t2t</CODE></DT><DD>
+<P></P>
+HTMLra bihurtu, Edukien Taula automatikoarekin.
+<P></P>
+<DT><CODE>txt2tags -t html --toc --toc-level 2 -n fitx.t2t</CODE></DT><DD>
+<P></P>
+HTMLra bihurtu, bi mailatako Edukien Taularekin eta zenbakitutako izenburuekin.
+<P></P>
+<DT><CODE>txt2tags --toc-only fitx.t2t</CODE></DT><DD>
+<P></P>
+Edukien Taula erakutsi bakarrik, bihurketarik egin gabe.
+<P></P>
+<DT><CODE>txt2tags -t html --css-sugar --style oinarrizkoa.css --style ui.css fitx.t2t</CODE></DT><DD>
+<P></P>
+HTMLra bihurtu, sortutako kodea CSSrekin erabiltzeko prestatuz, eta kanpoko bi CSS fitxategi erabiliz.
+<P></P>
+<DT><CODE>txt2tags -t art --slides --width 80 --height 25 -o - file.t2t | more</CODE></DT><DD>
+<P></P>
+Sortu ASCII Art aurkezpen diapositibak, 80x25-eko terminal/leihoan ikusteko prest.
+<P></P>
+<DT><CODE>(echo ; echo "**bold**") | txt2tags -t html -H -</CODE></DT><DD>
+<P></P>
+Lerro bakarreko dei lagungarria STDIN erabiliz froga azkarrak egiteko.
+<P></P>
+<DT><CODE>txt2tags -t html -o - file.t2t | tidy &gt; file.html</CODE></DT><DD>
+<P></P>
+Emaitzak STDOUTera bidali eta ondoren kanpoko programa baten bidez txukundu fitxategian gorde baino lehen.
+</DL>
+
+<A NAME="fitxategiak"></A>
+<H1>FITXATEGIAK</H1>
+
+<DL>
+<DT>~/.txt2tagsrc</DT><DD>
+Erabiltzailearen defektuzko konfigurazio fitxategia.
+</DL>
+
+<A NAME="ingurunea"></A>
+<H1>INGURUNEA</H1>
+
+<DL>
+<DT>T2TCONFIG</DT><DD>
+Null ez bada, erabiltzailearen defektuzko konfigurazio fitxategiaren bide osoa adierazten du.
+</DL>
+
+<A NAME="egilea"></A>
 <H1>EGILEA</H1>
+
 <P>
-Aurelio Jargas-ek &lt;&lt;verde (a) aurelio net&gt;&gt; idatzia eta mantendua
+Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 </P>
 <P>
-Man orri hau Jose Inacio Coelho-k &lt;&lt;jic (a) technologist com&gt;&gt; idatzi du testu
-fitxategi moduan, ondoren <B>txt2tags</B>ekin man formatura pasatuz.
-</P>
-<H1>COPYRIGHT</H1>
-<P>
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
-</P>
-<P>
-Hau software librea da; begiratu iturburua kopiatzeko balditzetarako. EZ dago
-bermerik, ez SALTZEARI DAGOZKIONAK ezta HELBURU ZEHATZ BATERAKO
-ERABILGARRITASUNA ere.
+Eskuliburu orriaren euskara itzulpena Ales Zabala Alava-k (Shagi) &lt;&lt;shagi (a) gisa-elkartea org&gt;&gt; egin du.
 </P>
 
-<!-- html code generated by txt2tags 2.3 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html manpage.t2t -->
+<A NAME="erroreak"></A>
+<H1>ERROREAK</H1>
+
+<P>
+<A HREF="http://code.google.com/p/txt2tags/issues">http://code.google.com/p/txt2tags/issues</A>
+</P>
+
+<A NAME="copyright"></A>
+<H1>COPYRIGHT</H1>
+
+<P>
+Copyright (C) 2001-2010 Aurelio Jargas, GNU GPL v2
+</P>
+
+<!-- html code generated by txt2tags 2.6b1 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html Basque/manpage-eu.t2t -->
 </BODY></HTML>
