@@ -17,5 +17,6 @@ else:
         print "Dynamic capacities are not available on your system."
     else:
         lines, columns = int(lines_s), int(columns_s)
-        print "Dynamic txt2tags options are --width=%d and --height=%d"%(columns,lines)
-        os.system('../txt2tags --slides --width=%d --height=%d %s -t art %s'%(columns, lines, " ".join(sys.argv[1:-1]),sys.argv[-1]))
+        command = '../txt2tags --slides --width=%d --height=%d -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
+        print command
+        os.system(command)
