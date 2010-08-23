@@ -1,0 +1,21 @@
+#! /usr/bin/env python
+#
+# dynartslides, a dynamic art slides generator for txt2tags
+#
+# Copyright (C) 2010, Florent Gallaire <fgallaire@gmail.com>
+# License GNU GPLv3
+#
+
+import os, sys
+
+if len(sys.argv) < 2:
+    print "Please, we need one file as argument."
+else:
+    try:
+        lines_s, columns_s = os.popen('stty size', 'r').read().split()
+    except:
+        print "Dynamic capacities are not available on your system."
+    else:
+        lines, columns = int(lines_s), int(columns_s)
+        print "Dynamic txt2tags options are --width=%d and --height=%d"%(columns,lines)
+        os.system('../txt2tags --slides --width=%d --height=%d %s -t art %s'%(columns, lines, " ".join(sys.argv[1:-1]),sys.argv[-1]))
