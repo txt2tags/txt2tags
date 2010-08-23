@@ -1,391 +1,472 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:3em               ;} 
-a    { text-decoration:none     ;} 
-pre  { background-color:#ffffcc ;} 
-</STYLE>
+<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.sf.net">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <TITLE>TXT2TAGS</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
-<FONT SIZE="4">
-May, 2005
-</FONT></CENTER>
+<CENTER>
+<H1>TXT2TAGS</H1>
+<FONT SIZE="4">Aug, 2010</FONT>
+</CENTER>
 
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+  <UL>
+  <LI><A HREF="#name">NOM</A>
+  <LI><A HREF="#synopsis">SINOPSI</A>
+  <LI><A HREF="#description">DESCRIPCIÃ“</A>
+  <LI><A HREF="#markup">MARCAT</A>
+  <LI><A HREF="#options">OPCIONS</A>
+  <LI><A HREF="#source">ARXIU FONT</A>
+  <LI><A HREF="#settings">AJUSTS</A>
+  <LI><A HREF="#commands">ORDRES</A>
+  <LI><A HREF="#macros">MACROS</A>
+  <LI><A HREF="#examples">EXEMPLES</A>
+  <LI><A HREF="#files">ARXIUS</A>
+  <LI><A HREF="#environment">ENTORN</A>
+  <LI><A HREF="#author">AUTOR</A>
+  <LI><A HREF="#bugs">BUGS</A>
+  <LI><A HREF="#copyright">COPYRIGHT</A>
+  </UL>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+<A NAME="name"></A>
 <H1>NOM</H1>
+
 <P>
-txt2tags - Eina de formatat i conversió de texte
+txt2tags - Eina de formataciÃ³ i conversiÃ³ de texte.
 </P>
+
+<A NAME="synopsis"></A>
 <H1>SINOPSI</H1>
+
 <P>
-<B>txt2tags</B> [<I>OPCIÓ</I>]... [<I>ARXIU</I>]...
+<B>txt2tags</B> [<I>opcions</I>] [<I>ARXIU</I>...]
 </P>
-<H1>DESCRIPCIÓ</H1>
+
+<A NAME="description"></A>
+<H1>DESCRIPCIÃ“</H1>
+
 <P>
-<B>txt2tags</B> es una eina GLP de conversió de formats, escrita en Pyton, que
-genera documents <I>HTML</I>, <I>XHTML</I>, <I>SGML</I>, <I>LaTeX</I>, <I>Lout</I>,
-<I>Man Page</I>, <I>MoinMoin</I>, <I>MagicPoint</I> i <I>PageMaker</I> a partir d'un simple
-arxiu de texte mínimament marcat ( per exemple.: texte pla).
+<B>txt2tags</B> llegeig un arxiu de texte que ha estat mÃ­nimament marcat i el converteix las siguents formats:
+<I>ASCII Art</I>,
+<I>AsciiDoc</I>,
+<I>Creole</I>,
+<I>DocBook</I>,
+<I>DokuWiki</I>,
+<I>Google Code Wiki</I>,
+<I>HTML</I>,
+<I>LaTeX</I>,
+<I>Lout</I>,
+<I>MagicPoint</I>,
+<I>Man page</I>,
+<I>MoinMoin</I>,
+<I>PageMaker</I>,
+<I>Plain Text (Texte PlÃ )</I>,
+<I>pmWiki</I>,
+<I>SGML</I>,
+<I>Wikipedia</I> 
+<I>XHTML</I>.
 </P>
 <P>
-L'usuari sols precisa coneixer unes poques i senzilles reglas de marcat, pròpies de <B>txt2tags</B>, 
-i escriure els seus arxius en texte pla. El programa s'encarrega de realitzar tot el treball, afegint-hi les marques necessàries i 
-solucionant els problemes que es puguin presentar a l'arxiu de sortida.
+Aquesta pÃ gina de manual (Man page) fou creada amb <B>txt2tags</B> a partir d'un arxiu de texte plÃ . El mateix arxiu de texte plÃ  fou tambÃ¨ convertit a HTML per a la versiÃ³ online d'aquest manual.
 </P>
 <P>
-El mateix arxiu de texte por ser convertit a tots i cada un dels formats de sortida,
-sense cap necessitat de haver-lo d'editar cada vegada. Es aquest precisament el propòsit de <B>txt2tags</B> : UN arxiu font, MÚLTIPLES arxius finals.
+UNA Ãºnica font, MÃšLTIPLES formats de sortida - <A HREF="http://txt2tags.sourceforge.net">http://txt2tags.sourceforge.net</A>
 </P>
-<P>
-Consulteu la pàgina del programa, que es troba a:
-<I>http://txt2tags.sourceforge.net</I>.
-</P>
+
+<A NAME="markup"></A>
+<H1>MARCAT</H1>
+
+<PRE>
+  EncapÃ§alaments            Les primeres tres lÃ­nies de l'arxiu font.
+  TÃ­tol                     = texte =
+  TÃ­tol numerat             + texte +
+  Comentari                 % comentaris
+  LÃ­nia de separaciÃ³        -----------------------...
+  LÃ­nia gruixuda            =======================...
+  ImÃ gen                    [nom.jpg]
+  EnlaÃ§                     [etiqueta url]
+  
+  Negreta                   **texte**
+  Cursiva                   //texte//
+  ratllat                   __texte__
+  Tatxat                    --texte--
+  Monoespai                 ``texte``
+  Raw                       ""texte""
+  Etiquetat                 ''texte''
+  
+  ParÃ graf                  texte
+  Cita                      &lt;TAB&gt;texte
+  Llista                    - texte
+  Llista numerada           + texte
+  Llista de definiciÃ³       : texte
+  Taula                     | cel.la1 | cel.la2 | cel.la3...
+  
+  LÃ­nia verbatim            ``` texte
+  LÃ­nia Raw                 """ texte
+  LÃ­nia Etiquetada          ''' texte
+  
+  Bloc Verbatim             ```
+                            lÃ­nies
+                            ```
+  Bloc Raw                  """
+                            lÃ­nies
+                            """
+  Bloc etiquetat            '''
+                            lÃ­nies
+                            '''
+</PRE>
+
+<A NAME="options"></A>
 <H1>OPCIONS</H1>
+
 <DL>
-<DT> <B>-C</B>, <B>--config-file</B></DT><DD>
-Llegeix la configuració des d'un arxiu extern (actúa com %!includeconf)
+<DT><B>-C</B>, <B>--config-file</B>=<I>ARXIU</I></DT><DD>
+Llegeig la configuraciÃ³ (ajusts) especificats a l'arxiu extern   <I>ARXIU</I>. La configuraciÃ³ ha d'estar en format   <I>%!keyword:value</I>. Per a mÃ©s detalls, consultar la secciÃ³  <A HREF="#settings">AJUSTS</A>.
 <P></P>
-<DT>     <B>--css-sugar</B></DT><DD>
-Inserta CSS-friendly tags per a arxius de sortida HTML y XHTML 
+<DT>    <B>--css-sugar</B></DT><DD>
+Millora el codi  HTML/XHTML generat per a fi de poder utilitzar CSS. S'eliminen els atributs de les etiquetes, s'ignÃ²ren les etiquetes de presentaciÃ³, les capÃ§aleres es generen amb etiquetes H1, H2 i H3 i es creen noves DIVs :  <I>#header</I>,  <I>#body</I>,  <I>.toc</I>.
 <P></P>
-<DT>     <B>--css-inside</B></DT><DD>
-Inserta el contingut d'un arxiu CSS a l'encapçalament HTML/XHTML 
+<DT>    <B>--css-inside</B></DT><DD>
+Insereix el contingut d'un arxiu CSS dins l'encapÃ§alament  HTML/XHTML. Utilitzar  <CODE>--style</CODE>  per especificar l'arxiu CSS que s'ha de llegir.
 <P></P>
-<DT>     <B>--dump-config</B></DT><DD>
-Imprimeix tota la configuració que troba i surt.
+<DT>    <B>--dump-config</B></DT><DD>
+Mostra tota la configuraciÃ³ (ajusts) i surt.
 <P></P>
-<DT>     <B>--dump-source</B></DT><DD>
-Imprimeix el document font, amb les inclusions expandides
+<DT>    <B>--dump-source</B></DT><DD>
+Mostra el document font, amb totes les seves les inclusions  (<CODE>%!include</CODE>) expandides.
 <P></P>
-<DT>     <B>--encoding</B></DT><DD>
-Escolleix la codificació de l'arxiu de sortida (UTF-8, ISO-8859-1, etc)
+<DT>    <B>--encoding</B>=<I>CODI</I></DT><DD>
+Estableix la configuraciÃ³ de carÃ cters que s'utilitzarÃ  a l'arxiu de sortida, utilitzant l'establerta a  <I>CODI</I>. Exemples de  <I>CODI</I>: UTF-8 y iso-8859-1.
 <P></P>
-<DT>     <B>--gui</B></DT><DD>
-Arrenca en modus gràfic ( interfaç GUI-TK)
+<DT>    <B>--gui</B></DT><DD>
+Activa la InterfÃ­cie GrÃ¡fica Tk.
 <P></P>
-<DT> <B>-h</B>, <B>--help</B></DT><DD>
-Imprimeix l'informació d'ajuda i surt
+<DT><B>-h</B>, <B>--help</B></DT><DD>
+Mostra la informaciÃ³ d'ajut i surt.
 <P></P>
-<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
-Suprimeix l'encapçalament, títol i peu de pàgina
+<DT><B>-H</B>, <B>--no-headers</B></DT><DD>
+Elimina els encapÃ§alaments i els peus de pÃ gina de l'arxiu de sortida. Sols es mostrarÃ n els continguts (cos del document).
 <P></P>
-<DT>     <B>--headers</B></DT><DD>
-Mostra l'encapçalament, títol i peu de pàgina (per defecte, ON)
+<DT>    <B>--headers</B></DT><DD>
+Mostra els encapÃ§alaments i els peus de pÃ gina de l'arxiu de sortida. Per defecte: ON.
 <P></P>
-<DT> <B>-i</B>, <B>--infile</B>=<I>FILE</I></DT><DD>
-Pren FILE  com a nom per a l'arxiu d'entrada ('-' per a STDIN)
+<DT>    <B>--height</B>=<I>NUM</I></DT><DD>
+Fixa el nombre de lÃ­nies de l'arxiu de sortida a l'establert a  <I>NUM</I>. Aquesta opciÃ³ s'utilitza sols amb formats de sortida  ASCII Art, quan tambÃ© s'estigui utilitzant l'opciÃ³ <CODE>--slides</CODE>.
 <P></P>
-<DT>     <B>--mask-email</B></DT><DD>
-Amaga els email als robots de spam. &lt; x@y.z &gt; esdevé &lt; x (a) y z &gt;
+<DT><B>-i</B>, <B>--infile</B>=<I>ARXIU</I></DT><DD>
+Pren  <I>ARXIU</I>  com l'arxiu font. Utilitzar '-' per a llegir la font des de STDIN.
 <P></P>
-<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
-Numera tots els títols: 1, 1.1, 1.1.1, etc
+<DT>    <B>--mask-email</B></DT><DD>
+Oculta els emails als robots de spam. Elimina @ i punts. L'adreÃ§a foo@bar.com esdevÃ© &lt;foo (a) bar com&gt;.
 <P></P>
-<DT>     <B>--no-dump-config</B></DT><DD>
-Desactiva dump config
+<DT><B>-n</B>, <B>--enum-title</B></DT><DD>
+Activa la numeraciÃ³ automÃ tica dels tÃ­tols. EstÃ  prefixada a: 1, 1.1, 1.1.1, ...
 <P></P>
-<DT>     <B>--no-dump-source</B></DT><DD>
-Desactiva dump source 
+<DT>    <B>--no-dump-config</B></DT><DD>
+Anul.la  l'acciÃ³  <CODE>--dump-config</CODE>.
 <P></P>
-<DT>     <B>--no-encoding</B></DT><DD>
-Exclou la configuració d'encoding
+<DT>    <B>--no-dump-source</B></DT><DD>
+Anul.la  l'acciÃ³  <CODE>--dump-source</CODE>.
 <P></P>
-<DT>     <B>--no-enum-title</B></DT><DD>
-Desactiva la numeració dels títols
+<DT>    <B>--no-encoding</B></DT><DD>
+Anul.la la configuraciÃ³ de carÃ cters.
 <P></P>
-<DT>     <B>--no-infile</B></DT><DD>
-Suprimeix les anteriors declaracions infile
+<DT>    <B>--no-enum-title</B></DT><DD>
+Desactiva la numeraciÃ³ automÃ tica dels tÃ­tols.
 <P></P>
-<DT>     <B>--no-mask-email</B></DT><DD>
-Mostra emails. Desactiva l'opció --mask-email 
+<DT>    <B>--no-infile</B></DT><DD>
+Anul.la tota anterior declaraciÃ³   <CODE>--infile</CODE>.
 <P></P>
-<DT>     <B>--no-outfile</B></DT><DD>
-Suprimeix les anteriors declaracions outfile
+<DT>    <B>--no-targets</B></DT><DD>
+Anul.la l'acciÃ³   <CODE>--targets</CODE>.
 <P></P>
-<DT>     <B>--no-quiet</B></DT><DD>
-Mostra missatges. Desactiva l'opció --quiet 
+<DT>    <B>--no-mask-email</B></DT><DD>
+Desactiva l'ocultaciÃ³ dels emails.
 <P></P>
-<DT>     <B>--no-rc</B></DT><DD>
-No llegeix l'arxiu de configuració de l'usuari ~/.txt2tagsrc
+<DT>    <B>--no-outfile</B></DT><DD>
+Anul.la tota anterior declaraciÃ³  <CODE>--outfile</CODE>.
 <P></P>
-<DT>     <B>--no-style</B></DT><DD>
-Suprimeix la declaració d'estil
+<DT>    <B>--no-quiet</B></DT><DD>
+Mostra els missatges del sistema, desactiva l'opciÃ³  <CODE>--quiet</CODE>.
 <P></P>
-<DT>     <B>--no-toc</B></DT><DD>
-No afegeix Índex de Continguts, TOC (Table of Contents) al document final
+<DT>    <B>--no-rc</B></DT><DD>
+No llegir a l'arxiu de configuraciÃ³ (ajusts) de l'usuari   ~/.txt2tagsrc.
 <P></P>
-<DT>     <B>--no-toc-only</B></DT><DD>
-Desactiva l'opció --toc-only 
+<DT>    <B>--no-slides</B></DT><DD>
+Desactiva  <CODE>--slides</CODE>.
 <P></P>
-<DT> <B>-o</B>, <B>--outfile</B>=<I>FILE</I></DT><DD>
-Pren FILE com a nom per a l'arxiu de sortida ('-' para STDOUT)
+<DT>    <B>--no-style</B></DT><DD>
+Desactiva tots els ajusts d'estil.
 <P></P>
-<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
-Modus silenciós, suprimeix totes les sortides (excepte errors)
+<DT>    <B>--no-toc</B></DT><DD>
+Elimina la Taula de Continguts (TOC) a l'arxiu de sortida.
 <P></P>
-<DT>     <B>--rc</B></DT><DD>
-Llegeix a l'arxiu de configuració de l'usuari ~/.txt2tagsrc (per defecte, ON)
+<DT>    <B>--no-toc-only</B></DT><DD>
+Desactiva l'acciÃ³  <CODE>--toc-only</CODE>.
 <P></P>
-<DT>     <B>--style</B>=<I>FILE</I></DT><DD>
-Utilitza FILE com a document d'estil (com HTML CSS)
+<DT><B>-o</B>, <B>--outfile</B>=<I>ARXIU</I></DT><DD>
+Pren  <I>ARXIU</I>  com a nom per a l'arxiu de sortida. Utilitzar '-' per a dirigir els resultats a STDOUT.
 <P></P>
-<DT><B>-t</B>, <B>--target</B></DT><DD>
-Defineix el tipus de document final. Actualment les opcions són:
-html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
+<DT><B>-q</B>, <B>--quiet</B></DT><DD>
+Mode silenciÃ³s. Suprimeix tots els missatges del sistema, excepte els dels errors.
 <P></P>
-<DT>     <B>--toc</B></DT><DD>
-Afegeix un Índex de Continguts, TOC (Table of Contents) al document final
+<DT>    <B>--rc</B></DT><DD>
+Llegeig a l'arxiu de configuraciÃ³ de l'usuari  ~/.txt2tagsrc. Per defecte: ON.
 <P></P>
-<DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
-Defineix en N el nivell máxim (profunditat) de l'Índex de Continguts
+<DT>    <B>--slides</B></DT><DD>
+Formata l'arxiu de sortida com una presentaciÃ³ de diapositives. Aquesta opciÃ³ s'utilitza sols amb formats de sortida ASCII Art.
 <P></P>
-<DT>     <B>--toc-only</B></DT><DD>
-Imprimeix l'Índex de Continguts (TOC) i surt
+<DT>    <B>--style</B>=<I>ARXIU</I></DT><DD>
+Utilitza  <I>ARXIU</I>  como l'arxiu que contÃ© l'estil del document. Utilitzat per a definir arxius CSS en documents  HTML/XHTML i Â´Â´mÃ²dulsÂ´Â´ LaTeX. Aquesta opciÃ³ es pot utilitzar repetides vegades amb la finalitat d'incloure mÃºltiples arxius d'estil.
 <P></P>
-<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
-Imprimeix els missatges d'informació durant la conversió
+<DT><B>-t</B>, <B>--target</B>=<I>TIPUS</I></DT><DD>
+Fixa el format del document de sortida a l'establert a  <I>TIPUS</I>. Els formats de document mes corrents son: <I>html</I>, <I>xhtml</I>, <I>tex</I>, <I>man</I>, <I>txt</I>. Utilitzar l'opciÃ³  <CODE>--targets</CODE> per a consultar els formats disponibles.
 <P></P>
-<DT> <B>-V</B>, <B>--version</B></DT><DD>
-Imprimeix la versió del programa i surt
+<DT>    <B>--targets</B></DT><DD>
+Mostra els formats de document disponibles per als arxius de sortida i surt.
+<P></P>
+<DT>    <B>--toc</B></DT><DD>
+Inclou, automaticament, una Taula de Continguts (TOC) a l'arxiu de sortida, entre la capÃ§alera (HEADER) i el cos del document (BODY). Es possible especificar la posiciÃ³  de la TOC  utilitzant la macro <CODE>%%TOC</CODE>.
+<P></P>
+<DT>    <B>--toc-level</B>=<I>NUM</I></DT><DD>
+Fixa el nivell mÃ xim de la Taula de Continguts (TOC) al nÃºmero especificat a  <I>NUM</I>. Tots els tÃ­tols inferiors a  <I>NUM</I> no serÃ¡n inclosos a la Taula de Continguts.
+<P></P>
+<DT>    <B>--toc-only</B></DT><DD>
+Mostra la Taula de Continguts (TOC) i surt.
+<P></P>
+<DT><B>-v</B>, <B>--verbose</B></DT><DD>
+Mostra els missatges del sistema durant el procÃ©s de conversiÃ³. Aquesta opciÃ³ es pot utilitzar repetides vegades per a incrementar el nombre de missatges a mostrar.
+<P></P>
+<DT><B>-V</B>, <B>--version</B></DT><DD>
+Mostra l'actual versiÃ³ del programa i surt.
+<P></P>
+<DT>    <B>--width</B>=<I>NUM</I> </DT><DD>
+Fixa al nÃºmero especificat a  <I>NUM</I>  l'amplada de les columnes de l'arxiu de sortida. Aquesta opciÃ³ s'utilitza sols amb formats de sortida del tipus ASCII Art.
+</DL>
+
+<A NAME="source"></A>
+<H1>ARXIU FONT</H1>
+
+<P>
+Els arxius font acostumen a especificar-se mitjanÃ§ant l'extensiÃ³  <I>.t2t</I>  (per exemple, <CODE>arxiu.t2t</CODE>). Dins d'un arxiu font hi podem considerar tres Ã rees :
+</P>
+
+<DL>
+<DT><B>EncapÃ§alament</B> (opcional)</DT><DD>
+Les tres primeres lÃ­nies de l'arxiu. Si no es necessita encapÃ§alament, deixar en blanc la primera lÃ­nia. S'acostuma a utilitzar aquesta Ã rea per a posar-hi el tÃ­tol del document i la informaciÃ³ sobre el autor, la versiÃ³, la data etc.
+<P></P>
+<DT><B>Ajusts</B> (opcional)</DT><DD>
+ComenÃ§a tot just desprÃ©s de l'EncapÃ§alament (4Âª lÃ­nia, o 2Âª lÃ­nia en el cÃ s d'ometre l'encapÃ§alament) i finalitza al comenÃ§ament de l'Ã rea del Cos del Document.
+Utilitzats per a implementar ajusts (configuracions) en format  <CODE>%!keyword:value</CODE>.
+<P></P>
+<DT><B>Cos del Document</B></DT><DD>
+ComenÃ§a amb la primera lÃ­nia de text vÃ lid  (que no sigui comentari o ajust) desprÃ©s de l'EncapÃ§alament i s'estÃ©n fins al final del document. A aquesta Ã rea es a on hi trobarÃ©m el contingut del document.
+</DL>
+
+<A NAME="settings"></A>
+<H1>AJUSTS</H1>
+
+<P>
+Els ajusts ens permeten personalitzar  <B>txt2tags</B>; son similars a les opcions. Poden emplaÃ§ar-se a: l'Ã¡rea d'Ajusts del document font, a l'arxiu  <CODE>~/.txt2tagsrc</CODE> o a un arxiu extern que s'invocarÃ  mitjanÃ§ant l'opciÃ³  <CODE>--config-file</CODE>.
+</P>
+
+<DL>
+<DT><B>%!target</B></DT><DD>
+Defineix el format de l'arxiu de sortida, tal com ho faria l'opciÃ³  <CODE>--target</CODE>. Exemple:
+
+<PRE>
+  %!target: html
+</PRE>
+
+<P></P>
+<DT><B>%!options(tipo)</B></DT><DD>
+Defineix les opcions per defecte per a cada tipus d'arxiu de sortida. S'han d'utilitzar les opcions amb versiÃ³ lÃ­nia d'ordres (la que comenÃ§a amb  '--'). Exemple:
+
+<PRE>
+  %!options(html): --toc --toc-level 3 --css-sugar
+</PRE>
+
+<P></P>
+<DT><B>%!includeconf</B></DT><DD>
+Inclou, a l'arxiu corrent, els ajusts definits a un arxiu extern, tal com ho faria l'opciÃ³  <CODE>--config-file</CODE>. Exemple:
+
+<PRE>
+  %!includeconf: miconfig.t2t
+</PRE>
+
+<P></P>
+<DT><B>%!style</B> </DT><DD>
+Utilitza un arxiu d'estil extern, tal com ho faria l'opciÃ³  <CODE>--style</CODE>. Es pot utilitzar repetides vegades. Exemple:
+
+<PRE>
+  %!style: colores.css
+</PRE>
+
+<P></P>
+<DT><B>%!encoding</B></DT><DD>
+Defineix la codificaciÃ³ de carÃ cters que s'utilitzarÃ  al document convertit, tal com ho faria l'opciÃ³  <CODE>--encoding</CODE>. Exemple :
+
+<PRE>
+  %!encoding: UTF-8
+</PRE>
+
+<P></P>
+<DT><B>%!preproc</B></DT><DD>
+Filtre input de cercar/reemplaÃ§ar utilitzat per a realitzar canvis en el cos del document font ABANS que txt2tags realitzi qualsevol acciÃ³. La cerca utilitza expresions regulars de Python. Exemple:
+
+<PRE>
+  %!preproc:  "JJS"  "John J. Smith"
+</PRE>
+
+<P></P>
+<DT><B>%!postproc</B></DT><DD>
+Filtre output de cercar/reemplaÃ§ar utilitzat per a realitzar canvis en el document generat DESPRÃ‰S del complet processament per txt2tags de l'arxiu font. La cerca utilitza exresions regulars de Python. Exemple:
+
+<PRE>
+  %!postproc(html):  "&lt;B&gt;"  "&lt;STRONG&gt;"
+</PRE>
+
 </DL>
 
 <P>
-Per defecte, l'arxiu de sortida es desat a 'file.&lt;type&gt;'.
-Utilitzar --outfile per tal d'assignar un altre nom a l'arxiu de sortida.
-Si l'arxiu d'entrada es '-', llegeix a STDIN.
-Si l'arxiu de sortida es '-', desa l'arxiu de sortida a STDOUT.
+Si la mateixa paraula clau apareix mÃ©s d'una vegada, l'Ã¹ltima trobada serÃ¡ que s'utilitzarÃ  (excepcions: opcions, preproc i postproc, que son acumulatives). Les paraules claus invÃ lides serÃ n ignorades. L'odre de processament es:  <CODE>~/.txt2tagsrc</CODE>, Ã rea de Ajusts del document font, opciÃ³  <CODE>--config-file</CODE>.
 </P>
-<H1>ESTRUCTURA</H1>
+
+<A NAME="commands"></A>
+<H1>ORDRES</H1>
+
 <P>
-Un arxiu font txt2tags pot tenir tres árees:
+Les Ordres executen tasques durant el procÃ©s de conversiÃ³. S'han d'emplaÃ§ar en el cos del document font.
 </P>
+
 <DL>
-<DT><B>Encapçalament</B></DT><DD>
-Les tres primeres línies. Son utilitzades per l'identificació del document.
-Si no vols encapçalament, pots deixar en blanc la primera línia o fer-ho mitjançant 
-l'opció  <CODE>no-header</CODE> .
+<DT><B>%!csv: arxiu.csv</B></DT><DD>
+Incorpora un arxiu CSV com una tabla.
 <P></P>
-<DT><B>Configuracions</B></DT><DD>
-S'inicien a partir de la quarta línia. Totes les configuracions segueixen el mateix format: <B>%!clau: valor</B>.
-Les configuracions també poden fer-se mitjançant arxius de configuració o línia d'ordres.
+<DT><B>%!include: arxiu.t2t</B></DT><DD>
+Incorpora al document un arxiu txt2tags.
 <P></P>
-<DT><B>Cos</B></DT><DD>
-Es el veritable document. Es l'única área imprescindible per tenir un arxiu txt2tags válid.
+<DT><B>%!include: ``arxiu.txt``</B></DT><DD>
+Incorpora al document un arxiu de text (verbatim).
+<P></P>
+<DT><B>%!include: ''arxiu.html''</B></DT><DD>
+Incorpora al document un arxiu marcat.
 </DL>
 
-<H1>CONFIGURACIÓ</H1>
-<P>
-La conversió d'un arxiu font pot personalitzar-se per dues vies: externa o interna.
-Externament, les configuracions poden ser llegides d'un arxiu RC
-(<CODE>~/.txt2tagsrc</CODE>) o importades d'un altre arxiu de configuració definit per l'usuari. Internament,
-la personalització es realitza mitjançant comandaments de configuració especials escrits en el mateix document font.
-</P>
-<P>
-En ambdós casos s'utilitza la mateixa sintaxi:
-</P>
-<DL>
-<DT><B>%!target:</B></DT><DD>
-Defineix el format de destí (target) principal
-<P></P>
-<DT><B>%!options(target):</B></DT><DD>
-Defineix les opcións de cada destí
-<P></P>
-<DT><B>%!include: file.t2t</B></DT><DD>
-Inclou un arxiu txt2tags en el document
-<P></P>
-<DT><B>%!include: ``file.txt``</B></DT><DD>
-Inclou un arxiu de texte (verbatim) en el document
-<P></P>
-<DT><B>%!include: ''file.html''</B></DT><DD>
-Inclou un arxiu de forma "literal"("tal-com-está") en el document
-<P></P>
-<DT><B>%!style:</B></DT><DD>
-Defineix un arxiu CSS (Cascading Style Sheets) per arxius finals del tipus XHTML i HTML
-o per carregar els mòduls (\usepackage) en un arxiu destí del tipus TEX
-<P></P>
-<DT><B>%!encoding:</B></DT><DD>
-Per definir la codificació de carácters de l'arxiu final (com ISO-8859-1, UTF-8,...). Ùtil per als usuaris de lléngua no-anglesa
-<P></P>
-<DT><B>%!includeconf:</B></DT><DD>
-Utilitzat per incloure, a l'arxiu corrent, una configuració a partir d'un arxiu extern.
-<P></P>
-<DT><B>%!guicolors:</B></DT><DD>
-Configuració dels colors per a l'interfaç GUI (tk/tcl) 
-<P></P>
-<DT><B>%!preproc:</B></DT><DD>
-Per a definir els propis filtres (macros) que serán processats <B>ABANS</B> de processar el document
-<P></P>
-<DT><B>%!postproc:</B></DT><DD>
-Per a definir els propis filtres (macros) que serán processados <B>DESPRÉS</B> de processar el document
-</DL>
-
-<H2>REGLES DE LES CONFIGURACIONS</H2>
- <UL>
- <LI>Les configuracions sols son válides dins de l'Área de Configuració 
- i serán considerades comentaris si es troben a l'Área del Cos
- . Una excepció es include, que es válida a l'Area del Cos.
- <P></P>
- <LI>Si apareix la mateixa paraula clau més d'una vegada dins d'una mateixa Área de Configuració,
-  l'última trobada será la que s'utilitzará. Excepcions: options, preproc, postproc, que són acumulatives.
- </UL>
-
- <UL>
- <LI>Una línia de configuració amb una paraula clau inválida, será considerada un comentari.
- <P></P>
- <LI>Aquestes configuracións ténen preferéncia sobre les de l'arxiu txt2tagsrc, pero no sobre les opciones en línia d'ordres.
- </UL>
-
-<H1>SINTAXI</H1>
-<P>
-S'utilitza una senzilla sintaxi de marques a l'arxiu font (l'arxiu de texte pla) per identificar les estructures i el format. Aquesta es la llista completa:
-</P>
-<H2>Básiques</H2>
-<PRE>
-  Encapçalament      Les 3 primeres línies de l'arxiu font
-  Títol              = paraules =
-  Títol numerat      + paraules +
-  Parágraf            paraules
-</PRE>
-<P></P>
-<H2>Atributs de les Fonts</H2>
-<PRE>
-  Negreta             **paraules**
-  Cursiva(Itálica)    //paraules//
-  Subratllat           __paraules__
-  Monoespaiat         ``paraules``
-</PRE>
-<P></P>
-<H2>Blocs de Texte</H2>
-<PRE>
-  Cita                  &lt;TAB&gt;paraules
-  Llista                 - paraules
-  Llista numerada        + paraules
-  Llista de definició    : paraules
-  Línia verbatim        ``` paraules
-  Zona verbatim         ```&lt;Retorn (/n)&gt; lìnies &lt;Retorn (/n)&gt;```
-  Línia raw             """ paraules
-  Zona raw              """&lt;Retorn (/n)&gt; línies &lt;Retorn (/n)&gt;"""
-  Taula                 | cel.la1 | cel.la2 | cel.la3...
-</PRE>
-<P></P>
-<H2>Altres</H2>
-<PRE>
-  Línia de separació     -----------------------...
-  Línia gruixuda         =======================...
-  Enlaç (link)           [etiqueta url]
-  Imatge                 [arxiu.jpg]
-  Texte raw              ""paraules""
-  Comentari             % comentaris
-</PRE>
-<P></P>
-<P>
-Llegir la Guía de l'Usuari de txt2tags per una descripció més detallada de cada marca
-</P>
-<H1>EXEMPLES</H1>
-<P>
-Suposant que s'ha creat un arxiu de texte anomenat <CODE>file.t2t</CODE>, tot seguit anem a veure com procedir per a la seva conversió:
-</P>
-<DL>
-<DT><B>Convertir a HTML  (arxiu final: file.html)</B></DT><DD>
-<CODE>$ txt2tags -t html file.t2t</CODE>
-<P></P>
-<DT><B>El mateix, utilitzant el redireccionament</B></DT><DD>
-<CODE>$ txt2tags -t html -o - file.t2t &gt; file.html</CODE>
-<P></P>
-<DT><B>Incloent-hi un Índex de Continguts (TOC)</B></DT><DD>
-<CODE>$ txt2tags -t html --toc file.t2t</CODE>
-<P></P>
-<DT><B>Incloent-hi TOC i títols numerats</B></DT><DD>
-<CODE>$ txt2tags -t html --toc --enum-title file.t2t</CODE>
-<P></P>
-<DT><B>Vista rápida de l'Index de Continguts</B></DT><DD>
-<CODE>$ txt2tags --toc-only file.t2t</CODE>
-<P></P>
-<DT><B>Comprovació on-line rápida através de STDIN</B></DT><DD>
-<CODE>$ (echo ; echo "**bold**") | txt2tags -t html -H -</CODE>
-<P></P>
-<DT><B>Utilització de l'interfaç gráfica</B></DT><DD>
-<CODE>$ txt2tags --gui file.t2t</CODE>
-</DL>
-
-<H1>TRUCS</H1>
-<P>
-Hi ha alguns truquets que fan de <B>text2tags</B> una excel.lent eina de tractament de documents:
-</P>
-<P>
-<U>Àncores</U>
-</P>
-<P>
-Els títols poden tenir enllaços amb àncores, el que ens permetrá arribar-hi directament, 
-si el format del document final ho permet:
-</P>
-<PRE>
-  Títol             = paraules =[àncora]
-  Títol numerat     + paraules +[àncora]
-</PRE>
-<P>
-<U>Arxius múltiples</U>
-</P>
-<P>
-<B>txt2tags</B> pot convertir més d'un arxiu alhora : 
-</P>
-<PRE>
-  txt2tags *.t2t
-</PRE>
-<P></P>
+<A NAME="macros"></A>
 <H1>MACROS</H1>
+
+<P>
+MitjanÃ§ant les Macros podrem inserir, d'una forma fÃ cil, continguts dinÃ mics en el document convertit. S'han de definir en el cos del document font. Amb l'excepciÃ³ de  <CODE>%%toc</CODE> , totes les macros poden ser personalitzades amb directives especials, como  <CODE>%Y</CODE> i  <CODE>%f</CODE>. Per mÃ©s detalls, consulteu la <B>Guia del Usuario de txt2tags</B>.
+</P>
+
 <DL>
-<DT>%%date</DT><DD>
-Permet incloure la data en curs, amb el format YYYYMMDD. Pot definir-se un format opcional utilitzant la sintaxi:
- %%date(cadena-format) 
+<DT><B>%%date</B></DT><DD>
+Insereix la data actual. El seu format per defecte es:  <CODE>%%date(%Y%m%d)</CODE>,  que ens mostrarÃ¡ la data com: AAAAMMDD.
 <P></P>
-<DT>%%infile</DT><DD>
-Utilitzat per obtenir informació de l'arxiu font. Admet formats opcionals, especificats per la sintaxi:  %%infile(cadena-format) .
+<DT><B>%%infile</B></DT><DD>
+Insereix el path de l'arxiu font. El seu format per defecte es:  <CODE>%%infile(%f)</CODE>.  Ãštil per a enllaÃ§os del tipus: <CODE>[Veure font %%infile]</CODE>.
 <P></P>
-Útil como enlaç a peu de página com [Veure l'arxiu font %%infile], d'aquesta manera podrás canviar el nom de l'arxiu
-i la referència será actualitzada.
+<DT><B>%%mtime</B></DT><DD>
+Insereix la data de l'Ãºltima modificaciÃ³ de l'arxiu font. El seu format per defecte es:  <CODE>%%date(%Y%m%d)</CODE>, que ens mostrarÃ  la data com: AAAAMMDD.
 <P></P>
-<DT>%%mtime</DT><DD>
+<DT><B>%%outfile</B></DT><DD>
+Insereix el path de l'arxiu final. El seu format per defecte es:  <CODE>%%outfile(%f)</CODE>. Ãštil en mencions del tipus: "Aquest es l'arxiu manpage-ca.html".
 <P></P>
-Ens dóna informació sobre la data de modificació de l'arxiu font. Utilitza el mateix format de la macro %%date.
-<P></P>
-<DT>%%outfile</DT><DD>
-Utilitzada per obtenir informació sobre l'arxiu convertit. Admet formats opcionals utilitzant la sintaxi: %%outfile(cadena-format) 
-<P></P>
-Útil per indicar coses com: "Aquest es l'arxiu de sortida  manpage-ca.html ",
-Podem canviar el nom de l'arxiu i la seva referència será actualitzada .
-<P></P>
-<DT>%%toc</DT><DD>
- %%toc  especifica l'emplaçament de l'Index de Continguts (TOC).
-Pot situar-se a qualsevol lloc del document.
-<P></P>
-NOTA: %%toc sóls será processat amb l'opció --toc .
+<DT><B>%%toc</B></DT><DD>
+Amb aquesta macro l'usuari pot fixar l'emplaÃ§ament de la Taula de Continguts (TOC). Es pot utilitzar repetides vegades. S'ha d'utilitzar conjuntament amb l'opciÃ³  <CODE>--toc</CODE>.
 </DL>
 
+<A NAME="examples"></A>
+<H1>EXEMPLES</H1>
+
+<DL>
+<DT><CODE>txt2tags -t html arxiu.t2t</CODE></DT><DD>
+<P></P>
+Converteix a HTML, guardant el resultat com arxiu.html.
+<P></P>
+<DT><CODE>txt2tags -t html -o - arxiu.t2t</CODE></DT><DD>
+<P></P>
+Converteix a HTML, mostrant el resultat a STDOUT.
+<P></P>
+<DT><CODE>txt2tags -t html --toc arxiu.t2t</CODE></DT><DD>
+<P></P>
+Converteix a HTML, generant una Taula de Continguts (TOC) de forma automÃ tica.
+<P></P>
+<DT><CODE>txt2tags -t html --toc --toc-level 2 -n archivo.t2t</CODE></DT><DD>
+<P></P>
+Converteix a HTML, amb una Taula de Continguts (TOC) a dos nivells i tÃ­tols numerats.
+<P></P>
+<DT><CODE>txt2tags --toc-only arxiu.t2t</CODE></DT><DD>
+<P></P>
+Ens mostra sols la Taula de Continguts (TOC), sense realitzar cap mena de conversiÃ³ en el document font.
+<P></P>
+<DT><CODE>txt2tags -t html --css-sugar --style base.css --style ui.css arxiu.t2t</CODE></DT><DD>
+<P></P>
+Converteix a HTML, preparant el codi resultat per a poder utilitzar CSS, incloent-hi tambÃ© una crida a dos arxius CSS externs (base.css y ui.css).
+<P></P>
+<DT><CODE>txt2tags -t art --slides --width 80 --height 25 -o - arxiu.t2t | more</CODE></DT><DD>
+<P></P>
+Crea una presentaciÃ³ de diapositives tipus ASCII Art, apta para a ser visionada amb un terminal pantalla/finestra 80x25.
+<P></P>
+<DT><CODE>(echo ; echo "**bold**") | txt2tags -t html -H -</CODE></DT><DD>
+<P></P>
+PrÃ ctica forma de realitzar comprovacions rÃ pides utilitzant STDIN.
+<P></P>
+<DT><CODE>txt2tags -t html -o - arxiu.t2t | tidy &gt; arxiu.html</CODE></DT><DD>
+<P></P>
+Envia el resultat a STDOUT, desde on se'l redirigeix a un programa extern (tidy) abans de ser guardat.
+</DL>
+
+<A NAME="files"></A>
+<H1>ARXIUS</H1>
+
+<DL>
+<DT>~/.txt2tagsrc</DT><DD>
+Arxiu de configuraciÃ³ de l'usuari, per defecte.
+</DL>
+
+<A NAME="environment"></A>
+<H1>ENTORN</H1>
+
+<DL>
+<DT>T2TCONFIG</DT><DD>
+Si no es nul, defineix el pathname de l'arxiu de configuraciÃ³ de l'usuari per defecte.
+</DL>
+
+<A NAME="author"></A>
 <H1>AUTOR</H1>
+
 <P>
-Escrit i mantingut per Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
+Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 </P>
 <P>
-Aquest manual fou escrit per Jose Inacio Coelho &lt;&lt;jic (a) technologist com&gt;&gt;
-com un arxiu de texte,  convertit al format man per <B>txt2tags</B>!
-</P>
-<P>
-La traducció al catalá fou realitzada per Antoni Serra Devecchi &lt;&lt;antoni serra (a) gmail com&gt;&gt; 
-</P>
-<H1>COPYRIGHT</H1>
-<P>
-Copyright (C) 2001, 2002, 2003, 2004, 2005 Aurelio Jargas
-</P>
-<P>
-This is free software; see the source for copying conditions. There is
-NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.
+TraducciÃ³ al catalÃ  realitzada per Antoni Serra Devecchi &lt;&lt;antoni serra (a) gmail com&gt;&gt;
 </P>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html ./Catalan/manpage-ca.t2t -->
+<A NAME="bugs"></A>
+<H1>BUGS</H1>
+
+<P>
+<A HREF="http://code.google.com/p/txt2tags/issues">http://code.google.com/p/txt2tags/issues</A>
+</P>
+
+<A NAME="copyright"></A>
+<H1>COPYRIGHT</H1>
+
+<P>
+Copyright (C) 2001-2010 Aurelio Jargas, GNU GPL v2
+</P>
+
+<!-- html code generated by txt2tags 2.6b1 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html /a/txt2tags/svn/doc/Catalan/manpage-ca.t2t -->
 </BODY></HTML>
