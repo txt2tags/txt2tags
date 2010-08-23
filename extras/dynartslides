@@ -12,11 +12,10 @@ if len(sys.argv) < 2:
     print "Please, we need one file as argument."
 else:
     try:
-        lines_s, columns_s = os.popen('stty size', 'r').read().split()
+        lines, columns = os.popen('stty size', 'r').read().split()
     except:
         print "Dynamic capacities are not available on your system."
     else:
-        lines, columns = int(lines_s), int(columns_s)
-        command = 'txt2tags --slides --width=%d --height=%d -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
+        command = 'txt2tags --slides --width=%s --height=%s -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
         print command
         os.system(command)
