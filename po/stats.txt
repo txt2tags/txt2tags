@@ -7,4 +7,4 @@
    it.po: 114 translated messages, 24 untranslated messages.
 pt_BR.po: 138 translated messages.
    uk.po: 113 translated messages, 25 untranslated messages.
-zh_CN.po: 114 translated messages, 24 untranslated messages.
+zh_CN.po: 138 translated messages.
