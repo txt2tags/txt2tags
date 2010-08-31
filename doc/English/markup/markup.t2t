@@ -91,10 +91,6 @@ See marks converted to HTML
 %!include: ``raw.t2t``
 ''' </td><td>
 %!include: raw.t2t
-''' </td></tr><tr><td class="t2t">
-%!include: ``rawline.t2t``
-''' </td><td>
-%!include: rawline.t2t
 ''' </td></tr><tr><th colspan="2">
 %-------------------------------------------------
 ''' OTHER
