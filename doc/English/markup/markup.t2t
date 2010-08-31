@@ -79,13 +79,14 @@ See marks converted to HTML
 %!include: quote.t2t
 
 ''' </td></tr><tr><td class="t2t">
-%!include: ``verb.t2t``
-''' </td><td>
-%!include: verb.t2t
-''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
 ''' </td><td>
 %!include: verbline.t2t
+
+''' </td></tr><tr><td class="t2t">
+%!include: ``verb.t2t``
+''' </td><td>
+%!include: verb.t2t
 
 ''' </td></tr><tr><td class="t2t">
 %!include: ``raw.t2t``
