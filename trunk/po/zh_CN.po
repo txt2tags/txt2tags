@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2010-08-13 11:55+BRT\n"
-"PO-Revision-Date: 2006-08-01 12:25+0800\n"
+"PO-Revision-Date: 2010-08-31 16:25+0800\n"
 "Last-Translator: wwfifi <wwfifi@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgid "SGML document"
 msgstr "SGML document"
 
 msgid "DocBook document"
-msgstr ""
+msgstr "DocBook 文档"
 
 msgid "LaTeX document"
 msgstr "LaTeX document"
@@ -37,16 +37,16 @@ msgid "MagicPoint presentation"
 msgstr "MagicPoint presentation"
 
 msgid "Wikipedia page"
-msgstr ""
+msgstr "维基页面"
 
 msgid "Google Wiki page"
-msgstr ""
+msgstr "Google 维基页面"
 
 msgid "DokuWiki page"
-msgstr ""
+msgstr "DokuWiki 页面"
 
 msgid "pmWiki page"
-msgstr ""
+msgstr "pmWiki 页面"
 
 msgid "MoinMoin page"
 msgstr "MoinMoin page"
@@ -58,13 +58,13 @@ msgid "Plain Text"
 msgstr "Plain Text"
 
 msgid "ASCII Art text"
-msgstr ""
+msgstr "ASCII 艺术文字"
 
 msgid "AsciiDoc document"
-msgstr ""
+msgstr "AsciiDoc 文档"
 
 msgid "Creole 1.0 document"
-msgstr ""
+msgstr "Creole 1.0 文档"
 
 msgid "%s version %s <%s>"
 msgstr "%s 版本 %s <%s>"
@@ -72,9 +72,8 @@ msgstr "%s 版本 %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "用法: %s [OPTIONS] [infile.t2t ...]"
 
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
+msgid "      --targets       print a list of all the available targets and exit"
+msgstr "      --targets       输出可能的目标格式,然后退出程序"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
 msgstr "  -t, --target=TYPE   设置目标文件类型. 目前支持:"
@@ -89,13 +88,13 @@ msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
 msgstr "      --encoding=ENC  设置目标文件编码 (utf-8, iso-8859-1, 等)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
-msgstr ""
+msgstr "      --toc           自动在输出文件添加一个目录"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr "      --toc-level=N   设置目录(TOC)最大深度为N"
 
 msgid "      --toc-only      print the Table of Contents and exit"
-msgstr ""
+msgstr "      --toc-only      输出目录,然后退出程序"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr "  -n, --enum-title    标题行格式为 1, 1.1, 1.1.1, 等"
@@ -104,31 +103,25 @@ msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr "      --style=FILE    设置文档样式类型(比如 HTML CSS)"
 
 msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
-msgstr ""
+msgstr "      --css-sugar     在HTML/XHTML中插入友好的CSS标记"
 
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr "      --css-inside    插入 CSS 文件内容到 HTML/XHTML 文件头部"
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
-msgstr ""
+msgstr "  -H, --no-headers    抑制页眉和页脚从输出"
 
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    防垃圾邮件,隐藏Email地址. x@y.z turns <x (a) y z>"
+msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "      --mask-email    防垃圾邮件,隐藏Email地址. x@y.z turns <x (a) y z>"
 
-msgid ""
-"      --slides        format output as presentation slides (used by -t art)"
-msgstr ""
+msgid "      --slides        format output as presentation slides (used by -t art)"
+msgstr "      --slides        输出格式作为简介幻灯片 (-t art时使用)"
 
-msgid ""
-"      --width=N       set the output's width to N columns (used by -t art)"
-msgstr ""
+msgid "      --width=N       set the output's width to N columns (used by -t art)"
+msgstr "      --width=N       设置输出宽度为N列(-t art时使用)"
 
-msgid ""
-"      --height=N      set the output's height to N rows (used by -t art)"
-msgstr ""
+msgid "      --height=N      set the output's height to N rows (used by -t art)"
+msgstr "      --height=N      设置输出高度为N行 (-t art时使用)"
 
 msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F 读取配置文件为F的配置"
@@ -161,7 +154,7 @@ msgid "Example:"
 msgstr "例如:"
 
 msgid "file.t2t"
-msgstr ""
+msgstr "file.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr "默认输出文件保存到'infile.<target>'."
@@ -218,16 +211,16 @@ msgid "No target specified (try --help)"
 msgstr "没有指定目标文件(试下 --help获得帮助)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr ""
+msgstr "-t 选项或%!target命令时,请告知目标格式."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr ""
+msgstr "运行 'txt2tags --targets' 查看所有可能的目标格式."
 
 msgid "Missing input file (try --help)"
 msgstr "缺少输入文件 (试下 --help获得帮助)"
 
 msgid "Invalid target '%s'"
-msgstr ""
+msgstr "无效的目标格式 '%s'"
 
 msgid "--%s value must be a number"
 msgstr "--%s 值必须是数字"
@@ -236,7 +229,7 @@ msgid "Option --split must be 0, 1 or 2"
 msgstr "Option --split 必须是 0, 1 或者 2"
 
 msgid "--art-chars: Expected %i chars, got %i"
-msgstr ""
+msgstr "--art-chars: 预计 %i  , 得到 %i"
 
 msgid "Input and Output files are the same: %s"
 msgstr "输入输出文件同名: %s"
@@ -260,7 +253,7 @@ msgid "Added %s"
 msgstr "已添加 %s"
 
 msgid "You can't use (target) with %s"
-msgstr ""
+msgstr "目标格式不能使用 %s "
 
 msgid "OFF"
 msgstr "关闭"
@@ -296,7 +289,7 @@ msgid "%s wrote %s"
 msgstr "%s 写了 %s"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "目录"
 
 msgid "Source document contents stored"
 msgstr "源文档内容已保存"
@@ -428,31 +421,26 @@ msgid "We are on Command Line interface"
 msgstr "现在在命令行界面下"
 
 msgid "Please inform an input file (.t2t) at the end of the command."
-msgstr ""
+msgstr "紧随命令后输入一个输入文件(.t2t)"
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags 成功完成"
 
 #~ msgid "  -H, --no-headers    suppress header, title and footer contents"
 #~ msgstr "  -H, --no-headers    禁用 header, title 和 footer 内容"
-
 #~ msgid ""
 #~ "      --headers       show header, title and footer contents (default ON)"
 #~ msgstr "      --headers       显示 header, title 和 footer 内容 (默认打开)"
-
 #~ msgid ""
 #~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
 #~ msgstr "      --css-sugar     为HTML 和 XHTML 标记插入友好的CSS标记"
-
 #~ msgid "      --toc           add TOC (Table of Contents) to target document"
 #~ msgstr "      --toc           在目标文件中添加 TOC (目录) "
-
 #~ msgid "      --toc-only      print document TOC and exit"
 #~ msgstr "      --toc-only      显示目录(TOC)并退出"
-
 #~ msgid ""
 #~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 #~ msgstr "      --rc            读取用户配置文件 ~/.txt2tagsrc (默认打开)"
-
 #~ msgid "Invalid target '%s' (try --help)"
 #~ msgstr "无效的目标文件 '%s' (试下--help获得帮助)"
+
