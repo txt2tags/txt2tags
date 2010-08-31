@@ -8,7 +8,8 @@ A short road map to help your work:
 - Start by renaming markup.t2t to markup-XX.t2t, where XX is the
   two-letter code of your language. Maybe your language needs a
   four-letter code, like pt_BR. If you don't know the code,
-  search here: http://www.mpi-sb.mpg.de/~pesca/locales.html
+  search here:
+  http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
   Do the same for the name of this folder: markup -> markup-XX
   There is no need to rename the other .t2t files.
@@ -32,3 +33,4 @@ A short road map to help your work:
     candidates are quote.t2t and link.t2t.
   - On table.t2t, attention to not mess the cell align.
   - verb.t2t and raw.t2t are right-aligned. Try to maintain this.
+  - tagged.t2t has HTML tags <div> and <p>, do not translate them.
