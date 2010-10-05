@@ -6,16 +6,16 @@
 # License GNU GPLv3
 #
 
-import os, sys
+import os, sys, fcntl, termios, struct
 
 if len(sys.argv) < 2:
     print "Please, we need one file as argument."
 else:
-    try:
-        lines, columns = os.popen('stty size', 'r').read().split()
-    except:
-        print "Dynamic capacities are not available on your system."
-    else:
+    if os.name == 'posix':
+        data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, '12345678') 
+        lines, columns, xpix, ypix = struct.unpack('HHHH',data)
         command = 'txt2tags --slides --width=%s --height=%s -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
         print command
         os.system(command)
+    else:
+        print "Dynamic capacities are not available on your system."
