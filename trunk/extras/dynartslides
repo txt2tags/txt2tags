@@ -13,7 +13,7 @@ if len(sys.argv) < 2:
 else:
     if os.name == 'posix':
         data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, '12345678') 
-        lines, columns, xpix, ypix = struct.unpack('HHHH',data)
+        lines, columns = struct.unpack('HHHH',data)[:2]
         command = 'txt2tags --slides --width=%s --height=%s -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
         print command
         os.system(command)
