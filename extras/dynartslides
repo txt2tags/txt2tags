@@ -12,8 +12,8 @@ if len(sys.argv) < 2:
     print "Please, we need one file as argument."
 else:
     if os.name == 'posix':
-        data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, '12345678') 
-        lines, columns = struct.unpack('HHHH',data)[:2]
+        data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
+        lines, columns = struct.unpack('4H',data)[:2]
         command = 'txt2tags --slides --width=%s --height=%s -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
         print command
         os.system(command)
