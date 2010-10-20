@@ -6,12 +6,13 @@
 # License GNU GPLv3
 #
 
-import os, sys, fcntl, termios, struct
+import os, sys
 
 if len(sys.argv) < 2:
     print "Please, we need one file as argument."
 else:
     if os.name == 'posix':
+        import fcntl, termios, struct
         data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
         lines, columns = struct.unpack('4H',data)[:2]
         command = 'txt2tags --slides --width=%s --height=%s -t art %s'%(columns, lines, " ".join(sys.argv[1:]))
