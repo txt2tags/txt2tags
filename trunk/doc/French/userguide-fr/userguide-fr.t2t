@@ -31,7 +31,7 @@ Translated by Claude Hiebel (Mar 2005)
 %!preproc: NOMARKS	Les marques ne sont pas interprétées
 %!preproc: NOMACRO	Les macros ne sont pas interprétées
 
-%!preproc: URLMARKUP	http://txt2tags.sf.net/fr/marques.html
+%!preproc: URLMARKUP	http://txt2tags.org/fr/marques.html
 
 % 15/Mar/2005: translated to french by Claude Hiebel
 % 22/Jun/2006: translation revised by Nicolas Dumoulin
@@ -377,7 +377,7 @@ exemple :
 === Interface Web ===
 
 L'interface Web est disponible à l'adresse
-http://txt2tags.sf.net/online.php. Vous pouvez tester et utiliser le
+http://txt2tags.org/online.php. Vous pouvez tester et utiliser le
 programme avant de le charger.
 
           [IMGPATH/web.png]  
@@ -480,7 +480,7 @@ installé, votre système vous le dira.
 == Charger txt2tags ==[download-txt2tags]
 
 Le site officiel de la distribution txt2tags est
-http://txt2tags.sf.net/src.
+http://txt2tags.org/src.
 
 Tous les fichiers sont des archives compressées (fichiers .tgz), qui peuvent être
 décompressés par la plupart des utilitaires (Winzip inclus).
@@ -730,7 +730,7 @@ comme le gras, l'italique, les titres, les images, les tables et autres.
 Un exemple rapide :
 ``**commencez en gras**`` et ``== les signes == pour le titre ==``.
 Vous pouvez apprendre les marques grâce au fichier
-[Txt2tags Markup Demo http://txt2tags.sf.net/markup.html].
+[Txt2tags Markup Demo http://txt2tags.org/markup.html].
 
 =======================================================================
 
@@ -2049,7 +2049,7 @@ Par exemple si un paragraphe doit être ajouté uniquement dans la cible
 HTML comme cela :
 
 ```
-%html% Cette page HTML est générée par [txt2tags http://txt2tags.sf.net].
+%html% Cette page HTML est générée par [txt2tags http://txt2tags.org].
 %html% voir le fichier texte source [ici source.t2t].
 ```
 

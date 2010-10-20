@@ -1,5 +1,5 @@
 #
-# txt2tags command line options tester (http://txt2tags.sf.net)
+# txt2tags command line options tester (http://txt2tags.org)
 # See also: ../run.py ../lib.py
 #
 # Note: The .t2t files are generated dynamicaly, based on 'tests' dict data

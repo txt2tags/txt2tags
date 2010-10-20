@@ -21,9 +21,9 @@
 
 = 关于本文 =[about]
 
-本文根据[txt2tags http://txt2tags.sf.net/]（当前版本为2.5）的**用户指南**英文版翻译而来，读者可通过以下途径获得用户指南的英文原版：
-- 用户指南官方网址：http://txt2tags.sf.net/userguide
-- 用户指南的PDF版本：http://txt2tags.sf.net/userguide/userguide.pdf
+本文根据[txt2tags http://txt2tags.org/]（当前版本为2.5）的**用户指南**英文版翻译而来，读者可通过以下途径获得用户指南的英文原版：
+- 用户指南官方网址：http://txt2tags.org/userguide
+- 用户指南的PDF版本：http://txt2tags.org/userguide/userguide.pdf
 
 
 本译文依照[创作共用约定（署名-非商业性使用-相同方式共享）3.0 http://creativecommons.org/licenses/by-nc-sa/3.0]发布。
@@ -279,7 +279,7 @@ Txt2tags能生成所有的标记，并且定义好丰富而有效的导言以设
 
 +++ 在线方式 +++
 
-基于Web的界面可以通过互联网地址http://txt2tags.sf.net/online.php来访问，你可以在下载之前先试用txt2tags。
+基于Web的界面可以通过互联网地址http://txt2tags.org/online.php来访问，你可以在下载之前先试用txt2tags。
 
         [IMGPATH/web.png] 
 
@@ -368,7 +368,7 @@ Python是一种极好的编程语言，能够跨平台的在Windows、Linux、UN
 
 ++ 下载txt2tags ++[download-txt2tags]
 
-Txt2tags的项目主页是http://txt2tags.sf.net。全部程序文件打包成一个tarball压缩文件（.tgz 文件），你可以使用大多数的压缩工具来提取（包括WinZip）。请下载**最新**的版本，早期版本仅仅作为历史存档之用。
+Txt2tags的项目主页是http://txt2tags.org。全部程序文件打包成一个tarball压缩文件（.tgz 文件），你可以使用大多数的压缩工具来提取（包括WinZip）。请下载**最新**的版本，早期版本仅仅作为历史存档之用。
 
 ++ 安装txt2tags ++[install-txt2tags]
 
@@ -1401,7 +1401,7 @@ th       { background-color:yellow  ;}
 
 举个例子来说，我们想要在HTML输出中加入一个额外的段落，于是把这些文本写成特殊的注释行，比如：
 ```
-%html% This HTML page is Powered by [txt2tags http://txt2tags.sf.net].
+%html% This HTML page is Powered by [txt2tags http://txt2tags.org].
 %html% See the source TXT file [here source.t2t].
 ```
 

@@ -2,7 +2,7 @@
 % txt2tags sample config file
 %
 % This is a sample for the .txt2tagsrc user config file.
-% Part ot the txt2tags project (http://txt2tags.sf.net).
+% Part ot the txt2tags project (http://txt2tags.org).
 %
 % Copy this file to $HOME/.txt2tagsrc (or %homepath%/_t2trc
 % on windows) and edit it to fit your needs. All configs are

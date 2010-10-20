@@ -1,6 +1,6 @@
 " unhtml.vim - by Aurelio Jargas
 " - Converts HTML tags into txt2tags marks
-" - Part of the txt2tags <http://txt2tags.sf.net> software
+" - Part of the txt2tags <http://txt2tags.org> software
 "
 " INSTRUCTIONS
 "   1. Open the HTML file on Vim and execute
@@ -33,7 +33,8 @@ g/<\s*a\s[^>]*>[^<]*$/join
 
 /<!--/,/-->/s,^,\% ,e
 " paragraph
-%s,<\s*p\(\s[^>]*\)\=\s*>,,ge
+%s,<\s*p\(\s[^>]*\)\=\s*>,
+,ge
 " bar
 %s,<\s*hr[^>]*>,-------------------------------------------------,ge
 " title
@@ -49,20 +50,28 @@ g/<\s*a\s[^>]*>[^<]*$/join
 %s,</\=\s*\(i\|em\)\s*>,//,ge
 %s,</\=\s*u\s*>,__,ge
 " pre
-%s,</\=\s*pre\s*>,```,ge
+%s,</\=\s*pre\s*>,
+```
+,ge
 " bullet/numbered list
 %s,<\s*li\s*>,- ,ge
 %s,</\s*li\s*>,,ge
 %s,<\s*[uo]l\s*>,,ge
-%s,</\s*[uo]l\s*>,,ge
+%s,</\s*[uo]l\s*>,
+
+,ge
 " definition list
 %s,<\s*dl\s*>,,ge
-%s,</\s*dl\s*>,,ge
+%s,</\s*dl\s*>,
+
+,ge
 %s,<\s*dt\s*>,: ,ge
-%s,</\s*dt\s*>,,ge
+%s,</\s*dt\s*>,
+,ge
 %s,</\=\s*dd\s*>,,ge
 " BR is ignored
-%s,<\s*br\s*/*>,,ge
+%s,<\s*br\s*/*>,
+,ge
 " trash
 %s,</\s*font[^>]*\s*>,,ge
 %s,</\s*p\s*>,,ge

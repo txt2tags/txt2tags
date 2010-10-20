@@ -9,7 +9,7 @@
 # Based on Guaracy Monteiro's t2tmake.rb program.
 # Implemented some ideas from Mauricio Teixeira (netmask).
 #
-# This file is part of the txt2tags (http://txt2tags.sf.net) project.
+# This file is part of the txt2tags (http://txt2tags.org) project.
 # Its license is the same as the program: GPL. See txt2tags COPYING
 # file for a detailed explanation of the GPL license.
 #

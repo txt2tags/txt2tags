@@ -43,7 +43,7 @@ Use --outfile to force an output file name.
 If  input file is '-', reads from STDIN.
 If output file is '-', dumps output to STDOUT.
 
-Site: http://txt2tags.sf.net
+Site: http://txt2tags.org
 Bugs: http://code.google.com/p/txt2tags/issues/list
 SVN : http://code.google.com/p/txt2tags/source/browse/trunk
 

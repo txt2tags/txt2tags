@@ -6,7 +6,7 @@
 // http://markitup.jaysalvat.com/
 // -------------------------------------------------------------------
 // Txt2tags tags example
-// http://txt2tags.sourceforge.net/markup.html
+// http://txt2tags.org/markup.html
 // -------------------------------------------------------------------
 // Feel free to add more tags
 // -------------------------------------------------------------------
