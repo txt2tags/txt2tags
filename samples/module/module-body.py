@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Sample of txt2tags being used as a module (http://txt2tags.sf.net) 
+# Sample of txt2tags being used as a module (http://txt2tags.org) 
 #
 # Details:
 #   The document body is a string.

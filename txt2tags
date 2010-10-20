@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # txt2tags - generic text conversion tool
-# http://txt2tags.sf.net
+# http://txt2tags.org
 #
 # Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
 #
@@ -111,7 +111,7 @@ except ImportError:
 	csv = None
 
 # Program information
-my_url = 'http://txt2tags.sf.net'
+my_url = 'http://txt2tags.org'
 my_name = 'txt2tags'
 my_email = 'verde@aurelio.net'
 my_version = '2.6b1'
@@ -323,7 +323,7 @@ Fake template to respect the general process.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=%(ENCODING)s">
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
 <TITLE>%(HEADER1)s</TITLE>
@@ -339,7 +339,7 @@ Fake template to respect the general process.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=%(ENCODING)s">
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
 <TITLE>%(HEADER1)s</TITLE>
@@ -362,7 +362,7 @@ Fake template to respect the general process.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
+<meta name="generator" content="http://txt2tags.org" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
 </head>
 <body bgcolor="white" text="black">
@@ -382,7 +382,7 @@ Fake template to respect the general process.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
+<meta name="generator" content="http://txt2tags.org" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
 </head>
 <body>

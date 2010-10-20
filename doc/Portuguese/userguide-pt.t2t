@@ -45,10 +45,10 @@ Tradução para o português: César A. K. Grossman
 	ferramenta de conversão de textos txt2tags.
 	
 	Minha versão atualizada pode ser encontrada em
-	http://txt2tags.sf.net/userguide/
+	http://txt2tags.org/userguide/
 	
 	Para mais informações e versões recentes, visite
-	[o website do txt2tags http://txt2tags.sf.net/].
+	[o website do txt2tags http://txt2tags.org/].
 	
 	Bom proveito!
 
@@ -397,7 +397,7 @@ configurando em ``%!guicolors``. Por exemplo:
 === Interface Web ===[web]
 
 A Interface Web está em funcionamento na Internet no endereço
-http://txt2tags.sf.net/online.php, permitindo que o programa possa ser
+http://txt2tags.org/online.php, permitindo que o programa possa ser
 usado e testado antes de ser copiado.
 
           [IMGPATH/web.png]          
@@ -500,7 +500,7 @@ sistema vai lhe informar.
 == Copiando o txt2tags ==
 
 O local oficial de distribuição do txt2tags é na homepage do programa,
-em http://txt2tags.sf.net/src.
+em http://txt2tags.org/src.
 
 Todos os arquivos do programa estão em um tarball (arquivo .tgz), que
 pode ser expandido pela maioria dos utilitários de compressão (incluindo
@@ -1352,7 +1352,7 @@ Por exemplo, se um parágrafo extra deve ser acrescentado somente no tipo
 destino HTML. Coloque o texto em um comentário especial, como este:
 
 ```
-%html% Esta página HTML foi produzida pelo [txt2tags http://txt2tags.sf.net].
+%html% Esta página HTML foi produzida pelo [txt2tags http://txt2tags.org].
 %html% Veja o arquivo fonte TXT [aqui fonte.t2t].
 ```
 

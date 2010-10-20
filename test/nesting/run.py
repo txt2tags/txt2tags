@@ -1,5 +1,5 @@
 #
-# txt2tags nesting marks tester (http://txt2tags.sf.net)
+# txt2tags nesting marks tester (http://txt2tags.org)
 # See also: ../run.py ../lib.py
 #
 

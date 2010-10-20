@@ -1,5 +1,5 @@
 #
-# txt2tags crossing marks tester (http://txt2tags.sf.net)
+# txt2tags crossing marks tester (http://txt2tags.org)
 # See also: ../run.py ../lib.py
 #
 

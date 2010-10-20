@@ -8,7 +8,7 @@ require 'fileutils'
 
  = t2tmake.rb (0.8beta)
  Programa para o processamento automatico de arquivos utilizando
- o txt2tags <t2t> (http://www.txt2tags.sf.net)
+ o txt2tags <t2t> (http://txt2tags.org)
  
  == download e instalação
  Existem duas maneiras de baixar este programa:
@@ -22,7 +22,7 @@ require 'fileutils'
  - python 1.5+ (sim, sim, para o txt2tags rodar);
  
  ===instalação: (t2t)
- - txt2tags: verifique o site www.txt2tags.sf.net;
+ - txt2tags: verifique o site http://txt2tags.org;
  - python: verifique o site www.python.org;
  
  ===instalação (ruby)

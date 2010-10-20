@@ -43,7 +43,7 @@ To translate txt2tags to your language:
 
 To update your translation when txt2tags.pot is updated:
 
-1. Download http://txt2tags.sourceforge.net/po/txt2tags.pot
+1. Download http://txt2tags.org/po/txt2tags.pot
 
 2. Run:
    msgmerge --no-fuzzy-matching <ID>.po txt2tags.pot > new.po

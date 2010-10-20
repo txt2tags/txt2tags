@@ -21,10 +21,10 @@
 > Gleichheitszeichen am Beginn und Ende der Zeile sein.)
 26,27c27,28
 < % Eine geheims Kommentar!
-< %TODO Link zur Programhompage http://txt2tags.sf.net
+< %TODO Link zur Programhompage http://txt2tags.org
 ---
 > % Ein geheimer Kommentar!
-> %TODO Link zur Programmhomepage http://txt2tags.sf.net
+> %TODO Link zur Programmhomepage http://txt2tags.org
 30c31
 <               =  Schriften und Verschönerungen  =
 ---

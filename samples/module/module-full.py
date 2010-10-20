@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Sample of txt2tags being used as a module (http://txt2tags.sf.net) 
+# Sample of txt2tags being used as a module (http://txt2tags.org) 
 #
 # Details:
 #   The full marked text is a string with headers, config and body.
