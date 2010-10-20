@@ -1,5 +1,5 @@
 #
-# txt2tags test-suite library (http://txt2tags.sf.net)
+# txt2tags test-suite library (http://txt2tags.org)
 # See also: run.py, */run.py
 #
 

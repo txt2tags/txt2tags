@@ -54,7 +54,7 @@ Aurelio, %%mtime(%c)
 %!preproc: NOMACRO	Macros are NOT interpreted
 
 %!preproc: URLMARKUP	URLWEBSITE/markup.html
-%!postproc: URLWEBSITE	http://txt2tags.sf.net
+%!postproc: URLWEBSITE	http://txt2tags.org
 
 % activate the areas disabled on the PDF version
 %!preproc(html): ^%nopdf  ''
@@ -2112,7 +2112,7 @@ For example, if an extra paragraph must be added only in HTML target.
 Place the text as special comments, like this:
 
 ```
-%html% This HTML page is Powered by [txt2tags http://txt2tags.sf.net].
+%html% This HTML page is Powered by [txt2tags http://txt2tags.org].
 %html% See the source TXT file [here source.t2t].
 ```
 

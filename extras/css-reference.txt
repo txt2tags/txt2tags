@@ -1,7 +1,7 @@
 %%%%% CSS Reference File (grep friendly)
 %
 % by Aurelio Jargas
-% Part of txt2tags project - http://txt2tags.sf.net
+% Part of txt2tags project - http://txt2tags.org
 %
 
 

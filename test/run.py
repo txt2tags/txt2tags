@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# txt2tags test-suite (http://txt2tags.sf.net)
+# txt2tags test-suite (http://txt2tags.org)
 # See also: lib.py, */run.py
 #
 # Just run this file without parameters at it will perform

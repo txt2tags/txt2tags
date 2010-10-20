@@ -1,4 +1,4 @@
-<? # txt2tags.php (http://txt2tags.sf.net)
+<? # txt2tags.php (http://txt2tags.org)
    # A handy web interface for the txt2tags conversion tool
    # License: GPL
    #
@@ -234,7 +234,7 @@ if ($is_standalone) {
 ?>
 
 <p id="footer">
-Txt2tags site: <a href="http://txt2tags.sf.net">http://txt2tags.sf.net</a><br>
+Txt2tags site: <a href="http://txt2tags.org">http://txt2tags.org</a><br>
 Author: <a href="http://aurelio.net/en/">Aurelio Jargas</a>
 </p>
 

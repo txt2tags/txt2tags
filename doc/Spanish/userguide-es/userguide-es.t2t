@@ -51,7 +51,7 @@ Traducción al español: Antoni Serra Devecchi
 %%!preproc: NOMARKS	Marks are NOT interpreted
 %%!preproc: NOMACRO	Macros are NOT interpreted
 
-%!preproc: URLMARKUP	http://txt2tags.sf.net/markup.html
+%!preproc: URLMARKUP	http://txt2tags.org/markup.html
 
 % activate the areas disabled on the PDF version
 %!preproc(html): ^%nopdf  ''
@@ -106,11 +106,11 @@ Traducción al español: Antoni Serra Devecchi
 
 %nopdf	"¡Hola! Èsto es la Guia del Usuario de Txt2tags. Aquí podrás encontrar
 %nopdf	toda la información disponible sobre la herramienta de conversión de textos txt2tags.
-%nopdf	Puedes encontrar la última versión en  http://txt2tags.sf.net/userguide/. 
+%nopdf	Puedes encontrar la última versión en  http://txt2tags.org/userguide/. 
 %nopdf	Para más información, visita la
-%nopdf	[web de txt2tags  http://txt2tags.sf.net]. ¡Que disfrutes!"
+%nopdf	[web de txt2tags  http://txt2tags.org]. ¡Que disfrutes!"
 %nopdf  
-%%nopdf	[Download PDF version http://txt2tags.sf.net/userguide/userguide.pdf]
+%%nopdf	[Download PDF version http://txt2tags.org/userguide/userguide.pdf]
 
 ========================================================================
 
@@ -394,7 +394,7 @@ usando los ajustes ``%!guicolors`` Por ejemplo:
 
 === Interfaz Web  ===
 
-La interfaz web se encuentra disponible en: http://txt2tags.sf.net/online.php . Allí puedes usar y probar el programa sin necesidad de instalarlo localmente.
+La interfaz web se encuentra disponible en: http://txt2tags.org/online.php . Allí puedes usar y probar el programa sin necesidad de instalarlo localmente.
 
           [IMGPATH/web.png]  
 
@@ -487,7 +487,7 @@ Si no estais seguros de tener Python instalado en vuestro sistema, abrid una con
 
 == Obtener Txt2tags ==[download-txt2tags]
 
-El sitio oficial de la distribución de txt2tags es: http://txt2tags.sf.net/src .
+El sitio oficial de la distribución de txt2tags es: http://txt2tags.org/src .
 
 Todos los archivos son del tipo "tarball" (tar.gz,.tgz), que pueden ser descomprimidos por la mayoria de los programas de descompresión (incluido Winzip).
 
@@ -677,7 +677,7 @@ Además del texto plano, txt2tags  proporciona una serie de marcas muy simples qu
 
 ``**comienza en negrita**`` y ``== los signos igual para el título ==``. 
 
-Para aprender a utilizar estas marcas consultad el archivo  [Txt2tags Markup Demo http://txt2tags.sf.net/markup.html].
+Para aprender a utilizar estas marcas consultad el archivo  [Txt2tags Markup Demo http://txt2tags.org/markup.html].
 
 =======================================================================
 
@@ -1740,7 +1740,7 @@ La idea es insertar este texto extra en el archivo original como comentario, per
 Por ejemplo, si debe insertarse un párrafo extra solamente en el tipo de destino HTML, coloca el texto en un comentario especial como este:
 
 ```
-%html% Esta página HTML fué generada por [txt2tags http://txt2tags.sf.net].
+%html% Esta página HTML fué generada por [txt2tags http://txt2tags.org].
 %html% Vea el archivo fuente TXT [aqui source.t2t].
 ```
 

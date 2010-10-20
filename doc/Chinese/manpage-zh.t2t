@@ -57,7 +57,7 @@ txt2tags - 文本格式化及转换工具
 
 此手册页是由**txt2tags**转换一个示例文本文件生成。并且该示例文本文件同时被转换成HTML，作为此手册页的在线版本。
 
-单个源文件，多种格式的目标文件 - http://txt2tags.sourceforge.net
+单个源文件，多种格式的目标文件 - http://txt2tags.org
 
 
 = 标记 =[markup]

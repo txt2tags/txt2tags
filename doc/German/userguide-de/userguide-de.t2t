@@ -49,7 +49,7 @@ Aurelio, %%mtime(%c)
 %!preproc: NOMARKS	Markierungen werden NICHT ausgewertet
 %!preproc: NOMACRO	Makros werden NICHT ausgewertet
 
-%!preproc: URLMARKUP	http://txt2tags.sf.net/markup.html
+%!preproc: URLMARKUP	http://txt2tags.org/markup.html
 
 % activate the areas disabled on the PDF version
 %!preproc(html): ^%nopdf  ''
@@ -104,11 +104,11 @@ Aurelio, %%mtime(%c)
 
 %nopdf	"Hallo! Hier kommt das txt2tags Benutzerhandbuch. Sie finden hier alle
 %nopdf	Informationen zum Textkonvertierunsgwerkzeug txt2tags. Die neuste
-%nopdf	Version ist stets erhältlich bei http://txt2tags.sf.net/userguide/. 
+%nopdf	Version ist stets erhältlich bei http://txt2tags.org/userguide/. 
 %nopdf	Für ergänzende Informationen besuchen sie bitte 
-%nopdf	[die txt2tags Webseite http://txt2tags.sf.net]. Viel Spaß!"
+%nopdf	[die txt2tags Webseite http://txt2tags.org]. Viel Spaß!"
 %nopdf  
-%nopdf	[Download PDF-Version http://txt2tags.sf.net/userguide/benutzerhandbuch.pdf]
+%nopdf	[Download PDF-Version http://txt2tags.org/userguide/benutzerhandbuch.pdf]
 
 ========================================================================
 
@@ -390,7 +390,7 @@ Die voreingestellten Farben der Schnittstelle können in der Datei ``~/.txt2tagsr
 === Webschnittstelle ===
 
 Die Webschnittstelle ist im Internet verfügbar über die Adresse
-http://txt2tags.sf.net/online.php. Dort können sie dass Programm sofort austesten und nutzen, noch bevor sie es dann eventuell herunterladen.
+http://txt2tags.org/online.php. Dort können sie dass Programm sofort austesten und nutzen, noch bevor sie es dann eventuell herunterladen.
 
           [IMGPATH/web.png]  
 
@@ -484,7 +484,7 @@ Falls sie sich nicht sicher sind, ob auf ihrem System Python installiert ist, öf
 
 == Download von txt2tags ==[Download-txt2tags]
 
-Der offizielle Ort für die txt2tags-Distribution ist die Website des Programms, aufrufbar via http://txt2tags.sf.net/src.
+Der offizielle Ort für die txt2tags-Distribution ist die Website des Programms, aufrufbar via http://txt2tags.org/src.
 
 Alle zum Programm gehörigen Dateien finden sich in einem tarball (.tgz Datei), die Dateien können mit den meisten gebräuchlichen Pack-Programmen (einschließlich Winzip) aus dem tarball entpackt werden
 
@@ -674,7 +674,7 @@ Mmmmmm, I weiß was jetzt was ich tun werde:
 
 Sie können eine ganze Homepage erstellen, ohne auch nur das geringste Wissen über HTML zu besitzen! Sie brauchen keinerlei Auszeichnungsmarken einfügen. Und der Clou, dieselbe Quelldatei kann auch in jedes andere der von txt2tags unterstützten Formate umgewandelt werden.
 
-Neben dem Klartext versteht txt2tags einige ganz einfache Auszeichnungsmarken, welche sie nutzen können, falls sie eine andere Textformatierung oder -struktur benötigen, wie etwa Fett- oder Kursivschrift, Titel, Bilder, Tabellen und anderes mehr. Hier zwei einfache Beispiele: ``**zeichnet fettgedruckte Passagen aus**`` und ``== kann für Titel genutzt werden ==``. Die Auszeichnungen lernen sie am besten mittels der [Demonstration von txt2tags Auszeichnungen http://txt2tags.sf.net/markup.html].
+Neben dem Klartext versteht txt2tags einige ganz einfache Auszeichnungsmarken, welche sie nutzen können, falls sie eine andere Textformatierung oder -struktur benötigen, wie etwa Fett- oder Kursivschrift, Titel, Bilder, Tabellen und anderes mehr. Hier zwei einfache Beispiele: ``**zeichnet fettgedruckte Passagen aus**`` und ``== kann für Titel genutzt werden ==``. Die Auszeichnungen lernen sie am besten mittels der [Demonstration von txt2tags Auszeichnungen http://txt2tags.org/markup.html].
 
 =======================================================================
 
@@ -1713,7 +1713,7 @@ Der Ausgangspunkt besteht dabei darin, den zusätzlichen Text im Quelldokument zu
 Falls sie zum Beispiel ein zusätzlichen Abschnitt eingeben möchten, der allerdings nur in einem HTML-Zieldokument erscheint, geben sie diesen Text als "speziellen" Kommentar ein, und zwar auf folgende Art und Weise:
 
 ```
-%html% Diese HTML-Seite wurde mit [txt2tags http://txt2tags.sf.net] erstellt.
+%html% Diese HTML-Seite wurde mit [txt2tags http://txt2tags.org] erstellt.
 %html% Die dazugehörige Quelltextdatei finden sie [here source.t2t].
 ```
 

@@ -1,5 +1,5 @@
 #
-# txt2tags fatal errors tester (http://txt2tags.sf.net)
+# txt2tags fatal errors tester (http://txt2tags.org)
 # See also: ../run.py ../lib.py
 #
 # All these bugs are already fixed on the current version.
