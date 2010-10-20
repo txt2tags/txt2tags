@@ -1870,16 +1870,16 @@ allowing user to specify custom encodings.
 
 == %!preproc ==[setting-preproc]
 
-The PreProc is an input filter used on the BODYAREA of the source document. It is a "find
+The PreProc is an input filter that changes the BODYAREA of the source document. It is a "find
 and replace" feature, applied right after the line is read from the
 document source, before any parsing by txt2tags.
 
 It is useful to define some abbreviations for common typed text, as:
 
 ```
-%!preproc JJS          "John J. Smith"
-%!preproc RELEASE_DATE "2003-05-01"
-%!preproc BULLET       "[images/tiny/bullet_blue.png]"
+%!preproc: JJS          "John J. Smith"
+%!preproc: RELEASE_DATE "2003-05-01"
+%!preproc: BULLET       "[images/tiny/bullet_blue.png]"
 ```
 
 So the user can write a line like:
@@ -1906,7 +1906,7 @@ were applied.
 
 == %!postproc ==[setting-postproc]
 
-The PostProc is an output filter used on the converted document. It is a
+The PostProc is an output filter that changes the converted document. It is a
 "find and replace" feature, applied after all txt2tags parsing and
 processing is done.
 
