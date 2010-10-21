@@ -1575,7 +1575,7 @@ General Rules:
 == Raw, Raw Line, Raw Area ==[mark-raw]
 
 - MARKDESC Used to "protect" some text from parsing, so marks and macros inside
-  it will not be expanded.
+  it will not be expanded. But escapes are applied.
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN **Raw:**
@@ -1595,6 +1595,36 @@ General Rules:
   - NOMACRO
   - If the end of the source file (EOF) is hit, the opened Raw Area is
     closed
+
+
+---------------------------------------------------------------------
+
+== Tagged, Tagged Line, Tagged Area ==[mark-tagged]
+
+- MARKDESC Used to send text directly to the output, no parsing or escaping is made by txt2tags.
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN **Tagged:**
+  - Two apostrophes around, ``''like this''``
+  - Marks glued with the contents (no spaces)
+- MARKSYN **Tagged Line:**
+  - A line beginning with 3 consecutive apostrophes, ``''' like this``
+  - The apostrophes must be at the start of the line, no spaces before
+  - Use a space after the apostrophes to separate them from the text
+- MARKSYN **Tagged Area:**
+  - A line with exactly 3 consecutive apostrophes, followed by text
+    lines, followed by another line with exactly 3 consecutive
+    apostrophes
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+  - If the end of the source file (EOF) is hit, the opened Tagged Area is
+    closed
+  - Use this mark to insert target code. For example, in HTML you could use
+    it to insert manual line breaks ``''<br>''``,
+    custom DIVs ``''<div id="myfooter">''`` or even full blocks of code,
+    like the Google Analytics tracking code.
 
 
 =======================================================================
