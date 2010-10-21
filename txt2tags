@@ -283,9 +283,7 @@ _("Use --outfile to force an output file name."),
 _("If  input file is '-', reads from STDIN."),
 _("If output file is '-', dumps output to STDOUT."),
 '',
-'Site: %s' % my_url,
-'Bugs: http://code.google.com/p/txt2tags/issues/list',
-'SVN : http://code.google.com/p/txt2tags/source/browse/trunk',
+my_url,
 ''
 ])
 
