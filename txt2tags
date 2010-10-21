@@ -632,7 +632,7 @@ def getTags(config):
 	EOD
 	""".split()
 	
-	# TIP: \a represents the current text on the mark
+	# TIP: \a represents the current text inside the mark
 	# TIP: ~A~, ~B~ and ~C~ are expanded to other tags parts
 	
 	alltags = {
@@ -848,8 +848,6 @@ def getTags(config):
 		# '_imgAlignLeft'        : ''                                 , # Don't know
 		# '_imgAlignCenter'      : ''                                 , # Don't know
 		# '_imgAlignRight'       : ''                                 , # Don't know
-		'tableOpen'            : '<para>', # just to have something...
-		'tableClose'           : '</para>',
 		# 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>', # Don't work, need to know number of cols
 		# 'tableClose'           : '</tbody></tgroup></informaltable>' ,
 		# 'tableRowOpen'         : '<row>'                             ,
@@ -1605,7 +1603,7 @@ def getRules(config):
 		},
 		'dbk': {
 			'linkable':1,
-			'tableable':1,
+			'tableable':0, # activate when table tags are ready
 			'imglinkable':1,
 			'imgalignable':1,
 			'imgasdefterm':1,
