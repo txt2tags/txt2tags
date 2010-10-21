@@ -39,7 +39,7 @@ Aurelio, %%mtime(%c)
 
 % TRANSLATOR
 % - Please translate the following macro contents and leave them alone 
-% - Remember they are expanded in consersion time, don't remove them 
+% - Remember they are expanded in conversion time, don't remove them 
 
 % normalizing common text
 %!preproc: CONFAREA	Config Area
@@ -143,11 +143,11 @@ of the supported targets:
 === Why should I use it? ===
 
 You'll find txt2tags really useful if you:
-- Need to publish documents on different formats
-- Need to maintain updated documents on different formats
-- Write technical or manual documents
-- Don't know how to write a document on a certain format
-- Don't have a specific editor for a certain format
+- Need to publish documents in different formats
+- Need to maintain updated documents in different formats
+- Write technical documents or guides
+- Don't know how to write a document in a specific format
+- Don't have an editor for a specific format
 - Want to use a simple text editor to update your documents
 
 
@@ -163,24 +163,24 @@ Txt2tags has a very straight way of growing, following basic concepts.
 These are the highlights:
 
 | //Source File Readable// | Txt2tags marks are very simple, almost natural.
-| //Target Document Readable// | As the source file, the target document is also readable, with indentation and short lines.
-| //Consistent Marks// | Txt2tags marks are unique enough to fit at all kind of documents and don't be confused with the document contents.
+| //Target Document Readable// | The target document is also readable, with indentation and spacing.
+| //Consistent Marks// | Txt2tags marks are simple symbols, designed to be unique enough to don't mix up with the document contents.
 | //Consistent Rules// | As the marks, the rules that applies to them are tied to each other, there are no "exceptions" or "special cases".
 | //Simple Structures// | All the supported formatting are **simple**, with no extra-options or complicated behavior modifiers. A mark is just a mark, with no options at all.
 | //Easy to Learn// | With simple marks and readable source, the txt2tags learning curve is user friendly.
-| //Nice Examples// | The **sample files** included on the package gives real life examples of simple and over-complicated documents written for txt2tags.
-| //Valuable Tools// | The **syntax files** included on the package (for vim, emacs, nano and kate editors) help you write documents with no syntax errors.
-| //Three User Interfaces// | There is a **Graphical Tk interface** that is very user friendly, a **Web interface** to use it remotely or on the intranet, and a **Command Line interface** for power-users and scripting.
+| //Nice Examples// | The **sample files** included on the package gives real life examples of documents written for txt2tags.
+| //Valuable Tools// | The **syntax files** included on the package help you to write documents with no syntax errors.
+| //Three User Interfaces// | There is a user friendly **Graphical interface**, a handy **Web interface** easy to install in intranets and a **Command Line interface** for power-users and scripting.
 | //Scripting// | With the full featured command line mode, an experienced user can **automatize** tasks and do **post-editing** on the converted files.
-| //Download and Run / Multi-platform// | Txt2tags is a single **Python script**. There is no need to compile it or download extra modules. So it runs nicely on *NIX, Linux, Windows and Macintosh machines.
-| //Frequent Updates// | The program has an active mailing list with users who suggest corrections and improvements. The author himself is an extensive user at home and at work, so the development won't stop briefly.
+| //Download and Run / Multi-platform// | Txt2tags is a single **Python script**. There is no need to compile it or download extra modules. So it runs nicely on *NIX, Linux, Windows and Macs.
+| //Mature// | First released in 2001, txt2tags is now a mature program with years of improvements and bug fixes, extensive documentation, translations and an loyal user base.
 
 
 ------------------------------------------------------------------------
 
 === Do I have to pay for it? ===
 
-                || Absolutely NO! |
+Absolutely NO!
 
 It's free, GPL licensed.
 
@@ -222,9 +222,13 @@ The following is a list of all the structures supported by txt2tags.
 - horizontal separator line
 - image (with smart alignment)
 - table (with or without border, smart alignment, column span)
-
-- special mark for raw text (no parsing)
-- special macro for current date (with flexible formatting)
+- macros (with flexible formatting):
+  - current date
+  - file modification time
+  - input and output file name and path
+  - automatic table of contents
+- special mark for raw text (no marks parsed inside)
+- special mark for tagged text (no parsing, sent directly to output)
 - comments (for self notes, TODO, FIXME)
 
 
@@ -241,21 +245,19 @@ The following is a list of all the structures supported by txt2tags.
   documents. But a separate CSS file can be used if wanted. Txt2tags
   generates "//HTML 4.0 Transitional//" code.
 
-  Since version 2.0, the txt2tags HTML generated code is 100% approved
-  by the [w3c validator http://validator.w3.org/].
+  Txt2tags HTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
 
 : **XHTML**
-  It is the new generation of HTML, with more strict rules, as to close
-  all the tags you open. This makes the code easier to parse and
+  It is the new generation of HTML, with more strict rules.
+  This makes the code easier to parse and
   understand. For the general purpose, consider it HTML. Txt2tags
   generates "//XHTML 1.0 Transitional//" code.
 
-  Since version 2.0, the txt2tags XHTML generated code is 100% approved
-  by the [w3c validator http://validator.w3.org/].
+  Txt2tags XHTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
 
 : **SGML**
   It is a common document format which has powerful conversion applications
-  ([linuxdoc-tools http://packages.debian.org/etch/linuxdoc-tools]). From a
+  ([linuxdoc-tools http://packages.debian.org/linuxdoc-tools]). From a
   single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
   and XML documents. The tools also does automatic TOC and break
   sections into subpages.
@@ -267,7 +269,7 @@ The following is a list of all the structures supported by txt2tags.
 : **LATEX**
   The preferred academic document format, it is more powerful than you
   ever wondered. Full books, complicated formulas and any complex text
-  can be written in LaTeX. But prepare to lost your hair if you will try
+  can be written in LaTeX. But prepare to loose your hair when you try
   to write the tags by hand...
 
   Txt2tags generates ready-to-use LaTeX files, doing all the complex
@@ -288,29 +290,25 @@ The following is a list of all the structures supported by txt2tags.
 
   There are other tools to generate man documents, but txt2tags has
   one advantage: one source, multi targets. So the same man page
-  contents can be converted to a HTML page, MagicPoint presentation, etc.
+  contents can be converted to an HTML page, Wiki document and plain text.
 
 : **MGP**
-  [MagicPoint http://www.mew.org/mgp] is a very handy presentation tool
+  [MagicPoint http://en.wikipedia.org/wiki/MagicPoint] is a very handy presentation tool
   (hint: Microsoft PowerPoint), that uses a tagged language to define all
   the screens. So you can do complex presentations in vi/emacs/notepad.
 
   Txt2tags generates a ready-to-use .mgp file, defining all the
   necessary headers for fonts and appearance definitions, as long as
-  ISO-8859 accents support.
+  international characters support.
 
-  **HOTSPOT 1:** txt2tags created .mgp file uses the XFree86 Type1
-  fonts! So you do not need to carry TrueType fonts files with your
-  presentation.
-
-  **HOTSPOT 2:** the color definitions for fonts are clean, so even on a
-  poor color palette system (as ``startx -- -bpp 8``), the presentation
-  will look pretty!
+  Txt2tags creates "diet" .mgp files: they use the Type1 fonts, so you do not
+  need to carry TrueType fonts files with your presentation. Also, the color
+  definitions are simple, so even on a poor color palette system (such as
+  ``startx -- -bpp 8``), the presentation will look pretty!
 
   The key is: convert and use. No quick fixes or requirements needed.
 
 : **WIKI**
-
   You've heard about the [Wikipedia http://wikipedia.org], right? So you
   don't need to learn yet-another markup syntax. Just stick with txt2tags
   and let it convert your text to the Wikipedia format, called
@@ -321,12 +319,11 @@ The following is a list of all the structures supported by txt2tags.
   [Google Code http://code.google.com/] Wiki.
 
 : **DOKU**
-
-  [DokuWiki http://wiki.splitbrain.org/wiki:dokuwiki] is a standards
+  [DokuWiki http://www.dokuwiki.org/dokuwiki] is a standards
   compliant, simple to use Wiki, mainly aimed at creating documentation
   of any kind. It is targeted at developer teams, workgroups and small
   companies. It has a simple but powerful syntax which makes sure the
-  datafiles remain readable outside the Wiki and eases the creation of
+  data files remain readable outside the Wiki and eases the creation of
   structured texts. All data is stored in plain text files - no
   database is required.
 
@@ -339,24 +336,23 @@ The following is a list of all the structures supported by txt2tags.
   simplified marks and unified solution: one source, multi targets.
 
 : **PM6**
-  I guess you didn't know, but Adobe PageMaker 6.0 has its own tagged
-  language! Styles, color table, beautifiers, and most of all the
-  PageMaker mouse-clicking features are available on its tagged language
-  also. You just need to access "Import tagged text" menu item. Just for
+  Adobe PageMaker 6.0 has its own tagged
+  language. Styles, color table, beautifiers, and most of all the
+  PageMaker mouse-clicking features are also available on its tagged language.
+  You just need to access the "Import tagged text" menu item. Just for
   the records, it's an <HTML "like"> tag format.
 
   Txt2tags generates all the tags and already defines a extensive and
   working header, setting paragraph styles and formatting. This is the
-  hard part. **GOTCHA:** No line breaks! A paragraph must be one single
-  line.
+  hard part.
 
-  Author's note:
-  //My entire portuguese [regular expression's book http://guia-er.sf.net]//
-  //was written in VI, converted to PageMaker with txt2tags and went to//
-  //press.//
+  **Author's note:**
+  My entire portuguese [regular expression's book http://guia-er.sf.net]
+  was written in VI, then converted to PageMaker with txt2tags and went to
+  the publisher. It works :)
 
 : **TXT**
-  TXT is text. The only true formatting type.
+  TXT is text. Simple, pure, beautiful.
 
   Although txt2tags marks are very intuitive and discrete, you can remove
   them by converting the file to pure TXT.
@@ -364,6 +360,9 @@ The following is a list of all the structures supported by txt2tags.
   The titles are underlined, and the text is basically left as is on the
   source.
 
+
+Tip: Use the ``--targets`` command line option to get a complete list of
+all the available targets.
 
 ------------------------------------------------------------------------
 
@@ -400,7 +399,6 @@ The following is a list of all the structures supported by txt2tags.
   | **Y** | //Supported//
   | **N** | //Not supported (may be in future releases)//
   | **-** | //Not supported (can't be done on this target)//
-% | **?** | //not supported (not sure if it can be done or not)//
 
 ------------------------------------------------------------------------
 
@@ -421,18 +419,16 @@ purpose and features.
 
 ------------------------------------------------------------------------
 
-=== Graphical Tk Interface ===[gui]
+=== Graphical Interface ===[gui]
 
 Since version 1.0, there is a nice Graphical Interface, that works on
-Linux, Windows, Mac and others.
+Linux, Windows, Mac and others. Just call txt2tags with the ``--gui``
+option to open it.
 
-The program detects automatically if your system can display the
-interface, and it is launched when called with no arguments. One can
-force the Graphical Interface call with the ``--gui`` option. If some
-resources are missing, the program will tell.
-
-	**Note:** The Tkinter module is needed. As it comes with the
-	standard Python distribution, you may already have it.
+% If some resources are missing, the program will tell.
+% 
+% 	**Note:** The Tkinter module is needed. As it comes with the
+% 	standard Python distribution, you may already have it.
 
 The interface is pretty simple and intuitive:
 
@@ -449,12 +445,12 @@ The interface is pretty simple and intuitive:
 + Finally, press the "Convert!" button.
 
 
-A nice option to check is the "//Dump to screen//", so you can check
+A nice option is the "//Dump to screen//", so you can check
 the resulting code on a separate window, no file is saved at all. When
 the code is OK, you uncheck it and the file will be saved.
 
-The default interface colors can be changed on the ``~/.txt2tagsrc``
-file, using the ``%!guicolors`` settings. For example:
+The default interface colors can be changed on the [configuration file #rc],
+using the ``%!guicolors`` settings. For example:
 
 ```
 % set my own colors for the graphical interface (bg1, fg1, bg2, fg2)
@@ -521,10 +517,9 @@ If  input file is '-', reads from STDIN.
 If output file is '-', dumps output to STDOUT.
 ```
 
-==== Examples ====
+Please read the txt2tags man page for detailed information about options and command line use.
 
-Assuming you have written a ``file.t2t`` marked file, let's have some
-converting fun.
+Examples:
 
 | **Convert to HTML**             | ``$ txt2tags -t html file.t2t``
 | **The same, using redirection** | ``$ txt2tags -t html -o - file.t2t > file.html``
@@ -537,59 +532,58 @@ converting fun.
 |  | .
 | **One liners from STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
 | **Testing Mask Email feature**  | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
-| **Post-convert editing**        | ``$ txt2tags -t html -o- file.t2t | sed "s/<BODY .*/<BODY BGCOLOR=green>/" > file.html``
-
-	**Note:** Since version 1.6 you can do pre and post processing
-	with the ``%!preproc`` and ``%!postproc`` configuration
-	filters.
 
 
 ========================================================================
 
 
 
-= Part II - OK, I want it. Now what? =[install]
+= Part II - Install =[install]
 
 Just download the program and run it on your machine.
 
 == Download & Install Python ==[download-python]
 
-First of all, you must download and install the Python interpreter on
-your system. If you already have it, just skip this step.
+First of all, you must download and install [Python http://www.python.org] on
+your system. Txt2tags requires Python version 2.2 or newer.
 
-Python is one of the nicest programming languages out there, it works on
-Windows, Linux, UNIX, Macintosh, and others and it can be downloaded
-from the [Python web site http://www.python.org]. Installation hints are
-found on the same site. Txt2tags works with Python version 2.0 or newer.
+Note that Python is already installed by default in Linux and Mac systems. If you're using those, you're done, just skip this step.
 
 If you are not sure if you have Python or not, open a console (tty,
-xterm, MSDOS) and type ``python``. If it is not installed, the system
+xterm, MSDOS, Terminal.app) and type ``python``. If it is not installed, the system
 will tell you.
 
 
 == Download txt2tags ==[download-txt2tags]
 
 The official location for txt2tags distribution is on the program
-site, at URLWEBSITE.
+site, at URLWEBSITE. Just download and uncompress the package (.tgz file).
 
-All the program's files are on the tarball (.tgz file), which can be
-expanded by most of the compression utilities (including Winzip).
+If you're in Linux, you can also use the automatic installer of your system. Some examples:
+- yum install txt2tags
+- sudo apt-get install txt2tags
+-
 
-Just get the **latest** one (more recent date, higher version number).
-The previous versions remains for historical purposes only.
+% All the program's files are on the tarball (.tgz file), which can be
+% expanded by most of the compression utilities (including Winzip).
+
+% Just get the **latest** one (more recent date, higher version number).
+% The previous versions remains for historical purposes only.
+
+
 
 == Install txt2tags ==[install-txt2tags]
 
 As a single Python script, txt2tags needs no installation at all.
 
 The only file needed to use the program is the txt2tags script. The
-other files of the tarball are documentation, tools and sample files.
+other files of the package are documentation, tools and sample files.
 
 The fail-proof way to run txt2tags, is calling Python with it:
 ``` prompt$ python txt2tags
 
-If you want to "install" txt2tags on the system as a stand alone
-program, just copy (or link) the txt2tags script to a System PATH
+If you want to install txt2tags on the system as a stand alone
+program, just copy the txt2tags script to a system PATH
 directory and make sure the system knows how to run it.
 
 : **UNIX/Linux/Mac**
@@ -598,38 +592,40 @@ directory and make sure the system knows how to run it.
 
 : **Windows**
   Rename the script adding the .py extension
-  (``ren txt2tags txt2tags.py``) and copy it to a system PATH directory
-  (``copy txt2tags.py C:\WINNT``)
+  and copy it to a system PATH directory, such as ``C:\Windows\System32``.
 
 
 After that, you can create an icon on your desktop for it, if you want to
 use the program's Graphical Interface.
 
-=== Special Packages for Windows Users ===
+% === Special Packages for Windows Users ===
+% 
+% There is also two .EXE distribution files for txt2tags, which install
+% the program on Windows machines with just a few clicks:
+% 
+% - The single txt2tags script for those who already have the Python
+%   interpreted installed
+% - The stand alone version, which doesn't require Python interpreter to
+%   run (it has a diet version embedded)
+% 
+% 
+% Please visit the //Txt2tags-Win// site to download this packages:
+% http://txt2tags-win.sf.net
 
-There is also two .EXE distribution files for txt2tags, which install
-the program on Windows machines with just a few clicks:
-
-- The single txt2tags script for those who already have the Python
-  interpreted installed
-- The stand alone version, which doesn't require Python interpreter to
-  run (it has a diet version embedded)
-
-
-Please visit the //Txt2tags-Win// site to download this packages:
-http://txt2tags-win.sf.net
-
-== Install Text Editor Syntax Highlighting File ==[editor-syntax]
+== Install Text Editor Syntax Highlighting File (optional)==[editor-syntax]
 
 Txt2tags comes with handy syntax highlighting files to be used by the
 following text editors:
 
-- Vim (www.vim.org)
-- Emacs (www.emacs.org)
-- Nano (www.nano-editor.org)
-- Kate (http://kate.kde.org)
-- gedit (http://www.gnome.org/projects/gedit/)
-- TextMate (http://macromates.com/)
+- Vim
+- Emacs
+- Nano
+- Kate
+- Gedit
+- JOE
+- le
+- ne
+- TextMate
 
 
 This syntax highlighting files have all the txt2tags rules and marks
@@ -657,18 +653,18 @@ text editor and a web browser.
 
   - **Command Line Interface:** Call "txt2tags" on the command line and
     the program should give you a "Missing input file" message. If it is
-    not working, try "python /path/to/txt2tags" or even "/path/to/python
-    /path/to/txt2tags" case Python is not on your PATH.
+    not working, try ``python /path/to/txt2tags`` or even
+    ``/path/to/python /path/to/txt2tags`` if Python is not on your PATH.
 
   - **Gui Interface:** Click on the program icon to launch the Gui
-    Interface.
+    Interface or call ``txt2tags --gui``.
 
 + Open the text editor your are comfortable with. It can be **any** text
   editor, from the good old VI to MS Word or OpenOffice.org. Create a
-  brand new empty document to be your first txt2tags one.
+  brand new empty document to be your first txt2tags one and remember to
+  save it as plain text.
 
-+ Launch your favorite web browser to see the results of the conversion
-  to an HTML page.
++ Launch your favorite web browser to see the results of the conversion.
 
 
 ------------------------------------------------------------------------
@@ -679,7 +675,7 @@ text editor and a web browser.
   main title: //My First Document//
 + On the second line make a subtitle, inserting this text:
   //A txt2tags test//
-+ Then, on the third line, put some time information, as:
++ Then, on the third line, put some time information:
   //Sunday, 2004//
 
 
@@ -695,8 +691,9 @@ Sunday, 2004
 This is just a part of the document, but we can already convert it and
 check the results.
 
-Now save this document with the name ``test.txt``. Pay attention to
-which folder you are saving the file, you will need to remember it soon.
+Now save this document with the name ``test.txt``. Remember to save it
+as plain text. Pay attention to which folder you are saving the file,
+you will need to remember it soon.
 
 
 ------------------------------------------------------------------------
@@ -727,24 +724,19 @@ folder as the text file, with the "html" extension.
 
 == The First Conversion - Command Line Interface ==
 
-If you are in the Gui Interface, please skip this step and read the next
-one.
-
 If you are in the Command Line Interface, move to the folder where the
 file was saved and type this command:
 
-``` txt2tags  --target  html  test.txt
+``` txt2tags --target html test.txt
 
-Note that there are spaces between the command parts, but no spaces
-inside the "--target" string, it is an option. This option is followed
+The option ``--target`` is followed
 by the "html" string, which tells the program to what format your text
 file will be converted. The last item is the text filename.
 
-If the conversion was done, the results were saved to the ``test.html``
+The results were saved to the ``test.html``
 file and then the program will show you the
-"//txt2tags wrote test.html//" message. If not, it will tell about some
-error you may have done when typing the command line. Check it with
-attention.
+"//txt2tags wrote test.html//" message.
+If some error occurred, read the message carefully.
 
 Here is a sample of how it will be shown on your screen:
 ```
@@ -757,19 +749,19 @@ prompt$
 
 == Check the Results ==
 
-Open the ``test.html`` file on the Web browser to check if everything
+Open the ``test.html`` file on the web browser to check if everything
 is ok.
 
    [IMGPATH/firstdoc-html.png] 
 
 Here it is! You just typed three simple lines of text and txt2tags made
-all the work to set the HTML page heading information. Text alignment,
-sizes, spacing and appearance. See that the main title is placed at the
-browser title bar also.
+all the work to set the HTML page heading information, text alignment,
+sizes, spacing and appearance. See that the main title is also placed at the
+browser title bar.
 
-  || You write text, txt2tags does the rest ;) |
+	You write text, txt2tags does the rest ;)
 
-Tip: You can also use CSS on HTML pages generated by txt2tags, so the
+Tip: You can also use CSS files on HTML pages generated by txt2tags, so the
 page appearance is 100% configurable.
 
 ------------------------------------------------------------------------
@@ -784,7 +776,7 @@ automatically, you don't have to "mark" them.
 Then again: save it, convert and check the results. This is the
 development cycle of a document in txt2tags. You just focus on the
 document contents, finishing documents faster than other editors. No
-mouse clickings, no menus, windows, distraction.
+mouse clicking, no menus, no windows, no distraction.
 
 Considering the following contents for the ``test.txt`` file, which is
 only plain text, compare the generated HTML page:
@@ -810,10 +802,10 @@ You can write a full homepage with 0% of HTML knowledge. You don't need
 to insert any tags. And more, the same text file can be converted to any
 of the other txt2tags supported formats.
 
-Besides plain text, txt2tags has some very simple marks, that you will
-use when need some other formating or structures like bold, italic,
+Besides plain text, txt2tags has some very simple marks, that you'll
+use when you need some other formatting or structures like bold, italic,
 title, images, table and other. As a quick sample,
-``**starts for bold**`` and ``== equals for title ==``. You can learn the
+``**stars for bold**`` and ``== equals for title ==``. You can learn the
 marks on the [Txt2tags Markup Demo URLWEBSITE/markup.html].
 
 =======================================================================
@@ -829,19 +821,17 @@ rules and purpose. They are:
 
 : //HEADAREA//
   Place for Document Title, Author, Version and Date information.
-  (optional)
 : //CONFAREA//
   Place for general Document Settings and Parser behavior modifiers.
-  (optional)
 : //BODYAREA//
-  Place for the Document Content. (required)
+  Place for the Document Content.
 
 
-As seen above, the first two Areas are optional, being //BODYAREA//
-the only required one.
+All areas are optional. You can write a txt2tags document with just
+headers (such as our first example), or a document with no headers or settings.
 
 The areas are delimited by special rules, which will be seen in detail
-on the next chapter. For now, this is a graphical representation of the
+on the next chapter. For now, this is a representation of the
 areas on a document:
 
 ```
@@ -875,7 +865,7 @@ Last Updated: %%mtime(%c)
 
 %!target  : html
 %!style   : fancy.css
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 %!options : --toc --enum-title
 
 Hi! This is my test document.
@@ -896,12 +886,12 @@ The HEADAREA is the only one that has a fixed position, line
 oriented. They are located at the first three lines of the source file.
 
 These lines are content-free, with no static information type needed.
-But the following is recommended for most documents:
+But the following is recommended:
 
-   - //line 1//: document title
-   - //line 2//: author name and/or email
-   - //line 3//: document date and/or version
-                 (nice place for ``%%date``)
+- //line 1//: document title
+- //line 2//: author name and/or email
+- //line 3//: document date and/or version
+              (nice place for ``%%date``)
 
 
 Keep in mind that the first 3 lines of the source document will be the
@@ -1003,7 +993,7 @@ Example:
 %!target  : html
 %!options : --toc --toc-level 3
 %!style   : fancy.css
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 %!preproc : "AMJ"        "Aurelio Marinho Jargas"
 %!postproc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
 ```
@@ -1023,8 +1013,8 @@ Interface only, not on Gui or Web.
 Just like the other system's tools, the program do accept a set of
 predefined options. An option is an hyphen followed by a letter or two
 hyphens followed by one or more words, like ``-t`` and ``--target``.
-Talking about the target option, it is the only required one, the others
-are optional.
+% Talking about the target option, it is the only required one, the others
+% are optional.
 
 Options that are generally used are ``--outfile`` to define a customized
 output file name, ``--toc`` to turn on the automatic TOC generation and
@@ -1043,7 +1033,7 @@ The exception is the target specification, that has its own setting:
 
 ``` %!target: html
 
-Do use the ``--help`` option to get a complete list of all the options
+Use the ``--help`` option to get a complete list of all the options
 available in txt2tags.
 
 Learn more about [%!options #setting-options] and [%!target #setting-target].
@@ -1063,12 +1053,12 @@ specified by the user, using an environment variable.
 
   ||              RC file location             ||
   |          Windows | ``%HOMEPATH%\_t2trc``
-  |  Linux and other | ``$HOME/.txt2tagsrc``
-  |     User defined | ``T2TCONFIG`` env var
+  | UNIX, Linux, Mac | ``$HOME/.txt2tagsrc``
+  |     User defined | ``T2TCONFIG`` variable
 
 
 The format of the settings is exactly the same as the ones used on the
-.t2t files CONFAREA. There is a sample RC file on the tarball on
+.t2t files CONFAREA. There is a sample RC file on the package at
 ``doc/txt2tagsrc``. Example:
 
 ```
@@ -1081,7 +1071,7 @@ The format of the settings is exactly the same as the ones used on the
 %!options: --toc-level 4
 
 %%% Set the default encoding for all documents
-%!options: --encoding iso-8859-1
+%!options: --encoding UTF-8
 ```
 
 Any line that is not blank, a comment or a valid config line will raise
@@ -1089,7 +1079,7 @@ error when txt2tags runs. So be careful when editing this file.
 
 Txt2tags automatically apply the RC file contents into any source file it
 is converting. If you want to disable this behavior for a specific
-file, do use the ``--no-rc`` command line option.
+file, use the ``--no-rc`` command line option.
 
 == Configuration Loading Order and Precedence ==[config-loading]
 
@@ -1153,13 +1143,13 @@ But there's another three types of include:
 
 The **Verbatim** type includes a text file preserving its original
 spaces and formatting, just like if the text was inside the txt2tags
-VERB area (```). To specify this type, enclose the filename with
+Verbatim area (```). To specify this type, enclose the filename with
 backquotes:
 
 ``` %!include: ``/etc/fstab``
 
 The **Raw** type includes a text file as is, not trying to find and
-parse txt2tags marks on it, just like if the text was inside the RAW
+parse txt2tags marks on it, just like if the text was inside the Raw
 area ("""). To specify this type, enclose the filename with double
 quotes:
 
@@ -1173,8 +1163,8 @@ unsupported by txt2tags:
 
 ``` %!include(html): ''footer.html''
 
-Note that the filename is enclosed with single quotes, and as the text
-inserted is already parsed, you must specify the target to avoid
+Note that the filename is enclosed with single quotes. As the text
+inserted is already parsed, you should specify the target to avoid
 mistakes.
 
 -----------------------------------------------------------------------
@@ -1241,7 +1231,7 @@ General Rules:
 - The **Comment** mark "%" must be at the line beginning (first column).
 - **Images** filename must end in GIF, JPG, PNG or similar.
 - The only **multiline** marks are the Comment, Verbatim and Raw areas.
-- No mark is **interpreted** inside Verbatim or Raw.
+- No mark is **interpreted** inside Verbatim, Raw and Tagged.
 - The **Separator/Strong lines** must have at least 20 chars.
 - Quote and lists **(un)nesting** is defined by indent.
 - A **Table title** line is defined by two || at the beginning of the line.
@@ -1260,7 +1250,7 @@ General Rules:
 - MARKSYN
   - The first 3 lines of the source file.
   - Leave the first line blank to not specify headers at all.
-    Nice for command line oneliners or customized headers.
+    Nice for command line one-liners or customized headers.
   - Leave the second and/or third lines blank to omit parts of header.
 - MARKDET
   - NOMARKS
@@ -1317,7 +1307,7 @@ General Rules:
 
 - MARKDESC Used to insert text that will not appear on the target
   document
-- MARKPROP !Multiline, !<FreeSpaces, !Align, !Nesting
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN
   - A line beginning with a percent char at the first column, ``% like this``
@@ -1328,7 +1318,7 @@ General Rules:
   - Useful for TODO and FIXME reminders and editor's notes
 
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 == Bold, Italic, Underline, Strike ==[mark-beautifiers]
 
@@ -1584,11 +1574,11 @@ Macros are special purpose keywords, that are expanded on conversion
 time. They are used to insert dynamic information, for example the
 current date or information about the document source.
 
-A macro is represented by the ``%%`` chars followed by its name, as
+A macro is represented by the ``%%`` chars followed by its name, such as
 ``%%date``. Some macros do accept an optional formatting string inside
 parenthesis, right after the macro name, such as ``%%date(%Y-%m-%d)``. This
 format string mixes common text with special directives, identified by a
-percent sign % followed by an identification character. If not format
+percent sign % followed by an identification character. If no format
 string is given, the default format is used.
 
   || Macro Name   | Expands to...                        | Default Format |
@@ -1602,10 +1592,10 @@ General rules:
 
 - The macro name is case-insensitive, so ``%%date``, ``%%DaTe`` and
   ``%%DATE`` are identical
-- Macros are valid at the document Header and Body Areas, except
+- Macros are valid at the document HEADAREA and BODYAREA, except
   %%toc that is valid on BODYAREA only
-- A macro starts the BODYAREA if it is found on the CONFAREA
-- A macro can be placed at any part of the line, various per line
+- A macro starts the BODYAREA if it is found in the CONFAREA
+- A macro can be placed at any part of the line, including various per line
   (except %%toc, valid when alone in a line)
 - A macro can be used inside links and images marks (except %%toc)
 - Macros are not expanded in Titles, Verbatim and Raw Areas
@@ -1631,7 +1621,7 @@ modification time, see the [""%%mtime"" macro #macro-mtime].
 
 This macros accepts several formatting directives. The full list can be
 found in the
-[Python site http://www.python.org/doc/current/lib/module-time.html].
+[Python site http://docs.python.org/library/time.html].
 Here are the most commonly used:
 
  || Directive | Description |
@@ -1679,10 +1669,10 @@ As an example, this User Guide source file was last edited on
 
 The ``%%infile`` macro expands to the source file location on the
 system. It is useful to make those "//see the source of this file//"
-links on HTML pages. Provide such link is a friendly attitude with
+links on HTML pages. Providing such link is a friendly attitude with
 beginners, so they can use your source as a sample for their own page.
 
-This macro accept the following formatting directives:
+This macro accepts the following formatting directives:
 
  || %<char> | Description | Output for this User Guide source |
  |    %f    | File name                     | %%infile(%f)
@@ -1757,7 +1747,7 @@ identifier ("!") that makes them different from plain comments. The
 syntax is just as simple as variable setting, composed by a keyword
 and a value, separated from each by a colon (":").
 
- || %! keyword : value |
+	**%! keyword : value**
 
 Syntax details:
 
@@ -1833,7 +1823,7 @@ Now the options are registered inside the source file, so you can convert it wit
 
 ``` $ txt2tags file.t2t
 
-Tip for Vim users: To convert the document right inside the editor, just run ``:!txt2tags %``
+	Tip for Vim users: To convert the document right inside the editor, just run ``:!txt2tags %``
 
 -----------------------------------------------------------------------
 
@@ -1849,7 +1839,7 @@ you're not sure which encoding you should use, try //utf-8//. If that doesn't wo
 [this complete (and long!) list http://www.iana.org/assignments/character-sets]
 should help.
 
-The LateX target use alias names for encoding. This is not a problem
+The LaTeX target uses alias names for encoding. This is not a problem
 for the user, because txt2tags translate the names internally. Some
 examples:
 
@@ -1864,7 +1854,7 @@ examples:
 
 
 If the value is unknown to txt2tags, it will be passed "as is",
-allowing user to specify custom encodings.
+allowing the user to specify custom encodings.
 
 -----------------------------------------------------------------------
 
@@ -1892,7 +1882,7 @@ And txt2tags will "see" this line as:
 
 This filter is a component that acts between the document author
 and the txt2tags conversion. It's like a first conversion before the
-"real" one. Its behavior is similar to an external Sed/Perl filter,
+"real" one. This behavior is similar to an external Sed/Perl filter,
 called this way:
 
 ``` $ cat file.t2t | preproc-script.sh | txt2tags -
@@ -2010,12 +2000,12 @@ have no TOC.
   PostProc to change tags: ``%!postproc(target): <this> <that>``
 
 - PREproc is applied right after the line is read, and POSTproc is
-  applied after all the parsing was made. They are exactly the same as
+  applied after all the parsing was made. This is similar to
   (UUOC ahead):
 ``` $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 
 - The first part of a filter (the "search for" part) is not read as a
-  regular string, but a Regular Expression pattern. If you don't know
+  regular string, but as a Regular Expression pattern. If you don't know
   what these expressions do, don't worry, you may never have to. Just
   keep in mind that you will need to "escape" some characters to use
   them. To escape is to prefix the character with a backslash "\". Here
@@ -2067,7 +2057,7 @@ Keep that in mind, please.
 
 -----------------------------------------------------------------------
 
-== Inserting Multiple Lines with %!postproc (like CSS rules) ==[postproc-multiline]
+== Inserting Multiple Lines with %!postproc (such as CSS rules) ==[postproc-multiline]
 
 In filters, the replacement pattern can include multiple lines using the
 ``\n`` line break char.
@@ -2138,7 +2128,7 @@ like it, or his text editor has some strange relationship with TABs, he
 can define a new mark for Quoted text. Say a leading ">>> " was his
 choice. Then he will do this simple filter:
 
-``` %!preproc: '>>> ' '\t'
+``` %!preproc: '^>>> ' '\t'
 
 And on the document source, the quoted text will be something like:
 
