@@ -1318,6 +1318,26 @@ General Rules:
   - Useful for TODO and FIXME reminders and editor's notes
 
 
+------------------------------------------------------------------------
+
+== Comment Block ==[mark-comment-block]
+
+- MARKDESC Used to insert text that will not appear on the target
+  document
+- MARKPROP Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - A line with exactly 3 consecutive percents ``%%%``, followed by
+    text lines, followed by another line with exactly 3 consecutive
+    percents ``%%%``
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - As comments, they're not showed on the converted text
+  - Useful for deactivate (not delete) large portions of the contents
+  - If the end of the source file (EOF) is hit, the opened Comment Block
+    is closed
+
+
 ---------------------------------------------------------------------
 
 == Bold, Italic, Underline, Strike ==[mark-beautifiers]
