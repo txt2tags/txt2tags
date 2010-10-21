@@ -23,10 +23,10 @@ complete manual about the program.
 
 <UL>
 <LI>User Guide official address:
-  http://txt2tags.org/userguide
+  <A HREF="http://txt2tags.org/userguide">http://txt2tags.org/userguide</A>
 <P></P>
 <LI>User Guide PDF download:
-  http://txt2tags.org/userguide/userguide.pdf
+  <A HREF="http://txt2tags.org/userguide/userguide.pdf">http://txt2tags.org/userguide/userguide.pdf</A>
 </UL>
 
 <A NAME="intro"></A>
@@ -54,14 +54,20 @@ of the supported targets:
 <LI>HTML document
 <LI>XHTML document
 <LI>SGML document
+<LI>DocBook document
 <LI>LaTeX document
+<LI>Lout document
 <LI>UNIX man page
 <LI>MagicPoint presentation
+<LI>Creole 1.0 document
 <LI>Wikipedia page (MediaWiki)
 <LI>Google Wiki page
+<LI>pmWiki page
 <LI>DokuWiki page
 <LI>MoinMoin page
 <LI>PageMaker 6.0 document
+<LI>AsciiDoc document
+<LI>ASCII Art text
 <LI>Plain Text (no marks)
 </UL>
 
@@ -72,11 +78,11 @@ You'll find txt2tags really useful if you:
 </P>
 
 <UL>
-<LI>Need to publish documents on different formats
-<LI>Need to maintain updated documents on different formats
-<LI>Write technical or manual documents
-<LI>Don't know how to write a document on a certain format
-<LI>Don't have a specific editor for a certain format
+<LI>Need to publish documents in different formats
+<LI>Need to maintain updated documents in different formats
+<LI>Write technical documents or guides
+<LI>Don't know how to write a document in a specific format
+<LI>Don't have an editor for a specific format
 <LI>Want to use a simple text editor to update your documents
 </UL>
 
@@ -102,11 +108,11 @@ These are the highlights:
 </TR>
 <TR>
 <TD><I>Target Document Readable</I></TD>
-<TD>As the source file, the target document is also readable, with indentation and short lines.</TD>
+<TD>The target document is also readable, with indentation and spacing.</TD>
 </TR>
 <TR>
 <TD><I>Consistent Marks</I></TD>
-<TD>Txt2tags marks are unique enough to fit at all kind of documents and don't be confused with the document contents.</TD>
+<TD>Txt2tags marks are simple symbols, designed to be unique enough to don't mix up with the document contents.</TD>
 </TR>
 <TR>
 <TD><I>Consistent Rules</I></TD>
@@ -122,15 +128,15 @@ These are the highlights:
 </TR>
 <TR>
 <TD><I>Nice Examples</I></TD>
-<TD>The <B>sample files</B> included on the package gives real life examples of simple and over-complicated documents written for txt2tags.</TD>
+<TD>The <B>sample files</B> included on the package gives real life examples of documents written for txt2tags.</TD>
 </TR>
 <TR>
 <TD><I>Valuable Tools</I></TD>
-<TD>The <B>syntax files</B> included on the package (for vim, emacs, nano and kate editors) help you write documents with no syntax errors.</TD>
+<TD>The <B>syntax files</B> included on the package help you to write documents with no syntax errors.</TD>
 </TR>
 <TR>
 <TD><I>Three User Interfaces</I></TD>
-<TD>There is a <B>Graphical Tk interface</B> that is very user friendly, a <B>Web interface</B> to use it remotely or on the intranet, and a <B>Command Line interface</B> for power-users and scripting.</TD>
+<TD>There is a user friendly <B>Graphical interface</B>, a handy <B>Web interface</B> easy to install in intranets and a <B>Command Line interface</B> for power-users and scripting.</TD>
 </TR>
 <TR>
 <TD><I>Scripting</I></TD>
@@ -138,22 +144,19 @@ These are the highlights:
 </TR>
 <TR>
 <TD><I>Download and Run / Multi-platform</I></TD>
-<TD>Txt2tags is a single <B>Python script</B>. There is no need to compile it or download extra modules. So it runs nicely on *NIX, Linux, Windows and Macintosh machines.</TD>
+<TD>Txt2tags is a single <B>Python script</B>. There is no need to compile it or download extra modules. So it runs nicely on *NIX, Linux, Windows and Macs.</TD>
 </TR>
 <TR>
-<TD><I>Frequent Updates</I></TD>
-<TD>The program has an active mailing list with users who suggest corrections and improvements. The author himself is an extensive user at home and at work, so the development won't stop briefly.</TD>
+<TD><I>Mature</I></TD>
+<TD>First released in 2001, txt2tags is now a mature program with years of improvements and bug fixes, extensive documentation, translations and an loyal user base.</TD>
 </TR>
 </TABLE>
 
 <H3>Do I have to pay for it?</H3>
 
-<TABLE ALIGN="center" BORDER="1">
-<TR>
-<TH>Absolutely NO!</TH>
-</TR>
-</TABLE>
-
+<P>
+Absolutely NO!
+</P>
 <P>
 It's free, GPL licensed.
 </P>
@@ -199,9 +202,15 @@ The following is a list of all the structures supported by txt2tags.
 <LI>horizontal separator line
 <LI>image (with smart alignment)
 <LI>table (with or without border, smart alignment, column span)
-<P></P>
-<LI>special mark for raw text (no parsing)
-<LI>special macro for current date (with flexible formatting)
+<LI>macros (with flexible formatting):
+  <UL>
+  <LI>current date
+  <LI>file modification time
+  <LI>input and output file name and path
+  <LI>automatic table of contents
+  </UL>
+<LI>special mark for raw text (no marks parsed inside)
+<LI>special mark for tagged text (no parsing, sent directly to output)
 <LI>comments (for self notes, TODO, FIXME)
 </UL>
 
@@ -218,21 +227,19 @@ The following is a list of all the structures supported by txt2tags.
   documents. But a separate CSS file can be used if wanted. Txt2tags
   generates "<I>HTML 4.0 Transitional</I>" code.
 <P></P>
-  Since version 2.0, the txt2tags HTML generated code is 100% approved
-  by the <A HREF="http://validator.w3.org/">w3c validator</A>.
+  Txt2tags HTML generated code is 100% approved by the <A HREF="http://validator.w3.org/">w3c validator</A>.
 <P></P>
 <DT><B>XHTML</B></DT><DD>
-  It is the new generation of HTML, with more strict rules, as to close
-  all the tags you open. This makes the code easier to parse and
+  It is the new generation of HTML, with more strict rules.
+  This makes the code easier to parse and
   understand. For the general purpose, consider it HTML. Txt2tags
   generates "<I>XHTML 1.0 Transitional</I>" code.
 <P></P>
-  Since version 2.0, the txt2tags XHTML generated code is 100% approved
-  by the <A HREF="http://validator.w3.org/">w3c validator</A>.
+  Txt2tags XHTML generated code is 100% approved by the <A HREF="http://validator.w3.org/">w3c validator</A>.
 <P></P>
 <DT><B>SGML</B></DT><DD>
   It is a common document format which has powerful conversion applications
-  (<A HREF="http://packages.debian.org/etch/linuxdoc-tools">linuxdoc-tools</A>). From a
+  (<A HREF="http://packages.debian.org/linuxdoc-tools">linuxdoc-tools</A>). From a
   single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
   and XML documents. The tools also does automatic TOC and break
   sections into subpages.
@@ -244,7 +251,7 @@ The following is a list of all the structures supported by txt2tags.
 <DT><B>LATEX</B></DT><DD>
   The preferred academic document format, it is more powerful than you
   ever wondered. Full books, complicated formulas and any complex text
-  can be written in LaTeX. But prepare to lost your hair if you will try
+  can be written in LaTeX. But prepare to loose your hair when you try
   to write the tags by hand...
 <P></P>
   Txt2tags generates ready-to-use LaTeX files, doing all the complex
@@ -265,29 +272,25 @@ The following is a list of all the structures supported by txt2tags.
 <P></P>
   There are other tools to generate man documents, but txt2tags has
   one advantage: one source, multi targets. So the same man page
-  contents can be converted to a HTML page, MagicPoint presentation, etc.
+  contents can be converted to an HTML page, Wiki document and plain text.
 <P></P>
 <DT><B>MGP</B></DT><DD>
-  <A HREF="http://www.mew.org/mgp">MagicPoint</A> is a very handy presentation tool
+  <A HREF="http://en.wikipedia.org/wiki/MagicPoint">MagicPoint</A> is a very handy presentation tool
   (hint: Microsoft PowerPoint), that uses a tagged language to define all
   the screens. So you can do complex presentations in vi/emacs/notepad.
 <P></P>
   Txt2tags generates a ready-to-use .mgp file, defining all the
   necessary headers for fonts and appearance definitions, as long as
-  ISO-8859 accents support.
+  international characters support.
 <P></P>
-  <B>HOTSPOT 1:</B> txt2tags created .mgp file uses the XFree86 Type1
-  fonts! So you do not need to carry TrueType fonts files with your
-  presentation.
-<P></P>
-  <B>HOTSPOT 2:</B> the color definitions for fonts are clean, so even on a
-  poor color palette system (as <CODE>startx -- -bpp 8</CODE>), the presentation
-  will look pretty!
+  Txt2tags creates "diet" .mgp files: they use the Type1 fonts, so you do not
+  need to carry TrueType fonts files with your presentation. Also, the color
+  definitions are simple, so even on a poor color palette system (such as
+  <CODE>startx -- -bpp 8</CODE>), the presentation will look pretty!
 <P></P>
   The key is: convert and use. No quick fixes or requirements needed.
 <P></P>
 <DT><B>WIKI</B></DT><DD>
-<P></P>
   You've heard about the <A HREF="http://wikipedia.org">Wikipedia</A>, right? So you
   don't need to learn yet-another markup syntax. Just stick with txt2tags
   and let it convert your text to the Wikipedia format, called
@@ -298,12 +301,11 @@ The following is a list of all the structures supported by txt2tags.
   <A HREF="http://code.google.com/">Google Code</A> Wiki.
 <P></P>
 <DT><B>DOKU</B></DT><DD>
-<P></P>
-  <A HREF="http://wiki.splitbrain.org/wiki:dokuwiki">DokuWiki</A> is a standards
+  <A HREF="http://www.dokuwiki.org/dokuwiki">DokuWiki</A> is a standards
   compliant, simple to use Wiki, mainly aimed at creating documentation
   of any kind. It is targeted at developer teams, workgroups and small
   companies. It has a simple but powerful syntax which makes sure the
-  datafiles remain readable outside the Wiki and eases the creation of
+  data files remain readable outside the Wiki and eases the creation of
   structured texts. All data is stored in plain text files - no
   database is required.
 <P></P>
@@ -316,24 +318,23 @@ The following is a list of all the structures supported by txt2tags.
   simplified marks and unified solution: one source, multi targets.
 <P></P>
 <DT><B>PM6</B></DT><DD>
-  I guess you didn't know, but Adobe PageMaker 6.0 has its own tagged
-  language! Styles, color table, beautifiers, and most of all the
-  PageMaker mouse-clicking features are available on its tagged language
-  also. You just need to access "Import tagged text" menu item. Just for
+  Adobe PageMaker 6.0 has its own tagged
+  language. Styles, color table, beautifiers, and most of all the
+  PageMaker mouse-clicking features are also available on its tagged language.
+  You just need to access the "Import tagged text" menu item. Just for
   the records, it's an &lt;HTML "like"&gt; tag format.
 <P></P>
   Txt2tags generates all the tags and already defines a extensive and
   working header, setting paragraph styles and formatting. This is the
-  hard part. <B>GOTCHA:</B> No line breaks! A paragraph must be one single
-  line.
+  hard part.
 <P></P>
-  Author's note:
-  <I>My entire portuguese <A HREF="http://guia-er.sf.net">regular expression's book</A></I>
-  <I>was written in VI, converted to PageMaker with txt2tags and went to</I>
-  <I>press.</I>
+  <B>Author's note:</B>
+  My entire portuguese <A HREF="http://guia-er.sf.net">regular expression's book</A>
+  was written in VI, then converted to PageMaker with txt2tags and went to
+  the publisher. It works :)
 <P></P>
 <DT><B>TXT</B></DT><DD>
-  TXT is text. The only true formatting type.
+  TXT is text. Simple, pure, beautiful.
 <P></P>
   Although txt2tags marks are very intuitive and discrete, you can remove
   them by converting the file to pure TXT.
@@ -341,6 +342,11 @@ The following is a list of all the structures supported by txt2tags.
   The titles are underlined, and the text is basically left as is on the
   source.
 </DL>
+
+<P>
+Tip: Use the <CODE>--targets</CODE> command line option to get a complete list of
+all the available targets.
+</P>
 
 <A NAME="struct-support"></A>
 <H2>Status of Supported Structures by Target</H2>
@@ -351,15 +357,20 @@ The following is a list of all the structures supported by txt2tags.
 <TH>html</TH>
 <TH>xhtml</TH>
 <TH>sgml</TH>
+<TH>dbk</TH>
 <TH>tex</TH>
 <TH>lout</TH>
 <TH>man</TH>
 <TH>mgp</TH>
+<TH>creole</TH>
 <TH>wiki</TH>
 <TH>gwiki</TH>
+<TH>pmw</TH>
 <TH>doku</TH>
 <TH>moin</TH>
 <TH>pm6</TH>
+<TH>adoc</TH>
+<TH>art</TH>
 <TH>txt</TH>
 </TR>
 <TR>
@@ -371,15 +382,25 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>section title</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
@@ -409,6 +430,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>bold</TD>
@@ -424,6 +450,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -440,6 +471,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -449,13 +485,18 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
-<TD ALIGN="center">-</TD>
-<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -463,15 +504,20 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -481,6 +527,9 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
@@ -488,6 +537,8 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -504,6 +555,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -520,6 +576,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -537,12 +598,18 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>internet links</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
@@ -550,6 +617,10 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
@@ -559,6 +630,7 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
@@ -566,6 +638,10 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
@@ -575,14 +651,19 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
@@ -591,6 +672,7 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
@@ -598,12 +680,21 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
 <TD>bulleted list</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
@@ -633,6 +724,11 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>definition list</TD>
@@ -642,12 +738,17 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
-<TD ALIGN="center">N</TD>
-<TD ALIGN="center">Y</TD>
-<TD ALIGN="center">-</TD>
-<TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 </TR>
 <TR>
@@ -655,15 +756,20 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 </TR>
 <TR>
@@ -673,13 +779,18 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -687,14 +798,19 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
-<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 </TR>
@@ -703,15 +819,20 @@ The following is a list of all the structures supported by txt2tags.
 <TH>html</TH>
 <TH>xhtml</TH>
 <TH>sgml</TH>
+<TH>dbk</TH>
 <TH>tex</TH>
 <TH>lout</TH>
 <TH>man</TH>
 <TH>mgp</TH>
+<TH>creole</TH>
 <TH>wiki</TH>
 <TH>gwiki</TH>
+<TH>pmw</TH>
 <TH>doku</TH>
 <TH>moin</TH>
 <TH>pm6</TH>
+<TH>adoc</TH>
+<TH>art</TH>
 <TH>txt</TH>
 </TR>
 <TR>
@@ -720,14 +841,19 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
-<TD ALIGN="center">Y</TD>
-<TD ALIGN="center">-</TD>
-<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
@@ -735,14 +861,19 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 </TR>
@@ -756,8 +887,13 @@ The following is a list of all the structures supported by txt2tags.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">N</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
@@ -804,22 +940,13 @@ purpose and features.
 </UL>
 
 <A NAME="gui"></A>
-<H3>Graphical Tk Interface</H3>
+<H3>Graphical Interface</H3>
 
 <P>
 Since version 1.0, there is a nice Graphical Interface, that works on
-Linux, Windows, Mac and others.
+Linux, Windows, Mac and others. Just call txt2tags with the <CODE>--gui</CODE>
+option to open it.
 </P>
-<P>
-The program detects automatically if your system can display the
-interface, and it is launched when called with no arguments. One can
-force the Graphical Interface call with the <CODE>--gui</CODE> option. If some
-resources are missing, the program will tell.
-</P>
-	<BLOCKQUOTE>
-	<B>Note:</B> The Tkinter module is needed. As it comes with the
-	standard Python distribution, you may already have it.
-	</BLOCKQUOTE>
 <P>
 The interface is pretty simple and intuitive:
 </P>
@@ -838,13 +965,13 @@ The interface is pretty simple and intuitive:
 </OL>
 
 <P>
-A nice option to check is the "<I>Dump to screen</I>", so you can check
+A nice option is the "<I>Dump to screen</I>", so you can check
 the resulting code on a separate window, no file is saved at all. When
 the code is OK, you uncheck it and the file will be saved.
 </P>
 <P>
-The default interface colors can be changed on the <CODE>~/.txt2tagsrc</CODE>
-file, using the <CODE>%!guicolors</CODE> settings. For example:
+The default interface colors can be changed on the <A HREF="#rc">configuration file</A>,
+using the <CODE>%!guicolors</CODE> settings. For example:
 </P>
 
 <PRE>
@@ -856,7 +983,7 @@ file, using the <CODE>%!guicolors</CODE> settings. For example:
 
 <P>
 The Web Interface is up and running on the Internet at
-http://txt2tags.org/online.php, so you can use and test the program
+<A HREF="http://txt2tags.org/online.php">http://txt2tags.org/online.php</A>, so you can use and test the program
 instantly, before download.
 </P>
           <center><IMG ALIGN="middle" SRC="./web.png" BORDER="0" ALT=""></center>  
@@ -875,37 +1002,42 @@ For command line power users, the --help should be enough:
 <PRE>
 Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
+      --targets       print a list of all the available targets and exit
   -t, --target=TYPE   set target document type. currently supported:
-                      html, xhtml, sgml, tex, lout, man, mgp, wiki,
-                      gwiki, doku, moin, pm6, txt
+                      adoc, art, creole, dbk, doku, gwiki, html, lout, man,
+                      mgp, moin, pm6, pmw, sgml, tex, txt, wiki, xhtml
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
-  -n, --enum-title    enumerate all title lines as 1, 1.1, 1.1.1, etc
-  -H, --no-headers    suppress header, title and footer contents
-      --headers       show header, title and footer contents (default ON)
-      --encoding      set target file encoding (utf-8, iso-8859-1, etc)
-      --style=FILE    use FILE as the document style (like HTML CSS)
-      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets
-      --css-inside    insert CSS file contents inside HTML/XHTML headers
-      --mask-email    hide email from spam robots. x@y.z turns &lt;x (a) y z&gt;
-      --toc           add TOC (Table of Contents) to target document
-      --toc-only      print document TOC and exit
+      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)
+      --toc           add an automatic Table of Contents to the output
       --toc-level=N   set maximum TOC level (depth) to N
-      --rc            read user config file ~/.txt2tagsrc (default ON)
+      --toc-only      print the Table of Contents and exit
+  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc
+      --style=FILE    use FILE as the document style (like HTML CSS)
+      --css-sugar     insert CSS-friendly tags for HTML/XHTML
+      --css-inside    insert CSS file contents inside HTML/XHTML headers
+  -H, --no-headers    suppress header and footer from the output
+      --mask-email    hide email from spam robots. x@y.z turns &lt;x (a) y z&gt;
+      --slides        format output as presentation slides (used by -t art)
+      --width=N       set the output's width to N columns (used by -t art)
+      --height=N      set the output's height to N rows (used by -t art)
+  -C, --config-file=F read configuration from file F
       --gui           invoke Graphical Tk Interface
   -q, --quiet         quiet mode, suppress all output (except errors)
   -v, --verbose       print informative messages during conversion
   -h, --help          print this help information and exit
   -V, --version       print program version and exit
-      --dump-config   print all the config found and exit
+      --dump-config   print all the configuration found and exit
+      --dump-source   print the document source, with includes expanded
 
 Turn OFF options:
-     --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers
-     --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc
-     --no-css-sugar, --no-css-inside, --no-quiet
+     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,
+     --no-encoding, --no-enum-title, --no-headers, --no-infile,
+     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,
+     --no-style, --no-targets, --no-toc, --no-toc-only
 
 Example:
-     txt2tags -t html --toc myfile.t2t
+     txt2tags -t html --toc file.t2t
 
 By default, converted output is saved to 'infile.&lt;target&gt;'.
 Use --outfile to force an output file name.
@@ -913,11 +1045,11 @@ If  input file is '-', reads from STDIN.
 If output file is '-', dumps output to STDOUT.
 </PRE>
 
-<H4>Examples</H4>
-
 <P>
-Assuming you have written a <CODE>file.t2t</CODE> marked file, let's have some
-converting fun.
+Please read the txt2tags man page for detailed information about options and command line use.
+</P>
+<P>
+Examples:
 </P>
 
 <TABLE>
@@ -965,20 +1097,10 @@ converting fun.
 <TD><B>Testing Mask Email feature</B></TD>
 <TD><CODE>$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -</CODE></TD>
 </TR>
-<TR>
-<TD><B>Post-convert editing</B></TD>
-<TD><CODE>$ txt2tags -t html -o- file.t2t | sed "s/&lt;BODY .*/&lt;BODY BGCOLOR=green&gt;/" &gt; file.html</CODE></TD>
-</TR>
 </TABLE>
 
-	<BLOCKQUOTE>
-	<B>Note:</B> Since version 1.6 you can do pre and post processing
-	with the <CODE>%!preproc</CODE> and <CODE>%!postproc</CODE> configuration
-	filters.
-	</BLOCKQUOTE>
-
 <A NAME="install"></A>
-<H1>Part II - OK, I want it. Now what?</H1>
+<H1>Part II - Install</H1>
 
 <P>
 Just download the program and run it on your machine.
@@ -988,18 +1110,15 @@ Just download the program and run it on your machine.
 <H2>Download &amp; Install Python</H2>
 
 <P>
-First of all, you must download and install the Python interpreter on
-your system. If you already have it, just skip this step.
+First of all, you must download and install <A HREF="http://www.python.org">Python</A> on
+your system. Txt2tags requires Python version 2.2 or newer.
 </P>
 <P>
-Python is one of the nicest programming languages out there, it works on
-Windows, Linux, UNIX, Macintosh, and others and it can be downloaded
-from the <A HREF="http://www.python.org">Python web site</A>. Installation hints are
-found on the same site. Txt2tags works with Python version 2.0 or newer.
+Note that Python is already installed by default in Linux and Mac systems. If you're using those, you're done, just skip this step.
 </P>
 <P>
 If you are not sure if you have Python or not, open a console (tty,
-xterm, MSDOS) and type <CODE>python</CODE>. If it is not installed, the system
+xterm, MSDOS, Terminal.app) and type <CODE>python</CODE>. If it is not installed, the system
 will tell you.
 </P>
 
@@ -1008,16 +1127,16 @@ will tell you.
 
 <P>
 The official location for txt2tags distribution is on the program
-site, at http://txt2tags.org.
+site, at <A HREF="http://txt2tags.org">http://txt2tags.org</A>. Just download and uncompress the package (.tgz file).
 </P>
 <P>
-All the program's files are on the tarball (.tgz file), which can be
-expanded by most of the compression utilities (including Winzip).
+If you're in Linux, you can also use the automatic installer of your system. Some examples:
 </P>
-<P>
-Just get the <B>latest</B> one (more recent date, higher version number).
-The previous versions remains for historical purposes only.
-</P>
+
+<UL>
+<LI>yum install txt2tags
+<LI>sudo apt-get install txt2tags
+</UL>
 
 <A NAME="install-txt2tags"></A>
 <H2>Install txt2tags</H2>
@@ -1027,7 +1146,7 @@ As a single Python script, txt2tags needs no installation at all.
 </P>
 <P>
 The only file needed to use the program is the txt2tags script. The
-other files of the tarball are documentation, tools and sample files.
+other files of the package are documentation, tools and sample files.
 </P>
 <P>
 The fail-proof way to run txt2tags, is calling Python with it:
@@ -1038,8 +1157,8 @@ prompt$ python txt2tags
 </PRE>
 
 <P>
-If you want to "install" txt2tags on the system as a stand alone
-program, just copy (or link) the txt2tags script to a System PATH
+If you want to install txt2tags on the system as a stand alone
+program, just copy the txt2tags script to a system PATH
 directory and make sure the system knows how to run it.
 </P>
 
@@ -1050,8 +1169,7 @@ directory and make sure the system knows how to run it.
 <P></P>
 <DT><B>Windows</B></DT><DD>
   Rename the script adding the .py extension
-  (<CODE>ren txt2tags txt2tags.py</CODE>) and copy it to a system PATH directory
-  (<CODE>copy txt2tags.py C:\WINNT</CODE>)
+  and copy it to a system PATH directory, such as <CODE>C:\Windows\System32</CODE>.
 </DL>
 
 <P>
@@ -1059,27 +1177,8 @@ After that, you can create an icon on your desktop for it, if you want to
 use the program's Graphical Interface.
 </P>
 
-<H3>Special Packages for Windows Users</H3>
-
-<P>
-There is also two .EXE distribution files for txt2tags, which install
-the program on Windows machines with just a few clicks:
-</P>
-
-<UL>
-<LI>The single txt2tags script for those who already have the Python
-  interpreted installed
-<LI>The stand alone version, which doesn't require Python interpreter to
-  run (it has a diet version embedded)
-</UL>
-
-<P>
-Please visit the <I>Txt2tags-Win</I> site to download this packages:
-<A HREF="http://txt2tags-win.sf.net">http://txt2tags-win.sf.net</A>
-</P>
-
 <A NAME="editor-syntax"></A>
-<H2>Install Text Editor Syntax Highlighting File</H2>
+<H2>Install Text Editor Syntax Highlighting File (optional)</H2>
 
 <P>
 Txt2tags comes with handy syntax highlighting files to be used by the
@@ -1087,12 +1186,15 @@ following text editors:
 </P>
 
 <UL>
-<LI>Vim (<A HREF="http://www.vim.org">www.vim.org</A>)
-<LI>Emacs (<A HREF="http://www.emacs.org">www.emacs.org</A>)
-<LI>Nano (<A HREF="http://www.nano-editor.org">www.nano-editor.org</A>)
-<LI>Kate (<A HREF="http://kate.kde.org">http://kate.kde.org</A>)
-<LI>gedit (<A HREF="http://www.gnome.org/projects/gedit/">http://www.gnome.org/projects/gedit/</A>)
-<LI>TextMate (<A HREF="http://macromates.com/">http://macromates.com/</A>)
+<LI>Vim
+<LI>Emacs
+<LI>Nano
+<LI>Kate
+<LI>Gedit
+<LI>JOE
+<LI>le
+<LI>ne
+<LI>TextMate
 </UL>
 
 <P>
@@ -1131,19 +1233,19 @@ text editor and a web browser.
   <UL>
   <LI><B>Command Line Interface:</B> Call "txt2tags" on the command line and
     the program should give you a "Missing input file" message. If it is
-    not working, try "python /path/to/txt2tags" or even "/path/to/python
-    /path/to/txt2tags" case Python is not on your PATH.
+    not working, try <CODE>python /path/to/txt2tags</CODE> or even
+    <CODE>/path/to/python /path/to/txt2tags</CODE> if Python is not on your PATH.
   <P></P>
   <LI><B>Gui Interface:</B> Click on the program icon to launch the Gui
-    Interface.
+    Interface or call <CODE>txt2tags --gui</CODE>.
   <P></P>
   </UL>
 <LI>Open the text editor your are comfortable with. It can be <B>any</B> text
   editor, from the good old VI to MS Word or OpenOffice.org. Create a
-  brand new empty document to be your first txt2tags one.
+  brand new empty document to be your first txt2tags one and remember to
+  save it as plain text.
 <P></P>
-<LI>Launch your favorite web browser to see the results of the conversion
-  to an HTML page.
+<LI>Launch your favorite web browser to see the results of the conversion.
 </OL>
 
 <H2>Write the Document Header</H2>
@@ -1153,7 +1255,7 @@ text editor and a web browser.
   main title: <I>My First Document</I>
 <LI>On the second line make a subtitle, inserting this text:
   <I>A txt2tags test</I>
-<LI>Then, on the third line, put some time information, as:
+<LI>Then, on the third line, put some time information:
   <I>Sunday, 2004</I>
 </OL>
 
@@ -1173,8 +1275,9 @@ This is just a part of the document, but we can already convert it and
 check the results.
 </P>
 <P>
-Now save this document with the name <CODE>test.txt</CODE>. Pay attention to
-which folder you are saving the file, you will need to remember it soon.
+Now save this document with the name <CODE>test.txt</CODE>. Remember to save it
+as plain text. Pay attention to which folder you are saving the file,
+you will need to remember it soon.
 </P>
 
 <H2>The First Conversion - Gui Interface</H2>
@@ -1206,30 +1309,24 @@ folder as the text file, with the "html" extension.
 <H2>The First Conversion - Command Line Interface</H2>
 
 <P>
-If you are in the Gui Interface, please skip this step and read the next
-one.
-</P>
-<P>
 If you are in the Command Line Interface, move to the folder where the
 file was saved and type this command:
 </P>
 
 <PRE>
-txt2tags  --target  html  test.txt
+txt2tags --target html test.txt
 </PRE>
 
 <P>
-Note that there are spaces between the command parts, but no spaces
-inside the "--target" string, it is an option. This option is followed
+The option <CODE>--target</CODE> is followed
 by the "html" string, which tells the program to what format your text
 file will be converted. The last item is the text filename.
 </P>
 <P>
-If the conversion was done, the results were saved to the <CODE>test.html</CODE>
+The results were saved to the <CODE>test.html</CODE>
 file and then the program will show you the
-"<I>txt2tags wrote test.html</I>" message. If not, it will tell about some
-error you may have done when typing the command line. Check it with
-attention.
+"<I>txt2tags wrote test.html</I>" message.
+If some error occurred, read the message carefully.
 </P>
 <P>
 Here is a sample of how it will be shown on your screen:
@@ -1244,25 +1341,21 @@ prompt$
 <H2>Check the Results</H2>
 
 <P>
-Open the <CODE>test.html</CODE> file on the Web browser to check if everything
+Open the <CODE>test.html</CODE> file on the web browser to check if everything
 is ok.
 </P>
    <center><IMG ALIGN="middle" SRC="./firstdoc-html.png" BORDER="0" ALT=""></center> 
 <P>
 Here it is! You just typed three simple lines of text and txt2tags made
-all the work to set the HTML page heading information. Text alignment,
-sizes, spacing and appearance. See that the main title is placed at the
-browser title bar also.
+all the work to set the HTML page heading information, text alignment,
+sizes, spacing and appearance. See that the main title is also placed at the
+browser title bar.
 </P>
-
-<TABLE ALIGN="center" BORDER="1">
-<TR>
-<TH>You write text, txt2tags does the rest ;)</TH>
-</TR>
-</TABLE>
-
+	<BLOCKQUOTE>
+	You write text, txt2tags does the rest ;)
+	</BLOCKQUOTE>
 <P>
-Tip: You can also use CSS on HTML pages generated by txt2tags, so the
+Tip: You can also use CSS files on HTML pages generated by txt2tags, so the
 page appearance is 100% configurable.
 </P>
 
@@ -1278,7 +1371,7 @@ automatically, you don't have to "mark" them.
 Then again: save it, convert and check the results. This is the
 development cycle of a document in txt2tags. You just focus on the
 document contents, finishing documents faster than other editors. No
-mouse clickings, no menus, windows, distraction.
+mouse clicking, no menus, no windows, no distraction.
 </P>
 <P>
 Considering the following contents for the <CODE>test.txt</CODE> file, which is
@@ -1306,10 +1399,10 @@ to insert any tags. And more, the same text file can be converted to any
 of the other txt2tags supported formats.
 </P>
 <P>
-Besides plain text, txt2tags has some very simple marks, that you will
-use when need some other formating or structures like bold, italic,
+Besides plain text, txt2tags has some very simple marks, that you'll
+use when you need some other formatting or structures like bold, italic,
 title, images, table and other. As a quick sample,
-<CODE>**starts for bold**</CODE> and <CODE>== equals for title ==</CODE>. You can learn the
+<CODE>**stars for bold**</CODE> and <CODE>== equals for title ==</CODE>. You can learn the
 marks on the <A HREF="http://txt2tags.org/markup.html">Txt2tags Markup Demo</A>.
 </P>
 
@@ -1327,21 +1420,19 @@ rules and purpose. They are:
 <DL>
 <DT><I>Header Area</I></DT><DD>
   Place for Document Title, Author, Version and Date information.
-  (optional)
 <DT><I>Config Area</I></DT><DD>
   Place for general Document Settings and Parser behavior modifiers.
-  (optional)
 <DT><I>Body Area</I></DT><DD>
-  Place for the Document Content. (required)
+  Place for the Document Content.
 </DL>
 
 <P>
-As seen above, the first two Areas are optional, being <I>Body Area</I>
-the only required one.
+All areas are optional. You can write a txt2tags document with just
+headers (such as our first example), or a document with no headers or settings.
 </P>
 <P>
 The areas are delimited by special rules, which will be seen in detail
-on the next chapter. For now, this is a graphical representation of the
+on the next chapter. For now, this is a representation of the
 areas on a document:
 </P>
 
@@ -1388,7 +1479,7 @@ Last Updated: %%mtime(%c)
 
 %!target  : html
 %!style   : fancy.css
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 %!options : --toc --enum-title
 
 Hi! This is my test document.
@@ -1414,15 +1505,15 @@ oriented. They are located at the first three lines of the source file.
 </P>
 <P>
 These lines are content-free, with no static information type needed.
-But the following is recommended for most documents:
+But the following is recommended:
 </P>
 
-   <UL>
-   <LI><I>line 1</I>: document title
-   <LI><I>line 2</I>: author name and/or email
-   <LI><I>line 3</I>: document date and/or version
-                 (nice place for <CODE>%%date</CODE>)
-   </UL>
+<UL>
+<LI><I>line 1</I>: document title
+<LI><I>line 2</I>: author name and/or email
+<LI><I>line 3</I>: document date and/or version
+              (nice place for <CODE>%%date</CODE>)
+</UL>
 
 <P>
 Keep in mind that the first 3 lines of the source document will be the
@@ -1582,7 +1673,7 @@ Example:
 %!target  : html
 %!options : --toc --toc-level 3
 %!style   : fancy.css
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 %!preproc : "AMJ"        "Aurelio Marinho Jargas"
 %!postproc: '&lt;BODY.*?&gt;'  '&lt;BODY bgcolor="yellow"&gt;'
 </PRE>
@@ -1606,8 +1697,6 @@ Interface only, not on Gui or Web.
 Just like the other system's tools, the program do accept a set of
 predefined options. An option is an hyphen followed by a letter or two
 hyphens followed by one or more words, like <CODE>-t</CODE> and <CODE>--target</CODE>.
-Talking about the target option, it is the only required one, the others
-are optional.
 </P>
 <P>
 Options that are generally used are <CODE>--outfile</CODE> to define a customized
@@ -1636,7 +1725,7 @@ The exception is the target specification, that has its own setting:
 </PRE>
 
 <P>
-Do use the <CODE>--help</CODE> option to get a complete list of all the options
+Use the <CODE>--help</CODE> option to get a complete list of all the options
 available in txt2tags.
 </P>
 <P>
@@ -1667,18 +1756,18 @@ specified by the user, using an environment variable.
 <TD><CODE>%HOMEPATH%\_t2trc</CODE></TD>
 </TR>
 <TR>
-<TD ALIGN="right">Linux and other</TD>
+<TD>UNIX, Linux, Mac</TD>
 <TD><CODE>$HOME/.txt2tagsrc</CODE></TD>
 </TR>
 <TR>
 <TD ALIGN="right">User defined</TD>
-<TD><CODE>T2TCONFIG</CODE> env var</TD>
+<TD><CODE>T2TCONFIG</CODE> variable</TD>
 </TR>
 </TABLE>
 
 <P>
 The format of the settings is exactly the same as the ones used on the
-.t2t files Config Area. There is a sample RC file on the tarball on
+.t2t files Config Area. There is a sample RC file on the package at
 <CODE>doc/txt2tagsrc</CODE>. Example:
 </P>
 
@@ -1692,7 +1781,7 @@ The format of the settings is exactly the same as the ones used on the
 %!options: --toc-level 4
 
 %%% Set the default encoding for all documents
-%!options: --encoding iso-8859-1
+%!options: --encoding UTF-8
 </PRE>
 
 <P>
@@ -1702,7 +1791,7 @@ error when txt2tags runs. So be careful when editing this file.
 <P>
 Txt2tags automatically apply the RC file contents into any source file it
 is converting. If you want to disable this behavior for a specific
-file, do use the <CODE>--no-rc</CODE> command line option.
+file, use the <CODE>--no-rc</CODE> command line option.
 </P>
 
 <A NAME="config-loading"></A>
@@ -1786,7 +1875,7 @@ But there's another three types of include:
 <P>
 The <B>Verbatim</B> type includes a text file preserving its original
 spaces and formatting, just like if the text was inside the txt2tags
-VERB area (```). To specify this type, enclose the filename with
+Verbatim area (```). To specify this type, enclose the filename with
 backquotes:
 </P>
 
@@ -1796,7 +1885,7 @@ backquotes:
 
 <P>
 The <B>Raw</B> type includes a text file as is, not trying to find and
-parse txt2tags marks on it, just like if the text was inside the RAW
+parse txt2tags marks on it, just like if the text was inside the Raw
 area ("""). To specify this type, enclose the filename with double
 quotes:
 </P>
@@ -1818,8 +1907,8 @@ unsupported by txt2tags:
 </PRE>
 
 <P>
-Note that the filename is enclosed with single quotes, and as the text
-inserted is already parsed, you must specify the target to avoid
+Note that the filename is enclosed with single quotes. As the text
+inserted is already parsed, you should specify the target to avoid
 mistakes.
 </P>
 
@@ -1909,6 +1998,11 @@ Overview of all txt2tags marks:
 <TD ALIGN="center">""words""</TD>
 </TR>
 <TR>
+<TD COLSPAN="2"></TD>
+<TD ALIGN="right"><I>Tagged text</I></TD>
+<TD ALIGN="center">''words''</TD>
+</TR>
+<TR>
 <TH COLSPAN="4">Other</TH>
 </TR>
 <TR>
@@ -1953,6 +2047,12 @@ Overview of all txt2tags marks:
 <TD ALIGN="right"><I>Raw area</I></TD>
 <TD ALIGN="center">"""\n lines \n"""</TD>
 </TR>
+<TR>
+<TD ALIGN="right"><I>Tagged line</I></TD>
+<TD ALIGN="center">''' words</TD>
+<TD ALIGN="right"><I>Tagged area</I></TD>
+<TD ALIGN="center">'''\n lines \n'''</TD>
+</TR>
 </TABLE>
 
 <P>
@@ -1965,8 +2065,8 @@ General Rules:
 <LI><B>Beautifiers</B> don't accept spaces between the marks and its contents.
 <LI>The <B>Comment</B> mark "%" must be at the line beginning (first column).
 <LI><B>Images</B> filename must end in GIF, JPG, PNG or similar.
-<LI>The only <B>multiline</B> marks are the Comment, Verbatim and Raw areas.
-<LI>No mark is <B>interpreted</B> inside Verbatim or Raw.
+<LI>The only <B>multiline</B> marks are the Comment, Verbatim, Raw and Tagged areas.
+<LI>No mark is <B>interpreted</B> inside Verbatim, Raw and Tagged.
 <LI>The <B>Separator/Strong lines</B> must have at least 20 chars.
 <LI>Quote and lists <B>(un)nesting</B> is defined by indent.
 <LI>A <B>Table title</B> line is defined by two || at the beginning of the line.
@@ -1983,7 +2083,7 @@ General Rules:
   <UL>
   <LI>The first 3 lines of the source file.
   <LI>Leave the first line blank to not specify headers at all.
-    Nice for command line oneliners or customized headers.
+    Nice for command line one-liners or customized headers.
   <LI>Leave the second and/or third lines blank to omit parts of header.
   </UL>
 <LI><B>Details:</B>
@@ -2008,7 +2108,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Identifies a (numbered or not) section title
 <LI><B>Properties:</B> !Multiline, FreeSpaces, !Align, !Nesting
-<LI><B>Contains:</B> Raw
+<LI><B>Contains:</B> -
 <LI><B>Syntax:</B>
   <UL>
   <LI>For Numbered Title, just change "=" by "+" on the following rules
@@ -2036,7 +2136,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Identifies a paragraph of text
 <LI><B>Properties:</B> Multiline, FreeSpaces, !Align, !Nesting
-<LI><B>Contains:</B> Macros, Beautifiers, Raw, Links, Image, Comment
+<LI><B>Contains:</B> Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
 <LI><B>Syntax:</B>
   <UL>
   <LI>Paragraphs are groups of lines delimited by blank lines
@@ -2051,7 +2151,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Used to insert text that will not appear on the target
   document
-<LI><B>Properties:</B> !Multiline, !&lt;FreeSpaces, !Align, !Nesting
+<LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting
 <LI><B>Contains:</B> -
 <LI><B>Syntax:</B>
   <UL>
@@ -2066,6 +2166,30 @@ General Rules:
   </UL>
 </UL>
 
+<A NAME="mark-comment-block"></A>
+<H2>Comment Area</H2>
+
+<UL>
+<LI><B>Description:</B> Used to insert text that will not appear on the target
+  document
+<LI><B>Properties:</B> Multiline, !FreeSpaces, !Align, !Nesting
+<LI><B>Contains:</B> -
+<LI><B>Syntax:</B>
+  <UL>
+  <LI>A line with exactly 3 consecutive percents <CODE>%%%</CODE>, followed by
+    text lines, followed by another line with exactly 3 consecutive
+    percents <CODE>%%%</CODE>
+  <LI>NO spaces allowed before or after the marks
+  </UL>
+<LI><B>Details:</B>
+  <UL>
+  <LI>As comments, they're not showed on the converted text
+  <LI>Useful for deactivate (not delete) large portions of the contents
+  <LI>If the end of the source file (EOF) is hit, the opened Comment Area
+    is closed
+  </UL>
+</UL>
+
 <A NAME="mark-beautifiers"></A>
 <H2>Bold, Italic, Underline, Strike</H2>
 
@@ -2073,7 +2197,7 @@ General Rules:
 <LI><B>Description:</B> Used to insert a bold/italic/underline/strike text inside a
   paragraph, table, list or quote
 <LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, Nesting
-<LI><B>Contains:</B> Macros, Beautifiers, Raw, Links, Image
+<LI><B>Contains:</B> Macros, Beautifiers, Raw, Tagged, Links, Image
 <LI><B>Syntax:</B>
   <UL>
   <LI>Two starts around for bold, <CODE>**like this**</CODE>
@@ -2185,7 +2309,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Identifies a remote (Internet) or local link
 <LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting
-<LI><B>Contains:</B> Macros, Raw, Image
+<LI><B>Contains:</B> Macros, Raw, Tagged, Image
 <LI><B>Syntax:</B>
   <UL>
   <LI>Any valid internet URL, ftp, news or email address is detected and
@@ -2210,7 +2334,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Identifies a quoted (indented) line
 <LI><B>Properties:</B> Multiline, !FreeSpaces, !Align, Nesting
-<LI><B>Contains:</B> Macros, Beautifiers, Quote, Raw, Bars, Links, Image, Comment
+<LI><B>Contains:</B> Macros, Beautifiers, Quote, Raw, Tagged, Bars, Links, Image, Comment
 <LI><B>Syntax:</B>
   <UL>
   <LI>A line that starts with a tabulation (TAB) character
@@ -2235,7 +2359,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Identifies the start of a list item
 <LI><B>Properties:</B> Multiline, !FreeSpaces, !Align, Nesting
-<LI><B>Contains:</B> Macros, Beautifiers, Lists, Table, Verbatim, Raw, Bars, Links, Image, Comment
+<LI><B>Contains:</B> Macros, Beautifiers, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
 <LI><B>Syntax:</B>
   <UL>
   <LI>A line that starts with a dash/plus/colon followed by exactly one
@@ -2297,7 +2421,7 @@ General Rules:
 <UL>
 <LI><B>Description:</B> Delimits a table row, with any number of columns
 <LI><B>Properties:</B> Multiline, FreeSpaces, Align, !Nesting
-<LI><B>Contains:</B> Macros, Beautifiers, Raw, Links, Image, Comment
+<LI><B>Contains:</B> Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
 <LI><B>Syntax:</B>
   <UL>
   <LI>A leading pipe "|" identifies a table row
@@ -2331,7 +2455,7 @@ General Rules:
 
 <UL>
 <LI><B>Description:</B> Used to "protect" some text from parsing, so marks and macros inside
-  it will not be expanded.
+  it will not be expanded. But escapes are applied.
 <LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting
 <LI><B>Contains:</B> -
 <LI><B>Syntax:</B> <B>Raw:</B>
@@ -2361,6 +2485,44 @@ General Rules:
   </UL>
 </UL>
 
+<A NAME="mark-tagged"></A>
+<H2>Tagged, Tagged Line, Tagged Area</H2>
+
+<UL>
+<LI><B>Description:</B> Used to send text directly to the output, no parsing or escaping is made by txt2tags.
+<LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting
+<LI><B>Contains:</B> -
+<LI><B>Syntax:</B> <B>Tagged:</B>
+  <UL>
+  <LI>Two apostrophes around, <CODE>''like this''</CODE>
+  <LI>Marks glued with the contents (no spaces)
+  </UL>
+<LI><B>Syntax:</B> <B>Tagged Line:</B>
+  <UL>
+  <LI>A line beginning with 3 consecutive apostrophes, <CODE>''' like this</CODE>
+  <LI>The apostrophes must be at the start of the line, no spaces before
+  <LI>Use a space after the apostrophes to separate them from the text
+  </UL>
+<LI><B>Syntax:</B> <B>Tagged Area:</B>
+  <UL>
+  <LI>A line with exactly 3 consecutive apostrophes, followed by text
+    lines, followed by another line with exactly 3 consecutive
+    apostrophes
+  <LI>NO spaces allowed before or after the marks
+  </UL>
+<LI><B>Details:</B>
+  <UL>
+  <LI>Marks are NOT interpreted
+  <LI>Macros are NOT interpreted
+  <LI>If the end of the source file (EOF) is hit, the opened Tagged Area is
+    closed
+  <LI>Use this mark to insert target code. For example, in HTML you could use
+    it to insert manual line breaks <CODE>''&lt;br&gt;''</CODE>,
+    custom DIVs <CODE>''&lt;div id="myfooter"&gt;''</CODE> or even full blocks of code,
+    like the Google Analytics tracking code.
+  </UL>
+</UL>
+
 <A NAME="macros"></A>
 <H1>Part VI - Mastering Macros</H1>
 
@@ -2370,11 +2532,11 @@ time. They are used to insert dynamic information, for example the
 current date or information about the document source.
 </P>
 <P>
-A macro is represented by the <CODE>%%</CODE> chars followed by its name, as
+A macro is represented by the <CODE>%%</CODE> chars followed by its name, such as
 <CODE>%%date</CODE>. Some macros do accept an optional formatting string inside
 parenthesis, right after the macro name, such as <CODE>%%date(%Y-%m-%d)</CODE>. This
 format string mixes common text with special directives, identified by a
-percent sign % followed by an identification character. If not format
+percent sign % followed by an identification character. If no format
 string is given, the default format is used.
 </P>
 
@@ -2418,13 +2580,13 @@ General rules:
 <UL>
 <LI>The macro name is case-insensitive, so <CODE>%%date</CODE>, <CODE>%%DaTe</CODE> and
   <CODE>%%DATE</CODE> are identical
-<LI>Macros are valid at the document Header and Body Areas, except
+<LI>Macros are valid at the document Header Area and Body Area, except
   %%toc that is valid on Body Area only
-<LI>A macro starts the Body Area if it is found on the Config Area
-<LI>A macro can be placed at any part of the line, various per line
+<LI>A macro starts the Body Area if it is found in the Config Area
+<LI>A macro can be placed at any part of the line, including various per line
   (except %%toc, valid when alone in a line)
 <LI>A macro can be used inside links and images marks (except %%toc)
-<LI>Macros are not expanded in Titles, Verbatim and Raw Areas
+<LI>Macros are not expanded in Titles, Verbatim, Raw and Tagged Areas
 </UL>
 
 <P>
@@ -2433,8 +2595,8 @@ Full example (bold text are expanded macros):
 <P>
 This is the Txt2tags User Guide, converted to <B>html</B>
 by txt2tags from the <B>userguide.t2t</B> source file. The conversion
-was done at <B>2010-08-11 10:30:17</B>, but the last change on the
-source document was made on <B>2010-08-11 10:30:16</B>. Both
+was done at <B>2010-10-21 21:04:29</B>, but the last change on the
+source document was made on <B>2010-10-21 21:04:25</B>. Both
 source and converted file reside on the <B>userguide</B>
 directory.
 </P>
@@ -2451,7 +2613,7 @@ modification time, see the <A HREF="#macro-mtime">%%mtime macro</A>.
 <P>
 This macros accepts several formatting directives. The full list can be
 found in the
-<A HREF="http://www.python.org/doc/current/lib/module-time.html">Python site</A>.
+<A HREF="http://docs.python.org/library/time.html">Python site</A>.
 Here are the most commonly used:
 </P>
 
@@ -2538,27 +2700,27 @@ Examples:
 <TR>
 <TH>Macro</TH>
 <TH>--&gt;</TH>
-<TH>Results for on 2010, Aug 11 at 10:30</TH>
+<TH>Results for on 2010, Oct 21 at 21:04</TH>
 </TR>
 <TR>
 <TD>%%date(Converted on: %c)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Converted on: Wed Aug 11 10:30:17 2010</TD>
+<TD>Converted on: Thu Oct 21 21:04:29 2010</TD>
 </TR>
 <TR>
 <TD>%%date(%Y-%m-%d)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>2010-08-11</TD>
+<TD>2010-10-21</TD>
 </TR>
 <TR>
 <TD>%%date(%I:%M %p)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>10:30 AM</TD>
+<TD>09:04 PM</TD>
 </TR>
 <TR>
 <TD>%%date(Today is %A, on %B.)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Today is Wednesday, on August.</TD>
+<TD>Today is Thursday, on October.</TD>
 </TR>
 </TABLE>
 
@@ -2573,7 +2735,7 @@ accepts exactly the same formatting directives.
 </P>
 <P>
 As an example, this User Guide source file was last edited on
-<B>Wed Aug 11 10:30:16 2010</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
+<B>Thu Oct 21 21:04:25 2010</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
 </P>
 
 <A NAME="macro-infile"></A>
@@ -2582,11 +2744,11 @@ As an example, this User Guide source file was last edited on
 <P>
 The <CODE>%%infile</CODE> macro expands to the source file location on the
 system. It is useful to make those "<I>see the source of this file</I>"
-links on HTML pages. Provide such link is a friendly attitude with
+links on HTML pages. Providing such link is a friendly attitude with
 beginners, so they can use your source as a sample for their own page.
 </P>
 <P>
-This macro accept the following formatting directives:
+This macro accepts the following formatting directives:
 </P>
 
 <TABLE ALIGN="center" BORDER="1">
@@ -2742,13 +2904,9 @@ identifier ("!") that makes them different from plain comments. The
 syntax is just as simple as variable setting, composed by a keyword
 and a value, separated from each by a colon (":").
 </P>
-
-<TABLE ALIGN="center" BORDER="1">
-<TR>
-<TH>%! keyword : value</TH>
-</TR>
-</TABLE>
-
+	<BLOCKQUOTE>
+	<B>%! keyword : value</B>
+	</BLOCKQUOTE>
 <P>
 Syntax details:
 </P>
@@ -2850,9 +3008,9 @@ Now the options are registered inside the source file, so you can convert it wit
 $ txt2tags file.t2t
 </PRE>
 
-<P>
-Tip for Vim users: To convert the document right inside the editor, just run <CODE>:!txt2tags %</CODE>
-</P>
+	<BLOCKQUOTE>
+	Tip for Vim users: To convert the document right inside the editor, just run <CODE>:!txt2tags %</CODE>
+	</BLOCKQUOTE>
 
 <A NAME="setting-encoding"></A>
 <H2>%!encoding</H2>
@@ -2870,7 +3028,7 @@ you're not sure which encoding you should use, try <I>utf-8</I>. If that doesn't
 should help.
 </P>
 <P>
-The LateX target use alias names for encoding. This is not a problem
+The LaTeX target uses alias names for encoding. This is not a problem
 for the user, because txt2tags translate the names internally. Some
 examples:
 </P>
@@ -2920,14 +3078,14 @@ examples:
 
 <P>
 If the value is unknown to txt2tags, it will be passed "as is",
-allowing user to specify custom encodings.
+allowing the user to specify custom encodings.
 </P>
 
 <A NAME="setting-preproc"></A>
 <H2>%!preproc</H2>
 
 <P>
-The PreProc is an input filter used on the Body Area of the source document. It is a "find
+The PreProc is an input filter that changes the Body Area of the source document. It is a "find
 and replace" feature, applied right after the line is read from the
 document source, before any parsing by txt2tags.
 </P>
@@ -2936,9 +3094,9 @@ It is useful to define some abbreviations for common typed text, as:
 </P>
 
 <PRE>
-%!preproc JJS          "John J. Smith"
-%!preproc RELEASE_DATE "2003-05-01"
-%!preproc BULLET       "[images/tiny/bullet_blue.png]"
+%!preproc: JJS          "John J. Smith"
+%!preproc: RELEASE_DATE "2003-05-01"
+%!preproc: BULLET       "[images/tiny/bullet_blue.png]"
 </PRE>
 
 <P>
@@ -2960,7 +3118,7 @@ Hi, I'm John J. Smith. Today is 2003-05-01.
 <P>
 This filter is a component that acts between the document author
 and the txt2tags conversion. It's like a first conversion before the
-"real" one. Its behavior is similar to an external Sed/Perl filter,
+"real" one. This behavior is similar to an external Sed/Perl filter,
 called this way:
 </P>
 
@@ -2980,7 +3138,7 @@ were applied.
 <H2>%!postproc</H2>
 
 <P>
-The PostProc is an output filter used on the converted document. It is a
+The PostProc is an output filter that changes the converted document. It is a
 "find and replace" feature, applied after all txt2tags parsing and
 processing is done.
 </P>
@@ -3103,7 +3261,7 @@ have no TOC.
   PostProc to change tags: <CODE>%!postproc(target): &lt;this&gt; &lt;that&gt;</CODE>
 <P></P>
 <LI>PREproc is applied right after the line is read, and POSTproc is
-  applied after all the parsing was made. They are exactly the same as
+  applied after all the parsing was made. This is similar to
   (UUOC ahead):
 <PRE>
 $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
@@ -3111,7 +3269,7 @@ $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 
 <P></P>
 <LI>The first part of a filter (the "search for" part) is not read as a
-  regular string, but a Regular Expression pattern. If you don't know
+  regular string, but as a Regular Expression pattern. If you don't know
   what these expressions do, don't worry, you may never have to. Just
   keep in mind that you will need to "escape" some characters to use
   them. To escape is to prefix the character with a backslash "\". Here
@@ -3174,7 +3332,7 @@ Keep that in mind, please.
 </P>
 
 <A NAME="postproc-multiline"></A>
-<H2>Inserting Multiple Lines with %!postproc (like CSS rules)</H2>
+<H2>Inserting Multiple Lines with %!postproc (such as CSS rules)</H2>
 
 <P>
 In filters, the replacement pattern can include multiple lines using the
@@ -3262,7 +3420,7 @@ choice. Then he will do this simple filter:
 </P>
 
 <PRE>
-%!preproc: '&gt;&gt;&gt; ' '\t'
+%!preproc: '^&gt;&gt;&gt; ' '\t'
 </PRE>
 
 <P>
@@ -3285,201 +3443,20 @@ TABs and txt2tags will recognize the Quote mark.
 	between marks. Be really really careful when doing this.
 	</BLOCKQUOTE>
 
-<A NAME="history"></A>
-<H1>Part IX - Txt2tags HISTORY</H1>
+<H1>The End</H1>
 
 <P>
-On July 2001, it was launched the first public release of txt2tags,
-version 0.1. But its origins date more than a year before that...
+Thanks for reading! :)
 </P>
 <P>
-This chapter gives an overview about the tool development since its very
-first draw until the current series.
+<A HREF="http://txt2tags.org">http://txt2tags.org</A>
 </P>
-
-<A NAME="history-1999-1"></A>
-<H2>1999 January: Pre-History</H2>
-
-<DL>
-<DT>From the author:</DT><DD>
-<P></P>
-"My really first attempts of a text conversion tool began back
-in 1999, as a very simple and limited Bourne Shell script that
-converts marked text to an HTML page. Yes, Yet-Another txt2html
-tool. Everyone, everywhere must have done one of this already...
-In short, it just recognized simple marks such as <CODE>*bold*</CODE>,
-<CODE>/italic/</CODE>, <CODE>_under_</CODE>, and escape the classic <CODE>&lt; &amp; &gt;</CODE> HTML
-special characters. Not impressive, but hey! I was young ;)"
-</DL>
-
-<A NAME="history-1999-2"></A>
-<H2>1999 June: Still Pre-History</H2>
-
-<DL>
-<DT>The author wants to speak some more:</DT><DD>
-<P></P>
-"Some months passed, and a big Sgml hype arrived at the company
-I was working (Conectiva). So the txt2html turned into a
-txt2sgml script. I was really trying to learn about SED* at
-that moment so txt2sgml was a 110 lines Bourne Shell script
-with lots of SED code."
-</DL>
-
-	<BLOCKQUOTE>
-	<B>Note:</B> SED is the UNIX Stream EDitor, an automatic text
-	editing tool.
-	</BLOCKQUOTE>
 <P>
-This improved Sgml version has more supported structures as lists
-and verbatim text. On the following sample file, you can see
-the txt2tags marks origins:
-</P>
-
-<PRE>
-* This was a bold line (BOLD line oriented? Well...)
-
-  --
-- bullet list was very similar to txt2tags list
-- but with these -- to begin and close a list
-  --
-
-=----------------------
-Verbatim text was delimited by the =-- pattern.
-The other ------- were just cosmetic.
-=----------------------
-</PRE>
-
-<P>
-Still not impressive, but the big step is coming...
-</P>
-
-<A NAME="history-2000"></A>
-<H2>2000 August: Not Pre-History Anymore</H2>
-
-<DL>
-<DT>The author once again:</DT><DD>
-<P></P>
-"A year passed and at that time I was really in love with
-SED. The txt2sgml.sh shell script was rewritten and became
-a 350 lines pure SED script. Some exciting features were
-added such as subsections, URL recognition and sublists. I have
-used and improved this script a lot, for almost a year."
-</DL>
-
-<P>
-A txt2sgml.sed sample file:
-</P>
-
-<PRE>
-* Hey, here are the first 3 magic lines
-* The document title / author / date
-* But they required those asterisks at the beginning
-
-MAIN TITLE
-
-Titles were made by uppercase-only lines. Subtitles were identified by
-leading spaces. Each space denoted a new sublevel. The beautifiers:
-*bold*, **strong**, "italic" and `typewriter`.
-
-- lists
-  + sublists
-    = and subsublists (by identifier, not indentation)
-
-
-Two blank lines to close lists. Links as www.example.com and e-mails
-were recognized automagically by regular expressions. And there was a
-strange image mark:
-%%image: path/to/image.jpg
-</PRE>
-
-<A NAME="history-2001-1"></A>
-<H2>2001 May: Pythonization and Multi-target Idea</H2>
-
-<DL>
-<DT>Guess who will speak:</DT><DD>
-<P></P>
-"I've started to write my <A HREF="http://guia-er.sf.net">Regular Expression book</A>
-and used the txt2sgml.sed marked text format. This way I could convert
-it to sgml (then to HTML using sgml2html tool) and quickly check on
-the browser how the book was going. As 'quick' and 'sgml2html' don't
-match, I've modified the SED script to a txt2html.sed tool, generating
-HTML directly. [...] The publisher used Adobe PageMaker software to
-format books and it was a problem for a Linux guy like me. But I was
-happy to know that PageMaker had a tagged HTML-like language, so I've
-started to turn my script into a txt2pagemaker.sed tool. I've ended up
-with three similar SED scripts, converting my texts to sgml, HTML and
-PageMaker. And some other Shell scripts were made to extract the book
-TOC (Table Of Contents) and do post formatting. At the middle of the
-book writing, I had the idea to join it all in a single tool, and
-choose Python as the language. TXT2TAGS was born."
-</DL>
-
-<A NAME="history-2001-2"></A>
-<H2>2001 July: 0.x series: Debut of txt2tags (World Release)</H2>
-
-<DL>
-<DT>Yes, him:</DT><DD>
-<P></P>
-"The release of the printed book (July, 31) and the
-release of the very first txt2tags 0.1 version (July, 26)
-were very close, a matter of days. One depended on the other,
-they were developed together. Besides sgml, HTML and
-PageMaker, other targets were implemented for this release:
-MoinMoin, MagicPoint and plain text. For more than a year,
-more releases of the 0.x series were made and the program
-began to grow: new target UNIX Man Page, %%date macro,
-table support, Web interface, smart image alignment and
-Table Of Contents generation.
-On version 0.2 a Shell script wrapper was added to handle
-file operation and command line options. I've made it
-because I was a shell wizard and a Python newbie. Only
-in version 0.9 txt2tags came back to a 100% Python code."
-</DL>
-
-<A NAME="history-2002"></A>
-<H2>2002 September: 1.x series: Growing</H2>
-
-<DL>
-<DT>Won't you release the microphone?</DT><DD>
-<P></P>
-"The txt2tags idea has proved to be good. I've decided to
-get serious on it. The next step was to spread the program
-out, to tell the world about it: documentation! The program
-site was launched, mailing lists (english and portuguese)
-were configured and the User Guide has born.
-The user base grew and many contributions came. Yes, I
-thought, it is working. The new features added on the 1.x
-series include: Graphical interface (GUI), Windows &amp; Mac
-compatibility, LaTeX target, %!style, include command and
-the powerful Pre and Post processing filters."
-</DL>
-
-<A NAME="history-2004"></A>
-<H2>2004 July: 2.x series: Maturing</H2>
-
-<DL>
-<DT>Ok, talk, I give up:</DT><DD>
-<P></P>
-"Growing is hard and strange. Remember I said I was a Python
-newbie? Now I got better, but the old mistakes accumulated,
-and a major code rewrite was unavoidable. This broke backwards
-compatibility with some marks, and an upgrade script was
-created. It took a long time, but version 2.0 was released.
-It came with tons of news such as XHTML target, W3C validated
-code, i18n, and RC file. A team of translators has came and
-the program and its documentation were translated to many
-languages. The Lout target was added, and new macros:
-%%mtime, %%infile, %%outfile, and %%toc.
-Continues..."
-</DL>
-
-<P>
-The End.
 (<A HREF="userguide.t2t">see source</A>)
 <IMG ALIGN="middle" SRC="../../img/t2tpowered.png" BORDER="0" ALT="">
 </P>
 </DIV>
 
-<!-- html code generated by txt2tags 2.6b (http://txt2tags.org) -->
-<!-- cmdline: txt2tags /a/txt2tags/svn/doc/English/userguide/userguide.t2t -->
+<!-- html code generated by txt2tags 2.6b1 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags userguide.t2t -->
 </BODY></HTML>
