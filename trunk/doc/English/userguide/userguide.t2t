@@ -374,32 +374,32 @@ all the available targets.
 
 == Status of Supported Structures by Target ==[struct-support]
 
-  || Structure        | html | xhtml | sgml | tex | lout | man | mgp | wiki | gwiki | doku | moin | pm6 | txt |
-  | headers           |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  -   |   -   |  -   |  -   |  N  |  Y  |
-  | section title     |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  Y  |
-  | paragraphs        |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  Y  |
-  | bold              |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  -  |
-  | italic            |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  -  |
-  | underline         |  Y   |   Y   |  -   |  Y  |  Y   |  -  |  Y  |  Y   |   -   |  Y   |  Y   |  Y  |  -  |
-  | strike            |  Y   |   Y   |  N   |  Y  |  -   |  -  |  -  |  Y   |   Y   |  Y   |  Y   |  N  |  -  |
-  | monospaced font   |  Y   |   Y   |  Y   |  Y  |  Y   |  -  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  -  |
-  | verbatim line     |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  -  |
-  | verbatim area     |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  -  |
-  | quoted area       |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  Y  |
-  | internet links    |  Y   |   Y   |  Y   |  -  |  -   |  -  |  -  |  Y   |   Y   |  Y   |  Y   |  -  |  -  |
-  | e-mail links      |  Y   |   Y   |  Y   |  -  |  -   |  -  |  -  |  Y   |   Y   |  Y   |  Y   |  -  |  -  |
-  | local links       |  Y   |   Y   |  Y   |  N  |  N   |  -  |  -  |  N   |   N   |  Y   |  Y   |  -  |  -  |
-  | named links       |  Y   |   Y   |  Y   |  -  |  -   |  -  |  -  |  Y   |   Y   |  Y   |  Y   |  -  |  -  |
-  | bulleted list     |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  Y  |
-  | numbered list     |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  Y  |  Y   |   Y   |  Y   |  Y   |  Y  |  Y  |
-  | definition list   |  Y   |   Y   |  Y   |  Y  |  Y   |  Y  |  N  |  Y   |   -   |  -   |  Y   |  N  |  Y  |
-  | horizontal line   |  Y   |   Y   |  -   |  Y  |  Y   |  -  |  Y  |  Y   |   -   |  Y   |  Y   |  N  |  Y  |
-  | image             |  Y   |   Y   |  Y   |  Y  |  Y   |  -  |  Y  |  Y   |   Y   |  Y   |  Y   |  N  |  -  |
-  | table             |  Y   |   Y   |  Y   |  Y  |  N   |  Y  |  N  |  Y   |   Y   |  Y   |  Y   |  N  |  N  |
-  || Extras           | html | xhtml | sgml | tex | lout | man | mgp | wiki | gwiki | doku | moin | pm6 | txt |
-  | image align       |  Y   |   Y   |  N   |  N  |  Y   |  -  |  Y  |  Y   |   -   |  Y   |  N   |  N  |  -  |
-  | table cell align  |  Y   |   Y   |  Y   |  Y  |  N   |  Y  |  N  |  N   |   -   |  -   |  Y   |  N  |  N  |
-  | table column span |  Y   |   Y   |  N   |  N  |  N   |  N  |  N  |  N   |   -   |  -   |  N   |  N  |  N  |
+  || Structure        | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
+  | headers           |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   -    |  -   |   -   |  Y  |  -   |  -   |  N  |  -   |  Y  |  Y  |
+  | section title     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | paragraphs        |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | bold              |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | italic            |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | underline         |  Y   |   Y   |  -   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   -   |  Y  |  Y   |  Y   |  Y  |  N   |  -  |  -  |
+  | strike            |  Y   |   Y   |  N   |  N  |  Y  |  -   |  -  |  -  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  -  |  -  |
+  | monospaced font   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | verbatim line     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | verbatim area     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | quoted area       |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  N   |  Y  |  Y  |
+  | internet links    |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | e-mail links      |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | local links       |  Y   |   Y   |  Y   |  Y  |  N  |  N   |  -  |  -  |   N    |  N   |   N   |  Y  |  Y   |  Y   |  -  |  N   |  -  |  -  |
+  | named links       |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | bulleted list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | numbered list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | definition list   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  N  |   Y    |  Y   |   -   |  Y  |  -   |  Y   |  N  |  N   |  Y  |  Y  |
+  | horizontal line   |  Y   |   Y   |  -   |  N  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   -   |  Y  |  Y   |  Y   |  N  |  N   |  Y  |  Y  |
+  | image             |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  Y   |  -  |  -  |
+  | table             |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  N  |  N  |
+  || Extras           | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
+  | image align       |  Y   |   Y   |  N   |  N  |  N  |  Y   |  -  |  Y  |   N    |  Y   |   -   |  N  |  Y   |  N   |  N  |  N   |  -  |  -  |
+  | table cell align  |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   N    |  N   |   -   |  N  |  -   |  Y   |  N  |  N   |  N  |  N  |
+  | table column span |  Y   |   Y   |  N   |  N  |  N  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N  |  N   |  N  |  N  |
 
   ||      | Legend
   | **Y** | //Supported//
