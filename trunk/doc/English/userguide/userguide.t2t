@@ -1224,6 +1224,7 @@ Overview of all txt2tags marks:
  |        //Paragraph// |  words               |          //Strike// |  ""--words--"" 
  |            //Links// |  ""[label url]""     |      //Monospaced// |  ""``words``"" 
  |            //Image// |  ""[filename.jpg]""  |        //Raw text// |  """"words"""" 
+ |                                            ||     //Tagged text// |  ""''words''"" 
  ||                                          Other                                ||||
  |            //Quote// |  <TAB>words          |  //Separator line// |  ------------... 
  |             //List// |  - words             |     //Strong line// |  ============... 
@@ -1232,6 +1233,7 @@ Overview of all txt2tags marks:
  |     //Comment line// |  % comments          |    //Comment area// |  %%%\n comments \n%%% 
  |    //Verbatim line// |  ""```"" word        |   //Verbatim area// |  ""```\n lines \n```"" 
  |         //Raw line// |  """"""" words       |        //Raw area// |  """""""\n lines \n""""""" 
+ |      //Tagged line// |  ""'''"" words       |     //Tagged area// |  ""'''""\n lines \n""'''"" 
 
 
 General Rules:
@@ -1241,7 +1243,7 @@ General Rules:
 - **Beautifiers** don't accept spaces between the marks and its contents.
 - The **Comment** mark "%" must be at the line beginning (first column).
 - **Images** filename must end in GIF, JPG, PNG or similar.
-- The only **multiline** marks are the Comment, Verbatim and Raw areas.
+- The only **multiline** marks are the Comment, Verbatim, Raw and Tagged areas.
 - No mark is **interpreted** inside Verbatim, Raw and Tagged.
 - The **Separator/Strong lines** must have at least 20 chars.
 - Quote and lists **(un)nesting** is defined by indent.
@@ -1250,7 +1252,7 @@ General Rules:
 
 ------------------------------------------------------------------------
 %- MARKPROP Multiline, FreeSpaces, Align, Nesting
-%- MARKCONT Macros, Beautifiers, Quote, Lists, Table, Verbatim, Raw, Bars, Links, Image, Comment
+%- MARKCONT Macros, Beautifiers, Quote, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
 %-----------------------------------------------------------------------
 
 == Headers ==[mark-headers]
@@ -1281,7 +1283,7 @@ General Rules:
 
 - MARKDESC Identifies a (numbered or not) section title
 - MARKPROP !Multiline, FreeSpaces, !Align, !Nesting
-- MARKCONT Raw
+- MARKCONT -
 - MARKSYN
   - For Numbered Title, just change "=" by "+" on the following rules
   - Balanced equal signs around, ``=like this=``
@@ -1305,7 +1307,7 @@ General Rules:
 
 - MARKDESC Identifies a paragraph of text
 - MARKPROP Multiline, FreeSpaces, !Align, !Nesting
-- MARKCONT Macros, Beautifiers, Raw, Links, Image, Comment
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
 - MARKSYN
   - Paragraphs are groups of lines delimited by blank lines
   - Other blocks like lists, quote, table or verbatim also ends a
@@ -1331,7 +1333,7 @@ General Rules:
 
 ------------------------------------------------------------------------
 
-== Comment Block ==[mark-comment-block]
+== Comment Area ==[mark-comment-block]
 
 - MARKDESC Used to insert text that will not appear on the target
   document
@@ -1345,7 +1347,7 @@ General Rules:
 - MARKDET
   - As comments, they're not showed on the converted text
   - Useful for deactivate (not delete) large portions of the contents
-  - If the end of the source file (EOF) is hit, the opened Comment Block
+  - If the end of the source file (EOF) is hit, the opened Comment Area
     is closed
 
 
@@ -1356,7 +1358,7 @@ General Rules:
 - MARKDESC Used to insert a bold/italic/underline/strike text inside a
   paragraph, table, list or quote
 - MARKPROP !Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Raw, Links, Image
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image
 - MARKSYN
   - Two starts around for bold, ``**like this**``
   - Two slashes around for italic, ``//like this//``
@@ -1448,7 +1450,7 @@ General Rules:
 
 - MARKDESC Identifies a remote (Internet) or local link
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
-- MARKCONT Macros, Raw, Image
+- MARKCONT Macros, Raw, Tagged, Image
 - MARKSYN
   - Any valid internet URL, ftp, news or email address is detected and
     converted automatically
@@ -1470,7 +1472,7 @@ General Rules:
 
 - MARKDESC Identifies a quoted (indented) line
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Quote, Raw, Bars, Links, Image, Comment
+- MARKCONT Macros, Beautifiers, Quote, Raw, Tagged, Bars, Links, Image, Comment
 - MARKSYN
   - A line that starts with a tabulation (TAB) character
   - More TABs at the start increase the quote depth
@@ -1491,7 +1493,7 @@ General Rules:
 
 - MARKDESC Identifies the start of a list item
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Lists, Table, Verbatim, Raw, Bars, Links, Image, Comment
+- MARKCONT Macros, Beautifiers, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
 - MARKSYN
   - A line that starts with a dash/plus/colon followed by exactly one
     space
@@ -1543,7 +1545,7 @@ General Rules:
 
 - MARKDESC Delimits a table row, with any number of columns
 - MARKPROP Multiline, FreeSpaces, Align, !Nesting
-- MARKCONT Macros, Beautifiers, Raw, Links, Image, Comment
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
 - MARKSYN
   - A leading pipe "|" identifies a table row
   - A leading double pipe "||" identifies a table title row
@@ -1629,7 +1631,7 @@ General rules:
 - A macro can be placed at any part of the line, including various per line
   (except %%toc, valid when alone in a line)
 - A macro can be used inside links and images marks (except %%toc)
-- Macros are not expanded in Titles, Verbatim and Raw Areas
+- Macros are not expanded in Titles, Verbatim, Raw and Tagged Areas
 
 
 Full example (bold text are expanded macros):
