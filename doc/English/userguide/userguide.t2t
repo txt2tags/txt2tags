@@ -127,14 +127,20 @@ of the supported targets:
 - HTML document
 - XHTML document
 - SGML document
+- DocBook document
 - LaTeX document
+- Lout document
 - UNIX man page
 - MagicPoint presentation
+- Creole 1.0 document
 - Wikipedia page (MediaWiki)
 - Google Wiki page
+- pmWiki page
 - DokuWiki page
 - MoinMoin page
 - PageMaker 6.0 document
+- AsciiDoc document
+- ASCII Art text
 - Plain Text (no marks)
 -
 
