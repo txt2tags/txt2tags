@@ -1,31 +1,36 @@
 Txt2tags README file
 ---------------------
-http://txt2tags.sf.net
+http://txt2tags.org
 
 
 Txt2tags is a document generator. It reads a text file with
 minimal markup as **bold** and //italic// and converts it
 to the following formats:
 
-  - HTML
-  - XHTML
-  - SGML
-  - LaTeX
-  - Lout
-  - Man page
-  - Wikipedia
-  - Google Code Wiki
-  - DokuWiki
-  - MoinMoin
-  - MagicPoint
-  - PageMaker
-  - Plain text
+   ASCII Art
+   AsciiDoc
+   Creole 1.0
+   DocBook
+   DokuWiki
+   Google Wiki
+   HTML
+   LaTeX
+   Lout
+   MagicPoint
+   MoinMoin
+   PageMaker
+   pmWiki
+   Plain Text
+   SGML
+   UNIX Manpage
+   Wikipedia / MediaWiki
+   XHTML
 
 You can use it as a Web component (PHP), as a GUI application
 (windows and buttons) or as a command line program.
 
 For more information, please visit the program website at
-http://txt2tags.sf.net
+http://txt2tags.org
  
 -------------------------------------------------------------
 
@@ -53,20 +58,19 @@ Quick sample for the command line usage:
 
 Txt2tags package structure:
 
-  ChangeLog             Changes from previous versions
-  COPYING               The GPL License contents
-  README                This file
-  TODO                  Things to do in future versions
-  txt2tags              The program itself
-                        (the only required file to run)
-  doc/                  Documentation
-  extras/               Syntax files and utilities
-  po/                   Program translation files
-  samples/              Sample file converted to all targets
-  samples/img           "Powered by" button and other images
-  samples/css           Sample CSS files for HTML and XHTML
-  samples/module        Examples: txt2tags as a Python module
-  test/                 The txt2tags test suite
+   ChangeLog             Changes from previous versions
+   COPYING               The GPL License contents
+   README                This file
+   txt2tags              The program itself
+                         (the only required file to run)
+   doc/                  Documentation
+   extras/               Syntax files and utilities
+   po/                   Program translation files
+   samples/              Sample file converted to all targets
+   samples/img           "Powered by" button and other images
+   samples/css           Sample CSS files for HTML and XHTML
+   samples/module        Examples: txt2tags as a Python module
+   test/                 The txt2tags test suite
 
 -------------------------------------------------------------
 
