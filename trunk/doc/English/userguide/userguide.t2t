@@ -54,6 +54,7 @@ Aurelio, %%mtime(%c)
 %!preproc: NOMACRO	Macros are NOT interpreted
 
 %!preproc: URLMARKUP	URLWEBSITE/markup.html
+%!preproc: URLWEBSITE	http://txt2tags.org
 %!postproc: URLWEBSITE	http://txt2tags.org
 
 % activate the areas disabled on the PDF version
@@ -2212,9 +2213,14 @@ TABs and txt2tags will recognize the Quote mark.
 
 
 
-The End.
+= The End =
+
+Thanks for reading! :)
+
+URLWEBSITE
+
 %nopdf([see source userguide.t2t])
-[../../img/t2tpowered.png]
+%nopdf[../../img/t2tpowered.png]
 
 
 % TRANSLATOR: You can stop here.
