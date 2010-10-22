@@ -29,7 +29,7 @@ helburuetara bihurtzen du:
 \fIMagicPoint\fR,
 \fIMoinMoin\fR,
 \fIPageMaker\fR,
-\fIpmWiki\fR,
+\fIPmWiki\fR,
 \fISGML\fR,
 \fITestu Soila\fR,
 \fIWikipedia\fR eta
