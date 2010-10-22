@@ -16,7 +16,7 @@ ctags
 	The ctags definition file for txt2tags markup.
 
 dynartslides
-	A Python script to generate art slides dynamicaly.
+	A Python script to generate art slides dynamically.
 
 gensite
 	A Python script to generate a site with txt2tags. It
@@ -58,7 +58,7 @@ txt2tags-compiler.vim
 	':make' to convert the opened document.
 
 txt2tags-gedit.lang
-	The gedit editor syntax highlight rules for txt2tags
+	The Gedit editor syntax highlight rules for txt2tags
 	marks.
 
 txt2tags-kate.xml
