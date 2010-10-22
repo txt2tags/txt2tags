@@ -11,6 +11,7 @@
    # 2006-07-24 Aurelio: v2.4: rewrote. Now configurable, clean and modular
    #            Form using labels and fieldset, --toc, hints simplified
    # 2008-07-08 Aurelio: v2.5: is_standalone flag to turn headers on/off
+   # 2010-10-22 Aurelio: v2.6: new targets, $dfttarget, targets alpha order
 
 
 #-----------------------------[ CONFIG ]-----------------------------
@@ -22,6 +23,9 @@ $prog = "./txt2tags";
 # Set to 1 to use this file alone (will print page headers)
 # Set to 0 to use this file inserted on another .php (embedded)
 $is_standalone = 1;
+
+# The default target
+$dtftarget = "html";
 
 # The default marked text
 #
@@ -45,24 +49,24 @@ $labels = array(
 # The available targets
 #
 $targets = array(
-	'html'  => 'HTML page',
-	'xhtml' => 'XHTML page',
-	'sgml'  => 'SGML document',
-	'dbk'   => 'DocBook document',
-	'tex'   => 'LaTeX document',
-	'lout'  => 'Lout document',
-	'man'   => 'UNIX Manual page',
-	'mgp'   => 'MagicPoint slides',
+	'art'    => 'ASCII Art text',
+	'adoc'   => 'AsciiDoc document',
 	'creole' => 'Creole 1.0 document',
-	'wiki'  => 'Wikipedia page',
-	'gwiki' => 'Google Wiki page',
-	'pmw'   => 'pmWiki page',
-	'doku'  => 'DokuWiki page',
-	'moin'  => 'MoinMoin page',
-	'pm6'   => 'PageMaker document',
-	'adoc'  => 'AsciiDoc document',
-	'art'   => 'ASCII Art text',
-	'txt'   => 'Plain Text (no marks)'
+	'dbk'    => 'DocBook document',
+	'doku'   => 'DokuWiki page',
+	'gwiki'  => 'Google Wiki page',
+	'html'   => 'HTML page',
+	'tex'    => 'LaTeX document',
+	'lout'   => 'Lout document',
+	'mgp'    => 'MagicPoint slides',
+	'moin'   => 'MoinMoin page',
+	'pm6'    => 'PageMaker document',
+	'txt'    => 'Plain Text (no marks)',
+	'pmw'    => 'pmWiki page',
+	'sgml'   => 'SGML document',
+	'man'    => 'UNIX Manual page',
+	'wiki'   => 'Wikipedia page',
+	'xhtml'  => 'XHTML page'
 );
 
 
@@ -179,7 +183,7 @@ if ($is_standalone) {
 	</table>	
 	
 	<?
-	echo FormLabel('target').FormSelect('target', $targets, $target, 1);
+	echo FormLabel('target').FormSelect('target', $targets, $target ? $target : $dtftarget, 1);
 	echo '<br><br>';
 	echo FormCheck('noheaders', '--no-headers', $noheaders);
 	echo FormLabel('noheaders').'<br>';
