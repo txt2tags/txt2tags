@@ -181,7 +181,7 @@ TARGET_NAMES = {
   'wiki'   : _('Wikipedia page'),
   'gwiki'  : _('Google Wiki page'),
   'doku'   : _('DokuWiki page'),
-  'pmw'    : _('pmWiki page'),
+  'pmw'    : _('PmWiki page'),
   'moin'   : _('MoinMoin page'),
   'pm6'    : _('PageMaker document'),
   'txt'    : _('Plain Text'),

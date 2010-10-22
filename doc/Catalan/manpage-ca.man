@@ -29,7 +29,7 @@ txt2tags \- Eina de formatació i conversió de texte.
 \fIMoinMoin\fR,
 \fIPageMaker\fR,
 \fIPlain Text (Texte Plà)\fR,
-\fIpmWiki\fR,
+\fIPmWiki\fR,
 \fISGML\fR,
 \fIWikipedia\fR 
 \fIXHTML\fR.
