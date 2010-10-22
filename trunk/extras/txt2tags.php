@@ -48,15 +48,21 @@ $targets = array(
 	'html'  => 'HTML page',
 	'xhtml' => 'XHTML page',
 	'sgml'  => 'SGML document',
+	'dbk'   => 'DocBook document',
 	'tex'   => 'LaTeX document',
 	'lout'  => 'Lout document',
 	'man'   => 'UNIX Manual page',
 	'mgp'   => 'MagicPoint slides',
+	'creole' => 'Creole 1.0 document',
 	'wiki'  => 'Wikipedia page',
 	'gwiki' => 'Google Wiki page',
+	'pmw'   => 'pmWiki page',
 	'doku'  => 'DokuWiki page',
 	'moin'  => 'MoinMoin page',
-	'pm6'   => 'PageMaker document'
+	'pm6'   => 'PageMaker document',
+	'adoc'  => 'AsciiDoc document',
+	'art'   => 'ASCII Art text',
+	'txt'   => 'Plain Text (no marks)'
 );
 
 
