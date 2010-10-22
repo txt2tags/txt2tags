@@ -2,7 +2,7 @@
 " Filename: txt2tags.vim
 " Language: marked text for conversion by txt2tags
 " Maintainer: Aurelio Jargas
-" Last change: 20060801 - v2.3.2 t2tCommentArea, %!include & macro start body
+" Last change: 2010-10-22 - Added new targets for v2.6
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INFO:
@@ -112,13 +112,13 @@ syn match   t2tUnderline    '__\S\(\|.\{-}\S\)__\+'hs=s+2,he=e-2
 syn match   t2tStrike       '--\S\(\|.\{-}\S\)--\+'hs=s+2,he=e-2
 syn match   t2tMonospace    '``\S\(\|.\{-}\S\)``\+'hs=s+2,he=e-2
 syn match   t2tRaw          '""\S\(\|.\{-}\S\)""\+'hs=s+2,he=e-2
-syn match   t2tPassthru     "''\S\(\|.\{-}\S\)''\+"hs=s+2,he=e-2
+syn match   t2tTagged       "''\S\(\|.\{-}\S\)''\+"hs=s+2,he=e-2
 syn match   t2tVerb1Line     '^``` .*$'hs=s+3
 syn match   t2tRaw1Line      '^""" .*$'hs=s+3
-syn match   t2tPassthru1Line "^''' .*$"hs=s+3
+syn match   t2tTagged1Line   "^''' .*$"hs=s+3
 syn region  t2tVerbArea     start='^```\s*$'hs=s+3 end='^```\s*$'he=e-3
 syn region  t2tRawArea      start='^"""\s*$'hs=s+3 end='^"""\s*$'he=e-3
-syn region  t2tPassthruArea start="^'''\s*$"hs=s+3 end="^'''\s*$"he=e-3
+syn region  t2tTaggedArea   start="^'''\s*$"hs=s+3 end="^'''\s*$"he=e-3
 syn match   t2tComment '^%.*$' contains=t2tTodo,t2tFoldMark,t2tIncluded
 syn region  t2tCommentArea  start="^%%%\s*$" end="^%%%\s*$"
 
@@ -174,11 +174,12 @@ syn region t2tNumtitleFold transparent fold start='^ *+[^+].*[^+]+\(\[[a-z0-9_-]
 "Config are special comments right after the headers
 "Config Area ends on a no-comment and no-blank line
 syn keyword t2tTargets    contained txt xhtml html sgml tex lout mgp man
-syn keyword t2tTargets    contained moin pm6 wiki gwiki doku
+syn keyword t2tTargets    contained moin pm6 wiki gwiki doku dbk creole
+syn keyword t2tTargets    contained pmw adoc art
 syn match t2tConfigString contained +"[^"]*"\|'[^']*'+
 syn match t2tConfigValue  contained ':.*'ms=s+1 contains=t2tConfigString
 syn match t2tConfigKey    contained '^%![^:]\+:' contains=t2tTargets
-syn match t2tConfigLine   contained "^%!\s*\(encoding\|style\|preproc\|postproc\|includeconf\|options\)\s*\((\s*\(\|txt\|html\|xhtml\|sgml\|tex\|lout\|mgp\|man\|moin\|pm6\)\s*)\)\=\s*:\s*\S.*" contains=t2tConfigKey,t2tConfigValue,t2tConfigString
+syn match t2tConfigLine   contained "^%!\s*\(encoding\|style\|preproc\|postproc\|includeconf\|options\)\s*\((\s*\(\|txt\|html\|xhtml\|sgml\|tex\|lout\|mgp\|man\|moin\|pm6\|wiki\|gwiki\|doku\|dbk\|creole\|pmw\|adoc\|art\)\s*)\)\=\s*:\s*\S.*" contains=t2tConfigKey,t2tConfigValue,t2tConfigString
 syn match t2tConfigLine   contained "^%!\s*target\s*:\s*\S.*" contains=t2tConfigKey,t2tTargets
 syn match t2tConfigLine   contained "^%!\s*guicolors\s*:\s*\(\S\+\s\+\)\{3}\S\+\s*$" contains=t2tConfigKey,t2tTargets
 
@@ -198,7 +199,7 @@ hi default link t2t_Component  Statement
 hi default link t2t_Delim      Identifier
 hi default link t2t_Verb       Type
 hi default link t2t_Raw        String
-hi default link t2t_Passthru   Special
+hi default link t2t_Tagged     Special
 "
 " color definitions (specific)
 hi default t2tBar         term=bold        cterm=bold        gui=bold
@@ -252,9 +253,9 @@ hi default link t2tMonospace     t2t_Verb
 hi default link t2tRaw           t2t_Raw
 hi default link t2tRaw1Line      t2t_Raw
 hi default link t2tRawArea       t2t_Raw
-hi default link t2tPassthru      t2t_Passthru
-hi default link t2tPassthru1Line t2t_Passthru
-hi default link t2tPassthruArea  t2t_Passthru
+hi default link t2tTagged        t2t_Tagged
+hi default link t2tTagged1Line   t2t_Tagged
+hi default link t2tTaggedArea    t2t_Tagged
 
 "
 let b:current_syntax = 'txt2tags'
