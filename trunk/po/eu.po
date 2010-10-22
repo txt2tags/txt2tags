@@ -43,8 +43,8 @@ msgstr "Google Wiki orria"
 msgid "DokuWiki page"
 msgstr "DokuWiki orria"
 
-msgid "pmWiki page"
-msgstr "pmWiki orria"
+msgid "PmWiki page"
+msgstr "PmWiki orria"
 
 msgid "MoinMoin page"
 msgstr "MoinMoin orria"

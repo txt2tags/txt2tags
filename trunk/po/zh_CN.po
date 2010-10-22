@@ -45,8 +45,8 @@ msgstr "Google 维基页面"
 msgid "DokuWiki page"
 msgstr "DokuWiki 页面"
 
-msgid "pmWiki page"
-msgstr "pmWiki 页面"
+msgid "PmWiki page"
+msgstr "PmWiki 页面"
 
 msgid "MoinMoin page"
 msgstr "MoinMoin page"

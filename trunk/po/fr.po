@@ -42,8 +42,8 @@ msgstr "page Google Wiki"
 msgid "DokuWiki page"
 msgstr "page Docuwiki"
 
-msgid "pmWiki page"
-msgstr "page pmWiki"
+msgid "PmWiki page"
+msgstr "page PmWiki"
 
 msgid "MoinMoin page"
 msgstr "page MoinMoin"

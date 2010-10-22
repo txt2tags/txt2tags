@@ -29,7 +29,7 @@ txt2tags \- Herramienta de formateo y conversión de texto.
 \fIMoinMoin\fR, 
 \fIPageMaker\fR, 
 \fIPlain Text (Texto Plano)\fR, 
-\fIpmWiki\fR, 
+\fIPmWiki\fR, 
 \fISGML\fR, 
 \fIWikipedia\fR and 
 \fIXHTML\fR.
