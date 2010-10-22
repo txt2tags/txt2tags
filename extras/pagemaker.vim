@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: pm6
 " Maintainer: Aurelio Jargas <verde (a) aurelio net>
-" URL: http://txt2tags.org/pagemaker.vim
+" URL: http://txt2tags.org/tools/pagemaker.vim
 " Last Change: 20010730
 
 syn clear
