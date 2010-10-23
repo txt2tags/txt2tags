@@ -218,16 +218,16 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 
 // Headings
 	
-	Markup ('txt2tags_h4','<txt2tags_h3'    , '/====(.*?)====/', "!!!!$1");		
-	Markup ('txt2tags_h3','<txt2tags_h2'    , '/===(.*?)===/', "!!!$1");	
+	Markup ('txt2tags_h4','<txt2tags_h3'    , '/====(.*?)====/', "<h4>$1</h4>");		
+	Markup ('txt2tags_h3','<txt2tags_h2'    , '/===(.*?)===/', "<h3>$1</h3>");	
 	Markup ('txt2tags_h2','<txt2tags_h1'    , '/==(.*?)==/', "<h2>$1</h2>");	
-	Markup ('txt2tags_h1'    , 'directives', '/= (.*?) =/', "!$1");	
+	Markup ('txt2tags_h1'    , 'directives', '/= (.*?) =/', "<h1>$1</h1>");	
 	
 
-	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+ (.*?) \+\+\+\+/', "!!!!$1");		
-	Markup ('txt2tags_nh3','<txt2tags_nh2'    ,  '/\+\+\+ (.*?) \+\+\+/', "!!!$1");	
-	Markup ('txt2tags_nh2','<txt2tags_nh1'    ,  '/\+\+ (.*?) \+\+/', "!!$1");	
-	Markup ('txt2tags_nh1'    , '<txt2tags_numberedlist', '/\+ (.*?) \+/', "!$1");	
+	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+(.*?)\+\+\+\+/', "<h4>$1</h4>");		
+	Markup ('txt2tags_nh3','<txt2tags_nh2'    ,  '/\+\+\+(.*?)\+\+\+/', "<h3>$1</h3>");	
+	Markup ('txt2tags_nh2','<txt2tags_nh1'    ,  '/\+\+(.*?)\+\+/', "<h2>$1</h2>");	
+	Markup ('txt2tags_nh1'    , '<txt2tags_numberedlist', '/\+ (.*?) \+/', "<h1>$1</h1>");	
 	
 	
 // Lists (^ = occurs at the beginning of a line only)
