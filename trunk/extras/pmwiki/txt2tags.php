@@ -17,10 +17,11 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2010-10-22';
+$RecipeInfo['txt2tags']['Version'] = '2010-10-23';
 
 // Check if the customized fonts were installed. Adapt it to your own path.
 $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
+//$MyGuiEditor = '/pub/t2tguiedit/';
 
 
 	if (!defined('PmWiki')) {	
@@ -253,8 +254,10 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	Markup ('txt2tags_mono'    , 'directives', '/``(.*?)``/', "@@$1@@");	
 
 
+	Markup('txt2tags_raw_area', '[=',  '/^"""\n(.*?\n)"""[^\\S\n]*\n/sme',  "Keep(PSS('<pre class=\"escaped\">$1</pre>'))"); // works
+
 	
-// TABLES : use the pmwiki tables but with double || instead
+// TABLES : use the pmwiki tables but with double || instead (not working yet)
 
 	//Markup ('txt2tags_tablehead'    , '<^||||', '/\|\|/', "||!");		// doesnt work
 	//Markup ('txt2tags_table'    , '>txt2tags_tablehead', '/\|(.*?)\|/', "|| $1 ||");	// doesnt work
@@ -333,9 +336,11 @@ Definition list										: not working
 
 A quoted paragraph is prefixed by a TAB. 			: not working.  Do we need this? Is it relevant for a wiki?
 
-verbatim area										: works
+raw area											: similar to verbatim area
 
-raw area											: only raw line is working, with double ""
+raw line											: works
+
+verbatim area										: works
 
 Verbatim line prefixed with 3 backquotes. 			: works
 
