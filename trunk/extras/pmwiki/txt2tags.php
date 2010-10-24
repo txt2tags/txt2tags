@@ -230,7 +230,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	Markup ('txt2tags_h4','<txt2tags_h3'    , '/( *)====[^=](.*?)[^=]====/', "!!!!$2");		
 	Markup ('txt2tags_h3','<txt2tags_h2'    , '/( *)===[^=](.*?)[^=]===/', "!!!$2");	
 	Markup ('txt2tags_h2','<txt2tags_h1'    , '/( *)==[^=](.*?)[^=]==/', "!!$2");	
-	Markup ('txt2tags_h1'    , '<split', '/( *)= (.*?) =/', "!$1");	
+	Markup ('txt2tags_h1'    , '<split', '/( *)= (.*?) =/', "!$2");	
 	
 
 	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+(.*?)\+\+\+\+/', "!!!!$1");		
