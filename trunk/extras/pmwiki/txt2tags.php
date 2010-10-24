@@ -310,7 +310,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 
 // Macros
 
-	Markup ('txt2tags_toc'    , '_begin', '/%%toc/', '(:toc:)');
+	Markup ('txt2tags_toc'    , '_begin', '/%%toc/', '(:*toc:)');
 	
 	 
 
