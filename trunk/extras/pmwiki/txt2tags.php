@@ -17,7 +17,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2010-10-23';
+$RecipeInfo['txt2tags']['Version'] = '2010-10-24';
 
 // Check if the customized fonts were installed. Adapt it to your own path.
 $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
@@ -243,12 +243,19 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 // Lists (^ = occurs at the beginning of a line only)
 
 	Markup ('txt2tags_bulletlist'    , 'directives', '/^- (.*?)/', "*$1");	
-	Markup ('txt2tags_bulletlist2'    , 'directives', '/^ - (.*?)/', "**$1");	// works
-	Markup ('txt2tags_bulletlist3'    , 'directives', '/^  - (.*?)/', "***$1");	// works
+	Markup ('txt2tags_bulletlist2'    , 'directives', '/^ - (.*?)/', "**$1");	
+	Markup ('txt2tags_bulletlist3'    , 'directives', '/^  - (.*?)/', "***$1");	
+	Markup ('txt2tags_bulletlist4'    , 'directives', '/^   - (.*?)/', "****$1");	
 
 	Markup ('txt2tags_numberedlist'    , 'directives', '/^\+ (.*?)/', "#$1");	
-	Markup ('txt2tags_numberedlist2'    , 'directives', '/^ \+ (.*?)/', "##$1");	// works
-	Markup ('txt2tags_numberedlist3'    , 'directives', '/^  \+ (.*?)/', "###$1");	// works
+	Markup ('txt2tags_numberedlist2'    , 'directives', '/^ \+ (.*?)/', "##$1");	
+	Markup ('txt2tags_numberedlist3'    , 'directives', '/^  \+ (.*?)/', "###$1");	
+	Markup ('txt2tags_numberedlist4'    , 'directives', '/^   \+ (.*?)/', "####$1");	
+	
+// Definition list
+
+	Markup ('txt2tags_deflist'    , 'directives', '/^: (.*?)$/', ":'''$1''':");	
+	
 	
 // Verbatim and PRE
 	
