@@ -196,12 +196,6 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	
 	
 	
-// HR Lines
-	
-	DisableMarkup("^----");
-	Markup ('txt2tags_hr'    , '<txt2tags_strike', '/^--------------------+/', "<:block,1><hr noshade  size=1/>");		
-	Markup ('txt2tags_hr5'    , '<txt2tags_h4', '/^====================+/', "<:block,1><hr noshade size=5/>");	
-
 // beautifiers
 	
 	Markup ('txt2tags_bold'     , 'directives', '/\*\*(.*?)\*\*/'              , "'''$1'''");
@@ -216,18 +210,34 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	Markup ('txt2tags_strike'    , 'directives', '/--(.*?)--/', "{-$1-}");	
 	// mono : see below
 
+
+// HR Lines
+	
+	DisableMarkup("^----");
+	Markup ('txt2tags_hr'    , '<txt2tags_strike', '/^--------------------+/', "<:block,1><hr noshade  size=1/>");		
+	Markup ('txt2tags_hr5'    , '_begin', '/^====================+/', "<:block,1><hr noshade size=5/>");	
+
+
 // Headings
 	
+	/*
 	Markup ('txt2tags_h4','<txt2tags_h3'    , '/====(.*?)====/', "<h4>$1</h4>");		
 	Markup ('txt2tags_h3','<txt2tags_h2'    , '/===(.*?)===/', "<h3>$1</h3>");	
 	Markup ('txt2tags_h2','<txt2tags_h1'    , '/==(.*?)==/', "<h2>$1</h2>");	
 	Markup ('txt2tags_h1'    , 'directives', '/= (.*?) =/', "<h1>$1</h1>");	
+	*/
+	
+	Markup ('txt2tags_h4','<txt2tags_h3'    , '/====[^=](.*?)[^=]====/', "!!!!$1");		
+	Markup ('txt2tags_h3','<txt2tags_h2'    , '/===[^=](.*?)[^=]===/', "!!!$1");	
+	Markup ('txt2tags_h2','<txt2tags_h1'    , '/==[^=](.*?)[^=]==/', "!!$1");	
+	Markup ('txt2tags_h1'    , '<split', '/= (.*?) =/', "!$1");	
 	
 
-	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+(.*?)\+\+\+\+/', "<h4>$1</h4>");		
-	Markup ('txt2tags_nh3','<txt2tags_nh2'    ,  '/\+\+\+(.*?)\+\+\+/', "<h3>$1</h3>");	
-	Markup ('txt2tags_nh2','<txt2tags_nh1'    ,  '/\+\+(.*?)\+\+/', "<h2>$1</h2>");	
-	Markup ('txt2tags_nh1'    , '<txt2tags_numberedlist', '/\+ (.*?) \+/', "<h1>$1</h1>");	
+	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+(.*?)\+\+\+\+/', "!!!!$1");		
+	Markup ('txt2tags_nh3','<txt2tags_nh2'    ,  '/\+\+\+(.*?)\+\+\+/', "!!!$1");	
+	Markup ('txt2tags_nh2','<txt2tags_nh1'    ,  '/\+\+(.*?)\+\+/', "!!$1");	
+	//Markup ('txt2tags_nh1'    , '<txt2tags_numberedlist', '/\+ (.*?) \+/', "!$1");	
+	Markup ('txt2tags_nh1'    , '<split', '/\+ (.*?) \+/', "!$1");	
 	
 	
 // Lists (^ = occurs at the beginning of a line only)
@@ -298,7 +308,11 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	
 	Markup ('txt2tags_imggif'    , '>_end', '/\[<img src=\'(.*?).gif\' alt=\'\' title=\'\' \/>\]/si', '<img src=\'$1.gif\' alt=\'\' title=\'\' \/>');
 
+// Macros
 
+	Markup ('txt2tags_toc'    , '_begin', '/%%toc/', '(:toc:)');
+	
+	 
 
 
 /*
@@ -308,7 +322,7 @@ Title level											: works
 Numbered Title level								: replaced by Title level
 
 
-Table of content based on titles					: doesn't work. (you can use http://www.pmwiki.org/wiki/Cookbook/PageTableOfContents eventually)
+Table of content based on titles					: works (you must use http://www.pmwiki.org/wiki/Cookbook/PageTableOfContents to get it work)
  
 
 A paragraph is made by one or more lines.
