@@ -3,6 +3,7 @@
 // TXT2TAGS syntax for pmwiki
 //
 // Get the lastest version from http://www.pmwiki.org/wiki/Cookbook/Txt2tags
+// or from the svn: http://txt2tags.googlecode.com/svn/trunk/extras/pmwiki/txt2tags.php
 //
 // Installation :
 // - Save this txt2tags.php in your /cookbook directory.
