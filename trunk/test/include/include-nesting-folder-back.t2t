@@ -2,5 +2,3 @@
 %!include: folder/subfolder/_folder-back.inc
 Folder - Level 0.
 
-% This test is OK, but the txt2tags behavior is WRONG
-% See folder/_foder.inc for details
