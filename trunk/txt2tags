@@ -4907,6 +4907,9 @@ def parse_images(line):
 		txt = regex['img'].search(line).group(1)
 		tag = TAGS['img']
 		
+		# Correct image path for relative path with outfile
+		imgpath = os.path.join(os.path.dirname(CONF['currentsourcefile']),txt)
+		txt = os.path.relpath(imgpath,os.path.dirname(CONF['outfile']))
 		# If target supports image alignment, here we go
 		if rules['imgalignable']:
 			
