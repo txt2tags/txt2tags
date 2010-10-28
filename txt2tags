@@ -160,7 +160,7 @@ OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'targets'    :0}
-MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 
+MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 'currentfile': '%f',
             'mtime': '%Y%m%d', 'outfile': '%f'}
 SETTINGS = {}         # for future use
 NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
@@ -4158,7 +4158,10 @@ class MacroMaster:
 		return x
 	
 	def set_file_info(self, macroname):
-		if self.fileinfo.get(macroname): return   # already done
+		if (macroname == 'currentfile'):
+			self.currentfile = self.config['currentsourcefile']
+		else:
+			if self.fileinfo.get(macroname): return   # already done
 		file_ = getattr(self, self.name)           # self.infile
 		if file_ == STDOUT or file_ == MODULEOUT:
 			dir_ = ''
@@ -4184,7 +4187,7 @@ class MacroMaster:
 					mtime = os.path.getmtime(self.infile)
 					fdate = time.localtime(mtime)
 				txt = time.strftime(fmt,fdate)
-			elif name == 'infile' or name == 'outfile':
+			elif name == 'infile' or name == 'outfile' or name == 'currentfile' :
 				self.set_file_info(name)
 				txt = self.walk_file_format(fmt)
 			else:
