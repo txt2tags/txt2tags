@@ -1,0 +1,254 @@
+<!doctype linuxdoc system>
+<article>
+<title>TXT2TAGS SAMPLE
+<author>Aurelio Jargas
+<date>07/26/2008
+
+
+<sect>Introduction<p>
+
+<p>
+Welcome to the txt2tags sample file.
+
+<p>
+Here you have examples and a brief explanation of all
+marks.
+
+<p>
+The first 3 lines of the this file are used as headers,
+on the following format:
+
+<tscreen><verb>
+line1: document title
+line2: author name, email
+line3: date, version
+</verb></tscreen>
+
+<p>
+Lines with balanced equal signs = around are titles.
+
+<sect>Fonts and Beautifiers<p>
+
+<p>
+We have two sets of fonts:
+
+<p>
+The NORMAL type that can be improved with beautifiers.
+
+<p>
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+
+<p>
+We will now enter on a subtitle...
+
+<sect1>Beautifiers<p>
+
+<p>
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+
+<p>
+We use double *, /, - and _ to represent <bf>bold</bf>,
+<em>italic</em>, strike and <bf><em>underline</em></bf>.
+
+<p>
+The <bf><em>bold italic</em></bf> style is also supported as a
+combination.
+
+<sect1>Pre-Formatted Text<p>
+
+<p>
+We can put a code sample or other pre-formatted text:
+
+<tscreen><verb>
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+</verb></tscreen>
+
+<p>
+And also, it's easy to put a one line pre-formatted
+text:
+
+<tscreen><verb>
+prompt$ ls /etc
+</verb></tscreen>
+
+<p>
+Or use <tt>pre-formatted</tt> inside sentences.
+
+<sect1>More Cosmetics<p>
+
+<p>
+Special entities like email (<htmlurl url="mailto:duh@somewhere.com" name="duh@somewhere.com">) and
+URL (<htmlurl url="http://www.duh.com" name="http://www.duh.com">) are detected automagically,
+as long as the horizontal line:
+
+<!-- ________________________________________________________ -->
+
+<p>
+^ thin or large v
+
+<!-- ======================================================== -->
+
+<p>
+You can also specify an <htmlurl url="http://duh.org" name="explicit link">
+with label.
+
+<p>
+And remember,
+
+	<quote>
+	A TAB in front of the line does a quotation.
+	More TABs, more depth (if allowed).
+	</quote>
+
+<p>
+Nice.
+
+<sect>Lists<p>
+
+<p>
+A list of items is natural, just putting a <bf>dash</bf> or
+a <bf>plus</bf> at the beginning of the line.
+
+<sect1>Plain List<p>
+
+<p>
+The dash is the default list identifier. For sublists,
+just add <bf>spaces</bf> at the beginning of the line. More
+spaces, more sublists.
+
+<itemize>
+<item>earth
+  <itemize>
+  <item>america
+    <itemize>
+    <item>south america
+      <itemize>
+      <item>brazil
+        <itemize>
+        <item>how deep can i go?
+        </itemize>
+      </itemize>
+    </itemize>
+  <item>europe
+    <itemize>
+    <item>lots of countries
+    </itemize>
+  </itemize>
+<item>mars
+  <itemize>
+  <item>who knows?
+  </itemize>
+</itemize>
+
+<p>
+The list ends with <bf>two</bf> consecutive blank lines.
+
+<sect1>Numbered List<p>
+
+<p>
+The same rules as the plain list, just a different
+identifier (plus).
+
+<enum>
+<item>one
+<item>two
+<item>three
+  <itemize>
+  <item>mixed lists!
+  <item>what a mess
+    <enum>
+    <item>counting again
+    <item>...
+    </enum>
+  </itemize>
+<item>four
+</enum>
+
+<sect1>Definition List<p>
+
+<p>
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+<descrip>
+<tag>orange</tag>
+  a yellow fruit
+<tag>apple</tag>
+  a green or red fruit
+<tag>other fruits</tag>
+  <itemize>
+  <item>wee!
+  <item>mixing lists
+    <enum>
+    <item>again!
+    <item>and again!
+    </enum>
+  </itemize>
+</descrip>
+
+<sect>Tables<p>
+
+<p>
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+<table><tabular ca="lcr">
+heading 1<colsep>heading 2<colsep>heading 3<rowsep>
+cell 1.1<colsep>cell 1.2<colsep>cell 1.3<rowsep>
+cell 2.1<colsep>cell 2.2<colsep>cell 2.3
+</tabular></table>
+
+<p>
+Without the last pipe, no border:
+
+<table><tabular ca="lcr">
+heading 1<colsep>heading 2<colsep>heading 3<rowsep>
+cell 1.1<colsep>cell 1.2<colsep>cell 1.3<rowsep>
+cell 2.1<colsep>cell 2.2<colsep>cell 2.3
+</tabular></table>
+
+<sect>Special Entities<p>
+
+<p>
+Because things were too simple.
+
+<sect1>Images<p>
+
+<p>
+The image mark is as simple as it can be: <tt>&lsqb;filename]</tt>.
+
+<p>
+                      <figure><ph vspace=""><img src="img/photo.jpg"></figure>  
+
+<itemize>
+<item>The filename must end in PNG, JPG, GIF, or similar.
+<item>No spaces inside the brackets!
+</itemize>
+
+<sect1>Other<p>
+
+<p>
+The handy <tt>%%date</tt> macro expands to the current date.
+
+<p>
+So today is 20100806 on the ISO <tt>YYYYMMDD</tt> format.
+
+<p>
+You can also specify the date format with the %? flags,
+as <tt>%%date(%m-%d-%Y)</tt> which gives: 08-06-2010.
+
+<p>
+That's all for now.
+
+<!-- ______________________________________________________- -->
+
+<p>
+<figure><ph vspace=""><img src="img/t2tpowered.png"></figure> (<htmlurl url="sample.t2t" name="sample.t2t">)
+
+<!-- sgml code generated by txt2tags 2.6b (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t sgml samples/sample.t2t -->
+</article>

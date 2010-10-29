@@ -1,0 +1,1 @@
+txt2tags: Error: A file cannot include itself (loop!): %!includeconf: includeconf-itself.t2t

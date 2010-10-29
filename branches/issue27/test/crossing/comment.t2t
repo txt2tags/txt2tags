@@ -1,0 +1,93 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Crossing: Title is ignored
+%%%
+= You're not seeing this. =
+%%%
+
+%%% Crossing: Paragraph is ignored
+%%%
+You're not seeing this.
+%%%
+
+%%% Crossing: Macro is ignored
+%%%
+%%date(You're not seeing this.)
+%%%
+
+%%% Crossing: Command is ignored
+%%%
+%!include: ''include.txt''
+%%%
+
+%%% Crossing: Line is ignored
+%%%
+----------------------------------------------
+%%%
+
+%%% Crossing: Verbatim Line is ignored
+%%%
+``` You're not seeing this.
+%%%
+
+%%% Crossing: Verbatim Block is ignored
+%%%
+```
+You're not seeing this.
+```
+%%%
+
+%%% Crossing: Raw Line is ignored
+%%%
+""" You're not seeing this.
+%%%
+
+%%% Crossing: Raw Block is ignored
+%%%
+"""
+You're not seeing this.
+"""
+%%%
+
+%%% Crossing: Tagged Line is ignored
+%%%
+''' You're not seeing this.
+%%%
+
+%%% Crossing: Tagged Block is ignored
+%%%
+'''
+You're not seeing this.
+'''
+%%%
+
+%%% Crossing: Quote is ignored
+%%%
+	You're not seeing this.
+%%%
+
+%%% Crossing: List is ignored
+%%%
+- You're not seeing this.
+-
+%%%
+
+%%% Crossing: Numbered List is ignored
+%%%
++ You're not seeing this.
++
+%%%
+
+%%% Crossing: Definition List is ignored
+%%%
+: You're not seeing this.
+  You're not seeing this.
+:
+%%%
+
+%%% Crossing: Table is ignored
+%%%
+| You're not seeing this.
+%%%

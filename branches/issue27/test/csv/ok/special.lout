@@ -1,0 +1,11 @@
+
+@LP
+Line 1.
+
+@LP @ID @F @RawVerbatim @Begin
+| '`^*~+-=_;:.{}[]()<>!@#$%&?/\ |
+@End @RawVerbatim
+
+@LP
+Line 2.
+

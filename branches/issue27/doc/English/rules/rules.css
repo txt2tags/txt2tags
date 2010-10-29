@@ -1,0 +1,26 @@
+body {
+	margin:2em;
+}
+a {
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+.toc {
+	margin-left:2em;
+}
+.section {
+	margin-top:2em;
+	margin-bottom:1em;
+	border:1px solid black;
+	text-align:center;
+	background-color:#ddd;
+}
+table {
+	empty-cells:hide;
+}	
+td {
+	padding:4px;
+}

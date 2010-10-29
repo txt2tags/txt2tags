@@ -1,0 +1,16 @@
+
+'''
+<div id="myblock">
+
+<p style="color:red">
+A tagged area is enclosed
+inside three single quotes.
+</p>
+
+<p style="color:blue">
+No parsing is made inside it,
+useful to insert target code.
+</p>
+
+</div>
+'''

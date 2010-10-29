@@ -1,0 +1,7 @@
+
+```
+ Un área literal ("verbatim") está encerrada
+   por tres comillas simples ("backquotes").
+            **Las marcas** no se interpretan
+                y los espacios se mantienen.
+```

@@ -1,0 +1,8 @@
+
+	Az idézet-bekezdések
+	TAB karakterrel kezdõdnek.
+		Minél több TAB van a sor
+		elején, annál mélyebben
+		kezdõdik a bekezdés.
+Nem TAB-bal kezdõdõ, vagy üres sor lezárja
+az idézetet.

@@ -1,0 +1,424 @@
+.TH "TXT2TAGS" 1 "Jul, 2008" ""
+
+.SH NOME
+.P
+txt2tags \- ferramenta para formatar e converter textos
+
+.SH SINOPSE
+.P
+\fBtxt2tags\fR [\fIOPÇÃO\fR]... [\fIARQUIVO\fR]...
+
+.SH DESCRIÇÃO
+.P
+O \fBtxt2tags\fR é uma ferramenta GPL de conversão de formatos escrita
+em Python que gera documentos em \fIHTML\fR, \fIXHTML\fR, \fISGML\fR,
+\fILaTeX\fR, \fILout\fR, \fIMan Page\fR, \fIMoinMoin\fR, \fIWikipedia\fR,
+\fIDokuWiki\fR, \fIGoogle Code Wiki\fR, \fIMagicPoint\fR e \fIPageMaker\fR
+a partir de um único arquivo de texto com algumas marcações.
+
+.P
+O usuário só precisa conhecer algumas marcas usadas pelo \fBtxt2tags\fR,
+e escrever textos normais. O programa faz todo o trabalho sujo,
+adicionando as tags complicadas e lidando com as pegadinhas dos
+documentos de destino.
+
+.P
+O mesmo arquivo texto pode ser convertido para todos os formatos
+disponíveis, sem a necessidade de qualquer alteração. Esta é a
+finalidade do \fBtxt2tags\fR: UM arquivo fonte, VÁRIOS destinos.
+
+.P
+Visite a página do programa em
+\fIhttp://txt2tags.org\fR.
+
+.SH OPÇÕES
+.TP
+ \fB\-C\fR, \fB\-\-config\-file\fR
+lê a configuração de um arquivo externo (igual ao %!includeconf)
+
+.TP
+     \fB\-\-css\-sugar\fR
+insere tags compatíveis com CSS em destinos HTML e XHTML
+
+.TP
+     \fB\-\-css\-inside\fR
+insere o conteúdo do arquivo CSS no documento HTML/XHTML
+
+.TP
+     \fB\-\-dump\-config\fR
+exibe todas as configurações encontradas e sai
+
+.TP
+     \fB\-\-dump\-source\fR
+exibe os fontes do documento, com os includes expandidos
+
+.TP
+     \fB\-\-encoding\fR
+informa a codificação de destino (utf\-8, iso\-8859\-1, etc)
+
+.TP
+     \fB\-\-gui\fR
+carrega a interface gráfica escrita em TK
+
+.TP
+ \fB\-h\fR, \fB\-\-help\fR
+exibe o texto de ajuda e sai
+
+.TP
+ \fB\-H\fR, \fB\-\-no\-headers\fR
+suprime os cabeçalhos, título e rodapé
+
+.TP
+     \fB\-\-headers\fR
+exibe os cabeçalhos, título e rodapé (padrão LIGADO)
+
+.TP
+ \fB\-i\fR, \fB\-\-infile\fR=\fIARQUIVO\fR
+define ARQUIVO como arquivo fonte ('\-' para STDIN)
+
+.TP
+     \fB\-\-mask\-email\fR
+esconde os e\-mails dos robôs de SPAM. x@y.z vira <x (a) y z>
+
+.TP
+ \fB\-n\fR, \fB\-\-enum\-title\fR
+numera todos os títulos como 1, 1.1, 1.1.1, etc
+
+.TP
+     \fB\-\-no\-dump\-config\fR
+desativa a opção de exibir as configurações
+
+.TP
+     \fB\-\-no\-dump\-source\fR
+desativa a opção de exibir os fontes
+
+.TP
+     \fB\-\-no\-encoding\fR
+exclui a configuração de codificação
+
+.TP
+     \fB\-\-no\-enum\-title\fR
+desativa a auto\-numeração de títulos
+
+.TP
+     \fB\-\-no\-infile\fR
+exclui as definições anteriores do arquivo fonte
+
+.TP
+     \fB\-\-no\-mask\-email\fR
+exibe os e\-mails, desativando a opção \-\-mask\-email
+
+.TP
+     \fB\-\-no\-outfile\fR
+exclui as definições anteriores sobre o arquivo de destino
+
+.TP
+     \fB\-\-no\-quiet\fR
+mostras as mensagens, desativando a opção \-\-quiet
+
+.TP
+     \fB\-\-no\-rc\fR
+não lê o arquivo configuração do usuário em ~/.txt2tagsrc
+
+.TP
+     \fB\-\-no\-style\fR
+exclui as configurações de estilo
+
+.TP
+     \fB\-\-no\-toc\fR
+não inclui o sumário (Table of Contents) no documento de destino
+
+.TP
+     \fB\-\-no\-toc\-only\fR
+desativa a opção \-\-toc\-only
+
+.TP
+ \fB\-o\fR, \fB\-\-outfile\fR=\fIARQUIVO\fR
+define ARQUIVO como destino ('\-' para STDOUT)
+
+.TP
+ \fB\-q\fR, \fB\-\-quiet\fR
+modo silencioso, não mostra nada na saída (exceto os erros)
+
+.TP
+     \fB\-\-rc\fR
+lê a configuração do usuário em ~/.txt2tagsrc (padrão LIGADO)
+
+.TP
+     \fB\-\-style\fR=\fIARQUIVO\fR
+utiliza ARQUIVO como estilo do documento (como o CSS do Html)
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR=\fITIPO\fR
+define o tipo do documento de destino. atualmente suportados:
+html, xhtml, sgml, tex, lout, man, mgp, wiki,
+gwiki, doku, moin, pm6, txt
+
+.TP
+     \fB\-\-toc\fR
+inclui o sumário (Table of Contents) no documento de destino
+
+.TP
+     \fB\-\-toc\-level\fR=\fIN\fR
+define o nível máximo (profundidade) do Índice para N
+
+.TP
+     \fB\-\-toc\-only\fR
+exibe o Índice do documento e sai
+
+.TP
+ \fB\-v\fR, \fB\-\-verbose\fR
+exibe mensagens informativas durante a conversão
+
+.TP
+ \fB\-V\fR, \fB\-\-version\fR
+exibe a versão do programa e sai
+
+.P
+Normalmente a saída convertida é gravada em 'arquivo.<tipo>'.
+Utilize \-\-outfile para forçar um nome para o arquivo de saída.
+Se o arquivo de entrada é '\-', lê de STDIN.
+Se o arquivo de saída é '\-', envia a saída para STDOUT.
+
+.SH ESTRUTURA
+.P
+Um arquivo fonte txt2tags pode ter três áreas:
+
+.TP
+\fBCabeçalho\fR
+As primeiras três linhas. São usadas para identificação do documento.
+Se não for necessário, o cabeçalho pode ser suprimido pela
+configuração no\-header.
+
+.TP
+\fBConfiguração\fR
+Inicia a partir da quarta linha. Todas as configurações têm o formato
+%!chave: valor. As configurações também podem ser realizadas por
+arquivos de configuração ou linha de comando.
+
+.TP
+\fBCorpo\fR
+O verdadeiro documento! É a única área necessária para que se tenha um
+documento txt2tags válido.
+
+.SH CONFIGURAÇÕES
+.P
+O Txt2tags pode ser personalizado por métodos internos e externos. Os
+meios externos podem ser de um arquivo chamado \&.txt2tagsrc ou
+importado de outro arquivo txt2tags. O jeito interno é feito por
+comandos incluídos na área de configuração do fonte. Ambas formas usam
+a mesma sintaxe:
+
+.TP
+\fB%!target:\fR
+define o formato destino (target) principal
+
+.TP
+\fB%!options(target):\fR
+define as opções de cada destino
+
+.TP
+\fB%!include: file.t2t\fR
+inclui um arquivo txt2tags no documento
+
+.TP
+\fB%!include: ``arquivo.txt``\fR
+inclui um arquivo texto no documento
+
+.TP
+\fB%!include: arquivo.html\fR
+inclui um arquivo literal no documento, \fIipsis literis\fR
+
+.TP
+\fB%!style:\fR
+para indicar um arquivo CSS (Cascading Style Sheets) para os destinos
+XHTML e HTML ou carregar um módulo \eusepackage no destino TEX
+
+.TP
+\fB%!encoding:\fR
+para indicar um conjunto de caracteres (como iso\-8859\-1) para usuários
+de língua não\-inglesa
+
+.TP
+\fB%!includeconf:\fR
+usado para incluir configurações a partir de um arquivo externo
+
+.TP
+\fB%!guicolors:\fR
+configurações de cores para a interface gráfica (tk/tcl)
+
+.TP
+\fB%!preproc:\fR
+filtros personalizados (macros) que serão processados \fBANTES\fR da
+avaliação do documento
+
+.TP
+\fB%!postproc:\fR
+filtros personalizados (macros) que serão processados \fBAPÓS\fR a
+avaliação do documento
+
+.SH REGRAS DAS CONFIGURAÇÕES
+.RS
+.IP \(bu 3
+As configurações são válidas somente dentro da Área de
+Configuração, e serão consideradas comentários simples se forem
+encontradas no Corpo do documento.
+
+.IP \(bu 3
+Se a mesma palavra\-chave aparece mais de uma vez na Área de
+Configuração, apenas a última será usada. Exceção: options, preproc
+e postproc, que são acumulativas.
+
+.IP \(bu 3
+Uma linha de configuração com uma palavra\-chave inválida será
+considerada um comentário.
+
+.IP \(bu 3
+Estas configurações têm precedência sobre o arquivo txt2tagsrc, mas
+não sobre as opções de linha de comando.
+.RE
+
+.SH SINTAXE
+.P
+Uma sintaxe de marcas bem simples é utilizada no arquivo fonte
+(o arquivo de texto puro) para identificar as estruturas
+e a formatação. Aqui está a lista completa:
+
+.SS Básico
+.nf
+  Cabeçalhos        As 3 primeiras linhas do arquivo fonte
+  Título            = palavras =
+  Título numerado   + palavras +
+  Parágrafo         palavras
+.fi
+
+
+.SS Embelezadores
+.nf
+  Negrito           **palavras**
+  Itálico           //palavras//
+  Sublinhado        __palavras__
+  Riscado           --palavras--
+  Monoespaçado      ``palavras``
+.fi
+
+
+.SS Text Blocks
+.nf
+  Citação             <TAB>palavras
+  Lista               - palavras
+  Lista numerada      + palavras
+  Lista de definição  : palavras
+  Linha formatada     ``` palavras
+  Área formatada      ```<Quebra> linhas <Quebra>```
+  Linha protegida     """ palavras
+  Área protegida      """<Quebra> linhas <Quebra>"""
+  Tabela              | cel1 | cel2 | cel3...
+.fi
+
+
+.SS Outros
+.nf
+  Linha de separação  -----------------------...
+  Linha destacada     =======================...
+  Links               [nome url]
+  Imagem              [arquivo.XXX]
+  Texto protegido     ""palavras""
+  Comentário          % comentários
+.fi
+
+
+.SH EXEMPLOS
+.P
+Supondo que você criou um arquivo marcado chamado arquivo.t2t,
+vamos nos divertir fazendo algumas conversões.
+
+.TP
+\fBConverte para HTML, gravando em arquivo.html\fR
+$ txt2tags \-t html arquivo.t2t
+
+.TP
+\fBSimilar ao anterior, usando redirecionamento\fR
+$ txt2tags \-t html \-o \- arquivo.t2t > arquivo.html
+
+.TP
+\fBIncluindo o Índice\fR
+$ txt2tags \-t html \-\-toc arquivo.t2t
+
+.TP
+\fBIncluindo o Índice e títulos numerados\fR
+$ txt2tags \-t html \-\-toc \-\-enum\-title arquivo.t2t
+
+.TP
+\fBExibição rápida do conteúdo\fR
+$ txt2tags \-\-toc\-only arquivo.t2t
+
+.TP
+\fBTeste rápido de uma linha vindo de STDIN\fR
+$ echo \-e "\en**negrito**" | txt2tags \-t html \-H \-
+
+.SH MACROS
+.TP
+%%date
+Representa a data atual, usando o formato YYYYMMDD.
+Também é possível mudar o formato da data usando a seguinte sintaxe:
+%%date(formato).
+
+.TP
+%%infile
+Representa o nome do arquivo fonte. O formato pode ser especificado
+usando a seguinte sintaxe: %%infile(formato).
+
+Útil para colocar um link para os fontes, no final do documento, como
+em [Veja os fontes %%infile]. Assim, você pode mudar o nome do
+arquivo, e o link não ficará quebrado.
+
+.TP
+%%mtime
+Representa a data de modificação do arquivo fonte. Os mesmos formatos
+usados na macro %%date também são aceitos.
+
+.TP
+%%outfile
+Representa o nome do arquivo de saída. O formato pode ser especificado
+usando a seguinte sintaxe: %%outfile(formato).
+
+Útil para mencionar o próprio arquivo, como em "Este é o arquivo
+manpage\-pt.man". Assim, você pode mudar o nome do arquivo, mas ele sempre
+aparecerá corretamente no documento.
+
+.TP
+%%toc
+A macro %%toc indica em que local do documento deve ser inserido
+o sumário (Table Of Contents). Você pode utilizá\-la em qualquer parte
+do documento, inclusive mais de uma vez.
+
+NOTA: A %%toc só será aplicada se a opção \-\-toc for utilizada.
+
+.SH AUTOR
+.P
+O txt2tags foi criado e é mantido por Aurélio Marinho Jargas
+<verde@aurelio.net>
+
+.P
+Esta Página de Manual foi escrita por José Inácio Coelho
+<jic@technologist.com> como um arquivo texto, e convertida para o
+formato de manual no \fBtxt2tags\fR!
+
+.P
+A tradução deste manual para o português foi feita por Mauricio
+Teixeira <mteixeira@webset.net>
+
+.SH LICENÇA
+.P
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurélio Marinho Jargas
+
+.P
+Este programa é livre. Veja nos arquivos fonte as condições de cópia.
+NÃO HÁ garantia, nem de COMERCIALIZAÇÃO nem de ADEQUAÇÃO A QUALQUER
+PROPÓSITO.
+
+
+.\" man code generated by txt2tags 2.6b (http://txt2tags.org)
+.\" cmdline: txt2tags -t man doc/Portuguese/manpage-pt.t2t
+

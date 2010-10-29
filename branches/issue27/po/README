@@ -1,0 +1,157 @@
+Txt2tags PO and POT files
+-------------------------
+
+These are the txt2tags program i18n files, which allows it
+to be translated to other languages besides english.
+
+txt2tags.pot
+	The main translation file, with all the messages
+	needed to be translated
+	
+*.po
+	The translated messages for some languages
+
+
+  NOTE: The procedures to install on Linux as non-root
+  and in Windows were provided by Andreas Deininger
+  (andreas@deininger.net).
+
+-----------------------------------------------------------
+
+To translate txt2tags to your language:
+
+1. Search which is the ID for your language. For example,
+   "es" is for spanish, "de" is for german.
+
+2. Copy the "txt2tags.pot" file as "<ID>.po".
+
+3. Fill the "<ID>.po" file headers with your data.
+
+4. Fill all the "msgstr" lines with the translations.
+
+5. Use the "msgfmt -c --statistics <ID>.po" command to check
+   the file syntax.
+
+6. Follow the next steps to compile and install the
+   messages on your system and test them.
+
+7. Send the .po file to the txt2tags author, so it can be
+   officially included on the program distribution and you
+   will be part of the txt2tags team.
+
+-----------------------------------------------------------
+
+To update your translation when txt2tags.pot is updated:
+
+1. Download http://txt2tags.org/po/txt2tags.pot
+
+2. Run:
+   msgmerge --no-fuzzy-matching <ID>.po txt2tags.pot > new.po
+
+3. Edit new.po and fill the new messages that are empty.
+
+4. Use the "msgfmt -c --statistics new.po" command to check
+   the file syntax.
+
+5. When everything is OK, rename new.po to <ID>.po.
+
+6. Send the .po file to the txt2tags author, or commit the
+   changes to the repository if you have access to txt2tags
+   SVN.
+
+-----------------------------------------------------------
+
+To install the translation file in your system:
+
+Linux (as root):
+
+  1. Search where is the locale directory. For most systems
+     it is "/usr/share/locale/".
+
+  2. Compile the .po into a .mo file with the following
+     command: "msgfmt -o txt2tags.mo <ID>.po"
+
+  3. Move the .mo file to the locale directory, under the
+     "<ID>/LC_MESSAGES/" directory, for example:
+     "mv txt2tags.mo /usr/share/locale/pt_BR/LC_MESSAGES/"
+
+  4. Make sure your system is configured to the same
+     language of your translation.
+     Hint: "/etc/sysconfig/i18n"
+
+  5. Run txt2tags and check if it worked!
+
+
+Linux (as plain user):
+
+  If you do not have root privileges on your system, proceed
+  the previous, but on the step 3 you will have to do:
+  
+  3. Locate the following two lines at the top of the Python
+     script for txt2tags (the file is usually called txt2tags)
+   
+     # if your locale dir is different, change it here
+     cat = gettext.Catalog('txt2tags',localedir='/usr/share/locale/')
+
+     Instead of '/usr/share/locale', put in:
+     '/path/to/txt2tags/po'
+   
+     Under the po directory create a subdirectory:
+     "<ID>/LC_MESSAGES/" and move <ID>.mo to this newly
+     created directory
+
+
+Windows:
+
+  1. Point your browser to the GNU gettext website, located
+     at http://www.gnu.org/software/gettext/ and download
+     the Windows versions of the packages gettext-runtime
+     and libiconv.
+  
+  2. Unpack the zip-files.
+  
+  3. From the bin directories created, move all DLL's to
+     your system32 directory of your Windows installation
+     (charset.dll, iconv.dll, gettextlib.dll, gettextpo.dll,
+     gettextsrc.dll)
+  
+  4. Compile the <ID>.po into a .mo file with the following
+     command: "msgfmt -o txt2tags.mo <ID>.po"
+  
+     Note: in order to do that, you need to download the
+     gettext-tools, too. Alternatively, you can use the
+     Cygwin or the Mingw environment, which both provide the
+     msgfmt command, too.
+  
+  5. Under your txt2tags directory, create a subdirectory:
+     "locale/<LANG>/LC_MESSAGES/" and move <ID>.mo to this 
+     newly created directory
+  
+  6. Locate the following two lines at the top of the Python
+     script for txt2tags (the file is usually called txt2tags)
+     
+     # if your locale dir is different, change it here
+     cat = gettext.Catalog('txt2tags',localedir='/usr/share/locale/')
+  
+     Replace these two lines with:
+  
+     # patch to make gettext work on Windows
+     basepath = os.path.abspath(os.path.dirname(sys.argv[0]))
+     localedir = os.path.join(basepath, "locale")
+     gettext.bindtextdomain('txt2tags', localedir)
+     gettext.textdomain('txt2tags')
+     
+  6. Add "LANGUAGE" as an environment variable to your system and 
+     assign the value <ID> to it.
+     This can be achieved via the following steps:
+  
+     a) Right-click My Computer, and then click Properties. 
+        (Alternatively, you may choose Start-Settings-Control 
+         Panel-System)
+     b) Click the Advanced tab.
+     c) Click Environment variables.
+     d) Click New to add a new variable name and value. The name 
+        should be LANG and the value is language code (e.g. "de")
+  
+  7. Run txt2tags and check if it worked!
+  

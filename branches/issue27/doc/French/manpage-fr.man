@@ -1,0 +1,469 @@
+.TH "TXT2TAGS" 1 "Aug, 2010" ""
+
+
+.SH NOM
+
+.P
+txt2tags \-  outil de conversion et de formatage de texte
+
+.SH SYNOPSIS
+
+.P
+\fBtxt2tags\fR [\fIoptions\fR] [\fIFICHIER\fR...]
+
+.SH DESCRIPTION
+
+.P
+\fBtxt2tags\fR lit un fichier texte avec des balises minimales et peut le convertir en :
+\fIASCII Art\fR,
+\fIAsciiDoc\fR,
+\fICreole\fR,
+\fIDocBook\fR,
+\fIDokuWiki\fR,
+\fIGoogle Code Wiki\fR,
+\fIHTML\fR,
+\fILaTeX\fR,
+\fILout\fR,
+\fIMagicPoint\fR,
+\fIMan page\fR,
+\fIMoinMoin\fR,
+\fIPageMaker\fR,
+\fIPlain Text\fR,
+\fIPmWiki\fR,
+\fISGML\fR,
+\fIWikipedia\fR et
+\fIXHTML\fR.
+
+.P
+Cette page de man a été créée grâce à \fBtxt2tags\fR depuis un simple fichier textuel. Le même fichier texte a été également converti en HTML pour la version en ligne de ce manuel.
+
+.P
+UNE source, des sorties MULTIPLES \- http://txt2tags.org
+
+.SH BALISES
+
+.nf
+Entête               Les 3 premières lignes du fichier source
+Titre                = mots =
+Titre numéroté       + mots +
+Commentaires         % commentaires
+Ligne de séparation  -----------------------...
+Ligne plus épaisse   =======================...
+Image                [fichier.jpg]
+Liens                [label url]
+
+Gras                 **mots**
+Italique             //mots//
+Souligné             __mots__
+Barré                --mots--
+Monospaced           ``mots``
+Raw                  ""mots""
+Tagged               ''mots''
+
+Paragraphe           mots
+Citation             <TAB>mots
+Liste                - mots
+Liste numérotée      + mots
+Liste de définitions : mots
+Table                | cellule1 | cellule2 | cellule3...
+
+Ligne verbatim       ``` mots
+Ligne raw            """ mots
+Ligne tagged         ''' mots
+
+Bloc verbatim        ```
+                     lignes
+                     ```
+Bloc raw             """
+                     lignes
+                     """
+Bloc tagged          '''
+                     lignes
+                     '''
+.fi
+
+
+.SH OPTIONS
+
+.TP
+    \fB\-\-art\-chars\fR=\fIMOTIF\fR
+Utilise le \fIMOTIF\fR pour définir les caractères du mode ASCII Art, respectivement pour les coins, les bordures, les côtés, les barres 1 et 2, les niveaux 2, niveaux 3, niveaux 4 et niveau 5. Le motif par défaut est +\-|\-==\-^". Cette option est uniquement valable pour la cible ASCII Art.
+
+.TP
+\fB\-C\fR, \fB\-\-config\-file\fR=\fIFICHIER\fR
+Lit la configuration depuis le fichier extérieur \fIFICHIER\fR. La configuration doit être de la forme \fI%!mot\-clé:valeur\fR. Se référer à la section CONFIGURATIONS pour plus de détails.
+
+.TP
+    \fB\-\-css\-sugar\fR
+Améliore l'utilisation de feuilles CSS par rapport au code HTML/XHTML généré. Les attributs éventuels des balises sont retirés, les balises de présentation sont évités, l'entête est composé de balises H1, H2 et H3, de nouveaux DIVs sont créés : \fI#header\fR, \fI#body\fR, \fI.toc\fR.
+
+.TP
+    \fB\-\-css\-inside\fR
+Insère le contenu du fichier CSS dans l'entête HTML/XHTML. Utilisez \-\-style pour spécifier le fichier CSS à inclure.
+
+.TP
+    \fB\-\-dump\-config\fR
+Affiche toute la configuration trouvée et sort.
+
+.TP
+    \fB\-\-dump\-source\fR
+Affiche la source du document, avec toutes les inclusions (%!include) éventuelles.
+
+.TP
+    \fB\-\-encoding\fR=\fICODE\fR
+Définit l'encodage de la sortie utilisé par le document source vers \fICODE\fR. Par exemple UTF\-8, iso\-8859\-1, etc.
+
+.TP
+    \fB\-\-gui\fR
+Appelle l'interface graphique Tk.
+
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Affiche l'aide et sort.
+
+.TP
+\fB\-H\fR, \fB\-\-no\-headers\fR
+Supprime les entêtes, les titres et les pieds de page de la sortie. Seul le contenu (body) sera affiché.
+
+.TP
+    \fB\-\-headers\fR
+Montre les entêtes, les titres et les pieds de page dans la sortie. ACTIVÉ par défaut.
+
+.TP
+    \fB\-\-height\fR=\fINOMBRE\fR
+Définit la hauteur de sortie à \fINOMBRE\fR de lignes. Cette option est uniquement utilisée par la cible ASCI ART (\-t art), en utilisant également l'option \-\-slides.
+
+.TP
+\fB\-i\fR, \fB\-\-infile\fR=\fIFICHIER\fR
+Définit \fIFICHIER\fR comme fichier d'entrée pour le document source. Utilisez '\-' pour lire la source depuis STDIN.
+
+.TP
+    \fB\-\-mask\-email\fR
+Masque les courriels contre les robots spammeurs. Retire @ et les points. Ainsi l'adresse foo@bar.com devient <foo (a) bar com>.
+
+.TP
+\fB\-n\fR, \fB\-\-enum\-title\fR
+Numérote automatiquement les titres. Ils seront préfixés par 1, 1.1, 1.1.1, ...
+
+.TP
+    \fB\-\-no\-dump\-config\fR
+Annule l'affichage de configuration via \-\-dump\-config.
+
+.TP
+    \fB\-\-no\-dump\-source\fR
+Annule l'affichage de la source via \-\-dump\-source.
+
+.TP
+    \fB\-\-no\-encoding\fR
+Annule la configuration d'encodage.
+
+.TP
+    \fB\-\-no\-enum\-title\fR
+Annule la numérotation automatique des titres.
+
+.TP
+    \fB\-\-no\-infile\fR
+Annule toutes les déclarations précédentes de fichiers d'entrée.
+
+.TP
+    \fB\-\-no\-targets\fR
+Annule l'action \-\-targets.
+
+.TP
+    \fB\-\-no\-mask\-email\fR
+Annule l'action de masquer les courriels.
+
+.TP
+    \fB\-\-no\-outfile\fR
+Annule la précédente déclaration de fichier de sortie.
+
+.TP
+    \fB\-\-no\-quiet\fR
+Affiche les messages, annule l'option \-\-quiet.
+
+.TP
+    \fB\-\-no\-rc\fR
+Ne lit pas le fichier de configuration utilisateur ~/.txt2tagsrc.
+
+.TP
+    \fB\-\-no\-slides\fR
+N'utilise pas les slides (\-t art).
+
+.TP
+    \fB\-\-no\-style\fR
+Supprime la déclaration de style.
+
+.TP
+    \fB\-\-no\-toc\fR
+N'ajoute pas de table des matières au document de sortie.
+
+.TP
+    \fB\-\-no\-toc\-only\fR
+Annule l'action de \-\-toc\-only.
+
+.TP
+\fB\-o\fR, \fB\-\-outfile\fR=\fIFICHIER\fR
+Génère le nom \fIFICHIER\fR en tant que fichier de sortie. Utilisez '\-' pour envoyer le résultat vers STDOUT.
+
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Mode silencieux, supprime toutes les sorties (sauf les erreurs).
+
+.TP
+    \fB\-\-rc\fR
+Lit le fichier de configuration utilisateur ~/.txt2tagsrc. ACTIVÉ par défaut.
+
+.TP
+    \fB\-\-slides\fR
+Formate la sortie en tant que slide de présentation. Cette option est uniquement utilisée par la cible ASCII Art.
+
+.TP
+    \fB\-\-style\fR=\fIFICHIER\fR
+Utilise \fIFICHIER\fR en tant que fichier de style pour le document. Utilisé pour définir les fichiers CSS pour les documents HTML/XHTML et les paquets pour LaTeX. Cette option peut être appelée à plusieurs reprises pour inclure de multiples fichiers.
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR=\fITYPE\fR
+Choisit la cible document de sortie en la définissant à \fITYPE\fR. Des cibles courantes sont : \fIhtml\fR, \fIxhtml\fR, \fItex\fR, \fIman\fR, \fItxt\fR. Utilisez l'option \-\-targets pour lister toutes les cibles disponibles.
+
+.TP
+    \fB\-\-targets\fR
+Affiche une liste de toutes les cibles disponibles, et sort.
+
+.TP
+    \fB\-\-toc\fR
+Ajoute une table des matières (Table of Contents ; TOC), générée automatiquement, au document de sortie, entre son entête et son contenu. Vous pouvez également spécifier la place de cette table des matières en utilisant la macro %%TOC.
+
+.TP
+    \fB\-\-toc\-level\fR=\fINOMBRE\fR
+Assigne le niveau maximum de la table des matières à \fINOMBRE\fR. Tous les titres au\-delà de \fINOMBRE\fR ne seront pas inclus dans la table des matières.
+
+.TP
+    \fB\-\-toc\-only\fR
+Affiche la table des matières et sort.
+
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Affiche les messages d'information durant la conversion. Cette option peut être appelée à plusieurs reprises pour augmenter le nombre de messages affichés.
+
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Affiche la version du programme et sort.
+
+.TP
+    \fB\-\-width\fR=\fINOMBRE\fR
+Assigne la largeur de sortie à \fINOMBRE\fR de colonnes. Cette option est uniquement utilisée par la cible ASCII Art.
+
+.SH FICHIERS SOURCE
+
+.P
+Les fichiers source sont généralement identifiés par l'extension \fI.t2t\fR (par exemple mon_fichier.t2t). Vous pouvez avoir trois zones dans vos sources :
+
+.TP
+\fBEntête\fR (optionel)
+Les trois premières lignes du fichier. Laissez la première ligne vide si vous n'avez pas besoin d'entêtes. Utilisé dans le document pour le titre, l'auteur, la version, et la date.
+
+.TP
+\fBConfiguration\fR (optionel)
+Commence juste après l'entête (4ème ou 2nde ligne) et se termine quand le corps du texte débute.
+Utilisé pour les configurations, dans le format %!mot\-clé:valeur.
+
+.TP
+\fBCorps\fR
+Commence à la première ligne de texte valide (pas de commentaire ou de configuration), après la zone d'entête et continue jusqu'à la fin du document. Utilisé pour le contenu du document proprement dit.
+
+.SH CONFIGURATIONS
+
+.P
+Les configurations vous permettent de personnaliser \fBtxt2tags\fR, elles sont similaires aux options. Elles peuvent être utilisées : dans la zone de configurations du document source, dans un fichier ~/.txt2tagsrc, dans un fichier extérieur appelé avec l'option \-\-config\-file.
+
+.TP
+\fB%!target\fR
+Définit le format de sortie, de la même manière que \-\-target. Par exemple :
+.nf
+%!target: html
+.fi
+
+
+
+.TP
+\fB%!options(target)\fR
+Définit les options par défaut de chaque cible. Vous devez utiliser la même syntaxe qu'en ligne de commande. Par exemple :
+.nf
+%!options(html): --toc --toc-level 3 --css-sugar
+.fi
+
+
+
+.TP
+\fB%!includeconf\fR
+Inclut une configuration à partir d'un fichier externe, de la même manière que \-\-config\-file. Par exemple :
+.nf
+%!includeconf: myconfig.t2t
+.fi
+
+
+
+.TP
+\fB%!style\fR
+Définit un fichier de style pour le document, de la même manière que \-\-style. Peut être appelée à plusieurs reprises. Par exemple :
+.nf
+%!style: colors.css
+.fi
+
+
+
+.TP
+\fB%!encoding\fR
+Définit l'encodage de la cible, de la même manière que \-\-encoding. Par exemple :
+.nf
+%!encoding: UTF-8
+.fi
+
+
+
+.TP
+\fB%!preproc\fR
+Filtre de recherche et remplacement utilisé pour modifier le corps de la source AVANT les remplacements habituels de txt2tags. La fonction de recherche utilise les expressions rationnelles (regex) de Python. Par exemple :
+.nf
+%!preproc:  "JJS"  "John J. Smith"
+.fi
+
+
+
+.TP
+\fB%!postproc\fR
+Filtre de recherche et remplacement utilisé pour modifier le document généré APRÈS les remplacements habituels de txt2tags. La fonction de recherche utilise les expressions rationnelles (regex) de Python. Par exemple :
+.nf
+%!postproc(html):  "<B>"  "<STRONG>"
+.fi
+
+
+
+.P
+Si le même mot apparaît plusieurs fois, le dernier trouvé sera celui utilisé (à l'exception des options, preproc et postproc, qui sont cumulatifs). Les mots\-clés non\-valides sont ignorés. L'ordre de priorité est : fichier ~/.txt2tagsrc, zone de configuration du document, option \-\-config\-file passée en ligne de commandes.
+
+.SH COMMANDES
+
+.P
+Les commandes font diverses tâches durant la conversion. Elles doivent être placées dans le corps du document.
+
+.TP
+\fB%!csv: fichier.csv\fR
+Inclut un fichier externe CSV file en tant que tableau.
+
+.TP
+\fB%!include: fichier.t2t\fR
+Inclut un fichier txt2tags dans le document.
+
+.TP
+\fB%!include: ``fichier.txt``\fR
+Inclut un fichier texte (verbatim) dans le document.
+
+.TP
+\fB%!include: \&''fichier.html''\fR
+Inclut un fichier html dans le document.
+
+.SH MACROS
+
+.P
+Les macros sont des raccourcis pratiques pour insérer du contenu dynamique dans votre document. Elles doivent être placées dans le corps du document source. À l'exception de %%toc, toutes les macros peuvent être personnalisées avec des directives spécifiques, comme %Y ou %f. Voir le guide complet de txt2tags pour plus de détails.
+
+.TP
+\fB%%date\fR
+Insère la date actuelle. Le format par défaut est %%date(%Y%m%d), ce qui donne AAAAMMJJ.
+
+.TP
+\fB%%infile\fR
+Insère le chemin du fichier source. Le format par défaut est %%infile(%f). Utile pour inclure des bas de page de type  [Voir la source %%infile].
+
+.TP
+\fB%%mtime\fR
+Insère la date de modification du fichier source. Le format par défaut est %%date(%Y%m%d), ce qui donne AAAAMMJJ.
+
+.TP
+\fB%%outfile\fR
+Insère le chemin du fichier de sortie. Le format par défaut est %%outfile(%f). Utile pour une description de type "C'est le fichier manpage\-fr.man".
+
+.TP
+\fB%%toc\fR
+Indique où sera placée la table des matières. Vous pouvez même l'appeler à de multiples reprises. Notez que vous devez également utiliser l'option \-\-toc.
+
+.SH EXEMPLES
+
+.TP
+txt2tags \-t html fichier.t2t
+
+Conversion HTML, vers le fichier fichier.html.
+
+.TP
+txt2tags \-t html \-o \- fichier.t2t
+
+Conversion HTML, envoie le résultat vers STDOUT.
+
+.TP
+txt2tags \-t html \-\-toc fichier.t2t
+
+Conversion HTML, incluant une table des matières automatiquement générée.
+
+.TP
+txt2tags \-t html \-\-toc \-\-toc\-level 2 \-n fichier.t2t
+
+Conversion HTML, avec une table des matières de niveau deux et des titres numérotés.
+
+.TP
+txt2tags \-\-toc\-only fichier.t2t
+
+Affiche juste la table des matières dans le terminal, aucune conversion ne sera faite.
+
+.TP
+txt2tags \-t html \-\-css\-sugar \-\-style base.css \-\-style ui.css fichier.t2t
+
+Convertion HTML, préparant le code résultant à être utilisé avec des CSS, et incluant également deux fichiers CSS externes.
+
+.TP
+txt2tags \-t art \-\-slides \-\-width 80 \-\-height 25 \-o \- fichier.t2t | more
+
+Crée une présentation en ASCII Art, prête à être visualisée dans un terminal en 80x25.
+
+.TP
+(echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+Test rapide en une ligne avec entrée depuis la console STDIN.
+
+.TP
+txt2tags \-t html \-o \- fichier.t2t | tidy > fichier.html
+
+Envoie le résultat vers STDOUT, puis ajuste le code avec un programme externe avant de sauvegarder le résultat dans un fichier externe.
+
+.SH FICHIERS
+
+.TP
+~/.txt2tagsrc
+Fichier de configuration par défaut de l'utilisateur.
+
+.SH ENVIRONNEMENT
+
+.TP
+T2TCONFIG
+Si cette variable d'environnement n'est pas nulle, elle définit alors le chemin complet pour la configuration par défaut de l'utilisateur.
+
+.SH AUTEUR
+
+.P
+Aurelio Jargas <verde@aurelio.net>
+
+.P
+Page de man traduite en français par Eric Forgeot <http://esclinux.tk>, en réutilisant parfois le travail original de Claude Hiebel <chiebel@free.fr>
+
+.SH BOGUES
+
+.P
+http://code.google.com/p/txt2tags/issues
+
+.SH COPYRIGHT
+
+.P
+Copyright (C) 2001\-2010 Aurelio Jargas, GNU GPL v2
+
+.\" man code generated by txt2tags 2.6b1 (http://txt2tags.org)
+.\" cmdline: txt2tags manpage-fr.t2t

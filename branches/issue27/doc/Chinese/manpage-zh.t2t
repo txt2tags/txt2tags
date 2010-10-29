@@ -1,0 +1,394 @@
+TXT2TAGS
+
+2010年8月
+
+%!target: man
+%!postproc(man): ' \(#\w+\)' ''
+
+%!options(html): --mask-email --toc
+%!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
+
+%% LOG
+%%    sep 2003 jic    : creation
+%% 25 sep 2003 anamim : text revision. misspellings, rewording phrases, etc
+%% 01 jun 2004 aurelio: updated to v2.0
+%% 20 jul 2004 jic    : included: settings area, few marks, areas; reorganizing
+%% 22 jul 2004 anamim : revision
+%% 30 ago 2004 aurelio: little typos
+%% 13 nov 2004 jic    : updated to v2.1
+%% 28 dec 2004 aurelio: updated to v2.2
+%% 21 may 2005 aurelio: updated to v2.3
+%% 12 aug 2010 aurelio: updated to v2.6, rewrite (r250)
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%!encoding: utf-8
+
+
+= 名称 =[name]
+
+txt2tags - 文本格式化及转换工具 
+
+= 总览 =[synopsis]
+
+**txt2tags** [//选项//] [//文件//...]
+
+= 描述 =[description]
+
+**txt2tags** 读入含少量标记的文本，并将其转换为多种格式的文档：
+//ASCII Art//,
+//AsciiDoc//,
+//Creole//,
+//DocBook//,
+//DokuWiki//,
+//Google Code Wiki//,
+//HTML//,
+//LaTeX//,
+//Lout//,
+//MagicPoint//,
+//Man page//,
+//MoinMoin//,
+//PageMaker//,
+//Plain Text//,
+//PmWiki//,
+//SGML//,
+//Wikipedia// 和
+//XHTML//.
+% TRANSLATOR: please keep the alphabetical order of this list.
+
+此手册页是由**txt2tags**转换一个示例文本文件生成。并且该示例文本文件同时被转换成HTML，作为此手册页的在线版本。
+
+单个源文件，多种格式的目标文件 - http://txt2tags.org
+
+
+= 标记 =[markup]
+
+```
+头部                源文件的前3行
+标题                = 文字 =
+带数字编号的标题    + 文字 +
+注释                % 注释内容
+隔离行              -----------------------...
+粗隔离行            =======================...
+图片                [filename.jpg]
+链接                [标签 url地址]
+
+粗体                **文字**
+斜体                //文字//
+下划线              __文字__
+删除线              --文字--
+等宽                ``文字``
+原始文本            ""文字""
+标记文本            ''文字''
+
+段落                文字
+引用                <TAB>文字
+列表                 - 文字
+带编号的列表        + 文字
+定义式列表          : 文字
+表格                | 单元格1 | 单元格2 | 单元格3...
+
+完全引用行          ``` 文字
+原文引用行          """ 文字
+标记引用行          ''' 文字
+
+完全引用块          ```
+                    多行文本
+                    ```
+原文引用块          """
+                    多行文本
+                    """
+标记引用块          '''
+                    多行文本
+                    '''
+```
+
+= 选项 =[options]
+
+:     **--art-chars**=//PATTERN//
+定义//PATTERN//为组成ASCII艺术字的字符模板，按以下顺序指定：
+拐角，边框，侧面，一级块，二级块，二级水平线，三级水平线，四级水平线，五级水平线。
+默认的模板是 +-|-==-^"。此选项只在输出目标格式为艺术ASCII时可用。
+
+: **-C**, **--config-file**=//FILE//
+从外部文件//FILE//中读入配置。配置项格式为//%!关键字:取值//，详情请见
+[配置 #settings] 小节。
+
+:     **--css-sugar**
+优化生成的嵌入CSS样式HTML/XHTML内容。移除标签属性，禁用样式属性，头部内容由H1、H2和H3组成，新建以下DIV：
+//#header//, //#body//, //.toc//。
+
+:     **--css-inside**
+在HTML/XHTML头部嵌入CSS文件的内容。使用``--style``指定读入的CSS文件。
+
+:     **--dump-config**
+输出所有配置项后退出。
+
+:     **--dump-source**
+输出文档源文件，并展开 (``%!include``) 中的内容。
+
+:     **--encoding**=//CODE//
+设置源文件转换成目标//CODE//时采用的字符集。例如 UTF-8 and iso-8859-1。
+
+:     **--gui**
+启动TK图形界面。
+
+: **-h**, **--help**
+输出帮助信息后退出。
+
+: **-H**, **--no-headers**
+输出内容时不显示头部、尾部信息，只显示主体内容。
+
+:     **--headers**
+输出内容时显示头部、尾部信息。此选项默认打开。
+
+:     **--height**=//NUM//
+设置输出内容为//NUM//行。此选项只在目标文档格式为艺术ASCII、且指定``--slides``时可用。
+
+: **-i**, **--infile**=//FILE//
+指定//FILE//为输入的源文件名。如果指定为'-'，则从STDIN读入源文本。
+
+:     **--mask-email**
+隐藏邮件地址，以防止垃圾邮件地址收割。移除@和.。邮件地址
+""foo@bar.com"" 被转换为 <foo (a) bar com>。
+
+: **-n**, **--enum-title**
+对所有标题行进行自动编号。显示的前缀为 1, 1.1, 1.1.1, ... 
+
+:     **--no-dump-config**
+取消``--dump-config``动作。
+
+:     **--no-dump-source**
+取消``--dump-source``动作。
+
+:     **--no-encoding**
+清除encoding设置。
+
+:     **--no-enum-title**
+关闭标题自动编号的设置。
+
+:     **--no-infile**
+清除之前所有infile的声明。
+
+:     **--no-targets**
+取消``--targets``动作。
+
+:     **--no-mask-email**
+关闭隐藏邮件地址的特性。
+
+:     **--no-outfile**
+清除之前所有outfile的声明。
+
+:     **--no-quiet**
+输出消息，关闭--quiet选项。
+
+:     **--no-rc**
+不读入用户配置文件~/.txt2tagsrc。
+
+:     **--no-slides**
+关闭演示文档特性。
+
+:     **--no-style**
+清除所有样式设置。
+
+:     **--no-toc**
+不输出目录。
+
+:     **--no-toc-only**
+关闭``--toc-only``动作。
+
+: **-o**, **--outfile**=//FILE//
+指定输出的文件名为//FILE//。指定'-'则将结果输出到STDOUT。
+
+: **-q**, **--quiet**
+安静模式。关闭除了错误之外的所有其他消息输出。
+
+:     **--rc**
+读入用户配置文件~/.txt2tagsrc。此选项默认打开。
+
+:     **--slides**
+指定输出格式为演示文档，此选项只在输出目标格式为艺术ASCII时可用。
+
+:     **--style**=//FILE//
+指定//FILE//作为目标文档的样式文件。用于指定HTML/XHTML文档使用的CSS文件，LaTeX文档使用的样式包。此选项可以多次使用，以指定多个样式文件。
+
+: **-t**, **--target**=//TYPE//
+指定输出目标文档的类型为//TYPE//。一些常用的类型为：//html//, //xhtml//, //tex//, //man//, //txt//。使用``--targets``选项查看所有支持的目标文档类型。
+
+:     **--targets**
+输出所有可用的目标文档类型后退出。
+
+:     **--toc**
+在输出内容中包含自动生成的目录信息，置于头部内容和主体内容之间。也可以
+通过`%%TOC``宏显示指定目录输出位置。 
+
+:     **--toc-level**=//NUM//
+指定目录最大深度为//NUM//。所有比//NUM//深的标题不会在目录中显示。
+
+:     **--toc-only**
+输出目录后退出。
+
+: **-v**, **--verbose**
+在文档转换过程中输出详细的信息。此选项可以多次使用，以提高输出的消息量。
+
+: **-V**, **--version**
+输出程序版本后退出。
+
+:     **--width**=//NUM//
+设置输出的宽度为//NUM//，此选项只在输出目标格式为艺术ASCII时可用。
+:
+
+= 源文件 =[source]
+
+源文件扩展名一般为//.t2t// (例如 ``myfile.t2t``)。可以在以下三个区域指定源文件：
+
+: **头部** (可选)
+源文件的前三行。如果不需要头部信息，则源文件首行留空。
+用于指定文档标题、作者、版本和日期信息。
+
+: **配置** (可选)
+紧接在头部信息之后（第4行或第2行），在主体内容之前结束。
+用于指定各种配置项，格式为``%!关键字:取值``。
+
+: **主体**
+从头部区域之后的第一个有效文本行开始（非注释或配置），直至源文件结束。
+用于指定文档内容。
+:
+
+= 配置 =[settings]
+
+配置用于定制**txt2tags**，与选项类似。配置项可以在源文件的配置区域，``~/.txt2tagsrc``文件，``--config-file``指定的外部文件中指定。
+
+: **%!target**
+配置输出目标文档类型，功能与``--target``相同。举例：
+``` %!target: html
+
+: **%!options(target)**
+设置该目标类型（target）文档的默认选项。必须以命令行的形式调用。举例：
+``` %!options(html): --toc --toc-level 3 --css-sugar
+
+: **%!includeconf**
+指定读入外部文件中包含的配置项，功能与``--config-file``相同。举例：
+``` %!includeconf: myconfig.t2t
+
+: **%!style**
+为目标文档指定样式文件，功能与``--style``相同。可以多次使用。举例：
+``` %!style: colors.css
+
+: **%!encoding**
+指定目标文档使用的字符集，功能与``--encoding``相同。举例：
+``` %!encoding: UTF-8
+
+: **%!preproc**
+指定查找/替换的过滤器，在txt2tags解析源文档之前，改变源文档的内容。格式采用Python正则表达式。举例：
+``` %!preproc:  "JJS"  "John J. Smith"
+
+: **%!postproc**
+指定查找/替换的过滤器，在txt2tags转换源文档之后，改变目标文档的内容。格式采用Python正则表达式。举例：
+``` %!postproc(html):  "<B>"  "<STRONG>"
+:
+
+如果同一个关键字多次出现，则以最后的取值为准（options, preproc and postproc是累计的除外）。异常关键字被忽略。解析顺序为：``~/.txt2tagsrc``，源文档的配置区域，``--config-file``命令行选项。
+
+
+= 指令 =[commands]
+
+指令在文本转换过程中生效。指令必须在源文件主体内容中指定。
+
+: **%!csv: file.csv**
+读入一个外部的CSV文件，作为表格。
+
+: **%!include: file.t2t**
+读入一个txt2tags文件。
+
+: **%!include: ""``file.txt``""**
+读入一个文本文件的内容，作为源文件的“原文引用块”。
+
+: **%!include: ""''file.html''""**
+读入一个标签文件内容到目标文档。
+:
+
+= 宏 =[macros]
+
+使用宏很容易在文档中插入动态内容。宏必须在源文件的主体内容中指定。
+除了``%%toc``，所有宏都能够用修饰符指定格式，例如``%Y``和``%f``。详情请查看txt2tags用户指南。
+
+: **""%%date""**
+插入当前日期。默认格式是``%%date(%Y%m%d)``，输出YYYYMMDD。
+
+: **""%%infile""**
+插入源文件所在路径。默认格式是``%%infile(%f)``。常用尾部链接举例：``[查看源文件 %%infile]``。
+
+: **""%%mtime""**
+插入源文件修改时间。默认格式是``%%date(%Y%m%d)``，输出YYYYMMDD。
+
+: **""%%outfile""**
+输出目标文档所在路径。默认格式是``%%outfile(%f)``。常用的自引用形式举例："这是 %%outfile 文件"。
+
+: **""%%toc""**
+指定目录信息所在位置。可以多次使用。注意同时指定``--toc``选项。
+:
+
+= 示例 =[examples]
+
+: ``txt2tags -t html file.t2t``
+
+转换成HTML，将转换的结果输出到文件file.html。
+
+: ``txt2tags -t html -o - file.t2t``
+
+转换成HTML，将转换的结果输出到STDOUT。
+
+: ``txt2tags -t html --toc file.t2t``
+
+转换成HTML，包含自动生成的目录。
+
+: ``txt2tags -t html --toc --toc-level 2 -n file.t2t``
+
+转换成HTML，并生成目录，目录深度为2，各项标题采用数字编号。
+
+: ``txt2tags --toc-only file.t2t``
+
+只输出目录，不进行实际的转换。
+
+: ``txt2tags -t html --css-sugar --style base.css --style ui.css file.t2t``
+
+转换成HTML，并预先设置采用CSS，同时指定引用两个外部CSS文件。
+
+: ``txt2tags -t art --slides --width 80 --height 25 -o - file.t2t | more``
+
+生成艺术ASCII演示文档，用于在80x25的屏幕或窗口上演示。
+
+: ``(echo ; echo "**bold**") | txt2tags -t html -H -``
+
+易用的单行指令，从STDIN读取内容做快速的测试。
+
+: ``txt2tags -t html -o - file.t2t | tidy > file.html``
+
+将转换的结果输出到STDOUT，然后调用外部程序优化结果代码，最终保存到文件。
+:
+
+= 文件 =[files]
+
+: ~/.txt2tagsrc
+用户默认配置文件。
+:
+
+= 环境 =[environment]
+
+: T2TCONFIG
+该值设置用户默认配置文件的绝对路径。
+:
+
+= 作者 =[author]
+
+原文由Aurelio Jargas <verde@aurelio.net>编写。
+
+中文版由Abby Pan <abbypan@gmail.com>翻译。
+
+= 缺陷 =[bugs]
+
+http://code.google.com/p/txt2tags/issues
+
+= 版权 =[copyright]
+
+Copyright (C) 2001-%%date(%Y) Aurelio Jargas, GNU GPL v2

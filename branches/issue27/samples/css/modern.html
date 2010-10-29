@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="modern.css">
+<TITLE>TXT2TAGS SAMPLE</TITLE>
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>TXT2TAGS SAMPLE</H1>
+<H2>Aurelio Jargas</H2>
+<H3>07/26/2008</H3>
+</DIV>
+
+<DIV CLASS="toc" ID="toc">
+  <UL>
+  <LI><A HREF="#toc1">Introduction</A>
+  <LI><A HREF="#toc2">Fonts and Beautifiers</A>
+    <UL>
+    <LI><A HREF="#toc3">Beautifiers</A>
+    <LI><A HREF="#toc4">Pre-Formatted Text</A>
+    <LI><A HREF="#toc5">More Cosmetics</A>
+    </UL>
+  <LI><A HREF="#toc6">Lists</A>
+    <UL>
+    <LI><A HREF="#toc7">Plain List</A>
+    <LI><A HREF="#toc8">Numbered List</A>
+    <LI><A HREF="#toc9">Definition List</A>
+    </UL>
+  <LI><A HREF="#toc10">Tables</A>
+  <LI><A HREF="#toc11">Special Entities</A>
+    <UL>
+    <LI><A HREF="#toc12">Images</A>
+    <LI><A HREF="#toc13">Other</A>
+    </UL>
+  </UL>
+
+</DIV>
+<DIV CLASS="body" ID="body">
+<A NAME="toc1"></A>
+<H1>Introduction</H1>
+<P>
+Welcome to the txt2tags sample file.
+</P>
+<P>
+Here you have examples and a brief explanation of all
+marks.
+</P>
+<P>
+The first 3 lines of the this file are used as headers,
+on the following format:
+</P>
+<PRE>
+line1: document title
+line2: author name, email
+line3: date, version
+</PRE>
+<P></P>
+<P>
+Lines with balanced equal signs = around are titles.
+</P>
+<A NAME="toc2"></A>
+<H1>Fonts and Beautifiers</H1>
+<P>
+We have two sets of fonts:
+</P>
+<P>
+The NORMAL type that can be improved with beautifiers.
+</P>
+<P>
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+</P>
+<P>
+We will now enter on a subtitle...
+</P>
+<A NAME="toc3"></A>
+<H2>Beautifiers</H2>
+<P>
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+</P>
+<P>
+We use double *, /, - and _ to represent <B>bold</B>,
+<I>italic</I>, <S>strike</S> and <U>underline</U>.
+</P>
+<P>
+The <B><I>bold italic</I></B> style is also supported as a
+combination.
+</P>
+<A NAME="toc4"></A>
+<H2>Pre-Formatted Text</H2>
+<P>
+We can put a code sample or other pre-formatted text:
+</P>
+<PRE>
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+</PRE>
+<P></P>
+<P>
+And also, it's easy to put a one line pre-formatted
+text:
+</P>
+<PRE>
+prompt$ ls /etc
+</PRE>
+<P></P>
+<P>
+Or use <CODE>pre-formatted</CODE> inside sentences.
+</P>
+<A NAME="toc5"></A>
+<H2>More Cosmetics</H2>
+<P>
+Special entities like email (<A HREF="mailto:duh@somewhere.com">duh@somewhere.com</A>) and
+URL (<A HREF="http://www.duh.com">http://www.duh.com</A>) are detected automagically,
+as long as the horizontal line:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+^ thin or large v
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<P>
+You can also specify an <A HREF="http://duh.org">explicit link</A>
+with label.
+</P>
+<P>
+And remember,
+</P>
+	<BLOCKQUOTE>
+	A TAB in front of the line does a quotation.
+		<BLOCKQUOTE>
+		More TABs, more depth (if allowed).
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Nice.
+</P>
+<A NAME="toc6"></A>
+<H1>Lists</H1>
+<P>
+A list of items is natural, just putting a <B>dash</B> or
+a <B>plus</B> at the beginning of the line.
+</P>
+<A NAME="toc7"></A>
+<H2>Plain List</H2>
+<P>
+The dash is the default list identifier. For sublists,
+just add <B>spaces</B> at the beginning of the line. More
+spaces, more sublists.
+</P>
+<UL>
+<LI>earth
+  <UL>
+  <LI>america
+    <UL>
+    <LI>south america
+      <UL>
+      <LI>brazil
+        <UL>
+        <LI>how deep can i go?
+        </UL>
+      </UL>
+    </UL>
+  <LI>europe
+    <UL>
+    <LI>lots of countries
+    </UL>
+  </UL>
+<LI>mars
+  <UL>
+  <LI>who knows?
+  </UL>
+</UL>
+
+<P>
+The list ends with <B>two</B> consecutive blank lines.
+</P>
+<A NAME="toc8"></A>
+<H2>Numbered List</H2>
+<P>
+The same rules as the plain list, just a different
+identifier (plus).
+</P>
+<OL>
+<LI>one
+<LI>two
+<LI>three
+  <UL>
+  <LI>mixed lists!
+  <LI>what a mess
+    <OL>
+    <LI>counting again
+    <LI>...
+    </OL>
+  </UL>
+<LI>four
+</OL>
+
+<A NAME="toc9"></A>
+<H2>Definition List</H2>
+<P>
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+</P>
+<DL>
+<DT>orange</DT><DD>
+  a yellow fruit
+<DT>apple</DT><DD>
+  a green or red fruit
+<DT>other fruits</DT><DD>
+  <UL>
+  <LI>wee!
+  <LI>mixing lists
+    <OL>
+    <LI>again!
+    <LI>and again!
+    </OL>
+  </UL>
+</DL>
+
+<A NAME="toc10"></A>
+<H1>Tables</H1>
+<P>
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR>
+<TH>heading 1</TH>
+<TH>heading 2</TH>
+<TH>heading 3</TH>
+</TR>
+<TR>
+<TD>cell 1.1</TD>
+<TD ALIGN="center">cell 1.2</TD>
+<TD ALIGN="right">cell 1.3</TD>
+</TR>
+<TR>
+<TD>cell 2.1</TD>
+<TD ALIGN="center">cell 2.2</TD>
+<TD ALIGN="right">cell 2.3</TD>
+</TR>
+</TABLE>
+
+<P>
+Without the last pipe, no border:
+</P>
+<TABLE ALIGN="center">
+<TR>
+<TH>heading 1</TH>
+<TH>heading 2</TH>
+<TH>heading 3</TH>
+</TR>
+<TR>
+<TD>cell 1.1</TD>
+<TD ALIGN="center">cell 1.2</TD>
+<TD ALIGN="right">cell 1.3</TD>
+</TR>
+<TR>
+<TD>cell 2.1</TD>
+<TD ALIGN="center">cell 2.2</TD>
+<TD ALIGN="right">cell 2.3</TD>
+</TR>
+</TABLE>
+
+<A NAME="toc11"></A>
+<H1>Special Entities</H1>
+<P>
+Because things were too simple.
+</P>
+<A NAME="toc12"></A>
+<H2>Images</H2>
+<P>
+The image mark is as simple as it can be: <CODE>[filename]</CODE>.
+</P>
+                      <center><IMG ALIGN="middle" SRC="../img/photo.jpg" BORDER="0" ALT=""></center>  
+<UL>
+<LI>The filename must end in PNG, JPG, GIF, or similar.
+<LI>No spaces inside the brackets!
+</UL>
+
+<A NAME="toc13"></A>
+<H2>Other</H2>
+<P>
+The handy <CODE>%%date</CODE> macro expands to the current date.
+</P>
+<P>
+So today is 20080726 on the ISO <CODE>YYYYMMDD</CODE> format.
+</P>
+<P>
+You can also specify the date format with the %? flags,
+as <CODE>%%date(%m-%d-%Y)</CODE> which gives: 07-26-2008.
+</P>
+<P>
+That's all for now.
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> (<A HREF="-">-</A>)
+</P>
+</DIV>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -\-style modern.css -o modern.html -\-css-sugar -\-toc -t html - -->
+</BODY></HTML>

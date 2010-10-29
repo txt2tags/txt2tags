@@ -1,0 +1,1757 @@
+<?xml version="1.0"
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Txt2tags Markup Rules</title>
+<meta name="generator" content="http://txt2tags.org" />
+
+<!-- Included /a/pessoal/sourceforge.net/txt2tags/src/doc/English/rules/rules.css -->
+<style type="text/css">
+body {
+	margin:2em;
+}
+a {
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+.toc {
+	margin-left:2em;
+}
+.section {
+	margin-top:2em;
+	margin-bottom:1em;
+	border:1px solid black;
+	text-align:center;
+	background-color:#ddd;
+}
+table {
+	empty-cells:hide;
+}	
+td {
+	padding:4px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header" id="header">
+<h1>Txt2tags Markup Rules</h1>
+</div>
+
+<div class="body" id="body">
+<p>
+This document describes all the details about each txt2tags mark.
+The target audience are <b>experienced</b> users. You may find it
+useful if you want to master the marks or solve a specific problem
+about a mark.
+</p>
+<p>
+If you are new to txt2tags or just want to know which are the
+available marks, please read the <a href="markup.html">Markup Demo</a>.
+</p>
+<p>
+Note 1: This document is generated directly from the txt2tags
+test-suite. All the rules mentioned here are 100% in sync with the
+current program code.
+</p>
+<p>
+Note 2: A good practice is to consult <a href="rules.t2t">the sources</a> when
+reading, to see how the texts were made.
+</p>
+<p>
+Table of Contents:
+</p>
+<div class="toc" id="toc">
+  <ul>
+  <li><a href="#paragraph">Paragraph</a>
+    <ul>
+    <li><a href="#toc2">Syntax: Lines grouped together</a>
+    </li>
+    <li><a href="#toc3">Syntax: Leading and trailing spaces are ignored</a>
+    </li>
+    <li><a href="#toc4">Syntax: A comment don't close a paragraph</a>
+    </li>
+    <li><a href="#toc5">Closing: EOF closes the open paragraph</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#comment">Comment</a>
+    <ul>
+    <li><a href="#toc7">Syntax: The % character at the line beginning (column 1)</a>
+    </li>
+    <li><a href="#toc8">Syntax: Area (block)</a>
+    </li>
+    <li><a href="#toc9">Syntax: Area (block) with trailing spaces</a>
+    </li>
+    <li><a href="#toc10">Invalid: The % in any other position</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#line">Line</a>
+    <ul>
+    <li><a href="#toc12">Syntax: At least 20 chars of - = _</a>
+    </li>
+    <li><a href="#toc13">Syntax: Any kind of mixing is allowed</a>
+    </li>
+    <li><a href="#toc14">Syntax: Leading and/or trailing spaces are allowed</a>
+    </li>
+    <li><a href="#toc15">Invalid: Less than 20 chars (but strike matches)</a>
+    </li>
+    <li><a href="#toc16">Invalid: Strange chars (but strike matches)</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#inline">Inline</a>
+    <ul>
+    <li><a href="#toc18">Syntax: Marks are greedy and must be "glued" with contents</a>
+    </li>
+    <li><a href="#toc19">Syntax: Repetition is greedy</a>
+    </li>
+    <li><a href="#toc20">Invalid: No contents</a>
+    </li>
+    <li><a href="#toc21">Invalid: Contents not "glued" with marks</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#link">Link</a>
+    <ul>
+    <li><a href="#toc23">Syntax: E-mail</a>
+    </li>
+    <li><a href="#toc24">Syntax: E-mail with form data</a>
+    </li>
+    <li><a href="#toc25">Syntax: URL</a>
+    </li>
+    <li><a href="#toc26">Syntax: URL with anchor</a>
+    </li>
+    <li><a href="#toc27">Syntax: URL with form data</a>
+    </li>
+    <li><a href="#toc28">Syntax: URL with form data and anchor</a>
+    </li>
+    <li><a href="#toc29">Syntax: URL with login data</a>
+    </li>
+    <li><a href="#toc30">Syntax: URL with login, form and anchor</a>
+    </li>
+    <li><a href="#toc31">Syntax: URL with label</a>
+    </li>
+    <li><a href="#toc32">Syntax: URL with label (trailing spaces are discarded, leading are maintained)</a>
+    </li>
+    <li><a href="#toc33">Syntax: URL with label, stressing</a>
+    </li>
+    <li><a href="#toc34">Syntax: Link with label for local files</a>
+    </li>
+    <li><a href="#toc35">Syntax: Another link as a label</a>
+    </li>
+    <li><a href="#toc36">Syntax: URL with funny chars</a>
+    </li>
+    <li><a href="#toc37">Test: Various per line</a>
+    </li>
+    <li><a href="#toc38">Feature: Guessed link, adding protocol automatically</a>
+    </li>
+    <li><a href="#toc39">Invalid: Trailing space on link</a>
+    </li>
+    <li><a href="#toc40">Invalid: Label with ] char (use postproc)</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#image">Image</a>
+    <ul>
+    <li><a href="#toc42">Syntax: Image name inside brackets: [img]</a>
+    </li>
+    <li><a href="#toc43">Syntax: Image pointing to a link: [[img] link]</a>
+    </li>
+    <li><a href="#toc44">Align: Image position is preserved when inside paragraph</a>
+    </li>
+    <li><a href="#toc45">Align: Image alone with spaces around is aligned</a>
+    </li>
+    <li><a href="#toc46">Test: Two glued images with no spaces (left &amp; right)</a>
+    </li>
+    <li><a href="#toc47">Test: Various per line</a>
+    </li>
+    <li><a href="#toc48">Invalid: Spaces inside are not allowed</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#macro">Macro</a>
+    <ul>
+    <li><a href="#toc50">Syntax: Macro without formatting string</a>
+    </li>
+    <li><a href="#toc51">Syntax: Macro name is case insensitive</a>
+    </li>
+    <li><a href="#toc52">Syntax: Macro with formatting string</a>
+    </li>
+    <li><a href="#toc53">Syntax: Leading and trailing spaces are preserved</a>
+    </li>
+    <li><a href="#toc54">Test: Expansion of the percent char</a>
+    </li>
+    <li><a href="#toc55">Test: Various per line, glued</a>
+    </li>
+    <li><a href="#toc56">Test: Path formatters</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#numtitle">Numbered Title</a>
+  </li>
+  <li><a href="#title">Title</a>
+    <ul>
+    <li><a href="#toc59">Syntax: Balanced equal signs (from 1 to 5)</a>
+    </li>
+    </ul>
+  </li>
+
+    <ul>
+
+    </li>
+    <li><a href="#toc62">Label: Between brackets, alphanumeric [A-Za-z0-9_-]</a>
+    </li>
+    </ul>
+  </li>
+
+    <ul>
+
+    </li>
+    <li><a href="#toc65">Syntax: Spaces around and/or inside are allowed (and ignored)</a>
+    </li>
+    <li><a href="#toc66">Invalid: Unbalanced equal signs</a>
+    </li>
+    <li><a href="#toc67">Invalid: Level deeper than 5</a>
+    </li>
+    <li><a href="#toc68">Invalid: Space between title and label</a>
+    </li>
+    <li><a href="#toc69">Invalid: Space inside label</a>
+    </li>
+    <li><a href="#toc70">Invalid: Strange chars inside label</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#quote">Quote</a>
+    <ul>
+    <li><a href="#toc72">Syntax: TAB defines quote</a>
+    </li>
+    <li><a href="#toc73">Nesting: Creating deeper quotes</a>
+    </li>
+    <li><a href="#toc74">Nesting: Reverse nesting works</a>
+    </li>
+    <li><a href="#toc75">Nesting: Random count</a>
+    </li>
+    <li><a href="#toc76">Nesting: When not supported</a>
+    </li>
+    <li><a href="#toc77">Syntax: Spaces after TAB</a>
+    </li>
+    <li><a href="#toc78">Invalid: Spaces before TAB</a>
+    </li>
+    <li><a href="#toc79">Invalid: Paragraphs inside</a>
+    </li>
+    <li><a href="#toc80">Closing: EOF closes the open block</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#raw">Raw</a>
+  </li>
+  <li><a href="#tagged">Tagged</a>
+  </li>
+  <li><a href="#verbatim">Verbatim</a>
+    <ul>
+    <li><a href="#toc84">Syntax: A single line</a>
+    </li>
+    <li><a href="#toc85">Syntax: A single line with leading spaces</a>
+    </li>
+    <li><a href="#toc86">Syntax: Area (block)</a>
+    </li>
+    <li><a href="#toc87">Syntax: Area (block) with trailing spaces</a>
+    </li>
+    <li><a href="#toc88">Invalid: No space between mark and contents</a>
+    </li>
+    <li><a href="#toc89">Invalid: Leading spaces on block marks</a>
+    </li>
+    <li><a href="#toc90">Closing: EOF closes the open block</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#deflist">Definition List</a>
+  </li>
+  <li><a href="#numlist">Numbered List</a>
+  </li>
+  <li><a href="#list">List</a>
+    <ul>
+    <li><a href="#toc94">Items: Prefixed by hyphen</a>
+    </li>
+    <li><a href="#toc95">Items: Free leading spacing (indentation)</a>
+    </li>
+    <li><a href="#toc96">Items: Vertical spacing between items</a>
+    </li>
+    <li><a href="#toc97">Items: Exactly ONE space after the hyphen</a>
+    </li>
+    <li><a href="#toc98">Items: Catchy cases</a>
+    </li>
+    <li><a href="#toc99">Nesting: Creating sublists</a>
+    </li>
+    <li><a href="#toc100">Nesting: Free leading spacing (indentation)</a>
+    </li>
+    <li><a href="#toc101">Nesting: Maximum depth</a>
+    </li>
+    <li><a href="#toc102">Nesting: Reverse doesn't work</a>
+    </li>
+    <li><a href="#toc103">Nesting: Going deeper and back</a>
+    </li>
+    <li><a href="#toc104">Nesting: Vertical spacing between lists</a>
+    </li>
+    <li><a href="#toc105">Nesting: Messing up</a>
+    </li>
+    <li><a href="#toc106">Closing: Two (not so) empty lines</a>
+    </li>
+    <li><a href="#toc107">Closing: Empty item closes current (sub)list</a>
+    </li>
+    <li><a href="#toc108">Closing: EOF closes the lists</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#table">Table</a>
+    <ul>
+    <li><a href="#toc110">Syntax: Lines starting with a pipe |</a>
+    </li>
+    <li><a href="#toc111">Syntax: Extra pipes separate cells</a>
+    </li>
+    <li><a href="#toc112">Syntax: With a trailing pipe, make border</a>
+    </li>
+    <li><a href="#toc113">Syntax: Table lines starting with double pipe are heading</a>
+    </li>
+    <li><a href="#toc114">Align: Spaces before the leading pipe centralize the table</a>
+    </li>
+    <li><a href="#toc115">Align: Spaces inside the cell denote its alignment</a>
+    </li>
+    <li><a href="#toc116">Span: Column span is defined by extra pipes at cell closing</a>
+    </li>
+    <li><a href="#toc117">Test: Empty cells are placed as expected</a>
+    </li>
+    <li><a href="#toc118">Test: Lines with different number of cells</a>
+    </li>
+    <li><a href="#toc119">Test: Empty cells + Span + Messy cell number = Fun!</a>
+    </li>
+    <li><a href="#toc120">Test: Lots of cells at the same line</a>
+    </li>
+    <li><a href="#toc121">Test: Empty lines</a>
+    </li>
+    <li><a href="#toc122">Invalid: There must be at least one space around the pipe</a>
+    </li>
+    <li><a href="#toc123">Invalid: You must use spaces, not TABs</a>
+    </li>
+    </ul>
+  </li>
+  </ul>
+
+</div>
+<p></p>
+<hr class="light" />
+<p></p>
+<a id="paragraph" name="paragraph"></a>
+<h1 class="section">Paragraph</h1>
+<a id="toc2" name="toc2"></a>
+<h2>Syntax: Lines grouped together</h2>
+<p>
+A paragraph is composed by one or more lines.
+A blank line (or a table, or a list) ends the
+current paragraph.
+</p>
+<a id="toc3" name="toc3"></a>
+<h2>Syntax: Leading and trailing spaces are ignored</h2>
+<p>
+   Leading and trailing spaces are ignored.   
+</p>
+<a id="toc4" name="toc4"></a>
+<h2>Syntax: A comment don't close a paragraph</h2>
+<p>
+A comment line can be placed inside a paragraph.
+It will not affect it.
+</p>
+<a id="toc5" name="toc5"></a>
+<h2>Closing: EOF closes the open paragraph</h2>
+<p>
+The end of the file (EOF) closes the
+currently open paragraph.
+</p>
+<a id="comment" name="comment"></a>
+<h1 class="section">Comment</h1>
+<a id="toc7" name="toc7"></a>
+<h2>Syntax: The % character at the line beginning (column 1)</h2>
+<a id="toc8" name="toc8"></a>
+<h2>Syntax: Area (block)</h2>
+<a id="toc9" name="toc9"></a>
+<h2>Syntax: Area (block) with trailing spaces</h2>
+<a id="toc10" name="toc10"></a>
+<h2>Invalid: The % in any other position</h2>
+<p>
+ % not on the line beginning (at column 2)
+</p>
+<p>
+some text     % half line comments are not allowed
+</p>
+<a id="line" name="line"></a>
+<h1 class="section">Line</h1>
+<a id="toc12" name="toc12"></a>
+<h2>Syntax: At least 20 chars of - = _</h2>
+<hr class="light" />
+<hr class="heavy" />
+<hr class="light" />
+<a id="toc13" name="toc13"></a>
+<h2>Syntax: Any kind of mixing is allowed</h2>
+<p>
+Free mixing is allowed to make the line,
+but the first char is the identifier for
+the difference between separator ( - _ )
+and strong ( = ) lines.
+</p>
+<hr class="heavy" />
+<hr class="light" />
+<hr class="heavy" />
+<hr class="heavy" />
+<hr class="light" />
+<a id="toc14" name="toc14"></a>
+<h2>Syntax: Leading and/or trailing spaces are allowed</h2>
+<hr class="light" />
+<hr class="light" />
+<hr class="light" />
+<a id="toc15" name="toc15"></a>
+<h2>Invalid: Less than 20 chars (but strike matches)</h2>
+<p>
+<s>-----</s>
+</p>
+<a id="toc16" name="toc16"></a>
+<h2>Invalid: Strange chars (but strike matches)</h2>
+<p>
+<s>-----</s> <s>------</s>
+</p>
+<p>
+<s>-----</s>+<s>------</s>
+</p>
+<p>
+( <s>----------------</s> )
+</p>
+<a id="inline" name="inline"></a>
+<h1 class="section">Inline</h1>
+<a id="toc18" name="toc18"></a>
+<h2>Syntax: Marks are greedy and must be "glued" with contents</h2>
+<p>
+GLUED: The contents must be glued with the marks, no spaces
+between them. Right after the opening mark there must be a
+non-blank character, as well as right before the closing mark.
+</p>
+<p>
+GREEDY: If the contents boundary character is the same as
+the mark character, it is considered contents, not mark.
+So ****bold**** turns to &lt;B&gt;**bold**&lt;/B&gt; in HTML.
+</p>
+<p>
+{ <b>b</b>        }{ <i>i</i>        }{ <u>u</u>        }{ <s>s</s>        }{ <code>m</code>        }{ r       }{ t }<br />
+{ <b>bo</b>       }{ <i>it</i>       }{ <u>un</u>       }{ <s>st</s>       }{ <code>mo</code>       }{ ra      }{ tg }<br />
+{ <b>bold</b>     }{ <i>ital</i>     }{ <u>undr</u>     }{ <s>strk</s>     }{ <code>mono</code>     }{ raw     }{ tggd }<br />
+{ <b>bo ld</b>    }{ <i>it al</i>    }{ <u>un dr</u>    }{ <s>st rk</s>    }{ <code>mo no</code>    }{ r aw    }{ tg gd }<br />
+{ <b>bo * ld</b>  }{ <i>it / al</i>  }{ <u>un _ dr</u>  }{ <s>st - rk</s>  }{ <code>mo ` no</code>  }{ r " aw  }{ tg ' gd }<br />
+{ <b>bo **ld</b>  }{ <i>it //al</i>  }{ <u>un __dr</u>  }{ <s>st --rk</s>  }{ <code>mo ``no</code>  }{ r ""aw  }{ tg ''gd }<br />
+{ <b>bo ** ld</b> }{ <i>it // al</i> }{ <u>un __ dr</u> }{ <s>st -- rk</s> }{ <code>mo `` no</code> }{ r "" aw }{ tg '' gd }<br />
+{ <b>**bold**</b> }{ <i>//ital//</i> }{ <u>__undr__</u> }{ <s>--strk--</s> }{ <code>``mono``</code> }{ ""raw"" }{ ''tggd'' }<br />
+{ <b>*bold*</b>   }{ <i>/ital/</i>   }{ <u>_undr_</u>   }{ <s>-strk-</s>   }{ <code>`mono`</code>   }{ "raw"   }{ 'tggd' }<br />
+</p>
+<a id="toc19" name="toc19"></a>
+<h2>Syntax: Repetition is greedy</h2>
+<p>
+When the mark character is repeated many times,
+the contents are expanded to the largest possible.
+Thats why they are greedy, the outer marks are
+the ones used.
+</p>
+<p>
+{  <b>*</b>       }{  <i>/</i>       }{  <u>_</u>       }{  <s>-</s>       }{  <code>`</code>       }{ "       }{ ' }<br />
+{  <b>**</b>      }{  <i>//</i>      }{  <u>__</u>      }{  <s>--</s>      }{  <code>``</code>      }{ ""      }{ '' }<br />
+{  <b>***</b>     }{  <i>///</i>     }{  <u>___</u>     }{  <s>---</s>     }{  <code>```</code>     }{ """     }{ ''' }<br />
+{  <b>****</b>    }{  <i>////</i>    }{  <u>____</u>    }{  <s>----</s>    }{  <code>````</code>    }{ """"    }{ '''' }<br />
+{  <b>*****</b>   }{  <i>/////</i>   }{  <u>_____</u>   }{  <s>-----</s>   }{  <code>`````</code>   }{ """""   }{ ''''' }<br />
+{  <b>******</b>  }{  <i>//////</i>  }{  <u>______</u>  }{  <s>------</s>  }{  <code>``````</code>  }{ """"""  }{ '''''' }<br />
+</p>
+<a id="toc20" name="toc20"></a>
+<h2>Invalid: No contents</h2>
+<p>
+{     ****     }{     ////     }{     ____     }{     ----     }{     ````     }{    """"     }{    '''' }<br />
+{     ** **    }{     // //    }{     __ __    }{     -- --    }{     `` ``    }{    "" ""    }{    '' '' }<br />
+</p>
+<a id="toc21" name="toc21"></a>
+<h2>Invalid: Contents not "glued" with marks</h2>
+<p>
+Spaces between the marks and the contents in any side
+invalidate the mark.
+</p>
+<p>
+{  ** bold**   }{  // ital//   }{  __ undr__   }{  -- strk--   }{  `` mono``   }{ "" raw""    }{ '' tggd'' }<br />
+{  **bold **   }{  //ital //   }{  __undr __   }{  --strk --   }{  ``mono ``   }{ ""raw ""    }{ ''tggd '' }<br />
+{  ** bold **  }{  // ital //  }{  __ undr __  }{  -- strk --  }{  `` mono ``  }{ "" raw ""   }{ '' tggd '' }<br />
+</p>
+<a id="link" name="link"></a>
+<h1 class="section">Link</h1>
+<a id="toc23" name="toc23"></a>
+<h2>Syntax: E-mail</h2>
+<p>
+<a href="mailto:user@domain.com">user@domain.com</a><br />
+<a href="mailto:user@domain.com">user@domain.com</a>.<br />
+<a href="mailto:user@domain.com">user@domain.com</a>. any text.<br />
+any text: <a href="mailto:user@domain.com">user@domain.com</a>. any text.<br />
+<a href="mailto:user@domain.com">label</a><br />
+</p>
+<a id="toc24" name="toc24"></a>
+<h2>Syntax: E-mail with form data</h2>
+<p>
+<a href="mailto:user@domain.com?subject=bla">user@domain.com?subject=bla</a><br />
+<a href="mailto:user@domain.com?subject=bla.">user@domain.com?subject=bla.</a><br />
+<a href="mailto:user@domain.com?subject=bla,">user@domain.com?subject=bla,</a><br />
+<a href="mailto:user@domain.com?subject=bla&amp;cc=otheruser@domain.com">user@domain.com?subject=bla&amp;cc=otheruser@domain.com</a><br />
+<a href="mailto:user@domain.com?subject=bla&amp;cc=otheruser@domain.com.">user@domain.com?subject=bla&amp;cc=otheruser@domain.com.</a><br />
+<a href="mailto:user@domain.com?subject=bla&amp;cc=otheruser@domain.com,">user@domain.com?subject=bla&amp;cc=otheruser@domain.com,</a><br />
+<a href="mailto:user@domain.com?subject=bla&amp;cc=otheruser@domain.com">label</a>.<br />
+<a href="mailto:user@domain.com?subject=bla&amp;cc=otheruser@domain.com.">label</a>.<br />
+</p>
+<a id="toc25" name="toc25"></a>
+<h2>Syntax: URL</h2>
+<p>
+<a href="http://www.domain.com">http://www.domain.com</a><br />
+<a href="http://www.domain.com/dir/">http://www.domain.com/dir/</a><br />
+<a href="http://www.domain.com/dir///">http://www.domain.com/dir///</a><br />
+<a href="http://www.domain.com">http://www.domain.com</a>.<br />
+<a href="http://www.domain.com">http://www.domain.com</a>,<br />
+<a href="http://www.domain.com">http://www.domain.com</a>. any text.<br />
+<a href="http://www.domain.com">http://www.domain.com</a>, any text.<br />
+<a href="http://www.domain.com/dir/">http://www.domain.com/dir/</a>. any text.<br />
+any text: <a href="http://www.domain.com">http://www.domain.com</a>. any text.<br />
+any text: <a href="http://www.domain.com/dir/">http://www.domain.com/dir/</a>. any text.<br />
+any text: <a href="http://www.domain.com/dir/index.html">http://www.domain.com/dir/index.html</a>. any text.<br />
+any text: <a href="http://www.domain.com/dir/index.html">http://www.domain.com/dir/index.html</a>, any text.<br />
+</p>
+<a id="toc26" name="toc26"></a>
+<h2>Syntax: URL with anchor</h2>
+<p>
+<a href="http://www.domain.com/dir/#anchor">http://www.domain.com/dir/#anchor</a><br />
+<a href="http://www.domain.com/dir/index.html#anchor">http://www.domain.com/dir/index.html#anchor</a><br />
+<a href="http://www.domain.com/dir/index.html#anchor.">http://www.domain.com/dir/index.html#anchor.</a><br />
+<a href="http://www.domain.com/dir/#anchor.">http://www.domain.com/dir/#anchor.</a> any text.<br />
+<a href="http://www.domain.com/dir/index.html#anchor.">http://www.domain.com/dir/index.html#anchor.</a> any text.<br />
+any text: <a href="http://www.domain.com/dir/#anchor.">http://www.domain.com/dir/#anchor.</a> any text.<br />
+any text: <a href="http://www.domain.com/dir/index.html#anchor.">http://www.domain.com/dir/index.html#anchor.</a> any text.<br />
+</p>
+<a id="toc27" name="toc27"></a>
+<h2>Syntax: URL with form data</h2>
+<p>
+<a href="http://domain.com?a=a@a.a&amp;b=a+b+c.">http://domain.com?a=a@a.a&amp;b=a+b+c.</a><br />
+<a href="http://domain.com?a=a@a.a&amp;b=a+b+c,">http://domain.com?a=a@a.a&amp;b=a+b+c,</a><br />
+<a href="http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.">http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.</a><br />
+<a href="http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@.">http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@.</a><br />
+</p>
+<a id="toc28" name="toc28"></a>
+<h2>Syntax: URL with form data and anchor</h2>
+<p>
+<a href="http://domain.com?a=a@a.a&amp;b=a+b+c.#anchor">http://domain.com?a=a@a.a&amp;b=a+b+c.#anchor</a><br />
+<a href="http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.#anchor">http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.#anchor</a><br />
+<a href="http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@.#anchor">http://domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@.#anchor</a><br />
+</p>
+<a id="toc29" name="toc29"></a>
+<h2>Syntax: URL with login data</h2>
+<p>
+<a href="http://user:password@domain.com/bla.html">http://user:password@domain.com/bla.html</a>.<br />
+<a href="http://user:password@domain.com/dir/">http://user:password@domain.com/dir/</a>.<br />
+<a href="http://user:password@domain.com">http://user:password@domain.com</a>.<br />
+<a href="http://user:@domain.com">http://user:@domain.com</a>.<br />
+<a href="http://user@domain.com">http://user@domain.com</a>.<br />
+</p>
+<a id="toc30" name="toc30"></a>
+<h2>Syntax: URL with login, form and anchor</h2>
+<p>
+<a href="http://user:password@domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.#anchor">http://user:password@domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.#anchor</a><br />
+<a href="http://user:password@domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@#anchor">http://user:password@domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c@#anchor</a><br />
+</p>
+<a id="toc31" name="toc31"></a>
+<h2>Syntax: URL with label</h2>
+<p>
+<a href="http://www.domain.com">label</a><br />
+</p>
+<a id="toc32" name="toc32"></a>
+<h2>Syntax: URL with label (trailing spaces are discarded, leading are maintained)</h2>
+<p>
+<a href="http://www.domain.com">  label</a><br />
+<a href="http://www.domain.com">label</a><br />
+</p>
+<a id="toc33" name="toc33"></a>
+<h2>Syntax: URL with label, stressing</h2>
+<p>
+<a href="http://www.domain.com/dir/index.html#anchor.">anchor</a><br />
+<a href="http://user:password@domain.com/bla.html">login</a><br />
+<a href="http://www.domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.">form</a><br />
+<a href="http://www.domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.#anchor">form &amp; anchor</a><br />
+<a href="http://user:password@domain.com/bla.cgi?a=a@a.a&amp;b=a+b+c.">login &amp; form</a><br />
+</p>
+<a id="toc34" name="toc34"></a>
+<h2>Syntax: Link with label for local files</h2>
+<p>
+<a href="..">local link up</a><br />
+<a href="bla.html">local link file</a><br />
+<a href="#anchor">local link anchor</a><br />
+<a href="bla.html#anchor">local link file/anchor</a><br />
+<a href="bla.html#anchor.">local link file/anchor</a><br />
+<a href="abc.gif">local link img</a><br />
+</p>
+<a id="toc35" name="toc35"></a>
+<h2>Syntax: Another link as a label</h2>
+<p>
+<a href="http://www.domain.com">www.fake.com</a><br />
+</p>
+<a id="toc36" name="toc36"></a>
+<h2>Syntax: URL with funny chars</h2>
+<p>
+<a href="http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm">http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm</a><br />
+<a href="http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-">http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-</a><br />
+<a href="http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-#anchor_-1%.">http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-#anchor_-1%.</a><br />
+<a href="http://foo._user-9:pass!#$%&amp;*()+word@domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-#anchor_-1%.">http://foo._user-9:pass!#$%&amp;*()+word@domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&amp;b=+.@*_-#anchor_-1%.</a><br />
+</p>
+<a id="toc37" name="toc37"></a>
+<h2>Test: Various per line</h2>
+<p>
+<a href="http://L1.com">http://L1.com</a> ! <a href="mailto:L2@www.com">L2@www.com</a> ! <a href="http://www.com">L3</a> ! <a href="mailto:w@ww.com">L4</a> ! <a href="http://www.L5.com">www.L5.com</a><br />
+</p>
+<a id="toc38" name="toc38"></a>
+<h2>Feature: Guessed link, adding protocol automatically</h2>
+<p>
+<a href="http://www.domain.com">www.domain.com</a><br />
+<a href="http://www2.domain.com">www2.domain.com</a><br />
+<a href="ftp://ftp.domain.com">ftp.domain.com</a><br />
+<a href="http://WWW.DOMAIN.COM">WWW.DOMAIN.COM</a><br />
+<a href="ftp://FTP.DOMAIN.COM">FTP.DOMAIN.COM</a><br />
+<a href="http://www.domain.com">label</a><br />
+<a href="ftp://ftp.domain.com">label</a><br />
+<a href="http://WWW.DOMAIN.COM">label</a><br />
+<a href="ftp://FTP.DOMAIN.COM">label</a><br />
+</p>
+<a id="toc39" name="toc39"></a>
+<h2>Invalid: Trailing space on link</h2>
+<p>
+[label <a href="http://www.domain.com">www.domain.com</a> ]
+</p>
+<a id="toc40" name="toc40"></a>
+<h2>Invalid: Label with ] char (use postproc)</h2>
+<p>
+[label] <a href="http://www.domain.com">www.domain.com</a>]
+</p>
+<a id="image" name="image"></a>
+<h1 class="section">Image</h1>
+<a id="toc42" name="toc42"></a>
+<h2>Syntax: Image name inside brackets: [img]</h2>
+<p>
+<img align="middle" src="../img/t2tpowered.png" border="0" alt=""/>
+</p>
+<a id="toc43" name="toc43"></a>
+<h2>Syntax: Image pointing to a link: [[img] link]</h2>
+<p>
+<a href="http://txt2tags.org"><img align="middle" src="../img/t2tpowered.png" border="0" alt=""/></a><br />
+</p>
+<a id="toc44" name="toc44"></a>
+<h2>Align: Image position is preserved when inside paragraph</h2>
+<p>
+<img align="left" src="../img/t2tpowered.png" border="0" alt=""/> Image at the line beginning.
+</p>
+<p>
+Image in the middle <img align="middle" src="../img/t2tpowered.png" border="0" alt=""/> of the line.
+</p>
+<p>
+Image at the line end. <img align="right" src="../img/t2tpowered.png" border="0" alt=""/>
+</p>
+<a id="toc45" name="toc45"></a>
+<h2>Align: Image alone with spaces around is aligned</h2>
+<p>
+<img align="left" src="../img/t2tpowered.png" border="0" alt=""/>   
+                <center><img align="middle" src="../img/t2tpowered.png" border="0" alt=""/></center>  
+                                    <img align="right" src="../img/t2tpowered.png" border="0" alt=""/>
+</p>
+<a id="toc46" name="toc46"></a>
+<h2>Test: Two glued images with no spaces (left &amp; right)</h2>
+<p>
+<img align="left" src="../img/t2tpowered.png" border="0" alt=""/><img align="right" src="../img/t2tpowered.png" border="0" alt=""/>
+</p>
+<a id="toc47" name="toc47"></a>
+<h2>Test: Various per line</h2>
+<p>
+Images <img align="middle" src="../img/t2tpowered.png" border="0" alt=""/> mixed <img align="middle" src="../img/t2tpowered.png" border="0" alt=""/> with <img align="middle" src="../img/t2tpowered.png" border="0" alt=""/> text.
+</p>
+<p>
+Images glued together: <img align="middle" src="../img/t2tpowered.png" border="0" alt=""/><img align="middle" src="../img/t2tpowered.png" border="0" alt=""/><img align="middle" src="../img/t2tpowered.png" border="0" alt=""/>.
+</p>
+<a id="toc48" name="toc48"></a>
+<h2>Invalid: Spaces inside are not allowed</h2>
+<p>
+[../img/t2tpowered.png ]
+</p>
+<p>
+[ ../img/t2tpowered.png]
+</p>
+<p>
+[ ../img/t2tpowered.png ]
+</p>
+<a id="macro" name="macro"></a>
+<h1 class="section">Macro</h1>
+<a id="toc50" name="toc50"></a>
+<h2>Syntax: Macro without formatting string</h2>
+<p>
+Date    : 20081027 - 20081027<br />
+Mtime   : 20081027 - 20081027<br />
+Infile  : rules.t2t - rules.t2t<br />
+Outfile : rules.html - rules.html<br />
+</p>
+<a id="toc51" name="toc51"></a>
+<h2>Syntax: Macro name is case insensitive</h2>
+<p>
+Date    : 20081027<br />
+Mtime   : 20081027<br />
+Infile  : rules.t2t<br />
+Outfile : rules.html<br />
+</p>
+<a id="toc52" name="toc52"></a>
+<h2>Syntax: Macro with formatting string</h2>
+<p>
+Date    : txt 20 txt<br />
+Mtime   : txt 20 txt<br />
+Infile  : txt t2t txt<br />
+Outfile : txt html txt<br />
+</p>
+<a id="toc53" name="toc53"></a>
+<h2>Syntax: Leading and trailing spaces are preserved</h2>
+<p>
+Date    : ( txt ) - ( 20 )<br />
+Mtime   : ( txt ) - ( 20 )<br />
+Infile  : ( txt ) - ( t2t )<br />
+Outfile : ( txt ) - ( html )<br />
+</p>
+<a id="toc54" name="toc54"></a>
+<h2>Test: Expansion of the percent char</h2>
+<p>
+Date    : % - % - %% - %%<br />
+Mtime   : % - % - %% - %%<br />
+Infile  : % - % - %% - %%<br />
+Outfile : % - % - %% - %%<br />
+</p>
+<a id="toc55" name="toc55"></a>
+<h2>Test: Various per line, glued</h2>
+<p>
+Date    : 202008102720081027<br />
+Mtime   : 202008102720081027<br />
+Infile  : t2trules.t2trules.t2t<br />
+Outfile : htmlrules.htmlrules.html<br />
+</p>
+<a id="toc56" name="toc56"></a>
+<h2>Test: Path formatters</h2>
+<p>
+Path    : /a/pessoal/sourceforge.net/txt2tags/src/doc/English/rules/rules.t2t<br />
+Path    : /a/pessoal/sourceforge.net/txt2tags/src/doc/English/rules.html<br />
+Dirname : /a/pessoal/sourceforge.net/txt2tags/src/doc/English/rules, rules<br />
+Dirname : /a/pessoal/sourceforge.net/txt2tags/src/doc/English, English<br />
+File    : rules + t2t = rules.t2t<br />
+File    : rules + html = rules.html<br />
+</p>
+<a id="numtitle" name="numtitle"></a>
+<h1 class="section">Numbered Title</h1>
+<p>
+See <a href="#title">Title</a>, the same rules apply.
+</p>
+<a id="title" name="title"></a>
+<h1 class="section">Title</h1>
+<a id="toc59" name="toc59"></a>
+<h2>Syntax: Balanced equal signs (from 1 to 5)</h2>
+<a id="toc60" name="toc60"></a>
+<h1>Title Level 1</h1>
+<a id="toc61" name="toc61"></a>
+<h2>Title Level 2</h2>
+<h3>Title Level 3</h3>
+<h4>Title Level 4</h4>
+<h5>Title Level 5</h5>
+<a id="toc62" name="toc62"></a>
+<h2>Label: Between brackets, alphanumeric [A-Za-z0-9_-]</h2>
+<a id="lab_el-1" name="lab_el-1"></a>
+<h1>Title Level 1</h1>
+<a id="lab_el-2" name="lab_el-2"></a>
+<h2>Title Level 2</h2>
+<a id="lab_el-3" name="lab_el-3"></a>
+<h3>Title Level 3</h3>
+<a id="lab_el-4" name="lab_el-4"></a>
+<h4>Title Level 4</h4>
+<a id="lab_el-5" name="lab_el-5"></a>
+<h5>Title Level 5</h5>
+<a id="toc65" name="toc65"></a>
+<h2>Syntax: Spaces around and/or inside are allowed (and ignored)</h2>
+<h3>Title Level 3</h3>
+<h3>Title Level 3</h3>
+<h3>Title Level 3</h3>
+<h3>Title Level 3</h3>
+<h3>Title Level 3</h3>
+<a id="lab_el-9" name="lab_el-9"></a>
+<h3>Title Level 3</h3>
+<a id="toc66" name="toc66"></a>
+<h2>Invalid: Unbalanced equal signs</h2>
+<p>
+      =Not Title
+</p>
+<p>
+     ==Not Title=
+</p>
+<p>
+    ===Not Title====
+</p>
+<a id="toc67" name="toc67"></a>
+<h2>Invalid: Level deeper than 5</h2>
+<p>
+ ======Not Title 6======
+</p>
+<p>
+=======Not Title 7=======
+</p>
+<a id="toc68" name="toc68"></a>
+<h2>Invalid: Space between title and label</h2>
+<p>
+=Not Title= [label1]
+</p>
+<a id="toc69" name="toc69"></a>
+<h2>Invalid: Space inside label</h2>
+<p>
+=Not Title=[ label ]
+</p>
+<a id="toc70" name="toc70"></a>
+<h2>Invalid: Strange chars inside label</h2>
+<p>
+=Not Title=[la/bel]
+</p>
+<a id="quote" name="quote"></a>
+<h1 class="section">Quote</h1>
+<a id="toc72" name="toc72"></a>
+<h2>Syntax: TAB defines quote</h2>
+	<blockquote>
+	To quote a paragraph, just prefix it by a TAB
+	character. All the lines of the paragraph must
+	begin with a TAB.
+	</blockquote>
+<p>
+Any non-tabbed line closes the quote block.
+</p>
+<a id="toc73" name="toc73"></a>
+<h2>Nesting: Creating deeper quotes</h2>
+	<blockquote>
+	The number of leading TABs identifies the quote
+	block depth. This is quote level 1.
+		<blockquote>
+		With two TABs, we are on the quote
+		level 2.
+			<blockquote>
+			The more TABs, more deep is
+			the quote level.
+				<blockquote>
+				There isn't a limit.
+				</blockquote>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+<p></p>
+<a id="toc74" name="toc74"></a>
+<h2>Nesting: Reverse nesting works</h2>
+	<blockquote>
+		<blockquote>
+			<blockquote>
+				<blockquote>
+				This quote starts at
+				level 4.
+				</blockquote>
+			Then its depth is decreased.
+			</blockquote>
+		Counting down, one by one.
+		</blockquote>
+	Until the level 1.
+	</blockquote>
+<p></p>
+<a id="toc75" name="toc75"></a>
+<h2>Nesting: Random count</h2>
+	<blockquote>
+		<blockquote>
+			<blockquote>
+			Unlike lists, any quote block is
+			independent, not part of a tree.
+			</blockquote>
+		</blockquote>
+	The TAB count don't need to be incremental
+	by one.
+		<blockquote>
+			<blockquote>
+				<blockquote>
+				The nesting don't need
+				to follow any rule.
+				</blockquote>
+			</blockquote>
+		Quotes can be opened and closed
+		in any way.
+			<blockquote>
+				<blockquote>
+					<blockquote>
+					You choose.
+					</blockquote>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+<p></p>
+<a id="toc76" name="toc76"></a>
+<h2>Nesting: When not supported</h2>
+	<blockquote>
+	Some targets (as sgml) don't support the
+	nesting of quotes. There is only one quote
+	level.
+		<blockquote>
+		In this case, no matter how much
+		TABs are used to define the quote
+		block, it always will be level 1.
+		</blockquote>
+	</blockquote>
+<p></p>
+<a id="toc77" name="toc77"></a>
+<h2>Syntax: Spaces after TAB</h2>
+	<blockquote>
+	  Spaces AFTER the TAB character are allowed.
+	  But be careful, it can be confusing.
+	</blockquote>
+<p></p>
+<a id="toc78" name="toc78"></a>
+<h2>Invalid: Spaces before TAB</h2>
+<p>
+  	Spaces BEFORE the TAB character
+  	invalidate the mark. It's not quote.
+</p>
+<a id="toc79" name="toc79"></a>
+<h2>Invalid: Paragraphs inside</h2>
+	<blockquote>
+	Paragraph breaks inside a quote aren't
+	possible.
+	</blockquote>
+<p></p>
+	<blockquote>
+	This sample are two separated quoted
+	paragraphs, not a quote block with
+	two paragraphs inside.
+	</blockquote>
+<p></p>
+<a id="toc80" name="toc80"></a>
+<h2>Closing: EOF closes the open block</h2>
+	<blockquote>
+	The end of the file (EOF) closes the
+	currently open quote block.
+	</blockquote>
+<p></p>
+<a id="raw" name="raw"></a>
+<h1 class="section">Raw</h1>
+<p>
+See <a href="#verbatim">Verbatim</a>, the same rules apply.
+</p>
+<a id="tagged" name="tagged"></a>
+<h1 class="section">Tagged</h1>
+<p>
+See <a href="#verbatim">Verbatim</a>, the same rules apply.
+</p>
+<a id="verbatim" name="verbatim"></a>
+<h1 class="section">Verbatim</h1>
+<a id="toc84" name="toc84"></a>
+<h2>Syntax: A single line</h2>
+<pre>
+A verbatim line.
+</pre>
+<p></p>
+<a id="toc85" name="toc85"></a>
+<h2>Syntax: A single line with leading spaces</h2>
+<pre>
+  Another verbatim line, with leading spaces.
+</pre>
+<p></p>
+<a id="toc86" name="toc86"></a>
+<h2>Syntax: Area (block)</h2>
+<pre>
+A verbatim area delimited
+       by lines with marks.
+</pre>
+<p></p>
+<a id="toc87" name="toc87"></a>
+<h2>Syntax: Area (block) with trailing spaces</h2>
+<pre>
+Trailing spaces and TABs after the area marks
+are allowed, but not encouraged nor documented.
+</pre>
+<p></p>
+<a id="toc88" name="toc88"></a>
+<h2>Invalid: No space between mark and contents</h2>
+<p>
+```Not a verbatim line, need one space after mark.
+</p>
+<a id="toc89" name="toc89"></a>
+<h2>Invalid: Leading spaces on block marks</h2>
+<p>
+  ```
+  Not a verbatim area.
+  The marks must be at the line beginning,
+  no leading spaces.
+  ```
+</p>
+<a id="toc90" name="toc90"></a>
+<h2>Closing: EOF closes the open block</h2>
+<pre>
+The end of the file (EOF) closes
+the currently open verbatim area.
+</pre>
+<p></p>
+<a id="deflist" name="deflist"></a>
+<h1 class="section">Definition List</h1>
+<p>
+See <a href="#list">List</a>, the same rules apply.
+</p>
+<a id="numlist" name="numlist"></a>
+<h1 class="section">Numbered List</h1>
+<p>
+See <a href="#list">List</a>, the same rules apply.
+</p>
+<a id="list" name="list"></a>
+<h1 class="section">List</h1>
+<a id="toc94" name="toc94"></a>
+<h2>Items: Prefixed by hyphen</h2>
+<ul>
+<li>Use the hyphen to prefix list items.
+</li>
+<li>There must be one space after the hyphen.
+</li>
+<li>The list is closed by two consecutive blank lines.
+</li>
+</ul>
+
+<a id="toc95" name="toc95"></a>
+<h2>Items: Free leading spacing (indentation)</h2>
+     <ul>
+     <li>The list can be indented on the source document.
+     </li>
+     <li>You can use any number of spaces.
+     </li>
+     <li>The result will be the same.
+     </li>
+     </ul>
+
+<a id="toc96" name="toc96"></a>
+<h2>Items: Vertical spacing between items</h2>
+<ul>
+<li>Let one blank line between the list items.
+<p></p>
+</li>
+<li>It will be maintained on the conversion.
+<p></p>
+</li>
+<li>Some targets don't support this behavior.
+<p></p>
+</li>
+<li>This one was separated by a line with blanks.
+  You can also put a blank line inside
+<p></p>
+  the item contents and it will be preserved.
+</li>
+</ul>
+
+<a id="toc97" name="toc97"></a>
+<h2>Items: Exactly ONE space after the hyphen</h2>
+<p>
+-This is not a list (no space)
+</p>
+<p>
+-    This is not a list (more than one space)
+</p>
+<p>
+-	This is not a list (a TAB instead the space)
+</p>
+<a id="toc98" name="toc98"></a>
+<h2>Items: Catchy cases</h2>
+<ul>
+<li>- This is a list
+</li>
+<li>+ This is a list
+</li>
+<li>: This is a list
+</li>
+</ul>
+
+<a id="toc99" name="toc99"></a>
+<h2>Nesting: Creating sublists</h2>
+<ul>
+<li>This is the "mother" list first item.
+</li>
+<li>Here is the second, but inside this item,
+  <ul>
+  <li>there is a sublist, with its own items.
+  </li>
+  <li>Note that the items of the same sublist
+  </li>
+  <li>must have the same indentation.
+    <ul>
+    <li>And this can go on, opening sublists.
+      <ul>
+      <li>Just add leading spaces before the
+      </li>
+      <li>hyphen and sublists will be opened.
+      </li>
+      <li>The two blank lines closes them all.
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<a id="toc100" name="toc100"></a>
+<h2>Nesting: Free leading spacing (indentation)</h2>
+<ul>
+<li>When nesting lists, the additional spaces are free.
+ <ul>
+ <li>You can add just one,
+        <ul>
+        <li>or many.
+          <ul>
+          <li>What matters is to put more than the previous.
+          </li>
+          <li>But remember that the other items of the same list
+          </li>
+          <li>must use the same indentation.
+          </li>
+          </ul>
+        </li>
+        </ul>
+ </li>
+ </ul>
+</li>
+</ul>
+
+<a id="toc101" name="toc101"></a>
+<h2>Nesting: Maximum depth</h2>
+<ul>
+<li>There is not a depth limit,
+  <ul>
+  <li>you can go deeper and deeper.
+    <ul>
+    <li>But some targets may have restrictions.
+      <ul>
+      <li>The LaTeX maximum is here, 4 levels.
+        <ul>
+        <li>This one and the following sublists
+          <ul>
+          <li>are moved up to the level 4
+            <ul>
+            <li>when converting to LaTeX.
+              <ul>
+              <li>On the other targets,
+                <ul>
+                <li>it is just fine
+                  <ul>
+                  <li>to have a very deep list.
+                  </li>
+                  </ul>
+                </li>
+                </ul>
+              </li>
+              </ul>
+            </li>
+            </ul>
+          </li>
+          </ul>
+        </li>
+        </ul>
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<a id="toc102" name="toc102"></a>
+<h2>Nesting: Reverse doesn't work</h2>
+        <ul>
+        <li>Reverse nesting doesn't work.
+        </li>
+        </ul>
+
+      <ul>
+      <li>Because a sublist *must* have a mother list.
+      </li>
+      </ul>
+
+    <ul>
+    <li>It's the list concept, not a txt2tags limitation.
+    </li>
+    </ul>
+
+  <ul>
+  <li>All this sublists will be bumped to mother lists.
+  </li>
+  </ul>
+
+<ul>
+<li>At level 1, like this one.
+</li>
+</ul>
+
+<a id="toc103" name="toc103"></a>
+<h2>Nesting: Going deeper and back</h2>
+<p>
+When nesting back to an upper level, the previous sublist
+is automatically closed.
+</p>
+<ul>
+<li>Level 1
+  <ul>
+  <li>Level 2
+    <ul>
+    <li>Level 3
+      <ul>
+      <li>Level 4
+      </li>
+      </ul>
+    </li>
+    <li>Level 3 -- (closed Level 4)
+    </li>
+    </ul>
+  </li>
+  <li>Level 2 -- (closed Level 3)
+  </li>
+  </ul>
+</li>
+<li>Level 1 -- (closed Level 2)
+</li>
+</ul>
+
+<p>
+More than one list can be closed when nesting back.
+</p>
+<ul>
+<li>Level 1
+  <ul>
+  <li>Level 2
+    <ul>
+    <li>Level 3
+      <ul>
+      <li>Level 4
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+<li>Level 1 -- (closed Level 4, Level 3 and Level 2)
+</li>
+</ul>
+
+<a id="toc104" name="toc104"></a>
+<h2>Nesting: Vertical spacing between lists</h2>
+<ul>
+<li>Level 1
+<p></p>
+  <ul>
+  <li>Level 2 -- blank BEFORE and AFTER (in)
+  <p></p>
+    <ul>
+    <li>Level 3
+      <ul>
+      <li>Level 4
+      </li>
+      </ul>
+    </li>
+    <li>Level 3
+    <p></p>
+    </li>
+    </ul>
+  </li>
+  <li>Level 2 -- blank BEFORE and AFTER (out)
+  <p></p>
+  </li>
+  </ul>
+</li>
+<li>Level 1
+<p></p>
+  <ul>
+  <li>Level 2 -- blank BEFORE (spaces) and AFTER (TAB)
+  <p></p>
+    <ul>
+    <li>Level 3
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<a id="toc105" name="toc105"></a>
+<h2>Nesting: Messing up</h2>
+<p>
+Be careful when going back on the nesting,
+it must be on a valid level! If not, it will
+be bumped up to the previous valid level.
+</p>
+<ul>
+<li>Level 1
+    <ul>
+    <li>Level 2
+        <ul>
+        <li>Level 3
+            <ul>
+            <li>Level 4
+            </li>
+            </ul>
+        </li>
+        <li>Level 3.5 ???
+        </li>
+        <li>Level 3
+        </li>
+        </ul>
+    </li>
+    <li>Level 2.5 ???
+    </li>
+    <li>Level 2
+    </li>
+    </ul>
+</li>
+<li>Level 1.5 ???
+</li>
+<li>Level 1
+</li>
+</ul>
+
+<a id="toc106" name="toc106"></a>
+<h2>Closing: Two (not so) empty lines</h2>
+<ul>
+<li>This list is closed by a line with spaces and other with TABs
+</li>
+</ul>
+
+<ul>
+<li>This list is NOT closed by two comment lines
+</li>
+<li>This list is closed by a line with spaces and TAB,
+</li>
+<li>then a comment line, then an empty line.
+</li>
+</ul>
+
+<a id="toc107" name="toc107"></a>
+<h2>Closing: Empty item closes current (sub)list</h2>
+<p>
+The two blank lines closes ALL the lists.
+To close just the current, use an empty item.
+</p>
+<ul>
+<li>Level 1
+  <ul>
+  <li>Level 2
+    <ul>
+    <li>Level 3
+    </li>
+    </ul>
+    Level 2
+  </li>
+  </ul>
+  Level 1
+</li>
+</ul>
+
+<p></p>
+<p>
+The empty item can have trailing blanks.
+</p>
+<ul>
+<li>Empty item with trailing spaces.
+</li>
+</ul>
+
+<p></p>
+<ul>
+<li>Empty item with trailing TAB.
+</li>
+</ul>
+
+<p></p>
+<a id="toc108" name="toc108"></a>
+<h2>Closing: EOF closes the lists</h2>
+<ul>
+<li>If the end of the file (EOF) is hit,
+  <ul>
+  <li>all the currently opened list are closed,
+    <ul>
+    <li>just like when using the two blank lines.
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<a id="table" name="table"></a>
+<h1 class="section">Table</h1>
+<a id="toc110" name="toc110"></a>
+<h2>Syntax: Lines starting with a pipe |</h2>
+<table>
+<tr>
+<td>Cell 1</td>
+</tr>
+</table>
+
+<a id="toc111" name="toc111"></a>
+<h2>Syntax: Extra pipes separate cells</h2>
+<table>
+<tr>
+<td>Cell 1</td>
+<td>Cell 2</td>
+<td>Cell 3</td>
+</tr>
+</table>
+
+<a id="toc112" name="toc112"></a>
+<h2>Syntax: With a trailing pipe, make border</h2>
+<table border="1">
+<tr>
+<td>Cell 1</td>
+<td>Cell 2</td>
+<td>Cell 3</td>
+</tr>
+</table>
+
+<a id="toc113" name="toc113"></a>
+<h2>Syntax: Table lines starting with double pipe are heading</h2>
+<table border="1">
+<tr>
+<th>Cell 1</th>
+<th>Cell 2</th>
+<th>Cell 3</th>
+</tr>
+</table>
+
+<a id="toc114" name="toc114"></a>
+<h2>Align: Spaces before the leading pipe centralize the table</h2>
+<table align="center" border="1">
+<tr>
+<td>Cell 1</td>
+<td>Cell 2</td>
+<td>Cell 3</td>
+</tr>
+</table>
+
+<a id="toc115" name="toc115"></a>
+<h2>Align: Spaces inside the cell denote its alignment</h2>
+<table align="center" border="1">
+<tr>
+<th>Heading</th>
+<th>Heading</th>
+<th>Heading</th>
+</tr>
+<tr>
+<td>&lt;-</td>
+<td align="center">--</td>
+<td align="right">-&gt;</td>
+</tr>
+<tr>
+<td align="center">--</td>
+<td align="center">--</td>
+<td align="center">--</td>
+</tr>
+<tr>
+<td align="right">-&gt;</td>
+<td align="center">--</td>
+<td>&lt;-</td>
+</tr>
+</table>
+
+<a id="toc116" name="toc116"></a>
+<h2>Span: Column span is defined by extra pipes at cell closing</h2>
+<table align="center" border="1">
+<tr>
+<th>1</th>
+<th>2</th>
+<th colspan="2">3+4</th>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center" colspan="3">1+2+3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center" colspan="2">2+3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center" colspan="4">1+2+3+4</td>
+</tr>
+</table>
+
+<a id="toc117" name="toc117"></a>
+<h2>Test: Empty cells are placed as expected</h2>
+<table align="center" border="1">
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td></td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+</table>
+
+<a id="toc118" name="toc118"></a>
+<h2>Test: Lines with different number of cells</h2>
+<table align="center" border="1">
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</table>
+
+<a id="toc119" name="toc119"></a>
+<h2>Test: Empty cells + Span + Messy cell number = Fun!</h2>
+<table align="center" border="1">
+<tr>
+<td align="right">Jan</td>
+</tr>
+<tr>
+<td align="right" colspan="2">Fev</td>
+</tr>
+<tr>
+<td align="right" colspan="3">Mar</td>
+</tr>
+<tr>
+<td align="right" colspan="4">Apr</td>
+</tr>
+<tr>
+<td align="right" colspan="5">May</td>
+</tr>
+<tr>
+<td align="center">20%</td>
+<td align="center">40%</td>
+<td align="center">60%</td>
+<td align="center">80%</td>
+<td align="center">100%</td>
+</tr>
+</table>
+
+<table align="center" border="1">
+<tr>
+<td></td>
+<td></td>
+<td align="center">/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center" colspan="3">/ / / / /</td>
+<td></td>
+</tr>
+<tr>
+<td align="center" colspan="5">/ / / / / / / / /</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">o</td>
+<td></td>
+<td align="center">o</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td align="right">.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td align="center" colspan="3">= = = =</td>
+<td></td>
+</tr>
+</table>
+
+<table align="center" border="1">
+<tr>
+<td>01</td>
+<td>02</td>
+<td></td>
+<td></td>
+<td>05</td>
+<td></td>
+<td>07</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>11</td>
+<td></td>
+<td>13</td>
+<td></td>
+<td></td>
+<td>16</td>
+</tr>
+<tr>
+<td>17</td>
+<td></td>
+<td>19</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td>23</td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>26</td>
+<td></td>
+<td></td>
+<td>29</td>
+<td>30</td>
+<td></td>
+<td>32</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>35</td>
+<td></td>
+<td>37</td>
+<td></td>
+<td>39</td>
+<td>40</td>
+</tr>
+</table>
+
+<a id="toc120" name="toc120"></a>
+<h2>Test: Lots of cells at the same line</h2>
+<table border="1">
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+</table>
+
+<a id="toc121" name="toc121"></a>
+<h2>Test: Empty lines</h2>
+<table border="1">
+<tr>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</table>
+
+<a id="toc122" name="toc122"></a>
+<h2>Invalid: There must be at least one space around the pipe</h2>
+<p>
+|this|is|not|a|table|
+</p>
+<p>
+|this| is| not| a| table|
+</p>
+<p>
+|this |is |not |a |table |
+</p>
+<a id="toc123" name="toc123"></a>
+<h2>Invalid: You must use spaces, not TABs</h2>
+<p>
+|	this	|	is	|	not	|	a	|	table	|
+</p>
+<hr class="light" />
+<p></p>
+<p>
+The End.
+</p>
+</div>
+
+<!-- xhtml code generated by txt2tags (http://txt2tags.org) -->
+<!-- cmdline: txt2tags /a/pessoal/sourceforge.net/txt2tags/src/doc/English/rules/rules.t2t -->
+</body></html>

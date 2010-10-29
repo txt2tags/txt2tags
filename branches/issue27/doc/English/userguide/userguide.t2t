@@ -1,0 +1,2284 @@
+Txt2tags User Guide
+
+Aurelio, %%mtime(%c)
+%!target: html
+%!options: --toc --toc-level 2 --css-sugar 
+
+% TRANSLATOR:
+% - The HTML output is optimized for the htmldoc tool
+% - Just comment the following lines when translating
+%!options: --css-sugar --no-toc --style userguide.css
+%!postproc: '<H1>Txt2tags User Guide.*'  ''
+%!postproc: '<H3>Aurelio, .*'  ''
+
+% TRANSLATOR:
+% - Don't worry about the PDF cover page
+% - Don't worry about PDF at all, translate and check on HTML
+% - Don't worry about the images
+
+% TRANSLATOR:
+% You can take new screenshots and make new images for the program
+% interface and "first conversion" section. Remember to send them
+% to the author!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% activate those lines when converting to HTML for PDF generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% htmldoc does TOC
+%pdf%!options(html): --no-toc --no-css-sugar -o userguide-pdf.html
+%%% mask the 'nopdf' marks so they will not be removed
+%pdf%!preproc(html): ^%nopdf  %yespdf
+%%% border for all images
+%pdf%!postproc: '(<IMG [^>]*BORDER)="0"'    '\1="1"'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% easy way to change all image locations once, when changing file location
+%!preproc: IMGPATH .
+
+% TRANSLATOR
+% - Please translate the following macro contents and leave them alone 
+% - Remember they are expanded in conversion time, don't remove them 
+
+% normalizing common text
+%!preproc: CONFAREA	Config Area
+%!preproc: HEADAREA	Header Area
+%!preproc: BODYAREA	Body Area
+%!preproc: MARKPROP	**Properties:**
+%!preproc: MARKCONT	**Contains:**
+%!preproc: MARKDESC	**Description:**
+%!preproc: MARKSYN	**Syntax:**
+%!preproc: MARKDET	**Details:**
+%!preproc: NOMARKS	Marks are NOT interpreted
+%!preproc: NOMACRO	Macros are NOT interpreted
+
+%!preproc: URLMARKUP	URLWEBSITE/markup.html
+%!preproc: URLWEBSITE	http://txt2tags.org
+%!postproc: URLWEBSITE	http://txt2tags.org
+
+% activate the areas disabled on the PDF version
+%!preproc(html): ^%nopdf  ''
+
+% remove separator lines and strong lines
+%!preproc(html): '^ *--------*'  ''
+%!preproc(html): '^ *========*'  ''
+
+% highlight NEW topic on TOC
+%%!postproc(html): '(<LI>.*Mastering Macros</A>)$' '\1 <b>[NEW!]</b>'
+
+%%% Little clean up for less large tables
+%!postproc: /pessoal/sourceforge.net ''
+
+
+% 26/Nov/2003: revised by anamimts
+% 26/Jun/2004: updated to v2, new embedded CSS 
+% 17/Jul/2004: revised by anamimts
+% 01/Nov/2004: updated to v2.0 and 2.1, new chapters, PDF version
+% 31/Aug/2006: little changes to use htmldoc for splitted HTML
+
+% TODO Mastering Options [option-help], [option-css-sugar], ...
+
+========================================================================
+
+%%nopdf	"Hi! I'm the txt2tags User Guide. Here you'll find all available
+%%nopdf	information about the txt2tags text conversion tool. You can
+%%nopdf	find my latest version at URLWEBSITE/userguide/. For
+%%nopdf	more information please visit
+%%nopdf	[the txt2tags website URLWEBSITE]. Enjoy!"
+%%nopdf  
+%%nopdf	[Download PDF version URLWEBSITE/userguide/userguide.pdf]
+
+%nopdf= About =
+%nopdf
+%nopdfThis is the [txt2tags URLWEBSITE] User Guide, the
+%nopdfcomplete manual about the program.
+%nopdf
+%nopdf- User Guide official address:
+%nopdf  URLWEBSITE/userguide
+%nopdf
+%nopdf- User Guide PDF download:
+%nopdf  URLWEBSITE/userguide/userguide.pdf
+%nopdf-
+
+========================================================================
+
+%%nopdf%**This Guide Contains:**
+
+%%toc
+
+========================================================================
+
+= Part I - Introducing Txt2tags =[intro]
+
+== The First Questions You May Have ==[1st-questions]
+
+This chapter is a txt2tags overview, that will introduce the program
+purpose and features.
+
+------------------------------------------------------------------------
+
+=== What is it? ===
+
+Txt2tags is a text formatting and conversion tool.
+
+Txt2tags converts a plain text file with little marks, to any
+of the supported targets:
+
+- HTML document
+- XHTML document
+- SGML document
+- DocBook document
+- LaTeX document
+- Lout document
+- UNIX man page
+- MagicPoint presentation
+- Creole 1.0 document
+- Wikipedia page (MediaWiki)
+- Google Wiki page
+- PmWiki page
+- DokuWiki page
+- MoinMoin page
+- PageMaker 6.0 document
+- AsciiDoc document
+- ASCII Art text
+- Plain Text (no marks)
+-
+
+------------------------------------------------------------------------
+
+=== Why should I use it? ===
+
+You'll find txt2tags really useful if you:
+- Need to publish documents in different formats
+- Need to maintain updated documents in different formats
+- Write technical documents or guides
+- Don't know how to write a document in a specific format
+- Don't have an editor for a specific format
+- Want to use a simple text editor to update your documents
+
+
+And the main motivation is:
+- Save time, writing **contents** and forgetting about **formatting**
+
+
+------------------------------------------------------------------------
+
+=== Why is it a good choice among other tools? ===
+
+Txt2tags has a very straight way of growing, following basic concepts.
+These are the highlights:
+
+| //Source File Readable// | Txt2tags marks are very simple, almost natural.
+| //Target Document Readable// | The target document is also readable, with indentation and spacing.
+| //Consistent Marks// | Txt2tags marks are simple symbols, designed to be unique enough to don't mix up with the document contents.
+| //Consistent Rules// | As the marks, the rules that applies to them are tied to each other, there are no "exceptions" or "special cases".
+| //Simple Structures// | All the supported formatting are **simple**, with no extra-options or complicated behavior modifiers. A mark is just a mark, with no options at all.
+| //Easy to Learn// | With simple marks and readable source, the txt2tags learning curve is user friendly.
+| //Nice Examples// | The **sample files** included on the package gives real life examples of documents written for txt2tags.
+| //Valuable Tools// | The **syntax files** included on the package help you to write documents with no syntax errors.
+| //Three User Interfaces// | There is a user friendly **Graphical interface**, a handy **Web interface** easy to install in intranets and a **Command Line interface** for power-users and scripting.
+| //Scripting// | With the full featured command line mode, an experienced user can **automatize** tasks and do **post-editing** on the converted files.
+| //Download and Run / Multi-platform// | Txt2tags is a single **Python script**. There is no need to compile it or download extra modules. So it runs nicely on *NIX, Linux, Windows and Macs.
+| //Mature// | First released in 2001, txt2tags is now a mature program with years of improvements and bug fixes, extensive documentation, translations and an loyal user base.
+
+
+------------------------------------------------------------------------
+
+=== Do I have to pay for it? ===
+
+Absolutely NO!
+
+It's free, GPL licensed.
+
+% It's free, GPL, open source, public domain,
+% //<put-your-favorite-buzzword-here>//.
+% 
+% You can copy, use, modify, sell, release as yours. Software
+% politics/copyright is not one of the author's major concerns.
+
+------------------------------------------------------------------------
+
+
+== Supported Formatting Structures ==[structures]
+
+The following is a list of all the structures supported by txt2tags.
+
+- header (document title, author name, date)
+- section title (numbered or not)
+- paragraphs
+- font beautifiers
+  - bold
+  - italic
+  - underline
+  - strike
+- monospaced font (verbatim)
+  - monospaced inside paragraph
+  - monospaced line
+  - monospaced area (multiline)
+- quoted area
+- link
+  - URL/Internet links
+  - e-mail links
+  - local links
+  - named links
+- lists
+  - bulleted list
+  - numbered list
+  - definition list
+- horizontal separator line
+- image (with smart alignment)
+- table (with or without border, smart alignment, column span)
+- macros (with flexible formatting):
+  - current date
+  - file modification time
+  - input and output file name and path
+  - automatic table of contents
+- special mark for raw text (no marks parsed inside)
+- special mark for tagged text (no parsing, sent directly to output)
+- comments (for self notes, TODO, FIXME)
+
+
+------------------------------------------------------------------------
+
+== Supported Targets ==[targets]
+
+: **HTML**
+  Everybody knows what HTML is. (hint: Internet)
+
+  Txt2tags generates clean HTML documents, that look pretty and have
+  its source readable. It DOES NOT use javascript, frames or other
+  futile formatting techniques, that aren't required for simple, techie
+  documents. But a separate CSS file can be used if wanted. Txt2tags
+  generates "//HTML 4.0 Transitional//" code.
+
+  Txt2tags HTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
+
+: **XHTML**
+  It is the new generation of HTML, with more strict rules.
+  This makes the code easier to parse and
+  understand. For the general purpose, consider it HTML. Txt2tags
+  generates "//XHTML 1.0 Transitional//" code.
+
+  Txt2tags XHTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
+
+: **SGML**
+  It is a common document format which has powerful conversion applications
+  ([linuxdoc-tools http://packages.debian.org/linuxdoc-tools]). From a
+  single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
+  and XML documents. The tools also does automatic TOC and break
+  sections into subpages.
+
+  Txt2tags generates SGML files in the LinuxDoc system type, ready to
+  be converted with linuxdoc-tools without any extra catalog files or any
+  SGML annoying requirements.
+
+: **LATEX**
+  The preferred academic document format, it is more powerful than you
+  ever wondered. Full books, complicated formulas and any complex text
+  can be written in LaTeX. But prepare to loose your hair when you try
+  to write the tags by hand...
+
+  Txt2tags generates ready-to-use LaTeX files, doing all the complex
+  escaping tricks and exceptions. The writer just need to worry about
+  the text.
+
+: **LOUT**
+  Very similar to LaTeX in power, but with an easier syntax using "@"
+  instead "\" and avoiding the need of braces in common situations. Its
+  approach of everything-is-an-object makes the tagging much saner.
+
+  Txt2tags generates ready-to-use Lout files, which can be converted do
+  PS or PDF files using the "lout" command.
+
+: **MAN**
+  UNIX man pages resist over the years. Document formats come and go,
+  and there they are, unbeatable.
+
+  There are other tools to generate man documents, but txt2tags has
+  one advantage: one source, multi targets. So the same man page
+  contents can be converted to an HTML page, Wiki document and plain text.
+
+: **MGP**
+  [MagicPoint http://en.wikipedia.org/wiki/MagicPoint] is a very handy presentation tool
+  (hint: Microsoft PowerPoint), that uses a tagged language to define all
+  the screens. So you can do complex presentations in vi/emacs/notepad.
+
+  Txt2tags generates a ready-to-use .mgp file, defining all the
+  necessary headers for fonts and appearance definitions, as long as
+  international characters support.
+
+  Txt2tags creates "diet" .mgp files: they use the Type1 fonts, so you do not
+  need to carry TrueType fonts files with your presentation. Also, the color
+  definitions are simple, so even on a poor color palette system (such as
+  ``startx -- -bpp 8``), the presentation will look pretty!
+
+  The key is: convert and use. No quick fixes or requirements needed.
+
+: **WIKI**
+  You've heard about the [Wikipedia http://wikipedia.org], right? So you
+  don't need to learn yet-another markup syntax. Just stick with txt2tags
+  and let it convert your text to the Wikipedia format, called
+  [MediaWiki http://en.wikipedia.org/wiki/MediaWiki].
+
+: **GWIKI**
+  Now you can easily paste your project's current documentation into the
+  [Google Code http://code.google.com/] Wiki.
+
+: **DOKU**
+  [DokuWiki http://www.dokuwiki.org/dokuwiki] is a standards
+  compliant, simple to use Wiki, mainly aimed at creating documentation
+  of any kind. It is targeted at developer teams, workgroups and small
+  companies. It has a simple but powerful syntax which makes sure the
+  data files remain readable outside the Wiki and eases the creation of
+  structured texts. All data is stored in plain text files - no
+  database is required.
+
+: **MOIN**
+  You don't know what [MoinMoin http://moinmo.in/] is?
+  It is a [WikiWiki http://www.c2.com/cgi/wiki]!
+
+  Moin syntax is kinda boring when you need to keep
+  ``{{{'''''adding braces and quotes'''''}}}``, so txt2tags comes with the
+  simplified marks and unified solution: one source, multi targets.
+
+: **PM6**
+  Adobe PageMaker 6.0 has its own tagged
+  language. Styles, color table, beautifiers, and most of all the
+  PageMaker mouse-clicking features are also available on its tagged language.
+  You just need to access the "Import tagged text" menu item. Just for
+  the records, it's an <HTML "like"> tag format.
+
+  Txt2tags generates all the tags and already defines a extensive and
+  working header, setting paragraph styles and formatting. This is the
+  hard part.
+
+  **Author's note:**
+  My entire portuguese [regular expression's book http://guia-er.sf.net]
+  was written in VI, then converted to PageMaker with txt2tags and went to
+  the publisher. It works :)
+
+: **TXT**
+  TXT is text. Simple, pure, beautiful.
+
+  Although txt2tags marks are very intuitive and discrete, you can remove
+  them by converting the file to pure TXT.
+
+  The titles are underlined, and the text is basically left as is on the
+  source.
+
+
+Tip: Use the ``--targets`` command line option to get a complete list of
+all the available targets.
+
+------------------------------------------------------------------------
+
+== Status of Supported Structures by Target ==[struct-support]
+
+  || Structure        | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
+  | headers           |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   -    |  -   |   -   |  Y  |  -   |  -   |  N  |  -   |  Y  |  Y  |
+  | section title     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | paragraphs        |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | bold              |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | italic            |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | underline         |  Y   |   Y   |  -   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   -   |  Y  |  Y   |  Y   |  Y  |  N   |  -  |  -  |
+  | strike            |  Y   |   Y   |  N   |  N  |  Y  |  -   |  -  |  -  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  -  |  -  |
+  | monospaced font   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | verbatim line     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | verbatim area     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
+  | quoted area       |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  N   |  Y  |  Y  |
+  | internet links    |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | e-mail links      |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | local links       |  Y   |   Y   |  Y   |  Y  |  N  |  N   |  -  |  -  |   N    |  N   |   N   |  Y  |  Y   |  Y   |  -  |  N   |  -  |  -  |
+  | named links       |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
+  | bulleted list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | numbered list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
+  | definition list   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  N  |   Y    |  Y   |   -   |  Y  |  -   |  Y   |  N  |  N   |  Y  |  Y  |
+  | horizontal line   |  Y   |   Y   |  -   |  N  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   -   |  Y  |  Y   |  Y   |  N  |  N   |  Y  |  Y  |
+  | image             |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  Y   |  -  |  -  |
+  | table             |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  N  |  N  |
+  || Extras           | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
+  | image align       |  Y   |   Y   |  N   |  N  |  N  |  Y   |  -  |  Y  |   N    |  Y   |   -   |  N  |  Y   |  N   |  N  |  N   |  -  |  -  |
+  | table cell align  |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   N    |  N   |   -   |  N  |  -   |  Y   |  N  |  N   |  N  |  N  |
+  | table column span |  Y   |   Y   |  N   |  N  |  N  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N  |  N   |  N  |  N  |
+
+  ||      | Legend
+  | **Y** | //Supported//
+  | **N** | //Not supported (may be in future releases)//
+  | **-** | //Not supported (can't be done on this target)//
+
+------------------------------------------------------------------------
+
+== The Three User Interfaces: Gui, Web and Command Line ==[interfaces]
+
+As different users have different needs and environments, txt2tags is
+very flexible on how it runs.
+
+There are three User Interfaces for the program, each one with its own
+purpose and features.
+
+- **Gui**: Written in Tk, brings the windowing and clicking to txt2tags.
+- **Web**: Written in PHP, allows users to run txt2tags on the browser,
+           requiring no installation on the client side.
+- **Command Line**: Written in Python, it's the program core. All
+           features are available as command line options.
+
+
+------------------------------------------------------------------------
+
+=== Graphical Interface ===[gui]
+
+Since version 1.0, there is a nice Graphical Interface, that works on
+Linux, Windows, Mac and others. Just call txt2tags with the ``--gui``
+option to open it.
+
+% If some resources are missing, the program will tell.
+% 
+% 	**Note:** The Tkinter module is needed. As it comes with the
+% 	standard Python distribution, you may already have it.
+
+The interface is pretty simple and intuitive:
+
+                     [IMGPATH/gui.png]  
+
++ You locate the source .t2t file on the disk and its options are
+  loaded.
+
++ If the target is still empty, you must choose one.
+
++ Then there are some options you may choose, but none of them are
+  required.
+
++ Finally, press the "Convert!" button.
+
+
+A nice option is the "//Dump to screen//", so you can check
+the resulting code on a separate window, no file is saved at all. When
+the code is OK, you uncheck it and the file will be saved.
+
+The default interface colors can be changed on the [configuration file #rc],
+using the ``%!guicolors`` settings. For example:
+
+```
+% set my own colors for the graphical interface (bg1, fg1, bg2, fg2)
+%!guicolors: blue white brown yellow
+```
+
+------------------------------------------------------------------------
+
+=== Web Interface ===
+
+The Web Interface is up and running on the Internet at
+URLWEBSITE/online.php, so you can use and test the program
+instantly, before download.
+
+          [IMGPATH/web.png]  
+
+One can also put this interface on the local intranet avoiding to
+install txt2tags in all machines.
+
+------------------------------------------------------------------------
+
+=== Command Line Interface ===[cmdline]
+
+For command line power users, the --help should be enough:
+
+```
+Usage: txt2tags [OPTIONS] [infile.t2t ...]
+
+      --targets       print a list of all the available targets and exit
+  -t, --target=TYPE   set target document type. currently supported:
+                      adoc, art, creole, dbk, doku, gwiki, html, lout, man,
+                      mgp, moin, pm6, pmw, sgml, tex, txt, wiki, xhtml
+  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
+  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
+      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)
+      --toc           add an automatic Table of Contents to the output
+      --toc-level=N   set maximum TOC level (depth) to N
+      --toc-only      print the Table of Contents and exit
+  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc
+      --style=FILE    use FILE as the document style (like HTML CSS)
+      --css-sugar     insert CSS-friendly tags for HTML/XHTML
+      --css-inside    insert CSS file contents inside HTML/XHTML headers
+  -H, --no-headers    suppress header and footer from the output
+      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>
+      --slides        format output as presentation slides (used by -t art)
+      --width=N       set the output's width to N columns (used by -t art)
+      --height=N      set the output's height to N rows (used by -t art)
+  -C, --config-file=F read configuration from file F
+      --gui           invoke Graphical Tk Interface
+  -q, --quiet         quiet mode, suppress all output (except errors)
+  -v, --verbose       print informative messages during conversion
+  -h, --help          print this help information and exit
+  -V, --version       print program version and exit
+      --dump-config   print all the configuration found and exit
+      --dump-source   print the document source, with includes expanded
+
+Turn OFF options:
+     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,
+     --no-encoding, --no-enum-title, --no-headers, --no-infile,
+     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,
+     --no-style, --no-targets, --no-toc, --no-toc-only
+
+Example:
+     txt2tags -t html --toc file.t2t
+
+By default, converted output is saved to 'infile.<target>'.
+Use --outfile to force an output file name.
+If  input file is '-', reads from STDIN.
+If output file is '-', dumps output to STDOUT.
+```
+
+Please read the txt2tags man page for detailed information about options and command line use.
+
+Examples:
+
+| **Convert to HTML**             | ``$ txt2tags -t html file.t2t``
+| **The same, using redirection** | ``$ txt2tags -t html -o - file.t2t > file.html``
+|  | .
+| **Including Table Of Contents** | ``$ txt2tags -t html --toc file.t2t``
+| **And also, numbering titles**  | ``$ txt2tags -t html --toc --enum-title file.t2t``
+|  | .
+| **Contents quick view**         | ``$ txt2tags --toc-only file.t2t``
+| **Maybe enumerate them?**       | ``$ txt2tags --toc-only --enum-title file.t2t``
+|  | .
+| **One liners from STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
+| **Testing Mask Email feature**  | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
+
+
+========================================================================
+
+
+
+= Part II - Install =[install]
+
+Just download the program and run it on your machine.
+
+== Download & Install Python ==[download-python]
+
+First of all, you must download and install [Python http://www.python.org] on
+your system. Txt2tags requires Python version 2.2 or newer.
+
+Note that Python is already installed by default in Linux and Mac systems. If you're using those, you're done, just skip this step.
+
+If you are not sure if you have Python or not, open a console (tty,
+xterm, MSDOS, Terminal.app) and type ``python``. If it is not installed, the system
+will tell you.
+
+
+== Download txt2tags ==[download-txt2tags]
+
+The official location for txt2tags distribution is on the program
+site, at URLWEBSITE. Just download and uncompress the package (.tgz file).
+
+If you're in Linux, you can also use the automatic installer of your system. Some examples:
+- yum install txt2tags
+- sudo apt-get install txt2tags
+-
+
+% All the program's files are on the tarball (.tgz file), which can be
+% expanded by most of the compression utilities (including Winzip).
+
+% Just get the **latest** one (more recent date, higher version number).
+% The previous versions remains for historical purposes only.
+
+
+
+== Install txt2tags ==[install-txt2tags]
+
+As a single Python script, txt2tags needs no installation at all.
+
+The only file needed to use the program is the txt2tags script. The
+other files of the package are documentation, tools and sample files.
+
+The fail-proof way to run txt2tags, is calling Python with it:
+``` prompt$ python txt2tags
+
+If you want to install txt2tags on the system as a stand alone
+program, just copy the txt2tags script to a system PATH
+directory and make sure the system knows how to run it.
+
+: **UNIX/Linux/Mac**
+  Make the script executable (``chmod +x txt2tags``) and copy it to a
+  $PATH directory (``cp txt2tags /usr/local/bin``)
+
+: **Windows**
+  Rename the script adding the .py extension
+  and copy it to a system PATH directory, such as ``C:\Windows\System32``.
+
+
+After that, you can create an icon on your desktop for it, if you want to
+use the program's Graphical Interface.
+
+% === Special Packages for Windows Users ===
+% 
+% There is also two .EXE distribution files for txt2tags, which install
+% the program on Windows machines with just a few clicks:
+% 
+% - The single txt2tags script for those who already have the Python
+%   interpreted installed
+% - The stand alone version, which doesn't require Python interpreter to
+%   run (it has a diet version embedded)
+% 
+% 
+% Please visit the //Txt2tags-Win// site to download this packages:
+% http://txt2tags-win.sf.net
+
+== Install Text Editor Syntax Highlighting File (optional)==[editor-syntax]
+
+Txt2tags comes with handy syntax highlighting files to be used by the
+following text editors:
+
+- Vim
+- Emacs
+- Nano
+- Kate
+- Gedit
+- JOE
+- le
+- ne
+- TextMate
+
+
+This syntax highlighting files have all the txt2tags rules and marks
+registered, helping the user to write error-free documents. Showing the
+marks in colors, you see on-the-fly if you wrote it right.
+
+           |  [IMGPATH/vim.png]  
+           |  Sample file opened in Vim Editor 
+
+Each editor has a different install procedure for a syntax highlighting
+file, please read the syntax file headers and the editor documentation.
+
+========================================================================
+
+
+
+= Part III - Writing and Converting Your First Document =[your-1st-doc]
+
+== Check the Tools ==
+
+To make the first conversion you will need three things: txt2tags, a
+text editor and a web browser.
+
++ Make sure txt2tags is installed and running on your system.
+
+  - **Command Line Interface:** Call "txt2tags" on the command line and
+    the program should give you a "Missing input file" message. If it is
+    not working, try ``python /path/to/txt2tags`` or even
+    ``/path/to/python /path/to/txt2tags`` if Python is not on your PATH.
+
+  - **Gui Interface:** Click on the program icon to launch the Gui
+    Interface or call ``txt2tags --gui``.
+
++ Open the text editor your are comfortable with. It can be **any** text
+  editor, from the good old VI to MS Word or OpenOffice.org. Create a
+  brand new empty document to be your first txt2tags one and remember to
+  save it as plain text.
+
++ Launch your favorite web browser to see the results of the conversion.
+
+
+------------------------------------------------------------------------
+
+== Write the Document Header ==
+
++ Go to the text editor and on the very first line type the document
+  main title: //My First Document//
++ On the second line make a subtitle, inserting this text:
+  //A txt2tags test//
++ Then, on the third line, put some time information:
+  //Sunday, 2004//
+
+
+If everything went right, you should be seeing a three line document
+with this contents:
+
+```
+My First Document
+A txt2tags test
+Sunday, 2004
+```
+
+This is just a part of the document, but we can already convert it and
+check the results.
+
+Now save this document with the name ``test.txt``. Remember to save it
+as plain text. Pay attention to which folder you are saving the file,
+you will need to remember it soon.
+
+
+------------------------------------------------------------------------
+
+== The First Conversion - Gui Interface ==
+
+If you are in the Command Line Interface, please skip this step and read
+the next one.
+
+If you are in the Gui Interface, follow this steps:
+
+    [IMGPATH/firstdoc.png] 
+
++ Press the "Browse" button and choose the ``test.txt`` you just saved
+  (remember the folder!).
++ Back to the first screen, select "HTML page" on the "Target document
+  type" combo.
++ Press the "Convert!" button.
+
+
+   [IMGPATH/firstdoc-done.png] 
+
+A dialog box will appear, telling you that the file was converted
+successfully. Note that the generated HTML page was saved on the same
+folder as the text file, with the "html" extension.
+
+------------------------------------------------------------------------
+
+== The First Conversion - Command Line Interface ==
+
+If you are in the Command Line Interface, move to the folder where the
+file was saved and type this command:
+
+``` txt2tags --target html test.txt
+
+The option ``--target`` is followed
+by the "html" string, which tells the program to what format your text
+file will be converted. The last item is the text filename.
+
+The results were saved to the ``test.html``
+file and then the program will show you the
+"//txt2tags wrote test.html//" message.
+If some error occurred, read the message carefully.
+
+Here is a sample of how it will be shown on your screen:
+```
+prompt$ txt2tags --target html test.txt
+txt2tags wrote test.html
+prompt$
+```
+
+------------------------------------------------------------------------
+
+== Check the Results ==
+
+Open the ``test.html`` file on the web browser to check if everything
+is ok.
+
+   [IMGPATH/firstdoc-html.png] 
+
+Here it is! You just typed three simple lines of text and txt2tags made
+all the work to set the HTML page heading information, text alignment,
+sizes, spacing and appearance. See that the main title is also placed at the
+browser title bar.
+
+	You write text, txt2tags does the rest ;)
+
+Tip: You can also use CSS files on HTML pages generated by txt2tags, so the
+page appearance is 100% configurable.
+
+------------------------------------------------------------------------
+
+== Writing the Document Body ==
+
+Now back to the text editor, the next step is to type the document
+contents. You can write plain text as you normally do on email messages.
+You will see that txt2tags recognizes paragraphs and list of items
+automatically, you don't have to "mark" them.
+
+Then again: save it, convert and check the results. This is the
+development cycle of a document in txt2tags. You just focus on the
+document contents, finishing documents faster than other editors. No
+mouse clicking, no menus, no windows, no distraction.
+
+Considering the following contents for the ``test.txt`` file, which is
+only plain text, compare the generated HTML page:
+
+```
+My First Document
+A txt2tags test
+Sunday, 2004
+
+Well, let's try this txt2tags thing.
+I don't know what to write.
+
+Mmmmmm, I know what I need to do now:
+- Take a shower
+- Eat a pizza
+- Sleep
+```
+
+   [IMGPATH/firstdoc-fullhtml.png] 
+
+
+You can write a full homepage with 0% of HTML knowledge. You don't need
+to insert any tags. And more, the same text file can be converted to any
+of the other txt2tags supported formats.
+
+Besides plain text, txt2tags has some very simple marks, that you'll
+use when you need some other formatting or structures like bold, italic,
+title, images, table and other. As a quick sample,
+``**stars for bold**`` and ``== equals for title ==``. You can learn the
+marks on the [Txt2tags Markup Demo URLWEBSITE/markup.html].
+
+=======================================================================
+
+
+
+= Part IV - Mastering Txt2tags Concepts =[concepts]
+
+== The .t2t document Areas ==[areas]
+
+Txt2tags marked files are divided in 3 areas. Each area have its own
+rules and purpose. They are:
+
+: //HEADAREA//
+  Place for Document Title, Author, Version and Date information.
+: //CONFAREA//
+  Place for general Document Settings and Parser behavior modifiers.
+: //BODYAREA//
+  Place for the Document Content.
+
+
+All areas are optional. You can write a txt2tags document with just
+headers (such as our first example), or a document with no headers or settings.
+
+The areas are delimited by special rules, which will be seen in detail
+on the next chapter. For now, this is a representation of the
+areas on a document:
+
+```
+             ____________
+            |            |
+            |   HEADERS  |       1. First, the Headers
+            |            |
+            |   CONFIG   |       2. Then the Settings
+            |            |
+            |    BODY    |       3. And finally the Document Body,
+            |            |
+            |    ...     |          which goes until the end
+            |    ...     |
+            |____________|
+
+```
+
+In short, this is how the areas are defined:
+
+ |  **Headers**  | First 3 lines of the file, or the first line blank for No Headers.
+ |  **Config**   | Begins right after the Header (4th or 2nd line) and ends when the //BODYAREA// starts.
+ |   **Body**    | The first valid text line (not comment or setting) after the //HEADAREA//.
+
+
+=== Full Example ===
+
+```
+My nice doc Title
+Mr. John Doe
+Last Updated: %%mtime(%c)
+
+%!target  : html
+%!style   : fancy.css
+%!encoding: UTF-8
+%!options : --toc --enum-title
+
+Hi! This is my test document.
+Its content will end here.
+```
+
+------------------------------------------------------------------------
+
+== HEADAREA ==[headers-area]
+
+Location:
+- Fixed position: **First 3 lines** of the file. Period.
+- Fixed position: **First line** of the file if it is blank. This
+  means Empty Headers.
+
+
+The HEADAREA is the only one that has a fixed position, line
+oriented. They are located at the first three lines of the source file.
+
+These lines are content-free, with no static information type needed.
+But the following is recommended:
+
+- //line 1//: document title
+- //line 2//: author name and/or email
+- //line 3//: document date and/or version
+              (nice place for ``%%date``)
+
+
+Keep in mind that the first 3 lines of the source document will be the
+first 3 lines on the target document, separated and with high contrast
+to the text body (i.e. big letters, bold). If paging is allowed, the
+headers will be alone and centralized on the first page.
+
+
+==== Less (or None) Header lines ====
+
+Sometimes the user wants to specify less than three lines for headers,
+giving just the document title and/or date information.
+
+Just let the 2nd and/or the 3rd lines empty (blank) and this position
+will not be placed at the target document. But keep in mind that even
+blanks, these lines are still part of the headers, so the document body
+must start **after** the 3rd line anyway.
+
+The title is the only required header (the first line), but if you
+leave it blank, you are saying that your document has **no headers**.
+So the //BODYAREA// will begin right after, on the 2nd line.
+
+No headers on the document is often useful if you want to specify your
+own customized headers after converting. The command line option
+``--no-headers`` is usually required for this kind of operation.
+
+==== Straight to the point ====
+
+In short: **"Headers are just __positions__, not contents"**
+
+Place one text on the first line, and it will appear on the target's
+first line. The same for 2nd and 3rd header lines.
+
+------------------------------------------------------------------------
+
+== CONFAREA ==[config-area]
+
+Location:
+- Begins right after the HEADAREA
+  - Begins on the **4th line** of the file if **Headers** were specified
+  - Begins on the **2nd line** of the file if **No Headers** were specified
+- Ends when the BODYAREA starts
+  - Ends by a non Setting, Blank or Comment line
+
+
+The CONFAREA is optional. An average user can write lots of txt2tags
+files without even know it exists, but the experienced users will
+enjoy the power and control it provides.
+
+The CONFAREA is used to store document-specific settings, so you don't
+have to type them on the command line when converting the document. For
+example, you can set the default document target type and encoding.
+
+Please read the [Settings section #settings-overview] for more
+information about them.
+
+----------------------------------------------------------------
+
+== BODYAREA ==[body-area]
+
+Location:
+- Begins on the first valid text line of the file
+  - Headers, Settings and Comments are **not** valid text lines
+- Ends at the end of the file (EOF)
+
+
+The body is anything outside Headers and Config Areas.
+
+The body holds the document contents and all formatting and structures
+txt2tags can recognize. Inside the body you can also put comments for
+//TODOs// and self notes.
+
+You can use the ``--no-headers`` command line option to convert only the
+document body, suppressing the headers. This is useful to set your own
+headers on a separate file, then join the converted body.
+
+----------------------------------------------------------------
+
+== Settings ==[settings-overview]
+
+Settings are special configurations placed at the source document's
+CONFAREA that can affect the conversion process. Their syntax is:
+
+``` %! keyword : value
+
+List of valid keywords:
+
+ || Keyword   | Description |
+ |   Target   | Set the default target to the document be converted to.
+ |  Options   | Set the default options to be used on the conversion. The format is the same as the command line options.
+ |   Style    | Set the document style. Used to define a CSS file for HTML/XHTML and to load a package in LaTeX.
+ |  Encoding  | Set the document Character Set. Used if the document contains accented letters or other not-ASCII characters.
+ |   PreProc  | Input filter. Sets "find and replace" rules to be applied on the BODYAREA of the source document.
+ |  PostProc  | Output filter. Sets "find and replace" rules to be applied on the converted document.
+
+Example:
+
+```
+%!target  : html
+%!options : --toc --toc-level 3
+%!style   : fancy.css
+%!encoding: UTF-8
+%!preproc : "AMJ"        "Aurelio Marinho Jargas"
+%!postproc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
+```
+
+Note that the spacing and capitalization of the keyword are ignored. So you can also do ``%!Target:html`` and  ``%! TARGET :html``.
+
+Learn more about settings in [Part VII - Mastering Settings #settings].
+
+-----------------------------------------------------------------------
+
+== Command Line Options ==[options]
+
+The fastest way of changing the txt2tags default behavior is to use
+command line options. This options are available on the Command Line
+Interface only, not on Gui or Web.
+
+Just like the other system's tools, the program do accept a set of
+predefined options. An option is an hyphen followed by a letter or two
+hyphens followed by one or more words, like ``-t`` and ``--target``.
+% Talking about the target option, it is the only required one, the others
+% are optional.
+
+Options that are generally used are ``--outfile`` to define a customized
+output file name, ``--toc`` to turn on the automatic TOC generation and
+``--encoding`` to set the document character set. Most of the options
+can be turned off prefixing a "no-" before its name, for example:
+``--no-encoding`` and ``--no-toc``.
+
+You can register the desired options for a source file inside its
+CONFAREA, using the ``%!options`` setting. This way you don't have to
+type them on the command line anymore.
+Example:
+
+``` %!options: --toc -o mydoc.html
+
+The exception is the target specification, that has its own setting:
+
+``` %!target: html
+
+Use the ``--help`` option to get a complete list of all the options
+available in txt2tags.
+
+Learn more about [%!options #setting-options] and [%!target #setting-target].
+
+-----------------------------------------------------------------------
+
+== User Configuration File (RC File) ==[rc]
+
+The user configuration file (also called RC file) is a central place to
+store the settings that will be shared by ALL converted files. If you
+keep inserting the same settings on every .t2t file you write, move it
+to the RC file and it will be used globally, for existing and future
+source files.
+
+The default location of this file depends on your system. It can also be
+specified by the user, using an environment variable.
+
+  ||              RC file location             ||
+  |          Windows | ``%HOMEPATH%\_t2trc``
+  | UNIX, Linux, Mac | ``$HOME/.txt2tagsrc``
+  |     User defined | ``T2TCONFIG`` variable
+
+
+The format of the settings is exactly the same as the ones used on the
+.t2t files CONFAREA. There is a sample RC file on the package at
+``doc/txt2tagsrc``. Example:
+
+```
+% my configs
+
+%%% Always use CSS-friendly tags in HTML
+%!options(html): --css-sugar
+
+%%% Change the default TOC depth for all targets
+%!options: --toc-level 4
+
+%%% Set the default encoding for all documents
+%!options: --encoding UTF-8
+```
+
+Any line that is not blank, a comment or a valid config line will raise
+error when txt2tags runs. So be careful when editing this file.
+
+Txt2tags automatically apply the RC file contents into any source file it
+is converting. If you want to disable this behavior for a specific
+file, use the ``--no-rc`` command line option.
+
+== Configuration Loading Order and Precedence ==[config-loading]
+
+There are three ways of telling txt2tags which options and settings to
+use, and this is the order that they are read and applied:
+
++ The user configuration file (RC) settings
++ The source document CONFAREA settings
++ The command line options
+
+
+First txt2tags reads the RC file contents (if any) and apply its
+configurations on the current source file. Then it scans the source
+document CONFAREA for settings and if found, they are applied also,
+overriding the RC ones in case of conflict. Finally comes the command
+line options, stronger than the other two.
+
+So, if the document encoding was defined on the three resources, the
+command line will be the one used.
+
+-----------------------------------------------------------------------
+
+== %!include command ==[include]
+
+The ``include`` command is used to paste the contents of an external
+file into the source document body. It is not a config, but a command,
+and it is valid on the document BODYAREA.
+
+The ``include`` command is useful to split a large document into smaller
+pieces (like chapters in a book) or to include the full contents of an
+external file into the document source. Sample:
+
+```
+My first book
+Dr. John Doe
+1st Edition
+
+%!include: intro.t2t
+%!include: chapter1.t2t
+%!include: chapter2.t2t
+...
+%!include: chapter9.t2t
+%!include: ending.t2t
+```
+
+You just inform the filename after the ``%!include`` string. The
+optional target specification is also supported, so this is valid
+either:
+
+``` %!include(html): file.t2t
+
+Note that include will insert the file BODYAREA into the source
+document. The included file Header and Config Areas are ignored. This
+way you can convert the included file alone or inside the main document.
+
+But there's another three types of include:
+- Verbatim include
+- Raw include
+- Tagged include
+
+
+The **Verbatim** type includes a text file preserving its original
+spaces and formatting, just like if the text was inside the txt2tags
+Verbatim area (```). To specify this type, enclose the filename with
+backquotes:
+
+``` %!include: ``/etc/fstab``
+
+The **Raw** type includes a text file as is, not trying to find and
+parse txt2tags marks on it, just like if the text was inside the Raw
+area ("""). To specify this type, enclose the filename with double
+quotes:
+
+``` %!include: ""nice_text.txt""
+
+And the **Tagged** type is passed directly to the resulting document,
+with NO parsing or escaping performed by txt2tags. This way you can
+include additional tagged parts to your document. Useful for default
+header or footer information, or more complicated tagged code,
+unsupported by txt2tags:
+
+``` %!include(html): ''footer.html''
+
+Note that the filename is enclosed with single quotes. As the text
+inserted is already parsed, you should specify the target to avoid
+mistakes.
+
+-----------------------------------------------------------------------
+
+== %!includeconf command ==[includeconf]
+
+The ``includeconf`` command is used to include configurations from an
+external file into the current one. This command is valid inside the
+source document CONFAREA only.
+
+It is useful to share the same config for multiple files, so you can
+centralize it. On any file do you want to include that central
+configuration, put a ``includeconf`` call. Example:
+
+```
+My First Document
+John Doe
+July, 2004
+
+%!includeconf: config.t2t
+
+Hi, this is my first document.
+```
+
+The format inside the included file is the same as in the
+[RC file #rc].
+
+Note that the optional target specification is NOT supported for this command.
+
+```
+%!includeconf: config.t2t            <--- OK
+%!includeconf(html): config.t2t      <--- NOT OK
+```
+
+=======================================================================
+
+
+
+= Part V - Mastering Marks =[marks]
+
+Overview of all txt2tags marks:
+ ||                   Basic                   ||               Beautifiers          ||
+ |          //Headers// |  First 3 lines       |            //Bold// |  ""**words**"" 
+ |            //Title// |  = words =           |          //Italic// |  ""//words//"" 
+ |   //Numbered title// |  + words +           |       //Underline// |  ""__words__"" 
+ |        //Paragraph// |  words               |          //Strike// |  ""--words--"" 
+ |            //Links// |  ""[label url]""     |      //Monospaced// |  ""``words``"" 
+ |            //Image// |  ""[filename.jpg]""  |        //Raw text// |  """"words"""" 
+ |                                            ||     //Tagged text// |  ""''words''"" 
+ ||                                          Other                                ||||
+ |            //Quote// |  <TAB>words          |  //Separator line// |  ------------... 
+ |             //List// |  - words             |     //Strong line// |  ============... 
+ |    //Numbered list// |  + words             |           //Table// |  ""| cell1 | cell2 | cell3..."" 
+ |  //Definition list// |  : words             |          //Anchor// |  = title =[anchor] 
+ |     //Comment line// |  % comments          |    //Comment area// |  %%%\n comments \n%%% 
+ |    //Verbatim line// |  ""```"" word        |   //Verbatim area// |  ""```\n lines \n```"" 
+ |         //Raw line// |  """"""" words       |        //Raw area// |  """""""\n lines \n""""""" 
+ |      //Tagged line// |  ""'''"" words       |     //Tagged area// |  ""'''""\n lines \n""'''"" 
+
+
+General Rules:
+
+- **Headers** are the first three document lines, marks are not interpreted.
+- **Titles** are balanced "=" or "+" chars around the title text. The more chars, more deep is the title.
+- **Beautifiers** don't accept spaces between the marks and its contents.
+- The **Comment** mark "%" must be at the line beginning (first column).
+- **Images** filename must end in GIF, JPG, PNG or similar.
+- The only **multiline** marks are the Comment, Verbatim, Raw and Tagged areas.
+- No mark is **interpreted** inside Verbatim, Raw and Tagged.
+- The **Separator/Strong lines** must have at least 20 chars.
+- Quote and lists **(un)nesting** is defined by indent.
+- A **Table title** line is defined by two || at the beginning of the line.
+
+
+------------------------------------------------------------------------
+%- MARKPROP Multiline, FreeSpaces, Align, Nesting
+%- MARKCONT Macros, Beautifiers, Quote, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
+%-----------------------------------------------------------------------
+
+== Headers ==[mark-headers]
+
+- MARKDESC Identifies the document headers
+- MARKPROP Multiline, FreeSpaces, !Align, !Nesting
+- MARKCONT Macros
+- MARKSYN
+  - The first 3 lines of the source file.
+  - Leave the first line blank to not specify headers at all.
+    Nice for command line one-liners or customized headers.
+  - Leave the second and/or third lines blank to omit parts of header.
+- MARKDET
+  - NOMARKS
+  - The first 3 lines will be the first 3 lines on the target document,
+    with high contrast to text body, or will be placed alone on the
+    first page (if paging is allowed).
+  - The headers are content-free, with no static information type
+    needed. But the following is recommended for the most documents:
+    - Line 1: Document title
+    - Line 2: Author name and/or email
+    - Line 3: Document date and/or version (nice place for ""%%mtime"")
+
+
+------------------------------------------------------------------------
+
+== Title, Numbered Title ==[mark-title]
+
+- MARKDESC Identifies a (numbered or not) section title
+- MARKPROP !Multiline, FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - For Numbered Title, just change "=" by "+" on the following rules
+  - Balanced equal signs around, ``=like this=``
+  - More signs, more sublevels: ``=title=``, ``==subtitle==``,
+    ``===subsubtitle===``, ...
+  - There is a maximum of 5 levels, ``=====like this=====``
+  - Unbalanced equals are not title, ``=like this===``
+  - Free spacing inside the marks are allowed, ``=       like this  =``
+  - Titles can have an anchor ``=like this=[anchor]``. To link to an anchor
+    create a ``[local link #anchor]``
+  - The anchor name can contain only letters, numbers, underscore
+    and hyphen (A-Za-z0-9_-)
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+
+
+------------------------------------------------------------------------
+
+== Paragraph ==[mark-paragraph]
+
+- MARKDESC Identifies a paragraph of text
+- MARKPROP Multiline, FreeSpaces, !Align, !Nesting
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
+- MARKSYN
+  - Paragraphs are groups of lines delimited by blank lines
+  - Other blocks like lists, quote, table or verbatim also ends a
+    paragraph
+
+
+------------------------------------------------------------------------
+
+== Comment ==[mark-comment]
+
+- MARKDESC Used to insert text that will not appear on the target
+  document
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - A line beginning with a percent char at the first column, ``% like this``
+  - NO leading spaces
+- MARKDET
+  - As comments, they're not showed on the converted text
+  - Not a block, so each comment line must begin with %
+  - Useful for TODO and FIXME reminders and editor's notes
+
+
+------------------------------------------------------------------------
+
+== Comment Area ==[mark-comment-block]
+
+- MARKDESC Used to insert text that will not appear on the target
+  document
+- MARKPROP Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - A line with exactly 3 consecutive percents ``%%%``, followed by
+    text lines, followed by another line with exactly 3 consecutive
+    percents ``%%%``
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - As comments, they're not showed on the converted text
+  - Useful for deactivate (not delete) large portions of the contents
+  - If the end of the source file (EOF) is hit, the opened Comment Area
+    is closed
+
+
+---------------------------------------------------------------------
+
+== Bold, Italic, Underline, Strike ==[mark-beautifiers]
+
+- MARKDESC Used to insert a bold/italic/underline/strike text inside a
+  paragraph, table, list or quote
+- MARKPROP !Multiline, !FreeSpaces, !Align, Nesting
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image
+- MARKSYN
+  - Two starts around for bold, ``**like this**``
+  - Two slashes around for italic, ``//like this//``
+  - Two underlines around for underline, ``__like this__``
+  - Two hyphens around for strike, ``--like this--``
+  - The marks must be glued with the contents (no spaces):
+    ``** this ** is invalid``
+- MARKDET
+  - All the beautified text must be on a single line of the source file,
+    no line breaks inside
+  - Macros are allowed inside beautifiers: ``**%%date**``
+  - You can mix beautifiers one inside another,
+    ``""**__like__ //this//**""``
+
+
+------------------------------------------------------------------------
+
+== Monospaced ==[mark-monospaced]
+
+- MARKDESC Used to insert a monospaced text inside a paragraph, table,
+  list or quote
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - Two backquotes around, ````like this````
+  - The marks must be glued with the contents (no spaces):
+    ```` this `` is invalid``
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+  - All the monospaced text must be on a single line of the source file,
+    no line breaks inside
+  - In some targets, the internal spacing is maintained, in others the
+    consecutive spaces are squeezed to one
+  - You can make a bold monospaced text enclosing it inside bold marks:
+    ``""**``monobold``**""``. The same applies to the other beautifiers
+    such as ``""//``italic``//""`` and ``""__``underline``__""``.
+
+
+---------------------------------------------------------------------
+
+== Verbatim Line, Verbatim Area ==[mark-verbatim]
+
+- MARKDESC Used to insert programming codes or other pre-formatted text,
+  preserving spacing and line breaks, and using a monospaced font
+- MARKPROP Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN **Verbatim Line:**
+  - A line beginning with 3 consecutive backquotes, followed by a space,
+    followed by the text, ``""```"" like this``
+  - The backquotes must be at the start of the line, no spaces before
+- MARKSYN **Verbatim Area:**
+  - A line with exactly 3 consecutive backquotes ```````, followed by
+    text lines, followed by another line with exactly 3 consecutive
+    backquotes ```````
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+  - If the end of the source file (EOF) is hit, the opened Verbatim Area
+    is closed
+
+
+---------------------------------------------------------------------
+
+== Separator Line, Strong Line ==[mark-separator]
+
+- MARKDESC Identifies a separator or strong line
+- MARKPROP !Multiline, FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN
+  - The separator line can be composed by dashes "-" or underscores "_"
+  - The strong line is composed by equals "="
+  - Use at least least 20 dashes/underscores/equal signs
+  - Optional spaces can be placed at the line start or end
+  - Any other characters on the line invalidate the mark
+- MARKDET
+  - If the target does not have separator line support, a commented line
+    is used instead
+  - The strong line may have different behaviors on some targets:
+    - A larger separator line
+    - A pause on presentation formats, like MagicPoint
+    - A page break in paged targets, like LaTeX
+
+
+---------------------------------------------------------------------
+
+== Links, Named Links ==[mark-link]
+
+- MARKDESC Identifies a remote (Internet) or local link
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT Macros, Raw, Tagged, Image
+- MARKSYN
+  - Any valid internet URL, ftp, news or email address is detected and
+    converted automatically
+  - The protocol (http, https, ftp) is optional, ``www.likethis.com``
+  - A name can be used for a link: ``[click here www.url.com]``
+  - An image can point to a link: ``[[image.jpg] www.url.com]``
+  - Macros are allowed on the link address: ``[see source %%infile]``
+  - Macros are allowed on the link name: ``[mirror of %%outfile www.url.com]``
+% - Beautifiers are allowed on the link name: ``[**click** here www.url.com]``
+  - All the link specification must be on a single line of the source
+    file, no line breaks inside
+- MARKDET
+  - If the target does not have link support, they're just underlined
+
+
+---------------------------------------------------------------------
+
+== Quote ==[mark-quote]
+
+- MARKDESC Identifies a quoted (indented) line
+- MARKPROP Multiline, !FreeSpaces, !Align, Nesting
+- MARKCONT Macros, Beautifiers, Quote, Raw, Tagged, Bars, Links, Image, Comment
+- MARKSYN
+  - A line that starts with a tabulation (TAB) character
+  - More TABs at the start increase the quote depth
+  - Lists and tables are not allowed inside quote
+- MARKDET
+  - If the end of the source file (EOF) is hit, the opened Quote is
+    closed
+  - Some targets may not support quote nesting, then the subquotes lines
+    are moved up to the mother quote level.
+  - There is not a limit for subquotes depth. But some targets may have
+    restrictions, so the subquotes than are deeper than the maximum level
+    are moved up.
+
+
+---------------------------------------------------------------------
+
+== List, Numbered List, Definition List ==[mark-lists]
+
+- MARKDESC Identifies the start of a list item
+- MARKPROP Multiline, !FreeSpaces, !Align, Nesting
+- MARKCONT Macros, Beautifiers, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
+- MARKSYN
+  - A line that starts with a dash/plus/colon followed by exactly one
+    space
+  - The first list char can NOT be a space (exception: definition
+    lists)
+  - Optional spaces (regular spaces, not TAB) at the line beginning
+    define sublists depth (nesting)
+  - Sublists end with a less depth item (from parent list) or with an
+    empty item
+  - All opened lists are closed with two consecutive blank lines
+- MARKDET
+  - If the end of the source file (EOF) is hit, all opened lists are
+    closed
+  - Lists can be mixed, like a definition list inside a numbered list.
+  - Some targets may not support list nesting, then the sublists items
+    are moved up to the mother list level.
+  - There is not a limit for sublists depth. But some targets may have
+    restrictions, so the sublists than are deeper than the maximum level
+    are moved up.
+
+
+---------------------------------------------------------------------
+
+== Image ==[mark-image]
+
+- MARKDESC Identifies an image
+- MARKPROP !Multiline, !FreeSpaces, Align, !Nesting
+- MARKCONT Macros
+- MARKSYN
+  - An image filename enclosed between brackets, ``[likethis.jpg]``
+  - The filename must end in an image extension like PNG, JPG, GIF,
+    ... (case doesn't matter)
+  - Symbols are allowed on the filename, ``[likethis!~1.jpg]``
+  - Macros are allowed on the filename, ``[report-%%date(%Y-%m-%d).png]``
+  - NO spaces allowed on the filename, ``[like this.jpg]``
+  - NO spaces allowed on the brackets, ``[ likethis.jpg ]``
+- MARKDET
+  - If the target does not have image support, the image filename is
+    shown inside (parenthesis).
+  - The position of the mark on the line defines the image alignment:
+    - ``[LEFT.jpg]`` blablablabla
+    - blablablabla ``[CENTER.jpg]`` blablablabla
+    - blablablabla ``[RIGHT.jpg]``
+
+
+---------------------------------------------------------------------
+
+== Table ==[mark-table]
+
+- MARKDESC Delimits a table row, with any number of columns
+- MARKPROP Multiline, FreeSpaces, Align, !Nesting
+- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
+- MARKSYN
+  - A leading pipe "|" identifies a table row
+  - A leading double pipe "||" identifies a table title row
+  - Leading spaces before first pipe identifies table centered align
+  - The fields are separated by the " | " string (space pipe space)
+  - A final pipe "|" at the first table row sets visible borders
+  - A final pipe "|" at the other table rows are ignored (just cosmetic)
+  - Closing a cell with more than one pipe "|" identifies column span:
+    "||" for 2 columns, "|||" for 3 and so on
+  - Natural spaces inside each cell identifies its alignment
+  - Example: ``| table | row | with | five | columns |``
+- MARKDET
+  - All the table row data must be on a single line of the source file,
+    no line breaks inside
+  - Targets with column-oriented align (like sgml and LaTeX), uses the
+    first table row align as the default for the other rows
+  - Any non-table line closes the opened table, except comment lines
+  - The cell count is flexible, each table row can have a different
+    number of cells
+  - Currently there's no way to specify row span
+  - If the target does not have table support, the table lines are
+    considered a Verbatim Area
+
+
+---------------------------------------------------------------------
+
+== Raw, Raw Line, Raw Area ==[mark-raw]
+
+- MARKDESC Used to "protect" some text from parsing, so marks and macros inside
+  it will not be expanded. But escapes are applied.
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN **Raw:**
+  - Two double quotes around, ``""like this""``
+  - Marks glued with the contents (no spaces)
+- MARKSYN **Raw Line:**
+  - A line beginning with 3 consecutive double quotes, ``""" like this``
+  - The double quotes must be at the start of the line, no spaces before
+  - Use a space after the double quotes to separate them from the text
+- MARKSYN **Raw Area:**
+  - A line with exactly 3 consecutive double quotes, followed by text
+    lines, followed by another line with exactly 3 consecutive
+    double quotes
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+  - If the end of the source file (EOF) is hit, the opened Raw Area is
+    closed
+
+
+---------------------------------------------------------------------
+
+== Tagged, Tagged Line, Tagged Area ==[mark-tagged]
+
+- MARKDESC Used to send text directly to the output, no parsing or escaping is made by txt2tags.
+- MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
+- MARKCONT -
+- MARKSYN **Tagged:**
+  - Two apostrophes around, ``''like this''``
+  - Marks glued with the contents (no spaces)
+- MARKSYN **Tagged Line:**
+  - A line beginning with 3 consecutive apostrophes, ``''' like this``
+  - The apostrophes must be at the start of the line, no spaces before
+  - Use a space after the apostrophes to separate them from the text
+- MARKSYN **Tagged Area:**
+  - A line with exactly 3 consecutive apostrophes, followed by text
+    lines, followed by another line with exactly 3 consecutive
+    apostrophes
+  - NO spaces allowed before or after the marks
+- MARKDET
+  - NOMARKS
+  - NOMACRO
+  - If the end of the source file (EOF) is hit, the opened Tagged Area is
+    closed
+  - Use this mark to insert target code. For example, in HTML you could use
+    it to insert manual line breaks ``''<br>''``,
+    custom DIVs ``''<div id="myfooter">''`` or even full blocks of code,
+    like the Google Analytics tracking code.
+
+
+=======================================================================
+
+
+
+= Part VI - Mastering Macros =[macros]
+
+Macros are special purpose keywords, that are expanded on conversion
+time. They are used to insert dynamic information, for example the
+current date or information about the document source.
+
+A macro is represented by the ``%%`` chars followed by its name, such as
+``%%date``. Some macros do accept an optional formatting string inside
+parenthesis, right after the macro name, such as ``%%date(%Y-%m-%d)``. This
+format string mixes common text with special directives, identified by a
+percent sign % followed by an identification character. If no format
+string is given, the default format is used.
+
+  || Macro Name   | Expands to...                        | Default Format |
+  | ""%%date""    | The current date                     |  %Y%m%d 
+  | ""%%mtime""   | The source file modification time    |  %Y%m%d 
+  | ""%%infile""  | The source file path                 |    %f 
+  | ""%%outfile"" | The output file path                 |    %f 
+  | ""%%toc""     | The document TOC (Table of Contents) |    - 
+
+General rules:
+
+- The macro name is case-insensitive, so ``%%date``, ``%%DaTe`` and
+  ``%%DATE`` are identical
+- Macros are valid at the document HEADAREA and BODYAREA, except
+  %%toc that is valid on BODYAREA only
+- A macro starts the BODYAREA if it is found in the CONFAREA
+- A macro can be placed at any part of the line, including various per line
+  (except %%toc, valid when alone in a line)
+- A macro can be used inside links and images marks (except %%toc)
+- Macros are not expanded in Titles, Verbatim, Raw and Tagged Areas
+
+
+Full example (bold text are expanded macros):
+
+This is the Txt2tags User Guide, converted to **%%outfile(%e)**
+by txt2tags from the **%%infile** source file. The conversion
+was done at **%%date(%Y-%m-%d %X)**, but the last change on the
+source document was made on **%%mtime(%Y-%m-%d %X)**. Both
+source and converted file reside on the **%%infile(%D)**
+directory.
+
+-----------------------------------------------------------------------
+
+== %%date ==[macro-date]
+
+The ``%%date`` macro expands to the current date and time. It is very
+useful on the document headers or footer, to register the date when the
+document was generated. To expand to the source document last
+modification time, see the [""%%mtime"" macro #macro-mtime].
+
+This macros accepts several formatting directives. The full list can be
+found in the
+[Python site http://docs.python.org/library/time.html].
+Here are the most commonly used:
+
+ || Directive | Description |
+  |  %a  | Locale's abbreviated weekday name.
+  |  %A  | Locale's full weekday name.
+  |  %b  | Locale's abbreviated month name.
+  |  %B  | Locale's full month name.
+  |  %c  | Locale's appropriate date and time representation.
+  |  %d  | Day of the month as a decimal number [01,31].
+  |  %H  | Hour (24-hour clock) as a decimal number [00,23].
+  |  %I  | Hour (12-hour clock) as a decimal number [01,12].
+  |  %m  | Month as a decimal number [01,12].
+  |  %M  | Minute as a decimal number [00,59].
+  |  %p  | Locale's equivalent of either AM or PM.
+  |  %S  | Second as a decimal number [00,61].  (1)
+  |  %x  | Locale's appropriate date representation.
+  |  %X  | Locale's appropriate time representation.
+  |  %y  | Year without century as a decimal number [00,99].
+  |  %Y  | Year with century as a decimal number.
+  |  %%  | A literal "%" character.
+
+Examples:
+
+ || Macro                           |  -->  | Results for on %%date(%Y, %b %d at %H:%M) |
+  | ""%%date(Converted on: %c)""    |  -->  | %%date(Converted on: %c)
+  | ""%%date(%Y-%m-%d)""            |  -->  | %%date(%Y-%m-%d)
+  | ""%%date(%I:%M %p)""            |  -->  | %%date(%I:%M %p)
+  | ""%%date(Today is %A, on %B.)"" |  -->  | %%date(Today is %A, on %B.)
+
+-----------------------------------------------------------------------
+
+== %%mtime ==[macro-mtime]
+
+The ``%%mtime`` macro expands to last modification time of the source
+document. It is useful to register when the file was last changed.
+This macro is a "sister" of the [""%%date"" macro #macro-date], so it
+accepts exactly the same formatting directives.
+
+As an example, this User Guide source file was last edited on
+**%%mtime(%c)**. This date was expanded from ``%%mtime(%c)``.
+
+-----------------------------------------------------------------------
+
+== %%infile ==[macro-infile]
+
+The ``%%infile`` macro expands to the source file location on the
+system. It is useful to make those "//see the source of this file//"
+links on HTML pages. Providing such link is a friendly attitude with
+beginners, so they can use your source as a sample for their own page.
+
+This macro accepts the following formatting directives:
+
+ || %<char> | Description | Output for this User Guide source |
+ |    %f    | File name                     | %%infile(%f)
+ |    %F    | File name (without extension) | %%infile(%F)
+ |    %e    | File extension                | %%infile(%e)
+ |    %p    | Absolute file path            | %%infile(%p)
+ |    %d    | File path (directories only)  | %%infile(%d)
+ |    %D    | File path (parent dir only)   | %%infile(%D)
+ |    %%    | Literal percent char          | %%infile(%%)
+
+Examples:
+
+ || Source                                       |  -->  | Expanded  |
+ | This Guide parent dir is ""%%infile(%D)"".    |  -->  | This Guide parent dir is %%infile(%D). |
+ | I do use the ""%%infile(%e)"" file extension. |  -->  | I do use the %%infile(%e) file extension. |
+ | ""[See the source %%infile]""                 |  -->  | [See the source %%infile]
+ | Converted to XHTML, I'll be ""%%infile(%F)"".xhtml |  -->  | Converted to XHTML, I'll be %%infile(%F).xhtml
+
+	**Note:** The macro is expanded to "-" if the source file is STDIN.
+
+-----------------------------------------------------------------------
+
+== %%outfile ==[macro-outfile]
+
+The ``%%outfile`` macro expands to the converted file location on the
+system. It is useful to its name inside the document Body or Headers.
+This macro is a sister of the [""%%infile"" macro #macro-infile] and
+do accept exactly the same formatting directives.
+
+Examples:
+
+ || Source                                    |  -->  | Expanded  |
+ | You are reading the ""%%outfile"" file.    |  -->  | You are reading the %%outfile file.
+ | txt2tags -t ""%%outfile(%e)"" -i ""%%infile"" -o ""%%outfile"" |  -->  | txt2tags -t %%outfile(%e) -i %%infile -o %%outfile
+
+	**Note:** The macro is expanded to "-" if the output file is STDOUT.
+
+-----------------------------------------------------------------------
+
+== %%toc ==[macro-toc]
+
+The ``%%toc`` macro expands to the document's Table of Contents. It is
+useful for you to specify exactly where you want the TOC to be placed.
+You can even use the macro more than one time and place the TOC at the
+end of the document also, for example. This Guide is using ""%%toc""
+to position the TOC.
+
+Different from the other macros, this one does not accept a format
+string and has its own special rules:
+
+- Valid at the document BODYAREA only
+- Must be alone on the line (leading and trailing spaces are allowed)
+- Must be used together with --toc command line option, or it will be
+  ignored
+- The default automatic TOC positioning/formatting is disabled when a
+  %%toc is found
+
+
+=======================================================================
+
+
+
+= Part VII - Mastering Settings =[settings]
+
+Settings are special configurations placed at the source document's
+CONFAREA that can affect the conversion process. The Settings are all
+optional. The average user can live fine without them. But they are
+addictive, if you start using them, you'll never stop :)
+
+Setting lines are //special comment lines//, marked by a leading
+identifier ("!") that makes them different from plain comments. The
+syntax is just as simple as variable setting, composed by a keyword
+and a value, separated from each by a colon (":").
+
+	**%! keyword : value**
+
+Syntax details:
+
+- The exclamation mark must be placed together with the comment char
+  (%!), no spaces between them.
+
+- The spaces around the keyword and the separator are optional.
+
+- Keywords are case insensitive (case doesn't matter).
+
+
+Rules:
+
+- Settings are valid only inside the CONFAREA, and are considered
+  plain comments if found on the document Body.
+
+- If the same keyword appears more than one time on the CONFAREA, the
+  last found will be the one used. Exception: options, preproc and
+  postproc, which are cumulative.
+
+- A setting line with an invalid keyword will be considered a plain
+  comment line.
+
+- This settings have precedence over RC file, but not on command line
+  options.
+
+
+-----------------------------------------------------------------------
+
+== %!target ==[setting-target]
+
+Using the target setting, a default target format is defined for the
+document:
+
+``` %!target: html
+
+This way the user can just call
+
+``` $ txt2tags file.t2t
+
+And the conversion will be done, to the specified target.
+
+The target setting does not support optional target specification.
+That doesn't make sense, such as ``%!target(tex): html``.
+
+-----------------------------------------------------------------------
+
+== %!options ==[setting-options]
+
+Writing long command lines every time you need to convert a document
+is boring and error prone. The Options setting let the user save
+all the converting options together with the source document. This also
+ensures that the document will always be converted the same way, with
+the same options.
+
+Just write it with no syntax errors, as you were on the real command
+line. But omit the "txt2tags" program call on the beginning, the target
+specification and the source filename from the ending.
+
+For example, if you do use this command line to convert your document:
+
+``` $ txt2tags -t html --toc --toc-level 2 --enum-title file.t2t
+
+You can save yourself from typing pain using this Options setting inside
+the document source:
+
+```
+%!target: html
+%!options(html): --toc --toc-level 2 --enum-title
+```
+
+Now the options are registered inside the source file, so you can convert it with this simple command:
+
+``` $ txt2tags file.t2t
+
+	Tip for Vim users: To convert the document right inside the editor, just run ``:!txt2tags %``
+
+-----------------------------------------------------------------------
+
+== %!encoding ==[setting-encoding]
+
+The Encoding setting is needed by non-english writers, who uses
+accented letters and other locale specific details, so the target
+document //Character Set// must be customized (if allowed).
+
+The valid values for the Encoding setting are the same charset names
+valid for HTML documents, like //iso-8859-1// and //koi8-r//. If
+you're not sure which encoding you should use, try //utf-8//. If that doesn't work,
+[this complete (and long!) list http://www.iana.org/assignments/character-sets]
+should help.
+
+The LaTeX target uses alias names for encoding. This is not a problem
+for the user, because txt2tags translate the names internally. Some
+examples:
+
+      || txt2tags/HTML   |  >  | LaTeX  |
+       | windows-1250    | >>> | cp1250 |
+       | windows-1252    | >>> | cp1252 |
+       | ibm850          | >>> | cp850  |
+       | ibm852          | >>> | cp852  |
+       | iso-8859-1      | >>> | latin1 |
+       | iso-8859-2      | >>> | latin2 |
+       | koi8-r          | >>> | koi8-r |
+
+
+If the value is unknown to txt2tags, it will be passed "as is",
+allowing the user to specify custom encodings.
+
+-----------------------------------------------------------------------
+
+== %!preproc ==[setting-preproc]
+
+The PreProc is an input filter that changes the BODYAREA of the source document. It is a "find
+and replace" feature, applied right after the line is read from the
+document source, before any parsing by txt2tags.
+
+It is useful to define some abbreviations for common typed text, as:
+
+```
+%!preproc: JJS          "John J. Smith"
+%!preproc: RELEASE_DATE "2003-05-01"
+%!preproc: BULLET       "[images/tiny/bullet_blue.png]"
+```
+
+So the user can write a line like:
+
+``` Hi, I'm JJS. Today is RELEASE_DATE.
+
+And txt2tags will "see" this line as:
+
+``` Hi, I'm John J. Smith. Today is 2003-05-01.
+
+This filter is a component that acts between the document author
+and the txt2tags conversion. It's like a first conversion before the
+"real" one. This behavior is similar to an external Sed/Perl filter,
+called this way:
+
+``` $ cat file.t2t | preproc-script.sh | txt2tags -
+
+So the txt2tags parsing will begin after all the PreProc substitutions
+were applied.
+
+	**Note:** Remember that the preprocessing is applied only to the BODY of the source document, not including the HEADAREA and CONFAREA.
+
+-----------------------------------------------------------------------
+
+== %!postproc ==[setting-postproc]
+
+The PostProc is an output filter that changes the converted document. It is a
+"find and replace" feature, applied after all txt2tags parsing and
+processing is done.
+
+It is useful to do some refinements on the generated document, change
+tags and add extra text or tags. Quick samples:
+
+```
+%!postproc(html): '<BODY.*?>' '<BODY BGCOLOR="green">'
+%!postproc(tex) : "\\newpage" ""
+```
+
+These filters change the background color of the HTML page and remove
+the page breaks on the LaTeX target.
+
+The PostProc rules are just like an external Sed/Perl filter, called
+this way:
+
+``` $ txt2tags -t html -o- file.t2t | postproc-script.sh > file.html
+
+Before this feature was introduced, it was very common to have little
+scripts to "adjust" the txt2tags results. These scripts were in fact
+just lots of sed (or alike) commands, to do "substitute this for that"
+actions. Now this replacement strings can be saved together with the
+document text, and the plus is to use the Python powerful Regular
+Expression machine to find patterns.
+
+-----------------------------------------------------------------------
+
+== %!style ==[setting-style]
+
+- Useful in HTML and XHTML targets, it defines a CSS file for the target
+  document.
+
+- Useful in LaTeX target, to load ``\usepackage`` modules.
+
+- The same effect is achieved with the command line option ``--style``.
+
+- The --style option is stronger than %!style. If both are used, --style
+  wins.
+
+
+-----------------------------------------------------------------------
+
+== Defining a Setting for a Specific Target ==[setting-specific]
+
+All the settings (except %!target) can be glued with a specific target
+using the ``%!key(target): value`` syntax. This way user can define
+different config for different targets.
+
+This is specially useful in the pre/postproc filters, but is applicable
+to all settings. For example, defining different styles for HTML and
+LaTeX:
+
+```
+%!style(html): fancy.css
+%!style(tex) : amssymb
+```
+
+For the options setting it's very useful to adjust the converted
+document:
+
+```
+%!target: sgml
+%!options(sgml): --toc
+%!options(html): --style foo.css
+%!options(txt ): --toc-only --toc-level 2
+```
+
+In this example, the default target is Sgml and it will use TOC. If the
+user run ``txt2tags -t html file.t2t``, only the HTML options will be
+used, so the converted file will use "foo.css" style file and will
+have no TOC.
+
+-----------------------------------------------------------------------
+
+== Details for PreProc and PostProc Filters ==[filters-details]
+
+- Filters are a "find and replace" feature (think SED)
+
+- Filters do not follow the "last found, one used" schema, they're
+  cumulative. You can define as many filters as needed, with no limit.
+  They will be applied on the same order as defined.
+
+- Different from other settings, both the target specific filters and
+  the generic ones (all targets) are used. On the following example,
+  both filters are used on the HTML target:
+```
+%!postproc      :   this   that
+%!postproc(html):   that   other
+```
+
+- The filters must receive exactly TWO arguments
+
+- Special escapes as ``\n`` (line break) and ``\t`` (tabulation) are
+  interpreted
+
+- To delete some text, change it by an empty string
+``` %!postproc: "undesired string" ""
+
+- To avoid problems, always use the explicit target form when using
+  PostProc to change tags: ``%!postproc(target): <this> <that>``
+
+- PREproc is applied right after the line is read, and POSTproc is
+  applied after all the parsing was made. This is similar to
+  (UUOC ahead):
+``` $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
+
+- The first part of a filter (the "search for" part) is not read as a
+  regular string, but as a Regular Expression pattern. If you don't know
+  what these expressions do, don't worry, you may never have to. Just
+  keep in mind that you will need to "escape" some characters to use
+  them. To escape is to prefix the character with a backslash "\". Here
+  is the list:
+``` \*  \+  \.  \^  \$  \?  \(  \)  \{  \[  \|  \\
+
+- Python Regular Expressions are available! They're similar to Perl
+  Regexes (PCRE). Example: Change all opening and closing "B" tags to
+  "STRONG" on HTML:
+``` %!postproc(html):   '(</?)B>'   '\1STRONG>'
+
+- The filter arguments can be passed on 3 ways:
+    + A single unquoted word such as FOO (no spaces)
+    + A string double quoted such as "FOO"
+    + A string single quoted such as 'FOO'
+
+- If your pattern has double quotes, protect it with single quotes and
+  vice-versa. Some valid samples:
+```
+%!postproc:   PATT    REPLACEMENT
+%!postproc:  "PATT"  "REPLACEMENT"
+%!postproc:  'PATT'  'REPLACEMENT'
+%!postproc:   PATT   "REPLACEMENT"
+%!postproc:  "PATT"  'REPLACEMENT'
+```
+
+
+=======================================================================
+
+
+
+= Part VIII - Black Magic =[black-magic]
+
+This chapter is really not recommended for newbies. It demonstrates how
+to do strange things with txt2tags filters, abusing of complex
+patterns and Regular Expressions.
+
+	**BEWARE!** The following procedures are NOT encouraged and can
+	break things. Even some text from the document source can be
+	lost on the conversion process, not appearing on the target
+	document. Just use these tactics if you really need them and
+	know what you are doing.
+
+	**Note:** Filters are a powerful feature, but can be dangerous!
+
+	**Note:** Bad filters do generate unexpected results.
+
+Keep that in mind, please.
+
+-----------------------------------------------------------------------
+
+== Inserting Multiple Lines with %!postproc (such as CSS rules) ==[postproc-multiline]
+
+In filters, the replacement pattern can include multiple lines using the
+``\n`` line break char.
+
+This can be handy for including really short CSS rules on HTML target,
+with no need to create a separate file:
+
+```
+%!postproc: <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
+%!postproc: (</STYLE>)  'body     { margin:3em               ;} \n\1'
+%!postproc: (</STYLE>)  'a        { text-decoration:none     ;} \n\1'
+%!postproc: (</STYLE>)  'pre,code { background-color:#ffffcc ;} \n\1'
+%!postproc: (</STYLE>)  'th       { background-color:yellow  ;} \n\1'
+```
+
+All the filters are tied to the first one, by replacing a string that it
+has inserted. So a single "<HEAD>" turns to:
+
+```
+<HEAD>
+<STYLE TYPE="text/css">
+body     { margin:3em               ;}
+a        { text-decoration:none     ;}
+pre,code { background-color:#ffffcc ;}
+th       { background-color:yellow  ;}
+</STYLE>
+```
+
+-----------------------------------------------------------------------
+
+== Creating "Target-Specific" Contents with %!preproc ==[target-specific-contents]
+
+Sometimes you need to insert some text on a specific target, but not on
+the others. This kind of strange behavior can be done using some
+PreProc tricks.
+
+The idea is to insert this extra text on the document source as
+comments, but mark it in a way that a target-specific filter will
+"uncomment" those lines.
+
+For example, if an extra paragraph must be added only in HTML target.
+Place the text as special comments, like this:
+
+```
+%html% This HTML page is Powered by [txt2tags http://txt2tags.org].
+%html% See the source TXT file [here source.t2t].
+```
+
+As those lines start with ``%``, they are plain comments lines and will be
+ignored. But when adding this special filter:
+
+``` %preproc(html): '^%html% ' ''
+
+The leading string is removed and those lines will be "activated", not
+being comments anymore. As a explicit target config, this filter will be
+processed for HTML targets only.
+
+-----------------------------------------------------------------------
+
+== Changing Txt2tags Marks with %!preproc ==[creating-marks]
+
+Being a Regular Expressions guru, the user can customize the document
+source syntax, changing the txt2tags default marks to some he find more
+comfortable.
+
+For example, a leading TAB is the Quotation mark. If the user doesn't
+like it, or his text editor has some strange relationship with TABs, he
+can define a new mark for Quoted text. Say a leading ">>> " was his
+choice. Then he will do this simple filter:
+
+``` %!preproc: '^>>> ' '\t'
+
+And on the document source, the quoted text will be something like:
+
+```
+>>> This is a quoted text.
+>>> The user defined this strange mark.
+>>> But they will be converted to TABs by PreProc.
+```
+
+Before the parsing begins, the strange ">>> " will be converted to
+TABs and txt2tags will recognize the Quote mark.
+
+	**BEWARE!** Extreme PreProc rules could eventually
+	change the entire marks syntax, even generating conflicts
+	between marks. Be really really careful when doing this.
+
+=======================================================================
+
+
+
+= The End =
+
+Thanks for reading! :)
+
+URLWEBSITE
+
+%nopdf([see source userguide.t2t])
+%nopdf[../../img/t2tpowered.png]
+
+
+% TRANSLATOR: You can stop here.
+
+
+
+%%%% OLD TEXTS, NOT USED ANYMORE
+%
+% ==   Split and language features (only for HTML target)   ==
+%
+% ---
+% usage: txt2tags -t html --split <split level> --lang <lang> file.t2t
+% 
+%    --split   split documents. values: 0, 1, 2 (default 0)
+%    --lang    document language (default english)
+% ---
+% 
+% For those who have [sgml-tools http://www.sgmltools.org] installed and
+% running on the system, when generating HTML documents, the split and
+% language features are available. First a SGML text is generated and the
+% sgml2html binary is called.
+% 
+% From sgml2html man page:
+%    | 0 | don't split             |
+%    | 1 | split by major sections |
+%    | 2 | split by subsections    |
+% 
+% 
+% ------------------------------------------------------------------------
+% 
+% ==   EXTRA I   ==
+% 
+% Cool Vim and Emacs syntax files sync'ed with all the rules.
+% See `txt2tags.vim` and `txt2tags-mode.el` on the `extras` dir.
+% 
+% BONUS: there's also a `pagemaker.vim` for the .pm6 files.
+% 
+% ------------------------------------------------------------------------
+% 
+% ==   EXTRA II   ==
+% 
+% For those who have the (1) package installed, the (2) target
+% is available! The package is found here: (3)
+% 
+% | 1           | 2   | 3                             |
+% | sgml-tools  | ps  | http://www.sgmltools.org      |
+% | ghostscript | pdf | http://www.cs.wisc.edu/~ghost |
+% 
+% 
+% And remember, from SGML you can convert to lots of types, see sgml2* on
+% the sgml-tools package.
+% 
+% PostScript Example:
+% --- prompt$ sgml2latex -o ps --language=english file.sgml
+% 
+% PDF Example:
+% --- prompt$ ps2pdf file.ps
+% 
+% 
+% ------------------------------------------------------------------------
+

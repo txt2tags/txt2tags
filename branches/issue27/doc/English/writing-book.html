@@ -1,0 +1,455 @@
+<?xml version="1.0"
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Writing Books with Txt2tags</title>
+<meta name="generator" content="http://txt2tags.org" />
+
+<!-- Included writing-book.css -->
+<style type="text/css">
+body
+	{
+	font: normal 14pt sans-serif;
+	text-align:justify;
+	margin: 3em;
+	padding: 3em 4em 2em 4em;
+	border: 1px solid black;
+	}
+#toc ol
+	{
+	padding: 2em;
+	}
+#body h1
+	{
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	margin-top: 3em;
+	}
+#body p, #body ul, #body ol
+	{
+	margin-left: 3em;
+	}
+#body li
+	{
+	/* to make IE happy */
+	margin-top: 1em;
+	}
+a
+	{
+	text-decoration: none;
+	}
+blockquote
+	{
+	margin-left: 5em;
+	margin-top:2em;
+	font-style:italic;
+	}
+code
+	{
+	font-style:italic;
+	}
+hr
+	{
+	margin-top:3em;
+	}
+</style>
+
+</head>
+<body>
+
+<div class="header" id="header">
+<h1>Writing Books with Txt2tags</h1>
+<h3>by Aurelio Jargas</h3>
+</div>
+
+<div class="toc" id="toc">
+  <ol>
+  <li><a href="#toc1">Preface</a>
+  </li>
+  <li><a href="#toc2">Visual Editors VS Markup</a>
+  </li>
+  <li><a href="#toc3">The Txt2tags Approach</a>
+  </li>
+  <li><a href="#toc4">Fast and Furious</a>
+  </li>
+  <li><a href="#toc5">Organize the Sources in Folders</a>
+  </li>
+  <li><a href="#toc6">Version Control Made Easy</a>
+  </li>
+  <li><a href="#toc7">Quality Matters</a>
+  </li>
+  <li><a href="#toc8">Other Advantages</a>
+  </li>
+  <li><a href="#toc9">No Tool Fits All Needs</a>
+  </li>
+  </ol>
+
+</div>
+<div class="body" id="body">
+	<blockquote>
+	This document is a quick guide showing the benefits of using
+	the txt2tags tool on the book writing process. Also applicable
+	for other large documents as Guides and Thesis.
+	</blockquote>
+<p></p>
+<a id="toc1" name="toc1"></a>
+<h1>1. Preface</h1>
+<p>
+I'm the txt2tags<code>[1]</code> author and I wrote two published papers using
+it: a <a href="http://guia-er.sourceforge.net/">Regular Expressions book</a> (96 pages) and a Shell
+Programming Course (108 pages). The writing process was smooth and
+painless, so I want to share this experience.
+</p>
+<p>
+A book is a real big work to get done, but it doesn't have to be a
+complicated process. To write is to organize ideas into text
+structures like sections, paragraphs and lists. Txt2tags is a tool
+that makes this task simple and easy.
+</p>
+<p>
+Writing alone or in a team, with or without version control, technical
+contents or not, text-only or graphics-enabled. In any case txt2tags
+can be used as the main tool for the book creation.
+</p>
+<p>
+There is <a href="http://www.picocontainer.org/Contructor+Dependency+Injection+...+Book+Announcement">a book</a> being written right now, using txt2tags.
+</p>
+	<blockquote>
+	<code>[1]</code> Txt2tags reads a text file with minimal markup as
+	**bold** and //italic// and converts it to documents
+	like HTML, LaTeX and Adobe PageMaker. More info:
+	<a href="http://txt2tags.org">http://txt2tags.org</a>.
+	</blockquote>
+<p></p>
+<a id="toc2" name="toc2"></a>
+<h1>2. Visual Editors VS Markup</h1>
+<p>
+The two common ways of writing a book are to use a Visual Editor
+(<i>Microsoft Word</i>, <i>Adobe Pagemaker</i>) or a Markup Language
+(<i>LaTeX</i>, <i>docbook</i>).
+</p>
+<p>
+In Visual Editors you write and format the contents at the same time.
+This approach is nice for small texts, but for a 300 pages book, the
+formatting consume time and distract the writer.
+</p>
+<p>
+In Markup Languages you write contents and mark it up, so an external
+program will convert it to the final form. The writer don't mind about
+formatting, but the process of including <code>&lt;tags&gt;&lt;/tags&gt;</code> and
+<code>\more{tags}</code> is error prone and very intrusive, making the contents
+hard to read on the sources.
+</p>
+<p>
+Txt2tags also uses the markup schema, but the big difference is that
+its marks are very minimal, some indeed are almost natural, as using
+the hyphen for list items. So the writer can focus on contents only
+and the source remains readable.
+</p>
+<a id="toc3" name="toc3"></a>
+<h1>3. The Txt2tags Approach</h1>
+<p>
+Using txt2tags, the book writing process follow these steps:
+</p>
+<ol>
+<li>The author(s) learn the very simple txt2tags markup rules.
+<p></p>
+</li>
+<li>The author writes the book contents, forgetting about noises
+  like page margin, font face, colors and sizes.
+<p></p>
+</li>
+<li>The author (or the publisher) open the contents on a graphical text
+  processor that reads HTML (or LaTeX or ...) and conclude the book
+  formatting.
+</li>
+</ol>
+
+<p>
+Step 1 is fast, just a few minutes. Step 2 will take months, and step
+3 can take days or weeks.
+</p>
+<p>
+Writing contents is when you will spend more time on the book, so it
+is really important to make this process a simple, productive and
+pleasant task.
+</p>
+<p>
+The following are arguments showing that txt2tags can be used to
+achieve that.
+</p>
+<a id="toc4" name="toc4"></a>
+<h1>4. Fast and Furious</h1>
+<p>
+Time is the key. Using txt2tags you will experience a very high
+productivity period because you write contents, not formatting.
+</p>
+<ul>
+<li><b>Initial Release Fast</b>
+<p></p>
+  It is very difficult to start something, but txt2tags has a nice
+  approach to this problem. Just sit and write plain text. When you're
+  done, in a few minutes you can add all the txt2tags marks on the
+  text and the document is ready to be converted and published.
+<p></p>
+</li>
+<li><b>Fast Snapshot Preview</b>
+<p></p>
+  No matter which will be the final book format, HTML is the preferred
+  format to use on the writing time. A snapshot of the current book
+  state can be done at any time, converting the sources to an HTML
+  page, so any system with a browser can read it. If you need a
+  printable version, convert the HTML to PDF with the excellent
+  <a href="http://www.easysw.com/htmldoc/">htmldoc</a> tool.
+<p></p>
+</li>
+<li><b>Book Contents Overview</b>
+<p></p>
+  To quickly have a global overview of the book contents at any time,
+  just use the txt2tags <i>TOC Only</i> feature. The program shows the
+  current Table of Contents for the book, with the listing of chapters
+  and sections, numbered or not, at any depth.
+<p></p>
+</li>
+<li><b>Fast Writing</b>
+<p></p>
+  Txt2tags marks are simple and minimalist, very easy to learn. No
+  names, no options, no parameters. You don't have to stop writing
+  contents to insert marks, they flow together with the text. If you
+  don't remember a specific mark at the moment, forget about it and
+  keep writing. At the end you do a global review on the text and
+  quickly insert the missing marks.
+<p></p>
+</li>
+<li><b>Fast Conversion</b>
+<p></p>
+  Even if you have a 500 pages book, the conversion process will take
+  just a moment. It is because txt2tags acts as a filter, converting
+  from one format to another. It does not index, compile, calculate,
+  compress, draw or do any strong processing on the sources. No more
+  library, catalog, schema and DTD nightmares.
+</li>
+</ul>
+
+<a id="toc5" name="toc5"></a>
+<h1>5. Organize the Sources in Folders</h1>
+<p>
+Txt2tags has a built in command to include external files in any part
+of a document, at conversion time. It makes possible to split the
+sources into several files.
+</p>
+<ul>
+<li><b>Each chapter in a folder</b>
+<p></p>
+  You can make a folder for each chapter, storing the sources in a
+  structured tree. Inside the chapter folder, you can even create
+  subfolders to store images, configuration and included files.
+<p></p>
+</li>
+<li><b>No file conflicts</b>
+<p></p>
+  Separating chapters, different teams can work in different chapters
+  with no interaction between them. Each team work on its own folder,
+  avoiding file conflicts due concurrent changes.
+<p></p>
+</li>
+<li><b>Flexible access control</b>
+<p></p>
+  Files and folders organized, you can implement access control rules,
+  setting up properties and permissions for any file or chapter. Do
+  use the standard system tools to configure the read/write
+  permissions, like the "users and groups" schema.
+<p></p>
+</li>
+<li><b>Global view of sources</b>
+<p></p>
+  Structuring the sources also helps to have a global view of the
+  book, using any file browser to quickly know the amount of text and
+  images of any chapter. (Hint: on UNIX, <code>find</code> and <code>du</code> commands)
+<p></p>
+</li>
+<li><b>Work your chapter, forget the others</b>
+<p></p>
+  Separating sources into files, you can convert your chapter alone,
+  not needing to wait for the full book processing. Besides faster
+  to convert, the chapter alone can be sent to reviewers or be
+  published alone, as a sample of the full book.
+<p></p>
+</li>
+<li><b>You separate, txt2tags joins</b>
+<p></p>
+  When converting, txt2tags will automatically join all the chapters
+  into the final book, no matter how deep or large is the folder
+  tree.
+</li>
+</ul>
+
+<a id="toc6" name="toc6"></a>
+<h1>6. Version Control Made Easy</h1>
+<p>
+Txt2tags helps the book version control with line based tools (as
+<i>CVS</i> and <i>Subversion</i>). The sources are plain text, not compiled
+data.
+</p>
+<ul>
+<li><b>Work with short lines</b>
+<p></p>
+  You can make short lines, breaking them at 72 columns. It will help
+  on the revision control, because it is line based. If the final
+  format needs that a paragraph is composed by a single long line (as
+  PageMaker), txt2tags will join them to you automatically.
+<p></p>
+</li>
+<li><b>Readable sources</b>
+<p></p>
+  With very minimal markup, the sources are readable. One can easily
+  see what has changed from one version to another, the marks don't
+  hide or pollute the text.
+<p></p>
+</li>
+<li><b>Large contents, small sources</b>
+<p></p>
+  As plain text, you can have a huge amount of contents, with a low
+  disk usage. People can do full checkouts and commits even in slow
+  connections.
+<p></p>
+</li>
+<li><b>Chapter versioning</b>
+<p></p>
+  As seen before, the sources can be organized into folders. This
+  makes version control separated by chapter, or even sections of
+  chapters, depending on how granulated you need the versioning.
+</li>
+</ul>
+
+<a id="toc7" name="toc7"></a>
+<h1>7. Quality Matters</h1>
+<p>
+You can write a book. Or you can write THE book. Txt2tags has nice
+built in features to increase your work quality.
+</p>
+<ul>
+<li><b>Spell Check</b>
+<p></p>
+  As all txt2tags marks are symbols and not words, you can use any
+  spell checker on the sources. It will take care of the text only,
+  not trying to correct tags.
+<p></p>
+</li>
+<li><b>Alias Database</b>
+<p></p>
+  Txt2tags has <i>Pre Processing Filters</i>, where you can define
+  keyword/value pairs. Wherever the keyword is found on the sources, it
+  is expanded to the given value at conversion time. For example, you
+  do use the string <code>URL_GOOGLE</code> on your text and it will appear as
+  <code>http://www.google.com</code> on the book. If the Google URL changes,
+  you just change the filter definition and all occurrences of it will
+  be updated. You can define as many keywords as needed, with no
+  maximum limit.
+<p></p>
+</li>
+<li><b>Dynamic Content</b>
+<p></p>
+  Txt2tags also has a command to include pre-formatted text into the
+  document when converting it, for example, a software source code
+  sample. This way you can keep this code sample separated from the
+  book text and update it by hand or even automatically. A nice idea
+  is to mark the software source code with special comments, and a
+  little program extract these marked parts into separate files.
+<p></p>
+</li>
+<li><b>Control Over the Result</b>
+<p></p>
+  Txt2tags has <i>Post Processing Filters</i>, where you can define rules
+  that makes adjustments on the resulting document. So if the standard
+  txt2tags conversion does not fully satisfy your needs, you can
+  improve it with your own filters. You can use the power of the
+  Regular Expressions to match patterns.
+</li>
+</ul>
+
+<a id="toc8" name="toc8"></a>
+<h1>8. Other Advantages</h1>
+<p>
+And there is more!
+</p>
+<ul>
+<li><b>Separate Formatting from Contents</b>
+<p></p>
+  Using HTML as the development target format, you can also use CSS
+  files to experiment different book looks. CSS defines formating for
+  HTML pages, and there is graphical editors to create CSS files.
+  A team of designers can work on doing CSS files for the book, while
+  the writers keep writing.
+<p></p>
+</li>
+<li><b>Include Complicated Structures</b>
+<p></p>
+  Txt2tags does have support for all the common structures used in
+  texts: lists, definitions, quotation, verbatim area and tables. But
+  if some parts of your book requires a more complicated structure,
+  you can use the <i>Tagged Include</i> feature, where you insert text
+  that is already tagged, like a real fancy HTML table. With txt2tags,
+  exceptions are not a problem!
+<p></p>
+</li>
+<li><b>Do Use Any Editor</b>
+<p></p>
+  As plain text source files, even the most modest text editor in the
+  world can be used to write the book. It doesn't have to have any
+  feature besides write and save text. If you use the editors with
+  txt2tags support, you will have <i>Syntax Highlight</i>, which helps to
+  identify the txt2tags marks. They are: Vim, Emacs, Kate, Nano, gedit
+  and TextMate.
+<p></p>
+</li>
+<li><b>Technical Support</b>
+<p></p>
+  Txt2tags has various channels to get technical support: two mailing
+  lists (english and portuguese), an IRC channel and even an Orkut
+  community. And for book projects, your can send direct e-mails to
+  the program author, who will give priority on the answer.
+</li>
+</ul>
+
+<a id="toc9" name="toc9"></a>
+<h1>9. No Tool Fits All Needs</h1>
+<p>
+There are some special cases where txt2tags is not a good tool for
+writing books.
+</p>
+<ul>
+<li><b>Very Complex Books</b>
+<p></p>
+  Books that uses lots of complicated tables, formulas or specific
+  structures, needs a graphical editor or a more complex markup
+  language, as LaTeX. If your book matches this description, txt2tags cannot help you.
+<p></p>
+</li>
+<li><b>Footnotes</b>
+<p></p>
+  Txt2tags does not have footnotes support. If you will use just a
+  few, you can add them later. But if you plan to make an intense
+  footnotes use, txt2tags cannot help you.
+<p></p>
+</li>
+<li><b>References for Pages, Tables and Images</b>
+<p></p>
+  One can use a graphical editor at the publishing time to include
+  indexes for pages, tables and images, no problem at all. But if you
+  plan to refer to them inside the text like
+  "<i>See table 4.11 on page 35</i>", txt2tags cannot help you.
+</li>
+</ul>
+
+<hr class="light" />
+<p>
+<i>Writing Books with Txt2tags - Oct/2004</i>
+(<a href="writing-book.t2t">see source</a>)
+</p>
+</div>
+
+<!-- xhtml code generated by txt2tags 2.6b (http://txt2tags.org) -->
+<!-- cmdline: txt2tags writing-book.t2t -->
+</body></html>

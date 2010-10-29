@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<TITLE>Escribiendo Libros con Txt2tags</TITLE>
+
+<!-- Included ./Spanish/../English/writing-book.css -->
+<STYLE TYPE="text/css">
+body
+	{
+	font: normal 14pt sans-serif;
+	text-align:justify;
+	margin: 3em;
+	padding: 3em 4em 2em 4em;
+	border: 1px solid black;
+	}
+#toc ol
+	{
+	padding: 2em;
+	}
+#body h1
+	{
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	margin-top: 3em;
+	}
+#body p, #body ul, #body ol
+	{
+	margin-left: 3em;
+	}
+#body li
+	{
+	/* to make IE happy */
+	margin-top: 1em;
+	}
+a
+	{
+	text-decoration: none;
+	}
+blockquote
+	{
+	margin-left: 5em;
+	margin-top:2em;
+	font-style:italic;
+	}
+code
+	{
+	font-style:italic;
+	}
+hr
+	{
+	margin-top:3em;
+	}
+</STYLE>
+
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>Escribiendo Libros con Txt2tags</H1>
+<H3>por Aurelio Jargas</H3>
+</DIV>
+
+<DIV CLASS="toc" ID="toc">
+  <OL>
+  <LI><A HREF="#toc1">Prefacio</A>
+  <LI><A HREF="#toc2">Editores Visuales vs Lenguajes de Marcas</A>
+  <LI><A HREF="#toc3">Una Aproximación a Txt2tags</A>
+  <LI><A HREF="#toc4">Rápido y Vigoroso</A>
+  <LI><A HREF="#toc5">Organizar las Fuentes en Carpetas</A>
+  <LI><A HREF="#toc6">Fácil Control de la Versión</A>
+  <LI><A HREF="#toc7">La Calidad en Primer Lugar</A>
+  <LI><A HREF="#toc8">Otras Ventajas</A>
+  <LI><A HREF="#toc9">Ninguna Herramienta Cubre Todas las Necesidades</A>
+  </OL>
+
+</DIV>
+<DIV CLASS="body" ID="body">
+	<BLOCKQUOTE>
+	Este documento es una breve guía que nos presenta los beneficios que puede reportarnos el uso de la herramienta 
+	txt2tags en el proceso de escritura de libros. Lo que aquí se exponga es también aplicable a la redacción de 
+	documentos extensos, tales como Guias y  Tesis.
+	</BLOCKQUOTE>
+<P></P>
+<A NAME="toc1"></A>
+<H1>1. Prefacio</H1>
+<P>
+Soy el autor de txt2tags <CODE>[1]</CODE> y he escrito dos publicaciones con él:  <A HREF="http://guia-er.sourceforge.net/">Regular Expressions book</A> (96 páginas) y Shell Programming Course (108 páginas). El proceso de su redacción fué tranquilo y nada doloroso, por lo que quisiera haceros partícipes de esta experiencia.
+</P>
+<P>
+Escribir un libro comporta realmente un importante esfuerzo, pero no tiene porqué ser un esfuerzo complicado. Escribir consiste, esencialmente, en organizar las ideas en estructuras de texto, tales como párrafos, secciones, listas, etc. Txt2tags es una herramienta que facilita y simplifica dicha tarea.
+</P>
+<P>
+Escribir sólo o en equipo, con o sin gestión de versión, un contenido técnico o no, sólo texto o con gráficos ......, en todos los casos txt2tags puede ser utilizada como la principal herramienta para la creación de un libro. 
+</P>
+<P>
+<CODE>[1]</CODE> Txt2tags lee un archivo de texto con un mínimo de marcas tales como **bold** e  //italic// y lo convierte en documentos tipo HTML,LaTeX y Adobe PageMaker. Más información en : <A HREF="http://txt2tags.org">http://txt2tags.org</A>.
+</P>
+<A NAME="toc2"></A>
+<H1>2. Editores Visuales vs Lenguajes de Marcas</H1>
+<P>
+Las dos formas principales de escribir un libro son, o bién utilizando un Editor Visual (<I>Microsoft Word</I>, <I>Adobe PageMaker</I>) o un Lenguaje de Marcas (<I>LaTeX</I>, <I>docbook</I>).
+</P>
+<P>
+Con los Editores Visuales se escribe y se formatea el contenido al mismo tiempo. Esto puede ser conveniente para textos cortos, pero para textos largos de, por ejemplo, 300 páginas, la labor de ir dando formato al texto que se va escribiendo consume una considerable cantidad de tiempo a la vez que distrae del proceso mismo de redacción.
+</P>
+<P>
+Con los Lenguajes de Marcas, se escribe el contenido y, posteriormente, se insertan las marcas. Un programa externo se encargará de convertir el archivo inicial al formato deseado. El redactor no debe preocuparse por el formato final del texto, pero el proceso, que comporta la inclusión de <CODE>&lt;tags&gt;&lt;/tags&gt;</CODE> y <CODE>\más{tags}</CODE> , facilita el error y ocasiona que el archivo fuente sea de dificil lectura.
+</P>
+<P>
+Txt2tags también utiliza marcas, pero con la gran diferencia que las marcas son mínimas y tan naturales como pueda ser la utilización del guión para el marcado de los elementos de una lista. De esta forma, el redactor puede centrarse sólo en el contenido generando, además, un archivo fuente facilmente legible. 
+</P>
+<A NAME="toc3"></A>
+<H1>3. Una Aproximación a Txt2tags</H1>
+<P>
+Utilizando txt2tags, el proceso de redacción de un libro sigue las siguientes etapas:
+</P>
+<OL>
+<LI>El autor(es) aprende(n) una série de marcas y reglas de marcado muy simples.
+<P></P>
+<LI>El autor escribe el contenido, sin preocuparse de aspectos del formato, tales como márgenes, fuentes, colores, tamaños etc.
+<P></P>
+<LI>El autor (o el editor) abre el contenido con un procesador de texto gráfico que lea HTML ( o LaTeX, o PM, o...) y finaliza el formateado del libro.
+<P></P>
+La etapa 1 dura apenas unos minutos. La etapa 2 puede durar meses y la etapa 3 puede comportar algunos dias o semanas.
+<P></P>
+Escribir el contenido es la tarea que consumirá la mayor parte del tiempo. Es, por lo tanto, importante conseguir que dicha tarea sea fácil, productiva e, incluso, placentera.
+<P></P>
+Seguidamente se expondrán argumentos que nos indicarán como la utilización txt2tags puede ayudar a conseguir los mencionados propósitos.
+</OL>
+
+<A NAME="toc4"></A>
+<H1>4. Rápido y Vigoroso</H1>
+<P>
+El tiempo es lo más importante. Utilizando txt2tags puedes lograr una gran productividad ya que podrás centrarte en el contenido, dejando en un plano muy secundario los aspectos formales.
+</P>
+<UL>
+<LI><B>Primera Revisión Rápida</B>
+<P></P>
+Suele ser dificil iniciar cualquier cosa, pero txt2tags aborda de forma amable esta dificultad. Acomódate y escribe en texto plano. Una vez hayas acabado, bastan unos pocos minutos para añadir las marcas al texto y tenerlo listo para su conversión y publicación.
+<P></P>
+<LI><B>Previsualización Rápida</B>
+<P></P>
+El formato final no tiene importancia; HTML es el formato preferido durante la redacción del texto. En cualquier momento puedes tener una imagen de lo que estás realizando, mediante la conversión del texto plano en una página HTML, visualizable con cualquier browser. Si necesitas una versión imprimible , puedes convertirla a PDF mediante la excelente herramienta   <A HREF="http://www.easysw.com/htmldoc/">htmldoc</A>.
+<P></P>
+<LI><B>Revisión del Contenido</B>
+<P></P>
+Para tener una rápida visión global del contenido del libro, puedes utilizar la opción de txt2tags <I>TOC Only</I> . El programa te mostrará la tabla de matérias, con la lista de los capítulos, secciones,subsecciones.... etc, numerados o no, sea cual sea su "profundidad".
+<P></P>
+<LI><B>Escritura Rápida</B>
+<P></P>
+Las marcas de txt2tags son simples y mínimas, muy fáciles de aprender. Sin nombres, opciones o parámetros. No tendrás necesidad de parar de escribir para insertar las marcas, se integran naturalmente en el flujo de escritura. Si en un momento dado no te acuerdas de una marca específica, olvídala y sigue escribiendo. Al final, durante una revisión rápida podrás insertar facilmente las marcas que falten.
+<P></P>
+<LI><B>Conversión Rápida</B>
+<P></P>
+Incluso si estás escribiendo un libros de 500 páginas la conversión es muy rápida. Ello es debido a que txt2tags actúa como un filtro, convirtiendo de un formato a otro. No necesita indexar, compilar, comprimir, calcular, trazar, ni de ningún otro pesado procesamiento del texto fuente. Nada de librerias, catálogos, esquemas o complejos DTDs.
+</UL>
+
+<A NAME="toc5"></A>
+<H1>5. Organizar las Fuentes en Carpetas</H1>
+<P>
+Txt2tags nos provee de una orden interna que nos permite insertar archivos externos en cualquier parte del documento. Ello nos permite dividir el documento fuente en múltiples archivos.
+</P>
+<UL>
+<LI><B>Cada Capítulo en una Carpeta</B>
+<P></P>
+Puedes crear una carpeta para cada capítulo, organizando la fuente en una estructura arborescente. Cada carpeta (capítulo) puede contener a su vez subcarpetas en donde emplazar imágenes, configuraciones o archivos a incluir en el documento.
+<P></P>
+<LI><B>Sin Conflictos</B>
+<P></P>
+Separando los capítulos en carpetas, distintas personas pueden trabajar sobre distintos capítulos sin interferir entre ellas. Cada equipo trabaja en su propio dossier, sin los conflictos que puedan derivarse del intercambio de archivos.
+<P></P>
+<LI><B>Control de Acceso Flexible</B>
+<P></P>
+Con la organización de las carpetas y los archivos, puede implementarse un sistema de control, estableciendo prioridades y privilegios para cada uno de los archivos y carpetas(capítulos). Pueden utilizarse las herramientas estándar del sistema para el establecimiento de los permisos de lectura/escritura, asi como para el establecimiento de un esquema de "usuarios y grupos".
+<P></P>
+<LI><B>Visión Global de las Fuentes</B>
+<P></P>
+Estructurar las fuentes nos ayuda también a tener una visión global del libro, utilizando un browser para ver rápidamente la cantidad de texto y de imágenes de cada capítulo. ( Truco: en UNIX, los comandos <CODE>tree</CODE> y <CODE>du</CODE> ).
+<P></P>
+<LI><B>Trabaja en Tu Capítulo; Olvida los Otros</B>
+<P></P>
+Separando los capítulos en archivos, puede procederse a la conversión de un sólo capítulo, sin necesidad de esperar que el libro este terminado. Además de la rapidez en la conversión que nos proporciona este tipo de organización, un capítulo puede ser remitido a los relectores o correctores, o ser publicado aisladamente como muestra del libro completo.
+<P></P>
+<LI><B>Tú Separas, Txt2tags Une</B>
+<P></P>
+Durante el proceso de conversión, txt2tags unirá automaticamente los capítulos para formar el libro final, sea cual fuere el tamaño o el nivel de la estructura en que se encuentren las distintas carpetas.
+</UL>
+
+<A NAME="toc6"></A>
+<H1>6. Fácil Control de la Versión</H1>
+<P>
+Txt2tags facilita el control de la versión del libro mediante herramientas en línea, tales como (<I>CVS</I> and <I>Subversion</I>). Las fuentes son texto plano, no datos compilados.
+</P>
+<UL>
+<LI><B>Trabaja con Líneas Cortas</B>
+<P></P>
+Puede acortar las líneas, cortándolas a 72 carácteres. Ello facilita el control de la versión ya que este se basa en la línea. Si el formato final necesita que un párrafo este compuesto por una línea larga ( como en PageMaker), txt2tags las concatenará automaticamente.  
+<P></P>
+<LI><B>Fuentes Legibles</B>
+<P></P>
+Con las marcas mínimas de txt2tags, el texto fuente es perfectamente legible. Se puede ver facilmente aquello que cambia de una versión a otra. En definitiva, las marcas no "polucionan" el texto.
+<P></P>
+<LI><B>Grandes Contenidos, Archivos Fuente Pequeños</B>
+<P></P>
+Con el texto plano pueden tenerse grandes contenidos con muy poca ocupación de espacio de disco. Pueden realizarse completos <I>checkouts</I> y <I>commits</I> , incluso con conexiones lentas.
+<P></P>
+<LI><B>Versionado de Capítulos</B> 
+<P></P>
+Mediante la organización de los capítulos en carpetas separadas, puede realizarse un control de versión separadamente por capítulos o secciones, dependiendo de la "granularidad" deseada.
+</UL>
+
+<A NAME="toc7"></A>
+<H1>7. La Calidad en Primer Lugar</H1>
+<P>
+Puedes escribir un libro o puedes escribir EL libro. Txt2tags te proporciona distintas posibilidades que te permitirán aumentar la calidad del trabajo.
+</P>
+<UL>
+<LI><B>Corrección Ortográfica</B>
+<P></P>
+Como las marcas de txt2tags son símbolos y no palabras, es posible utilizar un corrector ortográfico sobre el texto fuente.El corrector se ocupará exclusivamente del texto, sin intentar corregir las marcas.
+<P></P>
+<LI><B>Base de Datos de Alias</B>
+<P></P>
+Txt2tags tiene un <I>Pre Processing Filters</I> (filtro previo a la conversión), en el cual pueden definirse parejas <B>palabra-clave/valor</B>. Allá donde es encontrada la palabra-clave, es sustituida por el valor en el momento de la conversión. Por ejemplo, si en el texto fuente utilizas la cadena <CODE>URL_GOOGLE</CODE> , (palabra-clave), a la que se le ha asignado el valor:  <CODE>http://www.google.com</CODE> ; en el texto convertido aparecerá como <CODE>http://www.google.com</CODE>. Si la URL de Google cambiara, bastará con cambiar la definición del filtro para actualizar el texto. Pueden definirse tantas palabras-clave como se deseen, sin limitación alguna.
+<P></P>
+<LI><B>Contenido Dinámico</B>
+<P></P>
+Txt2tags tiene también un comando para incluir texto pre-formateado en el documento mientras se esta convirtiendo. Por ejemplo, una muestra de código fuente de programa. Se puede separar el código fuente del documento y actualizarlo, ya sea automaticamente o manualmente. Una buena idea consiste en marcar el código fuente de programa mediante marcas de comentario y un programa específico extraerá estas partes marcadas en ficheros separados.
+<P></P>
+<LI><B>Control Sobre el Resultado</B>
+<P></P>
+Txt2tags tiene un <I>Post Processing Filters</I> ( filtro posterior a la conversión) donde pueden definirse reglas que ajusten el documento generado en el proceso de conversión. De esta forma, si el resultado del proceso de conversión estandar de txt2tags no te gusta, puedes "mejorarlo" mediante tus propios filtros. Para la creación de los filtros pueden utilizarse las Expresiones Regulares.
+</UL>
+
+<A NAME="toc8"></A>
+<H1>8. Otras Ventajas</H1>
+<P>
+¡ Hay más !
+</P>
+<UL>
+<LI><B>Separar el Formato del Contenido</B>
+<P></P>
+Utilizado HTML como formato de salida, pueden usarse archivos CSS para probar distintas presentaciones finales del libro. Mediante CSS controlamos el formato de las hojas HTML. Existen distintos editores gráficos que nos permiten crear archivos CSS. Un equipo de diseño puede trabajar en archivos CSS (forma), mientras que el equipo de escritores puede dedicarse por entero a la redacción (contenido).
+<P></P>
+<LI><B>Incluir Estructuras Complejas</B>
+<P></P>
+Txt2tags  soporta todas las estructuras comunmente utilizadas en los textos: listas, definiciones, citas, área verbatim y tablas. Pero si una parte de tu libro requiriese la utilización de estructuras mas complejas, puedes recurrir a la opción <I>Pass-Thru Include</I> (inclusiones marcadas) en la cual pueden incluirse , por ejemplo, un texto HTML ya marcado. ¡ Con txt2tags las excepciones no son un problema!.
+<P></P>
+<LI><B>Utiliza Cualquier Editor</B>
+<P></P>
+Como los archivos fuente son de texto plano, puede utilizarse cualquier editor para generarlos. Incluso con el mas modesto editor del mundo puede generarse un libro. No se necesitan más capacidades que la de escritura y la de guardar el texto escrito. Si se utiliza un editor con soporte txt2tags, dispondremos de la <I>Coloración Sintáctica</I> , que nos permitirá identificar las marcas de txt2tags. Los editores con soporte txt2tags son : Vim, Emacs, Kate y Nano.
+<P></P>
+<LI><B>Soporte Técnico</B>
+<P></P>
+Txt2tags tiene distintos canales de soporte técnico: dos mailing lists ( una en inglés y otra en portugués), un canal IRC e, incluso, una comunidad <I>ORKUT</I>. Para proyectos de libros, puedes dirigirte directamente al autor del programa mediante e-mail; te responderá prioritariamente.
+</UL>
+
+<A NAME="toc9"></A>
+<H1>9. Ninguna Herramienta Cubre Todas las Necesidades</H1>
+<P>
+Existen algunos casos especiales en los cuales txt2tags no es una buena herramienta para escribir libros.
+</P>
+<UL>
+<LI><B>Libros Muy Complejos</B>
+<P></P>
+Los libros que incluyen tablas complicadas, fórmulas, estructuras específicas, precisan de un editor gráfico o de un lenguaje de marcas mas complejo, como LaTeX. Si este es el caso de tu libro, txt2tags no es tu herramienta.
+<P></P>
+<LI><B>Notas a Pié de Página</B>
+<P></P>
+Txt2tags no da soporte para notas a pié de página. Si en tu libro las utilizas poco, puedes añadirlas a posteriori. Si debes hacer un uso intensivo de ellas, txt2tags no puede ayudarte.
+<P></P>
+<LI><B>Referencias para Páginas, Tablas e Imágenes</B>
+<P></P>
+Si se desea incluir índices para las páginas, las tablas y las imágenes, puede utilizarse un editor gráfico en el momento de la edición;  sin ningún problema. Pero si lo que se pretende es referirse a ellas en el texto al modo de "<I>Ver tabla 4.11 en página 35</I>", txt2tags no puede ayudarte.
+<P></P>
+<HR NOSHADE SIZE=1>
+<I>Writing Books with Txt2tags - Oct/2004</I>
+(<A HREF="writing-book-es.t2t">see source</A>)
+<P></P>
+Traducido por: Antoni Serra Devecchi.
+<P></P>
+</UL>
+
+</DIV>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html ./Spanish/writing-book-es.t2t -->
+</BODY></HTML>

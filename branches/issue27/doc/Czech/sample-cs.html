@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
+<TITLE>Ukázka TXT2TAGS</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>Ukázka TXT2TAGS</H1>
+<FONT SIZE="4">
+<I>Aurelio Jargas</I><BR>
+07/26/2008
+</FONT></CENTER>
+
+<H1>Úvod</H1>
+<P>
+Vítejte u ukázkového souboru txt2tags.
+</P>
+<P>
+Naleznete zde příklady a stručné vysvětlení všech značek.
+</P>
+<P>
+První tři řádky tohoto souboru jsou použity jako hlavička,
+v tomto formátu:
+</P>
+<PRE>
+  řádek1: název dokumentu
+  řádek2: jméno autora, e-mail 
+  řádek3: datum, verze 
+</PRE>
+<P></P>
+<P>
+Řádky se znakem = na začátku a na konci jsou nadpisy.
+</P>
+<H1>Fonty a vylepšení</H1>
+<P>
+Máme dvě sady fontů:
+</P>
+<P>
+Sada NORMAL může být vylepšena pomocí některých příkazů.
+</P>
+<P>
+TYPEWRITER používá neproporcionální font pro výpisy.
+</P>
+<P>
+Teď se ponoříme do podkapitoly...
+</P>
+<H2>Vylepšení</H2>
+<P>
+Značky pro vylepšení textu jsou jednoduché, podobné, jaké 
+se používají při psaní e-mailů.
+</P>
+<P>
+Použijme dvojité *, / a _ k vytvoření <B>tučného</B>,
+<I>kurzivního</I> a <U>podtrženého</U> písma.
+</P>
+<P>
+Značky pro <B><I>tučné a kurzivní</I></B>  písmo jsou podporovány
+současně.
+</P>
+<H2>Neformátovaný text</H2>
+<P>
+Uvedeme ukázku kódu nebo jiný neformátovaný text:
+</P>
+<PRE>
+    tento    text     je          neformátovaný
+  //značky//  **nejsou**  ``interpretovány``
+</PRE>
+<P></P>
+<P>
+A stejně jednoduché je uvést celý řádek neformátovaného 
+textu:
+</P>
+<PRE>
+  prompt$ ls /etc
+</PRE>
+<P></P>
+<P>
+Nebo <CODE>neformátovaný text</CODE> uvnitř normálního odstavce.
+</P>
+<H2>Více kosmetiky</H2>
+<P>
+Speciální řetězce jako e-mail (<A HREF="mailto:pepa@zdepa.cz">pepa@zdepa.cz</A>) a 
+URL (<A HREF="http://www.zdepa.cz">http://www.zdepa.cz</A>) jsou rozpoznány automagicky,
+stejně jako horizontální čára:
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+^ tenká, nebo tlustá v
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<P>
+Můžete také vytvořit <A HREF="http://zdepa.cz">explicitní odkaz</A>
+s titulkem.
+</P>
+<P>
+A pamatujte,
+</P>
+	<BLOCKQUOTE>
+	tabulátor na začátku řádku vytvoří citaci.
+		<BLOCKQUOTE>
+		Více tabulátorů, více do hloubky (je-li povoleno).
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Pěkné.
+</P>
+<H1>Seznamy</H1>
+<P>
+Seznam položek je přirozený, prostě napíšete <B>pomlčku</B> nebo
+<B>plus</B> na začátku řádku.
+</P>
+<H2>Výčet</H2>
+<P>
+Pro výčty slouží jako oddělovač pomlčka. Abyste vytvořili podvýčet,
+přidejte na začátek řádku <B>mezery</B>. Čím víc mezer, tím víc podvýčtů.
+</P>
+<UL>
+<LI>Země
+  <UL>
+  <LI>Evropa
+    <UL>
+    <LI>Střední Evropa
+      <UL>
+      <LI>Česko
+        <UL>
+        <LI>Čechy, Morava, Slezsko
+          <UL>
+          <LI>Ještě hlouběji?
+          </UL>
+        </UL>
+      </UL>
+    </UL>
+  <LI>Amerika
+    <UL>
+    <LI>mnoho států
+    </UL>
+  </UL>
+<LI>Mars
+  <UL>
+  <LI>mnoho tvorů?
+  </UL>
+</UL>
+
+<P>
+Výčet ukončíte <B>dvěma</B> prázdnými řádky.
+</P>
+<H2>Seznam</H2>
+<P>
+Platí stejná pravidla jako pro výčty, pouze jiný 
+oddělovač (plus).
+</P>
+<OL>
+<LI>jedna
+<LI>dva
+<LI>tři
+  <UL>
+  <LI>Smíšené seznamy!
+  <LI>To je zmatek!
+    <OL>
+    <LI>a počítáme znovu
+    <LI>...
+    </OL>
+  </UL>
+<LI>čtyři
+</OL>
+
+<H2>Definiční seznam</H2>
+<P>
+Oddělovač pro definiční seznam je dvojtečka následovaná pojmem.
+Vysvětlení pojmu je umístěno na následujícím řádku.
+</P>
+<DL>
+<DT>pomeranč</DT><DD>
+  žlutý plod
+<DT>jablko</DT><DD>
+  zelený nebo červený plod
+<DT>jiné ovoce</DT><DD>
+  <UL>
+  <LI>drobné
+  <LI>kombinujeme seznamy
+    <OL>
+    <LI>znovu
+    <LI>a ještě jednou
+    </OL>
+  </UL>
+</DL>
+
+<H1>Tabulky</H1>
+<P>
+Pomocí svislítek vytvoříte řádky a buňky tabulky.
+Dvojité svislítko na začátku řádku uvozuje záhlaví tabulky.
+Mezery určují zarovnání obsahu buňky.
+</P>
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>záhlaví 1</TH>
+<TH>záhlaví 2</TH>
+<TH>záhlaví 3</TH>
+</TR>
+<TR>
+<TD>buňka 1.1</TD>
+<TD ALIGN="center">buňka 1.2</TD>
+<TD ALIGN="right">buňka 1.3</TD>
+</TR>
+<TR>
+<TD>buňka 2.1</TD>
+<TD ALIGN="center">buňka 2.2</TD>
+<TD ALIGN="right">buňka 2.3</TD>
+</TR>
+</TABLE>
+
+<P>
+Pokud neuvedete poslední svislítka, bude tabulka bez okrajů.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4">
+<TR>
+<TH>záhlaví 1</TH>
+<TH>záhlaví 2</TH>
+<TH>záhlaví 3</TH>
+</TR>
+<TR>
+<TD>buňka 1.1</TD>
+<TD ALIGN="center">buňka 1.2</TD>
+<TD ALIGN="right">buňka 1.3</TD>
+</TR>
+<TR>
+<TD>buňka 2.1</TD>
+<TD ALIGN="center">buňka 2.2</TD>
+<TD ALIGN="right">buňka 2.3</TD>
+</TR>
+</TABLE>
+
+<H1>Speciální entity</H1>
+<P>
+Protože jinak by to bylo moc jednoduché.
+</P>
+<H2>Obrázky</H2>
+<P>
+Značka pro vložení obrázku je tak jednoduchá, jak jen může být:
+<CODE>[jmeno-souboru]</CODE>.
+</P>
+                      <center><IMG ALIGN="middle" SRC="../img/photo.jpg" BORDER="0" ALT=""></center>  
+<UL>
+<LI>jmeno-souboru musí mít příponu PNG, JPG, GIF nebo podobnou.
+<LI>V uvozovkách nejsou povoleny žádné mezery!
+</UL>
+
+<H2>Ostatní</H2>
+<P>
+Praktické makro <CODE>%%date</CODE> expanduje na aktuální datum.
+</P>
+<P>
+Takže dnes je 20080726 v ISO formátu <CODE>YYYYMMDD</CODE>.
+</P>
+<P>
+Můžete taky určit formát data pomocí příznaku %?, např.
+<CODE>%%date(%m-%d-%Y)</CODE>, což vrátí 07-26-2008.
+</P>
+<P>
+To je zatím všechno.
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+Přeložil Vlastimil Ott.
+</P>
+<HR NOSHADE SIZE=1>
+<P>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> (<A HREF="sample-cs.t2t">sample-cs.t2t</A>)
+</P>
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html ./Czech/sample-cs.t2t -->
+</BODY></HTML>

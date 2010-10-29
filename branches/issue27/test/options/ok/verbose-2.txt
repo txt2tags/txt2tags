@@ -1,0 +1,19 @@
+----- Txt2tags 2.6b1 processing begins
+----- Ignoring user configuration file
+----- Loading source document
+---------- File read (2 lines): verbose-2.t2t
+---------- Areas found:   body (  2)
+---------- Source document contents stored
+----- Parsing and saving all config found (009 items)
+---------- Added the following keys: target, realcmdline, outfile, rc, infile, verbose
+----- We are on Command Line interface
+----- Composing target Headers
+----- Composing target Body
+----- Composing target Footer
+----- Composing target TOC
+----- Saving results to the output file
+
+
+Text.
+
+----- Txt2tags finished sucessfuly

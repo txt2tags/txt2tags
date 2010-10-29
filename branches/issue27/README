@@ -1,0 +1,82 @@
+Txt2tags README file
+---------------------
+http://txt2tags.org
+
+
+Txt2tags is a document generator. It reads a text file with
+minimal markup as **bold** and //italic// and converts it
+to the following formats:
+
+   ASCII Art
+   AsciiDoc
+   Creole 1.0
+   DocBook
+   DokuWiki
+   Google Wiki
+   HTML
+   LaTeX
+   Lout
+   MagicPoint
+   MoinMoin
+   PageMaker
+   PmWiki
+   Plain Text
+   SGML
+   UNIX Manpage
+   Wikipedia / MediaWiki
+   XHTML
+
+You can use it as a Web component (PHP), as a GUI application
+(windows and buttons) or as a command line program.
+
+For more information, please visit the program website at
+http://txt2tags.org
+ 
+-------------------------------------------------------------
+
+Quick sample for the command line usage:
+
+1. Write a text file like this (leave 1st line blank):
+
+   = Hello =
+   I'm a robot. You're my **master**!
+   [smile.jpg]
+
+2. Run this command:
+
+   txt2tags --target html --no-headers file.t2t
+
+3. The result is:
+
+   <H1>Hello</H1>
+   <P>
+   I'm a robot. You're my <B>master</B>!
+   <IMG ALIGN="middle" SRC="smile.jpg" BORDER="0" ALT="">
+   </P>
+
+-------------------------------------------------------------
+
+Txt2tags package structure:
+
+   ChangeLog             Changes from previous versions
+   COPYING               The GPL License contents
+   README                This file
+   txt2tags              The program itself
+                         (the only required file to run)
+   doc/                  Documentation
+   extras/               Syntax files and utilities
+   po/                   Program translation files
+   samples/              Sample file converted to all targets
+   samples/img           "Powered by" button and other images
+   samples/css           Sample CSS files for HTML and XHTML
+   samples/module        Examples: txt2tags as a Python module
+   test/                 The txt2tags test suite
+
+-------------------------------------------------------------
+
+Author: Aurelio Jargas - http://aurelio.net
+
+
+
+
+

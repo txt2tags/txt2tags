@@ -1,0 +1,37 @@
+
+%!target: html
+%!options: -H -o-
+
+%%%
+Sample output:
+	<BLOCKQUOTE>
+
+	<HR NOSHADE SIZE=1>
+
+
+	<HR NOSHADE SIZE=1>
+
+	</BLOCKQUOTE>
+
+On the output, there are *two* blank lines between the bars, and it should be only one. The extra line is added because both bars have their own blank lines before and after (respecting blanksaroundbar rule).
+
+It's _should_add_blank_line() mission to detect this situation and avoid printing the opening blank for the second bar, since the first bar already printed one on closing.
+
+It fails because the bar are nested, in this case, inside a quote block. 
+
+_should_add_blank_line() doesn't play well with nested blocks. It 
+
+_should_add_blank_line() does not handle nested blocks very well. It asks BLOCK.last content to decide if the opening blank line should be added, but it fails because BLOCK.last is empty. It should be "bar", but BLOCK.last only registers blocks closed at root level (BLOCK.level=1). As these are bars nested inside a quote block (level=2), BLOCK.last is empty until the quote block is closed (which occurs after the two bars are already put on target).
+
+The solution: it must see if we're dealing with a nested block, and if so, check if we're the first block or which was the last closed block at the same neste level.
+
+This bug affects:
+test/crossing/bar.t2t
+test/crossing/bar2.t2t
+
+2010-06-17
+%%%
+
+	----------------------------------------------
+	----------------------------------------------
+
