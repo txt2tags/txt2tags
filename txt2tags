@@ -160,7 +160,7 @@ OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'targets'    :0}
-MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 'currentfile': '%f',
+MACROS   = {'date' : '%Y%m%d',  'infile': '%f',
             'mtime': '%Y%m%d', 'outfile': '%f'}
 SETTINGS = {}         # for future use
 NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
@@ -2652,7 +2652,6 @@ class ConfigMaster:
 		empty.update(self.dft_settings)
 		empty['realcmdline'] = ''  # internal use only
 		empty['sourcefile']  = ''  # internal use only
-		empty['currentsourcefile']  = ''  # internal use only
 		return empty
 	
 	def _get_off(self):
@@ -4120,7 +4119,6 @@ class MacroMaster:
 		self.config   = config or CONF
 		self.infile   = self.config['sourcefile']
 		self.outfile  = self.config['outfile']
-		self.currentfile = self.config['currentsourcefile']
 		self.currdate = time.localtime(time.time())
 		self.rgx      = regex.get('macros') or getRegexes()['macros']
 		self.fileinfo = { 'infile': None, 'outfile': None }
@@ -4158,10 +4156,7 @@ class MacroMaster:
 		return x
 	
 	def set_file_info(self, macroname):
-		if (macroname == 'currentfile'):
-			self.currentfile = self.config['currentsourcefile']
-		else:
-			if self.fileinfo.get(macroname): return   # already done
+		if self.fileinfo.get(macroname): return   # already done
 		file_ = getattr(self, self.name)           # self.infile
 		if file_ == STDOUT or file_ == MODULEOUT:
 			dir_ = ''
@@ -4187,7 +4182,7 @@ class MacroMaster:
 					mtime = os.path.getmtime(self.infile)
 					fdate = time.localtime(mtime)
 				txt = time.strftime(fmt,fdate)
-			elif name == 'infile' or name == 'outfile' or name == 'currentfile' :
+			elif name == 'infile' or name == 'outfile':
 				self.set_file_info(name)
 				txt = self.walk_file_format(fmt)
 			else:
@@ -4814,12 +4809,10 @@ def process_source_file(file_='', noconf=0, contents=[]):
 		# Add manually the filename to the conf dic
 		if contents:
 			full_parsed['sourcefile'] = MODULEIN
-			full_parsed['currentsourcefile'] = MODULEIN
 			full_parsed['infile'] = MODULEIN
 			full_parsed['outfile'] = MODULEOUT
 		else:
 			full_parsed['sourcefile'] = file_
-			full_parsed['currentsourcefile'] = file_
 		# Maybe should we dump the config found?
 		if full_parsed.get('dump-config'):
 			dumpConfig(source_raw, full_parsed)
@@ -4907,9 +4900,6 @@ def parse_images(line):
 		txt = regex['img'].search(line).group(1)
 		tag = TAGS['img']
 		
-		# Correct image path for relative path with outfile
-		imgpath = os.path.join(os.path.dirname(CONF['currentsourcefile']),txt)
-		txt = os.path.relpath(imgpath,os.path.dirname(CONF['outfile']))
 		# If target supports image alignment, here we go
 		if rules['imgalignable']:
 			
@@ -4970,7 +4960,7 @@ def get_include_contents(file_, path=''):
 		lines = get_file_body(filepath)
 		#TODO fix images relative path if file has a path, ie.: chapter1/index.t2t (wait until tree parsing)
 		#TODO for the images path fix, also respect outfile path, if different from infile (wait until tree parsing)
-		lines.insert(0, '%%!currentfile: %s'%(filepath))
+		lines.insert(0, '%%INCLUDED(%s) starts here: %s'%(id_,file_))
 		# This appears when included hit EOF with verbatim area open
 		#lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
 	return id_, lines
@@ -5202,11 +5192,11 @@ def convert(bodylines, config, firstlinenr=1):
 				
 			# %!include command
 			if key == 'include':
-
-				incpath = os.path.dirname(CONF['currentsourcefile'])
+						
+				incpath = os.path.dirname(CONF['sourcefile'])
 				incfile = val
 				err = _('A file cannot include itself (loop!)')
-				if CONF['currentsourcefile'] == incfile:
+				if CONF['sourcefile'] == incfile:
 					Error("%s: %s"%(err,incfile))
 				inctype, inclines = get_include_contents(incfile, incpath)
 				
@@ -5218,17 +5208,12 @@ def convert(bodylines, config, firstlinenr=1):
 				else:
 					# Insert include lines into body
 					#TODO include maxdepth limit
-					bodylines = bodylines[:lineref] + inclines + ['%%!currentfile: %s'%(CONF['currentsourcefile'])] + bodylines[lineref:]
+					bodylines = bodylines[:lineref] + inclines + bodylines[lineref:]
+					#TODO fix path if include@include
 					# Remove %!include call
 					if CONF['dump-source']:
 						dump_source.pop()
-
-			# %!currentfile command
-			elif key == 'currentfile':
-				targ, key, val = ConfigLines().parse_line(line, 'currentfile', target)
-				if key:
-					Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
-					CONF['currentsourcefile'] = val
+				
 				# This line is done, go to next
 				continue
 				
