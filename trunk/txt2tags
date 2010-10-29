@@ -1149,7 +1149,7 @@ def getTags(config):
 		'title5'               : '~A~!!!!! \a '  ,
 		'blockQuoteOpen'       : '->'            ,
 		'blockQuoteClose'      : '\n'            ,
-		# In-text font 
+		# In-text font
 		'fontLargeOpen'        : "[+"            ,
 		'fontLargeClose'       : "+]"            ,
 		'fontLargerOpen'       : "[++"           ,
@@ -1168,14 +1168,14 @@ def getTags(config):
 		'fontUnderlineClose'   : "+}"            ,
 		'fontStrikeOpen'       : '{-'         	 ,
 		'fontStrikeClose'      : '-}'        	 ,
-		# Lists 
+		# Lists
 		'listItemLine'          : '*'            ,
 		'numlistItemLine'       : '#'            ,
 		'deflistItem1Open'      : ': '           ,
 		'deflistItem1Close'     : ':'            ,
 		'deflistItem2LineOpen'  : '::'           ,
 		'deflistItem2LineClose' : ':'            ,
-		# Verbatim block 
+		# Verbatim block
 		'blockVerbOpen'        : '[@'          	 ,
 		'blockVerbClose'       : '@]'            ,
 		'bar1'                 : '----'          ,
@@ -1185,7 +1185,7 @@ def getTags(config):
 		'email'                 : '\a'           ,
 		'emailMark'             : '[[\a -> mailto:\a]]',
 		'anchor'                : '[[#\a]]\n'    ,
-		# Image markup 
+		# Image markup
 		'img'                   : '\a'           ,
 		#'imgAlignLeft'         : '{{\a }}'       ,
 		#'imgAlignRight'        : '{{ \a}}'       ,
@@ -1368,7 +1368,7 @@ def getTags(config):
 		'title2'               : '== \a =='      ,
 		'title3'               : '=== \a ==='    ,
 		'title4'               : '==== \a ===='  ,
-		'title5'               : '===== \a =====',  
+		'title5'               : '===== \a =====',
 		'blockVerbOpen'        : '{{{'           ,
 		'blockVerbClose'       : '}}}'           ,
 		'blockQuoteLine'       : '  '            ,
@@ -1376,11 +1376,11 @@ def getTags(config):
 	#	'fontMonoClose'        : '##'            ,  # meanwhile we disable it
 		'fontBoldOpen'         : '**'            ,
 		'fontBoldClose'        : '**'            ,
-		'fontItalicOpen'       : '//'            , 
+		'fontItalicOpen'       : '//'            ,
 		'fontItalicClose'      : '//'            ,
 		'fontUnderlineOpen'    : '//'            ,  # no underline in 1.0, planned for 2.0,
 		'fontUnderlineClose'   : '//'            ,  # meanwhile we can use italic (emphasized)
-	#	'fontStrikeOpen'       : '--'            ,  # planned for 2.0, 
+	#	'fontStrikeOpen'       : '--'            ,  # planned for 2.0,
 	#	'fontStrikeClose'      : '--'            ,  # meanwhile we disable it
 		'listItemLine'          : '*'            ,
 		'numlistItemLine'       : '#'            ,
@@ -1396,7 +1396,7 @@ def getTags(config):
 		'tableRowClose'        : ' |'            ,
 		'tableCellSep'         : ' | '           ,
 		# TODO: placeholder (mark for unknown syntax)
-		# if possible: http://www.wikicreole.org/wiki/Placeholder 
+		# if possible: http://www.wikicreole.org/wiki/Placeholder
 	}
 	}
 	
@@ -1675,7 +1675,7 @@ def getRules(config):
 			'blanksaroundtable':1,
 			'blanksaroundbar':1,
 			'blanksaroundtitle':1,
-			'blanksaroundnumtitle':1,	
+			'blanksaroundnumtitle':1,
 		},
 		'moin': {
 			'spacedlistitem':1,
@@ -1761,7 +1761,7 @@ def getRules(config):
 			'blanksaroundnumtitle':1,
 		},
 		'pmw': {
-			'indentverbblock':1, 
+			'indentverbblock':1,
 			'spacedlistitem':1,
 			'linkable':1,
 			'labelbeforelink':1,
@@ -2068,10 +2068,10 @@ def aa_box(txt, length):
 	len_txt = len(txt)
 	nspace = (length - len_txt - 4) / 2
 	line_box = " " * nspace + AA['corner'] + AA['border'] * (len_txt + 2) + AA['corner']
-	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+" 
+	# <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
 	#                           +-------------------------------+
 	#                           | all theeeeeeeeeeeeeeeeee text |
-	# <----- nspace " " -----> "| " <--------- txt ---------> " |" 
+	# <----- nspace " " -----> "| " <--------- txt ---------> " |"
 	line_txt = " " * nspace + AA['side'] + ' ' + txt + ' ' + AA['side']
 	return [line_box, line_txt, line_box]
 
@@ -2082,7 +2082,7 @@ def aa_header(header_data, length, n, end):
  		if header_data[h]:
 			header.extend(aa_box(header_data[h], length))
 			header.extend(['']*n)
-	header.extend(['']*end)	
+	header.extend(['']*end)
 	header.append(aa_line(AA['bar2'], length))
 	return header
 
@@ -2103,7 +2103,7 @@ def aa_table(table):
         tab.append([line[i] for line in data])
     length = [max([len(el) for el in line]) for line in tab]
     res = "+"
-    for i in range(n):    
+    for i in range(n):
         res = res + (length[i] + 2) * "-" + '+'
     ret = []
     for line in data:
@@ -3010,7 +3010,7 @@ class MaskMaster:
 		# This means that one can't appear inside the other.
 		# If found, the inner marks must be ignored.
 		# Example: ``foo ""bar"" ''baz''``
-		# In HTML: <code>foo ""bar"" ''baz''</code> 		
+		# In HTML: <code>foo ""bar"" ''baz''</code>
 		#
 		# The trick here is to protect the mark who appears first on the line.
 		# The three regexes are tried and the one with the lowest index wins.
@@ -4320,7 +4320,7 @@ def toc_formatter(toc, config):
 	if not config['toc'] : return []               # TOC disabled
 	ret = toc
 
-	# Art: An automatic "Table of Contents" header is added to the TOC slide 
+	# Art: An automatic "Table of Contents" header is added to the TOC slide
 	if config['target'] == 'art' and config['slides']:
 		n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
 		toc = aa_slide(_("Table of Contents"), config['width']) + toc + ([''] * n)
@@ -5244,7 +5244,7 @@ def convert(bodylines, config, firstlinenr=1):
 
 				# Tables are mapped to verb when target is not table-aware
 				else:
-					if target == 'art' and table:		
+					if target == 'art' and table:
 						table = aa_table(table)
 					ret.extend(BLOCK.blockin('verb'))
 					BLOCK.propset('mapped', 'table')
