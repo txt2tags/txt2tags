@@ -7,6 +7,7 @@ This directory contains some extra files distributed with the
 txt2tags program. All of them share the same license as the
 program: GPL, unless specified on its headers.
 
+See even more extras at the txt2tags website.
 
 css-reference.txt
 	A short and quick document showing the CSS attributes and
@@ -68,9 +69,6 @@ txt2tags-kate.xml
 txt2tags-mode.el
 	The Emacs editor syntax highlight rules for txt2tags
 	marks.
-
-txt2tags-textmate.zip
-	The TextMate bundle for txt2tags.
 
 txt2tags.php
 	The txt2tags web interface, written in the PHP language.
