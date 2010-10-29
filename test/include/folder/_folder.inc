@@ -1,14 +1,13 @@
 
 Folder - Level 1.
-%%%
-This should be corrected now
 %!include: folder/subfolder/_folder.inc
 %%%
-
+This is WRONG! It should be:
 
 %!include: subfolder/_folder.inc
 
-Now txt2tags does not consider "current path" the path for the mother .t2t file
+But txt2tags considers "current path" the path for the mother .t2t file
 (../include-nesting-folder.t2t)
 
-
+Funny thing is that %!includeconf do not suffer from this bug. See ConfigLines.include_config_file()
+%%%
