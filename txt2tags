@@ -1143,7 +1143,7 @@ def getTags(config):
 	# http://www.pmwiki.org/wiki/PmWiki/TextFormattingRules
 	'pmw': {
 		'title1'               : '~A~! \a '      ,
-		'title2'               : '~A~!! \a '  	 ,
+		'title2'               : '~A~!! \a '     ,
 		'title3'               : '~A~!!! \a '    ,
 		'title4'               : '~A~!!!! \a '   ,
 		'title5'               : '~A~!!!!! \a '  ,
@@ -1166,8 +1166,8 @@ def getTags(config):
 		'fontItalicClose'      : "''"            ,
 		'fontUnderlineOpen'    : "{+"            ,
 		'fontUnderlineClose'   : "+}"            ,
-		'fontStrikeOpen'       : '{-'         	 ,
-		'fontStrikeClose'      : '-}'        	 ,
+		'fontStrikeOpen'       : '{-'            ,
+		'fontStrikeClose'      : '-}'            ,
 		# Lists
 		'listItemLine'          : '*'            ,
 		'numlistItemLine'       : '#'            ,
@@ -1176,7 +1176,7 @@ def getTags(config):
 		'deflistItem2LineOpen'  : '::'           ,
 		'deflistItem2LineClose' : ':'            ,
 		# Verbatim block
-		'blockVerbOpen'        : '[@'          	 ,
+		'blockVerbOpen'        : '[@'            ,
 		'blockVerbClose'       : '@]'            ,
 		'bar1'                 : '----'          ,
 		# URL, email and anchor
@@ -2078,8 +2078,8 @@ def aa_box(txt, length):
 def aa_header(header_data, length, n, end):
 	header = [aa_line(AA['bar2'], length)]
 	header.extend(['']*n)
- 	for h in 'HEADER1', 'HEADER2', 'HEADER3':
- 		if header_data[h]:
+	for h in 'HEADER1', 'HEADER2', 'HEADER3':
+		if header_data[h]:
 			header.extend(aa_box(header_data[h], length))
 			header.extend(['']*n)
 	header.extend(['']*end)
@@ -2960,7 +2960,7 @@ class ConfigLines:
 		if name in no_target and match.group('target'):
 			Error(
 				_("You can't use (target) with %s") % ('%!' + name)
-			 	+ "\n%s" % line)
+				+ "\n%s" % line)
 		
 		# Force no_target keywords to be valid for all targets
 		if name in no_target:
