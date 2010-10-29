@@ -1487,7 +1487,7 @@ def getRules(config):
 		'keepquoteindent',      # don't remove the leading TABs on quotes
 		'keeplistindent',       # don't remove the leading spaces on lists
 		'blankendautotoc',      # append a blank line at the auto TOC end
-		'tagnotindentable',     # tags must be placed at the line begining
+		'tagnotindentable',     # tags must be placed at the line beginning
 		'spacedlistitemopen',   # append a space after the list item open tag
 		'spacednumlistitemopen',# append a space after the numlist item open tag
 		'deflisttextstrip',     # strip the contents of the deflist text
@@ -2258,7 +2258,7 @@ class CommandLine:
 		this to compose an optimal command line for a group of
 		options.
 	
-	The get_raw_config() calls parse(), so the tipical use of this
+	The get_raw_config() calls parse(), so the typical use of this
 	class is:
 	
             raw = CommandLine().get_raw_config(sys.argv[1:])
@@ -2442,7 +2442,7 @@ class SourceDocument:
 	SourceDocument class - scan document structure, extract data
 	
 	It knows about full files. It reads a file and identify all
-	the areas begining (Head,Conf,Body). With this info it can
+	the areas beginning (Head,Conf,Body). With this info it can
 	extract each area contents.
 	Note: the original line break is removed.
 	
@@ -3371,8 +3371,8 @@ class TitleMaster:
 ##############################################################################
 
 #TODO check all this table mess
-# Trata linhas TABLE, com as prop do parse_row
-# O metodo table() do BLOCK xunxa e troca as celulas pelas parseadas
+# It uses parse_row properties for table lines
+# BLOCK.table() replaces the cells by the parsed content
 class TableMaster:
 	def __init__(self, line=''):
 		self.rows      = []
@@ -5968,7 +5968,7 @@ def exec_command_line(user_cmdline=[]):
 		
 		convert_this_files(infiles_config)
 	
-	Message(_("Txt2tags finished sucessfuly"),1)
+	Message(_("Txt2tags finished successfully"),1)
 
 if __name__ == '__main__':
 	try:
