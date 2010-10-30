@@ -70,6 +70,12 @@ txt2tags-mode.el
 	The Emacs editor syntax highlight rules for txt2tags
 	marks.
 
+txt2tags.jsf
+	The JOE and "ne" editor syntax highlight rules for txt2tags
+	
+txt2tags.le
+	The "le" editor syntax highlight rules for txt2tags
+	
 txt2tags.php
 	The txt2tags web interface, written in the PHP language.
 	Useful for intranet use and quick tests.
