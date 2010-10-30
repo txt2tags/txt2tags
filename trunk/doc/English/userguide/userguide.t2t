@@ -400,7 +400,7 @@ all the available targets.
   || Extras           | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
   | image align       |  Y   |   Y   |  N   |  N  |  N  |  Y   |  -  |  Y  |   N    |  Y   |   -   |  N  |  Y   |  N   |  N  |  N   |  -  |  -  |
   | table cell align  |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   N    |  N   |   -   |  N  |  -   |  Y   |  N  |  N   |  N  |  N  |
-  | table column span |  Y   |   Y   |  N   |  N  |  N  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N  |  N   |  N  |  N  |
+  | table column span |  Y   |   Y   |  N   |  N  |  Y  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N  |  N   |  N  |  N  |
 
   ||      | Legend
   | **Y** | //Supported//
