@@ -2,13 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es_mjp\n"
 "POT-Creation-Date: 2010-08-13 11:55+BRT\n"
-"PO-Revision-Date: 2006-11-04 04:55-0700\n"
-"Last-Translator: Tomás Martín Jimarez Ponce <mjp_ttc@yahoo.com>\n"
+"PO-Revision-Date: 2010-10-29 12:43+0100\n"
+"Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: spanish <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
 
 msgid "HTML page"
 msgstr "Página HTML"
@@ -20,7 +19,7 @@ msgid "SGML document"
 msgstr "Documento SGML"
 
 msgid "DocBook document"
-msgstr ""
+msgstr "Documento DocBook"
 
 msgid "LaTeX document"
 msgstr "Documento LaTeX"
@@ -37,16 +36,16 @@ msgid "MagicPoint presentation"
 msgstr "Presentación MagicPoint"
 
 msgid "Wikipedia page"
-msgstr ""
+msgstr "Página Wikipedia"
 
 msgid "Google Wiki page"
-msgstr ""
+msgstr "Página Google Wiki"
 
 msgid "DokuWiki page"
-msgstr ""
+msgstr "Página DokuWiki"
 
 msgid "PmWiki page"
-msgstr ""
+msgstr "Página PmWiki"
 
 msgid "MoinMoin page"
 msgstr "Página MoinMoin"
@@ -58,13 +57,13 @@ msgid "Plain Text"
 msgstr "Texto Plano"
 
 msgid "ASCII Art text"
-msgstr ""
+msgstr "Texto ASCII Art"
 
 msgid "AsciiDoc document"
-msgstr ""
+msgstr "Documento AsciiDoc"
 
 msgid "Creole 1.0 document"
-msgstr ""
+msgstr "Documento Creole 1.0"
 
 msgid "%s version %s <%s>"
 msgstr "%s versión %s <%s>"
@@ -72,78 +71,56 @@ msgstr "%s versión %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Uso: %s [OPCIONES] [archivo_entrada.t2t ...]"
 
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr ""
+msgid "      --targets       print a list of all the available targets and exit"
+msgstr "      --targets       imprime la lista de todos los objetivos posibles y sale"
 
 msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr ""
-"  -t, --target=TIPO   fija el tipo final del documento.  soportado "
-"actualmente:"
+msgstr "  -t, --target=TIPO   fija el tipo final del documento.  soportado actualmente:"
 
 msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr ""
-"  -i, --infile=ARCHIVO   fija el ARCHIVO como el nombre de archivo de "
-"entrada ('-' para STDIN)"
+msgstr "  -i, --infile=ARCHIVO   fija el ARCHIVO como el nombre de archivo de entrada ('-' para STDIN)"
 
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr ""
-"  -o, --outfile=ARCHIVO  fija el ARCHIVO como el nombre de archivo de salida "
-"('-' para STDOUT)"
+msgstr "  -o, --outfile=ARCHIVO  fija el ARCHIVO como el nombre de archivo de salida ('-' para STDOUT)"
 
 msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-msgstr ""
-"      --encoding=ENC  fija la codificación del archivo final (utf-8, iso-"
-"8859-1, etc)"
+msgstr "      --encoding=ENC  fija la codificación del archivo final (utf-8, iso-8859-1, etc)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
-msgstr ""
+msgstr "      --toc           agrega una Tabla de Contenidos automática al documento final"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr "      --toc-level=N   fija el nivel máximo del TOC (profundidad) a N"
 
 msgid "      --toc-only      print the Table of Contents and exit"
-msgstr ""
+msgstr "      --toc-only      imprime la Tabla de Contenidos y sale"
 
 msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr ""
-"  -n, --enum-title    enumera todas las líneas del título como 1, 1.1, "
-"1.1.1, etc"
+msgstr "  -n, --enum-title    enumera todas las líneas del título como 1, 1.1, 1.1.1, etc"
 
 msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr ""
-"      --style=ARCHIVO    usa ARCHIVO como estilo del documento  (como HTML "
-"CSS)"
+msgstr "      --style=ARCHIVO    usa ARCHIVO como estilo del documento  (como HTML CSS)"
 
 msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
-msgstr ""
+msgstr "      --css-sugar     inserta etiquetas amigables con CSS para HTML/XHTML"
 
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr ""
-"      --css-inside     inserta contenidos de archivo CSS dentro de "
-"encabezados HTML y XHTML"
+msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr "      --css-inside     inserta contenidos de archivo CSS dentro de encabezados HTML y XHTML"
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
-msgstr ""
+msgstr "  -H, --no-headers    suprime la cabecera contenidos de pie de página de la salida"
 
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    oculta email de robots anti spam. x@y.z resulta <x (a) "
-"y z>"
+msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "      --mask-email    oculta email de robots anti spam. x@y.z resulta <x (a) y z>"
 
-msgid ""
-"      --slides        format output as presentation slides (used by -t art)"
-msgstr ""
+msgid "      --slides        format output as presentation slides (used by -t art)"
+msgstr "      --slides        da formato al documento final como transparencias (usado por -t art)"
 
-msgid ""
-"      --width=N       set the output's width to N columns (used by -t art)"
-msgstr ""
+msgid "      --width=N       set the output's width to N columns (used by -t art)"
+msgstr "      --width=N       fija la anchura del documento final a N columnas (usado por -t art)"
 
-msgid ""
-"      --height=N      set the output's height to N rows (used by -t art)"
-msgstr ""
+msgid "      --height=N      set the output's height to N rows (used by -t art)"
+msgstr "      --height=N       fija la altura del documento final a N líneas (usado por -t art)"
 
 msgid "  -C, --config-file=F read configuration from file F"
 msgstr "  -C, --config-file=F lee configuración desde el archivo F"
@@ -152,8 +129,7 @@ msgid "      --gui           invoke Graphical Tk Interface"
 msgstr "      --gui           invoque el interfaz gráfica Tk"
 
 msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
-msgstr ""
-"  -q, --quiet         modo silencioso, suprime toda salida (excepto errores)"
+msgstr "  -q, --quiet         modo silencioso, suprime toda salida (excepto errores)"
 
 msgid "  -v, --verbose       print informative messages during conversion"
 msgstr "  -v, --verbose       imprime mensajes informativos mientras converte"
@@ -165,13 +141,10 @@ msgid "  -V, --version       print program version and exit"
 msgstr "  -V, --version       imprime la versión del programa y sale"
 
 msgid "      --dump-config   print all the configuration found and exit"
-msgstr ""
-"      --dump-config   imprime todas las configuraciones halladas y sale"
+msgstr "      --dump-config   imprime todas las configuraciones halladas y sale"
 
 msgid "      --dump-source   print the document source, with includes expanded"
-msgstr ""
-"      --dump-source   imprime el fuente del documento, con inclusiones "
-"expandidas"
+msgstr "      --dump-source   imprime el fuente del documento, con inclusiones expandidas"
 
 msgid "Turn OFF options:"
 msgstr "Desactiva las opciones::"
@@ -180,11 +153,10 @@ msgid "Example:"
 msgstr "Ejemplo:"
 
 msgid "file.t2t"
-msgstr ""
+msgstr "archivo.t2t"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
-msgstr ""
-"Por default, la salida, ya convertida, es salvada al 'infile.<target>'."
+msgstr "Por default, la salida, ya convertida, es salvada al 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Use --outfile para forzar un nombre de archivo de salida."
@@ -204,8 +176,7 @@ msgid "Sorry! Txt2tags aborted by an unknown error."
 msgstr "¡Lo siento! Txt2tags abortó por un error desconocido."
 
 msgid "Please send the following Error Traceback to the author"
-msgstr ""
-"Por favor envíe al autor el siguiente Rastro de Error (Error Traceback) :"
+msgstr "Por favor envíe al autor el siguiente Rastro de Error (Error Traceback) :"
 
 msgid "You must feed me with data on STDIN!"
 msgstr "¡Usted debe alimentarme con datos sobre STDIN!"
@@ -249,16 +220,16 @@ msgid "No target specified (try --help)"
 msgstr "El blanco no se ha especificado (intente --help)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr ""
+msgstr "Por favor especifica un objetivo usando la opción -t o con el comando %!target."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr ""
+msgstr "Ejecute 'txt2tags --targets' para ver todos objetivos posibles."
 
 msgid "Missing input file (try --help)"
 msgstr "Falta el fichero de entrada (intente --help)"
 
 msgid "Invalid target '%s'"
-msgstr ""
+msgstr "Blanco inválido '%s'"
 
 msgid "--%s value must be a number"
 msgstr "el valor de --%s debe ser un número"
@@ -267,7 +238,7 @@ msgid "Option --split must be 0, 1 or 2"
 msgstr "Opción --split debe ser 0, 1 o 2"
 
 msgid "--art-chars: Expected %i chars, got %i"
-msgstr ""
+msgstr "--art-chars: %i carácteres esperados,  %i obtenidos"
 
 msgid "Input and Output files are the same: %s"
 msgstr "Los archivos de la entrada y de la salida son identicos: %s"
@@ -294,7 +265,7 @@ msgid "Added %s"
 msgstr "Agregado %s"
 
 msgid "You can't use (target) with %s"
-msgstr ""
+msgstr "No puedes usar (target) con %s"
 
 msgid "OFF"
 msgstr "DESACTIVADO"
@@ -334,7 +305,7 @@ msgid "%s wrote %s"
 msgstr "%s escribió %s"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabla de Contenidos"
 
 # El contenido del documento de fuente almacenó
 msgid "Source document contents stored"
@@ -342,8 +313,7 @@ msgstr "Los contenidos del documento fuente han sido almacenados"
 
 # saving = salvar, guardar
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-"Analizando y salvando todas los configuraciones encontradas (%03d artículos)"
+msgstr "Analizando y salvando todas los configuraciones encontradas (%03d artículos)"
 
 # target = blanco, objetivo, final?
 msgid "Composing target Headers"
@@ -477,41 +447,19 @@ msgid "We are on Command Line interface"
 msgstr "Estamos en una interfaz de Linea de Comandos"
 
 msgid "Please inform an input file (.t2t) at the end of the command."
-msgstr ""
+msgstr "Por favor especifica un archivo de entrada (.t2t) al final del comando."
 
 msgid "Txt2tags finished sucessfuly"
 msgstr "Txt2tags: terminado con éxito"
-
-#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
-#~ msgstr ""
-#~ "  -H, --no-headers    suprime la cabecera, el título y contenidos de pie "
-#~ "de página"
 
 #~ msgid ""
 #~ "      --headers       show header, title and footer contents (default ON)"
 #~ msgstr ""
 #~ "      --headers       Muestra la cabecera, el título y contenidos de pie "
 #~ "de página (predef.ACTIVADO)"
-
-#~ msgid ""
-#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr ""
-#~ "      --css-sugar     inserta etiquetas amigables con CSS, para objetivos "
-#~ "HTML y XHTML"
-
-#~ msgid "      --toc           add TOC (Table of Contents) to target document"
-#~ msgstr ""
-#~ "      --toc           agrega la TDC (Tabla de Contenidos) al documento "
-#~ "final"
-
-#~ msgid "      --toc-only      print document TOC and exit"
-#~ msgstr "      --toc-only      imprime índice (TOC/TDC) del documento y sale"
-
 #~ msgid ""
 #~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
 #~ msgstr ""
 #~ "      --rc            lee archivo de configuración del usuario ~/."
 #~ "txt2tagsrc (predef.ACTIVADO)"
 
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "Blanco inválido '%s' (intente --help)"
