@@ -27,7 +27,7 @@ config['css-sugar'] = 1                 # CSS friendly
 config['toc'] = 1                       # show Table Of Contents
 
 # The Pre (and Post) processing config is a list of lists:
-# [ [this, that], [foo, bar], [patt, replace] ]
+# [ [this, that], [foo, bar], [pattern, replace] ]
 config['preproc'] = []
 config['preproc'].append(['nice','VERY NICE'])
 config['preproc'].append(['day','life'])
@@ -43,7 +43,7 @@ try:
 	finished  = txt2tags.finish_him(full_doc, config)
 	print '\n'.join(finished)
 
-# Txt2tags error, show the messsage to the user
+# Txt2tags error, show the message to the user
 except txt2tags.error, msg:
 	print msg
 

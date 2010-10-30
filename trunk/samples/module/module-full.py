@@ -16,14 +16,14 @@ txt = txt.split('\n')
 
 # Let's do the conversion
 try:
-	# First we parse the text, spliting parts and getting config.
+	# First we parse the text, splitting parts and getting config.
 	data = txt2tags.process_source_file(contents=txt)
 	# Then we convert it, dumping results to the 'tagged' list.
 	tagged, config = txt2tags.convert_this_files([data])
 	# Show the tagged file on the screen.
 	print '\n'.join(tagged)
 
-# Txt2tags error, show the messsage to the user
+# Txt2tags error, show the message to the user
 except txt2tags.error, msg:
 	print msg
 
