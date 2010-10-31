@@ -1,15 +1,12 @@
 TXT2TAGS
 
-Jul, 2008
+Ago, 2010
 
 %!target: man
-%%!options(man): -o txt2tags.1
-%!options(html): --mask-email
+%!postproc(man): ' \(#\w+\)' ''
 
-%!postproc(html): <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
-%!postproc(html): (</STYLE>)  'body { margin:3em               ;} \n\1'
-%!postproc(html): (</STYLE>)  'a    { text-decoration:none     ;} \n\1'
-%!postproc(html): (</STYLE>)  'pre  { background-color:#ffffcc ;} \n\1'
+%!options(html): --mask-email --toc
+%!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
 
 %% LOG
 %% 02 jul 2004 netmask: traduzido para o português
@@ -18,355 +15,365 @@ Jul, 2008
 %% 20 jul 2004 netmask: revisão da tradução
 %% 22 jul 2004 aurelio: pequenas correções
 %% 28 dez 2004 aurelio: atualização para v2.2
+%% 30 out 2010 aurelio: atualização para v2.6 (reescrita)
 
-= NOME =
+%!encoding: utf-8
+
+= NOME =[nome]
 
 txt2tags - ferramenta para formatar e converter textos
 
-= SINOPSE =
+= SINOPSE =[sinopse]
+
+**txt2tags** [//opções//] [//ARQUIVO//...]
+
+= DESCRIÇÃO =[descricao]
+
+O **txt2tags** lê um arquivo texto com poucas marcações e o converte para:
+//ASCII Art//,
+//AsciiDoc//,
+//Creole//,
+//DocBook//,
+//DokuWiki//,
+//Google Code Wiki//,
+//HTML//,
+//LaTeX//,
+//Lout//,
+//MagicPoint//,
+//Man page//,
+//MoinMoin//,
+//PageMaker//,
+//Plain Text//,
+//PmWiki//,
+//SGML//,
+//Wikipedia// e
+//XHTML//.
+% TRANSLATOR: please keep the alphabetical order of this list.
+
+Esta página de manual foi criada pelo **txt2tags** a partir de um arquivo de texto. Este mesmo arquivo de texto também é convertido para HTML e colocado no site do programa para consulta.
+
+UM arquivo fonte, VÁRIOS destinos - http://txt2tags.org
+
+
+= SINTAXE =[sintaxe]
 
-**txt2tags** [//OPÇÃO//]... [//ARQUIVO//]...
-
-= DESCRIÇÃO =
-
-O **txt2tags** é uma ferramenta GPL de conversão de formatos escrita
-em Python que gera documentos em //HTML//, //XHTML//, //SGML//,
-//LaTeX//, //Lout//, //Man Page//, //MoinMoin//, //Wikipedia//,
-//DokuWiki//, //Google Code Wiki//, //MagicPoint// e //PageMaker//
-a partir de um único arquivo de texto com algumas marcações.
-
-O usuário só precisa conhecer algumas marcas usadas pelo **txt2tags**,
-e escrever textos normais. O programa faz todo o trabalho sujo,
-adicionando as tags complicadas e lidando com as pegadinhas dos
-documentos de destino.
-
-O mesmo arquivo texto pode ser convertido para todos os formatos
-disponíveis, sem a necessidade de qualquer alteração. Esta é a
-finalidade do **txt2tags**: UM arquivo fonte, VÁRIOS destinos.
-
-Visite a página do programa em
-//""http://txt2tags.org""//.
-
-= OPÇÕES =
-
-:  **-C**, **--config-file**
-lê a configuração de um arquivo externo (igual ao %!includeconf)
-
-:      **--css-sugar**
-insere tags compatíveis com CSS em destinos HTML e XHTML
-
-:      **--css-inside**
-insere o conteúdo do arquivo CSS no documento HTML/XHTML
-
-:      **--dump-config**
-exibe todas as configurações encontradas e sai
-
-:      **--dump-source**
-exibe os fontes do documento, com os includes expandidos
-
-:      **--encoding**
-informa a codificação de destino (utf-8, iso-8859-1, etc)
-
-:      **--gui**
-carrega a interface gráfica escrita em TK
-
-:  **-h**, **--help**
-exibe o texto de ajuda e sai
-
-:  **-H**, **--no-headers**
-suprime os cabeçalhos, título e rodapé
-
-:      **--headers**
-exibe os cabeçalhos, título e rodapé (padrão LIGADO)
-
-:  **-i**, **--infile**=//ARQUIVO//
-define ARQUIVO como arquivo fonte ('-' para STDIN)
-
-:      **--mask-email**
-esconde os e-mails dos robôs de SPAM. x@y.z vira <x (a) y z>
-
-:  **-n**, **--enum-title**
-numera todos os títulos como 1, 1.1, 1.1.1, etc
-
-:      **--no-dump-config**
-desativa a opção de exibir as configurações
-
-:      **--no-dump-source**
-desativa a opção de exibir os fontes
-
-:      **--no-encoding**
-exclui a configuração de codificação
-
-:      **--no-enum-title**
-desativa a auto-numeração de títulos
-
-:      **--no-infile**
-exclui as definições anteriores do arquivo fonte
-
-:      **--no-mask-email**
-exibe os e-mails, desativando a opção --mask-email
-
-:      **--no-outfile**
-exclui as definições anteriores sobre o arquivo de destino
-
-:      **--no-quiet**
-mostras as mensagens, desativando a opção --quiet
-
-:      **--no-rc**
-não lê o arquivo configuração do usuário em ~/.txt2tagsrc
-
-:      **--no-style**
-exclui as configurações de estilo
-
-:      **--no-toc**
-não inclui o sumário (Table of Contents) no documento de destino
-
-:      **--no-toc-only**
-desativa a opção --toc-only
-
-:  **-o**, **--outfile**=//ARQUIVO//
-define ARQUIVO como destino ('-' para STDOUT)
-
-:  **-q**, **--quiet**
-modo silencioso, não mostra nada na saída (exceto os erros)
-
-:      **--rc**
-lê a configuração do usuário em ~/.txt2tagsrc (padrão LIGADO)
-
-:      **--style**=//ARQUIVO//
-utiliza ARQUIVO como estilo do documento (como o CSS do Html)
-
-: **-t**, **--target**=//TIPO//
-define o tipo do documento de destino. atualmente suportados:
-html, xhtml, sgml, tex, lout, man, mgp, wiki,
-gwiki, doku, moin, pm6, txt
-
-:      **--toc**
-inclui o sumário (Table of Contents) no documento de destino
-
-:      **--toc-level**=//N//
-define o nível máximo (profundidade) do Índice para N
-
-:      **--toc-only**
-exibe o Índice do documento e sai
-
-:  **-v**, **--verbose**
-exibe mensagens informativas durante a conversão
-
-:  **-V**, **--version**
-exibe a versão do programa e sai
-
-
-Normalmente a saída convertida é gravada em 'arquivo.<tipo>'.
-Utilize --outfile para forçar um nome para o arquivo de saída.
-Se o arquivo de entrada é '-', lê de STDIN.
-Se o arquivo de saída é '-', envia a saída para STDOUT.
-
-
-= ESTRUTURA =
-
-Um arquivo fonte txt2tags pode ter três áreas:
-
-: **Cabeçalho**
-As primeiras três linhas. São usadas para identificação do documento.
-Se não for necessário, o cabeçalho pode ser suprimido pela
-configuração ``no-header``.
-
-: **Configuração**
-Inicia a partir da quarta linha. Todas as configurações têm o formato
-""%!chave: valor"". As configurações também podem ser realizadas por
-arquivos de configuração ou linha de comando.
-
-: **Corpo**
-O verdadeiro documento! É a única área necessária para que se tenha um
-documento txt2tags válido.
-
-
-= CONFIGURAÇÕES =
-
-O Txt2tags pode ser personalizado por métodos internos e externos. Os
-meios externos podem ser de um arquivo chamado ``.txt2tagsrc`` ou
-importado de outro arquivo txt2tags. O jeito interno é feito por
-comandos incluídos na área de configuração do fonte. Ambas formas usam
-a mesma sintaxe:
-
-: **%!target:**
-define o formato destino (target) principal
-
-: **%!options(target):**
-define as opções de cada destino
-
-: **%!include: file.t2t**
-inclui um arquivo txt2tags no documento
-
-: **%!include: ""``arquivo.txt``""**
-inclui um arquivo texto no documento
-
-: **%!include: ''arquivo.html''**
-inclui um arquivo literal no documento, //ipsis literis//
-
-: **%!style:**
-para indicar um arquivo CSS (Cascading Style Sheets) para os destinos
-XHTML e HTML ou carregar um módulo \usepackage no destino TEX
-
-: **%!encoding:**
-para indicar um conjunto de caracteres (como iso-8859-1) para usuários
-de língua não-inglesa
-
-: **%!includeconf:**
-usado para incluir configurações a partir de um arquivo externo
-
-: **%!guicolors:**
-configurações de cores para a interface gráfica (tk/tcl)
-
-: **%!preproc:**
-filtros personalizados (macros) que serão processados **ANTES** da
-avaliação do documento
-
-: **%!postproc:**
-filtros personalizados (macros) que serão processados **APÓS** a
-avaliação do documento
-
-
-= REGRAS DAS CONFIGURAÇÕES =
-
-- As configurações são válidas somente dentro da Área de
-  Configuração, e serão consideradas comentários simples se forem
-  encontradas no Corpo do documento.
-
-- Se a mesma palavra-chave aparece mais de uma vez na Área de
-  Configuração, apenas a última será usada. Exceção: options, preproc
-  e postproc, que são acumulativas.
-
-- Uma linha de configuração com uma palavra-chave inválida será
-  considerada um comentário.
-
-- Estas configurações têm precedência sobre o arquivo txt2tagsrc, mas
-  não sobre as opções de linha de comando.
-
-
-= SINTAXE =
-
-Uma sintaxe de marcas bem simples é utilizada no arquivo fonte
-(o arquivo de texto puro) para identificar as estruturas
-e a formatação. Aqui está a lista completa:
-
-== Básico ==
 ```
-Cabeçalhos        As 3 primeiras linhas do arquivo fonte
-Título            = palavras =
-Título numerado   + palavras +
-Parágrafo         palavras
-```
+Cabeçalhos          As 3 primeiras linhas do arquivo fonte
+Título              = palavras =
+Título numerado     + palavras +
+Comentário          % comentários
+Linha de separação  -----------------------...
+Linha destacada     =======================...
+Imagem              [arquivo.jpg]
+Link                [nome url]
 
-== Embelezadores ==
-```
-Negrito           **palavras**
-Itálico           //palavras//
-Sublinhado        __palavras__
-Riscado           --palavras--
-Monoespaçado      ``palavras``
-```
+Negrito             **palavras**
+Itálico             //palavras//
+Sublinhado          __palavras__
+Riscado             --palavras--
+Monoespaçado        ``palavras``
+Texto protegido     ""palavras""
+Texto com tags      ''palavras''
 
-== Text Blocks ==
-```
+Parágrafo           palavras
 Citação             <TAB>palavras
 Lista               - palavras
 Lista numerada      + palavras
 Lista de definição  : palavras
-Linha formatada     ``` palavras
-Área formatada      ```<Quebra> linhas <Quebra>```
-Linha protegida     """ palavras
-Área protegida      """<Quebra> linhas <Quebra>"""
 Tabela              | cel1 | cel2 | cel3...
+
+Linha formatada     ``` palavras
+Linha protegida     """ palavras
+Linha com tags      ''' palavras
+
+Área formatada      ```
+                    linhas
+                    ```
+Área protegida      """
+                    linhas
+                    """
+Área com tags       '''
+                    linhas
+                    '''
 ```
 
-== Outros ==
-```
-Linha de separação  -----------------------...
-Linha destacada     =======================...
-Links               [nome url]
-Imagem              [arquivo.XXX]
-Texto protegido     ""palavras""
-Comentário          % comentários
-```
+= OPÇÕES =[opcoes]
+
+:     **--art-chars**=//STRING//
+Define //STRING// como a lista de caracteres usados para fazer os enfeites do ASCII Art, nesta ordem: canto, borda, lado, linha1, linha2, nível2, nível3, nível4, nível5. O valor padrão da string é +-|-==-^". Esta opção é utilizada somente pelo formato ASCII Art.
+
+: **-C**, **--config-file**=//ARQUIVO//
+Lê a configuração a partir do arquivo externo //ARQUIVO//. A configuração deve estar no formato //%!nome:valor//. Veja o tópico [CONFIGURAÇÕES #config] para mais detalhes.
+
+:     **--css-sugar**
+Prepara o código HTML/XHTML para ser usado com arquivos CSS. Os atributos das tags são removidos, tags de formatação são evitadas, o cabeçalho é composto pelas tags H1, H2 e H3, novos DIVs são criados: //#header//, //#body//, //.toc//.
+
+:     **--css-inside**
+Insere o conteúdo do arquivo CSS no cabeçalho do documento HTML/XHTML. Use ``--style`` para indicar o arquivo CSS a ser lido.
+
+:     **--dump-config**
+Exibe todas as configurações encontradas e sai.
+
+:     **--dump-source**
+Exibe os fontes do documento, com os arquivos incluídos (``%!include``) expandidos.
+
+:     **--encoding**=//CÓDIGO//
+Define a codificação do arquivo para //CÓDIGO//. Alguns exemplos são UTF-8 e iso-8859-1.
+
+:     **--gui**
+Carrega a interface gráfica (Tk).
+
+: **-h**, **--help**
+Exibe o texto de ajuda e sai.
+
+: **-H**, **--no-headers**
+Suprime os cabeçalhos e o rodapé do documento. Apenas o Corpo do documento será mostrado.
+
+:     **--headers**
+Exibe os cabeçalhos e o rodapé no documento. Esta opção é usada por padrão.
+
+:     **--height**=//N//
+Define a altura da saída para //N// linhas. Esta opção é utilizada somente pelo formato ASCII Art, quando também utilizada a opção ``--slides``.
+
+: **-i**, **--infile**=//ARQUIVO//
+Define //ARQUIVO// como arquivo fonte. Use '-' para ler os dados de STDIN.
+
+:     **--mask-email**
+Esconde os e-mails dos robôs de SPAM. Os pontos e o @ são removidos. O endereço ""foo@bar.com"" vira <foo (a) bar com>.
+
+: **-n**, **--enum-title**
+Enumera todos os títulos automaticamente, nos formatos 1, 1.1, 1.1.1, ...
+
+:     **--no-dump-config**
+Cancela a ação ``--dump-config``.
+
+:     **--no-dump-source**
+Cancela a ação ``--dump-source``.
+
+:     **--no-encoding**
+Remove a configuração de codificação.
+
+:     **--no-enum-title**
+Desativa a numeração automática de títulos.
+
+:     **--no-infile**
+Remove as definições anteriores do arquivo fonte.
+
+:     **--no-targets**
+Cancela a ação ``--targets``.
+
+:     **--no-mask-email**
+Desativa o disfarce de emails.
+
+:     **--no-outfile**
+Remove as definições anteriores sobre o arquivo de destino.
+
+:     **--no-quiet**
+Mostras as mensagens, desativando a opção ``--quiet``.
+
+:     **--no-rc**
+Não lê o arquivo configuração do usuário em ~/.txt2tagsrc.
+
+:     **--no-slides**
+Desliga os slides.
+
+:     **--no-style**
+Remove todas as configurações de estilo.
+
+:     **--no-toc**
+Remove o Sumário automático.
+
+:     **--no-toc-only**
+Desativa a opção ``--toc-only``.
+
+: **-o**, **--outfile**=//ARQUIVO//
+Define //ARQUIVO// como arquivo de destino. Use '-' para mandar o resultado para STDOUT.
+
+: **-q**, **--quiet**
+Modo silencioso, não mostra nada na saída, exceto os erros.
+
+:     **--rc**
+Lê a configuração do usuário em ~/.txt2tagsrc. Esta opção é usada por padrão.
+
+:     **--slides**
+Formata a saída como uma apresentação de slides. Esta opção é utilizada somente pelo formato ASCII Art.
+
+:     **--style**=//ARQUIVO//
+Utiliza //ARQUIVO// como estilo do documento. É usado para incluir arquivos CSS em documentos HTML, e pacotes para o LaTeX. Esta opção pode ser usada mais de uma vez caso você precise incluir dois ou mais arquivos.
+
+: **-t**, **--target**=//FORMATO//
+Define o formato do documento de destino. Alguns formatos populares são: //html//, //xhtml//, //tex//, //man//, //txt//. Use a opção ``--targets`` para ver a lista completa com todos os formatos disponíveis.
+
+:     **--targets**
+Mostra a lista completa de todos os formatos disponíveis e sai.
+
+:     **--toc**
+Inclui um Sumário automático (Table of Contents) no documento de destino, entre o cabeçalho e o corpo. Você também pode indicar onde o Sumário deve ser colocado, usando a macro ``%%TOC``.
+
+:     **--toc-level**=//N//
+Define o nível máximo (profundidade) do Sumário para //N//. Os títulos abaixo do nível //N// não serão incluídos no Sumário.
+
+:     **--toc-only**
+Exibe o Sumário do documento e sai.
+
+: **-v**, **--verbose**
+Exibe mensagens informativas durante a conversão. Utilize-a duas ou mais vezes na linha de comando para aumentar o número de mensagens a serem mostradas.
+
+: **-V**, **--version**
+Exibe a versão do programa e sai.
+
+:     **--width**=//N//
+Define a largura da saída para //N// colunas. Esta opção é utilizada somente pelo formato ASCII Art.
+:
+
+= ARQUIVO FONTE =[fonte]
+
+Um arquivo fonte do **txt2tags** geralmente usa a extensão //.t2t//, como por exemplo: ``trabalho.t2t``. Você pode ter três áreas distintas em seus fontes:
+
+: **Cabeçalho**
+As primeiras três linhas. São usadas para identificação do documento, como título, autor, versão e data. Se você não quiser usar cabeçalhos, deixe a primeira linha em branco.
+
+: **Configuração**
+Inicia logo após o cabeçalho (4ª ou 2ª linha) e termina quando o Corpo se inicia. Esta área é usada para configurações no formato ``%!nome:valor``.
+
+: **Corpo**
+Começa na primeira linha de texto (que não seja um comentário ou uma configuração) logo após o cabeçalho e vai até o fim do documento. É usada para guardar o conteúdo do documento.
+:
+
+= CONFIGURAÇÕES =[config]
+
+Você pode personalizar o txt2tags usando configurações. Elas são parecidas com as opções de linha de comando e podem ser usadas nos seguintes locais: na área Configuração do seu arquivo fonte, no arquivo ``~/.txt2tagsrc`` ou ainda em um arquivo externo chamado com a opção ``--config-file``.
+
+: **%!target**
+Define o formato de saída, igual faz a opção ``--target``. Exemplo:
+``` %!target: html
+
+: **%!options(target)**
+Define as opções de cada formato. No valor você deve colocar as opções de linha de comando. Exemplo:
+``` %!options(html): --toc --toc-level 3 --css-sugar
+
+: **%!includeconf**
+Lê as configurações a partir de um arquivo externo, igual faz a opção ``--config-file``. Exemplo:
+``` %!includeconf: minhaconfig.t2t
+
+: **%!style**
+Define um arquivo de estilos para o documento, igual faz a opção ``--style``. Pode ser usada várias vezes para definir mais de um arquivo. Exemplo:
+``` %!style: cores.css
+
+: **%!encoding**
+Define a codificação do texto, igual faz a opção ``--encoding``. Exemplo:
+``` %!encoding: UTF-8
+
+: **%!preproc**
+Filtro de entrada (estilo troque "isso" por "aquilo") usado para alterar o Corpo do documento ANTES do txt2tags processá-lo. Você pode usar as expressões regulares do Python. Exemplo:
+``` %!preproc:  "FSS"  "Fulano da Silva Sauro"
+
+: **%!postproc**
+Filtro de saída (estilo troque "isso" por "aquilo") usado para alterar o documento de saída DEPOIS da conversão feita pelo txt2tags. Você pode usar as expressões regulares do Python. Exemplo:
+``` %!postproc(html):  "<B>"  "<STRONG>"
+:
+
+Se a mesma configuração for usada mais de uma vez, somente a última será utilizada. As exceções são: options, preproc e postproc, que são cumulativas. Configurações com nomes inválidos serão ignoradas. A ordem de processamento é: ``~/.txt2tagsrc``, área Configuração do arquivo fonte, opção ``--config-file``.
 
 
-= EXEMPLOS =
+= COMANDOS =[comandos]
 
-Supondo que você criou um arquivo marcado chamado ``arquivo.t2t``,
-vamos nos divertir fazendo algumas conversões.
+Os comandos são executados durante a conversão do documento. Eles devem ser colocados dentro do Corpo do arquivo fonte.
 
-: **Converte para HTML, gravando em arquivo.html**
-``$ txt2tags -t html arquivo.t2t``
+: **%!csv: arquivo.csv**
+Gera uma tabela a partir de um arquivo externo CSV.
 
-: **Similar ao anterior, usando redirecionamento**
-``$ txt2tags -t html -o - arquivo.t2t > arquivo.html``
+: **%!include: arquivo.t2t**
+Inclui um arquivo fonte txt2tags no documento.
 
-: **Incluindo o Índice**
-``$ txt2tags -t html --toc arquivo.t2t``
+: **%!include: ""``arquivo.txt``""**
+Inclui um arquivo texto no documento.
 
-: **Incluindo o Índice e títulos numerados**
-``$ txt2tags -t html --toc --enum-title arquivo.t2t``
+: **%!include: ""''arquivo.html''""**
+Inclui um arquivo pronto no documento, ele não é modificado.
+:
 
-: **Exibição rápida do conteúdo**
-``$ txt2tags --toc-only arquivo.t2t``
+= MACROS =[macros]
 
-: **Teste rápido de uma linha vindo de STDIN**
-``$ echo -e "\n**negrito**" | txt2tags -t html -H -``
+As macros são úteis para inserir conteúdos dinâmicos em seu documento, como a data atual, por exemplo. Exceto a ``%%toc``, todas as macros podem ser personalizadas com curingas tipo ``%Y`` e ``%f``. Veja o Guia do Usuário para saber mais detalhes.
 
+: **""%%date""**
+Insere a data atual. O formato padrão é ``%%date(%Y%m%d)``, que fica AAAAMMDD.
 
-= MACROS =
+: **""%%infile""**
+Insere o nome do arquivo fonte. O formato padrão é ``%%infile(%f)``. Útil para links de rodapé, como ``[Veja os fontes %%infile]``.
 
-: ""%%date""
-Representa a data atual, usando o formato YYYYMMDD.
-Também é possível mudar o formato da data usando a seguinte sintaxe:
-""%%date(formato)"".
+: **""%%mtime""**
+Insere a data de modificação do arquivo fonte. O formato padrão é ``%%date(%Y%m%d)``, que fica AAAAMMDD.
 
-: ""%%infile""
-Representa o nome do arquivo fonte. O formato pode ser especificado
-usando a seguinte sintaxe: ""%%infile(formato)"".
+: **""%%outfile""**
+Insere o nome do arquivo de saída. O formato padrão é ``%%outfile(%f)``. Útil para mencionar o próprio documento, como em "Este é o arquivo %%outfile".
 
-Útil para colocar um link para os fontes, no final do documento, como
-em ""[Veja os fontes %%infile]"". Assim, você pode mudar o nome do
-arquivo, e o link não ficará quebrado.
+: **""%%toc""**
+Especifica o lugar onde será colocado o Sumário (Table Of Contents). Você pode utilizá-la em qualquer parte do documento, inclusive mais de uma vez. A opção ``--toc`` também deve ser usada para esta que esta macro funcione.
+:
 
-: ""%%mtime""
-Representa a data de modificação do arquivo fonte. Os mesmos formatos
-usados na macro ""%%date"" também são aceitos.
+= EXEMPLOS =[exemplos]
 
-: ""%%outfile""
-Representa o nome do arquivo de saída. O formato pode ser especificado
-usando a seguinte sintaxe: ""%%outfile(formato)"".
+: ``txt2tags -t html arquivo.t2t``
 
-Útil para mencionar o próprio arquivo, como em "Este é o arquivo
-%%outfile". Assim, você pode mudar o nome do arquivo, mas ele sempre
-aparecerá corretamente no documento.
+Converte para HTML, gravando o resultado em arquivo.html.
 
-: ""%%toc""
-A macro ""%%toc"" indica em que local do documento deve ser inserido
-o sumário (Table Of Contents). Você pode utilizá-la em qualquer parte
-do documento, inclusive mais de uma vez.
+: ``txt2tags -t html -o - arquivo.t2t``
 
-NOTA: A ""%%toc"" só será aplicada se a opção ""--toc"" for utilizada.
+Converte para HTML, mandando o resultado para STDOUT.
 
+: ``txt2tags -t html --toc arquivo.t2t``
 
-= AUTOR =
+Converte para HTML, com Sumário automático (Table Of Contents).
 
-O txt2tags foi criado e é mantido por Aurélio Marinho Jargas
-<verde@aurelio.net>
+: ``txt2tags -t html --toc --toc-level 2 -n arquivo.t2t``
 
-Esta Página de Manual foi escrita por José Inácio Coelho
-<jic@technologist.com> como um arquivo texto, e convertida para o
-formato de manual no **txt2tags**!
+Converte para HTML, com Sumário de dois níveis e títulos numerados.
 
-A tradução deste manual para o português foi feita por Mauricio
-Teixeira <mteixeira@webset.net>
+: ``txt2tags --toc-only arquivo.t2t``
 
-= LICENÇA =
+Apenas mostra o Sumário, nenhuma conversão é feita.
 
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurélio Marinho Jargas
+: ``txt2tags -t html --css-sugar --style base.css --style ui.css arquivo.t2t``
 
-Este programa é livre. Veja nos arquivos fonte as condições de cópia.
-NÃO HÁ garantia, nem de COMERCIALIZAÇÃO nem de ADEQUAÇÃO A QUALQUER
-PROPÓSITO.
+Converte para HTML, com código preparado para usar CSS e também inclui dois arquivos CSS externos.
+
+: ``txt2tags -t art --slides --width 80 --height 25 -o - arquivo.t2t | more``
+
+Cria uma apresentação de slides em ASCII Art, pronta para ser mostrada em um terminal de tamanho 80x25 (colunas e linhas).
+
+: ``(echo ; echo "**bold**") | txt2tags -t html -H -``
+
+Mostra como testar o programa rapidamente usando a STDIN como fonte.
+
+: ``txt2tags -t html -o - arquivo.t2t | tidy > arquivo.html``
+
+Manda os resultados para STDOUT e refina o código gerado usando um programa externo (tidy) antes de salvar o arquivo HTML final.
+:
+
+= ARQUIVOS =[arquivos]
+
+: ~/.txt2tagsrc
+A localização padrão para o arquivo com as configurações do usuário.
+:
+
+= AMBIENTE =[ambiente]
+
+: T2TCONFIG
+Se definida, esta variável guarda o caminho completo para o arquivo de configuração do usuário.
+:
+
+= AUTOR =[autor]
+
+Aurélio Marinho Jargas <verde@aurelio.net>
+
+Já trabalharam neste manual José Inácio Coelho <jic@technologist.com> e Mauricio Teixeira <mteixeira@webset.net>.
+
+= BUGS =[bugs]
+
+http://bugs.txt2tags.org
+
+= COPYRIGHT =[copyright]
+
+Copyright (C) 2001-%%date(%Y) Aurelio Jargas, GNU GPL v2
