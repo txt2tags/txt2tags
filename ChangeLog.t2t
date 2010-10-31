@@ -15,6 +15,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 %%% 
 
 %!target: txt
+%!encoding: utf-8
 
 % Output file name contains no .txt extension
 %!options(txt): -o ChangeLog
@@ -51,7 +52,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 %   r195: /art
 %   r202: /sample
 %   r224: /includeconf
-% Test-suite now exits with 1 if any error is found. <thanks Rudá Moura>
+% Test-suite now exits with 1 if any error is found. <thanks RudÃ¡ Moura>
 %
 % getTags() new keys: listOpenCompact, listCloseCompact, numlistOpenCompact, numlistCloseCompact, deflistOpenCompact, deflistCloseCompact, _tableCellMulticolOpen, _tableCellMulticolClose
 % getRules() new rules: compactlist, labelbeforelink, tablecellmulticol, blanksaroundpara, blanksaroundverb, blanksaroundquote, blanksaroundlist, blanksaroundnumlist, blanksarounddeflist, blanksaroundtable, blanksaroundbar, blanksaroundtitle, blanksaroundnumtitle
