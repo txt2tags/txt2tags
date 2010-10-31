@@ -12,4 +12,4 @@
 
 Text.
 
------ Txt2tags finished sucessfuly
+----- Txt2tags finished successfully
