@@ -1,0 +1,415 @@
+.TH "TXT2TAGS" 1 "Nov, 2006" ""
+
+
+.SH NAME
+
+.P
+txt2tags \- Werkzeug für Text\-Formatierung und \-Konvertierung
+
+.SH SYNOPSIS
+
+.P
+\fBtxt2tags\fR [\fIOPTION\fR]... [\fIDATEI\fR]...
+
+.SH BESCHREIBUNG
+
+.P
+\fBtxt2tags\fR ist ein GPL Werkzeug für das Konvertieren von Formaten, geschrieben in Python. Es erzeugt \fIHTML\fR, \fIXHTML\fR, \fISGML\fR, \fILaTeX\fR, \fILout\fR,
+\fIMan Page\fR, \fIMoinMoin\fR, \fIMagicPoint\fR und \fIPageMaker\fR
+Dokumente aus einer einzigen Textdatei mit minimalem Markup.
+
+.P
+Der Benutzer braucht nur die sehr wenigen und einfachen \fBtxt2tags\fR Auszeichnungen zu wissen,
+wobei er/sie einfache Textdateien schreibt. Dann tut das Programm all die schmutzige Arbeit, fügt komplizierte Tags hinzu und geht mit den Besonderheiten der Zieldokumente um.
+
+.P
+Dieselbe Textdatei kann ohne weiteres Editieren in alle Zielformate konvertiert werden. Dies ist der Zweck von \fBtxt2tags\fR: EINE Quelle, VIELE Zielformate.
+
+.P
+Bitte besuchen Sie die Website des Programms unter
+\fIhttp://txt2tags.org\fR.
+
+.SH OPTIONEN
+
+.TP
+ \fB\-C\fR, \fB\-\-config\-file\fR
+liest die Konfiguration aus einer externen Datei (arbeitet wie %!includeconf)
+
+.TP
+     \fB\-\-css\-sugar\fR
+fügt die CSS\-freundlichen Tags für HTML and XHTML Zielformate ein
+
+.TP
+     \fB\-\-css\-inside\fR
+fügt den Inhalt von der CSS Datei in die HTML/XHTML Köpfe ein
+
+.TP
+     \fB\-\-dump\-config\fR
+druckt alle gefundene Konfiguration und beendet das Programm
+
+.TP
+     \fB\-\-dump\-source\fR
+druckt die Quelle des Dokuments, mit erweitertem Eingefügten
+
+.TP
+     \fB\-\-encoding\fR
+setzt das Encoding der Zieldatei (utf\-8, iso\-8859\-1, etc)
+
+.TP
+     \fB\-\-gui\fR
+ruft das Graphical Tk Interface auf
+
+.TP
+ \fB\-h\fR, \fB\-\-help\fR
+druckt den Hilfetext und beendet das Programm
+
+.TP
+ \fB\-H\fR, \fB\-\-no\-headers\fR
+unterdrückt Kopf, Titel und Fußzeile
+
+.TP
+     \fB\-\-headers\fR
+zeigt Kopf, Titel und Fußzeile (STANDARD EIN)
+
+.TP
+ \fB\-i\fR, \fB\-\-infile\fR=\fIDATEI\fR
+setzt DATEI als Name der Eingabedatei ('\-' für STDIN)
+
+.TP
+     \fB\-\-mask\-email\fR
+versteckt Email vor Spam Robotern. x@y.z ergibt <x (a) y z>
+
+.TP
+ \fB\-n\fR, \fB\-\-enum\-title\fR
+nummeriert alle Überschriften wie 1, 1.1, 1.1.1, etc
+
+.TP
+     \fB\-\-no\-dump\-config\fR
+schaltet die Aktion dump Konfiguration aus
+
+.TP
+     \fB\-\-no\-dump\-source\fR
+schaltet die Aktion dump Quelltext aus
+
+.TP
+     \fB\-\-no\-encoding\fR
+löscht die Einstellungen für das Encoding
+
+.TP
+     \fB\-\-no\-enum\-title\fR
+schaltet die Titel\-Autonummerierung aus
+
+.TP
+     \fB\-\-no\-infile\fR
+löscht alle vorigen Eingabedatei\-Deklarationen
+
+.TP
+     \fB\-\-no\-mask\-email\fR
+macht Emails sichtbar, schaltet die \-\-mask\-email Option aus
+
+.TP
+     \fB\-\-no\-outfile\fR
+löscht die vorige Ausgabedatei\-Deklaration
+
+.TP
+     \fB\-\-no\-quiet\fR
+zeigt Meldungen, schaltet die Option \-\-quiet aus
+
+.TP
+     \fB\-\-no\-rc\fR
+liest keine Benutzer\-Konfigdatei ~/.txt2tagsrc
+
+.TP
+     \fB\-\-no\-style\fR
+löscht die Einstellung des Stils
+
+.TP
+     \fB\-\-no\-toc\fR
+fügt kein TOC (Table of Contents) ins Zieldokument ein
+
+.TP
+     \fB\-\-no\-toc\-only\fR
+schaltet die \-\-toc\-only Option aus
+
+.TP
+ \fB\-o\fR, \fB\-\-outfile\fR=\fIDATEI\fR
+setzt DATEI als Dateiname für die Ausgabe ('\-' für STDOUT)
+
+.TP
+ \fB\-q\fR, \fB\-\-quiet\fR
+Schweigemodus, unterdrückt die Ausgabe (außer Fehler)
+
+.TP
+     \fB\-\-rc\fR
+liest Bentzer\-Konfigdatei ~/.txt2tagsrc (Standard ist EIN)
+
+.TP
+     \fB\-\-style\fR=\fIDATEI\fR
+benutzt DATEI als Dokumentstil (wie Html CSS)
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR
+setzt das Zielformat des Dokuments. aktuell unterstützt werden:
+html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
+
+.TP
+     \fB\-\-toc\fR
+fügt die TOC (Table of Contents) ins Zieldokument ein
+
+.TP
+     \fB\-\-toc\-level\fR=\fIN\fR
+setzt die maximale TOC Tiefe auf N
+
+.TP
+     \fB\-\-toc\-only\fR
+druckt Dokument TOC und verläßt das Programm
+
+.TP
+ \fB\-v\fR, \fB\-\-verbose\fR
+druckt informative Meldungen während der Konvertierung
+
+.TP
+ \fB\-V\fR, \fB\-\-version\fR
+druckt die Programmversion und verläßt das Programm
+
+.P
+Als Standard werden konvertierte Ausgaben gespeichert nach 'datei.<typ>'.
+Benutzt \-\-outfile um einen Dateinamen für die Ausgabe zu erzwingen.
+Wenn die Eingabedatei '\-', lese von STDIN.
+Wenn die Ausgabedatei '\-', gebe aus nach STDOUT.
+
+.SH STRUKTUR
+
+.P
+Die Txt2tags Quelldatei kann aus drei Bereichen bestehen:
+
+.TP
+\fBKopf\fR
+Die ersten drei Zeilen. Sie werden verwendet für die Unterscheidung des Dokuments.
+Wenn Sie keine Kopfzeilen benötigen, müssen Sie die erste Zeile leer lassen oder
+die Einstellung no\-header setzen.
+
+.TP
+\fBEinstellungen\fR
+Beginnt an der vierten Zeile. Alle Einstellungen haben das Format %!schlüsselwort: wert. Einstellungen können gemacht werden in der Konfigurationsdatei oder auf der Kommandozeile.
+
+.TP
+\fBKörper\fR
+Ihre Dokument\-Quelle! Der einzig erforderliche Bereich um eine gültige
+txt2tags Datei zu erhalten.
+
+.SH EINSTELLUNGSREGELN
+
+.P
+Die Umwandlung einer Quelldatei kann angepaßt werden auf zwei unterschiedliche Weisen: Externe Konfigurationen werden aus der RC Datei genommen
+(~/.txt2tagsrc) oder aus einer anderen vom Benutzer gewählte Datei. Interne
+Konfigurationen werden durch Einstellungen vorgenommen. Beide verwenden dieselbe Syntax:
+
+.TP
+\fB%!target:\fR
+definiert das Hauptziel
+
+.TP
+\fB%!options(ziel):\fR
+definiert die Optionen zu jedem Ziel
+
+.TP
+\fB%!include: datei.t2t\fR
+fügt eine txt2tags Datei in das Dokument ein
+
+.TP
+\fB%!include: ``datei.txt``\fR
+fügt eine Textdatei (verbatim) in das Dokument ein
+
+.TP
+\fB%!include: datei.html\fR
+fügt eine literale Datei in das Dokument ein, wie sie ist
+
+.TP
+\fB%!style:\fR
+lädt eine CSS (Cascading Style Sheets)\-Datei für das XHTML und HTML
+Zielformat oder \eusepackage Module im TeX Format
+
+.TP
+\fB%!encoding:\fR
+legt einen Zeichensatz (wie iso\-8859\-1) für i18n fest
+
+.TP
+\fB%!includeconf:\fR
+wird benutzt, um Konfigurationen von einer externen in die aktuelle Datei zu übernehmen
+
+.TP
+\fB%!guicolors:\fR
+Farbeinstellungen für die GUI (Tk)
+
+.TP
+\fB%!preproc:\fR
+Ihr angepaßtes Filter (Makro), welches verarbeitet wird \fBVOR\fR dem 
+Parsen des Dokuments
+
+.TP
+\fB%!postproc:\fR
+Ihr angepaßtes Filter (Makro), welches verarbeitet wird \fBNACH\fR dem 
+Parsen des Dokuments
+
+.SS EINSTELLUNGEN
+
+.RS
+.IP \(bu 3
+Einstellungen sind nur gültig innerhalb des Konfig\-Bereichs, und werden als
+einfacher Kommentar betrachtet, wenn sie im Dokument stehen. Ausgenommen include,
+was ein gültiger Body\-Befehl ist.
+
+.IP \(bu 3
+Wenn dasselbe Schlüsselwort mehr als einmal im Konfig\-Bereich erscheint,
+wird das zuletzt gefundene benutzt. Ausgenommen: Optionen, preproc
+und postproc, welche kumulativ sind.
+
+.IP \(bu 3
+Eine Einstellungenzeile mit einem ungültigen Schlüsselwort wird betrachtet als eine
+einfache Kommentarzeile.
+
+.IP \(bu 3
+Diese Einstellungen haben Vorrang über die txt2tagsrc Datei, aber nicht über
+Optionen auf der Kommandozeile.
+.RE
+
+.SH SYNTAX
+
+.P
+Eine sehr einfache Markupsyntax wird in der Quelle des Dokuments (eine einfache Textdatei) verwendet, um Stukturen und Formatierung zu unterscheiden.
+Hier ist die komplette Liste:
+
+.SS Grundlagen
+
+.nf
+Headers                  Die ersten 3 Zeilen der Quelldatei
+Überschrift              = Wörter =
+Nummerierte Überschrift  + Wörter +
+Absatz                   Wörter
+.fi
+
+
+.SS Beautifiers
+
+.nf
+Fett                     **Wörter**
+Kursiv                   //Wörter//
+Understreichung          __Wörter__
+Mono                     ``Wörter``
+.fi
+
+
+.SS Text Blöcke
+
+.nf
+Quotierung               <TAB>Wörter
+Liste                    - Wörter
+Nummerierte Liste        + Wörter
+Definitions Liste        : Wörter
+Verbatim Zeile           ``` Wörter
+Verbatim Bereich         ```<Zeilenumbruch> Zeilen <Zeilenumbruch>```
+Rohe Zeile               """ Wörter
+Roher Bereich            """<Zeilenumbruch> Zeilen <Zeilenumbruch>"""
+Tabelle                  | Zelle1 | Zelle2 | Zelle3...
+.fi
+
+
+.SS Andere
+
+.nf
+Trennungszeile           -----------------------...
+Betonte Zeile            =======================...
+Links                    [Marke url]
+Bild                     [Dateiname.jpg]
+Roher Text               ""Wörter""
+Kommentare               % Kommentare
+.fi
+
+
+.P
+Lesen Sie bitte die Txt2tags Benutzeranleitung (im Verzeichnis für die Programmdokumentation), um eine ausführliche Beschreibung jeder Auszeichnung zu erhalten.
+
+.SH BEISPIELE
+
+.P
+Angenommen Sie haben eine file.t2t Datei ausgezeichnet, lassen Sie uns etwas Spaß am Konvertieren haben.
+
+.TP
+\fBKonvertiere nach HTML, schreibe nach file.html\fR
+$ txt2tags \-t html file.t2t
+
+.TP
+\fBDasselbe, eine Umleitung benutzend\fR
+$ txt2tags \-t html \-o \- file.t2t > file.html
+
+.TP
+\fBEin Inhaltsverzeichnis einfügen (TOC)\fR
+$ txt2tags \-t html \-\-toc file.t2t
+
+.TP
+\fBEin TOC einfügen und Überschriften nummerieren\fR
+$ txt2tags \-t html \-\-toc \-\-enum\-title file.t2t
+
+.TP
+\fBInhaltsverzeichnis, Schnell\-Ansicht\fR
+$ txt2tags \-\-toc\-only file.t2t
+
+.TP
+\fBSchneller Einzeiler\-Test vom STDIN\fR
+$ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+.SH MAKROS
+
+.TP
+%%date
+Erlaubt das aktuelle Datum einzufügen, in dem Format YYYYMMDD.
+Optionale Formatierung kann angegeben werden unter Verwendung der
+%%date(format\-string) Syntax.
+
+.TP
+%%infile
+Wird benutzt, um Informationen über die Quelldatei zu bekommen. Optionale Formatierung kann angegeben werden unter Verwendung der %%infile(format\-string) Syntax.
+
+Brauchbar für Fußnotenlinks wie [Siehe Quelle %%infile], so können Sie
+den Dateinamen ändern und seine Referenzen werden aktualisiert.
+
+.TP
+%%mtime
+
+Gibt Information über die Zeit der letzten Änderung der Quelldatei. Es verwendet dieselben Formater, die vom %%date Makro akzeptiert werden.
+
+.TP
+%%outfile
+Wird benutzt, um Informationen zu bekommen über die konvertierte Datei. Optionale Formatierung kann angegeben werden unter Verwendung der %%outfile(format\-string) Syntax.
+
+Brauchbar für Selbstreferenzen wie "Dies ist eine manpage\-de.man Datei", so können Sie den Dateinamen wechseln und seine Referenz wird aktualisiert.
+
+.TP
+%%toc
+Das %%toc Makro gibt an, wo das TOC des Dokuments platziert wird. Sie können es platzieren, wo immer es im Dokument gebraucht wird.
+
+Hinweis: %%toc wird erweitert nur mit der \-\-toc Option.
+
+.SH Autor
+
+.P
+Geschrieben und betreut durch Aurelio Jargas <verde@aurelio.net>
+
+.P
+Diese Anleitung wurde geschrieben von Jose Inacio Coelho <jic@technologist.com>
+als eine Textdatei, und dann konvertiert ins man Format durch \fBtxt2tags\fR!
+
+.P
+Übersetzt von Michael Malien <michael.malien@gmx.de>.
+
+.SH COPYRIGHT
+
+.P
+Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006 Aurelio Jargas
+
+.P
+Dies ist freie Software; siehe die Quelle für Kopierbedingungen. Es gibt keine GEWÄHR; nicht einmal für Verkaufbarkeit oder Eignung für einen besonderen Zweck.
+
+.\" man code generated by txt2tags 2.6b1 (http://txt2tags.org)
+.\" cmdline: txt2tags -t man doc/German/manpage-de.t2t
