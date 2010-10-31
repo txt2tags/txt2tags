@@ -174,7 +174,7 @@ Turn off the email masking feature.
 Clear the previous outfile declaration.
 
 :     **--no-quiet**
-Show messages, turning off the --quiet option.
+Show messages, turning off the ``--quiet`` option.
 
 :     **--no-rc**
 Do not read the user configuration file ~/.txt2tagsrc.
