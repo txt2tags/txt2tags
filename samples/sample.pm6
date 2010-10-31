@@ -21,7 +21,7 @@
 
 TXT2TAGS SAMPLE
 Aurelio Jargas
-07/26/2008
+10/20/2010
 
 
 <@Title1:>Introduction
@@ -215,10 +215,10 @@ The image mark is as simple as it can be: <FONT "Lucida Console"><SIZE 9>[filena
 The handy <FONT "Lucida Console"><SIZE 9>%%date<SIZE$><FONT$> macro expands to the current date.
 
 <@Normal:>
-So today is 20100806 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
+So today is 20101031 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
 
 <@Normal:>
-You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 08-06-2010.
+You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 10-31-2010.
 
 <@Normal:>
 That's all for now.
