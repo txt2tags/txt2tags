@@ -1,4 +1,4 @@
------ Txt2tags 2.6b1 processing begins
+----- Txt2tags 2.6 processing begins
 ----- Ignoring user configuration file
 ----- Loading source document
 ----- Parsing and saving all config found (008 items)
