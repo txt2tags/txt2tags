@@ -1,4 +1,4 @@
------ Txt2tags 2.6b1 processing begins
+----- Txt2tags 2.6 processing begins
 ----- Ignoring user configuration file
 ----- Loading source document
 ---------- File read (2 lines): v-4.t2t
