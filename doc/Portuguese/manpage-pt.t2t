@@ -9,13 +9,13 @@ Ago, 2010
 %!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
 
 %% LOG
-%% 02 jul 2004 netmask: traduzido para o portuguÍs
-%% 20 jul 2004 jic    : incluÌdo: ·rea de configuraÁ„o, mais marcas, ·reas;
-%%                      reorganizaÁ„o
-%% 20 jul 2004 netmask: revis„o da traduÁ„o
-%% 22 jul 2004 aurelio: pequenas correÁıes
-%% 28 dez 2004 aurelio: atualizaÁ„o para v2.2
-%% 30 out 2010 aurelio: atualizaÁ„o para v2.6 (reescrita)
+%% 02 jul 2004 netmask: traduzido para o portugu√™s
+%% 20 jul 2004 jic    : inclu√≠do: √°rea de configura√ß√£o, mais marcas, √°reas;
+%%                      reorganiza√ß√£o
+%% 20 jul 2004 netmask: revis√£o da tradu√ß√£o
+%% 22 jul 2004 aurelio: pequenas corre√ß√µes
+%% 28 dez 2004 aurelio: atualiza√ß√£o para v2.2
+%% 30 out 2010 aurelio: atualiza√ß√£o para v2.6 (reescrita)
 
 %!encoding: utf-8
 
@@ -25,11 +25,11 @@ txt2tags - ferramenta para formatar e converter textos
 
 = SINOPSE =[sinopse]
 
-**txt2tags** [//opÁıes//] [//ARQUIVO//...]
+**txt2tags** [//op√ß√µes//] [//ARQUIVO//...]
 
-= DESCRI«√O =[descricao]
+= DESCRI√á√ÉO =[descricao]
 
-O **txt2tags** lÍ um arquivo texto com poucas marcaÁıes e o converte para:
+O **txt2tags** l√™ um arquivo texto com poucas marca√ß√µes e o converte para:
 //ASCII Art//,
 //AsciiDoc//,
 //Creole//,
@@ -50,235 +50,235 @@ O **txt2tags** lÍ um arquivo texto com poucas marcaÁıes e o converte para:
 //XHTML//.
 % TRANSLATOR: please keep the alphabetical order of this list.
 
-Esta p·gina de manual foi criada pelo **txt2tags** a partir de um arquivo de texto. Este mesmo arquivo de texto tambÈm È convertido para HTML e colocado no site do programa para consulta.
+Esta p√°gina de manual foi criada pelo **txt2tags** a partir de um arquivo de texto. Este mesmo arquivo de texto tamb√©m √© convertido para HTML e colocado no site do programa para consulta.
 
-UM arquivo fonte, V¡RIOS destinos - http://txt2tags.org
+UM arquivo fonte, V√ÅRIOS destinos - http://txt2tags.org
 
 
 = SINTAXE =[sintaxe]
 
 ```
-CabeÁalhos          As 3 primeiras linhas do arquivo fonte
-TÌtulo              = palavras =
-TÌtulo numerado     + palavras +
-Coment·rio          % coment·rios
-Linha de separaÁ„o  -----------------------...
+Cabe√ßalhos          As 3 primeiras linhas do arquivo fonte
+T√≠tulo              = palavras =
+T√≠tulo numerado     + palavras +
+Coment√°rio          % coment√°rios
+Linha de separa√ß√£o  -----------------------...
 Linha destacada     =======================...
 Imagem              [arquivo.jpg]
 Link                [nome url]
 
 Negrito             **palavras**
-It·lico             //palavras//
+It√°lico             //palavras//
 Sublinhado          __palavras__
 Riscado             --palavras--
-MonoespaÁado        ``palavras``
+Monoespa√ßado        ``palavras``
 Texto protegido     ""palavras""
 Texto com tags      ''palavras''
 
-Par·grafo           palavras
-CitaÁ„o             <TAB>palavras
+Par√°grafo           palavras
+Cita√ß√£o             <TAB>palavras
 Lista               - palavras
 Lista numerada      + palavras
-Lista de definiÁ„o  : palavras
+Lista de defini√ß√£o  : palavras
 Tabela              | cel1 | cel2 | cel3...
 
 Linha formatada     ``` palavras
 Linha protegida     """ palavras
 Linha com tags      ''' palavras
 
-¡rea formatada      ```
+√Årea formatada      ```
                     linhas
                     ```
-¡rea protegida      """
+√Årea protegida      """
                     linhas
                     """
-¡rea com tags       '''
+√Årea com tags       '''
                     linhas
                     '''
 ```
 
-= OP«’ES =[opcoes]
+= OP√á√ïES =[opcoes]
 
 :     **--art-chars**=//STRING//
-Define //STRING// como a lista de caracteres usados para fazer os enfeites do ASCII Art, nesta ordem: canto, borda, lado, linha1, linha2, nÌvel2, nÌvel3, nÌvel4, nÌvel5. O valor padr„o da string È +-|-==-^". Esta opÁ„o È utilizada somente pelo formato ASCII Art.
+Define //STRING// como a lista de caracteres usados para fazer os enfeites do ASCII Art, nesta ordem: canto, borda, lado, linha1, linha2, n√≠vel2, n√≠vel3, n√≠vel4, n√≠vel5. O valor padr√£o da string √© +-|-==-^". Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
 
 : **-C**, **--config-file**=//ARQUIVO//
-LÍ a configuraÁ„o a partir do arquivo externo //ARQUIVO//. A configuraÁ„o deve estar no formato //%!nome:valor//. Veja o tÛpico [CONFIGURA«’ES #config] para mais detalhes.
+L√™ a configura√ß√£o a partir do arquivo externo //ARQUIVO//. A configura√ß√£o deve estar no formato //%!nome:valor//. Veja o t√≥pico [CONFIGURA√á√ïES #config] para mais detalhes.
 
 :     **--css-sugar**
-Prepara o cÛdigo HTML/XHTML para ser usado com arquivos CSS. Os atributos das tags s„o removidos, tags de formataÁ„o s„o evitadas, o cabeÁalho È composto pelas tags H1, H2 e H3, novos DIVs s„o criados: //#header//, //#body//, //.toc//.
+Prepara o c√≥digo HTML/XHTML para ser usado com arquivos CSS. Os atributos das tags s√£o removidos, tags de formata√ß√£o s√£o evitadas, o cabe√ßalho √© composto pelas tags H1, H2 e H3, novos DIVs s√£o criados: //#header//, //#body//, //.toc//.
 
 :     **--css-inside**
-Insere o conte˙do do arquivo CSS no cabeÁalho do documento HTML/XHTML. Use ``--style`` para indicar o arquivo CSS a ser lido.
+Insere o conte√∫do do arquivo CSS no cabe√ßalho do documento HTML/XHTML. Use ``--style`` para indicar o arquivo CSS a ser lido.
 
 :     **--dump-config**
-Exibe todas as configuraÁıes encontradas e sai.
+Exibe todas as configura√ß√µes encontradas e sai.
 
 :     **--dump-source**
-Exibe os fontes do documento, com os arquivos incluÌdos (``%!include``) expandidos.
+Exibe os fontes do documento, com os arquivos inclu√≠dos (``%!include``) expandidos.
 
-:     **--encoding**=//C”DIGO//
-Define a codificaÁ„o do arquivo para //C”DIGO//. Alguns exemplos s„o UTF-8 e iso-8859-1.
+:     **--encoding**=//C√ìDIGO//
+Define a codifica√ß√£o do arquivo para //C√ìDIGO//. Alguns exemplos s√£o UTF-8 e iso-8859-1.
 
 :     **--gui**
-Carrega a interface gr·fica (Tk).
+Carrega a interface gr√°fica (Tk).
 
 : **-h**, **--help**
 Exibe o texto de ajuda e sai.
 
 : **-H**, **--no-headers**
-Suprime os cabeÁalhos e o rodapÈ do documento. Apenas o Corpo do documento ser· mostrado.
+Suprime os cabe√ßalhos e o rodap√© do documento. Apenas o Corpo do documento ser√° mostrado.
 
 :     **--headers**
-Exibe os cabeÁalhos e o rodapÈ no documento. Esta opÁ„o È usada por padr„o.
+Exibe os cabe√ßalhos e o rodap√© no documento. Esta op√ß√£o √© usada por padr√£o.
 
 :     **--height**=//N//
-Define a altura da saÌda para //N// linhas. Esta opÁ„o È utilizada somente pelo formato ASCII Art, quando tambÈm utilizada a opÁ„o ``--slides``.
+Define a altura da sa√≠da para //N// linhas. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art, quando tamb√©m utilizada a op√ß√£o ``--slides``.
 
 : **-i**, **--infile**=//ARQUIVO//
 Define //ARQUIVO// como arquivo fonte. Use '-' para ler os dados de STDIN.
 
 :     **--mask-email**
-Esconde os e-mails dos robÙs de SPAM. Os pontos e o @ s„o removidos. O endereÁo ""foo@bar.com"" vira <foo (a) bar com>.
+Esconde os e-mails dos rob√¥s de SPAM. Os pontos e o @ s√£o removidos. O endere√ßo ""foo@bar.com"" vira <foo (a) bar com>.
 
 : **-n**, **--enum-title**
-Enumera todos os tÌtulos automaticamente, nos formatos 1, 1.1, 1.1.1, ...
+Enumera todos os t√≠tulos automaticamente, nos formatos 1, 1.1, 1.1.1, ...
 
 :     **--no-dump-config**
-Cancela a aÁ„o ``--dump-config``.
+Cancela a a√ß√£o ``--dump-config``.
 
 :     **--no-dump-source**
-Cancela a aÁ„o ``--dump-source``.
+Cancela a a√ß√£o ``--dump-source``.
 
 :     **--no-encoding**
-Remove a configuraÁ„o de codificaÁ„o.
+Remove a configura√ß√£o de codifica√ß√£o.
 
 :     **--no-enum-title**
-Desativa a numeraÁ„o autom·tica de tÌtulos.
+Desativa a numera√ß√£o autom√°tica de t√≠tulos.
 
 :     **--no-infile**
-Remove as definiÁıes anteriores do arquivo fonte.
+Remove as defini√ß√µes anteriores do arquivo fonte.
 
 :     **--no-targets**
-Cancela a aÁ„o ``--targets``.
+Cancela a a√ß√£o ``--targets``.
 
 :     **--no-mask-email**
 Desativa o disfarce de emails.
 
 :     **--no-outfile**
-Remove as definiÁıes anteriores sobre o arquivo de destino.
+Remove as defini√ß√µes anteriores sobre o arquivo de destino.
 
 :     **--no-quiet**
-Mostras as mensagens, desativando a opÁ„o ``--quiet``.
+Mostras as mensagens, desativando a op√ß√£o ``--quiet``.
 
 :     **--no-rc**
-N„o lÍ o arquivo configuraÁ„o do usu·rio em ~/.txt2tagsrc.
+N√£o l√™ o arquivo configura√ß√£o do usu√°rio em ~/.txt2tagsrc.
 
 :     **--no-slides**
 Desliga os slides.
 
 :     **--no-style**
-Remove todas as configuraÁıes de estilo.
+Remove todas as configura√ß√µes de estilo.
 
 :     **--no-toc**
-Remove o Sum·rio autom·tico.
+Remove o Sum√°rio autom√°tico.
 
 :     **--no-toc-only**
-Desativa a opÁ„o ``--toc-only``.
+Desativa a op√ß√£o ``--toc-only``.
 
 : **-o**, **--outfile**=//ARQUIVO//
 Define //ARQUIVO// como arquivo de destino. Use '-' para mandar o resultado para STDOUT.
 
 : **-q**, **--quiet**
-Modo silencioso, n„o mostra nada na saÌda, exceto os erros.
+Modo silencioso, n√£o mostra nada na sa√≠da, exceto os erros.
 
 :     **--rc**
-LÍ a configuraÁ„o do usu·rio em ~/.txt2tagsrc. Esta opÁ„o È usada por padr„o.
+L√™ a configura√ß√£o do usu√°rio em ~/.txt2tagsrc. Esta op√ß√£o √© usada por padr√£o.
 
 :     **--slides**
-Formata a saÌda como uma apresentaÁ„o de slides. Esta opÁ„o È utilizada somente pelo formato ASCII Art.
+Formata a sa√≠da como uma apresenta√ß√£o de slides. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
 
 :     **--style**=//ARQUIVO//
-Utiliza //ARQUIVO// como estilo do documento. … usado para incluir arquivos CSS em documentos HTML, e pacotes para o LaTeX. Esta opÁ„o pode ser usada mais de uma vez caso vocÍ precise incluir dois ou mais arquivos.
+Utiliza //ARQUIVO// como estilo do documento. √â usado para incluir arquivos CSS em documentos HTML, e pacotes para o LaTeX. Esta op√ß√£o pode ser usada mais de uma vez caso voc√™ precise incluir dois ou mais arquivos.
 
 : **-t**, **--target**=//FORMATO//
-Define o formato do documento de destino. Alguns formatos populares s„o: //html//, //xhtml//, //tex//, //man//, //txt//. Use a opÁ„o ``--targets`` para ver a lista completa com todos os formatos disponÌveis.
+Define o formato do documento de destino. Alguns formatos populares s√£o: //html//, //xhtml//, //tex//, //man//, //txt//. Use a op√ß√£o ``--targets`` para ver a lista completa com todos os formatos dispon√≠veis.
 
 :     **--targets**
-Mostra a lista completa de todos os formatos disponÌveis e sai.
+Mostra a lista completa de todos os formatos dispon√≠veis e sai.
 
 :     **--toc**
-Inclui um Sum·rio autom·tico (Table of Contents) no documento de destino, entre o cabeÁalho e o corpo. VocÍ tambÈm pode indicar onde o Sum·rio deve ser colocado, usando a macro ``%%TOC``.
+Inclui um Sum√°rio autom√°tico (Table of Contents) no documento de destino, entre o cabe√ßalho e o corpo. Voc√™ tamb√©m pode indicar onde o Sum√°rio deve ser colocado, usando a macro ``%%TOC``.
 
 :     **--toc-level**=//N//
-Define o nÌvel m·ximo (profundidade) do Sum·rio para //N//. Os tÌtulos abaixo do nÌvel //N// n„o ser„o incluÌdos no Sum·rio.
+Define o n√≠vel m√°ximo (profundidade) do Sum√°rio para //N//. Os t√≠tulos abaixo do n√≠vel //N// n√£o ser√£o inclu√≠dos no Sum√°rio.
 
 :     **--toc-only**
-Exibe o Sum·rio do documento e sai.
+Exibe o Sum√°rio do documento e sai.
 
 : **-v**, **--verbose**
-Exibe mensagens informativas durante a convers„o. Utilize-a duas ou mais vezes na linha de comando para aumentar o n˙mero de mensagens a serem mostradas.
+Exibe mensagens informativas durante a convers√£o. Utilize-a duas ou mais vezes na linha de comando para aumentar o n√∫mero de mensagens a serem mostradas.
 
 : **-V**, **--version**
-Exibe a vers„o do programa e sai.
+Exibe a vers√£o do programa e sai.
 
 :     **--width**=//N//
-Define a largura da saÌda para //N// colunas. Esta opÁ„o È utilizada somente pelo formato ASCII Art.
+Define a largura da sa√≠da para //N// colunas. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
 :
 
 = ARQUIVO FONTE =[fonte]
 
-Um arquivo fonte do **txt2tags** geralmente usa a extens„o //.t2t//, como por exemplo: ``trabalho.t2t``. VocÍ pode ter trÍs ·reas distintas em seus fontes:
+Um arquivo fonte do **txt2tags** geralmente usa a extens√£o //.t2t//, como por exemplo: ``trabalho.t2t``. Voc√™ pode ter tr√™s √°reas distintas em seus fontes:
 
-: **CabeÁalho**
-As primeiras trÍs linhas. S„o usadas para identificaÁ„o do documento, como tÌtulo, autor, vers„o e data. Se vocÍ n„o quiser usar cabeÁalhos, deixe a primeira linha em branco.
+: **Cabe√ßalho**
+As primeiras tr√™s linhas. S√£o usadas para identifica√ß√£o do documento, como t√≠tulo, autor, vers√£o e data. Se voc√™ n√£o quiser usar cabe√ßalhos, deixe a primeira linha em branco.
 
-: **ConfiguraÁ„o**
-Inicia logo apÛs o cabeÁalho (4™ ou 2™ linha) e termina quando o Corpo se inicia. Esta ·rea È usada para configuraÁıes no formato ``%!nome:valor``.
+: **Configura√ß√£o**
+Inicia logo ap√≥s o cabe√ßalho (4¬™ ou 2¬™ linha) e termina quando o Corpo se inicia. Esta √°rea √© usada para configura√ß√µes no formato ``%!nome:valor``.
 
 : **Corpo**
-ComeÁa na primeira linha de texto (que n„o seja um coment·rio ou uma configuraÁ„o) logo apÛs o cabeÁalho e vai atÈ o fim do documento. … usada para guardar o conte˙do do documento.
+Come√ßa na primeira linha de texto (que n√£o seja um coment√°rio ou uma configura√ß√£o) logo ap√≥s o cabe√ßalho e vai at√© o fim do documento. √â usada para guardar o conte√∫do do documento.
 :
 
-= CONFIGURA«’ES =[config]
+= CONFIGURA√á√ïES =[config]
 
-VocÍ pode personalizar o txt2tags usando configuraÁıes. Elas s„o parecidas com as opÁıes de linha de comando e podem ser usadas nos seguintes locais: na ·rea ConfiguraÁ„o do seu arquivo fonte, no arquivo ``~/.txt2tagsrc`` ou ainda em um arquivo externo chamado com a opÁ„o ``--config-file``.
+Voc√™ pode personalizar o txt2tags usando configura√ß√µes. Elas s√£o parecidas com as op√ß√µes de linha de comando e podem ser usadas nos seguintes locais: na √°rea Configura√ß√£o do seu arquivo fonte, no arquivo ``~/.txt2tagsrc`` ou ainda em um arquivo externo chamado com a op√ß√£o ``--config-file``.
 
 : **%!target**
-Define o formato de saÌda, igual faz a opÁ„o ``--target``. Exemplo:
+Define o formato de sa√≠da, igual faz a op√ß√£o ``--target``. Exemplo:
 ``` %!target: html
 
 : **%!options(target)**
-Define as opÁıes de cada formato. No valor vocÍ deve colocar as opÁıes de linha de comando. Exemplo:
+Define as op√ß√µes de cada formato. No valor voc√™ deve colocar as op√ß√µes de linha de comando. Exemplo:
 ``` %!options(html): --toc --toc-level 3 --css-sugar
 
 : **%!includeconf**
-LÍ as configuraÁıes a partir de um arquivo externo, igual faz a opÁ„o ``--config-file``. Exemplo:
+L√™ as configura√ß√µes a partir de um arquivo externo, igual faz a op√ß√£o ``--config-file``. Exemplo:
 ``` %!includeconf: minhaconfig.t2t
 
 : **%!style**
-Define um arquivo de estilos para o documento, igual faz a opÁ„o ``--style``. Pode ser usada v·rias vezes para definir mais de um arquivo. Exemplo:
+Define um arquivo de estilos para o documento, igual faz a op√ß√£o ``--style``. Pode ser usada v√°rias vezes para definir mais de um arquivo. Exemplo:
 ``` %!style: cores.css
 
 : **%!encoding**
-Define a codificaÁ„o do texto, igual faz a opÁ„o ``--encoding``. Exemplo:
+Define a codifica√ß√£o do texto, igual faz a op√ß√£o ``--encoding``. Exemplo:
 ``` %!encoding: UTF-8
 
 : **%!preproc**
-Filtro de entrada (estilo troque "isso" por "aquilo") usado para alterar o Corpo do documento ANTES do txt2tags process·-lo. VocÍ pode usar as expressıes regulares do Python. Exemplo:
+Filtro de entrada (estilo troque "isso" por "aquilo") usado para alterar o Corpo do documento ANTES do txt2tags process√°-lo. Voc√™ pode usar as express√µes regulares do Python. Exemplo:
 ``` %!preproc:  "FSS"  "Fulano da Silva Sauro"
 
 : **%!postproc**
-Filtro de saÌda (estilo troque "isso" por "aquilo") usado para alterar o documento de saÌda DEPOIS da convers„o feita pelo txt2tags. VocÍ pode usar as expressıes regulares do Python. Exemplo:
+Filtro de sa√≠da (estilo troque "isso" por "aquilo") usado para alterar o documento de sa√≠da DEPOIS da convers√£o feita pelo txt2tags. Voc√™ pode usar as express√µes regulares do Python. Exemplo:
 ``` %!postproc(html):  "<B>"  "<STRONG>"
 :
 
-Se a mesma configuraÁ„o for usada mais de uma vez, somente a ˙ltima ser· utilizada. As exceÁıes s„o: options, preproc e postproc, que s„o cumulativas. ConfiguraÁıes com nomes inv·lidos ser„o ignoradas. A ordem de processamento È: ``~/.txt2tagsrc``, ·rea ConfiguraÁ„o do arquivo fonte, opÁ„o ``--config-file``.
+Se a mesma configura√ß√£o for usada mais de uma vez, somente a √∫ltima ser√° utilizada. As exce√ß√µes s√£o: options, preproc e postproc, que s√£o cumulativas. Configura√ß√µes com nomes inv√°lidos ser√£o ignoradas. A ordem de processamento √©: ``~/.txt2tagsrc``, √°rea Configura√ß√£o do arquivo fonte, op√ß√£o ``--config-file``.
 
 
 = COMANDOS =[comandos]
 
-Os comandos s„o executados durante a convers„o do documento. Eles devem ser colocados dentro do Corpo do arquivo fonte.
+Os comandos s√£o executados durante a convers√£o do documento. Eles devem ser colocados dentro do Corpo do arquivo fonte.
 
 : **%!csv: arquivo.csv**
 Gera uma tabela a partir de um arquivo externo CSV.
@@ -290,27 +290,27 @@ Inclui um arquivo fonte txt2tags no documento.
 Inclui um arquivo texto no documento.
 
 : **%!include: ""''arquivo.html''""**
-Inclui um arquivo pronto no documento, ele n„o È modificado.
+Inclui um arquivo pronto no documento, ele n√£o √© modificado.
 :
 
 = MACROS =[macros]
 
-As macros s„o ˙teis para inserir conte˙dos din‚micos em seu documento, como a data atual, por exemplo. Exceto a ``%%toc``, todas as macros podem ser personalizadas com curingas tipo ``%Y`` e ``%f``. Veja o Guia do Usu·rio para saber mais detalhes.
+As macros s√£o √∫teis para inserir conte√∫dos din√¢micos em seu documento, como a data atual, por exemplo. Exceto a ``%%toc``, todas as macros podem ser personalizadas com curingas tipo ``%Y`` e ``%f``. Veja o Guia do Usu√°rio para saber mais detalhes.
 
 : **""%%date""**
-Insere a data atual. O formato padr„o È ``%%date(%Y%m%d)``, que fica AAAAMMDD.
+Insere a data atual. O formato padr√£o √© ``%%date(%Y%m%d)``, que fica AAAAMMDD.
 
 : **""%%infile""**
-Insere o nome do arquivo fonte. O formato padr„o È ``%%infile(%f)``. ⁄til para links de rodapÈ, como ``[Veja os fontes %%infile]``.
+Insere o nome do arquivo fonte. O formato padr√£o √© ``%%infile(%f)``. √ötil para links de rodap√©, como ``[Veja os fontes %%infile]``.
 
 : **""%%mtime""**
-Insere a data de modificaÁ„o do arquivo fonte. O formato padr„o È ``%%date(%Y%m%d)``, que fica AAAAMMDD.
+Insere a data de modifica√ß√£o do arquivo fonte. O formato padr√£o √© ``%%date(%Y%m%d)``, que fica AAAAMMDD.
 
 : **""%%outfile""**
-Insere o nome do arquivo de saÌda. O formato padr„o È ``%%outfile(%f)``. ⁄til para mencionar o prÛprio documento, como em "Este È o arquivo %%outfile".
+Insere o nome do arquivo de sa√≠da. O formato padr√£o √© ``%%outfile(%f)``. √ötil para mencionar o pr√≥prio documento, como em "Este √© o arquivo %%outfile".
 
 : **""%%toc""**
-Especifica o lugar onde ser· colocado o Sum·rio (Table Of Contents). VocÍ pode utiliz·-la em qualquer parte do documento, inclusive mais de uma vez. A opÁ„o ``--toc`` tambÈm deve ser usada para esta que esta macro funcione.
+Especifica o lugar onde ser√° colocado o Sum√°rio (Table Of Contents). Voc√™ pode utiliz√°-la em qualquer parte do documento, inclusive mais de uma vez. A op√ß√£o ``--toc`` tamb√©m deve ser usada para esta que esta macro funcione.
 :
 
 = EXEMPLOS =[exemplos]
@@ -325,23 +325,23 @@ Converte para HTML, mandando o resultado para STDOUT.
 
 : ``txt2tags -t html --toc arquivo.t2t``
 
-Converte para HTML, com Sum·rio autom·tico (Table Of Contents).
+Converte para HTML, com Sum√°rio autom√°tico (Table Of Contents).
 
 : ``txt2tags -t html --toc --toc-level 2 -n arquivo.t2t``
 
-Converte para HTML, com Sum·rio de dois nÌveis e tÌtulos numerados.
+Converte para HTML, com Sum√°rio de dois n√≠veis e t√≠tulos numerados.
 
 : ``txt2tags --toc-only arquivo.t2t``
 
-Apenas mostra o Sum·rio, nenhuma convers„o È feita.
+Apenas mostra o Sum√°rio, nenhuma convers√£o √© feita.
 
 : ``txt2tags -t html --css-sugar --style base.css --style ui.css arquivo.t2t``
 
-Converte para HTML, com cÛdigo preparado para usar CSS e tambÈm inclui dois arquivos CSS externos.
+Converte para HTML, com c√≥digo preparado para usar CSS e tamb√©m inclui dois arquivos CSS externos.
 
 : ``txt2tags -t art --slides --width 80 --height 25 -o - arquivo.t2t | more``
 
-Cria uma apresentaÁ„o de slides em ASCII Art, pronta para ser mostrada em um terminal de tamanho 80x25 (colunas e linhas).
+Cria uma apresenta√ß√£o de slides em ASCII Art, pronta para ser mostrada em um terminal de tamanho 80x25 (colunas e linhas).
 
 : ``(echo ; echo "**bold**") | txt2tags -t html -H -``
 
@@ -349,26 +349,26 @@ Mostra como testar o programa rapidamente usando a STDIN como fonte.
 
 : ``txt2tags -t html -o - arquivo.t2t | tidy > arquivo.html``
 
-Manda os resultados para STDOUT e refina o cÛdigo gerado usando um programa externo (tidy) antes de salvar o arquivo HTML final.
+Manda os resultados para STDOUT e refina o c√≥digo gerado usando um programa externo (tidy) antes de salvar o arquivo HTML final.
 :
 
 = ARQUIVOS =[arquivos]
 
 : ~/.txt2tagsrc
-A localizaÁ„o padr„o para o arquivo com as configuraÁıes do usu·rio.
+A localiza√ß√£o padr√£o para o arquivo com as configura√ß√µes do usu√°rio.
 :
 
 = AMBIENTE =[ambiente]
 
 : T2TCONFIG
-Se definida, esta vari·vel guarda o caminho completo para o arquivo de configuraÁ„o do usu·rio.
+Se definida, esta vari√°vel guarda o caminho completo para o arquivo de configura√ß√£o do usu√°rio.
 :
 
 = AUTOR =[autor]
 
-AurÈlio Marinho Jargas <verde@aurelio.net>
+Aur√©lio Marinho Jargas <verde@aurelio.net>
 
-J· trabalharam neste manual JosÈ In·cio Coelho <jic@technologist.com> e Mauricio Teixeira <mteixeira@webset.net>.
+J√° trabalharam neste manual Jos√© In√°cio Coelho <jic@technologist.com> e Mauricio Teixeira <mteixeira@webset.net>.
 
 = BUGS =[bugs]
 
