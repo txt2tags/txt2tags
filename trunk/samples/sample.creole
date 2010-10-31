@@ -1,6 +1,6 @@
 TXT2TAGS SAMPLE
 Aurelio Jargas
-07/26/2008
+10/20/2010
 
 
 = Introduction =
@@ -170,10 +170,10 @@ The image mark is as simple as it can be: [filename].
 
 The handy %%date macro expands to the current date.
 
-So today is 20100806 on the ISO YYYYMMDD format.
+So today is 20101031 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 08-06-2010.
+as %%date(%m-%d-%Y) which gives: 10-31-2010.
 
 That's all for now.
 
