@@ -1,0 +1,98 @@
+Exemples de conversion Txt2tags
+voir les marques converties en HTML
+
+
+%!target: html
+%!options: --css-sugar -o ../markup-fr.html
+%!preproc: t2t\.png	../img/t2tpowered.png
+
+%!postproc: {(.*?)}	<\1>
+
+%!postproc: ^<HEAD>$ '<HEAD>\n<STYLE TYPE="text/css">\n@#@'
+%!postproc: (@#@)$ 'body { margin:1em; }             \n\1'
+%!postproc: (@#@)$ 'div.header {text-align:center; } \n\1'
+%!postproc: (@#@)$ 'th { padding:.5em; }             \n\1'
+%!postproc: (@#@)$ 'td { width:45%; padding:.5em; }  \n\1'
+%!postproc: (@#@)$ 'td {background-color:silver; }   \n\1'
+%!postproc: (@#@)$ 'td.t2t {background-color:#ef4; } \n\1'
+%!postproc:  @#@$  </STYLE>
+
+
+{table align="center" border=1}
+{tr}{th colspan="2"}DE BASE{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``title.t2t``
+{/td}{td}
+%!include: title.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``numtitle.t2t``
+{/td}{td}
+%!include: numtitle.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``para.t2t``
+{/td}{td}
+%!include: para.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``comment.t2t``
+{/td}{td}
+%!include: comment.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``beauti.t2t``
+{/td}{td}
+%!include: beauti.t2t
+{/td}{/tr}{tr}{th colspan="2"}LISTES{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``list.t2t``
+{/td}{td}
+%!include: list.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``numlist.t2t``
+{/td}{td}
+%!include: numlist.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``deflist.t2t``
+{/td}{td}
+%!include: deflist.t2t
+{/td}{/tr}{tr}{th colspan="2"}ZONES{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``quote.t2t``
+{/td}{td}
+%!include: quote.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``verb.t2t``
+{/td}{td}
+%!include: verb.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``verbline.t2t``
+{/td}{td}
+%!include: verbline.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``raw.t2t``
+{/td}{td}
+%!include: raw.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``rawline.t2t``
+{/td}{td}
+%!include: rawline.t2t
+{/td}{/tr}{tr}{th colspan="2"}AUTRES{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``table.t2t``
+{/td}{td}
+%!include: table.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``image.t2t``
+{/td}{td}
+%!include: image.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``link.t2t``
+{/td}{td}
+%!include: link.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``bar.t2t``
+{/td}{td}
+%!include: bar.t2t
+{/td}{/tr}
+{/table}
+
+```
+
+```
+Traduit par Claude Hiebel.
+
+[Aller à la page de txt2tags (en anglais) http://txt2tags.org]

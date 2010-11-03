@@ -1,0 +1,100 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Syntax: E-mail
+user@domain.com
+user@domain.com.
+user@domain.com. any text.
+any text: user@domain.com. any text.
+[label user@domain.com]
+%%% Syntax: E-mail with form data
+user@domain.com?subject=bla
+user@domain.com?subject=bla.
+user@domain.com?subject=bla,
+user@domain.com?subject=bla&cc=otheruser@domain.com
+user@domain.com?subject=bla&cc=otheruser@domain.com.
+user@domain.com?subject=bla&cc=otheruser@domain.com,
+[label user@domain.com?subject=bla&cc=otheruser@domain.com].
+[label user@domain.com?subject=bla&cc=otheruser@domain.com.].
+%%% Syntax: URL
+http://www.domain.com
+http://www.domain.com/dir/
+http://www.domain.com/dir///
+http://www.domain.com.
+http://www.domain.com,
+http://www.domain.com. any text.
+http://www.domain.com, any text.
+http://www.domain.com/dir/. any text.
+any text: http://www.domain.com. any text.
+any text: http://www.domain.com/dir/. any text.
+any text: http://www.domain.com/dir/index.html. any text.
+any text: http://www.domain.com/dir/index.html, any text.
+%%% Syntax: URL with anchor
+http://www.domain.com/dir/#anchor
+http://www.domain.com/dir/index.html#anchor
+http://www.domain.com/dir/index.html#anchor.
+http://www.domain.com/dir/#anchor. any text.
+http://www.domain.com/dir/index.html#anchor. any text.
+any text: http://www.domain.com/dir/#anchor. any text.
+any text: http://www.domain.com/dir/index.html#anchor. any text.
+%%% Syntax: URL with form data
+http://domain.com?a=a@a.a&b=a+b+c.
+http://domain.com?a=a@a.a&b=a+b+c,
+http://domain.com/bla.cgi?a=a@a.a&b=a+b+c.
+http://domain.com/bla.cgi?a=a@a.a&b=a+b+c@.
+%%% Syntax: URL with form data and anchor
+http://domain.com?a=a@a.a&b=a+b+c.#anchor
+http://domain.com/bla.cgi?a=a@a.a&b=a+b+c.#anchor
+http://domain.com/bla.cgi?a=a@a.a&b=a+b+c@.#anchor
+%%% Syntax: URL with login data
+http://user:password@domain.com/bla.html.
+http://user:password@domain.com/dir/.
+http://user:password@domain.com.
+http://user:@domain.com.
+http://user@domain.com.
+%%% Syntax: URL with login, form and anchor
+http://user:password@domain.com/bla.cgi?a=a@a.a&b=a+b+c.#anchor
+http://user:password@domain.com/bla.cgi?a=a@a.a&b=a+b+c@#anchor
+%%% Syntax: URL with label
+[label www.domain.com]
+%%% Syntax: URL with label (trailing spaces are discarded, leading are maintained)
+%TODO normalize this behavior
+[  label www.domain.com]
+[label   www.domain.com]
+%%% Syntax: URL with label, stressing
+[anchor        http://www.domain.com/dir/index.html#anchor.]
+[login         http://user:password@domain.com/bla.html]
+[form          http://www.domain.com/bla.cgi?a=a@a.a&b=a+b+c.]
+[form & anchor http://www.domain.com/bla.cgi?a=a@a.a&b=a+b+c.#anchor]
+[login & form  http://user:password@domain.com/bla.cgi?a=a@a.a&b=a+b+c.]
+%%% Syntax: Link with label for local files
+[local link up          ..]
+[local link file        bla.html]
+[local link anchor      #anchor]
+[local link file/anchor bla.html#anchor]
+[local link file/anchor bla.html#anchor.]
+[local link img         abc.gif]
+%%% Syntax: Another link as a label
+[www.fake.com www.domain.com]
+%%% Syntax: URL with funny chars
+http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm
+http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&b=+.@*_-
+http://domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&b=+.@*_-#anchor_-1%.
+http://foo._user-9:pass!#$%&*()+word@domain.com:8080/~user/_st-r@a=n$g,e/index%20new.htm?a=/%22&b=+.@*_-#anchor_-1%.
+%%% Test: Various per line
+http://L1.com ! L2@www.com ! [L3 www.com] ! [L4 w@ww.com] ! www.L5.com
+%%% Feature: Guessed link, adding protocol automatically
+www.domain.com
+www2.domain.com
+ftp.domain.com
+WWW.DOMAIN.COM
+FTP.DOMAIN.COM
+[label www.domain.com]
+[label ftp.domain.com]
+[label WWW.DOMAIN.COM]
+[label FTP.DOMAIN.COM]
+%%% Invalid: Trailing space on link
+[label www.domain.com ]
+%%% Invalid: Label with ] char (use postproc)
+[label] www.domain.com]

@@ -1,0 +1,465 @@
+.TH "TXT2TAGS" 1 "Aug, 2010" ""
+
+
+.SH NOM
+
+.P
+txt2tags \- Eina de formatació i conversió de texte.
+
+.SH SINOPSI
+
+.P
+\fBtxt2tags\fR [\fIopcions\fR] [\fIARXIU\fR...]
+
+.SH DESCRIPCIÓ
+
+.P
+\fBtxt2tags\fR llegeig un arxiu de texte que ha estat mínimament marcat i el converteix las siguents formats:
+\fIASCII Art\fR,
+\fIAsciiDoc\fR,
+\fICreole\fR,
+\fIDocBook\fR,
+\fIDokuWiki\fR,
+\fIGoogle Code Wiki\fR,
+\fIHTML\fR,
+\fILaTeX\fR,
+\fILout\fR,
+\fIMagicPoint\fR,
+\fIMan page\fR,
+\fIMoinMoin\fR,
+\fIPageMaker\fR,
+\fIPlain Text (Texte Plà)\fR,
+\fIPmWiki\fR,
+\fISGML\fR,
+\fIWikipedia\fR 
+\fIXHTML\fR.
+
+.P
+Aquesta pàgina de manual (Man page) fou creada amb \fBtxt2tags\fR a partir d'un arxiu de texte plà. El mateix arxiu de texte plà fou tambè convertit a HTML per a la versió online d'aquest manual.
+
+.P
+UNA única font, MÚLTIPLES formats de sortida \- http://txt2tags.org
+
+.SH MARCAT
+
+.nf
+Encapçalaments            Les primeres tres línies de l'arxiu font.
+Títol                     = texte =
+Títol numerat             + texte +
+Comentari                 % comentaris
+Línia de separació        -----------------------...
+Línia gruixuda            =======================...
+Imàgen                    [nom.jpg]
+Enlaç                     [etiqueta url]
+
+Negreta                   **texte**
+Cursiva                   //texte//
+ratllat                   __texte__
+Tatxat                    --texte--
+Monoespai                 ``texte``
+Raw                       ""texte""
+Etiquetat                 ''texte''
+
+Paràgraf                  texte
+Cita                      <TAB>texte
+Llista                    - texte
+Llista numerada           + texte
+Llista de definició       : texte
+Taula                     | cel.la1 | cel.la2 | cel.la3...
+
+Línia verbatim            ``` texte
+Línia Raw                 """ texte
+Línia Etiquetada          ''' texte
+
+Bloc Verbatim             ```
+                          línies
+                          ```
+Bloc Raw                  """
+                          línies
+                          """
+Bloc etiquetat            '''
+                          línies
+                          '''
+.fi
+
+
+.SH OPCIONS
+
+.TP
+\fB\-C\fR, \fB\-\-config\-file\fR=\fIARXIU\fR
+Llegeig la configuració (ajusts) especificats a l'arxiu extern   \fIARXIU\fR. La configuració ha d'estar en format   \fI%!keyword:value\fR. Per a més detalls, consultar la secció  AJUSTS.
+
+.TP
+    \fB\-\-css\-sugar\fR
+Millora el codi  HTML/XHTML generat per a fi de poder utilitzar CSS. S'eliminen els atributs de les etiquetes, s'ignòren les etiquetes de presentació, les capçaleres es generen amb etiquetes H1, H2 i H3 i es creen noves DIVs :  \fI#header\fR,  \fI#body\fR,  \fI.toc\fR.
+
+.TP
+    \fB\-\-css\-inside\fR
+Insereix el contingut d'un arxiu CSS dins l'encapçalament  HTML/XHTML. Utilitzar  \-\-style  per especificar l'arxiu CSS que s'ha de llegir.
+
+.TP
+    \fB\-\-dump\-config\fR
+Mostra tota la configuració (ajusts) i surt.
+
+.TP
+    \fB\-\-dump\-source\fR
+Mostra el document font, amb totes les seves les inclusions  (%!include) expandides.
+
+.TP
+    \fB\-\-encoding\fR=\fICODI\fR
+Estableix la configuració de caràcters que s'utilitzarà a l'arxiu de sortida, utilitzant l'establerta a  \fICODI\fR. Exemples de  \fICODI\fR: UTF\-8 y iso\-8859\-1.
+
+.TP
+    \fB\-\-gui\fR
+Activa la Interfície Gráfica Tk.
+
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Mostra la informació d'ajut i surt.
+
+.TP
+\fB\-H\fR, \fB\-\-no\-headers\fR
+Elimina els encapçalaments i els peus de pàgina de l'arxiu de sortida. Sols es mostraràn els continguts (cos del document).
+
+.TP
+    \fB\-\-headers\fR
+Mostra els encapçalaments i els peus de pàgina de l'arxiu de sortida. Per defecte: ON.
+
+.TP
+    \fB\-\-height\fR=\fINUM\fR
+Fixa el nombre de línies de l'arxiu de sortida a l'establert a  \fINUM\fR. Aquesta opció s'utilitza sols amb formats de sortida  ASCII Art, quan també s'estigui utilitzant l'opció \-\-slides.
+
+.TP
+\fB\-i\fR, \fB\-\-infile\fR=\fIARXIU\fR
+Pren  \fIARXIU\fR  com l'arxiu font. Utilitzar '\-' per a llegir la font des de STDIN.
+
+.TP
+    \fB\-\-mask\-email\fR
+Oculta els emails als robots de spam. Elimina @ i punts. L'adreça foo@bar.com esdevé <foo (a) bar com>.
+
+.TP
+\fB\-n\fR, \fB\-\-enum\-title\fR
+Activa la numeració automàtica dels títols. Està prefixada a: 1, 1.1, 1.1.1, ...
+
+.TP
+    \fB\-\-no\-dump\-config\fR
+Anul.la  l'acció  \-\-dump\-config.
+
+.TP
+    \fB\-\-no\-dump\-source\fR
+Anul.la  l'acció  \-\-dump\-source.
+
+.TP
+    \fB\-\-no\-encoding\fR
+Anul.la la configuració de caràcters.
+
+.TP
+    \fB\-\-no\-enum\-title\fR
+Desactiva la numeració automàtica dels títols.
+
+.TP
+    \fB\-\-no\-infile\fR
+Anul.la tota anterior declaració   \-\-infile.
+
+.TP
+    \fB\-\-no\-targets\fR
+Anul.la l'acció   \-\-targets.
+
+.TP
+    \fB\-\-no\-mask\-email\fR
+Desactiva l'ocultació dels emails.
+
+.TP
+    \fB\-\-no\-outfile\fR
+Anul.la tota anterior declaració  \-\-outfile.
+
+.TP
+    \fB\-\-no\-quiet\fR
+Mostra els missatges del sistema, desactiva l'opció  \-\-quiet.
+
+.TP
+    \fB\-\-no\-rc\fR
+No llegir a l'arxiu de configuració (ajusts) de l'usuari   ~/.txt2tagsrc.
+
+.TP
+    \fB\-\-no\-slides\fR
+Desactiva  \-\-slides.
+
+.TP
+    \fB\-\-no\-style\fR
+Desactiva tots els ajusts d'estil.
+
+.TP
+    \fB\-\-no\-toc\fR
+Elimina la Taula de Continguts (TOC) a l'arxiu de sortida.
+
+.TP
+    \fB\-\-no\-toc\-only\fR
+Desactiva l'acció  \-\-toc\-only.
+
+.TP
+\fB\-o\fR, \fB\-\-outfile\fR=\fIARXIU\fR
+Pren  \fIARXIU\fR  com a nom per a l'arxiu de sortida. Utilitzar '\-' per a dirigir els resultats a STDOUT.
+
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Mode silenciós. Suprimeix tots els missatges del sistema, excepte els dels errors.
+
+.TP
+    \fB\-\-rc\fR
+Llegeig a l'arxiu de configuració de l'usuari  ~/.txt2tagsrc. Per defecte: ON.
+
+.TP
+    \fB\-\-slides\fR
+Formata l'arxiu de sortida com una presentació de diapositives. Aquesta opció s'utilitza sols amb formats de sortida ASCII Art.
+
+.TP
+    \fB\-\-style\fR=\fIARXIU\fR
+Utilitza  \fIARXIU\fR  como l'arxiu que conté l'estil del document. Utilitzat per a definir arxius CSS en documents  HTML/XHTML i ´´mòduls´´ LaTeX. Aquesta opció es pot utilitzar repetides vegades amb la finalitat d'incloure múltiples arxius d'estil.
+
+.TP
+\fB\-t\fR, \fB\-\-target\fR=\fITIPUS\fR
+Fixa el format del document de sortida a l'establert a  \fITIPUS\fR. Els formats de document mes corrents son: \fIhtml\fR, \fIxhtml\fR, \fItex\fR, \fIman\fR, \fItxt\fR. Utilitzar l'opció  \-\-targets per a consultar els formats disponibles.
+
+.TP
+    \fB\-\-targets\fR
+Mostra els formats de document disponibles per als arxius de sortida i surt.
+
+.TP
+    \fB\-\-toc\fR
+Inclou, automaticament, una Taula de Continguts (TOC) a l'arxiu de sortida, entre la capçalera (HEADER) i el cos del document (BODY). Es possible especificar la posició  de la TOC  utilitzant la macro %%TOC.
+
+.TP
+    \fB\-\-toc\-level\fR=\fINUM\fR
+Fixa el nivell màxim de la Taula de Continguts (TOC) al número especificat a  \fINUM\fR. Tots els títols inferiors a  \fINUM\fR no serán inclosos a la Taula de Continguts.
+
+.TP
+    \fB\-\-toc\-only\fR
+Mostra la Taula de Continguts (TOC) i surt.
+
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Mostra els missatges del sistema durant el procés de conversió. Aquesta opció es pot utilitzar repetides vegades per a incrementar el nombre de missatges a mostrar.
+
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Mostra l'actual versió del programa i surt.
+
+.TP
+    \fB\-\-width\fR=\fINUM\fR 
+Fixa al número especificat a  \fINUM\fR  l'amplada de les columnes de l'arxiu de sortida. Aquesta opció s'utilitza sols amb formats de sortida del tipus ASCII Art.
+
+.SH ARXIU FONT
+
+.P
+Els arxius font acostumen a especificar\-se mitjançant l'extensió  \fI.t2t\fR  (per exemple, arxiu.t2t). Dins d'un arxiu font hi podem considerar tres àrees :
+
+.TP
+\fBEncapçalament\fR (opcional)
+Les tres primeres línies de l'arxiu. Si no es necessita encapçalament, deixar en blanc la primera línia. S'acostuma a utilitzar aquesta àrea per a posar\-hi el títol del document i la informació sobre el autor, la versió, la data etc.
+
+.TP
+\fBAjusts\fR (opcional)
+Comença tot just després de l'Encapçalament (4ª línia, o 2ª línia en el càs d'ometre l'encapçalament) i finalitza al començament de l'àrea del Cos del Document.
+Utilitzats per a implementar ajusts (configuracions) en format  %!keyword:value.
+
+.TP
+\fBCos del Document\fR
+Comença amb la primera línia de text vàlid  (que no sigui comentari o ajust) després de l'Encapçalament i s'estén fins al final del document. A aquesta àrea es a on hi trobarém el contingut del document.
+
+.SH AJUSTS
+
+.P
+Els ajusts ens permeten personalitzar  \fBtxt2tags\fR; son similars a les opcions. Poden emplaçar\-se a: l'área d'Ajusts del document font, a l'arxiu  ~/.txt2tagsrc o a un arxiu extern que s'invocarà mitjançant l'opció  \-\-config\-file.
+
+.TP
+\fB%!target\fR
+Defineix el format de l'arxiu de sortida, tal com ho faria l'opció  \-\-target. Exemple:
+.nf
+%!target: html
+.fi
+
+
+
+.TP
+\fB%!options(tipo)\fR
+Defineix les opcions per defecte per a cada tipus d'arxiu de sortida. S'han d'utilitzar les opcions amb versió línia d'ordres (la que comença amb  '\-\-'). Exemple:
+.nf
+%!options(html): --toc --toc-level 3 --css-sugar
+.fi
+
+
+
+.TP
+\fB%!includeconf\fR
+Inclou, a l'arxiu corrent, els ajusts definits a un arxiu extern, tal com ho faria l'opció  \-\-config\-file. Exemple:
+.nf
+%!includeconf: miconfig.t2t
+.fi
+
+
+
+.TP
+\fB%!style\fR 
+Utilitza un arxiu d'estil extern, tal com ho faria l'opció  \-\-style. Es pot utilitzar repetides vegades. Exemple:
+.nf
+%!style: colores.css
+.fi
+
+
+
+.TP
+\fB%!encoding\fR
+Defineix la codificació de caràcters que s'utilitzarà al document convertit, tal com ho faria l'opció  \-\-encoding. Exemple :
+.nf
+%!encoding: UTF-8
+.fi
+
+
+
+.TP
+\fB%!preproc\fR
+Filtre input de cercar/reemplaçar utilitzat per a realitzar canvis en el cos del document font ABANS que txt2tags realitzi qualsevol acció. La cerca utilitza expresions regulars de Python. Exemple:
+.nf
+%!preproc:  "JJS"  "John J. Smith"
+.fi
+
+
+
+.TP
+\fB%!postproc\fR
+Filtre output de cercar/reemplaçar utilitzat per a realitzar canvis en el document generat DESPRÉS del complet processament per txt2tags de l'arxiu font. La cerca utilitza exresions regulars de Python. Exemple:
+.nf
+%!postproc(html):  "<B>"  "<STRONG>"
+.fi
+
+
+
+.P
+Si la mateixa paraula clau apareix més d'una vegada, l'ùltima trobada será que s'utilitzarà (excepcions: opcions, preproc i postproc, que son acumulatives). Les paraules claus invàlides seràn ignorades. L'odre de processament es:  ~/.txt2tagsrc, àrea de Ajusts del document font, opció  \-\-config\-file.
+
+.SH ORDRES
+
+.P
+Les Ordres executen tasques durant el procés de conversió. S'han d'emplaçar en el cos del document font.
+
+.TP
+\fB%!csv: arxiu.csv\fR
+Incorpora un arxiu CSV com una tabla.
+
+.TP
+\fB%!include: arxiu.t2t\fR
+Incorpora al document un arxiu txt2tags.
+
+.TP
+\fB%!include: ``arxiu.txt``\fR
+Incorpora al document un arxiu de text (verbatim).
+
+.TP
+\fB%!include: \&''arxiu.html''\fR
+Incorpora al document un arxiu marcat.
+
+.SH MACROS
+
+.P
+Mitjançant les Macros podrem inserir, d'una forma fàcil, continguts dinàmics en el document convertit. S'han de definir en el cos del document font. Amb l'excepció de  %%toc , totes les macros poden ser personalitzades amb directives especials, como  %Y i  %f. Per més detalls, consulteu la \fBGuia del Usuario de txt2tags\fR.
+
+.TP
+\fB%%date\fR
+Insereix la data actual. El seu format per defecte es:  %%date(%Y%m%d),  que ens mostrará la data com: AAAAMMDD.
+
+.TP
+\fB%%infile\fR
+Insereix el path de l'arxiu font. El seu format per defecte es:  %%infile(%f).  Útil per a enllaços del tipus: [Veure font %%infile].
+
+.TP
+\fB%%mtime\fR
+Insereix la data de l'última modificació de l'arxiu font. El seu format per defecte es:  %%date(%Y%m%d), que ens mostrarà la data com: AAAAMMDD.
+
+.TP
+\fB%%outfile\fR
+Insereix el path de l'arxiu final. El seu format per defecte es:  %%outfile(%f). Útil en mencions del tipus: "Aquest es l'arxiu manpage\-ca.man".
+
+.TP
+\fB%%toc\fR
+Amb aquesta macro l'usuari pot fixar l'emplaçament de la Taula de Continguts (TOC). Es pot utilitzar repetides vegades. S'ha d'utilitzar conjuntament amb l'opció  \-\-toc.
+
+.SH EXEMPLES
+
+.TP
+txt2tags \-t html arxiu.t2t
+
+Converteix a HTML, guardant el resultat com arxiu.html.
+
+.TP
+txt2tags \-t html \-o \- arxiu.t2t
+
+Converteix a HTML, mostrant el resultat a STDOUT.
+
+.TP
+txt2tags \-t html \-\-toc arxiu.t2t
+
+Converteix a HTML, generant una Taula de Continguts (TOC) de forma automàtica.
+
+.TP
+txt2tags \-t html \-\-toc \-\-toc\-level 2 \-n archivo.t2t
+
+Converteix a HTML, amb una Taula de Continguts (TOC) a dos nivells i títols numerats.
+
+.TP
+txt2tags \-\-toc\-only arxiu.t2t
+
+Ens mostra sols la Taula de Continguts (TOC), sense realitzar cap mena de conversió en el document font.
+
+.TP
+txt2tags \-t html \-\-css\-sugar \-\-style base.css \-\-style ui.css arxiu.t2t
+
+Converteix a HTML, preparant el codi resultat per a poder utilitzar CSS, incloent\-hi també una crida a dos arxius CSS externs (base.css y ui.css).
+
+.TP
+txt2tags \-t art \-\-slides \-\-width 80 \-\-height 25 \-o \- arxiu.t2t | more
+
+Crea una presentació de diapositives tipus ASCII Art, apta para a ser visionada amb un terminal pantalla/finestra 80x25.
+
+.TP
+(echo ; echo "**bold**") | txt2tags \-t html \-H \-
+
+Pràctica forma de realitzar comprovacions ràpides utilitzant STDIN.
+
+.TP
+txt2tags \-t html \-o \- arxiu.t2t | tidy > arxiu.html
+
+Envia el resultat a STDOUT, desde on se'l redirigeix a un programa extern (tidy) abans de ser guardat.
+
+.SH ARXIUS
+
+.TP
+~/.txt2tagsrc
+Arxiu de configuració de l'usuari, per defecte.
+
+.SH ENTORN
+
+.TP
+T2TCONFIG
+Si no es nul, defineix el pathname de l'arxiu de configuració de l'usuari per defecte.
+
+.SH AUTOR
+
+.P
+Aurelio Jargas <verde@aurelio.net>
+
+.P
+Traducció al català realitzada per Antoni Serra Devecchi <antoni.serra@gmail.com>
+
+.SH BUGS
+
+.P
+http://bugs.txt2tags.org
+
+.SH COPYRIGHT
+
+.P
+Copyright (C) 2001\-2010 Aurelio Jargas, GNU GPL v2
+
+.\" man code generated by txt2tags 2.6 (http://txt2tags.org)
+.\" cmdline: txt2tags -t man doc/Catalan/manpage-ca.t2t

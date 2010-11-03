@@ -1,0 +1,134 @@
+Txt2tags Markada Demonstraĵo
+Vidu markojn tradukitajn al HTML
+
+%!target: html
+%!postproc: Ĉ &#264;
+%!postproc: ĉ &#265;
+%!postproc: Ĝ &#284;
+%!postproc: ĝ &#285;
+%!postproc: Ĥ &#292;
+%!postproc: ĥ &#293;
+%!postproc: Ĵ &#308;
+%!postproc: ĵ &#309;
+%!postproc: Ŝ &#348;
+%!postproc: ŝ &#349;
+%!postproc: Ŭ &#364;
+%!postproc: ŭ &#365;
+
+%!preproc: t2t\.png	../img/t2tpowered.png
+
+% TRANSLATOR: change markup.html to markup-XX.html (see README file)
+%!options: --css-sugar -o ../markup-eo.html
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%!encoding: UTF-8
+
+%!postproc: {(.*?)}	<\1>
+
+% TRANSLATOR: CSS appearance config, please don't change
+%!postproc: ^<HEAD>$ '<HEAD>\n<STYLE TYPE="text/css">\n@#@'
+%!postproc: (@#@)$ 'body { margin:1em; }              \n\1'
+%!postproc: (@#@)$ 'div.header { text-align:center; } \n\1'
+%!postproc: (@#@)$ 'th { padding:.5em; }              \n\1'
+%!postproc: (@#@)$ 'td { width:45%; padding:.5em; }   \n\1'
+%!postproc: (@#@)$ 'td { background-color:silver; }   \n\1'
+%!postproc: (@#@)$ 'td.t2t { background-color:#ef4; } \n\1'
+%!postproc:  @#@$  </STYLE>
+
+% TRANSLATOR:
+% This {foo} marks will be converted to HTML tags.
+% Please don't change inside them.
+{table align="center" border=1}
+{tr}{th colspan="2"}
+
+BASAJ
+{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``title.t2t``
+{/td}{td}
+%!include: title.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``numtitle.t2t``
+{/td}{td}
+%!include: numtitle.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``para.t2t``
+{/td}{td}
+%!include: para.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``comment.t2t``
+{/td}{td}
+%!include: comment.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``beauti.t2t``
+{/td}{td}
+%!include: beauti.t2t
+{/td}{/tr}{tr}{th colspan="2"}
+
+LISTOJ
+{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``list.t2t``
+{/td}{td}
+%!include: list.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``numlist.t2t``
+{/td}{td}
+%!include: numlist.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``deflist.t2t``
+{/td}{td}
+%!include: deflist.t2t
+{/td}{/tr}{tr}{th colspan="2"}
+
+AREOJ
+{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``quote.t2t``
+{/td}{td}
+%!include: quote.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``verb.t2t``
+{/td}{td}
+%!include: verb.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``verbline.t2t``
+{/td}{td}
+%!include: verbline.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``raw.t2t``
+{/td}{td}
+%!include: raw.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``rawline.t2t``
+{/td}{td}
+%!include: rawline.t2t
+{/td}{/tr}{tr}{th colspan="2"}
+
+ALIAJ
+{/th}{/tr}{tr}{td class="t2t"}
+%!include: ``table.t2t``
+{/td}{td}
+%!include: table.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``image.t2t``
+{/td}{td}
+%!include: image.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``link.t2t``
+{/td}{td}
+%!include: link.t2t
+{/td}{/tr}{tr}{td class="t2t"}
+%!include: ``bar.t2t``
+{/td}{td}
+%!include: bar.t2t
+{/td}{/tr}
+{/table}
+
+```
+
+```
+
+%%% TRANSLATOR:
+%%% Uncomment and translate the next line (put your full name)
+Tradukita al la Esperanto de Rodrigo Cacilhas.
+
+% TRANSLATOR: don't forget the link text!
+[Aliru al la txt2tags hejmpaĝo http://txt2tags.org]

@@ -1,0 +1,383 @@
+TXT2TAGS
+
+Aug, 2010
+
+%!target: man
+%!postproc(man): ' \(#\w+\)' ''
+
+%!options(html): --mask-email --toc
+%!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
+
+%% LOG
+%%    sep 2003 jic    : creation
+%% 25 sep 2003 anamim : text revision. misspellings, rewording phrases, etc
+%% 01 jun 2004 aurelio: updated to v2.0
+%% 20 jul 2004 jic    : included: settings area, few marks, areas; reorganizing
+%% 22 jul 2004 anamim : revision
+%% 30 ago 2004 aurelio: little typos
+%% 13 nov 2004 jic    : updated to v2.1
+%% 28 dec 2004 aurelio: updated to v2.2
+%% 21 may 2005 aurelio: updated to v2.3
+%% 12 aug 2010 aurelio: updated to v2.6, rewrite (r250)
+
+% TRANSLATOR: uncomment the next line and fill the right encoding
+%!encoding: utf-8
+
+
+= NOM =[name]
+
+txt2tags - Eina de formatació i conversió de texte.
+
+= SINOPSI =[synopsis]
+
+**txt2tags** [//opcions//] [//ARXIU//...]
+
+= DESCRIPCIÓ =[description]
+
+**txt2tags** llegeig un arxiu de texte que ha estat mínimament marcat i el converteix las siguents formats:
+//ASCII Art//,
+//AsciiDoc//,
+//Creole//,
+//DocBook//,
+//DokuWiki//,
+//Google Code Wiki//,
+//HTML//,
+//LaTeX//,
+//Lout//,
+//MagicPoint//,
+//Man page//,
+//MoinMoin//,
+//PageMaker//,
+//Plain Text (Texte Plà)//,
+//PmWiki//,
+//SGML//,
+//Wikipedia// 
+//XHTML//.
+% TRANSLATOR: please keep the alphabetical order of this list.
+
+
+Aquesta pàgina de manual (Man page) fou creada amb **txt2tags** a partir d'un arxiu de texte plà. El mateix arxiu de texte plà fou tambè convertit a HTML per a la versió online d'aquest manual.
+
+UNA única font, MÚLTIPLES formats de sortida - http://txt2tags.org
+
+
+= MARCAT =[markup]
+
+```
+Encapçalaments            Les primeres tres línies de l'arxiu font.
+Títol                     = texte =
+Títol numerat             + texte +
+Comentari                 % comentaris
+Línia de separació        -----------------------...
+Línia gruixuda            =======================...
+Imàgen                    [nom.jpg]
+Enlaç                     [etiqueta url]
+
+Negreta                   **texte**
+Cursiva                   //texte//
+ratllat                   __texte__
+Tatxat                    --texte--
+Monoespai                 ``texte``
+Raw                       ""texte""
+Etiquetat                 ''texte''
+
+Paràgraf                  texte
+Cita                      <TAB>texte
+Llista                    - texte
+Llista numerada           + texte
+Llista de definició       : texte
+Taula                     | cel.la1 | cel.la2 | cel.la3...
+
+Línia verbatim            ``` texte
+Línia Raw                 """ texte
+Línia Etiquetada          ''' texte
+
+Bloc Verbatim             ```
+                          línies
+                          ```
+Bloc Raw                  """
+                          línies
+                          """
+Bloc etiquetat            '''
+                          línies
+                          '''
+```
+
+= OPCIONS =[options]
+
+: **-C**, **--config-file**=//ARXIU//
+Llegeig la configuració (ajusts) especificats a l'arxiu extern   //ARXIU//. La configuració ha d'estar en format   //%!keyword:value//. Per a més detalls, consultar la secció  [AJUSTS #settings].
+
+:     **--css-sugar**
+Millora el codi  HTML/XHTML generat per a fi de poder utilitzar CSS. S'eliminen els atributs de les etiquetes, s'ignòren les etiquetes de presentació, les capçaleres es generen amb etiquetes H1, H2 i H3 i es creen noves DIVs :  //#header//,  //#body//,  //.toc//.
+
+:     **--css-inside**
+Insereix el contingut d'un arxiu CSS dins l'encapçalament  HTML/XHTML. Utilitzar  ``--style``  per especificar l'arxiu CSS que s'ha de llegir.
+
+:     **--dump-config**
+Mostra tota la configuració (ajusts) i surt.
+
+:     **--dump-source**
+Mostra el document font, amb totes les seves les inclusions  (``%!include``) expandides.
+
+:     **--encoding**=//CODI//
+Estableix la configuració de caràcters que s'utilitzarà a l'arxiu de sortida, utilitzant l'establerta a  //CODI//. Exemples de  //CODI//: UTF-8 y iso-8859-1.
+
+:     **--gui**
+Activa la Interfície Gráfica Tk.
+
+: **-h**, **--help**
+Mostra la informació d'ajut i surt.
+
+: **-H**, **--no-headers**
+Elimina els encapçalaments i els peus de pàgina de l'arxiu de sortida. Sols es mostraràn els continguts (cos del document).
+
+:     **--headers**
+Mostra els encapçalaments i els peus de pàgina de l'arxiu de sortida. Per defecte: ON.
+
+:     **--height**=//NUM//
+Fixa el nombre de línies de l'arxiu de sortida a l'establert a  //NUM//. Aquesta opció s'utilitza sols amb formats de sortida  ASCII Art, quan també s'estigui utilitzant l'opció ``--slides``.
+
+: **-i**, **--infile**=//ARXIU//
+Pren  //ARXIU//  com l'arxiu font. Utilitzar '-' per a llegir la font des de STDIN.
+
+:     **--mask-email**
+Oculta els emails als robots de spam. Elimina @ i punts. L'adreça ""foo@bar.com"" esdevé <foo (a) bar com>.
+
+: **-n**, **--enum-title**
+Activa la numeració automàtica dels títols. Està prefixada a: 1, 1.1, 1.1.1, ...
+
+:     **--no-dump-config**
+Anul.la  l'acció  ``--dump-config``.
+
+:     **--no-dump-source**
+Anul.la  l'acció  ``--dump-source``.
+
+:     **--no-encoding**
+Anul.la la configuració de caràcters.
+
+:     **--no-enum-title**
+Desactiva la numeració automàtica dels títols.
+
+:     **--no-infile**
+Anul.la tota anterior declaració   ``--infile``.
+
+:     **--no-targets**
+Anul.la l'acció   ``--targets``.
+
+:     **--no-mask-email**
+Desactiva l'ocultació dels emails.
+
+:     **--no-outfile**
+Anul.la tota anterior declaració  ``--outfile``.
+
+:     **--no-quiet**
+Mostra els missatges del sistema, desactiva l'opció  ``--quiet``.
+
+:     **--no-rc**
+No llegir a l'arxiu de configuració (ajusts) de l'usuari   ~/.txt2tagsrc.
+
+:     **--no-slides**
+Desactiva  ``--slides``.
+
+:     **--no-style**
+Desactiva tots els ajusts d'estil.
+
+:     **--no-toc**
+Elimina la Taula de Continguts (TOC) a l'arxiu de sortida.
+
+:     **--no-toc-only**
+Desactiva l'acció  ``--toc-only``.
+
+: **-o**, **--outfile**=//ARXIU//
+Pren  //ARXIU//  com a nom per a l'arxiu de sortida. Utilitzar '-' per a dirigir els resultats a STDOUT.
+
+: **-q**, **--quiet**
+Mode silenciós. Suprimeix tots els missatges del sistema, excepte els dels errors.
+
+:     **--rc**
+Llegeig a l'arxiu de configuració de l'usuari  ~/.txt2tagsrc. Per defecte: ON.
+
+:     **--slides**
+Formata l'arxiu de sortida com una presentació de diapositives. Aquesta opció s'utilitza sols amb formats de sortida ASCII Art.
+
+:     **--style**=//ARXIU//
+Utilitza  //ARXIU//  como l'arxiu que conté l'estil del document. Utilitzat per a definir arxius CSS en documents  HTML/XHTML i ´´mòduls´´ LaTeX. Aquesta opció es pot utilitzar repetides vegades amb la finalitat d'incloure múltiples arxius d'estil.
+
+: **-t**, **--target**=//TIPUS//
+Fixa el format del document de sortida a l'establert a  //TIPUS//. Els formats de document mes corrents son: //html//, //xhtml//, //tex//, //man//, //txt//. Utilitzar l'opció  ``--targets`` per a consultar els formats disponibles.
+
+:     **--targets**
+Mostra els formats de document disponibles per als arxius de sortida i surt.
+
+:     **--toc**
+Inclou, automaticament, una Taula de Continguts (TOC) a l'arxiu de sortida, entre la capçalera (HEADER) i el cos del document (BODY). Es possible especificar la posició  de la TOC  utilitzant la macro ``%%TOC``.
+
+:     **--toc-level**=//NUM//
+Fixa el nivell màxim de la Taula de Continguts (TOC) al número especificat a  //NUM//. Tots els títols inferiors a  //NUM// no serán inclosos a la Taula de Continguts.
+
+:     **--toc-only**
+Mostra la Taula de Continguts (TOC) i surt.
+
+: **-v**, **--verbose**
+Mostra els missatges del sistema durant el procés de conversió. Aquesta opció es pot utilitzar repetides vegades per a incrementar el nombre de missatges a mostrar.
+
+: **-V**, **--version**
+Mostra l'actual versió del programa i surt.
+
+:     **--width**=//NUM// 
+Fixa al número especificat a  //NUM//  l'amplada de les columnes de l'arxiu de sortida. Aquesta opció s'utilitza sols amb formats de sortida del tipus ASCII Art.
+:
+
+= ARXIU FONT =[source]
+
+Els arxius font acostumen a especificar-se mitjançant l'extensió  //.t2t//  (per exemple, ``arxiu.t2t``). Dins d'un arxiu font hi podem considerar tres àrees :
+
+: **Encapçalament** (opcional)
+Les tres primeres línies de l'arxiu. Si no es necessita encapçalament, deixar en blanc la primera línia. S'acostuma a utilitzar aquesta àrea per a posar-hi el títol del document i la informació sobre el autor, la versió, la data etc.
+
+: **Ajusts** (opcional)
+Comença tot just després de l'Encapçalament (4ª línia, o 2ª línia en el càs d'ometre l'encapçalament) i finalitza al començament de l'àrea del Cos del Document.
+Utilitzats per a implementar ajusts (configuracions) en format  ``%!keyword:value``.
+
+: **Cos del Document**
+Comença amb la primera línia de text vàlid  (que no sigui comentari o ajust) després de l'Encapçalament i s'estén fins al final del document. A aquesta àrea es a on hi trobarém el contingut del document.
+:
+
+= AJUSTS =[settings]
+
+Els ajusts ens permeten personalitzar  **txt2tags**; son similars a les opcions. Poden emplaçar-se a: l'área d'Ajusts del document font, a l'arxiu  ``~/.txt2tagsrc`` o a un arxiu extern que s'invocarà mitjançant l'opció  ``--config-file``.
+
+: **%!target**
+Defineix el format de l'arxiu de sortida, tal com ho faria l'opció  ``--target``. Exemple:
+``` %!target: html
+
+: **%!options(tipo)**
+Defineix les opcions per defecte per a cada tipus d'arxiu de sortida. S'han d'utilitzar les opcions amb versió línia d'ordres (la que comença amb  '--'). Exemple:
+``` %!options(html): --toc --toc-level 3 --css-sugar
+
+: **%!includeconf**
+Inclou, a l'arxiu corrent, els ajusts definits a un arxiu extern, tal com ho faria l'opció  ``--config-file``. Exemple:
+``` %!includeconf: miconfig.t2t
+
+: **%!style** 
+Utilitza un arxiu d'estil extern, tal com ho faria l'opció  ``--style``. Es pot utilitzar repetides vegades. Exemple:
+``` %!style: colores.css
+
+: **%!encoding**
+Defineix la codificació de caràcters que s'utilitzarà al document convertit, tal com ho faria l'opció  ``--encoding``. Exemple :
+``` %!encoding: UTF-8
+
+: **%!preproc**
+Filtre input de cercar/reemplaçar utilitzat per a realitzar canvis en el cos del document font ABANS que txt2tags realitzi qualsevol acció. La cerca utilitza expresions regulars de Python. Exemple:
+``` %!preproc:  "JJS"  "John J. Smith"
+
+: **%!postproc**
+Filtre output de cercar/reemplaçar utilitzat per a realitzar canvis en el document generat DESPRÉS del complet processament per txt2tags de l'arxiu font. La cerca utilitza exresions regulars de Python. Exemple:
+``` %!postproc(html):  "<B>"  "<STRONG>"
+:
+
+Si la mateixa paraula clau apareix més d'una vegada, l'ùltima trobada será que s'utilitzarà (excepcions: opcions, preproc i postproc, que son acumulatives). Les paraules claus invàlides seràn ignorades. L'odre de processament es:  ``~/.txt2tagsrc``, àrea de Ajusts del document font, opció  ``--config-file``.
+
+
+= ORDRES =[commands]
+
+Les Ordres executen tasques durant el procés de conversió. S'han d'emplaçar en el cos del document font.
+
+: **%!csv: arxiu.csv**
+Incorpora un arxiu CSV com una tabla.
+
+: **%!include: arxiu.t2t**
+Incorpora al document un arxiu txt2tags.
+
+: **%!include: ""``arxiu.txt``""**
+Incorpora al document un arxiu de text (verbatim).
+
+: **%!include: ""''arxiu.html''""**
+Incorpora al document un arxiu marcat.
+:
+
+= MACROS =[macros]
+
+Mitjançant les Macros podrem inserir, d'una forma fàcil, continguts dinàmics en el document convertit. S'han de definir en el cos del document font. Amb l'excepció de  ``%%toc`` , totes les macros poden ser personalitzades amb directives especials, como  ``%Y`` i  ``%f``. Per més detalls, consulteu la **Guia del Usuario de txt2tags**.
+
+: **""%%date""**
+Insereix la data actual. El seu format per defecte es:  ``%%date(%Y%m%d)``,  que ens mostrará la data com: AAAAMMDD.
+
+: **""%%infile""**
+Insereix el path de l'arxiu font. El seu format per defecte es:  ``%%infile(%f)``.  Útil per a enllaços del tipus: ``[Veure font %%infile]``.
+
+: **""%%mtime""**
+Insereix la data de l'última modificació de l'arxiu font. El seu format per defecte es:  ``%%date(%Y%m%d)``, que ens mostrarà la data com: AAAAMMDD.
+
+: **""%%outfile""**
+Insereix el path de l'arxiu final. El seu format per defecte es:  ``%%outfile(%f)``. Útil en mencions del tipus: "Aquest es l'arxiu %%outfile".
+
+: **""%%toc""**
+Amb aquesta macro l'usuari pot fixar l'emplaçament de la Taula de Continguts (TOC). Es pot utilitzar repetides vegades. S'ha d'utilitzar conjuntament amb l'opció  ``--toc``.
+:
+
+= EXEMPLES =[examples]
+
+: ``txt2tags -t html arxiu.t2t``
+
+Converteix a HTML, guardant el resultat com arxiu.html.
+
+: ``txt2tags -t html -o - arxiu.t2t``
+
+Converteix a HTML, mostrant el resultat a STDOUT.
+
+: ``txt2tags -t html --toc arxiu.t2t``
+
+Converteix a HTML, generant una Taula de Continguts (TOC) de forma automàtica.
+
+: ``txt2tags -t html --toc --toc-level 2 -n archivo.t2t``
+
+Converteix a HTML, amb una Taula de Continguts (TOC) a dos nivells i títols numerats.
+
+: ``txt2tags --toc-only arxiu.t2t``
+
+Ens mostra sols la Taula de Continguts (TOC), sense realitzar cap mena de conversió en el document font.
+
+: ``txt2tags -t html --css-sugar --style base.css --style ui.css arxiu.t2t``
+
+Converteix a HTML, preparant el codi resultat per a poder utilitzar CSS, incloent-hi també una crida a dos arxius CSS externs (base.css y ui.css).
+
+: ``txt2tags -t art --slides --width 80 --height 25 -o - arxiu.t2t | more``
+
+Crea una presentació de diapositives tipus ASCII Art, apta para a ser visionada amb un terminal pantalla/finestra 80x25.
+
+: ``(echo ; echo "**bold**") | txt2tags -t html -H -``
+
+Pràctica forma de realitzar comprovacions ràpides utilitzant STDIN.
+
+: ``txt2tags -t html -o - arxiu.t2t | tidy > arxiu.html``
+
+Envia el resultat a STDOUT, desde on se'l redirigeix a un programa extern (tidy) abans de ser guardat.
+:
+
+= ARXIUS =[files]
+
+: ~/.txt2tagsrc
+Arxiu de configuració de l'usuari, per defecte.
+:
+
+= ENTORN =[environment]
+
+: T2TCONFIG
+Si no es nul, defineix el pathname de l'arxiu de configuració de l'usuari per defecte.
+:
+
+= AUTOR =[author]
+
+Aurelio Jargas <verde@aurelio.net>
+
+Traducció al català realitzada per Antoni Serra Devecchi <antoni.serra@gmail.com>
+
+= BUGS =[bugs]
+
+http://bugs.txt2tags.org
+
+= COPYRIGHT =[copyright]
+
+Copyright (C) 2001-%%date(%Y) Aurelio Jargas, GNU GPL v2

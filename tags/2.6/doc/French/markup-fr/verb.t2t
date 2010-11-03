@@ -1,0 +1,7 @@
+
+```
+    Une zone verbatim est entre 2 lignes 
+            commençant par 3 backquotes.
+**Les Marques** ne sont pas interprétées
+           et les espaces sont préservés
+```

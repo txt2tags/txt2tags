@@ -1,0 +1,39 @@
+
+Utilisation : txt2tags [OPTIONS] [entrée.t2t ...]
+
+  -t, --target	      indiquez le type de document de sortie supporté :
+                      html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
+  -i, --infile=ENTREE  choisissez le fichier d'entrée ('-' pour STDIN)
+  -o, --outfile=SORTIE choississez le fichier de sortie ('-' pour STDOUT)
+  -n, --enum-title    numéroter les titres en : 1, 1.1, 1.1.1, etc
+  -H, --no-headers    supprimer les entêtes, les titres et les pieds de page
+      --headers       montrer les entêtes, les titres et les pieds de page (par défaut)
+      --encoding=ENC  choisir l'encodage de sortie (utf-8, iso8859-1, etc)
+      --style=FILE    utiliser FILE comme feuille de style (comme HTML CSS)
+      --css-sugar     insère des étiquettes CSS pour des  sorties HTML et XHTML
+      --css-sugar     insèrer le contenu du fichier CSS pour des sorties HTML et XHTML
+      --mask-email    cacher l'email des robots spammeurs x@y.z devient x (a) y z
+      --toc           ajouter la table des matières à la sortie
+      --toc-only      imprime la table des matières et sort
+      --toc-level=N   limiter la profondeur de la table des matières à N
+      --rc            lire le fichier de configuration ~/.txt2tagsrc (option par défaut)
+      --gui           appeler l'interface graphique Tk
+  -q, --quiet         mode silencieux, plus de sortie (sauf les erreurs)
+  -v, --verbose       imprimer des messages d'information pendant la conversion
+  -h, --help          imprimer cette aide et sortir
+  -V, --version       imprimer la version et sortir
+      --dump-config   imprimer toute la configuration trouvée et sortir
+
+Désactive les options (OFF)
+     --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers
+     --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc
+     --no-css-sugar, --no-css-inside, --no-quiet
+
+Exemple : 
+    txt2tags -t html --toc myfile.t2t
+
+Par défaut, la sortie convertie est sauvée dans 'infile.<type>'
+Utilisez --outfile pour imposer un fichier de sortie
+Si le fichier d'entrée est '-', la lecture est à partir de STDIN
+Si le fichier de sortie est '-', la sortie est sur STDOUT
+

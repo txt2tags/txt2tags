@@ -1,0 +1,11 @@
+#!/bin/bash
+# 2004-06-28 Aurelio Jargas
+# Update (convert) the CSS samples
+
+cd $(dirname "$0")
+
+for file in *.css ; do
+  base=${file%.*}
+  sed 's|img/|../&|' ../sample.t2t |
+  ../../txt2tags --style $base.css -o $base.html --css-sugar --toc -t html -
+done
