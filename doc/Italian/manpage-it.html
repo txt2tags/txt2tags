@@ -10,20 +10,26 @@ pre  { background-color:#ffffcc ;}
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
 <TITLE>TXT2TAGS</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
-<FONT SIZE="4">
-Maggio, 2005
-</FONT></CENTER>
+<CENTER>
+<H1>TXT2TAGS</H1>
+<FONT SIZE="4">Maggio, 2005</FONT>
+</CENTER>
+
 
 <H1>NOME</H1>
+
 <P>
 txt2tags - utility per la formattazione e la conversione del testo
 </P>
+
 <H1>SINOPSI</H1>
+
 <P>
 <B>txt2tags</B> [<I>OPTION</I>]... [<I>FILE</I>]...
 </P>
+
 <H1>DESCRIZIONE</H1>
+
 <P>
 <B>txt2tags</B> è un'utility GPL scritta in Python per la formattazione e la
 conversione del testo che genera documenti <I>HTML</I>, <I>XHTML</I>, <I>SGML</I>,
@@ -43,7 +49,9 @@ MULTI destinazione.
 <P>
 Visita l'home page <I>http://txt2tags.org</I>.
 </P>
+
 <H1>OPZIONI</H1>
+
 <DL>
 <DT> <B>-C</B>, <B>--config-file</B></DT><DD>
 legge le configurazioni da un file esterno (come %!includeconf)
@@ -158,10 +166,13 @@ Usa --outfile per forzare un nome del file di destinazione.
 Se il file sorgente è '-', legge da STDIN.
 Se il file di destinazione è '-', indirizza l'output su STDOUT.
 </P>
+
 <H1>STRUTTURA</H1>
+
 <P>
 Il file sorgente Txt2tags può avere tre aree:
 </P>
+
 <DL>
 <DT><B>Intestazione</B></DT><DD>
 Le prime tre linee. Sono usate per l'identificazione del documento.
@@ -181,12 +192,14 @@ o configurazione) dopo l'area di Intestazione.
 </DL>
 
 <H1>SETTAGGI</H1>
+
 <P>
 La conversione di un file sorgente può essere personalizzata in due diversi
 modi. Le configurazione esterne sono prese dal file <CODE>~/.txt2tagsrc</CODE> o da un
 altro file scelto dall'utente. La configurazione interna è fatta con i settaggi
 nell'area di Configurazione. Entrambe le configurazioni usano la stessa sintassi:
 </P>
+
 <DL>
 <DT><B>%!target:</B></DT><DD>
 definisce il formato di destinazione principale
@@ -200,7 +213,7 @@ inserisce un file txt2tags nel documento
 <DT><B>%!include: ``file.txt``</B></DT><DD>
 inserisce un file di testo nel documento, preservando spazi e formattazione
 <P></P>
-<DT><B>%!include: ''file.html''</B></DT><DD>
+<DT><B>%!include: file.html</B></DT><DD>
 inserisce un file nel documento senza alcuna elaborazione da parte di txt2tags
 <P></P>
 <DT><B>%!style:</B></DT><DD>
@@ -227,6 +240,7 @@ l'elaborazione del documento
 </DL>
 
 <H2>REGOLE DEI SETTAGGI</H2>
+
  <UL>
  <LI>I settaggi sono validi soltanto nell'area di Configurazione, e sono considerati
    semplici commenti se sono trovati nel Corpo del documento. Eccetto include,
@@ -244,28 +258,33 @@ l'elaborazione del documento
  </UL>
 
 <H1>SINTASSI</H1>
+
 <P>
 Nel documento sorgente (il file contenente solo testo) è usata una sintassi molto
 semplice per identificare la struttura e la formattazione.
 Ecco la lista completa della sintassi:
 </P>
+
 <H2>Base</H2>
+
 <PRE>
   Intestazione        Le prime tre righe del file sorgente
   Titolo              = testo =
   Titolo numerato     + testo +
   Paragrafo           testo
 </PRE>
-<P></P>
+
 <H2>Formattazione</H2>
+
 <PRE>
   Grassetto           **testo**
   Italico             //testo//
   Sottolineato        __testo__
   Monospazio          ``testo``
 </PRE>
-<P></P>
+
 <H2>Blocchi di testo</H2>
+
 <PRE>
   Citazione           &lt;TAB&gt;testo
   Lista               - testo
@@ -277,8 +296,9 @@ Ecco la lista completa della sintassi:
   Area 'grezza'       """&lt;RitornoACapo&gt; linee &lt;RitornoACapo&gt;"""
   Tabella             | cella1 | cella2 | cella3...
 </PRE>
-<P></P>
+
 <H2>Altro</H2>
+
 <PRE>
   Linea separatrice   -----------------------...
   Linea più spessa    =======================...
@@ -287,16 +307,19 @@ Ecco la lista completa della sintassi:
   Testo 'grezzo'      ""testo""
   Commento            % commento
 </PRE>
-<P></P>
+
 <P>
 Per una descrizione dettagliata della sintassi leggi la Guida
 dell'Utente Txt2tags (nella directory dei documenti).
 </P>
+
 <H1>ESEMPI</H1>
+
 <P>
 Supponendo di avere scritto il file <CODE>file.t2t</CODE>, procediamo con
 la conversione.
 </P>
+
 <DL>
 <DT><B>Conversione in HTML, salvando in file.html</B></DT><DD>
 <CODE>$ txt2tags -t html file.t2t</CODE>
@@ -318,6 +341,7 @@ la conversione.
 </DL>
 
 <H1>MACRO</H1>
+
 <DL>
 <DT>%%date</DT><DD>
 Permette di includere la data corrente, nel formato AAAAMMGG.
@@ -353,6 +377,7 @@ NOTA: %%toc sarà convertito nell'indice solo se si utilizza l'opzione --toc.
 </DL>
 
 <H1>ALTRE INFORMAZIONI UTILI (*)</H1>
+
 <PRE>
   (*) Questa sezione non è presente nella versione originale
       inglese, ma è stata aggiunta dal traduttore nella versione italiana
@@ -362,12 +387,14 @@ NOTA: %%toc sarà convertito nell'indice solo se si utilizza l'opzione --toc.
       has been added by the italian translator (inspired by the 'TRUCS'
       section of the french version).
 </PRE>
-<P></P>
+
 <P>
 Elenchiamo di seguito alcune caratteristiche che rendono txt2tags
 un'eccellente utility per scrivere i nostri documenti.
 </P>
+
 <H2>COLLEGAMENTI IPERTESTUALI NEL DOCUMENTO</H2>
+
 <P>
 I titoli possono essere usati come destinazione di collegamenti ipertestuali,
 per essere raggiunti direttamente (se il formato lo consente) come se fossero
@@ -376,26 +403,31 @@ collegamenti a pagine web.
 <P>
 Definizione del collegamento (all'interno del titolo):
 </P>
+
 <PRE>
     Titolo            = testo =[NomeCollegamento]
     Titolo numerato   + testo +[NomeCollegamento]
 </PRE>
-<P></P>
+
 <P>
 Richiamo del collegamento (all'interno di un paragrafo di testo):
 </P>
+
 <PRE>
     testo testo [DescrizioneCollegamento #NomeCollegamento] testo testo
 </PRE>
-<P></P>
+
 <H2>FILE MULTIPLI</H2>
+
 <P>
 txt2tags può elaborare più file contemporaneamente, come segue:
 </P>
 <P>
    txt2tags *.t2t 
 </P>
+
 <H1>AUTORE</H1>
+
 <P>
 Scritto e mantenuto da Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 </P>
@@ -406,7 +438,9 @@ come file di testo, e convertita nel formato man da <B>txt2tags</B>!
 <P>
 Tradotto da Spinucci Stefano &lt;&lt;virgo977 (a) tin it&gt;&gt;
 </P>
+
 <H1>COPYRIGHT</H1>
+
 <P>
 Copyright (C) 2001, 2002, 2003, 2004, 2005 Aurelio Jargas
 </P>
@@ -416,6 +450,6 @@ NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
 PURPOSE.
 </P>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.org) -->
-<!-- cmdline: txt2tags -t html ./Italian/manpage-it.t2t -->
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html doc/Italian/manpage-it.t2t -->
 </BODY></HTML>
