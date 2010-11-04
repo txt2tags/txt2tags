@@ -1,380 +1,474 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:3em               ;} 
-a    { text-decoration:none     ;} 
-pre  { background-color:#ffffcc ;} 
-</STYLE>
+<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <TITLE>TXT2TAGS</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>TXT2TAGS</H1>
-<FONT SIZE="4">
-Jul, 2008
-</FONT></CENTER>
+<CENTER>
+<H1>TXT2TAGS</H1>
+<FONT SIZE="4">Ago, 2010</FONT>
+</CENTER>
 
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+  <UL>
+  <LI><A HREF="#nome">NOME</A>
+  <LI><A HREF="#sinopse">SINOPSE</A>
+  <LI><A HREF="#descricao">DESCRI√á√ÉO</A>
+  <LI><A HREF="#sintaxe">SINTAXE</A>
+  <LI><A HREF="#opcoes">OP√á√ïES</A>
+  <LI><A HREF="#fonte">ARQUIVO FONTE</A>
+  <LI><A HREF="#config">CONFIGURA√á√ïES</A>
+  <LI><A HREF="#comandos">COMANDOS</A>
+  <LI><A HREF="#macros">MACROS</A>
+  <LI><A HREF="#exemplos">EXEMPLOS</A>
+  <LI><A HREF="#arquivos">ARQUIVOS</A>
+  <LI><A HREF="#ambiente">AMBIENTE</A>
+  <LI><A HREF="#autor">AUTOR</A>
+  <LI><A HREF="#bugs">BUGS</A>
+  <LI><A HREF="#copyright">COPYRIGHT</A>
+  </UL>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+<A NAME="nome"></A>
 <H1>NOME</H1>
+
 <P>
 txt2tags - ferramenta para formatar e converter textos
 </P>
+
+<A NAME="sinopse"></A>
 <H1>SINOPSE</H1>
-<P>
-<B>txt2tags</B> [<I>OP«√O</I>]... [<I>ARQUIVO</I>]...
-</P>
-<H1>DESCRI«√O</H1>
-<P>
-O <B>txt2tags</B> È uma ferramenta GPL de convers„o de formatos escrita
-em Python que gera documentos em <I>HTML</I>, <I>XHTML</I>, <I>SGML</I>,
-<I>LaTeX</I>, <I>Lout</I>, <I>Man Page</I>, <I>MoinMoin</I>, <I>Wikipedia</I>,
-<I>DokuWiki</I>, <I>Google Code Wiki</I>, <I>MagicPoint</I> e <I>PageMaker</I>
-a partir de um ˙nico arquivo de texto com algumas marcaÁıes.
-</P>
-<P>
-O usu·rio sÛ precisa conhecer algumas marcas usadas pelo <B>txt2tags</B>,
-e escrever textos normais. O programa faz todo o trabalho sujo,
-adicionando as tags complicadas e lidando com as pegadinhas dos
-documentos de destino.
-</P>
-<P>
-O mesmo arquivo texto pode ser convertido para todos os formatos
-disponÌveis, sem a necessidade de qualquer alteraÁ„o. Esta È a
-finalidade do <B>txt2tags</B>: UM arquivo fonte, V¡RIOS destinos.
-</P>
-<P>
-Visite a p·gina do programa em
-<I>http://txt2tags.org</I>.
-</P>
-<H1>OP«’ES</H1>
-<DL>
-<DT> <B>-C</B>, <B>--config-file</B></DT><DD>
-lÍ a configuraÁ„o de um arquivo externo (igual ao %!includeconf)
-<P></P>
-<DT>     <B>--css-sugar</B></DT><DD>
-insere tags compatÌveis com CSS em destinos HTML e XHTML
-<P></P>
-<DT>     <B>--css-inside</B></DT><DD>
-insere o conte˙do do arquivo CSS no documento HTML/XHTML
-<P></P>
-<DT>     <B>--dump-config</B></DT><DD>
-exibe todas as configuraÁıes encontradas e sai
-<P></P>
-<DT>     <B>--dump-source</B></DT><DD>
-exibe os fontes do documento, com os includes expandidos
-<P></P>
-<DT>     <B>--encoding</B></DT><DD>
-informa a codificaÁ„o de destino (utf-8, iso-8859-1, etc)
-<P></P>
-<DT>     <B>--gui</B></DT><DD>
-carrega a interface gr·fica escrita em TK
-<P></P>
-<DT> <B>-h</B>, <B>--help</B></DT><DD>
-exibe o texto de ajuda e sai
-<P></P>
-<DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
-suprime os cabeÁalhos, tÌtulo e rodapÈ
-<P></P>
-<DT>     <B>--headers</B></DT><DD>
-exibe os cabeÁalhos, tÌtulo e rodapÈ (padr„o LIGADO)
-<P></P>
-<DT> <B>-i</B>, <B>--infile</B>=<I>ARQUIVO</I></DT><DD>
-define ARQUIVO como arquivo fonte ('-' para STDIN)
-<P></P>
-<DT>     <B>--mask-email</B></DT><DD>
-esconde os e-mails dos robÙs de SPAM. x@y.z vira &lt;x (a) y z&gt;
-<P></P>
-<DT> <B>-n</B>, <B>--enum-title</B></DT><DD>
-numera todos os tÌtulos como 1, 1.1, 1.1.1, etc
-<P></P>
-<DT>     <B>--no-dump-config</B></DT><DD>
-desativa a opÁ„o de exibir as configuraÁıes
-<P></P>
-<DT>     <B>--no-dump-source</B></DT><DD>
-desativa a opÁ„o de exibir os fontes
-<P></P>
-<DT>     <B>--no-encoding</B></DT><DD>
-exclui a configuraÁ„o de codificaÁ„o
-<P></P>
-<DT>     <B>--no-enum-title</B></DT><DD>
-desativa a auto-numeraÁ„o de tÌtulos
-<P></P>
-<DT>     <B>--no-infile</B></DT><DD>
-exclui as definiÁıes anteriores do arquivo fonte
-<P></P>
-<DT>     <B>--no-mask-email</B></DT><DD>
-exibe os e-mails, desativando a opÁ„o --mask-email
-<P></P>
-<DT>     <B>--no-outfile</B></DT><DD>
-exclui as definiÁıes anteriores sobre o arquivo de destino
-<P></P>
-<DT>     <B>--no-quiet</B></DT><DD>
-mostras as mensagens, desativando a opÁ„o --quiet
-<P></P>
-<DT>     <B>--no-rc</B></DT><DD>
-n„o lÍ o arquivo configuraÁ„o do usu·rio em ~/.txt2tagsrc
-<P></P>
-<DT>     <B>--no-style</B></DT><DD>
-exclui as configuraÁıes de estilo
-<P></P>
-<DT>     <B>--no-toc</B></DT><DD>
-n„o inclui o sum·rio (Table of Contents) no documento de destino
-<P></P>
-<DT>     <B>--no-toc-only</B></DT><DD>
-desativa a opÁ„o --toc-only
-<P></P>
-<DT> <B>-o</B>, <B>--outfile</B>=<I>ARQUIVO</I></DT><DD>
-define ARQUIVO como destino ('-' para STDOUT)
-<P></P>
-<DT> <B>-q</B>, <B>--quiet</B></DT><DD>
-modo silencioso, n„o mostra nada na saÌda (exceto os erros)
-<P></P>
-<DT>     <B>--rc</B></DT><DD>
-lÍ a configuraÁ„o do usu·rio em ~/.txt2tagsrc (padr„o LIGADO)
-<P></P>
-<DT>     <B>--style</B>=<I>ARQUIVO</I></DT><DD>
-utiliza ARQUIVO como estilo do documento (como o CSS do Html)
-<P></P>
-<DT><B>-t</B>, <B>--target</B>=<I>TIPO</I></DT><DD>
-define o tipo do documento de destino. atualmente suportados:
-html, xhtml, sgml, tex, lout, man, mgp, wiki,
-gwiki, doku, moin, pm6, txt
-<P></P>
-<DT>     <B>--toc</B></DT><DD>
-inclui o sum·rio (Table of Contents) no documento de destino
-<P></P>
-<DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
-define o nÌvel m·ximo (profundidade) do Õndice para N
-<P></P>
-<DT>     <B>--toc-only</B></DT><DD>
-exibe o Õndice do documento e sai
-<P></P>
-<DT> <B>-v</B>, <B>--verbose</B></DT><DD>
-exibe mensagens informativas durante a convers„o
-<P></P>
-<DT> <B>-V</B>, <B>--version</B></DT><DD>
-exibe a vers„o do programa e sai
-</DL>
 
 <P>
-Normalmente a saÌda convertida È gravada em 'arquivo.&lt;tipo&gt;'.
-Utilize --outfile para forÁar um nome para o arquivo de saÌda.
-Se o arquivo de entrada È '-', lÍ de STDIN.
-Se o arquivo de saÌda È '-', envia a saÌda para STDOUT.
+<B>txt2tags</B> [<I>op√ß√µes</I>] [<I>ARQUIVO</I>...]
 </P>
-<H1>ESTRUTURA</H1>
+
+<A NAME="descricao"></A>
+<H1>DESCRI√á√ÉO</H1>
+
 <P>
-Um arquivo fonte txt2tags pode ter trÍs ·reas:
+O <B>txt2tags</B> l√™ um arquivo texto com poucas marca√ß√µes e o converte para:
+<I>ASCII Art</I>,
+<I>AsciiDoc</I>,
+<I>Creole</I>,
+<I>DocBook</I>,
+<I>DokuWiki</I>,
+<I>Google Code Wiki</I>,
+<I>HTML</I>,
+<I>LaTeX</I>,
+<I>Lout</I>,
+<I>MagicPoint</I>,
+<I>Man page</I>,
+<I>MoinMoin</I>,
+<I>PageMaker</I>,
+<I>Plain Text</I>,
+<I>PmWiki</I>,
+<I>SGML</I>,
+<I>Wikipedia</I> e
+<I>XHTML</I>.
 </P>
-<DL>
-<DT><B>CabeÁalho</B></DT><DD>
-As primeiras trÍs linhas. S„o usadas para identificaÁ„o do documento.
-Se n„o for necess·rio, o cabeÁalho pode ser suprimido pela
-configuraÁ„o <CODE>no-header</CODE>.
-<P></P>
-<DT><B>ConfiguraÁ„o</B></DT><DD>
-Inicia a partir da quarta linha. Todas as configuraÁıes tÍm o formato
-%!chave: valor. As configuraÁıes tambÈm podem ser realizadas por
-arquivos de configuraÁ„o ou linha de comando.
-<P></P>
-<DT><B>Corpo</B></DT><DD>
-O verdadeiro documento! … a ˙nica ·rea necess·ria para que se tenha um
-documento txt2tags v·lido.
-</DL>
-
-<H1>CONFIGURA«’ES</H1>
 <P>
-O Txt2tags pode ser personalizado por mÈtodos internos e externos. Os
-meios externos podem ser de um arquivo chamado <CODE>.txt2tagsrc</CODE> ou
-importado de outro arquivo txt2tags. O jeito interno È feito por
-comandos incluÌdos na ·rea de configuraÁ„o do fonte. Ambas formas usam
-a mesma sintaxe:
+Esta p√°gina de manual foi criada pelo <B>txt2tags</B> a partir de um arquivo de texto. Este mesmo arquivo de texto tamb√©m √© convertido para HTML e colocado no site do programa para consulta.
 </P>
-<DL>
-<DT><B>%!target:</B></DT><DD>
-define o formato destino (target) principal
-<P></P>
-<DT><B>%!options(target):</B></DT><DD>
-define as opÁıes de cada destino
-<P></P>
-<DT><B>%!include: file.t2t</B></DT><DD>
-inclui um arquivo txt2tags no documento
-<P></P>
-<DT><B>%!include: ``arquivo.txt``</B></DT><DD>
-inclui um arquivo texto no documento
-<P></P>
-<DT><B>%!include: ''arquivo.html''</B></DT><DD>
-inclui um arquivo literal no documento, <I>ipsis literis</I>
-<P></P>
-<DT><B>%!style:</B></DT><DD>
-para indicar um arquivo CSS (Cascading Style Sheets) para os destinos
-XHTML e HTML ou carregar um mÛdulo \usepackage no destino TEX
-<P></P>
-<DT><B>%!encoding:</B></DT><DD>
-para indicar um conjunto de caracteres (como iso-8859-1) para usu·rios
-de lÌngua n„o-inglesa
-<P></P>
-<DT><B>%!includeconf:</B></DT><DD>
-usado para incluir configuraÁıes a partir de um arquivo externo
-<P></P>
-<DT><B>%!guicolors:</B></DT><DD>
-configuraÁıes de cores para a interface gr·fica (tk/tcl)
-<P></P>
-<DT><B>%!preproc:</B></DT><DD>
-filtros personalizados (macros) que ser„o processados <B>ANTES</B> da
-avaliaÁ„o do documento
-<P></P>
-<DT><B>%!postproc:</B></DT><DD>
-filtros personalizados (macros) que ser„o processados <B>AP”S</B> a
-avaliaÁ„o do documento
-</DL>
+<P>
+UM arquivo fonte, V√ÅRIOS destinos - <A HREF="http://txt2tags.org">http://txt2tags.org</A>
+</P>
 
-<H1>REGRAS DAS CONFIGURA«’ES</H1>
-<UL>
-<LI>As configuraÁıes s„o v·lidas somente dentro da ¡rea de
-  ConfiguraÁ„o, e ser„o consideradas coment·rios simples se forem
-  encontradas no Corpo do documento.
-<P></P>
-<LI>Se a mesma palavra-chave aparece mais de uma vez na ¡rea de
-  ConfiguraÁ„o, apenas a ˙ltima ser· usada. ExceÁ„o: options, preproc
-  e postproc, que s„o acumulativas.
-<P></P>
-<LI>Uma linha de configuraÁ„o com uma palavra-chave inv·lida ser·
-  considerada um coment·rio.
-<P></P>
-<LI>Estas configuraÁıes tÍm precedÍncia sobre o arquivo txt2tagsrc, mas
-  n„o sobre as opÁıes de linha de comando.
-</UL>
-
+<A NAME="sintaxe"></A>
 <H1>SINTAXE</H1>
-<P>
-Uma sintaxe de marcas bem simples È utilizada no arquivo fonte
-(o arquivo de texto puro) para identificar as estruturas
-e a formataÁ„o. Aqui est· a lista completa:
-</P>
-<H2>B·sico</H2>
+
 <PRE>
-  CabeÁalhos        As 3 primeiras linhas do arquivo fonte
-  TÌtulo            = palavras =
-  TÌtulo numerado   + palavras +
-  Par·grafo         palavras
-</PRE>
-<P></P>
-<H2>Embelezadores</H2>
-<PRE>
-  Negrito           **palavras**
-  It·lico           //palavras//
-  Sublinhado        __palavras__
-  Riscado           --palavras--
-  MonoespaÁado      ``palavras``
-</PRE>
-<P></P>
-<H2>Text Blocks</H2>
-<PRE>
-  CitaÁ„o             &lt;TAB&gt;palavras
+  Cabe√ßalhos          As 3 primeiras linhas do arquivo fonte
+  T√≠tulo              = palavras =
+  T√≠tulo numerado     + palavras +
+  Coment√°rio          % coment√°rios
+  Linha de separa√ß√£o  -----------------------...
+  Linha destacada     =======================...
+  Imagem              [arquivo.jpg]
+  Link                [nome url]
+  
+  Negrito             **palavras**
+  It√°lico             //palavras//
+  Sublinhado          __palavras__
+  Riscado             --palavras--
+  Monoespa√ßado        ``palavras``
+  Texto protegido     ""palavras""
+  Texto com tags      ''palavras''
+  
+  Par√°grafo           palavras
+  Cita√ß√£o             &lt;TAB&gt;palavras
   Lista               - palavras
   Lista numerada      + palavras
-  Lista de definiÁ„o  : palavras
-  Linha formatada     ``` palavras
-  ¡rea formatada      ```&lt;Quebra&gt; linhas &lt;Quebra&gt;```
-  Linha protegida     """ palavras
-  ¡rea protegida      """&lt;Quebra&gt; linhas &lt;Quebra&gt;"""
+  Lista de defini√ß√£o  : palavras
   Tabela              | cel1 | cel2 | cel3...
+  
+  Linha formatada     ``` palavras
+  Linha protegida     """ palavras
+  Linha com tags      ''' palavras
+  
+  √Årea formatada      ```
+                      linhas
+                      ```
+  √Årea protegida      """
+                      linhas
+                      """
+  √Årea com tags       '''
+                      linhas
+                      '''
 </PRE>
+
+<A NAME="opcoes"></A>
+<H1>OP√á√ïES</H1>
+
+<DL>
+<DT>    <B>--art-chars</B>=<I>STRING</I></DT><DD>
+Define <I>STRING</I> como a lista de caracteres usados para fazer os enfeites do ASCII Art, nesta ordem: canto, borda, lado, linha1, linha2, n√≠vel2, n√≠vel3, n√≠vel4, n√≠vel5. O valor padr√£o da string √© +-|-==-^". Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
 <P></P>
-<H2>Outros</H2>
+<DT><B>-C</B>, <B>--config-file</B>=<I>ARQUIVO</I></DT><DD>
+L√™ a configura√ß√£o a partir do arquivo externo <I>ARQUIVO</I>. A configura√ß√£o deve estar no formato <I>%!nome:valor</I>. Veja o t√≥pico <A HREF="#config">CONFIGURA√á√ïES</A> para mais detalhes.
+<P></P>
+<DT>    <B>--css-sugar</B></DT><DD>
+Prepara o c√≥digo HTML/XHTML para ser usado com arquivos CSS. Os atributos das tags s√£o removidos, tags de formata√ß√£o s√£o evitadas, o cabe√ßalho √© composto pelas tags H1, H2 e H3, novos DIVs s√£o criados: <I>#header</I>, <I>#body</I>, <I>.toc</I>.
+<P></P>
+<DT>    <B>--css-inside</B></DT><DD>
+Insere o conte√∫do do arquivo CSS no cabe√ßalho do documento HTML/XHTML. Use <CODE>--style</CODE> para indicar o arquivo CSS a ser lido.
+<P></P>
+<DT>    <B>--dump-config</B></DT><DD>
+Exibe todas as configura√ß√µes encontradas e sai.
+<P></P>
+<DT>    <B>--dump-source</B></DT><DD>
+Exibe os fontes do documento, com os arquivos inclu√≠dos (<CODE>%!include</CODE>) expandidos.
+<P></P>
+<DT>    <B>--encoding</B>=<I>C√ìDIGO</I></DT><DD>
+Define a codifica√ß√£o do arquivo para <I>C√ìDIGO</I>. Alguns exemplos s√£o UTF-8 e iso-8859-1.
+<P></P>
+<DT>    <B>--gui</B></DT><DD>
+Carrega a interface gr√°fica (Tk).
+<P></P>
+<DT><B>-h</B>, <B>--help</B></DT><DD>
+Exibe o texto de ajuda e sai.
+<P></P>
+<DT><B>-H</B>, <B>--no-headers</B></DT><DD>
+Suprime os cabe√ßalhos e o rodap√© do documento. Apenas o Corpo do documento ser√° mostrado.
+<P></P>
+<DT>    <B>--headers</B></DT><DD>
+Exibe os cabe√ßalhos e o rodap√© no documento. Esta op√ß√£o √© usada por padr√£o.
+<P></P>
+<DT>    <B>--height</B>=<I>N</I></DT><DD>
+Define a altura da sa√≠da para <I>N</I> linhas. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art, quando tamb√©m utilizada a op√ß√£o <CODE>--slides</CODE>.
+<P></P>
+<DT><B>-i</B>, <B>--infile</B>=<I>ARQUIVO</I></DT><DD>
+Define <I>ARQUIVO</I> como arquivo fonte. Use '-' para ler os dados de STDIN.
+<P></P>
+<DT>    <B>--mask-email</B></DT><DD>
+Esconde os e-mails dos rob√¥s de SPAM. Os pontos e o @ s√£o removidos. O endere√ßo foo@bar.com vira &lt;foo (a) bar com&gt;.
+<P></P>
+<DT><B>-n</B>, <B>--enum-title</B></DT><DD>
+Enumera todos os t√≠tulos automaticamente, nos formatos 1, 1.1, 1.1.1, ...
+<P></P>
+<DT>    <B>--no-dump-config</B></DT><DD>
+Cancela a a√ß√£o <CODE>--dump-config</CODE>.
+<P></P>
+<DT>    <B>--no-dump-source</B></DT><DD>
+Cancela a a√ß√£o <CODE>--dump-source</CODE>.
+<P></P>
+<DT>    <B>--no-encoding</B></DT><DD>
+Remove a configura√ß√£o de codifica√ß√£o.
+<P></P>
+<DT>    <B>--no-enum-title</B></DT><DD>
+Desativa a numera√ß√£o autom√°tica de t√≠tulos.
+<P></P>
+<DT>    <B>--no-infile</B></DT><DD>
+Remove as defini√ß√µes anteriores do arquivo fonte.
+<P></P>
+<DT>    <B>--no-targets</B></DT><DD>
+Cancela a a√ß√£o <CODE>--targets</CODE>.
+<P></P>
+<DT>    <B>--no-mask-email</B></DT><DD>
+Desativa o disfarce de emails.
+<P></P>
+<DT>    <B>--no-outfile</B></DT><DD>
+Remove as defini√ß√µes anteriores sobre o arquivo de destino.
+<P></P>
+<DT>    <B>--no-quiet</B></DT><DD>
+Mostras as mensagens, desativando a op√ß√£o <CODE>--quiet</CODE>.
+<P></P>
+<DT>    <B>--no-rc</B></DT><DD>
+N√£o l√™ o arquivo configura√ß√£o do usu√°rio em ~/.txt2tagsrc.
+<P></P>
+<DT>    <B>--no-slides</B></DT><DD>
+Desliga os slides.
+<P></P>
+<DT>    <B>--no-style</B></DT><DD>
+Remove todas as configura√ß√µes de estilo.
+<P></P>
+<DT>    <B>--no-toc</B></DT><DD>
+Remove o Sum√°rio autom√°tico.
+<P></P>
+<DT>    <B>--no-toc-only</B></DT><DD>
+Desativa a op√ß√£o <CODE>--toc-only</CODE>.
+<P></P>
+<DT><B>-o</B>, <B>--outfile</B>=<I>ARQUIVO</I></DT><DD>
+Define <I>ARQUIVO</I> como arquivo de destino. Use '-' para mandar o resultado para STDOUT.
+<P></P>
+<DT><B>-q</B>, <B>--quiet</B></DT><DD>
+Modo silencioso, n√£o mostra nada na sa√≠da, exceto os erros.
+<P></P>
+<DT>    <B>--rc</B></DT><DD>
+L√™ a configura√ß√£o do usu√°rio em ~/.txt2tagsrc. Esta op√ß√£o √© usada por padr√£o.
+<P></P>
+<DT>    <B>--slides</B></DT><DD>
+Formata a sa√≠da como uma apresenta√ß√£o de slides. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
+<P></P>
+<DT>    <B>--style</B>=<I>ARQUIVO</I></DT><DD>
+Utiliza <I>ARQUIVO</I> como estilo do documento. √â usado para incluir arquivos CSS em documentos HTML, e pacotes para o LaTeX. Esta op√ß√£o pode ser usada mais de uma vez caso voc√™ precise incluir dois ou mais arquivos.
+<P></P>
+<DT><B>-t</B>, <B>--target</B>=<I>FORMATO</I></DT><DD>
+Define o formato do documento de destino. Alguns formatos populares s√£o: <I>html</I>, <I>xhtml</I>, <I>tex</I>, <I>man</I>, <I>txt</I>. Use a op√ß√£o <CODE>--targets</CODE> para ver a lista completa com todos os formatos dispon√≠veis.
+<P></P>
+<DT>    <B>--targets</B></DT><DD>
+Mostra a lista completa de todos os formatos dispon√≠veis e sai.
+<P></P>
+<DT>    <B>--toc</B></DT><DD>
+Inclui um Sum√°rio autom√°tico (Table of Contents) no documento de destino, entre o cabe√ßalho e o corpo. Voc√™ tamb√©m pode indicar onde o Sum√°rio deve ser colocado, usando a macro <CODE>%%TOC</CODE>.
+<P></P>
+<DT>    <B>--toc-level</B>=<I>N</I></DT><DD>
+Define o n√≠vel m√°ximo (profundidade) do Sum√°rio para <I>N</I>. Os t√≠tulos abaixo do n√≠vel <I>N</I> n√£o ser√£o inclu√≠dos no Sum√°rio.
+<P></P>
+<DT>    <B>--toc-only</B></DT><DD>
+Exibe o Sum√°rio do documento e sai.
+<P></P>
+<DT><B>-v</B>, <B>--verbose</B></DT><DD>
+Exibe mensagens informativas durante a convers√£o. Utilize-a duas ou mais vezes na linha de comando para aumentar o n√∫mero de mensagens a serem mostradas.
+<P></P>
+<DT><B>-V</B>, <B>--version</B></DT><DD>
+Exibe a vers√£o do programa e sai.
+<P></P>
+<DT>    <B>--width</B>=<I>N</I></DT><DD>
+Define a largura da sa√≠da para <I>N</I> colunas. Esta op√ß√£o √© utilizada somente pelo formato ASCII Art.
+</DL>
+
+<A NAME="fonte"></A>
+<H1>ARQUIVO FONTE</H1>
+
+<P>
+Um arquivo fonte do <B>txt2tags</B> geralmente usa a extens√£o <I>.t2t</I>, como por exemplo: <CODE>trabalho.t2t</CODE>. Voc√™ pode ter tr√™s √°reas distintas em seus fontes:
+</P>
+
+<DL>
+<DT><B>Cabe√ßalho</B></DT><DD>
+As primeiras tr√™s linhas. S√£o usadas para identifica√ß√£o do documento, como t√≠tulo, autor, vers√£o e data. Se voc√™ n√£o quiser usar cabe√ßalhos, deixe a primeira linha em branco.
+<P></P>
+<DT><B>Configura√ß√£o</B></DT><DD>
+Inicia logo ap√≥s o cabe√ßalho (4¬™ ou 2¬™ linha) e termina quando o Corpo se inicia. Esta √°rea √© usada para configura√ß√µes no formato <CODE>%!nome:valor</CODE>.
+<P></P>
+<DT><B>Corpo</B></DT><DD>
+Come√ßa na primeira linha de texto (que n√£o seja um coment√°rio ou uma configura√ß√£o) logo ap√≥s o cabe√ßalho e vai at√© o fim do documento. √â usada para guardar o conte√∫do do documento.
+</DL>
+
+<A NAME="config"></A>
+<H1>CONFIGURA√á√ïES</H1>
+
+<P>
+Voc√™ pode personalizar o txt2tags usando configura√ß√µes. Elas s√£o parecidas com as op√ß√µes de linha de comando e podem ser usadas nos seguintes locais: na √°rea Configura√ß√£o do seu arquivo fonte, no arquivo <CODE>~/.txt2tagsrc</CODE> ou ainda em um arquivo externo chamado com a op√ß√£o <CODE>--config-file</CODE>.
+</P>
+
+<DL>
+<DT><B>%!target</B></DT><DD>
+Define o formato de sa√≠da, igual faz a op√ß√£o <CODE>--target</CODE>. Exemplo:
+
 <PRE>
-  Linha de separaÁ„o  -----------------------...
-  Linha destacada     =======================...
-  Links               [nome url]
-  Imagem              [arquivo.XXX]
-  Texto protegido     ""palavras""
-  Coment·rio          % coment·rios
+  %!target: html
 </PRE>
+
 <P></P>
-<H1>EXEMPLOS</H1>
-<P>
-Supondo que vocÍ criou um arquivo marcado chamado <CODE>arquivo.t2t</CODE>,
-vamos nos divertir fazendo algumas conversıes.
-</P>
-<DL>
-<DT><B>Converte para HTML, gravando em arquivo.html</B></DT><DD>
-<CODE>$ txt2tags -t html arquivo.t2t</CODE>
+<DT><B>%!options(target)</B></DT><DD>
+Define as op√ß√µes de cada formato. No valor voc√™ deve colocar as op√ß√µes de linha de comando. Exemplo:
+
+<PRE>
+  %!options(html): --toc --toc-level 3 --css-sugar
+</PRE>
+
 <P></P>
-<DT><B>Similar ao anterior, usando redirecionamento</B></DT><DD>
-<CODE>$ txt2tags -t html -o - arquivo.t2t &gt; arquivo.html</CODE>
+<DT><B>%!includeconf</B></DT><DD>
+L√™ as configura√ß√µes a partir de um arquivo externo, igual faz a op√ß√£o <CODE>--config-file</CODE>. Exemplo:
+
+<PRE>
+  %!includeconf: minhaconfig.t2t
+</PRE>
+
 <P></P>
-<DT><B>Incluindo o Õndice</B></DT><DD>
-<CODE>$ txt2tags -t html --toc arquivo.t2t</CODE>
+<DT><B>%!style</B></DT><DD>
+Define um arquivo de estilos para o documento, igual faz a op√ß√£o <CODE>--style</CODE>. Pode ser usada v√°rias vezes para definir mais de um arquivo. Exemplo:
+
+<PRE>
+  %!style: cores.css
+</PRE>
+
 <P></P>
-<DT><B>Incluindo o Õndice e tÌtulos numerados</B></DT><DD>
-<CODE>$ txt2tags -t html --toc --enum-title arquivo.t2t</CODE>
+<DT><B>%!encoding</B></DT><DD>
+Define a codifica√ß√£o do texto, igual faz a op√ß√£o <CODE>--encoding</CODE>. Exemplo:
+
+<PRE>
+  %!encoding: UTF-8
+</PRE>
+
 <P></P>
-<DT><B>ExibiÁ„o r·pida do conte˙do</B></DT><DD>
-<CODE>$ txt2tags --toc-only arquivo.t2t</CODE>
+<DT><B>%!preproc</B></DT><DD>
+Filtro de entrada (estilo troque "isso" por "aquilo") usado para alterar o Corpo do documento ANTES do txt2tags process√°-lo. Voc√™ pode usar as express√µes regulares do Python. Exemplo:
+
+<PRE>
+  %!preproc:  "FSS"  "Fulano da Silva Sauro"
+</PRE>
+
 <P></P>
-<DT><B>Teste r·pido de uma linha vindo de STDIN</B></DT><DD>
-<CODE>$ echo -e "\n**negrito**" | txt2tags -t html -H -</CODE>
+<DT><B>%!postproc</B></DT><DD>
+Filtro de sa√≠da (estilo troque "isso" por "aquilo") usado para alterar o documento de sa√≠da DEPOIS da convers√£o feita pelo txt2tags. Voc√™ pode usar as express√µes regulares do Python. Exemplo:
+
+<PRE>
+  %!postproc(html):  "&lt;B&gt;"  "&lt;STRONG&gt;"
+</PRE>
+
 </DL>
 
+<P>
+Se a mesma configura√ß√£o for usada mais de uma vez, somente a √∫ltima ser√° utilizada. As exce√ß√µes s√£o: options, preproc e postproc, que s√£o cumulativas. Configura√ß√µes com nomes inv√°lidos ser√£o ignoradas. A ordem de processamento √©: <CODE>~/.txt2tagsrc</CODE>, √°rea Configura√ß√£o do arquivo fonte, op√ß√£o <CODE>--config-file</CODE>.
+</P>
+
+<A NAME="comandos"></A>
+<H1>COMANDOS</H1>
+
+<P>
+Os comandos s√£o executados durante a convers√£o do documento. Eles devem ser colocados dentro do Corpo do arquivo fonte.
+</P>
+
+<DL>
+<DT><B>%!csv: arquivo.csv</B></DT><DD>
+Gera uma tabela a partir de um arquivo externo CSV.
+<P></P>
+<DT><B>%!include: arquivo.t2t</B></DT><DD>
+Inclui um arquivo fonte txt2tags no documento.
+<P></P>
+<DT><B>%!include: ``arquivo.txt``</B></DT><DD>
+Inclui um arquivo texto no documento.
+<P></P>
+<DT><B>%!include: ''arquivo.html''</B></DT><DD>
+Inclui um arquivo pronto no documento, ele n√£o √© modificado.
+</DL>
+
+<A NAME="macros"></A>
 <H1>MACROS</H1>
+
+<P>
+As macros s√£o √∫teis para inserir conte√∫dos din√¢micos em seu documento, como a data atual, por exemplo. Exceto a <CODE>%%toc</CODE>, todas as macros podem ser personalizadas com curingas tipo <CODE>%Y</CODE> e <CODE>%f</CODE>. Veja o Guia do Usu√°rio para saber mais detalhes.
+</P>
+
 <DL>
-<DT>%%date</DT><DD>
-Representa a data atual, usando o formato YYYYMMDD.
-TambÈm È possÌvel mudar o formato da data usando a seguinte sintaxe:
-%%date(formato).
+<DT><B>%%date</B></DT><DD>
+Insere a data atual. O formato padr√£o √© <CODE>%%date(%Y%m%d)</CODE>, que fica AAAAMMDD.
 <P></P>
-<DT>%%infile</DT><DD>
-Representa o nome do arquivo fonte. O formato pode ser especificado
-usando a seguinte sintaxe: %%infile(formato).
+<DT><B>%%infile</B></DT><DD>
+Insere o nome do arquivo fonte. O formato padr√£o √© <CODE>%%infile(%f)</CODE>. √ötil para links de rodap√©, como <CODE>[Veja os fontes %%infile]</CODE>.
 <P></P>
-⁄til para colocar um link para os fontes, no final do documento, como
-em [Veja os fontes %%infile]. Assim, vocÍ pode mudar o nome do
-arquivo, e o link n„o ficar· quebrado.
+<DT><B>%%mtime</B></DT><DD>
+Insere a data de modifica√ß√£o do arquivo fonte. O formato padr√£o √© <CODE>%%date(%Y%m%d)</CODE>, que fica AAAAMMDD.
 <P></P>
-<DT>%%mtime</DT><DD>
-Representa a data de modificaÁ„o do arquivo fonte. Os mesmos formatos
-usados na macro %%date tambÈm s„o aceitos.
+<DT><B>%%outfile</B></DT><DD>
+Insere o nome do arquivo de sa√≠da. O formato padr√£o √© <CODE>%%outfile(%f)</CODE>. √ötil para mencionar o pr√≥prio documento, como em "Este √© o arquivo manpage-pt.html".
 <P></P>
-<DT>%%outfile</DT><DD>
-Representa o nome do arquivo de saÌda. O formato pode ser especificado
-usando a seguinte sintaxe: %%outfile(formato).
-<P></P>
-⁄til para mencionar o prÛprio arquivo, como em "Este È o arquivo
-manpage-pt.html". Assim, vocÍ pode mudar o nome do arquivo, mas ele sempre
-aparecer· corretamente no documento.
-<P></P>
-<DT>%%toc</DT><DD>
-A macro %%toc indica em que local do documento deve ser inserido
-o sum·rio (Table Of Contents). VocÍ pode utiliz·-la em qualquer parte
-do documento, inclusive mais de uma vez.
-<P></P>
-NOTA: A %%toc sÛ ser· aplicada se a opÁ„o --toc for utilizada.
+<DT><B>%%toc</B></DT><DD>
+Especifica o lugar onde ser√° colocado o Sum√°rio (Table Of Contents). Voc√™ pode utiliz√°-la em qualquer parte do documento, inclusive mais de uma vez. A op√ß√£o <CODE>--toc</CODE> tamb√©m deve ser usada para esta que esta macro funcione.
 </DL>
 
+<A NAME="exemplos"></A>
+<H1>EXEMPLOS</H1>
+
+<DL>
+<DT><CODE>txt2tags -t html arquivo.t2t</CODE></DT><DD>
+<P></P>
+Converte para HTML, gravando o resultado em arquivo.html.
+<P></P>
+<DT><CODE>txt2tags -t html -o - arquivo.t2t</CODE></DT><DD>
+<P></P>
+Converte para HTML, mandando o resultado para STDOUT.
+<P></P>
+<DT><CODE>txt2tags -t html --toc arquivo.t2t</CODE></DT><DD>
+<P></P>
+Converte para HTML, com Sum√°rio autom√°tico (Table Of Contents).
+<P></P>
+<DT><CODE>txt2tags -t html --toc --toc-level 2 -n arquivo.t2t</CODE></DT><DD>
+<P></P>
+Converte para HTML, com Sum√°rio de dois n√≠veis e t√≠tulos numerados.
+<P></P>
+<DT><CODE>txt2tags --toc-only arquivo.t2t</CODE></DT><DD>
+<P></P>
+Apenas mostra o Sum√°rio, nenhuma convers√£o √© feita.
+<P></P>
+<DT><CODE>txt2tags -t html --css-sugar --style base.css --style ui.css arquivo.t2t</CODE></DT><DD>
+<P></P>
+Converte para HTML, com c√≥digo preparado para usar CSS e tamb√©m inclui dois arquivos CSS externos.
+<P></P>
+<DT><CODE>txt2tags -t art --slides --width 80 --height 25 -o - arquivo.t2t | more</CODE></DT><DD>
+<P></P>
+Cria uma apresenta√ß√£o de slides em ASCII Art, pronta para ser mostrada em um terminal de tamanho 80x25 (colunas e linhas).
+<P></P>
+<DT><CODE>(echo ; echo "**bold**") | txt2tags -t html -H -</CODE></DT><DD>
+<P></P>
+Mostra como testar o programa rapidamente usando a STDIN como fonte.
+<P></P>
+<DT><CODE>txt2tags -t html -o - arquivo.t2t | tidy &gt; arquivo.html</CODE></DT><DD>
+<P></P>
+Manda os resultados para STDOUT e refina o c√≥digo gerado usando um programa externo (tidy) antes de salvar o arquivo HTML final.
+</DL>
+
+<A NAME="arquivos"></A>
+<H1>ARQUIVOS</H1>
+
+<DL>
+<DT>~/.txt2tagsrc</DT><DD>
+A localiza√ß√£o padr√£o para o arquivo com as configura√ß√µes do usu√°rio.
+</DL>
+
+<A NAME="ambiente"></A>
+<H1>AMBIENTE</H1>
+
+<DL>
+<DT>T2TCONFIG</DT><DD>
+Se definida, esta vari√°vel guarda o caminho completo para o arquivo de configura√ß√£o do usu√°rio.
+</DL>
+
+<A NAME="autor"></A>
 <H1>AUTOR</H1>
+
 <P>
-O txt2tags foi criado e È mantido por AurÈlio Marinho Jargas
-&lt;&lt;verde (a) aurelio net&gt;&gt;
+Aur√©lio Marinho Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 </P>
 <P>
-Esta P·gina de Manual foi escrita por JosÈ In·cio Coelho
-&lt;&lt;jic (a) technologist com&gt;&gt; como um arquivo texto, e convertida para o
-formato de manual no <B>txt2tags</B>!
-</P>
-<P>
-A traduÁ„o deste manual para o portuguÍs foi feita por Mauricio
-Teixeira &lt;&lt;mteixeira (a) webset net&gt;&gt;
-</P>
-<H1>LICEN«A</H1>
-<P>
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 AurÈlio Marinho Jargas
-</P>
-<P>
-Este programa È livre. Veja nos arquivos fonte as condiÁıes de cÛpia.
-N√O H¡ garantia, nem de COMERCIALIZA«√O nem de ADEQUA«√O A QUALQUER
-PROP”SITO.
+J√° trabalharam neste manual Jos√© In√°cio Coelho &lt;&lt;jic (a) technologist com&gt;&gt; e Mauricio Teixeira &lt;&lt;mteixeira (a) webset net&gt;&gt;.
 </P>
 
-<!-- html code generated by txt2tags 2.5 (http://txt2tags.org) -->
-<!-- cmdline: txt2tags -t html ../src/doc/Portuguese/manpage-pt.t2t -->
+<A NAME="bugs"></A>
+<H1>BUGS</H1>
+
+<P>
+<A HREF="http://bugs.txt2tags.org">http://bugs.txt2tags.org</A>
+</P>
+
+<A NAME="copyright"></A>
+<H1>COPYRIGHT</H1>
+
+<P>
+Copyright (C) 2001-2010 Aurelio Jargas, GNU GPL v2
+</P>
+
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html doc/Portuguese/manpage-pt.t2t -->
 </BODY></HTML>
