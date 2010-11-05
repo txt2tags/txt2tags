@@ -30,10 +30,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 %!preproc(txt): ' ?\[r\d+\]'	''
 %!preproc(txt): ' ?\[#\d+\]'	''
 
-% Remove links
-%!preproc(txt): '\[(How to add.*?) http://.*?new-target.html]'	\1
-%!preproc(txt): '\[(Dmitri Popov) http://.*?]'			\1
-%!preproc(txt): '\[(Rubens Queiroz de Almeida) http://.*?]'	\1
+% Remove URLs from links: Site Name (http://example.com)
+%!postproc(txt): ' \(http://\w.*?\w\)'	''
 
 % ----------------------------------------------------------------------------
 
@@ -110,21 +108,21 @@ HTML: The full version, used in the txt2tags website. This file contents
 - No more several blank lines at the end of the document. [r204]
 - Raw and tagged blocks are allowed inside paragraphs, they don't close it. <thanks Kruzslicz Ferenc> [r15]
 - If called with no arguments, don't load the Gui. Must use ``--gui`` to load it. [r118]
-- The ":" char is now allowed in the query component of a URI (link). [r184][#9]
+- The ":" char is now allowed in the query component of a URI (link). <thanks sphaira, Chris lavabit> [r184][#9]
 - Added TOC formatting example in samples/module/module-body.py file. <thanks Jendrik Seipp> [r75]
 - Test-suite: 256 tests. New modules: art, csv, include, includeconf, sample. [r142][r146][r195][r202][r224]
 - Improved some error messages. <thanks Leonardo Rosa> [r119][#6]
 - Raise error when using ``(target)`` in ``%!target`` and ``%!includeconf``. [r221][#48]
 - The program code is now cleaner/safer with the help of ``pychecker``. [r132][r133][r134][r135][r136][r137][r138][r140]
 - Removed string module import: using ``foo.upper()`` instead ``string.upper(foo)``. [r11]
-- Bugfix: Now ``-C``,``--config-file`` respects ``(target)`` in the config file settings. [r229][#23]
+- Bugfix: Now ``-C``,``--config-file`` respects ``(target)`` in the config file settings. <thanks Emmanuel Godard> [r229][#23]
 - Bugfix: Now inline verbatim, raw and tagged marks are really mutually
   exclusive. No marks are interpreted inside them. [r54]
 
 - **IMPORTANT:** This release requires Python 2.2 or newer. The only exception
   is the new %!csv command that requires Python 2.3 or newer. [#39]
 
-- New website: http://txt2tags.org - Thanks Florent Gallaire for the domain! [r304]
+- New website: http://txt2tags.org - Thanks [Florent Gallaire http://fgallaire.flext.net] for the domain! [r304]
 
 - This release was sponsored by [Rubens Queiroz de Almeida http://www.dicas-l.com.br].
 -
