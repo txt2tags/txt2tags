@@ -241,7 +241,7 @@ HTML: The full version, used in the txt2tags website. This file contents
   HTML/XHTML headers
 - New T2TCONFIG environment variable to specify RC file location
 - The strong bar (===) now is mapped to a page break in paged targets <thanks Sandor Markon @ .com for requesting>
-- tex: Now links are blue and clickable on PDF, using 'hyperref' package <thanks Rahul Bhargava @ ? for the patch>
+- tex: Now links are blue and clickable on PDF, using 'hyperref' package <thanks Rahul Bhargava for the patch>
 
 - Debug messages revamped: categorized with IDs, background color setting
 - The ``--help`` message was improved with metavars (i.e. ``--target=TYPE``)
