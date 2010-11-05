@@ -111,7 +111,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - The ":" char is now allowed in the query component of a URI (link). <thanks sphaira, Chris lavabit> [r184][#9]
 - Added TOC formatting example in samples/module/module-body.py file. <thanks Jendrik Seipp> [r75]
 - Test-suite: 256 tests. New modules: art, csv, include, includeconf, sample. [r142][r146][r195][r202][r224]
-- Improved some error messages. <thanks Leonardo Rosa> [r119][#6]
+- Improved some error messages. <thanks Leo Rosa> [r119][#6]
 - Raise error when using ``(target)`` in ``%!target`` and ``%!includeconf``. [r221][#48]
 - The program code is now cleaner/safer with the help of ``pychecker``. [r132][r133][r134][r135][r136][r137][r138][r140]
 - Removed string module import: using ``foo.upper()`` instead ``string.upper(foo)``. [r11]
