@@ -4,22 +4,24 @@
 # Quick and dirty tests for Art target.
 # NOT integrated into main test suite, you must run it alone.
 
-txt2tags -i sample.t2t -t art                                   -o default.art
-txt2tags -i sample.t2t -t art --slides                          -o slides.art
-txt2tags -i sample.t2t -t art --slides --width 60               -o slides-60.art
-txt2tags -i sample.t2t -t art --slides --width 60 --height 30   -o slides-60x30.art
-txt2tags -i sample.t2t -t art --toc                             -o toc.art
-txt2tags -i sample.t2t -t art --toc --slides --width 60         -o toc-slide.art
-txt2tags -i sample.t2t -t art --toc-only                        -o toc-only.art
-txt2tags -i sample.t2t -t art --toc-only --slides --width 60    -o toc-only-slides.art
+t2t=../../txt2tags
 
-txt2tags -i sample.t2t -t art --no-headers                                   -o default-no-headers.art
-txt2tags -i sample.t2t -t art --no-headers --slides --width 60               -o slides-60-no-headers.art
-txt2tags -i sample.t2t -t art --no-headers --toc                             -o toc-no-headers.art
-txt2tags -i sample.t2t -t art --no-headers --toc --slides --width 60         -o toc-slide-no-headers.art
+$t2t -i sample.t2t -t art                                   -o default.art
+$t2t -i sample.t2t -t art --slides                          -o slides.art
+$t2t -i sample.t2t -t art --slides --width 60               -o slides-60.art
+$t2t -i sample.t2t -t art --slides --width 60 --height 30   -o slides-60x30.art
+$t2t -i sample.t2t -t art --toc                             -o toc.art
+$t2t -i sample.t2t -t art --toc --slides --width 60         -o toc-slide.art
+$t2t -i sample.t2t -t art --toc-only                        -o toc-only.art
+$t2t -i sample.t2t -t art --toc-only --slides --width 60    -o toc-only-slides.art
 
-txt2tags -i toc-macro.t2t -t art --toc --width 60               -o toc-macro.art
-txt2tags -i toc-macro.t2t -t art --toc --slides --width 60      -o toc-macro-slides.art
+$t2t -i sample.t2t -t art --no-headers                                   -o default-no-headers.art
+$t2t -i sample.t2t -t art --no-headers --slides --width 60               -o slides-60-no-headers.art
+$t2t -i sample.t2t -t art --no-headers --toc                             -o toc-no-headers.art
+$t2t -i sample.t2t -t art --no-headers --toc --slides --width 60         -o toc-slide-no-headers.art
+
+$t2t -i toc-macro.t2t -t art --toc --width 60               -o toc-macro.art
+$t2t -i toc-macro.t2t -t art --toc --slides --width 60      -o toc-macro-slides.art
 # ^ bug: The "Table of Contents" is added together with custom TOC title
 
 errors=0
