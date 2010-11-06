@@ -1,0 +1,14 @@
+-rw-rw-r--      239 Oct  1 2001 ChangeLog
+-rw-rw-r--     2802 Jul 30 2001 pagemaker.vim
+-rw-rw-r--    30769 Jul 24 2001 photo.jpg
+-rw-rw-r--     2645 Oct  1 2001 README
+-rw-rw-r--     5972 Jul 26 2001 RULES
+-rw-rw-r--     3132 Oct  1 2001 sample.html
+-rw-rw-r--     2363 Oct  1 2001 sample.man
+-rw-rw-r--     4380 Oct  1 2001 sample.mgp
+-rw-rw-r--     2238 Oct  1 2001 sample.moin
+-rw-rw-r--     4006 Oct  1 2001 sample.pm6
+-rw-rw-r--     3228 Oct  1 2001 sample.sgml
+-rw-rw-r--     2697 Sep 28 2001 sample.txt
+-rw-rw-r--     3675 Jul 30 2001 txt.vim
+-rwxrwxr-x    19564 Oct  1 2001 txt2tags

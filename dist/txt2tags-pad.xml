@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+	<MASTER_PAD_VERSION_INFO>
+		<MASTER_PAD_VERSION>2.02</MASTER_PAD_VERSION>
+		<MASTER_PAD_EDITOR>Apimac PAD Editor v1.0.2</MASTER_PAD_EDITOR>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to dissemminate information to anyone interested in their software products.  To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+	</MASTER_PAD_VERSION_INFO>
+	<Company_Info>
+		<Company_Name>Aurelio Jargas</Company_Name>
+		<Address_1/>
+		<Address_2/>
+		<City_Town>Curitiba</City_Town>
+		<State_Province/>
+		<Zip_Postal_Code/>
+		<Country>Brazil</Country>
+		<Company_WebSite_URL>http://aurelio.net/soft</Company_WebSite_URL>
+		<Contact_Info>
+			<Author_First_Name>Aurelio</Author_First_Name>
+			<Author_Last_Name>Jargas</Author_Last_Name>
+			<Author_Email>verde@aurelio.net</Author_Email>
+			<Contact_First_Name>Aurelio</Contact_First_Name>
+			<Contact_Last_Name>Jargas</Contact_Last_Name>
+			<Contact_Email>verde@aurelio.net</Contact_Email>
+		</Contact_Info>
+		<Support_Info>
+			<Sales_Email>verde@aurelio.net</Sales_Email>
+			<Support_Email>verde@aurelio.net</Support_Email>
+			<General_Email>verde@aurelio.net</General_Email>
+			<Sales_Phone/>
+			<Support_Phone/>
+			<General_Phone/>
+			<Fax_Phone/>
+		</Support_Info>
+	</Company_Info>
+	<Program_Info>
+		<Program_Name>txt2tags</Program_Name>
+		<Program_Version>2.6</Program_Version>
+		<Program_Release_Month>11</Program_Release_Month>
+		<Program_Release_Day>05</Program_Release_Day>
+		<Program_Release_Year>2010</Program_Release_Year>
+		<Program_Cost_Dollars/>
+		<Program_Cost_Other_Code/>
+		<Program_Cost_Other/>
+		<Program_Type>Freeware</Program_Type>
+		<Program_Release_Status>Major Update</Program_Release_Status>
+		<Program_Install_Support>No Install Support</Program_Install_Support>
+		<Program_OS_Support>Linux,Linux Console,Linux GPL,Linux Open Source,Mac OS X,Mac Other,Unix,Win2000,Win7 x32,Win7 x64,Win98,WinServer,WinVista,WinVista x64,WinXP</Program_OS_Support>
+		
+		<Program_Language>Basque,Chinese,English,Finnish,French,German,Hungarian,Italian,Portuguese,Spanish,Ukrainian</Program_Language>
+		<File_Info>
+			<File_Size_Bytes>544724</File_Size_Bytes>
+			<File_Size_K>532</File_Size_K>
+			<File_Size_MB>0.5</File_Size_MB>
+		</File_Info>
+		<Expire_Info>
+			<Has_Expire_Info>N</Has_Expire_Info>
+			<Expire_Count/>
+			<Expire_Based_On/>
+			<Expire_Other_Info/>
+			<Expire_Month/>
+			<Expire_Day/>
+			<Expire_Year/>
+		</Expire_Info>
+		<Program_Change_Info>New targets: ASCII Art, AsciiDoc, Creole, DocBook, PmWiki. 
+New mark for tagged text.
+New cmdline options: targets, slides, width, height, art-chars.
+New command %!csv.
+New plugins for JOE, ne, le, markitUp editors.
+Improved HTML, LaTeX, Lout, Man Page.
+Basque, Chinese, Ukrainian translations.</Program_Change_Info>
+		<Program_Category_Class>System Utilities::Automation Tools</Program_Category_Class>
+		<Program_Specific_Category>Utilities</Program_Specific_Category>
+		<Program_System_Requirements>Python language version 2.2 or later.
+</Program_System_Requirements>
+	</Program_Info>
+	<Program_Descriptions>
+		<English>
+			<Keywords>markup,free,convert,conversion,text,Linux,Mac,Windows,Web,Python,GPL,TXT,HTML,XHTML,SGML,DocBook,LaTeX,Lout,Man,UNIX manual page,Creole,Wikipedia,Google Code Wiki,DokuWiki,PmWiki,MoinMoin,MagicPoint,PageMaker,AsciiDoc,ASCII Art</Keywords>
+			<Char_Desc_45>Converts text to HTML, LaTeX, Man page, ...</Char_Desc_45>
+			<Char_Desc_80>Converts text files to (X)HTML, DocBook, LaTeX, Lout, Man page, Wikipedia, ...</Char_Desc_80>
+			<Char_Desc_250>Txt2tags converts text files to HTML, XHTML, SGML, DocBook, LaTeX, Lout, Man page, Creole, Wikipedia, Google Code Wiki, PmWiki, DokuWiki, MoinMoin, MagicPoint, PageMaker, AsciiDoc, ASCII Art. Automatic TOC, macros, filters, include, GUI/CLI/Web.</Char_Desc_250>
+			<Char_Desc_450>Txt2tags is a document generator. It converts text files with minimal markup as **bold** and //italic// to HTML, XHTML, SGML, DocBook, LaTeX, Lout, Man page, Creole, Wikipedia, Google Code Wiki, PmWiki, DokuWiki, MoinMoin, MagicPoint, PageMaker, AsciiDoc, ASCII Art. Console, web and graphical interfaces. Translated to many languages, extensive documentation and tools. A 9-year mature community product with 40+ team members. Simple, easy, KISS.</Char_Desc_450>
+			<Char_Desc_2000>Txt2tags is a document generator. It reads a text file with minimal markup as **bold** and //italic// and converts it to the following formats:
+
+- HTML
+- XHTML
+- SGML
+- DocBook
+- LaTeX
+- Lout
+- Man page
+- Creole
+- Wikipedia / MediaWiki
+- Google Code Wiki
+- PmWiki
+- DokuWiki 
+- MoinMoin
+- MagicPoint
+- PageMaker
+- AsciiDoc
+- ASCII Art
+- Plain Text
+
+Free/GPL simple tool that works on Linux, Mac, Windows using command line, web and graphical interfaces. Written in pure Python, it's a one-file program that works with the default language modules, no need to install anything.
+
+Translated to many languages, it has extensive documentation and helper tools. A 9-year mature community product, with more than 40 team members and hundreds of users. Follows KISS principle being simple and easy.
+
+Features: simple, fast, automatic TOC, macros, filters, include, tools, extensive documentation.</Char_Desc_2000>
+		</English>
+	</Program_Descriptions>
+	<Web_Info>
+		<Application_URLs>
+			<Application_Info_URL>http://txt2tags.org</Application_Info_URL>
+			<Application_Order_URL/>
+			<Application_Screenshot_URL>http://txt2tags.org/userguide/firstdoc.png</Application_Screenshot_URL>
+			<Application_Icon_URL>http://aurelio.net/soft/img/icon32/txt2tags.png</Application_Icon_URL>
+			<Application_XML_File_URL>http://aurelio.net/soft/padfiles/txt2tags-pad.xml</Application_XML_File_URL>
+		</Application_URLs>
+		<Download_URLs>
+			<Primary_Download_URL>http://txt2tags.googlecode.com/files/txt2tags-2.6.tgz</Primary_Download_URL>
+			<Secondary_Download_URL/>
+			<Additional_Download_URL_1/>
+			<Additional_Download_URL_2/>
+		</Download_URLs>
+	</Web_Info>
+	<Permissions>
+		<Distribution_Permissions>GPL License</Distribution_Permissions>
+		<EULA>GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
+
+Full license text at http://www.gnu.org/licenses/gpl.txt</EULA>
+	</Permissions>
+</XML_DIZ_INFO>
