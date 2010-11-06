@@ -3,7 +3,7 @@ Author: João Bernardo
 Date: 2010-11-06
 
 %!encoding: UTF-8
-
+%!options: --toc --enum-title
 
 = Problems encountered after running 2to3 script =
 
