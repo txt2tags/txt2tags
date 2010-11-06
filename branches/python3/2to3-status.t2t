@@ -1,0 +1,133 @@
+Txt2tags conversion to Python 3
+Author: João Bernardo
+Date: 2010-11-06
+
+%!encoding: UTF-8
+
+
+= Problems encountered after running 2to3 script =
+
+(The line numbers may differ)
+
+----------------------------------------------
+ == Indentation (related to 'Ascii Art'):==
+
+Mixture of tabs with spaces in lines 3744 -> 3753 (FIXED)
+
+
+----------------------------------------------
+ == Comparing strings and numbers ==
+
+The test:
+
+``` if t >= 0
+
+But ``t`` was initially set to ``'z'`` as str > int for Python 2.
+
+In Python 3, this comparison is not possible.
+
+lines 3033, 3039, 3046
+
+**Solution:**
+
+'z' replaced by 1000000 in line 3024:
+``` t = r = v = 'z'
+
+
+----------------------------------------------
+ == SaveFile function (lines 2181 to 2192): ==
+
+Encoding problem as described in http://code.google.com/p/txt2tags/issues/detail?id=57
+
+But the solution proposed in the issue messes with accented chars. My solution was to open the file with ``'w'`` and not ``'wb'``.
+
+**Solution:**
+
+```
+# Open file as text, not bin
+
+f = open (file_path, 'w')
+```
+
+----------------------------------------------
+
+== Decode unicode string (related to conversion to txt) ==
+
+The encode checking is not needed anymore.
+
+**Solution:**
+
+Commented lines 3224 to 3226, indentation removed from 3227.
+
+
+----------------------------------------------
+
+== String multiplied by float ==
+
+In line 2068, ``nspace`` is defined by a division by 2 and then multiplies the number of spaces.
+
+Python 2 makes ``10 / 2 = 5``, but Python 3 makes ``10 / 2 = 5.0`` as the symbol for integer division is ``//``.
+
+**Solution:**
+
+``` nspace = int ((length - len_txt - 4) / 2)
+
+-----------------------------------------------
+
+In lines 2079 and 2083 (function aa_header is used when ``-t art`` with ``--slides``), multiplied by ``n``.
+
+**Solution:**
+
+``` int (n) # the two calls
+
+
+----------------------------------------------
+ == GUI! ==
+
+2to3 script missed a 'Tkinter'.
+
+In py3K the module was renamed to tkinter.
+
+Fixed line 5552.
+
+
+----------------------------------------------
+ == Page Maker (PM6) ==
+
+The character ``\x95`` (bullet) can not be printed in unicode and generates exception to save the file.
+
+In lines 1354 and 1356 this character is used.
+
+**Workaround:**
+
+``\x95`` replaced to ``*\t``
+
+I don't know PageMaker format, please check this fix.
+
+
+===============================================
+
+ = Already been tested: =
+
+- All conversions
+- Print to screen - STDOUT
+- Read standard input - STDIN
+- Enumerate titles
+- Table of contents, toc-levels and toc-only
+- Remove Header and Footer
+- Mask email
+- Slides in Ascii Art
+- Width and Height in Ascii Art
+- Quiet, verbose, help (duh!)
+- GUI
+- %!csv
+
+
+===============================================
+
+= Tests Lacking =
+
+- Commands like ``%!postproc`` and ``%!include``
+- Style, CSS
+- Configuration Files
+
