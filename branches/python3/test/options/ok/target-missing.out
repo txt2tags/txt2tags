@@ -1,0 +1,6 @@
+txt2tags: Error: No target specified (try --help)
+
+Please inform a target using the -t option or the %!target command.
+Example: txt2tags -t html file.t2t
+
+Run 'txt2tags --targets' to see all the available targets.

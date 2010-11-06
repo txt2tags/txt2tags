@@ -1,0 +1,72 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Crossing: Title is ignored
+'''
+= No title tags here. =
+'''
+%%% Crossing: Paragraph is ignored
+'''
+No paragraph tags here.
+'''
+%%% Crossing: Macro is ignored
+'''
+%%date(No macros here.)
+'''
+%%% Crossing: Command is ignored
+'''
+%!include: ''include.txt''
+'''
+%%% Crossing: Line is ignored
+'''
+-------------------------------------------
+'''
+%%% Crossing: Comment Line is ignored
+'''
+% You're seeing this.
+'''
+%%% Crossing: Comment Block is ignored
+'''
+%%%
+You're seeing this.
+%%%
+'''
+%%% Crossing: Verbatim Line is ignored
+'''
+``` No verbatim here.
+'''
+%%% Crossing: Verbatim Block is ignored
+'''
+```
+No verbatim here.
+```
+'''
+%%% Crossing: Tagged Line is ignored
+'''
+''' No tagged line here.
+'''
+%%% Crossing: Quote is ignored
+'''
+	No quote tags here.
+'''
+%%% Crossing: List is ignored
+'''
+- No list tags here.
+-
+'''
+%%% Crossing: Numbered List is ignored
+'''
++ No numbered list tags here.
++
+'''
+%%% Crossing: Definition List is ignored
+'''
+: No definition term tags here.
+  No definition definition tags here.
+:
+'''
+%%% Crossing: Table is ignored
+'''
+| No table here.
+'''

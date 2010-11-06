@@ -1,0 +1,28 @@
+----- Txt2tags 2.6 processing begins
+----- Ignoring user configuration file
+----- Loading source document
+---------- File read (2 lines): vvv.t2t
+---------- Areas found:   body (  2)
+---------- Source document contents stored
+----- Parsing and saving all config found (010 items)
+--------------- Added config .......quiet : 1
+--------------- Added config ..........rc : 0
+--------------- Added config ......target : txt
+--------------- Added config .....verbose : 1
+--------------- Added config .....verbose : 1
+--------------- Added config .....verbose : 1
+--------------- Added config .....outfile : -
+--------------- Added config ......infile : vvv.t2t
+--------------- Added config .realcmdline : ['-q', '--no-rc', '-t', 'txt', '--no-quiet', '-vvv', '-o-', 'vvv.t2t']
+---------- Added the following keys: target, realcmdline, outfile, rc, infile, verbose
+----- We are on Command Line interface
+----- Composing target Headers
+----- Composing target Body
+----- Composing target Footer
+----- Composing target TOC
+----- Saving results to the output file
+
+
+Text.
+
+----- Txt2tags finished successfully

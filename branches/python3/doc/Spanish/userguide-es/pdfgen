@@ -1,0 +1,12 @@
+#!/bin/bash
+
+t2t=txt2tags
+html=userguide-pdf.html
+in=userguide-es.t2t
+out=../userguide-es.pdf
+
+$t2t $in
+htmldoc --batch pdf.book
+rm $html
+echo saved $out
+exit 0

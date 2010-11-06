@@ -1,0 +1,70 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Nesting: Title inside is plain text
+	Line 1.
+	= No title tags here. =
+	Line 3.
+%%% Nesting: Paragraph inside is parsed
+	Line 1.
+	Line 2.
+	Line 3.
+%%% Nesting: Macro inside is parsed
+	Line 1.
+	%%date(Line 2.)
+	Line 3.
+%%% Nesting: Line inside is parsed
+	Line 1.
+	-------------------------------------------
+	Line 3.
+%%% Nesting: Comment Line inside is plain text
+	Line 1.
+	% You're seeing this.
+	Line 3.
+%%% Nesting: Comment Block inside is plain text
+	Line 1.
+	%%%
+	You're seeing this.
+	%%%
+	Line 3.
+%%% Nesting: Raw Line inside is plain text
+	Line 1.
+	""" No raw here.
+	Line 3.
+%%% Nesting: Raw Block inside is plain text
+	Line 1.
+	"""
+	No raw here.
+	"""
+	Line 3.
+%%% Nesting: Verbatim Line inside is plain text
+	Line 1.
+	``` No verbatim line here.
+	Line 3.
+%%% Nesting: Verbatim Block inside is plain text
+	Line 1.
+	```
+	No verbatim here.
+	```
+	Line 3.
+%%% Nesting: List inside is plain text
+	Line 1.
+	- No list tags here.
+	-
+	Line 3.
+%%% Nesting: Numbered List inside is plain text
+	Line 1.
+	+ No numbered list tags here.
+	+
+	Line 3.
+%%% Nesting: Definition List inside is plain text
+	Line 1.
+	: No definition term tags here.
+	  No definition definition tags here.
+	:
+	Line 3.
+%%% Nesting: Table inside is plain text
+	Line 1.
+	| No table here.
+	Line 3.

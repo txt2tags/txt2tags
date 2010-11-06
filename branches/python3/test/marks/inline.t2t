@@ -1,0 +1,48 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Syntax: Marks are greedy and must be "glued" with contents
+%% GLUED: The contents must be glued with the marks, no spaces
+%% between them. Right after the opening mark there must be a
+%% non-blank character, as well as right before the closing mark.
+%% 
+%% GREEDY: If the contents boundary character is the same as
+%% the mark character, it is considered contents, not mark.
+%% So ""****bold****"" turns to ""<B>**bold**</B>"" in HTML.
+
+i) **b**         //i//         __u__         --s--         ``m``         ""r""        ''t''
+i) **bo**        //it//        __un__        --st--        ``mo``        ""ra""       ''tg''
+i) **bold**      //ital//      __undr__      --strk--      ``mono``      ""raw""      ''tggd''
+i) **bo ld**     //it al//     __un dr__     --st rk--     ``mo no``     ""r aw""     ''tg gd''
+i) **bo * ld**   //it / al//   __un _ dr__   --st - rk--   ``mo ` no``   ""r " aw""   ''tg ' gd''
+i) **bo **ld**   //it //al//   __un __dr__   --st --rk--   ``mo ``no``   ""r ""aw""   ''tg ''gd''
+i) **bo ** ld**  //it // al//  __un __ dr__  --st -- rk--  ``mo `` no``  ""r "" aw""  ''tg '' gd''
+i) ****bold****  ////ital////  ____undr____  ----strk----  ````mono````  """"raw""""  ''''tggd''''
+i) ***bold***    ///ital///    ___undr___    ---strk---    ```mono```    """raw"""    '''tggd'''
+
+%%% Syntax: Repetition is greedy
+%% When the mark character is repeated many times,
+%% the contents are expanded to the largest possible.
+%% Thats why they are greedy, the outer marks are
+%% the ones used.
+
+i)  *****         /////         _____         -----         `````        """""        '''''
+i)  ******        //////        ______        ------        ``````       """"""       ''''''
+i)  *******       ///////       _______       -------       ```````      """""""      '''''''
+i)  ********      ////////      ________      --------      ````````     """"""""     ''''''''
+i)  *********     /////////     _________     ---------     `````````    """""""""    '''''''''
+i)  **********    //////////    __________    ----------    ``````````   """"""""""   ''''''''''
+
+%%% Invalid: No contents
+
+i)     ****          ////          ____          ----          ````         """"         ''''
+i)     ** **         // //         __ __         -- --         `` ``        "" ""        '' ''
+
+%%% Invalid: Contents not "glued" with marks
+%% Spaces between the marks and the contents in any side
+%% invalidate the mark.
+
+i)  ** bold**     // ital//     __ undr__     -- strk--     `` mono``    "" raw""     '' tggd''
+i)  **bold **     //ital //     __undr __     --strk --     ``mono ``    ""raw ""     ''tggd ''
+i)  ** bold **    // ital //    __ undr __    -- strk --    `` mono ``   "" raw ""    '' tggd ''

@@ -1,0 +1,479 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: txt2tags 2.0\n"
+"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"PO-Revision-Date: 2010-08-16 12:00\n"
+"Last-Translator: IVÁN, Tamás <ivantomi@gmail.com>\n"
+"Language-Team: hu_HU team\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "HTML page"
+msgstr "HTML oldal"
+
+msgid "XHTML page"
+msgstr "XHTML oldal"
+
+msgid "SGML document"
+msgstr "SGML dokumentum"
+
+msgid "DocBook document"
+msgstr "DocBook dokumentum"
+
+msgid "LaTeX document"
+msgstr "LaTeX dokumentum"
+
+msgid "Lout document"
+msgstr "Lout dokumentum"
+
+msgid "UNIX Manual page"
+msgstr "UNIX Kézikönyv oldal"
+
+msgid "MagicPoint presentation"
+msgstr "MagicPoint prezentáció"
+
+msgid "Wikipedia page"
+msgstr "Wikipedia oldal"
+
+msgid "Google Wiki page"
+msgstr "Google Wiki oldal"
+
+msgid "DokuWiki page"
+msgstr "DokuWiki oldal"
+
+msgid "PmWiki page"
+msgstr "PmWiki oldal"
+
+msgid "MoinMoin page"
+msgstr "MoinMoin oldal"
+
+msgid "PageMaker document"
+msgstr "PageMaker dokumentum"
+
+msgid "Plain Text"
+msgstr "Egyszerü szöveg"
+
+msgid "ASCII Art text"
+msgstr "ASCII Art szöveg"
+
+msgid "AsciiDoc document"
+msgstr "AsciiDoc dokumentum"
+
+msgid "Creole 1.0 document"
+msgstr "Creole 1.0 dokumentum"
+
+msgid "%s version %s <%s>"
+msgstr "%s %s-es verzió <%s>"
+
+msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
+msgstr "Használat: %s [OPCIÓK] [bemenöfájl.t2t ...]"
+
+msgid ""
+"      --targets       print a list of all the available targets and exit"
+msgstr ""
+"      --targets       kiirja a választható kimenö formátumokat és kilép"
+
+msgid "  -t, --target=TYPE   set target document type. currently supported:"
+msgstr ""
+"  -t, --target=TIPUS  beállitja a kimenö dokumentum formátumát. Jelenlegi "
+"lehetöségek:"
+
+msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
+msgstr "  -i, --infile=FÁJL   FÁJL lesz a bemenö fájl neve ('-', ha STDIN)"
+
+msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
+msgstr "  -o, --outfile=FÁJL  FÁJL lesz a kimenö fájl neve ('-', ha STDOUT)"
+
+msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgstr ""
+"      --encoding=ENC  beállitja a kimenö fájl karakter kódolását (utf-8, iso-"
+"8859-2, stb.)"
+
+msgid "      --toc           add an automatic Table of Contents to the output"
+msgstr "      --toc           automatikusan tartalomjegyzéket illeszt a kimenetbe"
+
+msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgstr "      --toc-level=N   beállitja a tartalomjegyzék mélységét N-re"
+
+msgid "      --toc-only      print the Table of Contents and exit"
+msgstr "      --toc-only      kiirja a tartalomjegyzéket és kilép"
+
+msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "  -n, --enum-title    sorszámoz minden cimsort: 1, 1.1, 1.1.1, stb."
+
+msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgstr "      --style=FÁJL    megadja a dokumentum stilusát (mint HTML CSS)"
+
+msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgstr "      --css-sugar     CSS-barát cimkéket illeszt a HTML/XHTML dokumentumba"
+
+msgid ""
+"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgstr ""
+"      --css-inside    CSS file tartalmat illeszt a HTML/XHTML fejlécekbe"
+
+msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr "  -H, --no-headers    nem tesz fej-, és láblécet a kimenetbe"
+
+msgid ""
+"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"      --mask-email    elrejti az email cimeket a spam robotok elöl. x@y.z-"
+"böl <x (a) y z> lesz"
+
+msgid ""
+"      --slides        format output as presentation slides (used by -t art)"
+msgstr ""
+"      --slides        prezentációs diákat készít (-t art esetén)"
+
+msgid ""
+"      --width=N       set the output's width to N columns (used by -t art)"
+msgstr ""
+"      --width=N       a kimenet szélességét N oszlopra állitja (-t art esetén)"
+
+msgid ""
+"      --height=N      set the output's height to N rows (used by -t art)"
+msgstr ""
+"      --height=N      a kimenet magasságát N sorra állitja (-t art esetén)"
+
+msgid "  -C, --config-file=F read configuration from file F"
+msgstr "  -C, --config-file=F beolvassa a konfigurációt az F nevü fájlból"
+
+msgid "      --gui           invoke Graphical Tk Interface"
+msgstr "      --gui           elinditja a grafikus Tk felhasználói felületet"
+
+msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
+msgstr ""
+"  -q, --quiet         csendes mód, a kimenetre csak a hibaüzeneteket irja"
+
+msgid "  -v, --verbose       print informative messages during conversion"
+msgstr "  -v, --verbose       tájékoztató üzeneteket ir ki a futás folyamán"
+
+msgid "  -h, --help          print this help information and exit"
+msgstr "  -h, --help          kiirja ezt az oldalt és kilép"
+
+msgid "  -V, --version       print program version and exit"
+msgstr "  -V, --version       kiirja a program verzióját és kilép"
+
+msgid "      --dump-config   print all the configuration found and exit"
+msgstr "      --dump-config   kiirja a talált beállitásokat és kilép"
+
+msgid "      --dump-source   print the document source, with includes expanded"
+msgstr ""
+"      --dump-source   kiirja a dokumentum forrását kibontva az include "
+"fájlokat"
+
+msgid "Turn OFF options:"
+msgstr "Kikapcsoló opciók:"
+
+msgid "Example:"
+msgstr "Példa:"
+
+msgid "file.t2t"
+msgstr "file.t2t"
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr ""
+"Alapértelmezés szerint a kimenet a 'bemenet.<célformátum>' fájlba iródik."
+
+msgid "Use --outfile to force an output file name."
+msgstr "Használja az --outfile kapcsolót másik fájlnév megadásához."
+
+msgid "If  input file is '-', reads from STDIN."
+msgstr "Ha a bemenö fájl '-', a standard bemenetröl olvas."
+
+msgid "If output file is '-', dumps output to STDOUT."
+msgstr "Ha a kimenö fájl '-', a standard kimenetre ir."
+
+msgid "%s: Error: "
+msgstr "%s: Hiba: "
+
+msgid "Sorry! Txt2tags aborted by an unknown error."
+msgstr "Sajnálom, a Txt2tags program azonositatlan hiba miatt leállt."
+
+msgid "Please send the following Error Traceback to the author"
+msgstr "Kérem, küldje el az alábbi hiba naplót a szerzönek"
+
+msgid "You must feed me with data on STDIN!"
+msgstr "A standard bemenetröl (STDIN) várom az adatokat!"
+
+msgid "Cannot read file:"
+msgstr "Ez a fájl nem olvasható:"
+
+msgid "File read (%d lines): %s"
+msgstr "A beolvasott fájl (%d sor): %s"
+
+msgid "Cannot open file for writing:"
+msgstr "Nem sikerült irásra megnyitni:"
+
+msgid "%s (try --help)"
+msgstr "%s (próbálja a ki --help kapcsolót)"
+
+msgid "Loading source document"
+msgstr "A forrás dokumentum betöltése"
+
+msgid "The input file is empty: %s"
+msgstr "A bemenö fájl üres: %s"
+
+msgid "Areas found: %s"
+msgstr "Talált tartományok: %s"
+
+msgid "Scanning source document CONF area"
+msgstr "A forrás dokumentum CONF tartományának feldogozása"
+
+msgid "Added config %s : %s"
+msgstr "Hozzáadott paraméter %s : %s"
+
+msgid "No target specified (try --help)"
+msgstr "Cél formátum megadása hiányzik (próbálja ki a --help kapcsolót)"
+
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr "Kérem adja meg a kimenö formátumot a -t kapcsoló, "
+"vagy a %!target parancs segitségével"
+
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr "Futtassa a 'txt2tags --targets' parancsot a választható formátumok "
+"listázásához"
+
+msgid "Missing input file (try --help)"
+msgstr "Hiányzó bemenö fájl (próbálja ki a  --help kapcsolót)"
+
+msgid "Invalid target '%s'"
+msgstr "Érvénytelen kimenö formátum '%s'"
+
+msgid "--%s value must be a number"
+msgstr "A --%s kapcsoló után számot kell megadni"
+
+msgid "Option --split must be 0, 1 or 2"
+msgstr "A --split kapcsoló értéke 0, 1 vagy 2 lehet"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr "--art-chars: %i karakter helyett %i darab jött"
+
+msgid "Input and Output files are the same: %s"
+msgstr "A bemenö és kimenö fájlok azonosak: %s"
+
+msgid "Added the following keys: %s"
+msgstr "A következö kulcsok adódtak hozzá: %s"
+
+msgid "Invalid CONFIG line on %s"
+msgstr "Hibás sor a %s konfigurációs fájlban"
+
+msgid "Processing line %03d: %s"
+msgstr "A %03d sor feldolgozása: %s"
+
+msgid "A file cannot include itself (loop!)"
+msgstr "Egy fájl nem olvastathatja önmagát (hurok!)"
+
+msgid "Finished Config file inclusion: %s"
+msgstr "A konfigurációs fájl beolvasása befejezödött: %s"
+
+msgid "Added %s"
+msgstr "%s hozzáadva"
+
+msgid "You can't use (target) with %s"
+msgstr "A (target) és a %s nem használható együtt"
+
+msgid "OFF"
+msgstr "KI"
+
+msgid "ON"
+msgstr "BE"
+
+msgid "RC file"
+msgstr "RC fájl"
+
+msgid "source document"
+msgstr "forrás dokumentum"
+
+msgid "command line"
+msgstr "parancssor"
+
+msgid "RAW config for %s"
+msgstr "NYERS konfiguráció %s számára"
+
+msgid "Full PARSED config"
+msgstr "A teljes ÉRTELMEZETT konfiguráció"
+
+msgid "Active filters"
+msgstr "Aktiv szürök"
+
+msgid "Invalid PostProc filter regex"
+msgstr "Hibás reguláris kifejezés a PostProc szüröben"
+
+msgid "Invalid PostProc filter replacement"
+msgstr "Hibás PostProc szürö behelyettesités"
+
+msgid "%s wrote %s"
+msgstr "A %s kimenete a %s fájlba iródott"
+
+msgid "Table of Contents"
+msgstr "Tartalomjegyzék"
+
+msgid "Source document contents stored"
+msgstr "A bemenö dokumentum tartalma tárolva"
+
+msgid "Parsing and saving all config found (%03d items)"
+msgstr "A talált %03d konfigurációs paraméter értelmezése és mentése"
+
+msgid "Composing target Headers"
+msgstr "A fejlécek létrehozása"
+
+msgid "Composing target Body"
+msgstr "A dokumentumtörzs létrehozása"
+
+msgid "Composing target Footer"
+msgstr "A láb létrehozása"
+
+msgid "Composing target TOC"
+msgstr "A tartalomjegyzék létrehozása"
+
+msgid "Saving results to the output file"
+msgstr "Az eredmények kiirása a kimenö fájlba"
+
+msgid "Invalid PreProc filter regex"
+msgstr "Hibás reguláris kifejezés a PreProc szüröben"
+
+msgid "Invalid PreProc filter replacement"
+msgstr "Hibás PreProc szürö behelyettesités"
+
+msgid "All files"
+msgstr "Minden fájl"
+
+msgid "txt2tags files"
+msgstr "txt2tags fájlok"
+
+msgid "Close"
+msgstr "Bezár"
+
+msgid "You must select a target type!"
+msgstr "A cél formátum kiválasztása kötelezö"
+
+msgid "You must provide the source file location!"
+msgstr "A forrás fájl megadása kötelezö"
+
+msgid "%s: %s converted to %s"
+msgstr "%s: %s átalakitva %s-ra"
+
+msgid "Conversion done!"
+msgstr "Az átalakitás kész."
+
+msgid "FROM:"
+msgstr "MIRÖL:"
+
+msgid "TO:"
+msgstr "MIRE:"
+
+msgid "%s FATAL ERROR!"
+msgstr "%s VÉGZETES HIBA!"
+
+msgid "-- select one --"
+msgstr "-- válasszon egyet --"
+
+msgid "Enter the source file location:"
+msgstr "Adja meg a bemenö fájlt:"
+
+msgid "Choose the target document type:"
+msgstr "Adja meg a cél formátumot:"
+
+msgid "Some options you may check:"
+msgstr "Néhány hasznos kapcsoló:"
+
+msgid "Some extra options:"
+msgstr "Néhány különleges kapcsoló:"
+
+msgid "Include headers on output"
+msgstr "A fejléc, cim és láb generálás"
+
+msgid "Number titles (1, 1.1, 1.1.1, etc)"
+msgstr "Cimsorok számozása (1, 1.1, 1.1.1, stb.)"
+
+msgid "Do TOC also (Table of Contents)"
+msgstr "Készüljön tartalomjegyzék"
+
+msgid "Hide e-mails from SPAM robots"
+msgstr "Email cimek elrejtése a SPAM robotok elöl"
+
+msgid "Just do TOC, nothing more"
+msgstr "Csak tartalomjegyzék készüljön, semmi más."
+
+msgid "Dump to screen (Don't save target file)"
+msgstr "Képernyöre irjon, ne fájlba."
+
+msgid "ONE source, MULTI targets"
+msgstr "EGY forrás SOK kimenö formátum"
+
+msgid "Browse"
+msgstr "Böngészés"
+
+msgid "<screen>"
+msgstr "<képernyö>"
+
+msgid "Output: "
+msgstr "Kimenet: "
+
+msgid "Quit"
+msgstr "Kilép"
+
+msgid "Convert!"
+msgstr "Konvertálj!"
+
+msgid "Txt2tags %s processing begins"
+msgstr "Txt2tags %s feldolgozás megkezdödik"
+
+msgid "Option --%s can't be used with multiple input files"
+msgstr "A --%s kapcsoló nem használható több bemenö fájl esetén"
+
+msgid "Ignoring user configuration file"
+msgstr "A felhasználói beállitások fájlját figyelmen kivül hagyása"
+
+msgid "Loading user configuration file"
+msgstr "A felhasználói beállitások fájljának betöltése"
+
+msgid "We are on GUI interface"
+msgstr "A GUI felületet használjuk"
+
+msgid "txt2tags ERROR!"
+msgstr "txt2tags HIBA!"
+
+msgid "We are on Command Line interface"
+msgstr "A parancssoros felületet használjuk"
+
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr "Kérem adjon meg egy bemenö file-t (.t2t) a paranccsor végén."
+
+msgid "Txt2tags finished sucessfuly"
+msgstr "A txt2tags sikeresen lefutott"
+
+#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
+#~ msgstr "  -H, --no-headers    nem hoz létre fejléc, cim és láb tartalmakat"
+
+#~ msgid ""
+#~ "      --headers       show header, title and footer contents (default ON)"
+#~ msgstr ""
+#~ "      --headers       hozzon létre fejléc, cim és láb tartalmakat "
+#~ "(alapértelmezés: létrehoz)"
+
+#~ msgid ""
+#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr ""
+#~ "      --css-sugar     CSS-barát cimkéket illeszt a HTML és XHTML "
+#~ "dokumentumokba"
+
+#~ msgid "      --toc           add TOC (Table of Contents) to target document"
+#~ msgstr ""
+#~ "      --toc           tartalomjegyzéket illeszt a kimenö dokumentumba"
+
+#~ msgid "      --toc-only      print document TOC and exit"
+#~ msgstr "      --toc-only      csak tartalomjegyzéket készit"
+
+#~ msgid ""
+#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
+#~ msgstr ""
+#~ "      --rc            olvassa a felhasználói beállitásokat tartalmazó ~/."
+#~ "txt2tagsrc fájlt (alapértelmezés: olvassa)"
+
+#~ msgid "Invalid target '%s' (try --help)"
+#~ msgstr ""
+#~ "A '%s' ismeretlen cél formátum (próbálja ki a --help kapcsolót)"

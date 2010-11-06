@@ -1,0 +1,178 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Items: Prefixed by hyphen
+- Use the hyphen to prefix list items.
+- There must be one space after the hyphen.
+- The list is closed by two consecutive blank lines.
+
+
+%%% Items: Free leading spacing (indentation)
+     - The list can be indented on the source document.
+     - You can use any number of spaces.
+     - The result will be the same.
+
+
+%%% Items: Vertical spacing between items
+- Let one blank line between the list items.
+
+- It will be maintained on the conversion.
+
+- Some targets don't support this behavior.
+	   	  
+- This one was separated by a line with blanks.
+  You can also put a blank line inside
+
+  the item contents and it will be preserved.
+
+
+%%% Items: Exactly ONE space after the hyphen
+-This is not a list (no space)
+
+-    This is not a list (more than one space)
+
+-	This is not a list (a TAB instead the space)
+
+
+%%% Items: Catchy cases
+- - This is a list
+- + This is a list
+- : This is a list
+
+
+%%% Nesting: Creating sublists
+- This is the "mother" list first item.
+- Here is the second, but inside this item,
+  - there is a sublist, with its own items.
+  - Note that the items of the same sublist
+  - must have the same indentation.
+    - And this can go on, opening sublists.
+      - Just add leading spaces before the
+      - hyphen and sublists will be opened.
+      - The two blank lines closes them all.
+
+
+%%% Nesting: Free leading spacing (indentation)
+- When nesting lists, the additional spaces are free.
+ - You can add just one,
+        - or many.
+          - What matters is to put more than the previous.
+          - But remember that the other items of the same list
+          - must use the same indentation.
+
+
+%%% Nesting: Maximum depth
+- There is not a depth limit,
+  - you can go deeper and deeper.
+    - But some targets may have restrictions.
+      - The LaTeX maximum is here, 4 levels.
+        - This one and the following sublists
+          - are moved up to the level 4
+            - when converting to LaTeX.
+              - On the other targets,
+                - it is just fine
+                  - to have a very deep list.
+
+
+%%% Nesting: Reverse doesn't work
+        - Reverse nesting doesn't work.
+      - Because a sublist *must* have a mother list.
+    - It's the list concept, not a txt2tags limitation.
+  - All this sublists will be bumped to mother lists.
+- At level 1, like this one.
+
+
+%%% Nesting: Going deeper and back
+
+%% When nesting back to an upper level, the previous sublist
+%% is automatically closed.
+- Level 1
+  - Level 2
+    - Level 3
+      - Level 4
+    - Level 3 -- (closed Level 4)
+  - Level 2 -- (closed Level 3)
+- Level 1 -- (closed Level 2)
+
+
+%% More than one list can be closed when nesting back.
+- Level 1
+  - Level 2
+    - Level 3
+      - Level 4
+- Level 1 -- (closed Level 4, Level 3 and Level 2)
+
+
+%%% Nesting: Vertical spacing between lists
+- Level 1
+
+  - Level 2 -- blank BEFORE and AFTER (in)
+
+    - Level 3
+% comment lines are NOT considered blank lines
+      - Level 4
+% comment lines are NOT considered blank lines
+    - Level 3
+
+  - Level 2 -- blank BEFORE and AFTER (out)
+
+- Level 1
+        
+  - Level 2 -- blank BEFORE (spaces) and AFTER (TAB)
+	
+    - Level 3
+
+
+%%% Nesting: Messing up
+%% Be careful when going back on the nesting,
+%% it must be on a valid level! If not, it will
+%% be bumped up to the previous valid level.
+- Level 1
+    - Level 2
+        - Level 3
+            - Level 4
+          - Level 3.5 ???
+        - Level 3
+      - Level 2.5 ???
+    - Level 2
+  - Level 1.5 ???
+- Level 1
+
+
+%%% Closing: Two (not so) empty lines
+- This list is closed by a line with spaces and other with TABs
+        
+	
+- This list is NOT closed by two comment lines
+% comment lines are NOT considered blank lines
+% comment lines are NOT considered blank lines
+- This list is closed by a line with spaces and TAB,
+- then a comment line, then an empty line.
+	      	
+% comment lines are NOT considered blank lines
+
+%%% Closing: Empty item closes current (sub)list
+
+%% The two blank lines closes ALL the lists.
+%% To close just the current, use an empty item.
+- Level 1
+  - Level 2
+    - Level 3
+    -
+    Level 2
+  -  
+  Level 1
+-
+
+%% The empty item can have trailing blanks.
+- Empty item with trailing spaces.
+-    
+
+- Empty item with trailing TAB.
+-	
+
+%%% Closing: EOF closes the lists
+- If the end of the file (EOF) is hit,
+  - all the currently opened list are closed,
+    - just like when using the two blank lines.

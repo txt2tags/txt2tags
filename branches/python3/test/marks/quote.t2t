@@ -1,0 +1,64 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Syntax: TAB defines quote
+	To quote a paragraph, just prefix it by a TAB
+	character. All the lines of the paragraph must
+	begin with a TAB.
+Any non-tabbed line closes the quote block.
+
+%%% Nesting: Creating deeper quotes
+	The number of leading TABs identifies the quote
+	block depth. This is quote level 1.
+		With two TABs, we are on the quote
+		level 2.
+			The more TABs, more deep is
+			the quote level.
+				There isn't a limit.
+
+%%% Nesting: Reverse nesting works
+				This quote starts at
+				level 4.
+			Then its depth is decreased.
+		Counting down, one by one.
+	Until the level 1.
+
+%%% Nesting: Random count
+			Unlike lists, any quote block is
+			independent, not part of a tree.
+	The TAB count don't need to be incremental
+	by one.
+				The nesting don't need
+				to follow any rule.
+		Quotes can be opened and closed
+		in any way.
+					You choose.
+
+%%% Nesting: When not supported
+	Some targets (as sgml) don't support the
+	nesting of quotes. There is only one quote
+	level.
+		In this case, no matter how much
+		TABs are used to define the quote
+		block, it always will be level 1.
+
+%%% Syntax: Spaces after TAB
+	  Spaces AFTER the TAB character are allowed.
+	  But be careful, it can be confusing.
+
+%%% Invalid: Spaces before TAB
+  	Spaces BEFORE the TAB character
+  	invalidate the mark. It's not quote.
+
+%%% Invalid: Paragraphs inside
+	Paragraph breaks inside a quote aren't
+	possible.
+	
+	This sample are two separated quoted
+	paragraphs, not a quote block with
+	two paragraphs inside.
+
+%%% Closing: EOF closes the open block
+	The end of the file (EOF) closes the
+	currently open quote block.

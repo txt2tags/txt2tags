@@ -1,0 +1,276 @@
+<?xml version="1.0"
+      encoding="utf-8"
+?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbook/dtd/xml/4.5/docbookx.dtd">
+<article lang="en">
+  <articleinfo>
+    <title>TXT2TAGS SAMPLE</title>
+    <authorgroup>
+      <author><othername>Aurelio Jargas</othername></author>
+    </authorgroup>
+    <date>10/20/2010</date>
+  </articleinfo>
+
+<sect1><title>Introduction</title>
+<para>
+Welcome to the txt2tags sample file.
+</para>
+<para>
+Here you have examples and a brief explanation of all
+marks.
+</para>
+<para>
+The first 3 lines of the this file are used as headers,
+on the following format:
+</para>
+<programlisting>
+line1: document title
+line2: author name, email
+line3: date, version
+</programlisting>
+<para>
+Lines with balanced equal signs = around are titles.
+</para>
+</sect1>
+<sect1><title>Fonts and Beautifiers</title>
+<para>
+We have two sets of fonts:
+</para>
+<para>
+The NORMAL type that can be improved with beautifiers.
+</para>
+<para>
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+</para>
+<para>
+We will now enter on a subtitle...
+</para>
+  <sect2><title>Beautifiers</title>
+<para>
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+</para>
+<para>
+We use double *, /, - and _ to represent <emphasis role="bold">bold</emphasis>,
+<emphasis>italic</emphasis>, strike and <emphasis role="underline">underline</emphasis>.
+</para>
+<para>
+The <emphasis role="bold"><emphasis>bold italic</emphasis></emphasis> style is also supported as a
+combination.
+</para>
+  </sect2>
+  <sect2><title>Pre-Formatted Text</title>
+<para>
+We can put a code sample or other pre-formatted text:
+</para>
+<programlisting>
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+</programlisting>
+<para>
+And also, it's easy to put a one line pre-formatted
+text:
+</para>
+<programlisting>
+prompt$ ls /etc
+</programlisting>
+<para>
+Or use <code>pre-formatted</code> inside sentences.
+</para>
+  </sect2>
+  <sect2><title>More Cosmetics</title>
+<para>
+Special entities like email (<email>duh@somewhere.com</email>) and
+URL (<ulink url="http://www.duh.com">http://www.duh.com</ulink>) are detected automagically,
+as long as the horizontal line:
+</para>
+
+<para>
+^ thin or large v
+</para>
+
+<para>
+You can also specify an <ulink url="http://duh.org">explicit link</ulink>
+with label.
+</para>
+<para>
+And remember,
+</para>
+	<blockquote><para>
+A TAB in front of the line does a quotation.
+		<blockquote><para>
+More TABs, more depth (if allowed).
+		</para></blockquote>
+	</para></blockquote>
+<para>
+Nice.
+</para>
+  </sect2>
+</sect1>
+<sect1><title>Lists</title>
+<para>
+A list of items is natural, just putting a <emphasis role="bold">dash</emphasis> or
+a <emphasis role="bold">plus</emphasis> at the beginning of the line.
+</para>
+  <sect2><title>Plain List</title>
+<para>
+The dash is the default list identifier. For sublists,
+just add <emphasis role="bold">spaces</emphasis> at the beginning of the line. More
+spaces, more sublists.
+</para>
+<itemizedlist>
+<listitem><para>earth
+<itemizedlist>
+<listitem><para>america
+<itemizedlist>
+<listitem><para>south america
+<itemizedlist>
+<listitem><para>brazil
+<itemizedlist>
+<listitem><para>how deep can i go?
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+<listitem><para>europe
+<itemizedlist>
+<listitem><para>lots of countries
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+<listitem><para>mars
+<itemizedlist>
+<listitem><para>who knows?
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+</itemizedlist>
+<para>
+The list ends with <emphasis role="bold">two</emphasis> consecutive blank lines.
+</para>
+  </sect2>
+  <sect2><title>Numbered List</title>
+<para>
+The same rules as the plain list, just a different
+identifier (plus).
+</para>
+<orderedlist numeration="arabic">
+<listitem><para>one
+</para></listitem>
+<listitem><para>two
+</para></listitem>
+<listitem><para>three
+<itemizedlist>
+<listitem><para>mixed lists!
+</para></listitem>
+<listitem><para>what a mess
+<orderedlist numeration="arabic">
+<listitem><para>counting again
+</para></listitem>
+<listitem><para>...
+</para></listitem>
+</orderedlist>
+</para></listitem>
+</itemizedlist>
+</para></listitem>
+<listitem><para>four
+</para></listitem>
+</orderedlist>
+  </sect2>
+  <sect2><title>Definition List</title>
+<para>
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+</para>
+<variablelist>
+<varlistentry><term>orange</term><listitem><para>
+a yellow fruit
+</para></listitem></varlistentry>
+<varlistentry><term>apple</term><listitem><para>
+a green or red fruit
+</para></listitem></varlistentry>
+<varlistentry><term>other fruits</term><listitem><para>
+<itemizedlist>
+<listitem><para>wee!
+</para></listitem>
+<listitem><para>mixing lists
+<orderedlist numeration="arabic">
+<listitem><para>again!
+</para></listitem>
+<listitem><para>and again!
+</para></listitem>
+</orderedlist>
+</para></listitem>
+</itemizedlist>
+</para></listitem></varlistentry>
+</variablelist>
+  </sect2>
+</sect1>
+<sect1><title>Tables</title>
+<para>
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+</para>
+<programlisting>
+ || heading 1 |  heading 2  |  heading 3 |
+  | cell 1.1  |  cell 1.2   |   cell 1.3 |
+  | cell 2.1  |  cell 2.2   |   cell 2.3 |
+</programlisting>
+<para>
+Without the last pipe, no border:
+</para>
+<programlisting>
+ || heading 1 |  heading 2  |  heading 3
+  | cell 1.1  |  cell 1.2   |   cell 1.3
+  | cell 2.1  |  cell 2.2   |   cell 2.3
+</programlisting>
+</sect1>
+<sect1><title>Special Entities</title>
+<para>
+Because things were too simple.
+</para>
+  <sect2><title>Images</title>
+<para>
+The image mark is as simple as it can be: <code>[filename]</code>.
+</para>
+<para>
+                      <mediaobject><imageobject><imagedata fileref="img/photo.jpg"/></imageobject></mediaobject>  
+</para>
+<itemizedlist>
+<listitem><para>The filename must end in PNG, JPG, GIF, or similar.
+</para></listitem>
+<listitem><para>No spaces inside the brackets!
+</para></listitem>
+</itemizedlist>
+  </sect2>
+  <sect2><title>Other</title>
+<para>
+The handy <code>%%date</code> macro expands to the current date.
+</para>
+<para>
+So today is 20101031 on the ISO <code>YYYYMMDD</code> format.
+</para>
+<para>
+You can also specify the date format with the %? flags,
+as <code>%%date(%m-%d-%Y)</code> which gives: 10-31-2010.
+</para>
+<para>
+That's all for now.
+</para>
+
+<para>
+<mediaobject><imageobject><imagedata fileref="img/t2tpowered.png"/></imageobject></mediaobject> (<ulink url="sample.t2t">sample.t2t</ulink>)
+</para>
+  </sect2>
+</sect1>
+
+<!-- dbk code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t dbk samples/sample.t2t -->
+</article>

@@ -1,0 +1,38 @@
+
+%!target: html
+%!options: -H -o-
+
+%%%
+Sample output:
+<H2>title</H2>
+
+<UL>
+<LI>Item 1.
+<PRE>
+  Verbatim block
+</PRE>
+
+<LI>Item 2.
+</UL>
+
+There should be a blank line before <PRE>.
+
+It is not added because PRE is nested inside the list, and _should_add_blank_line() does not handle nested blocks very well. It asks BLOCK.last content to decide if the opening blank line should be added, but it fails because BLOCK.last = title (which is true, because the list is not closed yet).
+
+It must see if we're dealing with a nested block, and if so, check if we're the first block or which was the last closed block inside the list (in the case there were two consecutive PREs or something).
+
+This bug affects:
+test/crossing/deflist.t2t
+test/crossing/list.t2t
+test/crossing/numlist.t2t
+
+2010-06-17
+%%%
+
+==title==
+- Item 1.
+```
+Verbatim block
+```
+- Item 2.
+-
