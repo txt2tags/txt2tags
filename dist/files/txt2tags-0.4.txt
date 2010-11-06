@@ -1,0 +1,15 @@
+drwxrwxr-x        0 Mar 11 2002 txt2tags-0.4/
+-rw-rw-r--      889 Mar 11 2002 txt2tags-0.4/ChangeLog
+-rw-rw-r--     2802 Jul 30 2001 txt2tags-0.4/pagemaker.vim
+-rw-rw-r--    30769 Jul 24 2001 txt2tags-0.4/photo.jpg
+-rw-rw-r--     2647 Nov  9 2001 txt2tags-0.4/README
+-rw-rw-r--     6689 Mar 11 2002 txt2tags-0.4/RULES
+-rw-rw-r--     3783 Mar 11 2002 txt2tags-0.4/sample.html
+-rw-rw-r--     2910 Mar 11 2002 txt2tags-0.4/sample.man
+-rw-rw-r--     4950 Mar 11 2002 txt2tags-0.4/sample.mgp
+-rw-rw-r--     2680 Mar 11 2002 txt2tags-0.4/sample.moin
+-rw-rw-r--     4528 Mar 11 2002 txt2tags-0.4/sample.pm6
+-rw-rw-r--     3757 Mar 11 2002 txt2tags-0.4/sample.sgml
+-rw-rw-r--     3171 Mar 11 2002 txt2tags-0.4/sample.txt
+-rw-rw-r--     5143 Mar 11 2002 txt2tags-0.4/txt.vim
+-rwxrwxr-x    23971 Mar 11 2002 txt2tags-0.4/txt2tags

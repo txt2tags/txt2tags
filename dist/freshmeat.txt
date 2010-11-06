@@ -1,0 +1,24 @@
+http://freshmeat.net/projects/txt2tags
+
+SHORT DESCRIPTION: A tool that converts text files to HTML, LaTeX, man page, and more.
+
+DESCRIPTION: Txt2tags converts a text file with minimal markup to HTML, XHTML, SGML, DocBook, LaTeX, Lout, Man page, Creole, Wikipedia, Google Code Wiki, PmWiki, DokuWiki, MoinMoin, MagicPoint, PageMaker, AsciiDoc, ASCII Art. It is simple and fast and features automatic TOC, macros, filters, include, tools, GUI, CLI, and Web interfaces, translations, and extensive documentation.
+
+---------------------------------------------------------------------------
+
+2.6: New targets include ASCII Art, AsciiDoc, Creole, DocBook, and PmWiki. A new mark was adaded for tagged text. A new command %!csv was added to include a CSV file. New command line options include --targets, --slides, --width, --height, and --art-chars. New plugins for JOE, ne, le, markitUp editors. Improvements were made to the HTML, LaTeX, Lout, and Man Page targets. Basque, Chinese, Ukrainian translations were added.
+
+2.5: New targets include Wikipedia, Google Code Wiki, and DokuWiki. A new mark was added for strikeout text. New tools include a TextMate bundle, a gedit language file, and a gensite program. Unicode (UTF-8) support was improved. The PHP Web interface was rewritten. Improvements were made to the MoinMoin, LaTeX, and Lout targets. Finnish and Chinese translations were added.
+
+2.4: Many bugs were fixed. Speed was optimized. The "%%%" mark was added to comment multiple lines. More than one CSS per HTML file and user-defined .sty files for LaTeX are supported. Chinese translations were added. Cleaner minimalist LaTeX headers (preamble) were added.
+
+2.3.2: A new %%% mark was implemented for commented blocks. The test suite was improved, resulting in better handling of tricky markup combinations and the fixing of three (rare) fatal errors.
+
+2.3.1: A new header comment showing the CSS file path when using --css-inside. No more empty &lt;style&gt; tag on --css-inside when the CSS file is not found. The Style config may be used multiple times (e.g. two or more CSS files)
+
+2.3: This release brings the table column span feature for HTML/XHTML. The
+new --config-file option allows to include configuration from an
+external file and --dump-source show the source file with the includes
+expanded. The new "Markup Rules" document is a complete guide for all
+the marks and there are documentation translations for French,
+Hungarian and Chinese.

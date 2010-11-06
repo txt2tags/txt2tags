@@ -1,0 +1,12 @@
+drwxrwxr-x        0 Jul 26 2001 txt2tags-0.1/
+-rw-rw-r--    30769 Jul 24 2001 txt2tags-0.1/photo.jpg
+-rw-rw-r--      923 Jul 26 2001 txt2tags-0.1/README
+-rw-rw-r--     5972 Jul 26 2001 txt2tags-0.1/RULES
+-rw-rw-r--     3128 Jul 26 2001 txt2tags-0.1/sample.html
+-rw-rw-r--     4309 Jul 26 2001 txt2tags-0.1/sample.mgp
+-rw-rw-r--     2238 Jul 26 2001 txt2tags-0.1/sample.moin
+-rw-rw-r--     4006 Jul 26 2001 txt2tags-0.1/sample.pm6
+-rw-rw-r--     3224 Jul 26 2001 txt2tags-0.1/sample.sgml
+-rw-rw-r--     2697 Jul 26 2001 txt2tags-0.1/sample.txt
+-rw-rw-r--     3759 Jul 26 2001 txt2tags-0.1/txt.vim
+-rwxrwxr-x    15457 Jul 26 2001 txt2tags-0.1/txt2tags.py
