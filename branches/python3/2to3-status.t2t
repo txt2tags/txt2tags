@@ -1,6 +1,6 @@
 Txt2tags conversion to Python 3
 Author: João Bernardo
-Date: 2010-11-06
+Date: 2010-11-07
 
 %!encoding: UTF-8
 %!options: --toc --enum-title
@@ -82,6 +82,7 @@ In lines 2079 and 2083 (function aa_header is used when ``-t art`` with ``--slid
 
 
 ----------------------------------------------
+
  == GUI! ==
 
 2to3 script missed a 'Tkinter'.
@@ -92,6 +93,7 @@ Fixed line 5552.
 
 
 ----------------------------------------------
+
  == Page Maker (PM6) ==
 
 The character ``\x95`` (bullet) can not be printed in unicode and generates exception to save the file.
@@ -100,9 +102,75 @@ In lines 1354 and 1356 this character is used.
 
 **Workaround:**
 
-``\x95`` replaced to ``*\t``
+``\x95\t`` replaced to ``*\t``
 
 I don't know PageMaker format, please check this fix.
+
+
+----------------------------------------------
+
+ == Some idioms were fixed: ==
+
+ === Type Comparison: isinstance ===
+
+The isinstance function checks if an objects is from a class that inherits from the other
+ 
+``` if type(a) == type(b):
+
+is now:
+
+``` if isinstance(a, type(b)):
+
+some times appeared:
+
+``` if (type(a) == type('')) or (type(a) == type(u'')):
+
+This is deprecated, therefore only unicode string check is made.
+
+``` if isinstance(a, type('')):
+
+
+**Type comparison should be avoided for performance and compatibility reasons.**
+
+Use that instead (when possible):
+
+```
+try:
+    treat_as_iter_type(my_var)
+except:
+    treat_as_non_iter(my_var)
+```
+
+
+-----------------------------------------------
+ === Sorting lists ===
+
+In some places, is made:
+
+
+```
+my_list = 'some random words here'.split()
+my_list.sort()
+```
+
+To avoid these two operations (because ``[].sort`` doesn't return a list and that would be wasteful), now is used the new ``sorted()`` function
+
+``` my_list = sorted( 'some random words here'.split() )
+
+
+and that produces the same result
+
+-----------------------------------------------
+ === Better use of iterators: ===
+
+Functions like ``range()``, ``map()``, ``'{}.keys()'`` and many others now return iterators.
+
+2to3 script never knows (ok, it knows only when you use ``for i in range(n)``) when it can use an iterator and 
+changes everything to ``list(function())``.
+
+The new model, when used right, reduces memory use so I refixed many ``list(function())`` made by the script
+
+Fixed lines: 197, 1427, 1980, 2147, 2193, 2290, 2409, 2650, 2694, 2706, 2707, 2769, 2818, 4221, 4367, 4417, 4942, 5402
 
 
 ===============================================
@@ -120,14 +188,14 @@ I don't know PageMaker format, please check this fix.
 - Width and Height in Ascii Art
 - Quiet, verbose, help (duh!)
 - GUI
-- %!csv
+- ``%!csv``
+- ``%!postproc`` , ``%!preproc``, ``%!options``...
 
 
 ===============================================
 
 = Tests Lacking =
 
-- Commands like ``%!postproc`` and ``%!include``
 - Style, CSS
 - Configuration Files
 
