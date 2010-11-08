@@ -1413,7 +1413,7 @@ def getTags(config):
 	
 	# Make the HTML -> XHTML inheritance
 	xhtml = alltags['html'].copy()
-	for key in list(xhtml.keys()): xhtml[key] = xhtml[key].lower()
+	for key in xhtml.keys(): xhtml[key] = xhtml[key].lower()
 	# Some like HTML tags as lowercase, some don't... (headers out)
 	if HTML_LOWER: alltags['html'] = xhtml.copy()
 	xhtml.update(alltags['xhtml'])
@@ -2414,7 +2414,7 @@ class CommandLine:
 			# Default values are useless on cmdline
 			if val == dft_options.get(key): continue
 			# -short format
-			if key in list(use_short.keys()):
+			if key in use_short.keys():
 				args.append('-'+use_short[key])
 				continue
 			# --long format
@@ -2790,7 +2790,7 @@ class ConfigMaster:
 				Error(_("--art-chars: Expected %i chars, got %i") % (
 					len(AA_VALUES), len(config['art-chars'])))
 			else:
-				AA = dict(list(zip(AA_KEYS, config['art-chars'])))
+				AA = dict(zip(AA_KEYS, config['art-chars']))
 		# --toc-only is stronger than others
 		if config['toc-only']:
 			config['headers'] = 0
@@ -4211,8 +4211,7 @@ def dumpConfig(source_raw, parsed_config):
 		print()
 	# Then the parsed results of all of them
 	print(_('Full PARSED config'))
-	keys = list(parsed_config.keys()) ; keys.sort()  # sorted
-	for key in keys:
+	for key in sorted( parsed_config.keys() ):
 		val = parsed_config[key]
 		# Filters are the last
 		if key == 'preproc' or key == 'postproc':
