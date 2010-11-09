@@ -1,112 +1,112 @@
 TXT2TAGS - ARQUIVO DE EXEMPLO
-AurÈlio Jargas
-%%mtime(%d.%m.%Y)
+Aur√©lio Jargas
+%%mtime(%d/%m/%Y)
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 
-                   =  IntroduÁ„o  =
+                   =  Introdu√ß√£o  =
 
 Bem-vindo(a) ao arquivo de exemplo do txt2tags.
 
-Aqui vocÍ encontra exemplos e uma r·pida explicaÁ„o
+Aqui voc√™ encontra exemplos e uma r√°pida explica√ß√£o
 de todas as marcas. Use-o como esqueleto do seu
 primeiro documento escrito no txt2tags.
 
-As primeiras 3 linhas deste arquivo s„o usadas como
-cabeÁalho, no seguinte formato:
+As primeiras 3 linhas deste arquivo s√£o usadas como
+cabe√ßalho, no seguinte formato:
 ```
-linha 1: tÌtulo do documento
+linha 1: t√≠tulo do documento
 linha 2: nome do autor, email
-linha 3: data, vers„o
+linha 3: data, vers√£o
 ```
 
 As linhas que possuem sinais de igual = balanceados no
-inÌcio e final s„o tÌtulos.
+in√≠cio e final s√£o t√≠tulos.
 
-% aqui um coment·rio secreto!
-%TODO fazer um link para a p·gina do programa http://txt2tags.org
+% aqui um coment√°rio secreto!
+%TODO fazer um link para a p√°gina do programa http://txt2tags.org
 
 
              =  Fontes e Embelezadores  =
 
-H· dois tipos de fontes disponÌveis:
+H√° dois tipos de fontes dispon√≠veis:
 
 O tipo NORMAL, que pode ser destacado com
 embelezadores.
 
-O tipo MONOESPA«ADO, usa letras monoespaÁadas
-(tipo Courier) para textos j· formatados.
+O tipo MONOESPA√áADO, usa letras monoespa√ßadas
+(tipo Courier) para textos j√° formatados.
 
-Agora vamos entrar num subtÌtulo...
+Agora vamos entrar num subt√≠tulo...
 
 
                  ==  Embelezadores  ==
 
-As marcaÁıes para embelezar o texto s„o simples,
+As marca√ß√µes para embelezar o texto s√£o simples,
 iguais as usadas numa mensagem de e-mail.
 
 Basta duplicar *, /, - e _ para representar **negrito**,
-//it·lico//, --riscado-- e __sublinhado__.
+//it√°lico//, --riscado-- e __sublinhado__.
 
-TambÈm È possÌvel fazer **//negrito it·lico//**
+Tamb√©m √© poss√≠vel fazer **//negrito it√°lico//**
 combinando as marcas.
 
 
-              ==  Texto PrÈ-Formatado  ==
+              ==  Texto Pr√©-Formatado  ==
 
-… possÌvel inserir um trecho de cÛdigo ou outro texto
-j· formatado:
+√â poss√≠vel inserir um trecho de c√≥digo ou outro texto
+j√° formatado:
 ```
-  aqui    È      prÈ-formatado
-//marcas// **n„o**  s„o ``interpretadas``
+  aqui    √©      pr√©-formatado
+//marcas// **n√£o**  s√£o ``interpretadas``
 ```
 
-Se for apenas uma linha, h· uma marca especial:
+Se for apenas uma linha, h√° uma marca especial:
 ``` prompt$ ls /etc
 
-Ou ent„o use ``as crases`` para incluir texto
-monoespaÁado dentro de par·grafos.
+Ou ent√£o use ``as crases`` para incluir texto
+monoespa√ßado dentro de par√°grafos.
 
 
                 ==  Mais Perfumaria  ==
 
 Entidades especiais como e-mail (abc@algumlugar.com)
-e URL (http://www.abc.com) s„o reconhecidas
-automagicamente. A linha horizontal tambÈm:
+e URL (http://www.abc.com) s√£o reconhecidas
+automagicamente. A linha horizontal tamb√©m:
 
 --------------------------------------------------------
 ^ fina ou grossa v
 ========================================================
 
-VocÍ tambÈm pode especificar um
+Voc√™ tamb√©m pode especificar um
 [link com nome http://abc.org].
 
 E lembre-se:
-	Um TAB no inÌcio da linha indica uma citaÁ„o.
+	Um TAB no in√≠cio da linha indica uma cita√ß√£o.
 		Mais TABs, mais profundidade (se permitido).
 Legal.
 
 
                      =  Listas  =
 
-A lista de itens È natural, basta colocar um **hÌfen**
-ou **sinal de mais** no inÌcio da linha.
+A lista de itens √© natural, basta colocar um **h√≠fen**
+ou **sinal de mais** no in√≠cio da linha.
 
 
                  ==  Lista Normal  ==
 
-O hÌfen È o marcador de listas. Para fazer sublistas
-(aninhadas), basta adicionar **espaÁos em branco** no
-inÌcio da linha. Mais espaÁos, mais sublistas.
+O h√≠fen √© o marcador de listas. Para fazer sublistas
+(aninhadas), basta adicionar **espa√ßos em branco** no
+in√≠cio da linha. Mais espa√ßos, mais sublistas.
 
 - terra
-  - amÈrica
-    - amÈrica do sul
+  - am√©rica
+    - am√©rica do sul
       - brasil
         - quanto posso descer?
   - europa
-    - muitos paÌses
+    - muitos pa√≠ses
 - marte
   - quem sabe?
 
@@ -117,14 +117,14 @@ consecutivas.
 
                 ==  Lista Numerada  ==
 
-As mesmas regras as lista normal s„o v·lidas para a
+As mesmas regras as lista normal s√£o v√°lidas para a
 numerada, mudando apenas o marcador (sinal de mais).
 
 + um
 + dois
-+ trÍs
++ tr√™s
   - misturando listas!
-  - que bagunÁa...
+  - que bagun√ßa...
     + contando de novo
     + ...
 + quatro
@@ -132,15 +132,15 @@ numerada, mudando apenas o marcador (sinal de mais).
 
                 ==  Lista de Termos  ==
 
-O marcador da lista È o dois-pontos, seguido do termo.
-O conte˙do do termo È colocado na linha seguinte.
+O marcador da lista √© o dois-pontos, seguido do termo.
+O conte√∫do do termo √© colocado na linha seguinte.
 
 : laranja
   uma fruta amarela
-: maÁ„
+: ma√ß√£
   uma fruta verde ou vermelha
 : outras frutas
-  - Ípa!
+  - √™pa!
   - misturando listas
     + de novo!
     + e de novo!
@@ -149,45 +149,45 @@ O conte˙do do termo È colocado na linha seguinte.
                      =  Tabelas  =
 
 Utilize barras verticais para separar os campos.
-Duas barras no inÌcio indicam uma linha de tÌtulo.
-EspaÁos em branco indicam o alinhamento do campo.
+Duas barras no in√≠cio indicam uma linha de t√≠tulo.
+Espa√ßos em branco indicam o alinhamento do campo.
 
- || tÌtulo 1  |  tÌtulo 2   |   tÌtulo 3 |
+ || t√≠tulo 1  |  t√≠tulo 2   |   t√≠tulo 3 |
   | campo 1.1 |  campo 1.2  |  campo 1.3 |
   | campo 2.1 |  campo 2.2  |  campo 2.3 |
 
-Tire a ˙ltima barra para a tabela ficar sem borda:
+Tire a √∫ltima barra para a tabela ficar sem borda:
 
- || tÌtulo 1  |  tÌtulo 2   |   tÌtulo 3
+ || t√≠tulo 1  |  t√≠tulo 2   |   t√≠tulo 3
   | campo 1.1 |  campo 1.2  |  campo 1.3
   | campo 2.1 |  campo 2.2  |  campo 2.3
 
 
                =  Entidades Especiais  =
 
-Est· tudo muito simples, vamos complicar um pouco...
+Est√° tudo muito simples, vamos complicar um pouco...
 
                     == Imagens  ==
 
-A marca da imagem È simplÈrrima: ``[arquivo]``.
+A marca da imagem √© simpl√©rrima: ``[arquivo]``.
 
                [../img/photo.jpg]  
 
 - O nome do arquivo deve terminar em PNG, JPG, GIF, ...
-- N„o È permitido espaÁos em branco!
+- N√£o √© permitido espa√ßos em branco!
 
 
                     ==  Outros  ==
 
 A macro ``%%date`` informa a data atual.
 
-Hoje È %%date no formato ISO (``AAAAMMDD``).
+Hoje √© %%date no formato ISO (``AAAAMMDD``).
 
 O formato da data pode ser mudado usando os
 formatadores %?, como em ``%%date(%d-%m-%Y)``,
 que fica: %%date(%d-%m-%Y).
 
-… isso.
+√â isso.
 
 -------------------------------------------------------
 [../img/t2tpowered.png] ([%%infile %%infile])
