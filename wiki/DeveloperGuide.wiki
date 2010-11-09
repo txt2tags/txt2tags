@@ -1,6 +1,6 @@
 #summary Coding style and SVN instructions for developers
 
-If you have any doubt, please contact Aurelio: mailto:verde@aurelio.net or aureliojargas (Google Talk).
+If you have any doubt, please contact Aurelio: mailto:verde@aurelio.net, [http://twitter.com/aureliojargas @aureliojargas], or aureliojargas (Google Talk).
 
 = Before you start =
 
@@ -18,6 +18,7 @@ svn update
  * Do not use short options (like -s, -c) for new features. Talk to Aurelio if you think the feature is important enough to deserve a short option.
  * Talk to Aurelio before adding a new mark, %%macro or %!command, they may violate the KISS principle.
  * If your patch is complex or may alter txt2tags in a substancial way, talk to Aurelio first -- KISS principle under attack! :)
+ * If you have an incomplete or unstable work to commit, create a new branch. See instructions at this page.
 
 = Coding style =
 
@@ -120,5 +121,33 @@ If you're adding an extra, like text editor syntax files, add the prefix extra:
 {{{
 svn commit -m "Your nice detailed log message"
 }}}
+
+= Branches =
+
+Branches are used as a separate area where you can refine your work until it's stable and ready for production (trunk).
+
+When you have a new idea or feature to experiment, first create a new branch then add your code to it. When you think it's ready, merge the branch changes into trunk.
+
+== Create a branch ==
+
+To create a branch it's just a single command line, you don't even need to have a local copy of trunk. This was the command I used to create the python3 branch:
+
+{{{
+svn copy https://txt2tags.googlecode.com/svn/trunk/ \
+        https://txt2tags.googlecode.com/svn/branches/python3 \
+        -m "Creating a branch of trunk for code compatible with Python 3."
+}}}
+
+Just change "python3" and the log message and the new branch is done.
+
+== Checkout your new branch ==
+
+Checkout the new branch you just created so you can work on it:
+
+{{{
+svn checkout https://txt2tags.googlecode.com/svn/branches/python3/ python3 --username aureliojargas
+}}}
+
+Of course, change "python3" and "aureliojargas" by your own data.
 
 Happy coding! :)
