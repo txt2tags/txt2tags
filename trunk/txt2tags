@@ -141,7 +141,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
+TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole mdwn'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -183,7 +183,8 @@ TARGET_NAMES = {
   'txt'    : _('Plain Text'),
   'art'    : _('ASCII Art text'),
   'adoc'   : _('AsciiDoc document'),
-  'creole' : _('Creole 1.0 document')
+  'creole' : _('Creole 1.0 document'),
+  'mdwn'   : _('MarkDown document'),
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -549,6 +550,11 @@ r"""\documentclass{article}
 #@NP                               # Break page after Headers
 """,
 	'creole': """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
+""",
+	'mdwn': """\
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
@@ -1402,6 +1408,60 @@ def getTags(config):
 		'tableCellSep'         : ' | '           ,
 		# TODO: placeholder (mark for unknown syntax)
 		# if possible: http://www.wikicreole.org/wiki/Placeholder
+	},
+		# regular markdown: http://daringfireball.net/projects/markdown/syntax
+		# markdown extra:   http://michelf.com/projects/php-markdown/syntax/
+	'mdwn': {
+		'title1'               : '# \a '         ,
+		'title2'               : '## \a '  	     ,
+		'title3'               : '### \a '       ,
+		'title4'               : '#### \a '      ,
+		'title5'               : '##### \a '     ,
+		'blockQuoteOpen'       : '    '          ,
+		#'blockQuoteClose'      : '>'            ,
+		'fontMonoOpen'         : "`"             ,
+		'fontMonoClose'        : "`"             ,
+		'fontBoldOpen'         : "**"            ,
+		'fontBoldClose'        : "**"            ,
+		'fontItalicOpen'       : "*"             ,
+		'fontItalicClose'      : "*"             ,
+		'fontUnderlineOpen'    : ""              ,
+		'fontUnderlineClose'   : ""              ,
+		'fontStrikeOpen'       : ""         	 ,
+		'fontStrikeClose'      : ""        	     ,
+		# Lists 
+		#'listOpenCompact'             : '*'     ,
+		'listItemLine'          : ' '            ,
+		'listItemOpen'          : '*'            ,
+		#'numlistItemLine'       : '1.'          ,
+		'numlistItemOpen'       : '1.'           ,
+		'deflistItem1Open'      : ': '           ,
+		#'deflistItem1Close'     : ':'           ,
+		#'deflistItem2LineOpen'  : '::'          ,
+		#'deflistItem2LineClose' : ':'           ,
+		# Verbatim block 
+		#'blockVerbOpen'        : ''         	 ,
+		#'blockVerbClose'       : ''             ,
+		'bar1'                 : '---'           ,
+		'bar2'                 : '---'           ,
+		# URL, email and anchor
+		'url'                   : '\a'           ,
+		'urlMark'               : '[\a](\a)'     ,
+		'email'                 : '\a'           ,
+		#'emailMark'             : '[[\a -> mailto:\a]]',
+		#'anchor'                : '[[#\a]]\n'   ,
+		# Image markup 
+		'img'                   : '![](\a)'      ,
+		#'imgAlignLeft'         : '{{\a }}'      ,
+		#'imgAlignRight'        : '{{ \a}}'      ,
+		#'imgAlignCenter'       : '{{ \a }}'     ,
+		# Table attributes
+		'tableTitleRowOpen'    : '| '            ,
+		'tableTitleRowClose'   : '|\n|---------------|'            ,
+		'tableTitleCellSep'    : ' |'            ,
+		'tableRowOpen'         : '|'             ,
+		'tableRowClose'        : '|'             ,
+		'tableCellSep'         : ' |'            ,
 	}
 	}
 	
@@ -1873,6 +1933,31 @@ def getRules(config):
 			'blanksaroundlist':1,
 			'blanksaroundnumlist':1,
 			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+		},
+		'mdwn': {
+			#'keeplistindent':1,
+			'keepquoteindent':1,
+			#'indentverbblock':1, 
+			'linkable':1,
+			'labelbeforelink':1,
+			'tableable':1,
+			'imglinkable':1,
+			'tablecellstrip':1,
+			#'autotocwithbars':1,
+			'autonumberlist':1,
+			'spacedlistitemopen':1,
+			'spacednumlistitemopen':1,
+			'deflisttextstrip':1,
+			#'verbblocknotescaped':1,
+			'blanksaroundpara':1,
+			#'blanksaroundverb':1,
+			#'blanksaroundquote':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			#'blanksarounddeflist':1,
 			'blanksaroundtable':1,
 			'blanksaroundbar':1,
 			'blanksaroundtitle':1,
