@@ -43,9 +43,9 @@ def MoveFile(orig, target):
 def initTest(name, infile, outfile, okfile=None):
 		if not okfile:
 			okfile  = os.path.join(DIR_OK, outfile)
-		print '  Testing %s ...' % name,
+		print('  Testing %s ...' % name, end=' ')
 		if not os.path.isfile(okfile):
-			print 'Skipping test (missing %s)' % okfile
+			print('Skipping test (missing %s)' % okfile)
 			return False
 		return True
 
@@ -76,14 +76,14 @@ def diff(outfile, okfile=None):
 	out = ReadFile(outfile)
 	ok = ReadFile(okfile)
 	if out != ok:
-		print 'FAILED'
+		print('FAILED')
 		FAILED = FAILED + 1
 		if not os.path.isdir(DIR_ERROR):
 			os.mkdir(DIR_ERROR)
 		MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
 		ERROR_FILES.append(outfile)
 	else:
-		print 'OK'
+		print('OK')
 		OK = OK + 1
 		os.remove(outfile)
 

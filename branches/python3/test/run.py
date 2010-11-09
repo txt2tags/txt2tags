@@ -28,12 +28,12 @@ if len(sys.argv) > 1:
 
 # Show which version is being tested
 os.system(lib.TXT2TAGS + " -V")
-print
-print 'Base command used for all tests:\n  ' + lib.TXT2TAGS
-print
+print()
+print('Base command used for all tests:\n  ' + lib.TXT2TAGS)
+print()
 
 for module in MODULES:
-	print 'Entering on module', module
+	print('Entering on module', module)
 	
 	# loading test module
 	os.chdir(SCRIPT_DIR)
@@ -42,7 +42,7 @@ for module in MODULES:
 	
 	# do what you have to do
 	if not os.path.isdir(module):
-		print 'ERROR: Invalid module %s' % module
+		print('ERROR: Invalid module %s' % module)
 		sys.exit()
 	os.chdir(module)
 	ok, failed, errors = run.run()
@@ -63,11 +63,11 @@ if TOTAL_FAILED:
 	stats = "%d ok / %d failed" % (TOTAL_OK, TOTAL_FAILED)
 else:
 	stats = "100% ok"
-print
-print "Totals: %d tests (%s)" % (TOTAL_OK+TOTAL_FAILED, stats)
+print()
+print("Totals: %d tests (%s)" % (TOTAL_OK+TOTAL_FAILED, stats))
 
 if ERRORS:
-	print
-	print "Check out the files with errors:"
-	print '\n'.join(ERRORS)
+	print()
+	print("Check out the files with errors:")
+	print('\n'.join(ERRORS))
 	sys.exit(1)
