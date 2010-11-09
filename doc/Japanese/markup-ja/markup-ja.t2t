@@ -79,22 +79,24 @@ Txt2tags 書きかたの例
 %!include: quote.t2t
 
 ''' </td></tr><tr><td class="t2t">
-%!include: ``verb.t2t``
-''' </td><td>
-%!include: verb.t2t
-''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
 ''' </td><td>
 %!include: verbline.t2t
 
 ''' </td></tr><tr><td class="t2t">
+%!include: ``verb.t2t``
+''' </td><td>
+%!include: verb.t2t
+
+''' </td></tr><tr><td class="t2t">
 %!include: ``raw.t2t``
 ''' </td><td>
 %!include: raw.t2t
+
 ''' </td></tr><tr><td class="t2t">
-%!include: ``rawline.t2t``
+%!include: ``tagged.t2t``
 ''' </td><td>
-%!include: rawline.t2t
+%!include: tagged.t2t
 ''' </td></tr><tr><th colspan="2">
 %-------------------------------------------------
 ''' その他
@@ -126,4 +128,4 @@ Txt2tags 書きかたの例
 日本語訳 by. Mage Whopper (magewhopper at gmail.com)
 
 % TRANSLATOR: don't forget the link text!
-[Go to the txt2tags homepage http://txt2tags.sf.net]
+[Go to the txt2tags homepage http://txt2tags.org]
