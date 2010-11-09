@@ -152,7 +152,7 @@ OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
             'infile'     :'', 'outfile'    :'', 'encoding'   :'',
             'config-file':'', 'split'      :0 , 'lang'       :'',
             'width'      :0 , 'height'     :0 , 'art-chars'  :'',
-            'show-config-value':''}
+            'show-config-value':'', 'template':''}
 ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
             'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
             'dump-source':0 , 'targets'    :0}
@@ -243,6 +243,7 @@ _("  -t, --target=TYPE   set target document type. currently supported:"),
   '                      %s'  % ', '.join(TARGETS[9:]),
 _("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
 _("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
+_("  -T, --template=NAME use file NAME.<target> as template"),
 _("      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"),
 _("      --toc           add an automatic Table of Contents to the output"),
 _("      --toc-level=N   set maximum TOC level (depth) to N"),
@@ -2281,6 +2282,7 @@ class CommandLine:
 			'o':'outfile',
 			'q':'quiet',
 			't':'target',
+			'T':'template',
 			'v':'verbose',
 			'V':'version',
 		}
@@ -4355,17 +4357,30 @@ def toc_formatter(toc, config):
 
 
 def doHeader(headers, config):
-	if not config['headers']: return []
+	if not config['headers']: return config['fullBody']
 	if not headers: headers = ['','','']
 	target = config['target']
 	if not HEADER_TEMPLATE.has_key(target):
 		Error("doHeader: Unknown target '%s'"%target)
 	
-	if target in ('html','xhtml') and config.get('css-sugar'):
-		template = HEADER_TEMPLATE[target+'css'].split('\n')
-	else:
-		template = HEADER_TEMPLATE[target].split('\n')
-	
+	if config['template'] == '' : # use default templates
+		if target in ('html','xhtml','xhtmls') and config.get('css-sugar'):
+			template = HEADER_TEMPLATE[target+'css'].split('\n')
+		else:
+			template = HEADER_TEMPLATE[target].split('\n')
+		template.append("\n%(BODY)s\n")
+		template.append(TAGS['EOD'])
+	else: # read user's template file
+		templatefile = ''
+		names = [config['template']+'.'+target,config['template']]
+		for file in names:
+			if os.path.isfile(file): 
+				templatefile = file 
+				break
+		if not templatefile:
+			Error(_("Cannot find template file:")+config['template'])
+		template = Readfile(templatefile,remove_linebreaks=1)
+		
 	head_data = {'STYLE':[], 'ENCODING':''}
 	for key in head_data.keys():
 		val = config.get(key.lower())
@@ -4391,7 +4406,7 @@ def doHeader(headers, config):
 
 	# css-inside removes STYLE line
 	#XXX In tex, this also removes the modules call (%!style:amsfonts)
-	if target in ('html','xhtml') and config.get('css-inside') and \
+	if target in ('html','xhtml','xhtmls') and config.get('css-inside') and \
 	   config.get('style'):
 		head_data['STYLE'] = []
 
@@ -4438,7 +4453,11 @@ def doHeader(headers, config):
 					template.insert(i+1, template[i].replace(style_mark, styles.pop()))
 				del template[i]
 				break
+	# Expand macros on *all* lines of the template
+	template = map(MacroMaster(config=config).expand,template)
 	# Populate template with data (dict expansion)
+	# Adding Body contents
+	head_data['BODY'] = '\n'.join(config['fullBody'])
 	template = '\n'.join(template) % head_data
 	
 	# Adding CSS contents into template (for --css-inside)
@@ -4849,7 +4868,6 @@ def convert_this_files(configs):
 		#TODO escape line before?
 		#TODO see exceptions by tex and mgp
 		Message(_("Composing target Headers"),1)
-		target_head = doHeader(source_head, myconf)
 		# Parse the full marked body into tagged target
 		first_body_line = (len(source_head) or 1)+ len(source_conf) + 1
 		Message(_("Composing target Body"),1)
@@ -4876,7 +4894,8 @@ def convert_this_files(configs):
 		target_body = toc_inside_body(target_body, target_toc, myconf)
 		if not AUTOTOC and not myconf['toc-only']: target_toc = []
 		# Finally, we have our document
-		outlist = target_head + target_toc + target_body + target_foot
+		myconf['fullBody'] = target_toc + target_body + target_foot
+		outlist = doHeader(source_head, myconf)
 		# If on GUI, abort before finish_him
 		# If module, return finish_him as list
 		# Else, write results to file or STDOUT
