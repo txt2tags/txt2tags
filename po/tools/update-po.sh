@@ -1,6 +1,6 @@
 #!/bin/bash
 # update-po.sh
-# 2004-05-30 Aurelio Marinho Jargas
+# 2004-05-30 Aurelio Jargas
 # 2010-06-18 renamed to update-po.sh, pot extraction moved to update-pot.sh
 #
 # You get the msgmerge/msgfmt commands from gettext package.
