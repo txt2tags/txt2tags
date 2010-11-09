@@ -3,6 +3,7 @@ Veja as marcas convertidas para HTML
 
 
 %!target: html
+%!encoding: UTF-8
 %!options: --css-sugar -o ../markup-pt.html
 %!preproc: t2t\.png	../img/t2tpowered.png
 
@@ -19,7 +20,7 @@ Veja as marcas convertidas para HTML
 
 
 {table align="center" border=1}
-{tr}{th colspan="2"}B¡SICO{/th}{/tr}{tr}{td class="t2t"}
+{tr}{th colspan="2"}B√ÅSICO{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
 {/td}{td}
 %!include: title.t2t
@@ -51,7 +52,7 @@ Veja as marcas convertidas para HTML
 %!include: ``deflist.t2t``
 {/td}{td}
 %!include: deflist.t2t
-{/td}{/tr}{tr}{th colspan="2"}¡REAS{/th}{/tr}{tr}{td class="t2t"}
+{/td}{/tr}{tr}{th colspan="2"}√ÅREAS{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``quote.t2t``
 {/td}{td}
 %!include: quote.t2t
@@ -93,4 +94,4 @@ Veja as marcas convertidas para HTML
 ```
 
 ```
-[Ir para a p·gina do txt2tags http://txt2tags.org/pt/]
+[Ir para a p√°gina do txt2tags http://txt2tags.org/pt/]
