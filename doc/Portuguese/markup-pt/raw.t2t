@@ -1,8 +1,8 @@
 
 """
-   Uma área protegida é composta
- com três aspas duplas ao redor.
+   Uma Ã¡rea protegida Ã© composta
+ com trÃªs aspas duplas ao redor.
 
-**Marcas** não são interpretadas
-     e o espaçamento é ignorado.
+**Marcas** nÃ£o sÃ£o interpretadas
+     e o espaÃ§amento Ã© ignorado.
 """
