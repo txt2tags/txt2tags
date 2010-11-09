@@ -4847,8 +4847,8 @@ def doFooter(config):
 		ret.append(doCommentLine(cmdline))
 
 	# Maybe we have a specific tag to close the document?
-	if TAGS['EOD']:
-		ret.append(TAGS['EOD'])
+	#if TAGS['EOD']:
+	#	ret.append(TAGS['EOD'])
 
 	return ret
 
