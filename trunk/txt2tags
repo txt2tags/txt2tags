@@ -1529,7 +1529,7 @@ def getTags(config):
 		# markdown extra:   http://michelf.com/projects/php-markdown/syntax/
 	'mdwn': {
 		'title1'               : '# \a '         ,
-		'title2'               : '## \a '  	     ,
+		'title2'               : '## \a '        ,
 		'title3'               : '### \a '       ,
 		'title4'               : '#### \a '      ,
 		'title5'               : '##### \a '     ,
@@ -1543,9 +1543,9 @@ def getTags(config):
 		'fontItalicClose'      : "*"             ,
 		'fontUnderlineOpen'    : ""              ,
 		'fontUnderlineClose'   : ""              ,
-		'fontStrikeOpen'       : ""         	 ,
-		'fontStrikeClose'      : ""        	     ,
-		# Lists 
+		'fontStrikeOpen'       : ""              ,
+		'fontStrikeClose'      : ""              ,
+		# Lists
 		#'listOpenCompact'             : '*'     ,
 		'listItemLine'          : ' '            ,
 		'listItemOpen'          : '*'            ,
@@ -1555,7 +1555,7 @@ def getTags(config):
 		#'deflistItem1Close'     : ':'           ,
 		#'deflistItem2LineOpen'  : '::'          ,
 		#'deflistItem2LineClose' : ':'           ,
-		# Verbatim block 
+		# Verbatim block
 		#'blockVerbOpen'        : ''         	 ,
 		#'blockVerbClose'       : ''             ,
 		'bar1'                 : '---'           ,
@@ -1566,7 +1566,7 @@ def getTags(config):
 		'email'                 : '\a'           ,
 		#'emailMark'             : '[[\a -> mailto:\a]]',
 		#'anchor'                : '[[#\a]]\n'   ,
-		# Image markup 
+		# Image markup
 		'img'                   : '![](\a)'      ,
 		#'imgAlignLeft'         : '{{\a }}'      ,
 		#'imgAlignRight'        : '{{ \a}}'      ,
@@ -1583,7 +1583,7 @@ def getTags(config):
 		# http://www.bbcode.org/reference.php (but seldom implemented)
 	'bbcode': {
 		'title1'               : '[size=200]\a[/size]'             ,
-		'title2'               : '[size=170]\a[/size]'  	       ,
+		'title2'               : '[size=170]\a[/size]'             ,
 		'title3'               : '[size=150]\a[/size]'             ,
 		'title4'               : '[size=130]\a[/size]'             ,
 		'title5'               : '[size=120]\a[/size]'             ,
@@ -2147,7 +2147,7 @@ def getRules(config):
 		'mdwn': {
 			#'keeplistindent':1,
 			'keepquoteindent':1,
-			#'indentverbblock':1, 
+			#'indentverbblock':1,
 			'linkable':1,
 			'labelbeforelink':1,
 			'tableable':1,
@@ -2172,7 +2172,7 @@ def getRules(config):
 		'bbcode': {
 			#'keeplistindent':1,
 			'keepquoteindent':1,
-			#'indentverbblock':1, 
+			#'indentverbblock':1,
 			'linkable':1,
 			#'labelbeforelink':1,
 			'tableable':1,
@@ -4685,14 +4685,15 @@ def doHeader(headers, config):
 			template = HEADER_TEMPLATE[target+'css'].split('\n')
 		else:
 			template = HEADER_TEMPLATE[target].split('\n')
-		template.append("\n%(BODY)s\n")
+		template.append("%(BODY)s")
+		#template.append("\n%(BODY)s\n")
 		template.append(TAGS['EOD'])
 	else: # read user's template file
 		templatefile = ''
 		names = [config['template']+'.'+target,config['template']]
 		for file in names:
-			if os.path.isfile(file): 
-				templatefile = file 
+			if os.path.isfile(file):
+				templatefile = file
 				break
 		if not templatefile:
 			Error(_("Cannot find template file:")+config['template'])
