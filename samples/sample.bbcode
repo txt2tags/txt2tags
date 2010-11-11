@@ -1,0 +1,205 @@
+TXT2TAGS SAMPLE
+Aurelio Jargas
+10/20/2010
+
+
+[size=200]Introduction[/size]
+
+Welcome to the txt2tags sample file.
+
+Here you have examples and a brief explanation of all
+marks.
+
+The first 3 lines of the this file are used as headers,
+on the following format:
+
+line1: document title
+line2: author name, email
+line3: date, version
+
+Lines with balanced equal signs = around are titles.
+
+[size=200]Fonts and Beautifiers[/size]
+
+We have two sets of fonts:
+
+The NORMAL type that can be improved with beautifiers.
+
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+
+We will now enter on a subtitle...
+
+[size=170]Beautifiers[/size]
+
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+
+We use double *, /, - and _ to represent [b]bold[/b],
+[i]italic[/i], strike and [u]underline[/u].
+
+The [b][i]bold italic[/i][/b] style is also supported as a
+combination.
+
+[size=170]Pre-Formatted Text[/size]
+
+We can put a code sample or other pre-formatted text:
+
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+
+And also, it's easy to put a one line pre-formatted
+text:
+
+prompt$ ls /etc
+
+Or use [code]pre-formatted[/code] inside sentences.
+
+[size=170]More Cosmetics[/size]
+
+Special entities like email () and
+URL ([url]http://www.duh.com[/url]) are detected automagically,
+as long as the horizontal line:
+
+
+
+^ thin or large v
+
+
+
+You can also specify an [url=http://duh.org]explicit link[/url]
+with label.
+
+And remember,
+
+	[quote]
+	A TAB in front of the line does a quotation.
+		[quote]
+		More TABs, more depth (if allowed).
+		[/quote]
+	[/quote]
+
+Nice.
+
+[size=200]Lists[/size]
+
+A list of items is natural, just putting a [b]dash[/b] or
+a [b]plus[/b] at the beginning of the line.
+
+[size=170]Plain List[/size]
+
+The dash is the default list identifier. For sublists,
+just add [b]spaces[/b] at the beginning of the line. More
+spaces, more sublists.
+
+[list]
+[*] earth
+[list]
+[*] america
+[list]
+[*] south america
+[list]
+[*] brazil
+[list]
+[*] how deep can i go?
+[/list]
+[/list]
+[/list]
+[*] europe
+[list]
+[*] lots of countries
+[/list]
+[/list]
+[*] mars
+[list]
+[*] who knows?
+[/list]
+[/list]
+
+The list ends with [b]two[/b] consecutive blank lines.
+
+[size=170]Numbered List[/size]
+
+The same rules as the plain list, just a different
+identifier (plus).
+
+[list=1]
+[*] one
+[*] two
+[*] three
+[list]
+[*] mixed lists!
+[*] what a mess
+[list=1]
+[*] counting again
+[*] ...
+[/list]
+[/list]
+[*] four
+[/list]
+
+[size=170]Definition List[/size]
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+orange
+a yellow fruit
+apple
+a green or red fruit
+other fruits
+[list]
+[*] wee!
+[*] mixing lists
+[list=1]
+[*] again!
+[*] and again!
+[/list]
+[/list]
+
+[size=200]Tables[/size]
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+heading 1heading 2heading 3
+cell 1.1cell 1.2cell 1.3
+cell 2.1cell 2.2cell 2.3
+
+Without the last pipe, no border:
+
+heading 1heading 2heading 3
+cell 1.1cell 1.2cell 1.3
+cell 2.1cell 2.2cell 2.3
+
+[size=200]Special Entities[/size]
+
+Because things were too simple.
+
+[size=170]Images[/size]
+
+The image mark is as simple as it can be: [code][filename][/code].
+
+                      [img]img/photo.jpg[/img]  
+
+[list]
+[*] The filename must end in PNG, JPG, GIF, or similar.
+[*] No spaces inside the brackets!
+[/list]
+
+[size=170]Other[/size]
+
+The handy [code]%%date[/code] macro expands to the current date.
+
+So today is 20101110 on the ISO [code]YYYYMMDD[/code] format.
+
+You can also specify the date format with the %? flags,
+as [code]%%date(%m-%d-%Y)[/code] which gives: 11-10-2010.
+
+That's all for now.
+
+
+
+[img]img/t2tpowered.png[/img] ([url=sample.t2t]sample.t2t[/url])
+
