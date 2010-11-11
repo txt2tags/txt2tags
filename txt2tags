@@ -5308,8 +5308,6 @@ def get_include_contents(file_, path=''):
 	# Default txt2tags marked text, just BODY matters
 	if id_ == 't2t':
 		lines = get_file_body(filepath)
-		#TODO fix images relative path if file has a path, ie.: chapter1/index.t2t (wait until tree parsing)
-		#TODO for the images path fix, also respect outfile path, if different from infile (wait until tree parsing)
 		lines.insert(0, '%%!currentfile: %s'%(filepath))
 		# This appears when included hit EOF with verbatim area open
 		#lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
