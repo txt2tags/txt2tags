@@ -1,0 +1,19 @@
+% txt2tags proc for slidy
+
+%% http://www.w3.org/Talks/Tools/Slidy2/
+%% subsections define frame titles
+
+%% slidy specifics
+
+% ordered lists are animated
+
+%!postproc(xhtml): '<ol>' '<ul class="incremental">'
+%!postproc(xhtml): '</ol>' '</ul>'
+
+% consider H2 as new slide
+%!postproc(xhtml): '<h1>' '</div><div class="slide"><h1>'
+%!postproc(xhtml): '<h2>' '</div><div class="slide"><h2>'
+
+
+%TODO class="outline" / class="expand"
+%TODO 
