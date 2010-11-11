@@ -32,6 +32,11 @@
 [[folder/subfolder/../../../up.png] http://www.foo.com]
 [[folder/subfolder/../../../../upup.png] http://www.foo.com]
 
+% Images with absolute paths must be untouched
+[/foo/bar.png]
+[[/foo/bar.png] foo.html]
+[[/foo/bar.png] http://www.foo.com]
+
 % Local named links
 [Foo ../../up.html]
 [Foo ../up.html]
