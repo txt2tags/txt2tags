@@ -7,6 +7,8 @@
 # Tip: regenerate affected samples:
 # cd ../../ && for t in TARGETS; do txt2tags -t $t samples/sample.t2t; done
 
+cd $(dirname "$0")
+
 errors=0
 svn_root='../..'
 txt2tags=$svn_root/txt2tags
