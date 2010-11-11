@@ -1,0 +1,47 @@
+
+[../../../upup.png]
+[../../up.png]
+[../current.png]
+[sub.png]
+[subfolder/subsub.png]
+[sub.png]
+[../current.png]
+[../../up.png]
+[../../../upup.png]
+
+(../../../upup.png) (foo.html)
+(../../up.png) (foo.html)
+(../current.png) (foo.html)
+(sub.png) (foo.html)
+(subfolder/subsub.png) (foo.html)
+(sub.png) (foo.html)
+(../current.png) (foo.html)
+(../../up.png) (foo.html)
+(../../../upup.png) (foo.html)
+
+(../../../upup.png) (http://www.foo.com)
+(../../up.png) (http://www.foo.com)
+(../current.png) (http://www.foo.com)
+(sub.png) (http://www.foo.com)
+(subfolder/subsub.png) (http://www.foo.com)
+(sub.png) (http://www.foo.com)
+(../current.png) (http://www.foo.com)
+(../../up.png) (http://www.foo.com)
+(../../../upup.png) (http://www.foo.com)
+
+[/foo/bar.png]
+(/foo/bar.png) (foo.html)
+(/foo/bar.png) (http://www.foo.com)
+
+Foo (../../up.html)
+Foo (../up.html)
+Foo (current.html)
+Foo (folder/sub.html)
+Foo (folder/subfolder/subsub.html)
+Foo (folder/subfolder/../sub.html)
+Foo (folder/subfolder/../../current.html)
+Foo (folder/subfolder/../../../up.html)
+Foo (folder/subfolder/../../../../upup.html)
+
+Foo (http://foo.com)
+
