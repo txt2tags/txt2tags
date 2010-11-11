@@ -4673,6 +4673,7 @@ def toc_formatter(toc, config):
 	return ret
 
 
+# XXX change function name. Now it's called at the end of the execution, dumping the full template.
 def doHeader(headers, config):
 	if not config['headers']: return config['fullBody']
 	if not headers: headers = ['','','']
@@ -4687,7 +4688,7 @@ def doHeader(headers, config):
 		else:
 			template = HEADER_TEMPLATE[target].split('\n')
 
-		template.append("%(BODY)s")
+		template.append('%(BODY)s')
 		
 		if TAGS['EOD']:
 			template.append(TAGS['EOD'].replace('%', '%%')) # escape % chars
@@ -4705,6 +4706,7 @@ def doHeader(headers, config):
 		template = Readfile(templatefile,remove_linebreaks=1)
 		
 	head_data = {'STYLE':[], 'ENCODING':''}
+	
 	for key in head_data.keys():
 		val = config.get(key.lower())
 		# Remove .sty extension from each style filename (freaking tex)
@@ -4748,7 +4750,7 @@ def doHeader(headers, config):
                 else:
                         template = [''] + aa_header(head_data, config['width'], 2, 0)
 		# Header done, let's get out
-                return template
+		return template
 
 	# Scan for empty dictionary keys
 	# If found, scan template lines for that key reference
