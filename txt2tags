@@ -141,7 +141,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole mdwn bbcode'.split()
+TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -185,7 +185,7 @@ TARGET_NAMES = {
   'art'    : _('ASCII Art text'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
-  'mdwn'   : _('MarkDown document'),
+  'md'     : _('MarkDown document'),
   'bbcode' : _('BBCode document')
 }
 
@@ -599,7 +599,7 @@ r"""\documentclass{article}
 %(HEADER2)s
 %(HEADER3)s
 """,
-	'mdwn': """\
+	'md': """\
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
@@ -1527,7 +1527,7 @@ def getTags(config):
 	},
 		# regular markdown: http://daringfireball.net/projects/markdown/syntax
 		# markdown extra:   http://michelf.com/projects/php-markdown/syntax/
-	'mdwn': {
+	'md': {
 		'title1'               : '# \a '         ,
 		'title2'               : '## \a '        ,
 		'title3'               : '### \a '       ,
@@ -2144,7 +2144,7 @@ def getRules(config):
 			'blanksaroundbar':1,
 			'blanksaroundtitle':1,
 		},
-		'mdwn': {
+		'md': {
 			#'keeplistindent':1,
 			'keepquoteindent':1,
 			#'indentverbblock':1,
