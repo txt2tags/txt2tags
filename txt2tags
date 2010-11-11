@@ -3403,7 +3403,7 @@ class MaskMaster:
 				label = ''
 				link_re = regex['link']
 			else:                            # named link
-				link = m.group('link')
+				link = fix_relative_path(m.group('link'))
 				label = m.group('label').rstrip()
 				link_re = regex['linkmark']
 			line = link_re.sub(self.linkmask,line,1)
@@ -4957,10 +4957,17 @@ def enclose_me(tagname, txt):
 def fix_relative_path(path):
 	"""Fix image/link path to be relative to the source file path (issues 62, 63)"""
 
-	# Leave untouched if absolute path, or when infile or outfile are STDIN/OUT
-	if CONF['sourcefile'] in [STDIN, MODULEIN] \
-		or CONF['outfile'] in [STDOUT, MODULEOUT] \
-		or os.path.isabs(path):
+	# Leave the path untouched when:
+	# - path is an URL (or email)
+	# - path is an #anchor
+	# - path is absolute
+	# - infile is STDIN
+	# - outfile is STDOUT
+	if regex['link'].match(path) \
+		or path[0] == '#' \
+		or os.path.isabs(path) \
+		or CONF['sourcefile'] in [STDIN, MODULEIN] \
+		or CONF['outfile'] in [STDOUT, MODULEOUT]:
 		return path
 		
 	# Make sure the input path is relative to the correct source file.

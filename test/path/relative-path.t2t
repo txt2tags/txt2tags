@@ -21,6 +21,17 @@
 [[folder/subfolder/../../../up.png] foo.html]
 [[folder/subfolder/../../../../upup.png] foo.html]
 
+% Images as anchor labels
+[[../../upup.png] #foo]
+[[../up.png] #foo]
+[[current.png] #foo]
+[[folder/sub.png] #foo]
+[[folder/subfolder/subsub.png] #foo]
+[[folder/subfolder/../sub.png] #foo]
+[[folder/subfolder/../../current.png] #foo]
+[[folder/subfolder/../../../up.png] #foo]
+[[folder/subfolder/../../../../upup.png] #foo]
+
 % Images as internet link labels
 [[../../upup.png] http://www.foo.com]
 [[../up.png] http://www.foo.com]
@@ -35,10 +46,11 @@
 % Images with absolute paths must be untouched
 [/foo/bar.png]
 [[/foo/bar.png] foo.html]
+[[/foo/bar.png] #foo]
 [[/foo/bar.png] http://www.foo.com]
 
 % Local named links
-[Foo ../../up.html]
+[Foo ../../upup.html]
 [Foo ../up.html]
 [Foo current.html]
 [Foo folder/sub.html]
@@ -47,6 +59,9 @@
 [Foo folder/subfolder/../../current.html]
 [Foo folder/subfolder/../../../up.html]
 [Foo folder/subfolder/../../../../upup.html]
+
+% Anchors (no changes)
+[Foo #foo]
 
 % Internet named links (no changes)
 [Foo http://foo.com]
