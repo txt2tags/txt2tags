@@ -4954,6 +4954,23 @@ def compile_filters(filters, errmsg='Filter'):
 def enclose_me(tagname, txt):
 	return TAGS.get(tagname+'Open') + txt + TAGS.get(tagname+'Close')
 
+def fix_relative_path(path):
+	"""Fix image/link path to be relative to the source file path (issues 62, 63)"""
+
+	# Leave untouched if absolute path, or when infile or outfile are STDIN/OUT
+	if CONF['sourcefile'] in [STDIN, MODULEIN] \
+		or CONF['outfile'] in [STDOUT, MODULEOUT] \
+		or os.path.isabs(path):
+		return path
+		
+	# Make sure the input path is relative to the correct source file.
+	# The path may be different from original source file when using %!include
+	inputpath = os.path.join(os.path.dirname(CONF['currentsourcefile']), path)
+	
+	# Now adjust the inputpath to be reachable from the output folder
+	return os.path.relpath(inputpath, os.path.dirname(CONF['outfile']))
+
+
 def beautify_me(name, line):
 	"where name is: bold, italic, underline or strike"
 
@@ -5243,13 +5260,7 @@ def parse_images(line):
 		txt = regex['img'].search(line).group(1)
 		tag = TAGS['img']
 		
-		# Fix image path to be relative to the source file path (issue 62)
-		# Leave it untouched when infile or outfile are STDIN/OUT
-		if CONF['sourcefile'] not in [STDIN, MODULEIN] \
-			and CONF['outfile'] not in [STDOUT, MODULEOUT]:
-			
-			imgpath = os.path.join(os.path.dirname(CONF['currentsourcefile']), txt)
-			txt = os.path.relpath(imgpath, os.path.dirname(CONF['outfile']))
+		txt = fix_relative_path(txt)
 		
 		# If target supports image alignment, here we go
 		if rules['imgalignable']:
