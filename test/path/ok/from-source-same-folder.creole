@@ -29,6 +29,10 @@
 [[http://www.foo.com|{{../up.png}}]]
 [[http://www.foo.com|{{../../upup.png}}]]
 
+{{/foo/bar.png}}
+[[foo.html|{{/foo/bar.png}}]]
+[[http://www.foo.com|{{/foo/bar.png}}]]
+
 [[../../up.html|Foo]]
 [[../up.html|Foo]]
 [[current.html|Foo]]
