@@ -141,7 +141,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode'.split()
+TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -167,6 +167,7 @@ CONFIG_KEYWORDS = [
 
 TARGET_NAMES = {
   'html'   : _('HTML page'),
+  'html5'  : _('HTML5 page'),
   'xhtml'  : _('XHTML page'),
   'xhtmls' : _('XHTML Strict page'),
   'sgml'   : _('SGML document'),
@@ -242,8 +243,9 @@ _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
 '',
 _("      --targets       print a list of all the available targets and exit"),
 _("  -t, --target=TYPE   set target document type. currently supported:"),
-  '                      %s,' % ', '.join(TARGETS[:9]),
-  '                      %s'  % ', '.join(TARGETS[9:]),
+  '                      %s,' % ', '.join(TARGETS[:8]),
+  '                      %s,' % ', '.join(TARGETS[8:17]),
+  '                      %s'  % ', '.join(TARGETS[17:]),
 _("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
 _("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
 _("      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"),
@@ -369,6 +371,25 @@ Fake template to respect the general process.
 <h2>%(HEADER2)s</h2>
 <h3>%(HEADER3)s</h3>
 </div>
+""",
+
+	'html5': """\
+<!doctype html>
+<head>
+<meta charset=%(ENCODING)s>
+<title>%(HEADER1)s</title>
+<meta name="generator" content="http://txt2tags.org" />
+<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
+</head>
+<body>
+<header>
+<hgroup>
+<h1>%(HEADER1)s</h1>
+<h2>%(HEADER2)s</h2>
+<h3>%(HEADER3)s</h3>
+</hgroup>
+</header>
+<article>
 """,
 
 	'xhtmlcss': """\
@@ -865,6 +886,70 @@ def getTags(config):
 		'cssClose'             : '</style>'       ,
 		'comment'              : '<!-- \a -->'    ,
 		'EOD'                  : '</body></html>'
+	},
+	'html5': {
+		'paragraphOpen'        : '<p>'            ,
+		'paragraphClose'       : '</p>'           ,
+		'title1'               : '~a~<h1>\a</h1>' ,
+		'title2'               : '~a~<h2>\a</h2>' ,
+		'title3'               : '~a~<h3>\a</h3>' ,
+		'title4'               : '~a~<h4>\a</h4>' ,
+		'title5'               : '~a~<h5>\a</h5>' ,
+		'anchor'               : '<a id="\a" name="\a"></a>\n',
+		'blockVerbOpen'        : '<pre>'          ,
+		'blockVerbClose'       : '</pre>'         ,
+		'blockQuoteOpen'       : '<blockquote>'   ,
+		'blockQuoteClose'      : '</blockquote>'  ,
+		'fontMonoOpen'         : '<code>'         ,
+		'fontMonoClose'        : '</code>'        ,
+		'fontBoldOpen'         : '<strong>'       ,
+		'fontBoldClose'        : '</strong>'      ,
+		'fontItalicOpen'       : '<em>'           ,
+		'fontItalicClose'      : '</em>'          ,
+		'fontUnderlineOpen'    : '<span style="text-decoration:underline">',
+		'fontUnderlineClose'   : '</span>'        ,
+		'fontStrikeOpen'       : '<del>',
+		'fontStrikeClose'      : '</del>'        ,
+		'listOpen'             : '<ul>'           ,
+		'listClose'            : '</ul>'          ,
+		'listItemOpen'         : '<li>'           ,
+		'listItemClose'        : '</li>'          ,
+		'numlistOpen'          : '<ol>'           ,
+		'numlistClose'         : '</ol>'          ,
+		'numlistItemOpen'      : '<li>'           ,
+		'numlistItemClose'     : '</li>'          ,
+		'deflistOpen'          : '<dl>'           ,
+		'deflistClose'         : '</dl>'          ,
+		'deflistItem1Open'     : '<dt>'           ,
+		'deflistItem1Close'    : '</dt>'          ,
+		'deflistItem2Open'     : '<dd>'           ,
+		'deflistItem2Close'    : '</dd>'          ,
+		'bar1'                 : '<hr class="light" />',
+		'bar2'                 : '<hr class="heavy" />',
+		'url'                  : '<a href="\a">\a</a>'        ,
+		'urlMark'              : '<a href="\a">\a</a>'        ,
+		'email'                : '<a href="mailto:\a">\a</a>' ,
+		'emailMark'            : '<a href="mailto:\a">\a</a>' ,
+		'img'                  : '<img~a~ src="\a" style="border:0px" alt=""/>',
+		'tableOpen'            : '<table~a~ style="padding:4px">',
+		'tableClose'           : '</table>'       ,
+		'tableRowOpen'         : '<tr>'           ,
+		'tableRowClose'        : '</tr>'          ,
+		'tableCellOpen'        : '<td~a~~s~>'     ,
+		'tableCellClose'       : '</td>'          ,
+		'tableTitleCellopen'   : '<th~s~>'        ,
+		'tableTitleCellclose'  : '</th>'          ,
+		'_tableBorder'         : ' border="1"'    ,
+		'_tableAlignCenter'    : ' style="text-align:center"',
+		'_tableCellAlignRight' : ' style="text-align:right"' ,
+		'_tableCellAlignCenter': ' style="text-align:center"',
+		'_tableCellColSpan'    : ' colspan="\a"'  ,
+		'cssOpen'              : '<style type="text/css">',
+		'cssClose'             : '</style>'       ,
+		'comment'              : '<!-- \a -->'    ,
+		'tocOpen'              : '<nav>'    ,
+		'tocClose'              : '</nav>'    ,
+		'EOD'                  : '</article></body></html>'
 	},
 	
 	'sgml': {
@@ -1810,6 +1895,35 @@ def getRules(config):
 		
 		'xhtmls': {
 			'indentverbblock':1,
+			'linkable':1,
+			'stylable':1,
+			'escapeurl':1,
+			'imglinkable':1,
+			'imgalignable':1,
+			'imgasdefterm':1,
+			'autonumberlist':1,
+			'spacedlistitem':1,
+			'parainsidelist':1,
+			'tableable':1,
+			'tablecellstrip':1,
+			'breaktablecell':1,
+			'breaktablelineopen':1,
+			'keeplistindent':1,
+			'keepquoteindent':1,
+			'barinsidequote':1,
+			'autotocwithbars':1,
+			'tablecellspannable':1,
+			'tablecellaligntype':'cell',
+			'blanksaroundverb':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+			'blanksaroundnumtitle':1,
+		},
+	'html5': {
 			'linkable':1,
 			'stylable':1,
 			'escapeurl':1,

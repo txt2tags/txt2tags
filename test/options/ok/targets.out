@@ -1,12 +1,15 @@
 adoc	AsciiDoc document
 art	ASCII Art text
+bbcode	BBCode document
 creole	Creole 1.0 document
 dbk	DocBook document
 doku	DokuWiki page
 gwiki	Google Wiki page
 html	HTML page
+html5	HTML5 page
 lout	Lout document
 man	UNIX Manual page
+md	Markdown document
 mgp	MagicPoint presentation
 moin	MoinMoin page
 pm6	PageMaker document
@@ -16,3 +19,4 @@ tex	LaTeX document
 txt	Plain Text
 wiki	Wikipedia page
 xhtml	XHTML page
+xhtmls	XHTML Strict page
