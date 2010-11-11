@@ -6,42 +6,51 @@ BODYINIT
 Date    : %%date - %%date()
 Mtime   : %%mtime - %%mtime()
 Infile  : %%infile - %%infile()
+Currentfile : %%currentfile - %%currentfile()
 Outfile : %%outfile - %%outfile()
 
 %%% Syntax: Macro name is case insensitive
 Date    : %%dAtE
 Mtime   : %%mTiMe
 Infile  : %%iNfIlE
+Currentfile : %%cUrReNtFiLe
 Outfile : %%oUtFiLe
 
 %%% Syntax: Macro with formatting string
 Date    : %%date(txt %C txt)
 Mtime   : %%mtime(txt %C txt)
 Infile  : %%infile(txt %e txt)
+Currentfile : %%currentfile(txt %e txt)
 Outfile : %%outfile(txt %e txt)
 
 %%% Syntax: Leading and trailing spaces are preserved
 Date    : (%%date( txt )) - (%%date( %C ))
 Mtime   : (%%mtime( txt )) - (%%mtime( %C ))
 Infile  : (%%infile( txt )) - (%%infile( %e ))
+Currentfile : (%%currentfile( txt )) - (%%currentfile( %e ))
 Outfile : (%%outfile( txt )) - (%%outfile( %e ))
 
 %%% Test: Expansion of the percent char
 Date    : %%date(%) - %%date(%%) - %%date(%%%) - %%date(%%%)
 Mtime   : %%mtime(%) - %%mtime(%%) - %%mtime(%%%) - %%mtime(%%%)
 Infile  : %%infile(%) - %%infile(%%) - %%infile(%%%) - %%infile(%%%)
+Currentfile : %%currentfile(%) - %%currentfile(%%) - %%currentfile(%%%) - %%currentfile(%%%)
 Outfile : %%outfile(%) - %%outfile(%%) - %%outfile(%%%) - %%outfile(%%%)
 
 %%% Test: Various per line, glued
 Date    : %%date(%C)%%date%%date
 Mtime   : %%mtime(%C)%%mtime%%mtime
 Infile  : %%infile(%e)%%infile%%infile
+Currentfile : %%currentfile(%e)%%currentfile%%currentfile
 Outfile : %%outfile(%e)%%outfile%%outfile
 
 %%% Test: Path formatters
 Path    : %%infile(%p)
+Path    : %%currentfile(%p)
 Path    : %%outfile(%p)
 Dirname : %%infile(%d, %D)
+Dirname : %%currentfile(%d, %D)
 Dirname : %%outfile(%d, %D)
 File    : %%infile(%F + %e = %f)
+File    : %%currentfile(%F + %e = %f)
 File    : %%outfile(%F + %e = %f)
