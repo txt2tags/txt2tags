@@ -26,7 +26,8 @@ txt = {
   'k': '%%%\ncomment\n%%%',                          # Comment block
   'b': 'Text.',                                      # Body line
   'f': '%!encoding: enc',                            # Config line
-  'm': '%%date(!)%%mtime(!)%%infile(!)%%outfile(!)'  # Macros
+  # Macros
+  'm': '%%date(!)%%mtime(!)%%infile(!)%%outfile(!)%%currentfile(!)'
 }
 
 # the registered tests
