@@ -185,7 +185,7 @@ TARGET_NAMES = {
   'art'    : _('ASCII Art text'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
-  'md'     : _('MarkDown document'),
+  'md'     : _('Markdown document'),
   'bbcode' : _('BBCode document')
 }
 
