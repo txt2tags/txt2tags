@@ -15,6 +15,8 @@
 #      su -c "cp -v de.mo /usr/share/locale/de/LC_MESSAGES/"
 #
 
+cd $(dirname "$0")
+
 cd ..  # Operate on the 'po' folder
 
 pot=txt2tags.pot
