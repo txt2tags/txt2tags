@@ -5,11 +5,6 @@
 # NOT integrated into main test suite, you must run it alone.
 
 
-cd $(dirname "$0")
-
-t2t=../../txt2tags
-t=creole
-
 
 # Automatic relative PATH adjustment for images and local URIs.
 # See issues 62, 63.
@@ -27,8 +22,12 @@ t=creole
 # 
 # Maybe in the future this could be a setting or a command line option.
 
-
 test -d folder || mkdir folder
+
+for t in creole txt; do
+
+cd $(dirname "$0")
+t2t=../../txt2tags
 
 ########################################################################
 # Execution from source file folder
@@ -74,11 +73,15 @@ cat ../relative-path.t2t | $t2t -H -t $t -i - -o - >    from-output-diff-folder-
 ########################################################################
 
 cd ..
+
+done # Close for loop
+
+# Move all results to the main folder
 mv folder/* .
 rmdir folder
 
 errors=0
-for file in *.$t
+for file in from-*
 do
 	if ! test -f ok/$file
 	then
@@ -109,5 +112,5 @@ then
 else
 	echo
 	echo "Found errors here (compare with 'ok' folder):"
-	ls -1 | egrep -v '(t2t|sh|ok)$'
+	ls -1 from-*
 fi
