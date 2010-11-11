@@ -71,3 +71,9 @@ if ERRORS:
 	print "Check out the files with errors:"
 	print '\n'.join(ERRORS)
 	sys.exit(1)
+
+if len(sys.argv) == 1:
+	print
+	print "Don't forget to run the extra tests:"
+	print 'samples/run.sh'
+	print 'art/run.sh'
