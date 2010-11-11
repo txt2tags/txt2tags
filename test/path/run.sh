@@ -107,6 +107,7 @@ if test $errors -eq 0
 then
 	echo "All files are OK"
 else
+	echo
 	echo "Found errors here (compare with 'ok' folder):"
 	ls -1 | egrep -v '(t2t|sh|ok)$'
 fi
