@@ -1,0 +1,33 @@
+% txt2tags proc for beamer
+
+%% subsections define frame titles
+%% dirty hack with <invisible> to close frames
+%!postproc(tex): '\\section{(.*)}' '\\end{frame}\n\\section{\1}\\addtocounter{framenumber}{-1}\\begin{frame}<invisible>'
+%!postproc(tex): '\\subsection{(.*)}' '\\end{frame}\n\\subsection{\1}\\begin{frame}\n\\frametitle{\1}\n'
+%% Carefull with verbatim
+%!postproc(tex): '\\subsection\*{(.*)}' '\\end{frame}\n\\subsection{\1}\\begin{frame}[containsverbatim]\n\\frametitle{\1}\n'
+
+
+% beamer is OK with default itemize
+%!postproc(tex): '\\begin{compactitem}'	'\\begin{itemize}'
+%!postproc(tex): '\\end{compactitem}'   '\\end{itemize}'
+%% Enumerate yields animations 
+%!postproc(tex): '\\begin{compactenum}' '\\pause\\begin{enumerate}[<+->]'
+%!postproc(tex): '\\end{compactenum}' '\\end{enumerate}'
+
+
+%% Beamer specifics
+
+% Description Lists are blocks
+%!postproc(tex): '\\begin{compactdesc}'  '\\begin{block}<only@0>{}'
+%!postproc(tex): '\\item\[(.*)\]'	 '\\end{block}\n\\begin{block}{\1}'
+%!postproc(tex): '\\end{compactdesc}'  	 '\\end{block}{}'
+
+%!preproc(tex): PAUSE 'LATEXBEAMERP'
+%!postproc(tex): LATEXBEAMERP '\\pause'
+%!preproc(): PAUSE ''
+% Correctly coloured tables 
+%!postproc(tex):'\\pause\} \\\\' '} \\pause\\\\'
+%!postproc(tex):'\\pause \\\\' '\\pause\\\\'
+%% Weird but necessary...
+%!postproc(tex):'(\\end{tabular})' '\1\\begin{tabular}{c}\\end{tabular}'

@@ -1,0 +1,37 @@
+\documentclass[table]{beamer}
+
+\usepackage[%(ENCODING)s]{inputenc}  %% char encoding 
+\usepackage[T1]{fontenc} 
+\usepackage{lmodern}  %% Better PDF rendering with these fonts
+\usepackage{graphicx} %% For graphics
+%%\usepackage{paralist} %% no need for compact lists
+\usepackage[normalem]{ulem} %% needed by strike
+\usepackage{%(STYLE)s}  %% user defined
+
+%% Beamer parameters
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+
+
+\title{%(HEADER1)s}
+\author{%(HEADER2)s}
+\subtitle{%(HEADER3)s}
+\institute{INSTITUTE}
+\date{\today}
+\pgfdeclareimage{logo}{logo}
+\logo{\pgfuseimage{logo}}
+
+\begin{document}
+\rowcolors[]{1}{blue!20}{blue!10}
+\frame[plain]{\titlepage}
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[hideallsubsections]  
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\begin{frame}<dummy>
+%(BODY)s
+
+\end{frame}
+\end{document}
