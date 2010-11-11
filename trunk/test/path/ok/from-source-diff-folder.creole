@@ -9,15 +9,25 @@
 {{../../up.png}}
 {{../../../upup.png}}
 
-[[foo.html|{{../../../upup.png}}]]
-[[foo.html|{{../../up.png}}]]
-[[foo.html|{{../current.png}}]]
-[[foo.html|{{sub.png}}]]
-[[foo.html|{{subfolder/subsub.png}}]]
-[[foo.html|{{sub.png}}]]
-[[foo.html|{{../current.png}}]]
-[[foo.html|{{../../up.png}}]]
-[[foo.html|{{../../../upup.png}}]]
+[[../foo.html|{{../../../upup.png}}]]
+[[../foo.html|{{../../up.png}}]]
+[[../foo.html|{{../current.png}}]]
+[[../foo.html|{{sub.png}}]]
+[[../foo.html|{{subfolder/subsub.png}}]]
+[[../foo.html|{{sub.png}}]]
+[[../foo.html|{{../current.png}}]]
+[[../foo.html|{{../../up.png}}]]
+[[../foo.html|{{../../../upup.png}}]]
+
+[[#foo|{{../../../upup.png}}]]
+[[#foo|{{../../up.png}}]]
+[[#foo|{{../current.png}}]]
+[[#foo|{{sub.png}}]]
+[[#foo|{{subfolder/subsub.png}}]]
+[[#foo|{{sub.png}}]]
+[[#foo|{{../current.png}}]]
+[[#foo|{{../../up.png}}]]
+[[#foo|{{../../../upup.png}}]]
 
 [[http://www.foo.com|{{../../../upup.png}}]]
 [[http://www.foo.com|{{../../up.png}}]]
@@ -30,18 +40,21 @@
 [[http://www.foo.com|{{../../../upup.png}}]]
 
 {{/foo/bar.png}}
-[[foo.html|{{/foo/bar.png}}]]
+[[../foo.html|{{/foo/bar.png}}]]
+[[#foo|{{/foo/bar.png}}]]
 [[http://www.foo.com|{{/foo/bar.png}}]]
 
+[[../../../upup.html|Foo]]
 [[../../up.html|Foo]]
-[[../up.html|Foo]]
-[[current.html|Foo]]
-[[folder/sub.html|Foo]]
-[[folder/subfolder/subsub.html|Foo]]
-[[folder/subfolder/../sub.html|Foo]]
-[[folder/subfolder/../../current.html|Foo]]
-[[folder/subfolder/../../../up.html|Foo]]
-[[folder/subfolder/../../../../upup.html|Foo]]
+[[../current.html|Foo]]
+[[sub.html|Foo]]
+[[subfolder/subsub.html|Foo]]
+[[sub.html|Foo]]
+[[../current.html|Foo]]
+[[../../up.html|Foo]]
+[[../../../upup.html|Foo]]
+
+[[#foo|Foo]]
 
 [[http://foo.com|Foo]]
 
