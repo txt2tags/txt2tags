@@ -4686,8 +4686,8 @@ def doHeader(headers, config):
 		else:
 			template = HEADER_TEMPLATE[target].split('\n')
 		template.append("%(BODY)s")
-		#template.append("\n%(BODY)s\n")
-		template.append(TAGS['EOD'])
+		if TAGS['EOD']:
+			template.append(TAGS['EOD'].replace('%', '%%'))
 	else: # read user's template file
 		templatefile = ''
 		names = [config['template']+'.'+target,config['template']]
