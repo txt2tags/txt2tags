@@ -637,7 +637,7 @@ def getTags(config):
 	blocktitle3Open     blocktitle3Close
 
 	paragraphOpen       paragraphClose
-	blockVerbOpen       blockVerbClose
+	blockVerbOpen       blockVerbClose  blockVerbLine
 	blockQuoteOpen      blockQuoteClose blockQuoteLine
 	blockCommentOpen    blockCommentClose
 
@@ -1533,8 +1533,8 @@ def getTags(config):
 		'title3'               : '### \a '       ,
 		'title4'               : '#### \a '      ,
 		'title5'               : '##### \a '     ,
-		'blockQuoteOpen'       : '    '          ,
-		#'blockQuoteClose'      : '>'            ,
+		'blockVerbLine'        : '    '          ,
+		'blockQuoteLine'       : '> '            ,
 		'fontMonoOpen'         : "`"             ,
 		'fontMonoClose'        : "`"             ,
 		'fontBoldOpen'         : "**"            ,
@@ -2146,22 +2146,16 @@ def getRules(config):
 		},
 		'md': {
 			#'keeplistindent':1,
-			'keepquoteindent':1,
-			#'indentverbblock':1,
 			'linkable':1,
 			'labelbeforelink':1,
 			'tableable':1,
 			'imglinkable':1,
 			'tablecellstrip':1,
-			#'autotocwithbars':1,
 			'autonumberlist':1,
 			'spacedlistitemopen':1,
 			'spacednumlistitemopen':1,
 			'deflisttextstrip':1,
-			#'verbblocknotescaped':1,
 			'blanksaroundpara':1,
-			#'blanksaroundverb':1,
-			#'blanksaroundquote':1,
 			'blanksaroundlist':1,
 			'blanksaroundnumlist':1,
 			#'blanksarounddeflist':1,
@@ -4201,6 +4195,8 @@ class BlockMaster:
 				line = MacroMaster().expand(line)
 			if not rules['verbblocknotescaped']:
 				line = doEscape(TARGET,line)
+			if TAGS['blockVerbLine']:
+				line = TAGS['blockVerbLine'] + line
 			if rules['indentverbblock']:
 				line = '  '+line
 			if rules['verbblockfinalescape']:
