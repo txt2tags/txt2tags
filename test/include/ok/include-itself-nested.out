@@ -1,1 +1,1 @@
-txt2tags: Error: A file cannot include itself (loop!): folder/include-itself.inc
+txt2tags: Error: A file cannot include itself (loop!): folder/_include-itself.inc

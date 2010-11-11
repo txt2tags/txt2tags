@@ -1,2 +1,2 @@
 
-%!include: folder/include-itself.inc
+%!include: folder/_include-itself.inc
