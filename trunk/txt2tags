@@ -4680,15 +4680,20 @@ def doHeader(headers, config):
 	if not HEADER_TEMPLATE.has_key(target):
 		Error("doHeader: Unknown target '%s'"%target)
 	
-	if config['template'] == '' : # use default templates
+	# Use default templates
+	if config['template'] == '' :
 		if target in ('html','xhtml','xhtmls') and config.get('css-sugar'):
 			template = HEADER_TEMPLATE[target+'css'].split('\n')
 		else:
 			template = HEADER_TEMPLATE[target].split('\n')
+
 		template.append("%(BODY)s")
+		
 		if TAGS['EOD']:
-			template.append(TAGS['EOD'].replace('%', '%%'))
-	else: # read user's template file
+			template.append(TAGS['EOD'].replace('%', '%%')) # escape % chars
+
+ 	# Read user's template file
+	else:
 		templatefile = ''
 		names = [config['template']+'.'+target,config['template']]
 		for file in names:
@@ -4696,7 +4701,7 @@ def doHeader(headers, config):
 				templatefile = file
 				break
 		if not templatefile:
-			Error(_("Cannot find template file:")+config['template'])
+			Error(_("Cannot find template file:") + " " + config['template'])
 		template = Readfile(templatefile,remove_linebreaks=1)
 		
 	head_data = {'STYLE':[], 'ENCODING':''}
@@ -4771,11 +4776,12 @@ def doHeader(headers, config):
 					template.insert(i+1, template[i].replace(style_mark, styles.pop()))
 				del template[i]
 				break
+
 	# Expand macros on *all* lines of the template
 	template = map(MacroMaster(config=config).expand,template)
-	# Populate template with data (dict expansion)
-	# Adding Body contents
+	# Add Body contents to template data
 	head_data['BODY'] = '\n'.join(config['fullBody'])
+	# Populate template with data (dict expansion)
 	template = '\n'.join(template) % head_data
 	
 	# Adding CSS contents into template (for --css-inside)
