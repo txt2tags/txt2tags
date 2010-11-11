@@ -1,0 +1,5 @@
+
+Level 0 - [current.png][folder/sub.png]
+%!include: _image.inc
+%!include: folder/_image.inc
+%!include: folder/subfolder/_image.inc
