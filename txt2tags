@@ -1556,7 +1556,7 @@ def getTags(config):
 		#'deflistItem2LineOpen'  : '::'          ,
 		#'deflistItem2LineClose' : ':'           ,
 		# Verbatim block
-		#'blockVerbOpen'        : ''         	 ,
+		#'blockVerbOpen'        : ''             ,
 		#'blockVerbClose'       : ''             ,
 		'bar1'                 : '---'           ,
 		'bar2'                 : '---'           ,
@@ -4105,13 +4105,13 @@ class BlockMaster:
 
 		# # No blank before if it's the first block of the body
 		# elif where == 'before' \
-		# 	and BLOCK.count == 1:
-		# 	return False
+		#	and BLOCK.count == 1:
+		#	return False
 
 		# # No blank before if it's the first block of this level (nested)
 		# elif where == 'before' \
-		# 	and self.count == 1:
-		# 	return False
+		#	and self.count == 1:
+		#	return False
 
 		# The blank line before the block is only added if
 		# the previous block haven't added a blank line
@@ -4689,7 +4689,7 @@ def doHeader(headers, config):
 		if TAGS['EOD']:
 			template.append(TAGS['EOD'].replace('%', '%%')) # escape % chars
 
- 	# Read user's template file
+	# Read user's template file
 	else:
 		templatefile = ''
 		names = [config['template']+'.'+target,config['template']]
