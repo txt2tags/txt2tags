@@ -3,6 +3,8 @@
 # 2004-05-30 Aurelio Jargas
 # 2010-06-18 now using pygettext instead home-made sed, charset:utf-8 instead iso-8859-1
 
+cd $(dirname "$0")
+
 src=../../txt2tags
 pot=../txt2tags.pot
 version=$(LANG= "$src" -V | sed '/txt2tags/!d;s/.*sion //;s/ .*//')
