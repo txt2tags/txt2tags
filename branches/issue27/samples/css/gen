@@ -1,9 +1,0 @@
-#!/bin/bash
-# 2004-06-28 Aurelio Marinho Jargas
-
-for file in *.css ; do
-  base=${file%.*}
-  cat ../sample.t2t | sed 's|img/|../&|' |
-  ../../txt2tags --style $base.css -o $base.html \
-           --css-sugar --toc -t html -
-done

@@ -1,7 +1,0 @@
-
-%!includeconf: _config.inc
-%!includeconf: _config2.inc
-
-= title =
-
-%!includeconf: _failed.inc

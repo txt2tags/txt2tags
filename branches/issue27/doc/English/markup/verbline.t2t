@@ -1,4 +1,0 @@
-
-Verbatim line is nice for commands:
-``` $ cat /etc/passwd | tr : ,
-Just prefix it with 3 backquotes.

@@ -1,2 +1,0 @@
-
-%!includeconf: ../_config.inc

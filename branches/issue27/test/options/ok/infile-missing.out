@@ -1,4 +1,0 @@
-txt2tags: Error: Missing input file (try --help)
-
-Please inform an input file (.t2t) at the end of the command.
-Example: txt2tags -t html file.t2t

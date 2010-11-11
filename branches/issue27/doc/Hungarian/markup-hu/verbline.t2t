@@ -1,4 +1,0 @@
-
-A szó szerinti sor hasznos parancsok leírásához:
-``` $ cat /etc/passwd | tr : ,
-Az ilyen sorok 3 felsõ vesszõvel kezdõdnek.
