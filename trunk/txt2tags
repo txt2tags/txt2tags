@@ -1526,7 +1526,7 @@ def getTags(config):
 		# if possible: http://www.wikicreole.org/wiki/Placeholder
 	},
 		# regular markdown: http://daringfireball.net/projects/markdown/syntax
-		# markdown extra:   http://michelf.com/projects/php-markdown/syntax/
+		# markdown extra:   http://michelf.com/projects/php-markdown/extra/
 	'md': {
 		'title1'               : '# \a '         ,
 		'title2'               : '## \a '        ,
