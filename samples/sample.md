@@ -13,9 +13,9 @@ marks.
 The first 3 lines of the this file are used as headers,
 on the following format:
 
-line1: document title
-line2: author name, email
-line3: date, version
+    line1: document title
+    line2: author name, email
+    line3: date, version
 
 Lines with balanced equal signs = around are titles.
 
@@ -45,13 +45,13 @@ combination.
 
 We can put a code sample or other pre-formatted text:
 
-  here    is     pre-formatted
-//marks// are  **not**  ``interpreted``
+      here    is     pre-formatted
+    //marks// are  **not**  ``interpreted``
 
 And also, it's easy to put a one line pre-formatted
 text:
 
-prompt$ ls /etc
+    prompt$ ls /etc
 
 Or use `pre-formatted` inside sentences.
 
@@ -72,10 +72,8 @@ with label.
 
 And remember,
 
-	    
-	A TAB in front of the line does a quotation.
-		    
-		More TABs, more depth (if allowed).
+> A TAB in front of the line does a quotation.
+> > More TABs, more depth (if allowed).
 
 Nice.
 
