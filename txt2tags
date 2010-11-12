@@ -1608,8 +1608,6 @@ def getTags(config):
 	
 	# http://www.spip-contrib.net/Les-raccourcis-typographiques-en
 	# some tags are not implemented by spip tags, but spip accept html tags.
-	# ISSUE 2 -> sublist are marked "-##" (number of # depends of sublevels).so I don't know how translate
-	# this beavior in txt2tags mark.
 	'spip': {
 		'title1'                : '{{{ \a }}}' ,
 		'title2'                : '<h4>\a</h4>',
@@ -1628,9 +1626,9 @@ def getTags(config):
 		'fontUnderlineClose'    : '</u>'       ,
 		'fontStrikeOpen'        : '<del>'      ,
 		'fontStrikeClose'       : '</del>'     ,
-		'listItemOpen'          : '-'          ,
+		'listItemOpen'          : '-'          , # -* list, -** sublist, -*** subsublist
 		'listItemLine'          : '*'          ,
-		'numlistItemOpen'       : '-'          ,
+		'numlistItemOpen'       : '-'          , # -# list, -## sublist, -### subsublist
 		'numlistItemLine'       : '#'          ,
 		'bar1'                  : '----'       ,
 		'url'                   : '[->\a]'     ,
