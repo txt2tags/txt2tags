@@ -94,7 +94,11 @@ HTML_LOWER  = 0   # use lowercased HTML tags instead upper? (default is 0)
 
 
 # These are all the core Python modules used by txt2tags (KISS!)
-import re, os, sys, time, getopt
+import re
+import os
+import sys
+import time
+import getopt
 
 # The CSV module is new in Python version 2.3
 try:
