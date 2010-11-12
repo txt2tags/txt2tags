@@ -161,9 +161,7 @@ MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 'currentfile': '%f',
 SETTINGS = {}         # for future use
 NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
 NO_MULTI_INPUT = ['gui','dump-config','dump-source']
-CONFIG_KEYWORDS = [
-            'target', 'encoding', 'style', 'options', 'preproc','postproc',
-            'guicolors']
+CONFIG_KEYWORDS = ['target', 'encoding', 'style', 'options', 'preproc', 'postproc', 'postvoodoo', 'guicolors']
 
 TARGET_NAMES = {
   'html'   : _('HTML page'),
@@ -3062,7 +3060,7 @@ class ConfigMaster:
 		self.off          = self._get_off()
 		self.incremental  = ['verbose']
 		self.numeric      = ['toc-level', 'split', 'width', 'height']
-		self.multi        = ['infile', 'preproc', 'postproc', 'options', 'style']
+		self.multi        = ['infile', 'preproc', 'postproc', 'postvoodoo', 'options', 'style']
 	
 	def _get_defaults(self):
 		"Get the default values for all config/options/flags"
@@ -3404,7 +3402,7 @@ class ConfigLines:
 			value = re.split('\s+', value)
 		
 		# Special config with two quoted values (%!preproc: "foo" 'bar')
-		if name == 'preproc' or name == 'postproc':
+		if name in ['preproc', 'postproc', 'postvoodoo']:
 			valmatch = prepostregex.search(value)
 			if not valmatch: return empty
 			getval = valmatch.group
@@ -4652,7 +4650,7 @@ def dumpConfig(source_raw, parsed_config):
 	for key in keys:
 		val = parsed_config[key]
 		# Filters are the last
-		if key == 'preproc' or key == 'postproc':
+		if key in ['preproc', 'postproc', 'postvoodoo']:
 			continue
 		# Flag beautifier
 		if key in FLAGS.keys() or key in ACTIONS.keys():
@@ -4665,7 +4663,7 @@ def dumpConfig(source_raw, parsed_config):
 		print "%25s: %s"%(dotted_spaces("%-14s"%key),val)
 	print
 	print _('Active filters')
-	for filter_ in ['preproc', 'postproc']:
+	for filter_ in ['preproc', 'postproc', 'postvoodoo']:
 		for rule in parsed_config.get(filter_) or []:
 			print "%25s: %s  ->  %s" % (
 				dotted_spaces("%-14s"%filter_), rule[0], rule[1])
@@ -4676,6 +4674,49 @@ def get_file_body(file_):
 	return process_source_file(file_, noconf=1)[1][2]
 
 
+def post_voodoo(lines, config):
+	r'''
+	%!postvoodoo handler - Beware! Voodoo here. For advanced users only.
+
+	Your entire output document will be put in a single string, to your
+	search/replace pleasure. Line breaks are single \n's in all platforms.
+	You can change multiple lines at once, or even delete them. This is the
+	last txt2tags processing in your file. All %!postproc's were already
+	applied. It's the same as:
+
+	    $ txt2tags myfile.t2t | postvoodoo
+
+	Your regex will be compiled with no modifiers. The default behavior is:
+
+	    ^ and $ match begin/end of entire string
+	    . doesn't match \n
+	    \w is not locale aware
+	    \w is not Unicode aware
+
+	You can use (?...) in the beginning of your regex to change behavior:
+
+	    (?s)    the dot . will match \n, so .* will get everything
+	    (?m)    the ^ and $ match begin/end of EACH inner line
+	    (?u)    the \w, \d, \s and friends will be Unicode aware
+
+	You can also use (?smu) or any combination of those.
+	Learn more in http://docs.python.org/library/re.html
+	'''
+
+	loser1 = _('No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?')
+	loser2 = _('Dear PostVoodoo apprentice: You got the regex right, but messed the replacement')
+
+	subject = '\n'.join(lines)
+	spells = compile_filters(config['postvoodoo'], loser1)
+	
+	for (magic, words) in spells:
+		try:
+			subject = magic.sub(words, subject)
+		except:
+			Error("%s: '%s'" % (loser2, words))
+	
+	return subject.split('\n')
+	
 def finish_him(outlist, config):
 	"Writing output to screen or file"
 	outfile = config['outfile']
@@ -4694,6 +4735,9 @@ def finish_him(outlist, config):
 				except: Error("%s: '%s'"%(errmsg, repl))
 			postoutlist.append(line)
 		outlist = postoutlist[:]
+	
+	if config['postvoodoo']:
+		outlist = post_voodoo(outlist, config)
 	
 	if outfile == MODULEOUT:
 		return outlist
@@ -4741,6 +4785,7 @@ def toc_tagger(toc, config):
 		fakeconf['mask-email'] = 0
 		fakeconf['preproc']    = []
 		fakeconf['postproc']   = []
+		fakeconf['postvoodoo']  = []
 		fakeconf['css-sugar']  = 0
 		fakeconf['art-no-title']  = 1  # needed for --toc and --slides together, avoids slide title before TOC
 		ret,foo = convert(toc, fakeconf)
