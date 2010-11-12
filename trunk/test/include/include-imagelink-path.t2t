@@ -1,0 +1,5 @@
+
+Level 0 - [[current.png] foo.html][[folder/sub.png] foo.html]
+%!include: _imagelink.inc
+%!include: folder/_imagelink.inc
+%!include: folder/subfolder/_imagelink.inc
