@@ -148,24 +148,78 @@ else:
 TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip'.split()
 TARGETS.sort()
 
-FLAGS    = {'headers'    : 1 , 'enum-title' : 0 , 'mask-email' : 0 ,
-            'toc-only'   : 0 , 'toc'        : 0 , 'rc'         : 1 ,
-            'css-sugar'  : 0 , 'css-suggar' : 0 , 'css-inside' : 0 ,
-            'quiet'      : 0 , 'slides'     : 0 }
-OPTIONS  = {'target'     : '', 'toc-level'  : 3 , 'style'      : '',
-            'infile'     : '', 'outfile'    : '', 'encoding'   : '',
-            'config-file': '', 'split'      : 0 , 'lang'       : '',
-            'width'      : 0 , 'height'     : 0 , 'art-chars'  : '',
-            'show-config-value': '', 'template': ''}
-ACTIONS  = {'help'       : 0 , 'version'    : 0 , 'gui'        : 0 ,
-            'verbose'    : 0 , 'debug'      : 0 , 'dump-config': 0 ,
-            'dump-source': 0 , 'targets'    : 0}
-MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 'currentfile': '%f',
-            'mtime': '%Y%m%d', 'outfile': '%f'}
-SETTINGS = {}         # for future use
-NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
-NO_MULTI_INPUT = ['gui', 'dump-config', 'dump-source']
-CONFIG_KEYWORDS = ['target', 'encoding', 'style', 'options', 'preproc', 'postproc', 'postvoodoo', 'guicolors']
+FLAGS = {
+    'headers': 1,
+    'enum-title': 0,
+    'mask-email': 0,
+    'toc-only': 0,
+    'toc': 0,
+    'rc': 1,
+    'css-sugar': 0,
+    'css-suggar': 0,
+    'css-inside': 0,
+    'quiet': 0,
+    'slides': 0,
+    }
+OPTIONS = {
+    'target': '',
+    'toc-level': 3,
+    'style': '',
+    'infile': '',
+    'outfile': '',
+    'encoding': '',
+    'config-file': '',
+    'split': 0,
+    'lang': '',
+    'width': 0,
+    'height': 0,
+    'art-chars': '',
+    'show-config-value': '',
+    'template': '',
+    }
+ACTIONS = {
+    'help': 0,
+    'version': 0,
+    'gui': 0,
+    'verbose': 0,
+    'debug': 0,
+    'dump-config': 0,
+    'dump-source': 0,
+    'targets': 0,
+    }
+MACROS = {
+    'date': '%Y%m%d',
+    'infile': '%f',
+    'currentfile': '%f',
+    'mtime': '%Y%m%d',
+    'outfile': '%f',
+    }
+SETTINGS = {}  # for future use
+NO_TARGET = [
+    'help',
+    'version',
+    'gui',
+    'toc-only',
+    'dump-config',
+    'dump-source',
+    'targets',
+    ]
+NO_MULTI_INPUT = [
+    'gui',
+    'dump-config',
+    'dump-source'
+    ]
+CONFIG_KEYWORDS = [
+    'target',
+    'encoding',
+    'style',
+    'options',
+    'preproc',
+    'postproc',
+    'postvoodoo',
+    'guicolors',
+    ]
+
 
 TARGET_NAMES = {
   'html'   : _('HTML page'),
