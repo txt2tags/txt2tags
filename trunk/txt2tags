@@ -121,12 +121,12 @@ if USE_I18N:
     try:
         import gettext
         # If your locale dir is different, change it here
-        cat = gettext.Catalog('txt2tags',localedir='/usr/share/locale/')
+        cat = gettext.Catalog('txt2tags', localedir='/usr/share/locale/')
         _ = cat.gettext
     except:
-        _ = lambda x:x
+        _ = lambda x: x
 else:
-    _ = lambda x:x
+    _ = lambda x: x
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
@@ -148,23 +148,23 @@ else:
 TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip'.split()
 TARGETS.sort()
 
-FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
-            'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
-            'css-sugar'  :0 , 'css-suggar' :0 , 'css-inside' :0 ,
-            'quiet'      :0 , 'slides'     :0 }
-OPTIONS  = {'target'     :'', 'toc-level'  :3 , 'style'      :'',
-            'infile'     :'', 'outfile'    :'', 'encoding'   :'',
-            'config-file':'', 'split'      :0 , 'lang'       :'',
-            'width'      :0 , 'height'     :0 , 'art-chars'  :'',
-            'show-config-value':'', 'template':''}
-ACTIONS  = {'help'       :0 , 'version'    :0 , 'gui'        :0 ,
-            'verbose'    :0 , 'debug'      :0 , 'dump-config':0 ,
-            'dump-source':0 , 'targets'    :0}
+FLAGS    = {'headers'    : 1 , 'enum-title' : 0 , 'mask-email' : 0 ,
+            'toc-only'   : 0 , 'toc'        : 0 , 'rc'         : 1 ,
+            'css-sugar'  : 0 , 'css-suggar' : 0 , 'css-inside' : 0 ,
+            'quiet'      : 0 , 'slides'     : 0 }
+OPTIONS  = {'target'     : '', 'toc-level'  : 3 , 'style'      : '',
+            'infile'     : '', 'outfile'    : '', 'encoding'   : '',
+            'config-file': '', 'split'      : 0 , 'lang'       : '',
+            'width'      : 0 , 'height'     : 0 , 'art-chars'  : '',
+            'show-config-value': '', 'template': ''}
+ACTIONS  = {'help'       : 0 , 'version'    : 0 , 'gui'        : 0 ,
+            'verbose'    : 0 , 'debug'      : 0 , 'dump-config': 0 ,
+            'dump-source': 0 , 'targets'    : 0}
 MACROS   = {'date' : '%Y%m%d',  'infile': '%f', 'currentfile': '%f',
             'mtime': '%Y%m%d', 'outfile': '%f'}
 SETTINGS = {}         # for future use
 NO_TARGET = ['help', 'version', 'gui', 'toc-only', 'dump-config', 'dump-source', 'targets']
-NO_MULTI_INPUT = ['gui','dump-config','dump-source']
+NO_MULTI_INPUT = ['gui', 'dump-config', 'dump-source']
 CONFIG_KEYWORDS = ['target', 'encoding', 'style', 'options', 'preproc', 'postproc', 'postvoodoo', 'guicolors']
 
 TARGET_NAMES = {
@@ -233,13 +233,13 @@ STDIN = STDOUT = '-'
 MODULEIN = MODULEOUT = '-module-'
 ESCCHAR   = '\x00'
 SEPARATOR = '\x01'
-LISTNAMES = {'-':'list', '+':'numlist', ':':'deflist'}
-LINEBREAK = {'default':'\n', 'win':'\r\n', 'mac':'\r'}
+LISTNAMES = {'-': 'list', '+': 'numlist', ':': 'deflist'}
+LINEBREAK = {'default': '\n', 'win': '\r\n', 'mac': '\r'}
 
 # Platform specific settings
 LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']
 
-VERSIONSTR = _("%s version %s <%s>")%(my_name,my_version,my_url)
+VERSIONSTR = _("%s version %s <%s>")%(my_name, my_version, my_url)
 
 USAGE = '\n'.join([
 '',
@@ -306,7 +306,7 @@ my_url,
 #  - use %% to represent a literal %
 #
 HEADER_TEMPLATE = {
-    'art':"""
+    'art': """
 Fake template to respect the general process.
 """,
     'txt': """\
@@ -1831,7 +1831,7 @@ def getTags(config):
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html','xhtml'):
+    if config['css-sugar'] and config['target'] in ('html', 'xhtml'):
         # Change just HTML because XHTML inherits it
         htmltags = alltags['html']
         # Table with no cellpadding
@@ -1963,529 +1963,529 @@ def getRules(config):
 
     rules_bank = {
         'txt': {
-            'indentverbblock':1,
-            'spacedlistitem':1,
-            'parainsidelist':1,
-            'keeplistindent':1,
-            'barinsidequote':1,
-            'autotocwithbars':1,
+            'indentverbblock': 1,
+            'spacedlistitem': 1,
+            'parainsidelist': 1,
+            'keeplistindent': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'art': {
             #TIP art inherits all TXT rules
         },
         'html': {
-            'indentverbblock':1,
-            'linkable':1,
-            'stylable':1,
-            'escapeurl':1,
-            'imglinkable':1,
-            'imgalignable':1,
-            'imgasdefterm':1,
-            'autonumberlist':1,
-            'spacedlistitem':1,
-            'parainsidelist':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'breaktablecell':1,
-            'breaktablelineopen':1,
-            'keeplistindent':1,
-            'keepquoteindent':1,
-            'barinsidequote':1,
-            'autotocwithbars':1,
-            'tablecellspannable':1,
-            'tablecellaligntype':'cell',
+            'indentverbblock': 1,
+            'linkable': 1,
+            'stylable': 1,
+            'escapeurl': 1,
+            'imglinkable': 1,
+            'imgalignable': 1,
+            'imgasdefterm': 1,
+            'autonumberlist': 1,
+            'spacedlistitem': 1,
+            'parainsidelist': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'breaktablecell': 1,
+            'breaktablelineopen': 1,
+            'keeplistindent': 1,
+            'keepquoteindent': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
 
-            # 'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            # 'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'xhtml': {
             #TIP xhtml inherits all HTML rules
         },
 
         'xhtmls': {
-            'indentverbblock':1,
-            'linkable':1,
-            'stylable':1,
-            'escapeurl':1,
-            'imglinkable':1,
-            'imgalignable':1,
-            'imgasdefterm':1,
-            'autonumberlist':1,
-            'spacedlistitem':1,
-            'parainsidelist':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'breaktablecell':1,
-            'breaktablelineopen':1,
-            'keeplistindent':1,
-            'keepquoteindent':1,
-            'barinsidequote':1,
-            'autotocwithbars':1,
-            'tablecellspannable':1,
-            'tablecellaligntype':'cell',
-            'blanksaroundverb':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'indentverbblock': 1,
+            'linkable': 1,
+            'stylable': 1,
+            'escapeurl': 1,
+            'imglinkable': 1,
+            'imgalignable': 1,
+            'imgasdefterm': 1,
+            'autonumberlist': 1,
+            'spacedlistitem': 1,
+            'parainsidelist': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'breaktablecell': 1,
+            'breaktablelineopen': 1,
+            'keeplistindent': 1,
+            'keepquoteindent': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
+            'blanksaroundverb': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'html5': {
-            'linkable':1,
-            'stylable':1,
-            'escapeurl':1,
-            'imglinkable':1,
-            'imgalignable':1,
-            'imgasdefterm':1,
-            'autonumberlist':1,
-            'spacedlistitem':1,
-            'parainsidelist':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'breaktablecell':1,
-            'breaktablelineopen':1,
-            'keeplistindent':1,
-            'keepquoteindent':1,
-            'barinsidequote':1,
-            'autotocwithbars':1,
-            'tablecellspannable':1,
-            'tablecellaligntype':'cell',
-            'blanksaroundverb':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'linkable': 1,
+            'stylable': 1,
+            'escapeurl': 1,
+            'imglinkable': 1,
+            'imgalignable': 1,
+            'imgasdefterm': 1,
+            'autonumberlist': 1,
+            'spacedlistitem': 1,
+            'parainsidelist': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'breaktablecell': 1,
+            'breaktablelineopen': 1,
+            'keeplistindent': 1,
+            'keepquoteindent': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
+            'blanksaroundverb': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
 
         'sgml': {
-            'linkable':1,
-            'escapeurl':1,
-            'autonumberlist':1,
-            'spacedlistitem':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'blankendautotoc':1,
-            'quotenotnested':1,
-            'keeplistindent':1,
-            'keepquoteindent':1,
-            'barinsidequote':1,
-            'finalescapetitle':1,
-            'tablecellaligntype':'column',
+            'linkable': 1,
+            'escapeurl': 1,
+            'autonumberlist': 1,
+            'spacedlistitem': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'blankendautotoc': 1,
+            'quotenotnested': 1,
+            'keeplistindent': 1,
+            'keepquoteindent': 1,
+            'barinsidequote': 1,
+            'finalescapetitle': 1,
+            'tablecellaligntype': 'column',
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'dbk': {
-            'linkable':1,
-            'tableable':0, # activate when table tags are ready
-            'imglinkable':1,
-            'imgalignable':1,
-            'imgasdefterm':1,
-            'autonumberlist':1,
-            'autonumbertitle':1,
-            'parainsidelist':1,
-            'spacedlistitem':1,
-            'titleblocks':1,
+            'linkable': 1,
+            'tableable': 0, # activate when table tags are ready
+            'imglinkable': 1,
+            'imgalignable': 1,
+            'imgasdefterm': 1,
+            'autonumberlist': 1,
+            'autonumbertitle': 1,
+            'parainsidelist': 1,
+            'spacedlistitem': 1,
+            'titleblocks': 1,
         },
         'mgp': {
-            'tagnotindentable':1,
-            'spacedlistitem':1,
-            'imgalignable':1,
-            'autotocnewpagebefore':1,
+            'tagnotindentable': 1,
+            'spacedlistitem': 1,
+            'imgalignable': 1,
+            'autotocnewpagebefore': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            # 'blanksaroundtitle':1,
-            # 'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            # 'blanksaroundtitle': 1,
+            # 'blanksaroundnumtitle': 1,
         },
         'tex': {
-            'stylable':1,
-            'escapeurl':1,
-            'autonumberlist':1,
-            'autonumbertitle':1,
-            'spacedlistitem':1,
-            'compactlist':1,
-            'parainsidelist':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'tabletitlerowinbold':1,
-            'verbblocknotescaped':1,
-            'keeplistindent':1,
-            'listmaxdepth':4,  # deflist is 6
-            'quotemaxdepth':6,
-            'barinsidequote':1,
-            'finalescapetitle':1,
-            'autotocnewpageafter':1,
-            'mapbar2pagebreak':1,
-            'tablecellaligntype':'column',
-            'tablecellmulticol':1,
+            'stylable': 1,
+            'escapeurl': 1,
+            'autonumberlist': 1,
+            'autonumbertitle': 1,
+            'spacedlistitem': 1,
+            'compactlist': 1,
+            'parainsidelist': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'tabletitlerowinbold': 1,
+            'verbblocknotescaped': 1,
+            'keeplistindent': 1,
+            'listmaxdepth': 4,  # deflist is 6
+            'quotemaxdepth': 6,
+            'barinsidequote': 1,
+            'finalescapetitle': 1,
+            'autotocnewpageafter': 1,
+            'mapbar2pagebreak': 1,
+            'tablecellaligntype': 'column',
+            'tablecellmulticol': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'lout': {
-            'keepquoteindent':1,
-            'deflisttextstrip':1,
-            'escapeurl':1,
-            'verbblocknotescaped':1,
-            'imgalignable':1,
-            'mapbar2pagebreak':1,
-            'titleblocks':1,
-            'autonumberlist':1,
-            'parainsidelist':1,
+            'keepquoteindent': 1,
+            'deflisttextstrip': 1,
+            'escapeurl': 1,
+            'verbblocknotescaped': 1,
+            'imgalignable': 1,
+            'mapbar2pagebreak': 1,
+            'titleblocks': 1,
+            'autonumberlist': 1,
+            'parainsidelist': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'moin': {
-            'spacedlistitem':1,
-            'linkable':1,
-            'keeplistindent':1,
-            'tableable':1,
-            'barinsidequote':1,
-            'tabletitlerowinbold':1,
-            'tablecellstrip':1,
-            'autotocwithbars':1,
-            'tablecellaligntype':'cell',
-            'deflisttextstrip':1,
+            'spacedlistitem': 1,
+            'linkable': 1,
+            'keeplistindent': 1,
+            'tableable': 1,
+            'barinsidequote': 1,
+            'tabletitlerowinbold': 1,
+            'tablecellstrip': 1,
+            'autotocwithbars': 1,
+            'tablecellaligntype': 'cell',
+            'deflisttextstrip': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            # 'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            # 'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'gwiki': {
-            'spacedlistitem':1,
-            'linkable':1,
-            'keeplistindent':1,
-            'tableable':1,
-            'tabletitlerowinbold':1,
-            'tablecellstrip':1,
-            'autonumberlist':1,
+            'spacedlistitem': 1,
+            'linkable': 1,
+            'keeplistindent': 1,
+            'tableable': 1,
+            'tabletitlerowinbold': 1,
+            'tablecellstrip': 1,
+            'autonumberlist': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            # 'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            # 'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'adoc': {
-            'spacedlistitem':1,
-            'linkable':1,
-            'keeplistindent':1,
-            'autonumberlist':1,
-            'autonumbertitle':1,
-            'listnotnested':1,
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'spacedlistitem': 1,
+            'linkable': 1,
+            'keeplistindent': 1,
+            'autonumberlist': 1,
+            'autonumbertitle': 1,
+            'listnotnested': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'doku': {
-            'indentverbblock':1, # DokuWiki uses '  ' to mark verb blocks
-            'spacedlistitem':1,
-            'linkable':1,
-            'keeplistindent':1,
-            'tableable':1,
-            'barinsidequote':1,
-            'tablecellstrip':1,
-            'autotocwithbars':1,
-            'autonumberlist':1,
-            'imgalignable':1,
-            'tablecellaligntype':'cell',
+            'indentverbblock': 1, # DokuWiki uses '  ' to mark verb blocks
+            'spacedlistitem': 1,
+            'linkable': 1,
+            'keeplistindent': 1,
+            'tableable': 1,
+            'barinsidequote': 1,
+            'tablecellstrip': 1,
+            'autotocwithbars': 1,
+            'autonumberlist': 1,
+            'imgalignable': 1,
+            'tablecellaligntype': 'cell',
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'pmw': {
-            'indentverbblock':1,
-            'spacedlistitem':1,
-            'linkable':1,
-            'labelbeforelink':1,
-            # 'keeplistindent':1,
-            'tableable':1,
-            'barinsidequote':1,
-            'tablecellstrip':1,
-            'autotocwithbars':1,
-            'autonumberlist':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'imgalignable':1,
-            'tabletitlerowinbold':1,
-            'tablecellaligntype':'cell',
+            'indentverbblock': 1,
+            'spacedlistitem': 1,
+            'linkable': 1,
+            'labelbeforelink': 1,
+            # 'keeplistindent': 1,
+            'tableable': 1,
+            'barinsidequote': 1,
+            'tablecellstrip': 1,
+            'autotocwithbars': 1,
+            'autonumberlist': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'imgalignable': 1,
+            'tabletitlerowinbold': 1,
+            'tablecellaligntype': 'cell',
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'wiki': {
-            'linkable':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'autotocwithbars':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'deflisttextstrip':1,
-            'autonumberlist':1,
-            'imgalignable':1,
+            'linkable': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'autotocwithbars': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'deflisttextstrip': 1,
+            'autonumberlist': 1,
+            'imgalignable': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'red': {
-            'linkable':1,
-            'tableable':1,
-            'tablecellstrip':1,
-            'tablecellspannable':1,
-            'tablecellaligntype':'cell',
-            'autotocwithbars':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'deflisttextstrip':1,
-            'autonumberlist':1,
-            'imgalignable':1,
-            'labelbeforelink':1,
-            'quotenotnested':1,
-            'autonumbertitle':1,
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'linkable': 1,
+            'tableable': 1,
+            'tablecellstrip': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
+            'autotocwithbars': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'deflisttextstrip': 1,
+            'autonumberlist': 1,
+            'imgalignable': 1,
+            'labelbeforelink': 1,
+            'quotenotnested': 1,
+            'autonumbertitle': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'man': {
-            'spacedlistitem':1,
-            'tagnotindentable':1,
-            'tableable':1,
-            'tablecellaligntype':'column',
-            'tabletitlerowinbold':1,
-            'tablecellstrip':1,
-            'barinsidequote':1,
-            'parainsidelist':0,
+            'spacedlistitem': 1,
+            'tagnotindentable': 1,
+            'tableable': 1,
+            'tablecellaligntype': 'column',
+            'tabletitlerowinbold': 1,
+            'tablecellstrip': 1,
+            'barinsidequote': 1,
+            'parainsidelist': 0,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            # 'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            # 'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'pm6': {
-            'keeplistindent':1,
-            'verbblockfinalescape':1,
+            'keeplistindent': 1,
+            'verbblockfinalescape': 1,
             #TODO add support for these
             # maybe set a JOINNEXT char and do it on addLineBreaks()
-            'notbreaklistopen':1,
-            'barinsidequote':1,
-            'autotocwithbars':1,
-            'onelinepara':1,
+            'notbreaklistopen': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
+            'onelinepara': 1,
 
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            # 'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            # 'blanksaroundtable':1,
-            # 'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            # 'blanksaroundtable': 1,
+            # 'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
         'creole': {
-            'linkable':1,
-            'tableable':1,
-            'imglinkable':1,
-            'tablecellstrip':1,
-            'autotocwithbars':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'deflisttextstrip':1,
-            'verbblocknotescaped':1,
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
+            'linkable': 1,
+            'tableable': 1,
+            'imglinkable': 1,
+            'tablecellstrip': 1,
+            'autotocwithbars': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'deflisttextstrip': 1,
+            'verbblocknotescaped': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
         },
         'md': {
-            #'keeplistindent':1,
-            'linkable':1,
-            'labelbeforelink':1,
-            'tableable':1,
-            'imglinkable':1,
-            'tablecellstrip':1,
-            'autonumberlist':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'deflisttextstrip':1,
-            'blanksaroundpara':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            #'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
+            #'keeplistindent': 1,
+            'linkable': 1,
+            'labelbeforelink': 1,
+            'tableable': 1,
+            'imglinkable': 1,
+            'tablecellstrip': 1,
+            'autonumberlist': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'deflisttextstrip': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            #'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
         },
         'bbcode': {
-            #'keeplistindent':1,
-            'keepquoteindent':1,
-            #'indentverbblock':1,
-            'linkable':1,
-            #'labelbeforelink':1,
-            #'tableable':1,
-            'imglinkable':1,
-            'tablecellstrip':1,
-            #'autotocwithbars':1,
-            'autonumberlist':1,
-            'spacedlistitemopen':1,
-            'spacednumlistitemopen':1,
-            'deflisttextstrip':1,
-            #'verbblocknotescaped':1,
-            'blanksaroundpara':1,
-            #'blanksaroundverb':1,
-            #'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            #'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
+            #'keeplistindent': 1,
+            'keepquoteindent': 1,
+            #'indentverbblock': 1,
+            'linkable': 1,
+            #'labelbeforelink': 1,
+            #'tableable': 1,
+            'imglinkable': 1,
+            'tablecellstrip': 1,
+            #'autotocwithbars': 1,
+            'autonumberlist': 1,
+            'spacedlistitemopen': 1,
+            'spacednumlistitemopen': 1,
+            'deflisttextstrip': 1,
+            #'verbblocknotescaped': 1,
+            'blanksaroundpara': 1,
+            #'blanksaroundverb': 1,
+            #'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            #'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
         },
         'spip': {
-            'spacedlistitem':1,
-            'spacedlistitemopen':1,
-            'linkable':1,
-            'blankendmotherlist':1,
-            'tableable':1,
-            'barinsidequote':1,
-            'keepquoteindent':1,
-            'blankendtable':1,
-            'tablecellstrip':1,
-            'imgalignable':1,
-            'tablecellaligntype':'cell',
-            'listlineafteropen':1,
-            'labelbeforelink':1,
-            'blanksaroundpara':1,
-            'blanksaroundverb':1,
-            'blanksaroundquote':1,
-            'blanksaroundlist':1,
-            'blanksaroundnumlist':1,
-            'blanksarounddeflist':1,
-            'blanksaroundtable':1,
-            'blanksaroundbar':1,
-            'blanksaroundtitle':1,
-            'blanksaroundnumtitle':1,
+            'spacedlistitem': 1,
+            'spacedlistitemopen': 1,
+            'linkable': 1,
+            'blankendmotherlist': 1,
+            'tableable': 1,
+            'barinsidequote': 1,
+            'keepquoteindent': 1,
+            'blankendtable': 1,
+            'tablecellstrip': 1,
+            'imgalignable': 1,
+            'tablecellaligntype': 'cell',
+            'listlineafteropen': 1,
+            'labelbeforelink': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
         },
 
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html','xhtml','xhtmls'):
+    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls'):
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
 
@@ -2596,8 +2596,8 @@ def getRegexes():
 
     # Almost complicated title regexes ;)
     titskel = r'^ *(?P<id>%s)(?P<txt>%s)\1(\[(?P<label>[\w-]*)\])?\s*$'
-    bank[   'title'] = re.compile(titskel%('[=]{1,5}','[^=](|.*[^=])'))
-    bank['numtitle'] = re.compile(titskel%('[+]{1,5}','[^+](|.*[^+])'))
+    bank[   'title'] = re.compile(titskel%('[=]{1,5}', '[^=](|.*[^=])'))
+    bank['numtitle'] = re.compile(titskel%('[+]{1,5}', '[^+](|.*[^+])'))
 
     ### Complicated regexes begin here ;)
     #
@@ -2628,21 +2628,21 @@ def getRegexes():
     }
 
     # username [ :password ] @
-    patt_url_login = r'([%s]+(:%s)?@)?'%(urlskel['login'],urlskel['pass'])
+    patt_url_login = r'([%s]+(:%s)?@)?'%(urlskel['login'], urlskel['pass'])
 
     # [ http:// ] [ username:password@ ] domain.com [ / ]
     #     [ #anchor | ?form=data ]
     retxt_url = r'\b(%s%s|%s)[%s]+\b/*(\?[%s]+)?(#[%s]*)?'%(
-        urlskel['proto'],patt_url_login, urlskel['guess'],
-        urlskel['chars'],urlskel['form'],urlskel['anchor'])
+        urlskel['proto'], patt_url_login, urlskel['guess'],
+        urlskel['chars'], urlskel['form'], urlskel['anchor'])
 
     # filename | [ filename ] #anchor
     retxt_url_local = r'[%s]+|[%s]*(#[%s]*)'%(
-        urlskel['chars'],urlskel['chars'],urlskel['anchor'])
+        urlskel['chars'], urlskel['chars'], urlskel['anchor'])
 
     # user@domain [ ?form=data ]
     patt_email = r'\b[%s]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b(\?[%s]+)?'%(
-        urlskel['login'],urlskel['form'])
+        urlskel['login'], urlskel['form'])
 
     # Saving for future use
     bank['_urlskel'] = urlskel
@@ -2650,10 +2650,10 @@ def getRegexes():
     ### And now the real regexes
     #
 
-    bank['email'] = re.compile(patt_email,re.I)
+    bank['email'] = re.compile(patt_email, re.I)
 
     # email | url
-    bank['link'] = re.compile(r'%s|%s'%(retxt_url,patt_email), re.I)
+    bank['link'] = re.compile(r'%s|%s'%(retxt_url, patt_email), re.I)
 
     # \[ label | imagetag    url | email | filename \]
     bank['linkmark'] = re.compile(
@@ -2719,7 +2719,7 @@ def aa_table(table):
     for line in data:
         aff = "|"
         ret.append(res)
-        for j,el in enumerate(line):
+        for j, el in enumerate(line):
             aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
         ret.append(aff)
     ret.append(res)
@@ -2751,29 +2751,29 @@ def getUnknownErrorMessage():
         _('Please send the following Error Traceback to the author'),
         my_email, getTraceback())
     return msg
-def Message(msg,level):
+def Message(msg, level):
     if level <= VERBOSE and not QUIET:
         prefix = '-'*5
         print "%s %s"%(prefix*level, msg)
-def Debug(msg,id_=0,linenr=None):
+def Debug(msg, id_=0, linenr=None):
     "Show debug messages, categorized (colored or not)"
     if QUIET or not DEBUG:
         return
     if int(id_) not in range(8):
         id_ = 0
     # 0:black 1:red 2:green 3:yellow 4:blue 5:pink 6:cyan 7:white ;1:light
-    ids            = ['INI','CFG','SRC','BLK','HLD','GUI','OUT','DET']
-    colors_bgdark  = ['7;1','1;1','3;1','6;1','4;1','5;1','2;1','7;1']
-    colors_bglight = ['0'  ,'1'  ,'3'  ,'6'  ,'4'  ,'5'  ,'2'  ,'0'  ]
+    ids            = ['INI', 'CFG', 'SRC', 'BLK', 'HLD', 'GUI', 'OUT', 'DET']
+    colors_bgdark  = ['7;1', '1;1', '3;1', '6;1', '4;1', '5;1', '2;1', '7;1']
+    colors_bglight = ['0'  , '1'  , '3'  , '6'  , '4'  , '5'  , '2'  , '0'  ]
     if linenr is not None:
-        msg = "LINE %04d: %s"%(linenr,msg)
+        msg = "LINE %04d: %s"%(linenr, msg)
     if COLOR_DEBUG:
         if BG_LIGHT:
             color = colors_bglight[id_]
         else:
             color = colors_bgdark[id_]
-        msg = '\033[3%sm%s\033[m'%(color,msg)
-    print "++ %s: %s"%(ids[id_],msg)
+        msg = '\033[3%sm%s\033[m'%(color, msg)
+    print "++ %s: %s"%(ids[id_], msg)
 
 def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     data = []
@@ -2792,7 +2792,7 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
             if not ignore_error:
                 Error(_("Cannot read file:") + ' ' + file_path)
     if remove_linebreaks:
-        data = map(lambda x:re.sub('[\n\r]+$', '', x), data)
+        data = map(lambda x: re.sub('[\n\r]+$', '', x), data)
     Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
     return data
 
@@ -2810,7 +2810,7 @@ def Savefile(file_path, contents):
 
 def showdic(dic):
     for k in dic.keys():
-        print "%15s : %s" % (k,dic[k])
+        print "%15s : %s" % (k, dic[k])
 def dotted_spaces(txt=''):
     return txt.replace(' ', '.')
 
@@ -2823,7 +2823,7 @@ def get_rc_path():
         return user_defined
     # Env var not found, so perform automatic path composing
     # Set default filename according system platform
-    rc_names = {'default':'.txt2tagsrc', 'win':'_t2trc'}
+    rc_names = {'default': '.txt2tagsrc', 'win': '_t2trc'}
     rc_file = rc_names.get(sys.platform[:3]) or rc_names['default']
     # The file must be on the user directory, but where is this dir?
     rc_dir_search = ['HOME', 'HOMEPATH']
@@ -2838,7 +2838,7 @@ def get_rc_path():
         # On windows, prefix with the drive (%homedrive%: 2k/XP/NT)
         if sys.platform.startswith('win'):
             rc_drive = os.environ.get('HOMEDRIVE')
-            rc_path = os.path.join(rc_drive,rc_path)
+            rc_path = os.path.join(rc_drive, rc_path)
         return rc_path
     # Sorry, not found
     return ''
@@ -2890,17 +2890,17 @@ class CommandLine:
 
         # short:long options equivalence
         self.short_long = {
-            'C':'config-file',
-            'h':'help',
-            'H':'no-headers',
-            'i':'infile',
-            'n':'enum-title',
-            'o':'outfile',
-            'q':'quiet',
-            't':'target',
-            'T':'template',
-            'v':'verbose',
-            'V':'version',
+            'C': 'config-file',
+            'h': 'help',
+            'H': 'no-headers',
+            'i': 'infile',
+            'n': 'enum-title',
+            'o': 'outfile',
+            'q': 'quiet',
+            't': 'target',
+            'T': 'template',
+            'v': 'verbose',
+            'V': 'version',
         }
 
         # Compose valid short and long options data for getopt
@@ -2920,12 +2920,12 @@ class CommandLine:
 
     def _compose_long_opts(self):
         "Returns a list with all the valid long options/flags"
-        ret = map(lambda x:x+'=', self.all_options)          # add =
+        ret = map(lambda x: x+'=', self.all_options)         # add =
         ret.extend(self.all_flags)                           # flag ON
         ret.extend(self.all_actions)                         # actions
-        ret.extend(map(lambda x:'no-'+x, self.all_flags))    # add no-*
-        ret.extend(['no-style','no-encoding'])               # turn OFF
-        ret.extend(['no-outfile','no-infile'])               # turn OFF
+        ret.extend(map(lambda x: 'no-'+x, self.all_flags))   # add no-*
+        ret.extend(['no-style', 'no-encoding'])              # turn OFF
+        ret.extend(['no-outfile', 'no-infile'])              # turn OFF
         ret.extend(['no-dump-config', 'no-dump-source'])     # turn OFF
         ret.extend(['no-targets'])                           # turn OFF
         #Debug('Valid LONG options: %s'%ret)
@@ -3015,7 +3015,7 @@ class CommandLine:
         dft_options = OPTIONS.copy()
         cfg = conf.copy()
         valid_opts = self.all_options + self.all_flags
-        use_short = {'no-headers':'H', 'enum-title':'n'}
+        use_short = {'no-headers': 'H', 'enum-title': 'n'}
         # Remove useless options
         if not no_check and cfg.get('toc-only'):
             if cfg.has_key('no-headers'):
@@ -3050,7 +3050,7 @@ class CommandLine:
             if key in self.all_flags: # add --option
                 args.append('--'+key)
             else:                     # add --option=value
-                args.append('--%s=%s'%(key,val))
+                args.append('--%s=%s'%(key, val))
         # The outfile using -o
         if cfg.has_key('outfile') and \
            cfg['outfile'] != dft_options.get('outfile'):
@@ -3100,7 +3100,7 @@ class SourceDocument:
         header info, so the Head Area is just the first line.
     """
     def __init__(self, filename='', contents=[]):
-        self.areas = ['head','conf','body']
+        self.areas = ['head', 'conf', 'body']
         self.arearef = []
         self.areas_fancy = ''
         self.filename = filename
@@ -3143,7 +3143,7 @@ class SourceDocument:
 
     def scan_file(self, filename):
         Debug("source file: %s"%filename)
-        Message(_("Loading source document"),1)
+        Message(_("Loading source document"), 1)
         buf = Readfile(filename, remove_linebreaks=1)
         self.scan(buf)
 
@@ -3154,13 +3154,13 @@ class SourceDocument:
             Error(_('The input file is empty: %s')%self.filename)
         cfg_parser = ConfigLines().parse_line
         buf.insert(0, '')                         # text start at pos 1
-        ref = [1,4,0]
+        ref = [1, 4, 0]
         if not buf[1].strip():                    # no header
             ref[0] = 0
             ref[1] = 2
         rgx = getRegexes()
         on_comment_block = 0
-        for i in xrange(ref[1],len(buf)):         # find body init:
+        for i in xrange(ref[1], len(buf)):         # find body init:
             # Handle comment blocks inside config area
             if not on_comment_block \
                and rgx['blockCommentOpen'].search(buf[i]):
@@ -3177,14 +3177,14 @@ class SourceDocument:
                buf[i][0] != '%' or            # ... not comment or
                rgx['macros'].match(buf[i]) or # ... %%macro
                rgx['toc'].match(buf[i])    or # ... %%toc
-               cfg_parser(buf[i],'include')[1] or # ... %!include
-               cfg_parser(buf[i],'csv')[1]        # ... %!csv
+               cfg_parser(buf[i], 'include')[1] or # ... %!include
+               cfg_parser(buf[i], 'csv')[1]        # ... %!csv
             ):
                 ref[2] = i
                 break
         if ref[1] == ref[2]:
             ref[1] = 0                            # no conf area
-        for i in 0,1,2:                           # del !existent
+        for i in 0, 1, 2:                           # del !existent
             if ref[i] >= len(buf):
                 ref[i] = 0                        # title-only
             if not ref[i]:
@@ -3195,14 +3195,14 @@ class SourceDocument:
         # Fancyness sample: head conf body (1 4 8)
         self.areas_fancy = "%s (%s)"%(
             ' '.join(self.areas),
-            ' '.join(map(str, map(lambda x:x or '', ref))))
+            ' '.join(map(str, map(lambda x: x or '', ref))))
         Message(_("Areas found: %s")%self.areas_fancy, 2)
 
     def get_raw_config(self):
         "Handy method to get the CONF area RAW config (if any)"
         if not self.areas.count('conf'):
             return []
-        Message(_("Scanning source document CONF area"),1)
+        Message(_("Scanning source document CONF area"), 1)
         raw = ConfigLines(
             file_=self.filename, lines=self.get('conf'),
             first_line=self.arearef[1]).get_raw_config()
@@ -3332,7 +3332,7 @@ class ConfigMaster:
             val = self.off.get(key)    # turn key OFF
         # Is this key valid?
         if key not in self.defaults.keys():
-            Debug('Bogus Config %s:%s'%(key,val),1)
+            Debug('Bogus Config %s:%s'%(key, val), 1)
             return
         # Is this value the default one?
         if val == self.defaults.get(key):
@@ -3358,7 +3358,7 @@ class ConfigMaster:
         else:
             self.parsed[key] = val
         fancykey = dotted_spaces("%12s"%key)
-        Message(_("Added config %s : %s")%(fancykey,val),3)
+        Message(_("Added config %s : %s")%(fancykey, val), 3)
 
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
@@ -3371,7 +3371,7 @@ class ConfigMaster:
         if infile == MODULEIN and not outfile:
             outfile = MODULEOUT
         if not outfile and (infile and config.get('target')):
-            basename = re.sub('\.(txt|t2t)$','',infile)
+            basename = re.sub('\.(txt|t2t)$', '', infile)
             outfile = "%s.%s"%(basename, config['target'])
         Debug(" infile: '%s'"%infile , 1)
         Debug("outfile: '%s'"%outfile, 1)
@@ -3417,7 +3417,7 @@ class ConfigMaster:
                 except ValueError:
                     Error(_('--%s value must be a number') % key)
         # Check split level value
-        if config['split'] not in (0,1,2):
+        if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         # Slides needs width and height
         if config['slides'] and target == 'art':
@@ -3450,7 +3450,7 @@ class ConfigMaster:
         config['outfile'] = self.get_outfile_name(config)
         # Checking suicide
         if config['sourcefile'] == config['outfile'] and \
-           config['outfile'] not in [STDOUT,MODULEOUT] and not gui:
+           config['outfile'] not in [STDOUT, MODULEOUT] and not gui:
             Error(_("Input and Output files are the same: %s") % config['outfile'])
         return config
 
@@ -3527,7 +3527,7 @@ class ConfigLines:
             if not line:  # empty
                 continue
             if line[0] != '%':
-                Error(errormsg%(filename,i+1,line))
+                Error(errormsg%(filename, i+1, line))
         return lines
 
     def include_config_file(self, file_=''):
@@ -3548,7 +3548,7 @@ class ConfigLines:
         first = self.first_line
         for i in xrange(len(self.lines)):
             line = self.lines[i]
-            Message(_("Processing line %03d: %s")%(first+i,line),2)
+            Message(_("Processing line %03d: %s")%(first+i, line), 2)
             target, key, val = self.parse_line(line)
             if not key:    # no config on this line
                 continue
@@ -3561,7 +3561,7 @@ class ConfigLines:
                 Message(_("Finished Config file inclusion: %s") % val, 2)
             else:
                 ret.append([target, key, val])
-                Message(_("Added %s")%key,3)
+                Message(_("Added %s")%key, 3)
         return ret
 
     def parse_line(self, line='', keyname='', target=''):
@@ -3693,21 +3693,21 @@ class MaskMaster:
             if t >= 0 and t < r and t < v:
                 txt = regex['tagged'].search(line).group(1)
                 self.taggedbank.append(txt)
-                line = regex['tagged'].sub(self.taggedmask,line,1)
+                line = regex['tagged'].sub(self.taggedmask, line, 1)
 
             # Protect raw text
             elif r >= 0 and r < t and r < v:
                 txt = regex['raw'].search(line).group(1)
-                txt = doEscape(TARGET,txt)
+                txt = doEscape(TARGET, txt)
                 self.rawbank.append(txt)
-                line = regex['raw'].sub(self.rawmask,line,1)
+                line = regex['raw'].sub(self.rawmask, line, 1)
 
             # Protect verbatim text
             elif v >= 0 and v < t and v < r:
                 txt = regex['fontMono'].search(line).group(1)
-                txt = doEscape(TARGET,txt)
+                txt = doEscape(TARGET, txt)
                 self.monobank.append(txt)
-                line = regex['fontMono'].sub(self.monomask,line,1)
+                line = regex['fontMono'].sub(self.monomask, line, 1)
             else:
                 break
 
@@ -3715,11 +3715,11 @@ class MaskMaster:
         while regex['macros'].search(line):
             txt = regex['macros'].search(line).group()
             self.macrobank.append(txt)
-            line = regex['macros'].sub(self.macromask,line,1)
+            line = regex['macros'].sub(self.macromask, line, 1)
 
         # Protect TOC location
         while regex['toc'].search(line):
-            line = regex['toc'].sub(self.tocmask,line)
+            line = regex['toc'].sub(self.tocmask, line)
             AUTOTOC = 0
 
         # Protect URLs and emails
@@ -3749,7 +3749,7 @@ class MaskMaster:
                 link = fix_relative_path(m.group('link'))
                 label = m.group('label').rstrip()
                 link_re = regex['linkmark']
-            line = link_re.sub(self.linkmask,line,1)
+            line = link_re.sub(self.linkmask, line, 1)
 
             # Save link data to the link bank
             self.linkbank.append((label, link))
@@ -3758,7 +3758,7 @@ class MaskMaster:
     def undo(self, line):
 
         # url & email
-        for label,url in self.linkbank:
+        for label, url in self.linkbank:
             link = get_tagged_link(label, url)
             line = line.replace(self.linkmask, link, 1)
 
@@ -3769,7 +3769,7 @@ class MaskMaster:
 
         # Expand verb
         for mono in self.monobank:
-            open_,close = TAGS['fontMonoOpen'],TAGS['fontMonoClose']
+            open_, close = TAGS['fontMonoOpen'], TAGS['fontMonoClose']
             line = line.replace(self.monomask, open_+mono+close, 1)
 
         # Expand raw
@@ -3789,7 +3789,7 @@ class MaskMaster:
 class TitleMaster:
     "Title things"
     def __init__(self):
-        self.count = ['',0,0,0,0,0]
+        self.count = ['', 0, 0, 0, 0, 0]
         self.toc   = []
         self.level = 0
         self.kind  = ''
@@ -3902,7 +3902,7 @@ class TitleMaster:
         if CONF['enum-title']:
             kind = 'numtitle'  # force
         if rules['titleblocks']:
-            self.tag = TAGS.get('%s%dOpen'%(kind,level)) or \
+            self.tag = TAGS.get('%s%dOpen'%(kind, level)) or \
                        TAGS.get('title%dOpen'%level)
         else:
             self.tag = TAGS.get(kind+`level`) or \
@@ -3951,7 +3951,7 @@ class TitleMaster:
             # Autonumber label (if needed)
             label = label or '%s%s' % (self.anchor_prefix, self.anchor_count)
         if label and TAGS['anchor']:
-            ret = regex['x'].sub(label,TAGS['anchor'])
+            ret = regex['x'].sub(label, TAGS['anchor'])
         return ret
 
     def _get_full_title_text(self):
@@ -4069,7 +4069,7 @@ class TableMaster:
 
     def _get_col_align(self):
         colalign = []
-        for cell in range(0,len(self.cellalign)):
+        for cell in range(0, len(self.cellalign)):
             align = self.cellalign[cell]
             span  = self.cellspan[cell]
             colalign.extend([align] * span)
@@ -4135,7 +4135,7 @@ class TableMaster:
         cspan = []
         multicol = []
         colindex = 0
-        for cellindex in range(0,len(rowdata['cellspan'])):
+        for cellindex in range(0, len(rowdata['cellspan'])):
 
             span = rowdata['cellspan'][cellindex]
             align = rowdata['cellalign'][cellindex]
@@ -4174,7 +4174,7 @@ class TableMaster:
         if rules['tablecellstrip']:
             cells = map(lambda x: x.strip(), cells)
         if rowdata['title'] and rules['tabletitlerowinbold']:
-            cells = map(lambda x: enclose_me('fontBold',x), cells)
+            cells = map(lambda x: enclose_me('fontBold', x), cells)
 
         # Add cell BEGIN/END tags
         for cell in cells:
@@ -4218,8 +4218,8 @@ class TableMaster:
     def parse_row(self, line):
         # Default table properties
         ret = {
-            'border':0, 'title':0, 'align':'Left',
-            'cells':[], 'cellalign':[], 'cellspan':[]
+            'border': 0, 'title': 0, 'align': 'Left',
+            'cells': [], 'cellalign': [], 'cellspan': []
         }
         # Detect table align (and remove spaces mark)
         if line[0] == ' ':
@@ -4244,7 +4244,7 @@ class TableMaster:
         # Find cells span
         ret['cellspan'] = self._get_cell_span(ret['cells'])
         # Remove span ID
-        ret['cells'] = map(lambda x:re.sub('\a\|+$','',x),ret['cells'])
+        ret['cells'] = map(lambda x: re.sub('\a\|+$', '', x), ret['cells'])
         # Find cells align
         ret['cellalign'] = self._get_cell_align(ret['cells'])
         # Hooray!
@@ -4283,7 +4283,7 @@ class TableMaster:
         tagged_rows = []
         if rowsep:
             #!py15
-            #tagged_rows = map(lambda x:x+rowsep, tagged_cells)
+            #tagged_rows = map(lambda x: x+rowsep, tagged_cells)
             for cell in tagged_cells:
                 tagged_rows.append(cell+rowsep)
             # Remove last rowsep, because the table is over
@@ -4292,9 +4292,9 @@ class TableMaster:
         else:
             for rowdata in rows:
                 if rowdata['title']:
-                    o,c = titrowopen, titrowclose
+                    o, c = titrowopen, titrowclose
                 else:
-                    o,c = rowopen, rowclose
+                    o, c = rowopen, rowclose
                 row = tagged_cells.pop(0)
                 tagged_rows.append(o + row + c)
 
@@ -4323,24 +4323,24 @@ class BlockMaster:
         self.last = ''
         self.tableparser = None
         self.contains = {
-            'para'    :['comment','raw','tagged'],
-            'verb'    :[],
-            'table'   :['comment'],
-            'raw'     :[],
-            'tagged'  :[],
-            'comment' :[],
-            'quote'   :['quote','comment','raw','tagged'],
-            'list'    :['list','numlist','deflist','para','verb','comment','raw','tagged'],
-            'numlist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
-            'deflist' :['list','numlist','deflist','para','verb','comment','raw','tagged'],
-            'bar'     :[],
-            'title'   :[],
-            'numtitle':[],
+            'para'    : ['comment', 'raw', 'tagged'],
+            'verb'    : [],
+            'table'   : ['comment'],
+            'raw'     : [],
+            'tagged'  : [],
+            'comment' : [],
+            'quote'   : ['quote', 'comment', 'raw', 'tagged'],
+            'list'    : ['list', 'numlist', 'deflist', 'para', 'verb', 'comment', 'raw', 'tagged'],
+            'numlist' : ['list', 'numlist', 'deflist', 'para', 'verb', 'comment', 'raw', 'tagged'],
+            'deflist' : ['list', 'numlist', 'deflist', 'para', 'verb', 'comment', 'raw', 'tagged'],
+            'bar'     : [],
+            'title'   : [],
+            'numtitle': [],
         }
         self.allblocks = self.contains.keys()
 
         # If one is found inside another, ignore the marks
-        self.exclusive = ['comment','verb','raw','tagged']
+        self.exclusive = ['comment', 'verb', 'raw', 'tagged']
 
         # May we include bars inside quotes?
         if rules['barinsidequote']:
@@ -4361,7 +4361,7 @@ class BlockMaster:
 
     def propset(self, key, val):
         self.PRP[-1][key] = val
-        #Debug('BLOCK prop ++: %s->%s'%(key,repr(val)), 1)
+        #Debug('BLOCK prop ++: %s->%s'%(key, repr(val)), 1)
         #Debug('BLOCK props: %s'%(repr(self.PRP)), 1)
 
     def hold(self):
@@ -4406,7 +4406,7 @@ class BlockMaster:
             self.tableparser = TableMaster()
         # Deeper and deeper
         self.depth = len(self.BLK)
-        Debug('block ++ (%s): %s' % (block,self.BLK), 3)
+        Debug('block ++ (%s): %s' % (block, self.BLK), 3)
         return ret
 
     def blockout(self):
@@ -4432,8 +4432,8 @@ class BlockMaster:
             # Reset now. Mother block will have it all
             result = []
 
-        Debug('block -- (%s): %s' % (blockname,self.BLK), 3)
-        Debug('RELEASED (%s): %s' % (blockname,parsed), 3)
+        Debug('block -- (%s): %s' % (blockname, self.BLK), 3)
+        Debug('RELEASED (%s): %s' % (blockname, parsed), 3)
 
         # Save this top level block name (produced output)
         # The next block will use it
@@ -4471,7 +4471,7 @@ class BlockMaster:
         return ret
 
     def _remove_twoblanks(self, lastitem):
-        if len(lastitem) > 1 and lastitem[-2:] == ['','']:
+        if len(lastitem) > 1 and lastitem[-2:] == ['', '']:
             return lastitem[:-2]
         return lastitem
 
@@ -4585,7 +4585,7 @@ class BlockMaster:
             if self.prop('mapped') == 'table':
                 line = MacroMaster().expand(line)
             if not rules['verbblocknotescaped']:
-                line = doEscape(TARGET,line)
+                line = doEscape(TARGET, line)
             if TAGS['blockVerbLine']:
                 line = TAGS['blockVerbLine'] + line
             if rules['indentverbblock']:
@@ -4776,7 +4776,7 @@ class BlockMaster:
             # Tag it
             item[0] = self._last_escapes(item[0])
             if name == 'deflist':
-                z,term,rest = item[0].split(SEPARATOR, 2)
+                z, term, rest = item[0].split(SEPARATOR, 2)
                 item[0] = rest
                 if not item[0]:
                     del item[0]      # to avoid <p>
@@ -4882,7 +4882,7 @@ class MacroMaster:
         elif flag == 'f':
             x = info['name']
         elif flag == 'F':
-            x = re.sub('\.[^.]*$','',info['name'])
+            x = re.sub('\.[^.]*$', '', info['name'])
         elif flag == 'd':
             x = info['dir']
         elif flag == 'D':
@@ -4910,7 +4910,7 @@ class MacroMaster:
             path = os.path.abspath(file_)
             dir_ = os.path.dirname(path)
             name = os.path.basename(path)
-        self.fileinfo[macroname] = {'path':path,'dir':dir_,'name':name}
+        self.fileinfo[macroname] = {'path': path, 'dir': dir_, 'name': name}
 
     def expand(self, line=''):
         "Expand all macros found on the line"
@@ -4919,20 +4919,20 @@ class MacroMaster:
             name = self.name = m.group('name').lower()
             fmt = m.group('fmt') or self.dft_fmt.get(name)
             if name == 'date':
-                txt = time.strftime(fmt,self.currdate)
+                txt = time.strftime(fmt, self.currdate)
             elif name == 'mtime':
                 if self.infile in (STDIN, MODULEIN):
                     fdate = self.currdate
                 else:
                     mtime = os.path.getmtime(self.infile)
                     fdate = time.localtime(mtime)
-                txt = time.strftime(fmt,fdate)
+                txt = time.strftime(fmt, fdate)
             elif name == 'infile' or name == 'outfile' or name == 'currentfile' :
                 self.set_file_info(name)
                 txt = self.walk_file_format(fmt)
             else:
                 Error("Unknown macro name '%s'"%name)
-            line = self.rgx.sub(txt,line,1)
+            line = self.rgx.sub(txt, line, 1)
         return line
 
 
@@ -4947,7 +4947,7 @@ def listTargets():
         print "%s\t%s" % (target, TARGET_NAMES.get(target))
 
 def dumpConfig(source_raw, parsed_config):
-    onoff = {1:_('ON'), 0:_('OFF')}
+    onoff = {1: _('ON'), 0: _('OFF')}
     data = [
         (_('RC file')        , RC_RAW     ),
         (_('source document'), source_raw ),
@@ -4956,11 +4956,11 @@ def dumpConfig(source_raw, parsed_config):
     # First show all RAW data found
     for label, cfg in data:
         print _('RAW config for %s')%label
-        for target,key,val in cfg:
+        for target, key, val in cfg:
             target = '(%s)'%target
             key    = dotted_spaces("%-14s"%key)
             val    = val or _('ON')
-            print '  %-8s %s: %s'%(target,key,val)
+            print '  %-8s %s: %s'%(target, key, val)
         print
     # Then the parsed results of all of them
     print _('Full PARSED config')
@@ -4981,7 +4981,7 @@ def dumpConfig(source_raw, parsed_config):
             else:
                 sep = ', '
             val = sep.join(val)
-        print "%25s: %s"%(dotted_spaces("%-14s"%key),val)
+        print "%25s: %s"%(dotted_spaces("%-14s"%key), val)
     print
     print _('Active filters')
     for filter_ in ['preproc', 'postproc', 'postvoodoo']:
@@ -5051,7 +5051,7 @@ def finish_him(outlist, config):
         postoutlist = []
         errmsg = _('Invalid PostProc filter replacement')
         for line in outlist:
-            for rgx,repl in filters:
+            for rgx, repl in filters:
                 try:
                     line = rgx.sub(repl, line)
                 except:
@@ -5073,7 +5073,7 @@ def finish_him(outlist, config):
     else:
         Savefile(outfile, addLineBreaks(outlist))
         if not GUI and not QUIET:
-            print _('%s wrote %s')%(my_name,outfile)
+            print _('%s wrote %s')%(my_name, outfile)
 
     if config['split']:
         if not QUIET:
@@ -5115,7 +5115,7 @@ def toc_tagger(toc, config):
         fakeconf['postvoodoo']  = []
         fakeconf['css-sugar']  = 0
         fakeconf['art-no-title']  = 1  # needed for --toc and --slides together, avoids slide title before TOC
-        ret,foo = convert(toc, fakeconf)
+        ret, foo = convert(toc, fakeconf)
         set_global_config(config)   # restore config
     # Our TOC list is not needed, the target already knows how to do a TOC
     elif config['toc'] and TAGS['TOC']:
@@ -5158,7 +5158,7 @@ def toc_formatter(toc, config):
         if rules['blankendautotoc']:           # blank line after TOC
             ret.append('')
         if rules['autotocnewpagebefore']:      # page break before TOC
-            ret.insert(0,TAGS['pageBreak'])
+            ret.insert(0, TAGS['pageBreak'])
         if rules['autotocnewpageafter']:       # page break after TOC
             ret.append(TAGS['pageBreak'])
     return ret
@@ -5169,14 +5169,14 @@ def doHeader(headers, config):
     if not config['headers']:
         return config['fullBody']
     if not headers:
-        headers = ['','','']
+        headers = ['', '', '']
     target = config['target']
     if not HEADER_TEMPLATE.has_key(target):
         Error("doHeader: Unknown target '%s'"%target)
 
     # Use default templates
     if config['template'] == '' :
-        if target in ('html','xhtml','xhtmls') and config.get('css-sugar'):
+        if target in ('html', 'xhtml', 'xhtmls') and config.get('css-sugar'):
             template = HEADER_TEMPLATE[target+'css'].split('\n')
         else:
             template = HEADER_TEMPLATE[target].split('\n')
@@ -5189,28 +5189,28 @@ def doHeader(headers, config):
     # Read user's template file
     else:
         templatefile = ''
-        names = [config['template']+'.'+target,config['template']]
+        names = [config['template']+'.'+target, config['template']]
         for file in names:
             if os.path.isfile(file):
                 templatefile = file
                 break
         if not templatefile:
             Error(_("Cannot find template file:") + " " + config['template'])
-        template = Readfile(templatefile,remove_linebreaks=1)
+        template = Readfile(templatefile, remove_linebreaks=1)
 
-    head_data = {'STYLE':[], 'ENCODING':''}
+    head_data = {'STYLE': [], 'ENCODING': ''}
 
     for key in head_data.keys():
         val = config.get(key.lower())
         # Remove .sty extension from each style filename (freaking tex)
-        # XXX Can't handle --style foo.sty,bar.sty
+        # XXX Can't handle --style foo.sty, bar.sty
         if target == 'tex' and key == 'STYLE':
-            val = map(lambda x:re.sub('(?i)\.sty$','',x), val)
+            val = map(lambda x: re.sub('(?i)\.sty$', '', x), val)
         if key == 'ENCODING':
             val = get_encoding_string(val, target)
         head_data[key] = val
     # Parse header contents
-    for i in 0,1,2:
+    for i in 0, 1, 2:
         # Expand macros
         contents = MacroMaster(config=config).expand(headers[i])
         # Escapes - on tex, just do it if any \tag{} present
@@ -5224,7 +5224,7 @@ def doHeader(headers, config):
 
     # css-inside removes STYLE line
     #XXX In tex, this also removes the modules call (%!style:amsfonts)
-    if target in ('html','xhtml','xhtmls') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls') and config.get('css-inside') and \
        config.get('style'):
         head_data['STYLE'] = []
 
@@ -5274,7 +5274,7 @@ def doHeader(headers, config):
                 break
 
     # Expand macros on *all* lines of the template
-    template = map(MacroMaster(config=config).expand,template)
+    template = map(MacroMaster(config=config).expand, template)
     # Add Body contents to template data
     head_data['BODY'] = '\n'.join(config['fullBody'])
     # Populate template with data (dict expansion)
@@ -5282,7 +5282,7 @@ def doHeader(headers, config):
 
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
-    if target in ('html','xhtml','xhtmls') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls') and config.get('css-inside') and \
        config.get('style'):
         set_global_config(config) # usually on convert(), needed here
         for i in xrange(len(config['style'])):
@@ -5355,21 +5355,21 @@ def doFooter(config):
 
     return ret
 
-def doEscape(target,txt):
+def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
-    if target in ('html','sgml','xhtml','xhtmls','dbk'):
-        txt = re.sub('&','&amp;',txt)
-        txt = re.sub('<','&lt;',txt)
-        txt = re.sub('>','&gt;',txt)
+    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk'):
+        txt = re.sub('&', '&amp;', txt)
+        txt = re.sub('<', '&lt;', txt)
+        txt = re.sub('>', '&gt;', txt)
         if target == 'sgml':
-            txt = re.sub('\xff','&yuml;',txt)  # "+y
+            txt = re.sub('\xff', '&yuml;', txt)  # "+y
     elif target == 'pm6':
-        txt = re.sub('<','<\#60>',txt)
+        txt = re.sub('<', '<\#60>', txt)
     elif target == 'mgp':
-        txt = re.sub('^%',' %',txt)  # add leading blank to avoid parse
+        txt = re.sub('^%', ' %', txt)  # add leading blank to avoid parse
     elif target == 'man':
-        txt = re.sub("^([.'])", '\\&\\1',txt)           # command ID
+        txt = re.sub("^([.'])", '\\&\\1', txt)           # command ID
         txt = txt.replace(ESCCHAR, ESCCHAR+'e')         # \e
     elif target == 'lout':
         # TIP: / moved to FinalEscape to avoid //italic//
@@ -5408,7 +5408,7 @@ def EscapeCharHandler(action, data):
     "Mask/Unmask the Escape Char on the given string"
     if not data.strip():
         return data
-    if action not in ('mask','unmask'):
+    if action not in ('mask', 'unmask'):
         Error("EscapeCharHandler: Invalid action '%s'"%action)
     if action == 'mask':
         return data.replace('\\', ESCCHAR)
@@ -5419,13 +5419,13 @@ def maskEscapeChar(data):
     "Replace any Escape Char \ with a text mask (Input: str or list)"
     if type(data) == type([]):
         return map(lambda x: EscapeCharHandler('mask', x), data)
-    return EscapeCharHandler('mask',data)
+    return EscapeCharHandler('mask', data)
 
 def unmaskEscapeChar(data):
     "Undo the Escape char \ masking (Input: str or list)"
     if type(data) == type([]):
         return map(lambda x: EscapeCharHandler('unmask', x), data)
-    return EscapeCharHandler('unmask',data)
+    return EscapeCharHandler('unmask', data)
 
 def addLineBreaks(mylist):
     "use LB to respect sys.platform"
@@ -5445,12 +5445,12 @@ def expandLineBreaks(mylist):
 def compile_filters(filters, errmsg='Filter'):
     if filters:
         for i in xrange(len(filters)):
-            patt,repl = filters[i]
+            patt, repl = filters[i]
             try:
                 rgx = re.compile(patt)
             except:
                 Error("%s: '%s'"%(errmsg, patt))
-            filters[i] = (rgx,repl)
+            filters[i] = (rgx, repl)
     return filters
 
 def enclose_me(tagname, txt):
@@ -5491,7 +5491,7 @@ def beautify_me(name, line):
     open_ = TAGS['%sOpen'%name]
     close = TAGS['%sClose'%name]
     txt = r'%s\1%s'%(open_, close)
-    line = regex[name].sub(txt,line)
+    line = regex[name].sub(txt, line)
     return line
 
 def get_tagged_link(label, url):
@@ -5506,7 +5506,7 @@ def get_tagged_link(label, url):
         linktype = 'url'
 
     # Escape specials from TEXT parts
-    label = doEscape(target,label)
+    label = doEscape(target, label)
 
     # Escape specials from link URL
     if not rules['linkable'] or rules['escapeurl']:
@@ -5538,7 +5538,7 @@ def get_tagged_link(label, url):
         else:
             # Just add link data to tag
             tag = TAGS[linktype]
-            ret = regex['x'].sub(url,tag)
+            ret = regex['x'].sub(url, tag)
 
     # Named link or guessed simple link
     else:
@@ -5565,7 +5565,7 @@ def get_tagged_link(label, url):
         # Add link data to tag (replace \a's)
         ret = TAGS["%sMark"%linktype]
         for data in urlorder:
-            ret = regex['x'].sub(data,ret,1)
+            ret = regex['x'].sub(data, ret, 1)
 
     return ret
 
@@ -5641,10 +5641,10 @@ def get_encoding_string(enc, target):
         }
     }
     # Normalization
-    enc = re.sub('(?i)(us[-_]?)?ascii|us|ibm367','us-ascii'  , enc)
-    enc = re.sub('(?i)(ibm|cp)?85([02])'        ,'ibm85\\2'  , enc)
-    enc = re.sub('(?i)(iso[_-]?)?8859[_-]?'     ,'iso-8859-' , enc)
-    enc = re.sub('iso-8859-($|[^1-9]).*'        ,'iso-8859-1', enc)
+    enc = re.sub('(?i)(us[-_]?)?ascii|us|ibm367', 'us-ascii'  , enc)
+    enc = re.sub('(?i)(ibm|cp)?85([02])'        , 'ibm85\\2'  , enc)
+    enc = re.sub('(?i)(iso[_-]?)?8859[_-]?'     , 'iso-8859-' , enc)
+    enc = re.sub('iso-8859-($|[^1-9]).*'        , 'iso-8859-1', enc)
     # Apply translation table
     try:
         enc = translate[target][enc.lower()]
@@ -5682,7 +5682,7 @@ def process_source_file(file_='', noconf=0, contents=[]):
     else:
         source = SourceDocument(file_)
     head, conf, body = source.split()
-    Message(_("Source document contents stored"),2)
+    Message(_("Source document contents stored"), 2)
     if not noconf:
         # Read document config
         source_raw = source.get_raw_config()
@@ -5717,7 +5717,7 @@ def process_source_file(file_='', noconf=0, contents=[]):
         Debug("FULL config for this file: %s"%full_parsed, 1)
     else:
         full_parsed = {}
-    return full_parsed, (head,conf,body)
+    return full_parsed, (head, conf, body)
 
 def get_infiles_config(infiles):
     """
@@ -5729,7 +5729,7 @@ def get_infiles_config(infiles):
 
 def convert_this_files(configs):
     global CONF
-    for myconf,doc in configs:                 # multifile support
+    for myconf, doc in configs:                 # multifile support
         target_head = []
         target_toc  = []
         target_body = []
@@ -5739,10 +5739,10 @@ def convert_this_files(configs):
         # Compose the target file Headers
         #TODO escape line before?
         #TODO see exceptions by tex and mgp
-        Message(_("Composing target Headers"),1)
+        Message(_("Composing target Headers"), 1)
         # Parse the full marked body into tagged target
         first_body_line = (len(source_head) or 1)+ len(source_conf) + 1
-        Message(_("Composing target Body"),1)
+        Message(_("Composing target Body"), 1)
         target_body, marked_toc = convert(source_body, myconf, firstlinenr=first_body_line)
         # If dump-source, we're done
         if myconf['dump-source']:
@@ -5756,11 +5756,11 @@ def convert_this_files(configs):
             target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
 
         # Compose the target file Footer
-        Message(_("Composing target Footer"),1)
+        Message(_("Composing target Footer"), 1)
         target_foot = doFooter(myconf)
 
         # Make TOC (if needed)
-        Message(_("Composing target TOC"),1)
+        Message(_("Composing target TOC"), 1)
         tagged_toc  = toc_tagger(marked_toc, myconf)
         target_toc  = toc_formatter(tagged_toc, myconf)
         target_body = toc_inside_body(target_body, target_toc, myconf)
@@ -5777,7 +5777,7 @@ def convert_this_files(configs):
         elif myconf.get('outfile') == MODULEOUT:
             return finish_him(outlist, myconf), myconf
         else:
-            Message(_("Saving results to the output file"),1)
+            Message(_("Saving results to the output file"), 1)
             finish_him(outlist, myconf)
 
 
@@ -5803,25 +5803,25 @@ def parse_images(line):
                 tag = regex['_imgAlign'].sub(align_tag, tag, 1)
 
             # Dirty fix to allow centered solo images
-            if align == 'center' and TARGET in ('html','xhtml'):
-                rest = regex['img'].sub('',line,1)
+            if align == 'center' and TARGET in ('html', 'xhtml'):
+                rest = regex['img'].sub('', line, 1)
                 if re.match('^\s+$', rest):
                     tag = "<center>%s</center>" %tag
             if align == 'center' and TARGET == 'xhtmls':
-                rest = regex['img'].sub('',line,1)
+                rest = regex['img'].sub('', line, 1)
                 if re.match('^\s+$', rest):
                     tag = '<div style="text-align: center;">%s</div>' %tag
 
         if TARGET == 'tex':
-            tag = re.sub(r'\\b',r'\\\\b',tag)
+            tag = re.sub(r'\\b', r'\\\\b', tag)
             txt = txt.replace('_', 'vvvvTexUndervvvv')
 
         # Ugly hack to avoid infinite loop when target's image tag contains []
         tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
 
-        line = regex['img'].sub(tag,line,1)
-        line = regex['x'].sub(txt,line,1)
-    return line.replace('vvvvEscapeSquareBracketvvvv','[')
+        line = regex['img'].sub(tag, line, 1)
+        line = regex['x'].sub(txt, line, 1)
+    return line.replace('vvvvEscapeSquareBracketvvvv', '[')
 
 
 def add_inline_tags(line):
@@ -5836,7 +5836,7 @@ def add_inline_tags(line):
 
 def get_include_contents(file_, path=''):
     "Parses %!include: value and extract file contents"
-    ids = {'`':'verb', '"':'raw', "'":'tagged'}
+    ids = {'`': 'verb', '"': 'raw', "'": 'tagged'}
     id_ = 't2t'
     # Set include type and remove identifier marks
     mark = file_[0]
@@ -5853,7 +5853,7 @@ def get_include_contents(file_, path=''):
         lines = get_file_body(filepath)
         lines.insert(0, '%%!currentfile: %s'%(filepath))
         # This appears when included hit EOF with verbatim area open
-        #lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
+        #lines.append('%%INCLUDED(%s) ends here: %s'%(id_, file_))
     return id_, lines
 
 
@@ -5895,12 +5895,12 @@ def convert(bodylines, config, firstlinenr=1):
         untouchedline = bodylines[lineref]
         dump_source.append(untouchedline)
 
-        line = re.sub('[\n\r]+$','',untouchedline)   # del line break
+        line = re.sub('[\n\r]+$', '', untouchedline)   # del line break
 
         # Apply PreProc filters
         if pre_filter:
             errmsg = _('Invalid PreProc filter replacement')
-            for rgx,repl in pre_filter:
+            for rgx, repl in pre_filter:
                 try:
                     line = rgx.sub(repl, line)
                 except:
@@ -5955,7 +5955,7 @@ def convert(bodylines, config, firstlinenr=1):
         if regex['1lineTagged'].search(line) \
            and BLOCK.block() not in BLOCK.exclusive:
             ret.extend(BLOCK.blockin('tagged'))
-            line = regex['1lineTagged'].sub('',line)
+            line = regex['1lineTagged'].sub('', line)
             BLOCK.holdadd(line)
             ret.extend(BLOCK.blockout())
             continue
@@ -5984,7 +5984,7 @@ def convert(bodylines, config, firstlinenr=1):
         if regex['1lineRaw'].search(line) \
            and BLOCK.block() not in BLOCK.exclusive:
             ret.extend(BLOCK.blockin('raw'))
-            line = regex['1lineRaw'].sub('',line)
+            line = regex['1lineRaw'].sub('', line)
             BLOCK.holdadd(line)
             ret.extend(BLOCK.blockout())
             continue
@@ -6022,7 +6022,7 @@ def convert(bodylines, config, firstlinenr=1):
         if regex['1lineVerb'].search(line) \
            and BLOCK.block() not in BLOCK.exclusive:
             ret.extend(BLOCK.blockin('verb'))
-            line = regex['1lineVerb'].sub('',line)
+            line = regex['1lineVerb'].sub('', line)
             BLOCK.holdadd(line)
             ret.extend(BLOCK.blockout())
             f_lastwasblank = 0
@@ -6321,9 +6321,9 @@ def convert(bodylines, config, firstlinenr=1):
             if listname == 'deflist':
                 term = parse_deflist_term(line)
                 line = regex['deflist'].sub(
-                    SEPARATOR+term+SEPARATOR,line)
+                    SEPARATOR+term+SEPARATOR, line)
             else:
-                line = regex[listname].sub(SEPARATOR,line)
+                line = regex[listname].sub(SEPARATOR, line)
 
             # Don't cross depth limit
             maxdepth = rules['listmaxdepth']
@@ -6343,8 +6343,8 @@ def convert(bodylines, config, firstlinenr=1):
             if not BLOCK.block().endswith('list') or \
                len(listitemindent) > len(listindent):
                 ret.extend(BLOCK.blockin(listname))
-                BLOCK.propset('indent',listitemindent)
-                BLOCK.propset('type',listtype)
+                BLOCK.propset('indent', listitemindent)
+                BLOCK.propset('type', listtype)
 
             # Closing sublists
             while len(listitemindent) < len(BLOCK.prop('indent')):
@@ -6354,8 +6354,8 @@ def convert(bodylines, config, firstlinenr=1):
             # Fix: close sublist (as mother), open another list
             if not BLOCK.block().endswith('list'):
                 ret.extend(BLOCK.blockin(listname))
-                BLOCK.propset('indent',listitemindent)
-                BLOCK.propset('type',listtype)
+                BLOCK.propset('indent', listitemindent)
+                BLOCK.propset('type', listtype)
 
         #---------------------[ Table ]-----------------------------
 
@@ -6390,7 +6390,7 @@ def convert(bodylines, config, firstlinenr=1):
         #---------------------[ Final Parses ]----------------------
 
         # The target-specific special char escapes for body lines
-        line = doEscape(target,line)
+        line = doEscape(target, line)
 
         line = add_inline_tags(line)
         line = MASK.undo(line)
@@ -6415,7 +6415,7 @@ def convert(bodylines, config, firstlinenr=1):
         results_box(line)
 
     # EOF: close any open para/verb/lists/table/quotes
-    Debug('EOF',7)
+    Debug('EOF', 7)
     while BLOCK.block():
         ret.extend(BLOCK.blockout())
 
@@ -6462,7 +6462,7 @@ def load_GUI_resources():
     "Load all extra modules and methods used by GUI"
     global askopenfilename, showinfo, showwarning, showerror, Tkinter
     from tkFileDialog import askopenfilename
-    from tkMessageBox import showinfo,showwarning,showerror
+    from tkMessageBox import showinfo, showwarning, showerror
     import Tkinter
 
 class Gui:
@@ -6478,7 +6478,7 @@ class Gui:
         self.frame_border  = 6      # frame border size  (pixel)
 
         # The default Gui colors, can be changed by %!guicolors
-        self.dft_gui_colors = ['#6c6','white','#cf9','#030']
+        self.dft_gui_colors = ['#6c6', 'white', '#cf9', '#030']
         self.gui_colors = []
         self.bg1 = self.fg1 = self.bg2 = self.fg2 = ''
 
@@ -6505,36 +6505,36 @@ class Gui:
         self.conf = conf
         self.gui_colors = conf.get('guicolors') or self.dft_gui_colors
         self.bg1, self.fg1, self.bg2, self.fg2 = self.gui_colors
-        self.root.config(bd=15,bg=self.bg1)
+        self.root.config(bd=15, bg=self.bg1)
 
     ### Config as dic for python 1.5 compat (**opts don't work :( )
     def entry(self, **opts):
         return Tkinter.Entry(self.window, opts)
     def label(self, txt='', bg=None, **opts):
-        opts.update({'text':txt,'bg':bg or self.bg1})
+        opts.update({'text': txt, 'bg': bg or self.bg1})
         return Tkinter.Label(self.window, opts)
-    def button(self,name,cmd,**opts):
-        opts.update({'text':name,'command':cmd})
+    def button(self, name, cmd, **opts):
+        opts.update({'text': name, 'command': cmd})
         return Tkinter.Button(self.window, opts)
-    def check(self,name,checked=0,**opts):
+    def check(self, name, checked=0, **opts):
         bg, fg = self.bg2, self.fg2
         opts.update({
-            'text':name,
-            'onvalue':1,
-            'offvalue':0,
-            'activeforeground':fg,
-            'activebackground':bg,
-            'highlightbackground':bg,
-            'fg':fg,
-            'bg':bg,
-            'anchor':'w'
+            'text': name,
+            'onvalue': 1,
+            'offvalue': 0,
+            'activeforeground': fg,
+            'activebackground': bg,
+            'highlightbackground': bg,
+            'fg': fg,
+            'bg': bg,
+            'anchor': 'w'
         })
         chk = Tkinter.Checkbutton(self.window, opts)
         if checked:
             chk.select()
         chk.grid(columnspan=2, sticky='w', padx=0)
-    def menu(self,sel,items):
-        return apply(Tkinter.OptionMenu,(self.window,sel)+tuple(items))
+    def menu(self, sel, items):
+        return apply(Tkinter.OptionMenu, (self.window, sel)+tuple(items))
 
     # Handy auxiliary functions
     def action(self, txt):
@@ -6542,7 +6542,7 @@ class Gui:
             txt,
             fg=self.fg1,
             bg=self.bg1,
-            wraplength=self.action_length).grid(column=0,row=self.row)
+            wraplength=self.action_length).grid(column=0, row=self.row)
     def frame_open(self):
         self.window = Tkinter.Frame(
             self.root,
@@ -6578,7 +6578,7 @@ class Gui:
         return z
 
     def askfile(self):
-        ftypes= [(_('txt2tags files'), ('*.t2t','*.txt')), (_('All files'),'*')]
+        ftypes= [(_('txt2tags files'), ('*.t2t', '*.txt')), (_('All files'), '*')]
         newfile = askopenfilename(filetypes=ftypes)
         if newfile:
             self.infile.set(newfile)
@@ -6596,7 +6596,7 @@ class Gui:
         win.title(title)
         frame  = Tkinter.Frame(win)
         scroll = Tkinter.Scrollbar(frame)
-        text   = Tkinter.Text(frame,yscrollcommand=scroll.set)
+        text   = Tkinter.Text(frame, yscrollcommand=scroll.set)
         button = Tkinter.Button(win)
         # Config
         text.insert(Tkinter.END, '\n'.join(txt))
@@ -6616,10 +6616,10 @@ class Gui:
         infile, target = self.infile.get(), self.target.get()
         # Sanity
         if not target:
-            showwarning(my_name,_("You must select a target type!"))
+            showwarning(my_name, _("You must select a target type!"))
             return
         if not infile:
-            showwarning(my_name,_("You must provide the source file location!"))
+            showwarning(my_name, _("You must provide the source file location!"))
             return
         # Compose cmdline
         guiflags = []
@@ -6630,7 +6630,7 @@ class Gui:
             del real_cmdline_conf['target']
         real_cmdline = CommandLine().compose_cmdline(real_cmdline_conf)
         default_outfile = ConfigMaster().get_outfile_name(
-            {'sourcefile':infile, 'outfile':'', 'target':target})
+            {'sourcefile': infile, 'outfile': '', 'target': target})
         for opt in self.checks:
             val = int(getattr(self, 'f_%s'%opt).get() or "0")
             if opt == 'stdout':
@@ -6696,7 +6696,7 @@ class Gui:
         except:               # fatal error (windowed and printed)
             errormsg = getUnknownErrorMessage()
             print errormsg
-            showerror(_('%s FATAL ERROR!')%my_name,errormsg)
+            showerror(_('%s FATAL ERROR!')%my_name, errormsg)
             self.exit()
         CMDLINE_RAW = cmdline_raw_orig
 
@@ -6733,7 +6733,7 @@ class Gui:
         # Choose input file
         self.action(action1)
         self.frame_open()
-        e_infile = self.entry(textvariable=self.infile,width=25)
+        e_infile = self.entry(textvariable=self.infile, width=25)
         e_infile.grid(row=self.row, column=0, sticky='e')
         if not self.infile.get():
             e_infile.focus_set()
@@ -6747,7 +6747,7 @@ class Gui:
                 txt = _('<screen>')
             l_output = self.label(_('Output: ')+txt, fg=self.fg2, bg=self.bg2)
             l_output.grid(columnspan=2, sticky='w')
-        for setting in ['style','encoding']:
+        for setting in ['style', 'encoding']:
             if self.conf.get(setting):
                 name = setting.capitalize()
                 val  = self.conf[setting]
@@ -6766,7 +6766,7 @@ class Gui:
         self.action(action3)
         self.frame_open()
         # Compose options check boxes, example:
-        # self.check(checks_txt['toc'],1,variable=self.f_toc)
+        # self.check(checks_txt['toc'], 1, variable=self.f_toc)
         for check in self.checks:
             # Extra options label
             if check == 'toc-only':
@@ -6776,7 +6776,7 @@ class Gui:
             txt = checks_txt[check]
             var = getattr(self, 'f_'+check)
             checked = self.conf.get(check)
-            self.check(txt,checked,variable=var)
+            self.check(txt, checked, variable=var)
         self.frame_close()
         # Spacer and buttons
         self.label('').grid()
@@ -6813,7 +6813,7 @@ def exec_command_line(user_cmdline=[]):
     GUI     = cmdline_parsed.get('gui') or 0
     infiles = cmdline_parsed.get('infile') or []
 
-    Message(_("Txt2tags %s processing begins")%my_version,1)
+    Message(_("Txt2tags %s processing begins")%my_version, 1)
 
     # The easy ones
     if cmdline_parsed.get('help'):
@@ -6835,19 +6835,19 @@ def exec_command_line(user_cmdline=[]):
     Debug("python version: %s"%(sys.version.split('(')[0]))
     Debug("line break char: %s"%repr(LB))
     Debug("command line: %s"%sys.argv)
-    Debug("command line raw config: %s"%CMDLINE_RAW,1)
+    Debug("command line raw config: %s"%CMDLINE_RAW, 1)
 
     # Extract RC file config
     if cmdline_parsed.get('rc') == 0:
-        Message(_("Ignoring user configuration file"),1)
+        Message(_("Ignoring user configuration file"), 1)
     else:
         rc_file = get_rc_path()
         if os.path.isfile(rc_file):
-            Message(_("Loading user configuration file"),1)
+            Message(_("Loading user configuration file"), 1)
             RC_RAW = ConfigLines(file_=rc_file).get_raw_config()
 
         Debug("rc file: %s"%rc_file)
-        Debug("rc file raw config: %s"%RC_RAW,1)
+        Debug("rc file raw config: %s"%RC_RAW, 1)
 
     # Get all infiles config (if any)
     infiles_config = get_infiles_config(infiles)
@@ -6876,7 +6876,7 @@ def exec_command_line(user_cmdline=[]):
 
     # Okay, we will use GUI
     if GUI:
-        Message(_("We are on GUI interface"),1)
+        Message(_("We are on GUI interface"), 1)
 
         # Redefine Error function to raise exception instead sys.exit()
         def Error(msg):
@@ -6894,7 +6894,7 @@ def exec_command_line(user_cmdline=[]):
 
         # Sanity is needed to set outfile and other things
         gui_conf = ConfigMaster().sanity(gui_conf, gui=1)
-        Debug("GUI config: %s"%gui_conf,5)
+        Debug("GUI config: %s"%gui_conf, 5)
 
         # Insert config and populate the nice window!
         winbox.load_config(gui_conf)
@@ -6902,7 +6902,7 @@ def exec_command_line(user_cmdline=[]):
 
     # Console mode rocks forever!
     else:
-        Message(_("We are on Command Line interface"),1)
+        Message(_("We are on Command Line interface"), 1)
 
         # Called with no arguments, show error
         # TODO#1: this checking should be only in ConfigMaster.sanity()
@@ -6913,7 +6913,7 @@ def exec_command_line(user_cmdline=[]):
 
         convert_this_files(infiles_config)
 
-    Message(_("Txt2tags finished successfully"),1)
+    Message(_("Txt2tags finished successfully"), 1)
 
 if __name__ == '__main__':
     try:
