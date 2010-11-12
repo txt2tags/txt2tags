@@ -581,6 +581,7 @@ _%(HEADER3)s_
 
 ''%(HEADER3)s''
 """,
+
 	'red': """\
 h1. %(HEADER1)s
 
@@ -621,21 +622,29 @@ r"""\documentclass{article}
 @Display { %(HEADER3)s }
 #@NP                               # Break page after Headers
 """,
+
+# @SysInclude { tbl }                   # Tables support
+# setup: @MakeContents { Yes }          # show TOC
+# setup: @SectionGap                    # break page at each section
+
 	'creole': """\
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
 """,
+
 	'md': """\
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
 """,
+
 	'bbcode': """\
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
 """,
+
 	'spip': """\
 {{{%(HEADER1)s}}}
 
@@ -644,10 +653,6 @@ r"""\documentclass{article}
 {%(HEADER3)s}
 
 """,
-
-# @SysInclude { tbl }                   # Tables support
-# setup: @MakeContents { Yes }          # show TOC
-# setup: @SectionGap                    # break page at each section
 }
 
 
