@@ -141,7 +141,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red'.split()
+TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -187,6 +187,7 @@ TARGET_NAMES = {
   'md'     : _('Markdown document'),
   'bbcode' : _('BBCode document'),
   'red'    : _('Redmine Wiki page'),
+  'spip'   : _('SPIP article'),
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -634,7 +635,16 @@ r"""\documentclass{article}
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
-"""
+""",
+	'spip': """\
+{{{%(HEADER1)s}}}
+
+{{%(HEADER2)s}}
+
+{%(HEADER3)s}
+
+""",
+
 # @SysInclude { tbl }                   # Tables support
 # setup: @MakeContents { Yes }          # show TOC
 # setup: @SectionGap                    # break page at each section
@@ -1596,6 +1606,49 @@ def getTags(config):
 		'comment'               : '.\\" \a'
 	},
 	
+	# http://www.spip-contrib.net/Les-raccourcis-typographiques-en
+	# some tags are not implemented by spip tags, but spip accept html tags.
+	# ISSUE 1 -> Still have problem with link with label : in SPIP syntax, it works [label->http://link.com] so
+	# I don't knowhow invert the [a/ a/] for fitting with SPIP behavior.
+	# ISSUE 2 -> sublist are marked "-##" (number of # depends of sublevels).so I don't know how translate
+	# this beavior in txt2tags mark.
+	'spip': {
+		'title1'                : '{{{ \a }}}' ,
+		'title2'                : '<h4>\a</h4>',
+		'title3'                : '<h5>\a</h5>',
+		'blockVerbOpen'         : '<cadre>'    ,
+		'blockVerbClose'        : '</cadre>'   ,
+		'blockQuoteOpen'        : '<quote>'    ,
+		'blockQuoteClose'       : '</quote>'   ,
+		'fontMonoOpen'          : '<code>'     ,
+		'fontMonoClose'         : '</code>'    ,
+		'fontBoldOpen'          : '{{'         ,
+		'fontBoldClose'         : '}}'         ,
+		'fontItalicOpen'        : '{'          ,
+		'fontItalicClose'       : '}'          ,
+		'fontUnderlineOpen'     : '<u>'        ,
+		'fontUnderlineClose'    : '</u>'       ,
+		'fontStrikeOpen'        : '<del>'      ,
+		'fontStrikeClose'       : '</del>'     ,
+		'listItemOpen'          : '-* '        ,
+		'numlistItemOpen'       : '-# '        ,
+		'bar1'                  : '----'       ,
+		'url'                   : '[->\a]'     ,
+		'urlMark'               : '[\a->\a]'   , # bad behavior : label and url are inverted
+		'email'                 : '[->\a]'     ,
+		'emailMark'             : '[\a->\a]'   , # bad behavior : label and url are inverted
+		'img'                   : '<img src="\a" />',
+		'imgAlignLeft'          : '<img src="\a" align="left" />',
+		'imgAlignRight'         : '<img src="\a" align="right" />',
+		'imgAlignCenter'        : '<img src="\a" align="center" />',
+		'tableTitleRowOpen'     : '| {{'       ,
+		'tableTitleRowClose'    : '}} |'       ,
+		'tableTitleCellSep'     : '}} | {{'    ,
+		'tableRowOpen'          : '| '         ,
+		'tableRowClose'         : ' |'         ,
+		'tableCellSep'          : ' | '        ,
+		# TOC is automatic whith title1 when plugin "couteau suisse" is activate and the option "table des matieres" activate.
+	},
 	'pm6': {
 		'paragraphOpen'         : '<@Normal:>'    ,
 		'title1'                : '<@Title1:>\a',
@@ -2378,6 +2431,30 @@ def getRules(config):
 			'blanksaroundbar':1,
 			'blanksaroundtitle':1,
 		},
+		'spip': {
+			'spacedlistitem':1,
+			'linkable':1,
+			'blankendmotherlist':1,
+			'keeplistindent':1,
+			'tableable':1,
+			'barinsidequote':1,
+			'keepquoteindent':1,
+			'blankendtable':1,
+			'tablecellstrip':1,
+			'imgalignable':1,
+			'tablecellaligntype':'cell',
+			'blanksaroundpara':1,
+			'blanksaroundverb':1,
+			'blanksaroundquote':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+			'blanksaroundnumtitle':1,
+		},
+		
 	}
 	
 	# Exceptions for --css-sugar
