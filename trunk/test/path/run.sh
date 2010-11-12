@@ -22,12 +22,12 @@
 # 
 # Maybe in the future this could be a setting or a command line option.
 
-test -d folder || mkdir folder
-
 for t in creole txt; do
 
 cd $(dirname "$0")
 t2t=../../txt2tags
+
+test -d folder || mkdir folder
 
 ########################################################################
 # Execution from source file folder
