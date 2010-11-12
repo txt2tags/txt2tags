@@ -1855,9 +1855,11 @@ def getTags(config):
 
     # Make the HTML -> XHTML inheritance
     xhtml = alltags['html'].copy()
-    for key in xhtml.keys(): xhtml[key] = xhtml[key].lower()
+    for key in xhtml.keys():
+        xhtml[key] = xhtml[key].lower()
     # Some like HTML tags as lowercase, some don't... (headers out)
-    if HTML_LOWER: alltags['html'] = xhtml.copy()
+    if HTML_LOWER:
+        alltags['html'] = xhtml.copy()
     xhtml.update(alltags['xhtml'])
     alltags['xhtml'] = xhtml.copy()
 
@@ -1873,7 +1875,8 @@ def getTags(config):
     tags = {}
     target_tags = alltags[config['target']].copy()
 
-    for key in keys: tags[key] = '' # create empty keys
+    for key in keys:
+        tags[key] = '' # create empty keys
     for key in target_tags.keys():
         tags[key] = maskEscapeChar(target_tags[key]) # populate
 
@@ -2499,7 +2502,8 @@ def getRules(config):
         myrules = rules_bank[config['target']].copy()
 
     # Populate return dictionary
-    for key in allrules: ret[key] = 0        # reset all
+    for key in allrules:
+        ret[key] = 0                         # reset all
     ret.update(myrules)                      # get rules
 
     return ret
@@ -2728,7 +2732,8 @@ class error(Exception):
 def echo(msg):   # for quick debug
     print '\033[32;1m%s\033[m'%msg
 def Quit(msg=''):
-    if msg: print msg
+    if msg:
+        print msg
     sys.exit(0)
 def Error(msg):
     msg = _("%s: Error: ")%my_name + msg
@@ -2738,7 +2743,8 @@ def getTraceback():
         from traceback import format_exception
         etype, value, tb = sys.exc_info()
         return ''.join(format_exception(etype, value, tb))
-    except: pass
+    except:
+        pass
 def getUnknownErrorMessage():
     msg = '%s\n%s (%s):\n\n%s'%(
         _('Sorry! Txt2tags aborted by an unknown error.'),
@@ -2751,16 +2757,21 @@ def Message(msg,level):
         print "%s %s"%(prefix*level, msg)
 def Debug(msg,id_=0,linenr=None):
     "Show debug messages, categorized (colored or not)"
-    if QUIET or not DEBUG: return
-    if int(id_) not in range(8): id_ = 0
+    if QUIET or not DEBUG:
+        return
+    if int(id_) not in range(8):
+        id_ = 0
     # 0:black 1:red 2:green 3:yellow 4:blue 5:pink 6:cyan 7:white ;1:light
     ids            = ['INI','CFG','SRC','BLK','HLD','GUI','OUT','DET']
     colors_bgdark  = ['7;1','1;1','3;1','6;1','4;1','5;1','2;1','7;1']
     colors_bglight = ['0'  ,'1'  ,'3'  ,'6'  ,'4'  ,'5'  ,'2'  ,'0'  ]
-    if linenr is not None: msg = "LINE %04d: %s"%(linenr,msg)
+    if linenr is not None:
+        msg = "LINE %04d: %s"%(linenr,msg)
     if COLOR_DEBUG:
-        if BG_LIGHT: color = colors_bglight[id_]
-        else       : color = colors_bgdark[id_]
+        if BG_LIGHT:
+            color = colors_bglight[id_]
+        else:
+            color = colors_bgdark[id_]
         msg = '\033[3%sm%s\033[m'%(color,msg)
     print "++ %s: %s"%(ids[id_],msg)
 
@@ -2798,7 +2809,8 @@ def Savefile(file_path, contents):
     f.close()
 
 def showdic(dic):
-    for k in dic.keys(): print "%15s : %s" % (k,dic[k])
+    for k in dic.keys():
+        print "%15s : %s" % (k,dic[k])
 def dotted_spaces(txt=''):
     return txt.replace(' ', '.')
 
@@ -2807,7 +2819,8 @@ def get_rc_path():
     "Return the full path for the users' RC file"
     # Try to get the path from an env var. if yes, we're done
     user_defined = os.environ.get('T2TCONFIG')
-    if user_defined: return user_defined
+    if user_defined:
+        return user_defined
     # Env var not found, so perform automatic path composing
     # Set default filename according system platform
     rc_names = {'default':'.txt2tagsrc', 'win':'_t2trc'}
@@ -2816,7 +2829,8 @@ def get_rc_path():
     rc_dir_search = ['HOME', 'HOMEPATH']
     for var in rc_dir_search:
         rc_dir = os.environ.get(var)
-        if rc_dir: break
+        if rc_dir:
+            break
     # rc dir found, now we must join dir+file to compose the full path
     if rc_dir:
         # Compose path and return it if the file exists
@@ -2936,7 +2950,8 @@ class CommandLine:
     def get_raw_config(self, cmdline=[], ignore=[], filter_=[], relative=0):
         "Returns the options/arguments found as RAW config"
 
-        if not cmdline: return []
+        if not cmdline:
+            return []
         ret = []
 
         # We need lists, not strings (such as from %!options)
@@ -2994,7 +3009,8 @@ class CommandLine:
 
     def compose_cmdline(self, conf={}, no_check=0):
         "compose a full (and diet) command line from CONF dict"
-        if not conf: return []
+        if not conf:
+            return []
         args = []
         dft_options = OPTIONS.copy()
         cfg = conf.copy()
@@ -3016,12 +3032,16 @@ class CommandLine:
             del cfg['target']
         # Add other options
         for key in cfg.keys():
-            if key not in valid_opts: continue  # may be a %!setting
-            if key == 'outfile' or key == 'infile': continue # later
+            if key not in valid_opts:
+                continue  # may be a %!setting
+            if key == 'outfile' or key == 'infile':
+                continue # later
             val = cfg[key]
-            if not val: continue
+            if not val:
+                continue
             # Default values are useless on cmdline
-            if val == dft_options.get(key): continue
+            if val == dft_options.get(key):
+                continue
             # -short format
             if key in use_short.keys():
                 args.append('-'+use_short[key])
@@ -3097,8 +3117,10 @@ class SourceDocument:
     def get(self, areaname):
         "Returns head|conf|body contents from self.buffer"
         # Sanity
-        if areaname not in self.areas: return []
-        if not self.buffer           : return []
+        if areaname not in self.areas:
+            return []
+        if not self.buffer:
+            return []
         # Go get it
         bufini = 1
         bufend = len(self.buffer)
@@ -3134,7 +3156,8 @@ class SourceDocument:
         buf.insert(0, '')                         # text start at pos 1
         ref = [1,4,0]
         if not buf[1].strip():                    # no header
-            ref[0] = 0 ; ref[1] = 2
+            ref[0] = 0
+            ref[1] = 2
         rgx = getRegexes()
         on_comment_block = 0
         for i in xrange(ref[1],len(buf)):         # find body init:
@@ -3147,7 +3170,8 @@ class SourceDocument:
                and rgx['blockCommentOpen'].search(buf[i]):
                 on_comment_block = 0
                 continue
-            if on_comment_block: continue
+            if on_comment_block:
+                continue
 
             if buf[i].strip() and (           # ... not blank and
                buf[i][0] != '%' or            # ... not comment or
@@ -3156,11 +3180,15 @@ class SourceDocument:
                cfg_parser(buf[i],'include')[1] or # ... %!include
                cfg_parser(buf[i],'csv')[1]        # ... %!csv
             ):
-                ref[2] = i ; break
-        if ref[1] == ref[2]: ref[1] = 0           # no conf area
+                ref[2] = i
+                break
+        if ref[1] == ref[2]:
+            ref[1] = 0                            # no conf area
         for i in 0,1,2:                           # del !existent
-            if ref[i] >= len(buf): ref[i] = 0 # title-only
-            if not ref[i]: self.areas[i] = ''
+            if ref[i] >= len(buf):
+                ref[i] = 0                        # title-only
+            if not ref[i]:
+                self.areas[i] = ''
         Debug('Head,Conf,Body start line: %s'%ref)
         self.arearef = ref                        # save results
         self.buffer  = buf
@@ -3172,7 +3200,8 @@ class SourceDocument:
 
     def get_raw_config(self):
         "Handy method to get the CONF area RAW config (if any)"
-        if not self.areas.count('conf'): return []
+        if not self.areas.count('conf'):
+            return []
         Message(_("Scanning source document CONF area"),1)
         raw = ConfigLines(
             file_=self.filename, lines=self.get('conf'),
@@ -3244,7 +3273,8 @@ class ConfigMaster:
     def _get_defaults(self):
         "Get the default values for all config/options/flags"
         empty = {}
-        for kw in CONFIG_KEYWORDS: empty[kw] = ''
+        for kw in CONFIG_KEYWORDS:
+            empty[kw] = ''
         empty.update(self.dft_options)
         empty.update(self.dft_flags)
         empty.update(self.dft_actions)
@@ -3336,8 +3366,10 @@ class ConfigMaster:
         if outfile and outfile not in (STDOUT, MODULEOUT) \
            and not os.path.isabs(outfile):
             outfile = os.path.join(os.path.dirname(infile), outfile)
-        if infile == STDIN    and not outfile: outfile = STDOUT
-        if infile == MODULEIN and not outfile: outfile = MODULEOUT
+        if infile == STDIN    and not outfile:
+            outfile = STDOUT
+        if infile == MODULEIN and not outfile:
+            outfile = MODULEOUT
         if not outfile and (infile and config.get('target')):
             basename = re.sub('\.(txt|t2t)$','',infile)
             outfile = "%s.%s"%(basename, config['target'])
@@ -3348,7 +3380,8 @@ class ConfigMaster:
     def sanity(self, config, gui=0):
         "Basic config sanity checking"
         global AA
-        if not config: return {}
+        if not config:
+            return {}
         target = config.get('target')
         # Some actions don't require target specification
         if not target:
@@ -3373,7 +3406,8 @@ class ConfigMaster:
                 Error(_("Invalid target '%s'") % target + '\n\n' +
                 _("Run 'txt2tags --targets' to see all the available targets."))
         # Ensure all keys are present
-        empty = self.defaults.copy() ; empty.update(config)
+        empty = self.defaults.copy()
+        empty.update(config)
         config = empty.copy()
         # Check integers options
         for key in config.keys():
@@ -3435,10 +3469,13 @@ class ConfigMaster:
         for targ, k, val in self.raw:
             if k == key and (targ == target or targ == 'all'):
                 ret.append(val)
-        if not ret: return ''
+        if not ret:
+            return ''
         # If not multi value, return only the last found
-        if key in self.multi: return ret
-        else                : return ret[-1]
+        if key in self.multi:
+            return ret
+        else:
+            return ret[-1]
 
 ########################################################################
 
@@ -3480,19 +3517,23 @@ class ConfigLines:
 
     def read_config_file(self, filename=''):
         "Read a Config File contents, aborting on invalid line"
-        if not filename: return []
+        if not filename:
+            return []
         errormsg = _("Invalid CONFIG line on %s")+"\n%03d:%s"
         lines = Readfile(filename, remove_linebreaks=1)
         # Sanity: try to find invalid config lines
         for i in xrange(len(lines)):
             line = lines[i].rstrip()
-            if not line: continue  # empty
-            if line[0] != '%': Error(errormsg%(filename,i+1,line))
+            if not line:  # empty
+                continue
+            if line[0] != '%':
+                Error(errormsg%(filename,i+1,line))
         return lines
 
     def include_config_file(self, file_=''):
         "Perform the %!includeconf action, returning RAW config"
-        if not file_: return []
+        if not file_:
+            return []
         # Current dir relative to the current file (self.file)
         current_dir = os.path.dirname(self.file)
         file_ = os.path.join(current_dir, file_)
@@ -3509,7 +3550,8 @@ class ConfigLines:
             line = self.lines[i]
             Message(_("Processing line %03d: %s")%(first+i,line),2)
             target, key, val = self.parse_line(line)
-            if not key: continue    # no config on this line
+            if not key:    # no config on this line
+                continue
             if key == 'includeconf':
                 err = _('A file cannot include itself (loop!)')
                 if val == self.file:
@@ -3525,7 +3567,8 @@ class ConfigLines:
     def parse_line(self, line='', keyname='', target=''):
         "Detects %!key:val config lines and extract data from it"
         empty = ['', '', '']
-        if not line: return empty
+        if not line:
+            return empty
         no_target = ['target', 'includeconf']
         re_name   = keyname or '[a-z]+'
         re_target = target  or '[a-z]*'
@@ -3557,7 +3600,8 @@ class ConfigLines:
 
         # Give me a match or get out
         match = cfgregex.match(line)
-        if not match: return empty
+        if not match:
+            return empty
 
         # Save information about this config
         name   = (match.group('name') or '').lower()
@@ -3577,13 +3621,15 @@ class ConfigLines:
         # Special config for GUI colors
         if name == 'guicolors':
             valmatch = guicolors.search(value)
-            if not valmatch: return empty
+            if not valmatch:
+                return empty
             value = re.split('\s+', value)
 
         # Special config with two quoted values (%!preproc: "foo" 'bar')
         if name in ['preproc', 'postproc', 'postvoodoo']:
             valmatch = prepostregex.search(value)
-            if not valmatch: return empty
+            if not valmatch:
+                return empty
             getval = valmatch.group
             patt   = getval(2) or getval(3) or getval(4) or ''
             repl   = getval(6) or getval(7) or getval(8) or ''
@@ -3630,12 +3676,18 @@ class MaskMaster:
             # Note: 'z' > 999999
             #
             t = r = v = 'z'
-            try: t = regex['tagged'].search(line).start()
-            except: pass
-            try: r = regex['raw'].search(line).start()
-            except: pass
-            try: v = regex['fontMono'].search(line).start()
-            except: pass
+            try:
+                t = regex['tagged'].search(line).start()
+            except:
+                pass
+            try:
+                r = regex['raw'].search(line).start()
+            except:
+                pass
+            try:
+                v = regex['fontMono'].search(line).start()
+            except:
+                pass
 
             # Protect tagged text
             if t >= 0 and t < r and t < v:
@@ -3753,7 +3805,8 @@ class TitleMaster:
 
     def _open_close_blocks(self):
         "Open new title blocks, closing the previous (if any)"
-        if not rules['titleblocks']: return
+        if not rules['titleblocks']:
+            return
         tag = ''
         last = self.last_level
         curr = self.level
@@ -3761,7 +3814,8 @@ class TitleMaster:
         # Same level, just close the previous
         if curr == last:
             tag = TAGS.get('title%dClose'%last)
-            if tag: self.tag_hold.append(tag)
+            if tag:
+                self.tag_hold.append(tag)
 
         # Section -> subsection, more depth
         while curr > last:
@@ -3769,24 +3823,28 @@ class TitleMaster:
 
             # Open the new block of subsections
             tag = TAGS.get('blockTitle%dOpen'%last)
-            if tag: self.tag_hold.append(tag)
+            if tag:
+                self.tag_hold.append(tag)
 
             # Jump from title1 to title3 or more
             # Fill the gap with an empty section
             if curr - last > 0:
                 tag = TAGS.get('title%dOpen'%last)
                 tag = regex['x'].sub('', tag)      # del \a
-                if tag: self.tag_hold.append(tag)
+                if tag:
+                    self.tag_hold.append(tag)
 
         # Section <- subsection, less depth
         while curr < last:
             # Close the current opened subsection
             tag = TAGS.get('title%dClose'%last)
-            if tag: self.tag_hold.append(tag)
+            if tag:
+                self.tag_hold.append(tag)
 
             # Close the current opened block of subsections
             tag = TAGS.get('blockTitle%dClose'%last)
-            if tag: self.tag_hold.append(tag)
+            if tag:
+                self.tag_hold.append(tag)
 
             last -= 1
 
@@ -3794,11 +3852,13 @@ class TitleMaster:
             # The subsections were under it
             if curr == last:
                 tag = TAGS.get('title%dClose'%last)
-                if tag: self.tag_hold.append(tag)
+                if tag:
+                    self.tag_hold.append(tag)
 
     def add(self, line):
         "Parses a new title line."
-        if not line: return
+        if not line:
+            return
         self._set_prop(line)
         self._open_close_blocks()
         self._set_count_id()
@@ -3811,9 +3871,11 @@ class TitleMaster:
         ret.extend(self.tag_hold)
         while self.level:
             tag = TAGS.get('title%dClose'%self.level)
-            if tag: ret.append(tag)
+            if tag:
+                ret.append(tag)
             tag = TAGS.get('blockTitle%dClose'%self.level)
-            if tag: ret.append(tag)
+            if tag:
+                ret.append(tag)
             self.level -= 1
         return ret
 
@@ -3825,16 +3887,20 @@ class TitleMaster:
         "Extract info from original line and set data holders."
         # Detect title type (numbered or not)
         id_ = line.lstrip()[0]
-        if   id_ == '=': kind = 'title'
-        elif id_ == '+': kind = 'numtitle'
-        else: Error("Unknown Title ID '%s'"%id_)
+        if   id_ == '=':
+            kind = 'title'
+        elif id_ == '+':
+            kind = 'numtitle'
+        else:
+            Error("Unknown Title ID '%s'"%id_)
         # Extract line info
         match = regex[kind].search(line)
         level = len(match.group('id'))
         txt   = match.group('txt').strip()
         label = match.group('label')
         # Parse info & save
-        if CONF['enum-title']: kind = 'numtitle'  # force
+        if CONF['enum-title']:
+            kind = 'numtitle'  # force
         if rules['titleblocks']:
             self.tag = TAGS.get('%s%dOpen'%(kind,level)) or \
                        TAGS.get('title%dOpen'%level)
@@ -3922,7 +3988,8 @@ class TitleMaster:
 
         # Adds "underline" on TXT target
         if TARGET == 'txt':
-            if BLOCK.count > 1: ret.append('') # blank line before
+            if BLOCK.count > 1:
+                ret.append('') # blank line before
             ret.append(tagged)
             # Get the right letter count for UTF
             if CONF['encoding'].lower() == 'utf-8':
@@ -3934,11 +4001,13 @@ class TitleMaster:
             if CONF['slides'] :
                 AA_TITLE = tagged
             else :
-                if BLOCK.count > 1: ret.append('') # blank line before
+                if BLOCK.count > 1:
+                    ret.append('') # blank line before
                 ret.extend(aa_box(tagged, CONF['width']))
         elif TARGET == 'art':
             level = 'level'+str(self.level)
-            if BLOCK.count > 1: ret.append('') # blank line before
+            if BLOCK.count > 1:
+                ret.append('') # blank line before
             ret.append(tagged)
             ret.append(AA[level] * len(full_title))
         else:
@@ -3950,7 +4019,8 @@ class TitleMaster:
         ret = []
         toc_count = 1
         for level, count_id, txt, label in self.toc:
-            if level > max_level: continue   # ignore
+            if level > max_level: # ignore
+                continue
             indent = '  '*level
             id_txt = ('%s %s'%(count_id, txt)).lstrip()
             label = label or self.anchor_prefix+`toc_count`
@@ -4013,7 +4083,8 @@ class TableMaster:
         calign    = ''
 
         # The first line defines if table has border or not
-        if not self.border: tborder = ''
+        if not self.border:
+            tborder = ''
         # Set the columns alignment
         if rules['tablecellaligntype'] == 'column':
             calign = map(lambda x: TAGS['_tableColAlign%s'%x], self.colalign)
@@ -4045,7 +4116,8 @@ class TableMaster:
         for cell in cells:
             span = 1
             m = re.search('\a(\|+)$', cell)
-            if m: span = len(m.group(1))+1
+            if m:
+                span = len(m.group(1))+1
             ret.append(span)
         return ret
 
@@ -4095,7 +4167,8 @@ class TableMaster:
             sep   = TAGS['tableTitleCellSep']   or sep
 
         # Should we break the line on *each* table cell?
-        if rules['breaktablecell']: close = close+'\n'
+        if rules['breaktablecell']:
+            close = close+'\n'
 
         # Cells pre processing
         if rules['tablecellstrip']:
@@ -4110,9 +4183,12 @@ class TableMaster:
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
             this_align = this_span = this_mcopen = ''
-            if calign: this_align = calign.pop(0)
-            if cspan : this_span = cspan.pop(0)
-            if multicol: this_mcopen = multicol.pop(0)
+            if calign:
+                this_align = calign.pop(0)
+            if cspan :
+                this_span = cspan.pop(0)
+            if multicol:
+                this_mcopen = multicol.pop(0)
 
             # Insert cell align into open tag (if cell is alignable)
             if rules['tablecellaligntype'] == 'cell':
@@ -4146,14 +4222,19 @@ class TableMaster:
             'cells':[], 'cellalign':[], 'cellspan':[]
         }
         # Detect table align (and remove spaces mark)
-        if line[0] == ' ': ret['align'] = 'Center'
+        if line[0] == ' ':
+            ret['align'] = 'Center'
         line = line.lstrip()
         # Detect title mark
-        if line[1] == '|': ret['title'] = 1
+        if line[1] == '|':
+            ret['title'] = 1
         # Detect border mark and normalize the EOL
         m = re.search(' (\|+) *$', line)
-        if m: line = line+' ' ; ret['border'] = 1
-        else: line = line+' | '
+        if m:
+            line = line+' '
+            ret['border'] = 1
+        else:
+            line = line+' | '
         # Delete table mark
         line = regex['table'].sub('', line)
         # Detect colspan  | foo | bar baz |||
@@ -4195,7 +4276,8 @@ class TableMaster:
         # Now we tag all the table cells on each row
         #tagged_cells = map(lambda x: self._tag_cells(x), rows) #!py15
         tagged_cells = []
-        for cell in rows: tagged_cells.append(self._tag_cells(cell))
+        for cell in rows:
+            tagged_cells.append(self._tag_cells(cell))
 
         # Add row separator tags between lines
         tagged_rows = []
@@ -4218,9 +4300,11 @@ class TableMaster:
 
         # Join the pieces together
         fulltable = []
-        if open_: fulltable.append(open_)
+        if open_:
+            fulltable.append(open_)
         fulltable.extend(tagged_rows)
-        if close: fulltable.append(close)
+        if close:
+            fulltable.append(close)
 
         return fulltable
 
@@ -4263,14 +4347,16 @@ class BlockMaster:
             self.contains['quote'].append('bar')
 
     def block(self):
-        if not self.BLK: return ''
+        if not self.BLK:
+            return ''
         return self.BLK[-1]
 
     def isblock(self, name=''):
         return self.block() == name
 
     def prop(self, key):
-        if not self.PRP: return ''
+        if not self.PRP:
+            return ''
         return self.PRP[-1].get(key) or ''
 
     def propset(self, key, val):
@@ -4279,11 +4365,13 @@ class BlockMaster:
         #Debug('BLOCK props: %s'%(repr(self.PRP)), 1)
 
     def hold(self):
-        if not self.HLD: return []
+        if not self.HLD:
+            return []
         return self.HLD[-1]
 
     def holdadd(self, line):
-        if self.block().endswith('list'): line = [line]
+        if self.block().endswith('list'):
+            line = [line]
         self.HLD[-1].append(line)
         Debug('HOLD add: %s'%repr(line), 4)
         Debug('FULL HOLD: %s'%self.HLD, 4)
@@ -4294,7 +4382,8 @@ class BlockMaster:
         Debug('FULL HOLD: %s'%self.HLD, 4)
 
     def holdextend(self, lines):
-        if self.block().endswith('list'): lines = [lines]
+        if self.block().endswith('list'):
+            lines = [lines]
         self.HLD[-1].extend(lines)
         Debug('HOLD extend: %s'%repr(lines), 4)
         Debug('FULL HOLD: %s'%self.HLD, 4)
@@ -4313,7 +4402,8 @@ class BlockMaster:
         self.HLD.append([])
         self.PRP.append({})
         self.count += 1
-        if block == 'table': self.tableparser = TableMaster()
+        if block == 'table':
+            self.tableparser = TableMaster()
         # Deeper and deeper
         self.depth = len(self.BLK)
         Debug('block ++ (%s): %s' % (block,self.BLK), 3)
@@ -4322,13 +4412,15 @@ class BlockMaster:
     def blockout(self):
         global AA_COUNT
 
-        if not self.BLK: Error('No block to pop')
+        if not self.BLK:
+            Error('No block to pop')
         blockname = self.BLK.pop()
         result = getattr(self, blockname)()
         parsed = self.HLD.pop()
         self.PRP.pop()
         self.depth = len(self.BLK)
-        if blockname == 'table': del self.tableparser
+        if blockname == 'table':
+            del self.tableparser
 
         # Inserting a nested block into mother
         if self.block():
@@ -4440,10 +4532,12 @@ class BlockMaster:
         lines = self._get_escaped_hold()
 
         # Blank line before?
-        if self._should_add_blank_line('before', 'para'): result.append('')
+        if self._should_add_blank_line('before', 'para'):
+            result.append('')
 
         # Open tag
-        if open_: result.append(open_)
+        if open_:
+            result.append(open_)
 
         # Pagemaker likes a paragraph as a single long line
         if rules['onelinepara']:
@@ -4453,10 +4547,12 @@ class BlockMaster:
             result.extend(lines)
 
         # Close tag
-        if close: result.append(close)
+        if close:
+            result.append(close)
 
         # Blank line after?
-        if self._should_add_blank_line('after', 'para'): result.append('')
+        if self._should_add_blank_line('after', 'para'):
+            result.append('')
 
         # Very very very very very very very very very UGLY fix
         # Needed because <center> can't appear inside <p>
@@ -4465,7 +4561,8 @@ class BlockMaster:
                TARGET in ('html', 'xhtml', 'xhtmls') and \
                re.match('^\s*<center>.*</center>\s*$', lines[0]):
                 result = [lines[0]]
-        except: pass
+        except:
+            pass
 
         return result
 
@@ -4476,10 +4573,12 @@ class BlockMaster:
         close = TAGS['blockVerbClose']
 
         # Blank line before?
-        if self._should_add_blank_line('before', 'verb'): result.append('')
+        if self._should_add_blank_line('before', 'verb'):
+            result.append('')
 
         # Open tag
-        if open_: result.append(open_)
+        if open_:
+            result.append(open_)
 
         # Get contents
         for line in self.hold():
@@ -4496,25 +4595,30 @@ class BlockMaster:
             result.append(line)
 
         # Close tag
-        if close: result.append(close)
+        if close:
+            result.append(close)
 
         # Blank line after?
-        if self._should_add_blank_line('after', 'verb'): result.append('')
+        if self._should_add_blank_line('after', 'verb'):
+            result.append('')
 
         return result
 
-    def numtitle(self): return self.title('numtitle')
+    def numtitle(self):
+        return self.title('numtitle')
     def title(self, name='title'):
         result = []
 
         # Blank line before?
-        if self._should_add_blank_line('before', name): result.append('')
+        if self._should_add_blank_line('before', name):
+            result.append('')
 
         # Get contents
         result.extend(TITLE.get())
 
         # Blank line after?
-        if self._should_add_blank_line('after', name): result.append('')
+        if self._should_add_blank_line('after', name):
+            result.append('')
 
         return result
 
@@ -4522,7 +4626,8 @@ class BlockMaster:
         result = []
 
         # Blank line before?
-        if self._should_add_blank_line('before', 'table'): result.append('')
+        if self._should_add_blank_line('before', 'table'):
+            result.append('')
 
         # Rewrite all table cells by the unmasked and escaped data
         lines = self._get_escaped_hold()
@@ -4532,7 +4637,8 @@ class BlockMaster:
         result.extend(self.tableparser.dump())
 
         # Blank line after?
-        if self._should_add_blank_line('after', 'table'): result.append('')
+        if self._should_add_blank_line('after', 'table'):
+            result.append('')
 
         return result
 
@@ -4544,14 +4650,18 @@ class BlockMaster:
         indent = tagindent = '\t'*self.depth
 
         # Apply rules
-        if rules['tagnotindentable']: tagindent = ''
-        if not rules['keepquoteindent']: indent = ''
+        if rules['tagnotindentable']:
+            tagindent = ''
+        if not rules['keepquoteindent']:
+            indent = ''
 
         # Blank line before?
-        if self._should_add_blank_line('before', 'quote'): result.append('')
+        if self._should_add_blank_line('before', 'quote'):
+            result.append('')
 
         # Open tag
-        if open_: result.append(tagindent+open_)
+        if open_:
+            result.append(tagindent+open_)
 
         # Get contents
         for item in self.hold():
@@ -4564,10 +4674,12 @@ class BlockMaster:
                 result.append(indent+item) # quote line
 
         # Close tag
-        if close: result.append(tagindent+close)
+        if close:
+            result.append(tagindent+close)
 
         # Blank line after?
-        if self._should_add_blank_line('after', 'quote'): result.append('')
+        if self._should_add_blank_line('after', 'quote'):
+            result.append('')
 
         return result
 
@@ -4576,14 +4688,17 @@ class BlockMaster:
         bar_tag = ''
 
         # Blank line before?
-        if self._should_add_blank_line('before', 'bar'): result.append('')
+        if self._should_add_blank_line('before', 'bar'):
+            result.append('')
 
         # Get the original bar chars
         bar_chars = self.hold()[0].strip()
 
         # Set bar type
-        if bar_chars.startswith('='): bar_tag = TAGS['bar2']
-        else                        : bar_tag = TAGS['bar1']
+        if bar_chars.startswith('='):
+            bar_tag = TAGS['bar2']
+        else:
+            bar_tag = TAGS['bar1']
 
         # To avoid comment tag confusion like <!-- ------ --> (sgml)
         if TAGS['comment'].count('--'):
@@ -4593,12 +4708,15 @@ class BlockMaster:
         result.append(regex['x'].sub(bar_chars, bar_tag))
 
         # Blank line after?
-        if self._should_add_blank_line('after', 'bar'): result.append('')
+        if self._should_add_blank_line('after', 'bar'):
+            result.append('')
 
         return result
 
-    def deflist(self): return self.list('deflist')
-    def numlist(self): return self.list('numlist')
+    def deflist(self):
+        return self.list('deflist')
+    def numlist(self):
+        return self.list('numlist')
     def list(self, name='list'):
         result    = []
         items     = self.hold()
@@ -4618,8 +4736,10 @@ class BlockMaster:
             itemsep   = ''
 
         # Apply rules
-        if rules['tagnotindentable']: tagindent = ''
-        if not rules['keeplistindent']: indent = tagindent = ''
+        if rules['tagnotindentable']:
+            tagindent = ''
+        if not rules['keeplistindent']:
+            indent = tagindent = ''
 
         # ItemLine: number of leading chars identifies list depth
         if listline:
@@ -4637,7 +4757,8 @@ class BlockMaster:
         items[-1] = self._remove_twoblanks(items[-1])
 
         # Blank line before?
-        if self._should_add_blank_line('before', name): result.append('')
+        if self._should_add_blank_line('before', name):
+            result.append('')
 
         # Tag each list item (multiline items), store in listbody
         itemopenorig = itemopen
@@ -4657,7 +4778,8 @@ class BlockMaster:
             if name == 'deflist':
                 z,term,rest = item[0].split(SEPARATOR, 2)
                 item[0] = rest
-                if not item[0]: del item[0]      # to avoid <p>
+                if not item[0]:
+                    del item[0]      # to avoid <p>
                 listbody.append(tagindent+itemopen+term+itemsep)
             else:
                 fullitem = tagindent+itemopen
@@ -4688,7 +4810,8 @@ class BlockMaster:
                     listbody.append(line)
 
             # Close item (if needed)
-            if itemclose: listbody.append(tagindent+itemclose)
+            if itemclose:
+                listbody.append(tagindent+itemclose)
 
         if not widelist and rules['compactlist']:
             listopen = TAGS.get(name+'OpenCompact')
@@ -4710,7 +4833,8 @@ class BlockMaster:
             result.append(tagindent+listclose)
 
         # Blank line after?
-        if self._should_add_blank_line('after', name): result.append('')
+        if self._should_add_blank_line('after', name):
+            result.append('')
 
         return result
 
@@ -4732,14 +4856,17 @@ class MacroMaster:
 
     def walk_file_format(self, fmt):
         "Walks the %%{in/out}file format string, expanding the % flags"
-        i = 0; ret = ''                                 # counter/hold
+        i = 0
+        ret = ''
         while i < len(fmt):                             # char by char
-            c = fmt[i]; i += 1
+            c = fmt[i]
+            i += 1
             if c == '%':                            # hot char!
                 if i == len(fmt):               # % at the end
                     ret = ret + c
                     break
-                c = fmt[i]; i += 1              # read next
+                c = fmt[i]                      # read next
+                i += 1
                 ret = ret + self.expand_file_flag(c)
             else:
                 ret = ret +c                    # common char
@@ -4750,22 +4877,31 @@ class MacroMaster:
         "%d: dirname           %D: dirname (only parent dir)"
         "%p: file path         %e: extension"
         info = self.fileinfo[self.name]           # get dict
-        if   flag == '%': x = '%'                 # %% -> %
-        elif flag == 'f': x = info['name']
-        elif flag == 'F': x = re.sub('\.[^.]*$','',info['name'])
-        elif flag == 'd': x = info['dir']
-        elif flag == 'D': x = os.path.split(info['dir'])[-1]
-        elif flag == 'p': x = info['path']
-        elif flag == 'e': x = re.search('.(\.([^.]+))?$', info['name']).group(2) or ''
+        if   flag == '%':
+            x = '%'                 # %% -> %
+        elif flag == 'f':
+            x = info['name']
+        elif flag == 'F':
+            x = re.sub('\.[^.]*$','',info['name'])
+        elif flag == 'd':
+            x = info['dir']
+        elif flag == 'D':
+            x = os.path.split(info['dir'])[-1]
+        elif flag == 'p':
+            x = info['path']
+        elif flag == 'e':
+            x = re.search('.(\.([^.]+))?$', info['name']).group(2) or ''
         #TODO simpler way for %e ?
-        else            : x = '%'+flag            # false alarm
+        else:
+            x = '%'+flag            # false alarm
         return x
 
     def set_file_info(self, macroname):
         if (macroname == 'currentfile'):
             self.currentfile = self.config['currentsourcefile']
         else:
-            if self.fileinfo.get(macroname): return   # already done
+            if self.fileinfo.get(macroname):   # already done
+                return
         file_ = getattr(self, self.name)           # self.infile
         if file_ == STDOUT or file_ == MODULEOUT:
             dir_ = ''
@@ -4828,7 +4964,8 @@ def dumpConfig(source_raw, parsed_config):
         print
     # Then the parsed results of all of them
     print _('Full PARSED config')
-    keys = parsed_config.keys() ; keys.sort()  # sorted
+    keys = parsed_config.keys()
+    keys.sort()  # sorted
     for key in keys:
         val = parsed_config[key]
         # Filters are the last
@@ -4839,8 +4976,10 @@ def dumpConfig(source_raw, parsed_config):
             val = onoff.get(val) or val
         # List beautifier
         if type(val) == type([]):
-            if key == 'options': sep = ' '
-            else               : sep = ', '
+            if key == 'options':
+                sep = ' '
+            else:
+                sep = ', '
             val = sep.join(val)
         print "%25s: %s"%(dotted_spaces("%-14s"%key),val)
     print
@@ -4913,8 +5052,10 @@ def finish_him(outlist, config):
         errmsg = _('Invalid PostProc filter replacement')
         for line in outlist:
             for rgx,repl in filters:
-                try: line = rgx.sub(repl, line)
-                except: Error("%s: '%s'"%(errmsg, repl))
+                try:
+                    line = rgx.sub(repl, line)
+                except:
+                    Error("%s: '%s'"%(errmsg, repl))
             postoutlist.append(line)
         outlist = postoutlist[:]
 
@@ -4927,23 +5068,27 @@ def finish_him(outlist, config):
         if GUI:
             return outlist, config
         else:
-            for line in outlist: print line
+            for line in outlist:
+                print line
     else:
         Savefile(outfile, addLineBreaks(outlist))
         if not GUI and not QUIET:
             print _('%s wrote %s')%(my_name,outfile)
 
     if config['split']:
-        if not QUIET: print "--- html..."
+        if not QUIET:
+            print "--- html..."
         sgml2html = 'sgml2html -s %s -l %s %s' % (
             config['split'], config['lang'] or lang, outfile)
-        if not QUIET: print "Running system command:", sgml2html
+        if not QUIET:
+            print "Running system command:", sgml2html
         os.system(sgml2html)
 
 
 def toc_inside_body(body, toc, config):
     ret = []
-    if AUTOTOC: return body                     # nothing to expand
+    if AUTOTOC:
+        return body                     # nothing to expand
     toc_mark = MaskMaster().tocmask
     # Expand toc mark with TOC contents
     for line in body:
@@ -4980,8 +5125,10 @@ def toc_tagger(toc, config):
 def toc_formatter(toc, config):
     "Formats TOC for automatic placement between headers and body"
 
-    if config['toc-only']: return toc              # no formatting needed
-    if not config['toc'] : return []               # TOC disabled
+    if config['toc-only']:
+        return toc              # no formatting needed
+    if not config['toc']:
+        return []               # TOC disabled
     ret = toc
 
     # Art: An automatic "Table of Contents" header is added to the TOC slide
@@ -4992,8 +5139,10 @@ def toc_formatter(toc, config):
         return toc
 
     # TOC open/close tags (if any)
-    if TAGS['tocOpen' ]: ret.insert(0, TAGS['tocOpen'])
-    if TAGS['tocClose']: ret.append(TAGS['tocClose'])
+    if TAGS['tocOpen' ]:
+        ret.insert(0, TAGS['tocOpen'])
+    if TAGS['tocClose']:
+        ret.append(TAGS['tocClose'])
 
     # Autotoc specific formatting
     if AUTOTOC:
@@ -5017,8 +5166,10 @@ def toc_formatter(toc, config):
 
 # XXX change function name. Now it's called at the end of the execution, dumping the full template.
 def doHeader(headers, config):
-    if not config['headers']: return config['fullBody']
-    if not headers: headers = ['','','']
+    if not config['headers']:
+        return config['fullBody']
+    if not headers:
+        headers = ['','','']
     target = config['target']
     if not HEADER_TEMPLATE.has_key(target):
         Error("doHeader: Unknown target '%s'"%target)
@@ -5100,7 +5251,8 @@ def doHeader(headers, config):
     # If there isn't any other key reference on the same line, remove it
     #TODO loop by template line > key
     for key in head_data.keys():
-        if head_data.get(key): continue
+        if head_data.get(key):
+            continue
         for line in template:
             if line.count('%%(%s)s'%key):
                 sline = line.replace('%%(%s)s'%key, '')
@@ -5239,10 +5391,14 @@ def doEscape(target,txt):
 # TODO man: where - really needs to be escaped?
 def doFinalEscape(target, txt):
     "Last escapes of each line"
-    if   target == 'pm6' : txt = txt.replace(ESCCHAR+'<', r'<\#92><')
-    elif target == 'man' : txt = txt.replace('-', r'\-')
-    elif target == 'sgml': txt = txt.replace('[', '&lsqb;')
-    elif target == 'lout': txt = txt.replace('/', '"/"')
+    if   target == 'pm6' :
+        txt = txt.replace(ESCCHAR+'<', r'<\#92><')
+    elif target == 'man' :
+        txt = txt.replace('-', r'\-')
+    elif target == 'sgml':
+        txt = txt.replace('[', '&lsqb;')
+    elif target == 'lout':
+        txt = txt.replace('/', '"/"')
     elif target == 'tex' :
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
@@ -5250,11 +5406,14 @@ def doFinalEscape(target, txt):
 
 def EscapeCharHandler(action, data):
     "Mask/Unmask the Escape Char on the given string"
-    if not data.strip(): return data
+    if not data.strip():
+        return data
     if action not in ('mask','unmask'):
         Error("EscapeCharHandler: Invalid action '%s'"%action)
-    if action == 'mask': return data.replace('\\', ESCCHAR)
-    else:                return data.replace(ESCCHAR, '\\')
+    if action == 'mask':
+        return data.replace('\\', ESCCHAR)
+    else:
+        return data.replace(ESCCHAR, '\\')
 
 def maskEscapeChar(data):
     "Replace any Escape Char \ with a text mask (Input: str or list)"
@@ -5287,8 +5446,10 @@ def compile_filters(filters, errmsg='Filter'):
     if filters:
         for i in xrange(len(filters)):
             patt,repl = filters[i]
-            try: rgx = re.compile(patt)
-            except: Error("%s: '%s'"%(errmsg, patt))
+            try:
+                rgx = re.compile(patt)
+            except:
+                Error("%s: '%s'"%(errmsg, patt))
             filters[i] = (rgx,repl)
     return filters
 
@@ -5323,7 +5484,8 @@ def beautify_me(name, line):
     "where name is: bold, italic, underline or strike"
 
     # Exception: Doesn't parse an horizontal bar as strike
-    if name == 'strike' and regex['bar'].search(line): return line
+    if name == 'strike' and regex['bar'].search(line):
+        return line
 
     name  = 'font%s' % name.capitalize()
     open_ = TAGS['%sOpen'%name]
@@ -5341,7 +5503,7 @@ def get_tagged_link(label, url):
     if regex['email'].match(url):
         linktype = 'email'
     else:
-        linktype = 'url';
+        linktype = 'url'
 
     # Escape specials from TEXT parts
     label = doEscape(target,label)
@@ -5354,11 +5516,14 @@ def get_tagged_link(label, url):
     guessurl = ''
     if linktype == 'url' and \
        re.match('(?i)'+regex['_urlskel']['guess'], url):
-        if url[0] in 'Ww': guessurl = 'http://' +url
-        else             : guessurl =  'ftp://' +url
+        if url[0] in 'Ww':
+            guessurl = 'http://' +url
+        else:
+            guessurl =  'ftp://' +url
 
         # Not link aware targets -> protocol is useless
-        if not rules['linkable']: guessurl = ''
+        if not rules['linkable']:
+            guessurl = ''
 
     # Simple link (not guessed)
     if not label and not guessurl:
@@ -5367,7 +5532,8 @@ def get_tagged_link(label, url):
             url = url.replace('@', ' (a) ')
             url = url.replace('.', ' ')
             url = "<%s>" % url
-            if rules['linkable']: url = doEscape(target, url)
+            if rules['linkable']:
+                url = doEscape(target, url)
             ret = url
         else:
             # Just add link data to tag
@@ -5377,8 +5543,10 @@ def get_tagged_link(label, url):
     # Named link or guessed simple link
     else:
         # Adjusts for guessed link
-        if not label: label = url         # no   protocol
-        if guessurl : url   = guessurl    # with protocol
+        if not label:
+            label = url         # no protocol
+        if guessurl:
+            url = guessurl      # with protocol
 
         # Image inside link!
         if image_re.match(label):
@@ -5427,16 +5595,22 @@ def get_image_align(line):
 
     # Get image position on the line
     m = regex['img'].search(line)
-    ini = m.start() ; head = 0
-    end = m.end()   ; tail = len(line)
+    ini = m.start()
+    head = 0
+    end = m.end()
+    tail = len(line)
 
     # The align detection algorithm
-    if   ini == head and end != tail: align = 'left'   # ^img + text$
-    elif ini != head and end == tail: align = 'right'  # ^text + img$
-    else                            : align = 'center' # default align
+    if   ini == head and end != tail:
+        align = 'left'   # ^img + text$
+    elif ini != head and end == tail:
+        align = 'right'  # ^text + img$
+    else:
+        align = 'center' # default align
 
     # Some special cases
-    if BLOCK.isblock('table'): align = 'center'    # ignore when table
+    if BLOCK.isblock('table'):
+        align = 'center'    # ignore when table
 #   if TARGET == 'mgp' and align == 'center': align = 'center'
 
     return align
@@ -5445,7 +5619,8 @@ def get_image_align(line):
 # Reference: http://www.iana.org/assignments/character-sets
 # http://www.drclue.net/F1.cgi/HTML/META/META.html
 def get_encoding_string(enc, target):
-    if not enc: return ''
+    if not enc:
+        return ''
     # Target specific translation table
     translate = {
         'tex': {
@@ -5471,8 +5646,10 @@ def get_encoding_string(enc, target):
     enc = re.sub('(?i)(iso[_-]?)?8859[_-]?'     ,'iso-8859-' , enc)
     enc = re.sub('iso-8859-($|[^1-9]).*'        ,'iso-8859-1', enc)
     # Apply translation table
-    try: enc = translate[target][enc.lower()]
-    except: pass
+    try:
+        enc = translate[target][enc.lower()]
+    except:
+        pass
     return enc
 
 
@@ -5587,7 +5764,8 @@ def convert_this_files(configs):
         tagged_toc  = toc_tagger(marked_toc, myconf)
         target_toc  = toc_formatter(tagged_toc, myconf)
         target_body = toc_inside_body(target_body, target_toc, myconf)
-        if not AUTOTOC and not myconf['toc-only']: target_toc = []
+        if not AUTOTOC and not myconf['toc-only']:
+            target_toc = []
         # Finally, we have our document
         myconf['fullBody'] = target_toc + target_body + target_foot
         outlist = doHeader(source_head, myconf)
@@ -5723,8 +5901,10 @@ def convert(bodylines, config, firstlinenr=1):
         if pre_filter:
             errmsg = _('Invalid PreProc filter replacement')
             for rgx,repl in pre_filter:
-                try: line = rgx.sub(repl, line)
-                except: Error("%s: '%s'"%(errmsg, repl))
+                try:
+                    line = rgx.sub(repl, line)
+                except:
+                    Error("%s: '%s'"%(errmsg, repl))
 
         line = maskEscapeChar(line)                  # protect \ char
         linenr  += 1
@@ -6080,7 +6260,8 @@ def convert(bodylines, config, firstlinenr=1):
             quotedepth = len(regex['quote'].search(line).group(0))
 
             # SGML doesn't support nested quotes
-            if rules['quotenotnested']: quotedepth = 1
+            if rules['quotenotnested']:
+                quotedepth = 1
 
             # Don't cross depth limit
             maxdepth = rules['quotemaxdepth']
@@ -6243,14 +6424,18 @@ def convert(bodylines, config, firstlinenr=1):
         ret.extend(TITLE.close_all())
 
     # Maybe a major tag to enclose body? (like DIV for CSS)
-    if TAGS['bodyOpen' ]: ret.insert(0, TAGS['bodyOpen'])
-    if TAGS['bodyClose']: ret.append(TAGS['bodyClose'])
+    if TAGS['bodyOpen' ]:
+        ret.insert(0, TAGS['bodyOpen'])
+    if TAGS['bodyClose']:
+        ret.append(TAGS['bodyClose'])
 
-    if CONF['toc-only']: ret = []
+    if CONF['toc-only']:
+        ret = []
     marked_toc = TITLE.dump_marked_toc(CONF['toc-level'])
 
     # If dump-source, all parsing is ignored
-    if CONF['dump-source']: ret = dump_source[:]
+    if CONF['dump-source']:
+        ret = dump_source[:]
 
     return ret, marked_toc
 
@@ -6313,7 +6498,8 @@ class Gui:
 
         # Load RC config
         self.conf = {}
-        if conf: self.load_config(conf)
+        if conf:
+            self.load_config(conf)
 
     def load_config(self, conf):
         self.conf = conf
@@ -6322,7 +6508,8 @@ class Gui:
         self.root.config(bd=15,bg=self.bg1)
 
     ### Config as dic for python 1.5 compat (**opts don't work :( )
-    def entry(self, **opts): return Tkinter.Entry(self.window, opts)
+    def entry(self, **opts):
+        return Tkinter.Entry(self.window, opts)
     def label(self, txt='', bg=None, **opts):
         opts.update({'text':txt,'bg':bg or self.bg1})
         return Tkinter.Label(self.window, opts)
@@ -6343,7 +6530,8 @@ class Gui:
             'anchor':'w'
         })
         chk = Tkinter.Checkbutton(self.window, opts)
-        if checked: chk.select()
+        if checked:
+            chk.select()
         chk.grid(columnspan=2, sticky='w', padx=0)
     def menu(self,sel,items):
         return apply(Tkinter.OptionMenu,(self.window,sel)+tuple(items))
@@ -6372,16 +6560,22 @@ class Gui:
     def target_name2key(self):
         name = self.target_name.get()
         target = filter(lambda x: TARGET_NAMES[x] == name, TARGETS)
-        try   : key = target[0]
-        except: key = ''
+        try   :
+            key = target[0]
+        except:
+            key = ''
         self.target = self.setvar(key)
     def target_key2name(self):
         key = self.target.get()
         name = TARGET_NAMES.get(key) or key
         self.target_name = self.setvar(name)
 
-    def exit(self): self.root.destroy()
-    def setvar(self, val): z = Tkinter.StringVar() ; z.set(val) ; return z
+    def exit(self):
+        self.root.destroy()
+    def setvar(self, val):
+        z = Tkinter.StringVar()
+        z.set(val)
+        return z
 
     def askfile(self):
         ftypes= [(_('txt2tags files'), ('*.t2t','*.txt')), (_('All files'),'*')]
@@ -6398,7 +6592,8 @@ class Gui:
 
     def scrollwindow(self, txt='no text!', title=''):
         # Create components
-        win    = Tkinter.Toplevel() ; win.title(title)
+        win    = Tkinter.Toplevel()
+        win.title(title)
         frame  = Tkinter.Frame(win)
         scroll = Tkinter.Scrollbar(frame)
         text   = Tkinter.Text(frame,yscrollcommand=scroll.set)
@@ -6438,28 +6633,36 @@ class Gui:
             {'sourcefile':infile, 'outfile':'', 'target':target})
         for opt in self.checks:
             val = int(getattr(self, 'f_%s'%opt).get() or "0")
-            if opt == 'stdout': opt = 'outfile'
+            if opt == 'stdout':
+                opt = 'outfile'
             on_config  = self.conf.get(opt) or 0
             on_cmdline = real_cmdline_conf.get(opt) or 0
             if opt == 'outfile':
-                if on_config  == STDOUT: on_config = 1
-                else: on_config = 0
-                if on_cmdline == STDOUT: on_cmdline = 1
-                else: on_cmdline = 0
+                if on_config  == STDOUT:
+                    on_config = 1
+                else:
+                    on_config = 0
+                if on_cmdline == STDOUT:
+                    on_cmdline = 1
+                else:
+                    on_cmdline = 0
             if val != on_config or (
               val == on_config == on_cmdline and
               real_cmdline_conf.has_key(opt)):
                 if val:
                     # Was not set, but user selected on GUI
                     Debug("user turned  ON: %s"%opt)
-                    if opt == 'outfile': opt = '-o-'
-                    else: opt = '--%s'%opt
+                    if opt == 'outfile':
+                        opt = '-o-'
+                    else:
+                        opt = '--%s'%opt
                 else:
                     # Was set, but user deselected on GUI
                     Debug("user turned OFF: %s"%opt)
                     if opt == 'outfile':
                         opt = "-o%s"%default_outfile
-                    else: opt = '--no-%s'%opt
+                    else:
+                        opt = '--no-%s'%opt
                 guiflags.append(opt)
         cmdline = [my_name, '-t', target] + real_cmdline + guiflags + [infile]
         Debug('Gui/Tk cmdline: %s' % cmdline, 5)
@@ -6528,17 +6731,20 @@ class Gui:
             bg=self.bg1, fg=self.fg1).grid(columnspan=2)
         self.row = 2
         # Choose input file
-        self.action(action1) ; self.frame_open()
+        self.action(action1)
+        self.frame_open()
         e_infile = self.entry(textvariable=self.infile,width=25)
         e_infile.grid(row=self.row, column=0, sticky='e')
-        if not self.infile.get(): e_infile.focus_set()
+        if not self.infile.get():
+            e_infile.focus_set()
         self.button(_("Browse"), self.askfile).grid(
             row=self.row, column=1, sticky='w', padx=10)
         # Show outfile name, style and encoding (if any)
         txt = ''
         if outfile:
             txt = outfile
-            if outfile == STDOUT: txt = _('<screen>')
+            if outfile == STDOUT:
+                txt = _('<screen>')
             l_output = self.label(_('Output: ')+txt, fg=self.fg2, bg=self.bg2)
             l_output.grid(columnspan=2, sticky='w')
         for setting in ['style','encoding']:
@@ -6549,20 +6755,23 @@ class Gui:
                     fg=self.fg2, bg=self.bg2).grid(
                     columnspan=2, sticky='w')
         # Choose target
-        self.frame_close() ; self.action(action2)
+        self.frame_close()
+        self.action(action2)
         self.frame_open()
         self.target_key2name()
         self.menu(self.target_name, targets_menu).grid(
             columnspan=2, sticky='w')
         # Options checkboxes label
-        self.frame_close() ; self.action(action3)
+        self.frame_close()
+        self.action(action3)
         self.frame_open()
         # Compose options check boxes, example:
         # self.check(checks_txt['toc'],1,variable=self.f_toc)
         for check in self.checks:
             # Extra options label
             if check == 'toc-only':
-                self.frame_close() ; self.action(action4)
+                self.frame_close()
+                self.action(action4)
                 self.frame_open()
             txt = checks_txt[check]
             var = getattr(self, 'f_'+check)
@@ -6570,7 +6779,8 @@ class Gui:
             self.check(txt,checked,variable=var)
         self.frame_close()
         # Spacer and buttons
-        self.label('').grid() ; self.row += 1
+        self.label('').grid()
+        self.row += 1
         b_quit = self.button(_("Quit"), self.exit)
         b_quit.grid(row=self.row, column=0, sticky='w', padx=30)
         b_conv = self.button(_("Convert!"), self.runprogram)
@@ -6606,8 +6816,10 @@ def exec_command_line(user_cmdline=[]):
     Message(_("Txt2tags %s processing begins")%my_version,1)
 
     # The easy ones
-    if cmdline_parsed.get('help'   ): Quit(USAGE)
-    if cmdline_parsed.get('version'): Quit(VERSIONSTR)
+    if cmdline_parsed.get('help'   ):
+        Quit(USAGE)
+    if cmdline_parsed.get('version'):
+        Quit(VERSIONSTR)
     if cmdline_parsed.get('targets'):
         listTargets()
         Quit()
@@ -6655,7 +6867,8 @@ def exec_command_line(user_cmdline=[]):
 
     # User forced --gui, but it's not available
     if cmdline_parsed.get('gui') and not GUI:
-        print getTraceback(); print
+        print getTraceback()
+        print
         Error(
             "Sorry, I can't run my Graphical Interface - GUI\n"
             "- Check if Python Tcl/Tk module is installed (Tkinter)\n"
@@ -6674,8 +6887,10 @@ def exec_command_line(user_cmdline=[]):
         if not infiles:
             gui_conf = ConfigMaster(RC_RAW+CMDLINE_RAW).parse()
         else:
-            try   : gui_conf = infiles_config[0][0]
-            except: gui_conf = {}
+            try:
+                gui_conf = infiles_config[0][0]
+            except:
+                gui_conf = {}
 
         # Sanity is needed to set outfile and other things
         gui_conf = ConfigMaster().sanity(gui_conf, gui=1)
