@@ -1837,7 +1837,7 @@ def getTags(config):
         # Table with no cellpadding
         htmltags['tableOpen'] = htmltags['tableOpen'].replace(' CELLPADDING="4"', '')
         # DIVs
-        htmltags['tocOpen' ] = '<DIV CLASS="toc">'
+        htmltags['tocOpen'] = '<DIV CLASS="toc">'
         htmltags['tocClose'] = '</DIV>'
         htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
         htmltags['bodyClose']= '</DIV>'
@@ -1848,7 +1848,7 @@ def getTags(config):
         # Table with no cellpadding
         htmltags['tableOpen'] = htmltags['tableOpen'].replace(' cellpadding="4"', '')
         # DIVs
-        htmltags['tocOpen' ] = '<div class="toc">'
+        htmltags['tocOpen'] = '<div class="toc">'
         htmltags['tocClose'] = '</div>'
         htmltags['bodyOpen'] = '<div class="body" id="body">'
         htmltags['bodyClose']= '</div>'
@@ -3724,7 +3724,7 @@ class MaskMaster:
 
         # Protect URLs and emails
         while regex['linkmark'].search(line) or \
-              regex['link'    ].search(line):
+              regex['link'].search(line):
 
             # Try to match plain or named links
             match_link  = regex['link'].search(line)
@@ -4090,8 +4090,8 @@ class TableMaster:
             calign = map(lambda x: TAGS['_tableColAlign%s'%x], self.colalign)
             calign = calignsep.join(calign)
         # Align full table, set border and Column align (if any)
-        topen = regex['_tableAlign'   ].sub(talign , topen)
-        topen = regex['_tableBorder'  ].sub(tborder, topen)
+        topen = regex['_tableAlign'].sub(talign , topen)
+        topen = regex['_tableBorder'].sub(tborder, topen)
         topen = regex['_tableColAlign'].sub(calign , topen)
         # Tex table spec, border or not: {|l|c|r|} , {lcr}
         if calignsep and not self.border:
@@ -5139,7 +5139,7 @@ def toc_formatter(toc, config):
         return toc
 
     # TOC open/close tags (if any)
-    if TAGS['tocOpen' ]:
+    if TAGS['tocOpen']:
         ret.insert(0, TAGS['tocOpen'])
     if TAGS['tocClose']:
         ret.append(TAGS['tocClose'])
@@ -5836,7 +5836,7 @@ def add_inline_tags(line):
 
 def get_include_contents(file_, path=''):
     "Parses %!include: value and extract file contents"
-    ids = {'`':'verb', '"':'raw', "'":'tagged' }
+    ids = {'`':'verb', '"':'raw', "'":'tagged'}
     id_ = 't2t'
     # Set include type and remove identifier marks
     mark = file_[0]
@@ -6424,7 +6424,7 @@ def convert(bodylines, config, firstlinenr=1):
         ret.extend(TITLE.close_all())
 
     # Maybe a major tag to enclose body? (like DIV for CSS)
-    if TAGS['bodyOpen' ]:
+    if TAGS['bodyOpen']:
         ret.insert(0, TAGS['bodyOpen'])
     if TAGS['bodyClose']:
         ret.append(TAGS['bodyClose'])
@@ -6807,16 +6807,16 @@ def exec_command_line(user_cmdline=[]):
     cmdline_data = user_cmdline or sys.argv[1:]
     CMDLINE_RAW = CommandLine().get_raw_config(cmdline_data, relative=1)
     cmdline_parsed = ConfigMaster(CMDLINE_RAW).parse()
-    DEBUG   = cmdline_parsed.get('debug'  ) or 0
+    DEBUG   = cmdline_parsed.get('debug') or 0
     VERBOSE = cmdline_parsed.get('verbose') or 0
-    QUIET   = cmdline_parsed.get('quiet'  ) or 0
-    GUI     = cmdline_parsed.get('gui'    ) or 0
-    infiles = cmdline_parsed.get('infile' ) or []
+    QUIET   = cmdline_parsed.get('quiet') or 0
+    GUI     = cmdline_parsed.get('gui') or 0
+    infiles = cmdline_parsed.get('infile') or []
 
     Message(_("Txt2tags %s processing begins")%my_version,1)
 
     # The easy ones
-    if cmdline_parsed.get('help'   ):
+    if cmdline_parsed.get('help'):
         Quit(USAGE)
     if cmdline_parsed.get('version'):
         Quit(VERSIONSTR)
