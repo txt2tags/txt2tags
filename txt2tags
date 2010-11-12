@@ -382,8 +382,22 @@ Fake template to respect the general process.
 <head>
 <meta charset=%(ENCODING)s>
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org" />
-<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
+<meta name="generator" content="http://txt2tags.org"/>
+<link rel="stylesheet" href="%(STYLE)s"/>
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;}
+table{border:0;margin:0 auto;}
+table th{font-weight:700;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+.right{text-align:right;}
+.tableborder,.tableborder td{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
 </head>
 <body>
 <header>
@@ -914,12 +928,12 @@ def getTags(config):
     'html5': {
         'paragraphOpen'        : '<p>'            ,
         'paragraphClose'       : '</p>'           ,
-        'title1'               : '~a~<h1>\a</h1>' ,
-        'title2'               : '~a~<h2>\a</h2>' ,
-        'title3'               : '~a~<h3>\a</h3>' ,
-        'title4'               : '~a~<h4>\a</h4>' ,
-        'title5'               : '~a~<h5>\a</h5>' ,
-        'anchor'               : '<a id="\a" name="\a"></a>\n',
+        'title1'               : '<h1~a~>\a</h1>' ,
+        'title2'               : '<h2~a~>\a</h2>' ,
+        'title3'               : '<h3~a~>\a</h3>' ,
+        'title4'               : '<h4~a~>\a</h4>' ,
+        'title5'               : '<h5~a~>\a</h5>' ,
+        'anchor'               : ' id="\a"'       ,
         'blockVerbOpen'        : '<pre>'          ,
         'blockVerbClose'       : '</pre>'         ,
         'blockQuoteOpen'       : '<blockquote>'   ,
@@ -930,10 +944,10 @@ def getTags(config):
         'fontBoldClose'        : '</strong>'      ,
         'fontItalicOpen'       : '<em>'           ,
         'fontItalicClose'      : '</em>'          ,
-        'fontUnderlineOpen'    : '<span style="text-decoration:underline">',
+        'fontUnderlineOpen'    : '<span class="underline">',
         'fontUnderlineClose'   : '</span>'        ,
-        'fontStrikeOpen'       : '<del>',
-        'fontStrikeClose'      : '</del>'        ,
+        'fontStrikeOpen'       : '<del>'          ,
+        'fontStrikeClose'      : '</del>'         ,
         'listOpen'             : '<ul>'           ,
         'listClose'            : '</ul>'          ,
         'listItemOpen'         : '<li>'           ,
@@ -948,14 +962,14 @@ def getTags(config):
         'deflistItem1Close'    : '</dt>'          ,
         'deflistItem2Open'     : '<dd>'           ,
         'deflistItem2Close'    : '</dd>'          ,
-        'bar1'                 : '<hr class="light" />',
-        'bar2'                 : '<hr class="heavy" />',
+        'bar1'                 : '<hr class="light"/>'        ,
+        'bar2'                 : '<hr class="heavy"/>'        ,
         'url'                  : '<a href="\a">\a</a>'        ,
         'urlMark'              : '<a href="\a">\a</a>'        ,
         'email'                : '<a href="mailto:\a">\a</a>' ,
         'emailMark'            : '<a href="mailto:\a">\a</a>' ,
-        'img'                  : '<img~a~ src="\a" style="border:0px" alt=""/>',
-        'tableOpen'            : '<table~a~ style="padding:4px">',
+        'img'                  : '<img~a~ src="\a" alt=""/>'  ,
+        'tableOpen'            : '<table~a~~b~>'  ,
         'tableClose'           : '</table>'       ,
         'tableRowOpen'         : '<tr>'           ,
         'tableRowClose'        : '</tr>'          ,
@@ -963,16 +977,16 @@ def getTags(config):
         'tableCellClose'       : '</td>'          ,
         'tableTitleCellopen'   : '<th~s~>'        ,
         'tableTitleCellclose'  : '</th>'          ,
-        '_tableBorder'         : ' border="1"'    ,
+        '_tableBorder'         : ' class="tableborder"'      ,
         '_tableAlignCenter'    : ' style="text-align:center"',
-        '_tableCellAlignRight' : ' style="text-align:right"' ,
-        '_tableCellAlignCenter': ' style="text-align:center"',
+        '_tableCellAlignRight' : ' class="right"' ,
+        '_tableCellAlignCenter': ' class="center"',
         '_tableCellColSpan'    : ' colspan="\a"'  ,
-        'cssOpen'              : '<style type="text/css">',
+        'cssOpen'              : '<style>'        ,
         'cssClose'             : '</style>'       ,
         'comment'              : '<!-- \a -->'    ,
-        'tocOpen'              : '<nav>'    ,
-        'tocClose'              : '</nav>'    ,
+        'tocOpen'              : '<nav>'          ,
+        'tocClose'              : '</nav>'        ,
         'EOD'                  : '</article></body></html>'
     },
 
