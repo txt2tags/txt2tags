@@ -1,0 +1,7 @@
+
+Level 0 - [[foo.html|{{current.png}}]][[foo.html|{{folder/sub.png}}]]
+Level 0 - [[foo.html|{{current.png}}]][[foo.html|{{folder/sub.png}}]]
+Level 1 - [[folder/foo.html|{{folder/sub.png}}]][[folder/foo.html|{{folder/subfolder/subsub.png}}]]
+Level 2 - [[folder/subfolder/foo.html|{{folder/subfolder/subsub.png}}]]
+Level 2 - [[folder/subfolder/foo.html|{{folder/subfolder/subsub.png}}]]
+
