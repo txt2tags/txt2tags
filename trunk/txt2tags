@@ -1628,8 +1628,10 @@ def getTags(config):
 		'fontUnderlineClose'    : '</u>'       ,
 		'fontStrikeOpen'        : '<del>'      ,
 		'fontStrikeClose'       : '</del>'     ,
-		'listItemOpen'          : '-* '        ,
-		'numlistItemOpen'       : '-# '        ,
+		'listItemOpen'          : '-'          ,
+		'listItemLine'          : '*'          ,
+		'numlistItemOpen'       : '-'          ,
+		'numlistItemLine'       : '#'          ,
 		'bar1'                  : '----'       ,
 		'url'                   : '[->\a]'     ,
 		'urlMark'               : '[\a->\a]'   ,
@@ -1904,6 +1906,7 @@ def getRules(config):
 		'autotocwithbars',      # automatic TOC surrounded by bars
 		'mapbar2pagebreak',     # map the strong bar to a page break
 		'titleblocks',          # titles must be on open/close section blocks
+		'listlineafteropen',    # put listItemLine after listItemOpen
 	
 		# Target code beautify (ON/OFF)
 		'indentverbblock',      # add leading spaces to verb block lines
@@ -2431,9 +2434,9 @@ def getRules(config):
 		},
 		'spip': {
 			'spacedlistitem':1,
+			'spacedlistitemopen':1,
 			'linkable':1,
 			'blankendmotherlist':1,
-			'keeplistindent':1,
 			'tableable':1,
 			'barinsidequote':1,
 			'keepquoteindent':1,
@@ -2441,6 +2444,7 @@ def getRules(config):
 			'tablecellstrip':1,
 			'imgalignable':1,
 			'tablecellaligntype':'cell',
+			'listlineafteropen':1,
 			'labelbeforelink':1,
 			'blanksaroundpara':1,
 			'blanksaroundverb':1,
@@ -4598,7 +4602,10 @@ class BlockMaster:
 
 		# ItemLine: number of leading chars identifies list depth
 		if listline:
-			itemopen  = listline*self.depth + itemopen
+			if rules['listlineafteropen']:
+				itemopen  = itemopen + listline*self.depth
+			else:
+				itemopen  = listline*self.depth + itemopen
 		
 		# Adds trailing space on opening tags
 		if (name == 'list'    and rules['spacedlistitemopen']) or \
