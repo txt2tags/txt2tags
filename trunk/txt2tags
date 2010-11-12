@@ -141,7 +141,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5'.split()
+TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red'.split()
 TARGETS.sort()
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
@@ -185,7 +185,8 @@ TARGET_NAMES = {
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
-  'bbcode' : _('BBCode document')
+  'bbcode' : _('BBCode document'),
+  'red'    : _('Redmine Wiki page'),
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -578,6 +579,12 @@ _%(HEADER3)s_
 %(HEADER2)s
 
 ''%(HEADER3)s''
+""",
+	'red': """\
+h1. %(HEADER1)s
+
+Author: %(HEADER2)s
+Date: %(HEADER3)s
 """,
 
 	'tex': \
@@ -1458,6 +1465,51 @@ def getTags(config):
 		'TOC'                   : '__TOC__'         ,
 	},
 	
+	# http://demo.redmine.org/help/wiki_syntax.html
+	# http://demo.redmine.org/help/wiki_syntax_detailed.html
+	# http://demo.redmine.org
+	'red': {
+		'title1'                : 'h1. \a'   ,
+		'title2'                : 'h2. \a'   ,
+		'title3'                : 'h3. \a'   ,
+		'title4'                : 'h4. \a'   ,
+		'title5'                : 'h5. \a'   ,
+		'fontBoldOpen'          : '*'        ,
+		'fontBoldClose'         : '*'        ,
+		'fontItalicOpen'        : '_'        ,
+		'fontItalicClose'       : '_'        ,
+		'fontStrikeOpen'        : '-'        ,
+		'fontStrikeClose'       : '-'        ,
+		'fontUnderlineOpen'     : "+"        ,
+		'fontUnderlineClose'    : "+"        ,
+		'blockVerbOpen'         : '<pre>'    ,
+		'blockVerbClose'        : '</pre>'   ,
+		'blockQuoteLine'        : 'bq. '     , #XXX It's a *paragraph* prefix. (issues 64, 65)
+		'fontMonoOpen'          : '@'        ,
+		'fontMonoClose'         : '@'        ,
+		'listItemLine'          : '*'        ,
+		'numlistItemLine'       : '#'        ,
+		'deflistItem1Open'      : '* '       ,
+		'url'                   : '\a'       ,
+		'urlMark'               : '"\a":\a'  , # "Google":http://www.google.com
+		'email'                 : '\a'       ,
+		'emailMark'             : '"\a":\a'  ,
+		'img'                   : '!~A~\a!'  ,
+		'_imgAlignLeft'         : ''         , # !image.png! (no align == left)
+		'_imgAlignCenter'       : '='        , # !=image.png!
+		'_imgAlignRight'        : '>'        , # !>image.png!
+		'tableTitleCellOpen'    : '_.'       , # Table header is |_.header|
+		'tableTitleCellSep'     : '|'        ,
+		'tableCellOpen'         : '~S~~A~. ' ,
+		'tableCellSep'          : '|'        ,
+		'tableRowOpen'          : '|'        ,
+		'tableRowClose'         : '|'        ,
+		'_tableCellColSpan'     : '\\\a'     ,
+		'bar1'                  : '---'      ,
+		'bar2'                  : '---'      ,
+		'TOC'                   : '{{toc}}'  ,
+	},
+	
 	# http://www.inference.phy.cam.ac.uk/mackay/mgp/SYNTAX
 	# http://en.wikipedia.org/wiki/MagicPoint
 	'mgp': {
@@ -1921,7 +1973,7 @@ def getRules(config):
 			'blanksaroundtitle':1,
 			'blanksaroundnumtitle':1,
 		},
-	'html5': {
+		'html5': {
 			'linkable':1,
 			'stylable':1,
 			'escapeurl':1,
@@ -2194,6 +2246,32 @@ def getRules(config):
 			'blanksaroundtitle':1,
 			'blanksaroundnumtitle':1,
 		},
+                'red': {
+			'linkable':1,
+			'tableable':1,
+			'tablecellstrip':1,
+			'tablecellspannable':1,
+			'tablecellaligntype':'cell',
+			'autotocwithbars':1,
+			'spacedlistitemopen':1,
+			'spacednumlistitemopen':1,
+			'deflisttextstrip':1,
+			'autonumberlist':1,
+			'imgalignable':1,
+			'labelbeforelink':1,
+			'quotenotnested':1,
+			'autonumbertitle':1,
+			'blanksaroundpara':1,
+			'blanksaroundverb':1,
+			# 'blanksaroundquote':1,
+			'blanksaroundlist':1,
+			'blanksaroundnumlist':1,
+			'blanksarounddeflist':1,
+			'blanksaroundtable':1,
+			'blanksaroundbar':1,
+			'blanksaroundtitle':1,
+			'blanksaroundnumtitle':1,
+                },
 		'man': {
 			'spacedlistitem':1,
 			'tagnotindentable':1,
