@@ -4,7 +4,8 @@
 # Quick and dirty tests for path related features.
 # NOT integrated into main test suite, you must run it alone.
 
-
+cd $(dirname "$0")
+my_path=$PWD
 
 # Automatic relative PATH adjustment for images and local URIs.
 # See issues 62, 63.
@@ -24,7 +25,7 @@
 
 for t in creole txt; do
 
-cd $(dirname "$0")
+cd "$my_path"
 t2t=../../txt2tags
 
 test -d folder || mkdir folder
