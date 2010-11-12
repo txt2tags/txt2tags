@@ -104,14 +104,14 @@ just add {{spaces}} at the beginning of the line. More
 spaces, more sublists.
 
 -* earth
-  -* america
-    -* south america
-      -* brazil
-        -* how deep can i go?
-  -* europe
-    -* lots of countries
+-** america
+-*** south america
+-**** brazil
+-***** how deep can i go?
+-** europe
+-*** lots of countries
 -* mars
-  -* who knows?
+-** who knows?
 
 The list ends with {{two}} consecutive blank lines.
 
@@ -120,14 +120,14 @@ The list ends with {{two}} consecutive blank lines.
 The same rules as the plain list, just a different
 identifier (plus).
 
--# one
--# two
--# three
-  -* mixed lists!
-  -* what a mess
-    -# counting again
-    -# ...
--# four
+-#one
+-#two
+-#three
+-** mixed lists!
+-** what a mess
+-###counting again
+-###...
+-#four
 
 <h4>Definition List</h4>
 
@@ -135,14 +135,14 @@ The definition list identifier is a colon, followed by
 the term. The term contents is placed on the next line.
 
 orange
-  a yellow fruit
+a yellow fruit
 apple
-  a green or red fruit
+a green or red fruit
 other fruits
-  -* wee!
-  -* mixing lists
-    -# again!
-    -# and again!
+-** wee!
+-** mixing lists
+-###again!
+-###and again!
 
 {{{ Tables }}}
 
