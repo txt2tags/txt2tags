@@ -1608,8 +1608,6 @@ def getTags(config):
 	
 	# http://www.spip-contrib.net/Les-raccourcis-typographiques-en
 	# some tags are not implemented by spip tags, but spip accept html tags.
-	# ISSUE 1 -> Still have problem with link with label : in SPIP syntax, it works [label->http://link.com] so
-	# I don't knowhow invert the [a/ a/] for fitting with SPIP behavior.
 	# ISSUE 2 -> sublist are marked "-##" (number of # depends of sublevels).so I don't know how translate
 	# this beavior in txt2tags mark.
 	'spip': {
@@ -1634,9 +1632,9 @@ def getTags(config):
 		'numlistItemOpen'       : '-# '        ,
 		'bar1'                  : '----'       ,
 		'url'                   : '[->\a]'     ,
-		'urlMark'               : '[\a->\a]'   , # bad behavior : label and url are inverted
+		'urlMark'               : '[\a->\a]'   ,
 		'email'                 : '[->\a]'     ,
-		'emailMark'             : '[\a->\a]'   , # bad behavior : label and url are inverted
+		'emailMark'             : '[\a->\a]'   ,
 		'img'                   : '<img src="\a" />',
 		'imgAlignLeft'          : '<img src="\a" align="left" />',
 		'imgAlignRight'         : '<img src="\a" align="right" />',
@@ -2443,6 +2441,7 @@ def getRules(config):
 			'tablecellstrip':1,
 			'imgalignable':1,
 			'tablecellaligntype':'cell',
+			'labelbeforelink':1,
 			'blanksaroundpara':1,
 			'blanksaroundverb':1,
 			'blanksaroundquote':1,
