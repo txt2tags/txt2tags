@@ -241,7 +241,7 @@ LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']
 
 VERSIONSTR = _("%s version %s <%s>")%(my_name,my_version,my_url)
 
-USAGE =  '\n'.join([
+USAGE = '\n'.join([
 '',
 _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
 '',
@@ -5519,7 +5519,7 @@ def get_tagged_link(label, url):
         if url[0] in 'Ww':
             guessurl = 'http://' +url
         else:
-            guessurl =  'ftp://' +url
+            guessurl = 'ftp://' +url
 
         # Not link aware targets -> protocol is useless
         if not rules['linkable']:
