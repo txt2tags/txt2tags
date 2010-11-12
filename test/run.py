@@ -75,6 +75,6 @@ if ERRORS:
 if len(sys.argv) == 1:
 	print
 	print "Don't forget to run the extra tests:"
-	print 'samples/run.sh'
+	print 'sample/run.sh'
 	print 'art/run.sh'
 	print 'path/run.sh'
