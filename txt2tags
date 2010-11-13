@@ -192,6 +192,9 @@ MACROS = {
     'infile': '%f',
     'currentfile': '%f',
     'mtime': '%Y%m%d',
+    'appurl': '',
+    'appname': '',
+    'appversion': '',
     'outfile': '%f',
     }
 SETTINGS = {}  # for future use
@@ -4972,6 +4975,12 @@ class MacroMaster:
                     mtime = os.path.getmtime(self.infile)
                     fdate = time.localtime(mtime)
                 txt = time.strftime(fmt, fdate)
+            elif name == 'appurl':
+                txt = self.walk_file_format(my_url)
+            elif name == 'appname':
+                txt = self.walk_file_format(my_name)
+            elif name == 'appversion':
+                txt = self.walk_file_format(my_version) 
             elif name == 'infile' or name == 'outfile' or name == 'currentfile' :
                 self.set_file_info(name)
                 txt = self.walk_file_format(fmt)
