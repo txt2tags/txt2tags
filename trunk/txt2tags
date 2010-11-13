@@ -2566,6 +2566,9 @@ def getRules(config):
     if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls'):
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
+    elif config['css-sugar'] and config['target'] in ('html5'):
+        rules_bank['html5']['indentverbblock'] = 0
+        rules_bank['html5']['autotocwithbars'] = 0
 
     # Get the target specific rules
     if config['target'] == 'xhtml':
@@ -5260,7 +5263,7 @@ def doHeader(headers, config):
 
     # Use default templates
     if config['template'] == '' :
-        if target in ('html', 'xhtml', 'xhtmls') and config.get('css-sugar'):
+        if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-sugar'):
             template = HEADER_TEMPLATE[target+'css'].split('\n')
         else:
             template = HEADER_TEMPLATE[target].split('\n')
@@ -5308,7 +5311,7 @@ def doHeader(headers, config):
 
     # css-inside removes STYLE line
     #XXX In tex, this also removes the modules call (%!style:amsfonts)
-    if target in ('html', 'xhtml', 'xhtmls','html5') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and \
        config.get('style'):
         head_data['STYLE'] = []
 
@@ -5366,7 +5369,7 @@ def doHeader(headers, config):
 
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
-    if target in ('html', 'xhtml', 'xhtmls','html5') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and \
        config.get('style'):
         set_global_config(config) # usually on convert(), needed here
         for i in xrange(len(config['style'])):
@@ -5442,7 +5445,7 @@ def doFooter(config):
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
-    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk'):
+    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk', 'html5'):
         txt = re.sub('&', '&amp;', txt)
         txt = re.sub('<', '&lt;', txt)
         txt = re.sub('>', '&gt;', txt)
