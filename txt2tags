@@ -196,6 +196,8 @@ MACROS = {
     'appname': '',
     'appversion': '',
     'outfile': '%f',
+    'target': '',
+    'cmdline': '',
     }
 SETTINGS = {}  # for future use
 NO_TARGET = [
@@ -5023,9 +5025,13 @@ class MacroMaster:
                 txt = self.walk_file_format(my_name)
             elif name == 'appversion':
                 txt = self.walk_file_format(my_version) 
-            elif name == 'infile' or name == 'outfile' or name == 'currentfile' :
+            elif name == 'infile' or name == 'outfile' or name == 'currentfile':
                 self.set_file_info(name)
                 txt = self.walk_file_format(fmt)
+            elif name == 'target':
+                txt = self.walk_file_format(TARGET)
+            elif name == 'cmdline':
+                txt = self.walk_file_format(my_name)+' '+self.walk_file_format(CMDLINE)
             else:
                 Error("Unknown macro name '%s'"%name)
             line = self.rgx.sub(txt, line, 1)
@@ -5954,12 +5960,13 @@ def get_include_contents(file_, path=''):
 
 
 def set_global_config(config):
-    global CONF, TAGS, regex, rules, TARGET
+    global CONF, TAGS, regex, rules, TARGET, CMDLINE
     CONF   = config
     rules  = getRules(CONF)
     TAGS   = getTags(CONF)
     regex  = getRegexes()
     TARGET = config['target']  # save for buggy functions that need global
+    CMDLINE = ' '.join(config['realcmdline'])  # save for buggy functions that need global
 
 
 def convert(bodylines, config, firstlinenr=1):
