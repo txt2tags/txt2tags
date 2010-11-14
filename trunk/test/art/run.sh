@@ -22,7 +22,9 @@ $t2t -i sample.t2t -t art --no-headers --slides --width 60               -o slid
 $t2t -i sample.t2t -t art --no-headers --toc                             -o toc-no-headers.art
 $t2t -i sample.t2t -t art --no-headers --toc --slides --width 60         -o toc-slide-no-headers.art
 
+$t2t -i toc-macro.t2t -t art --width 60                     -o no-toc-macro.art
 $t2t -i toc-macro.t2t -t art --toc --width 60               -o toc-macro.art
+$t2t -i toc-macro.t2t -t art --slides --width 60            -o no-toc-macro-slides.art
 $t2t -i toc-macro.t2t -t art --toc --slides --width 60      -o toc-macro-slides.art
 # ^ bug: The "Table of Contents" is added together with custom TOC title
 
