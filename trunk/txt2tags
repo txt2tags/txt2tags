@@ -4520,6 +4520,15 @@ class BlockMaster:
         # The next block will use it
         if result:
             self.last = blockname
+            if TARGET == 'art':
+                final = []
+                for line in result:
+                    while len(line) > CONF['width']:
+                        final.append(line[:CONF['width']])
+                        line = line[CONF['width']:]
+                    final.append(line)
+                result = final[:] 
+                    
             Debug('BLOCK: %s'%result, 6)
 
         # ASCII Art processing
