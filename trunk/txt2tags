@@ -5335,7 +5335,7 @@ def doHeader(headers, config):
     if target == 'art':
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
         if not n_h :
-            return []
+            return config['fullBody']
         if config['slides']:
             x = config['height'] - 3 - (n_h * 3)
             n = x / (n_h + 1)
