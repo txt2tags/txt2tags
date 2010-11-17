@@ -5045,7 +5045,8 @@ class MacroMaster:
             elif name in ('header1', 'header2', 'header3'):
                 txt = self.config[name]
             else:
-                Error("Unknown macro name '%s'"%name)
+                # Never reached because the macro regex list the valid keys
+                Error("Unknown macro name '%s'" % name)
             line = self.rgx.sub(txt, line, 1)
         return line
 

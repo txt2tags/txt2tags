@@ -1,0 +1,9 @@
+
+
+%%appname    "txt2tags"
+%%appversion "2.6"
+%%appurl     "http://txt2tags.org"
+%%target     "txt"
+%%encoding   "UTF-8"
+%%cmdline    "txt2tags -q --no-rc -C config -t txt -i info.t2t"
+
