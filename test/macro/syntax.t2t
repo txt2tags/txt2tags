@@ -32,11 +32,11 @@ Currentfile : (%%currentfile( txt )) - (%%currentfile( %e ))
 Outfile : (%%outfile( txt )) - (%%outfile( %e ))
 
 %%% Test: Expansion of the percent char
-Date    : %%date(%) - %%date(%%) - %%date(%%%) - %%date(%%%)
-Mtime   : %%mtime(%) - %%mtime(%%) - %%mtime(%%%) - %%mtime(%%%)
-Infile  : %%infile(%) - %%infile(%%) - %%infile(%%%) - %%infile(%%%)
-Currentfile : %%currentfile(%) - %%currentfile(%%) - %%currentfile(%%%) - %%currentfile(%%%)
-Outfile : %%outfile(%) - %%outfile(%%) - %%outfile(%%%) - %%outfile(%%%)
+Date    : %%date(%) - %%date(%%) - %%date(%%%) - %%date(%%%%)
+Mtime   : %%mtime(%) - %%mtime(%%) - %%mtime(%%%) - %%mtime(%%%%)
+Infile  : %%infile(%) - %%infile(%%) - %%infile(%%%) - %%infile(%%%%)
+Currentfile : %%currentfile(%) - %%currentfile(%%) - %%currentfile(%%%) - %%currentfile(%%%%)
+Outfile : %%outfile(%) - %%outfile(%%) - %%outfile(%%%) - %%outfile(%%%%)
 
 %%% Test: Various per line, glued
 Date    : %%date(%C)%%date%%date
