@@ -44,24 +44,3 @@ Infile  : t2tsyntax.t2tsyntax.t2t
 Currentfile : t2tsyntax.t2tsyntax.t2t
 Outfile : txtsyntax.txtsyntax.txt
 
-Test: Path formatters
-Path    : @DIRNAME@/macro/syntax.t2t
-Path    : @DIRNAME@/macro/syntax.t2t
-Path    : @DIRNAME@/macro/syntax.txt
-Dirname : @DIRNAME@/macro, macro
-Dirname : @DIRNAME@/macro, macro
-Dirname : @DIRNAME@/macro, macro
-File    : syntax + t2t = syntax.t2t
-File    : syntax + t2t = syntax.t2t
-File    : syntax + txt = syntax.txt
-
-Test: App info
-Name    : txt2tags
-Version : 2.6
-Url     : http://txt2tags.org
-
-Test: Conversion info
-Target   : txt
-Encoding : UTF-8
-Cmdline  : txt2tags -q --no-rc -C config -t txt -i syntax.t2t
-
