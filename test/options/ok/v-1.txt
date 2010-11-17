@@ -3,10 +3,10 @@
 ----- Loading source document
 ----- Parsing and saving all config found (008 items)
 ----- We are on Command Line interface
------ Composing target Headers
 ----- Composing target Body
 ----- Composing target Footer
 ----- Composing target TOC
+----- Composing target Headers
 ----- Saving results to the output file
 
 
