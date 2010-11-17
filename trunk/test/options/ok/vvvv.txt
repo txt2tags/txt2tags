@@ -17,10 +17,10 @@
 --------------- Added config .realcmdline : ['-q', '--no-rc', '-t', 'txt', '--no-quiet', '-vvvv', '-o-', 'vvvv.t2t']
 ---------- Added the following keys: target, realcmdline, outfile, rc, infile, verbose
 ----- We are on Command Line interface
------ Composing target Headers
 ----- Composing target Body
 ----- Composing target Footer
 ----- Composing target TOC
+----- Composing target Headers
 ----- Saving results to the output file
 
 
