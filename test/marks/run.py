@@ -33,7 +33,9 @@ FILTERS = {
                 ('post', lib.getFileMtime('marks/macro.t2t'), '@MTIME@'),
                 ('post', lib.getCurrentDate(), '@DATE@'),
                 ('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
-                ('post', '^(Date.*)@MTIME@', r'\1@DATE@') ],
+                ('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
+                ('post', '^(Version +: \d\.\d+)\.\d+', r'\1'),  # Remove SVN release
+  ],
 }
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
