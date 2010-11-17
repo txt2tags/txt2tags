@@ -227,6 +227,7 @@ CONFIG_KEYWORDS = [
     'target',
     'encoding',
     'style',
+    'stylepath',  # internal use only
     'options',
     'preproc',
     'postproc',
@@ -3074,6 +3075,12 @@ class CommandLine:
                 ret.extend(ConfigLines().include_config_file(value))
                 continue
 
+            # --style: path relative to PWD
+            # Already OK, command line path is already relative to PWD
+            # No matter if it's absolute or relative, we save stylepath anyway
+            if name == 'style':
+                ret.append(['all', 'stylepath', value])
+
             # Save this config
             ret.append(['all', name, value])
 
@@ -3359,7 +3366,7 @@ class ConfigMaster:
         self.off          = self._get_off()
         self.incremental  = ['verbose']
         self.numeric      = ['toc-level', 'split', 'width', 'height']
-        self.multi        = ['infile', 'preproc', 'postproc', 'postvoodoo', 'options', 'style']
+        self.multi        = ['infile', 'preproc', 'postproc', 'postvoodoo', 'options', 'style', 'stylepath']
 
     def _get_defaults(self):
         "Get the default values for all config/options/flags"
@@ -3598,6 +3605,10 @@ class ConfigLines:
         self.file = file_ or 'NOFILE'
         self.lines = lines
         self.first_line = first_line
+        if file_:
+            self.folder = os.path.dirname(self.file)
+        else:
+            self.folder = ''
 
     def load_lines(self):
         "Make sure we've loaded the file contents into buffer"
@@ -3625,34 +3636,72 @@ class ConfigLines:
         "Perform the %!includeconf action, returning RAW config"
         if not file_:
             return []
-        # Current dir relative to the current file (self.file)
-        current_dir = os.path.dirname(self.file)
-        file_ = os.path.join(current_dir, file_)
+        
+        # Fix config file path
+        file_ = self.fix_config_relative_path(file_)
+        
         # Read and parse included config file contents
-        lines = self.read_config_file(file_)
-        return ConfigLines(file_=file_, lines=lines).get_raw_config()
+        return ConfigLines(file_=file_).get_raw_config()
+
+    def fix_config_relative_path(self, path_):
+        """
+        The path for external files must be relative to the config file path.
+        External files appear in: %!includeconf, %!style, %!template.
+        See issue 71.
+        """
+        
+        # Fix relative paths only. Ignore absolute path or URL.
+        if os.path.isabs(path_) or path_.startswith('http'):
+            return path_
+        else:
+            return os.path.join(self.folder, path_)
 
     def get_raw_config(self):
         "Scan buffer and extract all config as RAW (including includes)"
         ret = []
         self.load_lines()
         first = self.first_line
+
+        def add(target, key, val):
+            "Save the RAW config"
+            ret.append([target, key, val])
+            Message(_("Added %s") % key, 3)
+
         for i in xrange(len(self.lines)):
             line = self.lines[i]
             Message(_("Processing line %03d: %s")%(first+i, line), 2)
             target, key, val = self.parse_line(line)
-            if not key:    # no config on this line
+            
+            if not key:  # no config on this line
                 continue
+
+            # %!style
+            # We need to fix the CSS files path. See issue 71.
+            #
+            # This stylepath config holds the fixed path for each CSS file.
+            # This path is used when composing headers, inside doHeader().
+            #
+            if key == 'style':
+                stylepath = self.fix_config_relative_path(val)
+                add(target, 'stylepath', stylepath)
+                # Note: the normal 'style' config will be added later
+
+            # %!includeconf
             if key == 'includeconf':
+                
+                # Sanity
                 err = _('A file cannot include itself (loop!)')
                 if val == self.file:
                     Error("%s: %%!includeconf: %s" % (err, self.file))
+                
                 more_raw = self.include_config_file(val)
                 ret.extend(more_raw)
+                
                 Message(_("Finished Config file inclusion: %s") % val, 2)
+            
+            # Normal config, except %!includeconf
             else:
-                ret.append([target, key, val])
-                Message(_("Added %s")%key, 3)
+                add(target, key, val)
         return ret
 
     def parse_line(self, line='', keyname='', target=''):
@@ -4537,8 +4586,8 @@ class BlockMaster:
                         final.append(line[:CONF['width']])
                         line = line[CONF['width']:]
                     final.append(line)
-                result = final[:] 
-                    
+                result = final[:]
+
             Debug('BLOCK: %s'%result, 6)
 
         # ASCII Art processing
@@ -5315,6 +5364,19 @@ def doHeader(headers, config):
 
     head_data = {'STYLE': [], 'ENCODING': ''}
 
+    # Fix CSS files path with %!stylepath data (issue 71)
+    if config.get('style') and 'html' in target and config['outfile'] not in [STDOUT, MODULEOUT]:
+
+        # Sanity
+        if len(config.get('style')) != len(config.get('stylepath')):
+            Error('stylepath corrupted')
+
+        # The stylepath paths are relative to the INPUT file folder.
+        # Now we must make them relative to the OUTPUT file folder.
+        # Then we save them to the 'style' config, so they can be used ahead.
+        config['style'] = [os.path.relpath(x, os.path.dirname(config['outfile'])) for x in config['stylepath']]
+
+
     for key in head_data.keys():
         val = config.get(key.lower())
         # Remove .sty extension from each style filename (freaking tex)
@@ -5324,6 +5386,7 @@ def doHeader(headers, config):
         if key == 'ENCODING':
             val = get_encoding_string(val, target)
         head_data[key] = val
+
     # Parse header contents
     for i in 0, 1, 2:
         # Expand macros
@@ -5373,7 +5436,7 @@ def doHeader(headers, config):
                 sline = line.replace('%%(%s)s'%key, '')
                 if not re.search(r'%\([A-Z0-9]+\)s', sline):
                     template.remove(line)
-    
+
     # Style is a multiple tag.
     # - If none or just one, use default template
     # - If two or more, insert extra lines in a loop (and remove original)
@@ -5862,7 +5925,7 @@ def convert_this_files(configs):
             myconf['header1'] = source_head[0]
             myconf['header2'] = source_head[1]
             myconf['header3'] = source_head[2]
-        
+
         # Parse the full marked body into tagged target
         first_body_line = (len(source_head) or 1)+ len(source_conf) + 1
         Message(_("Composing target Body"), 1)
