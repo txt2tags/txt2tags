@@ -5960,13 +5960,12 @@ def get_include_contents(file_, path=''):
 
 
 def set_global_config(config):
-    global CONF, TAGS, regex, rules, TARGET, CMDLINE
+    global CONF, TAGS, regex, rules, TARGET
     CONF   = config
     rules  = getRules(CONF)
     TAGS   = getTags(CONF)
     regex  = getRegexes()
     TARGET = config['target']  # save for buggy functions that need global
-    CMDLINE = ' '.join(config['realcmdline'])  # save for buggy functions that need global
 
 
 def convert(bodylines, config, firstlinenr=1):
