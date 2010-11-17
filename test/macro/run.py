@@ -13,6 +13,27 @@ del sys.path[0]
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
+# smart filters to perform macros normalization
+FILTERS = [
+	('post', os.path.abspath(""), '@DIRNAME@'),
+	('post', lib.getFileMtime('macro/syntax.t2t'), '@MTIME@'),
+	('post', lib.getCurrentDate(), '@DATE@'),
+	('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
+	('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
+	('post', '^(Version +: \d\.\d+)\.\d+', r'\1'),	# Remove SVN release
+]
+
+# convert FILTERS tuples to txt2tags pre/postproc rules
+def addFilters(filters):
+	config = []
+	cmdline = []
+	for filter_ in filters:
+		config.append("%%!%sproc: '%s' %s" % filter_)
+	if config:
+		lib.WriteFile(lib.CONFIG_FILE, '\n'.join(config))
+		cmdline = ['-C', lib.CONFIG_FILE]
+	return cmdline
+
 def run():
 	# test all OK files found
 	for outfile in glob.glob("ok/*"):
@@ -25,13 +46,15 @@ def run():
 		infile = basename + ".t2t"
 		# Using filename -H suffix to run new tests using -H option
 		if basename.endswith('-H'):
-		    infile = basename.replace('-H', '') + ".t2t"
+			infile = basename.replace('-H', '') + ".t2t"
 		outfile = outfile.replace('ok/', '')
+		
 		if lib.initTest(basename, infile, outfile):
 			cmdline = []
+			cmdline = addFilters(FILTERS)
 			if basename.endswith('-H'):
-			    cmdline.append('-H')
-			    cmdline.extend(['-o', outfile.replace('ok/','')])
+				cmdline.append('-H')
+				cmdline.extend(['-o', outfile])
 			cmdline.extend(['-t', target])
 			cmdline.extend(['-i', infile])
 			if stderr:
@@ -41,7 +64,8 @@ def run():
 			lib.convert(cmdline)
 			lib.diff(outfile)
 	# clean up
-	if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
+	if os.path.isfile(lib.CONFIG_FILE):
+		os.remove(lib.CONFIG_FILE)
 	
 	return lib.OK, lib.FAILED, lib.ERROR_FILES
 

@@ -1,6 +1,6 @@
 
-%!includeconf: test.conf
 %!encoding: UTF-8
+%!preproc: '^%%% '   ''
 BODYINIT
 
 %%% Syntax: Macro without formatting string

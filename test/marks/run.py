@@ -22,20 +22,13 @@ ALIASES = {
 	'tagged'  : 'verbatim'
 }
 
-# smart filters to allow source inheritance and macros normalization
+# smart filters to allow source inheritance
 FILTERS = {
   'deflist' : [ ('pre', 'hyphen'  , 'colon' ), ('pre', '^( *)-', r'\1:') ],
   'numlist' : [ ('pre', 'hyphen'  , 'plus'  ), ('pre', '^( *)-', r'\1+') ],
   'numtitle': [ ('pre', 'equal'   , 'plus'  ), ('pre', '='     ,  '+'  ) ],
   'raw'     : [ ('pre', 'verbatim', 'raw'   ), ('pre', '`'     ,  '"'  ) ],
-  'tagged'  : [ ('pre', 'verbatim', 'tagged'), ('pre', '`'     ,  "\'"  ) ],
-  'macro'   : [ ('post', os.path.abspath(""), '@DIRNAME@'),
-                ('post', lib.getFileMtime('marks/macro.t2t'), '@MTIME@'),
-                ('post', lib.getCurrentDate(), '@DATE@'),
-                ('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
-                ('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
-                ('post', '^(Version +: \d\.\d+)\.\d+', r'\1'),  # Remove SVN release
-  ],
+  'tagged'  : [ ('pre', 'verbatim', 'tagged'), ('pre', '`'     ,  "\'" ) ],
 }
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
