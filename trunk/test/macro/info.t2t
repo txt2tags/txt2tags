@@ -1,0 +1,9 @@
+
+%!encoding: UTF-8
+
+""%%appname""    "%%appname"
+""%%appversion"" "%%appversion"
+""%%appurl""     "%%appurl"
+""%%target""     "%%target"
+""%%encoding""   "%%encoding"
+""%%cmdline""    "%%cmdline"
