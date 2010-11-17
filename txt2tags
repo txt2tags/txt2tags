@@ -879,7 +879,7 @@ def getTags(config):
         'title3'               : '<H3~A~>\a</H3>' ,
         'title4'               : '<H4~A~>\a</H4>' ,
         'title5'               : '<H5~A~>\a</H5>' ,
-        'anchor'               : ' id="\a"',
+        'anchor'               : ' ID="\a"',
         'blockVerbOpen'        : '<PRE>'          ,
         'blockVerbClose'       : '</PRE>'         ,
         'blockQuoteOpen'       : '<BLOCKQUOTE>'   ,
