@@ -1,0 +1,38 @@
+
+
+filename
+
+    %%currentfile(%f): path.t2t
+         %%infile(%f): path.t2t
+        %%outfile(%f): path.txt
+
+filename (w/o extension)
+
+    %%currentfile(%F): path
+         %%infile(%F): path
+        %%outfile(%F): path
+
+dirname
+
+    %%currentfile(%d): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro
+         %%infile(%d): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro
+        %%outfile(%d): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro
+
+dirname (only parent dir)
+
+    %%currentfile(%D): macro
+         %%infile(%D): macro
+        %%outfile(%D): macro
+
+file path
+
+    %%currentfile(%p): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro/path.t2t
+         %%infile(%p): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro/path.t2t
+        %%outfile(%p): /ABSOLUTE-PATH-TO-TEST-FOLDER/test/macro/path.txt
+
+extension
+
+    %%currentfile(%e): t2t
+         %%infile(%e): t2t
+        %%outfile(%e): txt
+

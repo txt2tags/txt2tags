@@ -15,12 +15,12 @@ lib.ERROR_FILES = []
 
 # smart filters to perform macros normalization
 FILTERS = [
-	('post', os.path.abspath(""), '@DIRNAME@'),
+	('post', os.path.abspath('..'), '/ABSOLUTE-PATH-TO-TEST-FOLDER'),
 	('post', lib.getFileMtime('macro/syntax.t2t'), '@MTIME@'),
 	('post', lib.getCurrentDate(), '@DATE@'),
 	('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
 	('post', '^(Date.*)@MTIME@', r'\1@DATE@'),
-	('post', '^(Version +: \d\.\d+)\.\d+', r'\1'),	# Remove SVN release
+	('post', '^(..appversion +"\d\.\d+)\.\d+', r'\1'),	# Remove SVN release
 ]
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
