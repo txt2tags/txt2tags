@@ -203,6 +203,10 @@ MACROS = {
     'target': '',
     'cmdline': '',
     'encoding': '',
+    # header
+    'header1': '',
+    'header2': '',
+    'header3': '',
     }
 SETTINGS = {}  # for future use
 NO_TARGET = [
@@ -5038,6 +5042,8 @@ class MacroMaster:
                 txt = self.config['encoding']
             elif name == 'cmdline':
                 txt = '%s %s' % (my_name, ' '.join(self.config['realcmdline']))
+            elif name in ('header1', 'header2', 'header3'):
+                txt = self.config[name]
             else:
                 Error("Unknown macro name '%s'"%name)
             line = self.rgx.sub(txt, line, 1)
@@ -5845,14 +5851,22 @@ def convert_this_files(configs):
         target_foot = []
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
-        # Compose the target file Headers
-        #TODO escape line before?
-        #TODO see exceptions by tex and mgp
-        Message(_("Composing target Headers"), 1)
+
+        # Save header info for %%header1..3 macros
+        if not source_head:
+            myconf['header1'] = ''
+            myconf['header2'] = ''
+            myconf['header3'] = ''
+        else:
+            myconf['header1'] = source_head[0]
+            myconf['header2'] = source_head[1]
+            myconf['header3'] = source_head[2]
+        
         # Parse the full marked body into tagged target
         first_body_line = (len(source_head) or 1)+ len(source_conf) + 1
         Message(_("Composing target Body"), 1)
         target_body, marked_toc = convert(source_body, myconf, firstlinenr=first_body_line)
+
         # If dump-source, we're done
         if myconf['dump-source']:
             for line in source_head+source_conf+target_body:
@@ -5877,7 +5891,13 @@ def convert_this_files(configs):
             target_toc = []
         # Finally, we have our document
         myconf['fullBody'] = target_toc + target_body + target_foot
+
+        # Compose the target file Headers
+        #TODO escape line before?
+        #TODO see exceptions by tex and mgp
+        Message(_("Composing target Headers"), 1)
         outlist = doHeader(source_head, myconf)
+
         # If on GUI, abort before finish_him
         # If module, return finish_him as list
         # Else, write results to file or STDOUT
