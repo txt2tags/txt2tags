@@ -54,3 +54,12 @@ Dirname : %%outfile(%d, %D)
 File    : %%infile(%F + %e = %f)
 File    : %%currentfile(%F + %e = %f)
 File    : %%outfile(%F + %e = %f)
+
+%%% Test: App info
+Name    : %%appname
+Version : %%appversion
+Url     : %%appurl
+
+%%% Test: Conversion info
+Target  : %%target
+Cmdline : %%cmdline
