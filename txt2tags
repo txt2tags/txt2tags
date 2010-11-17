@@ -5323,10 +5323,10 @@ def doHeader(headers, config):
 
         head_data['HEADER%d'%(i+1)] = contents
 
-    # css-inside removes STYLE line
-    #XXX In tex, this also removes the modules call (%!style:amsfonts)
-    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and \
-       config.get('style'):
+    # When using --css-inside, the template's <STYLE> line must be removed.
+    # Template line removal for empty header keys is made some lines above.
+    # That's why we will clean STYLE now.
+    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and config.get('style'):
         head_data['STYLE'] = []
 
     Debug("Header Data: %s"%head_data, 1)
@@ -5359,6 +5359,7 @@ def doHeader(headers, config):
                 sline = line.replace('%%(%s)s'%key, '')
                 if not re.search(r'%\([A-Z0-9]+\)s', sline):
                     template.remove(line)
+    
     # Style is a multiple tag.
     # - If none or just one, use default template
     # - If two or more, insert extra lines in a loop (and remove original)
