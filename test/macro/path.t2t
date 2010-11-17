@@ -1,0 +1,36 @@
+
+filename
+
+    ""%%currentfile(%f)"": %%currentfile(%f)
+         ""%%infile(%f)"": %%infile(%f)
+        ""%%outfile(%f)"": %%outfile(%f)
+
+filename (w/o extension)
+
+    ""%%currentfile(%F)"": %%currentfile(%F)
+         ""%%infile(%F)"": %%infile(%F)
+        ""%%outfile(%F)"": %%outfile(%F)
+
+dirname
+
+    ""%%currentfile(%d)"": %%currentfile(%d)
+         ""%%infile(%d)"": %%infile(%d)
+        ""%%outfile(%d)"": %%outfile(%d)
+
+dirname (only parent dir)
+
+    ""%%currentfile(%D)"": %%currentfile(%D)
+         ""%%infile(%D)"": %%infile(%D)
+        ""%%outfile(%D)"": %%outfile(%D)
+
+file path
+
+    ""%%currentfile(%p)"": %%currentfile(%p)
+         ""%%infile(%p)"": %%infile(%p)
+        ""%%outfile(%p)"": %%outfile(%p)
+
+extension
+
+    ""%%currentfile(%e)"": %%currentfile(%e)
+         ""%%infile(%e)"": %%infile(%e)
+        ""%%outfile(%e)"": %%outfile(%e)
