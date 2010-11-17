@@ -202,6 +202,7 @@ MACROS = {
     # conversion
     'target': '',
     'cmdline': '',
+    'encoding': '',
     }
 SETTINGS = {}  # for future use
 NO_TARGET = [
@@ -5022,17 +5023,19 @@ class MacroMaster:
                     mtime = os.path.getmtime(self.infile)
                     fdate = time.localtime(mtime)
                 txt = time.strftime(fmt, fdate)
+            elif name in ('infile', 'outfile', 'currentfile'):
+                self.set_file_info(name)
+                txt = self.walk_file_format(fmt)
             elif name == 'appurl':
                 txt = my_url
             elif name == 'appname':
                 txt = my_name
             elif name == 'appversion':
                 txt = my_version
-            elif name == 'infile' or name == 'outfile' or name == 'currentfile':
-                self.set_file_info(name)
-                txt = self.walk_file_format(fmt)
             elif name == 'target':
                 txt = TARGET
+            elif name == 'encoding':
+                txt = self.config['encoding']
             elif name == 'cmdline':
                 txt = '%s %s' % (my_name, ' '.join(self.config['realcmdline']))
             else:

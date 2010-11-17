@@ -1,5 +1,6 @@
 
 %!includeconf: test.conf
+%!encoding: UTF-8
 BODYINIT
 
 %%% Syntax: Macro without formatting string
@@ -61,5 +62,6 @@ Version : %%appversion
 Url     : %%appurl
 
 %%% Test: Conversion info
-Target  : %%target
-Cmdline : %%cmdline
+Target   : %%target
+Encoding : %%encoding
+Cmdline  : %%cmdline
