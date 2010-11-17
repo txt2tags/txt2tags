@@ -188,14 +188,18 @@ ACTIONS = {
     'targets': 0,
     }
 MACROS = {
+    # date
     'date': '%Y%m%d',
+    'mtime': '%Y%m%d',
+    # files
     'infile': '%f',
     'currentfile': '%f',
-    'mtime': '%Y%m%d',
+    'outfile': '%f',
+    # app
     'appurl': '',
     'appname': '',
     'appversion': '',
-    'outfile': '%f',
+    # conversion
     'target': '',
     'cmdline': '',
     }
