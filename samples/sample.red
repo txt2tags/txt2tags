@@ -1,7 +1,7 @@
 h1. TXT2TAGS SAMPLE
 
 Author: Aurelio Jargas
-Date: 10/20/2010
+Date: 11/18/2010
 
 
 h1. Introduction
@@ -95,15 +95,15 @@ The dash is the default list identifier. For sublists,
 just add *spaces* at the beginning of the line. More
 spaces, more sublists.
 
-* earth
-** america
-*** south america
-**** brazil
-***** how deep can i go?
-** europe
-*** lots of countries
-* mars
-** who knows?
+* Earth
+** America
+*** South America
+**** Brazil
+***** How deep can I go?
+** Europe
+*** Lots of countries
+* Mars
+** Who knows?
 
 The list ends with *two* consecutive blank lines.
 
@@ -169,10 +169,10 @@ h2. Other
 
 The handy @%%date@ macro expands to the current date.
 
-So today is 20101112 on the ISO @YYYYMMDD@ format.
+So today is 20101118 on the ISO @YYYYMMDD@ format.
 
 You can also specify the date format with the %? flags,
-as @%%date(%m-%d-%Y)@ which gives: 11-12-2010.
+as @%%date(%m-%d-%Y)@ which gives: 11-18-2010.
 
 That's all for now.
 
