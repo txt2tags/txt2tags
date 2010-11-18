@@ -146,7 +146,7 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # --version and --help inside %!options are also odd
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip'.split()
+TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip rtf'.split()
 TARGETS.sort()
 
 FLAGS = {
@@ -262,6 +262,7 @@ TARGET_NAMES = {
   'bbcode' : _('BBCode document'),
   'red'    : _('Redmine Wiki page'),
   'spip'   : _('SPIP article'),
+  'rtf'    : _('RTF document'),
 }
 
 DEBUG = 0     # do not edit here, please use --debug
@@ -760,6 +761,68 @@ r"""\documentclass{article}
 {%(HEADER3)s}
 
 """,
+
+    'rtf': \
+r"""{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl
+{\f0\froman Times;}
+{\f1\fswiss Arial;}
+{\f2\fmodern Courier;}
+}
+{\colortbl;\red0\green0\blue255;}
+{\stylesheet{\s1\cf0\f0\fs24\lang1033 Normal;}
+}
+{\*\listtable
+{\list\listtemplateid1
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li720}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li1080}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li1440}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li1800}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li2160}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li2520}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li2880}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li3240}
+{\listlevel\levelnfc23\leveljc0\levelstartat1\levelfollow0{\leveltext \'01\'95;}{\levelnumbers;}\f0\fi-360\li3600}
+\listid1}
+{\list\listtemplateid2
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'00.;}{\levelnumbers\'01;}\fi-360\li720}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'01.;}{\levelnumbers\'01;}\fi-360\li1080}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'02.;}{\levelnumbers\'01;}\fi-360\li1440}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'03.;}{\levelnumbers\'01;}\fi-360\li1800}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'04.;}{\levelnumbers\'01;}\fi-360\li2160}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'05.;}{\levelnumbers\'01;}\fi-360\li2520}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'06.;}{\levelnumbers\'01;}\fi-360\li2880}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'07.;}{\levelnumbers\'01;}\fi-360\li3240}
+{\listlevel\levelnfc0\leveljc0\levelstartat1\levelfollow0{\leveltext \'02\'08.;}{\levelnumbers\'01;}\fi-360\li3600}
+\listid2}
+{\list\listtemplateid3
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'02\'00.;}{\levelnumbers\'01;}\f1\fs48}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'04\'00.\'01.;}{\levelnumbers\'01\'03;}\f1\fs40}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'06\'00.\'01.\'02.;}{\levelnumbers\'01\'03\'05;}\f1\fs36}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'08\'00.\'01.\'02.\'03.;}{\levelnumbers\'01\'03\'05\'07;}\f1\fs32}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'10\'00.\'01.\'02.\'03.\'04.;}{\levelnumbers\'01\'03\'05\'07\'09;}\f1\fs24\b}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'02\'05.;}{\levelnumbers\'01;}}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'02\'06.;}{\levelnumbers\'01;}}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow1{\leveltext \'02\'07.;}{\levelnumbers\'01;}}
+{\listlevel\levelnfc0\leveljc1\levelstartat1\levelfollow0{\leveltext \'02\'08.;}{\levelnumbers\'01;}}
+\listid3}
+}
+{\listoverridetable
+{\listoverride\listid1\listoverridecount0\ls1}
+{\listoverride\listid2\listoverridecount0\ls2}
+{\listoverride\listid3\listoverridecount0\ls3}
+}
+{\info
+{\title %(HEADER1)s }
+{\author %(HEADER1)s }
+}
+\deflang1033\widowctrl\hyphauto\uc0
+{\header\pard\qr\plain\f0 Page \chpgn
+\par}{\pard\plain\qc\f1\fs48\sb480 %(HEADER1)s
+\par}{\pard\plain\qc\f1\fs36\sb360 %(HEADER2)s
+\par}{\pard\plain\qc\f1\fs32\sb320\sa240 %(HEADER3)s
+""",
+
 }
 
 
@@ -1917,7 +1980,60 @@ def getTags(config):
         #'tableCellClose'       : '[/td]'          ,
         #'tableTitleCellOpen'   : '[th]'           ,
         #'tableTitleCellClose'  : '[/th]'          ,
-    }
+    },
+    # http://en.wikipedia.org/wiki/Rich_Text_Format
+	# Based on RTF Version 1.5 specification
+	# Should be compatible with MS Word 97 and newer
+	# ~V~ and ~L~ are used to encode depth and nesting level formatting
+	'rtf': {
+        'title1'                : '\\par}~A~{\\pard\\plain\\qc\\f1\\fs48\\sb480\\sa240\\keepn \a',
+        'title2'                : '\\par}~A~{\\pard\\plain\\qc\\f1\\fs40\\sb480\\sa240\\keepn \a',
+        'title3'                : '\\par}~A~{\\pard\\plain\\qc\\f1\\fs36\\sb360\\sa120\\keepn \a',
+        'title4'                : '\\par}~A~{\\pard\\plain\\qc\\f1\\fs32\\sb320\\keepn \a',
+        'title5'                : '\\par}~A~{\\pard\\plain\\qc\\f1\\fs24\\sb240\\keepn\b \a',
+        'numtitle1'             : '\\par}~A~{\\pard\\plain\\qc\\sb480\\sa240\\keepn\\ls3\\ilvl0\\f1\\fs48 \a\n',
+        'numtitle2'             : '\\par}~A~{\\pard\\plain\\qc\\sb480\\sa240\\keepn\\ls3\\ilvl1\\f1\\fs40 \a\n',
+        'numtitle3'             : '\\par}~A~{\\pard\\plain\\qc\\sb360\\sa120\\keepn\\ls3\\ilvl2\\f1\\fs36 \a\n',
+        'numtitle4'             : '\\par}~A~{\\pard\\plain\\qc\\sb320\\keepn\\ls3\\ilvl3\\f1\\fs32 \a\n',
+        'numtitle5'             : '\\par}~A~{\\pard\\plain\\qc\\sb240\\keepn\\ls3\\ilvl4\\f1\\fs24\b \a\n',
+        'paragraphOpen'         : '\\sa240\\par}{\\pard\\plain\\qj\\f0\\fs24\\li~V~',
+        'blockVerbOpen'         : '\\sa240',
+		'blockVerbLine'			: '\\par}{\\pard\\plain\\li720\\ri720\\sb0\\sa0\\ql\\f2\\fs20\n',
+        'blockVerbClose'        : '\\sa240',
+		'blockQuoteOpen'        : '\\sa240\\par}{\\pard\\plain\\li~V~\\ri720\\qj\\f0\\fs24',
+        'blockQuoteClose'       : '\\sa240',
+        'fontMonoOpen'          : '{\\f2\\fs20\n',
+        'fontMonoClose'         : '}',
+        'fontBoldOpen'          : '{\\b\n',
+        'fontBoldClose'         : '}',
+        'fontItalicOpen'        : '{\\i\n',
+        'fontItalicClose'       : '}',
+        'fontUnderlineOpen'     : '{\\ul\n',
+        'fontUnderlineClose'    : '}',
+        'fontStrikeOpen'        : '{\\strike\n',
+        'fontStrikeClose'       : '}',
+        'anchor'                : '{\\*\\bkmkstart \a}{\\*\\bkmkend \a}',
+        # 'comment'               : '{\\v \a }', # doesn't hide text in all readers
+        'pageBreak'             : '\\page\n',
+        'EOD'                   : '\\par}}',
+        'url'                   : '{\\field{\\*\\fldinst{HYPERLINK "\a"}}{\\fldrslt{\\ul\\cf1 \a}}}',
+        'urlMark'               : '{\\field{\\*\\fldinst{HYPERLINK "\a"}}{\\fldrslt{\\ul\\cf1 \a}}}',
+        'email'                 : '{\\field{\\*\\fldinst{HYPERLINK "mailto:\a"}}{\\fldrslt{\\ul\\cf1 \a}}}',
+        'emailMark'             : '{\\field{\\*\\fldinst{HYPERLINK "mailto:\a"}}{\\fldrslt{\\ul\\cf1 \a}}}',
+        'listOpen'              : '\\sa240',
+        'listClose'             : '\\sa240',
+        'listItemOpen'          : '\\par}{\\pard\\plain\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~\\\'95\\tab}\\ls1\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
+        'numlistOpen'           : '\\sa240',
+        'numlistClose'          : '\\sa240',
+        'numlistItemOpen'       : '\\par}{\\pard\\plain\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
+        'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}}',
+        'deflistOpen'           : '\\sa240',
+        'deflistClose'          : '\\sa240',
+        'deflistItem1Open'      : '\\par}{\\pard\\plain\\f0\\fs24\\sa0\\fi-360\\li~V~{\\b\n',
+        'deflistItem1Close'     : ':}\\tab',
+        'bar1'                  : '\\sa240\\par}{\\pard\\brdrt\\brdrs\\brdrw10\\brsp20\\li1400\\sb120\\ri1400\\fs12',
+        'bar2'                  : '\\sa240\\par}{\\pard\\brdrt\\brdrs\\brdrdb\\brdrw10\\brsp20\\sb120\\li1400\\ri1400\\fs12'
+    },
     }
 
     # Exceptions for --css-sugar
@@ -2571,7 +2687,16 @@ def getRules(config):
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
         },
-
+        'rtf': {
+            'linkable': 1,
+            'autonumbertitle': 1,
+            'parainsidelist': 1,
+            'onelinepara': 1,
+            'tagnotindentable': 1,
+            'deflisttextstrip': 1,
+            'listmaxdepth': 9,
+            # 'tableable':0, #TODO
+        },
     }
 
     # Exceptions for --css-sugar
@@ -4665,6 +4790,21 @@ class BlockMaster:
 
         return False
 
+    # function to help encode block depth into RTF formatting
+    def _apply_depth_rtf(self, line, level):
+        # convert block depth into an indent in twips
+        depth = level
+        if depth > 0:
+            # 360 'twips' equals 1/4 inch in RTF
+            multiply = 360
+            add = 360
+            depth = (depth * multiply) + add
+        tagline = re.sub(r'~V~', str(depth), line)
+
+        # list depth 'levels' are zero-based
+        depth = level - 1
+        return re.sub(r'~L~', str(depth), tagline)
+
     def comment(self):
         return ''
 
@@ -4684,6 +4824,10 @@ class BlockMaster:
         # Blank line before?
         if self._should_add_blank_line('before', 'para'):
             result.append('')
+
+        # RTF needs depth level encoded into nested paragraphs
+        if TARGET == 'rtf':
+            open_ = self._apply_depth_rtf(open_, 0)
 
         # Open tag
         if open_:
@@ -4809,6 +4953,10 @@ class BlockMaster:
         if self._should_add_blank_line('before', 'quote'):
             result.append('')
 
+        # RTF needs depth level encoded into almost everything
+        if TARGET == 'rtf':
+            open_ = self._apply_depth_rtf(open_, self.depth)
+
         # Open tag
         if open_:
             result.append(tagindent+open_)
@@ -4891,6 +5039,10 @@ class BlockMaster:
         if not rules['keeplistindent']:
             indent = tagindent = ''
 
+        # RTF encoding depth
+        if TARGET == 'rtf':
+            itemopen = self._apply_depth_rtf(itemopen, self.depth)
+
         # ItemLine: number of leading chars identifies list depth
         if listline:
             if rules['listlineafteropen']:
@@ -4946,6 +5098,11 @@ class BlockMaster:
                     # Blank lines turns to <p>
                     if not line and rules['parainsidelist']:
                         line = indent + TAGS['paragraphOpen'] + TAGS['paragraphClose']
+
+                        # RTF encoding depth into nested paragraphs
+                        if TARGET == 'rtf':
+                            line = self._apply_depth_rtf(line, self.depth)
+
                         line = line.rstrip()
                         widelist = 1
 
