@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6b\n"
-"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
 "PO-Revision-Date: 2010-08-13 12:03+BRT\n"
 "Last-Translator: Aurelio Jargas\n"
 "Language-Team: pt_BR team\n"
@@ -12,8 +12,14 @@ msgstr ""
 msgid "HTML page"
 msgstr "Página HTML"
 
+msgid "HTML5 page"
+msgstr ""
+
 msgid "XHTML page"
 msgstr "Página XHTML"
+
+msgid "XHTML Strict page"
+msgstr ""
 
 msgid "SGML document"
 msgstr "Documento SGML"
@@ -63,6 +69,18 @@ msgstr "Documento AsciiDoc"
 msgid "Creole 1.0 document"
 msgstr "Documento Creole 1.0"
 
+msgid "Markdown document"
+msgstr ""
+
+msgid "BBCode document"
+msgstr ""
+
+msgid "Redmine Wiki page"
+msgstr ""
+
+msgid "SPIP article"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s versão %s <%s>"
 
@@ -84,10 +102,10 @@ msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 "  -o, --outfile=ARQ   define ARQ como o arquivo destino ('-' para STDOUT)"
 
-msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgid ""
+"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  informa a codificação de destino (utf-8, iso-8859-1, "
-"etc)"
+"      --encoding=ENC  informa a codificação do arquivo (UTF-8, iso-8859-1)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr "      --toc           cria um Sumário automático no documento"
@@ -116,6 +134,9 @@ msgstr ""
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
 msgstr "  -H, --no-headers    remove os cabeçalhos e o rodapé do documento"
+
+msgid "  -T, --template=FILE use FILE as the template for the output document"
+msgstr ""
 
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
@@ -253,6 +274,9 @@ msgstr "Adicionadas as seguintes chaves: %s"
 msgid "Invalid CONFIG line on %s"
 msgstr "CONFIG: Linha inválida em %s"
 
+msgid "Added %s"
+msgstr "Adicionado %s"
+
 msgid "Processing line %03d: %s"
 msgstr "Processando a linha %03d: %s"
 
@@ -261,9 +285,6 @@ msgstr "Um arquivo não pode se incluir (loop!)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "Finalizada a inclusão do arquivo de configuração: %s"
-
-msgid "Added %s"
-msgstr "Adicionado %s"
 
 msgid "You can't use (target) with %s"
 msgstr "Você não pode usar (formato) em %s"
@@ -292,6 +313,14 @@ msgstr "Configuração completa e pronta"
 msgid "Active filters"
 msgstr "Filtros ativos"
 
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr ""
+
+msgid ""
+"Dear PostVoodoo apprentice: You got the regex right, but messed the "
+"replacement"
+msgstr ""
+
 msgid "Invalid PostProc filter regex"
 msgstr "Filtro de PostProc inválido (regex quebrada)"
 
@@ -304,14 +333,14 @@ msgstr "%s gravou %s"
 msgid "Table of Contents"
 msgstr "Sumário"
 
+msgid "Cannot find template file:"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr "Conteúdo do documento fonte guardado"
 
 msgid "Parsing and saving all config found (%03d items)"
 msgstr "Processando e salvando a configuração encontrada (%03d itens)"
-
-msgid "Composing target Headers"
-msgstr "Compondo o Cabeçalho"
 
 msgid "Composing target Body"
 msgstr "Compondo o Corpo"
@@ -321,6 +350,9 @@ msgstr "Compondo o Rodapé"
 
 msgid "Composing target TOC"
 msgstr "Compondo o Sumário (TOC)"
+
+msgid "Composing target Headers"
+msgstr "Compondo o Cabeçalho"
 
 msgid "Saving results to the output file"
 msgstr "Salvando o resultado no arquivo de saída"
@@ -436,6 +468,5 @@ msgstr "Estamos na interface de Linha de Comando"
 msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr "Informe o arquivo de entrada (.t2t) no final do comando."
 
-msgid "Txt2tags finished sucessfuly"
+msgid "Txt2tags finished successfully"
 msgstr "Txt2tags: finalizado com sucesso"
-
