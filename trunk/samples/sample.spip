@@ -2,7 +2,7 @@
 
 {{Aurelio Jargas}}
 
-{10/20/2010}
+{11/18/2010}
 
 
 
@@ -103,15 +103,15 @@ The dash is the default list identifier. For sublists,
 just add {{spaces}} at the beginning of the line. More
 spaces, more sublists.
 
--* earth
--** america
--*** south america
--**** brazil
--***** how deep can i go?
--** europe
--*** lots of countries
--* mars
--** who knows?
+-* Earth
+-** America
+-*** South America
+-**** Brazil
+-***** How deep can I go?
+-** Europe
+-*** Lots of countries
+-* Mars
+-** Who knows?
 
 The list ends with {{two}} consecutive blank lines.
 
@@ -177,10 +177,10 @@ The image mark is as simple as it can be: <code>[filename]</code>.
 
 The handy <code>%%date</code> macro expands to the current date.
 
-So today is 20101112 on the ISO <code>YYYYMMDD</code> format.
+So today is 20101118 on the ISO <code>YYYYMMDD</code> format.
 
 You can also specify the date format with the %? flags,
-as <code>%%date(%m-%d-%Y)</code> which gives: 11-12-2010.
+as <code>%%date(%m-%d-%Y)</code> which gives: 11-18-2010.
 
 That's all for now.
 

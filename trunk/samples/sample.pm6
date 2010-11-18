@@ -21,7 +21,7 @@
 
 TXT2TAGS SAMPLE
 Aurelio Jargas
-10/20/2010
+11/18/2010
 
 
 <@Title1:>Introduction
@@ -121,21 +121,21 @@ A list of items is natural, just putting a <B>dash<P> or a <B>plus<P> at the beg
 The dash is the default list identifier. For sublists, just add <B>spaces<P> at the beginning of the line. More spaces, more sublists.
 
 <@Bullet:>
-•	earth
+•	Earth
   <@Bullet:>
-  •	america
+  •	America
     <@Bullet:>
-    •	south america
+    •	South America
       <@Bullet:>
-      •	brazil
+      •	Brazil
         <@Bullet:>
-        •	how deep can i go?
-  •	europe
+        •	How deep can I go?
+  •	Europe
     <@Bullet:>
-    •	lots of countries
-•	mars
+    •	Lots of countries
+•	Mars
   <@Bullet:>
-  •	who knows?
+  •	Who knows?
 
 <@Normal:>
 The list ends with <B>two<P> consecutive blank lines.
@@ -215,10 +215,10 @@ The image mark is as simple as it can be: <FONT "Lucida Console"><SIZE 9>[filena
 The handy <FONT "Lucida Console"><SIZE 9>%%date<SIZE$><FONT$> macro expands to the current date.
 
 <@Normal:>
-So today is 20101031 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
+So today is 20101118 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
 
 <@Normal:>
-You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 10-31-2010.
+You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 11-18-2010.
 
 <@Normal:>
 That's all for now.

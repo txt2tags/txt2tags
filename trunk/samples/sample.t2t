@@ -95,15 +95,15 @@ The dash is the default list identifier. For sublists,
 just add **spaces** at the beginning of the line. More
 spaces, more sublists.
 
-- earth
-  - america
-    - south america
-      - brazil
-        - how deep can i go?
-  - europe
-    - lots of countries
-- mars
-  - who knows?
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
 
 
 The list ends with **two** consecutive blank lines.
