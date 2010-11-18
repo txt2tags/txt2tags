@@ -99,6 +99,7 @@ import os
 import sys
 import time
 import getopt
+import textwrap
 
 # The CSV module is new in Python version 2.3
 try:
@@ -272,8 +273,6 @@ AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 DFT_TEXT_WIDTH   = 72 # do not edit here, please use --width
 DFT_SLIDE_WIDTH  = 80 # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25 # do not edit here, please use --height
-
-import textwrap
 
 # ASCII Art config
 AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
@@ -4584,7 +4583,7 @@ class BlockMaster:
             if TARGET == 'art':
                 final = []
                 for line in result:
-                    if not line :
+                    if not line:
                         final.append(line)
                     else:
                         final.extend(textwrap.wrap(line, CONF['width']))
