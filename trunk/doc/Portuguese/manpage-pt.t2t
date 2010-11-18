@@ -118,7 +118,7 @@ Exibe todas as configurações encontradas e sai.
 Exibe os fontes do documento, com os arquivos incluídos (``%!include``) expandidos.
 
 :     **--encoding**=//CÓDIGO//
-Define a codificação do arquivo para //CÓDIGO//. Alguns exemplos são UTF-8 e iso-8859-1.
+Informa a codificação usada no arquivo fonte. Alguns exemplos são UTF-8 e iso-8859-1. A codificação não é alterada durante a conversão, então o arquivo de destino terá a mesma codificação do arquivo fonte.
 
 :     **--gui**
 Carrega a interface gráfica (Tk).

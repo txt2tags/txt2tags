@@ -8,7 +8,7 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
                       sgml, spip, tex, txt, wiki, xhtml, xhtmls
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
-      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)
+      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)
       --toc           add an automatic Table of Contents to the output
       --toc-level=N   set maximum TOC level (depth) to N
       --toc-only      print the Table of Contents and exit

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
 "PO-Revision-Date: 2010-08-16 12:00\n"
 "Last-Translator: IVÁN, Tamás <ivantomi@gmail.com>\n"
 "Language-Team: hu_HU team\n"
@@ -12,8 +12,14 @@ msgstr ""
 msgid "HTML page"
 msgstr "HTML oldal"
 
+msgid "HTML5 page"
+msgstr ""
+
 msgid "XHTML page"
 msgstr "XHTML oldal"
+
+msgid "XHTML Strict page"
+msgstr ""
 
 msgid "SGML document"
 msgstr "SGML dokumentum"
@@ -63,6 +69,18 @@ msgstr "AsciiDoc dokumentum"
 msgid "Creole 1.0 document"
 msgstr "Creole 1.0 dokumentum"
 
+msgid "Markdown document"
+msgstr ""
+
+msgid "BBCode document"
+msgstr ""
+
+msgid "Redmine Wiki page"
+msgstr ""
+
+msgid "SPIP article"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s %s-es verzió <%s>"
 
@@ -85,13 +103,13 @@ msgstr "  -i, --infile=FÁJL   FÁJL lesz a bemenö fájl neve ('-', ha STDIN)"
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr "  -o, --outfile=FÁJL  FÁJL lesz a kimenö fájl neve ('-', ha STDOUT)"
 
-msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgid ""
+"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  beállitja a kimenö fájl karakter kódolását (utf-8, iso-"
-"8859-2, stb.)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
-msgstr "      --toc           automatikusan tartalomjegyzéket illeszt a kimenetbe"
+msgstr ""
+"      --toc           automatikusan tartalomjegyzéket illeszt a kimenetbe"
 
 msgid "      --toc-level=N   set maximum TOC level (depth) to N"
 msgstr "      --toc-level=N   beállitja a tartalomjegyzék mélységét N-re"
@@ -106,7 +124,8 @@ msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
 msgstr "      --style=FÁJL    megadja a dokumentum stilusát (mint HTML CSS)"
 
 msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
-msgstr "      --css-sugar     CSS-barát cimkéket illeszt a HTML/XHTML dokumentumba"
+msgstr ""
+"      --css-sugar     CSS-barát cimkéket illeszt a HTML/XHTML dokumentumba"
 
 msgid ""
 "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
@@ -116,6 +135,9 @@ msgstr ""
 msgid "  -H, --no-headers    suppress header and footer from the output"
 msgstr "  -H, --no-headers    nem tesz fej-, és láblécet a kimenetbe"
 
+msgid "  -T, --template=FILE use FILE as the template for the output document"
+msgstr ""
+
 msgid ""
 "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
@@ -124,13 +146,13 @@ msgstr ""
 
 msgid ""
 "      --slides        format output as presentation slides (used by -t art)"
-msgstr ""
-"      --slides        prezentációs diákat készít (-t art esetén)"
+msgstr "      --slides        prezentációs diákat készít (-t art esetén)"
 
 msgid ""
 "      --width=N       set the output's width to N columns (used by -t art)"
 msgstr ""
-"      --width=N       a kimenet szélességét N oszlopra állitja (-t art esetén)"
+"      --width=N       a kimenet szélességét N oszlopra állitja (-t art "
+"esetén)"
 
 msgid ""
 "      --height=N      set the output's height to N rows (used by -t art)"
@@ -229,11 +251,13 @@ msgid "No target specified (try --help)"
 msgstr "Cél formátum megadása hiányzik (próbálja ki a --help kapcsolót)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr "Kérem adja meg a kimenö formátumot a -t kapcsoló, "
-"vagy a %!target parancs segitségével"
+msgstr ""
+"Kérem adja meg a kimenö formátumot a -t kapcsoló, vagy a %!target parancs "
+"segitségével"
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr "Futtassa a 'txt2tags --targets' parancsot a választható formátumok "
+msgstr ""
+"Futtassa a 'txt2tags --targets' parancsot a választható formátumok "
 "listázásához"
 
 msgid "Missing input file (try --help)"
@@ -260,6 +284,9 @@ msgstr "A következö kulcsok adódtak hozzá: %s"
 msgid "Invalid CONFIG line on %s"
 msgstr "Hibás sor a %s konfigurációs fájlban"
 
+msgid "Added %s"
+msgstr "%s hozzáadva"
+
 msgid "Processing line %03d: %s"
 msgstr "A %03d sor feldolgozása: %s"
 
@@ -268,9 +295,6 @@ msgstr "Egy fájl nem olvastathatja önmagát (hurok!)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "A konfigurációs fájl beolvasása befejezödött: %s"
-
-msgid "Added %s"
-msgstr "%s hozzáadva"
 
 msgid "You can't use (target) with %s"
 msgstr "A (target) és a %s nem használható együtt"
@@ -299,6 +323,14 @@ msgstr "A teljes ÉRTELMEZETT konfiguráció"
 msgid "Active filters"
 msgstr "Aktiv szürök"
 
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr ""
+
+msgid ""
+"Dear PostVoodoo apprentice: You got the regex right, but messed the "
+"replacement"
+msgstr ""
+
 msgid "Invalid PostProc filter regex"
 msgstr "Hibás reguláris kifejezés a PostProc szüröben"
 
@@ -311,14 +343,14 @@ msgstr "A %s kimenete a %s fájlba iródott"
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
+msgid "Cannot find template file:"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr "A bemenö dokumentum tartalma tárolva"
 
 msgid "Parsing and saving all config found (%03d items)"
 msgstr "A talált %03d konfigurációs paraméter értelmezése és mentése"
-
-msgid "Composing target Headers"
-msgstr "A fejlécek létrehozása"
 
 msgid "Composing target Body"
 msgstr "A dokumentumtörzs létrehozása"
@@ -328,6 +360,9 @@ msgstr "A láb létrehozása"
 
 msgid "Composing target TOC"
 msgstr "A tartalomjegyzék létrehozása"
+
+msgid "Composing target Headers"
+msgstr "A fejlécek létrehozása"
 
 msgid "Saving results to the output file"
 msgstr "Az eredmények kiirása a kimenö fájlba"
@@ -443,8 +478,14 @@ msgstr "A parancssoros felületet használjuk"
 msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr "Kérem adjon meg egy bemenö file-t (.t2t) a paranccsor végén."
 
-msgid "Txt2tags finished sucessfuly"
+msgid "Txt2tags finished successfully"
 msgstr "A txt2tags sikeresen lefutott"
+
+#~ msgid ""
+#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr ""
+#~ "      --encoding=ENC  beállitja a kimenö fájl karakter kódolását (utf-8, "
+#~ "iso-8859-2, stb.)"
 
 #~ msgid "  -H, --no-headers    suppress header, title and footer contents"
 #~ msgstr "  -H, --no-headers    nem hoz létre fejléc, cim és láb tartalmakat"
@@ -475,5 +516,4 @@ msgstr "A txt2tags sikeresen lefutott"
 #~ "txt2tagsrc fájlt (alapértelmezés: olvassa)"
 
 #~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr ""
-#~ "A '%s' ismeretlen cél formátum (próbálja ki a --help kapcsolót)"
+#~ msgstr "A '%s' ismeretlen cél formátum (próbálja ki a --help kapcsolót)"

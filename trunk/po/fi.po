@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags\n"
-"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
 "PO-Revision-Date: 2008-06-07 20:52+0300\n"
 "Last-Translator: Mikko Piippo <mikko.piippo@helsinki.fi>\n"
 "Language-Team:  <fi@li.org>\n"
@@ -15,8 +15,14 @@ msgstr ""
 msgid "HTML page"
 msgstr "HTML-sivu"
 
+msgid "HTML5 page"
+msgstr ""
+
 msgid "XHTML page"
 msgstr "XHTML-sivu"
+
+msgid "XHTML Strict page"
+msgstr ""
 
 msgid "SGML document"
 msgstr "SGML-asiakirja"
@@ -66,6 +72,18 @@ msgstr ""
 msgid "Creole 1.0 document"
 msgstr ""
 
+msgid "Markdown document"
+msgstr ""
+
+msgid "BBCode document"
+msgstr ""
+
+msgid "Redmine Wiki page"
+msgstr ""
+
+msgid "SPIP article"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s versio %s z%s>"
 
@@ -91,10 +109,9 @@ msgstr ""
 "  -o, --outfile=TIEDOSTO  aseta TIEDOSTO tulostetiedostoksi ('-' on "
 "vakiotuloste STDOUT)"
 
-msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgid ""
+"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=KOODAUS  aseta kohdetiedoston merkkikoodaus (utf-8, iso-"
-"8859-1 jne.)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr ""
@@ -123,6 +140,9 @@ msgstr ""
 "sisään"
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
+msgid "  -T, --template=FILE use FILE as the template for the output document"
 msgstr ""
 
 msgid ""
@@ -263,6 +283,9 @@ msgstr "Lisättiin seuraavat avaimet: %s"
 msgid "Invalid CONFIG line on %s"
 msgstr "Virheellinen CONFIG-rivi %s"
 
+msgid "Added %s"
+msgstr "Lisätty %s"
+
 msgid "Processing line %03d: %s"
 msgstr "Käsitellään riviä %03d: %s"
 
@@ -271,9 +294,6 @@ msgstr "Tiedosto ei voi sisällyttää itseään (silmukka!)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "Määritystiedosto sisällytetty: %s"
-
-msgid "Added %s"
-msgstr "Lisätty %s"
 
 msgid "You can't use (target) with %s"
 msgstr ""
@@ -302,6 +322,14 @@ msgstr "Asetukset tulkittu"
 msgid "Active filters"
 msgstr "Aktiiviset suotimet"
 
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr ""
+
+msgid ""
+"Dear PostVoodoo apprentice: You got the regex right, but messed the "
+"replacement"
+msgstr ""
+
 msgid "Invalid PostProc filter regex"
 msgstr "Virheellinen PostProc-suotimen säännöllinen lauseke"
 
@@ -314,15 +342,15 @@ msgstr "%s kirjoitti %s"
 msgid "Table of Contents"
 msgstr ""
 
+msgid "Cannot find template file:"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr "Lähdeasiakirjan sisältö tallennettu"
 
 msgid "Parsing and saving all config found (%03d items)"
 msgstr ""
 "Tulkitaan ja tallennetaan kaikki löydetyt määritykset (%03d kappaletta)"
-
-msgid "Composing target Headers"
-msgstr "Luodaan kohdetiedoston ylätunnisteita"
 
 msgid "Composing target Body"
 msgstr "Luodaan kohdeasiakirjan runkoa"
@@ -332,6 +360,9 @@ msgstr "Luodaan kohdeasiakirjan alatunnisteita"
 
 msgid "Composing target TOC"
 msgstr "Luodaan kohdeasiakirjan sisällysluetteloa"
+
+msgid "Composing target Headers"
+msgstr "Luodaan kohdetiedoston ylätunnisteita"
 
 msgid "Saving results to the output file"
 msgstr "Tallennetaan tulokset tulostetiedostoon"
@@ -447,8 +478,14 @@ msgstr "Komentorivikäyttöliittymä"
 msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr ""
 
-msgid "Txt2tags finished sucessfuly"
+msgid "Txt2tags finished successfully"
 msgstr "Txt2tags suoritettiin loppuun"
+
+#~ msgid ""
+#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr ""
+#~ "      --encoding=KOODAUS  aseta kohdetiedoston merkkikoodaus (utf-8, iso-"
+#~ "8859-1 jne.)"
 
 #~ msgid "  -H, --no-headers    suppress header, title and footer contents"
 #~ msgstr "  -H, --no-headers    sivuuttaa otsikot, ylä- ja alatunnisteet"

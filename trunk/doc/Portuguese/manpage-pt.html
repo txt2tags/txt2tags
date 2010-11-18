@@ -37,22 +37,19 @@
 <HR NOSHADE SIZE=1>
 <P></P>
 
-<A NAME="nome"></A>
-<H1>NOME</H1>
+<H1 ID="nome">NOME</H1>
 
 <P>
 txt2tags - ferramenta para formatar e converter textos
 </P>
 
-<A NAME="sinopse"></A>
-<H1>SINOPSE</H1>
+<H1 ID="sinopse">SINOPSE</H1>
 
 <P>
 <B>txt2tags</B> [<I>opções</I>] [<I>ARQUIVO</I>...]
 </P>
 
-<A NAME="descricao"></A>
-<H1>DESCRIÇÃO</H1>
+<H1 ID="descricao">DESCRIÇÃO</H1>
 
 <P>
 O <B>txt2tags</B> lê um arquivo texto com poucas marcações e o converte para:
@@ -82,8 +79,7 @@ Esta página de manual foi criada pelo <B>txt2tags</B> a partir de um arquivo de
 UM arquivo fonte, VÁRIOS destinos - <A HREF="http://txt2tags.org">http://txt2tags.org</A>
 </P>
 
-<A NAME="sintaxe"></A>
-<H1>SINTAXE</H1>
+<H1 ID="sintaxe">SINTAXE</H1>
 
 <PRE>
   Cabeçalhos          As 3 primeiras linhas do arquivo fonte
@@ -125,8 +121,7 @@ UM arquivo fonte, VÁRIOS destinos - <A HREF="http://txt2tags.org">http://txt2ta
                       '''
 </PRE>
 
-<A NAME="opcoes"></A>
-<H1>OPÇÕES</H1>
+<H1 ID="opcoes">OPÇÕES</H1>
 
 <DL>
 <DT>    <B>--art-chars</B>=<I>STRING</I></DT><DD>
@@ -148,7 +143,7 @@ Exibe todas as configurações encontradas e sai.
 Exibe os fontes do documento, com os arquivos incluídos (<CODE>%!include</CODE>) expandidos.
 <P></P>
 <DT>    <B>--encoding</B>=<I>CÓDIGO</I></DT><DD>
-Define a codificação do arquivo para <I>CÓDIGO</I>. Alguns exemplos são UTF-8 e iso-8859-1.
+Informa a codificação usada no arquivo fonte. Alguns exemplos são UTF-8 e iso-8859-1. A codificação não é alterada durante a conversão, então o arquivo de destino terá a mesma codificação do arquivo fonte.
 <P></P>
 <DT>    <B>--gui</B></DT><DD>
 Carrega a interface gráfica (Tk).
@@ -256,8 +251,7 @@ Exibe a versão do programa e sai.
 Define a largura da saída para <I>N</I> colunas. Esta opção é utilizada somente pelo formato ASCII Art.
 </DL>
 
-<A NAME="fonte"></A>
-<H1>ARQUIVO FONTE</H1>
+<H1 ID="fonte">ARQUIVO FONTE</H1>
 
 <P>
 Um arquivo fonte do <B>txt2tags</B> geralmente usa a extensão <I>.t2t</I>, como por exemplo: <CODE>trabalho.t2t</CODE>. Você pode ter três áreas distintas em seus fontes:
@@ -274,8 +268,7 @@ Inicia logo após o cabeçalho (4ª ou 2ª linha) e termina quando o Corpo se in
 Começa na primeira linha de texto (que não seja um comentário ou uma configuração) logo após o cabeçalho e vai até o fim do documento. É usada para guardar o conteúdo do documento.
 </DL>
 
-<A NAME="config"></A>
-<H1>CONFIGURAÇÕES</H1>
+<H1 ID="config">CONFIGURAÇÕES</H1>
 
 <P>
 Você pode personalizar o txt2tags usando configurações. Elas são parecidas com as opções de linha de comando e podem ser usadas nos seguintes locais: na área Configuração do seu arquivo fonte, no arquivo <CODE>~/.txt2tagsrc</CODE> ou ainda em um arquivo externo chamado com a opção <CODE>--config-file</CODE>.
@@ -343,8 +336,7 @@ Filtro de saída (estilo troque "isso" por "aquilo") usado para alterar o docume
 Se a mesma configuração for usada mais de uma vez, somente a última será utilizada. As exceções são: options, preproc e postproc, que são cumulativas. Configurações com nomes inválidos serão ignoradas. A ordem de processamento é: <CODE>~/.txt2tagsrc</CODE>, área Configuração do arquivo fonte, opção <CODE>--config-file</CODE>.
 </P>
 
-<A NAME="comandos"></A>
-<H1>COMANDOS</H1>
+<H1 ID="comandos">COMANDOS</H1>
 
 <P>
 Os comandos são executados durante a conversão do documento. Eles devem ser colocados dentro do Corpo do arquivo fonte.
@@ -364,8 +356,7 @@ Inclui um arquivo texto no documento.
 Inclui um arquivo pronto no documento, ele não é modificado.
 </DL>
 
-<A NAME="macros"></A>
-<H1>MACROS</H1>
+<H1 ID="macros">MACROS</H1>
 
 <P>
 As macros são úteis para inserir conteúdos dinâmicos em seu documento, como a data atual, por exemplo. Exceto a <CODE>%%toc</CODE>, todas as macros podem ser personalizadas com curingas tipo <CODE>%Y</CODE> e <CODE>%f</CODE>. Veja o Guia do Usuário para saber mais detalhes.
@@ -388,8 +379,7 @@ Insere o nome do arquivo de saída. O formato padrão é <CODE>%%outfile(%f)</CO
 Especifica o lugar onde será colocado o Sumário (Table Of Contents). Você pode utilizá-la em qualquer parte do documento, inclusive mais de uma vez. A opção <CODE>--toc</CODE> também deve ser usada para esta que esta macro funcione.
 </DL>
 
-<A NAME="exemplos"></A>
-<H1>EXEMPLOS</H1>
+<H1 ID="exemplos">EXEMPLOS</H1>
 
 <DL>
 <DT><CODE>txt2tags -t html arquivo.t2t</CODE></DT><DD>
@@ -429,24 +419,21 @@ Mostra como testar o programa rapidamente usando a STDIN como fonte.
 Manda os resultados para STDOUT e refina o código gerado usando um programa externo (tidy) antes de salvar o arquivo HTML final.
 </DL>
 
-<A NAME="arquivos"></A>
-<H1>ARQUIVOS</H1>
+<H1 ID="arquivos">ARQUIVOS</H1>
 
 <DL>
 <DT>~/.txt2tagsrc</DT><DD>
 A localização padrão para o arquivo com as configurações do usuário.
 </DL>
 
-<A NAME="ambiente"></A>
-<H1>AMBIENTE</H1>
+<H1 ID="ambiente">AMBIENTE</H1>
 
 <DL>
 <DT>T2TCONFIG</DT><DD>
 Se definida, esta variável guarda o caminho completo para o arquivo de configuração do usuário.
 </DL>
 
-<A NAME="autor"></A>
-<H1>AUTOR</H1>
+<H1 ID="autor">AUTOR</H1>
 
 <P>
 Aurélio Marinho Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
@@ -455,20 +442,18 @@ Aurélio Marinho Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 Já trabalharam neste manual José Inácio Coelho &lt;&lt;jic (a) technologist com&gt;&gt; e Mauricio Teixeira &lt;&lt;mteixeira (a) webset net&gt;&gt;.
 </P>
 
-<A NAME="bugs"></A>
-<H1>BUGS</H1>
+<H1 ID="bugs">BUGS</H1>
 
 <P>
 <A HREF="http://bugs.txt2tags.org">http://bugs.txt2tags.org</A>
 </P>
 
-<A NAME="copyright"></A>
-<H1>COPYRIGHT</H1>
+<H1 ID="copyright">COPYRIGHT</H1>
 
 <P>
 Copyright (C) 2001-2010 Aurelio Jargas, GNU GPL v2
 </P>
 
-<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- html code generated by txt2tags 2.6.492 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -t html doc/Portuguese/manpage-pt.t2t -->
 </BODY></HTML>
