@@ -273,6 +273,8 @@ DFT_TEXT_WIDTH   = 72 # do not edit here, please use --width
 DFT_SLIDE_WIDTH  = 80 # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25 # do not edit here, please use --height
 
+import textwrap
+
 # ASCII Art config
 AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
 AA_VALUES = '+-|-==-^"' # do not edit here, please use --art-chars
@@ -4582,10 +4584,10 @@ class BlockMaster:
             if TARGET == 'art':
                 final = []
                 for line in result:
-                    while len(line) > CONF['width']:
-                        final.append(line[:CONF['width']])
-                        line = line[CONF['width']:]
-                    final.append(line)
+                    if not line :
+                        final.append(line)
+                    else:
+                        final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
 
             Debug('BLOCK: %s'%result, 6)
