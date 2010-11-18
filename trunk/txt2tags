@@ -2892,6 +2892,9 @@ def getRegexes():
 def aa_line(char, length):
     return char * length
 
+def aa_under(txt, char):
+    return [txt, aa_line(char, len(txt))]
+
 def aa_box(txt, length):
     len_txt = len(txt)
     nspace = (length - len_txt - 4) / 2
@@ -4274,8 +4277,7 @@ class TitleMaster:
             level = 'level'+str(self.level)
             if BLOCK.count > 1:
                 ret.append('') # blank line before
-            ret.append(tagged)
-            ret.append(AA[level] * len(full_title))
+            ret.extend(aa_under(tagged, AA[level]))
         else:
             ret.append(tagged)
         return ret
