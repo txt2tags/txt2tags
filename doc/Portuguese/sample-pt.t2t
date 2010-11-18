@@ -100,15 +100,15 @@ O hífen é o marcador de listas. Para fazer sublistas
 (aninhadas), basta adicionar **espaços em branco** no
 início da linha. Mais espaços, mais sublistas.
 
-- terra
-  - américa
-    - américa do sul
-      - brasil
-        - quanto posso descer?
-  - europa
-    - muitos países
-- marte
-  - quem sabe?
+- Terra
+  - América
+    - América do sul
+      - Brasil
+        - Posso aprofundar ainda mais?
+  - Europa
+    - Muitos países
+- Marte
+  - Quem sabe?
 
 
 A lista acaba com **duas** linhas em branco
@@ -169,7 +169,7 @@ Está tudo muito simples, vamos complicar um pouco...
 
                     == Imagens  ==
 
-A marca da imagem é simplérrima: ``[arquivo]``.
+A marca da imagem é simplérrima: ``[nome-do-arquivo]``.
 
                [../img/photo.jpg]  
 
