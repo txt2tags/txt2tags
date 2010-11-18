@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
 "PO-Revision-Date: 2010-07-20 20:00-0200\n"
 "Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
 "Language-Team: Ukrainian\n"
@@ -12,8 +12,14 @@ msgstr ""
 msgid "HTML page"
 msgstr "НTML документ"
 
+msgid "HTML5 page"
+msgstr ""
+
 msgid "XHTML page"
 msgstr "XHTML документ"
+
+msgid "XHTML Strict page"
+msgstr ""
 
 msgid "SGML document"
 msgstr "SGML документ"
@@ -63,6 +69,18 @@ msgstr ""
 msgid "Creole 1.0 document"
 msgstr ""
 
+msgid "Markdown document"
+msgstr ""
+
+msgid "BBCode document"
+msgstr ""
+
+msgid "Redmine Wiki page"
+msgstr ""
+
+msgid "SPIP article"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr "%s версія %s <%s>"
 
@@ -86,9 +104,9 @@ msgstr ""
 "  -o, --outfile=FILE  використати FILE як ім'я вихідного файлу ('-' для "
 "STDOUT)"
 
-msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgid ""
+"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
-"      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
 
 msgid "      --toc           add an automatic Table of Contents to the output"
 msgstr ""
@@ -119,6 +137,9 @@ msgstr ""
 "XHTML"
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
+msgid "  -T, --template=FILE use FILE as the template for the output document"
 msgstr ""
 
 msgid ""
@@ -259,6 +280,9 @@ msgstr "Додані такі ключі: %s"
 msgid "Invalid CONFIG line on %s"
 msgstr "Неправильний рядок налаштування в %s"
 
+msgid "Added %s"
+msgstr "Додано %s"
+
 msgid "Processing line %03d: %s"
 msgstr "Обробляється рядок %03d: %s"
 
@@ -267,9 +291,6 @@ msgstr "Файл не може включати себе (рекурсія!)"
 
 msgid "Finished Config file inclusion: %s"
 msgstr "Включення файлу конфігурації завершене: %s"
-
-msgid "Added %s"
-msgstr "Додано %s"
 
 msgid "You can't use (target) with %s"
 msgstr ""
@@ -298,6 +319,14 @@ msgstr "Повністю проаналізовані налаштування"
 msgid "Active filters"
 msgstr "Активні фільтри"
 
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr ""
+
+msgid ""
+"Dear PostVoodoo apprentice: You got the regex right, but messed the "
+"replacement"
+msgstr ""
+
 msgid "Invalid PostProc filter regex"
 msgstr "Невірний регулярний вираз постпроцесора"
 
@@ -310,14 +339,14 @@ msgstr "%s записав %s"
 msgid "Table of Contents"
 msgstr ""
 
+msgid "Cannot find template file:"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr "Зміст вхідного файлу збережений"
 
 msgid "Parsing and saving all config found (%03d items)"
 msgstr "Аналіз та збереження всіх %03d знайдених нашатувань"
-
-msgid "Composing target Headers"
-msgstr "Створюються заголовки"
 
 msgid "Composing target Body"
 msgstr "Створюється тіло"
@@ -327,6 +356,9 @@ msgstr "Створюється закінчення"
 
 msgid "Composing target TOC"
 msgstr "Створюється зміст"
+
+msgid "Composing target Headers"
+msgstr "Створюються заголовки"
 
 msgid "Saving results to the output file"
 msgstr "Збереження результатів у вихідному файлі"
@@ -442,8 +474,13 @@ msgstr "Ми в режимі командного рядка"
 msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr ""
 
-msgid "Txt2tags finished sucessfuly"
+msgid "Txt2tags finished successfully"
 msgstr "Txt2tags успішно завершив роботу"
+
+#~ msgid ""
+#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr ""
+#~ "      --encoding=ENC  зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
 
 #~ msgid "  -H, --no-headers    suppress header, title and footer contents"
 #~ msgstr ""

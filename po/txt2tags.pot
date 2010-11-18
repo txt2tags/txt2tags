@@ -2,8 +2,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6b1\n"
-"POT-Creation-Date: 2010-08-13 11:55+BRT\n"
+"Project-Id-Version: txt2tags 2.6.492\n"
+"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,13 @@ msgstr ""
 msgid "HTML page"
 msgstr ""
 
+msgid "HTML5 page"
+msgstr ""
+
 msgid "XHTML page"
+msgstr ""
+
+msgid "XHTML Strict page"
 msgstr ""
 
 msgid "SGML document"
@@ -67,6 +73,18 @@ msgstr ""
 msgid "Creole 1.0 document"
 msgstr ""
 
+msgid "Markdown document"
+msgstr ""
+
+msgid "BBCode document"
+msgstr ""
+
+msgid "Redmine Wiki page"
+msgstr ""
+
+msgid "SPIP article"
+msgstr ""
+
 msgid "%s version %s <%s>"
 msgstr ""
 
@@ -85,7 +103,7 @@ msgstr ""
 msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 
-msgid "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
+msgid "      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
 
 msgid "      --toc           add an automatic Table of Contents to the output"
@@ -110,6 +128,9 @@ msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
 
 msgid "  -H, --no-headers    suppress header and footer from the output"
+msgstr ""
+
+msgid "  -T, --template=FILE use FILE as the template for the output document"
 msgstr ""
 
 msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
@@ -241,6 +262,9 @@ msgstr ""
 msgid "Invalid CONFIG line on %s"
 msgstr ""
 
+msgid "Added %s"
+msgstr ""
+
 msgid "Processing line %03d: %s"
 msgstr ""
 
@@ -248,9 +272,6 @@ msgid "A file cannot include itself (loop!)"
 msgstr ""
 
 msgid "Finished Config file inclusion: %s"
-msgstr ""
-
-msgid "Added %s"
 msgstr ""
 
 msgid "You can't use (target) with %s"
@@ -280,6 +301,12 @@ msgstr ""
 msgid "Active filters"
 msgstr ""
 
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr ""
+
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
+msgstr ""
+
 msgid "Invalid PostProc filter regex"
 msgstr ""
 
@@ -292,13 +319,13 @@ msgstr ""
 msgid "Table of Contents"
 msgstr ""
 
+msgid "Cannot find template file:"
+msgstr ""
+
 msgid "Source document contents stored"
 msgstr ""
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-
-msgid "Composing target Headers"
 msgstr ""
 
 msgid "Composing target Body"
@@ -308,6 +335,9 @@ msgid "Composing target Footer"
 msgstr ""
 
 msgid "Composing target TOC"
+msgstr ""
+
+msgid "Composing target Headers"
 msgstr ""
 
 msgid "Saving results to the output file"
@@ -424,6 +454,6 @@ msgstr ""
 msgid "Please inform an input file (.t2t) at the end of the command."
 msgstr ""
 
-msgid "Txt2tags finished sucessfuly"
+msgid "Txt2tags finished successfully"
 msgstr ""
 
