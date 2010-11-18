@@ -2893,10 +2893,10 @@ def aa_line(char, length):
     return char * length
 
 def aa_under(txt, char):
-    return [txt, aa_line(char, len(txt))]
+    return [txt, aa_line(char, aa_len(txt))]
 
 def aa_box(txt, length):
-    len_txt = len(txt)
+    len_txt = aa_len(txt)
     nspace = (length - len_txt - 4) / 2
     line_box = " " * nspace + AA['corner'] + AA['border'] * (len_txt + 2) + AA['corner']
     # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
@@ -2946,6 +2946,11 @@ def aa_table(table):
     ret.append(res)
     return ret
 
+def aa_len(txt):
+    if CONF['encoding'].lower() == 'utf-8':
+        return len(txt.decode('utf-8'))
+    else:
+        return len(txt)
 ##############################################################################
 
 class error(Exception):
