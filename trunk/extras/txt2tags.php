@@ -27,6 +27,9 @@ $is_standalone = 1;
 # The default target
 $dtftarget = "html";
 
+# The default text encoding
+$dtfencoding = "UTF-8";
+
 # The default marked text
 #
 $dfttxt = "= My Title =";
@@ -214,10 +217,13 @@ if ($target){
 	if ($enumtitle) $cmd[] = $enumtitle;
 	if ($toc      ) $cmd[] = $toc;
 	if ($csssugar ) $cmd[] = $csssugar;
+	$cmd[] = "--encoding $dtfencoding";
 	$cmd[] = "-t $target";
 	$cmd[] = "-i -";
 	$cmd[] = "-o -";
-	$cmd = ereg_replace('[^a-z6 -]', '', implode(' ', $cmd));
+	
+	# Security: Remove symbols from command line
+	$cmd = ereg_replace('[^A-Za-z0-9 -]', '', implode(' ', $cmd));
 
 	# Show results
 	?>	
