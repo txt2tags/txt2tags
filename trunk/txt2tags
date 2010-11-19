@@ -2042,8 +2042,24 @@ def getTags(config):
         'deflistClose'          : '\\sa240',
         'deflistItem1Open'      : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0\\fi-360\\li~V~{\\b\n',
         'deflistItem1Close'     : ':}\\tab',
-        'bar1'                  : '\\sa240\\par}{\\pard\\s11\\brdrt\\brdrs\\brdrw10\\brsp20\\li1400\\sb120\\ri1400\\fs12',
-        'bar2'                  : '\\sa240\\par}{\\pard\\s11\\brdrt\\brdrs\\brdrdb\\brdrw10\\brsp20\\sb120\\li1400\\ri1400\\fs12'
+        'tableOpen'             : '\\sa240\\par}{\\pard\\plain{\\trowd\\trgaph60~B~',
+        'tableClose'            : '\\row}\\pard\\sa240',
+        'tableRowClose'         : '',
+        'tableRowSep'           : '\\row\\trgaph60',
+        'tableTitleRowOpen'     : '\\trhdr\\trbrdrt\\brdrs\\brdrw20\\trbrdrb\\brdrs\\brdrw20',
+        'tableTitleRowClose'    : '',
+        'tableCellOpen'         : '~B~~S~xxSEPARATExx{\\intbl\\itap1\\f0\\fs20~A~ ',
+        'tableCellClose'        : '\\cell}',
+        'tableTitleCellOpen'    : '~B~\\clbrdrt\\brdrs\\brdrw20\\clbrdrb\\brdrs\\brdrw20~S~xxSEPARATExx{\\intbl\\itap1\\f0\\fs20~A~\\b ',
+        'tableTitleCellClose'   : '\\cell}',
+        '_tableCellColSpan'     : '\\cellx\a',
+        '_tableBorder'          : '\\trbrdrt\\brdrs\\brdrw10\\trbrdrb\\brdrs\\brdrw10\\trbrdrl\\brdrs\\brdrw10\\trbrdrr\\brdrs\\brdrw10',
+        '_tableCellAlignLeft'   : '\\ql',
+        '_tableCellAlignRight'  : '\\qr',
+        '_tableCellAlignCenter' : '\\qc',
+        '_cellBorder'           : '\\clbrdrt\\brdrs\\brdrw10\\clbrdrb\\brdrs\\brdrw10\\clbrdrl\\brdrs\\brdrw10\\clbrdrr\\brdrs\\brdrw10',
+        'bar1'                  : '\\sa240\\par}{\\pard\\plain\\s11\\brdrt\\brdrs\\brdrw10\\li1400\\sb120\\ri1400\\fs12',
+        'bar2'                  : '\\sa240\\par}{\\pard\\plain\\s11\\brdrt\\brdrs\\brdrdb\\brdrw10\\sb120\\li1400\\ri1400\\fs12'
     },
     }
 
@@ -2700,13 +2716,16 @@ def getRules(config):
         },
         'rtf': {
             'linkable': 1,
+            'tableable': 1,
             'autonumbertitle': 1,
             'parainsidelist': 1,
             'onelinepara': 1,
+            'tablecellstrip': 1,
+            'tablecellspannable': 1,
             'tagnotindentable': 1,
             'deflisttextstrip': 1,
             'listmaxdepth': 9,
-            # 'tableable':0, #TODO
+            'tablecellaligntype': 'cell',
         },
     }
 
@@ -4419,10 +4438,19 @@ class TableMaster:
         cspan = []
         multicol = []
         colindex = 0
+
+        rtfspan = 0
+        rtfcell = 1080 # width in twips of a single cell
+
         for cellindex in range(0, len(rowdata['cellspan'])):
 
             span = rowdata['cellspan'][cellindex]
             align = rowdata['cellalign'][cellindex]
+
+            # hack to get cell size/span into rtf, in twips
+            if TARGET == 'rtf':
+                rtfspan += span
+                span = rtfcell * rtfspan
 
             if span > 1:
                 cspan.append(regex['x'].sub(
@@ -4492,6 +4520,23 @@ class TableMaster:
                     cclose = TAGS['_tableCellMulticolClose']
 
             row.append(copen + cell + cclose)
+
+        # Rtf tweak
+        if TARGET == 'rtf':
+            cformat = []
+            ctext = []
+            for cell in row:
+                # insert border if needed
+                border = ''
+                if self.border:
+                    border = TAGS['_cellBorder']
+                celltext = regex['_tableBorder'].sub(border, cell)
+
+                #separate cells from cell formatting
+                cellregex = re.compile(r'xxSEPARATExx(.*)')
+                ctext.append(cellregex.search(celltext).group(1))
+                cformat.append(cellregex.sub('', celltext))
+            row = cformat + ctext
 
         # Maybe there are cell separators?
         return sep.join(row)
