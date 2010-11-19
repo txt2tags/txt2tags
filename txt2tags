@@ -2026,7 +2026,7 @@ def getTags(config):
         'numlistOpen'           : '\\sa240',
         'numlistClose'          : '\\sa240',
         'numlistItemOpen'       : '\\par}{\\pard\\plain\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
-        'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}}',
+        'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}{\\fldrslt{(\a)}}}',
         'deflistOpen'           : '\\sa240',
         'deflistClose'          : '\\sa240',
         'deflistItem1Open'      : '\\par}{\\pard\\plain\\f0\\fs24\\sa0\\fi-360\\li~V~{\\b\n',
@@ -6169,6 +6169,14 @@ def parse_images(line):
                 rest = regex['img'].sub('', line, 1)
                 if re.match('^\s+$', rest):
                     tag = '<div style="text-align: center;">%s</div>' %tag
+
+        # Rtf needs some tweaking
+        if TARGET == 'rtf':
+            # insert './' for relative paths if needed
+            if not re.match(r':/|:\\', txt):
+                tag = regex['x'].sub('./\a', tag, 1)
+            # insert image filename an extra time for readers that don't grok linked images
+            tag = regex['x'].sub(txt, tag, 1)
 
         if TARGET == 'tex':
             tag = re.sub(r'\\b', r'\\\\b', tag)
