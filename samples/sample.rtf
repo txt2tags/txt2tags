@@ -128,10 +128,10 @@ pre-formatted} inside sentences.
 \par}{\pard\plain\s6\qc\f1\fs40\sb480\sa240\keepn More Cosmetics
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 Special entities like email ({\field{\*\fldinst{HYPERLINK "mailto:duh@somewhere.com"}}{\fldrslt{\ul\cf1 duh@somewhere.com}}}) and URL ({\field{\*\fldinst{HYPERLINK "http://www.duh.com"}}{\fldrslt{\ul\cf1 http://www.duh.com}}}) are detected automagically, as long as the horizontal line:
-\sa240\par}{\pard\s11\brdrt\brdrs\brdrw10\brsp20\li1400\sb120\ri1400\fs12
+\sa240\par}{\pard\plain\s11\brdrt\brdrs\brdrw10\li1400\sb120\ri1400\fs12
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 ^ thin or large v
-\sa240\par}{\pard\s11\brdrt\brdrs\brdrdb\brdrw10\brsp20\sb120\li1400\ri1400\fs12
+\sa240\par}{\pard\plain\s11\brdrt\brdrs\brdrdb\brdrw10\sb120\li1400\ri1400\fs12
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 You can also specify an {\field{\*\fldinst{HYPERLINK "http://duh.org"}}{\fldrslt{\ul\cf1 explicit link}}} with label.
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
@@ -241,24 +241,18 @@ and again!
 \par}{\pard\plain\s5\qc\f1\fs48\sb480\sa240\keepn Tables
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 Use pipes to compose table rows and cells. Double pipe at the line beginning starts a heading row. Natural spaces specify each cell alignment.
-\sa240
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
- || heading 1 |  heading 2  |  heading 3 |
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
-  | cell 1.1  |  cell 1.2   |   cell 1.3 |
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
-  | cell 2.1  |  cell 2.2   |   cell 2.3 |
-\sa240
+\sa240\par}{\pard\plain{\trowd\trgaph60\trbrdrt\brdrs\brdrw10\trbrdrb\brdrs\brdrw10\trbrdrl\brdrs\brdrw10\trbrdrr\brdrs\brdrw10
+\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx1080\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx2160\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx3240{\intbl\itap1\f0\fs20\ql\b heading 1\cell}{\intbl\itap1\f0\fs20\qc\b heading 2\cell}{\intbl\itap1\f0\fs20\qr\b heading 3\cell}\row\trgaph60
+\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx1080\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx2160\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx3240{\intbl\itap1\f0\fs20\ql cell 1.1\cell}{\intbl\itap1\f0\fs20\qc cell 1.2\cell}{\intbl\itap1\f0\fs20\qr cell 1.3\cell}\row\trgaph60
+\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx1080\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx2160\clbrdrt\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clbrdrl\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\cellx3240{\intbl\itap1\f0\fs20\ql cell 2.1\cell}{\intbl\itap1\f0\fs20\qc cell 2.2\cell}{\intbl\itap1\f0\fs20\qr cell 2.3\cell}
+\row}\pard\sa240
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 Without the last pipe, no border:
-\sa240
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
- || heading 1 |  heading 2  |  heading 3
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
-  | cell 1.1  |  cell 1.2   |   cell 1.3
-\par}{\pard\plain\s3\li720\ri720\sb0\sa0\ql\f2\fs20
-  | cell 2.1  |  cell 2.2   |   cell 2.3
-\sa240
+\sa240\par}{\pard\plain{\trowd\trgaph60
+\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx1080\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx2160\clbrdrt\brdrs\brdrw20\clbrdrb\brdrs\brdrw20\cellx3240{\intbl\itap1\f0\fs20\ql\b heading 1\cell}{\intbl\itap1\f0\fs20\qc\b heading 2\cell}{\intbl\itap1\f0\fs20\qr\b heading 3\cell}\row\trgaph60
+\cellx1080\cellx2160\cellx3240{\intbl\itap1\f0\fs20\ql cell 1.1\cell}{\intbl\itap1\f0\fs20\qc cell 1.2\cell}{\intbl\itap1\f0\fs20\qr cell 1.3\cell}\row\trgaph60
+\cellx1080\cellx2160\cellx3240{\intbl\itap1\f0\fs20\ql cell 2.1\cell}{\intbl\itap1\f0\fs20\qc cell 2.2\cell}{\intbl\itap1\f0\fs20\qr cell 2.3\cell}
+\row}\pard\sa240
 \par}{\pard\plain\s5\qc\f1\fs48\sb480\sa240\keepn Special Entities
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 Because things were too simple.
@@ -286,7 +280,7 @@ You can also specify the date format with the %? flags, as {\f2\fs20
 %%date(%m-%d-%Y)} which gives: 11-19-2010.
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 That's all for now.
-\sa240\par}{\pard\s11\brdrt\brdrs\brdrw10\brsp20\li1400\sb120\ri1400\fs12
+\sa240\par}{\pard\plain\s11\brdrt\brdrs\brdrw10\li1400\sb120\ri1400\fs12
 \sa240\par}{\pard\plain\s2\qj\f0\fs24\li0
 {\field{\*\fldinst{INCLUDEPICTURE "./img/t2tpowered.png" \\* MERGEFORMAT \\d}}{\fldrslt{(img/t2tpowered.png)}}} ({\field{\*\fldinst{HYPERLINK "sample.t2t"}}{\fldrslt{\ul\cf1 sample.t2t}}})
 
