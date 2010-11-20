@@ -2928,34 +2928,34 @@ def aa_under(txt, char, width):
         ret.extend([line, aa_line(char, aa_len(line))])
     return ret
 
-def aa_box(txt, width):
+def aa_box(txt, chars, width):
     len_txt = aa_len(txt)
     nspace = (width - len_txt - 4) / 2
-    line_box = " " * nspace + AA['corner'] + AA['border'] * (len_txt + 2) + AA['corner']
+    line_box = " " * nspace + chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']
     # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
     #                           +-------------------------------+
     #                           | all theeeeeeeeeeeeeeeeee text |
     # <----- nspace " " -----> "| " <--------- txt ---------> " |"
-    line_txt = " " * nspace + AA['side'] + ' ' + txt + ' ' + AA['side']
+    line_txt = " " * nspace + chars['side'] + ' ' + txt + ' ' + chars['side']
     return [line_box, line_txt, line_box]
 
-def aa_header(header_data, width, n, end):
-    header = [aa_line(AA['bar2'], width)]
+def aa_header(header_data, chars, width, n, end):
+    header = [aa_line(chars['bar2'], width)]
     header.extend(['']*n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
         if header_data[h]:
-            header.extend(aa_box(header_data[h], width))
+            header.extend(aa_box(header_data[h], chars, width))
             header.extend(['']*n)
     header.extend(['']*end)
-    header.append(aa_line(AA['bar2'], width))
+    header.append(aa_line(chars['bar2'], width))
     return header
 
-def aa_slide(title, width):
-    res = [aa_line(AA['bar2'], width)]
+def aa_slide(title, chars, width):
+    res = [aa_line(chars['bar2'], width)]
     res.append('')
     res.append(title.center(width))
     res.append('')
-    res.append(aa_line(AA['bar2'], width))
+    res.append(aa_line(chars['bar2'], width))
     return res
 
 def aa_table(table):
@@ -4310,7 +4310,7 @@ class TitleMaster:
             else :
                 if BLOCK.count > 1:
                     ret.append('') # blank line before
-                ret.extend(aa_box(tagged, CONF['width']))
+                ret.extend(aa_box(tagged, AA, CONF['width']))
         elif TARGET == 'art':
             level = 'level'+str(self.level)
             if BLOCK.count > 1:
@@ -4786,9 +4786,9 @@ class BlockMaster:
         if TARGET == 'art' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
-                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, CONF['width']) + [''] + result
+                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA, CONF['width']) + [''] + result
             if blockname in ["title", "numtitle"] and TITLE.level == 1:
-                aa_title = aa_slide(AA_TITLE, CONF['width']) + ['']
+                aa_title = aa_slide(AA_TITLE, AA, CONF['width']) + ['']
                 if AA_COUNT:
                     aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
@@ -5522,7 +5522,7 @@ def toc_formatter(toc, config):
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if config['target'] == 'art' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
-        toc = aa_slide(_("Table of Contents"), config['width']) + toc + ([''] * n)
+        toc = aa_slide(_("Table of Contents"), AA, config['width']) + toc + ([''] * n)
         toc.append(aa_line(AA['bar2'], config['width']))
         return toc
 
@@ -5641,9 +5641,9 @@ def doHeader(headers, config):
             x = config['height'] - 3 - (n_h * 3)
             n = x / (n_h + 1)
             end = x % (n_h + 1)
-            template = aa_header(head_data, config['width'], n, end)
+            template = aa_header(head_data, AA, config['width'], n, end)
         else:
-            template = [''] + aa_header(head_data, config['width'], 2, 0)
+            template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         # Header done, let's get out
         return template + config['fullBody']
 
