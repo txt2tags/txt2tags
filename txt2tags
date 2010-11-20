@@ -2922,8 +2922,11 @@ def getRegexes():
 def aa_line(char, length):
     return char * length
 
-def aa_under(txt, char):
-    return [txt, aa_line(char, aa_len(txt))]
+def aa_under(txt, char, width):
+    ret = []
+    for line in textwrap.wrap(txt, width):
+        ret.extend([line, aa_line(char, aa_len(line))])
+    return ret
 
 def aa_box(txt, length):
     len_txt = aa_len(txt)
@@ -4312,7 +4315,7 @@ class TitleMaster:
             level = 'level'+str(self.level)
             if BLOCK.count > 1:
                 ret.append('') # blank line before
-            ret.extend(aa_under(tagged, AA[level]))
+            ret.extend(aa_under(tagged, AA[level], CONF['width']))
         else:
             ret.append(tagged)
         return ret
