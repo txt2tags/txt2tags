@@ -1,0 +1,84 @@
+
+
+
+
+%!postproc: 'é' '\u0233 '
+%!postproc: 'À'  '\u0192 '
+%!postproc: 'Â'  '\u0194 '
+%!postproc: 'Ä'  '\u0196 '
+%!postproc: 'Ã'  '\u0195 '
+%!postproc: 'Á'  '\u0193 '
+%!postproc: 'È'  '\u0200 '
+%!postproc: 'É'  '\u0201 '
+%!postproc: 'Ê'  '\u0202 '
+%!postproc: 'Ë'  '\u0203 '
+%!postproc: 'Î'  '\u0206 '
+%!postproc: 'Ï'  '\u0207 '
+%!postproc: 'Ì'  '\u0204 '
+%!postproc: 'Í'  '\u0205 '
+%!postproc: 'Ô'  '\u0212 '
+%!postproc: 'Ò'  '\u0210 '
+%!postproc: 'Ó'  '\u0211 '
+%!postproc: 'Ö'	 '\u0214 '
+%!postproc: 'Õ'  '\u0213 '
+%!postproc: 'Œ'  '\u0140 '
+%!postproc: 'Ù'  '\u0217 '
+%!postproc: 'Û'  '\u0219 '
+%!postproc: 'Ü'  '\u0220 '
+%!postproc: 'Ú'  '\u0218 '
+%!postproc: 'Ÿ'  '\u0159 '
+%!postproc: 'à'  '\u0224 '
+%!postproc: 'â'  '\u0226 '
+%!postproc: 'ä'  '\u0228 '
+%!postproc: 'ã'  '\u0227 '
+%!postproc: 'á'  '\u0225 '
+%!postproc: 'è'  '\u0232 '
+%!postproc: 'é'  '\u0233 '
+%!postproc: 'ê'  '\u0234 '
+%!postproc: 'ë'  '\u0235 '
+%!postproc: 'î'  '\u0238 '
+%!postproc: 'ï'  '\u0239 '
+%!postproc: 'ì'  '\u0236 '
+%!postproc: 'í'  '\u0237 '
+%!postproc: 'ô'  '\u0244 '
+%!postproc: 'ò'  '\u0242 '
+%!postproc: 'ó'  '\u0243 '
+%!postproc: 'ö'	 '\u0246 '
+%!postproc: 'õ'  '\u0245 '
+%!postproc: 'œ'  '\u0156 '
+%!postproc: 'ù'  '\u0249 '
+%!postproc: 'û'  '\u0251 '
+%!postproc: 'ü'  '\u0252 '
+%!postproc: 'ú'  '\u0250 '
+%!postproc: 'ÿ'  '\u0255 '
+
+%!postproc: 'Ç'  '\u0199' 
+%!postproc: 'ç'  '\u0231 '
+%!postproc: '«'  '\u0171 '
+%!postproc: '»'  '\u0187 '
+%!postproc: '€'  '\u0128 '
+
+%!postproc: 'ß'	'\u0223 '
+
+
+%!postproc: 'Æ'  '\u0198 '
+%!postproc: 'æ'  '\u0230 '
+%!postproc: 'Å'  '\u0197 '
+%!postproc: 'å'  '\u0229 '
+%!postproc: 'Ø'  '\u0216 '
+%!postproc: 'ø'  '\u0248 '
+
+
+
+%!postproc: 'Ñ'  '\u0209 '
+%!postproc: 'ñ'  '\u0241 '
+
+%!postproc: '¿'  '\u0191 '
+%!postproc: '¡'  '\u0161 '
+%!postproc: 'º'  '\u0186 '
+%!postproc: 'ª'  '\u0170 '
+
+
+
+
+% from http://tlt.its.psu.edu/suggestions/international/bylanguage/index.html
