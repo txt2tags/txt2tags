@@ -2919,8 +2919,8 @@ def getRegexes():
 
 ################# functions for the ASCII Art backend ########################
 
-def aa_line(char, length):
-    return char * length
+def aa_line(char, width):
+    return char * width
 
 def aa_under(txt, char, width):
     ret = []
@@ -2928,9 +2928,9 @@ def aa_under(txt, char, width):
         ret.extend([line, aa_line(char, aa_len(line))])
     return ret
 
-def aa_box(txt, length):
+def aa_box(txt, width):
     len_txt = aa_len(txt)
-    nspace = (length - len_txt - 4) / 2
+    nspace = (width - len_txt - 4) / 2
     line_box = " " * nspace + AA['corner'] + AA['border'] * (len_txt + 2) + AA['corner']
     # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
     #                           +-------------------------------+
@@ -2939,23 +2939,23 @@ def aa_box(txt, length):
     line_txt = " " * nspace + AA['side'] + ' ' + txt + ' ' + AA['side']
     return [line_box, line_txt, line_box]
 
-def aa_header(header_data, length, n, end):
-    header = [aa_line(AA['bar2'], length)]
+def aa_header(header_data, width, n, end):
+    header = [aa_line(AA['bar2'], width)]
     header.extend(['']*n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
         if header_data[h]:
-            header.extend(aa_box(header_data[h], length))
+            header.extend(aa_box(header_data[h], width))
             header.extend(['']*n)
     header.extend(['']*end)
-    header.append(aa_line(AA['bar2'], length))
+    header.append(aa_line(AA['bar2'], width))
     return header
 
-def aa_slide(title, length):
-    res = [aa_line(AA['bar2'], length)]
+def aa_slide(title, width):
+    res = [aa_line(AA['bar2'], width)]
     res.append('')
-    res.append(title.center(length))
+    res.append(title.center(width))
     res.append('')
-    res.append(aa_line(AA['bar2'], length))
+    res.append(aa_line(AA['bar2'], width))
     return res
 
 def aa_table(table):
