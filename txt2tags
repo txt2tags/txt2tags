@@ -827,7 +827,7 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 {\title %(HEADER1)s }
 {\author %(HEADER1)s }
 }
-\deflang1033\widowctrl\hyphauto\uc0
+\deflang1033\widowctrl\hyphauto\uc1
 {\header\pard\qr\plain\f0 Page \chpgn
 \par}{\pard\plain\s5\qc\f1\fs48\sb480\sa0 %(HEADER1)s
 \par}{\pard\plain\s7\qc\f1\fs36\sb360\sa0 %(HEADER2)s
@@ -5758,6 +5758,12 @@ def doFooter(config):
 
     return ret
 
+#this converts proper \ue37f escapes to RTF \u-7297 escapes
+def convertUnicodeRTF(match):
+    num = int(match.group(1), 16)
+    if num > 32767: num = num | -65536
+    return ESCCHAR+'u'+str(num)+'?'
+
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
@@ -5789,6 +5795,25 @@ def doEscape(target, txt):
         txt = re.sub('([<|>])'   ,         r'$\1$', txt)  # $>$
         txt = txt.replace(tmpmask, maskEscapeChar(r'$\backslash$'))
         # TIP the _ is escaped at the end
+    elif target == 'rtf':
+        txt = txt.replace(ESCCHAR, ESCCHAR+ESCCHAR)
+        txt = re.sub('([{}])', ESCCHAR+r'\1', txt)
+        # RTF is ascii only
+        # If an encoding is declared, try to convert to RTF unicode
+        enc = get_encoding_string(CONF['encoding'], 'rtf')
+        if enc:
+            try:
+                txt = txt.decode(enc)
+            except:
+                Error('Problem decoding line "'%txt + '"')
+            txt = txt.encode('cp1252', 'backslashreplace')
+            # escape ANSI codes above ascii range
+            for code in range(128,255):
+                txt = re.sub('%c' %code, ESCCHAR+"'"+hex(code)[2:], txt)
+            # some code were preescaped by txt.encode
+            txt = re.sub(r'\\x([0-9a-f]{2})', r"\\\'\1", txt)
+            #finally, convert escaped unicode chars to RTF format
+            txt = re.sub(r'\\u([0-9a-f]{4})', convertUnicodeRTF, txt)
     return txt
 
 # TODO man: where - really needs to be escaped?
@@ -5805,6 +5830,8 @@ def doFinalEscape(target, txt):
     elif target == 'tex' :
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
+    elif target == 'rtf':
+        txt = txt.replace('\t', ESCCHAR+r'\1')
     return txt
 
 def EscapeCharHandler(action, data):
@@ -6041,6 +6068,9 @@ def get_encoding_string(enc, target):
             'iso-8859-5'  : 'latin5',
             'iso-8859-9'  : 'latin9',
             'koi8-r'      : 'koi8-r'
+        },
+        'rtf': {
+            'utf-8'       : 'utf8',
         }
     }
     # Normalization
