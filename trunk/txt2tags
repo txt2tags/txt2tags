@@ -2950,12 +2950,12 @@ def aa_header(header_data, chars, width, n, end):
     header.append(aa_line(chars['bar2'], width))
     return header
 
-def aa_slide(title, chars, width):
-    res = [aa_line(chars['bar2'], width)]
+def aa_slide(title, char, width):
+    res = [aa_line(char, width)]
     res.append('')
     res.append(title.center(width))
     res.append('')
-    res.append(aa_line(chars['bar2'], width))
+    res.append(aa_line(char, width))
     return res
 
 def aa_table(table):
@@ -4786,9 +4786,9 @@ class BlockMaster:
         if TARGET == 'art' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
-                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA, CONF['width']) + [''] + result
+                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
             if blockname in ["title", "numtitle"] and TITLE.level == 1:
-                aa_title = aa_slide(AA_TITLE, AA, CONF['width']) + ['']
+                aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + ['']
                 if AA_COUNT:
                     aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
@@ -5522,7 +5522,7 @@ def toc_formatter(toc, config):
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if config['target'] == 'art' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
-        toc = aa_slide(_("Table of Contents"), AA, config['width']) + toc + ([''] * n)
+        toc = aa_slide(_("Table of Contents"), AA['bar2'], config['width']) + toc + ([''] * n)
         toc.append(aa_line(AA['bar2'], config['width']))
         return toc
 
