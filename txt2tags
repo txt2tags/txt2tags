@@ -5704,8 +5704,7 @@ def doHeader(headers, config):
                 # Style now is content, needs escaping (tex)
                 #css = maskEscapeChar(css)
             except:
-                errmsg = "CSS include failed for %s" % cssfile
-                css = "\n%s\n" % (doCommentLine(errmsg))
+                Error(_("CSS include failed for %s") % cssfile)
             # Insert this CSS file contents on the template
             template = re.sub('(?i)(</HEAD>)', css+r'\1', template)
             # template = re.sub(r'(?i)(\\begin{document})',
