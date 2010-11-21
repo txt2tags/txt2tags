@@ -548,9 +548,10 @@ tests = [
   'extra'  : ['css']
   }, {
   'name'   : 'css-inside-3',                # missing CSS file
-  'target' : 'html',
   'content': EMPTY_HEADER+VERSION_GOTCHA+SIMPLE_BODY,
-  'cmdline': ["--css-inside --style", lib.CSS_FILE],
+  'redir'  : ["> css-inside-3.out"],
+  'cmdline': ["-t html --css-inside --style", lib.CSS_FILE],
+  'extra'  : ['notarget'],
   }, {
   'name'   : 'css-inside-4',                # no --style
   'target' : 'html',
@@ -564,10 +565,10 @@ tests = [
   'extra'  : ['css']
   }, {
   'name'   : 'css-inside-6',                # two CSS files, one missing
-  'target' : 'html',
   'content': EMPTY_HEADER+VERSION_GOTCHA+SIMPLE_BODY,
-  'cmdline': ["--css-inside --style missing.css --style "+ lib.CSS_FILE],
-  'extra'  : ['css']
+  'redir'  : ["> css-inside-6.out"],
+  'cmdline': ["-t html --css-inside --style missing.css --style "+ lib.CSS_FILE],
+  'extra'  : ['css', 'notarget'],
   }, {
   'name'   : 'no-css-inside-1',             # useless
   'target' : 'html',
