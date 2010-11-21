@@ -3,6 +3,10 @@
 #
 # Quick and dirty tests for path related features.
 # NOT integrated into main test suite, you must run it alone.
+#
+# Using Creole for it's clean image mark.
+# Using txt to test targets not image-aware.
+# Using HTML to test styles.
 
 cd $(dirname "$0")
 my_path=$PWD
@@ -23,10 +27,13 @@ my_path=$PWD
 # 
 # Maybe in the future this could be a setting or a command line option.
 
-for t in creole txt; do
+for t in html creole txt; do
 
 cd "$my_path"
 t2t=../../txt2tags
+
+# Targets other than HTML won't show headers
+test "$t" != 'html' && t2t="$t2t -H"
 
 test -d folder || mkdir folder
 
@@ -34,20 +41,20 @@ test -d folder || mkdir folder
 # Execution from source file folder
 
 # Regular files
-$t2t -H -t $t -i relative-path.t2t -o        from-source-same-folder.$t
-$t2t -H -t $t -i relative-path.t2t -o folder/from-source-diff-folder.$t
+$t2t -t $t -i relative-path.t2t -o        from-source-same-folder.$t
+$t2t -t $t -i relative-path.t2t -o folder/from-source-diff-folder.$t
 
 # STDIN
-cat relative-path.t2t | $t2t -H -t $t -i - -o        from-source-same-folder-stdin.$t
-cat relative-path.t2t | $t2t -H -t $t -i - -o folder/from-source-diff-folder-stdin.$t
+cat relative-path.t2t | $t2t -t $t -i - -o        from-source-same-folder-stdin.$t
+cat relative-path.t2t | $t2t -t $t -i - -o folder/from-source-diff-folder-stdin.$t
 
 # STDOUT
-$t2t -H -t $t -i relative-path.t2t -o - >        from-source-same-folder-stdout.$t
-$t2t -H -t $t -i relative-path.t2t -o - > folder/from-source-diff-folder-stdout.$t
+$t2t -t $t -i relative-path.t2t -o - >        from-source-same-folder-stdout.$t
+$t2t -t $t -i relative-path.t2t -o - > folder/from-source-diff-folder-stdout.$t
 
 # STDIN + STDOUT
-cat relative-path.t2t | $t2t -H -t $t -i - -o - >        from-source-same-folder-stdinout.$t
-cat relative-path.t2t | $t2t -H -t $t -i - -o - > folder/from-source-diff-folder-stdinout.$t
+cat relative-path.t2t | $t2t -t $t -i - -o - >        from-source-same-folder-stdinout.$t
+cat relative-path.t2t | $t2t -t $t -i - -o - > folder/from-source-diff-folder-stdinout.$t
 
 ########################################################################
 # Execution from output folder
@@ -56,20 +63,20 @@ cd folder
 t2t=../$t2t
 
 # Regular files
-$t2t -H -t $t -i ../relative-path.t2t -o ../from-output-same-folder.$t
-$t2t -H -t $t -i ../relative-path.t2t -o    from-output-diff-folder.$t
+$t2t -t $t -i ../relative-path.t2t -o ../from-output-same-folder.$t
+$t2t -t $t -i ../relative-path.t2t -o    from-output-diff-folder.$t
 
 # STDIN
-cat ../relative-path.t2t | $t2t -H -t $t -i - -o ../from-output-same-folder-stdin.$t
-cat ../relative-path.t2t | $t2t -H -t $t -i - -o    from-output-diff-folder-stdin.$t
+cat ../relative-path.t2t | $t2t -t $t -i - -o ../from-output-same-folder-stdin.$t
+cat ../relative-path.t2t | $t2t -t $t -i - -o    from-output-diff-folder-stdin.$t
 
 # STDOUT
-$t2t -H -t $t -i ../relative-path.t2t -o - > ../from-output-same-folder-stdout.$t
-$t2t -H -t $t -i ../relative-path.t2t -o - >    from-output-diff-folder-stdout.$t
+$t2t -t $t -i ../relative-path.t2t -o - > ../from-output-same-folder-stdout.$t
+$t2t -t $t -i ../relative-path.t2t -o - >    from-output-diff-folder-stdout.$t
 
 # STDIN + STDOUT
-cat ../relative-path.t2t | $t2t -H -t $t -i - -o - > ../from-output-same-folder-stdinout.$t
-cat ../relative-path.t2t | $t2t -H -t $t -i - -o - >    from-output-diff-folder-stdinout.$t
+cat ../relative-path.t2t | $t2t -t $t -i - -o - > ../from-output-same-folder-stdinout.$t
+cat ../relative-path.t2t | $t2t -t $t -i - -o - >    from-output-diff-folder-stdinout.$t
 
 ########################################################################
 
