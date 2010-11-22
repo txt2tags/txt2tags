@@ -2959,7 +2959,7 @@ def aa_slide(title, char, width):
     res.append(aa_line(char, width))
     return res
 
-def aa_table(table):
+def aa_table(table, header = 0):
     data = [row['cells'] for row in table]
     n = max([len(line) for line in data])
     data = [line + (n - len(line)) * [''] for line in data]
@@ -2967,13 +2967,17 @@ def aa_table(table):
     for i in range(n):
         tab.append([line[i] for line in data])
     length = [max([len(el) for el in line]) for line in tab]
-    res = "+"
+    resh = res = "+"
     for i in range(n):
         res = res + (length[i] + 2) * "-" + '+'
+        resh = resh + (length[i] + 2) * "=" + '+'
     ret = []
-    for line in data:
+    for i, line in enumerate(data):
         aff = "|"
-        ret.append(res)
+        if i == 1 and header:
+            ret.append(resh)
+        else:
+            ret.append(res)
         for j, el in enumerate(line):
             aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
         ret.append(aff)
@@ -4369,6 +4373,7 @@ class TableMaster:
         if line:
             prop = self.parse_row(line)
             self.border    = prop['border']
+            self.title     = prop['title']
             self.align     = prop['align']
             self.cellalign = prop['cellalign']
             self.cellspan  = prop['cellspan']
@@ -4987,7 +4992,7 @@ class BlockMaster:
         result = []
         
         if TARGET == 'art':
-            return aa_table(self.tableparser.rows) + [''] 
+            return aa_table(self.tableparser.rows, self.tableparser.title) + [''] 
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
