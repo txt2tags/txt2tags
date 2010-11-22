@@ -531,7 +531,7 @@ table th,table td{padding:4px;}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
+<meta name="generator" content="http://txt2tags.org" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
 <style type="text/css">body {background-color:#FFFFFF ; color:#000000}</style>
 </head>
@@ -553,7 +553,7 @@ table th,table td{padding:4px;}
 <head>
 <body>
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.sf.net" />
+<meta name="generator" content="http://txt2tags.org" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
 </head>
 <body>
