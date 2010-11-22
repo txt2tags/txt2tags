@@ -12,6 +12,7 @@
 %!style: folder/subfolder/../../current.css
 %!style: folder/subfolder/../../../up.css
 %!style: folder/subfolder/../../../../upup.css
+%!style: /absolute.css
 
 % Images
 [../../upup.png]
