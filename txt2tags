@@ -5597,21 +5597,14 @@ def doHeader(headers, config):
 
     head_data = {'STYLE': [], 'ENCODING': ''}
 
-    # Fix CSS files path with %!stylepath data (issue 71)
-    if config.get('style') and 'html' in target and config['outfile'] not in [STDOUT, MODULEOUT]:
+    # Fix CSS files path
+    config['stylepath_out'] = fix_css_out_path(config)
 
-        # Sanity
-        if len(config.get('style')) != len(config.get('stylepath')):
-            Error('stylepath corrupted')
-
-        # The stylepath paths are relative to the INPUT file folder.
-        # Now we must make them relative to the OUTPUT file folder.
-        # Then we save them to the 'style' config, so they can be used ahead.
-        config['style'] = [os.path.relpath(x, os.path.dirname(config['outfile'])) for x in config['stylepath']]
-
-
+    # Populate head_data with config info
     for key in head_data.keys():
         val = config.get(key.lower())
+        if key == 'STYLE' and 'html' in target:
+            val = config.get('stylepath_out') or []
         # Remove .sty extension from each style filename (freaking tex)
         # XXX Can't handle --style foo.sty, bar.sty
         if target == 'tex' and key == 'STYLE':
@@ -5695,16 +5688,12 @@ def doHeader(headers, config):
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
     if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and \
-       config.get('style'):
+       config.get('stylepath'):
         set_global_config(config) # usually on convert(), needed here
-        for i in xrange(len(config['style'])):
-            cssfile = config['style'][i]
-            if not os.path.isabs(cssfile):
-                infile = config.get('sourcefile')
-                cssfile = os.path.join(
-                    os.path.dirname(infile), cssfile)
+        for i in xrange(len(config['stylepath'])):
+            cssfile = config['stylepath'][i]
             try:
-                contents = Readfile(cssfile, 1)
+                contents = Readfile(cssfile, remove_linebreaks=1)
                 css = "\n%s\n%s\n%s\n%s\n" % (
                     doCommentLine("Included %s" % cssfile),
                     TAGS['cssOpen'],
@@ -5895,14 +5884,18 @@ def enclose_me(tagname, txt):
     return TAGS.get(tagname+'Open') + txt + TAGS.get(tagname+'Close')
 
 def fix_relative_path(path):
-    """Fix image/link path to be relative to the source file path (issues 62, 63)"""
+    """
+    Fix image/link path to be relative to the source file path (issues 62, 63)
 
-    # Leave the path untouched when:
-    # - path is an URL (or email)
-    # - path is an #anchor
-    # - path is absolute
-    # - infile is STDIN
-    # - outfile is STDOUT
+    Leave the path untouched when:
+    - path is an URL (or email)
+    - path is an #anchor
+    - path is absolute
+    - infile is STDIN
+    - outfile is STDOUT
+    
+    Note: Keep this rules in sync with fix_css_out_path()
+    """
     if regex['link'].match(path) \
         or path[0] == '#' \
         or os.path.isabs(path) \
@@ -5916,6 +5909,48 @@ def fix_relative_path(path):
 
     # Now adjust the inputpath to be reachable from the output folder
     return os.path.relpath(inputpath, os.path.dirname(CONF['outfile']))
+
+
+def fix_css_out_path(config):
+    """
+    Fix CSS files path to be reached from the output folder (issue 71)
+
+    Needed when the output file is in a different folder than the sources.
+    This will affect the HTML's <link rel="stylesheet"> header tag.
+
+    Leave the path untouched when:
+    - path is an URL
+    - path is absolute
+    - infile is STDIN
+    - outfile is STDOUT
+
+    Note: Keep this rules in sync with fix_relative_path()
+    """
+
+    # No CSS files
+    if not config.get('style'):
+        return None
+
+    # Defaults to user-typed paths
+    default = config['style'][:]
+
+    if config['sourcefile'] in [STDIN, MODULEIN] \
+        or config['outfile'] in [STDOUT, MODULEOUT]:
+        return default
+
+    # Sanity
+    if len(config['style']) != len(config['stylepath']):
+        Error("stylepath corrupted. Sorry, this shouldn't happen :(")
+
+    # The stylepath paths are relative to the INPUT file folder.
+    # Now we must make them relative to the OUTPUT file folder.
+    stylepath_out = []
+    for path in config['stylepath']:
+        # Don't try to fix absolute paths and URLs
+        if not os.path.isabs(path) and not re.match('https?://', path):
+            path = os.path.relpath(path, os.path.dirname(config['outfile']))
+        stylepath_out.append(path)
+    return stylepath_out
 
 
 def beautify_me(name, line):
