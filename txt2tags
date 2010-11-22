@@ -2743,6 +2743,7 @@ def getRules(config):
         myrules.update(rules_bank['xhtml'])   # get XHTML specific
     elif config['target'] == 'art':
         myrules = rules_bank['txt'].copy()    # inheritance
+        myrules['tableable'] = 1
         if config['slides']:
             myrules['blanksaroundtitle'] = 0
             myrules['blanksaroundnumtitle'] = 0
@@ -2959,7 +2960,7 @@ def aa_slide(title, char, width):
     return res
 
 def aa_table(table):
-    data = [row[2:-2].split(' | ') for row in table]
+    data = [row['cells'] for row in table]
     n = max([len(line) for line in data])
     data = [line + (n - len(line)) * [''] for line in data]
     tab = []
@@ -4984,6 +4985,9 @@ class BlockMaster:
 
     def table(self):
         result = []
+        
+        if TARGET == 'art':
+            return aa_table(self.tableparser.rows) + [''] 
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
@@ -6608,8 +6612,6 @@ def convert(bodylines, config, firstlinenr=1):
 
                 # Tables are mapped to verb when target is not table-aware
                 else:
-                    if target == 'art' and table:
-                        table = aa_table(table)
                     ret.extend(BLOCK.blockin('verb'))
                     BLOCK.propset('mapped', 'table')
                     for row in table:
