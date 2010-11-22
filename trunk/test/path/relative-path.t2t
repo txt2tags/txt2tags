@@ -13,6 +13,22 @@
 %!style: folder/subfolder/../../../up.css
 %!style: folder/subfolder/../../../../upup.css
 %!style: /absolute.css
+%!style: http://txt2tags.org/site.css
+%!style: https://txt2tags.org/site.css
+
+% Styles in %!options
+%!options: --style ../../upup.css
+%!options: --style ../up.css
+%!options: --style current.css
+%!options: --style folder/sub.css
+%!options: --style folder/subfolder/subsub.css
+%!options: --style folder/subfolder/../sub.css
+%!options: --style folder/subfolder/../../current.css
+%!options: --style folder/subfolder/../../../up.css
+%!options: --style folder/subfolder/../../../../upup.css
+%!options: --style /absolute.css
+%!options: --style http://txt2tags.org/site.css
+%!options: --style https://txt2tags.org/site.css
 
 % Images
 [../../upup.png]

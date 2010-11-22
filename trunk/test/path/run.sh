@@ -27,6 +27,8 @@ my_path=$PWD
 # 
 # Maybe in the future this could be a setting or a command line option.
 
+txt2tags options.t2t
+
 for t in html creole txt; do
 
 cd "$my_path"
@@ -85,11 +87,10 @@ cd ..
 done # Close for loop
 
 # Move all results to the main folder
-mv folder/* .
-rmdir folder
+mv folder/from-* .
 
 errors=0
-for file in from-*
+for file in from-* options.html
 do
 	if ! test -f ok/$file
 	then
@@ -120,5 +121,5 @@ then
 else
 	echo
 	echo "Found errors here (compare with 'ok' folder):"
-	ls -1 from-*
+	ls -1 from-* *.html 2>/dev/null
 fi

@@ -177,6 +177,7 @@ OPTIONS = {
     'art-chars': '',
     'show-config-value': '',
     'template': '',
+    'dirname': '',  # internal use only
     }
 ACTIONS = {
     'help': 0,
@@ -3111,6 +3112,37 @@ def get_rc_path():
 
 ##############################################################################
 
+class PathMaster:
+    """Handle paths. See issues: 27, 62, 63, 71, 85."""
+
+    def __init__(self):
+        pass
+
+    def is_url(self, text):
+        return text.startswith('http://') or text.startswith('https://')
+
+    def join(self, dirname, filename):
+        """Join paths, unless filename is STDOUT, absolute or URL."""
+        
+        if not dirname \
+            or not filename \
+            or filename in (STDOUT, MODULEOUT) \
+            or os.path.isabs(filename) \
+            or self.is_url(filename):
+            return filename
+        else:
+            return os.path.join(dirname, filename)
+
+    def relpath(self, path, start):
+        """Unlike os.path.relpath(), never touch absolute paths"""
+        if not path \
+            or os.path.isabs(path) \
+            or self.is_url(path):
+            return path
+        else:
+            return os.path.relpath(path, start)
+
+
 class CommandLine:
     """
     Command Line class - Masters command line
@@ -3225,6 +3257,9 @@ class CommandLine:
         # Extract name/value pair of all configs, check for invalid names
         options, arguments = self.parse(cmdline[:])
 
+        # Needed when expanding %!options inside remote %!includeconf
+        dirname = ''
+
         # Some cleanup on the raw config
         for name, value in options:
 
@@ -3238,20 +3273,28 @@ class CommandLine:
             if len(name) == 1:
                 name = self.short_long[name]
 
+            if name == 'dirname':
+                dirname = value
+                continue
+
             # Outfile exception: path relative to PWD
-            if name == 'outfile' and relative and value not in [STDOUT, MODULEOUT]:
-                value = os.path.abspath(value)
+            if name == 'outfile' and value not in [STDOUT, MODULEOUT]:
+                if relative:
+                    value = os.path.abspath(value)
+                else:
+                    value = PathMaster().join(dirname, value)
 
             # -C, --config-file inclusion, path relative to PWD
             if name == 'config-file':
+                value = PathMaster().join(dirname, value)
                 ret.extend(ConfigLines().include_config_file(value))
                 continue
 
             # --style: path relative to PWD
-            # Already OK, command line path is already relative to PWD
-            # No matter if it's absolute or relative, we save stylepath anyway
+            # Already OK, when comming from the command line
+            # Needs fix when coming from %!options: --style foo.css
             if name == 'style':
-                ret.append(['all', 'stylepath', value])
+                ret.append(['all', 'stylepath', PathMaster().join(dirname, value)])
 
             # Save this config
             ret.append(['all', name, value])
@@ -3587,7 +3630,9 @@ class ConfigMaster:
         "Adds the key:value pair to the config dictionary (if needed)"
         # %!options
         if key == 'options':
+            # Actions are not valid inside %!options
             ignoreme = self.dft_actions.keys() + ['target']
+            # But there are some exceptions that are allowed (XXX why?)
             ignoreme.remove('dump-config')
             ignoreme.remove('dump-source')
             ignoreme.remove('targets')
@@ -3633,9 +3678,8 @@ class ConfigMaster:
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
         infile, outfile = config['sourcefile'], config['outfile']
-        if outfile and outfile not in (STDOUT, MODULEOUT) \
-           and not os.path.isabs(outfile):
-            outfile = os.path.join(os.path.dirname(infile), outfile)
+        if outfile:
+            outfile = PathMaster().join(os.path.dirname(infile), outfile)
         if infile == STDIN    and not outfile:
             outfile = STDOUT
         if infile == MODULEIN and not outfile:
@@ -3821,12 +3865,7 @@ class ConfigLines:
         External files appear in: %!includeconf, %!style, %!template.
         See issue 71.
         """
-        
-        # Fix relative paths only. Ignore absolute path or URL.
-        if os.path.isabs(path_) or path_.startswith('http'):
-            return path_
-        else:
-            return os.path.join(self.folder, path_)
+        return PathMaster().join(self.folder, path_)
 
     def get_raw_config(self):
         "Scan buffer and extract all config as RAW (including includes)"
@@ -3858,6 +3897,12 @@ class ConfigLines:
                 add(target, 'stylepath', stylepath)
                 # Note: the normal 'style' config will be added later
 
+            # %!options
+            if key == 'options':
+                # Prepend --dirname option to track config file original folder
+                if self.folder:
+                    val = '--dirname %s %s' % (self.folder, val)
+
             # %!includeconf
             if key == 'includeconf':
                 
@@ -3870,7 +3915,7 @@ class ConfigLines:
                 ret.extend(more_raw)
                 
                 Message(_("Finished Config file inclusion: %s") % val, 2)
-            
+
             # Normal config, except %!includeconf
             else:
                 add(target, key, val)
@@ -5905,10 +5950,10 @@ def fix_relative_path(path):
 
     # Make sure the input path is relative to the correct source file.
     # The path may be different from original source file when using %!include
-    inputpath = os.path.join(os.path.dirname(CONF['currentsourcefile']), path)
+    inputpath = PathMaster().join(os.path.dirname(CONF['currentsourcefile']), path)
 
     # Now adjust the inputpath to be reachable from the output folder
-    return os.path.relpath(inputpath, os.path.dirname(CONF['outfile']))
+    return PathMaster().relpath(inputpath, os.path.dirname(CONF['outfile']))
 
 
 def fix_css_out_path(config):
@@ -5947,8 +5992,7 @@ def fix_css_out_path(config):
     stylepath_out = []
     for path in config['stylepath']:
         # Don't try to fix absolute paths and URLs
-        if not os.path.isabs(path) and not re.match('https?://', path):
-            path = os.path.relpath(path, os.path.dirname(config['outfile']))
+        path = PathMaster().relpath(path, os.path.dirname(config['outfile']))
         stylepath_out.append(path)
     return stylepath_out
 
@@ -6343,7 +6387,7 @@ def get_include_contents(file_, path=''):
             id_ = ids[mark]      # set type
             file_ = file_[2:-2]  # remove marks
     # Handle remote dir execution
-    filepath = os.path.join(path, file_)
+    filepath = PathMaster().join(path, file_)
     # Read included file contents
     lines = Readfile(filepath, remove_linebreaks=1)
     # Default txt2tags marked text, just BODY matters
@@ -6587,7 +6631,7 @@ def convert(bodylines, config, firstlinenr=1):
                 # The current path is always relative to the file where %!include appeared
                 incfile = val
                 incpath = os.path.dirname(CONF['currentsourcefile'])
-                fullpath = os.path.join(incpath, incfile)
+                fullpath = PathMaster().join(incpath, incfile)
 
                 # Infinite loop detection
                 if os.path.abspath(fullpath) == os.path.abspath(CONF['currentsourcefile']):
