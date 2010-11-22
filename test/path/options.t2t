@@ -1,0 +1,6 @@
+
+%!includeconf: config.t2t
+%!target: html
+
+%!options: --config-file folder/options.t2t
+Body.
