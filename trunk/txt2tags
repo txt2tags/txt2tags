@@ -6677,8 +6677,15 @@ def convert(bodylines, config, firstlinenr=1):
                     Error("Python module 'csv' not found, but needed for %!csv")
 
                 table = []
-                filename = val
-                reader = csv.reader(Readfile(filename))
+                try:
+                    filename, delimiter = val.split()
+                except:
+                    filename, delimiter = val, ','
+                if delimiter == 'space':
+                    delimiter = ' '
+                elif delimiter == 'tab':
+                    delimiter = '\t'
+                reader = csv.reader(Readfile(filename), delimiter=delimiter)
 
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
