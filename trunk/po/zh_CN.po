@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2010-08-31 16:25+0800\n"
 "Last-Translator: wwfifi <wwfifi@gmail.com>\n"
 "Language-Team: \n"
@@ -82,6 +82,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -221,6 +224,9 @@ msgstr "不能打开文件进行写入操作"
 msgid "%s (try --help)"
 msgstr "%s (试下 --help获得帮助)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "装载源文件"
 
@@ -233,8 +239,8 @@ msgstr "找到区域: %s"
 msgid "Scanning source document CONF area"
 msgstr "检测源文件CONF区域"
 
-msgid "Added config %s : %s"
-msgstr "已添加配置 %s : %s"
+msgid "Added config"
+msgstr "已添加配置"
 
 msgid "No target specified (try --help)"
 msgstr "没有指定目标文件(试下 --help获得帮助)"
@@ -329,6 +335,9 @@ msgid "Table of Contents"
 msgstr "目录"
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"

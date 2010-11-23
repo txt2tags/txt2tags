@@ -3328,6 +3328,9 @@ class CommandLine:
                 if (filter_ and name in filter_) or \
                    (ignore and name not in ignore):
                     filtered.append([target, name, value])
+                else:
+                    fancykey = dotted_spaces("%12s" % name)
+                    Message(_("Ignored config") + (" %s : %s" % (fancykey, value)), 3)                    
             ret = filtered[:]
 
         # Add the original command line string as 'realcmdline'
@@ -3691,7 +3694,7 @@ class ConfigMaster:
         else:
             self.parsed[key] = val
         fancykey = dotted_spaces("%12s"%key)
-        Message(_("Added config %s : %s")%(fancykey, val), 3)
+        Message(_("Added config") + (" %s : %s" % (fancykey, val)), 3)
 
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
