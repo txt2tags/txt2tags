@@ -2953,12 +2953,12 @@ def aa_box(txt, chars, width):
 
 def aa_header(header_data, chars, width, n, end):
     header = [aa_line(chars['bar2'], width)]
-    header.extend(['']*n)
+    header.extend([''] * n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
         if header_data[h]:
             header.extend(aa_box(header_data[h], chars, width))
-            header.extend(['']*n)
-    header.extend(['']*end)
+            header.extend([''] * n)
+    header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
     return header
 
@@ -3028,8 +3028,8 @@ def getUnknownErrorMessage():
     return msg
 def Message(msg, level):
     if level <= VERBOSE and not QUIET:
-        prefix = '-'*5
-        print "%s %s" % (prefix*level, msg)
+        prefix = '-' * 5
+        print "%s %s" % (prefix * level, msg)
 def Debug(msg, id_=0, linenr=None):
     "Show debug messages, categorized (colored or not)"
     if QUIET or not DEBUG:
@@ -4022,13 +4022,13 @@ class ConfigLines:
 class MaskMaster:
     "(Un)Protect important structures from escaping and formatting"
     def __init__(self):
-        self.linkmask  = 'vvvLINKvvv'
-        self.monomask  = 'vvvMONOvvv'
-        self.macromask = 'vvvMACROvvv'
-        self.rawmask   = 'vvvRAWvvv'
-        self.taggedmask= 'vvvTAGGEDvvv'
-        self.tocmask   = 'vvvTOCvvv'
-        self.macroman  = MacroMaster()
+        self.linkmask   = 'vvvLINKvvv'
+        self.monomask   = 'vvvMONOvvv'
+        self.macromask  = 'vvvMACROvvv'
+        self.rawmask    = 'vvvRAWvvv'
+        self.taggedmask = 'vvvTAGGEDvvv'
+        self.tocmask    = 'vvvTOCvvv'
+        self.macroman   = MacroMaster()
         self.reset()
 
     def reset(self):
@@ -4302,12 +4302,12 @@ class TitleMaster:
             self.count[self.level] += 1
             # Reset sublevels count (if any)
             max_levels = len(self.count)
-            if self.level < max_levels-1:
+            if self.level < max_levels - 1:
                 for i in xrange(self.level + 1, max_levels):
                     self.count[i] = 0
             # Compose count id from hierarchy
             for i in xrange(self.level):
-                count_id= "%s%d." % (count_id, self.count[i + 1])
+                count_id = "%s%d." % (count_id, self.count[i + 1])
         self.count_id = count_id
 
     def _set_label(self):
@@ -4377,7 +4377,7 @@ class TitleMaster:
                 i = len(full_title.decode('utf-8'))
             else:
                 i = len(full_title)
-            ret.append(regex['x'].sub('='*i, self.tag))
+            ret.append(regex['x'].sub('=' * i, self.tag))
         elif TARGET == 'art' and self.level == 1:
             if CONF['slides'] :
                 AA_TITLE = tagged
@@ -4401,7 +4401,7 @@ class TitleMaster:
         for level, count_id, txt, label in self.toc:
             if level > max_level: # ignore
                 continue
-            indent = '  '*level
+            indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
             label = label or self.anchor_prefix + `toc_count`
             toc_count += 1
@@ -5085,7 +5085,7 @@ class BlockMaster:
         open_  = TAGS['blockQuoteOpen']            # block based
         close  = TAGS['blockQuoteClose']
         qline  = TAGS['blockQuoteLine']            # line based
-        indent = tagindent = '\t'*self.depth
+        indent = tagindent = '\t' * self.depth
 
         # Apply rules
         if rules['tagnotindentable']:
@@ -5112,7 +5112,7 @@ class BlockMaster:
             else:
                 item = regex['quote'].sub('', item)  # del TABs
                 item = self._last_escapes(item)
-                item = qline*self.depth + item
+                item = qline * self.depth + item
                 result.append(indent + item) # quote line
 
         # Close tag
@@ -5190,9 +5190,9 @@ class BlockMaster:
         # ItemLine: number of leading chars identifies list depth
         if listline:
             if rules['listlineafteropen']:
-                itemopen  = itemopen + listline*self.depth
+                itemopen  = itemopen + listline * self.depth
             else:
-                itemopen  = listline*self.depth + itemopen
+                itemopen  = listline * self.depth + itemopen
 
         # Adds trailing space on opening tags
         if (name == 'list'    and rules['spacedlistitemopen']) or \
@@ -5864,15 +5864,15 @@ def doEscape(target, txt):
     elif target == 'mgp':
         txt = re.sub('^%', ' %', txt)  # add leading blank to avoid parse
     elif target == 'man':
-        txt = re.sub("^([.'])", '\\&\\1', txt)            # command ID
-        txt = txt.replace(ESCCHAR, ESCCHAR + 'e')         # \e
+        txt = re.sub("^([.'])", '\\&\\1', txt)              # command ID
+        txt = txt.replace(ESCCHAR, ESCCHAR + 'e')           # \e
     elif target == 'lout':
         # TIP: / moved to FinalEscape to avoid //italic//
         # TIP: these are also converted by lout:  ...  ---  --
-        txt = txt.replace(ESCCHAR, tmpmask)               # \
-        txt = txt.replace('"', '"%s""' % ESCCHAR)         # "\""
-        txt = re.sub('([|&{}@#^~])', '"\\1"', txt)        # "@"
-        txt = txt.replace(tmpmask, '"%s"' % (ESCCHAR*2))  # "\\"
+        txt = txt.replace(ESCCHAR, tmpmask)                 # \
+        txt = txt.replace('"', '"%s""' % ESCCHAR)           # "\""
+        txt = re.sub('([|&{}@#^~])', '"\\1"', txt)          # "@"
+        txt = txt.replace(tmpmask, '"%s"' % (ESCCHAR * 2))  # "\\"
     elif target == 'tex':
         # Mark literal \ to be changed to $\backslash$ later
         txt = txt.replace(ESCCHAR, tmpmask)
@@ -6312,7 +6312,7 @@ def convert_this_files(configs):
             myconf['header3'] = source_head[2]
 
         # Parse the full marked body into tagged target
-        first_body_line = (len(source_head) or 1)+ len(source_conf) + 1
+        first_body_line = (len(source_head) or 1) + len(source_conf) + 1
         Message(_("Composing target Body"), 1)
         target_body, marked_toc = convert(source_body, myconf, firstlinenr=first_body_line)
 
@@ -6427,7 +6427,7 @@ def get_include_contents(file_, path=''):
     # Set include type and remove identifier marks
     mark = file_[0]
     if mark in ids.keys():
-        if file_[:2] == file_[-2:] == mark*2:
+        if file_[:2] == file_[-2:] == mark * 2:
             id_ = ids[mark]      # set type
             file_ = file_[2:-2]  # remove marks
     # Handle remote dir execution
@@ -6471,7 +6471,7 @@ def convert(bodylines, config, firstlinenr=1):
         CONF['preproc'], _('Invalid PreProc filter regex'))
 
     # Let's mark it up!
-    linenr = firstlinenr-1
+    linenr = firstlinenr - 1
     lineref = 0
     while lineref < len(bodylines):
         # Defaults
@@ -7171,7 +7171,7 @@ class Gui:
         return z
 
     def askfile(self):
-        ftypes= [(_('txt2tags files'), ('*.t2t', '*.txt')), (_('All files'), '*')]
+        ftypes = [(_('txt2tags files'), ('*.t2t', '*.txt')), (_('All files'), '*')]
         newfile = askopenfilename(filetypes=ftypes)
         if newfile:
             self.infile.set(newfile)
@@ -7419,7 +7419,7 @@ def exec_command_line(user_cmdline=[]):
 
     # Multifile haters
     if len(infiles) > 1:
-        errmsg=_("Option --%s can't be used with multiple input files")
+        errmsg = _("Option --%s can't be used with multiple input files")
         for option in NO_MULTI_INPUT:
             if cmdline_parsed.get(option):
                 Error(errmsg % option)
