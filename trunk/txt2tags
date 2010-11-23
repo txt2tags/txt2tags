@@ -2856,7 +2856,7 @@ def getRegexes():
 
     # Almost complicated title regexes ;)
     titskel = r'^ *(?P<id>%s)(?P<txt>%s)\1(\[(?P<label>[\w-]*)\])?\s*$'
-    bank[   'title'] = re.compile(titskel % ('[=]{1,5}', '[^=](|.*[^=])'))
+    bank['title']    = re.compile(titskel % ('[=]{1,5}', '[^=](|.*[^=])'))
     bank['numtitle'] = re.compile(titskel % ('[+]{1,5}', '[^+](|.*[^+])'))
 
     ### Complicated regexes begin here ;)
@@ -5336,7 +5336,7 @@ class MacroMaster:
         self.currentfile = self.config['currentsourcefile']
         self.currdate = time.localtime(time.time())
         self.rgx      = regex.get('macros') or getRegexes()['macros']
-        self.fileinfo = { 'infile': None, 'outfile': None }
+        self.fileinfo = {'infile': None, 'outfile': None}
         self.dft_fmt  = MACROS
 
     def walk_file_format(self, fmt):
