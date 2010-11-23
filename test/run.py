@@ -64,7 +64,7 @@ if TOTAL_FAILED:
 else:
     stats = "100% ok"
 print
-print "Totals: %d tests (%s)" % (TOTAL_OK+TOTAL_FAILED, stats)
+print "Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats)
 
 if ERRORS:
     print

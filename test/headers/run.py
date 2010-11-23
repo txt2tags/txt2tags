@@ -18,16 +18,16 @@ lib.ERROR_FILES = []
 
 # text patterns to compose source files
 txt = {
-  'e': '',                                           # Empty line
-  '1': 'Header 1',                                   # Header line 1
-  '2': 'Header 2',                                   # Header line 2
-  '3': 'Header 3',                                   # Header line 3
-  'c': '% comment',                                  # Comment line
-  'k': '%%%\ncomment\n%%%',                          # Comment block
-  'b': 'Text.',                                      # Body line
-  'f': '%!encoding: enc',                            # Config line
-  # Macros
-  'm': '%%date(!)%%mtime(!)%%infile(!)%%outfile(!)%%currentfile(!)'
+    'e': '',                                           # Empty line
+    '1': 'Header 1',                                   # Header line 1
+    '2': 'Header 2',                                   # Header line 2
+    '3': 'Header 3',                                   # Header line 3
+    'c': '% comment',                                  # Comment line
+    'k': '%%%\ncomment\n%%%',                          # Comment block
+    'b': 'Text.',                                      # Body line
+    'f': '%!encoding: enc',                            # Config line
+    # Macros
+    'm': '%%date(!)%%mtime(!)%%infile(!)%%outfile(!)%%currentfile(!)',
 }
 
 # the registered tests
