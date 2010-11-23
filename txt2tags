@@ -2863,7 +2863,6 @@ def getRegexes():
     #
     # Textual descriptions on --help's style: [...] is optional, | is OR
 
-
     ### First, some auxiliary variables
     #
 
@@ -2931,14 +2930,17 @@ def getRegexes():
 
 ################# functions for the ASCII Art backend ########################
 
+
 def aa_line(char, width):
     return char * width
+
 
 def aa_under(txt, char, width):
     ret = []
     for line in textwrap.wrap(txt, width):
         ret.extend([line, aa_line(char, aa_len(line))])
     return ret
+
 
 def aa_box(txt, chars, width):
     len_txt = aa_len(txt)
@@ -2951,6 +2953,7 @@ def aa_box(txt, chars, width):
     line_txt = " " * nspace + chars['side'] + ' ' + txt + ' ' + chars['side']
     return [line_box, line_txt, line_box]
 
+
 def aa_header(header_data, chars, width, n, end):
     header = [aa_line(chars['bar2'], width)]
     header.extend([''] * n)
@@ -2962,6 +2965,7 @@ def aa_header(header_data, chars, width, n, end):
     header.append(aa_line(chars['bar2'], width))
     return header
 
+
 def aa_slide(title, char, width):
     res = [aa_line(char, width)]
     res.append('')
@@ -2969,6 +2973,7 @@ def aa_slide(title, char, width):
     res.append('')
     res.append(aa_line(char, width))
     return res
+
 
 def aa_table(table, header=0):
     data = [row['cells'] for row in table]
@@ -2995,24 +3000,35 @@ def aa_table(table, header=0):
     ret.append(res)
     return ret
 
+
 def aa_len(txt):
     if CONF['encoding'].lower() == 'utf-8':
         return len(txt.decode('utf-8'))
     else:
         return len(txt)
+
+
 ##############################################################################
 
 class error(Exception):
     pass
+
+
 def echo(msg):   # for quick debug
     print '\033[32;1m%s\033[m' % msg
+
+
 def Quit(msg=''):
     if msg:
         print msg
     sys.exit(0)
+
+
 def Error(msg):
     msg = _("%s: Error: ") % my_name + msg
     raise error, msg
+
+
 def getTraceback():
     try:
         from traceback import format_exception
@@ -3020,16 +3036,22 @@ def getTraceback():
         return ''.join(format_exception(etype, value, tb))
     except:
         pass
+
+
 def getUnknownErrorMessage():
     msg = '%s\n%s (%s):\n\n%s' % (
         _('Sorry! Txt2tags aborted by an unknown error.'),
         _('Please send the following Error Traceback to the author'),
         my_email, getTraceback())
     return msg
+
+
 def Message(msg, level):
     if level <= VERBOSE and not QUIET:
         prefix = '-' * 5
         print "%s %s" % (prefix * level, msg)
+
+
 def Debug(msg, id_=0, linenr=None):
     "Show debug messages, categorized (colored or not)"
     if QUIET or not DEBUG:
@@ -3049,6 +3071,7 @@ def Debug(msg, id_=0, linenr=None):
             color = colors_bgdark[id_]
         msg = '\033[3%sm%s\033[m' % (color, msg)
     print "++ %s: %s" % (ids[id_], msg)
+
 
 def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     data = []
@@ -3079,6 +3102,7 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
     return data
 
+
 def Savefile(file_path, contents):
     try:
         f = open(file_path, 'wb')
@@ -3091,11 +3115,15 @@ def Savefile(file_path, contents):
     doit(contents)
     f.close()
 
+
 def showdic(dic):
     for k in dic.keys():
         print "%15s : %s" % (k, dic[k])
+
+
 def dotted_spaces(txt=''):
     return txt.replace(' ', '.')
+
 
 # TIP: win env vars http://www.winnetmag.com/Article/ArticleID/23873/23873.html
 def get_rc_path():
@@ -3125,7 +3153,6 @@ def get_rc_path():
         return rc_path
     # Sorry, not found
     return ''
-
 
 
 ##############################################################################
@@ -3396,6 +3423,7 @@ class CommandLine:
         Debug("Diet command line: %s" % ' '.join(args), 1)
         return args
 
+
 ##############################################################################
 
 class SourceDocument:
@@ -3543,6 +3571,7 @@ class SourceDocument:
             first_line=self.arearef[1]).get_raw_config()
         Debug("document raw config: %s" % raw, 1)
         return raw
+
 
 ##############################################################################
 
@@ -3815,6 +3844,7 @@ class ConfigMaster:
         else:
             return ret[-1]
 
+
 ########################################################################
 
 class ConfigLines:
@@ -4016,6 +4046,7 @@ class ConfigLines:
             repl   = getval(6) or getval(7) or getval(8) or ''
             value  = (patt, repl)
         return [target, name, value]
+
 
 ##############################################################################
 
@@ -5041,6 +5072,7 @@ class BlockMaster:
 
     def numtitle(self):
         return self.title('numtitle')
+
     def title(self, name='title'):
         result = []
 
@@ -5157,8 +5189,10 @@ class BlockMaster:
 
     def deflist(self):
         return self.list('deflist')
+
     def numlist(self):
         return self.list('numlist')
+
     def list(self, name='list'):
         result    = []
         items     = self.hold()
@@ -5429,6 +5463,7 @@ def listTargets():
     for target in targets:
         print "%s\t%s" % (target, TARGET_NAMES.get(target))
 
+
 def dumpConfig(source_raw, parsed_config):
     onoff = {1: _('ON'), 0: _('OFF')}
     data = [
@@ -5521,6 +5556,7 @@ def post_voodoo(lines, config):
 
     return subject.split('\n')
 
+
 def finish_him(outlist, config):
     "Writing output to screen or file"
     outfile = config['outfile']
@@ -5584,6 +5620,7 @@ def toc_inside_body(body, toc, config):
             ret.append(line)            # common line
     return ret
 
+
 def toc_tagger(toc, config):
     "Returns the tagged TOC, as a single tag or a tagged list"
     ret = []
@@ -5604,6 +5641,7 @@ def toc_tagger(toc, config):
     elif config['toc'] and TAGS['TOC']:
         ret = [TAGS['TOC']]
     return ret
+
 
 def toc_formatter(toc, config):
     "Formats TOC for automatic placement between headers and body"
@@ -5802,6 +5840,7 @@ def doHeader(headers, config):
 
     return template.split('\n')
 
+
 def doCommentLine(txt):
     # The -- string ends a (h|sg|xht)ml comment :(
     txt = maskEscapeChar(txt)
@@ -5811,6 +5850,7 @@ def doCommentLine(txt):
     if TAGS['comment']:
         return regex['x'].sub(txt, TAGS['comment'])
     return ''
+
 
 def doFooter(config):
     ret = []
@@ -5844,11 +5884,13 @@ def doFooter(config):
 
     return ret
 
+
 #this converts proper \ue37f escapes to RTF \u-7297 escapes
 def convertUnicodeRTF(match):
     num = int(match.group(1), 16)
     if num > 32767: num = num | -65536
     return ESCCHAR + 'u' + str(num) + '?'
+
 
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
@@ -5902,6 +5944,7 @@ def doEscape(target, txt):
             txt = re.sub(r'\\u([0-9a-f]{4})', convertUnicodeRTF, txt)
     return txt
 
+
 # TODO man: where - really needs to be escaped?
 def doFinalEscape(target, txt):
     "Last escapes of each line"
@@ -5920,6 +5963,7 @@ def doFinalEscape(target, txt):
         txt = txt.replace('\t', ESCCHAR + r'\1')
     return txt
 
+
 def EscapeCharHandler(action, data):
     "Mask/Unmask the Escape Char on the given string"
     if not data.strip():
@@ -5931,17 +5975,20 @@ def EscapeCharHandler(action, data):
     else:
         return data.replace(ESCCHAR, '\\')
 
+
 def maskEscapeChar(data):
     "Replace any Escape Char \ with a text mask (Input: str or list)"
     if type(data) == type([]):
         return map(lambda x: EscapeCharHandler('mask', x), data)
     return EscapeCharHandler('mask', data)
 
+
 def unmaskEscapeChar(data):
     "Undo the Escape char \ masking (Input: str or list)"
     if type(data) == type([]):
         return map(lambda x: EscapeCharHandler('unmask', x), data)
     return EscapeCharHandler('unmask', data)
+
 
 def addLineBreaks(mylist):
     "use LB to respect sys.platform"
@@ -5951,12 +5998,14 @@ def addLineBreaks(mylist):
         ret.append(line + LB)               # add final line break
     return ret
 
+
 # Convert ['foo\nbar'] to ['foo', 'bar']
 def expandLineBreaks(mylist):
     ret = []
     for line in mylist:
         ret.extend(line.split('\n'))
     return ret
+
 
 def compile_filters(filters, errmsg='Filter'):
     if filters:
@@ -5969,8 +6018,10 @@ def compile_filters(filters, errmsg='Filter'):
             filters[i] = (rgx, repl)
     return filters
 
+
 def enclose_me(tagname, txt):
     return TAGS.get(tagname + 'Open') + txt + TAGS.get(tagname + 'Close')
+
 
 def fix_relative_path(path):
     """
@@ -6054,6 +6105,7 @@ def beautify_me(name, line):
     txt = r'%s\1%s' % (open_, close)
     line = regex[name].sub(txt, line)
     return line
+
 
 def get_tagged_link(label, url):
     ret = ''
@@ -6283,6 +6335,7 @@ def process_source_file(file_='', noconf=0, contents=[]):
         full_parsed = {}
     return full_parsed, (head, conf, body)
 
+
 def get_infiles_config(infiles):
     """
     Find and Join into a single list, all configuration available
@@ -6290,6 +6343,7 @@ def get_infiles_config(infiles):
     first one to be called, before any processing.
     """
     return map(process_source_file, infiles)
+
 
 def convert_this_files(configs):
     global CONF
@@ -6657,7 +6711,6 @@ def convert(bodylines, config, firstlinenr=1):
             f_lastwasblank = 1
             continue
 
-
         #---------------------[ special ]---------------------------
 
         if regex['special'].search(line):
@@ -6786,7 +6839,6 @@ def convert(bodylines, config, firstlinenr=1):
         if BLOCK.isblock('table') and not regex['table'].search(line):
             ret.extend(BLOCK.blockout())
 
-
         #---------------------[ Horizontal Bar ]--------------------
 
         if regex['bar'].search(line):
@@ -6811,7 +6863,6 @@ def convert(bodylines, config, firstlinenr=1):
 
                 # We're done, nothing more to process
                 continue
-
 
         #---------------------[ Title ]-----------------------------
 
@@ -6974,11 +7025,9 @@ def convert(bodylines, config, firstlinenr=1):
            not line.count(MASK.tocmask):  # new para!
             ret.extend(BLOCK.blockin('para'))
 
-
         ############################################################
         ############################################################
         ############################################################
-
 
         #---------------------[ Final Parses ]----------------------
 
@@ -6987,7 +7036,6 @@ def convert(bodylines, config, firstlinenr=1):
 
         line = add_inline_tags(line)
         line = MASK.undo(line)
-
 
         #---------------------[ Hold or Return? ]-------------------
 
@@ -7033,7 +7081,6 @@ def convert(bodylines, config, firstlinenr=1):
     return ret, marked_toc
 
 
-
 ##############################################################################
 ################################### GUI ######################################
 ##############################################################################
@@ -7057,6 +7104,7 @@ def load_GUI_resources():
     from tkFileDialog import askopenfilename
     from tkMessageBox import showinfo, showwarning, showerror
     import Tkinter
+
 
 class Gui:
     "Graphical Tk Interface"
@@ -7103,12 +7151,15 @@ class Gui:
     ### Config as dic for python 1.5 compat (**opts don't work :( )
     def entry(self, **opts):
         return Tkinter.Entry(self.window, opts)
+
     def label(self, txt='', bg=None, **opts):
         opts.update({'text': txt, 'bg': bg or self.bg1})
         return Tkinter.Label(self.window, opts)
+
     def button(self, name, cmd, **opts):
         opts.update({'text': name, 'command': cmd})
         return Tkinter.Button(self.window, opts)
+
     def check(self, name, checked=0, **opts):
         bg, fg = self.bg2, self.fg2
         opts.update({
@@ -7126,6 +7177,7 @@ class Gui:
         if checked:
             chk.select()
         chk.grid(columnspan=2, sticky='w', padx=0)
+
     def menu(self, sel, items):
         return apply(Tkinter.OptionMenu, (self.window, sel) + tuple(items))
 
@@ -7136,11 +7188,13 @@ class Gui:
             fg=self.fg1,
             bg=self.bg1,
             wraplength=self.action_length).grid(column=0, row=self.row)
+
     def frame_open(self):
         self.window = Tkinter.Frame(
             self.root,
             bg=self.bg2,
             borderwidth=self.frame_border)
+
     def frame_close(self):
         self.window.grid(
             column=1,
@@ -7150,6 +7204,7 @@ class Gui:
         self.window = self.root
         self.label('').grid()
         self.row += 2   # update row count
+
     def target_name2key(self):
         name = self.target_name.get()
         target = filter(lambda x: TARGET_NAMES[x] == name, TARGETS)
@@ -7158,6 +7213,7 @@ class Gui:
         except:
             key = ''
         self.target = self.setvar(key)
+
     def target_key2name(self):
         key = self.target.get()
         name = TARGET_NAMES.get(key) or key
@@ -7165,6 +7221,7 @@ class Gui:
 
     def exit(self):
         self.root.destroy()
+
     def setvar(self, val):
         z = Tkinter.StringVar()
         z.set(val)
