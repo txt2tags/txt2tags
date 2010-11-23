@@ -22,24 +22,28 @@ svn update
 
 = Coding style =
 
-The current code is a mess, it will be reformatted in the future. For now just try to maintain the current style.
+The current code is PEP-8 compatible, with a few exceptions for visual alignment of dictionary keys and variable setting. Long lines (>80) are also allowed.
 
-Indentation:
+Use the {{{dist/check-code.sh}}} script to check if the code is following the rules.
 
- * Use TABs for indentation, not spaces.
- * Do not change the indentation of old code.
+Please read [http://www.python.org/dev/peps/pep-0008/ PEP-8] for details about the code syntax.
+
+A quick summary:
+
+ * Use 4 spaces for indentation, not TABs.
  * Use just one command per line.
+ * Use spaces around operators: {{{a = 1 + 2}}} not {{{a=1+2}}}
+ * Prefer descriptive names for variables and functions: {{{table_row}}} not {{{tr}}}
  * Avoid global variables.
  * Use Unix line breaks (LF), not Windows (CR+LF).
 
 Other:
 
  * Comment your code.
- * Avoid Python's new commands and features, to make txt2tags compatible with old Python versions. Stick with 2.x features, do not use Python 3 features.
+ * Avoid Python's new commands and features, to make txt2tags compatible with old Python versions. Stick with Python 2.3 features.
 
 Useful reading:
 
- * For the future, we will follow [http://www.python.org/dev/peps/pep-0008/ PEP-8].
  * For a quick reference, the [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html Google Python Style Guide] is a good read.
 
 = Debug =
@@ -56,13 +60,19 @@ You can use the {{{--debug}}} option to see what's going on behind the curtain w
 
 Make extensive tests to make sure your code really do want you want it to do.
 
-== 2. ALWAYS run the test suite ==
+== 2. ALWAYS run the test suite and check-code.sh ==
 
 The test suite must be 100% for you to commit. If you find any error, fix it before the commit.
 
 {{{
 cd test
 python run.py
+}}}
+
+Also, check if your code is ok:
+
+{{{
+./dist/check-code.sh
 }}}
 
 == 3. Make a diff to review your changes ==
