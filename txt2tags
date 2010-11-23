@@ -5888,7 +5888,8 @@ def doFooter(config):
 #this converts proper \ue37f escapes to RTF \u-7297 escapes
 def convertUnicodeRTF(match):
     num = int(match.group(1), 16)
-    if num > 32767: num = num | -65536
+    if num > 32767:
+        num = num | -65536
     return ESCCHAR + 'u' + str(num) + '?'
 
 
@@ -5936,7 +5937,7 @@ def doEscape(target, txt):
                 Error('Problem decoding line "' % txt + '"')
             txt = txt.encode('cp1252', 'backslashreplace')
             # escape ANSI codes above ascii range
-            for code in range(128,255):
+            for code in range(128, 255):
                 txt = re.sub('%c' % code, ESCCHAR + "'" + hex(code)[2:], txt)
             # some code were preescaped by txt.encode
             txt = re.sub(r'\\x([0-9a-f]{2})', r"\\\'\1", txt)
