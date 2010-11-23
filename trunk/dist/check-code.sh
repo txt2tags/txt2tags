@@ -29,6 +29,15 @@ hecho "searching for lines >80 columns"
 # sed "s/$(echo -ne '\t')/        /g" $t2t | egrep '.{81}'
 echo DISABLED
 
+hecho "checking PEP-8 compliance"
+if pep8 --version >/dev/null 2>&1
+then
+    pep8 --ignore E203,E221,E241,E501 -r $t2t
+else
+    echo "pep8 command not installed"
+    echo "See http://pypi.python.org/pypi/pep8"
+fi
+        
 hecho 'checking version'
 $t2t -V | sed 's/<.*//'
 
