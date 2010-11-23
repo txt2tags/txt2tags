@@ -3065,6 +3065,8 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     else:
         try:
             f = urllib.urlopen(file_path)
+            if f.getcode() == 404:  # URL not found
+                raise
             data = f.readlines()
             f.close()
         except:
