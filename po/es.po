@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es_mjp\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2010-10-29 12:43+0100\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: spanish <en@li.org>\n"
@@ -81,6 +81,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -253,6 +256,9 @@ msgstr "No puede abrir el archivo para escritura:"
 msgid "%s (try --help)"
 msgstr "%s (intente --help)"
 
+msgid "Ignored config"
+msgstr ""
+
 # documento fuente de carga?
 # maybe the hispanish original translation (HOT)
 # is Ok, but anyway i need to know the message context.
@@ -272,8 +278,8 @@ msgstr "Áreas encontradas: %s"
 msgid "Scanning source document CONF area"
 msgstr "Analizando área CONF del documento fuente"
 
-msgid "Added config %s : %s"
-msgstr "Se agrego la configuración %s : %s"
+msgid "Added config"
+msgstr "Se agrego la configuración"
 
 # Ninguna blanco especificada (intento --help)
 msgid "No target specified (try --help)"
@@ -378,6 +384,9 @@ msgid "Table of Contents"
 msgstr "Tabla de Contenidos"
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 # El contenido del documento de fuente almacenó

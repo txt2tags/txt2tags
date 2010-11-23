@@ -1,10 +1,10 @@
-   de.po: 113 translated messages, 35 untranslated messages.
-   es.po: 137 translated messages, 11 untranslated messages.
-   eu.po: 137 translated messages, 11 untranslated messages.
-   fi.po: 113 translated messages, 35 untranslated messages.
-   fr.po: 136 translated messages, 12 untranslated messages.
-   hu.po: 137 translated messages, 11 untranslated messages.
-   it.po: 113 translated messages, 35 untranslated messages.
-pt_BR.po: 138 translated messages, 10 untranslated messages.
-   uk.po: 112 translated messages, 36 untranslated messages.
-zh_CN.po: 137 translated messages, 11 untranslated messages.
+   de.po: 113 translated messages, 38 untranslated messages.
+   es.po: 137 translated messages, 14 untranslated messages.
+   eu.po: 137 translated messages, 14 untranslated messages.
+   fi.po: 113 translated messages, 38 untranslated messages.
+   fr.po: 136 translated messages, 15 untranslated messages.
+   hu.po: 137 translated messages, 14 untranslated messages.
+   it.po: 113 translated messages, 38 untranslated messages.
+pt_BR.po: 138 translated messages, 13 untranslated messages.
+   uk.po: 112 translated messages, 39 untranslated messages.
+zh_CN.po: 137 translated messages, 14 untranslated messages.

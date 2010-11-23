@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2008-06-07 20:52+0300\n"
 "Last-Translator: Mikko Piippo <mikko.piippo@helsinki.fi>\n"
 "Language-Team:  <fi@li.org>\n"
@@ -82,6 +82,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -235,6 +238,9 @@ msgstr "Ei voitu kirjoittaa tiedostoon:"
 msgid "%s (try --help)"
 msgstr "%s (kokeile --help)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "Ladataan lähdeasiakirjaa"
 
@@ -247,8 +253,8 @@ msgstr "Alueita löydetty: %s"
 msgid "Scanning source document CONF area"
 msgstr "Luetaan lähdeasiakirjan CONF-aluetta"
 
-msgid "Added config %s : %s"
-msgstr "Lisätään määritys %s: %s"
+msgid "Added config"
+msgstr "Lisätään määritys"
 
 msgid "No target specified (try --help)"
 msgstr "Kohdetta ei määritetty (kokeile --help)"
@@ -343,6 +349,9 @@ msgid "Table of Contents"
 msgstr ""
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"
