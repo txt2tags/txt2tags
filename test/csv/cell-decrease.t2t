@@ -1,4 +1,5 @@
-one,two,three,four
-one,two,three
-one,two
-one
+
+Line 1.
+%!csv: cell-decrease.csv
+Line 2.
+
