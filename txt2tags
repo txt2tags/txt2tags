@@ -5333,7 +5333,7 @@ class MacroMaster:
         elif flag == 'f':
             x = info['name']
         elif flag == 'F':
-            x = re.sub('\.[^.]*$', '', info['name'])
+            x = os.path.splitext(info['name'])[0]
         elif flag == 'd':
             x = info['dir']
         elif flag == 'D':
@@ -5341,8 +5341,7 @@ class MacroMaster:
         elif flag == 'p':
             x = info['path']
         elif flag == 'e':
-            x = re.search('.(\.([^.]+))?$', info['name']).group(2) or ''
-        #TODO simpler way for %e ?
+            x = os.path.splitext(info['name'])[1].replace('.', '')
         else:
             x = '%'+flag            # false alarm
         return x
