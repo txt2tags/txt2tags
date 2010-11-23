@@ -13,6 +13,9 @@ del sys.path[0]
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
+remote_root = 'http://txt2tags.org/test/'
+remote_infiles = ['mtime.t2t']
+
 def run():
 	# test all OK files found
 	for outfile in glob.glob("ok/*"):
@@ -23,10 +26,14 @@ def run():
 			target = 'txt'
 			stderr = 1
 		infile = basename + ".t2t"
+		if infile in remote_infiles:
+			infile = remote_root + infile
 		outfile = outfile.replace('ok/', '')
 		if lib.initTest(basename, infile, outfile):
 			cmdline = []
 			cmdline.extend(['-i', infile])
+			if infile.startswith(remote_root):
+				cmdline.extend(['-o', outfile])
 			if stderr:
 				cmdline.extend(['-o', '-'])
 				cmdline.append('>' + outfile)
