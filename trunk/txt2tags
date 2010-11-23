@@ -100,6 +100,7 @@ import sys
 import time
 import getopt
 import textwrap
+import urllib
 
 # The CSV module is new in Python version 2.3
 try:
@@ -3050,22 +3051,28 @@ def Debug(msg, id_=0, linenr=None):
 
 def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     data = []
+    
+    # STDIN
     if file_path == '-':
         try:
             data = sys.stdin.readlines()
         except:
             if not ignore_error:
                 Error(_('You must feed me with data on STDIN!'))
+
+    # URL or local file
     else:
         try:
-            f = open(file_path)
+            f = urllib.urlopen(file_path)
             data = f.readlines()
             f.close()
         except:
             if not ignore_error:
                 Error(_("Cannot read file:") + ' ' + file_path)
+
     if remove_linebreaks:
         data = map(lambda x: re.sub('[\n\r]+$', '', x), data)
+
     Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
     return data
 
