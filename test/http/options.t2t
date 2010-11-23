@@ -1,0 +1,5 @@
+
+%!options: --config-file http://txt2tags.org/test/includeconf.t2t
+%!options: --style       http://txt2tags.org/test/file.css
+%!target:html
+Body.
