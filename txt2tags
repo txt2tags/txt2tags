@@ -5646,15 +5646,18 @@ def doHeader(headers, config):
 
     # Read user's template file
     else:
-        templatefile = ''
-        names = [config['template']+'.'+target, config['template']]
-        for file in names:
-            if os.path.isfile(file):
-                templatefile = file
-                break
-        if not templatefile:
-            Error(_("Cannot find template file:") + " " + config['template'])
-        template = Readfile(templatefile, remove_linebreaks=1)
+        if PathMaster().is_url(config['template']):
+            template = Readfile(config['template'], remove_linebreaks=1)
+        else:
+            templatefile = ''
+            names = [config['template'] + '.' + target, config['template']]
+            for filename in names:
+                if os.path.isfile(filename):
+                    templatefile = filename
+                    break
+            if not templatefile:
+                Error(_("Cannot find template file:") + ' ' + config['template'])
+            template = Readfile(templatefile, remove_linebreaks=1)
 
     head_data = {'STYLE': [], 'ENCODING': ''}
 
