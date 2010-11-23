@@ -2804,19 +2804,19 @@ def getRegexes():
     # - marks must be glued with the contents, no boundary spaces
     # - they are greedy, so in ****bold****, turns to <b>**bold**</b>
     'fontMono':
-        re.compile(  r'``([^\s](|.*?[^\s])`*)``'),
+        re.compile(r'``([^\s](|.*?[^\s])`*)``'),
     'raw':
-        re.compile(  r'""([^\s](|.*?[^\s])"*)""'),
+        re.compile(r'""([^\s](|.*?[^\s])"*)""'),
     'tagged':
-        re.compile(  r"''([^\s](|.*?[^\s])'*)''"),
+        re.compile(r"''([^\s](|.*?[^\s])'*)''"),
     'fontBold':
         re.compile(r'\*\*([^\s](|.*?[^\s])\**)\*\*'),
     'fontItalic':
-        re.compile(  r'//([^\s](|.*?[^\s])/*)//'),
+        re.compile(r'//([^\s](|.*?[^\s])/*)//'),
     'fontUnderline':
-        re.compile(  r'__([^\s](|.*?[^\s])_*)__'),
+        re.compile(r'__([^\s](|.*?[^\s])_*)__'),
     'fontStrike':
-        re.compile(  r'--([^\s](|.*?[^\s])-*)--'),
+        re.compile(r'--([^\s](|.*?[^\s])-*)--'),
     'list':
         re.compile(r'^( *)(-) (?=[^ ])'),
     'numlist':
@@ -3364,7 +3364,7 @@ class CommandLine:
             ret = filtered[:]
 
         # Add the original command line string as 'realcmdline'
-        ret.append( ['all', 'realcmdline', cmdline] )
+        ret.append(['all', 'realcmdline', cmdline])
 
         return ret
 
