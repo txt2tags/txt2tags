@@ -1,0 +1,8 @@
+
+%!target:txt
+Body.
+%!include: http://txt2tags.org/test/include-t2t.t2t
+%!include: ""http://txt2tags.org/test/include-raw.t2t""
+%!include: ''http://txt2tags.org/test/include-tagged.t2t''
+%!include: ``http://txt2tags.org/test/include-verb.t2t``
+%!csv: http://txt2tags.org/test/file.csv
