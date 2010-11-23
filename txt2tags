@@ -2970,7 +2970,7 @@ def aa_slide(title, char, width):
     res.append(aa_line(char, width))
     return res
 
-def aa_table(table, header = 0):
+def aa_table(table, header=0):
     data = [row['cells'] for row in table]
     n = max([len(line) for line in data])
     data = [line + (n - len(line)) * [''] for line in data]
