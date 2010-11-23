@@ -33,7 +33,8 @@ def WriteFile(filename, content=''):
     f.close()
 
 def MoveFile(orig, target):
-    if os.path.isfile(target): os.remove(target)
+    if os.path.isfile(target):
+        os.remove(target)
     os.link(orig, target)
     os.remove(orig)
 
@@ -52,11 +53,11 @@ def initTest(name, infile, outfile, okfile=None):
 def getFileMtime(file):
     ret = "-NO-MTIME-"
     if os.path.isfile(file):
-        ret = time.strftime('%Y%m%d',time.localtime(os.path.getmtime(file)))
+        ret = time.strftime('%Y%m%d', time.localtime(os.path.getmtime(file)))
     return ret
 
 def getCurrentDate():
-    return time.strftime('%Y%m%d',time.localtime(time.time()))
+    return time.strftime('%Y%m%d', time.localtime(time.time()))
 
 #
 # the hot tools
