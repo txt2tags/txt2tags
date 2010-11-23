@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2005-09-05 12:00-0200\n"
 "Last-Translator: manne <manne@somedomain>\n"
 "Language-Team: de team <LL@li.org>\n"
@@ -79,6 +79,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -241,6 +244,9 @@ msgstr "Kann nicht in Datei schreiben:"
 msgid "%s (try --help)"
 msgstr "%s (Hilfefunktion --help benutzen)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "Quelldatei wird geladen"
 
@@ -253,8 +259,8 @@ msgstr "Bereiche gefunden: %s"
 msgid "Scanning source document CONF area"
 msgstr "CONF Bereich der Quelldatei wird bearbeitet"
 
-msgid "Added config %s : %s"
-msgstr "Konfiguration hinzugefügt %s : %s"
+msgid "Added config"
+msgstr "Konfiguration hinzugefügt"
 
 msgid "No target specified (try --help)"
 msgstr "Kein Ziel angegeben (Hilfefunktion --help benutzen)"
@@ -350,6 +356,9 @@ msgid "Table of Contents"
 msgstr ""
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"

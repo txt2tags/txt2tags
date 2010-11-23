@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2010-07-20 20:00-0200\n"
 "Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
 "Language-Team: Ukrainian\n"
@@ -79,6 +79,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -232,6 +235,9 @@ msgstr "Не можу відкрити файл для запису:"
 msgid "%s (try --help)"
 msgstr "%s (спробуйте --help)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "Завантаження вхідного файлу"
 
@@ -244,8 +250,8 @@ msgstr "Знайдені області: %s"
 msgid "Scanning source document CONF area"
 msgstr "Сканування області налаштувань вхідного документа"
 
-msgid "Added config %s : %s"
-msgstr "Додане налаштування: %s : %s"
+msgid "Added config"
+msgstr "Додане налаштування"
 
 msgid "No target specified (try --help)"
 msgstr "Не зазначений тип вихідного документа (спробуйте --help)"
@@ -340,6 +346,9 @@ msgid "Table of Contents"
 msgstr ""
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"

@@ -2,8 +2,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6.492\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"Project-Id-Version: txt2tags 2.6.527\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,6 +83,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -214,6 +217,9 @@ msgstr ""
 msgid "%s (try --help)"
 msgstr ""
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr ""
 
@@ -226,7 +232,7 @@ msgstr ""
 msgid "Scanning source document CONF area"
 msgstr ""
 
-msgid "Added config %s : %s"
+msgid "Added config"
 msgstr ""
 
 msgid "No target specified (try --help)"
@@ -320,6 +326,9 @@ msgid "Table of Contents"
 msgstr ""
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"

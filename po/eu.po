@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2010-08-12 18:03+0100\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: Basque\n"
@@ -80,6 +80,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -246,6 +249,9 @@ msgstr "Ezin da fitxategia idazteko ireki:"
 msgid "%s (try --help)"
 msgstr "%s (--help frogatu)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "Iturburu dokumentua kargatzen"
 
@@ -258,8 +264,8 @@ msgstr "Topatutako Areak: %s"
 msgid "Scanning source document CONF area"
 msgstr "Iturburu dokumentuaren CONF area irakurtzen"
 
-msgid "Added config %s : %s"
-msgstr "%s konfigurazioa gehituta: %s"
+msgid "Added config"
+msgstr "konfigurazioa gehituta"
 
 msgid "No target specified (try --help)"
 msgstr "Ez da helbururik zehaztu (--help frogatu)"
@@ -357,6 +363,9 @@ msgid "Table of Contents"
 msgstr "Edukien Taula"
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"

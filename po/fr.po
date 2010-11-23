@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6\n"
-"POT-Creation-Date: 2010-11-18 10:22+BRST\n"
+"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
 "PO-Revision-Date: 2010-08-13 00:35+0100\n"
 "Last-Translator: Claude Hiebel <chiebel@free.fr>\n"
 "Language-Team: FRENCH <LL@li.org>\n"
@@ -79,6 +79,9 @@ msgid "Redmine Wiki page"
 msgstr ""
 
 msgid "SPIP article"
+msgstr ""
+
+msgid "RTF document"
 msgstr ""
 
 msgid "%s version %s <%s>"
@@ -233,6 +236,9 @@ msgstr "Impossible d'ouvrir le fichier en écriture :"
 msgid "%s (try --help)"
 msgstr "%s (essayez --help)"
 
+msgid "Ignored config"
+msgstr ""
+
 msgid "Loading source document"
 msgstr "Chargement du document source"
 
@@ -245,8 +251,8 @@ msgstr "Zones %s trouvées"
 msgid "Scanning source document CONF area"
 msgstr "Scrutation de la zone CONF du document source"
 
-msgid "Added config %s : %s"
-msgstr "Ajouté config %s : %s"
+msgid "Added config"
+msgstr "Ajouté config"
 
 msgid "No target specified (try --help)"
 msgstr "Pas de cible spécifiée (essayez --help)"
@@ -341,6 +347,9 @@ msgid "Table of Contents"
 msgstr "Table des matières"
 
 msgid "Cannot find template file:"
+msgstr ""
+
+msgid "CSS include failed for %s"
 msgstr ""
 
 msgid "Source document contents stored"
