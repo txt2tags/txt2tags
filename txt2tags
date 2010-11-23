@@ -3052,7 +3052,7 @@ def Debug(msg, id_=0, linenr=None):
 
 def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     data = []
-    
+
     # STDIN
     if file_path == '-':
         try:
@@ -3141,7 +3141,7 @@ class PathMaster:
 
     def join(self, dirname, filename):
         """Join paths, unless filename is STDOUT, absolute or URL."""
-        
+
         if not dirname \
             or not filename \
             or filename in (STDOUT, MODULEOUT) \
@@ -3333,7 +3333,7 @@ class CommandLine:
                     filtered.append([target, name, value])
                 else:
                     fancykey = dotted_spaces("%12s" % name)
-                    Message(_("Ignored config") + (" %s : %s" % (fancykey, value)), 3)                    
+                    Message(_("Ignored config") + (" %s : %s" % (fancykey, value)), 3)
             ret = filtered[:]
 
         # Add the original command line string as 'realcmdline'
@@ -3876,10 +3876,10 @@ class ConfigLines:
         "Perform the %!includeconf action, returning RAW config"
         if not file_:
             return []
-        
+
         # Fix config file path
         file_ = self.fix_config_relative_path(file_)
-        
+
         # Read and parse included config file contents
         return ConfigLines(file_=file_).get_raw_config()
 
@@ -3906,7 +3906,7 @@ class ConfigLines:
             line = self.lines[i]
             Message(_("Processing line %03d: %s") % (first + i, line), 2)
             target, key, val = self.parse_line(line)
-            
+
             if not key:  # no config on this line
                 continue
 
@@ -3929,15 +3929,15 @@ class ConfigLines:
 
             # %!includeconf
             if key == 'includeconf':
-                
+
                 # Sanity
                 err = _('A file cannot include itself (loop!)')
                 if val == self.file:
                     Error("%s: %%!includeconf: %s" % (err, self.file))
-                
+
                 more_raw = self.include_config_file(val)
                 ret.extend(more_raw)
-                
+
                 Message(_("Finished Config file inclusion: %s") % val, 2)
 
             # Normal config, except %!includeconf
@@ -5059,9 +5059,9 @@ class BlockMaster:
 
     def table(self):
         result = []
-        
+
         if TARGET == 'art':
-            return aa_table(self.tableparser.rows, self.tableparser.title) + [''] 
+            return aa_table(self.tableparser.rows, self.tableparser.title) + ['']
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
@@ -5380,10 +5380,10 @@ class MacroMaster:
                         # But I'm trying to avoid yet another global var
                         # or fake 'sourcefile_mtime' config.
                         #
-                        # >>> f= urllib.urlopen('http://txt2tags.org/index.t2t') 
+                        # >>> f= urllib.urlopen('http://txt2tags.org/index.t2t')
                         # >>> f.info().get('last-modified')
                         # 'Thu, 18 Nov 2010 22:42:11 GMT'
-                        # >>> 
+                        # >>>
                         #
                         f = urllib.urlopen(self.infile)
                         mtime_rfc2822 = f.info().get('last-modified')
@@ -5982,7 +5982,7 @@ def fix_relative_path(path):
     - path is absolute
     - infile is STDIN
     - outfile is STDOUT
-    
+
     Note: Keep this rules in sync with fix_css_out_path()
     """
     if regex['link'].match(path) \
