@@ -1,0 +1,5 @@
+
+%!target: html
+%!includeconf: config.t2t
+%!options: --template http://txt2tags.org/test/template.html
+Body.
