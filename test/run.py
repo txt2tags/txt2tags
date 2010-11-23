@@ -24,7 +24,7 @@ TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
 
 if len(sys.argv) > 1:
-	MODULES = sys.argv[1:]
+    MODULES = sys.argv[1:]
 
 # Show which version is being tested
 os.system(lib.TXT2TAGS + " -V")
@@ -33,48 +33,48 @@ print 'Base command used for all tests:\n  ' + lib.TXT2TAGS
 print
 
 for module in MODULES:
-	print 'Entering on module', module
-	
-	# loading test module
-	os.chdir(SCRIPT_DIR)
-	sys.path.insert(0, module)
-	import run
-	
-	# do what you have to do
-	if not os.path.isdir(module):
-		print 'ERROR: Invalid module %s' % module
-		sys.exit()
-	os.chdir(module)
-	ok, failed, errors = run.run()
-	
-	# update count
-	TOTAL_OK = TOTAL_OK + ok
-	TOTAL_FAILED = TOTAL_FAILED + failed
-	for err in errors:
-		ERRORS.append(os.path.join(module, lib.DIR_ERROR, err))
-	
-	# cleaning the house
-	del sys.path[0]
-	del run
-	del sys.modules['run']
+    print 'Entering on module', module
+
+    # loading test module
+    os.chdir(SCRIPT_DIR)
+    sys.path.insert(0, module)
+    import run
+
+    # do what you have to do
+    if not os.path.isdir(module):
+        print 'ERROR: Invalid module %s' % module
+        sys.exit()
+    os.chdir(module)
+    ok, failed, errors = run.run()
+
+    # update count
+    TOTAL_OK = TOTAL_OK + ok
+    TOTAL_FAILED = TOTAL_FAILED + failed
+    for err in errors:
+        ERRORS.append(os.path.join(module, lib.DIR_ERROR, err))
+
+    # cleaning the house
+    del sys.path[0]
+    del run
+    del sys.modules['run']
 
 # show report at the end
 if TOTAL_FAILED:
-	stats = "%d ok / %d failed" % (TOTAL_OK, TOTAL_FAILED)
+    stats = "%d ok / %d failed" % (TOTAL_OK, TOTAL_FAILED)
 else:
-	stats = "100% ok"
+    stats = "100% ok"
 print
 print "Totals: %d tests (%s)" % (TOTAL_OK+TOTAL_FAILED, stats)
 
 if ERRORS:
-	print
-	print "Check out the files with errors:"
-	print '\n'.join(ERRORS)
-	sys.exit(1)
+    print
+    print "Check out the files with errors:"
+    print '\n'.join(ERRORS)
+    sys.exit(1)
 
 if len(sys.argv) == 1:
-	print
-	print "Don't forget to run the extra tests:"
-	print 'sample/run.sh'
-	print 'art/run.sh'
-	print 'path/run.sh'
+    print
+    print "Don't forget to run the extra tests:"
+    print 'sample/run.sh'
+    print 'art/run.sh'
+    print 'path/run.sh'
