@@ -3499,7 +3499,8 @@ class SourceDocument:
                rgx['macros'].match(buf[i]) or # ... %%macro
                rgx['toc'].match(buf[i])    or # ... %%toc
                cfg_parser(buf[i], 'include')[1] or # ... %!include
-               cfg_parser(buf[i], 'csv')[1]        # ... %!csv
+               cfg_parser(buf[i], 'csv')[1] or     # ... %!csv
+               cfg_parser(buf[i], 'csvheader')[1]  # ... %!csvheader
             ):
                 ref[2] = i
                 break
@@ -6670,7 +6671,7 @@ def convert(bodylines, config, firstlinenr=1):
                 continue
 
             # %!csv command
-            elif key == 'csv':
+            elif key in ['csv', 'csvheader']:
 
                 if not csv:
                     Error("Python module 'csv' not found, but needed for %!csv")
@@ -6684,6 +6685,8 @@ def convert(bodylines, config, firstlinenr=1):
                 try:
                     for row in reader:
                         table.append('| %s |' % ' | '.join(row))
+                    if key == 'csvheader':
+                        table[0] = '|' + table[0]
                 except csv.Error, e:
                     Error('CSV: file %s: %s' % (filename, e))
 
