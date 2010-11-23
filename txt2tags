@@ -2919,10 +2919,10 @@ def getRegexes():
     bank['linkmark'] = re.compile(
         r'\[(?P<label>%s|[^]]+) (?P<link>%s|%s|%s)\]' % (
             patt_img, retxt_url, patt_email, retxt_url_local),
-        re.L+re.I)
+        re.L + re.I)
 
     # Image
-    bank['img'] = re.compile(patt_img, re.L+re.I)
+    bank['img'] = re.compile(patt_img, re.L + re.I)
 
     # Special things
     bank['special'] = re.compile(r'^%!\s*')
@@ -3227,21 +3227,21 @@ class CommandLine:
         for opt in self.short_long.keys():
             long_ = self.short_long[opt]
             if long_ in self.all_options: # is flag or option?
-                opt = opt+':'        # option: have param
+                opt = opt + ':'        # option: have param
             ret.append(opt)
         #Debug('Valid SHORT options: %s' % ret)
         return ''.join(ret)
 
     def _compose_long_opts(self):
         "Returns a list with all the valid long options/flags"
-        ret = map(lambda x: x+'=', self.all_options)         # add =
-        ret.extend(self.all_flags)                           # flag ON
-        ret.extend(self.all_actions)                         # actions
-        ret.extend(map(lambda x: 'no-'+x, self.all_flags))   # add no-*
-        ret.extend(['no-style', 'no-encoding'])              # turn OFF
-        ret.extend(['no-outfile', 'no-infile'])              # turn OFF
-        ret.extend(['no-dump-config', 'no-dump-source'])     # turn OFF
-        ret.extend(['no-targets'])                           # turn OFF
+        ret = map(lambda x: x + '=', self.all_options)        # add =
+        ret.extend(self.all_flags)                            # flag ON
+        ret.extend(self.all_actions)                          # actions
+        ret.extend(map(lambda x: 'no-' + x, self.all_flags))  # add no-*
+        ret.extend(['no-style', 'no-encoding'])               # turn OFF
+        ret.extend(['no-outfile', 'no-infile'])               # turn OFF
+        ret.extend(['no-dump-config', 'no-dump-source'])      # turn OFF
+        ret.extend(['no-targets'])                            # turn OFF
         #Debug('Valid LONG options: %s' % ret)
         return ret
 
@@ -3362,7 +3362,7 @@ class CommandLine:
             del cfg['toc-only']
         # Add target type
         if cfg.has_key('target'):
-            args.append('-t '+cfg['target'])
+            args.append('-t ' + cfg['target'])
             del cfg['target']
         # Add other options
         for key in cfg.keys():
@@ -3378,17 +3378,17 @@ class CommandLine:
                 continue
             # -short format
             if key in use_short.keys():
-                args.append('-'+use_short[key])
+                args.append('-' + use_short[key])
                 continue
             # --long format
             if key in self.all_flags: # add --option
-                args.append('--'+key)
+                args.append('--' + key)
             else:                     # add --option=value
                 args.append('--%s=%s' % (key, val))
         # The outfile using -o
         if cfg.has_key('outfile') and \
            cfg['outfile'] != dft_options.get('outfile'):
-            args.append('-o '+cfg['outfile'])
+            args.append('-o ' + cfg['outfile'])
         # Place input file(s) always at the end
         if cfg.has_key('infile'):
             args.append(' '.join(cfg['infile']))
@@ -3869,7 +3869,7 @@ class ConfigLines:
             if not line:  # empty
                 continue
             if line[0] != '%':
-                Error(errormsg % (filename, i+1, line))
+                Error(errormsg % (filename, i + 1, line))
         return lines
 
     def include_config_file(self, file_=''):
@@ -3904,7 +3904,7 @@ class ConfigLines:
 
         for i in xrange(len(self.lines)):
             line = self.lines[i]
-            Message(_("Processing line %03d: %s") % (first+i, line), 2)
+            Message(_("Processing line %03d: %s") % (first + i, line), 2)
             target, key, val = self.parse_line(line)
             
             if not key:  # no config on this line
@@ -3961,7 +3961,7 @@ class ConfigLines:
             \s*:\s*               # key:value delimiter with opt spaces
             (?P<value>\S.+?)      # config value
             \s*$                  # rstrip() spaces and hit EOL
-            """ % (re_name, re_target), re.I+re.VERBOSE)
+            """ % (re_name, re_target), re.I + re.VERBOSE)
         prepostregex = re.compile("""
                                       # ---[ PATTERN ]---
             ^( "([^"]*)"          # "double quoted" or
@@ -4151,7 +4151,7 @@ class MaskMaster:
         # Expand verb
         for mono in self.monobank:
             open_, close = TAGS['fontMonoOpen'], TAGS['fontMonoClose']
-            line = line.replace(self.monomask, open_+mono+close, 1)
+            line = line.replace(self.monomask, open_ + mono + close, 1)
 
         # Expand raw
         for raw in self.rawbank:
@@ -4286,8 +4286,8 @@ class TitleMaster:
             self.tag = TAGS.get('%s%dOpen' % (kind, level)) or \
                        TAGS.get('title%dOpen' % level)
         else:
-            self.tag = TAGS.get(kind+`level`) or \
-                       TAGS.get('title'+`level`)
+            self.tag = TAGS.get(kind + `level`) or \
+                       TAGS.get('title' + `level`)
         self.last_level = self.level
         self.kind  = kind
         self.level = level
@@ -4303,11 +4303,11 @@ class TitleMaster:
             # Reset sublevels count (if any)
             max_levels = len(self.count)
             if self.level < max_levels-1:
-                for i in xrange(self.level+1, max_levels):
+                for i in xrange(self.level + 1, max_levels):
                     self.count[i] = 0
             # Compose count id from hierarchy
             for i in xrange(self.level):
-                count_id= "%s%d." % (count_id, self.count[i+1])
+                count_id= "%s%d." % (count_id, self.count[i + 1])
         self.count_id = count_id
 
     def _set_label(self):
@@ -4318,7 +4318,7 @@ class TitleMaster:
         #TODO how to translate safely accented chars to plain?
         #self.label = re.sub('[^A-Za-z0-9]', '', self.txt)[:15]
         # 'tocN' label - sequential count, ignoring 'toc-level'
-        #self.label = self.anchor_prefix + str(len(self.toc)+1)
+        #self.label = self.anchor_prefix + str(len(self.toc) + 1)
 
     def _get_tagged_anchor(self):
         "Return anchor if user defined a label, or TOC is on."
@@ -4386,7 +4386,7 @@ class TitleMaster:
                     ret.append('') # blank line before
                 ret.extend(aa_box(tagged, AA, CONF['width']))
         elif TARGET == 'art':
-            level = 'level'+str(self.level)
+            level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('') # blank line before
             ret.extend(aa_under(tagged, AA[level], CONF['width']))
@@ -4403,7 +4403,7 @@ class TitleMaster:
                 continue
             indent = '  '*level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
-            label = label or self.anchor_prefix+`toc_count`
+            label = label or self.anchor_prefix + `toc_count`
             toc_count += 1
 
             # TOC will have crosslinks to anchors
@@ -4459,7 +4459,7 @@ class TableMaster:
     def _get_open_tag(self):
         topen     = TAGS['tableOpen']
         tborder   = TAGS['_tableBorder']
-        talign    = TAGS['_tableAlign'+self.align]
+        talign    = TAGS['_tableAlign' + self.align]
         calignsep = TAGS['tableColAlignSep']
         calign    = ''
 
@@ -4498,7 +4498,7 @@ class TableMaster:
             span = 1
             m = re.search('\a(\|+)$', cell)
             if m:
-                span = len(m.group(1))+1
+                span = len(m.group(1)) + 1
             ret.append(span)
         return ret
 
@@ -4508,7 +4508,7 @@ class TableMaster:
         open_   = TAGS['tableCellOpen']
         close  = TAGS['tableCellClose']
         sep    = TAGS['tableCellSep']
-        calign    = map(lambda x: TAGS['_tableCellAlign'+x], rowdata['cellalign'])
+        calign    = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
         calignsep = TAGS['tableColAlignSep']
         ncolumns = len(self.colalign)
 
@@ -4558,7 +4558,7 @@ class TableMaster:
 
         # Should we break the line on *each* table cell?
         if rules['breaktablecell']:
-            close = close+'\n'
+            close = close + '\n'
 
         # Cells pre processing
         if rules['tablecellstrip']:
@@ -4638,10 +4638,10 @@ class TableMaster:
         # Detect border mark and normalize the EOL
         m = re.search(' (\|+) *$', line)
         if m:
-            line = line+' '
+            line = line + ' '
             ret['border'] = 1
         else:
-            line = line+' | '
+            line = line + ' | '
         # Delete table mark
         line = regex['table'].sub('', line)
         # Detect colspan  | foo | bar baz |||
@@ -4690,9 +4690,9 @@ class TableMaster:
         tagged_rows = []
         if rowsep:
             #!py15
-            #tagged_rows = map(lambda x: x+rowsep, tagged_cells)
+            #tagged_rows = map(lambda x: x + rowsep, tagged_cells)
             for cell in tagged_cells:
-                tagged_rows.append(cell+rowsep)
+                tagged_rows.append(cell + rowsep)
             # Remove last rowsep, because the table is over
             tagged_rows[-1] = tagged_rows[-1].replace(rowsep, '')
         # Add row BEGIN/END tags for each line
@@ -4900,7 +4900,7 @@ class BlockMaster:
 
         # The blank line after the block is always added
         if where == 'after' \
-            and rules['blanksaround'+blockname]:
+            and rules['blanksaround' + blockname]:
             return True
 
         # # No blank before if it's the first block of the body
@@ -4917,15 +4917,15 @@ class BlockMaster:
         # the previous block haven't added a blank line
         # (to avoid consecutive blanks)
         elif where == 'before' \
-            and rules['blanksaround'+blockname] \
-            and not rules.get('blanksaround'+self.last):
+            and rules['blanksaround' + blockname] \
+            and not rules.get('blanksaround' + self.last):
             return True
 
         # Nested quotes are handled here,
         # because the mother quote isn't closed yet
         elif where == 'before' \
             and blockname == 'quote' \
-            and rules['blanksaround'+blockname] \
+            and rules['blanksaround' + blockname] \
             and self.depth > 1:
             return True
 
@@ -5024,7 +5024,7 @@ class BlockMaster:
             if TAGS['blockVerbLine']:
                 line = TAGS['blockVerbLine'] + line
             if rules['indentverbblock']:
-                line = '  '+line
+                line = '  ' + line
             if rules['verbblockfinalescape']:
                 line = doFinalEscape(TARGET, line)
             result.append(line)
@@ -5103,7 +5103,7 @@ class BlockMaster:
 
         # Open tag
         if open_:
-            result.append(tagindent+open_)
+            result.append(tagindent + open_)
 
         # Get contents
         for item in self.hold():
@@ -5113,11 +5113,11 @@ class BlockMaster:
                 item = regex['quote'].sub('', item)  # del TABs
                 item = self._last_escapes(item)
                 item = qline*self.depth + item
-                result.append(indent+item) # quote line
+                result.append(indent + item) # quote line
 
         # Close tag
         if close:
-            result.append(tagindent+close)
+            result.append(tagindent + close)
 
         # Blank line after?
         if self._should_add_blank_line('after', 'quote'):
@@ -5164,17 +5164,17 @@ class BlockMaster:
         items     = self.hold()
         indent    = self.prop('indent')
         tagindent = indent
-        listline  = TAGS.get(name+'ItemLine')
+        listline  = TAGS.get(name + 'ItemLine')
         itemcount = 0
 
         if name == 'deflist':
-            itemopen  = TAGS[name+'Item1Open']
-            itemclose = TAGS[name+'Item2Close']
-            itemsep   = TAGS[name+'Item1Close']+\
-                        TAGS[name+'Item2Open']
+            itemopen  = TAGS[name + 'Item1Open']
+            itemclose = TAGS[name + 'Item2Close']
+            itemsep   = TAGS[name + 'Item1Close'] +\
+                        TAGS[name + 'Item2Open']
         else:
-            itemopen  = TAGS[name+'ItemOpen']
-            itemclose = TAGS[name+'ItemClose']
+            itemopen  = TAGS[name + 'ItemOpen']
+            itemclose = TAGS[name + 'ItemClose']
             itemsep   = ''
 
         # Apply rules
@@ -5226,9 +5226,9 @@ class BlockMaster:
                 item[0] = rest
                 if not item[0]:
                     del item[0]      # to avoid <p>
-                listbody.append(tagindent+itemopen+term+itemsep)
+                listbody.append(tagindent + itemopen + term + itemsep)
             else:
-                fullitem = tagindent+itemopen
+                fullitem = tagindent + itemopen
                 listbody.append(item[0].replace(SEPARATOR, fullitem))
                 del item[0]
 
@@ -5262,26 +5262,26 @@ class BlockMaster:
 
             # Close item (if needed)
             if itemclose:
-                listbody.append(tagindent+itemclose)
+                listbody.append(tagindent + itemclose)
 
         if not widelist and rules['compactlist']:
-            listopen = TAGS.get(name+'OpenCompact')
-            listclose = TAGS.get(name+'CloseCompact')
+            listopen = TAGS.get(name + 'OpenCompact')
+            listclose = TAGS.get(name + 'CloseCompact')
         else:
-            listopen  = TAGS.get(name+'Open')
-            listclose = TAGS.get(name+'Close')
+            listopen  = TAGS.get(name + 'Open')
+            listclose = TAGS.get(name + 'Close')
 
         # Open list (not nestable lists are only opened at mother)
         if listopen and not \
            (rules['listnotnested'] and BLOCK.depth != 1):
-            result.append(tagindent+listopen)
+            result.append(tagindent + listopen)
 
         result.extend(listbody)
 
         # Close list (not nestable lists are only closed at mother)
         if listclose and not \
            (rules['listnotnested'] and self.depth != 1):
-            result.append(tagindent+listclose)
+            result.append(tagindent + listclose)
 
         # Blank line after?
         if self._should_add_blank_line('after', name):
@@ -5309,10 +5309,10 @@ class MacroMaster:
         "Walks the %%{in/out}file format string, expanding the % flags"
         i = 0
         ret = ''
-        while i < len(fmt):                             # char by char
+        while i < len(fmt):                     # char by char
             c = fmt[i]
             i += 1
-            if c == '%':                            # hot char!
+            if c == '%':                        # hot char!
                 if i == len(fmt):               # % at the end
                     ret = ret + c
                     break
@@ -5320,16 +5320,16 @@ class MacroMaster:
                 i += 1
                 ret = ret + self.expand_file_flag(c)
             else:
-                ret = ret +c                    # common char
+                ret = ret + c                   # common char
         return ret
 
     def expand_file_flag(self, flag):
         "%f: filename          %F: filename (w/o extension)"
         "%d: dirname           %D: dirname (only parent dir)"
         "%p: file path         %e: extension"
-        info = self.fileinfo[self.name]           # get dict
+        info = self.fileinfo[self.name]         # get dict
         if   flag == '%':
-            x = '%'                 # %% -> %
+            x = '%'                             # %% -> %
         elif flag == 'f':
             x = info['name']
         elif flag == 'F':
@@ -5343,16 +5343,16 @@ class MacroMaster:
         elif flag == 'e':
             x = os.path.splitext(info['name'])[1].replace('.', '')
         else:
-            x = '%'+flag            # false alarm
+            x = '%' + flag                      # false alarm
         return x
 
     def set_file_info(self, macroname):
         if (macroname == 'currentfile'):
             self.currentfile = self.config['currentsourcefile']
         else:
-            if self.fileinfo.get(macroname):   # already done
+            if self.fileinfo.get(macroname):    # already done
                 return
-        file_ = getattr(self, self.name)           # self.infile
+        file_ = getattr(self, self.name)        # self.infile
         if file_ == STDOUT or file_ == MODULEOUT:
             dir_ = ''
             path = name = file_
@@ -5630,7 +5630,7 @@ def toc_formatter(toc, config):
     # Autotoc specific formatting
     if AUTOTOC:
         if rules['autotocwithbars']:           # TOC between bars
-            para = TAGS['paragraphOpen']+TAGS['paragraphClose']
+            para = TAGS['paragraphOpen'] + TAGS['paragraphClose']
             bar  = regex['x'].sub('-' * DFT_TEXT_WIDTH, TAGS['bar1'])
             tocbar = [para, bar, para]
             if config['target'] == 'art' and config['headers']:
@@ -5660,7 +5660,7 @@ def doHeader(headers, config):
     # Use default templates
     if config['template'] == '' :
         if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-sugar'):
-            template = HEADER_TEMPLATE[target+'css'].split('\n')
+            template = HEADER_TEMPLATE[target + 'css'].split('\n')
         else:
             template = HEADER_TEMPLATE[target].split('\n')
 
@@ -5713,7 +5713,7 @@ def doHeader(headers, config):
         if target == 'lout':
             contents = doFinalEscape(target, contents)
 
-        head_data['HEADER%d' % (i+1)] = contents
+        head_data['HEADER%d' % (i + 1)] = contents
 
     # When using --css-inside, the template's <STYLE> line must be removed.
     # Template line removal for empty header keys is made some lines above.
@@ -5763,7 +5763,7 @@ def doHeader(headers, config):
         for i in xrange(len(template)):
             if template[i].count(style_mark):
                 while styles:
-                    template.insert(i+1, template[i].replace(style_mark, styles.pop()))
+                    template.insert(i + 1, template[i].replace(style_mark, styles.pop()))
                 del template[i]
                 break
 
@@ -5793,12 +5793,12 @@ def doHeader(headers, config):
             except:
                 Error(_("CSS include failed for %s") % cssfile)
             # Insert this CSS file contents on the template
-            template = re.sub('(?i)(</HEAD>)', css+r'\1', template)
+            template = re.sub('(?i)(</HEAD>)', css + r'\1', template)
             # template = re.sub(r'(?i)(\\begin{document})',
-            #       css+'\n'+r'\1', template) # tex
+            #       css + '\n' + r'\1', template) # tex
 
         # The last blank line to keep everything separated
-        template = re.sub('(?i)(</HEAD>)', '\n'+r'\1', template)
+        template = re.sub('(?i)(</HEAD>)', '\n' + r'\1', template)
 
     return template.split('\n')
 
@@ -5820,7 +5820,7 @@ def doFooter(config):
         return []
 
     # Only add blank line before footer if last block doesn't added by itself
-    if not rules.get('blanksaround'+BLOCK.last):
+    if not rules.get('blanksaround' + BLOCK.last):
         ret.append('')
 
     # Add txt2tags info at footer, if target supports comments
@@ -5848,7 +5848,7 @@ def doFooter(config):
 def convertUnicodeRTF(match):
     num = int(match.group(1), 16)
     if num > 32767: num = num | -65536
-    return ESCCHAR+'u'+str(num)+'?'
+    return ESCCHAR + 'u' + str(num) + '?'
 
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
@@ -5865,7 +5865,7 @@ def doEscape(target, txt):
         txt = re.sub('^%', ' %', txt)  # add leading blank to avoid parse
     elif target == 'man':
         txt = re.sub("^([.'])", '\\&\\1', txt)            # command ID
-        txt = txt.replace(ESCCHAR, ESCCHAR+'e')           # \e
+        txt = txt.replace(ESCCHAR, ESCCHAR + 'e')         # \e
     elif target == 'lout':
         # TIP: / moved to FinalEscape to avoid //italic//
         # TIP: these are also converted by lout:  ...  ---  --
@@ -5876,14 +5876,14 @@ def doEscape(target, txt):
     elif target == 'tex':
         # Mark literal \ to be changed to $\backslash$ later
         txt = txt.replace(ESCCHAR, tmpmask)
-        txt = re.sub('([#$&%{}])', ESCCHAR+r'\1'  , txt)  # \%
-        txt = re.sub('([~^])'    , ESCCHAR+r'\1{}', txt)  # \~{}
-        txt = re.sub('([<|>])'   ,         r'$\1$', txt)  # $>$
+        txt = re.sub('([#$&%{}])', ESCCHAR + r'\1'  , txt)  # \%
+        txt = re.sub('([~^])'    , ESCCHAR + r'\1{}', txt)  # \~{}
+        txt = re.sub('([<|>])'   ,           r'$\1$', txt)  # $>$
         txt = txt.replace(tmpmask, maskEscapeChar(r'$\backslash$'))
         # TIP the _ is escaped at the end
     elif target == 'rtf':
-        txt = txt.replace(ESCCHAR, ESCCHAR+ESCCHAR)
-        txt = re.sub('([{}])', ESCCHAR+r'\1', txt)
+        txt = txt.replace(ESCCHAR, ESCCHAR + ESCCHAR)
+        txt = re.sub('([{}])', ESCCHAR + r'\1', txt)
         # RTF is ascii only
         # If an encoding is declared, try to convert to RTF unicode
         enc = get_encoding_string(CONF['encoding'], 'rtf')
@@ -5906,7 +5906,7 @@ def doEscape(target, txt):
 def doFinalEscape(target, txt):
     "Last escapes of each line"
     if   target == 'pm6' :
-        txt = txt.replace(ESCCHAR+'<', r'<\#92><')
+        txt = txt.replace(ESCCHAR + '<', r'<\#92><')
     elif target == 'man' :
         txt = txt.replace('-', r'\-')
     elif target == 'sgml':
@@ -5917,7 +5917,7 @@ def doFinalEscape(target, txt):
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
     elif target == 'rtf':
-        txt = txt.replace('\t', ESCCHAR+r'\1')
+        txt = txt.replace('\t', ESCCHAR + r'\1')
     return txt
 
 def EscapeCharHandler(action, data):
@@ -5947,8 +5947,8 @@ def addLineBreaks(mylist):
     "use LB to respect sys.platform"
     ret = []
     for line in mylist:
-        line = line.replace('\n', LB)        # embedded \n's
-        ret.append(line+LB)                  # add final line break
+        line = line.replace('\n', LB)       # embedded \n's
+        ret.append(line + LB)               # add final line break
     return ret
 
 # Convert ['foo\nbar'] to ['foo', 'bar']
@@ -5970,7 +5970,7 @@ def compile_filters(filters, errmsg='Filter'):
     return filters
 
 def enclose_me(tagname, txt):
-    return TAGS.get(tagname+'Open') + txt + TAGS.get(tagname+'Close')
+    return TAGS.get(tagname + 'Open') + txt + TAGS.get(tagname + 'Close')
 
 def fix_relative_path(path):
     """
@@ -6076,11 +6076,11 @@ def get_tagged_link(label, url):
     # Adding protocol to guessed link
     guessurl = ''
     if linktype == 'url' and \
-       re.match('(?i)'+regex['_urlskel']['guess'], url):
+       re.match('(?i)' + regex['_urlskel']['guess'], url):
         if url[0] in 'Ww':
-            guessurl = 'http://' +url
+            guessurl = 'http://' + url
         else:
-            guessurl = 'ftp://' +url
+            guessurl = 'ftp://' + url
 
         # Not link aware targets -> protocol is useless
         if not rules['linkable']:
@@ -6150,9 +6150,9 @@ def get_image_align(line):
     "Return the image (first found) align for the given line"
 
     # First clear marks that can mess align detection
-    line = re.sub(SEPARATOR+'$', '', line)  # remove deflist sep
-    line = re.sub('^'+SEPARATOR, '', line)  # remove list sep
-    line = re.sub('^[\t]+'     , '', line)  # remove quote mark
+    line = re.sub(SEPARATOR + '$', '', line)  # remove deflist sep
+    line = re.sub('^' + SEPARATOR, '', line)  # remove list sep
+    line = re.sub('^[\t]+'       , '', line)  # remove quote mark
 
     # Get image position on the line
     m = regex['img'].search(line)
@@ -6318,7 +6318,7 @@ def convert_this_files(configs):
 
         # If dump-source, we're done
         if myconf['dump-source']:
-            for line in source_head+source_conf+target_body:
+            for line in source_head + source_conf + target_body:
                 print line
             return
 
@@ -6374,10 +6374,10 @@ def parse_images(line):
             align_name = align.capitalize()       # Right
 
             # The align is a full tag, or part of the image tag (~A~)
-            if TAGS['imgAlign'+align_name]:
-                tag = TAGS['imgAlign'+align_name]
+            if TAGS['imgAlign' + align_name]:
+                tag = TAGS['imgAlign' + align_name]
             else:
-                align_tag = TAGS['_imgAlign'+align_name]
+                align_tag = TAGS['_imgAlign' + align_name]
                 tag = regex['_imgAlign'].sub(align_tag, tag, 1)
 
             # Dirty fix to allow centered solo images
@@ -6914,7 +6914,7 @@ def convert(bodylines, config, firstlinenr=1):
             if listname == 'deflist':
                 term = parse_deflist_term(line)
                 line = regex['deflist'].sub(
-                    SEPARATOR+term+SEPARATOR, line)
+                    SEPARATOR + term + SEPARATOR, line)
             else:
                 line = regex[listname].sub(SEPARATOR, line)
 
@@ -7087,7 +7087,7 @@ class Gui:
 
         # Creating variables for all checks
         for check in self.checks:
-            setattr(self, 'f_'+check, self.setvar(''))
+            setattr(self, 'f_' + check, self.setvar(''))
 
         # Load RC config
         self.conf = {}
@@ -7127,7 +7127,7 @@ class Gui:
             chk.select()
         chk.grid(columnspan=2, sticky='w', padx=0)
     def menu(self, sel, items):
-        return apply(Tkinter.OptionMenu, (self.window, sel)+tuple(items))
+        return apply(Tkinter.OptionMenu, (self.window, sel) + tuple(items))
 
     # Handy auxiliary functions
     def action(self, txt):
@@ -7338,7 +7338,7 @@ class Gui:
             txt = outfile
             if outfile == STDOUT:
                 txt = _('<screen>')
-            l_output = self.label(_('Output: ')+txt, fg=self.fg2, bg=self.bg2)
+            l_output = self.label(_('Output: ') + txt, fg=self.fg2, bg=self.bg2)
             l_output.grid(columnspan=2, sticky='w')
         for setting in ['style', 'encoding']:
             if self.conf.get(setting):
@@ -7367,7 +7367,7 @@ class Gui:
                 self.action(action4)
                 self.frame_open()
             txt = checks_txt[check]
-            var = getattr(self, 'f_'+check)
+            var = getattr(self, 'f_' + check)
             checked = self.conf.get(check)
             self.check(txt, checked, variable=var)
         self.frame_close()
@@ -7478,7 +7478,7 @@ def exec_command_line(user_cmdline=[]):
 
         # If no input file, get RC+cmdline config, else full config
         if not infiles:
-            gui_conf = ConfigMaster(RC_RAW+CMDLINE_RAW).parse()
+            gui_conf = ConfigMaster(RC_RAW + CMDLINE_RAW).parse()
         else:
             try:
                 gui_conf = infiles_config[0][0]
