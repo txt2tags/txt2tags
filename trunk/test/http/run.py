@@ -14,7 +14,7 @@ lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
 remote_root = 'http://txt2tags.org/test/'
-remote_infiles = ['mtime.t2t']
+remote_infiles = ['mtime.t2t','not-found.t2t']
 
 def run():
 	# test all OK files found
