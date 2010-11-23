@@ -1,0 +1,8 @@
+Test: using mtime in a remote file
+%%mtime
+
+%!target:txt
+%!postproc: '^20\d{6}$'  'MTIME-OK'
+
+Body.
+%%mtime

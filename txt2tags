@@ -97,10 +97,11 @@ HTML_LOWER  = 0   # use lowercased HTML tags instead upper? (default is 0)
 import re
 import os
 import sys
-import time
+import time  # %%date, %%mtime
 import getopt
 import textwrap
-import urllib
+import urllib  # read remote files (URLs)
+import email  # %%mtime for remote files
 
 # The CSV module is new in Python version 2.3
 try:
@@ -5371,6 +5372,24 @@ class MacroMaster:
             elif name == 'mtime':
                 if self.infile in (STDIN, MODULEIN):
                     fdate = self.currdate
+                elif PathMaster().is_url(self.infile):
+                    try:
+                        # Doing it the easy way: fetching the URL again.
+                        # The right way would be doing it in Readfile().
+                        # But I'm trying to avoid yet another global var
+                        # or fake 'sourcefile_mtime' config.
+                        #
+                        # >>> f= urllib.urlopen('http://txt2tags.org/index.t2t') 
+                        # >>> f.info().get('last-modified')
+                        # 'Thu, 18 Nov 2010 22:42:11 GMT'
+                        # >>> 
+                        #
+                        f = urllib.urlopen(self.infile)
+                        mtime_rfc2822 = f.info().get('last-modified')
+                        fdate = email.Utils.parsedate(mtime_rfc2822)
+                    except:
+                        # If mtime cannot be found, defaults to current date
+                        fdate = self.currdate
                 else:
                     mtime = os.path.getmtime(self.infile)
                     fdate = time.localtime(mtime)
