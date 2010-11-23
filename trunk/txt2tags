@@ -57,7 +57,7 @@
 # - do NOT use newlist=list instead newlist=list[:]
 # - do NOT use newdic=dic   instead newdic=dic.copy()
 # - do NOT use dic[key]     instead dic.get(key)
-# - do NOT use del dic[key] without has_key() before
+# - do NOT use del dic[key] without key in dic before
 
 #XXX Smart Image Align don't work if the image is a link
 # Can't fix that because the image is expanded together with the
@@ -3379,16 +3379,16 @@ class CommandLine:
         use_short = {'no-headers': 'H', 'enum-title': 'n'}
         # Remove useless options
         if not no_check and cfg.get('toc-only'):
-            if cfg.has_key('no-headers'):
+            if 'no-headers' in cfg:
                 del cfg['no-headers']
-            if cfg.has_key('outfile'):
+            if 'outfile' in cfg:
                 del cfg['outfile']      # defaults to STDOUT
             if cfg.get('target') == 'txt':
                 del cfg['target']       # already default
             args.append('--toc-only')  # must be the first
             del cfg['toc-only']
         # Add target type
-        if cfg.has_key('target'):
+        if 'target' in cfg:
             args.append('-t ' + cfg['target'])
             del cfg['target']
         # Add other options
@@ -3413,11 +3413,11 @@ class CommandLine:
             else:                       # add --option=value
                 args.append('--%s=%s' % (key, val))
         # The outfile using -o
-        if cfg.has_key('outfile') and \
+        if 'outfile' in cfg and \
            cfg['outfile'] != dft_options.get('outfile'):
             args.append('-o ' + cfg['outfile'])
         # Place input file(s) always at the end
-        if cfg.has_key('infile'):
+        if 'infile' in cfg:
             args.append(' '.join(cfg['infile']))
         # Return as a nice list
         Debug("Diet command line: %s" % ' '.join(args), 1)
@@ -3705,7 +3705,7 @@ class ConfigMaster:
         # Is this value the default one?
         if val == self.defaults.get(key):
             # If default value, remove previous key:val
-            if self.parsed.has_key(key):
+            if key in self.parsed:
                 del self.parsed[key]
             # Nothing more to do
             return
@@ -3717,7 +3717,7 @@ class ConfigMaster:
         # Multi value or single?
         if key in self.multi:
             # First one? start new list
-            if not self.parsed.has_key(key):
+            if key not in self.parsed:
                 self.parsed[key] = []
             self.parsed[key].append(val)
         # Incremental value? so let's add it
@@ -5692,7 +5692,7 @@ def doHeader(headers, config):
     if not headers:
         headers = ['', '', '']
     target = config['target']
-    if not HEADER_TEMPLATE.has_key(target):
+    if target not in HEADER_TEMPLATE:
         Error("doHeader: Unknown target '%s'" % target)
 
     # Use default templates
@@ -7275,9 +7275,9 @@ class Gui:
         # Compose cmdline
         guiflags = []
         real_cmdline_conf = ConfigMaster(CMDLINE_RAW).parse()
-        if real_cmdline_conf.has_key('infile'):
+        if 'infile' in real_cmdline_conf:
             del real_cmdline_conf['infile']
-        if real_cmdline_conf.has_key('target'):
+        if 'target' in real_cmdline_conf:
             del real_cmdline_conf['target']
         real_cmdline = CommandLine().compose_cmdline(real_cmdline_conf)
         default_outfile = ConfigMaster().get_outfile_name(
@@ -7299,7 +7299,7 @@ class Gui:
                     on_cmdline = 0
             if val != on_config or (
               val == on_config == on_cmdline and
-              real_cmdline_conf.has_key(opt)):
+              opt in real_cmdline_conf):
                 if val:
                     # Was not set, but user selected on GUI
                     Debug("user turned  ON: %s" % opt)
