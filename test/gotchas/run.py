@@ -27,8 +27,9 @@ def run():
             lib.convert(cmdline)
             lib.diff(outfile)
     # clean up
-    if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
-
+    if os.path.isfile(lib.CONFIG_FILE):
+        os.remove(lib.CONFIG_FILE)
+    
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':

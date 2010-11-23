@@ -16,63 +16,70 @@ lib.ERROR_FILES = []
 # Tests for the command line option -C
 # Note: --config-file is also tested automatically from these tests
 tests = [
-  {
-  'name'   : 'C',
-  'cmdline': ["-C _config.inc"],
-  'not-numbered': True
-  }, {
-  'name'   : 'C-C',
-  'cmdline': ["-C _config.inc -C _config.inc"],
-  'not-numbered': True
-  }, {
-  'name'   : 'C-C2',
-  'cmdline': ["-C _config.inc -C _config2.inc"]
-  }, {
-  'name'   : 'C-default',
-  'cmdline': ["-t html -C _config2.inc"]
-  }, {
-  'name'   : 'C-empty',
-  'cmdline': ["-t html -C _empty.inc"],
-  'not-numbered': True
-  }, {
-  'name'   : 'C-not-found',
-  'cmdline': ["-t html -C XXX.inc"],
-  'not-numbered': True
-  }, {
-  'name'   : 'C-text',
-  'cmdline': ["-t html -C _text.inc"],
-  'not-numbered': True
-  }, {
-  'name'   : 'C-targeted-inside',
-  'cmdline': ["-t html -C _targeted.inc"]
-  }, {
-  'name'   : 'C-nesting',
-  'cmdline': ["-C _sub_include.inc"]
-  }, {
-  'name'   : 'C-nesting-folder',
-  'cmdline': ["-C folder/_folder.inc"]
-  }, {
-  'name'   : 'C-nesting-folder-back',
-  'cmdline': ["-C folder/subfolder/_folder-back.inc"]
-
-  # This checking is never made because the infile may not be known without
-  # reading the config file. In other words, you can set %!options: -i foo.t2t
-  # inside the config file and just call: txt2tags -C config.t2t
-  # Because of this feature, we can't compare config file and infile names
-  # before reading the full config. But it will not loop, since the first body
-  # line of the infile will raise a config error.
-  # }, {
-  # 'name'   : 'C-itself',             # t2t -C foo.t2t -i foo.t2t
-  # 'cmdline': ["-C body-only"],
-  }
+    {
+    'name'   : 'C',
+    'cmdline': ["-C _config.inc"],
+    'not-numbered': True,
+    }, {
+    'name'   : 'C-C',
+    'cmdline': ["-C _config.inc -C _config.inc"],
+    'not-numbered': True,
+    }, {
+    'name'   : 'C-C2',
+    'cmdline': ["-C _config.inc -C _config2.inc"],
+    }, {
+    'name'   : 'C-default',
+    'cmdline': ["-t html -C _config2.inc"],
+    }, {
+    'name'   : 'C-empty',
+    'cmdline': ["-t html -C _empty.inc"],
+    'not-numbered': True,
+    }, {
+    'name'   : 'C-not-found',
+    'cmdline': ["-t html -C XXX.inc"],
+    'not-numbered': True,
+    }, {
+    'name'   : 'C-text',
+    'cmdline': ["-t html -C _text.inc"],
+    'not-numbered': True,
+    }, {
+    'name'   : 'C-targeted-inside',
+    'cmdline': ["-t html -C _targeted.inc"],
+    }, {
+    'name'   : 'C-nesting',
+    'cmdline': ["-C _sub_include.inc"],
+    }, {
+    'name'   : 'C-nesting-folder',
+    'cmdline': ["-C folder/_folder.inc"],
+    }, {
+    'name'   : 'C-nesting-folder-back',
+    'cmdline': ["-C folder/subfolder/_folder-back.inc"],
+    
+    # This checking is never made because the infile may not be known without
+    # reading the config file. In other words, you can set %!options: -i foo.t2t
+    # inside the config file and just call: txt2tags -C config.t2t
+    # Because of this feature, we can't compare config file and infile names
+    # before reading the full config. But it will not loop, since the first body
+    # line of the infile will raise a config error.
+    # }, {
+    # 'name'   : 'C-itself',             # t2t -C foo.t2t -i foo.t2t
+    # 'cmdline': ["-C body-only"],
+    }
 ]
 
 def run():
 
     ### First test the %!includeconf command
 
-    errors = ['includeconf-itself', 'includeconf-not-found', 'includeconf-targeted', 'includeconf-text']
-    unnumbered = ['includeconf-empty']
+    errors = [
+        'includeconf-itself',
+        'includeconf-not-found',
+        'includeconf-targeted',
+        'includeconf-text',
+        ]
+    unnumbered = [
+        'includeconf-empty',
+        ]
 
     # test all t2t files found
     for infile in glob.glob("includeconf-*.t2t"):
@@ -109,7 +116,7 @@ def run():
             okfile = 'ok/numbered.html'
 
         # 1st turn (-C), 2nd turn (--config-file)
-        for i in (1,2):
+        for i in (1, 2):
 
             if i == 1:
                 name = test['name']
@@ -133,7 +140,8 @@ def run():
                 lib.diff(outfile, okfile)
 
     # clean up
-    if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
+    if os.path.isfile(lib.CONFIG_FILE):
+        os.remove(lib.CONFIG_FILE)
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 

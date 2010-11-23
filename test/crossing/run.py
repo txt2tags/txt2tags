@@ -22,9 +22,9 @@ ALIASES = {
 
 # smart filters to allow source inheritance and macros normalization
 FILTERS = {
-  'deflist' : [ ('pre', '^-( |$)', r':\1') ],
-  'numlist' : [ ('pre', '^-( |$)', r'+\1') ],
-  'bar2'    : [ ('pre', '--'     , r'==' ) ],
+    'deflist' : [ ('pre', '^-( |$)', r':\1') ],
+    'numlist' : [ ('pre', '^-( |$)', r'+\1') ],
+    'bar2'    : [ ('pre', '--'     , r'==' ) ],
 }
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
@@ -81,7 +81,8 @@ def run():
         lib.diff(outfile)
 
     # clean up
-    if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
+    if os.path.isfile(lib.CONFIG_FILE):
+        os.remove(lib.CONFIG_FILE)
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
