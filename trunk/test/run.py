@@ -18,7 +18,7 @@
 import os, sys
 import lib
 
-MODULES = 'headers marks options nesting crossing gotchas bugs include csv includeconf'.split()
+MODULES = 'headers marks options nesting crossing gotchas bugs include csv includeconf macro http'.split()
 SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
 TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
