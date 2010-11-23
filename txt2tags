@@ -4317,8 +4317,8 @@ class TitleMaster:
             self.tag = TAGS.get('%s%dOpen' % (kind, level)) or \
                        TAGS.get('title%dOpen' % level)
         else:
-            self.tag = TAGS.get(kind + `level`) or \
-                       TAGS.get('title' + `level`)
+            self.tag = TAGS.get(kind + str(level)) or \
+                       TAGS.get('title' + str(level))
         self.last_level = self.level
         self.kind  = kind
         self.level = level
@@ -4434,7 +4434,7 @@ class TitleMaster:
                 continue
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
-            label = label or self.anchor_prefix + `toc_count`
+            label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
             # TOC will have crosslinks to anchors
