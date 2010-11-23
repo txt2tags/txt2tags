@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Sample of txt2tags being used as a module (http://txt2tags.org) 
+# Sample of txt2tags being used as a module (http://txt2tags.org)
 #
 # Details:
 #   The document body is a string.
@@ -16,7 +16,7 @@ txt = "=Hi!=\nHave a **nice** day.\n\nBye."
 txt = txt.split('\n')
 
 # Set the three header fields
-headers = ['Header 1', 'Header 2', 'Header 3'] 
+headers = ['Header 1', 'Header 2', 'Header 3']
 
 # Set the configuration on the 'config' dict.
 config = txt2tags.ConfigMaster()._get_defaults()
@@ -29,24 +29,24 @@ config['toc'] = 1                       # show Table Of Contents
 # The Pre (and Post) processing config is a list of lists:
 # [ [this, that], [foo, bar], [pattern, replace] ]
 config['preproc'] = []
-config['preproc'].append(['nice','VERY NICE'])
-config['preproc'].append(['day','life'])
+config['preproc'].append(['nice', 'VERY NICE'])
+config['preproc'].append(['day', 'life'])
 
 # Let's do the conversion
 try:
-	headers   = txt2tags.doHeader(headers, config)
-	body, toc = txt2tags.convert(txt, config)
-	footer    = txt2tags.doFooter(config)
-	toc       = txt2tags.toc_tagger(toc, config)
-	toc       = txt2tags.toc_formatter(toc, config)
-	full_doc  = headers + toc + body + footer
-	finished  = txt2tags.finish_him(full_doc, config)
-	print '\n'.join(finished)
+    headers   = txt2tags.doHeader(headers, config)
+    body, toc = txt2tags.convert(txt, config)
+    footer    = txt2tags.doFooter(config)
+    toc       = txt2tags.toc_tagger(toc, config)
+    toc       = txt2tags.toc_formatter(toc, config)
+    full_doc  = headers + toc + body + footer
+    finished  = txt2tags.finish_him(full_doc, config)
+    print '\n'.join(finished)
 
 # Txt2tags error, show the message to the user
 except txt2tags.error, msg:
-	print msg
+    print msg
 
 # Unknown error, show the traceback to the user
 except:
-	print txt2tags.getUnknownErrorMessage()
+    print txt2tags.getUnknownErrorMessage()
