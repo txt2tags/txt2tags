@@ -929,6 +929,14 @@ def getTags(config):
         'email'                : '\a'                     ,
         'emailMark'            : '\a (\a)'                ,
         'img'                  : '[\a]'                   ,
+        'fontBoldOpen'         : '*'                      ,
+        'fontBoldClose'        : '*'                      ,
+        'fontItalicOpen'       : '/'                      ,
+        'fontItalicClose'      : '/'                      ,
+        'fontUnderlineOpen'    : '_'                      ,
+        'fontUnderlineClose'   : '_'                      ,
+        'fontStrikeOpen'       : '-'                      ,
+        'fontStrikeClose'      : '-'                      ,
     },
 
     'txt': {
