@@ -102,12 +102,8 @@ import getopt
 import textwrap
 import urllib  # read remote files (URLs)
 import email  # %%mtime for remote files
+import csv
 
-# The CSV module is new in Python version 2.3
-try:
-    import csv
-except ImportError:
-    csv = None
 
 # Program information
 my_url = 'http://txt2tags.org'
@@ -6761,9 +6757,6 @@ def convert(bodylines, config, firstlinenr=1):
 
             # %!csv command
             elif key in ['csv', 'csvheader']:
-
-                if not csv:
-                    Error("Python module 'csv' not found, but needed for %!csv")
 
                 table = []
                 try:
