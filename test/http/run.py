@@ -17,6 +17,7 @@ remote_root = 'http://txt2tags.org/test/'
 remote_infiles = [
 	'mtime.t2t',
 	'not-found.t2t',
+	'relative-path.t2t',
 	]
 remote_mapping = {
 	'remote-outfile': 'simple.t2t',
@@ -48,6 +49,8 @@ def run():
 				cmdline.append('>' + outfile)
 			elif basename == 'remote-outfile':
 				cmdline.append('2>' + outfile)
+			elif basename == 'relative-path':
+				cmdline.extend(['-t', 'html'])
 			lib.convert(cmdline)
 			lib.diff(outfile)
 	# clean up
