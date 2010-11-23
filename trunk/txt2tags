@@ -3026,7 +3026,7 @@ def Quit(msg=''):
 
 def Error(msg):
     msg = _("%s: Error: ") % my_name + msg
-    raise error, msg
+    raise error(msg)
 
 
 def getTraceback():
