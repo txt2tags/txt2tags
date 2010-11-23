@@ -3647,7 +3647,9 @@ class ConfigMaster:
         # %!options
         if key == 'options':
             # Actions are not valid inside %!options
-            ignoreme = self.dft_actions.keys() + ['target']
+            ignoreme = self.dft_actions.keys()
+            # --target inside %!options is not allowed (use %!target)
+            ignoreme.append('target')
             # But there are some exceptions that are allowed (XXX why?)
             ignoreme.remove('dump-config')
             ignoreme.remove('dump-source')
