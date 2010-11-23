@@ -1,0 +1,7 @@
+Test: using mtime in a remote file
+MTIME-OK
+
+
+Body.
+MTIME-OK
+
