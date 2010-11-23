@@ -68,74 +68,74 @@ tests = [
 ]
 
 def run():
-	
-	### First test the %!includeconf command
-	
-	errors = ['includeconf-itself', 'includeconf-not-found', 'includeconf-targeted', 'includeconf-text']
-	unnumbered = ['includeconf-empty']
 
-	# test all t2t files found
-	for infile in glob.glob("includeconf-*.t2t"):
-		basename = infile.replace('.t2t', '')
-		outfile = basename + '.html'
+    ### First test the %!includeconf command
 
-		if basename in unnumbered:
-			okfile = 'ok/not-numbered.html'
-		else:
-			okfile = 'ok/numbered.html'
-		
-		if basename in errors:
-			outfile = basename + '.out'
-			okfile = 'ok/' + outfile
-			cmdline = ['-H', '-i', infile, '-o- >', outfile, '2>&1']			
-		else:
-			cmdline = ['-H', '-i', infile, '-o', outfile]
+    errors = ['includeconf-itself', 'includeconf-not-found', 'includeconf-targeted', 'includeconf-text']
+    unnumbered = ['includeconf-empty']
 
-		if lib.initTest(basename, infile, outfile, okfile):
-			lib.convert(cmdline)
-			lib.diff(outfile, okfile)
-	
-	### Now test -C and --config-file command line options
-	
-	errors = ['C-not-found', 'C-text']
-	default_cmdline = ['-H -i body-only.t2t']
-	infile = 'body-only.t2t'
-	for test in tests:
+    # test all t2t files found
+    for infile in glob.glob("includeconf-*.t2t"):
+        basename = infile.replace('.t2t', '')
+        outfile = basename + '.html'
 
-		# --enum-title is used by this test?
-		if test.get('not-numbered'):
-			okfile = 'ok/not-numbered.html'
-		else:
-			okfile = 'ok/numbered.html'
-		
-		# 1st turn (-C), 2nd turn (--config-file)
-		for i in (1,2):
-			
-			if i == 1:
-				name = test['name']
-				cmdline = test['cmdline']
-			else:
-				name = test['name'].replace('C', 'config-file')
-				cmdline = map(lambda x: x.replace('-C', '--config-file'), test['cmdline'])
-			
-			outfile = name + '.html'
-			
-			if test['name'] in errors:
-				outfile = name + '.out'
-				okfile = 'ok/' + outfile
-				cmdline = default_cmdline + cmdline + ['-o- >', outfile, '2>&1']
-			else:
-				cmdline = default_cmdline + cmdline + ['-o', outfile]
-		
-			# convert and check results
-			if lib.initTest(name, infile, outfile, okfile):
-				lib.convert(cmdline)
-				lib.diff(outfile, okfile)
-	
-	# clean up
-	if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
-	
-	return lib.OK, lib.FAILED, lib.ERROR_FILES
+        if basename in unnumbered:
+            okfile = 'ok/not-numbered.html'
+        else:
+            okfile = 'ok/numbered.html'
+
+        if basename in errors:
+            outfile = basename + '.out'
+            okfile = 'ok/' + outfile
+            cmdline = ['-H', '-i', infile, '-o- >', outfile, '2>&1']
+        else:
+            cmdline = ['-H', '-i', infile, '-o', outfile]
+
+        if lib.initTest(basename, infile, outfile, okfile):
+            lib.convert(cmdline)
+            lib.diff(outfile, okfile)
+
+    ### Now test -C and --config-file command line options
+
+    errors = ['C-not-found', 'C-text']
+    default_cmdline = ['-H -i body-only.t2t']
+    infile = 'body-only.t2t'
+    for test in tests:
+
+        # --enum-title is used by this test?
+        if test.get('not-numbered'):
+            okfile = 'ok/not-numbered.html'
+        else:
+            okfile = 'ok/numbered.html'
+
+        # 1st turn (-C), 2nd turn (--config-file)
+        for i in (1,2):
+
+            if i == 1:
+                name = test['name']
+                cmdline = test['cmdline']
+            else:
+                name = test['name'].replace('C', 'config-file')
+                cmdline = map(lambda x: x.replace('-C', '--config-file'), test['cmdline'])
+
+            outfile = name + '.html'
+
+            if test['name'] in errors:
+                outfile = name + '.out'
+                okfile = 'ok/' + outfile
+                cmdline = default_cmdline + cmdline + ['-o- >', outfile, '2>&1']
+            else:
+                cmdline = default_cmdline + cmdline + ['-o', outfile]
+
+            # convert and check results
+            if lib.initTest(name, infile, outfile, okfile):
+                lib.convert(cmdline)
+                lib.diff(outfile, okfile)
+
+    # clean up
+    if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
+
+    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-	print lib.MSG_RUN_ALONE
+    print lib.MSG_RUN_ALONE
