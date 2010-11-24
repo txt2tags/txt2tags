@@ -2971,7 +2971,7 @@ def aa_slide(title, char, width):
     return res
 
 
-def aa_table(table, header=0):
+def aa_table(table, header, align, width):
     data = [row['cells'] for row in table]
     n = max([len(line) for line in data])
     data = [line + (n - len(line)) * [''] for line in data]
@@ -2994,6 +2994,10 @@ def aa_table(table, header=0):
             aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
         ret.append(aff)
     ret.append(res)
+    if align == 'Left':
+        ret = [' ' * 2  + line for line in ret]
+    elif align == 'Center':
+        ret = [line.center(width) for line in ret]
     return ret
 
 
@@ -5089,7 +5093,7 @@ class BlockMaster:
         result = []
 
         if TARGET == 'art':
-            return aa_table(self.tableparser.rows, self.tableparser.title) + ['']
+            return aa_table(self.tableparser.rows, self.tableparser.title, self.tableparser.align, CONF['width']) + ['']
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
