@@ -2939,15 +2939,13 @@ def aa_under(txt, char, width):
 
 
 def aa_box(txt, chars, width):
-    len_txt = aa_len(txt)
-    nspace = (width - len_txt - 4) / 2
-    line_box = " " * nspace + chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']
-    # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
-    #                           +-------------------------------+
-    #                           | all theeeeeeeeeeeeeeeeee text |
-    # <----- nspace " " -----> "| " <--------- txt ---------> " |"
-    line_txt = " " * nspace + chars['side'] + ' ' + txt + ' ' + chars['side']
-    return [line_box, line_txt, line_box]
+    txt = textwrap.wrap(txt, width - 4)
+    len_txt = max(aa_len(line) for line in txt)
+    line_box = (chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']).center(width)
+    line_txt = []
+    for line in txt:
+        line_txt.append((chars['side'] + ' ' + line.center(len_txt) + ' ' + chars['side']).center(width))
+    return [line_box] + line_txt + [line_box]
 
 
 def aa_header(header_data, chars, width, n, end):
@@ -3792,6 +3790,8 @@ class ConfigMaster:
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         # Slides needs width and height
+        if target == 'art' and config['width'] < 5:
+            Error(_("--width: Expected width > 4, got %i") % config['width']) 
         if config['slides'] and target == 'art':
             if not config['width']:
                 config['width'] = DFT_SLIDE_WIDTH
