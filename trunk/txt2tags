@@ -3790,8 +3790,6 @@ class ConfigMaster:
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         # Slides needs width and height
-        if target == 'art' and config['width'] < 5:
-            Error(_("--width: Expected width > 4, got %i") % config['width']) 
         if config['slides'] and target == 'art':
             if not config['width']:
                 config['width'] = DFT_SLIDE_WIDTH
@@ -3800,6 +3798,8 @@ class ConfigMaster:
         # ASCII Art needs a width
         if target == 'art' and not config['width']:
             config['width'] = DFT_TEXT_WIDTH
+        if target == 'art' and config['width'] < 5:
+            Error(_("--width: Expected width > 4, got %i") % config['width']) 
         # Check/set user ASCII Art formatting characters
         if config['art-chars']:
             if len(config['art-chars']) != len(AA_VALUES):
