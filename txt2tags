@@ -4885,7 +4885,7 @@ class BlockMaster:
             if TARGET == 'art':
                 final = []
                 for line in result:
-                    if not line:
+                    if not line or blockname == 'table':
                         final.append(line)
                     else:
                         final.extend(textwrap.wrap(line, CONF['width']))
