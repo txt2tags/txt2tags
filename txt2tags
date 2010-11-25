@@ -5966,7 +5966,7 @@ def doFinalEscape(target, txt):
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
     elif target == 'rtf':
-        txt = txt.replace('\t', ESCCHAR + r'\1')
+        txt = txt.replace('\t', ESCCHAR + 'tab')
     return txt
 
 
