@@ -28,6 +28,8 @@ def run():
             cmdline = ['-H']
             cmdline.extend(['-t', target])
             cmdline.extend(['-i', infile])
+            if basename in ('include-image-path', 'include-imagelink-path'):
+                cmdline.append('--fix-path')
             if stderr:
                 cmdline.extend(['-o', '-'])
                 cmdline.append('>' + outfile)
