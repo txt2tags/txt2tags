@@ -11,8 +11,9 @@
 cd $(dirname "$0")
 my_path=$PWD
 
-# Automatic relative PATH adjustment for images and local URIs.
-# See issues 62, 63.
+# --fix-path
+# Automatic relative PATH adjustment for images, local URIs and CSS files.
+# See issues 62, 63, 71, 85
 #
 # RULES:
 #
@@ -27,12 +28,12 @@ my_path=$PWD
 # 
 # Maybe in the future this could be a setting or a command line option.
 
-txt2tags options.t2t
+txt2tags --fix-path options.t2t
 
 for t in html creole txt; do
 
 cd "$my_path"
-t2t=../../txt2tags
+t2t='../../txt2tags --fix-path'
 
 # Targets other than HTML won't show headers
 test "$t" != 'html' && t2t="$t2t -H"

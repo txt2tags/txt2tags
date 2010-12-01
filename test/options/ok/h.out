@@ -23,6 +23,7 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --width=N       set the output's width to N columns (used by -t art)
       --height=N      set the output's height to N rows (used by -t art)
   -C, --config-file=F read configuration from file F
+      --fix-path      fix resources path (image, links, CSS) when needed
       --gui           invoke Graphical Tk Interface
   -q, --quiet         quiet mode, suppress all output (except errors)
   -v, --verbose       print informative messages during conversion
@@ -33,9 +34,9 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
 Turn OFF options:
      --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,
-     --no-encoding, --no-enum-title, --no-headers, --no-infile,
-     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,
-     --no-style, --no-targets, --no-toc, --no-toc-only
+     --no-encoding, --no-enum-title, --no-fix-path, --no-headers,
+     --no-infile, --no-mask-email, --no-outfile, --no-quiet, --no-rc,
+     --no-slides, --no-style, --no-targets, --no-toc, --no-toc-only
 
 Example:
      txt2tags -t html --toc file.t2t

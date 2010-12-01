@@ -159,6 +159,7 @@ FLAGS = {
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
+    'fix-path': 0,
     }
 OPTIONS = {
     'target': '',
@@ -337,6 +338,7 @@ _("      --slides        format output as presentation slides (used by -t art)")
 _("      --width=N       set the output's width to N columns (used by -t art)"),
 _("      --height=N      set the output's height to N rows (used by -t art)"),
 _("  -C, --config-file=F read configuration from file F"),
+_("      --fix-path      fix resources path (image, links, CSS) when needed"),
 _("      --gui           invoke Graphical Tk Interface"),
 _("  -q, --quiet         quiet mode, suppress all output (except errors)"),
 _("  -v, --verbose       print informative messages during conversion"),
@@ -347,9 +349,9 @@ _("      --dump-source   print the document source, with includes expanded"),
 '',
 _("Turn OFF options:"),
 "     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
-"     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
-"     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
-"     --no-style, --no-targets, --no-toc, --no-toc-only",
+"     --no-encoding, --no-enum-title, --no-fix-path, --no-headers,",
+"     --no-infile, --no-mask-email, --no-outfile, --no-quiet, --no-rc,",
+"     --no-slides, --no-style, --no-targets, --no-toc, --no-toc-only",
 '',
 _("Example:"),
 "     %s -t html --toc %s" % (my_name, _("file.t2t")),
@@ -5637,8 +5639,9 @@ def toc_tagger(toc, config):
         fakeconf['mask-email'] = 0
         fakeconf['preproc']    = []
         fakeconf['postproc']   = []
-        fakeconf['postvoodoo']  = []
+        fakeconf['postvoodoo'] = []
         fakeconf['css-sugar']  = 0
+        fakeconf['fix-path']   = 0
         fakeconf['art-no-title']  = 1  # needed for --toc and --slides together, avoids slide title before TOC
         ret, foo = convert(toc, fakeconf)
         set_global_config(config)   # restore config
@@ -6034,6 +6037,7 @@ def fix_relative_path(path):
     Fix image/link path to be relative to the source file path (issues 62, 63)
 
     Leave the path untouched when:
+    - not using --fix-path
     - path is an URL (or email)
     - path is an #anchor
     - path is absolute
@@ -6042,7 +6046,8 @@ def fix_relative_path(path):
 
     Note: Keep this rules in sync with fix_css_out_path()
     """
-    if regex['link'].match(path) \
+    if not CONF['fix-path'] \
+        or regex['link'].match(path) \
         or path[0] == '#' \
         or os.path.isabs(path) \
         or CONF['sourcefile'] in [STDIN, MODULEIN] \
@@ -6065,6 +6070,7 @@ def fix_css_out_path(config):
     This will affect the HTML's <link rel="stylesheet"> header tag.
 
     Leave the path untouched when:
+    - not using --fix-path
     - path is an URL
     - path is absolute
     - infile is STDIN
@@ -6080,7 +6086,8 @@ def fix_css_out_path(config):
     # Defaults to user-typed paths
     default = config['style'][:]
 
-    if config['sourcefile'] in [STDIN, MODULEIN] \
+    if not config['fix-path'] \
+        or config['sourcefile'] in [STDIN, MODULEIN] \
         or config['outfile'] in [STDOUT, MODULEOUT]:
         return default
 
