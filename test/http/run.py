@@ -51,6 +51,7 @@ def run():
                 cmdline.append('2>' + outfile)
             elif basename == 'relative-path':
                 cmdline.extend(['-t', 'html'])
+                cmdline.append('--fix-path')
             lib.convert(cmdline)
             lib.diff(outfile)
     # clean up
