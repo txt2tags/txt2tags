@@ -144,9 +144,6 @@ else:
 # first file and gui for the second. There is no --no-<action>.
 # Options --version and --help inside %!options are odd.
 #
-TARGETS  = 'html xhtml xhtmls sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole md bbcode html5 red spip rtf'.split()
-TARGETS.sort()
-
 FLAGS = {
     'headers': 1,
     'enum-title': 0,
@@ -264,6 +261,9 @@ TARGET_NAMES = {
   'spip'   : _('SPIP article'),
   'rtf'    : _('RTF document'),
 }
+TARGETS = TARGET_NAMES.keys()
+TARGETS.sort()
+
 
 DEBUG = 0     # do not edit here, please use --debug
 VERBOSE = 0   # do not edit here, please use -v, -vv or -vvv
