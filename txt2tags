@@ -1623,6 +1623,7 @@ def getTags(config):
     },
 
     # http://en.wikipedia.org/wiki/Help:Editing
+    # http://www.mediawiki.org/wiki/Sandbox
     'wiki': {
         'title1'                : '== \a =='        ,
         'title2'                : '=== \a ==='      ,
@@ -2173,6 +2174,7 @@ def getRules(config):
         'mapbar2pagebreak',       # map the strong bar to a page break
         'titleblocks',            # titles must be on open/close section blocks
         'listlineafteropen',      # put listItemLine after listItemOpen
+        'escapexmlchars',         # escape the XML special chars: < > &
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -2227,6 +2229,7 @@ def getRules(config):
             #TIP art inherits all TXT rules
         },
         'html': {
+            'escapexmlchars':1,
             'indentverbblock': 1,
             'linkable': 1,
             'stylable': 1,
@@ -2264,6 +2267,7 @@ def getRules(config):
         },
 
         'xhtmls': {
+            'escapexmlchars':1,
             'indentverbblock': 1,
             'linkable': 1,
             'stylable': 1,
@@ -2294,6 +2298,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'html5': {
+            'escapexmlchars':1,
             'linkable': 1,
             'stylable': 1,
             'escapeurl': 1,
@@ -2324,6 +2329,7 @@ def getRules(config):
         },
 
         'sgml': {
+            'escapexmlchars':1,
             'linkable': 1,
             'escapeurl': 1,
             'autonumberlist': 1,
@@ -2350,6 +2356,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'dbk': {
+            'escapexmlchars':1,
             'linkable': 1,
             'tableable': 0,  # activate when table tags are ready
             'imglinkable': 1,
@@ -2545,6 +2552,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'wiki': {
+            'escapexmlchars':1,
             'linkable': 1,
             'tableable': 1,
             'tablecellstrip': 1,
@@ -5904,11 +5912,13 @@ def convertUnicodeRTF(match):
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
-    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk', 'html5', 'wiki'):
+
+    if rules['escapexmlchars']:
         txt = re.sub('&', '&amp;', txt)
         txt = re.sub('<', '&lt;', txt)
         txt = re.sub('>', '&gt;', txt)
-        if target == 'sgml':
+
+    if target == 'sgml':
             txt = re.sub('\xff', '&yuml;', txt)  # "+y
     elif target == 'pm6':
         txt = re.sub('<', '<\#60>', txt)
