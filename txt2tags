@@ -1667,10 +1667,14 @@ def getTags(config):
         'tableRowOpen'          : '|-'              ,
         'tableTitleRowOpen'     : '|-'              ,
         # Note: using one cell per line syntax
-        'tableCellOpen'         : '\n| '            ,
-        'tableTitleCellOpen'    : '\n! '            ,
+        'tableCellOpen'         : '\n|~A~~S~~Z~ '   ,
+        'tableTitleCellOpen'    : '\n!~A~~S~~Z~ '   ,
         '_tableBorder'          : ' border="1"'     ,
         '_tableAlignCenter'     : ' align="center"' ,
+        '_tableCellAlignRight'  : ' align="right"'  ,
+        '_tableCellAlignCenter' : ' align="center"' ,
+        '_tableCellColSpan'     : ' colspan="\a"'   ,
+        '_tableAttrDelimiter'   : ' |'              ,
         'comment'               : '<!-- \a -->'     ,
         'TOC'                   : '__TOC__'         ,
     },
@@ -2569,6 +2573,8 @@ def getRules(config):
             'deflisttextstrip': 1,
             'autonumberlist': 1,
             'imgalignable': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
 
             'blanksaroundpara': 1,
             'blanksaroundverb': 1,
@@ -2855,6 +2861,7 @@ def getRegexes():
     '_tableColAlign'     : re.compile(r'~C~', re.I),
     '_tableCellColSpan'  : re.compile(r'~S~', re.I),
     '_tableCellAlign'    : re.compile(r'~A~', re.I),
+    '_tableAttrDelimiter': re.compile(r'~Z~', re.I),
     }
 
     # Special char to place data on TAGs contents  (\a == bell)
@@ -4647,6 +4654,17 @@ class TableMaster:
                 if this_mcopen:
                     copen = regex['_tableColAlign'].sub(this_align, this_mcopen)
                     cclose = TAGS['_tableCellMulticolClose']
+            
+            # Attribute delimiter, added when align/span attributes were used
+            # Example: Wikipedia table cell, without and with attributes:
+            # | cell contents
+            # | align="right" colspan="2" | cell contents
+            #
+            if regex['_tableAttrDelimiter'].search(copen):
+                if this_align or this_span:
+                    copen = regex['_tableAttrDelimiter'].sub(TAGS['_tableAttrDelimiter'], copen)
+                else:
+                    copen = regex['_tableAttrDelimiter'].sub('', copen)  # remove marker
 
             row.append(copen + cell + cclose)
 
