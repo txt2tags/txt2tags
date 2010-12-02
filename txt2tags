@@ -882,7 +882,7 @@ def getTags(config):
     deflistItem2Open    deflistItem2Close deflistItem2LinePrefix
 
     bar1                bar2
-    url                 urlMark
+    url                 urlMark      urlMarkAnchor
     email               emailMark
     img                 imgAlignLeft  imgAlignRight  imgAlignCenter
                        _imgAlignLeft _imgAlignRight _imgAlignCenter
@@ -1654,6 +1654,7 @@ def getTags(config):
         'bar1'                  : '----'            ,
         'url'                   : '[\a]'            ,
         'urlMark'               : '[\a \a]'         ,
+        'urlMarkAnchor'         : '[[\a|\a]]'       ,
         'email'                 : 'mailto:\a'       ,
         'emailMark'             : '[mailto:\a \a]'  ,
         # [[Image:foo.png|right|Optional alt/caption text]] (right, left, center, none)
@@ -6240,8 +6241,13 @@ def get_tagged_link(label, url):
         else:
             urlorder = [url, label]   # link before label
 
-        # Add link data to tag (replace \a's)
         ret = TAGS["%sMark" % linktype]
+
+        # Exception: tag for anchor link is different from the link tag
+        if url.startswith('#') and TAGS['urlMarkAnchor']:
+            ret = TAGS['urlMarkAnchor']
+        
+        # Add link data to tag (replace \a's)
         for data in urlorder:
             ret = regex['x'].sub(data, ret, 1)
 
