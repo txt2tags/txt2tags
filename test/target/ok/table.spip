@@ -1,0 +1,136 @@
+
+
+
+
+
+{{{ Simple table }}}
+
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+
+{{{ Simple table + border }}}
+
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+
+{{{ Simple table + heading }}}
+
+| {{Head 1-1}} | {{Head 1-2}} | {{Head 1-3}} |
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+
+{{{ Simple table + heading + border }}}
+
+| {{Head 1-1}} | {{Head 1-2}} | {{Head 1-3}} |
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+
+{{{ Simple table + heading + border + footer }}}
+
+| {{Head 1-1}} | {{Head 1-2}} | {{Head 1-3}} |
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+| {{Foot 1-1}} | {{Foot 1-2}} | {{Foot 1-3}} |
+
+{{{ Simple table + heading + border + centralized }}}
+
+| {{Head 1-1}} | {{Head 1-2}} | {{Head 1-3}} |
+| Cell 1-1 | Cell 1-2 | Cell 1-3 |
+| Cell 2-1 | Cell 2-2 | Cell 2-3 |
+| Cell 3-1 | Cell 3-2 | Cell 3-3 |
+
+{{{ Cell alignment }}}
+
+| ======= | ======= |
+| < | > |
+| = | = |
+| > | < |
+
+{{{ Heading alignment }}}
+
+| {{=======}} | {{=======}} |
+| {{<}} | {{>}} |
+| {{=}} | {{=}} |
+| {{>}} | {{<}} |
+
+{{{ Column span for cells }}}
+
+| 1 | 2 | 3 | 4 |
+| 1 | 2 | 3 + 4 |
+| 1 + 2 + 3 | 4 |
+| 1 | 2 + 3 | 4 |
+| 1 + 2 + 3 + 4 |
+
+{{{ Column span for headings }}}
+
+| {{1}} | {{2}} | {{3}} | {{4}} |
+| {{1}} | {{2}} | {{3 + 4}} |
+| {{1 + 2 + 3}} | {{4}} |
+| {{1}} | {{2 + 3}} | {{4}} |
+| {{1 + 2 + 3 + 4}} |
+
+{{{ Cell alignment + column span }}}
+
+| ======= | ======= | ======= |
+| < | = |
+| = |
+| = | > |
+
+{{{ Heading alignment + column span }}}
+
+| {{=======}} | {{=======}} | {{=======}} |
+| {{<}} | {{=}} |
+| {{=}} |
+| {{=}} | {{>}} |
+
+{{{ Some empty cells }}}
+
+| A | B | C | D |  |
+| F | G | H |  | J |
+| K | L |  | N | O |
+| P |  | R | S | T |
+|  | V | W | X | Y |
+
+{{{ Lines with different number of cells, increase }}}
+
+| 1 |
+| 1 | 2 |
+| 1 | 2 | 3 |
+| 1 | 2 | 3 | 4 |
+| 1 | 2 | 3 | 4 | 5 |
+
+{{{ Lines with different number of cells, decrease }}}
+
+| 1 | 2 | 3 | 4 | 5 |
+| 1 | 2 | 3 | 4 |
+| 1 | 2 | 3 |
+| 1 | 2 |
+| 1 |
+
+{{{ One cell table }}}
+
+| Cell 1 |
+
+{{{ One cell table + border }}}
+
+| Cell 1 |
+
+{{{ One cell table + heading }}}
+
+| {{Head 1}} |
+
+{{{ One cell table + heading + border }}}
+
+| {{Head 1}} |
+
+{{{ Empty lines }}}
+
+|  |
+|  |
+|  |
+

@@ -4488,9 +4488,28 @@ class TitleMaster:
 
 ##############################################################################
 
+# Table syntax reference for targets:
+# http://www.mediawiki.org/wiki/Help:Tables
+# http://moinmo.in/HelpOnMoinWikiSyntax#Tables
+# http://moinmo.in/HelpOnTables
+# http://www.wikicreole.org/wiki/Creole1.0#section-Creole1.0-Tables
+# http://www.wikicreole.org/wiki/Tables
+# http://www.pmwiki.org/wiki/PmWiki/Tables
+# http://www.dokuwiki.org/syntax#tables
+# http://michelf.com/projects/php-markdown/extra/#table
+# http://code.google.com/p/support/wiki/WikiSyntax#Tables
+# 
+# Good reading:
+# http://www.wikicreole.org/wiki/ListOfTableMarkups
+#
+# See also:
+# test/marks/table.t2t
+# test/target/table.t2t
+
 #TODO check all this table mess
 # It uses parse_row properties for table lines
 # BLOCK.table() replaces the cells by the parsed content
+#
 class TableMaster:
     def __init__(self, line=''):
         self.rows      = []

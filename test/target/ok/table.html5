@@ -1,0 +1,460 @@
+<!doctype html>
+<head>
+<meta name="generator" content="http://txt2tags.org"/>
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+table,img.center{border:0;margin:0 auto;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+.right{text-align:right;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
+</head>
+<body>
+<header>
+<hgroup>
+</hgroup>
+</header>
+<article>
+
+
+<h1>Simple table</h1>
+
+<table>
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+</table>
+
+<h1>Simple table + border</h1>
+
+<table class="tableborder">
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+</table>
+
+<h1>Simple table + heading</h1>
+
+<table>
+<tr>
+<th>Head 1-1</th>
+<th>Head 1-2</th>
+<th>Head 1-3</th>
+</tr>
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+</table>
+
+<h1>Simple table + heading + border</h1>
+
+<table class="tableborder">
+<tr>
+<th>Head 1-1</th>
+<th>Head 1-2</th>
+<th>Head 1-3</th>
+</tr>
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+</table>
+
+<h1>Simple table + heading + border + footer</h1>
+
+<table class="tableborder">
+<tr>
+<th>Head 1-1</th>
+<th>Head 1-2</th>
+<th>Head 1-3</th>
+</tr>
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+<tr>
+<th>Foot 1-1</th>
+<th>Foot 1-2</th>
+<th>Foot 1-3</th>
+</tr>
+</table>
+
+<h1>Simple table + heading + border + centralized</h1>
+
+<table style="text-align:center" class="tableborder">
+<tr>
+<th>Head 1-1</th>
+<th>Head 1-2</th>
+<th>Head 1-3</th>
+</tr>
+<tr>
+<td>Cell 1-1</td>
+<td>Cell 1-2</td>
+<td>Cell 1-3</td>
+</tr>
+<tr>
+<td>Cell 2-1</td>
+<td>Cell 2-2</td>
+<td>Cell 2-3</td>
+</tr>
+<tr>
+<td>Cell 3-1</td>
+<td>Cell 3-2</td>
+<td>Cell 3-3</td>
+</tr>
+</table>
+
+<h1>Cell alignment</h1>
+
+<table class="tableborder">
+<tr>
+<td>=======</td>
+<td>=======</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td class="right">&gt;</td>
+</tr>
+<tr>
+<td class="center">=</td>
+<td class="center">=</td>
+</tr>
+<tr>
+<td class="right">&gt;</td>
+<td>&lt;</td>
+</tr>
+</table>
+
+<h1>Heading alignment</h1>
+
+<table class="tableborder">
+<tr>
+<th>=======</th>
+<th>=======</th>
+</tr>
+<tr>
+<th>&lt;</th>
+<th>&gt;</th>
+</tr>
+<tr>
+<th>=</th>
+<th>=</th>
+</tr>
+<tr>
+<th>&gt;</th>
+<th>&lt;</th>
+</tr>
+</table>
+
+<h1>Column span for cells</h1>
+
+<table class="tableborder">
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td colspan="2">3 + 4</td>
+</tr>
+<tr>
+<td colspan="3">1 + 2 + 3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td colspan="2">2 + 3</td>
+<td>4</td>
+</tr>
+<tr>
+<td colspan="4">1 + 2 + 3 + 4</td>
+</tr>
+</table>
+
+<h1>Column span for headings</h1>
+
+<table class="tableborder">
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+<tr>
+<th>1</th>
+<th>2</th>
+<th colspan="2">3 + 4</th>
+</tr>
+<tr>
+<th colspan="3">1 + 2 + 3</th>
+<th>4</th>
+</tr>
+<tr>
+<th>1</th>
+<th colspan="2">2 + 3</th>
+<th>4</th>
+</tr>
+<tr>
+<th colspan="4">1 + 2 + 3 + 4</th>
+</tr>
+</table>
+
+<h1>Cell alignment + column span</h1>
+
+<table class="tableborder">
+<tr>
+<td>=======</td>
+<td>=======</td>
+<td>=======</td>
+</tr>
+<tr>
+<td colspan="2">&lt;</td>
+<td class="center">=</td>
+</tr>
+<tr>
+<td class="center" colspan="3">=</td>
+</tr>
+<tr>
+<td class="center">=</td>
+<td class="right" colspan="2">&gt;</td>
+</tr>
+</table>
+
+<h1>Heading alignment + column span</h1>
+
+<table class="tableborder">
+<tr>
+<th>=======</th>
+<th>=======</th>
+<th>=======</th>
+</tr>
+<tr>
+<th colspan="2">&lt;</th>
+<th>=</th>
+</tr>
+<tr>
+<th colspan="3">=</th>
+</tr>
+<tr>
+<th>=</th>
+<th colspan="2">&gt;</th>
+</tr>
+</table>
+
+<h1>Some empty cells</h1>
+
+<table class="tableborder">
+<tr>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td></td>
+<td>J</td>
+</tr>
+<tr>
+<td>K</td>
+<td>L</td>
+<td></td>
+<td>N</td>
+<td>O</td>
+</tr>
+<tr>
+<td>P</td>
+<td></td>
+<td>R</td>
+<td>S</td>
+<td>T</td>
+</tr>
+<tr>
+<td></td>
+<td>V</td>
+<td>W</td>
+<td>X</td>
+<td>Y</td>
+</tr>
+</table>
+
+<h1>Lines with different number of cells, increase</h1>
+
+<table class="tableborder">
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</table>
+
+<h1>Lines with different number of cells, decrease</h1>
+
+<table class="tableborder">
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+</table>
+
+<h1>One cell table</h1>
+
+<table>
+<tr>
+<td>Cell 1</td>
+</tr>
+</table>
+
+<h1>One cell table + border</h1>
+
+<table class="tableborder">
+<tr>
+<td>Cell 1</td>
+</tr>
+</table>
+
+<h1>One cell table + heading</h1>
+
+<table>
+<tr>
+<th>Head 1</th>
+</tr>
+</table>
+
+<h1>One cell table + heading + border</h1>
+
+<table class="tableborder">
+<tr>
+<th>Head 1</th>
+</tr>
+</table>
+
+<h1>Empty lines</h1>
+
+<table class="tableborder">
+<tr>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</table>
+
+<!-- html5 code generated by txt2tags (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -q -\-no-rc -i table.t2t -t html5 -->
+</article></body></html>
