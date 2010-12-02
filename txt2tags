@@ -1517,7 +1517,8 @@ def getTags(config):
         'img'                  : 'image::\a[]'   ,
     },
 
-    # http://wiki.splitbrain.org/wiki:syntax
+    # http://www.dokuwiki.org/syntax
+    # http://www.dokuwiki.org/playground:playground
     # Hint: <br> is \\ $
     # Hint: You can add footnotes ((This is a footnote))
     'doku': {
@@ -1564,6 +1565,7 @@ def getTags(config):
     },
 
     # http://www.pmwiki.org/wiki/PmWiki/TextFormattingRules
+    # http://www.pmwiki.org/wiki/Main/WikiSandbox
     'pmw': {
         'title1'               : '~A~! \a '      ,
         'title2'               : '~A~!! \a '     ,
@@ -1648,7 +1650,7 @@ def getTags(config):
         'listItemLine'          : '*'               ,
         'numlistItemLine'       : '#'               ,
         'deflistItem1Open'      : '; '              ,
-        'deflistItem2LinePrefix': ': '            ,
+        'deflistItem2LinePrefix': ': '              ,
         'bar1'                  : '----'            ,
         'url'                   : '[\a]'            ,
         'urlMark'               : '[\a \a]'         ,
@@ -1660,10 +1662,10 @@ def getTags(config):
         '_imgAlignCenter'       : '|center'         ,
         '_imgAlignRight'        : '|right'          ,
         # {| border="1" cellspacing="0" cellpadding="4" align="center"
-        'tableOpen'             : '{|~A~~B~'      ,
-        'tableClose'            : '|}'            ,
-        'tableRowOpen'          : '|-'            ,
-        'tableTitleRowOpen'     : '|-'            ,
+        'tableOpen'             : '{|~A~~B~'        ,
+        'tableClose'            : '|}'              ,
+        'tableRowOpen'          : '|-'              ,
+        'tableTitleRowOpen'     : '|-'              ,
         # Note: using one cell per line syntax
         'tableCellOpen'         : '\n| '            ,
         'tableTitleCellOpen'    : '\n! '            ,
@@ -1675,7 +1677,7 @@ def getTags(config):
 
     # http://demo.redmine.org/help/wiki_syntax.html
     # http://demo.redmine.org/help/wiki_syntax_detailed.html
-    # http://demo.redmine.org
+    # Sandbox: http://demo.redmine.org - create account, add new project
     'red': {
         'title1'                : 'h1. \a'   ,
         'title2'                : 'h2. \a'   ,
@@ -1805,6 +1807,7 @@ def getTags(config):
     },
 
     # http://www.spip-contrib.net/Les-raccourcis-typographiques-en
+    # http://www.spip-contrib.net/Carnet-Bac-a-Sable
     # some tags are not implemented by spip tags, but spip accept html tags.
     'spip': {
         'title1'                : '{{{ \a }}}' ,
@@ -1911,6 +1914,9 @@ def getTags(config):
     },
         # regular markdown: http://daringfireball.net/projects/markdown/syntax
         # markdown extra:   http://michelf.com/projects/php-markdown/extra/
+        # sandbox:
+        # http://daringfireball.net/projects/markdown/dingus
+        # http://michelf.com/projects/php-markdown/dingus/
     'md': {
         'title1'               : '# \a '         ,
         'title2'               : '## \a '        ,
@@ -2842,13 +2848,13 @@ def getRegexes():
         re.compile(r'^%'),
 
     # Auxiliary tag regexes
-    '_imgAlign'        : re.compile(r'~A~', re.I),
-    '_tableAlign'      : re.compile(r'~A~', re.I),
-    '_anchor'          : re.compile(r'~A~', re.I),
-    '_tableBorder'     : re.compile(r'~B~', re.I),
-    '_tableColAlign'   : re.compile(r'~C~', re.I),
-    '_tableCellColSpan': re.compile(r'~S~', re.I),
-    '_tableCellAlign'  : re.compile(r'~A~', re.I),
+    '_imgAlign'          : re.compile(r'~A~', re.I),
+    '_tableAlign'        : re.compile(r'~A~', re.I),
+    '_anchor'            : re.compile(r'~A~', re.I),
+    '_tableBorder'       : re.compile(r'~B~', re.I),
+    '_tableColAlign'     : re.compile(r'~C~', re.I),
+    '_tableCellColSpan'  : re.compile(r'~S~', re.I),
+    '_tableCellAlign'    : re.compile(r'~A~', re.I),
     }
 
     # Special char to place data on TAGs contents  (\a == bell)
@@ -4551,11 +4557,11 @@ class TableMaster:
 
     def _tag_cells(self, rowdata):
         row = []
-        cells  = rowdata['cells']
-        open_   = TAGS['tableCellOpen']
-        close  = TAGS['tableCellClose']
-        sep    = TAGS['tableCellSep']
-        calign    = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
+        cells = rowdata['cells']
+        open_ = TAGS['tableCellOpen']
+        close = TAGS['tableCellClose']
+        sep = TAGS['tableCellSep']
+        calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
         calignsep = TAGS['tableColAlignSep']
         ncolumns = len(self.colalign)
 
@@ -4578,8 +4584,7 @@ class TableMaster:
                 span = rtfcell * rtfspan
 
             if span > 1:
-                cspan.append(regex['x'].sub(
-                str(span), TAGS['_tableCellColSpan']))
+                cspan.append(regex['x'].sub(str(span), TAGS['_tableCellColSpan']))
 
                 mcopen = regex['x'].sub(str(span), TAGS['_tableCellMulticolOpen'])
                 multicol.append(mcopen)
@@ -4617,25 +4622,24 @@ class TableMaster:
         for cell in cells:
             copen = open_
             cclose = close
+
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
             this_align = this_span = this_mcopen = ''
             if calign:
                 this_align = calign.pop(0)
-            if cspan :
+            if cspan:
                 this_span = cspan.pop(0)
             if multicol:
                 this_mcopen = multicol.pop(0)
 
             # Insert cell align into open tag (if cell is alignable)
             if rules['tablecellaligntype'] == 'cell':
-                copen = regex['_tableCellAlign'].sub(
-                    this_align, copen)
+                copen = regex['_tableCellAlign'].sub(this_align, copen)
 
             # Insert cell span into open tag (if cell is spannable)
             if rules['tablecellspannable']:
-                copen = regex['_tableCellColSpan'].sub(
-                    this_span, copen)
+                copen = regex['_tableCellColSpan'].sub(this_span, copen)
 
             # Use multicol tags instead (if multicol supported, and if
             # cell has a span or is aligned differently to column)
