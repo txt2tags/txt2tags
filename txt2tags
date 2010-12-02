@@ -1453,9 +1453,8 @@ def getTags(config):
         'emailMark'             : '[\a \a]'       ,
         'img'                   : '[\a]'          ,
         'tableRowOpen'          : '||'            ,
-        'tableCellOpen'         : '~A~'           ,
-        'tableCellClose'        : '||'            ,
-        'tableTitleCellClose'   : '||'            ,
+        'tableCellOpen'         : '~A~ '          ,
+        'tableCellClose'        : ' ||'           ,
         '_tableCellAlignRight'  : '<)>'           ,
         '_tableCellAlignCenter' : '<:>'           ,
         'comment'               : '/* \a */'      ,
@@ -4631,6 +4630,7 @@ class TableMaster:
 
         # Maybe is it a title row?
         if rowdata['title']:
+            # Defaults to normal cell tag if not found
             open_ = TAGS['tableTitleCellOpen']  or open_
             close = TAGS['tableTitleCellClose'] or close
             sep   = TAGS['tableTitleCellSep']   or sep
