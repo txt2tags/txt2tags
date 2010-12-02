@@ -5904,7 +5904,7 @@ def convertUnicodeRTF(match):
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
-    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk', 'html5'):
+    if target in ('html', 'sgml', 'xhtml', 'xhtmls', 'dbk', 'html5', 'wiki'):
         txt = re.sub('&', '&amp;', txt)
         txt = re.sub('<', '&lt;', txt)
         txt = re.sub('>', '&gt;', txt)
