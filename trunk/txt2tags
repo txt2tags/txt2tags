@@ -3757,14 +3757,21 @@ class ConfigMaster:
 
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
+        
         infile, outfile = config['sourcefile'], config['outfile']
-        if infile == STDIN    and not outfile:
+
+        # Set output to STDOUT/MODULEOUT when no real inputfile
+        if infile == STDIN and not outfile:
             outfile = STDOUT
         if infile == MODULEIN and not outfile:
             outfile = MODULEOUT
+
+        # Automatic outfile name: infile.target
         if not outfile and (infile and config.get('target')):
-            basename = re.sub('\.(txt|t2t)$', '', infile)
+            # .t2t and .txt are the only "official" source extensions
+            basename = re.sub('\.t[2x]t$', '', infile)
             outfile = "%s.%s" % (basename, config['target'])
+
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
         return outfile
