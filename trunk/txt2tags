@@ -3758,8 +3758,6 @@ class ConfigMaster:
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
         infile, outfile = config['sourcefile'], config['outfile']
-        if outfile:
-            outfile = PathMaster().join(os.path.dirname(infile), outfile)
         if infile == STDIN    and not outfile:
             outfile = STDOUT
         if infile == MODULEIN and not outfile:
