@@ -79,3 +79,4 @@ if len(sys.argv) == 1:
     print 'sample/run.sh'
     print 'art/run.sh'
     print 'path/run.sh'
+    print 'outfile/run.sh'
