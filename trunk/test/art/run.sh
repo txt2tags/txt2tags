@@ -6,7 +6,7 @@
 
 cd $(dirname "$0")
 
-t2t=../../txt2tags
+t2t="../../txt2tags --no-rc"
 
 $t2t -i sample.t2t -t art                                   -o default.art
 $t2t -i sample.t2t -t art --slides                          -o slides.art

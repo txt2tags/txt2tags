@@ -11,7 +11,7 @@ cd $(dirname "$0")
 
 errors=0
 svn_root='../..'
-txt2tags=$svn_root/txt2tags
+txt2tags="$svn_root/txt2tags --no-rc"
 samples_path=$svn_root/samples
 input=$samples_path/sample.t2t
 

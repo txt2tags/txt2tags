@@ -10,6 +10,7 @@
 
 cd $(dirname "$0")
 my_path=$PWD
+svn_root='../..'
 
 # --fix-path
 # Automatic relative PATH adjustment for images, local URIs and CSS files.
@@ -28,12 +29,12 @@ my_path=$PWD
 # 
 # Maybe in the future this could be a setting or a command line option.
 
-txt2tags --fix-path options.t2t
+$svn_root/txt2tags --no-rc --fix-path options.t2t
 
 for t in html creole txt; do
 
 cd "$my_path"
-t2t='../../txt2tags --fix-path'
+t2t="$svn_root/txt2tags --no-rc --fix-path"
 
 # Targets other than HTML won't show headers
 test "$t" != 'html' && t2t="$t2t -H"
