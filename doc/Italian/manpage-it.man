@@ -14,7 +14,7 @@ txt2tags \- utility per la formattazione e la conversione del testo
 .SH DESCRIZIONE
 
 .P
-\fBtxt2tags\fR Ë un'utility GPL scritta in Python per la formattazione e la
+\fBtxt2tags\fR √® un'utility GPL scritta in Python per la formattazione e la
 conversione del testo che genera documenti \fIHTML\fR, \fIXHTML\fR, \fISGML\fR,
 \fILaTeX\fR, \fILout\fR, \fIMan Page\fR, \fIMoinMoin\fR, \fIMagicPoint\fR e
 \fIPageMaker\fR da un singolo file di testo contenente un markup minimale.
@@ -25,8 +25,8 @@ e scrivere semplici file di testo. Il programma fa tutto il lavoro sporco,
 aggiungendo i simboli necessari e gestendo i problemi di conversione.
 
 .P
-Uno stesso file puÚ essere convertito in tutti i formati di destinazione, senza
-ulteriori modifiche. Questo Ë lo scopo di \fBtxt2tags\fR: MONO sorgente,
+Uno stesso file pu√≤ essere convertito in tutti i formati di destinazione, senza
+ulteriori modifiche. Questo √® lo scopo di \fBtxt2tags\fR: MONO sorgente,
 MULTI destinazione.
 
 .P
@@ -68,11 +68,11 @@ visualizza le informazioni di aiuto ed esce
 
 .TP
  \fB\-H\fR, \fB\-\-no\-headers\fR
-sopprime intestazione, titoli e piÈ di pagina
+sopprime intestazione, titoli e pi√© di pagina
 
 .TP
      \fB\-\-headers\fR
-mostra intestazioni, titoli e piÈ di pagina (predefinito SI)
+mostra intestazioni, titoli e pi√© di pagina (predefinito SI)
 
 .TP
  \fB\-i\fR, \fB\-\-infile\fR=\fIFILE\fR
@@ -161,7 +161,7 @@ aggiunge l'indice al documento di destinazione
 
 .TP
      \fB\-\-toc\-level\fR=\fIN\fR
-setta la profondit‡ massima dell'indice ad N
+setta la profondit√† massima dell'indice ad N
 
 .TP
      \fB\-\-toc\-only\fR
@@ -176,15 +176,15 @@ stampa messaggi informativi durante la conversione
 visualizza la versione del programma ed esce
 
 .P
-Come opzione predefinita, il documento di destinazione convertito Ë salvato in 'file.<type>'.
+Come opzione predefinita, il documento di destinazione convertito √® salvato in 'file.<type>'.
 Usa \-\-outfile per forzare un nome del file di destinazione.
-Se il file sorgente Ë '\-', legge da STDIN.
-Se il file di destinazione Ë '\-', indirizza l'output su STDOUT.
+Se il file sorgente √® '\-', legge da STDIN.
+Se il file di destinazione √® '\-', indirizza l'output su STDOUT.
 
 .SH STRUTTURA
 
 .P
-Il file sorgente Txt2tags puÚ avere tre aree:
+Il file sorgente Txt2tags pu√≤ avere tre aree:
 
 .TP
 \fBIntestazione\fR
@@ -201,16 +201,16 @@ riga di comando.
 
 .TP
 \fBCorpo\fR
-Il documento sorgente vero e proprio! Questa Ë l'unica area richiesta per avere
+Il documento sorgente vero e proprio! Questa √® l'unica area richiesta per avere
 un file txt2tags valido ed inizia alla prima linea di testo valida (non commento
 o configurazione) dopo l'area di Intestazione.
 
 .SH SETTAGGI
 
 .P
-La conversione di un file sorgente puÚ essere personalizzata in due diversi
+La conversione di un file sorgente pu√≤ essere personalizzata in due diversi
 modi. Le configurazione esterne sono prese dal file ~/.txt2tagsrc o da un
-altro file scelto dall'utente. La configurazione interna Ë fatta con i settaggi
+altro file scelto dall'utente. La configurazione interna √® fatta con i settaggi
 nell'area di Configurazione. Entrambe le configurazioni usano la stessa sintassi:
 
 .TP
@@ -267,15 +267,15 @@ l'elaborazione del documento
 .IP \(bu 3
 I settaggi sono validi soltanto nell'area di Configurazione, e sono considerati
 semplici commenti se sono trovati nel Corpo del documento. Eccetto include,
-che Ë un comando valido all'interno del Corpo del documento.
+che √® un comando valido all'interno del Corpo del documento.
 
 .IP \(bu 3
-Se la stesso settaggio compare pi˘ di una volta nell'area di Configurazione,
-verr‡ usato solo l'ultimo trovato. Fanno eccezione: options, preproc
+Se la stesso settaggio compare pi√π di una volta nell'area di Configurazione,
+verr√† usato solo l'ultimo trovato. Fanno eccezione: options, preproc
 e postproc, che sono settaggi cumulativi.
 
 .IP \(bu 3
-Una riga di settaggio con un settaggio invalido verr‡ considerato una semplice
+Una riga di settaggio con un settaggio invalido verr√† considerato una semplice
 riga di commento.
 
 .IP \(bu 3
@@ -286,7 +286,7 @@ ma non sulle opzioni da riga di comando.
 .SH SINTASSI
 
 .P
-Nel documento sorgente (il file contenente solo testo) Ë usata una sintassi molto
+Nel documento sorgente (il file contenente solo testo) √® usata una sintassi molto
 semplice per identificare la struttura e la formattazione.
 Ecco la lista completa della sintassi:
 
@@ -329,7 +329,7 @@ Tabella             | cella1 | cella2 | cella3...
 
 .nf
 Linea separatrice   -----------------------...
-Linea pi˘ spessa    =======================...
+Linea pi√π spessa    =======================...
 Colleg.ipertest.    [etichetta url]
 Immagine            [nomefile.jpg]
 Testo 'grezzo'      ""testo""
@@ -376,17 +376,17 @@ $ (echo ; echo "**bold**") | txt2tags \-t html \-H \-
 .TP
 %%date
 Permette di includere la data corrente, nel formato AAAAMMGG.
-Formattazione opzionale si puÚ ottenere usando la sintassi
+Formattazione opzionale si pu√≤ ottenere usando la sintassi
 %%date(format\-string).
 
 .TP
 %%infile
 Usato per ottenere informazioni circa il file sorgente. Formattazione
-opzionale si puÚ ottenere usando la sintassi
+opzionale si pu√≤ ottenere usando la sintassi
 %%infile(format\-string).
 
-Utile per collegamenti nel piÈ di pagina come [Vedi sorgente %%infile],
-in quanto se il nome del file sorgente viene cambiato, esso verr‡ aggiornato
+Utile per collegamenti nel pi√© di pagina come [Vedi sorgente %%infile],
+in quanto se il nome del file sorgente viene cambiato, esso verr√† aggiornato
 nel documento convertito.
 
 .TP
@@ -398,23 +398,23 @@ sorgente. Usa la stessa formattazione della macro %%date.
 .TP
 %%outfile
 Usato per ottenere informazioni circa il file convertito. Formattazione
-opzionale si puÚ ottenere usando la sintassi %%outfile(format\-string).
+opzionale si pu√≤ ottenere usando la sintassi %%outfile(format\-string).
 
-Utile per riferirsi al documento corrente, come "Questo Ë il file manpage\-it.man";
-se il nome del file convertito viene cambiato, esso verr‡ aggiornato.
+Utile per riferirsi al documento corrente, come "Questo √® il file manpage\-it.man";
+se il nome del file convertito viene cambiato, esso verr√† aggiornato.
 
 .TP
 %%toc
-La macro %%toc specifica dove verr‡ inserito l'indice del documento.
-Esso puÚ essere inserito in qualunque punto all'interno del documento.
+La macro %%toc specifica dove verr√† inserito l'indice del documento.
+Esso pu√≤ essere inserito in qualunque punto all'interno del documento.
 
-NOTA: %%toc sar‡ convertito nell'indice solo se si utilizza l'opzione \-\-toc.
+NOTA: %%toc sar√† convertito nell'indice solo se si utilizza l'opzione \-\-toc.
 
 .SH ALTRE INFORMAZIONI UTILI (*)
 
 .nf
-(*) Questa sezione non Ë presente nella versione originale
-    inglese, ma Ë stata aggiunta dal traduttore nella versione italiana
+(*) Questa sezione non √® presente nella versione originale
+    inglese, ma √® stata aggiunta dal traduttore nella versione italiana
     (ispirato dalla sezione 'TRUCS' della versione francese).
     
     This section is not present in the original english version, but it
@@ -454,7 +454,7 @@ Richiamo del collegamento (all'interno di un paragrafo di testo):
 .SS FILE MULTIPLI
 
 .P
-txt2tags puÚ elaborare pi˘ file contemporaneamente, come segue:
+txt2tags pu√≤ elaborare pi√π file contemporaneamente, come segue:
 
 .P
    txt2tags *.t2t 
@@ -465,7 +465,7 @@ txt2tags puÚ elaborare pi˘ file contemporaneamente, come segue:
 Scritto e mantenuto da Aurelio Jargas <verde@aurelio.net>
 
 .P
-Questa pagina di manuale Ë stata scritta da Jose Inacio Coelho <jic@technologist.com>
+Questa pagina di manuale √® stata scritta da Jose Inacio Coelho <jic@technologist.com>
 come file di testo, e convertita nel formato man da \fBtxt2tags\fR!
 
 .P

@@ -3,6 +3,8 @@ TXT2TAGS
 Aug, 2010
 
 %!target: man
+%!encoding: UTF-8
+
 %!postproc(man): ' \(#\w+\)' ''
 
 %!options(html): --mask-email --toc
@@ -19,9 +21,6 @@ Aug, 2010
 %% 28 dec 2004 aurelio: updated to v2.2
 %% 21 may 2005 aurelio: updated to v2.3
 %% 12 aug 2010 aurelio: updated to v2.6, rewrite (r250)
-
-% TRANSLATOR: uncomment the next line and fill the right encoding
-%%!encoding: utf-8
 
 
 = NAME =[name]
