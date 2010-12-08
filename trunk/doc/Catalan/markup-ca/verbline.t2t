@@ -1,4 +1,4 @@
 
-Una línia verbatim es adequada per anotar ordres:
+Una lÃ­nia verbatim es adequada per anotar ordres:
 ``` $ cat /etc/passwd | tr : ,
-Está precedida per tres accents oberts.
+EstÃ¡ precedida per tres accents oberts.

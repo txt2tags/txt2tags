@@ -1,4 +1,4 @@
 
-Una línea literal es ideal para anotar comandos:
+Una lÃ­nea literal es ideal para anotar comandos:
 ``` $ cat /etc/passwd | tr : ,
-Y solamente está precedida de tres comillas.
+Y solamente estÃ¡ precedida de tres comillas.

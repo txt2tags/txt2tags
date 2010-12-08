@@ -2,7 +2,7 @@ Exemples de conversion Txt2tags
 voir les marques converties en HTML
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 %!style: http://txt2tags.org/markup.css
 %!options: --css-sugar -o ../markup-fr.html
 
@@ -89,4 +89,4 @@ voir les marques converties en HTML
 ```
 Traduit par Claude Hiebel.
 
-[Aller à la page de txt2tags (en anglais) http://txt2tags.org]
+[Aller Ã  la page de txt2tags (en anglais) http://txt2tags.org]

@@ -2,6 +2,7 @@ Txt2tags Markup Demo
 D'Markeierungen ginn an HTML konverteiert
 
 %!target: html
+%!encoding: UTF-8
 %!options: --css-sugar
 %!style: http://txt2tags.org/markup.css
 
@@ -10,9 +11,6 @@ D'Markeierungen ginn an HTML konverteiert
 
 % TRANSLATOR: change markup.html to markup-XX.html (see README file)
 %!options: -o ../markup-de_LU.html
-
-% TRANSLATOR: uncomment the next line and fill the right encoding
-%!encoding: iso-8859-15
 
 %!postproc: {(.*?)}	<\1>
 
@@ -61,7 +59,7 @@ LESCHTEN
 %!include: deflist.t2t
 {/td}{/tr}{tr}{th colspan="2"}
 
-BLÉCK
+BLÃ‰CK
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``quote.t2t``
 {/td}{td}

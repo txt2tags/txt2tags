@@ -2,6 +2,7 @@ Mostre de les marques de Txt2tags
 Fitxa't amb les marques convertides a HTML
 
 %!target: html
+%!encoding: UTF-8
 %!options: --css-sugar
 %!style: http://txt2tags.org/markup.css
 
@@ -11,9 +12,6 @@ Fitxa't amb les marques convertides a HTML
 % TRANSLATOR: change markup.html to markup-XX.html (see README file)
 %!options: -o ../markup-ca.html
 
-% TRANSLATOR: uncomment the next line and fill the right encoding
-%!encoding: iso-8859-1
-
 %!postproc: {(.*?)}	<\1>
 
 % TRANSLATOR:
@@ -22,7 +20,7 @@ Fitxa't amb les marques convertides a HTML
 {table}
 {tr}{th colspan="2"}
 
-B¿SIQUES
+B√ÄSIQUES
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
 {/td}{td}
@@ -60,7 +58,7 @@ LLISTES
 %!include: deflist.t2t
 {/td}{/tr}{tr}{th colspan="2"}
 
-¡REES
+√ÅREES
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``quote.t2t``
 {/td}{td}
@@ -109,7 +107,7 @@ ALTRES
 
 %%% TRANSLATOR:
 %%% Uncomment the next line and fill your full name
-TraduÔt al catal· per Antoni Serra Devecchi.
+Tradu√Øt al catal√° per Antoni Serra Devecchi.
 
 % TRANSLATOR: don't forget the link text!
 [Go to the txt2tags homepage http://txt2tags.org]

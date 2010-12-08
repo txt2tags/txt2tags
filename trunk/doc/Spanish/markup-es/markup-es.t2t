@@ -2,6 +2,7 @@ Muestra de las marcas de Txt2tags
 Observe las marcas convertidas a HTML
 
 %!target: html
+%!encoding: UTF-8
 %!options: --css-sugar
 %!style: http://txt2tags.org/markup.css
 
@@ -11,9 +12,6 @@ Observe las marcas convertidas a HTML
 % TRANSLATOR: change markup.html to markup-XX.html (see README file)
 %!options: -o ../markup-es.html
 
-% TRANSLATOR: uncomment the next line and fill the right encoding
-%!encoding: iso-8859-1
-
 %!postproc: {(.*?)}	<\1>
 
 % TRANSLATOR:
@@ -22,7 +20,7 @@ Observe las marcas convertidas a HTML
 {table}
 {tr}{th colspan="2"}
 
-B¡SICAS
+B√ÅSICAS
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
 {/td}{td}
@@ -60,7 +58,7 @@ LISTAS
 %!include: deflist.t2t
 {/td}{/tr}{tr}{th colspan="2"}
 
-¡REAS
+√ÅREAS
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``quote.t2t``
 {/td}{td}
@@ -109,7 +107,7 @@ OTRAS
 
 %%% TRANSLATOR:
 %%% Uncomment the next line and fill your full name
-Traducido por Luis Cort·zar.
+Traducido por Luis Cort√°zar.
 
 % TRANSLATOR: don't forget the link text!
 [Go to the txt2tags homepage http://txt2tags.org]

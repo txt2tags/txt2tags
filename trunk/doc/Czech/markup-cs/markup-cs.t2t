@@ -1,7 +1,8 @@
 Txt2tags Markup Demo
-ZnaËky p¯evedenÈ do HTML
+Znaƒçky p≈ôeveden√© do HTML
 
 %!target: html
+%!encoding: UTF-8
 %!options: --css-sugar
 %!style: http://txt2tags.org/markup.css
 
@@ -11,9 +12,6 @@ ZnaËky p¯evedenÈ do HTML
 % TRANSLATOR: change markup.html to markup-XX.html (see README file)
 %!options: -o ../markup-cs.html
 
-% TRANSLATOR: uncomment the next line and fill the right encoding
-%!encoding: iso-8859-2
-
 %!postproc: {(.*?)}	<\1>
 
 % TRANSLATOR:
@@ -22,7 +20,7 @@ ZnaËky p¯evedenÈ do HTML
 {table}
 {tr}{th colspan="2"}
 
-Z¡KLADY
+Z√ÅKLADY
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
 {/td}{td}
@@ -83,7 +81,7 @@ OBLASTI
 %!include: rawline.t2t
 {/td}{/tr}{tr}{th colspan="2"}
 
-OSTATNÕ
+OSTATN√ç
 {/th}{/tr}{tr}{td class="t2t"}
 %!include: ``table.t2t``
 {/td}{td}
@@ -109,7 +107,7 @@ OSTATNÕ
 
 %%% TRANSLATOR:
 %%% Uncomment the next line and fill your full name
-P¯eloæil Vlastimil Ott.
+P≈ôelo≈æil Vlastimil Ott.
 
 % TRANSLATOR: don't forget the link text!
-[Navπtivte domovskou str·nku txt2tags http://txt2tags.org]
+[Nav≈°tivte domovskou str√°nku txt2tags http://txt2tags.org]

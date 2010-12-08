@@ -1,8 +1,8 @@
 
 """
-   Nezpracovanı text je uzavøen 
-         tøemi dvojitımi uvozovkami.
+   NezpracovanÃ½ text je uzavÅ™en 
+         tÅ™emi dvojitÃ½mi uvozovkami.
 
-     **Znaèky* nejsou interpretovány
-       a odsazení není respektováno.
+     **ZnaÄky* nejsou interpretovÃ¡ny
+       a odsazenÃ­ nenÃ­ respektovÃ¡no.
 """
