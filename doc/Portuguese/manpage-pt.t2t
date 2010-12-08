@@ -3,6 +3,8 @@ TXT2TAGS
 Ago, 2010
 
 %!target: man
+%!encoding: UTF-8
+
 %!postproc(man): ' \(#\w+\)' ''
 
 %!options(html): --mask-email --toc
@@ -17,7 +19,6 @@ Ago, 2010
 %% 28 dez 2004 aurelio: atualização para v2.2
 %% 30 out 2010 aurelio: atualização para v2.6 (reescrita)
 
-%!encoding: utf-8
 
 = NOME =[nome]
 
