@@ -1,13 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:3em               ;} 
-a    { text-decoration:none     ;} 
-pre  { background-color:#ffffcc ;} 
-</STYLE>
+<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.org">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <TITLE>TXT2TAGS</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
 <CENTER>
@@ -15,23 +11,58 @@ pre  { background-color:#ffffcc ;}
 <FONT SIZE="4">Maggio, 2005</FONT>
 </CENTER>
 
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
 
-<H1>NOME</H1>
+  <UL>
+  <LI><A HREF="#toc1">NOME</A>
+  <LI><A HREF="#toc2">SINOPSI</A>
+  <LI><A HREF="#toc3">DESCRIZIONE</A>
+  <LI><A HREF="#toc4">OPZIONI</A>
+  <LI><A HREF="#toc5">STRUTTURA</A>
+  <LI><A HREF="#toc6">SETTAGGI</A>
+    <UL>
+    <LI><A HREF="#toc7">REGOLE DEI SETTAGGI</A>
+    </UL>
+  <LI><A HREF="#toc8">SINTASSI</A>
+    <UL>
+    <LI><A HREF="#toc9">Base</A>
+    <LI><A HREF="#toc10">Formattazione</A>
+    <LI><A HREF="#toc11">Blocchi di testo</A>
+    <LI><A HREF="#toc12">Altro</A>
+    </UL>
+  <LI><A HREF="#toc13">ESEMPI</A>
+  <LI><A HREF="#toc14">MACRO</A>
+  <LI><A HREF="#toc15">ALTRE INFORMAZIONI UTILI (*)</A>
+    <UL>
+    <LI><A HREF="#toc16">COLLEGAMENTI IPERTESTUALI NEL DOCUMENTO</A>
+    <LI><A HREF="#toc17">FILE MULTIPLI</A>
+    </UL>
+  <LI><A HREF="#toc18">AUTORE</A>
+  <LI><A HREF="#toc19">COPYRIGHT</A>
+  </UL>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+
+<H1 ID="toc1">NOME</H1>
 
 <P>
 txt2tags - utility per la formattazione e la conversione del testo
 </P>
 
-<H1>SINOPSI</H1>
+<H1 ID="toc2">SINOPSI</H1>
 
 <P>
 <B>txt2tags</B> [<I>OPTION</I>]... [<I>FILE</I>]...
 </P>
 
-<H1>DESCRIZIONE</H1>
+<H1 ID="toc3">DESCRIZIONE</H1>
 
 <P>
-<B>txt2tags</B> è un'utility GPL scritta in Python per la formattazione e la
+<B>txt2tags</B> Ã¨ un'utility GPL scritta in Python per la formattazione e la
 conversione del testo che genera documenti <I>HTML</I>, <I>XHTML</I>, <I>SGML</I>,
 <I>LaTeX</I>, <I>Lout</I>, <I>Man Page</I>, <I>MoinMoin</I>, <I>MagicPoint</I> e
 <I>PageMaker</I> da un singolo file di testo contenente un markup minimale.
@@ -42,15 +73,15 @@ e scrivere semplici file di testo. Il programma fa tutto il lavoro sporco,
 aggiungendo i simboli necessari e gestendo i problemi di conversione.
 </P>
 <P>
-Uno stesso file può essere convertito in tutti i formati di destinazione, senza
-ulteriori modifiche. Questo è lo scopo di <B>txt2tags</B>: MONO sorgente,
+Uno stesso file puÃ² essere convertito in tutti i formati di destinazione, senza
+ulteriori modifiche. Questo Ã¨ lo scopo di <B>txt2tags</B>: MONO sorgente,
 MULTI destinazione.
 </P>
 <P>
 Visita l'home page <I>http://txt2tags.org</I>.
 </P>
 
-<H1>OPZIONI</H1>
+<H1 ID="toc4">OPZIONI</H1>
 
 <DL>
 <DT> <B>-C</B>, <B>--config-file</B></DT><DD>
@@ -78,10 +109,10 @@ avvia l'interfaccia grafica Tk
 visualizza le informazioni di aiuto ed esce
 <P></P>
 <DT> <B>-H</B>, <B>--no-headers</B></DT><DD>
-sopprime intestazione, titoli e pié di pagina
+sopprime intestazione, titoli e piÃ© di pagina
 <P></P>
 <DT>     <B>--headers</B></DT><DD>
-mostra intestazioni, titoli e pié di pagina (predefinito SI)
+mostra intestazioni, titoli e piÃ© di pagina (predefinito SI)
 <P></P>
 <DT> <B>-i</B>, <B>--infile</B>=<I>FILE</I></DT><DD>
 setta FILE come file sorgente ('-' per STDIN)
@@ -148,7 +179,7 @@ html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
 aggiunge l'indice al documento di destinazione
 <P></P>
 <DT>     <B>--toc-level</B>=<I>N</I></DT><DD>
-setta la profondità massima dell'indice ad N
+setta la profonditÃ  massima dell'indice ad N
 <P></P>
 <DT>     <B>--toc-only</B></DT><DD>
 stampa l'indice del documento ed esce
@@ -161,16 +192,16 @@ visualizza la versione del programma ed esce
 </DL>
 
 <P>
-Come opzione predefinita, il documento di destinazione convertito è salvato in 'file.&lt;type&gt;'.
+Come opzione predefinita, il documento di destinazione convertito Ã¨ salvato in 'file.&lt;type&gt;'.
 Usa --outfile per forzare un nome del file di destinazione.
-Se il file sorgente è '-', legge da STDIN.
-Se il file di destinazione è '-', indirizza l'output su STDOUT.
+Se il file sorgente Ã¨ '-', legge da STDIN.
+Se il file di destinazione Ã¨ '-', indirizza l'output su STDOUT.
 </P>
 
-<H1>STRUTTURA</H1>
+<H1 ID="toc5">STRUTTURA</H1>
 
 <P>
-Il file sorgente Txt2tags può avere tre aree:
+Il file sorgente Txt2tags puÃ² avere tre aree:
 </P>
 
 <DL>
@@ -186,17 +217,17 @@ I settaggi possono anche essere importati da un file di configurazione o dalla
 riga di comando.
 <P></P>
 <DT><B>Corpo</B></DT><DD>
-Il documento sorgente vero e proprio! Questa è l'unica area richiesta per avere
+Il documento sorgente vero e proprio! Questa Ã¨ l'unica area richiesta per avere
 un file txt2tags valido ed inizia alla prima linea di testo valida (non commento
 o configurazione) dopo l'area di Intestazione.
 </DL>
 
-<H1>SETTAGGI</H1>
+<H1 ID="toc6">SETTAGGI</H1>
 
 <P>
-La conversione di un file sorgente può essere personalizzata in due diversi
+La conversione di un file sorgente puÃ² essere personalizzata in due diversi
 modi. Le configurazione esterne sono prese dal file <CODE>~/.txt2tagsrc</CODE> o da un
-altro file scelto dall'utente. La configurazione interna è fatta con i settaggi
+altro file scelto dall'utente. La configurazione interna Ã¨ fatta con i settaggi
 nell'area di Configurazione. Entrambe le configurazioni usano la stessa sintassi:
 </P>
 
@@ -239,33 +270,33 @@ i tuoi filtri personalizzati (macro) che verranno elaborati <B>DOPO</B>
 l'elaborazione del documento
 </DL>
 
-<H2>REGOLE DEI SETTAGGI</H2>
+<H2 ID="toc7">REGOLE DEI SETTAGGI</H2>
 
  <UL>
  <LI>I settaggi sono validi soltanto nell'area di Configurazione, e sono considerati
    semplici commenti se sono trovati nel Corpo del documento. Eccetto include,
-   che è un comando valido all'interno del Corpo del documento.
+   che Ã¨ un comando valido all'interno del Corpo del documento.
  <P></P>
- <LI>Se la stesso settaggio compare più di una volta nell'area di Configurazione,
-   verrà usato solo l'ultimo trovato. Fanno eccezione: options, preproc
+ <LI>Se la stesso settaggio compare piÃ¹ di una volta nell'area di Configurazione,
+   verrÃ  usato solo l'ultimo trovato. Fanno eccezione: options, preproc
    e postproc, che sono settaggi cumulativi.
  <P></P>
- <LI>Una riga di settaggio con un settaggio invalido verrà considerato una semplice
+ <LI>Una riga di settaggio con un settaggio invalido verrÃ  considerato una semplice
    riga di commento.
  <P></P>
  <LI>I settaggi nell'area di Configurazione hanno la precedenza sul file txt2tagsrc,
    ma non sulle opzioni da riga di comando.
  </UL>
 
-<H1>SINTASSI</H1>
+<H1 ID="toc8">SINTASSI</H1>
 
 <P>
-Nel documento sorgente (il file contenente solo testo) è usata una sintassi molto
+Nel documento sorgente (il file contenente solo testo) Ã¨ usata una sintassi molto
 semplice per identificare la struttura e la formattazione.
 Ecco la lista completa della sintassi:
 </P>
 
-<H2>Base</H2>
+<H2 ID="toc9">Base</H2>
 
 <PRE>
   Intestazione        Le prime tre righe del file sorgente
@@ -274,7 +305,7 @@ Ecco la lista completa della sintassi:
   Paragrafo           testo
 </PRE>
 
-<H2>Formattazione</H2>
+<H2 ID="toc10">Formattazione</H2>
 
 <PRE>
   Grassetto           **testo**
@@ -283,7 +314,7 @@ Ecco la lista completa della sintassi:
   Monospazio          ``testo``
 </PRE>
 
-<H2>Blocchi di testo</H2>
+<H2 ID="toc11">Blocchi di testo</H2>
 
 <PRE>
   Citazione           &lt;TAB&gt;testo
@@ -297,11 +328,11 @@ Ecco la lista completa della sintassi:
   Tabella             | cella1 | cella2 | cella3...
 </PRE>
 
-<H2>Altro</H2>
+<H2 ID="toc12">Altro</H2>
 
 <PRE>
   Linea separatrice   -----------------------...
-  Linea più spessa    =======================...
+  Linea piÃ¹ spessa    =======================...
   Colleg.ipertest.    [etichetta url]
   Immagine            [nomefile.jpg]
   Testo 'grezzo'      ""testo""
@@ -313,7 +344,7 @@ Per una descrizione dettagliata della sintassi leggi la Guida
 dell'Utente Txt2tags (nella directory dei documenti).
 </P>
 
-<H1>ESEMPI</H1>
+<H1 ID="toc13">ESEMPI</H1>
 
 <P>
 Supponendo di avere scritto il file <CODE>file.t2t</CODE>, procediamo con
@@ -340,21 +371,21 @@ la conversione.
 <CODE>$ (echo ; echo "**bold**") | txt2tags -t html -H -</CODE>
 </DL>
 
-<H1>MACRO</H1>
+<H1 ID="toc14">MACRO</H1>
 
 <DL>
 <DT>%%date</DT><DD>
 Permette di includere la data corrente, nel formato AAAAMMGG.
-Formattazione opzionale si può ottenere usando la sintassi
+Formattazione opzionale si puÃ² ottenere usando la sintassi
 %%date(format-string).
 <P></P>
 <DT>%%infile</DT><DD>
 Usato per ottenere informazioni circa il file sorgente. Formattazione
-opzionale si può ottenere usando la sintassi
+opzionale si puÃ² ottenere usando la sintassi
 %%infile(format-string).
 <P></P>
-Utile per collegamenti nel pié di pagina come [Vedi sorgente %%infile],
-in quanto se il nome del file sorgente viene cambiato, esso verrà aggiornato
+Utile per collegamenti nel piÃ© di pagina come [Vedi sorgente %%infile],
+in quanto se il nome del file sorgente viene cambiato, esso verrÃ  aggiornato
 nel documento convertito.
 <P></P>
 <DT>%%mtime</DT><DD>
@@ -364,23 +395,23 @@ sorgente. Usa la stessa formattazione della macro %%date.
 <P></P>
 <DT>%%outfile</DT><DD>
 Usato per ottenere informazioni circa il file convertito. Formattazione
-opzionale si può ottenere usando la sintassi %%outfile(format-string).
+opzionale si puÃ² ottenere usando la sintassi %%outfile(format-string).
 <P></P>
-Utile per riferirsi al documento corrente, come "Questo è il file manpage-it.html";
-se il nome del file convertito viene cambiato, esso verrà aggiornato.
+Utile per riferirsi al documento corrente, come "Questo Ã¨ il file manpage-it.html";
+se il nome del file convertito viene cambiato, esso verrÃ  aggiornato.
 <P></P>
 <DT>%%toc</DT><DD>
-La macro %%toc specifica dove verrà inserito l'indice del documento.
-Esso può essere inserito in qualunque punto all'interno del documento.
+La macro %%toc specifica dove verrÃ  inserito l'indice del documento.
+Esso puÃ² essere inserito in qualunque punto all'interno del documento.
 <P></P>
-NOTA: %%toc sarà convertito nell'indice solo se si utilizza l'opzione --toc.
+NOTA: %%toc sarÃ  convertito nell'indice solo se si utilizza l'opzione --toc.
 </DL>
 
-<H1>ALTRE INFORMAZIONI UTILI (*)</H1>
+<H1 ID="toc15">ALTRE INFORMAZIONI UTILI (*)</H1>
 
 <PRE>
-  (*) Questa sezione non è presente nella versione originale
-      inglese, ma è stata aggiunta dal traduttore nella versione italiana
+  (*) Questa sezione non Ã¨ presente nella versione originale
+      inglese, ma Ã¨ stata aggiunta dal traduttore nella versione italiana
       (ispirato dalla sezione 'TRUCS' della versione francese).
       
       This section is not present in the original english version, but it
@@ -393,7 +424,7 @@ Elenchiamo di seguito alcune caratteristiche che rendono txt2tags
 un'eccellente utility per scrivere i nostri documenti.
 </P>
 
-<H2>COLLEGAMENTI IPERTESTUALI NEL DOCUMENTO</H2>
+<H2 ID="toc16">COLLEGAMENTI IPERTESTUALI NEL DOCUMENTO</H2>
 
 <P>
 I titoli possono essere usati come destinazione di collegamenti ipertestuali,
@@ -417,29 +448,29 @@ Richiamo del collegamento (all'interno di un paragrafo di testo):
     testo testo [DescrizioneCollegamento #NomeCollegamento] testo testo
 </PRE>
 
-<H2>FILE MULTIPLI</H2>
+<H2 ID="toc17">FILE MULTIPLI</H2>
 
 <P>
-txt2tags può elaborare più file contemporaneamente, come segue:
+txt2tags puÃ² elaborare piÃ¹ file contemporaneamente, come segue:
 </P>
 <P>
    txt2tags *.t2t 
 </P>
 
-<H1>AUTORE</H1>
+<H1 ID="toc18">AUTORE</H1>
 
 <P>
 Scritto e mantenuto da Aurelio Jargas &lt;&lt;verde (a) aurelio net&gt;&gt;
 </P>
 <P>
-Questa pagina di manuale è stata scritta da Jose Inacio Coelho &lt;&lt;jic (a) technologist com&gt;&gt;
+Questa pagina di manuale Ã¨ stata scritta da Jose Inacio Coelho &lt;&lt;jic (a) technologist com&gt;&gt;
 come file di testo, e convertita nel formato man da <B>txt2tags</B>!
 </P>
 <P>
 Tradotto da Spinucci Stefano &lt;&lt;virgo977 (a) tin it&gt;&gt;
 </P>
 
-<H1>COPYRIGHT</H1>
+<H1 ID="toc19">COPYRIGHT</H1>
 
 <P>
 Copyright (C) 2001, 2002, 2003, 2004, 2005 Aurelio Jargas
@@ -450,6 +481,6 @@ NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
 PURPOSE.
 </P>
 
-<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- html code generated by txt2tags 2.6.585 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -t html doc/Italian/manpage-it.t2t -->
 </BODY></HTML>
