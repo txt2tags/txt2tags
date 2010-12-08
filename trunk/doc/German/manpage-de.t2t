@@ -3,12 +3,12 @@ TXT2TAGS
 Nov, 2006
 
 %!target: man
+%!encoding: UTF-8
+
 %!postproc(man): ' \(#\w+\)' ''
 
 %!options(html): --mask-email --toc
 %!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
-
-%% LOG
 
 
 = NAME =
