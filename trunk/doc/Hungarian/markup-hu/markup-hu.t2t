@@ -1,25 +1,17 @@
 A Txt2tags jeleinek demója
 Így alakulnak át a jelek HTML formátumra
 
-
 %!target: html
-%!Encoding  : iso-8859-2
+%!encoding: iso-8859-2
+%!style: http://txt2tags.org/markup.css
 %!options: --css-sugar -o ../markup-hu.html
+
 %!preproc: t2t\.png	../img/t2tpowered.png
 
 %!postproc: {(.*?)}	<\1>
 
-%!postproc: ^<HEAD>$ '<HEAD>\n<STYLE TYPE="text/css">\n@#@'
-%!postproc: (@#@)$ 'body { margin:1em; }             \n\1'
-%!postproc: (@#@)$ 'div.header {text-align:center; } \n\1'
-%!postproc: (@#@)$ 'th { padding:.5em; }             \n\1'
-%!postproc: (@#@)$ 'td { width:45%; padding:.5em; }  \n\1'
-%!postproc: (@#@)$ 'td {background-color:silver; }   \n\1'
-%!postproc: (@#@)$ 'td.t2t {background-color:#ef4; } \n\1'
-%!postproc:  @#@$  </STYLE>
 
-
-{table align="center" border=1}
+{table}
 {tr}{th colspan="2"}ALAPOK{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
 {/td}{td}
