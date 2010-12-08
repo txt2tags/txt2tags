@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<TITLE>TXT2TAGS SAMPLE</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<CENTER>
+<H1>TXT2TAGS SAMPLE</H1>
+<FONT SIZE="4"><I>Aurelio Jargas</I></FONT><BR>
+<FONT SIZE="4">12/08/2010</FONT>
+</CENTER>
+
+
+<H1>Introduzione</H1>
+
+<P>
+benvenuti nel file di esempio di txt2tags.
+</P>
+<P>
+Qui potrete trovare gli esempi e una breve spiegazione
+di tutti i codici.
+</P>
+<P>
+Le prime tre linee di questo file sono usate per le
+intestazioni (headers), con il seguente formato:
+</P>
+
+<PRE>
+  linea1: titolo del documento
+  linea2: nome dell'autore, email
+  linea3: data, versione
+</PRE>
+
+<P>
+Le linee che sono precedute e seguite simmetricamente
+dal simbolo = sono titoli.
+</P>
+
+<H1>Caratteri e Stili</H1>
+
+<P>
+Abbiamo due tipi di caratteri:
+</P>
+<P>
+Il tipo NORMALE che può essere sottoposto a stili.
+</P>
+<P>
+Il tipo TYPEWRITER usato per caratteri a spaziatura
+fissa per i testi pre-formattati.
+</P>
+<P>
+Adesso inseriamo un sottotitolo...
+</P>
+
+<H2>Stili</H2>
+
+<P>
+I codici per gli stili sono semplici, come quando
+scrivi una semplie email o un testo.
+</P>
+<P>
+Usiamo un doppio *, /, - ae _ per rappresentare
+<B>grassetto</B>, <I>italico</I>, <S>barrato</S> e <U>sottolineato</U>.
+</P>
+<P>
+I codici per gli stili <B><I>grassetto italico</I></B> si
+possono usare in combinazione.
+</P>
+
+<H2>Testo Pre-formattato</H2>
+
+<P>
+Possiamo inserire codice sorgente o altro testo
+pre-formattato:
+</P>
+
+<PRE>
+    qui    trovi     testo pre-formattato
+  //i codici// **non**  sono  ``interpretati``
+</PRE>
+
+<P>
+Inoltre è semplice inserire una singola linea
+pre-formattata in un testo:
+</P>
+
+<PRE>
+  prompt$ ls /etc
+</PRE>
+
+<P>
+Oppure usare testo <CODE>pre-formattato</CODE> all'interno delle
+frase.
+</P>
+
+<H2>Più Cosmesi</H2>
+
+<P>
+Le entità speciali come le email (<A HREF="mailto:duh@somewhere.com">duh@somewhere.com</A>) e
+gli URL (<A HREF="http://www.duh.com">http://www.duh.com</A>) sono automagicamente
+individuate, tanto quanto la linea orizzontale:
+</P>
+
+<HR NOSHADE SIZE=1>
+
+<P>
+^ sottile o spessa v
+</P>
+
+<HR NOSHADE SIZE=5>
+
+<P>
+Si può anche inserire un <A HREF="http://duh.org">link esplicito</A>
+con un'etichetta.
+</P>
+<P>
+E ricorda che,
+</P>
+	<BLOCKQUOTE>
+	un TAB davanti alla linea crea un citazione
+		<BLOCKQUOTE>
+		più TAB aumentano la profondità (se permesso).
+		</BLOCKQUOTE>
+	</BLOCKQUOTE>
+<P>
+Carino.
+</P>
+
+<H1>Elenchi</H1>
+
+<P>
+Un elenco è facilissimo, basta mettere un <B>meno</B> o un
+<B>più</B> all'inizio della linea.
+</P>
+
+<H2>Elenchi semplici</H2>
+
+<P>
+Il meno è il codice standard per le liste. Per le
+sottoliste basta aggiungere <B>spazi</B> all'inizio della
+linea. Più spazi, più sottoliste.
+</P>
+
+<UL>
+<LI>Terra
+  <UL>
+  <LI>America
+    <UL>
+    <LI>Sud America
+      <UL>
+      <LI>Brasile
+        <UL>
+        <LI>Quanto posso spingermi all'interno?
+        </UL>
+      </UL>
+    </UL>
+  <LI>Europa
+    <UL>
+    <LI>Un sacco di paesi
+    </UL>
+  </UL>
+<LI>Marte
+  <UL>
+  <LI>Chissà?
+  </UL>
+</UL>
+
+<P>
+L'elenco finisce con <B>due</B> interlinee consecutive.
+</P>
+
+<H2>Liste Numerate</H2>
+
+<P>
+Si applicano le stesse regole per gli elenchi semplici,
+solo con un diverso codice (più).
+</P>
+
+<OL>
+<LI>uno
+<LI>due
+<LI>tre
+  <UL>
+  <LI>elenchi misti!
+  <LI>che confusione
+    <OL>
+    <LI>ricontiamo
+    <LI>...
+    </OL>
+  </UL>
+<LI>quattro
+</OL>
+
+<H2>Liste di definizioni</H2>
+
+<P>
+Il codice per le liste di definizioni è il "punto e
+virgola", seguito dal termine. Le definizioni del
+termine sono nella linea successiva.
+</P>
+
+<DL>
+<DT>arancia</DT><DD>
+  un frutto giallo
+<DT>mela</DT><DD>
+  un frutto verde o rosso. O un computer :)
+<DT>altra frutta</DT><DD>
+  <UL>
+  <LI>wee!
+  <LI>mescoliamo le liste
+    <OL>
+    <LI>ancora!
+    <LI>di nuovo!
+    </OL>
+  </UL>
+</DL>
+
+<H1>Tabelle</H1>
+
+<P>
+Usa le barre verticali per comporre righe e celle delle tabelle.
+Le doppie barre all'inizio della riga creano i titoli (headers).
+Gli spazi specificano l'allineamento per ciascuna cella.
+</P>
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
+<TR>
+<TH>titolo 1</TH>
+<TH>titolo 2</TH>
+<TH>titolo 3</TH>
+</TR>
+<TR>
+<TD>cella 1.1</TD>
+<TD ALIGN="center">cella 1.2</TD>
+<TD ALIGN="right">cella 1.3</TD>
+</TR>
+<TR>
+<TD>cella 2.1</TD>
+<TD ALIGN="center">cella 2.2</TD>
+<TD ALIGN="right">cella 2.3</TD>
+</TR>
+</TABLE>
+
+<P>
+Senza l'ultima barra, si omette il bordo:
+</P>
+
+<TABLE ALIGN="center" CELLPADDING="4">
+<TR>
+<TH>titolo 1</TH>
+<TH>titolo 2</TH>
+<TH>titolo 3</TH>
+</TR>
+<TR>
+<TD>cella 1.1</TD>
+<TD ALIGN="center">cella 1.2</TD>
+<TD ALIGN="right">cella 1.3</TD>
+</TR>
+<TR>
+<TD>cella 2.1</TD>
+<TD ALIGN="center">cella 2.2</TD>
+<TD ALIGN="right">cella 2.3</TD>
+</TR>
+</TABLE>
+
+<H1>Entitità Speciali</H1>
+
+<P>
+Perché le cose erano troppo semplici.
+</P>
+
+<H2>Immagini</H2>
+
+<P>
+Il codice per le immagini è semplicissimo: <CODE>[filename]</CODE>.
+</P>
+                      <center><IMG ALIGN="middle" SRC="../img/photo.jpg" BORDER="0" ALT=""></center>  
+
+<UL>
+<LI>Il nome del file deve finire in PNG, JPG, GIF, o simili.
+<LI>Niente spazi tra le parentesi!
+</UL>
+
+<H2>Altro</H2>
+
+<P>
+la pratica macro <CODE>%%date</CODE> viene sostituita dalla data corrente.
+</P>
+<P>
+Così oggi è 20101208 nel formato ISO <CODE>YYYYMMDD</CODE>.
+</P>
+<P>
+Si può anche modificare il formato con i codici %?, come <CODE>%%date(%m-%d-%Y)</CODE> con cui si ottiene: 12-08-2010.
+</P>
+<P>
+Questo è tutto per ora.
+</P>
+
+<HR NOSHADE SIZE=1>
+
+<P>
+Translated by Ruggero Furlanetto.
+</P>
+
+<HR NOSHADE SIZE=1>
+
+<P>
+<IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> (<A HREF="sample-it.t2t">sample-it.t2t</A>)
+</P>
+
+<!-- html code generated by txt2tags 2.6.585 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html doc/Italian/sample-it.t2t -->
+</BODY></HTML>
