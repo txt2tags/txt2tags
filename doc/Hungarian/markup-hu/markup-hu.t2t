@@ -1,8 +1,8 @@
-A Txt2tags jeleinek demója
-Így alakulnak át a jelek HTML formátumra
+A Txt2tags jeleinek demÃ³ja
+Ãgy alakulnak Ã¡t a jelek HTML formÃ¡tumra
 
 %!target: html
-%!encoding: iso-8859-2
+%!encoding: UTF-8
 %!style: http://txt2tags.org/markup.css
 %!options: --css-sugar -o ../markup-hu.html
 
@@ -32,7 +32,7 @@ A Txt2tags jeleinek demója
 %!include: ``beauti.t2t``
 {/td}{td}
 %!include: beauti.t2t
-{/td}{/tr}{tr}{th colspan="2"}LISTÁK{/th}{/tr}{tr}{td class="t2t"}
+{/td}{/tr}{tr}{th colspan="2"}LISTÃK{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``list.t2t``
 {/td}{td}
 %!include: list.t2t
@@ -44,7 +44,7 @@ A Txt2tags jeleinek demója
 %!include: ``deflist.t2t``
 {/td}{td}
 %!include: deflist.t2t
-{/td}{/tr}{tr}{th colspan="2"}TERÜLETEK{/th}{/tr}{tr}{td class="t2t"}
+{/td}{/tr}{tr}{th colspan="2"}TERÃœLETEK{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``quote.t2t``
 {/td}{td}
 %!include: quote.t2t
@@ -64,7 +64,7 @@ A Txt2tags jeleinek demója
 %!include: ``rawline.t2t``
 {/td}{td}
 %!include: rawline.t2t
-{/td}{/tr}{tr}{th colspan="2"}EGYÉB{/th}{/tr}{tr}{td class="t2t"}
+{/td}{/tr}{tr}{th colspan="2"}EGYÃ‰B{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``table.t2t``
 {/td}{td}
 %!include: table.t2t
@@ -86,7 +86,7 @@ A Txt2tags jeleinek demója
 ```
 
 ```
-Fordította Iván Tamás.
+FordÃ­totta IvÃ¡n TamÃ¡s.
 
 
 [Go to the txt2tags homepage http://txt2tags.org]

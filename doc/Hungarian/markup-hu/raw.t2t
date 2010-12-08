@@ -1,9 +1,9 @@
 
 """
-       A három idézõjel közé zárt sorokat
-       "nyers" területnek nevezünk.
+       A hÃ¡rom idÃ©zÅ‘jel kÃ¶zÃ© zÃ¡rt sorokat
+       "nyers" terÃ¼letnek nevezÃ¼nk.
 
-A nyers területen belül a **jelek** elvesztik
-különleges jelentésüket, de a tördelés
+A nyers terÃ¼leten belÃ¼l a **jelek** elvesztik
+kÃ¼lÃ¶nleges jelentÃ©sÃ¼ket, de a tÃ¶rdelÃ©s
 bekapcsolva marad.
 """
