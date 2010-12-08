@@ -1,4 +1,4 @@
 
-A szÛ szerinti sor hasznos parancsok leÌr·s·hoz:
+A sz√≥ szerinti sor hasznos parancsok le√≠r√°s√°hoz:
 ``` $ cat /etc/passwd | tr : ,
-Az ilyen sorok 3 felsı vesszıvel kezdıdnek.
+Az ilyen sorok 3 fels≈ë vessz≈ëvel kezd≈ëdnek.

@@ -1,5 +1,5 @@
 
-Vıpis na øádku se hodí pro pøíkazy:
+VÃ½pis na Å™Ã¡dku se hodÃ­ pro pÅ™Ã­kazy:
 ``` $ cat /etc/passwd | tr : ,
-Staèí jej zaèít tøemi obrácenımi uvozovkami.
+StaÄÃ­ jej zaÄÃ­t tÅ™emi obrÃ¡cenÃ½mi uvozovkami.
 
