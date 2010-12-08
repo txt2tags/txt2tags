@@ -3232,10 +3232,8 @@ class PathMaster:
             return os.path.join(dirname, filename)
 
     def relpath(self, path, start):
-        """Unlike os.path.relpath(), never touch absolute paths"""
-        if not path \
-            or os.path.isabs(path) \
-            or self.is_url(path):
+        """Unlike os.path.relpath(), never touch URLs"""
+        if not path or self.is_url(path):
             return path
         else:
             return os.path.relpath(path, start)
@@ -6189,9 +6187,12 @@ def fix_css_out_path(config):
     # The stylepath paths are relative to the INPUT file folder.
     # Now we must make them relative to the OUTPUT file folder.
     stylepath_out = []
-    for path in config['stylepath']:
-        # Don't try to fix absolute paths and URLs
-        path = PathMaster().relpath(path, os.path.dirname(config['outfile']))
+    for (userpath, fixedpath) in zip(config['style'], config['stylepath']):
+        if os.path.isabs(userpath):
+            # Never fix user-typed absolute paths
+            path = userpath
+        else:
+            path = PathMaster().relpath(fixedpath, os.path.dirname(config['outfile']))
         stylepath_out.append(path)
     return stylepath_out
 

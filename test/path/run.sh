@@ -48,6 +48,10 @@ test -d folder || mkdir folder
 $t2t -t $t -i relative-path.t2t -o        from-source-same-folder.$t
 $t2t -t $t -i relative-path.t2t -o folder/from-source-diff-folder.$t
 
+# Regular absolute files
+$t2t -t $t -i "$PWD"/relative-path.t2t -o        from-source-same-folder-absolute.$t
+$t2t -t $t -i "$PWD"/relative-path.t2t -o folder/from-source-diff-folder-absolute.$t
+
 # STDIN
 cat relative-path.t2t | $t2t -t $t -i - -o        from-source-same-folder-stdin.$t
 cat relative-path.t2t | $t2t -t $t -i - -o folder/from-source-diff-folder-stdin.$t
@@ -123,5 +127,5 @@ then
 else
 	echo
 	echo "Found errors here (compare with 'ok' folder):"
-	ls -1 from-* *.html 2>/dev/null
+	ls -1 from-* options.html 2>/dev/null
 fi
