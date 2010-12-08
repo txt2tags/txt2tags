@@ -1,16 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:1em; }              
-div.header { text-align:center; } 
-th { padding:.5em; }              
-td { width:45%; padding:.5em; }   
-td { background-color:silver; }   
-td.t2t { background-color:#ef4; } 
-</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.org">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<LINK REL="stylesheet" TYPE="text/css" HREF="http://txt2tags.org/markup.css">
 <TITLE>Txt2tags Markup Demo</TITLE>
 </HEAD>
 <BODY>
@@ -22,13 +15,14 @@ td.t2t { background-color:#ef4; }
 
 <DIV CLASS="body" ID="body">
 <P>
-<table align="center" border=1>
+<table>
 <tr><th colspan="2">
 </P>
 <P>
 BASIS
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 = Titel Niveau 1 =
@@ -37,15 +31,21 @@ BASIS
 
 === Titel Niveau 3 ===
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <H1>Titel Niveau 1</H1>
+
 <H2>Titel Niveau 2</H2>
+
 <H3>Titel Niveau 3</H3>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 + Numerierter Title Niveau 1 +
@@ -54,15 +54,21 @@ BASIS
 
 +++ Numerierter Title Niveau 3 +++
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <H1>1. Numerierter Title Niveau 1</H1>
+
 <H2>1.1. Numerierter Title Niveau 2</H2>
+
 <H3>1.1.1. Numerierter Title Niveau 3</H3>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Ein Paragraf besteht aus einer oder
@@ -70,6 +76,7 @@ mehrerer Zeilen.
 
 Eine leer Zeile trennt sie.
 </PRE>
+
 <P>
 </td><td>
 Ein Paragraf besteht aus einer oder
@@ -79,6 +86,7 @@ mehrerer Zeilen.
 Eine leer Zeile trennt sie.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 % beginne eine Zeile mit dem 
@@ -86,12 +94,14 @@ Prozent Zeichen,
 % und sie wird ignorier
 sehr nützlich für TODOs!
 </PRE>
+
 <P>
 </td><td>
 Prozent Zeichen,
 sehr nützlich für TODOs!
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Zum verschönern gibts **fett**
@@ -100,6 +110,7 @@ und //kursiv//.
 Ebenfalls haben wir __unterstrichen__ und
 ``mono``.
 </PRE>
+
 <P>
 </td><td>
 Zum verschönern gibts <B>fett</B>
@@ -114,6 +125,7 @@ Ebenfalls haben wir <U>unterstrichen</U> und
 LISTEN
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 - Dies ist ein Listen Eintrag
@@ -123,9 +135,11 @@ LISTEN
 
 Zwei leere Zeilen, schliessen die Listen.
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <UL>
 <LI>Dies ist ein Listen Eintrag
 <LI>Einfach ein Bindestrich setzen
@@ -138,6 +152,7 @@ Zwei leere Zeilen, schliessen die Listen.
 Zwei leere Zeilen, schliessen die Listen.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 + Benutze das Pluszeichen
@@ -147,9 +162,11 @@ Zwei leere Zeilen, schliessen die Listen.
 +
 Ein leeres Listenfeld beendet die Liste.
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <OL>
 <LI>Benutze das Pluszeichen
 <LI>und man erhaelt eine Nummerierteliste
@@ -162,6 +179,7 @@ Ein leeres Listenfeld beendet die Liste.
 Ein leeres Listenfeld beendet die Liste.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 : Definitionenliste
@@ -170,9 +188,11 @@ Ein leeres Listenfeld beendet die Liste.
   Und die Erklärung folgt zugleich
 :
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <DL>
 <DT>Definitionenliste</DT><DD>
   Eine Liste mit Begriffen
@@ -187,6 +207,7 @@ Ein leeres Listenfeld beendet die Liste.
 BLÖCKE
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 	Ein zitierter Paragraf wird
@@ -194,6 +215,7 @@ BLÖCKE
 		Mehr TABs, tiefer.
 Kein TAB oder eine leere Zeile, schliessen das Zitat.
 </PRE>
+
 <P>
 </td><td>
 </P>
@@ -208,6 +230,7 @@ Kein TAB oder eine leere Zeile, schliessen das Zitat.
 Kein TAB oder eine leere Zeile, schliessen das Zitat.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 ```
@@ -217,35 +240,43 @@ Kein TAB oder eine leere Zeile, schliessen das Zitat.
               Leerzeichen, nicht.
 ```
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <PRE>
          Ein verbatim Block steht
       zwischen drei "backquotes".
 **Markierungen** werden ignoriert
               Leerzeichen, nicht.
 </PRE>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Verbatime Zeilen sind super für Kommandos:
 ``` $ cat /etc/passwd | tr : ,
 Einfach 3 "backquotes" davor setzen.
 </PRE>
+
 <P>
 </td><td>
 Verbatime Zeilen sind super für Kommandos:
 </P>
+
 <PRE>
 $ cat /etc/passwd | tr : ,
 </PRE>
+
 <P>
 Einfach 3 "backquotes" davor setzen.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 """
@@ -256,6 +287,7 @@ Einfach 3 "backquotes" davor setzen.
                sowie Leerzeichen.
 """
 </PRE>
+
 <P>
 </td><td>
        Eine "raw" Block entsteht
@@ -265,10 +297,12 @@ Einfach 3 "backquotes" davor setzen.
                sowie Leerzeichen.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 """ Einzelne **raw** Zeilen sind auch möglich.
 </PRE>
+
 <P>
 </td><td>
 Einzelne **raw** Zeilen sind auch möglich.
@@ -278,6 +312,7 @@ Einzelne **raw** Zeilen sind auch möglich.
 VERSCHIEDENES
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 || Tabellen Kopfdaten | Tabellen Kopfdaten |
@@ -285,9 +320,11 @@ VERSCHIEDENES
 |              Zeilen |        ist         |
 |          und Zellen |       toll!        |
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <TABLE BORDER="1">
 <TR>
 <TH>Tabellen Kopfdaten</TH>
@@ -310,6 +347,7 @@ VERSCHIEDENES
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 [t2t.png] Linksbündisches Bild
@@ -318,6 +356,7 @@ Zentriertes [t2t.png] Bild
 
 Rechtsbündisches Bild [t2t.png]
 </PRE>
+
 <P>
 </td><td>
 <IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> Linksbündisches Bild
@@ -329,6 +368,7 @@ Zentriertes <IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> B
 Rechtsbündisches Bild <IMG ALIGN="right" SRC="../img/t2tpowered.png" BORDER="0" ALT="">
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Ein Link wird automatisch@erkannt.ok?
@@ -337,6 +377,7 @@ Ein [benannter Link www.meine-seite.de] is so einfach.
 
 Ein Bild [[t2t.png] als-Link.html].
 </PRE>
+
 <P>
 </td><td>
 Ein Link wird <A HREF="mailto:automatisch@erkannt.ok">automatisch@erkannt.ok</A>?
@@ -348,6 +389,7 @@ Ein <A HREF="http://www.meine-seite.de">benannter Link</A> is so einfach.
 Ein Bild <A HREF="als-Link.html"><IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""></A>.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Eine Linie:
@@ -356,24 +398,30 @@ Eine breitere Linie:
 ====================
 (Mindestens 20 Zeichen erforderlich)
 </PRE>
+
 <P>
 </td><td>
 Eine Linie:
 </P>
+
 <HR NOSHADE SIZE=1>
+
 <P>
 Eine breitere Linie:
 </P>
+
 <HR NOSHADE SIZE=5>
+
 <P>
 (Mindestens 20 Zeichen erforderlich)
 </td></tr>
 </table>
 </P>
+
 <PRE>
 
 </PRE>
-<P></P>
+
 <P>
 Übersetzung von Pascal Steichen.
 </P>
@@ -382,6 +430,6 @@ Eine breitere Linie:
 </P>
 </DIV>
 
-<!-- html code generated by txt2tags 2.4-dev (http://txt2tags.org) -->
+<!-- html code generated by txt2tags 2.6.585 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags German/markup-de/markup-de.t2t -->
 </BODY></HTML>
