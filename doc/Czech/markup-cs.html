@@ -1,16 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<STYLE TYPE="text/css">
-body { margin:1em; }              
-div.header { text-align:center; } 
-th { padding:.5em; }              
-td { width:45%; padding:.5em; }   
-td { background-color:silver; }   
-td.t2t { background-color:#ef4; } 
-</STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.org">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
+<LINK REL="stylesheet" TYPE="text/css" HREF="http://txt2tags.org/markup.css">
 <TITLE>Txt2tags Markup Demo</TITLE>
 </HEAD>
 <BODY>
@@ -22,13 +15,14 @@ td.t2t { background-color:#ef4; }
 
 <DIV CLASS="body" ID="body">
 <P>
-<table align="center" border=1>
+<table>
 <tr><th colspan="2">
 </P>
 <P>
 ZÁKLADY
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 = Nadpis úrovně 1 =
@@ -37,15 +31,21 @@ ZÁKLADY
 
 === Nadpis úrovně 3 ===
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <H1>Nadpis úrovně 1</H1>
+
 <H2>Nadpis úrovně 2</H2>
+
 <H3>Nadpis úrovně 3</H3>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 + Číslovaný nadpis úrovně 1 +
@@ -54,15 +54,21 @@ ZÁKLADY
 
 +++ Číslovaný nadpis úrovně 3 +++
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <H1>1. Číslovaný nadpis úrovně 1</H1>
+
 <H2>1.1. Číslovaný nadpis úrovně 2</H2>
+
 <H3>1.1.1. Číslovaný nadpis úrovně 3</H3>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Odstavec je tvořen jedním 
@@ -72,6 +78,7 @@ nebo více řádky.
 Prázdný řádek je odděluje.
 
 </PRE>
+
 <P>
 </td><td>
 Odstavec je tvořen jedním 
@@ -83,6 +90,7 @@ Prázdný řádek je odděluje.
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 
@@ -92,6 +100,7 @@ znak procento
 je užitečný pro komentáře!
 
 </PRE>
+
 <P>
 </td><td>
 znak procento
@@ -100,6 +109,7 @@ je užitečný pro komentáře!
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Pro vylepšení máme **tučné písmo**
@@ -108,6 +118,7 @@ a //kurzívu//.
 Existuje také __podtržení__ a
 ``strojopis``.
 </PRE>
+
 <P>
 </td><td>
 Pro vylepšení máme <B>tučné písmo</B>
@@ -122,6 +133,7 @@ Existuje také <U>podtržení</U> a
 SEZNAMY
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 
@@ -132,9 +144,11 @@ SEZNAMY
 
 Dva prázdné řádky seznam uzavřou.
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <UL>
 <LI>Tohle je seznam položek
 <LI>Stačí použít pomlčku
@@ -147,6 +161,7 @@ Dva prázdné řádky seznam uzavřou.
 Dva prázdné řádky seznam uzavřou.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 
@@ -158,9 +173,11 @@ Dva prázdné řádky seznam uzavřou.
 Prázdná položka seznam uzavře.
 
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <OL>
 <LI>Místo pomlčky použijte plus
 <LI>Vytvoříte číslovaný seznam
@@ -175,6 +192,7 @@ Prázdná položka seznam uzavře.
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 : Definiční seznam
@@ -183,9 +201,11 @@ Prázdná položka seznam uzavře.
   a následuje definice
 :
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <DL>
 <DT>Definiční seznam</DT><DD>
   je seznam s termíny
@@ -200,6 +220,7 @@ Prázdná položka seznam uzavře.
 OBLASTI
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 
@@ -212,6 +233,7 @@ Prázdný řádek, nebo absence tabulátoru
 ukončuje citaci.
 
 </PRE>
+
 <P>
 </td><td>
 </P>
@@ -223,7 +245,6 @@ ukončuje citaci.
 		tím více do hloubky.
 		</BLOCKQUOTE>
 	</BLOCKQUOTE>
-<P></P>
 <P>
 Prázdný řádek, nebo absence tabulátoru
 ukončuje citaci.
@@ -231,6 +252,7 @@ ukončuje citaci.
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 ```
@@ -240,18 +262,22 @@ ukončuje citaci.
         a odsazení je zachováno.
 ```
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <PRE>
          Výpis je uzavřen  třemi
           obrácenými uvozovkami.
 **Značky** nejsou interpretovány
         a odsazení je zachováno.
 </PRE>
+
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Výpis na řádku se hodí pro příkazy:
@@ -259,19 +285,23 @@ Výpis na řádku se hodí pro příkazy:
 Stačí jej začít třemi obrácenými uvozovkami.
 
 </PRE>
+
 <P>
 </td><td>
 Výpis na řádku se hodí pro příkazy:
 </P>
+
 <PRE>
 $ cat /etc/passwd | tr : ,
 </PRE>
+
 <P>
 Stačí jej začít třemi obrácenými uvozovkami.
 </P>
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 """
@@ -282,6 +312,7 @@ Stačí jej začít třemi obrácenými uvozovkami.
        a odsazení není respektováno.
 """
 </PRE>
+
 <P>
 </td><td>
    Nezpracovaný text je uzavřen 
@@ -291,10 +322,12 @@ Stačí jej začít třemi obrácenými uvozovkami.
        a odsazení není respektováno.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 """ Existuje také **nezpracovaný** řádek.
 </PRE>
+
 <P>
 </td><td>
 Existuje také **nezpracovaný** řádek.
@@ -304,6 +337,7 @@ Existuje také **nezpracovaný** řádek.
 OSTATNÍ
 </th></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 || Hlavička tabulky | Hlavička tabulky |
@@ -311,9 +345,11 @@ OSTATNÍ
 |             řádky |       je         |
 |             buňky |      pěkné!      |
 </PRE>
+
 <P>
 </td><td>
 </P>
+
 <TABLE BORDER="1">
 <TR>
 <TH>Hlavička tabulky</TH>
@@ -336,6 +372,7 @@ OSTATNÍ
 <P>
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 [t2t.png] Obrázek zarovnaný vlevo 
@@ -344,6 +381,7 @@ Vycentrovaný [t2t.png] obrázek
 
 Zarovnaný vpravo [t2t.png]
 </PRE>
+
 <P>
 </td><td>
 <IMG ALIGN="left" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> Obrázek zarovnaný vlevo 
@@ -355,6 +393,7 @@ Vycentrovaný <IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""> 
 Zarovnaný vpravo <IMG ALIGN="right" SRC="../img/t2tpowered.png" BORDER="0" ALT="">
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 Odkaz je rozpoznan@automaticky.co?
@@ -363,6 +402,7 @@ Odkaz je rozpoznan@automaticky.co?
 
 Obrázek [[t2t.png] jako-odkaz.html].
 </PRE>
+
 <P>
 </td><td>
 Odkaz je <A HREF="mailto:rozpoznan@automaticky.co">rozpoznan@automaticky.co</A>?
@@ -374,6 +414,7 @@ Odkaz je <A HREF="mailto:rozpoznan@automaticky.co">rozpoznan@automaticky.co</A>?
 Obrázek <A HREF="jako-odkaz.html"><IMG ALIGN="middle" SRC="../img/t2tpowered.png" BORDER="0" ALT=""></A>.
 </td></tr><tr><td class="t2t">
 </P>
+
 <PRE>
 
 
@@ -383,24 +424,30 @@ A tučnější:
 ====================
 (Alespoň 20 znaků)
 </PRE>
+
 <P>
 </td><td>
 Oddělovací čára:
 </P>
+
 <HR NOSHADE SIZE=1>
+
 <P>
 A tučnější:
 </P>
+
 <HR NOSHADE SIZE=5>
+
 <P>
 (Alespoň 20 znaků)
 </td></tr>
 </table>
 </P>
+
 <PRE>
 
 </PRE>
-<P></P>
+
 <P>
 Přeložil Vlastimil Ott.
 </P>
@@ -409,6 +456,6 @@ Přeložil Vlastimil Ott.
 </P>
 </DIV>
 
-<!-- html code generated by txt2tags 2.4-dev (http://txt2tags.org) -->
+<!-- html code generated by txt2tags 2.6.585 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags Czech/markup-cs/markup-cs.t2t -->
 </BODY></HTML>
