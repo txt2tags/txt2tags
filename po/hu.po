@@ -1,13 +1,18 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2010-08-16 12:00\n"
-"Last-Translator: IVÁN, Tamás <ivantomi@gmail.com>\n"
-"Language-Team: hu_HU team\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:25+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "HTML oldal"
@@ -133,8 +138,7 @@ msgid "use FILE as the template for the output document"
 msgstr ""
 
 msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"elrejti az email cimeket a spam robotok elöl. x@y.z-böl <x (a) y z> lesz"
+msgstr "elrejti az email cimeket a spam robotok elöl. x@y.z-böl <x (a) y z> lesz"
 
 msgid "format output as presentation slides (used by -t art)"
 msgstr "prezentációs diákat készít (-t art esetén)"
@@ -172,18 +176,17 @@ msgstr "kiirja a talált beállitásokat és kilép"
 msgid "print the document source, with includes expanded"
 msgstr "kiirja a dokumentum forrását kibontva az include fájlokat"
 
-msgid "Turn OFF options:"
-msgstr "Kikapcsoló opciók:"
-
 msgid "Example:"
 msgstr "Példa:"
 
 msgid "file.t2t"
 msgstr "file.t2t"
 
-msgid "By default, converted output is saved to 'infile.<target>'."
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
-"Alapértelmezés szerint a kimenet a 'bemenet.<célformátum>' fájlba iródik."
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "Alapértelmezés szerint a kimenet a 'bemenet.<célformátum>' fájlba iródik."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Használja az --outfile kapcsolót másik fájlnév megadásához."
@@ -240,14 +243,10 @@ msgid "No target specified (try --help)"
 msgstr "Cél formátum megadása hiányzik (próbálja ki a --help kapcsolót)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr ""
-"Kérem adja meg a kimenö formátumot a -t kapcsoló, vagy a %!target parancs "
-"segitségével"
+msgstr "Kérem adja meg a kimenö formátumot a -t kapcsoló, vagy a %!target parancs segitségével"
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr ""
-"Futtassa a 'txt2tags --targets' parancsot a választható formátumok "
-"listázásához"
+msgstr "Futtassa a 'txt2tags --targets' parancsot a választható formátumok listázásához"
 
 msgid "Missing input file (try --help)"
 msgstr "Hiányzó bemenö fájl (próbálja ki a  --help kapcsolót)"
@@ -318,9 +317,7 @@ msgstr "Aktiv szürök"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"
@@ -475,34 +472,3 @@ msgstr "Kérem adjon meg egy bemenö file-t (.t2t) a paranccsor végén."
 
 msgid "Txt2tags finished successfully"
 msgstr "A txt2tags sikeresen lefutott"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr ""
-#~ "beállitja a kimenö fájl karakter kódolását (utf-8, iso-8859-2, stb.)"
-
-#~ msgid "suppress header, title and footer contents"
-#~ msgstr "nem hoz létre fejléc, cim és láb tartalmakat"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       hozzon létre fejléc, cim és láb tartalmakat "
-#~ "(alapértelmezés: létrehoz)"
-
-#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr "CSS-barát cimkéket illeszt a HTML és XHTML dokumentumokba"
-
-#~ msgid "add TOC (Table of Contents) to target document"
-#~ msgstr "tartalomjegyzéket illeszt a kimenö dokumentumba"
-
-#~ msgid "print document TOC and exit"
-#~ msgstr "csak tartalomjegyzéket készit"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            olvassa a felhasználói beállitásokat tartalmazó ~/."
-#~ "txt2tagsrc fájlt (alapértelmezés: olvassa)"
-
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "A '%s' ismeretlen cél formátum (próbálja ki a --help kapcsolót)"

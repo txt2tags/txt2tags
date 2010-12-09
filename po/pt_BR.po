@@ -1,25 +1,30 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6b\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2010-08-13 12:03+BRT\n"
-"Last-Translator: Aurelio Jargas\n"
-"Language-Team: pt_BR team\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:24+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "Página HTML"
 
 msgid "HTML5 page"
-msgstr ""
+msgstr "Página HTML5"
 
 msgid "XHTML page"
 msgstr "Página XHTML"
 
 msgid "XHTML Strict page"
-msgstr ""
+msgstr "Página XHTML Strict"
 
 msgid "SGML document"
 msgstr "Documento SGML"
@@ -70,10 +75,10 @@ msgid "Creole 1.0 document"
 msgstr "Documento Creole 1.0"
 
 msgid "Markdown document"
-msgstr ""
+msgstr "Documento Markdown"
 
 msgid "BBCode document"
-msgstr ""
+msgstr "Documento BBCode"
 
 msgid "Redmine Wiki page"
 msgstr ""
@@ -171,14 +176,14 @@ msgstr "exibe todas as configurações encontradas e sai"
 msgid "print the document source, with includes expanded"
 msgstr "mostra os fontes com os includes expandidos"
 
-msgid "Turn OFF options:"
-msgstr "Opções para DESLIGAR funcionalidades:"
-
 msgid "Example:"
 msgstr "Exemplo:"
 
 msgid "file.t2t"
 msgstr "arquivo.t2t"
+
+msgid "The 'no-' prefix disables the option:"
+msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr "Normalmente a saída convertida é gravada em 'arquivo.<tipo>'."
@@ -312,9 +317,7 @@ msgstr "Filtros ativos"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"

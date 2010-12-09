@@ -1,16 +1,18 @@
-# translation of txt2tags.po to Finnish
-# Mikko Piippo <mikko.piippo@helsinki.fi>, 2008.
+# txt2tags messages
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2008-06-07 20:52+0300\n"
-"Last-Translator: Mikko Piippo <mikko.piippo@helsinki.fi>\n"
-"Language-Team:  <fi@li.org>\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:24+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "HTML-sivu"
@@ -136,9 +138,7 @@ msgid "use FILE as the template for the output document"
 msgstr ""
 
 msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"naamioi sähköpostiosoite roskapostiroboteilta. x@y.z muutetaan muotoon <x "
-"(a) y z>"
+msgstr "naamioi sähköpostiosoite roskapostiroboteilta. x@y.z muutetaan muotoon <x (a) y z>"
 
 msgid "format output as presentation slides (used by -t art)"
 msgstr ""
@@ -176,18 +176,17 @@ msgstr "tulosta kaikki löytyvät määritykset ja lopeta"
 msgid "print the document source, with includes expanded"
 msgstr "tulosta asiakirjan lähdekoodi, myös sisällytetyt osat"
 
-msgid "Turn OFF options:"
-msgstr "Estovalinnat:"
-
 msgid "Example:"
 msgstr "Esimerkki:"
 
 msgid "file.t2t"
 msgstr ""
 
-msgid "By default, converted output is saved to 'infile.<target>'."
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
-"Oletuksena muunnettu tuloste tallennetaan tiedostoon 'infile.<target>'."
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "Oletuksena muunnettu tuloste tallennetaan tiedostoon 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Käytä valintaa --outfile pakottaaksesi tulostetiedoston nimen."
@@ -318,9 +317,7 @@ msgstr "Aktiiviset suotimet"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"
@@ -345,8 +342,7 @@ msgid "Source document contents stored"
 msgstr "Lähdeasiakirjan sisältö tallennettu"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-"Tulkitaan ja tallennetaan kaikki löydetyt määritykset (%03d kappaletta)"
+msgstr "Tulkitaan ja tallennetaan kaikki löydetyt määritykset (%03d kappaletta)"
 
 msgid "Composing target Body"
 msgstr "Luodaan kohdeasiakirjan runkoa"
@@ -476,33 +472,3 @@ msgstr ""
 
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags suoritettiin loppuun"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "aseta kohdetiedoston merkkikoodaus (utf-8, iso-8859-1 jne.)"
-
-#~ msgid "suppress header, title and footer contents"
-#~ msgstr "sivuuttaa otsikot, ylä- ja alatunnisteet"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       näyttää otsikot, ylä- ja alatunnisteet (oletusarvo "
-#~ "ON)"
-
-#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr "lisää HTML- ja XHTML-kohdetiedostoihin CSS-ystävälliset tagit"
-
-#~ msgid "add TOC (Table of Contents) to target document"
-#~ msgstr "lisää kohdeasiakirjaan sisällysluettelo"
-
-#~ msgid "print document TOC and exit"
-#~ msgstr "tulosta asiakirjan sisällysluettelo ja lopeta"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            lue käyttäjän määritystiedosto ~/.txt2tagsrc "
-#~ "(oletusarvo ON)"
-
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "Virheellinen kohde '%s' (kokeile --help)"

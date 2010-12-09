@@ -1,13 +1,18 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2010-07-20 20:00-0200\n"
-"Last-Translator: Bunyk Taras <tbunyk@ukr.net>\n"
-"Language-Team: Ukrainian\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:24+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "НTML документ"
@@ -109,9 +114,7 @@ msgid "add an automatic Table of Contents to the output"
 msgstr ""
 
 msgid "set maximum TOC level (depth) to N"
-msgstr ""
-"встановити максимальну глибину змісту (кількість вкладених підрозділів що "
-"потрапляють в зміст) в N"
+msgstr "встановити максимальну глибину змісту (кількість вкладених підрозділів що потрапляють в зміст) в N"
 
 msgid "print the Table of Contents and exit"
 msgstr ""
@@ -173,18 +176,17 @@ msgstr "надрукувати всі знайдені опції та вийт�
 msgid "print the document source, with includes expanded"
 msgstr "надрукувати код, з розкритими включеннями"
 
-msgid "Turn OFF options:"
-msgstr "Опції ВИМКНЕННЯ:"
-
 msgid "Example:"
 msgstr ""
 
 msgid "file.t2t"
 msgstr ""
 
-msgid "By default, converted output is saved to 'infile.<target>'."
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
-"За замовчуванням, згенерований документ зберігається в 'infile.<target>'."
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "За замовчуванням, згенерований документ зберігається в 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Використайте --outfile щоб задати ім'я вихідного файлу."
@@ -315,9 +317,7 @@ msgstr "Активні фільтри"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"
@@ -472,45 +472,3 @@ msgstr ""
 
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags успішно завершив роботу"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "зазначити кодування файлу (utf-8, iso-8859-1, і т.п)"
-
-#~ msgid "suppress header, title and footer contents"
-#~ msgstr ""
-#~ "не вставляти заголовки та закінчення документа (генерувати тільки тіло)"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       генерувати заголовки та футер (ввімкнено за "
-#~ "замовчуванням)"
-
-#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr ""
-#~ "вставити теги, що краще підходять для CSS (в HTML та XHTML документах)"
-
-#~ msgid "add TOC (Table of Contents) to target document"
-#~ msgstr "додати зміст до вихідного документа"
-
-#~ msgid "print document TOC and exit"
-#~ msgstr "тільки надрукувати зміст"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            читати файл конфігурації користувача ~/txt2tagsrc "
-#~ "(за замовчуванням так)"
-
-#~ msgid ""
-#~ "Example:\n"
-#~ "     %s -t html --toc myfile.t2t"
-#~ msgstr ""
-#~ "Приклад:\n"
-#~ "     %s -t html --toc myfile.t2t"
-
-#~ msgid "Maybe trying to convert an old v1.x file?"
-#~ msgstr "Можливо ви стараєтесь перетворити старий файл (версії 1 з чимось)"
-
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "Невідомий тип файлу '%s' (спробуйте --help)"

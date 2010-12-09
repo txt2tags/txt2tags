@@ -127,8 +127,7 @@ msgstr ""
 "XHTML"
 
 msgid "insert CSS file contents inside HTML/XHTML headers"
-msgstr ""
-"  --css-inside     insère le contenu du fichier CSS dans l'entête HTML/XHTML"
+msgstr "insère le contenu du fichier CSS dans l'entête HTML/XHTML"
 
 msgid "suppress header and footer from the output"
 msgstr "supprime les entêtes, les titres et les pieds de page"
@@ -149,7 +148,7 @@ msgid "set the output's height to N rows (used by -t art)"
 msgstr "fixe la hauteur à N lignes (utilisé par -t art)"
 
 msgid "read configuration from file F"
-msgstr ""
+msgstr "lit la configuration à partir du fichier F"
 
 msgid "fix resources path (image, links, CSS) when needed"
 msgstr ""
@@ -173,7 +172,7 @@ msgid "print all the configuration found and exit"
 msgstr "affiche toute la configuration trouvée et sort"
 
 msgid "print the document source, with includes expanded"
-msgstr "     --dump-source   affiche le document source, avec les inclusions"
+msgstr "affiche le document source, avec les inclusions"
 
 msgid "Turn OFF options:"
 msgstr "Désactive les options (OFF)"
@@ -474,19 +473,3 @@ msgstr "Précisez un fichier d'entrée (.t2t) à la fin de la commande"
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags a terminé sans erreur"
 
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
-
-#~ msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-#~ msgstr ""
-#~ "     --art-chars=S   met les caractères ASCII Art à S (par défaut %s) "
-#~ "pour : "
-
-#~ msgid "read config from file F"
-#~ msgstr " -C, --config-file=F lit la configuration à partir du fichier F"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            lit le fichier de configuration ~/.txt2tagsrc "
-#~ "(option par défaut)"
