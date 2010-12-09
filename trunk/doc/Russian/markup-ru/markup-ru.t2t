@@ -3,15 +3,11 @@
 
 %!target: html
 %!encoding: UTF-8
-%!options: --css-sugar
 %!style: http://txt2tags.org/markup.css
+%!options: --css-sugar -o ../markup-ru.html
 
 % TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
-
-% TRANSLATOR: change markup.html to markup-XX.html (see README file)
-%!options: -o ../markup-ru.html
-
 
 % TRANSLATOR:
 % This <foo> marks are HTML tags.
