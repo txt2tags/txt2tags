@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.0\n"
-"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
+"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
 "PO-Revision-Date: 2005-08-13 18:56+02:00\n"
 "Last-Translator: Stefano Spinucci <virgo977@tin.it>\n"
 "Language-Team: it_IT team\n"
@@ -90,101 +90,86 @@ msgstr "%s versione %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Utilizzo: %s [OPZIONI] [infile.t2t ...]"
 
-msgid ""
-"      --targets       print a list of all the available targets and exit"
+msgid "print a list of all the available targets and exit"
 msgstr ""
 
-msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr "  -t, --target=TYPE   setta il formato finale. formati supportati:"
+msgid "set target document type. currently supported:"
+msgstr "setta il formato finale. formati supportati:"
 
-msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=FILE   setta FILE come file sorgente ('-' per STDIN)"
+msgid "set FILE as the input file name ('-' for STDIN)"
+msgstr "setta FILE come file sorgente ('-' per STDIN)"
 
-msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr ""
-"  -o, --outfile=FILE  setta FILE come file destinazione ('-' per STDOUT)"
+msgid "set FILE as the output file name ('-' for STDOUT)"
+msgstr "setta FILE come file destinazione ('-' per STDOUT)"
 
-msgid ""
-"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
+msgid "inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
 
-msgid "      --toc           add an automatic Table of Contents to the output"
+msgid "add an automatic Table of Contents to the output"
 msgstr ""
 
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr "      --toc-level=N   setta la profondità massima dell'indice ad N"
+msgid "set maximum TOC level (depth) to N"
+msgstr "setta la profondità massima dell'indice ad N"
 
-msgid "      --toc-only      print the Table of Contents and exit"
+msgid "print the Table of Contents and exit"
 msgstr ""
 
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr ""
-"  -n, --enum-title    enumera le righe di titolo come 1, 1.1, 1.1.1, etc"
+msgid "enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "enumera le righe di titolo come 1, 1.1, 1.1.1, etc"
 
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr ""
-"      --style=FILE    usa FILE come stile del documento (come HTML CSS)"
+msgid "use FILE as the document style (like HTML CSS)"
+msgstr "usa FILE come stile del documento (come HTML CSS)"
 
-msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgid "insert CSS-friendly tags for HTML/XHTML"
 msgstr ""
 
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr ""
-"      --css-inside    inserisce contenuto file CSS nell'intestazione HTML/"
-"XHTML"
+msgid "insert CSS file contents inside HTML/XHTML headers"
+msgstr "inserisce contenuto file CSS nell'intestazione HTML/XHTML"
 
-msgid "  -H, --no-headers    suppress header and footer from the output"
+msgid "suppress header and footer from the output"
 msgstr ""
 
-msgid "  -T, --template=FILE use FILE as the template for the output document"
+msgid "use FILE as the template for the output document"
 msgstr ""
 
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    nasconde l'email agli spam robot. x@y.z diventa <x (a) "
-"y z>"
+msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "nasconde l'email agli spam robot. x@y.z diventa <x (a) y z>"
 
-msgid ""
-"      --slides        format output as presentation slides (used by -t art)"
+msgid "format output as presentation slides (used by -t art)"
 msgstr ""
 
-msgid ""
-"      --width=N       set the output's width to N columns (used by -t art)"
+msgid "set the output's width to N columns (used by -t art)"
 msgstr ""
 
-msgid ""
-"      --height=N      set the output's height to N rows (used by -t art)"
+msgid "set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "  -C, --config-file=F read configuration from file F"
-msgstr "  -C, --config-file=F legge le configurazioni dal file F"
+msgid "read configuration from file F"
+msgstr "legge le configurazioni dal file F"
 
-msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           avvia l'interfaccia grafica Tk"
-
-msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
-msgstr "  -q, --quiet         sopprime tutti i messaggi (esclusi gli errori)"
-
-msgid "  -v, --verbose       print informative messages during conversion"
+msgid "fix resources path (image, links, CSS) when needed"
 msgstr ""
-"  -v, --verbose       stampa messaggi informativi durante la conversione"
 
-msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          visualizza questo testo di aiuto ed esce"
+msgid "invoke Graphical Tk Interface"
+msgstr "avvia l'interfaccia grafica Tk"
 
-msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       visualizza la versione del programma ed esce"
+msgid "quiet mode, suppress all output (except errors)"
+msgstr "sopprime tutti i messaggi (esclusi gli errori)"
 
-msgid "      --dump-config   print all the configuration found and exit"
-msgstr ""
-"      --dump-config   visualizza tutte le configurazioni trovate ed esce"
+msgid "print informative messages during conversion"
+msgstr "stampa messaggi informativi durante la conversione"
 
-msgid "      --dump-source   print the document source, with includes expanded"
-msgstr ""
-"      --dump-source   visualizza il documento sorgente, espandendo le "
-"inclusioni"
+msgid "print this help information and exit"
+msgstr "visualizza questo testo di aiuto ed esce"
+
+msgid "print program version and exit"
+msgstr "visualizza la versione del programma ed esce"
+
+msgid "print all the configuration found and exit"
+msgstr "visualizza tutte le configurazioni trovate ed esce"
+
+msgid "print the document source, with includes expanded"
+msgstr "visualizza il documento sorgente, espandendo le inclusioni"
 
 msgid "Turn OFF options:"
 msgstr "Opzioni per DISATTIVARE le funzionalità:"
@@ -269,6 +254,9 @@ msgstr "il valore di --%s deve essere un numero"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "L'opzione --split deve essere 0, 1 o 2"
+
+msgid "--width: Expected width > 4, got %i"
+msgstr ""
 
 msgid "--art-chars: Expected %i chars, got %i"
 msgstr ""
@@ -482,30 +470,25 @@ msgstr ""
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags: terminato con successo"
 
-#~ msgid ""
-#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr ""
-#~ "      --encoding=ENC  codifica file destinazione (utf-8, iso-8859-1, etc)"
+#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr "codifica file destinazione (utf-8, iso-8859-1, etc)"
 
-#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
-#~ msgstr "  -H, --no-headers    sopprime intestazione, titoli e pié di pagina"
+#~ msgid "suppress header, title and footer contents"
+#~ msgstr "sopprime intestazione, titoli e pié di pagina"
 
 #~ msgid ""
 #~ "      --headers       show header, title and footer contents (default ON)"
 #~ msgstr ""
 #~ "      --headers       mostra intestaz.,titoli e pié di pagina (predef.SI)"
 
-#~ msgid ""
-#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr ""
-#~ "      --css-sugar     inserisce tag compatibili con CSS, per HTML e XHTML"
+#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr "inserisce tag compatibili con CSS, per HTML e XHTML"
 
-#~ msgid "      --toc           add TOC (Table of Contents) to target document"
-#~ msgstr ""
-#~ "      --toc           aggiunge l'indice al documento di destinazione"
+#~ msgid "add TOC (Table of Contents) to target document"
+#~ msgstr "aggiunge l'indice al documento di destinazione"
 
-#~ msgid "      --toc-only      print document TOC and exit"
-#~ msgstr "      --toc-only      stampa l'indice del documento ed esce"
+#~ msgid "print document TOC and exit"
+#~ msgstr "stampa l'indice del documento ed esce"
 
 #~ msgid ""
 #~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags\n"
-"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
+"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
 "PO-Revision-Date: 2008-06-07 20:52+0300\n"
 "Last-Translator: Mikko Piippo <mikko.piippo@helsinki.fi>\n"
 "Language-Team:  <fi@li.org>\n"
@@ -93,104 +93,88 @@ msgstr "%s versio %s z%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Käyttö: %s [VALINNAT] [tiedosto.t2t ...]"
 
-msgid ""
-"      --targets       print a list of all the available targets and exit"
+msgid "print a list of all the available targets and exit"
 msgstr ""
 
-msgid "  -t, --target=TYPE   set target document type. currently supported:"
-msgstr ""
-"  -t, --target=TYYPPI   aseta asiakirjan kohdetyyppi. Tällä hetkellä tuetaan "
-"seuraavia:"
+msgid "set target document type. currently supported:"
+msgstr "aseta asiakirjan kohdetyyppi. Tällä hetkellä tuetaan seuraavia:"
 
-msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr ""
-"  -i, --infile=TIEDOSTO   aseta TIEDOSTO syötetiedostoksi ('-' on vakiosyöte "
-"STDIN)"
+msgid "set FILE as the input file name ('-' for STDIN)"
+msgstr "aseta TIEDOSTO syötetiedostoksi ('-' on vakiosyöte STDIN)"
 
-msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr ""
-"  -o, --outfile=TIEDOSTO  aseta TIEDOSTO tulostetiedostoksi ('-' on "
-"vakiotuloste STDOUT)"
+msgid "set FILE as the output file name ('-' for STDOUT)"
+msgstr "aseta TIEDOSTO tulostetiedostoksi ('-' on vakiotuloste STDOUT)"
 
-msgid ""
-"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
+msgid "inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
 
-msgid "      --toc           add an automatic Table of Contents to the output"
+msgid "add an automatic Table of Contents to the output"
 msgstr ""
 
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
-msgstr ""
-"      --toc-level=N   aseta sisällysluettelon tasojen määräksi enintään N"
+msgid "set maximum TOC level (depth) to N"
+msgstr "aseta sisällysluettelon tasojen määräksi enintään N"
 
-msgid "      --toc-only      print the Table of Contents and exit"
-msgstr ""
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numeroi kaikki otsikot, esim. 1, 1.1, 1.1.1, jne"
-
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr ""
-"      --style=TIEDOSTO    käytä TIEDOSTOa asiakirjatyylinä (kuten HTML CSS)"
-
-msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgid "print the Table of Contents and exit"
 msgstr ""
 
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
-msgstr ""
-"      --css-inside    lisää CSS-tiedoston sisältö HTML/XHTML-otsakkeiden "
-"sisään"
+msgid "enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "numeroi kaikki otsikot, esim. 1, 1.1, 1.1.1, jne"
 
-msgid "  -H, --no-headers    suppress header and footer from the output"
-msgstr ""
+msgid "use FILE as the document style (like HTML CSS)"
+msgstr "käytä TIEDOSTOa asiakirjatyylinä (kuten HTML CSS)"
 
-msgid "  -T, --template=FILE use FILE as the template for the output document"
+msgid "insert CSS-friendly tags for HTML/XHTML"
 msgstr ""
 
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    naamioi sähköpostiosoite roskapostiroboteilta. x@y.z "
-"muutetaan muotoon <x (a) y z>"
+msgid "insert CSS file contents inside HTML/XHTML headers"
+msgstr "lisää CSS-tiedoston sisältö HTML/XHTML-otsakkeiden sisään"
 
-msgid ""
-"      --slides        format output as presentation slides (used by -t art)"
+msgid "suppress header and footer from the output"
 msgstr ""
 
-msgid ""
-"      --width=N       set the output's width to N columns (used by -t art)"
+msgid "use FILE as the template for the output document"
 msgstr ""
 
-msgid ""
-"      --height=N      set the output's height to N rows (used by -t art)"
+msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr ""
+"naamioi sähköpostiosoite roskapostiroboteilta. x@y.z muutetaan muotoon <x "
+"(a) y z>"
+
+msgid "format output as presentation slides (used by -t art)"
 msgstr ""
 
-msgid "  -C, --config-file=F read configuration from file F"
-msgstr "  -C, --config-file=TIEDOSTO lue määritykset TIEDOSTOsta"
-
-msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           käynnistä graafinen TK-käyttöliittymä"
-
-msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
-msgstr "  -q, --quiet         hiljainen tila, tulostaa vain virheilmoitukset"
-
-msgid "  -v, --verbose       print informative messages during conversion"
+msgid "set the output's width to N columns (used by -t art)"
 msgstr ""
-"  -v, --verbose       tulostaa muunnoksen aikana informatiivisia viestejä"
 
-msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          tulosta tämä ohje ja lopeta"
-
-msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       tulosta ohjelman versio ja lopeta"
-
-msgid "      --dump-config   print all the configuration found and exit"
-msgstr "      --dump-config   tulosta kaikki löytyvät määritykset ja lopeta"
-
-msgid "      --dump-source   print the document source, with includes expanded"
+msgid "set the output's height to N rows (used by -t art)"
 msgstr ""
-"      --dump-source   tulosta asiakirjan lähdekoodi, myös sisällytetyt osat"
+
+msgid "read configuration from file F"
+msgstr "lue määritykset TIEDOSTOsta"
+
+msgid "fix resources path (image, links, CSS) when needed"
+msgstr ""
+
+msgid "invoke Graphical Tk Interface"
+msgstr "käynnistä graafinen TK-käyttöliittymä"
+
+msgid "quiet mode, suppress all output (except errors)"
+msgstr "hiljainen tila, tulostaa vain virheilmoitukset"
+
+msgid "print informative messages during conversion"
+msgstr "tulostaa muunnoksen aikana informatiivisia viestejä"
+
+msgid "print this help information and exit"
+msgstr "tulosta tämä ohje ja lopeta"
+
+msgid "print program version and exit"
+msgstr "tulosta ohjelman versio ja lopeta"
+
+msgid "print all the configuration found and exit"
+msgstr "tulosta kaikki löytyvät määritykset ja lopeta"
+
+msgid "print the document source, with includes expanded"
+msgstr "tulosta asiakirjan lähdekoodi, myös sisällytetyt osat"
 
 msgid "Turn OFF options:"
 msgstr "Estovalinnat:"
@@ -276,6 +260,9 @@ msgstr "--%s arvon on oltava numero"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr " Valinnan --split on oltava 0, 1 tai 2"
+
+msgid "--width: Expected width > 4, got %i"
+msgstr ""
 
 msgid "--art-chars: Expected %i chars, got %i"
 msgstr ""
@@ -490,14 +477,11 @@ msgstr ""
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags suoritettiin loppuun"
 
-#~ msgid ""
-#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr ""
-#~ "      --encoding=KOODAUS  aseta kohdetiedoston merkkikoodaus (utf-8, iso-"
-#~ "8859-1 jne.)"
+#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr "aseta kohdetiedoston merkkikoodaus (utf-8, iso-8859-1 jne.)"
 
-#~ msgid "  -H, --no-headers    suppress header, title and footer contents"
-#~ msgstr "  -H, --no-headers    sivuuttaa otsikot, ylä- ja alatunnisteet"
+#~ msgid "suppress header, title and footer contents"
+#~ msgstr "sivuuttaa otsikot, ylä- ja alatunnisteet"
 
 #~ msgid ""
 #~ "      --headers       show header, title and footer contents (default ON)"
@@ -505,17 +489,14 @@ msgstr "Txt2tags suoritettiin loppuun"
 #~ "      --headers       näyttää otsikot, ylä- ja alatunnisteet (oletusarvo "
 #~ "ON)"
 
-#~ msgid ""
-#~ "      --css-sugar     insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr ""
-#~ "      --css-sugar     lisää HTML- ja XHTML-kohdetiedostoihin CSS-"
-#~ "ystävälliset tagit"
+#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
+#~ msgstr "lisää HTML- ja XHTML-kohdetiedostoihin CSS-ystävälliset tagit"
 
-#~ msgid "      --toc           add TOC (Table of Contents) to target document"
-#~ msgstr "      --toc           lisää kohdeasiakirjaan sisällysluettelo"
+#~ msgid "add TOC (Table of Contents) to target document"
+#~ msgstr "lisää kohdeasiakirjaan sisällysluettelo"
 
-#~ msgid "      --toc-only      print document TOC and exit"
-#~ msgstr "      --toc-only      tulosta asiakirjan sisällysluettelo ja lopeta"
+#~ msgid "print document TOC and exit"
+#~ msgstr "tulosta asiakirjan sisällysluettelo ja lopeta"
 
 #~ msgid ""
 #~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"

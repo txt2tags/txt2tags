@@ -312,58 +312,61 @@ LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']
 
 VERSIONSTR = _("%s version %s <%s>") % (my_name, my_version, my_url)
 
-USAGE = '\n'.join([
-'',
-_("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
-'',
-_("      --targets       print a list of all the available targets and exit"),
-_("  -t, --target=TYPE   set target document type. currently supported:"),
-  '                      %s,' % ', '.join(TARGETS[:8]),
-  '                      %s,' % ', '.join(TARGETS[8:17]),
-  '                      %s'  % ', '.join(TARGETS[17:]),
-_("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
-_("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
-_("      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"),
-_("      --toc           add an automatic Table of Contents to the output"),
-_("      --toc-level=N   set maximum TOC level (depth) to N"),
-_("      --toc-only      print the Table of Contents and exit"),
-_("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
-_("      --style=FILE    use FILE as the document style (like HTML CSS)"),
-_("      --css-sugar     insert CSS-friendly tags for HTML/XHTML"),
-_("      --css-inside    insert CSS file contents inside HTML/XHTML headers"),
-_("  -H, --no-headers    suppress header and footer from the output"),
-_("  -T, --template=FILE use FILE as the template for the output document"),
-_("      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"),
-_("      --slides        format output as presentation slides (used by -t art)"),
-_("      --width=N       set the output's width to N columns (used by -t art)"),
-_("      --height=N      set the output's height to N rows (used by -t art)"),
-_("  -C, --config-file=F read configuration from file F"),
-_("      --fix-path      fix resources path (image, links, CSS) when needed"),
-_("      --gui           invoke Graphical Tk Interface"),
-_("  -q, --quiet         quiet mode, suppress all output (except errors)"),
-_("  -v, --verbose       print informative messages during conversion"),
-_("  -h, --help          print this help information and exit"),
-_("  -V, --version       print program version and exit"),
-_("      --dump-config   print all the configuration found and exit"),
-_("      --dump-source   print the document source, with includes expanded"),
-'',
-_("Turn OFF options:"),
-"     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
-"     --no-encoding, --no-enum-title, --no-fix-path, --no-headers,",
-"     --no-infile, --no-mask-email, --no-outfile, --no-quiet, --no-rc,",
-"     --no-slides, --no-style, --no-targets, --no-toc, --no-toc-only",
-'',
-_("Example:"),
-"     %s -t html --toc %s" % (my_name, _("file.t2t")),
-'',
-_("By default, converted output is saved to 'infile.<target>'."),
-_("Use --outfile to force an output file name."),
-_("If  input file is '-', reads from STDIN."),
-_("If output file is '-', dumps output to STDOUT."),
-'',
-my_url,
-''
-])
+def Usage():
+    fmt1 = "%4s  %-15s %s"
+    fmt2 = "%4s, %-15s %s"
+    return '\n'.join([
+        '',
+        _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
+        '',
+        fmt1 % (  '', '--targets'      , _("print a list of all the available targets and exit")),
+        fmt2 % ('-t', '--target=TYPE'  , _("set target document type. currently supported:")),
+        fmt1 % (  '', ''               , ', '.join(TARGETS[:8]) + ','),
+        fmt1 % (  '', ''               , ', '.join(TARGETS[8:17]) + ','),
+        fmt1 % (  '', ''               , ', '.join(TARGETS[17:])),
+        fmt2 % ('-i', '--infile=FILE'  , _("set FILE as the input file name ('-' for STDIN)")),
+        fmt2 % ('-o', '--outfile=FILE' , _("set FILE as the output file name ('-' for STDOUT)")),
+        fmt1 % (  '', '--encoding=ENC' , _("inform source file encoding (UTF-8, iso-8859-1, etc)")),
+        fmt1 % (  '', '--toc'          , _("add an automatic Table of Contents to the output")),
+        fmt1 % (  '', '--toc-level=N'  , _("set maximum TOC level (depth) to N")),
+        fmt1 % (  '', '--toc-only'     , _("print the Table of Contents and exit")),
+        fmt2 % ('-n', '--enum-title'   , _("enumerate all titles as 1, 1.1, 1.1.1, etc")),
+        fmt1 % (  '', '--style=FILE'   , _("use FILE as the document style (like HTML CSS)")),
+        fmt1 % (  '', '--css-sugar'    , _("insert CSS-friendly tags for HTML/XHTML")),
+        fmt1 % (  '', '--css-inside'   , _("insert CSS file contents inside HTML/XHTML headers")),
+        fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
+        fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
+        fmt1 % (  '', '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
+        fmt1 % (  '', '--slides'       , _("format output as presentation slides (used by -t art)")),
+        fmt1 % (  '', '--width=N'      , _("set the output's width to N columns (used by -t art)")),
+        fmt1 % (  '', '--height=N'     , _("set the output's height to N rows (used by -t art)")),
+        fmt2 % ('-C', '--config-file=F', _("read configuration from file F")),
+        fmt1 % (  '', '--fix-path'     , _("fix resources path (image, links, CSS) when needed")),
+        fmt1 % (  '', '--gui'          , _("invoke Graphical Tk Interface")),
+        fmt2 % ('-q', '--quiet'        , _("quiet mode, suppress all output (except errors)")),
+        fmt2 % ('-v', '--verbose'      , _("print informative messages during conversion")),
+        fmt2 % ('-h', '--help'         , _("print this help information and exit")),
+        fmt2 % ('-V', '--version'      , _("print program version and exit")),
+        fmt1 % (  '', '--dump-config'  , _("print all the configuration found and exit")),
+        fmt1 % (  '', '--dump-source'  , _("print the document source, with includes expanded")),
+        '',
+        _("Turn OFF options:"),
+        "     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
+        "     --no-encoding, --no-enum-title, --no-fix-path, --no-headers,",
+        "     --no-infile, --no-mask-email, --no-outfile, --no-quiet, --no-rc,",
+        "     --no-slides, --no-style, --no-targets, --no-toc, --no-toc-only",
+        '',
+        _("Example:"),
+        "     %s -t html --toc %s" % (my_name, _("file.t2t")),
+        '',
+        _("By default, converted output is saved to 'infile.<target>'."),
+        _("Use --outfile to force an output file name."),
+        _("If  input file is '-', reads from STDIN."),
+        _("If output file is '-', dumps output to STDOUT."),
+        '',
+        my_url,
+        '',
+    ])
 
 
 ##############################################################################
@@ -7574,7 +7577,7 @@ def exec_command_line(user_cmdline=[]):
 
     # The easy ones
     if cmdline_parsed.get('help'):
-        Quit(USAGE)
+        Quit(Usage())
     if cmdline_parsed.get('version'):
         Quit(VERSIONSTR)
     if cmdline_parsed.get('targets'):
