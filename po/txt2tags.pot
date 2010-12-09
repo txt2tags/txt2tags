@@ -2,8 +2,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6.598\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
+"Project-Id-Version: txt2tags 2.6.600\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,13 +175,13 @@ msgstr ""
 msgid "print the document source, with includes expanded"
 msgstr ""
 
-msgid "Turn OFF options:"
-msgstr ""
-
 msgid "Example:"
 msgstr ""
 
 msgid "file.t2t"
+msgstr ""
+
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
