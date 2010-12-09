@@ -4,24 +4,9 @@ Vidu markojn tradukitajn al HTML
 %!target: html
 %!encoding: UTF-8
 %!style: http://txt2tags.org/markup.css
-
-%!postproc: Ĉ &#264;
-%!postproc: ĉ &#265;
-%!postproc: Ĝ &#284;
-%!postproc: ĝ &#285;
-%!postproc: Ĥ &#292;
-%!postproc: ĥ &#293;
-%!postproc: Ĵ &#308;
-%!postproc: ĵ &#309;
-%!postproc: Ŝ &#348;
-%!postproc: ŝ &#349;
-%!postproc: Ŭ &#364;
-%!postproc: ŭ &#365;
+%!options: --css-sugar -o ../markup-eo.html
 
 %!preproc: t2t\.png	../img/t2tpowered.png
-
-% TRANSLATOR: change markup.html to markup-XX.html (see README file)
-%!options: --css-sugar -o ../markup-eo.html
 
 %!postproc: {(.*?)}	<\1>
 
