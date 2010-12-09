@@ -9,98 +9,91 @@ D'Markeierungen ginn an HTML konverteiert
 % TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
-%!postproc: {(.*?)}	<\1>
 
-% TRANSLATOR:
-% This {foo} marks will be converted to HTML tags.
-% Please don't change inside them.
-{table}
-{tr}{th colspan="2"}
+''' <table>
+''' <tr><th colspan="2">
 
-BASIS
-{/th}{/tr}{tr}{td class="t2t"}
+''' BASIS
+''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
-{/td}{td}
+''' </td><td>
 %!include: title.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
-{/td}{td}
+''' </td><td>
 %!include: numtitle.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
-{/td}{td}
+''' </td><td>
 %!include: para.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``comment.t2t``
-{/td}{td}
+''' </td><td>
 %!include: comment.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``beauti.t2t``
-{/td}{td}
+''' </td><td>
 %!include: beauti.t2t
-{/td}{/tr}{tr}{th colspan="2"}
+''' </td></tr><tr><th colspan="2">
 
-LESCHTEN
-{/th}{/tr}{tr}{td class="t2t"}
+''' LESCHTEN
+''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
-{/td}{td}
+''' </td><td>
 %!include: list.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``numlist.t2t``
-{/td}{td}
+''' </td><td>
 %!include: numlist.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``deflist.t2t``
-{/td}{td}
+''' </td><td>
 %!include: deflist.t2t
-{/td}{/tr}{tr}{th colspan="2"}
+''' </td></tr><tr><th colspan="2">
 
-BLÉCK
-{/th}{/tr}{tr}{td class="t2t"}
+''' BLÉCK
+''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
-{/td}{td}
+''' </td><td>
 %!include: quote.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``verb.t2t``
-{/td}{td}
+''' </td><td>
 %!include: verb.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
-{/td}{td}
+''' </td><td>
 %!include: verbline.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``raw.t2t``
-{/td}{td}
+''' </td><td>
 %!include: raw.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``rawline.t2t``
-{/td}{td}
+''' </td><td>
 %!include: rawline.t2t
-{/td}{/tr}{tr}{th colspan="2"}
+''' </td></tr><tr><th colspan="2">
 
-VERSCHIDDENES
-{/th}{/tr}{tr}{td class="t2t"}
+''' VERSCHIDDENES
+''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
-{/td}{td}
+''' </td><td>
 %!include: table.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
-{/td}{td}
+''' </td><td>
 %!include: image.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``link.t2t``
-{/td}{td}
+''' </td><td>
 %!include: link.t2t
-{/td}{/tr}{tr}{td class="t2t"}
+''' </td></tr><tr><td class="t2t">
 %!include: ``bar.t2t``
-{/td}{td}
+''' </td><td>
 %!include: bar.t2t
-{/td}{/tr}
-{/table}
+''' </td></tr>
+''' </table>
 
-```
-
-```
 
 %%% TRANSLATOR:
 %%% Uncomment the next line and fill your full name
