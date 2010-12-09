@@ -20,6 +20,24 @@ txt2tags.pot
 
 To translate txt2tags to your language:
 
+
+EASY WAY:
+
+1. Go to http://www.transifex.net/projects/p/txt2tags/resource/potfile/
+
+2. Login (create an account if you don't have one)
+
+3. Click the Add Translation button
+
+4. Choose your language
+
+5. Click the Translate Online button
+
+6. Translate!
+
+
+OLD SCHOOL:
+
 1. Search which is the ID for your language. For example,
    "es" is for spanish, "de" is for german.
 
