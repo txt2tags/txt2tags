@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: txt2tags 2.6\n"
-"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
+"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
 "PO-Revision-Date: 2010-08-13 00:35+0100\n"
 "Last-Translator: Claude Hiebel <chiebel@free.fr>\n"
 "Language-Team: FRENCH <LL@li.org>\n"
@@ -90,105 +90,89 @@ msgstr "%s version %s <%s>"
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr "Utilisation : %s [OPTIONS] [entrée.t2t ...]"
 
-msgid ""
-"      --targets       print a list of all the available targets and exit"
-msgstr "      --targets       affiche une liste des cibles disponibles et sort"
+msgid "print a list of all the available targets and exit"
+msgstr "affiche une liste des cibles disponibles et sort"
 
-msgid "  -t, --target=TYPE   set target document type. currently supported:"
+msgid "set target document type. currently supported:"
 msgstr ""
-"  -t, --target=TYPE      définit le type de document de sortie. Formats "
-"actuellement supportés :"
+"   définit le type de document de sortie. Formats actuellement supportés :"
 
-msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
-msgstr "  -i, --infile=ENTREE  choisit le fichier d'entrée ('-' pour STDIN)"
+msgid "set FILE as the input file name ('-' for STDIN)"
+msgstr "choisit le fichier d'entrée ('-' pour STDIN)"
 
-msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
-msgstr "  -o, --outfile=SORTIE choisit le fichier de sortie ('-' pour STDOUT)"
+msgid "set FILE as the output file name ('-' for STDOUT)"
+msgstr "choisit le fichier de sortie ('-' pour STDOUT)"
 
-msgid ""
-"      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
+msgid "inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
 
-msgid "      --toc           add an automatic Table of Contents to the output"
-msgstr "      --toc           ajoute la table des matières à la sortie"
+msgid "add an automatic Table of Contents to the output"
+msgstr "ajoute la table des matières à la sortie"
 
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgid "set maximum TOC level (depth) to N"
+msgstr "limite la profondeur de la table des matières à N"
+
+msgid "print the Table of Contents and exit"
+msgstr "affiche la table des matières et sort"
+
+msgid "enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "numéroter les titres en : 1, 1.1, 1.1.1, etc"
+
+msgid "use FILE as the document style (like HTML CSS)"
+msgstr "utilise FILE comme feuille de style (comme HTML CSS)"
+
+msgid "insert CSS-friendly tags for HTML/XHTML"
 msgstr ""
-"      --toc-level=N   limite la profondeur de la table des matières à N"
+"insère des marques pour l'inclusion de feuilles CSS pour les sorties HTML et "
+"XHTML"
 
-msgid "      --toc-only      print the Table of Contents and exit"
-msgstr "      --toc-only      affiche la table des matières et sort"
-
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
-msgstr "  -n, --enum-title    numéroter les titres en : 1, 1.1, 1.1.1, etc"
-
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
-msgstr ""
-"      --style=FILE    utilise FILE comme feuille de style (comme HTML CSS)"
-
-msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
-msgstr ""
-"      --css-sugar     insère des marques pour l'inclusion de feuilles CSS "
-"pour les sorties HTML et XHTML"
-
-msgid ""
-"      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgid "insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
 "  --css-inside     insère le contenu du fichier CSS dans l'entête HTML/XHTML"
 
-msgid "  -H, --no-headers    suppress header and footer from the output"
-msgstr ""
-"  -H, --no-headers    supprime les entêtes, les titres et les pieds de page"
+msgid "suppress header and footer from the output"
+msgstr "supprime les entêtes, les titres et les pieds de page"
 
-msgid "  -T, --template=FILE use FILE as the template for the output document"
-msgstr ""
-
-msgid ""
-"      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
-msgstr ""
-"      --mask-email    cache l'email des robots spammeurs. Ainsi x@y.z "
-"devient x (a) y z"
-
-msgid ""
-"      --slides        format output as presentation slides (used by -t art)"
-msgstr ""
-"      --slides        formate la sortie comme une présentation (utilisé par -"
-"t art)"
-
-msgid ""
-"      --width=N       set the output's width to N columns (used by -t art)"
-msgstr ""
-"      --width=N       fixe la largeur à N colonnes (utilisé par -t art)"
-
-msgid ""
-"      --height=N      set the output's height to N rows (used by -t art)"
-msgstr "      --height=N      fixe la hauteur à N lignes (utilisé par -t art)"
-
-msgid "  -C, --config-file=F read configuration from file F"
+msgid "use FILE as the template for the output document"
 msgstr ""
 
-msgid "      --gui           invoke Graphical Tk Interface"
-msgstr "      --gui           appelle l'interface graphique Tk"
+msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "cache l'email des robots spammeurs. Ainsi x@y.z devient x (a) y z"
 
-msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
+msgid "format output as presentation slides (used by -t art)"
+msgstr "formate la sortie comme une présentation (utilisé par -t art)"
+
+msgid "set the output's width to N columns (used by -t art)"
+msgstr "fixe la largeur à N colonnes (utilisé par -t art)"
+
+msgid "set the output's height to N rows (used by -t art)"
+msgstr "fixe la hauteur à N lignes (utilisé par -t art)"
+
+msgid "read configuration from file F"
 msgstr ""
-"  -q, --quiet         mode silencieux, plus de sortie (sauf les erreurs)"
 
-msgid "  -v, --verbose       print informative messages during conversion"
+msgid "fix resources path (image, links, CSS) when needed"
 msgstr ""
-"  -v, --verbose       affiche des messages d'information pendant la "
-"conversion"
 
-msgid "  -h, --help          print this help information and exit"
-msgstr "  -h, --help          affiche cette aide et sort"
+msgid "invoke Graphical Tk Interface"
+msgstr "appelle l'interface graphique Tk"
 
-msgid "  -V, --version       print program version and exit"
-msgstr "  -V, --version       affiche la version et sort"
+msgid "quiet mode, suppress all output (except errors)"
+msgstr "mode silencieux, plus de sortie (sauf les erreurs)"
 
-msgid "      --dump-config   print all the configuration found and exit"
-msgstr "      --dump-config   affiche toute la configuration trouvée et sort"
+msgid "print informative messages during conversion"
+msgstr "affiche des messages d'information pendant la conversion"
 
-msgid "      --dump-source   print the document source, with includes expanded"
+msgid "print this help information and exit"
+msgstr "affiche cette aide et sort"
+
+msgid "print program version and exit"
+msgstr "affiche la version et sort"
+
+msgid "print all the configuration found and exit"
+msgstr "affiche toute la configuration trouvée et sort"
+
+msgid "print the document source, with includes expanded"
 msgstr "     --dump-source   affiche le document source, avec les inclusions"
 
 msgid "Turn OFF options:"
@@ -274,6 +258,9 @@ msgstr "--la valeur %s doit être un nombre"
 
 msgid "Option --split must be 0, 1 or 2"
 msgstr "Option --split doit être 0, 1 ou 2"
+
+msgid "--width: Expected width > 4, got %i"
+msgstr ""
 
 msgid "--art-chars: Expected %i chars, got %i"
 msgstr "--art-chars : attendu %i caractères, récupéré %i"
@@ -487,17 +474,15 @@ msgstr "Précisez un fichier d'entrée (.t2t) à la fin de la commande"
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags a terminé sans erreur"
 
-#~ msgid ""
-#~ "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr ""
-#~ "      --encoding=ENC  choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
+#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
+#~ msgstr "choisit l'encodage de sortie (utf-8, iso8859-1, etc)"
 
 #~ msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
 #~ msgstr ""
 #~ "     --art-chars=S   met les caractères ASCII Art à S (par défaut %s) "
 #~ "pour : "
 
-#~ msgid "  -C, --config-file=F read config from file F"
+#~ msgid "read config from file F"
 #~ msgstr " -C, --config-file=F lit la configuration à partir du fichier F"
 
 #~ msgid ""

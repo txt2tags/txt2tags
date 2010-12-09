@@ -2,8 +2,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.6.527\n"
-"POT-Creation-Date: 2010-11-23 10:40+BRST\n"
+"Project-Id-Version: txt2tags 2.6.598\n"
+"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,82 +94,85 @@ msgstr ""
 msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
 msgstr ""
 
-msgid "      --targets       print a list of all the available targets and exit"
+msgid "print a list of all the available targets and exit"
 msgstr ""
 
-msgid "  -t, --target=TYPE   set target document type. currently supported:"
+msgid "set target document type. currently supported:"
 msgstr ""
 
-msgid "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"
+msgid "set FILE as the input file name ('-' for STDIN)"
 msgstr ""
 
-msgid "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"
+msgid "set FILE as the output file name ('-' for STDOUT)"
 msgstr ""
 
-msgid "      --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)"
+msgid "inform source file encoding (UTF-8, iso-8859-1, etc)"
 msgstr ""
 
-msgid "      --toc           add an automatic Table of Contents to the output"
+msgid "add an automatic Table of Contents to the output"
 msgstr ""
 
-msgid "      --toc-level=N   set maximum TOC level (depth) to N"
+msgid "set maximum TOC level (depth) to N"
 msgstr ""
 
-msgid "      --toc-only      print the Table of Contents and exit"
+msgid "print the Table of Contents and exit"
 msgstr ""
 
-msgid "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgid "enumerate all titles as 1, 1.1, 1.1.1, etc"
 msgstr ""
 
-msgid "      --style=FILE    use FILE as the document style (like HTML CSS)"
+msgid "use FILE as the document style (like HTML CSS)"
 msgstr ""
 
-msgid "      --css-sugar     insert CSS-friendly tags for HTML/XHTML"
+msgid "insert CSS-friendly tags for HTML/XHTML"
 msgstr ""
 
-msgid "      --css-inside    insert CSS file contents inside HTML/XHTML headers"
+msgid "insert CSS file contents inside HTML/XHTML headers"
 msgstr ""
 
-msgid "  -H, --no-headers    suppress header and footer from the output"
+msgid "suppress header and footer from the output"
 msgstr ""
 
-msgid "  -T, --template=FILE use FILE as the template for the output document"
+msgid "use FILE as the template for the output document"
 msgstr ""
 
-msgid "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"
+msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr ""
 
-msgid "      --slides        format output as presentation slides (used by -t art)"
+msgid "format output as presentation slides (used by -t art)"
 msgstr ""
 
-msgid "      --width=N       set the output's width to N columns (used by -t art)"
+msgid "set the output's width to N columns (used by -t art)"
 msgstr ""
 
-msgid "      --height=N      set the output's height to N rows (used by -t art)"
+msgid "set the output's height to N rows (used by -t art)"
 msgstr ""
 
-msgid "  -C, --config-file=F read configuration from file F"
+msgid "read configuration from file F"
 msgstr ""
 
-msgid "      --gui           invoke Graphical Tk Interface"
+msgid "fix resources path (image, links, CSS) when needed"
 msgstr ""
 
-msgid "  -q, --quiet         quiet mode, suppress all output (except errors)"
+msgid "invoke Graphical Tk Interface"
 msgstr ""
 
-msgid "  -v, --verbose       print informative messages during conversion"
+msgid "quiet mode, suppress all output (except errors)"
 msgstr ""
 
-msgid "  -h, --help          print this help information and exit"
+msgid "print informative messages during conversion"
 msgstr ""
 
-msgid "  -V, --version       print program version and exit"
+msgid "print this help information and exit"
 msgstr ""
 
-msgid "      --dump-config   print all the configuration found and exit"
+msgid "print program version and exit"
 msgstr ""
 
-msgid "      --dump-source   print the document source, with includes expanded"
+msgid "print all the configuration found and exit"
+msgstr ""
+
+msgid "print the document source, with includes expanded"
 msgstr ""
 
 msgid "Turn OFF options:"
@@ -254,6 +257,9 @@ msgid "--%s value must be a number"
 msgstr ""
 
 msgid "Option --split must be 0, 1 or 2"
+msgstr ""
+
+msgid "--width: Expected width > 4, got %i"
 msgstr ""
 
 msgid "--art-chars: Expected %i chars, got %i"
