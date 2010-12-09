@@ -6,6 +6,7 @@ Vidu markojn tradukitajn al HTML
 %!style: http://txt2tags.org/markup.css
 %!options: --css-sugar -o ../markup-eo.html
 
+% TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
 %!postproc: {(.*?)}	<\1>
