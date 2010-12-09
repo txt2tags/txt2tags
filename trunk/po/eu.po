@@ -1,14 +1,18 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.3.1\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2010-08-12 18:03+0100\n"
-"Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
-"Language-Team: Basque\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:24+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: eu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "HTML orria"
@@ -137,8 +141,7 @@ msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr "epostak spam robotengandik ezkutatu. x@y.z <x (a) y z> bihurtzen da"
 
 msgid "format output as presentation slides (used by -t art)"
-msgstr ""
-"irteera aurkezpen diapositiba bezala formateatu (-t art-ekin erabilita)"
+msgstr "irteera aurkezpen diapositiba bezala formateatu (-t art-ekin erabilita)"
 
 msgid "set the output's width to N columns (used by -t art)"
 msgstr "irteeraren zabalera N zutabeetan finkatu (-t art-ekin erabilita)"
@@ -173,14 +176,14 @@ msgstr "topatutako konfigurazio guztia inprimatu eta irten"
 msgid "print the document source, with includes expanded"
 msgstr "dokumentuaren iturburua inprimatu, barneratzeko guztiak txertatuta"
 
-msgid "Turn OFF options:"
-msgstr "Aukerak EZGAITU:"
-
 msgid "Example:"
 msgstr "Adibidea:"
 
 msgid "file.t2t"
 msgstr "fitx.t2t"
+
+msgid "The 'no-' prefix disables the option:"
+msgstr ""
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr "Lehenetsiz, bihurtutako irteera 'infile.<helburua>'-n gordetzen da."
@@ -240,13 +243,10 @@ msgid "No target specified (try --help)"
 msgstr "Ez da helbururik zehaztu (--help frogatu)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr ""
-"-t aukera erabiliz edo %!target komandoaren bidez helburu bat zehaztu "
-"mesedez."
+msgstr "-t aukera erabiliz edo %!target komandoaren bidez helburu bat zehaztu mesedez."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
-msgstr ""
-"Exekutatu 'txt2tags --targets'  eskuragarri dauden helburu guztiak ikusteko."
+msgstr "Exekutatu 'txt2tags --targets'  eskuragarri dauden helburu guztiak ikusteko."
 
 msgid "Missing input file (try --help)"
 msgstr "Sarrera fitxategia faltan (--help frogatu)"
@@ -317,9 +317,7 @@ msgstr "Gaitutako iragazkiak"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"
@@ -344,8 +342,7 @@ msgid "Source document contents stored"
 msgstr "Iturburuko dokumentuaren edukiak gordeta"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-"Topatutako konfigurazio guztia parseatzen eta gordetzen (%03d elementu)"
+msgstr "Topatutako konfigurazio guztia parseatzen eta gordetzen (%03d elementu)"
 
 msgid "Composing target Body"
 msgstr "Helburuko Gorputza sortzen"
@@ -475,26 +472,3 @@ msgstr "Mesedez zehaztu sarrerako fitxategia (.t2t) komandoaren bukaeran."
 
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags egoki bukatu da"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "ezarri irteera fitxategiaren kodeketa (utf-8, iso-8859-1, etab.)"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       goiburukoa, izenburua eta oinaren edukiak erakutsi "
-#~ "(lehenetsiz gaituta)"
-
-#~ msgid "      --art-chars=S   set the ASCII Art chars to S (default %s) for:"
-#~ msgstr ""
-#~ "      --art-chars=S   ASCII Art karaktereak S-ra ezarri (defektuz %s) "
-#~ "hauetarako:"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            erabiltzailearen ~/.txt2tagsrc konfigurazio "
-#~ "fitxategia irakurri (lehenetsiz gaituta)"
-
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "'%s' helburu ezegokia (--help frogatu)"
