@@ -9,21 +9,22 @@
 % TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
-% TRANSLATOR:
-% This <foo> marks are HTML tags.
-% Please don't change inside them.
+
 ''' <table>
 ''' <tr><th colspan="2">
-%-------------------------------------------------
+
 ''' Базовая разметка
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
@@ -40,8 +41,9 @@
 %!include: beauti.t2t
 
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' Списки
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
@@ -56,9 +58,11 @@
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' Области
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
@@ -83,13 +87,16 @@
 %!include: ``tagged.t2t``
 ''' </td><td>
 %!include: tagged.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' Остальные
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
@@ -109,9 +116,6 @@
 ''' </table>
 
 
-%%% TRANSLATOR:
-%%% Uncomment and translate the next line (put your full name)
 Автор перевода Kontenta Kato.
 
-% TRANSLATOR: don't forget the link text!
 [Перейти на главную txt2tags http://txt2tags.org]
