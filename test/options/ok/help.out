@@ -32,14 +32,11 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --dump-config   print all the configuration found and exit
       --dump-source   print the document source, with includes expanded
 
-Turn OFF options:
-     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,
-     --no-encoding, --no-enum-title, --no-fix-path, --no-headers,
-     --no-infile, --no-mask-email, --no-outfile, --no-quiet, --no-rc,
-     --no-slides, --no-style, --no-targets, --no-toc, --no-toc-only
-
 Example:
      txt2tags -t html --toc file.t2t
+
+The 'no-' prefix disables the option:
+     --no-toc, --no-style, --no-enum-title, ...
 
 By default, converted output is saved to 'infile.<target>'.
 Use --outfile to force an output file name.
