@@ -38,10 +38,10 @@ Beautifiers
 The text marks for beautifiers are simple, just as you
 type on a plain text email message.
 
-We use double *, /, - and _ to represent bold,
-italic, strike and underline.
+We use double *, /, - and _ to represent *bold*,
+/italic/, -strike- and _underline_.
 
-The bold italic style is also supported as a
+The */bold italic/* style is also supported as a
 combination.
 
 
@@ -79,9 +79,9 @@ with label.
 
 And remember,
 
-	A TAB in front of the line does a quotation.
+        A TAB in front of the line does a quotation.
 
-		More TABs, more depth (if allowed).
+                More TABs, more depth (if allowed).
 
 
 Nice.
@@ -91,15 +91,15 @@ Nice.
                                | Lists |
                                +-------+
 
-A list of items is natural, just putting a dash or
-a plus at the beginning of the line.
+A list of items is natural, just putting a *dash* or
+a *plus* at the beginning of the line.
 
 
 Plain List
 ==========
 
 The dash is the default list identifier. For sublists,
-just add spaces at the beginning of the line. More
+just add *spaces* at the beginning of the line. More
 spaces, more sublists.
 
 - earth
@@ -112,7 +112,7 @@ spaces, more sublists.
 - mars
   - who knows?
 
-The list ends with two consecutive blank lines.
+The list ends with *two* consecutive blank lines.
 
 
 Numbered List
@@ -156,15 +156,23 @@ Use pipes to compose table rows and cells.
 Double pipe at the line beginning starts a heading row.
 Natural spaces specify each cell alignment.
 
-   || heading 1 |  heading 2  |  heading 3 |
-    | cell 1.1  |  cell 1.2   |   cell 1.3 |
-    | cell 2.1  |  cell 2.2   |   cell 2.3 |
+                +-----------+-------------+------------+                
+                | heading 1 |  heading 2  |  heading 3 |                
+                +===========+=============+============+                
+                | cell 1.1  |  cell 1.2   |   cell 1.3 |                
+                +-----------+-------------+------------+                
+                | cell 2.1  |  cell 2.2   |   cell 2.3 |                
+                +-----------+-------------+------------+                
 
 Without the last pipe, no border:
 
-   || heading 1 |  heading 2  |  heading 3
-    | cell 1.1  |  cell 1.2   |   cell 1.3
-    | cell 2.1  |  cell 2.2   |   cell 2.3
+                 ----------- ------------- ------------                 
+                  heading 1    heading 2     heading 3                  
+                 =========== ============= ============                 
+                  cell 1.1     cell 1.2       cell 1.3                  
+                 ----------- ------------- ------------                 
+                  cell 2.1     cell 2.2       cell 2.3                  
+                 ----------- ------------- ------------                 
 
 
                           +------------------+
@@ -179,7 +187,7 @@ Images
 
 The image mark is as simple as it can be: [filename].
 
-                      [img/photo.jpg]  
+                      [img/photo.jpg]
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
