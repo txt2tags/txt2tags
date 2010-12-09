@@ -37,11 +37,13 @@ Please read this *list of ideas* and leave a comment, telling your preferences. 
  # Code compatible with [http://docs.python.org/dev/3.0/whatsnew/3.0.html Python3]
  # New {{{%!exec}}} command to execute external commands and insert the results on the document: {{{%!exec: cat -n myapp.py}}} (security implications)
  # {{{$HOME/txt2tags}}} folder to store things: file history, command history, style files, includes, config, run count, allowed files for %!exec, alternative header templates, --split templates, plugins
+
 Updates:
  # %%header1, %%header2, %%header3 macros
  # multiline-aware pre/postprocs (expand internal \n) (see issue #25)
  # Templates (see patch from Emmanuel Godard)
  # Clean the code. I love the project but it's pretty hackish and quite difficult to reuse in other applications. (by griff.rees)
+ # Use argparse module (new in Python 2.7) for command line options handling
 
 = New Name? =
 
