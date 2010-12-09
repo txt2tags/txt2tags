@@ -6,12 +6,14 @@ Txt2tags 标记示例
 %!style: http://txt2tags.org/markup.css
 %!options: --css-sugar -o ../markup-zh.html
 
+% TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
 %!postproc: {(.*?)}	<\1>
 
-
-
+% TRANSLATOR:
+% This {foo} marks will be converted to HTML tags.
+% Please don't change inside them.
 {table}
 {tr}{th colspan="2"}基础 BASIC{/th}{/tr}{tr}{td class="t2t"}
 %!include: ``title.t2t``
