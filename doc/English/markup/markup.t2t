@@ -12,21 +12,25 @@ See marks converted to HTML
 % TRANSLATOR: change markup.html to markup-XX.html (see README file)
 %!options: -o ../markup.html
 
+
 % TRANSLATOR:
 % This <foo> marks are HTML tags.
 % Please don't change inside them.
 ''' <table>
 ''' <tr><th colspan="2">
-%-------------------------------------------------
+
 ''' BASIC
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
@@ -43,8 +47,9 @@ See marks converted to HTML
 %!include: beauti.t2t
 
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' LISTS
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
@@ -59,9 +64,11 @@ See marks converted to HTML
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' AREAS
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
@@ -86,13 +93,16 @@ See marks converted to HTML
 %!include: ``tagged.t2t``
 ''' </td><td>
 %!include: tagged.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' OTHER
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
@@ -116,6 +126,5 @@ See marks converted to HTML
 %%% Uncomment and translate the next line (put your full name)
 %Translated by John Smith.
 
-% TRANSLATOR: don't forget the link text!
+% TRANSLATOR: don't forget to translate the link text!
 [Go to the txt2tags website http://txt2tags.org]
-

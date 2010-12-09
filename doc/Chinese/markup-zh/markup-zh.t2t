@@ -14,87 +14,108 @@ Txt2tags 标记示例
 ''' <tr><th colspan="2">
 
 ''' 基础 BASIC
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
 %!include: para.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``comment.t2t``
 ''' </td><td>
 %!include: comment.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``beauti.t2t``
 ''' </td><td>
 %!include: beauti.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' 列表 LISTS
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
 %!include: list.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numlist.t2t``
 ''' </td><td>
 %!include: numlist.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' 区域 AREAS
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
 %!include: quote.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``verb.t2t``
 ''' </td><td>
 %!include: verb.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
 ''' </td><td>
 %!include: verbline.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``raw.t2t``
 ''' </td><td>
 %!include: raw.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``rawline.t2t``
 ''' </td><td>
 %!include: rawline.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' 其它 OTHER
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
 %!include: image.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``link.t2t``
 ''' </td><td>
 %!include: link.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``bar.t2t``
 ''' </td><td>
 %!include: bar.t2t
+
 ''' </td></tr>
 ''' </table>
 
 
 Translated to Chinese by 周琦([Zoom Quiet http://wiki.woodpecker.org.cn/moin/ZoomQuiet]).
 
-动力源自:**[txt2tags http://txt2tags.org]**
+动力源自: [txt2tags http://txt2tags.org]

@@ -9,21 +9,22 @@ Ikusi markak HTML-ra itzulita
 % TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
-% TRANSLATOR:
-% This <foo> marks are HTML tags.
-% Please don't change inside them.
+
 ''' <table>
 ''' <tr><th colspan="2">
-%-------------------------------------------------
+
 ''' OINARRIZKOA
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
@@ -40,8 +41,9 @@ Ikusi markak HTML-ra itzulita
 %!include: beauti.t2t
 
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' ZERRENDAK
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
@@ -56,9 +58,11 @@ Ikusi markak HTML-ra itzulita
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' BARRUTIAK
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
@@ -68,6 +72,7 @@ Ikusi markak HTML-ra itzulita
 %!include: ``verb.t2t``
 ''' </td><td>
 %!include: verb.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
 ''' </td><td>
@@ -77,17 +82,21 @@ Ikusi markak HTML-ra itzulita
 %!include: ``raw.t2t``
 ''' </td><td>
 %!include: raw.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``rawline.t2t``
 ''' </td><td>
 %!include: rawline.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' BESTELAKOAK
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
@@ -107,9 +116,6 @@ Ikusi markak HTML-ra itzulita
 ''' </table>
 
 
-%%% TRANSLATOR:
-%%% Uncomment and translate the next line (put your full name)
 Ales Zabala Alavak euskaratuta.
 
-% TRANSLATOR: don't forget the link text!
 [Joan txt2tags-en orri nagusira http://txt2tags.org]
