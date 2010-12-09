@@ -1,13 +1,18 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: txt2tags 2.1\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2005-09-05 12:00-0200\n"
-"Last-Translator: manne <manne@somedomain>\n"
-"Language-Team: de team <LL@li.org>\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:24+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "HTML Seite"
@@ -109,9 +114,7 @@ msgid "add an automatic Table of Contents to the output"
 msgstr ""
 
 msgid "set maximum TOC level (depth) to N"
-msgstr ""
-"Setze die maximale Tiefe der Gliederungsebenen im Inhaltsverzeichnis auf den "
-"Wert N"
+msgstr "Setze die maximale Tiefe der Gliederungsebenen im Inhaltsverzeichnis auf den Wert N"
 
 msgid "print the Table of Contents and exit"
 msgstr ""
@@ -168,15 +171,10 @@ msgid "print program version and exit"
 msgstr "Anzeige der Programmversion und dann das Programm beenden"
 
 msgid "print all the configuration found and exit"
-msgstr ""
-"Alle gefundenen Konfigurationen werden angezeigt und dann das Programm "
-"beendet."
+msgstr "Alle gefundenen Konfigurationen werden angezeigt und dann das Programm beendet."
 
 msgid "print the document source, with includes expanded"
 msgstr "Anzeige des Quelldokuments, eingefügte Dokumente werden expandiert"
-
-msgid "Turn OFF options:"
-msgstr "Schalten Sie Optionen aus:"
 
 msgid "Example:"
 msgstr "Beispiel:"
@@ -184,10 +182,11 @@ msgstr "Beispiel:"
 msgid "file.t2t"
 msgstr ""
 
-msgid "By default, converted output is saved to 'infile.<target>'."
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
-"Standardmässig wird die gewandelte Ausgabe in die Datei 'infile.<target> "
-"gespeichert'"
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "Standardmässig wird die gewandelte Ausgabe in die Datei 'infile.<target> gespeichert'"
 
 msgid "Use --outfile to force an output file name."
 msgstr "Verwende --outfile um einen Ausgabedateinamen zu erzwingen"
@@ -318,17 +317,14 @@ msgstr "Aktivierte Filter"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
 msgid "Invalid PostProc filter regex"
 msgstr "Ungültiger regulärer Ausdruck in den PostProc Filtern"
 
 msgid "Invalid PostProc filter replacement"
-msgstr ""
-"Ungültige Ersetzung durch einen regulären Ausdruck in den PostProc Filtern"
+msgstr "Ungültige Ersetzung durch einen regulären Ausdruck in den PostProc Filtern"
 
 msgid "%s wrote %s"
 msgstr "%s erzeugte %s"
@@ -346,9 +342,7 @@ msgid "Source document contents stored"
 msgstr "Inhalte der Quelldatei gespeichert"
 
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-"Alle Konfigurationseinstellungen werden geprüft und gespeichert (%03d "
-"Einstellungen)"
+msgstr "Alle Konfigurationseinstellungen werden geprüft und gespeichert (%03d Einstellungen)"
 
 msgid "Composing target Body"
 msgstr "Ziel Hauptteil wird erzeugt"
@@ -369,8 +363,7 @@ msgid "Invalid PreProc filter regex"
 msgstr "Ungültiger regulärer Ausdruck in den PreProc Filtern"
 
 msgid "Invalid PreProc filter replacement"
-msgstr ""
-"Ungültige Ersetzung durch einen regulären Ausdruck in den PreProc Filtern"
+msgstr "Ungültige Ersetzung durch einen regulären Ausdruck in den PreProc Filtern"
 
 msgid "All files"
 msgstr "Alle Dateien"
@@ -479,34 +472,3 @@ msgstr ""
 
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags wurde erfolgreich beendet"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "Zielformatierung einstellen (utf-8, iso-8859-1, usw)"
-
-#~ msgid "suppress header, title and footer contents"
-#~ msgstr "unterdrücke Kopfzeilen, Überschriften und Fusszeilen"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       zeige Kopfzeilen, Titel und Fusszeilen an "
-#~ "(standardmässig eingeschaltet)"
-
-#~ msgid "insert CSS-friendly tags for HTML and XHTML targets"
-#~ msgstr "CSS freundliche Tags für HTML und XHTML Zielformate einfügen"
-
-#~ msgid "add TOC (Table of Contents) to target document"
-#~ msgstr "Füge ein Inhaltsverzeichnis (TOC) der Zieldatei hinzu"
-
-#~ msgid "print document TOC and exit"
-#~ msgstr ""
-#~ "Das Inhaltsverzeichnis (TOC) wird angezeigt und dann das Programm beendet"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            Einlesen der Benutzerkonfigurationsdatei ~/."
-#~ "txt2tagsrc (standardmässig eingeschaltet)"
-
-#~ msgid "Invalid target '%s' (try --help)"
-#~ msgstr "Falsches Ziel '%s' (Hilfefunktion --help benutzen)"

@@ -1,13 +1,18 @@
+# txt2tags messages
 msgid ""
 msgstr ""
-"Project-Id-Version: es_mjp\n"
-"POT-Creation-Date: 2010-12-09 13:04+BRST\n"
-"PO-Revision-Date: 2010-10-29 12:43+0100\n"
-"Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
-"Language-Team: spanish <en@li.org>\n"
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-09 17:25+0000\n"
+"Last-Translator: aurelio <verde@aurelio.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Generated-By: pygettext.py 1.5\n"
 
 msgid "HTML page"
 msgstr "Página HTML"
@@ -30,8 +35,6 @@ msgstr "Documento DocBook"
 msgid "LaTeX document"
 msgstr "Documento LaTeX"
 
-# Lout is a document formatting system
-# http://packages.debian.org/stable/text/lout
 msgid "Lout document"
 msgstr "Documento Lout"
 
@@ -173,18 +176,17 @@ msgstr "imprime todas las configuraciones halladas y sale"
 msgid "print the document source, with includes expanded"
 msgstr "imprime el fuente del documento, con inclusiones expandidas"
 
-msgid "Turn OFF options:"
-msgstr "Desactiva las opciones::"
-
 msgid "Example:"
 msgstr "Ejemplo:"
 
 msgid "file.t2t"
 msgstr "archivo.t2t"
 
-msgid "By default, converted output is saved to 'infile.<target>'."
+msgid "The 'no-' prefix disables the option:"
 msgstr ""
-"Por default, la salida, ya convertida, es salvada al 'infile.<target>'."
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "Por default, la salida, ya convertida, es salvada al 'infile.<target>'."
 
 msgid "Use --outfile to force an output file name."
 msgstr "Use --outfile para forzar un nombre de archivo de salida."
@@ -198,14 +200,11 @@ msgstr "Si el archivo de salida es ' - ', descarga la salida a STDOUT."
 msgid "%s: Error: "
 msgstr "%s: Error: "
 
-# I don't know what about tk on the original translation.
-# Let me know WHY are you refereing to TK.
 msgid "Sorry! Txt2tags aborted by an unknown error."
 msgstr "¡Lo siento! Txt2tags abortó por un error desconocido."
 
 msgid "Please send the following Error Traceback to the author"
-msgstr ""
-"Por favor envíe al autor el siguiente Rastro de Error (Error Traceback) :"
+msgstr "Por favor envíe al autor el siguiente Rastro de Error (Error Traceback) :"
 
 msgid "You must feed me with data on STDIN!"
 msgstr "¡Usted debe alimentarme con datos sobre STDIN!"
@@ -225,12 +224,6 @@ msgstr "%s (intente --help)"
 msgid "Ignored config"
 msgstr ""
 
-# documento fuente de carga?
-# maybe the hispanish original translation (HOT)
-# is Ok, but anyway i need to know the message context.
-# If there is a process in execution, some dots
-# are needed,
-# so : "Loading ... please wait."
 msgid "Loading source document"
 msgstr "Cargando el documento fuente"
 
@@ -240,21 +233,17 @@ msgstr "El archivo de entrada esta vacio: %s"
 msgid "Areas found: %s"
 msgstr "Áreas encontradas: %s"
 
-# HOT :Área del documento de fuente de la exploración CONF
 msgid "Scanning source document CONF area"
 msgstr "Analizando área CONF del documento fuente"
 
 msgid "Added config"
 msgstr "Se agrego la configuración"
 
-# Ninguna blanco especificada (intento --help)
 msgid "No target specified (try --help)"
 msgstr "El blanco no se ha especificado (intente --help)"
 
 msgid "Please inform a target using the -t option or the %!target command."
-msgstr ""
-"Por favor especifica un objetivo usando la opción -t o con el comando %!"
-"target."
+msgstr "Por favor especifica un objetivo usando la opción -t o con el comando %!target."
 
 msgid "Run 'txt2tags --targets' to see all the available targets."
 msgstr "Ejecute 'txt2tags --targets' para ver todos objetivos posibles."
@@ -283,21 +272,18 @@ msgstr "Los archivos de la entrada y de la salida son identicos: %s"
 msgid "Added the following keys: %s"
 msgstr "Agregó las llaves siguientes: %s"
 
-# CONFIG: Línea inválida de los %s
 msgid "Invalid CONFIG line on %s"
 msgstr "Linea CONFIG invalida en %s"
 
 msgid "Added %s"
 msgstr "Agregado %s"
 
-# Línea de proceso %03d: %s
 msgid "Processing line %03d: %s"
 msgstr "Procesando linea %03d: %s"
 
 msgid "A file cannot include itself (loop!)"
 msgstr "Un archivo no puede autoincluirse(es en ciclo!)"
 
-# Inclusión acabada del archivo de la configuración: %s
 msgid "Finished Config file inclusion: %s"
 msgstr "Inclusión de archivo de Configuración terminada: %s"
 
@@ -331,21 +317,15 @@ msgstr "Filtros activos"
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
 msgstr ""
 
-msgid ""
-"Dear PostVoodoo apprentice: You got the regex right, but messed the "
-"replacement"
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
 msgstr ""
 
-# Filtro PostProc : expresión regular inválida
 msgid "Invalid PostProc filter regex"
 msgstr "Es invalida la expresión regular del fitro PostProc"
 
-# Filtro PostProc : expresión regular inválida
 msgid "Invalid PostProc filter replacement"
 msgstr "Es invalido el remplazo del fitro PostProc"
 
-# This item can be difficult
-# i suppost that {someone} wrote {somthing}
 msgid "%s wrote %s"
 msgstr "%s escribió %s"
 
@@ -358,14 +338,11 @@ msgstr ""
 msgid "CSS include failed for %s"
 msgstr ""
 
-# El contenido del documento de fuente almacenó
 msgid "Source document contents stored"
 msgstr "Los contenidos del documento fuente han sido almacenados"
 
-# saving = salvar, guardar
 msgid "Parsing and saving all config found (%03d items)"
-msgstr ""
-"Analizando y salvando todas los configuraciones encontradas (%03d artículos)"
+msgstr "Analizando y salvando todas los configuraciones encontradas (%03d artículos)"
 
 msgid "Composing target Body"
 msgstr "Compone el cuerpo objetivo"
@@ -376,14 +353,12 @@ msgstr "Compone el Pie de página objetivo"
 msgid "Composing target TOC"
 msgstr "Compone el índice (TOC) objetivo"
 
-# target = blanco, objetivo, final?
 msgid "Composing target Headers"
 msgstr "Compone la cabeceras objetivo"
 
 msgid "Saving results to the output file"
 msgstr "Salvando resultados en el archivo de salida"
 
-# Filtro PreProc : expresión regular inválida
 msgid "Invalid PreProc filter regex"
 msgstr "Es invalida la expresión regular del fitro PostProc"
 
@@ -402,8 +377,6 @@ msgstr "Cerrar"
 msgid "You must select a target type!"
 msgstr "¡Usted debe seleccionar un tipo de blanco!"
 
-# ¡Usted debe proporcionar la localización del archivo de fuente!
-# location != localización
 msgid "You must provide the source file location!"
 msgstr "¡Usted debe proporcionar la ubicación del archivo fuente!"
 
@@ -431,7 +404,6 @@ msgstr "Introduzca la ubicación del archivo fuente:"
 msgid "Choose the target document type:"
 msgstr "Seleccione el tipo de documento objetivo:"
 
-# Check: ? verify mark select ... ?
 msgid "Some options you may check:"
 msgstr "Algunas opciones que usted puede verificar:"
 
@@ -447,7 +419,6 @@ msgstr "Títulos numerados (1, 1.1, 1.1.1, etc)"
 msgid "Do TOC also (Table of Contents)"
 msgstr "Elaborar también el TOC (TOC)"
 
-# may be "anti-SPAM" ??
 msgid "Hide e-mails from SPAM robots"
 msgstr "Oculta e-mails de robots SPAM"
 
@@ -487,35 +458,17 @@ msgstr "Ignorando al archivo de configuración de usuario"
 msgid "Loading user configuration file"
 msgstr "Cargando archivo de configuración de usuario"
 
-# somos una interfaz gráfica
 msgid "We are on GUI interface"
 msgstr "Estamos en una GUI o interfaz gráfica"
 
 msgid "txt2tags ERROR!"
 msgstr "ERROR en txt2tags!"
 
-# Somos una interfaz línea de comando
 msgid "We are on Command Line interface"
 msgstr "Estamos en una interfaz de Linea de Comandos"
 
 msgid "Please inform an input file (.t2t) at the end of the command."
-msgstr ""
-"Por favor especifica un archivo de entrada (.t2t) al final del comando."
+msgstr "Por favor especifica un archivo de entrada (.t2t) al final del comando."
 
 msgid "Txt2tags finished successfully"
 msgstr "Txt2tags: terminado con éxito"
-
-#~ msgid "set target file encoding (utf-8, iso-8859-1, etc)"
-#~ msgstr "fija la codificación del archivo final (utf-8, iso-8859-1, etc)"
-
-#~ msgid ""
-#~ "      --headers       show header, title and footer contents (default ON)"
-#~ msgstr ""
-#~ "      --headers       Muestra la cabecera, el título y contenidos de pie "
-#~ "de página (predef.ACTIVADO)"
-
-#~ msgid ""
-#~ "      --rc            read user config file ~/.txt2tagsrc (default ON)"
-#~ msgstr ""
-#~ "      --rc            lee archivo de configuración del usuario ~/."
-#~ "txt2tagsrc (predef.ACTIVADO)"

@@ -1,0 +1,8 @@
+[main]
+host = http://www.transifex.net
+
+[txt2tags.potfile]
+file_filter = po/<lang>.po
+source_file = po/txt2tags.pot
+source_lang = en
+
