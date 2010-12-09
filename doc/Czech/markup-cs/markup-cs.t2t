@@ -14,90 +14,108 @@ Značky převedené do HTML
 ''' <tr><th colspan="2">
 
 ''' ZÁKLADY
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
 %!include: para.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``comment.t2t``
 ''' </td><td>
 %!include: comment.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``beauti.t2t``
 ''' </td><td>
 %!include: beauti.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' SEZNAMY
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
 %!include: list.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numlist.t2t``
 ''' </td><td>
 %!include: numlist.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' OBLASTI
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
 %!include: quote.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``verb.t2t``
 ''' </td><td>
 %!include: verb.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``verbline.t2t``
 ''' </td><td>
 %!include: verbline.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``raw.t2t``
 ''' </td><td>
 %!include: raw.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``rawline.t2t``
 ''' </td><td>
 %!include: rawline.t2t
+
 ''' </td></tr><tr><th colspan="2">
 
 ''' OSTATNÍ
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
 %!include: image.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``link.t2t``
 ''' </td><td>
 %!include: link.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``bar.t2t``
 ''' </td><td>
 %!include: bar.t2t
+
 ''' </td></tr>
 ''' </table>
 
 
-%%% TRANSLATOR:
-%%% Uncomment the next line and fill your full name
 Přeložil Vlastimil Ott.
 
-% TRANSLATOR: don't forget the link text!
 [Navštivte domovskou stránku txt2tags http://txt2tags.org]

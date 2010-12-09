@@ -9,21 +9,22 @@ Txt2tags 書きかたの例
 % TRANSLATOR: the images won't appear, it is normal, don't worry
 %!preproc: t2t\.png	../img/t2tpowered.png
 
-% TRANSLATOR:
-% This <foo> marks are HTML tags.
-% Please don't change inside them.
+
 ''' <table>
 ''' <tr><th colspan="2">
-%-------------------------------------------------
+
 ''' 基本
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``title.t2t``
 ''' </td><td>
 %!include: title.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``numtitle.t2t``
 ''' </td><td>
 %!include: numtitle.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``para.t2t``
 ''' </td><td>
@@ -40,8 +41,9 @@ Txt2tags 書きかたの例
 %!include: beauti.t2t
 
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' リスト
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``list.t2t``
 ''' </td><td>
@@ -56,9 +58,11 @@ Txt2tags 書きかたの例
 %!include: ``deflist.t2t``
 ''' </td><td>
 %!include: deflist.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' 範囲
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``quote.t2t``
 ''' </td><td>
@@ -83,13 +87,16 @@ Txt2tags 書きかたの例
 %!include: ``tagged.t2t``
 ''' </td><td>
 %!include: tagged.t2t
+
 ''' </td></tr><tr><th colspan="2">
-%-------------------------------------------------
+
 ''' その他
+
 ''' </th></tr><tr><td class="t2t">
 %!include: ``table.t2t``
 ''' </td><td>
 %!include: table.t2t
+
 ''' </td></tr><tr><td class="t2t">
 %!include: ``image.t2t``
 ''' </td><td>
@@ -109,9 +116,6 @@ Txt2tags 書きかたの例
 ''' </table>
 
 
-%%% TRANSLATOR:
-%%% Uncomment and translate the next line (put your full name)
 日本語訳 by. Mage Whopper (magewhopper at gmail.com)
 
-% TRANSLATOR: don't forget the link text!
 [Go to the txt2tags homepage http://txt2tags.org]
