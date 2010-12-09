@@ -2248,7 +2248,7 @@ def getRules(config):
             #TIP art inherits all TXT rules
         },
         'html': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'indentverbblock': 1,
             'linkable': 1,
             'stylable': 1,
@@ -2286,7 +2286,7 @@ def getRules(config):
         },
 
         'xhtmls': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'indentverbblock': 1,
             'linkable': 1,
             'stylable': 1,
@@ -2317,7 +2317,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'html5': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'linkable': 1,
             'stylable': 1,
             'escapeurl': 1,
@@ -2348,7 +2348,7 @@ def getRules(config):
         },
 
         'sgml': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'linkable': 1,
             'escapeurl': 1,
             'autonumberlist': 1,
@@ -2375,7 +2375,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'dbk': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'linkable': 1,
             'tableable': 0,  # activate when table tags are ready
             'imglinkable': 1,
@@ -2572,7 +2572,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'wiki': {
-            'escapexmlchars':1,
+            'escapexmlchars': 1,
             'linkable': 1,
             'tableable': 1,
             'tablecellstrip': 1,
@@ -3003,7 +3003,7 @@ def aa_slide(title, char, width):
 
 
 def aa_table(table, chars, width, border, header, align):
-    data = [[row['cells'],row['cellspan']] for row in table]
+    data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
     for line in data:
@@ -3781,7 +3781,7 @@ class ConfigMaster:
 
     def get_outfile_name(self, config={}):
         "Dirname is the same for {in,out}file"
-        
+
         infile, outfile = config['sourcefile'], config['outfile']
 
         # Set output to STDOUT/MODULEOUT when no real inputfile
@@ -3852,7 +3852,7 @@ class ConfigMaster:
         if target == 'art' and not config['width']:
             config['width'] = DFT_TEXT_WIDTH
         if target == 'art' and config['width'] < 5:
-            Error(_("--width: Expected width > 4, got %i") % config['width']) 
+            Error(_("--width: Expected width > 4, got %i") % config['width'])
         # Check/set user ASCII Art formatting characters
         if config['art-chars']:
             if len(config['art-chars']) != len(AA_VALUES):
@@ -4527,7 +4527,7 @@ class TitleMaster:
 # http://www.dokuwiki.org/syntax#tables
 # http://michelf.com/projects/php-markdown/extra/#table
 # http://code.google.com/p/support/wiki/WikiSyntax#Tables
-# 
+#
 # Good reading:
 # http://www.wikicreole.org/wiki/ListOfTableMarkups
 #
@@ -4639,7 +4639,7 @@ class TableMaster:
                 span = rtfcell * rtfspan
 
             if span > 1:
-                
+
                 if TAGS['_tableCellColSpanChar']:
                     # spanchar * n
                     cspan.append(TAGS['_tableCellColSpanChar'] * (span - 1))
@@ -4710,7 +4710,7 @@ class TableMaster:
                 if this_mcopen:
                     copen = regex['_tableColAlign'].sub(this_align, this_mcopen)
                     cclose = TAGS['_tableCellMulticolClose']
-            
+
             # Attribute delimiter, added when align/span attributes were used
             # Example: Wikipedia table cell, without and with attributes:
             # | cell contents
@@ -6285,7 +6285,7 @@ def get_tagged_link(label, url):
         # Exception: tag for anchor link is different from the link tag
         if url.startswith('#') and TAGS['urlMarkAnchor']:
             ret = TAGS['urlMarkAnchor']
-        
+
         # Add link data to tag (replace \a's)
         for data in urlorder:
             ret = regex['x'].sub(data, ret, 1)
