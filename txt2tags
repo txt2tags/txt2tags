@@ -3943,9 +3943,9 @@ class ConfigLines:
     """
     # parse_line regexes, moved here to avoid recompilation
     _parse_cfg = re.compile("""
-        ^%%!\s*               # leading id with opt spaces
-        (?P<name>[a-z]+)\s*       # config name
-        (\((?P<target>[a-z]*)\))? # optional target spec inside ()
+        ^%!\s*                # leading id with opt spaces
+        (?P<name>\w+)\s*       # config name
+        (\((?P<target>\w*)\))? # optional target spec inside ()
         \s*:\s*               # key:value delimiter with opt spaces
         (?P<value>\S.+?)      # config value
         \s*$                  # rstrip() spaces and hit EOL
@@ -4090,7 +4090,7 @@ class ConfigLines:
 
         if keyname and keyname != match.group('name'):
             return empty
-        if target and target != match.group('target'):
+        if target and match.group('target') not in (None, '', target):
             return empty
 
         # Save information about this config
