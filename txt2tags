@@ -100,7 +100,8 @@ import sys
 import time  # %%date, %%mtime
 import getopt
 import textwrap
-import urllib  # read remote files (URLs)
+# urllib now only imported if needed
+# import urllib  # read remote files (URLs)
 import email  # %%mtime for remote files
 import csv
 
@@ -2800,7 +2801,6 @@ def getRules(config):
 
 ##############################################################################
 
-
 def getRegexes():
     "Returns all the regexes used to find the t2t marks"
 
@@ -3138,12 +3138,23 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
             if not ignore_error:
                 Error(_('You must feed me with data on STDIN!'))
 
-    # URL or local file
-    else:
+    # URL
+    elif PathMaster().is_url(file_path):
         try:
-            f = urllib.urlopen(file_path)
+            from urllib import urlopen
+            f = urlopen(file_path)
             if f.getcode() == 404:  # URL not found
                 raise
+            data = f.readlines()
+            f.close()
+        except:
+            if not ignore_error:
+                Error(_("Cannot read file:") + ' ' + file_path)
+
+    # local file
+    else:
+        try:
+            f = open(file_path)
             data = f.readlines()
             f.close()
         except:
@@ -3930,6 +3941,31 @@ class ConfigLines:
 
         target, key, value = ConfigLines().parse_line(body_line)
     """
+    # parse_line regexes, moved here to avoid recompilation
+    _parse_cfg = re.compile("""
+        ^%%!\s*               # leading id with opt spaces
+        (?P<name>[a-z]+)\s*       # config name
+        (\((?P<target>[a-z]*)\))? # optional target spec inside ()
+        \s*:\s*               # key:value delimiter with opt spaces
+        (?P<value>\S.+?)      # config value
+        \s*$                  # rstrip() spaces and hit EOL
+        """, re.I + re.VERBOSE)
+    _parse_prepost = re.compile("""
+                                      # ---[ PATTERN ]---
+        ^( "([^"]*)"          # "double quoted" or
+        | '([^']*)'           # 'single quoted' or
+        | ([^\s]+)            # single_word
+        )
+        \s+                   # separated by spaces
+                                  # ---[ REPLACE ]---
+        ( "([^"]*)"           # "double quoted" or
+        | '([^']*)'           # 'single quoted' or
+        | (.*)                # anything
+        )
+        \s*$
+        """, re.VERBOSE)
+    _parse_guicolors = re.compile("^([^\s]+\s+){3}[^\s]+")  # 4 tokens
+
     def __init__(self, file_='', lines=[], first_line=1):
         self.file = file_ or 'NOFILE'
         self.lines = lines
@@ -4043,34 +4079,18 @@ class ConfigLines:
         re_name   = keyname or '[a-z]+'
         re_target = target  or '[a-z]*'
         # XXX TODO <value>\S.+?  requires TWO chars, breaks %!include:a
-        cfgregex  = re.compile("""
-            ^%%!\s*               # leading id with opt spaces
-            (?P<name>%s)\s*       # config name
-            (\((?P<target>%s)\))? # optional target spec inside ()
-            \s*:\s*               # key:value delimiter with opt spaces
-            (?P<value>\S.+?)      # config value
-            \s*$                  # rstrip() spaces and hit EOL
-            """ % (re_name, re_target), re.I + re.VERBOSE)
-        prepostregex = re.compile("""
-                                      # ---[ PATTERN ]---
-            ^( "([^"]*)"          # "double quoted" or
-            | '([^']*)'           # 'single quoted' or
-            | ([^\s]+)            # single_word
-            )
-            \s+                   # separated by spaces
-
-                                      # ---[ REPLACE ]---
-            ( "([^"]*)"           # "double quoted" or
-            | '([^']*)'           # 'single quoted' or
-            | (.*)                # anything
-            )
-            \s*$
-            """, re.VERBOSE)
-        guicolors = re.compile("^([^\s]+\s+){3}[^\s]+")  # 4 tokens
+        cfgregex  = ConfigLines._parse_cfg
+        prepostregex = ConfigLines._parse_prepost
+        guicolors = ConfigLines._parse_guicolors
 
         # Give me a match or get out
         match = cfgregex.match(line)
         if not match:
+            return empty
+
+        if keyname and keyname != match.group('name'):
+            return empty
+        if target and target != match.group('target'):
             return empty
 
         # Save information about this config
@@ -5503,6 +5523,7 @@ class MacroMaster:
                 if self.infile in (STDIN, MODULEIN):
                     fdate = self.currdate
                 elif PathMaster().is_url(self.infile):
+                    from urllib import urlopen
                     try:
                         # Doing it the easy way: fetching the URL again.
                         # The right way would be doing it in Readfile().
@@ -5514,7 +5535,7 @@ class MacroMaster:
                         # 'Thu, 18 Nov 2010 22:42:11 GMT'
                         # >>>
                         #
-                        f = urllib.urlopen(self.infile)
+                        f = urlopen(self.infile)
                         mtime_rfc2822 = f.info().get('last-modified')
                         fdate = email.Utils.parsedate(mtime_rfc2822)
                     except:
