@@ -100,10 +100,9 @@ import sys
 import time  # %%date, %%mtime
 import getopt
 import textwrap
-# urllib now only imported if needed
-# import urllib  # read remote files (URLs)
-import email  # %%mtime for remote files
 import csv
+# import urllib  # read remote files (URLs) -- postponed, see issue 96
+# import email  # %%mtime for remote files -- postponed, see issue 96
 
 
 # Program information
@@ -5523,7 +5522,6 @@ class MacroMaster:
                 if self.infile in (STDIN, MODULEIN):
                     fdate = self.currdate
                 elif PathMaster().is_url(self.infile):
-                    from urllib import urlopen
                     try:
                         # Doing it the easy way: fetching the URL again.
                         # The right way would be doing it in Readfile().
@@ -5535,9 +5533,12 @@ class MacroMaster:
                         # 'Thu, 18 Nov 2010 22:42:11 GMT'
                         # >>>
                         #
+                        from urllib import urlopen
+                        from email.Utils import parsedate
+
                         f = urlopen(self.infile)
                         mtime_rfc2822 = f.info().get('last-modified')
-                        fdate = email.Utils.parsedate(mtime_rfc2822)
+                        fdate = parsedate(mtime_rfc2822)
                     except:
                         # If mtime cannot be found, defaults to current date
                         fdate = self.currdate
