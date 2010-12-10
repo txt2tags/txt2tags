@@ -252,7 +252,8 @@ TARGET_NAMES = {
   'moin'   : _('MoinMoin page'),
   'pm6'    : _('PageMaker document'),
   'txt'    : _('Plain Text'),
-  'art'    : _('ASCII Art text'),
+  'art'    : _('ASCII Art document'),
+  'arts'   : _('ASCII Art slides'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
@@ -338,7 +339,6 @@ def Usage():
         fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
         fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
         fmt1 % (''  , '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
-        fmt1 % (''  , '--slides'       , _("format output as presentation slides (used by -t art)")),
         fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by -t art)")),
         fmt1 % (''  , '--height=N'     , _("set the output's height to N rows (used by -t art)")),
         fmt2 % ('-C', '--config-file=F', _("read configuration from file F")),
@@ -3806,6 +3806,8 @@ class ConfigMaster:
             # .t2t and .txt are the only "official" source extensions
             basename = re.sub('\.t[2x]t$', '', infile)
             outfile = "%s.%s" % (basename, config['target'])
+            if config['target'] == 'art' and config['slides']:
+                outfile = "%s.%s" % (basename, 'arts')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -3854,6 +3856,8 @@ class ConfigMaster:
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         # Slides needs width and height
+        if target == 'arts':
+            target, config['slides'] = 'art', True
         if config['slides'] and target == 'art':
             if not config['width']:
                 config['width'] = DFT_SLIDE_WIDTH
