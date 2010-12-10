@@ -1,0 +1,474 @@
+# txt2tags messages
+msgid ""
+msgstr ""
+"Project-Id-Version: txt2tags\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
+"POT-Creation-Date: 2010-12-09 13:30+BRST\n"
+"PO-Revision-Date: 2010-12-10 12:59+0000\n"
+"Last-Translator: farizluqman <2fzweb@gmail.com>\n"
+"Language-Team: Malay <None>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ms\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Generated-By: pygettext.py 1.5\n"
+
+msgid "HTML page"
+msgstr "Muka HTML"
+
+msgid "HTML5 page"
+msgstr "Muka HTML5"
+
+msgid "XHTML page"
+msgstr "Muka XHTML"
+
+msgid "XHTML Strict page"
+msgstr "Muka XHTML Diperketat"
+
+msgid "SGML document"
+msgstr "Dokumen SGML"
+
+msgid "DocBook document"
+msgstr "Dokumen DocBook"
+
+msgid "LaTeX document"
+msgstr "Dokumen LaTeX"
+
+msgid "Lout document"
+msgstr "Dokumen Lout"
+
+msgid "UNIX Manual page"
+msgstr "Laman Manual Unix"
+
+msgid "MagicPoint presentation"
+msgstr "Pembentangan MagicPoint"
+
+msgid "Wikipedia page"
+msgstr "Laman Wikipedia"
+
+msgid "Google Wiki page"
+msgstr "Halaman Google Wiki"
+
+msgid "DokuWiki page"
+msgstr "Laman DokuWiki"
+
+msgid "PmWiki page"
+msgstr "Laman PmWiki"
+
+msgid "MoinMoin page"
+msgstr "Halaman MoinMoin"
+
+msgid "PageMaker document"
+msgstr "Dokumen PageMaker"
+
+msgid "Plain Text"
+msgstr "Teks Kosong"
+
+msgid "ASCII Art text"
+msgstr "Teks Seni ASCII"
+
+msgid "AsciiDoc document"
+msgstr "Dokumen AsciiDoc"
+
+msgid "Creole 1.0 document"
+msgstr "Dokumen Creole 1.0"
+
+msgid "Markdown document"
+msgstr "Dokumen Markdown"
+
+msgid "BBCode document"
+msgstr "Dokumen BBCode"
+
+msgid "Redmine Wiki page"
+msgstr "Laman Redmine Wiki"
+
+msgid "SPIP article"
+msgstr "Artikel SPIP"
+
+msgid "RTF document"
+msgstr "Dokumen RTF"
+
+msgid "%s version %s <%s>"
+msgstr "%s versi %s <%s>"
+
+msgid "Usage: %s [OPTIONS] [infile.t2t ...]"
+msgstr "Penggunaan: %s [OPTIONS] [infile.t2t ...]"
+
+msgid "print a list of all the available targets and exit"
+msgstr "cetak senarai untuk kesemua target dan pembalikan yang sedia ada"
+
+msgid "set target document type. currently supported:"
+msgstr "tetapkan target bagi jenis dokumen yang disokong."
+
+msgid "set FILE as the input file name ('-' for STDIN)"
+msgstr "tetapkan FILE sebagai nama fail input ('-' untuk STDIN)"
+
+msgid "set FILE as the output file name ('-' for STDOUT)"
+msgstr "tetapkan FILE sebagai nama fail output ('-' untuk STDOUT)"
+
+msgid "inform source file encoding (UTF-8, iso-8859-1, etc)"
+msgstr "beritahu encoding untuk fail sumber (UTF-8, iso-8859-1, sebagainya)"
+
+msgid "add an automatic Table of Contents to the output"
+msgstr "secara automatik menambah Senarai Kandungan kepada output"
+
+msgid "set maximum TOC level (depth) to N"
+msgstr "tetapkan maksima paras TOC (kedalaman) ke N"
+
+msgid "print the Table of Contents and exit"
+msgstr "cetak Senarai Kandungan dan kemudian keluar"
+
+msgid "enumerate all titles as 1, 1.1, 1.1.1, etc"
+msgstr "menghitung semua judul 1, 1.1, 1.1.1, dll"
+
+msgid "use FILE as the document style (like HTML CSS)"
+msgstr "gunakan FAIL sebagai stail bagi dokumen (seperti CSS HTML)"
+
+msgid "insert CSS-friendly tags for HTML/XHTML"
+msgstr "masukkan tag mesra-CSS untuk HTML/XHTML"
+
+msgid "insert CSS file contents inside HTML/XHTML headers"
+msgstr "masukkan kandungan fail CSS kedalam header HTML/XHTML"
+
+msgid "suppress header and footer from the output"
+msgstr "beri lebih penekanan untuk header dan footer daripada output"
+
+msgid "use FILE as the template for the output document"
+msgstr "gunakan FILE sebagai templat untuk dokumen output"
+
+msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
+msgstr "sembunyikan email dari robot spam. x@y.z turns <x (a) y z>"
+
+msgid "format output as presentation slides (used by -t art)"
+msgstr "formatkan output sebagai slaid pembentangan (digunakan oleh -t art)"
+
+msgid "set the output's width to N columns (used by -t art)"
+msgstr "tetapkan lebar output ke N kolum (digunakan oleh -t art)"
+
+msgid "set the output's height to N rows (used by -t art)"
+msgstr "tetapkan tinggi output ke N baris (digunakan oleh -t art)"
+
+msgid "read configuration from file F"
+msgstr "baca konfigurasi dari fail F"
+
+msgid "fix resources path (image, links, CSS) when needed"
+msgstr "perbaiki path bagi sumber (imej, pautan, CSS) sekiranya perlu"
+
+msgid "invoke Graphical Tk Interface"
+msgstr "panggil Antaramuka Bergrafik Tk"
+
+msgid "quiet mode, suppress all output (except errors)"
+msgstr "mod senyap, berikan penekanan kepada semua output (kecuali ralat)"
+
+msgid "print informative messages during conversion"
+msgstr "cetak mesej-mesej bermaklumat semasa penukaran"
+
+msgid "print this help information and exit"
+msgstr "paparkan maklumat penolong ini dan kemudian keluar"
+
+msgid "print program version and exit"
+msgstr "paparkan versi program ini dan kemudian keluar"
+
+msgid "print all the configuration found and exit"
+msgstr "paparkan semua konfigurasi yang dijumpai dan kemudian keluar"
+
+msgid "print the document source, with includes expanded"
+msgstr "paparkan dokumen sumber, dan memasukkan sekali yang telah diperlebar"
+
+msgid "Example:"
+msgstr "Contoh:"
+
+msgid "file.t2t"
+msgstr "file.t2t"
+
+msgid "The 'no-' prefix disables the option:"
+msgstr "Prefiks 'no-' membatalkan pilihan:"
+
+msgid "By default, converted output is saved to 'infile.<target>'."
+msgstr "Secara lalai, fail output telah disimpan ke 'infile.<target>'."
+
+msgid "Use --outfile to force an output file name."
+msgstr "tetapkan FAIL sebagai input untuk nama fail  ('-' untuk STDIN)"
+
+msgid "If  input file is '-', reads from STDIN."
+msgstr "tetapkan FAIL sebagai output untuk nama fail ('-' untuk STDOUT)"
+
+msgid "If output file is '-', dumps output to STDOUT."
+msgstr "beritahu encoding bagi sumber fail (UTF-8, iso-8859-1, dsb)"
+
+msgid "%s: Error: "
+msgstr "%s: Ralat: "
+
+msgid "Sorry! Txt2tags aborted by an unknown error."
+msgstr "Maaf! Proses Txt2tags terbatal atas sebab yang tidak diketahui."
+
+msgid "Please send the following Error Traceback to the author"
+msgstr "Sila hantar Error Traceback kepada author"
+
+msgid "You must feed me with data on STDIN!"
+msgstr "menomborkan semua judul seperti 1, 1.1, 1.1.1, dan sebagainya"
+
+msgid "Cannot read file:"
+msgstr "gunakan FAIL sebagai stail dokumen (seperti CSS HTML)"
+
+msgid "File read (%d lines): %s"
+msgstr "Bacaan fail (%d baris): %s"
+
+msgid "Cannot open file for writing:"
+msgstr "Tidak boleh membuka fail untuk penulisan:"
+
+msgid "%s (try --help)"
+msgstr "%s (cuba --help)"
+
+msgid "Ignored config"
+msgstr "Konfig diabaikan"
+
+msgid "Loading source document"
+msgstr "sembunyikan email dari robot spam. x@y.z bertukar kepada <x (a) y z>"
+
+msgid "The input file is empty: %s"
+msgstr "Fail input adalah kosong: %s"
+
+msgid "Areas found: %s"
+msgstr "Kawasan dijumpai: %s"
+
+msgid "Scanning source document CONF area"
+msgstr "Mengimbas dokumen sumber kawasan CONF"
+
+msgid "Added config"
+msgstr "baca konfigurasi dari fail F"
+
+msgid "No target specified (try --help)"
+msgstr "Tiada target dinyatakan (cuba --help)"
+
+msgid "Please inform a target using the -t option or the %!target command."
+msgstr "Sila nyatakan target menggunakan opsyen -t ataupun arahan %!target."
+
+msgid "Run 'txt2tags --targets' to see all the available targets."
+msgstr "Jalankan 'txt2tags --targets' untuk melihat kesemua target yang tersedia."
+
+msgid "Missing input file (try --help)"
+msgstr "Fail input hilang (cuba --help)"
+
+msgid "Invalid target '%s'"
+msgstr "Target tidak lengkap '%s'"
+
+msgid "--%s value must be a number"
+msgstr "Nilai --%s mestilah sebuah nombor"
+
+msgid "Option --split must be 0, 1 or 2"
+msgstr "Opsyen --split hendaklah 0, 1 atau 2"
+
+msgid "--width: Expected width > 4, got %i"
+msgstr "--width: Kelebaran yang dikehendaki > 4, tetapi dapat %i"
+
+msgid "--art-chars: Expected %i chars, got %i"
+msgstr "--art-chars: Dikehendaki %i karekter, tetapi dapat %i"
+
+msgid "Input and Output files are the same: %s"
+msgstr "Fail input dan output adalah serupa: %s"
+
+msgid "Added the following keys: %s"
+msgstr "Kata kunci ditambah: %s"
+
+msgid "Invalid CONFIG line on %s"
+msgstr "CONFIG tidak sah pada baris %s"
+
+msgid "Added %s"
+msgstr "%s ditambah"
+
+msgid "Processing line %03d: %s"
+msgstr "Memproses baris %03d: %s"
+
+msgid "A file cannot include itself (loop!)"
+msgstr "Sebuah fail tidak boleh merangkumi diri sendiri (loop!)"
+
+msgid "Finished Config file inclusion: %s"
+msgstr "Pemasukan fail konfig disiapkan: %s"
+
+msgid "You can't use (target) with %s"
+msgstr "Anda tidak boleh menggunakan (target) dengan %s"
+
+msgid "OFF"
+msgstr "TUTUP"
+
+msgid "ON"
+msgstr "BUKA"
+
+msgid "RC file"
+msgstr "fail RC"
+
+msgid "source document"
+msgstr "dokumen sumber"
+
+msgid "command line"
+msgstr "baris perintah"
+
+msgid "RAW config for %s"
+msgstr "Konfig RAW untuk %s"
+
+msgid "Full PARSED config"
+msgstr "Konfig PARSED penuh"
+
+msgid "Active filters"
+msgstr "Filter aktif"
+
+msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
+msgstr "Tidak, tidak! Regex PostVoodoo anda salah. Mungkin anda patut jerit sekuat hati?"
+
+msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
+msgstr "Wahai perintis PostVoodoo: Regex anda sebenarnya bagus, tetapi susunannya bersepah"
+
+msgid "Invalid PostProc filter regex"
+msgstr "Filter ragex PostProc tidak diterima"
+
+msgid "Invalid PostProc filter replacement"
+msgstr "Penggantian filter PostProc tidak diterima"
+
+msgid "%s wrote %s"
+msgstr "%s tulis %s"
+
+msgid "Table of Contents"
+msgstr "Senarai Kandungan"
+
+msgid "Cannot find template file:"
+msgstr "Tidak dapat menemui fail templat:"
+
+msgid "CSS include failed for %s"
+msgstr "Pemasukan CSS gagal untuk %s"
+
+msgid "Source document contents stored"
+msgstr "Isi-isi dokumen sumber disimpan"
+
+msgid "Parsing and saving all config found (%03d items)"
+msgstr "Menganalisis dan menyimpan semua tetapan yang dijumpai (jumlah: %03d)"
+
+msgid "Composing target Body"
+msgstr "Menulis target Body"
+
+msgid "Composing target Footer"
+msgstr "Menulis target Footer"
+
+msgid "Composing target TOC"
+msgstr "Menulis target TOC"
+
+msgid "Composing target Headers"
+msgstr "Menulis target Header"
+
+msgid "Saving results to the output file"
+msgstr "Menyimpan hasil ke fail output"
+
+msgid "Invalid PreProc filter regex"
+msgstr "Filter ragex bagi PrePoc tidak sah"
+
+msgid "Invalid PreProc filter replacement"
+msgstr "Penggantian filter PrePoc tidak sah"
+
+msgid "All files"
+msgstr "Semua fail"
+
+msgid "txt2tags files"
+msgstr "fail-fail txt2tags"
+
+msgid "Close"
+msgstr "Tutup"
+
+msgid "You must select a target type!"
+msgstr "Anda mesti memilih jenis target!"
+
+msgid "You must provide the source file location!"
+msgstr "Anda mesti memberikan lokasi sumber fail!"
+
+msgid "%s: %s converted to %s"
+msgstr "%s: %s ditukarkan kepada %s"
+
+msgid "Conversion done!"
+msgstr "Penukaran berjaya!"
+
+msgid "FROM:"
+msgstr "DARIPADA:"
+
+msgid "TO:"
+msgstr "KEPADA:"
+
+msgid "%s FATAL ERROR!"
+msgstr "%s RALAT SERIUS!"
+
+msgid "-- select one --"
+msgstr "-- pilih satu --"
+
+msgid "Enter the source file location:"
+msgstr "Masukkan lokasi fail sumber:"
+
+msgid "Choose the target document type:"
+msgstr "Pilih jenis dokumen target:"
+
+msgid "Some options you may check:"
+msgstr "Beberapa pilihan yang ada mungkin semak:"
+
+msgid "Some extra options:"
+msgstr "Sedikit pilihan ekstra:"
+
+msgid "Include headers on output"
+msgstr "Sertakan header pada output"
+
+msgid "Number titles (1, 1.1, 1.1.1, etc)"
+msgstr "Nombor judul (1, 1.1, 1.1.1, dll)"
+
+msgid "Do TOC also (Table of Contents)"
+msgstr "Lakukannya pada TOC juga (Senarai Kandungan)"
+
+msgid "Hide e-mails from SPAM robots"
+msgstr "Sembunyikan e-mel dari robot-robot SPAM"
+
+msgid "Just do TOC, nothing more"
+msgstr "Lakukan hanya TOC, tak lebih, tak kurang"
+
+msgid "Dump to screen (Don't save target file)"
+msgstr "Dump ke skrin (Tetapi jangan simpan fail target)"
+
+msgid "ONE source, MULTI targets"
+msgstr "SATU sumber, PELBAGAI target"
+
+msgid "Browse"
+msgstr "Cari"
+
+msgid "<screen>"
+msgstr "<skrin>"
+
+msgid "Output: "
+msgstr "Output: "
+
+msgid "Quit"
+msgstr "Keluar"
+
+msgid "Convert!"
+msgstr "Tukarkan!"
+
+msgid "Txt2tags %s processing begins"
+msgstr "Proses Txt2tags bagi %s bermula"
+
+msgid "Option --%s can't be used with multiple input files"
+msgstr "Opsyen --%s tidak boleh digunakan bersama banyak fail input"
+
+msgid "Ignoring user configuration file"
+msgstr "Mengendahkan tetapan pengguna"
+
+msgid "Loading user configuration file"
+msgstr "Memuatkan konfigurasi pengguna"
+
+msgid "We are on GUI interface"
+msgstr "Kami berada pada GUI"
+
+msgid "txt2tags ERROR!"
+msgstr "Ralat txt2tags"
+
+msgid "We are on Command Line interface"
+msgstr "Kami berada pada CLi"
+
+msgid "Please inform an input file (.t2t) at the end of the command."
+msgstr "Sila nyatakan fail input (.t2t) pada penghujung arahan."
+
+msgid "Txt2tags finished successfully"
+msgstr "Proses Txt2tag diakhiri dengan jayanya"
