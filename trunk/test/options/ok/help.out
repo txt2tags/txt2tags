@@ -3,9 +3,9 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
       --targets       print a list of all the available targets and exit
   -t, --target=TYPE   set target document type. currently supported:
-                      adoc, art, bbcode, creole, dbk, doku, gwiki, html,
-                      html5, lout, man, md, mgp, moin, pm6, pmw, red,
-                      rtf, sgml, spip, tex, txt, wiki, xhtml, xhtmls
+                      adoc, art, arts, bbcode, creole, dbk, doku, gwiki,
+                      html, html5, lout, man, md, mgp, moin, pm6, pmw,
+                      red, rtf, sgml, spip, tex, txt, wiki, xhtml, xhtmls
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
       --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)
@@ -19,7 +19,6 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
   -H, --no-headers    suppress header and footer from the output
   -T, --template=FILE use FILE as the template for the output document
       --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>
-      --slides        format output as presentation slides (used by -t art)
       --width=N       set the output's width to N columns (used by -t art)
       --height=N      set the output's height to N rows (used by -t art)
   -C, --config-file=F read configuration from file F

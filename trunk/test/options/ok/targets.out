@@ -1,5 +1,6 @@
 adoc	AsciiDoc document
-art	ASCII Art text
+art	ASCII Art document
+arts	ASCII Art slides
 bbcode	BBCode document
 creole	Creole 1.0 document
 dbk	DocBook document
