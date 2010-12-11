@@ -7,9 +7,9 @@ TXT2TAGS 示例
 %%mtime(%Y-%m-%d)
 
 %!encoding: UTF-8
-%! Target  : html
-%! Options : --toc --css-inside
-%! Style   : css/moin.css
+%!target  : html
+%!options : --toc --css-inside
+%!style   : css/moin.css
 
 
                   =  介绍 Introduction  =
@@ -36,9 +36,9 @@ TXT2TAGS 示例
 
 使用编辑环境时最好加入类似文档声明:
 ```
-%! Target  : html
-%! Options : --toc --css-inside
-%! Style   : css/moin.css
+%! target  : html
+%! options : --toc --css-inside
+%! style   : css/moin.css
 
 ```
 说明本文输出时的重要参数:
@@ -48,7 +48,7 @@ TXT2TAGS 示例
 
 中文用户，一般要再单另一行声明编码:
 ```
-%!encoding: gb2312
+%! encoding: gb2312
 ```
 
 

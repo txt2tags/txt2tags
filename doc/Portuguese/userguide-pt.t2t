@@ -1,9 +1,9 @@
-Guia do Usu·rio Txt2tags
+Guia do Usu√°rio Txt2tags
 Aurelio, %%date(%c)
-TraduÁ„o para o portuguÍs: CÈsar A. K. Grossman
+Tradu√ß√£o para o portugu√™s: C√©sar A. K. Grossman
 
 %!target: html
-%!options: --toc --toc-level 2 --encoding iso-8859-1
+%!options: --toc --toc-level 2 --encoding UTF-8
 
 %!preproc: IMGPATH ../userguide
 
@@ -32,22 +32,22 @@ TraduÁ„o para o portuguÍs: CÈsar A. K. Grossman
 %!postproc(html): (@#@)$ '     border-color:black;}                      \n\1'
 %!postproc(html):  @#@$  </STYLE>
 
-% 23/08/2003 grossman: traduzido para o portuguÍs
+% 23/08/2003 grossman: traduzido para o portugu√™s
 % 13/07/2004 jic     : revisado e atualizado por jic conforme V2.0 beta 4
 % 22/07/2004 aurelio : revisado para a v2.0
 
 
 = Sobre este documento =
 
-	Ol·, eu sou o guia do usu·rio do txt2tags!
+	Ol√°, eu sou o guia do usu√°rio do txt2tags!
 	
-	Aqui vocÍ encontra toda a informaÁ„o disponÌvel sobre a
-	ferramenta de convers„o de textos txt2tags.
+	Aqui voc√™ encontra toda a informa√ß√£o dispon√≠vel sobre a
+	ferramenta de convers√£o de textos txt2tags.
 	
-	Minha vers„o atualizada pode ser encontrada em
+	Minha vers√£o atualizada pode ser encontrada em
 	http://txt2tags.org/userguide/
 	
-	Para mais informaÁıes e versıes recentes, visite
+	Para mais informa√ß√µes e vers√µes recentes, visite
 	[o website do txt2tags http://txt2tags.org/].
 	
 	Bom proveito!
@@ -56,19 +56,19 @@ TraduÁ„o para o portuguÍs: CÈsar A. K. Grossman
 
 
 
-= Parte I - IntroduÁ„o ao Txt2tags =
+= Parte I - Introdu√ß√£o ao Txt2tags =
 
-== Suas Primeiras Questıes ==
+== Suas Primeiras Quest√µes ==
 
-Este capÌtulo apresenta o txt2tags, introduzindo as funcionalidades e
+Este cap√≠tulo apresenta o txt2tags, introduzindo as funcionalidades e
 objetivo do programa.
 
 ------------------------------------------------------------------------
 
 
-=== O Que …? ===
+=== O Que √â? ===
 
-O txt2tags È uma ferramenta de formataÁ„o e convers„o de texto.
+O txt2tags √© uma ferramenta de formata√ß√£o e convers√£o de texto.
 
 O txt2tags converte um arquivo texto com algumas marcas para qualquer um
 dos tipos de arquivos suportados:
@@ -77,52 +77,52 @@ dos tipos de arquivos suportados:
 - Documento XHTML
 - Documento SGML
 - Documento LaTeX
-- P·gina man UNIX
-- ApresentaÁ„o Magic Point
-- P·gina MoinMoin
+- P√°gina man UNIX
+- Apresenta√ß√£o Magic Point
+- P√°gina MoinMoin
 - Documento PageMaker 6.0
-- Texto Plano (sem marcaÁıes)
+- Texto Plano (sem marca√ß√µes)
 
 
 ------------------------------------------------------------------------
 
 
-=== Por QuÍ Eu Devo Us·-lo? ===
+=== Por Qu√™ Eu Devo Us√°-lo? ===
 
-VocÍ achar· o txt2tags bastante ˙til se vocÍ:
+Voc√™ achar√° o txt2tags bastante √∫til se voc√™:
 - precisa publicar documentos em diferentes formatos
 - precisa manter documentos atualizados em diferentes formatos
-- escreve manuais ou documentos tÈcnicos
-- n„o sabe como escrever um documento em um formato especÌfico
-- n„o tem um editor especÌfico para um certo formato.
+- escreve manuais ou documentos t√©cnicos
+- n√£o sabe como escrever um documento em um formato espec√≠fico
+- n√£o tem um editor espec√≠fico para um certo formato.
 - quer usar um editor de texto simples para atualizar seus documentos
 
 
-E a motivaÁ„o principal È:
-- economizar tempo, escrevendo **conte˙do**, sem se preocupar com
-  **formataÁ„o**
+E a motiva√ß√£o principal √©:
+- economizar tempo, escrevendo **conte√∫do**, sem se preocupar com
+  **formata√ß√£o**
 
 
 ------------------------------------------------------------------------
 
 
-=== Quais vantagens oferece em relaÁ„o a outras ferramentas? ===
+=== Quais vantagens oferece em rela√ß√£o a outras ferramentas? ===
 
 O txt2tags possui uma forma bem direta de crescimento, seguindo alguns
-conceitos b·sicos. Os conceitos a seguir se destacam:
+conceitos b√°sicos. Os conceitos a seguir se destacam:
 
-| //Arquivo fonte legÌvel//       | As marcaÁıes do txt2tags s„o bastante simples, quase naturais.
-| //Documento destino legÌvel//   | Da mesma forma que o arquivo fonte, o cÛdigo do documento gerado tambÈm È legÌvel, alinhado e possui linhas curtas.
-| //ConsistÍncia na MarcaÁ„o// 	  | As marcaÁıes txt2tags s„o ˙nicas, atendendo todos os tipos de documentos e n„o sendo confundidas com o conte˙do.
-| //Regras Consistentes//         | Da mesma forma que as marcas, as regras aplicadas a elas s„o uniformes, n„o h· "exceÁıes" ou "casos especiais".
-| //Estruturas Simples//          | Toda a formataÁ„o suportada È **simples**, sem opÁıes extras ou modificadores complexos de comportamento. Uma marcaÁ„o È sÛ uma marcaÁ„o, sem opÁıes adicionais.
-| //F·cil de aprender//           | Com marcaÁıes simples e o cÛdigo fonte legÌvel, a curva de aprendizado È bem amig·vel.
-| //Bons Exemplos//               | Os **arquivos de exemplo** incluÌdos com o pacote d„o mostras reais de documentos simples e super-estruturados, escritos no formato txt2tags.
-| //Ferramentas Valiosas//        | Os **arquivos de sintaxe** incluÌdos com o pacote (para os editores vim, emacs, nano e kate) ajudam a escrever documentos sem erros sint·ticos.
-| //TrÍs interfaces ao usu·rios// | H· uma **interface Gr·fica Tk** que È bastante amig·vel, uma **inteface Web** para usar remotamente ou na intranet, e uma **interface de Linha de Comando**, para usu·rios avanÁados e scripts.
-| //Suporte a Scripts//           | Com o modo completo de linha de comando, um usu·rio experiente pode **automatizar** tarefas e efetuar **pÛs-ediÁıes** nos arquivos convertidos.
-| //Baixe e Execute / Multiplataforma// | O txt2tags È apenas um **script Python**. N„o h· necessidade de compil·-lo ou carregar mÛdulos extras. Assim, ele pode ser executado sem problemas em m·quinas *NIX, Linux, Windows e Macintosh.
-| //AtualizaÁıes Freq¸entes//     | O programa possui uma lista de discussıes com usu·rios ativos que sugerem correÁıes e melhorias. O prÛprio autor È um usu·rio intenso em casa e no trabalho, por isto o desenvolvimento n„o ir· parar t„o cedo.
+| //Arquivo fonte leg√≠vel//       | As marca√ß√µes do txt2tags s√£o bastante simples, quase naturais.
+| //Documento destino leg√≠vel//   | Da mesma forma que o arquivo fonte, o c√≥digo do documento gerado tamb√©m √© leg√≠vel, alinhado e possui linhas curtas.
+| //Consist√™ncia na Marca√ß√£o// 	  | As marca√ß√µes txt2tags s√£o √∫nicas, atendendo todos os tipos de documentos e n√£o sendo confundidas com o conte√∫do.
+| //Regras Consistentes//         | Da mesma forma que as marcas, as regras aplicadas a elas s√£o uniformes, n√£o h√° "exce√ß√µes" ou "casos especiais".
+| //Estruturas Simples//          | Toda a formata√ß√£o suportada √© **simples**, sem op√ß√µes extras ou modificadores complexos de comportamento. Uma marca√ß√£o √© s√≥ uma marca√ß√£o, sem op√ß√µes adicionais.
+| //F√°cil de aprender//           | Com marca√ß√µes simples e o c√≥digo fonte leg√≠vel, a curva de aprendizado √© bem amig√°vel.
+| //Bons Exemplos//               | Os **arquivos de exemplo** inclu√≠dos com o pacote d√£o mostras reais de documentos simples e super-estruturados, escritos no formato txt2tags.
+| //Ferramentas Valiosas//        | Os **arquivos de sintaxe** inclu√≠dos com o pacote (para os editores vim, emacs, nano e kate) ajudam a escrever documentos sem erros sint√°ticos.
+| //Tr√™s interfaces ao usu√°rios// | H√° uma **interface Gr√°fica Tk** que √© bastante amig√°vel, uma **inteface Web** para usar remotamente ou na intranet, e uma **interface de Linha de Comando**, para usu√°rios avan√ßados e scripts.
+| //Suporte a Scripts//           | Com o modo completo de linha de comando, um usu√°rio experiente pode **automatizar** tarefas e efetuar **p√≥s-edi√ß√µes** nos arquivos convertidos.
+| //Baixe e Execute / Multiplataforma// | O txt2tags √© apenas um **script Python**. N√£o h√° necessidade de compil√°-lo ou carregar m√≥dulos extras. Assim, ele pode ser executado sem problemas em m√°quinas *NIX, Linux, Windows e Macintosh.
+| //Atualiza√ß√µes Freq√ºentes//     | O programa possui uma lista de discuss√µes com usu√°rios ativos que sugerem corre√ß√µes e melhorias. O pr√≥prio autor √© um usu√°rio intenso em casa e no trabalho, por isto o desenvolvimento n√£o ir√° parar t√£o cedo.
 
 
 ------------------------------------------------------------------------
@@ -130,35 +130,35 @@ conceitos b·sicos. Os conceitos a seguir se destacam:
 
 === Tenho que pagar por ele? ===
 
-  ||  Absolutamente N√O!  |
+  ||  Absolutamente N√ÉO!  |
 
-O txt2tags È um programa gratuito, GPL, open source, domÌnio p˙blico,
+O txt2tags √© um programa gratuito, GPL, open source, dom√≠nio p√∫blico,
 etc...
 
-VocÍ pode copiar, usar, modificar, vender, liberar como seu. As
-polÌticas de software e copyright n„o s„o uma das maiores preocupaÁıes
+Voc√™ pode copiar, usar, modificar, vender, liberar como seu. As
+pol√≠ticas de software e copyright n√£o s√£o uma das maiores preocupa√ß√µes
 do autor.
 
 
 ------------------------------------------------------------------------
 
 
-== Estruturas de FormataÁ„o Suportadas ==
+== Estruturas de Formata√ß√£o Suportadas ==
 
 Segue uma lista de todas as estruturas suportadas pelo txt2tags.
 
-- cabeÁalho (tÌtulo, nome do autor, data)
-- tÌtulos de seÁıes (numeradas ou n„o)
-- par·grafos
+- cabe√ßalho (t√≠tulo, nome do autor, data)
+- t√≠tulos de se√ß√µes (numeradas ou n√£o)
+- par√°grafos
 - modificadores de fontes
   - negrito
-  - it·lico
+  - it√°lico
   - sublinhado
-- fonte monoespaÁo (verbatim)
-  - monoespaÁo no meio de um par·grafo
-  - linha monoespaÁada
-  - trecho em monoespaÁado
-- citaÁıes
+- fonte monoespa√ßo (verbatim)
+  - monoespa√ßo no meio de um par√°grafo
+  - linha monoespa√ßada
+  - trecho em monoespa√ßado
+- cita√ß√µes
 - links
   - Links de Internet (URL)
   - links de email
@@ -167,13 +167,13 @@ Segue uma lista de todas as estruturas suportadas pelo txt2tags.
 - listas
   - listas com marcadores
   - listas numeradas
-  - listas de definiÁ„o
-- linha horizontal de separaÁ„o
+  - listas de defini√ß√£o
+- linha horizontal de separa√ß√£o
 - imagems (com alinhamento inteligente)
 - tabela (com ou sem borda, com alinhamento inteligente)
-- marcaÁ„o especial para texto que n„o deve ser formatado
-- macro especial para a data atual (com formataÁ„o flexÌvel)
-- coment·rios (para notas, A FAZER, CORRE«’ES, etc.)
+- marca√ß√£o especial para texto que n√£o deve ser formatado
+- macro especial para a data atual (com formata√ß√£o flex√≠vel)
+- coment√°rios (para notas, A FAZER, CORRE√á√ïES, etc.)
 
 
 ------------------------------------------------------------------------
@@ -182,138 +182,138 @@ Segue uma lista de todas as estruturas suportadas pelo txt2tags.
 == Formatos Suportados ==
 
 : **HTML**                                                                
-Todo mundo sabe o que o HTML È (dica: Internet).
+Todo mundo sabe o que o HTML √© (dica: Internet).
 
-O txt2tags gera documentos HTML limpos, que tem boa apresentaÁ„o e cujo
-cÛdigo fonte È legÌvel. Ele N√O USA javascript, frames ou outras
-tÈcnicas de formataÁ„o f˙teis, que n„o s„o necess·rias para documentos
-tÈcnicos simples. Mas um arquivo CSS separado pode ser utilizado, se for
-desejado. O Txt2tags gera cÛdigo "//HTML 4.0 Transitional//".
+O txt2tags gera documentos HTML limpos, que tem boa apresenta√ß√£o e cujo
+c√≥digo fonte √© leg√≠vel. Ele N√ÉO USA javascript, frames ou outras
+t√©cnicas de formata√ß√£o f√∫teis, que n√£o s√£o necess√°rias para documentos
+t√©cnicos simples. Mas um arquivo CSS separado pode ser utilizado, se for
+desejado. O Txt2tags gera c√≥digo "//HTML 4.0 Transitional//".
 
-Desde a vers„o 2.0, o cÛdigo HTML gerado pelo txt2tags È 100% aprovado
+Desde a vers√£o 2.0, o c√≥digo HTML gerado pelo txt2tags √© 100% aprovado
 pelo [validador w3c vhttp://validator.w3.org/].
 
 
 : **XHTML**
-Esta È a nova generaÁ„o do HTML, com regras mais restritas, como fechar
-todas as marcas que forem abertas. Isto torna o cÛdigo mas f·cil de ser
-avaliado e entendido. Para propÛsitos gerais, considere como HTML. O
-txt2tags gera cÛdigo "//HTML 4.0 Transitional//".
+Esta √© a nova genera√ß√£o do HTML, com regras mais restritas, como fechar
+todas as marcas que forem abertas. Isto torna o c√≥digo mas f√°cil de ser
+avaliado e entendido. Para prop√≥sitos gerais, considere como HTML. O
+txt2tags gera c√≥digo "//HTML 4.0 Transitional//".
 
-Desde a vers„o 2.0, o cÛdigo XHTML gerado pelo txt2tags È 100% aprovado
+Desde a vers√£o 2.0, o c√≥digo XHTML gerado pelo txt2tags √© 100% aprovado
 pelo [validador w3c vhttp://validator.w3.org/].
 
 : **SGML**
-O SGML È um formato de documento comum que possui aplicaÁıes de
-convers„o, como [sgmltools http://www.sgmltools.org/]. De um arquivo
+O SGML √© um formato de documento comum que possui aplica√ß√µes de
+convers√£o, como [sgmltools http://www.sgmltools.org/]. De um arquivo
 sgml pode-se gerar documentos html, pdf, ps, info, latex, lyx, rtf e
-xml. As ferramentas sgml2* tambÈm criam Ìndices (TOC) e quebra de seÁıes
-em subp·ginas (sgml2html).
+xml. As ferramentas sgml2* tamb√©m criam √≠ndices (TOC) e quebra de se√ß√µes
+em subp√°ginas (sgml2html).
 
-O txt2tags gera arquivos SGML v·lidos para a DTD linuxdoc, prontos para
+O txt2tags gera arquivos SGML v√°lidos para a DTD linuxdoc, prontos para
 serem convertidos com uma ferramenta sgml2* sem qualquer arquivo de
-cat·logo extra ou outras exigÍncias incÙmodas do SGML.
+cat√°logo extra ou outras exig√™ncias inc√¥modas do SGML.
 
 : **LATEX**
-O formato de documentaÁ„o preferido nos meios acadÍmicos, È mais potente
-do que normalmente se considera. Livros completos, fÛrmulas complicadas
+O formato de documenta√ß√£o preferido nos meios acad√™micos, √© mais potente
+do que normalmente se considera. Livros completos, f√≥rmulas complicadas
 e qualquer texto complexo pode ser escrito em LaTeX. Mas se prepare para
-perder os cabelos se tentar escever as marcaÁıes ‡ m„o...
+perder os cabelos se tentar escever as marca√ß√µes √† m√£o...
 
 O txt2tags gera arquivos LaTeX prontos para usar, realizando todos os
-complexos truques de escape e exceÁıes. O escritor deve se preocupar
+complexos truques de escape e exce√ß√µes. O escritor deve se preocupar
 exclusivamente com o texto.
 
 : **MAN**
-As p·ginas man do UNIX resistiram pelos anos. Formatos de documento vem
-e v„o, e elas est„o aÌ, imbatÌveis.
+As p√°ginas man do UNIX resistiram pelos anos. Formatos de documento vem
+e v√£o, e elas est√£o a√≠, imbat√≠veis.
 
 Existem outras ferramentas para gerar documentos man, mas o txt2tags tem
-uma vantagem: uma fonte, m˙ltiplos formatos destino. Assim, o conte˙do
-da mesma p·gina man pode ser convertido para uma p·gina HTML, uma
-apresentaÁ„o Magic Point, etc.
+uma vantagem: uma fonte, m√∫ltiplos formatos destino. Assim, o conte√∫do
+da mesma p√°gina man pode ser convertido para uma p√°gina HTML, uma
+apresenta√ß√£o Magic Point, etc.
 
 : **MGP**
-O [Magic Point http://www.mew.org/mgp/] È uma ferramenta de apresentaÁ„o
-bastante ˙til (dica: Microsoft PowerPoint), que usa uma linguagem de
-marcaÁ„o para definir todas as telas. Desta forma, vocÍ pode criar
-apresentaÁıes complexas no vi/emacs/notepad.
+O [Magic Point http://www.mew.org/mgp/] √© uma ferramenta de apresenta√ß√£o
+bastante √∫til (dica: Microsoft PowerPoint), que usa uma linguagem de
+marca√ß√£o para definir todas as telas. Desta forma, voc√™ pode criar
+apresenta√ß√µes complexas no vi/emacs/notepad.
 
 O txt2tags gera um arquivo .mgp pronto para ser usado, definindo todos
-os cabeÁalhos necess·rios para as definiÁıes de fontes e aparÍncia, bem
-como o suporte aos caracteres acentuados da p·gina de cÛdigo ISO-8859.
+os cabe√ßalhos necess√°rios para as defini√ß√µes de fontes e apar√™ncia, bem
+como o suporte aos caracteres acentuados da p√°gina de c√≥digo ISO-8859.
 
-**ObservaÁ„o 1:** os arquivos .mgp criados pelo txt2tags usam as fontes
-Type1 do XFree86! Desta forma, n„o È necess·rio incluir fontes TrueType
-com sua apresentaÁ„o.
+**Observa√ß√£o 1:** os arquivos .mgp criados pelo txt2tags usam as fontes
+Type1 do XFree86! Desta forma, n√£o √© necess√°rio incluir fontes TrueType
+com sua apresenta√ß√£o.
 
-**ObservaÁ„o 2:** as definiÁıes de cor para as fontes s„o limpas, de
+**Observa√ß√£o 2:** as defini√ß√µes de cor para as fontes s√£o limpas, de
 forma que mesmo com uma paleta de cores de sistema pobre (como em
-``startx -- -bpp 8``) a apresentaÁ„o vai ter boa aparÍncia.
+``startx -- -bpp 8``) a apresenta√ß√£o vai ter boa apar√™ncia.
 
-A chave È: converta e use. N„o h· necessidade de remendos ou de outros
+A chave √©: converta e use. N√£o h√° necessidade de remendos ou de outros
 requisitos.
 
 : **MOIN**
-VocÍ n„o sabe o que È o [MoinMoin http://moin.sourceforge.net]? Ele È
+Voc√™ n√£o sabe o que √© o [MoinMoin http://moin.sourceforge.net]? Ele √©
 um [WikiWiki http://www.c2.com/cgi/wiki]!
 
-A sintaxe do Moin È um pouco chata, quando vocÍ tem que ficar
+A sintaxe do Moin √© um pouco chata, quando voc√™ tem que ficar
 ``{{{'''''acrescentando chaves e plicas'''''}}}``, mas o txt2tags vem
-com as marcaÁıes simplificadas e uma soluÁ„o unificada: uma fonte,
-m˙ltiplos formatos destino.
+com as marca√ß√µes simplificadas e uma solu√ß√£o unificada: uma fonte,
+m√∫ltiplos formatos destino.
 
 : **PM6**
-Aposto que vocÍ n„o sabia, mas o Adobe PageMaker 6.0 tem sua prÛpria
-linguagem de marcaÁ„o! Estilos, tabelas de cores, embelezadores, e a
-maior parte das funcionalidades acessÌveis via cliques de mouse tambÈm
-est„o disponÌveis em sua linguagem de marcaÁ„o. VocÍ sÛ precisa acessar
-o item de menu "Import tagged text". Apenas para registro, È um formato
-de marcaÁ„o semelhante ao HTML.
+Aposto que voc√™ n√£o sabia, mas o Adobe PageMaker 6.0 tem sua pr√≥pria
+linguagem de marca√ß√£o! Estilos, tabelas de cores, embelezadores, e a
+maior parte das funcionalidades acess√≠veis via cliques de mouse tamb√©m
+est√£o dispon√≠veis em sua linguagem de marca√ß√£o. Voc√™ s√≥ precisa acessar
+o item de menu "Import tagged text". Apenas para registro, √© um formato
+de marca√ß√£o semelhante ao HTML.
 
-O txt2tags gera todas as tags e j· define um cabeÁalho extenso e
-funcional, configurando os estilos de par·grafo e formataÁıes. Esta È a
-parte difÌcil. **EPA:** Sem quebras de linha! Um par·grafo deve ser uma
-˙nica linha.
+O txt2tags gera todas as tags e j√° define um cabe√ßalho extenso e
+funcional, configurando os estilos de par√°grafo e formata√ß√µes. Esta √© a
+parte dif√≠cil. **EPA:** Sem quebras de linha! Um par√°grafo deve ser uma
+√∫nica linha.
 
 Nota do Autor:
-//Todo meu livro em portuguÍs sobre [expressıes regulares http://guia-er.sf.net/]//
+//Todo meu livro em portugu√™s sobre [express√µes regulares http://guia-er.sf.net/]//
 //foi escrito no vi, convertido para o formato do PageMaker com o//
-//txt2tags e ent„o mandado para o prelo.//
+//txt2tags e ent√£o mandado para o prelo.//
 
 : **TXT**
-TXT È texto. O ˙nico tipo de formataÁ„o verdadeiro.
+TXT √© texto. O √∫nico tipo de formata√ß√£o verdadeiro.
 
-Apesar das marcaÁıes do txt2tags serem bem intuitivas e discretas,
-pode-se removÍ-las ao converter o arquivo para TXT puro.
+Apesar das marca√ß√µes do txt2tags serem bem intuitivas e discretas,
+pode-se remov√™-las ao converter o arquivo para TXT puro.
 
-Os tÌtulos s„o sublinhados, e o texto È basicamente deixado como est· no
-cÛdigo fonte.
+Os t√≠tulos s√£o sublinhados, e o texto √© basicamente deixado como est√° no
+c√≥digo fonte.
 
 
 ------------------------------------------------------------------------
 
 
-== SituaÁ„o dos Formatos-Destino para as Estruturas Suportadas ==[estruturas]
+== Situa√ß√£o dos Formatos-Destino para as Estruturas Suportadas ==[estruturas]
 
   || Estrutura          | html | xhtml | sgml | tex | man | mgp | moin | pm6 | txt |
-  | cabeÁalhos          |  S   |   S   |  S   |  S  |  S  |  S  |  N   |  N  |  S  |
-  | tÌtulo de seÁıes    |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
-  | par·grafos          |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
+  | cabe√ßalhos          |  S   |   S   |  S   |  S  |  S  |  S  |  N   |  N  |  S  |
+  | t√≠tulo de se√ß√µes    |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
+  | par√°grafos          |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
   | negrito             |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
-  | it·lico             |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
+  | it√°lico             |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
   | sublinhado          |  S   |   S   |  -   |  S  |  -  |  S  |  S   |  S  |  -  |
-  | prÈ-formatado       |  S   |   S   |  S   |  S  |  -  |  S  |  S   |  S  |  -  |
-  | linha prÈ-formatada |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
-  | ·rea prÈ-formatada  |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
-  | ·rea cotada         |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
+  | pr√©-formatado       |  S   |   S   |  S   |  S  |  -  |  S  |  S   |  S  |  -  |
+  | linha pr√©-formatada |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
+  | √°rea pr√©-formatada  |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  -  |
+  | √°rea cotada         |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
   | links internet      |  S   |   S   |  S   |  -  |  -  |  -  |  S   |  -  |  -  |
   | links e-mail        |  S   |   S   |  S   |  -  |  -  |  -  |  S   |  -  |  -  |
   | links locais        |  S   |   S   |  S   |  N  |  -  |  -  |  S   |  -  |  -  |
   | links nomeados      |  S   |   S   |  S   |  -  |  -  |  -  |  S   |  -  |  -  |
-  | lista n„o-numerada  |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
+  | lista n√£o-numerada  |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
   | lista numerada      |  S   |   S   |  S   |  S  |  S  |  S  |  S   |  S  |  S  |
-  | lista de definiÁıes |  S   |   S   |  S   |  S  |  S  |  N  |  N   |  N  |  S  |
+  | lista de defini√ß√µes |  S   |   S   |  S   |  S  |  S  |  N  |  N   |  N  |  S  |
   | linha horizontal    |  S   |   S   |  -   |  S  |  -  |  S  |  S   |  N  |  S  |
   | imagem              |  S   |   S   |  S   |  S  |  -  |  S  |  S   |  N  |  -  |
   | tabela              |  S   |   S   |  S   |  S  |  S  |  N  |  S   |  N  |  N  |
@@ -323,67 +323,67 @@ cÛdigo fonte.
 
   ||      | Legenda
   | **S** | //suportada//
-  | **N** | //n„o suportada (talvez em uma vers„o futura)//
-  | **-** | //n„o suportada (n„o pode ser feita neste formato)//
-% | **?** | //n„o suportada (n„o estou bem certo se pode ou n„o ser feito)//
+  | **N** | //n√£o suportada (talvez em uma vers√£o futura)//
+  | **-** | //n√£o suportada (n√£o pode ser feita neste formato)//
+% | **?** | //n√£o suportada (n√£o estou bem certo se pode ou n√£o ser feito)//
 
 
 ------------------------------------------------------------------------
 
 
-== As TrÍs Interfaces ao Usu·rio: GUI, Web e Linha de Comando ==
+== As Tr√™s Interfaces ao Usu√°rio: GUI, Web e Linha de Comando ==
 
-Assim como diferentes usu·rios possuem diferentes necessidades e
-ambientes, o txt2tags È bastante flexivel na forma de ser usado.
+Assim como diferentes usu√°rios possuem diferentes necessidades e
+ambientes, o txt2tags √© bastante flexivel na forma de ser usado.
 
-Existem trÍs Interfaces de Usu·rio para o programa, cada uma atendendo a
-um objetivo definido e com funcionalidades prÛprias.
+Existem tr√™s Interfaces de Usu√°rio para o programa, cada uma atendendo a
+um objetivo definido e com funcionalidades pr√≥prias.
 
 - **GUI**: Escrita em Tk, traz as janelas e os cliques para o txt2tags.
-- **Web**: Escrita em PHP, permite que o usu·rio execute o txt2tags no
-           navegador, n„o exigindo instalaÁ„o do lado do cliente.
-- **Linha de Comando**: Escrita em Python, È o n˙cleo do programa.
-           Todas as funcionalidades est„o disponÌveis como opÁıes de
+- **Web**: Escrita em PHP, permite que o usu√°rio execute o txt2tags no
+           navegador, n√£o exigindo instala√ß√£o do lado do cliente.
+- **Linha de Comando**: Escrita em Python, √© o n√∫cleo do programa.
+           Todas as funcionalidades est√£o dispon√≠veis como op√ß√µes de
            linha de comando.
 
 
 ------------------------------------------------------------------------
 
 
-=== Interface Gr·fica Tk ===[gui]
+=== Interface Gr√°fica Tk ===[gui]
 
-Desde a vers„o 1.0, h· uma bela Interface Gr·fica, que funciona do
+Desde a vers√£o 1.0, h√° uma bela Interface Gr√°fica, que funciona do
 Linux, Windows, Mac e outros.
 
 O programa automaticamente detecta se seu sistema pode apresentar a
-interface e a lanÁa quando È chamado sem argumentos. Pode-se forÁar a
-apresentaÁ„o da Interfaca Gr·fica com a opÁ„o ``--gui``. Se estiver
-faltando algum recurso o programa ir· alertar.
+interface e a lan√ßa quando √© chamado sem argumentos. Pode-se for√ßar a
+apresenta√ß√£o da Interfaca Gr√°fica com a op√ß√£o ``--gui``. Se estiver
+faltando algum recurso o programa ir√° alertar.
 
-	**Nota:** O mÛdulo Tkinter È necess·rio. Como ele vem com a
-	distribiÁ„o padr„o do Python vocÍ j· deve tÍ-lo.
+	**Nota:** O m√≥dulo Tkinter √© necess√°rio. Como ele vem com a
+	distribi√ß√£o padr√£o do Python voc√™ j√° deve t√™-lo.
 
-Ela È bastante simples e f·cil de usar:
+Ela √© bastante simples e f√°cil de usar:
 
           [IMGPATH/gui.png]          
 
-+ VocÍ localiza o arquivo fonte .t2t no disco e suas opÁıes s„o
++ Voc√™ localiza o arquivo fonte .t2t no disco e suas op√ß√µes s√£o
   carregadas.
 
-+ Se o destino ainda estiver vazio, vocÍ deve escolher um.
++ Se o destino ainda estiver vazio, voc√™ deve escolher um.
 
-+ H· algumas opıes que podem ser escolhidas, mas nenhuma delas È
++ H√° algumas op√µes que podem ser escolhidas, mas nenhuma delas √©
   essencial.
 
-+ Finalmente, pressione o bot„o "Converter!".
++ Finalmente, pressione o bot√£o "Converter!".
 
 
-Uma boa opÁ„o a selecionar È "//Dump to screen//", assim se pode
-verificar o cÛdigo resultante em uma janela separada, sem que o arquivo
-seja salvo. Quando o cÛdigo estiver correto, basta desmarc·-la e o
-arquivo ser· gravado.
+Uma boa op√ß√£o a selecionar √© "//Dump to screen//", assim se pode
+verificar o c√≥digo resultante em uma janela separada, sem que o arquivo
+seja salvo. Quando o c√≥digo estiver correto, basta desmarc√°-la e o
+arquivo ser√° gravado.
 
-As cores padr„o podem ser mudadas no arquivo ``~/.txt2tagsrc``,
+As cores padr√£o podem ser mudadas no arquivo ``~/.txt2tagsrc``,
 configurando em ``%!guicolors``. Por exemplo:
 
 
@@ -396,47 +396,47 @@ configurando em ``%!guicolors``. Por exemplo:
 
 === Interface Web ===[web]
 
-A Interface Web est· em funcionamento na Internet no endereÁo
+A Interface Web est√° em funcionamento na Internet no endere√ßo
 http://txt2tags.org/online.php, permitindo que o programa possa ser
 usado e testado antes de ser copiado.
 
           [IMGPATH/web.png]          
 
-Esta interface tambÈm pode ser colocada na intrant para uso local,
-evitando a instalaÁ„o do txt2tags em todas as m·quinas.
+Esta interface tamb√©m pode ser colocada na intrant para uso local,
+evitando a instala√ß√£o do txt2tags em todas as m√°quinas.
 
 ------------------------------------------------------------------------
 
 === Interface de Linha de Comando ===[linhadecomando]
 
-Para usu·rios de linha de comando acostumados, o par‚metro --help deve
+Para usu√°rios de linha de comando acostumados, o par√¢metro --help deve
 ser suficiente:
 
 ```
-Uso: txt2tags [OP«’ES] [arquivo.t2t ...]
+Uso: txt2tags [OP√á√ïES] [arquivo.t2t ...]
 
   -t, --target        define o formato do destino. tipos suportados:
                       html, xhtml, sgml, tex, man, mgp, moin, pm6, txt
   -i, --infile=ARQ    define ARQ como o arquivo fonte ('-' para STDIN)
   -0, --outfile=ARQ   define ARQ como o arquivo destino ('-' para STDOUT)
-  -n, --enum-title    numera todos os tÌtulos como 1, 1.1, 1.1.1, etc
-  -H, --no-headers    suprime os cabeÁalhos, tÌtulo e rodapÈ
-      --headers       exibe os cabeÁalhos, tÌtulo e rodapÈ (padr„o LIGADO)
-      --encoding      informa a codificaÁ„o de destino (utf-8, iso-8859-1, etc)
+  -n, --enum-title    numera todos os t√≠tulos como 1, 1.1, 1.1.1, etc
+  -H, --no-headers    suprime os cabe√ßalhos, t√≠tulo e rodap√©
+      --headers       exibe os cabe√ßalhos, t√≠tulo e rodap√© (padr√£o LIGADO)
+      --encoding      informa a codifica√ß√£o de destino (utf-8, iso-8859-1, etc)
       --style=ARQ     utiliza ARQ como estilo do documento (CSS no Html)
-      --css-sugar     insere tags compatÌveis com CSS em destinos HTML e XHTML
-      --mask-email    esconde e-mails dos robÙs de SPAM. x@y.z vira <x (a) y z>
-      --toc           inclui o Õndice (Table of Contents) no documento destino
-      --toc-only      exibe o Õndice do documento e sai
-      --toc-level=N   define o nÌvel m·ximo do Õndice para N
-      --rc            lÍ a config do usu·rio em ~/.txt2tagsrc (padr„o LIGADO)
-      --gui           carrega a interface gr·fica escrita em TK
-  -v, --verbose       exibe mensagens informativas durante a convers„o
+      --css-sugar     insere tags compat√≠veis com CSS em destinos HTML e XHTML
+      --mask-email    esconde e-mails dos rob√¥s de SPAM. x@y.z vira <x (a) y z>
+      --toc           inclui o √çndice (Table of Contents) no documento destino
+      --toc-only      exibe o √çndice do documento e sai
+      --toc-level=N   define o n√≠vel m√°ximo do √çndice para N
+      --rc            l√™ a config do usu√°rio em ~/.txt2tagsrc (padr√£o LIGADO)
+      --gui           carrega a interface gr√°fica escrita em TK
+  -v, --verbose       exibe mensagens informativas durante a convers√£o
   -h, --help          exibe este texto de ajuda e sai
-  -V, --version       exibe a vers„o do programa e sai
-      --dump-config   exibe todas as configuraÁıes encontradas e sai
+  -V, --version       exibe a vers√£o do programa e sai
+      --dump-config   exibe todas as configura√ß√µes encontradas e sai
 
-OpÁıes para DESLIGAR funcionalidades:
+Op√ß√µes para DESLIGAR funcionalidades:
      --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers
      --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc
      --no-css-sugar
@@ -444,33 +444,33 @@ OpÁıes para DESLIGAR funcionalidades:
 Exemplo:
      txt2tags -t html --toc meuarquivo.t2t
 
-Normalmente a saÌda convertida È gravada em 'arquivo.<tipo>'.
-Utilize --outfile para forÁar um nome para o arquivo de saÌda.
-Se o arquivo de entrada È '-', lÍ de STDIN.
-Se o arquivo de saÌda È '-', envia a saÌda para STDOUT.
+Normalmente a sa√≠da convertida √© gravada em 'arquivo.<tipo>'.
+Utilize --outfile para for√ßar um nome para o arquivo de sa√≠da.
+Se o arquivo de entrada √© '-', l√™ de STDIN.
+Se o arquivo de sa√≠da √© '-', envia a sa√≠da para STDOUT.
 ```
 
 ==== Exemplos ====
 
-Supondo que exista um arquivo de marcaÁ„o chamado ``file.t2t``, vamos nos
+Supondo que exista um arquivo de marca√ß√£o chamado ``file.t2t``, vamos nos
 divertir um pouco.
 
 | **Convertendo para HTML**            | ``$ txt2tags -t html file.t2t``
 | **O mesmo, usando redirecionamento** | ``$ txt2tags -t html -o - file.t2t > file.html``
 |  | .
-| **Incluindo uma Tabela de Conte˙do** | ``$ txt2tags -t html --toc file.t2t``
-| **Idem, numerando os tÌtulos**       | ``$ txt2tags -t html --toc --enum-title file.t2t``
+| **Incluindo uma Tabela de Conte√∫do** | ``$ txt2tags -t html --toc file.t2t``
+| **Idem, numerando os t√≠tulos**       | ``$ txt2tags -t html --toc --enum-title file.t2t``
 |  | .
-| **VisualizaÁ„o R·pida do Conte˙do**  | ``$ txt2tags --toc-only file.t2t``
-| **Quem sabe com n˙meros?**           | ``$ txt2tags --toc-only --enum-title file.t2t``
+| **Visualiza√ß√£o R√°pida do Conte√∫do**  | ``$ txt2tags --toc-only file.t2t``
+| **Quem sabe com n√∫meros?**           | ``$ txt2tags --toc-only --enum-title file.t2t``
 |  | .
 | **Linha simples de STDIN**           | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
 | **Testando o Mascaramento de Email** | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
-| **EdiÁ„o pÛs-convers„o**             | ``$ txt2tags -t html -o- file.t2t | sed "s/<BODY .*/<BODY BGCOLOR=green>/" > file.html``
+| **Edi√ß√£o p√≥s-convers√£o**             | ``$ txt2tags -t html -o- file.t2t | sed "s/<BODY .*/<BODY BGCOLOR=green>/" > file.html``
 
 : //Nota//
-Desde a vers„o 1.6 vocÍ pode fazer pre e pÛs processamento usando as
-macros de configuraÁ„o ``%!preproc`` e ``%!postproc``.
+Desde a vers√£o 1.6 voc√™ pode fazer pre e p√≥s processamento usando as
+macros de configura√ß√£o ``%!preproc`` e ``%!postproc``.
 
 
 ========================================================================
@@ -481,74 +481,74 @@ macros de configuraÁ„o ``%!preproc`` e ``%!postproc``.
 
 Basta baixar o programa e executar o mesmo no seu computador.
 
-== Download e InstalaÁ„o do Python ==
+== Download e Instala√ß√£o do Python ==
 
 Antes de mais nada, deve-se baixar e instalar o interpretador Python
-para o seu sistema. Se vocÍ j· o tem, ent„o pule eset passo.
+para o seu sistema. Se voc√™ j√° o tem, ent√£o pule eset passo.
 
-O Python È uma das melhores linguagens de programaÁ„o que existem, ela
+O Python √© uma das melhores linguagens de programa√ß√£o que existem, ela
 pode ser utilizada no Windows, Linux, UNIX, Macintosh, e outras
 plataformas, e pode ser baixada do
-[web site do Python http://www.python.org]. As dicas de instalaÁ„o podem
+[web site do Python http://www.python.org]. As dicas de instala√ß√£o podem
 ser encontradas no mesmo site. O txt2tags funciona com o Python 1.5 ou
 posterior.
 
-Se vocÍ n„o tem certeza de ter o Python ou n„o, abra um console (tty,
-xterm, MSDOS) e escreva ``python``. Se ele n„o estiver instalado, o
+Se voc√™ n√£o tem certeza de ter o Python ou n√£o, abra um console (tty,
+xterm, MSDOS) e escreva ``python``. Se ele n√£o estiver instalado, o
 sistema vai lhe informar.
 
 == Copiando o txt2tags ==
 
-O local oficial de distribuiÁ„o do txt2tags È na homepage do programa,
+O local oficial de distribui√ß√£o do txt2tags √© na homepage do programa,
 em http://txt2tags.org/src.
 
-Todos os arquivos do programa est„o em um tarball (arquivo .tgz), que
-pode ser expandido pela maioria dos utilit·rios de compress„o (incluindo
+Todos os arquivos do programa est√£o em um tarball (arquivo .tgz), que
+pode ser expandido pela maioria dos utilit√°rios de compress√£o (incluindo
 o Winzip).
 
-Simplesmente pegue a **˙ltima** vers„o (data mais recente, n˙mero de
-vers„o maior). As versıes anteriores est„o l· apenas por razıes
-histÛricas.
+Simplesmente pegue a **√∫ltima** vers√£o (data mais recente, n√∫mero de
+vers√£o maior). As vers√µes anteriores est√£o l√° apenas por raz√µes
+hist√≥ricas.
 
-== InstalaÁ„o do txt2tags ==
+== Instala√ß√£o do txt2tags ==
 
-Como È apenas um script Python, o txt2tags n„o precisa ser instalado.
+Como √© apenas um script Python, o txt2tags n√£o precisa ser instalado.
 
-O ˙nico arquivo necess·rio para usar o programa È o script txt2tags. Os
-outros arquivos do tarball compreendem a documentaÁ„o, ferramentas e
+O √∫nico arquivo necess√°rio para usar o programa √© o script txt2tags. Os
+outros arquivos do tarball compreendem a documenta√ß√£o, ferramentas e
 arquivos de exemplo.
 
-O modo mais seguro de usar o txt2tags È chamar o Python com ele:
+O modo mais seguro de usar o txt2tags √© chamar o Python com ele:
 
 ``` prompt$ python txt2tags 
 
-Se vocÍ quiser "instalar" o txt2tags no sistema como um programa
+Se voc√™ quiser "instalar" o txt2tags no sistema como um programa
 independente, basta copiar (ou criar um link) o script txt2tags para um
-diretÛrio que esteja no PATH do sistema e certificar-se que o sistema
+diret√≥rio que esteja no PATH do sistema e certificar-se que o sistema
 saiba como executar o mesmo.
 
 : **UNIX/Linux**
-  Torne o script execut·vel (``chmod +x txt2tags``) e copie o mesmo para
-  um diretÛrio no $PATH (``cp txt2tags /usr/local/bin``)
+  Torne o script execut√°vel (``chmod +x txt2tags``) e copie o mesmo para
+  um diret√≥rio no $PATH (``cp txt2tags /usr/local/bin``)
 
 : **Windows**
-  Renomeie o script, acrescentando a extens„o .py
-  (``ren txt2tags txt2tags.py``) e o copie para um diretÛrio que esteja
+  Renomeie o script, acrescentando a extens√£o .py
+  (``ren txt2tags txt2tags.py``) e o copie para um diret√≥rio que esteja
   no PATH do sistema (``copy txt2tags.py C:\WINNT``)
 
 
-Depois disto, pode-se criar um Ìcone no desktop para o programa, se
-quiser usar a Interface Gr·fica do programa.
+Depois disto, pode-se criar um √≠cone no desktop para o programa, se
+quiser usar a Interface Gr√°fica do programa.
 
-=== Pacotes Especiais para Usu·rios Windows ===
+=== Pacotes Especiais para Usu√°rios Windows ===
 
-Existem dois arquivos de distribuiÁ„o .EXE para o txt2tags, que instalam
-o programa em m·quinas Windows com apenas alguns cliques:
+Existem dois arquivos de distribui√ß√£o .EXE para o txt2tags, que instalam
+o programa em m√°quinas Windows com apenas alguns cliques:
 
 - O script txt2tags para aqueles que tem o interpretador Python
   instalado
-- A vers„o stand-alone, que n„o requer a instalaÁ„o do interpretador
-  Pyton para ser executada (j· tem uma vers„o pequena incluÌda).
+- A vers√£o stand-alone, que n√£o requer a instala√ß√£o do interpretador
+  Pyton para ser executada (j√° tem uma vers√£o pequena inclu√≠da).
 
 
 Visite o site //Txt2tags-Win// para baixar estes pacotes:
@@ -556,7 +556,7 @@ http://txt2tags-win.sf.net/
 
 == Instalar os Arquivos de Sintaxe dos Editores de Texto ==[sintaxe]
 
-O txt2tags possui arquivos de sintaxe pr·ticos que podem ser usados com
+O txt2tags possui arquivos de sintaxe pr√°ticos que podem ser usados com
 os seguintes editores de texto:
 
 - Vim (www.vim.org)
@@ -565,17 +565,17 @@ os seguintes editores de texto:
 - Kate (http://kate.kde.org)
 
 
-Os arquivos de sintaxe tÍm registro de todas as regras e marcaÁıes do
-txt2tags, ajudando ao usu·rio a escrever documentos sem erros. As marcas
-s„o mostradas coloridas, assim se pode ver se tudo foi escrito
+Os arquivos de sintaxe t√™m registro de todas as regras e marca√ß√µes do
+txt2tags, ajudando ao usu√°rio a escrever documentos sem erros. As marcas
+s√£o mostradas coloridas, assim se pode ver se tudo foi escrito
 corretamente.
 
            |  [IMGPATH/vim.png]  |
            |  O arquivo de exemplo aberto no Editor Vim 
 
 Cada editor tem um procedimento diferente para usar seu arquivo de
-sintaxe. Por favor verifique no cabeÁalho de cada arquivo e na
-documentaÁ„o do editor.
+sintaxe. Por favor verifique no cabe√ßalho de cada arquivo e na
+documenta√ß√£o do editor.
 
 ========================================================================
 
@@ -583,68 +583,68 @@ documentaÁ„o do editor.
 
 = Parte III - Escrevendo e Convertendo Seu Primeiro Documento =
 
-Desculpe, este capÌtulo ainda est· em desenvolvimento.
+Desculpe, este cap√≠tulo ainda est√° em desenvolvimento.
 
-== As ¡reas do documento .t2t ==
+== As √Åreas do documento .t2t ==
 
-Os arquivos de marcaÁ„o txt2tags s„o divididos em 3 ·reas. Cada ·rea tem
-suas prÛprias regras e finalidade. S„o elas:
+Os arquivos de marca√ß√£o txt2tags s√£o divididos em 3 √°reas. Cada √°rea tem
+suas pr√≥prias regras e finalidade. S√£o elas:
 
-: //¡rea de CabeÁalho//
-… o lugar para informaÁıes sobre o TÌtulo do Documento, Autor, Vers„o e
+: //√Årea de Cabe√ßalho//
+√â o lugar para informa√ß√µes sobre o T√≠tulo do Documento, Autor, Vers√£o e
 Data. (opcional)
 
-: //¡rea de ConfiguraÁ„o//
-… o local para colocar as configuraÁıes Gerais do documento e
+: //√Årea de Configura√ß√£o//
+√â o local para colocar as configura√ß√µes Gerais do documento e
 modificadores do funcionamento do analisador. (opcional)
 
 : //Corpo do Texto//
-… o local para o Conte˙do do Documento (requerida)
+√â o local para o Conte√∫do do Documento (requerida)
 
 
-Como vemos acima, as duas primeiras ·reas s„o opcionais, sendo que o
-//Corpo do Texto// È a ˙nica ·rea indispens·vel.
-(//Nota: A **¡rea de ConfiguraÁ„o** foi introduzida no txt2tags na vers„o 1.3//)
+Como vemos acima, as duas primeiras √°reas s√£o opcionais, sendo que o
+//Corpo do Texto// √© a √∫nica √°rea indispens√°vel.
+(//Nota: A **√Årea de Configura√ß√£o** foi introduzida no txt2tags na vers√£o 1.3//)
 
-As ·reas s„o delimitadas por regras especiais, que ser„o vistas em
-detalhe no prÛximo capÌtulo. Por enquanto, esta È uma representaÁ„o
-gr·fica das ·reas de um documento:
+As √°reas s√£o delimitadas por regras especiais, que ser√£o vistas em
+detalhe no pr√≥ximo cap√≠tulo. Por enquanto, esta √© uma representa√ß√£o
+gr√°fica das √°reas de um documento:
 
 ```
              ____________
             |            |
-            |  CABE«ALHO |       1. Primeiro, o cabeÁalho
+            |  CABE√áALHO |       1. Primeiro, o cabe√ßalho
             |            |
-            |   CONFIG   |       2. Ent„o a configuraÁ„o
+            |   CONFIG   |       2. Ent√£o a configura√ß√£o
             |            |
             |   CORPO    |       3. E, finalmente, o corpo do documento
             |            |
-            |    ...     |          que segue atÈ o final do arquivo.
+            |    ...     |          que segue at√© o final do arquivo.
             |    ...     |
             |____________|
 
 ```
 
-Em resumo, È assim que as ·reas s„o definidas:
+Em resumo, √© assim que as √°reas s√£o definidas:
 
-  | **CabeÁalhos**   | As primeiras 3 linhas do arquivo, ou a primeira linha È deixada em branco se n„o s„o usados cabeÁalhos
-  | **ConfiguraÁ„o** | ComeÁam logo depois do cabeÁalho (4a. ou 2a. linha)  e termina quando a //¡rea de Conte˙do// comeÁa.
-  | **Corpo**        | A primeira linha de texto v·lida (que n„o È coment·rio ou configuraÁ„o) apÛs a //¡rea de CabeÁalho//.
+  | **Cabe√ßalhos**   | As primeiras 3 linhas do arquivo, ou a primeira linha √© deixada em branco se n√£o s√£o usados cabe√ßalhos
+  | **Configura√ß√£o** | Come√ßam logo depois do cabe√ßalho (4a. ou 2a. linha)  e termina quando a //√Årea de Conte√∫do// come√ßa.
+  | **Corpo**        | A primeira linha de texto v√°lida (que n√£o √© coment√°rio ou configura√ß√£o) ap√≥s a //√Årea de Cabe√ßalho//.
 
 === Exemplo Completo ===
 
 ```
-TÌtulo do meu belo documento
+T√≠tulo do meu belo documento
 Sr. Fulano da Silva
-⁄ltima atualizaÁ„o: %%date(%c)
+√öltima atualiza√ß√£o: %%date(%c)
 
 %! Target  : html
 %! Style   : fancy.css
-%! Encoding: iso-8859-1
+%! Encoding: UTF-8
 %! Options : --toc --enum--title
 
-Oi! Este È o meu documento de teste.
-E o seu conte˙do termina aqui.
+Oi! Este √© o meu documento de teste.
+E o seu conte√∫do termina aqui.
 ```
 
 =======================================================================
@@ -654,125 +654,125 @@ E o seu conte˙do termina aqui.
 = Parte IV - Dominando o Txt2tags =
 
 
-== A ¡rea de CabeÁalho ==
+== A √Årea de Cabe√ßalho ==
 
-LocalizaÁ„o:
-- PosiÁ„o fixa: **Primeiras 3 linhas** do arquivo. Ponto.
-- PosiÁ„o fixa: **A Primeira Linha** do arquivo est· em branco. Isto
-  significa que o cabeÁalho est· vazio.
+Localiza√ß√£o:
+- Posi√ß√£o fixa: **Primeiras 3 linhas** do arquivo. Ponto.
+- Posi√ß√£o fixa: **A Primeira Linha** do arquivo est√° em branco. Isto
+  significa que o cabe√ßalho est√° vazio.
 
 
-A ¡rea de CabeÁalho È a ˙nica que tem uma posiÁ„o fixa, orientada a
-linhas. Ela est· localizada nas trÍs primeiras linhas do cÛdigo fonte.
+A √Årea de Cabe√ßalho √© a √∫nica que tem uma posi√ß√£o fixa, orientada a
+linhas. Ela est√° localizada nas tr√™s primeiras linhas do c√≥digo fonte.
 
-O conte˙do destas linhas È livre, sem necessidade de nenhuma informaÁ„o
-est·tica de nenhum tipo. Mas recomenda-se o seguinte para a maioria dos
+O conte√∫do destas linhas √© livre, sem necessidade de nenhuma informa√ß√£o
+est√°tica de nenhum tipo. Mas recomenda-se o seguinte para a maioria dos
 documentos:
 
-   - //linha 1//: tÌtulo do documento
+   - //linha 1//: t√≠tulo do documento
    - //linha 2//: nome e/ou email do autor
-   - //linha 3//: data e/ou vers„o do documento
+   - //linha 3//: data e/ou vers√£o do documento
                  (um bom lugar para colocar ``%%date``)
 
 
-Tenha em mente que as 3 primeiras linhas do arquivo fonte ser„o as 3
+Tenha em mente que as 3 primeiras linhas do arquivo fonte ser√£o as 3
 primeiras linhas no documento gerado, separadas e com um grande
-contraste em relaÁ„o ao corpo do texto (ou seja, letras grandes,
-negrito). Se a paginaÁ„o for permitida, os cabeÁalhos estar„o separados
-e centralizados na primeira p·gina.
+contraste em rela√ß√£o ao corpo do texto (ou seja, letras grandes,
+negrito). Se a pagina√ß√£o for permitida, os cabe√ßalhos estar√£o separados
+e centralizados na primeira p√°gina.
 
-==== Menos (ou Nenhuma) Linhas de CabeÁalho ====
+==== Menos (ou Nenhuma) Linhas de Cabe√ßalho ====
 
-¿s vezes os usu·rios querem especificar menos de trÍs linhas nos
-cabeÁalhos, dando apenas o tÌtulo do documento e/ou informaÁ„o de data.
+√Äs vezes os usu√°rios querem especificar menos de tr√™s linhas nos
+cabe√ßalhos, dando apenas o t√≠tulo do documento e/ou informa√ß√£o de data.
 
-Basta deixar a 2a. e/ou a 3a. linhas em branco e estas linhas n„o ser„o
-incluÌdas no documento gerado. Mas tenha em mente que, mesmo em branco,
-estas linhas ainda s„o parte dos cabeÁalho, e o corpo do documento deve
-comeÁar **apÛs** a 3a. linha.
+Basta deixar a 2a. e/ou a 3a. linhas em branco e estas linhas n√£o ser√£o
+inclu√≠das no documento gerado. Mas tenha em mente que, mesmo em branco,
+estas linhas ainda s√£o parte dos cabe√ßalho, e o corpo do documento deve
+come√ßar **ap√≥s** a 3a. linha.
 
-O tÌtulo È o ˙nico cabeÁalho requerido (a primeira linha), mas se vocÍ
-deixar ela em branco, est· dizendo que seu documento
-**n„o tem cabeÁalho**. Desta forma, a //¡rea de Texto// ir· comeÁar em
+O t√≠tulo √© o √∫nico cabe√ßalho requerido (a primeira linha), mas se voc√™
+deixar ela em branco, est√° dizendo que seu documento
+**n√£o tem cabe√ßalho**. Desta forma, a //√Årea de Texto// ir√° come√ßar em
 seguida, na 2a. linha.
 
-N„o usar cabeÁalhos no documento È ˙til se vocÍ quiser especificar seus
-prÛprios cabeÁalhos customizados apÛs a convers„o. A opÁ„o de linha de
-comando ``--no-headers`` È geralmente necess·ria para este tipo de coisa.
+N√£o usar cabe√ßalhos no documento √© √∫til se voc√™ quiser especificar seus
+pr√≥prios cabe√ßalhos customizados ap√≥s a convers√£o. A op√ß√£o de linha de
+comando ``--no-headers`` √© geralmente necess√°ria para este tipo de coisa.
 
 ==== Direto ao ponto ====
 
- || Em resumo: "CabeÁalhos s„o apenas __posiÁıes__, n„o conte˙do " |
+ || Em resumo: "Cabe√ßalhos s√£o apenas __posi√ß√µes__, n√£o conte√∫do " |
 
-Coloque um texto na primeira linha, ele ir· aparecer na primeira linha
-do arquivo gerado. O mesmo para a 2a. e 3a. linhas de cabeÁalho.
+Coloque um texto na primeira linha, ele ir√° aparecer na primeira linha
+do arquivo gerado. O mesmo para a 2a. e 3a. linhas de cabe√ßalho.
 
 ------------------------------------------------------------------------
 
-== A ¡rea de ConfiguraÁ„o ==
+== A √Årea de Configura√ß√£o ==
 
-LocalizaÁ„o:
-- ComeÁa logo apÛs a ¡rea de CabeÁalhos
-  - ComeÁa na **4a. linha** do arquivo se forem especificados **CabeÁalhos**
-  - ComeÁa na **2a. linha** se **n„o** forem especificados **CabeÁalhos**
-- Termina quando a ¡rea de Conte˙do comeÁa
-  - Termina com uma linha que n„o seja de ConfiguraÁ„o, ou de
-    Coment·rio, ou que seja uma linha em Branco.
+Localiza√ß√£o:
+- Come√ßa logo ap√≥s a √Årea de Cabe√ßalhos
+  - Come√ßa na **4a. linha** do arquivo se forem especificados **Cabe√ßalhos**
+  - Come√ßa na **2a. linha** se **n√£o** forem especificados **Cabe√ßalhos**
+- Termina quando a √Årea de Conte√∫do come√ßa
+  - Termina com uma linha que n√£o seja de Configura√ß√£o, ou de
+    Coment√°rio, ou que seja uma linha em Branco.
 
 
-A ¡rea de ConfiguraÁ„o È opcional. A maioria dos usu·rios pode escrever
+A √Årea de Configura√ß√£o √© opcional. A maioria dos usu√°rios pode escrever
 carradas de arquivos txt2tags mesmo sem saber que ela existe, mas os
-usu·rios experientes ir„o gostar do poder e controle que ela oferece.
+usu√°rios experientes ir√£o gostar do poder e controle que ela oferece.
 
-O uso prim·rio desta ·rea È para definir configuraÁıes que afetam o
+O uso prim√°rio desta √°rea √© para definir configura√ß√µes que afetam o
 comportamento do programa.
 
-==== Ent„o, como configurar algo? Qual a sintaxe? ====
+==== Ent√£o, como configurar algo? Qual a sintaxe? ====
 
-As linhas de configuraÁ„o s„o //linhas de coment·rio especiais//,
-marcadas com um identificador no inÌcio ("``!``") que torna estes
-coment·rios diferentes dos coment·rios normais. A sintaxe È t„o simples
-quanto uma atribuiÁ„o de valor a uma vari·vel, composta por uma
-palavra-chave e um valor, separados um do outro pelo separador canÙnico
+As linhas de configura√ß√£o s√£o //linhas de coment√°rio especiais//,
+marcadas com um identificador no in√≠cio ("``!``") que torna estes
+coment√°rios diferentes dos coment√°rios normais. A sintaxe √© t√£o simples
+quanto uma atribui√ß√£o de valor a uma vari√°vel, composta por uma
+palavra-chave e um valor, separados um do outro pelo separador can√¥nico
 dois-pontos ("``:``").
 
  || %! palavra-chave : valor |
 
-**``Detalhes da Sintaxe:``** O ponto de exclamaÁ„o deve ser colocado
-junto com o caractere de coment·rio, sem espaÁo entre eles ("``%!``").
-Os espaÁos em torno da //palavra-chave// e o separador s„o opcionais, e
+**``Detalhes da Sintaxe:``** O ponto de exclama√ß√£o deve ser colocado
+junto com o caractere de coment√°rio, sem espa√ßo entre eles ("``%!``").
+Os espa√ßos em torno da //palavra-chave// e o separador s√£o opcionais, e
 tanto a //palavra-chave// quanto o //valor// podem estar
-indiferentemente em mai˙sculas ou min˙sculas.
+indiferentemente em mai√∫sculas ou min√∫sculas.
 
-==== O que eu posso configurar? Quais s„o as palavra-chave v·lidas? ====
+==== O que eu posso configurar? Quais s√£o as palavra-chave v√°lidas? ====
 
-As configuraÁıes que podem ser feitas s„o //Target//, //Options//, //Style//,
+As configura√ß√µes que podem ser feitas s√£o //Target//, //Options//, //Style//,
 //Encoding//, //PreProc// e //PostProc//.
 
-A configuraÁ„o **//Target//** define o destino padr„o na qual o
+A configura√ß√£o **//Target//** define o destino padr√£o na qual o
 documento deve ser convertido.
 
-A configuraÁ„o **//Options//** È ˙til para especificar as opÁıes de
-linha de comando padr„o para o arquivo fonte. Estas opÁıes podem ser
-sobrescritas pela linha de comando real. Usar esta opÁ„o juntamente com
+A configura√ß√£o **//Options//** √© √∫til para especificar as op√ß√µes de
+linha de comando padr√£o para o arquivo fonte. Estas op√ß√µes podem ser
+sobrescritas pela linha de comando real. Usar esta op√ß√£o juntamente com
 ``%!target`` permite converter o documento simplesmente comandando:
 ``txt2tags file.t2t``
 
-A configuraÁ„o **//Style//** sÛ È suportada pelo tipo de documento
+A configura√ß√£o **//Style//** s√≥ √© suportada pelo tipo de documento
 destino HTML, para definir uma folha de estilo
 (//Cascading Style Sheets - CSS//).
 
-A configuraÁ„o **//Encoding//** È necess·ria para escritores n„o
-ingleses, que usem letras acentuadas e outros detalhes especÌficos de
-localizaÁ„o, de forma que o //Conjunto de Caracteres// do documento seja
+A configura√ß√£o **//Encoding//** √© necess√°ria para escritores n√£o
+ingleses, que usem letras acentuadas e outros detalhes espec√≠ficos de
+localiza√ß√£o, de forma que o //Conjunto de Caracteres// do documento seja
 personalizado (se permitido).
 
-A configuraÁ„o **//PreProc//** È um filtro. Ela define regras do tipo
-"busca e troca" que ser„o aplicadas ao arquivo original __antes__ que
-qualquer an·lise por parte do txt2tags ocorra.
+A configura√ß√£o **//PreProc//** √© um filtro. Ela define regras do tipo
+"busca e troca" que ser√£o aplicadas ao arquivo original __antes__ que
+qualquer an√°lise por parte do txt2tags ocorra.
 
-A configuraÁ„o **//PostProc//** È um filtro. Ela define regras do tipo
-"busca e troca" que ser„o aplicadas ao arquivo destino __depois__ de
+A configura√ß√£o **//PostProc//** √© um filtro. Ela define regras do tipo
+"busca e troca" que ser√£o aplicadas ao arquivo destino __depois__ de
 todo o processamento por parte do txt2tags.
 
 Exemplo:
@@ -781,92 +781,92 @@ Exemplo:
 %! Target  : html
 %! Options : --toc --toc-level 3
 %! Style   : fancy.css
-%! Encoding: iso-8859-1
+%! Encoding: UTF-8
 %! PreProc : "amj"       "Aurelio Marinho Jargas"
 %! PostProc: '<BODY.*?>' '<BODY bgcolor="yellow">'
 ```
 
 
-==== Algumas regras sobre as ConfiguraÁıes ====
+==== Algumas regras sobre as Configura√ß√µes ====
 
- - As configuraÁıes s„o v·lidas somente dentro da ¡rea de ConfiguraÁ„o,
-   e ser„o consideradas coment·rios simples se forem encontradas no
+ - As configura√ß√µes s√£o v√°lidas somente dentro da √Årea de Configura√ß√£o,
+   e ser√£o consideradas coment√°rios simples se forem encontradas no
    Corpo do documento.
 
- - Se a mesma palavra-chave aparece mais de uma vez na ¡rea de
-   ConfiguraÁ„o, apenas a ˙ltima ser· usada. ExceÁ„o: options, preproc e
-   postproc, que s„o acumulativas.
+ - Se a mesma palavra-chave aparece mais de uma vez na √Årea de
+   Configura√ß√£o, apenas a √∫ltima ser√° usada. Exce√ß√£o: options, preproc e
+   postproc, que s√£o acumulativas.
 
- - Uma linha de configuraÁ„o com uma palavra-chave inv·lida ser·
-   considerada um coment·rio.
+ - Uma linha de configura√ß√£o com uma palavra-chave inv√°lida ser√°
+   considerada um coment√°rio.
 
- - Estas configuraÁıes tÍm precedÍncia sobre o arquivo ``txt2tagsrc``,
-   as n„o sobre as opÁıes de linha de comando.
+ - Estas configura√ß√µes t√™m preced√™ncia sobre o arquivo ``txt2tagsrc``,
+   as n√£o sobre as op√ß√µes de linha de comando.
 
 
 ----------------------------------------------------------------
 
 == O Corpo do Texto == 
 
-LocalizaÁ„o:
-- ComeÁa na primeira linha v·lida de texto do arquivo
-  - CabeÁalhos, ConfiguraÁıes e Coment·rios **n„o** s„o linhas de texto
-    v·lidas
+Localiza√ß√£o:
+- Come√ßa na primeira linha v√°lida de texto do arquivo
+  - Cabe√ßalhos, Configura√ß√µes e Coment√°rios **n√£o** s√£o linhas de texto
+    v√°lidas
 - Termina no fim do arquivo (EOF)
 
 
-Bem, o corpo do texto È tudo que estiver fora das ¡reas de CabeÁalho e
-de ConfiguraÁ„o.
+Bem, o corpo do texto √© tudo que estiver fora das √Åreas de Cabe√ßalho e
+de Configura√ß√£o.
 
-O corpo do texto È onde est· o conte˙do do documento e todas as
-estruturas e formataÁıes que o txt2tags reconhece. Dentro do corpo podem
-ser tambÈm colocados coment·rios para //A FAZER// e anotaÁıes
+O corpo do texto √© onde est√° o conte√∫do do documento e todas as
+estruturas e formata√ß√µes que o txt2tags reconhece. Dentro do corpo podem
+ser tamb√©m colocados coment√°rios para //A FAZER// e anota√ß√µes
 particulares.
 
-Pode-se utilizar a opÁ„o de linha de comando ``--no-headers`` para
-converter somente o corpo do documento, suprimindo os cabeÁalhos. Esta
-opÁ„o È ˙til quando os cabeÁalhos est„o em um arquivo separado, que ser·
-unido ao corpo depois da convers„o.
+Pode-se utilizar a op√ß√£o de linha de comando ``--no-headers`` para
+converter somente o corpo do documento, suprimindo os cabe√ßalhos. Esta
+op√ß√£o √© √∫til quando os cabe√ßalhos est√£o em um arquivo separado, que ser√°
+unido ao corpo depois da convers√£o.
 
 -----------------------------------------------------------------------
 
-== MarcaÁıes (REGRAS) ==[regras]
+== Marca√ß√µes (REGRAS) ==[regras]
 
-Todas as marcaÁıes e sintaxe usadas pelo txt2tags est„o detalhadas em
+Todas as marca√ß√µes e sintaxe usadas pelo txt2tags est√£o detalhadas em
 um [arquivo REGRAS a parte REGRAS].
 
 -----------------------------------------------------------------------
 
 == A macro %%date ==[data]
 
-A macro ``%%date`` chamada sem nenhum par‚metro adicional retorna a data
-atual no formato ISO //yyyymmdd//. Uma formataÁ„o opcional pode ser
+A macro ``%%date`` chamada sem nenhum par√¢metro adicional retorna a data
+atual no formato ISO //yyyymmdd//. Uma formata√ß√£o opcional pode ser
 especificada usando a sintaxe ``%%date(formato)``.
 
-O //formato// contÈm texto de diretivas de formataÁ„o, que s„o compostas
+O //formato// cont√©m texto de diretivas de formata√ß√£o, que s√£o compostas
 por um sinal de porcentagem (``%``) seguido por um caractere de
-identificaÁ„o.
+identifica√ß√£o.
 
 Segue uma lista de algumas diretivas comuns. A lista completa pode ser
 encontrada em http://www.python.org/doc/current/lib/module-time.html.
 
- || Diretiva | DescriÁ„o |
+ || Diretiva | Descri√ß√£o |
   |  %a  | Dia da semana local abreviado.
   |  %A  | Dia da semana completo.
-  |  %b  | Nome do mÍs abreviado.
-  |  %B  | Nome do mÍs.
+  |  %b  | Nome do m√™s abreviado.
+  |  %B  | Nome do m√™s.
   |  %c  | Dia e hora formatados apropriadamente.
-  |  %d  | Dia do mÍs como um n˙mero decimal [01,31].
-  |  %H  | Hora (24 horas) como um n˙mero decimal [00,23].
-  |  %I  | Hora (12 horas) como um n˙mero decimal [01,12].
-  |  %m  | O mÍs como um n˙mero decimal [01,12].
-  |  %M  | O minuto como um n˙mero decimal [00,59].
+  |  %d  | Dia do m√™s como um n√∫mero decimal [01,31].
+  |  %H  | Hora (24 horas) como um n√∫mero decimal [00,23].
+  |  %I  | Hora (12 horas) como um n√∫mero decimal [01,12].
+  |  %m  | O m√™s como um n√∫mero decimal [01,12].
+  |  %M  | O minuto como um n√∫mero decimal [00,59].
   |  %p  | O equivalente local a AM e PM.
-  |  %S  | Os segundos como um n˙mero decimal [00,61].  (1)
-  |  %x  | RepresentaÁ„o local da data.
-  |  %X  | RepresentaÁ„o local da hora.
-  |  %y  | O ano sem o sÈculo como um n˙mero decimal [00,99].
-  |  %Y  | O ano com o sÈculo como um n˙mero decimal.
+  |  %S  | Os segundos como um n√∫mero decimal [00,61].  (1)
+  |  %x  | Representa√ß√£o local da data.
+  |  %X  | Representa√ß√£o local da hora.
+  |  %y  | O ano sem o s√©culo como um n√∫mero decimal [00,99].
+  |  %Y  | O ano com o s√©culo como um n√∫mero decimal.
   |  %%  | Um caractere "%".
 
 
@@ -882,21 +882,21 @@ encontrada em http://www.python.org/doc/current/lib/module-time.html.
 
 == O comando %!include ==[include]
 
-A partir da vers„o 1.7, È possÌvel usar o comando ``include`` para
-inserir o conte˙do de um arquivo externo dentro do corpo do documento
+A partir da vers√£o 1.7, √© poss√≠vel usar o comando ``include`` para
+inserir o conte√∫do de um arquivo externo dentro do corpo do documento
 original.
 
-O ``%!include`` n„o È uma configuraÁ„o, mas um comando, sendo somente
-v·lido na ·rea de CORPO do texto.
+O ``%!include`` n√£o √© uma configura√ß√£o, mas um comando, sendo somente
+v√°lido na √°rea de CORPO do texto.
 
-O comando ``include`` È ˙til para dividir um documento grande em v·rios
-arquivos menores (como capÌtulos de um livro) ou para incluir todo o
-conte˙do de um arquivo qualquer no documento. Por exemplo:
+O comando ``include`` √© √∫til para dividir um documento grande em v√°rios
+arquivos menores (como cap√≠tulos de um livro) ou para incluir todo o
+conte√∫do de um arquivo qualquer no documento. Por exemplo:
 
 ```
 Meu Primeiro Livro
 Dr. Fulano da Silva
-1™ EdiÁ„o
+1¬™ Edi√ß√£o
 
 %!include: introducao.t2t
 %!include: capitulo1.t2t
@@ -906,99 +906,99 @@ Dr. Fulano da Silva
 %!include: conclusao.t2t
 ```
 
-Como se pode ver, basta informar o nome do arquivo logo apÛs o comando
-``%!include``. TambÈm È possÌvel atrelar o comando a um destino
-especÌfico, como em:
+Como se pode ver, basta informar o nome do arquivo logo ap√≥s o comando
+``%!include``. Tamb√©m √© poss√≠vel atrelar o comando a um destino
+espec√≠fico, como em:
 
 ``` %!include(html): arquivo.t2t
 
 Note que o ``include`` vai inserir o CORPO do documento .t2t, ignorando
-seu CABE«ALHO e suas CONFIGURA«’ES. Assim È possÌvel converter o arquivo
-incluÌdo de maneira isolada ou como parte do documento m„e.
+seu CABE√áALHO e suas CONFIGURA√á√ïES. Assim √© poss√≠vel converter o arquivo
+inclu√≠do de maneira isolada ou como parte do documento m√£e.
 
-AlÈm de incluir arquivos .t2t, h· mais trÍs tipos de inclus„o:
+Al√©m de incluir arquivos .t2t, h√° mais tr√™s tipos de inclus√£o:
 
-- Inclus„o de texto prÈ-formatado (Verbatim)
-- Inclus„o de texto protegido (Raw)
-- Inclus„o de texto j· convertido (Tagged)
+- Inclus√£o de texto pr√©-formatado (Verbatim)
+- Inclus√£o de texto protegido (Raw)
+- Inclus√£o de texto j√° convertido (Tagged)
 
 
-No tipo **Verbatim** o texto È incluÌdo preservado seus espaÁos e
-formataÁ„o originais. … como se esse texto estivesse entre as marcaÁıes
-(```) da ·rea VERB do txt2tags. Para incluir um arquivo dessa maneira,
+No tipo **Verbatim** o texto √© inclu√≠do preservado seus espa√ßos e
+formata√ß√£o originais. √â como se esse texto estivesse entre as marca√ß√µes
+(```) da √°rea VERB do txt2tags. Para incluir um arquivo dessa maneira,
 basta colocar seu nome entre crases:
 
 ``` %!include: ``/etc/fstab``
 
-No tipo **Raw** o texto È incluÌdo "como est·", sem tentar encontrar e
-avaliar as marcas do txt2tags dele. … como se esse texto estivesse entre
-as marcaÁıes (""") da ·rea protegida. Para incluir um arquivo dessa
+No tipo **Raw** o texto √© inclu√≠do "como est√°", sem tentar encontrar e
+avaliar as marcas do txt2tags dele. √â como se esse texto estivesse entre
+as marca√ß√µes (""") da √°rea protegida. Para incluir um arquivo dessa
 maneira, basta colocar seu nome entre aspas
 
 ``` %!include: ""bom_texto.txt""
 
-J· no tipo **Tagged**, o texto È passado diretamente para o documento
-resultante, sem NENHUM tratamento pelo txt2tags. Assim È possÌvel
-incluir tags adicionais, trechos j· prontos ou estruturas mais
-complicadas que n„o s„o suportadas pelo programa. Outra aplicaÁ„o È
-incluir um cabeÁalho ou rodapÈ padr„o em todos os documentos:
+J√° no tipo **Tagged**, o texto √© passado diretamente para o documento
+resultante, sem NENHUM tratamento pelo txt2tags. Assim √© poss√≠vel
+incluir tags adicionais, trechos j√° prontos ou estruturas mais
+complicadas que n√£o s√£o suportadas pelo programa. Outra aplica√ß√£o √©
+incluir um cabe√ßalho ou rodap√© padr√£o em todos os documentos:
 
 ``` %!include(html): ''rodape.html''
 
-Note que o nome do arquivo est· entre aspas simples (e n„o crases como o
-anterior). S„o estas aspas que indicam que o conte˙do deve ser passado
-diretamente. Como este conte˙do j· contÈm tags, È primordial especificar
-o destino tambÈm, para evitar problemas.
+Note que o nome do arquivo est√° entre aspas simples (e n√£o crases como o
+anterior). S√£o estas aspas que indicam que o conte√∫do deve ser passado
+diretamente. Como este conte√∫do j√° cont√©m tags, √© primordial especificar
+o destino tamb√©m, para evitar problemas.
 
 =======================================================================
 
 
 
-= Parte V - Dominando as Diretivas de ConfiguraÁ„o =[settings]
+= Parte V - Dominando as Diretivas de Configura√ß√£o =[settings]
 
-As Diretivas de ConfiguraÁ„o s„o todas opcionais. A maioria dos usu·rios
-pode muito bem passar sem elas. Mas elas s„o viciantes, se vocÍ comeÁa a
-us·-las, n„o consegue parar :)
+As Diretivas de Configura√ß√£o s√£o todas opcionais. A maioria dos usu√°rios
+pode muito bem passar sem elas. Mas elas s√£o viciantes, se voc√™ come√ßa a
+us√°-las, n√£o consegue parar :)
 
 -----------------------------------------------------------------------
 
 == %!Target ==
 
-Usando a configuraÁ„o Target define o destino padr„o definido no
+Usando a configura√ß√£o Target define o destino padr√£o definido no
 documento:
 
 ``` %!target: html
 
-Assim o usu·rio pode simplesmente comandar
+Assim o usu√°rio pode simplesmente comandar
 
 ``` $ txt2tags file.t2t
 
-E a convers„o ser· efetuada para o destino especificado.
+E a convers√£o ser√° efetuada para o destino especificado.
 
-A configuraÁ„o Target n„o permite a especificaÁ„o opcional de destino.
-Afinal, n„o faz sentido algo como ``%!target(tex): html``.
+A configura√ß√£o Target n√£o permite a especifica√ß√£o opcional de destino.
+Afinal, n√£o faz sentido algo como ``%!target(tex): html``.
 
 
 -----------------------------------------------------------------------
 
 == %!Options ==
 
-Escrever longas linhas de comando toda vez que for necess·rio converter
-um documento È maÁante e sujeito a erros. A configuraÁ„o Options permite
-que o usu·rio salve todas as opÁıes de convers„o juntas, no prÛprio
-documento. Desta forma tambÈm se garante que o documento sempre ser·
-convertido da mesma forma, com as mesmas opÁıes.
+Escrever longas linhas de comando toda vez que for necess√°rio converter
+um documento √© ma√ßante e sujeito a erros. A configura√ß√£o Options permite
+que o usu√°rio salve todas as op√ß√µes de convers√£o juntas, no pr√≥prio
+documento. Desta forma tamb√©m se garante que o documento sempre ser√°
+convertido da mesma forma, com as mesmas op√ß√µes.
 
-SÛ È necess·rio escrevÍ-la sem erros de sintaxe, como se estivesse na
-linha de comando. Mas omita a chamada ao programa "txt2tags" no inÌcio e
+S√≥ √© necess√°rio escrev√™-la sem erros de sintaxe, como se estivesse na
+linha de comando. Mas omita a chamada ao programa "txt2tags" no in√≠cio e
 o nome do arquivo origem no fim da linha.
 
-Por exemplo, se vocÍ usa esta linha de comando para converter seu
+Por exemplo, se voc√™ usa esta linha de comando para converter seu
 documento:
 
 ``` $ txt2tags -t html --toc --toc-level 2 --enum-title file.t2t
 
-Pode-se economizar um bocado de digitaÁ„o usando esta configuraÁ„o de
+Pode-se economizar um bocado de digita√ß√£o usando esta configura√ß√£o de
 Options dentro do documento origem:
 
 ```
@@ -1007,8 +1007,8 @@ Options dentro do documento origem:
 ```
 
 A linha de comando real passa agora a ser apenas "``txt2tags file.t2t``",
-e a convers„o pode ser executada dentro do seu editor de textos
-favorito, enquanto o conte˙do est· sendo editado. No Vi, o comando È:
+e a convers√£o pode ser executada dentro do seu editor de textos
+favorito, enquanto o conte√∫do est√° sendo editado. No Vi, o comando √©:
 
 ``` :!txt2tags %
 
@@ -1016,20 +1016,20 @@ favorito, enquanto o conte˙do est· sendo editado. No Vi, o comando È:
 
 == %!Encoding ==
 
-A configuraÁ„o de Encoding È necess·ria para autores n„o ingleses, que
-usam letras acentuadas e outros detalhes especÌficos, de forma que o
+A configura√ß√£o de Encoding √© necess√°ria para autores n√£o ingleses, que
+usam letras acentuadas e outros detalhes espec√≠ficos, de forma que o
 //Conjunto de Caracteres// do documento gerado possa ser personalizado
-(se possÌvel).
+(se poss√≠vel).
 
-Os valores v·lidos para a configuraÁ„o de Encoding s„o os mesmos que s„o
-v·lidos para documentos, HTML, como //iso-8859-1// e //koi8-r//. Se vocÍ
-n„o est· certo de qual codificaÁ„o quer usar,
+Os valores v√°lidos para a configura√ß√£o de Encoding s√£o os mesmos que s√£o
+v√°lidos para documentos, HTML, como //iso-8859-1// e //koi8-r//. Se voc√™
+n√£o est√° certo de qual codifica√ß√£o quer usar,
 [esta lista completa (e longa!) http://www.iana.org/assignments/character-sets]
-poder· ser de ajuda.
+poder√° ser de ajuda.
 
-Quando for gerado documentos LaTeX, utiliza aliases para a codificaÁ„o.
-Isto n„o deve ser problema para o usu·rio, j· que o txt2tags faz a
-traduÁ„o internamente. Alguns exemplos:
+Quando for gerado documentos LaTeX, utiliza aliases para a codifica√ß√£o.
+Isto n√£o deve ser problema para o usu√°rio, j√° que o txt2tags faz a
+tradu√ß√£o internamente. Alguns exemplos:
 
       || txt2tags/HTML   |  >  | LaTeX  |
        | windows-1250    | >>> | cp1250 |
@@ -1040,18 +1040,18 @@ traduÁ„o internamente. Alguns exemplos:
        | iso-8859-2      | >>> | latin2 |
        | koi8-r          | >>> | koi8-r |
 
-Se o valor È desconhecido do txt2tags, ele ser· passado sem traduÁ„o,
-permitindo que o usu·rio especifique codificaÁıes personalizadas.
+Se o valor √© desconhecido do txt2tags, ele ser√° passado sem tradu√ß√£o,
+permitindo que o usu√°rio especifique codifica√ß√µes personalizadas.
 
 -----------------------------------------------------------------------
 
 == %!PreProc ==
 
-O filtro de usu·rio PreProc È uma funÁ„o "busca e troca" que È aplicada
-logo apÛs a linha ter sido lida do arquivo original, antes de qualquer
+O filtro de usu√°rio PreProc √© uma fun√ß√£o "busca e troca" que √© aplicada
+logo ap√≥s a linha ter sido lida do arquivo original, antes de qualquer
 tratamento pelo txt2tags.
 
-Ela È ˙til para definir algumas abreviaÁıes para texto que seja usado
+Ela √© √∫til para definir algumas abrevia√ß√µes para texto que seja usado
 comumente, como:
 
 ```
@@ -1060,34 +1060,34 @@ comumente, como:
 %!preproc BOLOTA       "[images/tiny/bullet_blue.png]"
 ```
 
-Desta forma, o usu·rio pode escrever uma linha como:
+Desta forma, o usu√°rio pode escrever uma linha como:
 
-``` Oi, eu sou amj. Hoje È RELEASE_DATE.
+``` Oi, eu sou amj. Hoje √© RELEASE_DATE.
 
-E o txt2tags ir· ver esta linha como:
+E o txt2tags ir√° ver esta linha como:
 
-``` Oi, eu sou Aurelio Marinho Jargas. Hoje È 2004-07-13.
+``` Oi, eu sou Aurelio Marinho Jargas. Hoje √© 2004-07-13.
 
-Este filtro È um componente que trabalha entre o autor do documento e a
-convers„o do txt2tags. … como uma primeira convers„o antes da convers„o
+Este filtro √© um componente que trabalha entre o autor do documento e a
+convers√£o do txt2tags. √â como uma primeira convers√£o antes da convers√£o
 "real". Este comportamento funciona exatamente como um filtro Sed/Perl
 externo, chamado assim:
 
 ``` $ cat arquivo.t2t | preproc-script.sh | txt2tags -
 
-Assim, o tratamento executado pelo txt2tags ir· comeÁar apÛs todas as
-substituiÁıes PreProc terem sido feitas.
+Assim, o tratamento executado pelo txt2tags ir√° come√ßar ap√≥s todas as
+substitui√ß√µes PreProc terem sido feitas.
 
 -----------------------------------------------------------------------
 
 == %!PostProc ==
 
-O filtro de usu·rio PostProc È uma funÁ„o do tipo "busca e troca" que È
-aplicada no arquivo resultante, apÛs todos as conversıes do txt2tags
+O filtro de usu√°rio PostProc √© uma fun√ß√£o do tipo "busca e troca" que √©
+aplicada no arquivo resultante, ap√≥s todos as convers√µes do txt2tags
 terem sido feitas.
 
-… ˙til para defintir alguns refinamentos no documento gerado, mudar
-algumas marcaÁıes e acrescentar algumas marcaÁıes ou texto extra.
+√â √∫til para defintir alguns refinamentos no documento gerado, mudar
+algumas marca√ß√µes e acrescentar algumas marca√ß√µes ou texto extra.
 Alguns exemplos breves:
 
 ```
@@ -1095,56 +1095,56 @@ Alguns exemplos breves:
 %!postproc(tex) : "\\clearpage" ""
 ```
 
-Estes filtros mudam a cor de fundo da p·gina HTML e removem as quebras
-de p·gina em arquivos LaTeX gerados.
+Estes filtros mudam a cor de fundo da p√°gina HTML e removem as quebras
+de p√°gina em arquivos LaTeX gerados.
 
-As regras do PostProc s„o iguais a filtros externos Sed/Perl, chamados
+As regras do PostProc s√£o iguais a filtros externos Sed/Perl, chamados
 desta forma:
 
 ``` $ txt2tags -t html -o- arquivo.t2t | postproc-script.sh > arquivo.html
 
 Antes desta funcionalidade ter sido introduzida, era bastante comum ter
 pequenos scripts para "ajustar" os resultados gerados pelo txt2tags.
-Estes scripts eram, de fato, v·rios comandos sed (ou assemelhados), para
+Estes scripts eram, de fato, v√°rios comandos sed (ou assemelhados), para
 fazer algo do tipo "substitua isto por aquilo". Agora estas trocas podem
-ser salvas junto com o texto do documento, e tambÈm aproveitar-se da
-poderosa m·quina de Expressıes Regulares do Python para encontrar os
-padrıes.
+ser salvas junto com o texto do documento, e tamb√©m aproveitar-se da
+poderosa m√°quina de Express√µes Regulares do Python para encontrar os
+padr√µes.
 
 -----------------------------------------------------------------------
 
 == %!Style ==
 
-- Esta opÁ„o È ˙til na geraÁ„o de arquivos HTML e XHTML, definindo o
-  nome do arquivo CSS que ser· usado no documento gerado.
+- Esta op√ß√£o √© √∫til na gera√ß√£o de arquivos HTML e XHTML, definindo o
+  nome do arquivo CSS que ser√° usado no documento gerado.
 
-- No formato LaTeX, essa opÁ„o È usada para carregar mÛdulos com o
+- No formato LaTeX, essa op√ß√£o √© usada para carregar m√≥dulos com o
   ``\usepackage``.
 
-- O mesmo efeito pode ser obtido com a opÁ„o de linha de comando
+- O mesmo efeito pode ser obtido com a op√ß√£o de linha de comando
   ``--style``.
 
-- A opÁ„o de linha de comando --style tem precedÍncia sobre a
-  configuraÁ„o de %!style
+- A op√ß√£o de linha de comando --style tem preced√™ncia sobre a
+  configura√ß√£o de %!style
 
 
 -----------------------------------------------------------------------
 
 == Detalhes dos Filtros PreProc e PostProc ==
 
-- Estes filtros foram acrescentados ao txt2tags na vers„o 1.6.
+- Estes filtros foram acrescentados ao txt2tags na vers√£o 1.6.
 
-- Filtros s„o uma funÁ„o do tipo "buscar e trocar" (pense no sed)
+- Filtros s√£o uma fun√ß√£o do tipo "buscar e trocar" (pense no sed)
 
-- O PREproc È aplicado logo apÛs a linha ser lida, e o POSTproc È
-  aplicado apÛs todo o tratamento ter sido feito. Funcionam exatamente
-  como em (UUOC ‡ frente):
+- O PREproc √© aplicado logo ap√≥s a linha ser lida, e o POSTproc √©
+  aplicado ap√≥s todo o tratamento ter sido feito. Funcionam exatamente
+  como em (UUOC √† frente):
 
 ``` $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 
-- Escapes especiais como ``\n`` e ``\t`` s„o interpretados
+- Escapes especiais como ``\n`` e ``\t`` s√£o interpretados
 
-- Os filtros s„o cumulativos e s„o aplicados na mesma ordem em que s„o
+- Os filtros s√£o cumulativos e s√£o aplicados na mesma ordem em que s√£o
   definidos
 
 - Os filtros devem receber exatamente DOIS argumentos
@@ -1154,50 +1154,50 @@ padrıes.
 
 - Para evitar problemas, sempre use informar explicitamente para que
   destino se aplica o filtro quando estiver usando o PostProc para mudar
-  marcaÁıes: ``%!PostProc(destino): <isto> <aquilo>``
+  marca√ß√µes: ``%!PostProc(destino): <isto> <aquilo>``
 
-- As Expressıes Regulares do Python podem ser utilizadas! Elas s„o
-  similares ‡s Regex do Perl. Por exemplo: troque todas as marcaÁıes "B"
+- As Express√µes Regulares do Python podem ser utilizadas! Elas s√£o
+  similares √†s Regex do Perl. Por exemplo: troque todas as marca√ß√µes "B"
   para "STRONG" no HTML:
 
 ``` %!postproc(html):   '(</?)B>'   '\1STRONG>'
 
 - Os argumentos dos filtros podem ser passados de 3 formas:
-   + Uma palavra simples, sem aspas ou plicas, como FOO (sem espaÁos)
+   + Uma palavra simples, sem aspas ou plicas, como FOO (sem espa√ßos)
    + Uma string com aspas duplas, como em "FOO"
-   + Uma string com plicas ou apÛstrofos, como em 'FOO'
+   + Uma string com plicas ou ap√≥strofos, como em 'FOO'
 
-- Se seu padr„o tem aspas, proteja as mesmas com plicas, e vice-versa.
-  Alguns exemplos v·lidos:
+- Se seu padr√£o tem aspas, proteja as mesmas com plicas, e vice-versa.
+  Alguns exemplos v√°lidos:
 ```
-%!postproc:   PADR√O    TROCA
-%!postproc:  "PADR√O"  "TROCA"
-%!postproc:  'PADR√O'  'TROCA'
-%!postproc:   PADR√O   "TROCA"
-%!postproc:  "PADR√O"  'TROCA'
+%!postproc:   PADR√ÉO    TROCA
+%!postproc:  "PADR√ÉO"  "TROCA"
+%!postproc:  'PADR√ÉO'  'TROCA'
+%!postproc:   PADR√ÉO   "TROCA"
+%!postproc:  "PADR√ÉO"  'TROCA'
 ```
 
 
 -----------------------------------------------------------------------
 
-== Definindo uma ConfiguraÁ„o para um Tipo-Destino EspecÌfico ==
+== Definindo uma Configura√ß√£o para um Tipo-Destino Espec√≠fico ==
 
-Desde a vers„o 1.6 do txt2tags, todas as Diretivas de ConfiguraÁ„o podem
-ser especificadas para um destino especÌfico, usando a sintaxe
-``%!key(target): value``. Desta forma, o usu·rio pode definir diferentes
-configuraÁıes para diverentes tipos de arquivos gerados.
+Desde a vers√£o 1.6 do txt2tags, todas as Diretivas de Configura√ß√£o podem
+ser especificadas para um destino espec√≠fico, usando a sintaxe
+``%!key(target): value``. Desta forma, o usu√°rio pode definir diferentes
+configura√ß√µes para diverentes tipos de arquivos gerados.
 
-Este aspecto È especialmente ˙til nos filtros pre/postproc, mas pode ser
+Este aspecto √© especialmente √∫til nos filtros pre/postproc, mas pode ser
 utilizado em todas as diretrizes. Por exemplo, configurar diferentes
 valores de Encoding para HTML e LaTeX:
 
 ```
-%!encoding(html): iso-8859-1
+%!encoding(html): iso-8859-1 
 %!encoding(tex): latin1
 ```
 
-	**Nota:** O mapeamento de codificaÁıes para os nomes especiais
-	LaTeX j· È parte do txt2tags, o trecho acima È apenas um
+	**Nota:** O mapeamento de codifica√ß√µes para os nomes especiais
+	LaTeX j√° √© parte do txt2tags, o trecho acima √© apenas um
 	exemplo.
 
 Para o ``%!options``, pode ser interessante:
@@ -1209,34 +1209,34 @@ Para o ``%!options``, pode ser interessante:
 %!options(txt ): --toc-only --toc-level 2
 ```
 
-Desta forma, o tipo de destino padr„o È o SGML, com TOC. Se o usu·rio
+Desta forma, o tipo de destino padr√£o √© o SGML, com TOC. Se o usu√°rio
 executar:
 
 ``` $ txt2tags -t html file.t2t
 
-O tipo de destino HTML ser· feito, e **somente** as opÁıes de
-``%!options(html)`` ser„o usadas. Desta forma, a opÁıa --style ser·
-usada e o arquivo HTML n„o ter· TOC.
+O tipo de destino HTML ser√° feito, e **somente** as op√ß√µes de
+``%!options(html)`` ser√£o usadas. Desta forma, a op√ß√µa --style ser√°
+usada e o arquivo HTML n√£o ter√° TOC.
 
-=== A PrecedÍncia È Diferente ===
+=== A Preced√™ncia √© Diferente ===
 
-Em geral, para as diretivas de configuraÁ„o, a ˙ltima encontrada È a
-usada, mas quando usar diretivas explÌcitas de tipo-destino, elas tem
-precedÍncia sobre as genÈricas, n„o importando qual vem antes. Assim:
+Em geral, para as diretivas de configura√ß√£o, a √∫ltima encontrada √© a
+usada, mas quando usar diretivas expl√≠citas de tipo-destino, elas tem
+preced√™ncia sobre as gen√©ricas, n√£o importando qual vem antes. Assim:
 
 ```
-%!encoding(html): iso-8859-1
+%!encoding(html): iso-8859-1 
 %!encoding: latin1
 ```
 
-Ir· expandir para 'iso-8859-1' quando chamado com ``-t html`` mesmo que
-'latin1' seja definido logo apÛs.
+Ir√° expandir para 'iso-8859-1' quando chamado com ``-t html`` mesmo que
+'latin1' seja definido logo ap√≥s.
 
-=== Filtros s„o Cumulativos ===
+=== Filtros s√£o Cumulativos ===
 
-Os filtros pre/postproc n„o tem precedÍncia e n„o se encaixam no esquema
-"˙ltimo encontrado", eles s„o cumulativos. O usu·rio pode configurar
-m˙ltiplos filtros, e eles ser„o aplicados na ordem em que s„o definidos.
+Os filtros pre/postproc n√£o tem preced√™ncia e n√£o se encaixam no esquema
+"√∫ltimo encontrado", eles s√£o cumulativos. O usu√°rio pode configurar
+m√∫ltiplos filtros, e eles ser√£o aplicados na ordem em que s√£o definidos.
 
 Por exemplo:
 
@@ -1245,41 +1245,41 @@ Por exemplo:
 %!postproc(txt): ^ '> '
 ```
 
-Com estes filtros, todos os tipos-destino ser„o indentados por uma TAB.
-Se o tipo-destino È TXT, ele tambÈm receber· citaÁıes, como mensagens
+Com estes filtros, todos os tipos-destino ser√£o indentados por uma TAB.
+Se o tipo-destino √© TXT, ele tamb√©m receber√° cita√ß√µes, como mensagens
 de email.
 
 ```
 Desta forma        Minha bela linha.
-se tornar·         \t> Minha bela linha.
+se tornar√°         \t> Minha bela linha.
 ```
 
 === Em Resumo ===
 
-- Para filtros, a ordem faz diferenÁa e as regras genÈricas __e__
-  especÌficas ao tipo-destino ser„o usadas
+- Para filtros, a ordem faz diferen√ßa e as regras gen√©ricas __e__
+  espec√≠ficas ao tipo-destino ser√£o usadas
 
-- Para outras configuraÁıes, __somente__ o tipo-destino especificado È
-  usado (se definido, È claro), n„o importando a ordem
-
-
-== RC, CONF e a precedÍncia de linha de comando ==
-
-H· trÍs maneiras de dizer ao txt2tags quais opÁıes e configuraÁıes usar:
-
-+ O arquivo de usu·rio RC  (``.txt2tagsrc``)
-+ A ¡rea de ConfiguraÁıes CONF do documento
-+ As opÁıes de linha de comando
+- Para outras configura√ß√µes, __somente__ o tipo-destino especificado √©
+  usado (se definido, √© claro), n√£o importando a ordem
 
 
-E esta È a ordem exata de como as configuraÁıes s„o lidas e aplicadas.
-Logo, as configuraÁıe dp arquivo RC s„o lidas primeiro, daÌ as
-configuraÁıes do fonte do documento vÍm a seguir, sobreescrevendo as do
-RC e finalmente as opÁıes da linha de comando, mais fortes do que as
+== RC, CONF e a preced√™ncia de linha de comando ==
+
+H√° tr√™s maneiras de dizer ao txt2tags quais op√ß√µes e configura√ß√µes usar:
+
++ O arquivo de usu√°rio RC  (``.txt2tagsrc``)
++ A √Årea de Configura√ß√µes CONF do documento
++ As op√ß√µes de linha de comando
+
+
+E esta √© a ordem exata de como as configura√ß√µes s√£o lidas e aplicadas.
+Logo, as configura√ß√µe dp arquivo RC s√£o lidas primeiro, da√≠ as
+configura√ß√µes do fonte do documento v√™m a seguir, sobreescrevendo as do
+RC e finalmente as op√ß√µes da linha de comando, mais fortes do que as
 outras duas.
 
-Ent„o se o "encoding" do documento foi definido nas trÍs opÁıes, a da
-linha de comando ser· a utilizada.
+Ent√£o se o "encoding" do documento foi definido nas tr√™s op√ß√µes, a da
+linha de comando ser√° a utilizada.
 
 
 =======================================================================
@@ -1288,17 +1288,17 @@ linha de comando ser· a utilizada.
 
 = Parte VI - Magia Negra =
 
-Este capÌtulo n„o È recomendado para novatos. Ele demonstra como fazer
-coisas estranhas com os filtros txt2tags, abusando de padrıes complexos
-e Expressıes Regulares.
+Este cap√≠tulo n√£o √© recomendado para novatos. Ele demonstra como fazer
+coisas estranhas com os filtros txt2tags, abusando de padr√µes complexos
+e Express√µes Regulares.
 
-	**CUIDADO!** Os procedimentos detalhados a seguir N√O s„o
-	encorajados e podem acarretar danos. AtÈ mesmo algum texto do
-	arquivo fonte pode ser perdido no processo de convers„o, n„o
-	aparecendo no arquivo gerado. Use estas t·ticas se vocÍ
-	realmente precisa delas e sabe o que est· fazendo.
+	**CUIDADO!** Os procedimentos detalhados a seguir N√ÉO s√£o
+	encorajados e podem acarretar danos. At√© mesmo algum texto do
+	arquivo fonte pode ser perdido no processo de convers√£o, n√£o
+	aparecendo no arquivo gerado. Use estas t√°ticas se voc√™
+	realmente precisa delas e sabe o que est√° fazendo.
 
- || Filtros s„o um recurso poderoso, mas podem ser perigosos! |
+ || Filtros s√£o um recurso poderoso, mas podem ser perigosos! |
 
  || Filtros mal-feitos geram resultados inesperados. |
 
@@ -1306,14 +1306,14 @@ Tenha isto em mente, sempre.
 
 -----------------------------------------------------------------------
 
-== Inserindo M˙ltiplas Linhas com %!PostProc (como regras CSS) ==
+== Inserindo M√∫ltiplas Linhas com %!PostProc (como regras CSS) ==
 
-Nos filtros, o padr„o de troca pode incluir m˙ltiplas linhas usando o
+Nos filtros, o padr√£o de troca pode incluir m√∫ltiplas linhas usando o
 caractere de quebra de linha, ``\n``.
 
-Esta funcionalidade pode ser ˙til para incluir regras CSS curtas em um
+Esta funcionalidade pode ser √∫til para incluir regras CSS curtas em um
 arquivo HTML gerado, sem a necessidade de se criar um arquivo separado.
-… o caso deste Guia do Usu·rio, que usa estes filtros:
+√â o caso deste Guia do Usu√°rio, que usa estes filtros:
 
 ```
 %!postproc: <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
@@ -1323,7 +1323,7 @@ arquivo HTML gerado, sem a necessidade de se criar um arquivo separado.
 %!postproc: (</STYLE>)  'th       { background-color:yellow  ;} \n\1'
 ```
 
-Todos os filtros est„o presos ao primeiro, ao substituir uma string que
+Todos os filtros est√£o presos ao primeiro, ao substituir uma string que
 ele inseriu. desta forma, um simples "<HEAD>" torna-se:
 
 ```
@@ -1338,181 +1338,181 @@ th       { background-color:yellow  ;}
 
 -----------------------------------------------------------------------
 
-== Criando Conte˙do "EspecÌfico ao Tipo Destino", com %!PreProc ==
+== Criando Conte√∫do "Espec√≠fico ao Tipo Destino", com %!PreProc ==
 
-Algumas vezes È necess·rio inserir algum texto sÛ para um tipo destino
-especÌfico, e n„o para outros. Este tipo de comportamento estranho pode
+Algumas vezes √© necess√°rio inserir algum texto s√≥ para um tipo destino
+espec√≠fico, e n√£o para outros. Este tipo de comportamento estranho pode
 ser feito usando alguns truques de PreProc.
 
-A idÈia È inserir este texto extra no arquivo original como coment·rio,
-mas marc·-lo de forma que um filtro especÌfico para aquele tipo destino
-ir· "descomentar" aquelas linhas.
+A id√©ia √© inserir este texto extra no arquivo original como coment√°rio,
+mas marc√°-lo de forma que um filtro espec√≠fico para aquele tipo destino
+ir√° "descomentar" aquelas linhas.
 
-Por exemplo, se um par·grafo extra deve ser acrescentado somente no tipo
-destino HTML. Coloque o texto em um coment·rio especial, como este:
+Por exemplo, se um par√°grafo extra deve ser acrescentado somente no tipo
+destino HTML. Coloque o texto em um coment√°rio especial, como este:
 
 ```
-%html% Esta p·gina HTML foi produzida pelo [txt2tags http://txt2tags.org].
+%html% Esta p√°gina HTML foi produzida pelo [txt2tags http://txt2tags.org].
 %html% Veja o arquivo fonte TXT [aqui fonte.t2t].
 ```
 
-Como todas estas linhas comeÁam com ``%``, elas s„o linhas de coment·rio e
-ser„o ignoradas. Mas se acrescentarmos este filtro especial:
+Como todas estas linhas come√ßam com ``%``, elas s√£o linhas de coment√°rio e
+ser√£o ignoradas. Mas se acrescentarmos este filtro especial:
 
 ``` %preproc(html): '^%html% ' ''
 
-A string inicial È removida e aquelas linhas ser„o "ativadas", deixando
-de ser coment·rios. Como uma configuraÁ„o especÌfica a um tipo, este
-filtro ser· processado apenas quando for gerado um arquivo HTML.
+A string inicial √© removida e aquelas linhas ser√£o "ativadas", deixando
+de ser coment√°rios. Como uma configura√ß√£o espec√≠fica a um tipo, este
+filtro ser√° processado apenas quando for gerado um arquivo HTML.
 
 -----------------------------------------------------------------------
 
 == Mudando Marcas txt2tags com %!PreProc ==
 
-Se o usu·rio for um guru de Expressıes Regulares, ele pode personalizar
-a sintaxe do documento, mudando as marcaÁıes txt2tags padr„o para algo
-que ele achar mais confort·vel.
+Se o usu√°rio for um guru de Express√µes Regulares, ele pode personalizar
+a sintaxe do documento, mudando as marca√ß√µes txt2tags padr√£o para algo
+que ele achar mais confort√°vel.
 
-Por exemplo, uma TAB È a marca de citaÁ„o. Se o usu·rio n„o gostar
+Por exemplo, uma TAB √© a marca de cita√ß√£o. Se o usu√°rio n√£o gostar
 disto, ou se seu texto tenha um estranho relacionamento com as TABs, ele
 pode definir uma nova marca para texto citado. Digamos que colocar ">>>"
-seja sua escolha. Ent„o ele ir· precisar deste filtro simples:
+seja sua escolha. Ent√£o ele ir√° precisar deste filtro simples:
 
 ``` %!PreProc: '>>> ' \t
 
 E no documento original, o texto citado vai parecer algo tipo:
 
 ```
->>> Este È um texto de citaÁ„o.
->>> O usu·rio definiu esta marca esquisita.
->>> Mas elas ser„o convertidas para TABs pelo PreProc.
+>>> Este √© um texto de cita√ß√£o.
+>>> O usu√°rio definiu esta marca esquisita.
+>>> Mas elas ser√£o convertidas para TABs pelo PreProc.
 ```
 
-Antes que a an·lise do programa comece, os ">>> " esquisitos ser„o
-convertidos em TABs e o txt2tags ir· reconhecer a marca de citaÁ„o.
+Antes que a an√°lise do programa comece, os ">>> " esquisitos ser√£o
+convertidos em TABs e o txt2tags ir√° reconhecer a marca de cita√ß√£o.
 
 	**CUIDADO!** Regras PreProc extremas podem eventualmente mudar
-	toda a sintaxe de marcaÁ„o, e atÈ mesmo gerar conflitos entre as
-	marcaÁıes. Tenha muito cuidado quando trabalhar com estas
+	toda a sintaxe de marca√ß√£o, e at√© mesmo gerar conflitos entre as
+	marca√ß√µes. Tenha muito cuidado quando trabalhar com estas
 	regras.
 
 =======================================================================
 
 
 
-= Parte VII - HistÛria do txt2tags =[historia]
+= Parte VII - Hist√≥ria do txt2tags =[historia]
 
-Em julho de 2001, foi lanÁada a primeira vers„o ao p˙blico do txt2tags
+Em julho de 2001, foi lan√ßada a primeira vers√£o ao p√∫blico do txt2tags
 (v0.1). Mas suas origens vem de mais de um ano antes daquele dia...
 
-Este capÌtulo ilustra em algumas palavras o desenvolvimento desta
-ferramenta desde a primeira linha ser escrita atÈ a sÈrie atual.
+Este cap√≠tulo ilustra em algumas palavras o desenvolvimento desta
+ferramenta desde a primeira linha ser escrita at√© a s√©rie atual.
 
-== Janeiro de 1999: PrÈ HistÛria ==
+== Janeiro de 1999: Pr√© Hist√≥ria ==
 
 Do autor:
 
 	//"Minha primeira tentativa de fazer uma ferramenta de//
-	//convers„o comeÁou em 1999, como um script Bourne Shell//
-	//que convertia texto com marcaÁ„o em uma p·gina HTML. Sim,//
-	//Mais Outra ferramenta txt2html. Todo mundo j· deve ter feito//
-	//uma destas... Em resumo, ele reconhecia marcaÁıes simples//
+	//convers√£o come√ßou em 1999, como um script Bourne Shell//
+	//que convertia texto com marca√ß√£o em uma p√°gina HTML. Sim,//
+	//Mais Outra ferramenta txt2html. Todo mundo j√° deve ter feito//
+	//uma destas... Em resumo, ele reconhecia marca√ß√µes simples//
 	//como ``*bold*``, ``/italic/``, ``_under_``, e escapava os//
-	//caracteres especiais ``< & >`` do HTML. N„o muito//
+	//caracteres especiais ``< & >`` do HTML. N√£o muito//
 	//impressionante, mas ei, eu era novinho ;)"//
 
-== Junho 1999: Ainda PrÈ-HistÛria ==
+== Junho 1999: Ainda Pr√©-Hist√≥ria ==
 
 % ts/antigos/txt2sgml-bash/txt2sgml  25/06/1999
 
 O autor tem mais a dizer:
 
 	//"Passaram-se alguns meses, e um grande hype em torno de//
-	//Sgml chegou ‡ companhia que eu trabalhava (Conectiva). Ent„o o//
+	//Sgml chegou √† companhia que eu trabalhava (Conectiva). Ent√£o o//
 	//txt2html tornou-se um script txt2sgml. Eu estava realmente//
 	//tentando aprender sobre o SED* naquele tempo, de forma que o//
-	//txt2tags na Època era um script Bourne Shell com muito//
-	//cÛdigo SED."//
+	//txt2tags na √©poca era um script Bourne Shell com muito//
+	//c√≥digo SED."//
 
-	* **SED:** UNIX Stream EDitor - uma ferramenta de ediÁ„o
-	autom·tica de textos
+	* **SED:** UNIX Stream EDitor - uma ferramenta de edi√ß√£o
+	autom√°tica de textos
 
-Esta vers„o melhorada, com suporte a Sgml, oferecia suporte a mais
+Esta vers√£o melhorada, com suporte a Sgml, oferecia suporte a mais
 estruturas como listas e texto preformatado. No seguinte arquivo
-exemplo, pode-se ver as origens das marcaÁıes txt2tags:
+exemplo, pode-se ver as origens das marca√ß√µes txt2tags:
 
 ```
-		 * Esta È uma linha em negrito  (NEGRITO orientado a linha? bem...)
+		 * Esta √© uma linha em negrito  (NEGRITO orientado a linha? bem...)
 
 		   --
-		 - lista n„o numerada muito semelhante ‡ lista do txt2tags 
+		 - lista n√£o numerada muito semelhante √† lista do txt2tags 
 		 - mas com estes -- para iniciar e terminar a lista
 		   --
 
 		 =----------------------
-		 Texto preformatado era delimitado pelo =-- padr„o.
-		 Os outros ------- eram apenas cosmÈticos.
+		 Texto preformatado era delimitado pelo =-- padr√£o.
+		 Os outros ------- eram apenas cosm√©ticos.
 		 =----------------------
 ```
 
-Ainda n„o era impressionante, mas o grande passo est· chegando...
+Ainda n√£o era impressionante, mas o grande passo est√° chegando...
 
-== Agosto de 2000: N„o Mais PrÈ-HistÛria ==
+== Agosto de 2000: N√£o Mais Pr√©-Hist√≥ria ==
 
 % verde666.org/sed/programas/txt2*/txt2sgml.sed  20000816 - 20010514
 
 TODO (txt2sgml.sed)
 
-== Julho de 2001: Debute das sÈries 0.x (LanÁamento Mundial) ==
+== Julho de 2001: Debute das s√©ries 0.x (Lan√ßamento Mundial) ==
 
 TODO
 
-== Setembro de 2002: Debute das sÈries 1.x ==
+== Setembro de 2002: Debute das s√©ries 1.x ==
 
-: **An˙ncio**
-  Este release inicia a minha //sÈrie 1.x//.
+: **An√∫ncio**
+  Este release inicia a minha //s√©rie 1.x//.
 
-  Mais de um ano de atualizaÁıs quase mensais e a //sÈrie 0.x//
+  Mais de um ano de atualiza√ß√µs quase mensais e a //s√©rie 0.x//
   proporcionou-me muitos bons recursos, como Linha de Comando e
-  interface Web, criaÁ„o de Sum·rio (TOC), tÌtulos e listas numerados,
+  interface Web, cria√ß√£o de Sum√°rio (TOC), t√≠tulos e listas numerados,
   facilidades STDIN e STDOUT, arquivos de sintaxe vim/emacs e sete
   formatos de destino suportados.
 
-  Para a iniciar a //sÈrie 1.x// vou tentar me espalhar por aÌ, com uma
-  boa interface GUI, muita documentaÁ„o, lista de discuss„o, base de
-  usu·rios, compatibilidade Unix/Windows/Mac e incluir mais destinos
+  Para a iniciar a //s√©rie 1.x// vou tentar me espalhar por a√≠, com uma
+  boa interface GUI, muita documenta√ß√£o, lista de discuss√£o, base de
+  usu√°rios, compatibilidade Unix/Windows/Mac e incluir mais destinos
   (como tex, rtf e xhtml).
 
-  Nesta vers„o 1.0 j· estou com a corda toda, com uma roupa nova
-  (Interface Gr·fica Tk) e compatibilidade com Unix/Windows/Mac,
-  manipulaÁ„o de quebras de linhas e outros detalhes especÌficos de cada
+  Nesta vers√£o 1.0 j√° estou com a corda toda, com uma roupa nova
+  (Interface Gr√°fica Tk) e compatibilidade com Unix/Windows/Mac,
+  manipula√ß√£o de quebras de linhas e outros detalhes espec√≠ficos de cada
   plataforma. Felizmente agora meu mestre pode usar os sistemas Linux,
   Windows 2000, Cygwin e MacOS 8.6 para me testar.
 
 
-== 2002, 2003... e as HistÛria n„o p·ra ==
+== 2002, 2003... e as Hist√≥ria n√£o p√°ra ==
 
-: //06 Novembro 2002// - **Liberada minha nova vers„o 1.1**
+: //06 Novembro 2002// - **Liberada minha nova vers√£o 1.1**
 
-  AtenÁ„o! Por favor leia //cuidadosamnte// antes de me atualizar!
+  Aten√ß√£o! Por favor leia //cuidadosamnte// antes de me atualizar!
 
-  Esta nova v1.1 È uma __**quebra de compatibilidade**__ .
+  Esta nova v1.1 √© uma __**quebra de compatibilidade**__ .
 
-  Isto significa que antes de atualizar vocÍ deve verificar seus
-  arquivos txt2tags atuais, e, possivelmente ajust·-los. Ignorar esta
-  vers„o n„o È uma opÁ„o :) porque as prÛximas versıes consideram que
-  vocÍ arrumou os seus arquivos.
+  Isto significa que antes de atualizar voc√™ deve verificar seus
+  arquivos txt2tags atuais, e, possivelmente ajust√°-los. Ignorar esta
+  vers√£o n√£o √© uma op√ß√£o :) porque as pr√≥ximas vers√µes consideram que
+  voc√™ arrumou os seus arquivos.
 
-  Por favor leia o "Guia de SobrevivÍncia de AtualizaÁ„o para a v1.1"
-  para mais informaÁıes mais detalhadas sobre //o que// foi mudado e
+  Por favor leia o "Guia de Sobreviv√™ncia de Atualiza√ß√£o para a v1.1"
+  para mais informa√ß√µes mais detalhadas sobre //o que// foi mudado e
   //como// ajustar os seus arquivos.
 
-  Mas h· algumas boas novas, como:
+  Mas h√° algumas boas novas, como:
     - imagens agora podem apontar links, como ``[[img.gif] www.abc.com]``
     - novas regras de foldmethod=syntax no arquivo de sintaxe do Vim
     - melhorias no detector de URL
 
-: //03 Dezembro 2002// - **LanÁamento da nova vers„o 1.2 (vers„o LaTeX)**
+: //03 Dezembro 2002// - **Lan√ßamento da nova vers√£o 1.2 (vers√£o LaTeX)**
 
   Oi! Finalmente aprendi um dos formatos de documento mais usado pelos
   geeks: **//LaTeX//**. Me execute com "``-t tex``" e veja seus arquivos
@@ -1521,30 +1521,30 @@ TODO
   Ah! Estou ficando esperto e agora posso cuidar de mais de um arquivo
   ao mesmo tempo. Dica: "``*.t2t``"
 
-  E meu ˙ltimo novo recurso È a habilidade de tornar um arquivo HTML em
-  um arquivo .t2t "quase pronto". Desculpem-me os n„o-usu·rios do vim
-  porque isso sÛ funciona neste editor.
+  E meu √∫ltimo novo recurso √© a habilidade de tornar um arquivo HTML em
+  um arquivo .t2t "quase pronto". Desculpem-me os n√£o-usu√°rios do vim
+  porque isso s√≥ funciona neste editor.
 
-  O que vocÍ est· esperando? Baixe-me agora e teste meus novos recursos:
+  O que voc√™ est√° esperando? Baixe-me agora e teste meus novos recursos:
   ``txt2tags --toc -t tex *.t2t``
 
-: //20 Dezembro 2002// - **LanÁamento da nova vers„o 1.3**
+: //20 Dezembro 2002// - **Lan√ßamento da nova vers√£o 1.3**
 
-  Ufa, estou cansado! Muitas modificaÁıes foram feitas para esta vers„o
+  Ufa, estou cansado! Muitas modifica√ß√µes foram feitas para esta vers√£o
   e agora preciso de um tempo!
 
   A novidade inclui uma nova marca (coisa rara de acontecer!) para texto
-  protegido. Desta forma vocÍ pode facilmente incluir marcas no
-  documento destino e eu prometo que n„o as vou considerar!
+  protegido. Desta forma voc√™ pode facilmente incluir marcas no
+  documento destino e eu prometo que n√£o as vou considerar!
 
-  Um novo comando //Encoding// est· disponÌvel para permitir que
-  usu·rios de todo o mundo especifiquem suas prÛprias codificaÁıes em
+  Um novo comando //Encoding// est√° dispon√≠vel para permitir que
+  usu√°rios de todo o mundo especifiquem suas pr√≥prias codifica√ß√µes em
   seus documentos.
 
-  E h· mais melhorias e ajustes, mas, por favor leia o arquivo ChangeLog
+  E h√° mais melhorias e ajustes, mas, por favor leia o arquivo ChangeLog
   por que agora vou dormir. zzZZzzzzZZZZzz...
 
-: //18 Fevereiro 2003// - **LanÁamento da nova vers„o 1.4**
+: //18 Fevereiro 2003// - **Lan√ßamento da nova vers√£o 1.4**
 
   I've enjoyed my //X-mas/New Year// vacation, then some lazy days on
   a hot Brazilian beach, what a great time! But now it is time to get
@@ -1567,7 +1567,7 @@ TODO
   Mmmmmm, there were some bug fixes also, but let's forget about them,
   you know I'm not buggy! ;)
 
-: //09 Maio 2003// - **LanÁamento da nova vers„o 1.5**
+: //09 Maio 2003// - **Lan√ßamento da nova vers√£o 1.5**
 
   Tsc, Tsc... Almost three months from the last version, what a shame!
   But the new features will worth the delay.
@@ -1593,7 +1593,7 @@ txt2tags-v1.5 -t html -n -o new.html file.t2t
 
   Ah! LaTeX target now supports images :)
 
-: //23 Jul 2003// - **LanÁamento da nova vers„o 1.6**
+: //23 Jul 2003// - **Lan√ßamento da nova vers√£o 1.6**
 
   Hi there! Here I am again with fresh news.
 
@@ -1614,21 +1614,21 @@ txt2tags-v1.5 -t html -n -o new.html file.t2t
   file is loaded. Gui also can receive options from the command line, as
   in ``txt2tags --gui -n file.t2t``
 
-: //30 Novembro 2003// - **LanÁamento da nova vers„o 1.7**
+: //30 Novembro 2003// - **Lan√ßamento da nova vers√£o 1.7**
 
-   Saiu a minha vers„o 1.7! Agora tenho o comando que os usu·rios mais
-   pediram: ``%!include``. Com ele vocÍ pode incluir texto, tags e atÈ
+   Saiu a minha vers√£o 1.7! Agora tenho o comando que os usu√°rios mais
+   pediram: ``%!include``. Com ele voc√™ pode incluir texto, tags e at√©
    mesmo outro arquivo .t2t no documento original. Veja como fazer isso
-   no [Guia do Usu·rio #include].
+   no [Guia do Usu√°rio #include].
 
    Fora isso mais checagens foram adicionadas e bugs foram corrigidos.
-   Os usu·rios do Emacs ficar„o felizes com o arquivo novo de sintaxe.
-   Os usu·rios do Vim continuar„o felizes com o arquivo de sintaxe
+   Os usu√°rios do Emacs ficar√£o felizes com o arquivo novo de sintaxe.
+   Os usu√°rios do Vim continuar√£o felizes com o arquivo de sintaxe
    atualizado.
 
-   **MUITO IMPORTANTE:** Essa vers„o fecha a minha sÈrie 1.x, ent„o n„o
-   haver„o versıes 1.8 e 1.9. A prÛxima ser· a t„o esperada 2.0, com
-   cÛdigo reescrito, conversıes mais ricas e enxutas e suporte ao
+   **MUITO IMPORTANTE:** Essa vers√£o fecha a minha s√©rie 1.x, ent√£o n√£o
+   haver√£o vers√µes 1.8 e 1.9. A pr√≥xima ser√° a t√£o esperada 2.0, com
+   c√≥digo reescrito, convers√µes mais ricas e enxutas e suporte ao
    destino XHTML. Eu serei mais massa!
 
 ========================================================================
@@ -1676,10 +1676,10 @@ Fim. ([veja o fonte userguide-pt.t2t])
 % 
 % ==   EXTRA II   ==
 % 
-% For those who have the (π) package installed, the (≤) target
-% is available! The package is found here: (≥)
+% For those who have the (¬π) package installed, the (¬≤) target
+% is available! The package is found here: (¬≥)
 % 
-% | π           | ≤   | ≥                             |
+% | ¬π           | ¬≤   | ¬≥                             |
 % | sgml-tools  | ps  | http://www.sgmltools.org      |
 % | ghostscript | pdf | http://www.cs.wisc.edu/~ghost |
 % 
@@ -1706,7 +1706,7 @@ Fim. ([veja o fonte userguide-pt.t2t])
 
 % here is the list of all special chars: % ! - + = : * _ / [ ] | ` \t
 
-% pq n„o usar alinhamento como PRE
+% pq n√£o usar alinhamento como PRE
 
 % - title line DOESNT support beautifiers, link, macro, etc (like PRE)
 % why not ZIP? windows .ZIP file ? (winzip abre .gz anyway...)

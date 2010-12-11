@@ -3,13 +3,13 @@ Aurelio Jargas
 %%mtime(%m/%d/%Y)
 
 %!target: html
-%!encoding: iso-8859-15
+%!encoding: UTF-8
 
                   =  Einleitung  =
 
 Willkommen in der txt2tags-Beispieldatei.
 
-Hier erhalten Sie Beispiele und kurze Erklärungen
+Hier erhalten Sie Beispiele und kurze ErklÃ¤rungen
 zu allen Markierungen.
 
 Die ersten 3  Zeilen dieser Datei enhalten die Kopfdaten
@@ -21,7 +21,7 @@ Zeile3: Datum, Version
 ```
 
 Zeilen, die mit Gleichheitszeichen '=' beginnen und
-enden, sind Überschriften. (Es müssen gleich viele
+enden, sind Ãœberschriften. (Es mÃ¼ssen gleich viele
 Gleichheitszeichen am Beginn und Ende der Zeile sein.)
 
 % Ein geheimer Kommentar!
@@ -35,26 +35,26 @@ Es gibt zwei Schriftarten:
 Die Schrift NORMAL, die mit Textauszeichnungen versehen werden kann.
 
 Die Schrift TYPEWRITER, die Zeichen fester
-Breite hat und sich für vorformatierten Text eignet.
+Breite hat und sich fÃ¼r vorformatierten Text eignet.
 
 Jetzt kommen wir zu einem Unterabschnitt ...
 
 
                   ==  Textauszeichnungen  ==
 
-Die Markierungen für Textauszeichnungen sind einfach,
-ähnlich wie sie bei Text-Emails verwendet werden.
+Die Markierungen fÃ¼r Textauszeichnungen sind einfach,
+Ã¤hnlich wie sie bei Text-Emails verwendet werden.
 
 Wir benutzen die Zeichen *, / und _ doppelt, um
 **fette Schrift**, //kursive Schrift// und __Unterstreichen__ zu 
 kennzeichnen.
 
-**//Fette kursive Schrift//** wird ebenfalls unterstützt.
+**//Fette kursive Schrift//** wird ebenfalls unterstÃ¼tzt.
 
 
               ==  Vorformatierte Texte  ==
 
-Wir können Programmcode oder anderen vorformatierten Text setzen:
+Wir kÃ¶nnen Programmcode oder anderen vorformatierten Text setzen:
 ```
   Dieser      Text  is     vorformatiert
 //Markierungen// werden  **einfach**  ``ignoriert``
@@ -73,7 +73,7 @@ Spezielle Elemente wie Emailadressen
 automagisch erkannt, ebenso wie horizontale Linien:
 
 --------------------------------------------------------
-^ dünn oder dick v
+^ dÃ¼nn oder dick v
 ========================================================
 
 Man kann auch einen [expliziten Link http://irgendwo.de] 
@@ -81,20 +81,20 @@ mit Beschriftung setzen.
 
 Und merken Sie sich,
 	ein TAB am Beginn einer Zeile erzeugt ein Zitat.
-		Weitere TABs erzeugen tiefere Einrückung (wenn erlaubt).
-Schön.
+		Weitere TABs erzeugen tiefere EinrÃ¼ckung (wenn erlaubt).
+SchÃ¶n.
 
 
                       =  Listen  =
 
-Listen werden ganz natürlich mit dem **Bindestrich**
+Listen werden ganz natÃ¼rlich mit dem **Bindestrich**
 oder **Pluszeichen** am Anfang der Zeile erzeugt.
 
 
                   ==  Standard-Liste  ==
 
-Der Bindestrich ist das Standard-Listenzeichen. Für
-Unterlisten fügen Sie einfach Leerzeichen am Zeilenanfang hinzu.
+Der Bindestrich ist das Standard-Listenzeichen. FÃ¼r
+Unterlisten fÃ¼gen Sie einfach Leerzeichen am Zeilenanfang hinzu.
 Weitere Leerzeichen erzeugen weitere Unterlisten.
 
 - Erde
@@ -103,11 +103,11 @@ Weitere Leerzeichen erzeugen weitere Unterlisten.
       - Luxembourg
         - Wie tief kann ich gehen?
   - Amerika
-    - Süd-Amerika
+    - SÃ¼d-Amerika
       - Brasilien
       - und viele mehr ...
 - Mars
-  - Wo sind die kleinen grünen Männchen?
+  - Wo sind die kleinen grÃ¼nen MÃ¤nnchen?
 
 
 Die Liste endet mit **zwei** aufeinanderfolgenden Leerzeilen.
@@ -116,29 +116,29 @@ Die Liste endet mit **zwei** aufeinanderfolgenden Leerzeilen.
                  ==  Numerierte Listen  ==
 
 Die Regeln bleiben dieselben, nur das Startzeichen
-ändert sich (Pluszeichen).
+Ã¤ndert sich (Pluszeichen).
 
 + Eins
 + Zwei
 + Drei
   - Gemischt geht es auch!
   - Welch Durcheinander
-    + Zähle wieder
+    + ZÃ¤hle wieder
     + ...
 + Vier
 
 
                 ==  Definitionslisten  ==
 
-Das Zeichen für Definitionslisten ist der Doppelpunkt,
-gefolgt vom zu erklärenden Ausdruck. Die Erklärung
-beginnt in der nächsten Zeile.
+Das Zeichen fÃ¼r Definitionslisten ist der Doppelpunkt,
+gefolgt vom zu erklÃ¤renden Ausdruck. Die ErklÃ¤rung
+beginnt in der nÃ¤chsten Zeile.
 
 : Apfelsine (Orange)
   Eine gelbe Frucht
 : Apfel
-  Eine grüne oder rote Frucht
-: Weitere Füchte
+  Eine grÃ¼ne oder rote Frucht
+: Weitere FÃ¼chte
   - Oops!
   - Gemischtes
     + wieder!
@@ -151,7 +151,7 @@ Das //pipe (|)//-Zeichen trennt Zeilen und Zellen einer
 Tabelle.
 Doppelte //pipes// am Zeilenbeginn erzeugen eine
 Titelzeile.
-Rechte, linke oder zentrierte Zellenausrichtung werden ganz natürlich mit
+Rechte, linke oder zentrierte Zellenausrichtung werden ganz natÃ¼rlich mit
 Leerzeichen markiert
 
  || Titel 1    |   Titel 2     |     Titel 3 |
@@ -167,17 +167,17 @@ Keine Schluss-//pipe//, kein Rahmen um die Tabelle:
 
                 =  Spezielle Elemente  =
 
-Sonst wär's doch zu einfach.
+Sonst wÃ¤r's doch zu einfach.
 
 
                     ==  Bilder  ==
 
-Die Markierung für Bilder: ``[Dateiname]``, einfacher geht's
+Die Markierung fÃ¼r Bilder: ``[Dateiname]``, einfacher geht's
 nicht.
 
                       [../img/photo.jpg]  
 
-- Der Dateiname muss mit PNG, JPG, GIF, or ähnlich enden.
+- Der Dateiname muss mit PNG, JPG, GIF, or Ã¤hnlich enden.
 - Keine Leerzeichen innerhalb der eckigen Klammern!
 
 
@@ -190,10 +190,10 @@ Heute ist also %%date im ISO ``YYYYMMDD``-Format.
 Das Format zur Datumsanzeige kann auch mit %?
 spezifiert werden: ``%%date(%m-%d-%Y)`` wird zu: %%date(%m-%d-%Y).
 
-So, das war's für's Erste.
+So, das war's fÃ¼r's Erste.
 
 -------------------------------------------------------
-Übersetzung von Pascal Steichen.
+Ãœbersetzung von Pascal Steichen.
 
 Revised by Thomas Bauer.
 -------------------------------------------------------

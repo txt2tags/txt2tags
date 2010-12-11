@@ -1,9 +1,9 @@
 Txt2tags User Guide - French Translation
-Aurélio Marinho Jargas v2.2 (Dez 2004)
+AurÃ©lio Marinho Jargas v2.2 (Dez 2004)
 Translated by Claude Hiebel (Mar 2005)
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 
 %%% htmldoc does TOC
 %!options(html): --no-toc --no-css-sugar -o userguide-pdf.html
@@ -23,13 +23,13 @@ Translated by Claude Hiebel (Mar 2005)
 %!preproc: CONFAREA	Zone CONFIGURATION
 %!preproc: HEADAREA	Zone ENTETE
 %!preproc: BODYAREA	Zone CORPS
-%!preproc: MARKPROP	**Propriétés :**
+%!preproc: MARKPROP	**PropriÃ©tÃ©s :**
 %!preproc: MARKCONT	**Contenu :**
 %!preproc: MARKDESC	**Description :**
 %!preproc: MARKSYN	**Syntaxe :**
-%!preproc: MARKDET	**Détails :**
-%!preproc: NOMARKS	Les marques ne sont pas interprétées
-%!preproc: NOMACRO	Les macros ne sont pas interprétées
+%!preproc: MARKDET	**DÃ©tails :**
+%!preproc: NOMARKS	Les marques ne sont pas interprÃ©tÃ©es
+%!preproc: NOMACRO	Les macros ne sont pas interprÃ©tÃ©es
 
 %!preproc: URLMARKUP	http://txt2tags.org/fr/marques.html
 
@@ -38,12 +38,12 @@ Translated by Claude Hiebel (Mar 2005)
 
 ========================================================================
 
-= Première partie - Introduction =[intro]
+= PremiÃ¨re partie - Introduction =[intro]
 
-== Les premières questions que vous vous posez ==[1st-questions]
+== Les premiÃ¨res questions que vous vous posez ==[1st-questions]
 
-Ce chapitre est un aperçu de txt2tags, qui présente son utilisation et ses
-caractéristiques.
+Ce chapitre est un aperÃ§u de txt2tags, qui prÃ©sente son utilisation et ses
+caractÃ©ristiques.
 
 ------------------------------------------------------------------------
 
@@ -55,13 +55,22 @@ Txt2tags convertit un fichier texte brut avec des petites marques en de
 multiples formats cibles :
 
 - Document HTML
-- Document XHTML
-- Document SGML
-- Document LaTeX
-- Page man UNIX
-- Présentation Magic Point
-- Page MoinMoin
-- DocumentPageMaker 6.0
+- Document XHTML 
+- Document SGML 
+- Document DocBook 
+- Document LaTeX 
+- Document Lout 
+- Page de man UNIX 
+- PrÃ©sentation MagicPoint
+- Document Creole 1.0
+- Page Wikipedia (MediaWiki)
+- Page Google Wiki 
+- Page PmWiki 
+- Page DokuWiki 
+- Page MoinMoin 
+- Document PageMaker 6.0 
+- Document AsciiDoc 
+- Texte ASCII Art 
 - Texte brut (sans marques)
 
 
@@ -69,45 +78,45 @@ multiples formats cibles :
 
 === Pourquoi dois-je l'utiliser ? ===
 
-Vous allez trouver txt2tags très pratique si :
+Vous allez trouver txt2tags trÃ¨s pratique si :
 - vous avez besoin de publier des documents sous divers formats,
-- maintenir des documents à jour sous divers formats,
-- écrire des documents techniques ou des manuels,
-- vous ne savez pas comment écrire un document dans un format
+- maintenir des documents Ã  jour sous divers formats,
+- Ã©crire des documents techniques ou des manuels,
+- vous ne savez pas comment Ã©crire un document dans un format
   particulier,
-- vous n'avez pas un éditeur spécifique pour un certain format,
-- vous voulez utiliser un éditeur simple pour faire les mises à jour.
+- vous n'avez pas un Ã©diteur spÃ©cifique pour un certain format,
+- vous voulez utiliser un Ã©diteur simple pour faire les mises Ã  jour.
 
 
 Et la motivation principale est :
-- gagner du temps : écrire le **contenu** et ne pas vous soucier de la
+- gagner du temps : Ã©crire le **contenu** et ne pas vous soucier de la
 **mise en forme**.
 
 ------------------------------------------------------------------------
 
-=== Pourquoi est-ce un bon choix par rapport à d'autres outils ? ===
+=== Pourquoi est-ce un bon choix par rapport Ã  d'autres outils ? ===
 
-Txt2tags est en très forte croissance, suivant des
+Txt2tags est en trÃ¨s forte croissance, suivant des
 concepts de base.
 En voici les points forts :
 
-| //Fichiers source lisibles// | les marques Txt2tags sont très simples, presque naturelles.
-| //Document de sortie lisible// | Comme le fichier source, le fichier résultat est lisible, avec des indentations et des lignes courtes.
-| //Des marques compatibles// | les marques txt2tags sont suffisamment spécifiques pour aller dans n'importe quel document et ne peuvent pas être confondues avec le contenu.
-| //Des règles simples// | Comme les marques, les règles qui s'appliquent sont liées les unes aux autres. Il n'y a pas de "cas spéciaux" ni "d'exception".
-| //Structures simples// | Toute la mise en forme supportée est **simple** sans autre option ni modificateur compliqué. Juste une marque sans aucune option.
-| //facile à apprendre// | Avec des marques simples et un source lisible, l'apprentissage de txt2tags est ``user friendly``.
-| //De jolis exemples// | Les **fichiers d'exemple** inclus dans le package donnent des exemples réels simples ou "sur"-compliqués écrits avec txt2tags.
-| //Des outils précieux// | Les **fichiers de syntaxe** inclus dans le logiciel (pour les éditeurs vim, emacs, nano et kate) vous aidant à écrire des documents sans erreur de syntaxe.
-| //trois interfaces utilisateur// | Il y a **l'interface graphique Tk**, très facile à utiliser, une **interface Web** qui peut être utilisée à distance et une **interface en ligne de commande** pour les connaisseurs des langages de script.
-| //langage script// | Avec le mode ligne de commande comportant toutes les options, un utilisateur expérimenté peut **automatiser** les tâches et faire de la **post-édition** sur les fichiers convertis.
-| //Chargez et lancez / Multi-platforme// | Txt2tags est un simple **script Python**. Il n'y a pas besoin de compilateur ni de charger des modules supplémentaires. Ainsi il tourne sans problème sur *NIX, Linux, Windows et Macintosh.
-| //Mises à jour fréquentes// | Le programme possède une liste de diffusion très active avec des utilisateurs qui proposent des corrections et des améliorations. L'auteur lui-même est un utilisateur intensif à la maison et au travail, donc le développement n'est pas prêt de s'arrêter.
+| //Fichiers source lisibles// | les marques Txt2tags sont trÃ¨s simples, presque naturelles.
+| //Document de sortie lisible// | Comme le fichier source, le fichier rÃ©sultat est lisible, avec des indentations et des lignes courtes.
+| //Des marques compatibles// | les marques txt2tags sont suffisamment spÃ©cifiques pour aller dans n'importe quel document et ne peuvent pas Ãªtre confondues avec le contenu.
+| //Des rÃ¨gles simples// | Comme les marques, les rÃ¨gles qui s'appliquent sont liÃ©es les unes aux autres. Il n'y a pas de "cas spÃ©ciaux" ni "d'exception".
+| //Structures simples// | Toute la mise en forme supportÃ©e est **simple** sans autre option ni modificateur compliquÃ©. Juste une marque sans aucune option.
+| //facile Ã  apprendre// | Avec des marques simples et un source lisible, l'apprentissage de txt2tags est ``user friendly``.
+| //De jolis exemples// | Les **fichiers d'exemple** inclus dans le package donnent des exemples rÃ©els simples ou "sur"-compliquÃ©s Ã©crits avec txt2tags.
+| //Des outils prÃ©cieux// | Les **fichiers de syntaxe** inclus dans le logiciel (pour les Ã©diteurs vim, emacs, nano et kate) vous aidant Ã  Ã©crire des documents sans erreur de syntaxe.
+| //trois interfaces utilisateur// | Il y a **l'interface graphique Tk**, trÃ¨s facile Ã  utiliser, une **interface Web** qui peut Ãªtre utilisÃ©e Ã  distance et une **interface en ligne de commande** pour les connaisseurs des langages de script.
+| //langage script// | Avec le mode ligne de commande comportant toutes les options, un utilisateur expÃ©rimentÃ© peut **automatiser** les tÃ¢ches et faire de la **post-Ã©dition** sur les fichiers convertis.
+| //Chargez et lancez / Multi-platforme// | Txt2tags est un simple **script Python**. Il n'y a pas besoin de compilateur ni de charger des modules supplÃ©mentaires. Ainsi il tourne sans problÃ¨me sur *NIX, Linux, Windows et Macintosh.
+| //Mises Ã  jour frÃ©quentes// | Le programme possÃ¨de une liste de diffusion trÃ¨s active avec des utilisateurs qui proposent des corrections et des amÃ©liorations. L'auteur lui-mÃªme est un utilisateur intensif Ã  la maison et au travail, donc le dÃ©veloppement n'est pas prÃªt de s'arrÃªter.
 
 
 ------------------------------------------------------------------------
 
-=== Ai-je à payer? ===
+=== Ai-je Ã  payer? ===
 
                 || Absolument PAS ! |
 
@@ -115,23 +124,23 @@ C'est un logiciel libre, GPL, open source et du domaine public.
 //<mettez-votre-mot-favori-ici>//.
 
 Vous pouvez le copier, l'utiliser, le modifier, le vendre et faire des
-mises à jour comme s'il vous appartenait. La politique de copyright du
+mises Ã  jour comme s'il vous appartenait. La politique de copyright du
 logiciel n'est pas un des soucis principaux de l'auteur.
 
 ------------------------------------------------------------------------
 
 
-== Structures de mise au format supportées==[structures]
+== Structures de mise au format supportÃ©es==[structures]
 
-Voici la liste de toutes les structures supportées par txt2tags.
+Voici la liste de toutes les structures supportÃ©es par txt2tags.
 
-- entête (titre du document, nom de l'auteur, date)
-- titre de section (numéroté ou non)
+- entÃªte (titre du document, nom de l'auteur, date)
+- titre de section (numÃ©rotÃ© ou non)
 - paragraphes
 - modificateurs de fontes
  - gras
  - italique
- - souligné
+ - soulignÃ©
 - fonte non proportionnelle (verbatim)
   - dans un paragraphe en fonte non proportionnelle
   - ligne en fonte non proportionnelle
@@ -141,103 +150,103 @@ Voici la liste de toutes les structures supportées par txt2tags.
   - URL/liens Internet,
   - liens e-mail,
   - liens locaux,
-  - liens nommés.
+  - liens nommÃ©s.
 - listes
-  - liste pointée
-  - liste numérotée
-  - liste de définition
-- lignes de séparation horizontales
+  - liste pointÃ©e
+  - liste numÃ©rotÃ©e
+  - liste de dÃ©finition
+- lignes de sÃ©paration horizontales
 - image avec un joli alignement
 - table (avec ou sans bordures, alignement dans la cellule)
-- marques spéciales pour du texte brut (sans traitement)
-- macro spéciale pour la date courante (avec une mise en forme souple)
+- marques spÃ©ciales pour du texte brut (sans traitement)
+- macro spÃ©ciale pour la date courante (avec une mise en forme souple)
 - commentaires (pour des notes, TODO, FIXME)
 
 
 ------------------------------------------------------------------------
 
-== Cibles supportées ==[targets]
+== Cibles supportÃ©es ==[targets]
 
 : **HTML**
   Tout le monde sait ce qu'est l'HTML. (Internet)
 
-  Txt2tags génère des documents HTML propres, qui sont jolis et dont le
-source est lisible. Il N'UTILISE PAS javascript, des fenêtres ou autre
-technique futile, qui ne sont pas nécessaires pour des documents simples
-ou techniques. Mais un fichier CSS peut être utilisé si demandé. Txt2tags
-génère du code "//HTML 4.0 Transitional//".
+  Txt2tags gÃ©nÃ¨re des documents HTML propres, qui sont jolis et dont le
+source est lisible. Il N'UTILISE PAS javascript, des fenÃªtres ou autre
+technique futile, qui ne sont pas nÃ©cessaires pour des documents simples
+ou techniques. Mais un fichier CSS peut Ãªtre utilisÃ© si demandÃ©. Txt2tags
+gÃ©nÃ¨re du code "//HTML 4.0 Transitional//".
 
-Depuis la version 2.0, le code HTML généré est approuvé 100% par
+Depuis la version 2.0, le code HTML gÃ©nÃ©rÃ© est approuvÃ© 100% par
 le [w3c validator http://validator.w3.org/].
 
 : **XHTML**
-C'est la nouvelle génération de HTML, avec des règles plus strictes aussi
-près des marques que vous ouvrez. Cela rend le code plus facile à
-traiter et à comprendre. Pour les cas généraux, considérez que c'est
-du HTML. Txt2tags génère du code "//XHTML 1.0 Transitional//".
+C'est la nouvelle gÃ©nÃ©ration de HTML, avec des rÃ¨gles plus strictes aussi
+prÃ¨s des marques que vous ouvrez. Cela rend le code plus facile Ã 
+traiter et Ã  comprendre. Pour les cas gÃ©nÃ©raux, considÃ©rez que c'est
+du HTML. Txt2tags gÃ©nÃ¨re du code "//XHTML 1.0 Transitional//".
 
-Depuis la version 2.0, le code XHTML généré est approuvé 100% par
+Depuis la version 2.0, le code XHTML gÃ©nÃ©rÃ© est approuvÃ© 100% par
 le [w3c validator http://validator.w3.org/].
 
 : **SGML**
 C'est un format courant de document qui a de puissants
   [outils de conversion http://www.sgmltools.org].
-A partir d'un fichier sgml vous pouvez générer des documents html, pdf,
+A partir d'un fichier sgml vous pouvez gÃ©nÃ©rer des documents html, pdf,
 ps, info, latex, lyx, rtf. Les outils sgml2* font aussi une table des
-matières automatique et sépart les sections en pages distinctes (sgml2html).
+matiÃ¨res automatique et sÃ©part les sections en pages distinctes (sgml2html).
 
-Txt2tags génère des fichiers SGML dans le système de fichiers linuxdoc
-prêt à être convertis avec les outils sgml2* sans fichier catalogue
-supplémentaire et sans besoin ennuyeux du SGML
+Txt2tags gÃ©nÃ¨re des fichiers SGML dans le systÃ¨me de fichiers linuxdoc
+prÃªt Ã  Ãªtre convertis avec les outils sgml2* sans fichier catalogue
+supplÃ©mentaire et sans besoin ennuyeux du SGML
 
 : **LATEX**
-Le format académique préféré, bien plus puissant que vous pouvez
-le rêver. Des livres complets, des formules compliquées et tout texte
-complexe peuvent être écrits en LaTeX. Mais si vous voulez écrire les
-marques à la main, préparez vous à vous arracher les cheveux ...
+Le format acadÃ©mique prÃ©fÃ©rÃ©, bien plus puissant que vous pouvez
+le rÃªver. Des livres complets, des formules compliquÃ©es et tout texte
+complexe peuvent Ãªtre Ã©crits en LaTeX. Mais si vous voulez Ã©crire les
+marques Ã  la main, prÃ©parez vous Ã  vous arracher les cheveux ...
 
-Txt2tags génère des fichiers LaTeX prêts à l'usage, faisant
+Txt2tags gÃ©nÃ¨re des fichiers LaTeX prÃªts Ã  l'usage, faisant
 tout le travail complexe de mise en forme avec ses exceptions.
-L'utilisateur n'a à s'occuper que du texte.
+L'utilisateur n'a Ã  s'occuper que du texte.
 
 : **LOUT**
-Très semblable à LaTeX en puissance, mais avec une syntaxe plus facile,
-utilisant des "@" à la place des "\" et évitant l'utilisation des
+TrÃ¨s semblable Ã  LaTeX en puissance, mais avec une syntaxe plus facile,
+utilisant des "@" Ã  la place des "\" et Ã©vitant l'utilisation des
 accolades dans les cas classiques. Son approche tout-est-objet rend
 le marquage plus sain.
 
-Txt2tags génère des fichiers Lout prêts à l'usage, qui peuvent être
+Txt2tags gÃ©nÃ¨re des fichiers Lout prÃªts Ã  l'usage, qui peuvent Ãªtre
 convertis en PS ou PDF en utilisant la commande "lout".
 
 : **MAN**
-Les page de manuel UNIX résistent au temps. Les formats de documents
-passent et elles sont toujours là, inamovibles.
+Les page de manuel UNIX rÃ©sistent au temps. Les formats de documents
+passent et elles sont toujours lÃ , inamovibles.
 
-Il y a d'autres outils pour générer des pages de man, mais txt2tags a un
-avantage : une source de multiples cibles. Ainsi la même page de man peut
-être convertie en page HTML, présentation Magic Point, etc.
+Il y a d'autres outils pour gÃ©nÃ©rer des pages de man, mais txt2tags a un
+avantage : une source de multiples cibles. Ainsi la mÃªme page de man peut
+Ãªtre convertie en page HTML, prÃ©sentation Magic Point, etc.
 
 : **MGP**
-  [Magic Point http://www.mew.org/mgp] est un outil de présentation très
+  [Magic Point http://www.mew.org/mgp] est un outil de prÃ©sentation trÃ¨s
 pratique (genre : Microsoft PowerPoint), qui utilise un langage de
-marques pour définir tous les écrans. Vous pouvez faire des
-présentations complexes avec vi/emacs/notepad.
+marques pour dÃ©finir tous les Ã©crans. Vous pouvez faire des
+prÃ©sentations complexes avec vi/emacs/notepad.
 
-Txt2tags génère des fichiers .mgp prêts à l'usage, définissant toutes
-les entêtes pour les fontes et pour les définitions de la présentation,
+Txt2tags gÃ©nÃ¨re des fichiers .mgp prÃªts Ã  l'usage, dÃ©finissant toutes
+les entÃªtes pour les fontes et pour les dÃ©finitions de la prÃ©sentation,
 ainsi que le support des accents en encodage ISO-8859 avec le support des accents.
 
-  **POINT FORT 1 :** txt2tags crée les fichiers .mgp en utilisant les
-fontes XFree86 Type1. Ainsi vous n'avez pas à joindre les fichiers
-de fontes TrueType à votre présentation.
+  **POINT FORT 1 :** txt2tags crÃ©e les fichiers .mgp en utilisant les
+fontes XFree86 Type1. Ainsi vous n'avez pas Ã  joindre les fichiers
+de fontes TrueType Ã  votre prÃ©sentation.
 
-  **POINT FORT 2 :** les définitions de couleurs des fontes sont
-propres, même sur un système avec une palette de couleurs réduite
-(même lancé avec la commande ``startx -- -bpp 8``) la présentation sera
+  **POINT FORT 2 :** les dÃ©finitions de couleurs des fontes sont
+propres, mÃªme sur un systÃ¨me avec une palette de couleurs rÃ©duite
+(mÃªme lancÃ© avec la commande ``startx -- -bpp 8``) la prÃ©sentation sera
 correcte.
 
- Les mots clés sont : convertir et utiliser. Aucun autre besoin ou
-arrangement nécessaire.
+ Les mots clÃ©s sont : convertir et utiliser. Aucun autre besoin ou
+arrangement nÃ©cessaire.
 
 : **MOIN**
   Vous ne savez pas ce qu'est [MoinMoin http://moin.sourceforge.net] ?
@@ -245,49 +254,49 @@ arrangement nécessaire.
 
   La syntaxe du Moin est un tantinet ennuyeuse quand vous devez mettre
 ``{{{'''''des apostrophes et des accolades'''''}}}``, txt2tags vient
-avec ses marques simples et sa solution unifiée : un source des cibles
+avec ses marques simples et sa solution unifiÃ©e : un source des cibles
 multiples.
 
 : **PM6**
-J'espère que vous ne le savez pas, mais Adobe PageMaker 6.0 a son
+J'espÃ¨re que vous ne le savez pas, mais Adobe PageMaker 6.0 a son
 propre langage de balises. Les styles, les couleurs de table, les
-modificateurs de caractères et la majorité des possibilités à la souris
-sont également disponibles dans son langage de marques. Vous avez juste
-besoin d'accéder au menu "Import tagged text". Juste pour information,
+modificateurs de caractÃ¨res et la majoritÃ© des possibilitÃ©s Ã  la souris
+sont Ã©galement disponibles dans son langage de marques. Vous avez juste
+besoin d'accÃ©der au menu "Import tagged text". Juste pour information,
 c'est un langage de marques <comme HTML>.
 
-Txt2tags génère toutes les marques et définit déjà une entête
-complète et fonctionnelle, réglant la mise au format et les styles de
+Txt2tags gÃ©nÃ¨re toutes les marques et dÃ©finit dÃ©jÃ  une entÃªte
+complÃ¨te et fonctionnelle, rÃ©glant la mise au format et les styles de
 paragraphe. C'est le morceau le plus difficile.
 
-**ATTENTION:** Pas de coupure de ligne. Un paragraphe doit être sur une
+**ATTENTION:** Pas de coupure de ligne. Un paragraphe doit Ãªtre sur une
 seule ligne.
 
   Note de l'auteur :
   //Mon livre entier en portugais [regular expression's book http://guia-er.sf.net]//
-  //a été écrit avec VI, convertit en PageMaker avec txt2tags et envoyé
+  //a Ã©tÃ© Ã©crit avec VI, convertit en PageMaker avec txt2tags et envoyÃ©
   //sous presse.//
 
 : **TXT**
 TXT est le texte. Le seul vrai type de mise au format.
-Quoique les marques de txt2tags soient intuitives et discrètes, vous
+Quoique les marques de txt2tags soient intuitives et discrÃ¨tes, vous
 pouvez les enlever en  convertissant le fichier en texte pur.
 
-Les titres sont soulignés. Et le texte est laissé comme dans le fichier
+Les titres sont soulignÃ©s. Et le texte est laissÃ© comme dans le fichier
 source.
 
 
 ------------------------------------------------------------------------
 
-== Statuts des structures supportées par cible ==[struct-support]
+== Statuts des structures supportÃ©es par cible ==[struct-support]
 
   || Structure        | html | xhtml | sgml | tex | lout | man | mgp | moin | pm6 | txt |
-  | entêtes           |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  N   |  N  |  O  |
-  | entête de section     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
+  | entÃªtes           |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  N   |  N  |  O  |
+  | entÃªte de section     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
   | paragraphes        |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
   | gras              |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  -  |
   | italique            |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  -  |
-  | souligné         |  O   |   O   |  -   |  O  |  O   |  -  |  O  |  O   |  O  |  -  |
+  | soulignÃ©         |  O   |   O   |  -   |  O  |  O   |  -  |  O  |  O   |  O  |  -  |
   | fonte non proportionnelle   |  O   |   O   |  O   |  O  |  O   |  -  |  O  |  O   |  O  |  -  |
   | ligne verbatim     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  -  |
   | zone verbatim     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  -  |
@@ -295,9 +304,9 @@ source.
   | liens internet    |  O   |   O   |  O   |  -  |  -   |  -  |  -  |  O   |  -  |  -  |
   | liens e-mail       |  O   |   O   |  O   |  -  |  -   |  -  |  -  |  O   |  -  |  -  |
   | liens locaux       |  O   |   O   |  O   |  N  |  N   |  -  |  -  |  O   |  -  |  -  |
-  | liens nommés      |  O   |   O   |  O   |  -  |  -   |  -  |  -  |  O   |  -  |  -  |
-  | liste pointée     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
-  | liste numérotée   |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
+  | liens nommÃ©s      |  O   |   O   |  O   |  -  |  -   |  -  |  -  |  O   |  -  |  -  |
+  | liste pointÃ©e     |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
+  | liste numÃ©rotÃ©e   |  O   |   O   |  O   |  O  |  O   |  O  |  O  |  O   |  O  |  O  |
   | liste de definition |  O   |   O   |  O   |  O  |  O   |  O  |  N  |  N   |  N  |  O  |
   | ligne horizontale |  O   |   O   |  -   |  O  |  O   |  -  |  O  |  O   |  N  |  O  |
   | image             |  O   |   O   |  O   |  O  |  O   |  -  |  O  |  O   |  N  |  -  |
@@ -306,26 +315,26 @@ source.
   | alignement d'image |  O   |   O   |  N   |  N  |  O   |  -  |  O  |  N   |  N  |  -  |
   | alignement cellule table |  O   |   O   |  O   |  O  |  N   |  O  |  N  |  O   |  N  |  N  |
 
-  ||      | Légende
-  | **O** | //supporté//
-  | **N** | //non supporté (peut-être dans une révision future)//
-  | **-** | //non supporté (ne peut pas l'être dans cette cible)//
-% | **?** | //non supporté (pas sûr que cela puisse être fait)//
+  ||      | LÃ©gende
+  | **O** | //supportÃ©//
+  | **N** | //non supportÃ© (peut-Ãªtre dans une rÃ©vision future)//
+  | **-** | //non supportÃ© (ne peut pas l'Ãªtre dans cette cible)//
+% | **?** | //non supportÃ© (pas sÃ»r que cela puisse Ãªtre fait)//
 
 ------------------------------------------------------------------------
 
 == Les trois interfaces utilisateur : GUI, internet et ligne de commande==[interfaces]
 
-Comme les utilisateurs ont des besoins différents et des environnements
-divers, txt2tags est très souple dans son utilisation.
+Comme les utilisateurs ont des besoins diffÃ©rents et des environnements
+divers, txt2tags est trÃ¨s souple dans son utilisation.
 
 Il y a trois interfaces utilisateur pour le programme, chacune avec ses
-particularités et fonctionnalités.
+particularitÃ©s et fonctionnalitÃ©s.
 
-- **GUI**: écrite en Tk, apporte le fenêtrage et le clic de souris à txt2tags
-- **Web**: écrite en PHP, permet de lancer txt2tags sur un butineur, ne
-  nécessitant aucune installation côté client.
-- **ligne de commande**: écrite en Python, c'est le coeur du programme.
+- **GUI**: Ã©crite en Tk, apporte le fenÃªtrage et le clic de souris Ã  txt2tags
+- **Web**: Ã©crite en PHP, permet de lancer txt2tags sur un butineur, ne
+  nÃ©cessitant aucune installation cÃ´tÃ© client.
+- **ligne de commande**: Ã©crite en Python, c'est le coeur du programme.
   Toutes les options sont disponibles en option.
 
 
@@ -336,12 +345,12 @@ particularités et fonctionnalités.
 Depuis la version 1.0, il y a une jolie interface graphique, qui
 fonctionne sur Linux, Windows, Mac et autres.
 
-Le programme détecte automatiquement si votre système peut afficher
-l'interface, et est lancé sans argument. On peut
+Le programme dÃ©tecte automatiquement si votre systÃ¨me peut afficher
+l'interface, et est lancÃ© sans argument. On peut
 forcer l'interface graphique avec l'option ``--gui``. S'il manque une
 ressource, le programme le dira.
 
-	**Note:** Le module Tkinter est nécessaire. Comme il est
+	**Note:** Le module Tkinter est nÃ©cessaire. Comme il est
 	disponible dans la distribution standard de Python, vous devez
 	certainement l'avoir.
 
@@ -350,22 +359,22 @@ L'interface est simple et intuitive.
                      [IMGPATH/gui.png]  
 
 + Vous localisez le fichier .t2t sur le disque et les options sont
-chargées.
+chargÃ©es.
 
-+ Si aucune cible n'est définie, vous devez en choisir une
++ Si aucune cible n'est dÃ©finie, vous devez en choisir une
 
 + Ensuite vous pouvez choisir quelques options, mais aucune n'est
-nécessaire
+nÃ©cessaire
 
 + A la fin vous appuyez sur le bouton "convertir"
 
-Un option pratique est "//visualisation à l'écran//". Vous pouvez voir le
-code généré dans une autre fenêtre , aucun fichier n'est sauvegardé.
+Un option pratique est "//visualisation Ã  l'Ã©cran//". Vous pouvez voir le
+code gÃ©nÃ©rÃ© dans une autre fenÃªtre , aucun fichier n'est sauvegardÃ©.
 Quand le code est correct, vous enlevez l'option et la conversion
 s'effectuera normalement.
 
-Les couleurs par défaut peuvent être changées dans le fichier
-``~/.txt2tagsrc``, en utilisant les réglages ``%!guicolors``. Par
+Les couleurs par dÃ©faut peuvent Ãªtre changÃ©es dans le fichier
+``~/.txt2tagsrc``, en utilisant les rÃ©glages ``%!guicolors``. Par
 exemple :
 ```
 % choisir mes couleurs pour l'interface graphique (bg1, fg1, bg2, fg2)
@@ -376,14 +385,14 @@ exemple :
 
 === Interface Web ===
 
-L'interface Web est disponible à l'adresse
+L'interface Web est disponible Ã  l'adresse
 http://txt2tags.org/online.php. Vous pouvez tester et utiliser le
 programme avant de le charger.
 
           [IMGPATH/web.png]  
 
-On peut aussi installer cette interface sur le réseau local. Cela évite
-d'avoir à l'installer sur toutes les machines.
+On peut aussi installer cette interface sur le rÃ©seau local. Cela Ã©vite
+d'avoir Ã  l'installer sur toutes les machines.
 
 ------------------------------------------------------------------------
 
@@ -392,32 +401,32 @@ d'avoir à l'installer sur toutes les machines.
 Pour les utilisateurs en ligne de commande l'option ``--help`` doit suffire.
 
 ```
-Utilisation : txt2tags [OPTIONS] [entrée.t2t ...]
+Utilisation : txt2tags [OPTIONS] [entrÃ©e.t2t ...]
 
-  -t, --target	       indiquez le type de document de sortie supporté :
+  -t, --target	       indiquez le type de document de sortie supportÃ© :
                        html, xhtml, sgml, tex, lout, man, mgp, moin, pm6, txt
-  -i, --infile=ENTREE  choisissez le fichier d'entrée ('-' pour STDIN)
+  -i, --infile=ENTREE  choisissez le fichier d'entrÃ©e ('-' pour STDIN)
   -o, --outfile=SORTIE choississez le fichier de sortie ('-' pour STDOUT)
-  -n, --enum-title     numéroter les titres en : 1, 1.1, 1.1.1, etc
-  -H, --no-headers     supprimer les entêtes, les titres et les pieds de page
-      --headers        montrer les entêtes, les titres et les pieds de page (par défaut)
+  -n, --enum-title     numÃ©roter les titres en : 1, 1.1, 1.1.1, etc
+  -H, --no-headers     supprimer les entÃªtes, les titres et les pieds de page
+      --headers        montrer les entÃªtes, les titres et les pieds de page (par dÃ©faut)
       --encoding=ENC   choisir l'encodage de sortie (utf-8, iso8859-1, etc)
       --style=FILE     utiliser FILE comme feuille de style (comme HTML CSS)
-      --css-sugar      insère des étiquettes CSS pour des  sorties HTML et XHTML
-      --css-sugar      insèrer le contenu du fichier CSS pour des sorties HTML et XHTML
+      --css-sugar      insÃ¨re des Ã©tiquettes CSS pour des  sorties HTML et XHTML
+      --css-sugar      insÃ¨rer le contenu du fichier CSS pour des sorties HTML et XHTML
       --mask-email     cacher l'email des robots spammeurs x@y.z devient x (a) y z
-      --toc            ajouter la table des matières à la sortie
-      --toc-only       imprime la table des matières et sort
-      --toc-level=N    limiter la profondeur de la table des matières à N
-      --rc             lire le fichier de configuration ~/.txt2tagsrc (option par défaut)
+      --toc            ajouter la table des matiÃ¨res Ã  la sortie
+      --toc-only       imprime la table des matiÃ¨res et sort
+      --toc-level=N    limiter la profondeur de la table des matiÃ¨res Ã  N
+      --rc             lire le fichier de configuration ~/.txt2tagsrc (option par dÃ©faut)
       --gui            appeler l'interface graphique Tk
   -q, --quiet          mode silencieux, plus de sortie (sauf les erreurs)
   -v, --verbose        imprimer des messages d'information pendant la conversion
   -h, --help           imprimer cette aide et sortir
   -V, --version        imprimer la version et sortir
-      --dump-config    imprimer toute la configuration trouvée et sortir
+      --dump-config    imprimer toute la configuration trouvÃ©e et sortir
 
-Désactive les options (OFF)
+DÃ©sactive les options (OFF)
      --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers
      --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc
      --no-css-sugar, --no-css-inside, --no-quiet
@@ -425,29 +434,29 @@ Désactive les options (OFF)
 Exemple : 
     txt2tags -t html --toc myfile.t2t
 
-Par défaut, la sortie convertie est sauvée dans 'entrée.<type>'
+Par dÃ©faut, la sortie convertie est sauvÃ©e dans 'entrÃ©e.<type>'
 Utilisez --outfile pour imposer un fichier de sortie
-Si le fichier d'entrée est '-', la lecture est à partir de STDIN
+Si le fichier d'entrÃ©e est '-', la lecture est Ã  partir de STDIN
 Si le fichier de sortie est '-', la sortie est sur STDOUT
 ```
 
 ==== Exemples ====
 
-Si vous avez créé un fichier marqué ``file.t2t``, voici quelques
+Si vous avez crÃ©Ã© un fichier marquÃ© ``file.t2t``, voici quelques
 exemples :
 
 | **Convertir en HTML**             | ``$ txt2tags -t html file.t2t``
-| **Le même avec redirection**      | ``$ txt2tags -t html -o - file.t2t > file.html`` |  | .
-| **Avec une table des matières** | ``$ txt2tags -t html --toc file.t2t``
-| **Et aussi avec les titres numérotés**  | ``$ txt2tags -t html --toc --enum-title file.t2t`` |  |
-| **vue rapide de la table des matières**         | ``$ txt2tags --toc-only file.t2t``
-| **la même numérotée**       | ``$ txt2tags --toc-only --enum-title file.t2t`` |  | .
-| **coder une ligne à partir de STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
+| **Le mÃªme avec redirection**      | ``$ txt2tags -t html -o - file.t2t > file.html`` |  | .
+| **Avec une table des matiÃ¨res** | ``$ txt2tags -t html --toc file.t2t``
+| **Et aussi avec les titres numÃ©rotÃ©s**  | ``$ txt2tags -t html --toc --enum-title file.t2t`` |  |
+| **vue rapide de la table des matiÃ¨res**         | ``$ txt2tags --toc-only file.t2t``
+| **la mÃªme numÃ©rotÃ©e**       | ``$ txt2tags --toc-only --enum-title file.t2t`` |  | .
+| **coder une ligne Ã  partir de STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
 | **Tester l'option masquer les emails**  | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
-| **Édition post-conversion**        | ``$ txt2tags -t html -o- file.t2t | sed "s/<BODY .*/<BODY BGCOLOR=green>/" > file.html``
+| **Ã‰dition post-conversion**        | ``$ txt2tags -t html -o- file.t2t | sed "s/<BODY .*/<BODY BGCOLOR=green>/" > file.html``
 
 : //Note//
-   Depuis la version 1.6 vous pouvez faire du traitement avant et après
+   Depuis la version 1.6 vous pouvez faire du traitement avant et aprÃ¨s
 conversion avec les filtres ``%!preproc`` et ``%!postproc``.
 
 
@@ -455,26 +464,26 @@ conversion avec les filtres ``%!preproc`` et ``%!postproc``.
 
 
 
-= Deuxième partie - OK je le veux, que faire maintenant ?=[install]
+= DeuxiÃ¨me partie - OK je le veux, que faire maintenant ?=[install]
 
-Téléchargez le programme et lancez le sur votre machine.
+TÃ©lÃ©chargez le programme et lancez le sur votre machine.
 
 == Charger et installer Python ==[download-python]
 
-Avant tout, vous devez charger et installer l'interpréteur
-Python sur votre système. Si vous l'avez déjà, sautez ce
+Avant tout, vous devez charger et installer l'interprÃ©teur
+Python sur votre systÃ¨me. Si vous l'avez dÃ©jÃ , sautez ce
 paragraphe.
 
 Python est un bon programme, il fonctionne sur Windows,
-Linux, UNIX, Macintosh et autres et peut être téléchargé à
+Linux, UNIX, Macintosh et autres et peut Ãªtre tÃ©lÃ©chargÃ© Ã 
 partir du [site web Python http://www.python.org]. Les
 instructions d'installation  sont disponibles sur le site
 web. Txt2tags marche mieux avec une version de Python 1.5 ou
-supérieure.
+supÃ©rieure.
 
-Si vous n'êtes pas sûr d'avoir Python, ouvrez une console
+Si vous n'Ãªtes pas sÃ»r d'avoir Python, ouvrez une console
 (tty, xterm ou MSDOS) et tapez ``python``. Si ce n'est pas
-installé, votre système vous le dira.
+installÃ©, votre systÃ¨me vous le dira.
 
 
 == Charger txt2tags ==[download-txt2tags]
@@ -482,61 +491,61 @@ installé, votre système vous le dira.
 Le site officiel de la distribution txt2tags est
 http://txt2tags.org/src.
 
-Tous les fichiers sont des archives compressées (fichiers .tgz), qui peuvent être
-décompressés par la plupart des utilitaires (Winzip inclus).
+Tous les fichiers sont des archives compressÃ©es (fichiers .tgz), qui peuvent Ãªtre
+dÃ©compressÃ©s par la plupart des utilitaires (Winzip inclus).
 
-Prenez la **dernière** version (la plus récente ou le numéro de version le
-plus élevé). Les versions précédentes restent pour des raisons
+Prenez la **derniÃ¨re** version (la plus rÃ©cente ou le numÃ©ro de version le
+plus Ã©levÃ©). Les versions prÃ©cÃ©dentes restent pour des raisons
 historiques.
 
 == Installer txt2tags ==[install-txt2tags]
 
-Comme tous les scripts Python, txt2tags ne nécessite aucune
+Comme tous les scripts Python, txt2tags ne nÃ©cessite aucune
 installation.
 
-Le seul fichier nécessaire pour le programme est le script txt2tags. Les
-autres fichiers de l'archive compressée sont de la documentation, des outils et des
+Le seul fichier nÃ©cessaire pour le programme est le script txt2tags. Les
+autres fichiers de l'archive compressÃ©e sont de la documentation, des outils et des
 fichiers d'exemple.
 
 Le moyen le plus sur de lancer txt2tags est de l'appeler par Python.
 ``` prompt$ python txt2tags
 
-Si vous voulez installer txt2tags sur le système comme programme, copiez
-(ou faites un lien) sur le fichier script txt2tags dans un répertoire
-référencé par la variable PATH et assurez vous que le système peut le
+Si vous voulez installer txt2tags sur le systÃ¨me comme programme, copiez
+(ou faites un lien) sur le fichier script txt2tags dans un rÃ©pertoire
+rÃ©fÃ©rencÃ© par la variable PATH et assurez vous que le systÃ¨me peut le
 lancer.
 
 : **UNIX/Linux**
-Rendez le script exécutable (``chmod +x txt2tags``) et copiez le dans un
-répertoire référencé par la variable PATH (``cp txt2tags /usr/local/bin``).
+Rendez le script exÃ©cutable (``chmod +x txt2tags``) et copiez le dans un
+rÃ©pertoire rÃ©fÃ©rencÃ© par la variable PATH (``cp txt2tags /usr/local/bin``).
 
 : **Windows**
 Renommez le fichier script en ajoutant l'extension .py
-(``ren txt2tags txt2tags.py``) et copiez le dans un répertoire de la
+(``ren txt2tags txt2tags.py``) et copiez le dans un rÃ©pertoire de la
 variable PATH (``copy txt2tags.py C:\WINNT``).
 
 
-Après cela, vous pouvez créer un icône pour votre bureau, si vous voulez
+AprÃ¨s cela, vous pouvez crÃ©er un icÃ´ne pour votre bureau, si vous voulez
 utiliser l'interface graphique.
 
-=== Paquets spéciaux pour les utilisateurs Windows ===
+=== Paquets spÃ©ciaux pour les utilisateurs Windows ===
 
 Il y a aussi deux distributions .EXE pour txt2tags, chacune installe le
 programme sur les machines Window avec quelques clics :
 
-- Le script txt2tags pour ceux qui ont l'interpréteur Python déjà
-  installé
-- La version complète, qui n'a pas besoin de l'interpréteur Python (il
-  y a une version légère de Python incluse).
+- Le script txt2tags pour ceux qui ont l'interprÃ©teur Python dÃ©jÃ 
+  installÃ©
+- La version complÃ¨te, qui n'a pas besoin de l'interprÃ©teur Python (il
+  y a une version lÃ©gÃ¨re de Python incluse).
 
 
 Visitez le site //Txt2tags-Win// pour charger les paquets :
 http://txt2tags-win.sf.net
 
-== Installer les colorateurs syntaxiques pour les éditeurs ==[editor-syntax]
+== Installer les colorateurs syntaxiques pour les Ã©diteurs ==[editor-syntax]
 
-Txt2tags est livré avec des fichiers de colorateurs syntaxiques utilisables
-avec les éditeurs suivants :
+Txt2tags est livrÃ© avec des fichiers de colorateurs syntaxiques utilisables
+avec les Ã©diteurs suivants :
 
 - Vim (www.vim.org)
 - Emacs (www.emacs.org)
@@ -544,29 +553,29 @@ avec les éditeurs suivants :
 - Kate (http://kate.kde.org)
 
 
-Ces fichiers de coloration syntaxique connaissent toutes les règles et les
-marques de txt2tags, aidant l'utilisateur à écrire des documents sans
+Ces fichiers de coloration syntaxique connaissent toutes les rÃ¨gles et les
+marques de txt2tags, aidant l'utilisateur Ã  Ã©crire des documents sans
 faute de syntaxe. Visualisant les marques en couleur, vous voyez en
-direct si vous écrivez correctement.
+direct si vous Ã©crivez correctement.
 
            |  [IMGPATH/vim.png]  |
-           |  Exemple de fichier ouvert avec l'éditeur Vim 
+           |  Exemple de fichier ouvert avec l'Ã©diteur Vim 
 
-Chaque éditeur a une procédure d'installation spécifique, lire
-l'entête du ficher de syntaxe et la documentation de l'éditeur.
+Chaque Ã©diteur a une procÃ©dure d'installation spÃ©cifique, lire
+l'entÃªte du ficher de syntaxe et la documentation de l'Ã©diteur.
 
 ========================================================================
 
 
 
-= Troisième partie - Écrire et convertir son premier document =[your-1st-doc]
+= TroisiÃ¨me partie - Ã‰crire et convertir son premier document =[your-1st-doc]
 
 == Tester les outils ==
 
-Pour faire votre première conversion, vous avez besoin de trois choses :
-txt2tags, un éditeur de texte et un butineur.
+Pour faire votre premiÃ¨re conversion, vous avez besoin de trois choses :
+txt2tags, un Ã©diteur de texte et un butineur.
 
-+ Vérifiez que txt2tags fonctionne sur votre machine.
++ VÃ©rifiez que txt2tags fonctionne sur votre machine.
 
   - **Interface en ligne de commande :** Appelez "txt2tags" sur une ligne
     de commande et le programme va vous donner le message "Missing
@@ -574,28 +583,28 @@ input file" ou similaire. Si cela ne marche pas essayez "python /chemin/vers/txt
 ou "/chemin/vers/python /chemin/vers/txt2tags" si Python n'est pas dans
 votre PATH.
 
-  - **Interface Gui :** Cliquez sur l'icône du programme pour lancer
+  - **Interface Gui :** Cliquez sur l'icÃ´ne du programme pour lancer
     l'interface graphique.
 
-+ Ouvrez un éditeur de texte que vous connaissez bien. cela peut être
-**n'importe lequel**, de vi jusqu'à MS Word ou Open Office. Créez un
-nouveau document marqué qui sera votre premier document txt2tags.
++ Ouvrez un Ã©diteur de texte que vous connaissez bien. cela peut Ãªtre
+**n'importe lequel**, de vi jusqu'Ã  MS Word ou Open Office. CrÃ©ez un
+nouveau document marquÃ© qui sera votre premier document txt2tags.
 
-+ Lancez votre butineur préféré pour voir les résultats de la conversion
++ Lancez votre butineur prÃ©fÃ©rÃ© pour voir les rÃ©sultats de la conversion
 dans une page HTML.
 
 
 ------------------------------------------------------------------------
 
-== Écrire l'entête du document ==
+== Ã‰crire l'entÃªte du document ==
 
-+ Allez dans l'éditeur de texte et tapez sur la **première** ligne du
++ Allez dans l'Ã©diteur de texte et tapez sur la **premiÃ¨re** ligne du
   document //Mon premier doument//
-+ Sur la deuxième ligne faire un sous titre avec le texte //test txt2tags//
-+ Puis sur la troisième ligne mettre une information de date //Lundi 2029//
++ Sur la deuxiÃ¨me ligne faire un sous titre avec le texte //test txt2tags//
++ Puis sur la troisiÃ¨me ligne mettre une information de date //Lundi 2029//
 
 
-Si tout c'est bien passé vous avez un document avec le contenu suivant :
+Si tout c'est bien passÃ© vous avez un document avec le contenu suivant :
 
 ```
 Mon premier document
@@ -604,102 +613,102 @@ Lundi 32 Janvier 2029
 ```
 
 Ceci n'est qu'une partie du document, mais vous pouvez le convertir et
-tester le résultat.
+tester le rÃ©sultat.
 
-Maintenant sauvegardez le résultat avec le nom ``test.txt``. Notez
+Maintenant sauvegardez le rÃ©sultat avec le nom ``test.txt``. Notez
 dans quel dossier vous sauvez le fichier, vous en aurez besoin
 plus tard.
 
 
 ------------------------------------------------------------------------
 
-== La première conversion - l'interface graphique ==
+== La premiÃ¨re conversion - l'interface graphique ==
 
 Si vous utilisez l'interface en ligne de commande passez au paragraphe
 suivant.
 
-Si vous utilisez l'interface graphique procédez comme suit:
+Si vous utilisez l'interface graphique procÃ©dez comme suit:
 
     [IMGPATH/firstdoc.png] 
 
 + Appuyez sur le bouton "choisir" et choisir le fichier ``test.txt``
 que vous venez de sauver (souvenez vous du dossier !)
-+ De retour à la première image, choisir "page HTML" pour "Choisissez le type du document de sortie"
++ De retour Ã  la premiÃ¨re image, choisir "page HTML" pour "Choisissez le type du document de sortie"
 + Appuyez sur le bouton "convertir"
 
 
    [IMGPATH/firstdoc-done.png] 
 
-Une boite de dialogue apparaît, qui vous informe que le fichier a été
-converti avec succès. Notez que le fichier HTML généré a été sauvé dans
-le même dossier que le fichier texte avec l'extension "html".
+Une boite de dialogue apparaÃ®t, qui vous informe que le fichier a Ã©tÃ©
+converti avec succÃ¨s. Notez que le fichier HTML gÃ©nÃ©rÃ© a Ã©tÃ© sauvÃ© dans
+le mÃªme dossier que le fichier texte avec l'extension "html".
 
 ------------------------------------------------------------------------
 
-== La première conversion - interface ligne de commande ==
+== La premiÃ¨re conversion - interface ligne de commande ==
 
-Si vous utilisez l'interface graphique allez au paragraphe précédent.
+Si vous utilisez l'interface graphique allez au paragraphe prÃ©cÃ©dent.
 
-Si vous êtes dans l'interface ligne de commande allez dans le dossier où
-a été sauvé votre fichier et tapez la commande :
+Si vous Ãªtes dans l'interface ligne de commande allez dans le dossier oÃ¹
+a Ã©tÃ© sauvÃ© votre fichier et tapez la commande :
 
 ``` txt2tags  --target  html  test.txt
 
 Notez qu'il y a des espaces entres les parties de la commande mais pas
-dans la chaîne "--target", c'est une option. Cette option est suivie de
-la chaîne "html", qui dit au programme dans quel format votre fichier
-texte doit être converti. Le dernier argument est le nom du fichier.
+dans la chaÃ®ne "--target", c'est une option. Cette option est suivie de
+la chaÃ®ne "html", qui dit au programme dans quel format votre fichier
+texte doit Ãªtre converti. Le dernier argument est le nom du fichier.
 
-Si la conversion se réalise, le résultat est sauvé dans le fichier
+Si la conversion se rÃ©alise, le rÃ©sultat est sauvÃ© dans le fichier
 ``test.html`` et le programme affichera le message
-"//txt2tags écrit test.html//"  Sinon il vous indiquera l'erreur que
-vous avez faite en tapant la ligne de commande. Vérifiez
+"//txt2tags Ã©crit test.html//"  Sinon il vous indiquera l'erreur que
+vous avez faite en tapant la ligne de commande. VÃ©rifiez
 attentivement.
 
-Voici un exemple de ce que vous verrez à l'écran :
+Voici un exemple de ce que vous verrez Ã  l'Ã©cran :
 ```
 prompt$ txt2tags --target html test.txt
-txt2tags écrit test.html
+txt2tags Ã©crit test.html
 prompt$
 ```
 
 ------------------------------------------------------------------------
 
-== Tester le résultat ==
+== Tester le rÃ©sultat ==
 
-Ouvrez le fichier ``test.html`` avec le butineur pour vérifier que tout
+Ouvrez le fichier ``test.html`` avec le butineur pour vÃ©rifier que tout
 est bon.
 
    [IMGPATH/firstdoc-html.png] 
 
-On y arrive ! Vous avez juste tapé trois lignes simples de texte et
-txt2tags a fait tout le travail pour configurer l'entête de la page HTML.
+On y arrive ! Vous avez juste tapÃ© trois lignes simples de texte et
+txt2tags a fait tout le travail pour configurer l'entÃªte de la page HTML.
 L'alignement du texte, les tailles, les espacements et l'apparence.
-Voyez que le titre principal est également dans l'onglet du butineur.
+Voyez que le titre principal est Ã©galement dans l'onglet du butineur.
 
-  || Vous écrivez du texte, txt2tags fait le reste :) |
+  || Vous Ã©crivez du texte, txt2tags fait le reste :) |
 
-Astuce : Vous pouvez également utiliser des CSS sur les pages HTML
-générées par txt2tags, ainsi l'apparence de la page est configurable à
+Astuce : Vous pouvez Ã©galement utiliser des CSS sur les pages HTML
+gÃ©nÃ©rÃ©es par txt2tags, ainsi l'apparence de la page est configurable Ã 
 100%.
 
 ------------------------------------------------------------------------
 
-== Écrire le corps du document ==
+== Ã‰crire le corps du document ==
 
-Retournons à l'éditeur de texte, l'étape suivante est d'écrire le corps
-du document. Vous pouvez écrire du texte brut comme vous le faites pour
-les emails. Vous voyez que txt2tags reconnaît les paragraphes et les
+Retournons Ã  l'Ã©diteur de texte, l'Ã©tape suivante est d'Ã©crire le corps
+du document. Vous pouvez Ã©crire du texte brut comme vous le faites pour
+les emails. Vous voyez que txt2tags reconnaÃ®t les paragraphes et les
 listes d'items automatiquement, vous n'avez pas besoin de les "marquer".
 
-Sauvez à nouveau, convertissez et testez le résultat. C'est le cycle de
-développement avec txt2tags. Vous ne vous intéressez qu'au contenu du
+Sauvez Ã  nouveau, convertissez et testez le rÃ©sultat. C'est le cycle de
+dÃ©veloppement avec txt2tags. Vous ne vous intÃ©ressez qu'au contenu du
 document, terminant les documents plus rapidement qu'avec les autres
-éditeurs. Pas de cliquage de souris, pas de menus, de fenêtre ni de
+Ã©diteurs. Pas de cliquage de souris, pas de menus, de fenÃªtre ni de
 distraction.
 
 Regardez le contenu du fichier suivant ``test.txt``, qui n'est que du
-texte brut et comparez le avec la page HTML générée :
+texte brut et comparez le avec la page HTML gÃ©nÃ©rÃ©e :
 
 ```
 Mon premier document
@@ -707,79 +716,79 @@ test txt2tags
 Lundi 32 Janvier 2029
 
 Essayons donc ce truc qui s'appelle txt2tags.
-Ce que je met c'est juste pour noircir l'écran.
-C'est pas un temps à aller dehors chercher :
+Ce que je met c'est juste pour noircir l'Ã©cran.
+C'est pas un temps Ã  aller dehors chercher :
 - des mouches
 - des souris
 - des canards
-- des éléphants
+- des Ã©lÃ©phants
 - des baleines
 ```
 
    [IMGPATH/firstdoc-fullhtml.png] 
 
 
-Vous pouvez écrire une page complète sans aucune connaissance de HTML.
-Vous n'avez pas besoin d'insérer des marques. En plus le même fichier
-texte peut être converti dans tous les autres formats cibles supportés par
+Vous pouvez Ã©crire une page complÃ¨te sans aucune connaissance de HTML.
+Vous n'avez pas besoin d'insÃ©rer des marques. En plus le mÃªme fichier
+texte peut Ãªtre converti dans tous les autres formats cibles supportÃ©s par
 txt2tags.
 
-A côté du texte brut, txt2tags a quelques marques très simples, que vous
+A cÃ´tÃ© du texte brut, txt2tags a quelques marques trÃ¨s simples, que vous
 utilisez quand vous avez besoin d'autres mises au format ou structures
 comme le gras, l'italique, les titres, les images, les tables et autres.
 Un exemple rapide :
 ``**commencez en gras**`` et ``== les signes == pour le titre ==``.
-Vous pouvez apprendre les marques grâce au fichier
+Vous pouvez apprendre les marques grÃ¢ce au fichier
 [Txt2tags Markup Demo http://txt2tags.org/markup.html].
 
 =======================================================================
 
 
 
-= Quatrième partie - maîtriser les concepts de txt2tags =[concepts]
+= QuatriÃ¨me partie - maÃ®triser les concepts de txt2tags =[concepts]
 
 == Les zones d'un document .t2t ==[areas]
 
-Les fichiers marques txt2tags sont divisés en 3 zones. Chacune a ses
-propres règles et usage. Ce sont :
+Les fichiers marques txt2tags sont divisÃ©s en 3 zones. Chacune a ses
+propres rÃ¨gles et usage. Ce sont :
 
 : //ENTETE//
   La zone pour le titre du document, l'auteur, la version et la date
 (ceci est optionnel)
 : //CONFIGURATION//
-  La zone pour la configuration générale du document et le comportement
+  La zone pour la configuration gÃ©nÃ©rale du document et le comportement
 de la conversion(ceci est optionnel).
 : //CORPS//
   La place du contenu du document (obligatoire)
 
 
-Comme vu au dessus, les deux premières zones sont optionnelles, seul le
+Comme vu au dessus, les deux premiÃ¨res zones sont optionnelles, seul le
 //CORPS// est obligatoire.
 
-Les zones sont délimitées par des règles spéciales, qui seront vues en
-détail dans le chapitre suivant. La représentation graphique des zones du document
+Les zones sont dÃ©limitÃ©es par des rÃ¨gles spÃ©ciales, qui seront vues en
+dÃ©tail dans le chapitre suivant. La reprÃ©sentation graphique des zones du document
 est la suivante :
 
 ```
              _____________
             |             |
-            |   ENTETE    |       1. En premier, l'entête
+            |   ENTETE    |       1. En premier, l'entÃªte
             |             |
             |CONFIGURATION|       2. Puis la configuration
             |             |
             |    CORPS    |       3. Enfin le corps du document,
             |             |
-            |    ...      |          jusqu'à la fin.
+            |    ...      |          jusqu'Ã  la fin.
             |    ...      |
             |_____________|
 
 ```
 
-En bref, les zones sont définies de la façon suivante :
+En bref, les zones sont dÃ©finies de la faÃ§on suivante :
 
- |  **Entête**  | Les 3 premières lignes du fichier ou la première ligne vide
- |  **Configuration**   | Commence après l'entête (4e ou 2e ligne) et termine lorsque le corps commence
- |   **Corps**    | La première ligne de texte valide (pas un commentaire ou une configuration après l'//ENTETE//
+ |  **EntÃªte**  | Les 3 premiÃ¨res lignes du fichier ou la premiÃ¨re ligne vide
+ |  **Configuration**   | Commence aprÃ¨s l'entÃªte (4e ou 2e ligne) et termine lorsque le corps commence
+ |   **Corps**    | La premiÃ¨re ligne de texte valide (pas un commentaire ou une configuration aprÃ¨s l'//ENTETE//
 
 
 === Exemple complet===
@@ -787,7 +796,7 @@ En bref, les zones sont définies de la façon suivante :
 ```
 Mon joli titre de document
 Mr. John Doe
-Dernière mise à jour: %%mtime(%c)
+DerniÃ¨re mise Ã  jour: %%mtime(%c)
 
 %! Target  : html
 %! Style   : fancy.css
@@ -803,81 +812,81 @@ Son contenu se termine ici.
 == ENTETE ==[headers-area]
 
 Localisation:
-- position fixe : **les 3 premières lignes** du fichier. C'est tout.
-- position fixe : **la première ligne** du fichier si elle est blanche.
-  Cela signifie une entête vide.
+- position fixe : **les 3 premiÃ¨res lignes** du fichier. C'est tout.
+- position fixe : **la premiÃ¨re ligne** du fichier si elle est blanche.
+  Cela signifie une entÃªte vide.
 
 
-L'ENTETE est la seule zone qui a une position fixe, et est orientée
-ligne. Elle est localisée dans les trois premières lignes du fichier
+L'ENTETE est la seule zone qui a une position fixe, et est orientÃ©e
+ligne. Elle est localisÃ©e dans les trois premiÃ¨res lignes du fichier
 source.
 
 Ces lignes sont libres, aucune information statique de type est
-demandée, mais le contenu suivant est recommandé :
+demandÃ©e, mais le contenu suivant est recommandÃ© :
 
    - //ligne 1//: titre du document
    - //ligne 2//: nom de l'auteur et/ou email
    - //ligne 3//: date du document et/ou version
-                 (un lieu privilégié pour ``%%date``)
+                 (un lieu privilÃ©giÃ© pour ``%%date``)
 
 
-Gardez en mémoire que les trois premières lignes du document source
-seront les trois premières lignes du document cible, séparées et
-contrastées par rapport au corps du document (grandes lettres en gras).
-Si la pagination est autorisée, l'entête sera seule et centrée sur la
-première page.
+Gardez en mÃ©moire que les trois premiÃ¨res lignes du document source
+seront les trois premiÃ¨res lignes du document cible, sÃ©parÃ©es et
+contrastÃ©es par rapport au corps du document (grandes lettres en gras).
+Si la pagination est autorisÃ©e, l'entÃªte sera seule et centrÃ©e sur la
+premiÃ¨re page.
 
 
-==== Plus (ou pas) de lignes d'entête ====
+==== Plus (ou pas) de lignes d'entÃªte ====
 
-Quelquefois l'utilisateur désire spécifier moins de trois lignes pour
-l'entête, ne donnant que le titre et/ou la date.
+Quelquefois l'utilisateur dÃ©sire spÃ©cifier moins de trois lignes pour
+l'entÃªte, ne donnant que le titre et/ou la date.
 
-Il n'y a qu'à laisser la deuxième et/ou la troisième ligne vide et cela
-ne sera pas inclus dans le document final. Mais gardez en mémoire que
-même vides, ces lignes font partie de l'entête et que le corps du
-document **doit** commencer après cette troisième ligne.
+Il n'y a qu'Ã  laisser la deuxiÃ¨me et/ou la troisiÃ¨me ligne vide et cela
+ne sera pas inclus dans le document final. Mais gardez en mÃ©moire que
+mÃªme vides, ces lignes font partie de l'entÃªte et que le corps du
+document **doit** commencer aprÃ¨s cette troisiÃ¨me ligne.
 
-Le titre est le seul élément demandé de l'entête, mais si vous le
-laissez vide, vous dites que votre document n'aura **pas d'entête**. le
-corps du document commencera juste après à la deuxième ligne.
+Le titre est le seul Ã©lÃ©ment demandÃ© de l'entÃªte, mais si vous le
+laissez vide, vous dites que votre document n'aura **pas d'entÃªte**. le
+corps du document commencera juste aprÃ¨s Ã  la deuxiÃ¨me ligne.
 
-Ne pas mettre d'entête est souvent utile si vous voulez spécifier votre
-propre entête personnalisée après conversion. L'option de ligne de
-commande ``--no-headers`` est nécessaire pour cette opération.
+Ne pas mettre d'entÃªte est souvent utile si vous voulez spÃ©cifier votre
+propre entÃªte personnalisÃ©e aprÃ¨s conversion. L'option de ligne de
+commande ``--no-headers`` est nÃ©cessaire pour cette opÃ©ration.
 
 ==== En deux mots ====
 
- || En résumé : "les entêtes sont des __positions__ pas des contenus." |
+ || En rÃ©sumÃ© : "les entÃªtes sont des __positions__ pas des contenus." |
 
-Placez un texte sur la première ligne et il apparaîtra sur la première ligne
-du fichier résultat. Idem pour les deuxième et troisième lignes de
-l'entête.
+Placez un texte sur la premiÃ¨re ligne et il apparaÃ®tra sur la premiÃ¨re ligne
+du fichier rÃ©sultat. Idem pour les deuxiÃ¨me et troisiÃ¨me lignes de
+l'entÃªte.
 
 ------------------------------------------------------------------------
 
 == CONFIGURATION ==[config-area]
 
 Localisation:
-- Commence juste après l'ENTETE
-  - Commence à la **quatrième ligne** du fichier si des **entêtes** sont spécifiées.
-  - Commence à la **deuxième ligne** du fichier si **aucune entête** n'est spécifiée.
+- Commence juste aprÃ¨s l'ENTETE
+  - Commence Ã  la **quatriÃ¨me ligne** du fichier si des **entÃªtes** sont spÃ©cifiÃ©es.
+  - Commence Ã  la **deuxiÃ¨me ligne** du fichier si **aucune entÃªte** n'est spÃ©cifiÃ©e.
 - Se termine lorsque le CORPS commence.
-  - Se termine par une ligne vide, une ligne qui n'est pas un réglage, ou une ligne
+  - Se termine par une ligne vide, une ligne qui n'est pas un rÃ©glage, ou une ligne
     de commentaire
 
 
-La zone de CONFIGURATION est optionnelle. Un utilisateur moyen peut écrire un
+La zone de CONFIGURATION est optionnelle. Un utilisateur moyen peut Ã©crire un
 tas de fichiers txt2tags sans savoir que cela existe, mais les
-utilisateurs expérimentés apprécieront la puissance et le contrôle que
+utilisateurs expÃ©rimentÃ©s apprÃ©cieront la puissance et le contrÃ´le que
 cela procure.
 
-La zone de CONFIGURATION est utilisée pour ranger les réglages du document,
-vous n'aurez pas à taper les options dans la ligne de commande au
-moment de la conversion. Par exemple vous pouvez définir le format de la
+La zone de CONFIGURATION est utilisÃ©e pour ranger les rÃ©glages du document,
+vous n'aurez pas Ã  taper les options dans la ligne de commande au
+moment de la conversion. Par exemple vous pouvez dÃ©finir le format de la
 cible et l'encodage.
 
-Lire la section [réglages #settings-overview] pour plus
+Lire la section [rÃ©glages #settings-overview] pour plus
 d'informations.
 
 ----------------------------------------------------------------
@@ -885,42 +894,42 @@ d'informations.
 == CORPS ==[body-area]
 
 Localisation:
-- Commence à la première ligne valide de texte du fichier.
-  - Les entêtes, les réglages et les commentaires ne sont **pas**
+- Commence Ã  la premiÃ¨re ligne valide de texte du fichier.
+  - Les entÃªtes, les rÃ©glages et les commentaires ne sont **pas**
     des lignes de texte valides.
-- Se termine à la fin du fichier (EOF).
+- Se termine Ã  la fin du fichier (EOF).
 
 
 Le CORPS est tout ce qui n'est pas ENTETE ou CONFIGURATION.
 
-Le CORPS est constitué du contenu du document et de toutes les
-structures et mises en forme que txt2tags peut reconnaître. Dans le
+Le CORPS est constituÃ© du contenu du document et de toutes les
+structures et mises en forme que txt2tags peut reconnaÃ®tre. Dans le
 corps vous pouvez inclure des commentaires pour les //TODO// et les
 //notes personnelles//.
 
 Vous pouvez utiliser l'option en ligne de commande ``--no-headers`` pour
-convertir le corps du document, en supprimant les entêtes. C'est
-pratique pour fabriquer vos entêtes dans un fichier séparé, que vous
-concaténez ensuite.
+convertir le corps du document, en supprimant les entÃªtes. C'est
+pratique pour fabriquer vos entÃªtes dans un fichier sÃ©parÃ©, que vous
+concatÃ©nez ensuite.
 
 ----------------------------------------------------------------
 
-== Réglages ==[settings-overview]
+== RÃ©glages ==[settings-overview]
 
-Les réglages sont des lignes de commande placées dans la CONFIGURATION
+Les rÃ©glages sont des lignes de commande placÃ©es dans la CONFIGURATION
 et qui modifient la conversion.  Leur syntaxe est :
 
- || %! clé : valeur |
+ || %! clÃ© : valeur |
 
-Liste des clés valides :
+Liste des clÃ©s valides :
 
- || clé   | Description |
- |   Target   | définit la cible par défaut dans laquelle le document sera converti
- |  Options   | Définit les options par  défaut qui seront utilisées à la conversion. Le format est le  même que dans la ligne de commande.
- |   Style    | Définit le style du document. Utilisé pour définir un fichier CSS pour HTML/XHTML et pour charger un package LaTeX.
- |  Encoding  | Choisit le jeu de caractères. Utilisé si le document contient des caractères accentués ou des caractères non ASCII
- |   PreProc  | Filtre d'entrée. Définit les règles "trouve et remplace" qui seront appliquées au document source.
- |  PostProc  | filtre de sortie. Définit les règles "trouve et remplace" qui seront appliquées au document de sortie.
+ || clÃ©   | Description |
+ |   Target   | dÃ©finit la cible par dÃ©faut dans laquelle le document sera converti
+ |  Options   | DÃ©finit les options par  dÃ©faut qui seront utilisÃ©es Ã  la conversion. Le format est le  mÃªme que dans la ligne de commande.
+ |   Style    | DÃ©finit le style du document. UtilisÃ© pour dÃ©finir un fichier CSS pour HTML/XHTML et pour charger un package LaTeX.
+ |  Encoding  | Choisit le jeu de caractÃ¨res. UtilisÃ© si le document contient des caractÃ¨res accentuÃ©s ou des caractÃ¨res non ASCII
+ |   PreProc  | Filtre d'entrÃ©e. DÃ©finit les rÃ¨gles "trouve et remplace" qui seront appliquÃ©es au document source.
+ |  PostProc  | filtre de sortie. DÃ©finit les rÃ¨gles "trouve et remplace" qui seront appliquÃ©es au document de sortie.
 
 Exemple:
 
@@ -937,56 +946,56 @@ Exemple:
 
 == Option en ligne de commande ==[options]
 
-Le moyen le plus rapide de changer le comportement par défaut est
+Le moyen le plus rapide de changer le comportement par dÃ©faut est
 d'utiliser les options de la ligne de commande. Cela n'est disponible
 que sur l'interface en ligne  de commande pas sur l'interface GUI ou
 Web.
 
-Comme les autres programmes système, le programme accepte un jeu
-d'options prédéfinies. Une option est un tiret suivi par une lettre ou
+Comme les autres programmes systÃ¨me, le programme accepte un jeu
+d'options prÃ©dÃ©finies. Une option est un tiret suivi par une lettre ou
 deux tirets suivis d'un ou plusieurs mots comme ``-t`` ou ``--target``. A
 propos de l'option "target", c'est la seule obligatoire, toutes les
 autres sont optionnelles.
 
-Les options généralement utilisées sont ``--outfile`` pour définir un
-fichier de sortie particulier, ``--toc`` pour activer la génération
-automatique de la table des matières et ``--encoding`` pour choisir le
-jeu de caractères. La plupart des options peuvent être désactivées en la
-précédant de "no-" devant, par exemple :``-no-encoding`` et
+Les options gÃ©nÃ©ralement utilisÃ©es sont ``--outfile`` pour dÃ©finir un
+fichier de sortie particulier, ``--toc`` pour activer la gÃ©nÃ©ration
+automatique de la table des matiÃ¨res et ``--encoding`` pour choisir le
+jeu de caractÃ¨res. La plupart des options peuvent Ãªtre dÃ©sactivÃ©es en la
+prÃ©cÃ©dant de "no-" devant, par exemple :``-no-encoding`` et
 ``--no-toc``.
 
-Vous pouvez enregistrer les options désirées dans le fichier source dans
-la CONFIGURATION, en utilisant le réglage ``%!option``. Par ce
-moyen, vous n'avez plus à les retaper dans la ligne de commande.
+Vous pouvez enregistrer les options dÃ©sirÃ©es dans le fichier source dans
+la CONFIGURATION, en utilisant le rÃ©glage ``%!option``. Par ce
+moyen, vous n'avez plus Ã  les retaper dans la ligne de commande.
 Exemple: ``%!options: --toc -o mydoc.html``. L'exception est la
-spécification de la cible qui a sa propre syntaxe  : ``%!target: html``.
+spÃ©cification de la cible qui a sa propre syntaxe  : ``%!target: html``.
 
-Utilisez l'option ``--help`` pour avoir la liste complète des options
+Utilisez l'option ``--help`` pour avoir la liste complÃ¨te des options
 disponibles dans txt2tags.
 
 -----------------------------------------------------------------------
 
 == Fichier de configuration utilisateur (fichier RC) ==[rc]
 
-Le fichier de configuration utilisateur (appelé aussi fichier RC) est le
-lieu de stockage des réglages qui vont être gérés pour **tous**
-les fichiers convertis. Si vous insérez les mêmes réglages pour tous
-les fichiers .t2t que vous écrivez, déplacez les dans le fichier RC, ils
-seront utilisés globalement pour les fichiers existants et à venir.
+Le fichier de configuration utilisateur (appelÃ© aussi fichier RC) est le
+lieu de stockage des rÃ©glages qui vont Ãªtre gÃ©rÃ©s pour **tous**
+les fichiers convertis. Si vous insÃ©rez les mÃªmes rÃ©glages pour tous
+les fichiers .t2t que vous Ã©crivez, dÃ©placez les dans le fichier RC, ils
+seront utilisÃ©s globalement pour les fichiers existants et Ã  venir.
 
-L'emplacement par défaut de ce fichier dépend de votre système. Il peut
-aussi être spécifié par l'utilisateur, en utilisant une variable
+L'emplacement par dÃ©faut de ce fichier dÃ©pend de votre systÃ¨me. Il peut
+aussi Ãªtre spÃ©cifiÃ© par l'utilisateur, en utilisant une variable
 d'environnement.
 
   ||                  | localisation du fichier RC |
   |          Windows : | ``%HOMEPATH%\_t2trc``
   |  Linux et autres : | ``$HOME/.txt2tagsrc``
-  |     défini par l'utilisateur : | variable d'environnement ``T2TCONFIG``
+  |     dÃ©fini par l'utilisateur : | variable d'environnement ``T2TCONFIG``
 
 
-Le format des réglages est exactement le même que celui utilisé dans
+Le format des rÃ©glages est exactement le mÃªme que celui utilisÃ© dans
 la zone CONFIGURATION des fichiers .t2t. Il y a un exemple de fichier RC
-dans l'archive compressée à l'emplacement ``doc/txt2tagsrc``. Exemple:
+dans l'archive compressÃ©e Ã  l'emplacement ``doc/txt2tagsrc``. Exemple:
 
 ```
 % ma config
@@ -994,27 +1003,27 @@ dans l'archive compressée à l'emplacement ``doc/txt2tagsrc``. Exemple:
 %%% utiliser un fichier CSS pour le HTML
 %!options(html): --css-sugar
 
-%%% changer la profondeur de la table des matières à 4 pour toutes les cibles
+%%% changer la profondeur de la table des matiÃ¨res Ã  4 pour toutes les cibles
 %!options: --toc-level 4
 
-%%% encodage par défaut pour tous les documents
+%%% encodage par dÃ©faut pour tous les documents
 %!options: --encoding iso-8859-1
 ```
 
 Toute ligne non vide, un commentaire ou une ligne de configuration valide
-va générer une erreur à l'exécution de txt2tags. Donc soyez attentif
-quand vous éditez ce fichier.
+va gÃ©nÃ©rer une erreur Ã  l'exÃ©cution de txt2tags. Donc soyez attentif
+quand vous Ã©ditez ce fichier.
 
-Txt2tags applique automatiquement le fichier RC à tout fichier qu'il
-convertit. Si vous voulez désactiver ce comportement pour un fichier
-spécifique, utilisez l'option ``--no-rc`` en option dans la ligne de
+Txt2tags applique automatiquement le fichier RC Ã  tout fichier qu'il
+convertit. Si vous voulez dÃ©sactiver ce comportement pour un fichier
+spÃ©cifique, utilisez l'option ``--no-rc`` en option dans la ligne de
 commande.
 
-== Ordre de chargement des configuration et précédence ==[config-loading]
+== Ordre de chargement des configuration et prÃ©cÃ©dence ==[config-loading]
 
-Il y a trois moyens pour préciser à txt2tags les options et les
-réglages à utiliser. Ceci est l'ordre dans lequel ils sont lus et
-appliqués :
+Il y a trois moyens pour prÃ©ciser Ã  txt2tags les options et les
+rÃ©glages Ã  utiliser. Ceci est l'ordre dans lequel ils sont lus et
+appliquÃ©s :
 
 + Le fichier de configuration utilisateur (RC)
 + La zone CONFIGURATION dans le document source
@@ -1024,28 +1033,28 @@ appliqués :
 En premier txt2tags lit le contenu du fichier RC s'il existe et applique
 contenu sur le fichier source. Puis il scrute la zone CONFIGURATION du
 fichier source courant si elle existe et l'applique en surchargeant les
-règles du fichier RC en cas de conflit. En dernier, il applique les
-options de la ligne de commande qui ont toujours priorité.
+rÃ¨gles du fichier RC en cas de conflit. En dernier, il applique les
+options de la ligne de commande qui ont toujours prioritÃ©.
 
-Ainsi, si l'encodage est défini dans les trois sources, ce sera l'option
-de la ligne de commande qui sera utilisée.
+Ainsi, si l'encodage est dÃ©fini dans les trois sources, ce sera l'option
+de la ligne de commande qui sera utilisÃ©e.
 
 -----------------------------------------------------------------------
 
 == commande %!include ==[include]
 
-La commande ``include`` est utilisée pour inclure un fichier externe
+La commande ``include`` est utilisÃ©e pour inclure un fichier externe
 dans le corps du document source courant. Ce n'est pas une
 configuration mais une commande qui est valide dans le CORPS du document.
 
-La commande ``include`` est pratique pour découper un gros document en
+La commande ``include`` est pratique pour dÃ©couper un gros document en
 d'autres plus petits (comme les chapitres d'un livre) ou pour inclure le
 contenu complet d'un fichier externe dans le document source. Exemple :
 
 ```
 Mon premier livre
 Dr. John Doe
-1ere Édition
+1ere Ã‰dition
 
 %!include: intro.t2t
 %!include: chapter1.t2t
@@ -1055,55 +1064,55 @@ Dr. John Doe
 %!include: ending.t2t
 ```
 
-Indiquez juste le nom du fichier après la chaîne ``%!include``. Les
-spécification optionnelles de la cible sont supportées. La commande suivante est valide :
+Indiquez juste le nom du fichier aprÃ¨s la chaÃ®ne ``%!include``. Les
+spÃ©cification optionnelles de la cible sont supportÃ©es. La commande suivante est valide :
 
 ``` %!include(html): file.t2t
 
-Notez que la commande include insère le CORPS dans le fichier source du
-document. Les zones ENTETE et CONFIGURATION sont ignorées. Cela permet
-de convertir le fichier inclus séparément ou avec le document principal.
+Notez que la commande include insÃ¨re le CORPS dans le fichier source du
+document. Les zones ENTETE et CONFIGURATION sont ignorÃ©es. Cela permet
+de convertir le fichier inclus sÃ©parÃ©ment ou avec le document principal.
 
 Il y a 3 variantes de la commande include :
 - inclusion Verbatim
 - inclusion tel-quel (brut)
-- inclusion marquée
+- inclusion marquÃ©e
 
 
-Le type **verbatim** inclut le fichier texte en préservant le format et
-les espaces du fichier original comme s'il était marqué par VERB(```).
+Le type **verbatim** inclut le fichier texte en prÃ©servant le format et
+les espaces du fichier original comme s'il Ã©tait marquÃ© par VERB(```).
 Pour cela encadrer le nom de fichier avec des apostrophes inverses :
 
 ``` %!include: ``/etc/fstab``
 
 Le type **tel-quel** inclut un fichier texte tel quel, ne cherchant pas les
-marques txt2tags et **ne les interprétant pas**, comme s'il était marqué par
+marques txt2tags et **ne les interprÃ©tant pas**, comme s'il Ã©tait marquÃ© par
 RAW ("""). Pour cela encadrer le nom de fichier par des apostrophes
 doubles comme :
 
 ``` %!include: ""nice_text.txt""
 
-Le type **marqué** est envoyé directement dans le fichier résultat, sans
-aucun traitement effectué par txt2tags. Par ce moyen vous pouvez inclure
-des parties marquées ou du code avec des marques de sortie plus complexes
-non supportées par txt2tags :
+Le type **marquÃ©** est envoyÃ© directement dans le fichier rÃ©sultat, sans
+aucun traitement effectuÃ© par txt2tags. Par ce moyen vous pouvez inclure
+des parties marquÃ©es ou du code avec des marques de sortie plus complexes
+non supportÃ©es par txt2tags :
 
 ``` %!include(html): ''footer.html''
 
-Notez que le fichier est encadré par des apostrophes, et comme le texte
-est inclus déjà marqué vous devez spécifier la cible pour
-éviter les erreurs.
+Notez que le fichier est encadrÃ© par des apostrophes, et comme le texte
+est inclus dÃ©jÃ  marquÃ© vous devez spÃ©cifier la cible pour
+Ã©viter les erreurs.
 
 -----------------------------------------------------------------------
 
 == commande %!includeconf ==[includeconf]
 
-La commande ``includeconf`` est utilisée pour inclure la configuration
+La commande ``includeconf`` est utilisÃ©e pour inclure la configuration
 d'un fichier externe dans le fichier courant. Cette commande n'est
 valide que dans la zone CONFIGURATION.
 
-C'est pratique pour avoir la même configuration pour de multiples
-fichiers, vous pouvez en centraliser la gestion. Dans le fichier où vous
+C'est pratique pour avoir la mÃªme configuration pour de multiples
+fichiers, vous pouvez en centraliser la gestion. Dans le fichier oÃ¹ vous
 voulez inclure cette configuration globale, mettez un appel
 ``includeconf``. Par exemple :
 
@@ -1117,51 +1126,51 @@ Juillet 2004
 Hi, ceci est mon premier document
 ```
 
-Le format dans le fichier inclus est le même que dans le
+Le format dans le fichier inclus est le mÃªme que dans le
 [fichier RC #rc].
 
 =======================================================================
 
 
 
-= Cinquième partie - maîtriser les marques =[marks]
+= CinquiÃ¨me partie - maÃ®triser les marques =[marks]
 
-Synthèse de toutes les marques txt2tags :
+SynthÃ¨se de toutes les marques txt2tags :
  ||                   Basic | ``...............``  |  modificateurs | ``...............`` |
- |               //Entête// |  3 premières lignes  |               //gras// |  ""**mots**"" 
+ |               //EntÃªte// |  3 premiÃ¨res lignes  |               //gras// |  ""**mots**"" 
  |                //Titre// |    = mots =   |                  //Italique// |  ""//mots//"" 
- |    //2cwtitre numéroté// |    + mots +   |                  //souligné// |  ""__mots"" 
+ |    //2cwtitre numÃ©rotÃ©// |    + mots +   |                  //soulignÃ©// |  ""__mots"" 
  |           //Paragraphe// |      mots     | //fonte non proportionnelle// |  ""``mots``"" 
  ||          blocs de texte |  ``...............`` |                  autre |  ``...............`` |
- |                //Quote// |  <TAB>mots    |       //ligne de séparation// |  ------------... 
- |                //Liste// |    - mots     |             //ligne épaisse// |  ============... 
- |      //liste numérotée// |    + mots     |                     //liens// |  ""[label url]"" 
- |  //liste de définition// |    : mots     |                     //Image// |  ""[filename.jpg]"" 
+ |                //Quote// |  <TAB>mots    |       //ligne de sÃ©paration// |  ------------... 
+ |                //Liste// |    - mots     |             //ligne Ã©paisse// |  ============... 
+ |      //liste numÃ©rotÃ©e// |    + mots     |                     //liens// |  ""[label url]"" 
+ |  //liste de dÃ©finition// |    : mots     |                     //Image// |  ""[filename.jpg]"" 
  |       //ligne Verbatim// |  ``` mots     |               //Commentaire// |  % commentaire 
  |        //zone Verbatim// |  ""```\n lignes \n```""  |     //texte brut// |  """"mots"""" 
  |  //ligne tel-quel(raw)// |  """"""" mots  |                    //Table// |  ""| cell1 | cell2 | cell3..."" 
  |  //zone tel-quel (Raw)// |  """""""\n lignes \n"""""""  |      //Ancre// |  = titre =[ancre] 
 
-Règles générales :
+RÃ¨gles gÃ©nÃ©rales :
 
-- **Entêtes** Ce sont les 3 premières lignes du document, les marques ne sont pas interprétées.
-- **Titres** ce sont des caractères "=" ou "+" équilibrés autour du
-   texte du titre. Plus il y a de caractères, plus le niveau du titre est
+- **EntÃªtes** Ce sont les 3 premiÃ¨res lignes du document, les marques ne sont pas interprÃ©tÃ©es.
+- **Titres** ce sont des caractÃ¨res "=" ou "+" Ã©quilibrÃ©s autour du
+   texte du titre. Plus il y a de caractÃ¨res, plus le niveau du titre est
 important.
 - les **modificateurs** n'acceptent pas d'espace entre les marques et leur
   contenu.
-- les marques de **commentaire** "%" doivent être au début de la ligne
-  (première colonne).
+- les marques de **commentaire** "%" doivent Ãªtre au dÃ©but de la ligne
+  (premiÃ¨re colonne).
 - les fichiers **Image** doivent se terminer par GIF, JPG, PNG ou
   similaire.
 - Les seules marques **multiligne** sont les marques des zones Verbatim
   et tel-quel (brut).
-- **Aucune marque n'est interprétée** dans les zones Verbatim et
+- **Aucune marque n'est interprÃ©tÃ©e** dans les zones Verbatim et
   tel-quel (brut).
-- Les **lignes séparatrices** doivent avoir au moins 20 caractères.
-- La profondeur des citations et les listes est définie par
+- Les **lignes sÃ©paratrices** doivent avoir au moins 20 caractÃ¨res.
+- La profondeur des citations et les listes est dÃ©finie par
   **l'indentation**.
-- Les **titres de table** sont définis par deux "||" au début de la
+- Les **titres de table** sont dÃ©finis par deux "||" au dÃ©but de la
   ligne.
 
 ------------------------------------------------------------------------
@@ -1169,25 +1178,25 @@ important.
 %- MARKCONT Macros, Beautifiers, Quote, Lists, Table, Verbatim, Raw, Bars, Links, Image, Comment
 %-----------------------------------------------------------------------
 
-== Entête ==[mark-headers]
+== EntÃªte ==[mark-headers]
 
-- MARKDESC Identifie l'entête du document
+- MARKDESC Identifie l'entÃªte du document
 - MARKPROP Multiline, FreeSpaces, !Align, !Nesting
 - MARKCONT Macros
 - MARKSYN
-  - Les 3 premières lignes du fichier source.
-  - Pour ne pas spécifier d'entête laisser la première ligne vide
-    Pratique pour les entêtes particulières et les spécialistes
+  - Les 3 premiÃ¨res lignes du fichier source.
+  - Pour ne pas spÃ©cifier d'entÃªte laisser la premiÃ¨re ligne vide
+    Pratique pour les entÃªtes particuliÃ¨res et les spÃ©cialistes
     "oneliners" en ligne de commande
-  - Laisser les deuxième et troisième lignes vides pour éliminer les
-    autres parties de l'entête.
+  - Laisser les deuxiÃ¨me et troisiÃ¨me lignes vides pour Ã©liminer les
+    autres parties de l'entÃªte.
 - MARKDET
   - NOMARKS
-  - les 3 lignes doivent être les trois premières du document final,
-    elles vont être mises en valeur par rapport au corps du document
-    et isolées sur la première page (si la pagination est autorisée).
-  - Le contenu des entêtes est quelconque, sans aucune obligation de
-    format, mais le contenu recommandé pour la plupart des documents est :
+  - les 3 lignes doivent Ãªtre les trois premiÃ¨res du document final,
+    elles vont Ãªtre mises en valeur par rapport au corps du document
+    et isolÃ©es sur la premiÃ¨re page (si la pagination est autorisÃ©e).
+  - Le contenu des entÃªtes est quelconque, sans aucune obligation de
+    format, mais le contenu recommandÃ© pour la plupart des documents est :
     - Ligne 1: Titre du document
     - Ligne 2: Nom de l'auteur et/ou email
     - Ligne 3: Date du document et/ou version (le bon endroit pour ""%%mtime"")
@@ -1195,24 +1204,24 @@ important.
 
 ------------------------------------------------------------------------
 
-== Titre, titre numéroté ==[mark-title]
+== Titre, titre numÃ©rotÃ© ==[mark-title]
 
-- MARKDESC Identifie un titre de section (numéroté ou non)
+- MARKDESC Identifie un titre de section (numÃ©rotÃ© ou non)
 - MARKPROP !Multiline, FreeSpaces, !Align, !Nesting
 - MARKCONT Raw
 - MARKSYN
-  -  Pour des titres numérotés changez "=" par "+" sur les règles
+  -  Pour des titres numÃ©rotÃ©s changez "=" par "+" sur les rÃ¨gles
      suivantes
-  - des signes équilibrés autour ``=comme ceci=``
-  - Plus il y a de signes, plus le niveau est élevé : ``=titre=``,
+  - des signes Ã©quilibrÃ©s autour ``=comme ceci=``
+  - Plus il y a de signes, plus le niveau est Ã©levÃ© : ``=titre=``,
     ``==soustitre==``,
     ``===soussoustitre===``, ...
   - Il y a a un maximum de 5 niveaux ``===== comme ceci =====``
-  - Des signes non équilibrés ne font pas un titre , ``=comme ceci===``
+  - Des signes non Ã©quilibrÃ©s ne font pas un titre , ``=comme ceci===``
   - Des espaces libres dans les marques ne sont pas
-    autorisés  ``=       comme ceci  =``
+    autorisÃ©s  ``=       comme ceci  =``
   - Les titres peuvent avoir des ancres ``=comme ceci=[ancre]``. Pour
-    créer une ancre créez un ``[lien local#ancre]``
+    crÃ©er une ancre crÃ©ez un ``[lien local#ancre]``
 - MARKDET
   - NOMARKS
   - NOMACRO
@@ -1226,7 +1235,7 @@ important.
 - MARKPROP Multiline, FreeSpaces, !Align, !Nesting
 - MARKCONT Macros, Beautifiers, Raw, Links, Image, Comment
 - MARKSYN
-  - Les paragraphes sont des groupes de lignes délimités par des lignes
+  - Les paragraphes sont des groupes de lignes dÃ©limitÃ©s par des lignes
     vides
   - D'autres blocs comme les listes, les citations, les tables et les
     zones verbatim terminent aussi un paragraphe.
@@ -1236,187 +1245,187 @@ important.
 
 == Commentaire ==[mark-comment]
 
-- MARKDESC Utilisé pour insérer du texte qui n'apparaîtra pas dans le
+- MARKDESC UtilisÃ© pour insÃ©rer du texte qui n'apparaÃ®tra pas dans le
   document cible
 - MARKPROP !Multiline, !<FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN
-  - Un ligne avec le caractère "%" en première colonne ``% comme ceci``
+  - Un ligne avec le caractÃ¨re "%" en premiÃ¨re colonne ``% comme ceci``
   - PAS d'espace devant
 - MARKDET
-  - Comme les commentaires, ils ne sont pas montrés dans le texte
+  - Comme les commentaires, ils ne sont pas montrÃ©s dans le texte
     converti
   - Ce n'est pas un bloc : chaque ligne de commentaire doit commencer
     par "%"
-  - Pratiques pour les TODO, rappels FIXME et les notes de l'éditeur
+  - Pratiques pour les TODO, rappels FIXME et les notes de l'Ã©diteur
 
 
 ------------------------------------------------------------------------
 
-== Gras, italique et souligné ==[mark-beautifiers]
+== Gras, italique et soulignÃ© ==[mark-beautifiers]
 
-- MARKDESC Utilisé pour insérer du texte gras/italique/souligné dans un
+- MARKDESC UtilisÃ© pour insÃ©rer du texte gras/italique/soulignÃ© dans un
   paragraphe, une table, une liste ou une citation
 - MARKPROP !Multiline, !FreeSpaces, !Align, Nesting
 - MARKCONT Macros, Beautifiers, Raw, Links, Image
 - MARKSYN
-  - Deux étoiles autour pour le gras ``**comme ceci**``
+  - Deux Ã©toiles autour pour le gras ``**comme ceci**``
   - Deux barres autour pour l'italique ``//comme ceci//``
-  - Deux signes soulignés pour le souligné ``__comme ceci__``
-  - Les marques doivent collées au contenu (pas d'espace) ``** ceci ** est invalide``
+  - Deux signes soulignÃ©s pour le soulignÃ© ``__comme ceci__``
+  - Les marques doivent collÃ©es au contenu (pas d'espace) ``** ceci ** est invalide``
 - MARKDET
-  - Tous les modificateurs de texte doivent être sur une seule ligne du
+  - Tous les modificateurs de texte doivent Ãªtre sur une seule ligne du
     fichier source, il ne doit pas y avoir de coupure de ligne
-  - Les macros dont autorisées à l'intérieur : ``**%%date**``
-  - Vous pouvez mixer les modificateurs à l'intérieur ``""**__comme__ //ceci//**""``
+  - Les macros dont autorisÃ©es Ã  l'intÃ©rieur : ``**%%date**``
+  - Vous pouvez mixer les modificateurs Ã  l'intÃ©rieur ``""**__comme__ //ceci//**""``
 
 
 ------------------------------------------------------------------------
 
 == fonte non proportionnelle ==[mark-monospaced]
 
-- MARKDESC Utilisé pour mettre un texte en fonte non proportionnelle
+- MARKDESC UtilisÃ© pour mettre un texte en fonte non proportionnelle
   dans un paragraphe, un table, une liste ou une citation.
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN
   - Deux apostrophes inverses ````comme ceci````
-  - Les marques doivent être collées au contenu (pas d'espace)
+  - Les marques doivent Ãªtre collÃ©es au contenu (pas d'espace)
     ```` ceci `` est invalide``
 - MARKDET
   - NOMARKS
   - NOMACRO
-  - Tout le texte en fonte non proportionnelle doit être sur une seule ligne, pas de
+  - Tout le texte en fonte non proportionnelle doit Ãªtre sur une seule ligne, pas de
     coupure de ligne dans le contenu
   - Dans quelques cibles les espaces internes sont maintenus, dans
-    d'autres les espaces multiples sont remplacés par un  seul.
-  - Vous pouvez créer un texte gras en fonte non proportionnelle en l'insérant dans
+    d'autres les espaces multiples sont remplacÃ©s par un  seul.
+  - Vous pouvez crÃ©er un texte gras en fonte non proportionnelle en l'insÃ©rant dans
     les marques de gras :
-    ``""**``gras non proportionnel``**""``. La même chose pour les autres modificateurs
-    comme ``""//``italique``//""`` et ``""__``souligné``__""``.
+    ``""**``gras non proportionnel``**""``. La mÃªme chose pour les autres modificateurs
+    comme ``""//``italique``//""`` et ``""__``soulignÃ©``__""``.
 
 
 ---------------------------------------------------------------------
 
 == ligne et zone Verbatim ==[mark-verbatim]
 
-- MARKDESC Utilisé pour insérer du code programme ou autre texte
-  pré-formatté, préservant les espaces et les sauts de ligne et en
+- MARKDESC UtilisÃ© pour insÃ©rer du code programme ou autre texte
+  prÃ©-formattÃ©, prÃ©servant les espaces et les sauts de ligne et en
 utilisant une fonte non proportionnelle
 - MARKPROP Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN **ligne Verbatim :**
-  - Une ligne commençant avec exactement 3 apostrophes inverses suivis d'un espace,
+  - Une ligne commenÃ§ant avec exactement 3 apostrophes inverses suivis d'un espace,
     et suivi du texte  ``""```"" comme ceci``
-  - Les apostrophes inverses doivent être en première colonne, sans
+  - Les apostrophes inverses doivent Ãªtre en premiÃ¨re colonne, sans
     espace devant
 - MARKSYN **Zone Verbatim :**
-  - Une ligne commençant avec exactement 3 apostrophes inverses
+  - Une ligne commenÃ§ant avec exactement 3 apostrophes inverses
     ``````` suivie par les lignes de texte, suivis d'une autre ligne
     avec exactement 3 apostrophes inverses  ```````
-  - **AUCUN** espace n'est autorisé avant et après les marques
+  - **AUCUN** espace n'est autorisÃ© avant et aprÃ¨s les marques
 - MARKDET
   - NOMARKS
   - NOMACRO
   - Si on atteint la fin du fichier (EOF), la  zone verbatim est
-    terminée
+    terminÃ©e
 
 
 ---------------------------------------------------------------------
 
-== Ligne de séparation, ligne épaisse ==[mark-separator]
+== Ligne de sÃ©paration, ligne Ã©paisse ==[mark-separator]
 
-- MARKDESC identifie une ligne de séparation ou une ligne épaisse
+- MARKDESC identifie une ligne de sÃ©paration ou une ligne Ã©paisse
 - MARKPROP !Multiline, FreeSpaces, !Align, !Nesting
 - MARKCONT -
 - MARKSYN
-  - La ligne de séparation peut être composée de tirets "-" ou
-    de caractères soulignés "_"
-  - La ligne épaisse est composée par des signes égal "="
-  - Il faut au moins 20 tirets/soulignés/égal
-  - Des espaces optionnels peuvent être mis en début ou en fin de ligne
-  - Tout autre caractère sur la ligne invalide la marque
+  - La ligne de sÃ©paration peut Ãªtre composÃ©e de tirets "-" ou
+    de caractÃ¨res soulignÃ©s "_"
+  - La ligne Ã©paisse est composÃ©e par des signes Ã©gal "="
+  - Il faut au moins 20 tirets/soulignÃ©s/Ã©gal
+  - Des espaces optionnels peuvent Ãªtre mis en dÃ©but ou en fin de ligne
+  - Tout autre caractÃ¨re sur la ligne invalide la marque
 - MARKDET
-  - Si la cible n'admet pas de ligne de séparation, une ligne de
+  - Si la cible n'admet pas de ligne de sÃ©paration, une ligne de
     commentaire la remplace
-  - La ligne épaisse peut avoir une traduction différente sur certaines
+  - La ligne Ã©paisse peut avoir une traduction diffÃ©rente sur certaines
     cibles :
-    - Une ligne de séparation plus épaisse
-    - Une pause dans les formats de présentation comme Magic Point
+    - Une ligne de sÃ©paration plus Ã©paisse
+    - Une pause dans les formats de prÃ©sentation comme Magic Point
     - Une coupure de page pour les cibles avec pagination comme LaTeX
 
 
 ---------------------------------------------------------------------
 
-== Liens, liens nommés ==[mark-link]
+== Liens, liens nommÃ©s ==[mark-link]
 
 - MARKDESC identifie une lien distant (internet) ou local
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT Macros, Raw, Image
 - MARKSYN
   - Toute adresse internet valide URL, ftp, news ou adresse email est
-    détectée et une adresse est convertie automatiquement
+    dÃ©tectÃ©e et une adresse est convertie automatiquement
   - Le protocole (http, https, ftp) est optionnel ``www.comme-ceci.com``
-  - Un nom peut être utilisé pour un lien : ``[cliquer ici www.url.com]``
+  - Un nom peut Ãªtre utilisÃ© pour un lien : ``[cliquer ici www.url.com]``
   - Une image peut pointer sur un lien : ``[[image.jpg] www.url.com]``
-  - Les macros sont autorisées dans les adresses de lien : ``[voir source %%infile]``
-  - Les macros sont autorisées dans le nom du lien : ``[mirror of %%outfile www.url.com]``
+  - Les macros sont autorisÃ©es dans les adresses de lien : ``[voir source %%infile]``
+  - Les macros sont autorisÃ©es dans le nom du lien : ``[mirror of %%outfile www.url.com]``
 % - Beautifiers are allowed on the link name: ``[**click** here www.url.com]``
-  - Le lien doit être spécifié sur une seule ligne, sans
+  - Le lien doit Ãªtre spÃ©cifiÃ© sur une seule ligne, sans
     coupure de ligne
 - MARKDET
-  - Si la cible n'a pas de support de liens elle sera soulignée
+  - Si la cible n'a pas de support de liens elle sera soulignÃ©e
 
 
 ---------------------------------------------------------------------
 
 == Quote ==[mark-quote]
 
-- MARKDESC identifie une ligne citation indentée
+- MARKDESC identifie une ligne citation indentÃ©e
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
 - MARKCONT Macros, Beautifiers, Quote, Raw, Bars, Links, Image, Comment
 - MARKSYN
   - Une ligne qui commence par une tabulation (TAB)
   - Plus il y a de tabulation plus la profondeur est grande
-  - Les citations ne sont pas autorisées dans les listes et les tables
+  - Les citations ne sont pas autorisÃ©es dans les listes et les tables
 - MARKDET
   - Si la fin du fichier est atteinte (EOF), la citation ouverte est
-    terminée
-  - Certaines cibles ne supportent pas différents niveaux de citation, alors les
-    "sous-citations" sont transformées au niveau supérieur
+    terminÃ©e
+  - Certaines cibles ne supportent pas diffÃ©rents niveaux de citation, alors les
+    "sous-citations" sont transformÃ©es au niveau supÃ©rieur
   - Il n'y a pas de limitation pour la profondeur. Mais certaines cibles
     peuvent avoir des restrictions, les sous-citations sont mises au
-niveau supérieur
+niveau supÃ©rieur
 
 
  --------------------------------------------------------------------
 
-== Listes, listes numérotées, listes de définition ==[mark-lists]
+== Listes, listes numÃ©rotÃ©es, listes de dÃ©finition ==[mark-lists]
 
-- MARKDESC identifie le début d'une liste d'items
+- MARKDESC identifie le dÃ©but d'une liste d'items
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
 - MARKCONT Macros, Beautifiers, Lists, Table, Verbatim, Raw, Bars, Links, Image, Comment
 - MARKSYN
   - Une ligne commence par un tiret/plus/deux points suivi d'un seul
     espace
- - le premier caractère de la liste ne peut PAS être un espace (sauf
-   dans les listes de définition)
-  - Des espaces (pas des TAB) en début de ligne définissent la
+ - le premier caractÃ¨re de la liste ne peut PAS Ãªtre un espace (sauf
+   dans les listes de dÃ©finition)
+  - Des espaces (pas des TAB) en dÃ©but de ligne dÃ©finissent la
     profondeur de l'indentation
   - Les sous-listes se terminent par une sous-liste de moindre
     profondeur ou avec un item vide
-  - Toutes les listes ouvertes sont fermées par deux lignes blanches
-    consécutives
+  - Toutes les listes ouvertes sont fermÃ©es par deux lignes blanches
+    consÃ©cutives
 - MARKDET
   - Si la fin de fichier est atteinte (EOF), toutes les listes ouvertes
-    sont terminées
-  - Les listes peuvent être mixées, comme une liste de définition dans
-    une liste numérotée
+    sont terminÃ©es
+  - Les listes peuvent Ãªtre mixÃ©es, comme une liste de dÃ©finition dans
+    une liste numÃ©rotÃ©e
   - Quelques cibles n'admettent pas les imbrications de listes, les items des
-    sous-listes sont transformées dans le niveau supérieur
+    sous-listes sont transformÃ©es dans le niveau supÃ©rieur
   - Il n'y a pas de limite pour la profondeur des listes. Mais certaines
-    cibles ont des restrictions, les sous-listes de niveau inférieur sont
-alors remontées
+    cibles ont des restrictions, les sous-listes de niveau infÃ©rieur sont
+alors remontÃ©es
 
 
 ---------------------------------------------------------------------
@@ -1427,17 +1436,17 @@ alors remontées
 - MARKPROP !Multiline, !FreeSpaces, Align, !Nesting
 - MARKCONT Macros
 - MARKSYN
-  - Un nom de fichier image encadré entre deux crochets, ``[comme_ceci.jpg]``
+  - Un nom de fichier image encadrÃ© entre deux crochets, ``[comme_ceci.jpg]``
   - Le fichier doit se terminer par une extension comme PNG, JPG, GIF,
-    ... (la casse est indifférente)
-  - les symboles ne sont pas autorisés dans le nom de fichier
+    ... (la casse est indiffÃ©rente)
+  - les symboles ne sont pas autorisÃ©s dans le nom de fichier
     ``[comme_ceci!~1.jpg]``
-  - Les macros sont autorisées dans le nom de fichier ``[report-%%date(%Y-%m-%d).png]``
+  - Les macros sont autorisÃ©es dans le nom de fichier ``[report-%%date(%Y-%m-%d).png]``
   - PAS d'espace dans le nom de fichier ``[comme ceci.jpg]``
   - PAS d'espace entre le crochet et le nom de fichier ``[ comme-ceci.jpg ]``
 - MARKDET
   - Si la cible n'a pas de support d'image, le nom de fichier est entre
-    (parenthèses)
+    (parenthÃ¨ses)
   - La position des marques indique l'alignement de l'image :
     - ``[GAUCHE.jpg]`` blablablabla
     - blablablabla ``[CENTRE.jpg]`` blablablabla
@@ -1448,150 +1457,150 @@ alors remontées
 
 == Tableau ==[mark-table]
 
-- MARKDESC Délimite une ligne d'un tableau avec n'importe quel nombre de
+- MARKDESC DÃ©limite une ligne d'un tableau avec n'importe quel nombre de
   colonnes
 - MARKPROP Multiline, FreeSpaces, Align, !Nesting
 - MARKCONT Macros, Beautifiers, Raw, Links, Image, Comment
 - MARKSYN
   - Une barre verticale "|" identifie la ligne d'un tableau
-  - Deux lignes verticales au début de la ligne "||" identifient  la ligne de titre d'un
+  - Deux lignes verticales au dÃ©but de la ligne "||" identifient  la ligne de titre d'un
     tableau
-  - les espaces avant le première barre verticale personnalisent le
+  - les espaces avant le premiÃ¨re barre verticale personnalisent le
     centrage de ta table
-  - Les champs sont séparés par la chaîne " | " (espace barre-verticale espace)
-  - Une barre verticale "|" à la fin de la première ligne du tableau rend les
+  - Les champs sont sÃ©parÃ©s par la chaÃ®ne " | " (espace barre-verticale espace)
+  - Une barre verticale "|" Ã  la fin de la premiÃ¨re ligne du tableau rend les
     bordures visibles
-  - La barre verticale "|" à la fin des autres colonnes de la table est ignoré
-  - Les espaces dans chaque cellule spécifient leur alignement
-  - Exemple: ``| ligne | de tableau | à | cinq | colonnes |``
+  - La barre verticale "|" Ã  la fin des autres colonnes de la table est ignorÃ©
+  - Les espaces dans chaque cellule spÃ©cifient leur alignement
+  - Exemple: ``| ligne | de tableau | Ã  | cinq | colonnes |``
 - MARKDET
-  - Chaque ligne du tableau doit être sur une seule ligne du fichier
+  - Chaque ligne du tableau doit Ãªtre sur une seule ligne du fichier
     source, sans saut de ligne
   - Les cibles avec alignement par colonne (comme sgml et LaTeX),
-    utilisent l'alignement de la première ligne comme référence
+    utilisent l'alignement de la premiÃ¨re ligne comme rÃ©fÃ©rence
   - Toute ligne "non table" la termine, sauf les lignes de commentaire
   - Le nombre de cellules est flexible, chaque ligne peut avoir un
-    nombre différent de cellules
-  - il n'y a pas de moyen de spécifier la largeur d'une colonne ou d'une
-    rangée
+    nombre diffÃ©rent de cellules
+  - il n'y a pas de moyen de spÃ©cifier la largeur d'une colonne ou d'une
+    rangÃ©e
   - Si la cible n'admet pas les tableaux, les lignes de la table sont
-    considérés comme une zone Verbatim
+    considÃ©rÃ©s comme une zone Verbatim
 
 
 ---------------------------------------------------------------------
 
-== caractères, lignes et zones tel-quel (brut) ==[mark-raw]
+== caractÃ¨res, lignes et zones tel-quel (brut) ==[mark-raw]
 
-- MARKDESC Utilisée pour "protéger" du texte du fichier source, pour que
-  les marques et les macros ne soient pas traitées.
+- MARKDESC UtilisÃ©e pour "protÃ©ger" du texte du fichier source, pour que
+  les marques et les macros ne soient pas traitÃ©es.
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
-- MARKSYN **caractères tel-quel :**
+- MARKSYN **caractÃ¨res tel-quel :**
   - trois apostrophes doubles autour ``""""comme ceci""""``
-  - Les marques sont collées au contenu (pas d'espace entre les marques
+  - Les marques sont collÃ©es au contenu (pas d'espace entre les marques
     et le contenu)
 - MARKSYN **ligne tel-quel :**
-  - Une ligne commençant par trois apostrophes doubles ``""" comme ceci``
-  - La marque doit être au début de la ligne en première colonne
-  - Utiliser un espace après les doubles apostrophes pour les séparer
+  - Une ligne commenÃ§ant par trois apostrophes doubles ``""" comme ceci``
+  - La marque doit Ãªtre au dÃ©but de la ligne en premiÃ¨re colonne
+  - Utiliser un espace aprÃ¨s les doubles apostrophes pour les sÃ©parer
     du texte.
 - MARKSYN **zone tel-quel :**
   - Une ligne avec exactement 3 doubles apostrophes suivis de la ligne de
     texte, suivi d'exactement 3 doubles apostrophe
-  - PAS d'espace avant et après les marques
+  - PAS d'espace avant et aprÃ¨s les marques
 - MARKDET
   - NOMARKS
   - NOMACRO
-  - Si la fin du fichier (EOF) est atteinte la zone tel-quel (brut) est fermée.
+  - Si la fin du fichier (EOF) est atteinte la zone tel-quel (brut) est fermÃ©e.
 
 
 =======================================================================
 
 
 
-= Sixième partie - maîtriser les macros =[macros]
+= SixiÃ¨me partie - maÃ®triser les macros =[macros]
 
-Les macros sont des mots clés spécifiques qui sont développées au moment
-de la conversion. Elles sont utilisées pour insérer des informations
+Les macros sont des mots clÃ©s spÃ©cifiques qui sont dÃ©veloppÃ©es au moment
+de la conversion. Elles sont utilisÃ©es pour insÃ©rer des informations
 dynamiques comme la date ou des informations sur les documents source et
 converti.
 
-Une macro est constituée par les caractères ``%%`` suivis par son nom
-comme dans ``%%date``. Quelques macros acceptent une chaîne de formatage
-entre parenthèses juste après le nom de la macro comme
-``%%date(%Y-%m-%d)``. Cette chaîne de formatage inclut du texte classique
-avec des directives identifiées par le signe % suivi d'un caractère
-d'identification. Si aucune chaîne de formatage n'est fournie, le format
-par défaut est utilisé.
+Une macro est constituÃ©e par les caractÃ¨res ``%%`` suivis par son nom
+comme dans ``%%date``. Quelques macros acceptent une chaÃ®ne de formatage
+entre parenthÃ¨ses juste aprÃ¨s le nom de la macro comme
+``%%date(%Y-%m-%d)``. Cette chaÃ®ne de formatage inclut du texte classique
+avec des directives identifiÃ©es par le signe % suivi d'un caractÃ¨re
+d'identification. Si aucune chaÃ®ne de formatage n'est fournie, le format
+par dÃ©faut est utilisÃ©.
 
-  || Nom de la macro   | Produit ...             | Format par défaut |
+  || Nom de la macro   | Produit ...             | Format par dÃ©faut |
   | ""%%date""    | la date courante                     |  %Y%m%d 
   | ""%%mtime""   | la date de modification du fichier source    |  %Y%m%d 
   | ""%%infile""  | le chemin du fichier source          |    %f 
   | ""%%outfile"" | le chemin du fichier de sortie       |    %f 
-  | ""%%toc""     | la table des matières du document(TOC) |    - 
+  | ""%%toc""     | la table des matiÃ¨res du document(TOC) |    - 
 
-Règles générales :
+RÃ¨gles gÃ©nÃ©rales :
 
-- le nom de la macro est insensible à la casse : ``%%date``, ``%%DaTe`` et ``%%DATE`` sont identiques
+- le nom de la macro est insensible Ã  la casse : ``%%date``, ``%%DaTe`` et ``%%DATE`` sont identiques
 - le macros sont valides dans la zone ENTETE et la zone CORPS sauf
   ``%%toc`` valide seulement dans la zone CORPS
-- Une macro démarre la zone CORPS si elle est trouvée dans la zone
+- Une macro dÃ©marre la zone CORPS si elle est trouvÃ©e dans la zone
   CONFIGURATION
-- Une macro peut être n'importe où dans la ligne (sauf la macro
-  ``%%toc`` qui doit être seule sur une ligne)
-- Une macro peut être utilisée dans les liens et les marques d'image
+- Une macro peut Ãªtre n'importe oÃ¹ dans la ligne (sauf la macro
+  ``%%toc`` qui doit Ãªtre seule sur une ligne)
+- Une macro peut Ãªtre utilisÃ©e dans les liens et les marques d'image
   (sauf ``%%toc``)
-- Les macros ne sont pas traitées dans les titres, le verbatim et
+- Les macros ne sont pas traitÃ©es dans les titres, le verbatim et
   le texte brut
 
 
-Exemple complet ( les zones en gras montrent les macros développées) :
+Exemple complet ( les zones en gras montrent les macros dÃ©veloppÃ©es) :
 
 	Ceci est le manuel utilisateur de txt2tags, converti en
-	**%%outfile(%e)** par txt2tags à partir du fichier source **%%infile**.
-	La conversion a été faite le **%%date(%Y-%m-%d %X)**, mais la dernière
-	modification dans le document source a été faite le **%%mtime(%Y-%m-%d %X)**.
-	Les fichiers source et résultats sont dans le répertoire
+	**%%outfile(%e)** par txt2tags Ã  partir du fichier source **%%infile**.
+	La conversion a Ã©tÃ© faite le **%%date(%Y-%m-%d %X)**, mais la derniÃ¨re
+	modification dans le document source a Ã©tÃ© faite le **%%mtime(%Y-%m-%d %X)**.
+	Les fichiers source et rÃ©sultats sont dans le rÃ©pertoire
 	**%%infile(%D)**.
 
 -----------------------------------------------------------------------
 
 == %%date ==[macro-date]
 
-La macro ``%%date`` produit la date et l'heure courante. C'est très
-pratique pour les entêtes et les pieds de document, pour indiquer quand
-le document a été généré. Pour développer la dernière date de
+La macro ``%%date`` produit la date et l'heure courante. C'est trÃ¨s
+pratique pour les entÃªtes et les pieds de document, pour indiquer quand
+le document a Ã©tÃ© gÃ©nÃ©rÃ©. Pour dÃ©velopper la derniÃ¨re date de
 modification voir la [macro ""%%mtime"" #macro-mtime].
 
 Cette macro accepte un certain nombre de directives de formatage. La liste
-complète peut être consultée sur le
+complÃ¨te peut Ãªtre consultÃ©e sur le
 [site Python http://www.python.org/doc/current/lib/module-time.html].
 
-Voici les plus couramment utilisées :
+Voici les plus couramment utilisÃ©es :
 
  || Directive | Description |
-  |  %a  | jour de la semaine en abrégé d'après la locale
-  |  %A  | jour de la semaine d'après la locale
-  |  %b  | nom du mois en abrégé d'après la locale
-  |  %B  | nom du mois d'après la locale
-  |  %c  | jour et heure d'après la locale
+  |  %a  | jour de la semaine en abrÃ©gÃ© d'aprÃ¨s la locale
+  |  %A  | jour de la semaine d'aprÃ¨s la locale
+  |  %b  | nom du mois en abrÃ©gÃ© d'aprÃ¨s la locale
+  |  %B  | nom du mois d'aprÃ¨s la locale
+  |  %c  | jour et heure d'aprÃ¨s la locale
   |  %d  | jour du mois en chiffre [01,31]
   |  %H  | heure (24-heures) en chiffre [00,23]
   |  %I  | heure (12-heures) en chiffre [01,12]
   |  %m  | mois en chiffre [01,12].
   |  %M  | Minute en chiffre [00,59].
-  |  %p  | équivalent d'après la locale de AM/PM
+  |  %p  | Ã©quivalent d'aprÃ¨s la locale de AM/PM
   |  %S  | iseconde en chiffre [00,61].  (1)
-  |  %x  | représentation de la date d'après la locale
-  |  %X  | représentation de l'heure d'après la locale
-  |  %y  | année sans les siècles en chiffre [00,99].
-  |  %Y  | année complète avec les siècles en chiffre
-  |  %%  | caractère "%"
+  |  %x  | reprÃ©sentation de la date d'aprÃ¨s la locale
+  |  %X  | reprÃ©sentation de l'heure d'aprÃ¨s la locale
+  |  %y  | annÃ©e sans les siÃ¨cles en chiffre [00,99].
+  |  %Y  | annÃ©e complÃ¨te avec les siÃ¨cles en chiffre
+  |  %%  | caractÃ¨re "%"
 
 Exemples:
 
- || Macro                           |  -->  | Résultats pour la date %%date(%Y, %b %d at %H:%M) |
+ || Macro                           |  -->  | RÃ©sultats pour la date %%date(%Y, %b %d at %H:%M) |
   | ""%%date(Converti le: %c)""    |  -->  | %%date(Converti le : %c)
   | ""%%date(%Y-%m-%d)""            |  -->  | %%date(%Y-%m-%d)
   | ""%%date(%I:%M %p)""            |  -->  | %%date(%I:%M %p)
@@ -1601,122 +1610,122 @@ Exemples:
 
 == %%mtime ==[macro-mtime]
 
-La macro ``%%mtime`` produit la date de dernière modification
-du fichier source. C'est utile pour noter quand le fichier a été changé
-la dernière fois. Cette macro est la "soeur" de la [macro ""%%date"" #macro-date],
-et accepte les mêmes chaînes de formatage.
+La macro ``%%mtime`` produit la date de derniÃ¨re modification
+du fichier source. C'est utile pour noter quand le fichier a Ã©tÃ© changÃ©
+la derniÃ¨re fois. Cette macro est la "soeur" de la [macro ""%%date"" #macro-date],
+et accepte les mÃªmes chaÃ®nes de formatage.
 
-Comme exemple : ce guide utilisateur a été édité la dernière fois le
-**%%mtime(%c)**. Cette date est développée à partir de ``%%mtime(%c)``.
+Comme exemple : ce guide utilisateur a Ã©tÃ© Ã©ditÃ© la derniÃ¨re fois le
+**%%mtime(%c)**. Cette date est dÃ©veloppÃ©e Ã  partir de ``%%mtime(%c)``.
 
 -----------------------------------------------------------------------
 
 == %%infile ==[macro-infile]
 
  La macro ``%%infile`` produit le chemin du fichier source dans le
-système. C'est utile pour dire "//voir le source de ce fichier//" sur
+systÃ¨me. C'est utile pour dire "//voir le source de ce fichier//" sur
 les liens des pages HTML. Donner cette information est une attitude
-aimable avec les débutants, pour qu'ils puissent utiliser votre source
+aimable avec les dÃ©butants, pour qu'ils puissent utiliser votre source
 comme exemple pour leurs propres pages.
 
-Cette macro accepte les chaînes de formatage suivantes :
+Cette macro accepte les chaÃ®nes de formatage suivantes :
 
- || %<caractère> | Description | Sortie pour ce manuel utilisateur |
+ || %<caractÃ¨re> | Description | Sortie pour ce manuel utilisateur |
  |    %f    | nom du fichier                     | %%infile(%f)
  |    %F    | nom du fichier (sans extension)    | %%infile(%F)
  |    %e    | extension du fichier               | %%infile(%e)
  |    %p    | chemin absolu du fichier           | %%infile(%p)
- |    %d    | chemin du fichier (répertoire seulement) | %%infile(%d)
- |    %D    | chemin du fichier (répertoire parent seulement) | %%infile(%D)
- |    %%    | caractère "%" seul                 | %%infile(%%)
+ |    %d    | chemin du fichier (rÃ©pertoire seulement) | %%infile(%d)
+ |    %D    | chemin du fichier (rÃ©pertoire parent seulement) | %%infile(%D)
+ |    %%    | caractÃ¨re "%" seul                 | %%infile(%%)
 
 Exemples:
 
- || Source                                       |  -->  | Développement  |
- | Ce guide est dans le répertoire ""%%infile(%D)"".    |  -->  | Ce guide est dans le répertoire %%infile(%D). |
+ || Source                                       |  -->  | DÃ©veloppement  |
+ | Ce guide est dans le rÃ©pertoire ""%%infile(%D)"".    |  -->  | Ce guide est dans le rÃ©pertoire %%infile(%D). |
  | j'utilise l'extension ""%%infile(%e)""  |  -->  | j'utilise l'extension %%infile(%e)  |
  | ""[voir le source  %%infile]""                 |  -->  | [voir le source %%infile]
  | Convertit en XHTML, cela donne ""%%infile(%F)"".xhtml |  -->  | Convertit en XHTML, cela donne %%infile(%F).xhtml
 
-Note: La macro et développée en "-" si la source vient de STDIN
+Note: La macro et dÃ©veloppÃ©e en "-" si la source vient de STDIN
 
 -----------------------------------------------------------------------
 
 == %%outfile ==[macro-outfile]
 
 La macro ``%%outfile`` produit le nom du fichier converti dans
-le système. C'est pratique dans les zones CORPS et ENTETE. Cette macro
+le systÃ¨me. C'est pratique dans les zones CORPS et ENTETE. Cette macro
 est une "soeur" de la [macro ""%%infile""  #macro-infile] et accepte les
-mêmes chaînes de formatage.
+mÃªmes chaÃ®nes de formatage.
 
 Exemples:
 
- || Source                                    |  -->  | Développement  |
+ || Source                                    |  -->  | DÃ©veloppement  |
  | vous lisez le fichier ""%%outfile""     |  -->  | vous lisez le fichier %%outfile
  | txt2tags -t ""%%outfile(%e)"" -i ""%%infile"" -o ""%%outfile"" |  -->  | txt2tags -t %%outfile(%e) -i %%infile -o %%outfile
 
-Note: La macro et développée en "-" si la sortie est STDOUT
+Note: La macro et dÃ©veloppÃ©e en "-" si la sortie est STDOUT
 
 -----------------------------------------------------------------------
 
 == %%toc ==[macro-toc]
 
-La macro ``%%toc`` produit la table des matières du document.
-C'est pratique pour indiquer où vous voulez l'insérer. Vous pouvez
-l'utiliser plusieurs fois et la placer à la fin du document. Ce guide
-utilise ""%%toc"" pour positionner la table des matières.
+La macro ``%%toc`` produit la table des matiÃ¨res du document.
+C'est pratique pour indiquer oÃ¹ vous voulez l'insÃ©rer. Vous pouvez
+l'utiliser plusieurs fois et la placer Ã  la fin du document. Ce guide
+utilise ""%%toc"" pour positionner la table des matiÃ¨res.
 
-Différente des autres macros, cette macro n'accepte pas de chaîne de
-format et a ses propres règles :
+DiffÃ©rente des autres macros, cette macro n'accepte pas de chaÃ®ne de
+format et a ses propres rÃ¨gles :
 
 - n'est valide que dans le CORPS du document
-- doit être seule sur la ligne (des espaces avant et après sont
-  autorisés)
-- doit être utilisée avec l'option en ligne de commande --toc sinon elle
-  sera ignorée
-- le positionnement et le format par défaut sont désactivés quand la
-  macro %%toc est trouvée
+- doit Ãªtre seule sur la ligne (des espaces avant et aprÃ¨s sont
+  autorisÃ©s)
+- doit Ãªtre utilisÃ©e avec l'option en ligne de commande --toc sinon elle
+  sera ignorÃ©e
+- le positionnement et le format par dÃ©faut sont dÃ©sactivÃ©s quand la
+  macro %%toc est trouvÃ©e
 
 
 =======================================================================
 
 
 
-= Septième partie - maîtriser les réglages =[settings]
+= SeptiÃ¨me partie - maÃ®triser les rÃ©glages =[settings]
 
-Ces réglages sont des réglages spéciaux placés dans la zone
+Ces rÃ©glages sont des rÃ©glages spÃ©ciaux placÃ©s dans la zone
 CONFIGURATION du document source qui modifient le comportement de la
-conversion. Ces réglages sont tous optionnels.  Les utilisateurs moyens
-peuvent les ignorer. Mais ils créent une dépendance, si vous commencez à
+conversion. Ces rÃ©glages sont tous optionnels.  Les utilisateurs moyens
+peuvent les ignorer. Mais ils crÃ©ent une dÃ©pendance, si vous commencez Ã 
 les utiliser, vous ne pourrez plus vous en passer.
 
-Le lignes de réglage sont des //lignes de commentaire spéciales//
-précédées d'une marque ("!") qui les rendent différents des commentaires
-classiques. La syntaxe est aussi simple que le réglage des variables,
-composés d'une clé et d'une valeur séparés par deux points (":").
+Le lignes de rÃ©glage sont des //lignes de commentaire spÃ©ciales//
+prÃ©cÃ©dÃ©es d'une marque ("!") qui les rendent diffÃ©rents des commentaires
+classiques. La syntaxe est aussi simple que le rÃ©glage des variables,
+composÃ©s d'une clÃ© et d'une valeur sÃ©parÃ©s par deux points (":").
 
- || %! clé : valeur |
+ || %! clÃ© : valeur |
 
-Détail de la syntaxe :
+DÃ©tail de la syntaxe :
 
-- le point d'exclamation doit être collé avec le caractère commentaire
+- le point d'exclamation doit Ãªtre collÃ© avec le caractÃ¨re commentaire
   sans espace ("%!")
-- les espaces entre la clé et le séparateur (":") sont optionnels
-- le mot clé et la valeur sont insensibles à la casse (pas de
+- les espaces entre la clÃ© et le sÃ©parateur (":") sont optionnels
+- le mot clÃ© et la valeur sont insensibles Ã  la casse (pas de
   distinction majuscule-minuscule)
 
-Règles:
+RÃ¨gles:
 
-- Ces réglages ne sont valides que dans la zone CONFIGURATION et sont
+- Ces rÃ©glages ne sont valides que dans la zone CONFIGURATION et sont
   pris comme des commentaires dans la zone CORPS du document
 
-- Si la même clé apparaît plusieurs fois dans la zone CONFIGURATION, la
-  dernière occurrence sera celle utilisée. Exception : ``options, preproc et postproc`` sont cumulatifs.
+- Si la mÃªme clÃ© apparaÃ®t plusieurs fois dans la zone CONFIGURATION, la
+  derniÃ¨re occurrence sera celle utilisÃ©e. Exception : ``options, preproc et postproc`` sont cumulatifs.
 
-- Une ligne de réglage avec une clé non valide est considérée comme du
+- Une ligne de rÃ©glage avec une clÃ© non valide est considÃ©rÃ©e comme du
   commentaire
 
-- ces réglages ont priorité sur le fichier RC mais pas sur les options
+- ces rÃ©glages ont prioritÃ© sur le fichier RC mais pas sur les options
   en ligne de commande
 
 
@@ -1724,7 +1733,7 @@ Règles:
 
 == %!Target ==[setting-target]
 
-En utilisant le réglage ``target`` un format cible par défaut est défini
+En utilisant le rÃ©glage ``target`` un format cible par dÃ©faut est dÃ©fini
 pour le document
 
 ``` %!target: html
@@ -1733,24 +1742,24 @@ Ainsi il suffit  de lancer la conversion par :
 
 ``` $ txt2tags file.t2t
 
-Et la conversion sera faite dans la cible spécifiée
+Et la conversion sera faite dans la cible spÃ©cifiÃ©e
 
-Le réglage ``target`` ne supporte pas de spécification d'option de
-cible. La déclaration  ``%!target(tex): html`` n'a pas de sens ...
+Le rÃ©glage ``target`` ne supporte pas de spÃ©cification d'option de
+cible. La dÃ©claration  ``%!target(tex): html`` n'a pas de sens ...
 
 -----------------------------------------------------------------------
 
 == %!Options ==[setting-options]
 
-Écrire une longue ligne de commande avec plein d'options n'est pas
-agréable et source d'erreur. Les réglages ``options`` permettent à
+Ã‰crire une longue ligne de commande avec plein d'options n'est pas
+agrÃ©able et source d'erreur. Les rÃ©glages ``options`` permettent Ã 
 l'utilisateur de sauver les options de conversion dans le document
 source. Cela garantit que le document source sera toujours converti de
-façon identique avec les mêmes options.
+faÃ§on identique avec les mÃªmes options.
 
-Il suffit d'écrire les options sans erreur de syntaxe comme vous le
+Il suffit d'Ã©crire les options sans erreur de syntaxe comme vous le
 feriez dans la ligne de commande sans mettre l'appel du programme
-txt2tags, la spécification de cible et le nom du fichier source.
+txt2tags, la spÃ©cification de cible et le nom du fichier source.
 
 Par exemple si vous tapez cette ligne de commande pour convertir votre
 document :
@@ -1766,7 +1775,7 @@ options suivantes dans le document source :
 ```
 
 Et en ligne de commande vous tapez "``txt2tags file.t2t``", et vous
-pouvez lancer directement la conversion à partir de votre éditeur favori
+pouvez lancer directement la conversion Ã  partir de votre Ã©diteur favori
 par exemple pour vi :
 
 ``` :!txt2tags %
@@ -1775,17 +1784,17 @@ par exemple pour vi :
 
 == %!Encoding ==[setting-encoding]
 
-Ce réglage est nécessaire aux non anglophones, qui utilisent
-des caractères accentués ou d'autres détails spécifiques à la locale. Ainsi
-l'encodage de la cible peut être personnalisé.
+Ce rÃ©glage est nÃ©cessaire aux non anglophones, qui utilisent
+des caractÃ¨res accentuÃ©s ou d'autres dÃ©tails spÃ©cifiques Ã  la locale. Ainsi
+l'encodage de la cible peut Ãªtre personnalisÃ©.
 
-Les valeurs valides pour le réglage de l'encodage sont les mêmes que
+Les valeurs valides pour le rÃ©glage de l'encodage sont les mÃªmes que
 pour les document HTML comme //iso-8859-1// et //koi8-r//. Si vous
-n'êtes pas sur consultez
+n'Ãªtes pas sur consultez
 [cette adresse http://www.iana.org/assignments/character-sets].
 
 La cible LaTeX utilise des noms d'alias pour l'encodage. Ce n'est pas
-un problème pour l'utilisateur car txt2tags traduit les noms de façon
+un problÃ¨me pour l'utilisateur car txt2tags traduit les noms de faÃ§on
 interne. Quelques exemples :
 
       || txt2tags/HTML   |  >  | LaTeX  |
@@ -1799,19 +1808,19 @@ interne. Quelques exemples :
 
 
 Si la valeur est inconnue elle est transmise telle quelle autorisant
-à l'utilisateur des encodages spécifiques.
+Ã  l'utilisateur des encodages spÃ©cifiques.
 
 -----------------------------------------------------------------------
 
 == %!PreProc ==[setting-preproc]
 
-Le réglage PreProc est un filtre d'entrée utilisé sur le document
-source. C'est une ressource "trouve et remplace" appliquée après que la
-ligne a été lue du document source et avant d'êtres traitée par
+Le rÃ©glage PreProc est un filtre d'entrÃ©e utilisÃ© sur le document
+source. C'est une ressource "trouve et remplace" appliquÃ©e aprÃ¨s que la
+ligne a Ã©tÃ© lue du document source et avant d'Ãªtres traitÃ©e par
 txt2tags.
 
-C'est utile pour définir des abréviations pour du texte tapé de façon
-répétitive comme :
+C'est utile pour dÃ©finir des abrÃ©viations pour du texte tapÃ© de faÃ§on
+rÃ©pÃ©titive comme :
 
 ```
 %!preproc JJS          "John J. Smith"
@@ -1819,7 +1828,7 @@ répétitive comme :
 %!preproc BULLET       "[images/tiny/bullet_blue.png]"
 ```
 
-Ainsi l'utilisateur peut écrire une ligne comme :
+Ainsi l'utilisateur peut Ã©crire une ligne comme :
 
 ``` Bonjour, je suis JJB. Aujourd'hui nous sommes le RELEASE_DATE.
 
@@ -1828,20 +1837,20 @@ Et txt2tags va "voir" la ligne suivante :
 ``` Bonjour, je suis John J. Smith. Aujourd'hui nous sommes le 2003-05-01.
 
 Ce filtre agit entre l'auteur du document et la conversion txt2tags.
-C'est une première conversion avant la "vraie" conversion. Il se
-comporte comme un filtre Sed/Perl externe appelé de cette façon :
+C'est une premiÃ¨re conversion avant la "vraie" conversion. Il se
+comporte comme un filtre Sed/Perl externe appelÃ© de cette faÃ§on :
 
 ``` $ cat file.t2t | preproc-script.sh | txt2tags -
 
-Le traitement de txt2tags commencera après que les substitutions PreProc
-aient été appliquées.
+Le traitement de txt2tags commencera aprÃ¨s que les substitutions PreProc
+aient Ã©tÃ© appliquÃ©es.
 
 -----------------------------------------------------------------------
 
 == %!PostProc ==[setting-postproc]
 
-Le réglage PostProc est un filtre de sortie appliqué sur le document
-converti. C'est une ressource "trouve et remplace" appliquée après le
+Le rÃ©glage PostProc est un filtre de sortie appliquÃ© sur le document
+converti. C'est une ressource "trouve et remplace" appliquÃ©e aprÃ¨s le
 traitement de txt2tags.
 
 Il est utile pour faire quelques finitions sur le document de
@@ -1853,57 +1862,57 @@ exemples :
 %!postproc(tex) : "\\newpage" ""
 ```
 
-Ces filtres changent la couleur de fond des pages HTML et enlèvent les
+Ces filtres changent la couleur de fond des pages HTML et enlÃ¨vent les
 sauts de page en LaTeX.
 
-Les règles PostProc sont comme un filtre Sed/Perl externe appelé de
-cette façon :
+Les rÃ¨gles PostProc sont comme un filtre Sed/Perl externe appelÃ© de
+cette faÃ§on :
 
 ``` $ txt2tags -t html -o- file.t2t | postproc-script.sh > file.html
 
-Avant que cette fonctionnalité ne soit intégrée, il était courant d'avoir
-des petits scripts pour ajuster le résultat de txt2tags.
-Ces scripts étaient en fait des commandes ``sed``, pour faire des
+Avant que cette fonctionnalitÃ© ne soit intÃ©grÃ©e, il Ã©tait courant d'avoir
+des petits scripts pour ajuster le rÃ©sultat de txt2tags.
+Ces scripts Ã©taient en fait des commandes ``sed``, pour faire des
 remplacements.
-Maintenant ces chaînes de remplacement peuvent être sauvées avec le
+Maintenant ces chaÃ®nes de remplacement peuvent Ãªtre sauvÃ©es avec le
 document source, et le plus est l'utilisation possible des expressions
-régulières pour trouver les motifs.
+rÃ©guliÃ¨res pour trouver les motifs.
 
 -----------------------------------------------------------------------
 
 == %!Style ==[setting-style]
 
-- Utile pour les cibles HTML et XHTML, il définit un fichier CSS pour le
-  document résultat.
+- Utile pour les cibles HTML et XHTML, il dÃ©finit un fichier CSS pour le
+  document rÃ©sultat.
 
 - utile pour la cible LaTeX pour charger des modules par
   ``\usepackage``.
 
-- le même résultat est obtenu par l'option en ligne de commande ``--style``.
+- le mÃªme rÃ©sultat est obtenu par l'option en ligne de commande ``--style``.
 
-- l'option --style est plus forte que le réglage %!style. Si les deux
-  sont utilisés l'option --style sera appliquée.
+- l'option --style est plus forte que le rÃ©glage %!style. Si les deux
+  sont utilisÃ©s l'option --style sera appliquÃ©e.
 
 
 -----------------------------------------------------------------------
 
-== Définir un réglage pour une cible spécifique ==[setting-specific]
+== DÃ©finir un rÃ©glage pour une cible spÃ©cifique ==[setting-specific]
 
-Tous les réglages (sauf %!target) peuvent être liés avec une cible
-spécifique en utilisant la syntaxe : ``%!clé(target): valeur``. De cette
-façon vous pouvez définir plusieurs configurations pour différentes
+Tous les rÃ©glages (sauf %!target) peuvent Ãªtre liÃ©s avec une cible
+spÃ©cifique en utilisant la syntaxe : ``%!clÃ©(target): valeur``. De cette
+faÃ§on vous pouvez dÃ©finir plusieurs configurations pour diffÃ©rentes
 cibles.
 
-Cela est particulièrement utile pour les filtres pre/postproc, mais est
-applicable à tous les réglages. Par exemple définir des styles
-différents pour HTML et LaTeX :
+Cela est particuliÃ¨rement utile pour les filtres pre/postproc, mais est
+applicable Ã  tous les rÃ©glages. Par exemple dÃ©finir des styles
+diffÃ©rents pour HTML et LaTeX :
 
 ```
 %!style(html): fancy.css
 %!style(tex) : amssymb
 ```
 
-Cela est également utile pour ajuster les options sur le document converti :
+Cela est Ã©galement utile pour ajuster les options sur le document converti :
 
 ```
 %!target: sgml
@@ -1912,23 +1921,23 @@ Cela est également utile pour ajuster les options sur le document converti :
 %!options(txt ): --toc-only --toc-level 2
 ```
 
-Dans cet exemple, la cible par défaut est sgml et générera une table des
-matières. Si on lance la commande : ``txt2tags -t html file.t2t`` seules
-les options html seront utilisées, ainsi le fichier converti utilisera
-la feuille de style "foo.css" et n'aura pas de table des matières.
+Dans cet exemple, la cible par dÃ©faut est sgml et gÃ©nÃ©rera une table des
+matiÃ¨res. Si on lance la commande : ``txt2tags -t html file.t2t`` seules
+les options html seront utilisÃ©es, ainsi le fichier converti utilisera
+la feuille de style "foo.css" et n'aura pas de table des matiÃ¨res.
 
 -----------------------------------------------------------------------
 
-== Détails sur les filtres PreProc et PostProc ==[filters-details]
+== DÃ©tails sur les filtres PreProc et PostProc ==[filters-details]
 
 - Les filtres sont des fonctions "trouve et remplace" (pensez Sed)
-- les filtres ne sont pas "utilise le dernier trouvé", ils sont
-  cumulatifs. Vous pouvez définir sans limite autant de filtres que vous
-avez besoin. Ils seront appliqués dans l'ordre dans lequel ils sont
-définis.
-- différents des autres réglages, les filtres spécifiques pour une cible
-  et ceux génériques sont appliqués. s'appliquant sur toutes les cibles.
-Dans l'exemple suivant les deux filtres sont utilisés sur une cible HTML.
+- les filtres ne sont pas "utilise le dernier trouvÃ©", ils sont
+  cumulatifs. Vous pouvez dÃ©finir sans limite autant de filtres que vous
+avez besoin. Ils seront appliquÃ©s dans l'ordre dans lequel ils sont
+dÃ©finis.
+- diffÃ©rents des autres rÃ©glages, les filtres spÃ©cifiques pour une cible
+  et ceux gÃ©nÃ©riques sont appliquÃ©s. s'appliquant sur toutes les cibles.
+Dans l'exemple suivant les deux filtres sont utilisÃ©s sur une cible HTML.
 ```
 %!postproc      :   this   that
 %!postproc(html):   that   other
@@ -1936,39 +1945,39 @@ Dans l'exemple suivant les deux filtres sont utilisés sur une cible HTML.
 
 - Les filtres doivent avoir deux arguments
 
-- les séquences spéciales comme ``\n`` (saut de ligne) et ``\t``
-  (tabulation) sont interprétés
+- les sÃ©quences spÃ©ciales comme ``\n`` (saut de ligne) et ``\t``
+  (tabulation) sont interprÃ©tÃ©s
 
-- pour supprimer du texte utilisez une chaîne vide
-``` %!postproc: "chaîne non désirée" ""
+- pour supprimer du texte utilisez une chaÃ®ne vide
+``` %!postproc: "chaÃ®ne non dÃ©sirÃ©e" ""
 
-- pour éviter les problèmes, spécifiez toujours la cible quand vous
+- pour Ã©viter les problÃ¨mes, spÃ©cifiez toujours la cible quand vous
   utilisez PostProc pour changer les marques : ``%!PostProc(target): <ceci> <cela>``
 
-- PreProc est appliqué avant que la ligne ait été lue et PostProc est
-  appliqué après que la conversion a été faite. Attention à l'UUOC (Useless Use Of Cat : utilisation inutile de cat) :
+- PreProc est appliquÃ© avant que la ligne ait Ã©tÃ© lue et PostProc est
+  appliquÃ© aprÃ¨s que la conversion a Ã©tÃ© faite. Attention Ã  l'UUOC (Useless Use Of Cat : utilisation inutile de cat) :
 
 ``` $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 
-- la première partie du filtre (la chaîne "cherche") n'est pas lue comme
-  une chaîne mais comme une expression régulière. Si vous ne savez pas
+- la premiÃ¨re partie du filtre (la chaÃ®ne "cherche") n'est pas lue comme
+  une chaÃ®ne mais comme une expression rÃ©guliÃ¨re. Si vous ne savez pas
 ce que c'est, ne vous en souciez pas, vous pouvez ne jamais en avoir
-besoin. Mais gardez en mémoire que vous devez "échapper" des caractères
-pour l'utiliser. Échapper veut dire faire précéder la caractère par "\".
+besoin. Mais gardez en mÃ©moire que vous devez "Ã©chapper" des caractÃ¨res
+pour l'utiliser. Ã‰chapper veut dire faire prÃ©cÃ©der la caractÃ¨re par "\".
 En voici la liste :
 ``` \*  \+  \.  \^  \$  \?  \(  \)  \{  \[  \|  \\
 
-- les expressions régulières Python sont disponibles. Elles sont
+- les expressions rÃ©guliÃ¨res Python sont disponibles. Elles sont
   identiques aux Perl Regexes (PCRE). Exemple: Changer les marques en
 gras "<B>" et"</B>" en "STRONG" en HTML :
 ``` %!postproc(html):   '(</?)B>'   '\1STRONG>'
 
-- les arguments des filtres peuvent être passés de 3 façons :
-    + une  simple chaîne comme FOO (sans espace)
-    + une chaîne avec des apostrophes doubles comme "FOO"
-    + une chaîne avec des apostrophes comme 'FOO'
+- les arguments des filtres peuvent Ãªtre passÃ©s de 3 faÃ§ons :
+    + une  simple chaÃ®ne comme FOO (sans espace)
+    + une chaÃ®ne avec des apostrophes doubles comme "FOO"
+    + une chaÃ®ne avec des apostrophes comme 'FOO'
 
-- Si votre motif a des apostrophes doubles, protégez le avec des
+- Si votre motif a des apostrophes doubles, protÃ©gez le avec des
   apostrophes simples et vice-versa. Quelques exemples valides :
 
 ```
@@ -1984,33 +1993,33 @@ gras "<B>" et"</B>" en "STRONG" en HTML :
 
 
 
-= Huitième partie - magie noire =[black-magic]
+= HuitiÃ¨me partie - magie noire =[black-magic]
 
-Ce chapitre n'est pas recommandé aux débutants. Il montre comment faire
-des choses étranges avec les filtres txt2tags, en utilisant des
-expressions régulières  et des motifs complexes.
+Ce chapitre n'est pas recommandÃ© aux dÃ©butants. Il montre comment faire
+des choses Ã©tranges avec les filtres txt2tags, en utilisant des
+expressions rÃ©guliÃ¨res  et des motifs complexes.
 
 	**ATTENTION** : les manipulations suivantes ne sont pas
-	encouragées et peuvent casser des choses. Un partie du texte de
-	sortie peut être perdu lors de la conversion, n'apparaissant pas dans le
-	document de sortie. N'utilisez ces trucs que si vous en avez réellement
+	encouragÃ©es et peuvent casser des choses. Un partie du texte de
+	sortie peut Ãªtre perdu lors de la conversion, n'apparaissant pas dans le
+	document de sortie. N'utilisez ces trucs que si vous en avez rÃ©ellement
 	besoin et que savez ce que vous faites.
 
- || Les filtres sont une fonctionnalité puissante mais dangereuse |
+ || Les filtres sont une fonctionnalitÃ© puissante mais dangereuse |
 
- || De mauvais filtres génèrent des résultats inattendus. |
+ || De mauvais filtres gÃ©nÃ¨rent des rÃ©sultats inattendus. |
 
 SVP ne l'oubliez pas.
 
 -----------------------------------------------------------------------
 
-== Insérer plusieurs lignes avec %!PostProc (comme des règles CSS) ==[postproc-multiline]
+== InsÃ©rer plusieurs lignes avec %!PostProc (comme des rÃ¨gles CSS) ==[postproc-multiline]
 
 Dans les filtres, le motif de remplacement peut inclure plusieurs lignes
-en utilisant la chaîne de coupure de ligne ``\n``.
+en utilisant la chaÃ®ne de coupure de ligne ``\n``.
 
-Elles peuvent être utiles pour inclure de courtes règles CSS dans une
-cible HTML, supprimant le besoin d'un fichier supplémentaire.
+Elles peuvent Ãªtre utiles pour inclure de courtes rÃ¨gles CSS dans une
+cible HTML, supprimant le besoin d'un fichier supplÃ©mentaire.
 
 ```
 %!postproc: <HEAD>      '<HEAD>\n<STYLE TYPE="text/css">\n</STYLE>'
@@ -2020,8 +2029,8 @@ cible HTML, supprimant le besoin d'un fichier supplémentaire.
 %!postproc: (</STYLE>)  'th       { background-color:yellow  ;} \n\1'
 ```
 
-Tous ces filtres sont liés au premier, en remplaçant une chaîne qui a été
-insérée. Ainsi un simple "<HEAD>" se change en :
+Tous ces filtres sont liÃ©s au premier, en remplaÃ§ant une chaÃ®ne qui a Ã©tÃ©
+insÃ©rÃ©e. Ainsi un simple "<HEAD>" se change en :
 
 ```
 <HEAD>
@@ -2035,62 +2044,62 @@ th       { background-color:yellow  ;}
 
 -----------------------------------------------------------------------
 
-== créer un contenu spécifique à la cible avec %!PostProc ==[target-specific-contents]
+== crÃ©er un contenu spÃ©cifique Ã  la cible avec %!PostProc ==[target-specific-contents]
 
 Quelquefois vous devez inclure du texte dans une seule cible, mais pas
-dans les autres. Ce comportement peut être obtenu en utilisant des astuces
+dans les autres. Ce comportement peut Ãªtre obtenu en utilisant des astuces
 de PreProc.
 
-L'idée est d'inclure un texte spécial en commentaire dans le document
-source, mais de le marquer de telle façon qu'un filtre spécifique à une
-cible le décommente.
+L'idÃ©e est d'inclure un texte spÃ©cial en commentaire dans le document
+source, mais de le marquer de telle faÃ§on qu'un filtre spÃ©cifique Ã  une
+cible le dÃ©commente.
 
-Par exemple si un paragraphe doit être ajouté uniquement dans la cible
+Par exemple si un paragraphe doit Ãªtre ajoutÃ© uniquement dans la cible
 HTML comme cela :
 
 ```
-%html% Cette page HTML est générée par [txt2tags http://txt2tags.org].
+%html% Cette page HTML est gÃ©nÃ©rÃ©e par [txt2tags http://txt2tags.org].
 %html% voir le fichier texte source [ici source.t2t].
 ```
 
 Comme ces lignes commencent par ``%`` ce sont des lignes de commentaire
-et seront ignorées. En ajoutant ce filtre :
+et seront ignorÃ©es. En ajoutant ce filtre :
 
 ``` %preproc(html): '^%html% ' ''
 
-La chaîne "%html% est supprimée et ces lignes deviennent visibles, n'étant plus
-des commentaires. Comme une cible est spécifiée ce filtre ne sera actif
-que pour générer du html.
+La chaÃ®ne "%html% est supprimÃ©e et ces lignes deviennent visibles, n'Ã©tant plus
+des commentaires. Comme une cible est spÃ©cifiÃ©e ce filtre ne sera actif
+que pour gÃ©nÃ©rer du html.
 
 -----------------------------------------------------------------------
 
 == Changer les marques de txt2tags avec %!PreProc ==[creating-marks]
 
-Si l'utilisateur est un spécialiste en expressions régulières, il peut
-personnaliser la syntaxe du document source en changeant les marques par défaut en
+Si l'utilisateur est un spÃ©cialiste en expressions rÃ©guliÃ¨res, il peut
+personnaliser la syntaxe du document source en changeant les marques par dÃ©faut en
 quelque chose de plus "confortable".
 
-Par exemple une tabulation en début de ligne est la marque de la
-citation. Si cela ne plaît pas à l'utilisateur, ou que son éditeur a un comportement bizarre avec
-les tabulations, il peut définir une nouvelle marque pour les citations.
+Par exemple une tabulation en dÃ©but de ligne est la marque de la
+citation. Si cela ne plaÃ®t pas Ã  l'utilisateur, ou que son Ã©diteur a un comportement bizarre avec
+les tabulations, il peut dÃ©finir une nouvelle marque pour les citations.
 Par exemple ">>>". Il ajoute ce simple filtre :
 
 ``` %!PreProc: '>>> ' '\t'
 
-Et dans le document source, la citation sera indiquée par :
+Et dans le document source, la citation sera indiquÃ©e par :
 
 ```
 >>> Ceci est une citation.
->>> L'utilisateur a défini cette marque.
+>>> L'utilisateur a dÃ©fini cette marque.
 >>> Mais elles seront converties en tabulations par PreProc.
 ```
 
 Avant que la conversion ne commence, les marques ">>>" seront converties
-en tabulations et txt2tags reconnaîtra le format de citation
+en tabulations et txt2tags reconnaÃ®tra le format de citation
 
-	**ATTENTION** : des règles PreProc peuvent changer toute la
-	syntaxe des marques, générant éventuellement des conflits entre les
-	marques. Soyez très attentif quand vous faites cela.
+	**ATTENTION** : des rÃ¨gles PreProc peuvent changer toute la
+	syntaxe des marques, gÃ©nÃ©rant Ã©ventuellement des conflits entre les
+	marques. Soyez trÃ¨s attentif quand vous faites cela.
 
 =======================================================================
 
