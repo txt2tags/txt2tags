@@ -3,144 +3,144 @@ Aurelio Jargas
 %%mtime(%m/%d/%Y)
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 
                   =  Introduktion  =
 
-Välkommen till txt2tags exempelfil.
+VÃ¤lkommen till txt2tags exempelfil.
 
-Här kommer exempel och en kortfattad föklaring av alla
+HÃ¤r kommer exempel och en kortfattad fÃ¶klaring av alla
 markeringar.
 
-De första 3 raderna i denna fil är rubriker på följande
+De fÃ¶rsta 3 raderna i denna fil Ã¤r rubriker pÃ¥ fÃ¶ljande
 format:
 ```
 rad1: dokumentets titel
-rad2: författarens namn, epost
+rad2: fÃ¶rfattarens namn, epost
 rad3: datum, version
 ```
 
-Rader med balanserade likamedtecken = runt sig är
+Rader med balanserade likamedtecken = runt sig Ã¤r
 titlar.
 
 % en hemlig kommentar!
-% ATT GÖRA: länk till programmets hemsida
+% ATT GÃ–RA: lÃ¤nk till programmets hemsida
 % http://txt2tags.org
 
 
-              = Typsnitt och Förvackrare =
+              = Typsnitt och FÃ¶rvackrare =
 
-Vi har två uppsättningar med typsnitt:              
+Vi har tvÃ¥ uppsÃ¤ttningar med typsnitt:              
 
-Den NORMALA typen som kan förbättras med förvackrare.
+Den NORMALA typen som kan fÃ¶rbÃ¤ttras med fÃ¶rvackrare.
 
-SKRIVMASKINSTYPEN som använder ett typsnitt där alla
-tecken är like stora för preformatterad text.
+SKRIVMASKINSTYPEN som anvÃ¤nder ett typsnitt dÃ¤r alla
+tecken Ã¤r like stora fÃ¶r preformatterad text.
 
 
 Vi kommer nu komma till ett underavsnitt...
 
 
-                  ==  Förvackrare  ==
+                  ==  FÃ¶rvackrare  ==
 
-Textmarkeringarna för förvackrare är enkla, precis som
-de du använder i ett epost meddelande.                  
+Textmarkeringarna fÃ¶r fÃ¶rvackrare Ã¤r enkla, precis som
+de du anvÃ¤nder i ett epost meddelande.                  
                   
 
-Vi använder dubbla *, / och _ för att representera
+Vi anvÃ¤nder dubbla *, / och _ fÃ¶r att representera
 **fet**, //kursiv// och __understruken__ text.
 
-**//Fet kursiv//** stil stöds också som kombination.
+**//Fet kursiv//** stil stÃ¶ds ocksÃ¥ som kombination.
 
 
               ==  Pre-Formatterad Text  ==
 
-Vi kan använda ett stycke kod eller annan preformatterad
+Vi kan anvÃ¤nda ett stycke kod eller annan preformatterad
 text:              
 ```
-  detta      är preformatterat
-//markeringar// slår **inte**  ``igenom``
+  detta      Ã¤r preformatterat
+//markeringar// slÃ¥r **inte**  ``igenom``
 ```
 
-Det är även enkelt att göra bara en rad preformatterad
+Det Ã¤r Ã¤ven enkelt att gÃ¶ra bara en rad preformatterad
 text:
 ``` prompt$ ls /etc
 
-Eller att avända ``preformatterad`` inuti meningar.
+Eller att avÃ¤nda ``preformatterad`` inuti meningar.
 
 
                 ==  Mer kosmetika  ==
 
 Speciella inslag som epost (duh@somewhere.com) och               
 URL (http://www.duh.com) detekteras automagiskt,
-och horisontella linjer likaså:
+och horisontella linjer likasÃ¥:
 
 --------------------------------------------------------
 ^ tunn eller tjock v
 ========================================================
 
-Man kan också specificera en [explicit link http://duh.org]
+Man kan ocksÃ¥ specificera en [explicit link http://duh.org]
 med ett namn.
 
-Kom ihåg,
-	TAB framför en rad gör ett citat.
-		Fler TABBAR, mer djup (om det tillåts).
+Kom ihÃ¥g,
+	TAB framfÃ¶r en rad gÃ¶r ett citat.
+		Fler TABBAR, mer djup (om det tillÃ¥ts).
 Trevligt.
 
 
                       =  Listor  =
 
-En lista med saker är naturligt, stoppa bara ett 
-**bindestreck** eller ett **plus** i början av
+En lista med saker Ã¤r naturligt, stoppa bara ett 
+**bindestreck** eller ett **plus** i bÃ¶rjan av
 varje rad.
 
 
                   ==  Enkla listor  ==
 
-Bindestrecket är standard listans identifierare. För
-underlistor lägger du bara till **mellanslag** i början 
-på varje rad. Mer mellan slag, mer underlistor.                  
+Bindestrecket Ã¤r standard listans identifierare. FÃ¶r
+underlistor lÃ¤gger du bara till **mellanslag** i bÃ¶rjan 
+pÃ¥ varje rad. Mer mellan slag, mer underlistor.                  
                   
 
 - jorden
   - amerika
     - sydamerica
       - brazilien
-        - hur djupt kan jag gå?
+        - hur djupt kan jag gÃ¥?
   - europa
-    - en massa länder
+    - en massa lÃ¤nder
 - mars
   - vem vet?
 
 
-En lista slutar med **två** på varandra följande tomma rader.
+En lista slutar med **tvÃ¥** pÃ¥ varandra fÃ¶ljande tomma rader.
 
 
                  ==  Numrerad lista  ==
 
-Samma regler gäller som för en vanlig lista, fast med en 
+Samma regler gÃ¤ller som fÃ¶r en vanlig lista, fast med en 
 annan identifierare (plus).                 
 
 + ett
-+ två
++ tvÃ¥
 + tre
   - mixad lista!
-  - vilken röra
-    + räknar igen
+  - vilken rÃ¶ra
+    + rÃ¤knar igen
     + ...
 + fyra
 
 
                 ==  Definitionslista  ==
 
-Identifieraren för en definitionslista är ett kolon,
-följt av termen. Termens definition placeras på
-nästa rad.                
+Identifieraren fÃ¶r en definitionslista Ã¤r ett kolon,
+fÃ¶ljt av termen. Termens definition placeras pÃ¥
+nÃ¤sta rad.                
 
 : apelsin
   en gul frukt
-: äpple
-  en grön eller röd frukt
+: Ã¤pple
+  en grÃ¶n eller rÃ¶d frukt
 : andra frukter
   - wee!
   - mixar listor
@@ -150,8 +150,8 @@ nästa rad.
 
                      =  Tabeller  =
 
-Använd "pipe" för att bygga listor och celler.
-Dubbla pipes i början på en rad är en rad med rubriker.
+AnvÃ¤nd "pipe" fÃ¶r att bygga listor och celler.
+Dubbla pipes i bÃ¶rjan pÃ¥ en rad Ã¤r en rad med rubriker.
 Dubbla mellanslag specificerar varje cells gruppering.
 
  || rubrik 1  |  rubrik 2  |  rubrik 3 |
@@ -167,32 +167,32 @@ Utan den sista pipen, inga ramar:
 
                 =  Speciella Entiteter  =
                 
-Eftersom att saker var för enkla.                
+Eftersom att saker var fÃ¶r enkla.                
 
 
                     ==  Bilder  ==
 
-Bildmarkeringen är så enkel som den kan vara: ``[filnamn]``.
+Bildmarkeringen Ã¤r sÃ¥ enkel som den kan vara: ``[filnamn]``.
 
                       [../img/photo.jpg]  
 
-- Filnamnet måste sluta på PNG, JPG, GIF, eller något liknande.
+- Filnamnet mÃ¥ste sluta pÃ¥ PNG, JPG, GIF, eller nÃ¥got liknande.
 - Inga mellanslag inom hakparenteserna!
 
 
                      ==  Annat  ==
 
-Det bekväma ``%%date`` macrot expanderar till dagens datum.
+Det bekvÃ¤ma ``%%date`` macrot expanderar till dagens datum.
 
-Så idag är det %%date på ISO ``YYYYMMDD`` format.
+SÃ¥ idag Ã¤r det %%date pÃ¥ ISO ``YYYYMMDD`` format.
 
-Du kan också specifiecera datumformatet med %? flaggorna,
-så här: ``%%date(%m-%d-%Y)`` deom ger: %%date(%m-%d-%Y).
+Du kan ocksÃ¥ specifiecera datumformatet med %? flaggorna,
+sÃ¥ hÃ¤r: ``%%date(%m-%d-%Y)`` deom ger: %%date(%m-%d-%Y).
 
-Det var det för den här gången.
+Det var det fÃ¶r den hÃ¤r gÃ¥ngen.
 
 -------------------------------------------------------
-Översatt av Per Erik Strandberg.
+Ã–versatt av Per Erik Strandberg.
 www.pererikstrandberg.se
 -------------------------------------------------------
 [../img/t2tpowered.png] ([%%infile %%infile])

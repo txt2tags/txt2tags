@@ -1,141 +1,141 @@
 TXT2TAGS - ARCHIVO DE EJEMPLO
-Aurélio Jargas
+AurÃ©lio Jargas
 %%mtime(%d.%m.%Y)
 
 %!target: html
-%!encoding: iso-8859-1
+%!encoding: UTF-8
 
-                   =  Introducción  =
+                   =  IntroducciÃ³n  =
 
 Bienvenido(a) al archivo de ejemplo de txt2tags.
 
-Aquí encontrará ejemplos y explicaciones breves de todas las etiquetas. Utilice el contenido como modelo para escribir sus primeros documentos en txt2tags.
+AquÃ­ encontrarÃ¡ ejemplos y explicaciones breves de todas las etiquetas. Utilice el contenido como modelo para escribir sus primeros documentos en txt2tags.
 
-Las primeras 3 líneas de este archivo son usadas como encabezados, según el siguiente esquema:
+Las primeras 3 lÃ­neas de este archivo son usadas como encabezados, segÃºn el siguiente esquema:
 ```
-línea 1: título del documento
-línea 2: nombre del autor, domicilio electrónico
-línea 3: fecha, versión
+lÃ­nea 1: tÃ­tulo del documento
+lÃ­nea 2: nombre del autor, domicilio electrÃ³nico
+lÃ­nea 3: fecha, versiÃ³n
 ```
 
-Las líneas encerradas entre signos de igualdad (=) son títulos dentro del documento.
+Las lÃ­neas encerradas entre signos de igualdad (=) son tÃ­tulos dentro del documento.
 
-% aquí un comentario secreto!
-%TODO hacer un enlace hacia la página electrónica del programa http://txt2tags.org
+% aquÃ­ un comentario secreto!
+%TODO hacer un enlace hacia la pÃ¡gina electrÃ³nica del programa http://txt2tags.org
 
 
              =  Fuentes y atributos  =
 
-Están disponibles dos tipos de fuentes:
+EstÃ¡n disponibles dos tipos de fuentes:
 
 Un tipo NORMAL, que puede ser modificado con atributos.
 
 Un tipo MONOESPACIADO, que usa letras monoespaciadas (tipo Courier) para textos sin formato.
 
-Ahora vamos a crear un subtítulo...
+Ahora vamos a crear un subtÃ­tulo...
 
 
                  ==  Atributos  ==
 
-Las etiquetas para modificar un texto son simples, iguales a las que se usan en algunos mensajes electrónicos sin formato.
+Las etiquetas para modificar un texto son simples, iguales a las que se usan en algunos mensajes electrÃ³nicos sin formato.
 
 Basta con duplicar *, / y _ para crear **negrita**, //cursiva// y __subrayado__.
 
-También es posible hacer **//negrita cursiva//** combinando las etiquetas.
+TambiÃ©n es posible hacer **//negrita cursiva//** combinando las etiquetas.
 
 
               ==  Texto preformateado  ==
 
-Es posible insertar un código u otro texto sin formato:
+Es posible insertar un cÃ³digo u otro texto sin formato:
 ```
-  aquí    es      zona de preformato
+  aquÃ­    es      zona de preformato
 las //marcas// **no**  son ``interpretadas``
 ```
 
-Así es fácil insertar una línea especial de texto:
+AsÃ­ es fÃ¡cil insertar una lÃ­nea especial de texto:
 ``` prompt$ ls /etc
 
-También es posible usar ``sentencias`` monoespaciadas dentro de un texto.
+TambiÃ©n es posible usar ``sentencias`` monoespaciadas dentro de un texto.
 
 
-                ==  Más atributos  ==
+                ==  MÃ¡s atributos  ==
 
-Entidades especiales como domicilios electrónicos (abc@algunlugar.com) y URL (http://abc.com) son reconocidas automáticamente. Pasa lo mismo con una línea horizontal:
+Entidades especiales como domicilios electrÃ³nicos (abc@algunlugar.com) y URL (http://abc.com) son reconocidas automÃ¡ticamente. Pasa lo mismo con una lÃ­nea horizontal:
 
 --------------------------------------------------------
 ^ delgada o gruesa v
 ========================================================
 
-También es posible especificar un [enlace con un texto alternativo http://abc.org].
+TambiÃ©n es posible especificar un [enlace con un texto alternativo http://abc.org].
 
 Y recuerde:
-	Un TAB (tabulación) al inicio de una línea indica una cita.
-		Más TAB y más profundidad también se permiten.
+	Un TAB (tabulaciÃ³n) al inicio de una lÃ­nea indica una cita.
+		MÃ¡s TAB y mÃ¡s profundidad tambiÃ©n se permiten.
 Bien.
 
 
                      =  Listas  =
 
-Para hacer una lista de elementos, basta con colocar un **signo de sustracción** o un **signo de adición** al inicio de la línea.
+Para hacer una lista de elementos, basta con colocar un **signo de sustracciÃ³n** o un **signo de adiciÃ³n** al inicio de la lÃ­nea.
 
 
-                 ==  Lista simple (con viñetas)  ==
+                 ==  Lista simple (con viÃ±etas)  ==
 
-El signo de sustracción es el signo predeterminado para hacer listas. Para hacer sublistados, basta con agregar **espacios en blanco** al inicio de la línea. A más espacios, más subelementos.
+El signo de sustracciÃ³n es el signo predeterminado para hacer listas. Para hacer sublistados, basta con agregar **espacios en blanco** al inicio de la lÃ­nea. A mÃ¡s espacios, mÃ¡s subelementos.
 
 - tierra
-  - américa
-    - américa del sur
+  - amÃ©rica
+    - amÃ©rica del sur
       - brasil
-        - ¿cuánto puede descender?
+        - Â¿cuÃ¡nto puede descender?
   - europa
-    - muchos países
+    - muchos paÃ­ses
 - marte
-  - ¿alguien sabe?
+  - Â¿alguien sabe?
 
 
-Una lista debe finalizarse con **dos** líneas consecutivas en blanco.
+Una lista debe finalizarse con **dos** lÃ­neas consecutivas en blanco.
 
 
                 ==  Lista numerada  ==
 
-Las reglas de una lista simple son las mismas para hacer una numerada, solamente hay que cambiar el signo por uno de adición.
+Las reglas de una lista simple son las mismas para hacer una numerada, solamente hay que cambiar el signo por uno de adiciÃ³n.
 
 + uno
 + dos
 + tres
-  - ¡combinando listas!
-  - qué desorden...
+  - Â¡combinando listas!
+  - quÃ© desorden...
     + contando de nuevo
     + ...
 + cuatro
 
 
-                ==  Lista de definición  ==
+                ==  Lista de definiciÃ³n  ==
 
-Los dos puntos se usan como signo para este tipo de lista, seguidos del término a definir. La definición debe colocarse en la siguiente línea.
+Los dos puntos se usan como signo para este tipo de lista, seguidos del tÃ©rmino a definir. La definiciÃ³n debe colocarse en la siguiente lÃ­nea.
 
 : naranja
   una fruta amarilla (o anaranjada ;-))
 : manzana
   una fruta verde o roja
-  - ¡yepa!
+  - Â¡yepa!
   - combinando listas
-    + ¡de nuevo!
-    + ¡y nuevamente!
+    + Â¡de nuevo!
+    + Â¡y nuevamente!
 
 
                      =  Cuadros  =
 
-Utilice barras verticales para separar las celdas. Dos barras al inicio indican un título. Espacios en blanco indican la alinación de la celda.
+Utilice barras verticales para separar las celdas. Dos barras al inicio indican un tÃ­tulo. Espacios en blanco indican la alinaciÃ³n de la celda.
 
- || título 1  |  título 2   |   título 3 |
+ || tÃ­tulo 1  |  tÃ­tulo 2   |   tÃ­tulo 3 |
   | celda 1.1 |  celda 1.2  |  celda 1.3 |
   | celda 2.1 |  celda 2.2  |  celda 2.3 |
 
-Quite la última barra para hacer una tabla sin bordes:
+Quite la Ãºltima barra para hacer una tabla sin bordes:
 
- || título 1  |  título 2   |   título 3
+ || tÃ­tulo 1  |  tÃ­tulo 2   |   tÃ­tulo 3
   | celda 1.1 |  celda 1.2  |  celda 1.3
   | celda 2.1 |  celda 2.2  |  celda 2.3
 
@@ -144,14 +144,14 @@ Quite la última barra para hacer una tabla sin bordes:
 
 Todo esto es muy sencillo, vamos a enriquecerlo un poco...
 
-                    == Imágenes  ==
+                    == ImÃ¡genes  ==
 
 La etiqueta para una imagen es muy sencilla: ``[archivo]``.
 
                [../img/photo.jpg]  
 
 - El nombre del archivo debe terminar en PNG, JPG, GIF, ...
-- ¡No están permitidos espacios en blanco!
+- Â¡No estÃ¡n permitidos espacios en blanco!
 
 
                     ==  Otros  ==
@@ -160,12 +160,12 @@ El macro ``%%date`` informa de la fecha actual.
 
 Hoy es %%date en el formato ISO (``YYYYMMDD``).
 
-El formato de la fecha puede cambiarse usando los modificadores %?, como en ``%%date(%d-%m-%Y)``, que devolverá lo siguiente: %%date(%d-%m-%Y).
+El formato de la fecha puede cambiarse usando los modificadores %?, como en ``%%date(%d-%m-%Y)``, que devolverÃ¡ lo siguiente: %%date(%d-%m-%Y).
 
 Es todo.
 
 ----------------------------------------------------------
-Traducido por Luis Cortázar.
+Traducido por Luis CortÃ¡zar.
 ----------------------------------------------------------
 [../img/t2tpowered.png] ([%%infile %%infile])
 

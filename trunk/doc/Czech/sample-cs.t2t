@@ -1,194 +1,194 @@
-Ukázka TXT2TAGS
+UkÃ¡zka TXT2TAGS
 Aurelio Jargas
 %%mtime(%m/%d/%Y)
 
-%!encoding: iso-8859-2
 %!target: html
+%!encoding: UTF-8
 
-                  =  Úvod  =
+                  =  Ãšvod  =
 
-Vítejte u ukázkového souboru txt2tags.
+VÃ­tejte u ukÃ¡zkovÃ©ho souboru txt2tags.
 
-Naleznete zde pøíklady a struèné vysvìtlení v¹ech znaèek.
+Naleznete zde pÅ™Ã­klady a struÄnÃ© vysvÄ›tlenÃ­ vÅ¡ech znaÄek.
 
-První tøi øádky tohoto souboru jsou pou¾ity jako hlavièka,
-v tomto formátu:
-
-```
-øádek1: název dokumentu
-øádek2: jméno autora, e-mail 
-øádek3: datum, verze 
-```
-
-Øádky se znakem = na zaèátku a na konci jsou nadpisy.
-
-
-% skrytı komentáø!
-% dodìlat odkaz na domovskou stránku http://txt2tags.org
-
-
-              =  Fonty a vylep¹ení  =
-
-Máme dvì sady fontù:
-
-Sada NORMAL mù¾e bıt vylep¹ena pomocí nìkterıch pøíkazù.
-
-TYPEWRITER pou¾ívá neproporcionální font pro vıpisy.
-
-Teï se ponoøíme do podkapitoly...
-
-
-                  ==  Vylep¹ení ==
-
-Znaèky pro vylep¹ení textu jsou jednoduché, podobné, jaké 
-se pou¾ívají pøi psaní e-mailù.
-
-Pou¾ijme dvojité *, / a _ k vytvoøení **tuèného**,
-//kurzivního// a __podtr¾eného__ písma.
-
-Znaèky pro **//tuèné a kurzivní//**  písmo jsou podporovány
-souèasnì.
-
-
-              ==  Neformátovanı text  ==
-
-Uvedeme ukázku kódu nebo jinı neformátovanı text:
+PrvnÃ­ tÅ™i Å™Ã¡dky tohoto souboru jsou pouÅ¾ity jako hlaviÄka,
+v tomto formÃ¡tu:
 
 ```
-  tento    text     je          neformátovanı
-//znaèky//  **nejsou**  ``interpretovány``
+Å™Ã¡dek1: nÃ¡zev dokumentu
+Å™Ã¡dek2: jmÃ©no autora, e-mail 
+Å™Ã¡dek3: datum, verze 
 ```
 
-A stejnì jednoduché je uvést celı øádek neformátovaného 
+Å˜Ã¡dky se znakem = na zaÄÃ¡tku a na konci jsou nadpisy.
+
+
+% skrytÃ½ komentÃ¡Å™!
+% dodÄ›lat odkaz na domovskou strÃ¡nku http://txt2tags.org
+
+
+              =  Fonty a vylepÅ¡enÃ­  =
+
+MÃ¡me dvÄ› sady fontÅ¯:
+
+Sada NORMAL mÅ¯Å¾e bÃ½t vylepÅ¡ena pomocÃ­ nÄ›kterÃ½ch pÅ™Ã­kazÅ¯.
+
+TYPEWRITER pouÅ¾Ã­vÃ¡ neproporcionÃ¡lnÃ­ font pro vÃ½pisy.
+
+TeÄ se ponoÅ™Ã­me do podkapitoly...
+
+
+                  ==  VylepÅ¡enÃ­ ==
+
+ZnaÄky pro vylepÅ¡enÃ­ textu jsou jednoduchÃ©, podobnÃ©, jakÃ© 
+se pouÅ¾Ã­vajÃ­ pÅ™i psanÃ­ e-mailÅ¯.
+
+PouÅ¾ijme dvojitÃ© *, / a _ k vytvoÅ™enÃ­ **tuÄnÃ©ho**,
+//kurzivnÃ­ho// a __podtrÅ¾enÃ©ho__ pÃ­sma.
+
+ZnaÄky pro **//tuÄnÃ© a kurzivnÃ­//**  pÃ­smo jsou podporovÃ¡ny
+souÄasnÄ›.
+
+
+              ==  NeformÃ¡tovanÃ½ text  ==
+
+Uvedeme ukÃ¡zku kÃ³du nebo jinÃ½ neformÃ¡tovanÃ½ text:
+
+```
+  tento    text     je          neformÃ¡tovanÃ½
+//znaÄky//  **nejsou**  ``interpretovÃ¡ny``
+```
+
+A stejnÄ› jednoduchÃ© je uvÃ©st celÃ½ Å™Ã¡dek neformÃ¡tovanÃ©ho 
 textu:
 ``` prompt$ ls /etc
 
-Nebo ``neformátovanı text`` uvnitø normálního odstavce.
+Nebo ``neformÃ¡tovanÃ½ text`` uvnitÅ™ normÃ¡lnÃ­ho odstavce.
 
 
-                ==  Více kosmetiky  ==
+                ==  VÃ­ce kosmetiky  ==
 
-Speciální øetìzce jako e-mail (pepa@zdepa.cz) a 
-URL (http://www.zdepa.cz) jsou rozpoznány automagicky,
-stejnì jako horizontální èára:
+SpeciÃ¡lnÃ­ Å™etÄ›zce jako e-mail (pepa@zdepa.cz) a 
+URL (http://www.zdepa.cz) jsou rozpoznÃ¡ny automagicky,
+stejnÄ› jako horizontÃ¡lnÃ­ ÄÃ¡ra:
 
 --------------------------------------------------------
-^ tenká, nebo tlustá v
+^ tenkÃ¡, nebo tlustÃ¡ v
 ========================================================
 
-Mù¾ete také vytvoøit [explicitní odkaz http://zdepa.cz]
+MÅ¯Å¾ete takÃ© vytvoÅ™it [explicitnÃ­ odkaz http://zdepa.cz]
 s titulkem.
 
 A pamatujte,
-	tabulátor na zaèátku øádku vytvoøí citaci.
-		Více tabulátorù, více do hloubky (je-li povoleno).
-Pìkné.
+	tabulÃ¡tor na zaÄÃ¡tku Å™Ã¡dku vytvoÅ™Ã­ citaci.
+		VÃ­ce tabulÃ¡torÅ¯, vÃ­ce do hloubky (je-li povoleno).
+PÄ›knÃ©.
 
 
                   =  Seznamy  =
 
-Seznam polo¾ek je pøirozenı, prostì napí¹ete **pomlèku** nebo
-**plus** na zaèátku øádku.
+Seznam poloÅ¾ek je pÅ™irozenÃ½, prostÄ› napÃ­Å¡ete **pomlÄku** nebo
+**plus** na zaÄÃ¡tku Å™Ã¡dku.
 
 
-                  ==  Vıèet  ==
+                  ==  VÃ½Äet  ==
 
-Pro vıèty slou¾í jako oddìlovaè pomlèka. Abyste vytvoøili podvıèet,
-pøidejte na zaèátek øádku **mezery**. Èím víc mezer, tím víc podvıètù.
+Pro vÃ½Äty slouÅ¾Ã­ jako oddÄ›lovaÄ pomlÄka. Abyste vytvoÅ™ili podvÃ½Äet,
+pÅ™idejte na zaÄÃ¡tek Å™Ã¡dku **mezery**. ÄŒÃ­m vÃ­c mezer, tÃ­m vÃ­c podvÃ½ÄtÅ¯.
 
-- Zemì
+- ZemÄ›
   - Evropa
-    - Støední Evropa
-      - Èesko
-        - Èechy, Morava, Slezsko
-          - Je¹tì hloubìji?
+    - StÅ™ednÃ­ Evropa
+      - ÄŒesko
+        - ÄŒechy, Morava, Slezsko
+          - JeÅ¡tÄ› hloubÄ›ji?
   - Amerika
-    - mnoho státù
+    - mnoho stÃ¡tÅ¯
 - Mars
-  - mnoho tvorù?
+  - mnoho tvorÅ¯?
 
 
-Vıèet ukonèíte **dvìma** prázdnımi øádky.
+VÃ½Äet ukonÄÃ­te **dvÄ›ma** prÃ¡zdnÃ½mi Å™Ã¡dky.
 
 
                  ==  Seznam  ==
 
-Platí stejná pravidla jako pro vıèty, pouze jinı 
-oddìlovaè (plus).
+PlatÃ­ stejnÃ¡ pravidla jako pro vÃ½Äty, pouze jinÃ½ 
+oddÄ›lovaÄ (plus).
 
 + jedna
 + dva
-+ tøi
-  - Smí¹ené seznamy!
++ tÅ™i
+  - SmÃ­Å¡enÃ© seznamy!
   - To je zmatek!
-    + a poèítáme znovu
+    + a poÄÃ­tÃ¡me znovu
     + ...
-+ ètyøi
++ ÄtyÅ™i
 
 
-                ==  Definièní seznam  ==
+                ==  DefiniÄnÃ­ seznam  ==
 
-Oddìlovaè pro definièní seznam je dvojteèka následovaná pojmem.
-Vysvìtlení pojmu je umístìno na následujícím øádku.
+OddÄ›lovaÄ pro definiÄnÃ­ seznam je dvojteÄka nÃ¡sledovanÃ¡ pojmem.
+VysvÄ›tlenÃ­ pojmu je umÃ­stÄ›no na nÃ¡sledujÃ­cÃ­m Å™Ã¡dku.
 
-: pomeranè
-  ¾lutı plod
+: pomeranÄ
+  Å¾lutÃ½ plod
 : jablko
-  zelenı nebo èervenı plod
-: jiné ovoce
-  - drobné
+  zelenÃ½ nebo ÄervenÃ½ plod
+: jinÃ© ovoce
+  - drobnÃ©
   - kombinujeme seznamy
     + znovu
-    + a je¹tì jednou
+    + a jeÅ¡tÄ› jednou
   
 
 
                      =  Tabulky  =
 
-Pomocí svislítek vytvoøíte øádky a buòky tabulky.
-Dvojité svislítko na zaèátku øádku uvozuje záhlaví tabulky.
-Mezery urèují zarovnání obsahu buòky.
+PomocÃ­ svislÃ­tek vytvoÅ™Ã­te Å™Ã¡dky a buÅˆky tabulky.
+DvojitÃ© svislÃ­tko na zaÄÃ¡tku Å™Ã¡dku uvozuje zÃ¡hlavÃ­ tabulky.
+Mezery urÄujÃ­ zarovnÃ¡nÃ­ obsahu buÅˆky.
 
- || záhlaví 1  |  záhlaví 2   |   záhlaví 3 |
-  | buòka 1.1  |  buòka 1.2   |   buòka 1.3 |
-  | buòka 2.1  |  buòka 2.2   |   buòka 2.3 |
+ || zÃ¡hlavÃ­ 1  |  zÃ¡hlavÃ­ 2   |   zÃ¡hlavÃ­ 3 |
+  | buÅˆka 1.1  |  buÅˆka 1.2   |   buÅˆka 1.3 |
+  | buÅˆka 2.1  |  buÅˆka 2.2   |   buÅˆka 2.3 |
 
-Pokud neuvedete poslední svislítka, bude tabulka bez okrajù.
+Pokud neuvedete poslednÃ­ svislÃ­tka, bude tabulka bez okrajÅ¯.
 
- || záhlaví 1  |  záhlaví 2   |   záhlaví 3
-  | buòka 1.1  |  buòka 1.2   |   buòka 1.3
-  | buòka 2.1  |  buòka 2.2   |   buòka 2.3
-
-
-                =  Speciální entity  =
-
-Proto¾e jinak by to bylo moc jednoduché.
+ || zÃ¡hlavÃ­ 1  |  zÃ¡hlavÃ­ 2   |   zÃ¡hlavÃ­ 3
+  | buÅˆka 1.1  |  buÅˆka 1.2   |   buÅˆka 1.3
+  | buÅˆka 2.1  |  buÅˆka 2.2   |   buÅˆka 2.3
 
 
-                    ==  Obrázky  ==
+                =  SpeciÃ¡lnÃ­ entity  =
 
-Znaèka pro vlo¾ení obrázku je tak jednoduchá, jak jen mù¾e bıt:
+ProtoÅ¾e jinak by to bylo moc jednoduchÃ©.
+
+
+                    ==  ObrÃ¡zky  ==
+
+ZnaÄka pro vloÅ¾enÃ­ obrÃ¡zku je tak jednoduchÃ¡, jak jen mÅ¯Å¾e bÃ½t:
 ``[jmeno-souboru]``.
 
                       [../img/photo.jpg]  
 
-- jmeno-souboru musí mít pøíponu PNG, JPG, GIF nebo podobnou.
-- V uvozovkách nejsou povoleny ¾ádné mezery!
+- jmeno-souboru musÃ­ mÃ­t pÅ™Ã­ponu PNG, JPG, GIF nebo podobnou.
+- V uvozovkÃ¡ch nejsou povoleny Å¾Ã¡dnÃ© mezery!
 
 
-                    ==  Ostatní  ==
+                    ==  OstatnÃ­  ==
 
-Praktické makro ``%%date`` expanduje na aktuální datum.
+PraktickÃ© makro ``%%date`` expanduje na aktuÃ¡lnÃ­ datum.
 
-Tak¾e dnes je %%date v ISO formátu ``YYYYMMDD``.
+TakÅ¾e dnes je %%date v ISO formÃ¡tu ``YYYYMMDD``.
 
-Mù¾ete taky urèit formát data pomocí pøíznaku %?, napø.
-``%%date(%m-%d-%Y)``, co¾ vrátí %%date(%m-%d-%Y).
+MÅ¯Å¾ete taky urÄit formÃ¡t data pomocÃ­ pÅ™Ã­znaku %?, napÅ™.
+``%%date(%m-%d-%Y)``, coÅ¾ vrÃ¡tÃ­ %%date(%m-%d-%Y).
 
-To je zatím v¹echno.
+To je zatÃ­m vÅ¡echno.
 
 -------------------------------------------------------
-Pøelo¾il Vlastimil Ott.
+PÅ™eloÅ¾il Vlastimil Ott.
 -------------------------------------------------------
 [../img/t2tpowered.png] ([%%infile %%infile])
 

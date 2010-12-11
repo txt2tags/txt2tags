@@ -66,6 +66,7 @@ $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
 
 if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
     $GUIButtonDirUrlFmt = $MyGuiEditor;
+                                       
     
     $GUIButtons ['strong']      = array(10, "**", "**", '$[Strong Text]',
                                     '$GUIButtonDirUrlFmt/strong.png"$[Strong]"');                                 
@@ -120,6 +121,13 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
     $GUIButtons ['comment'] = array(800, "% ", "", '',
                                     '$GUIButtonDirUrlFmt/comment.png"$[Comment]"');
     
+    $GUIButtons ['empty5'] = array(850, "", "", '',
+                                    '$GUIButtonDirUrlFmt/empty.png');
+                                    
+    $GUIButtons['sig'] = array(900, ' $CurrentTime', ' ', ' ',
+                    '$GUIButtonDirUrlFmt/sig.gif"$[Insert <CurrentTime>]"');
+                                    
+    
 } else {
     //echo "rem";
     //$GUIButtonDirUrlFmt = '/../../pmwiki/pub/guiedit';
@@ -154,6 +162,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
                      
 	$GUIButtons ['ol'] = array(531, "+ ", "", '$[Ordered list]',
                                     '$GUIButtonDirUrlFmt/ol.gif"$[Ordered (numbered) list]"');
+                                    
 }
 
 

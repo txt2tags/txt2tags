@@ -1,4 +1,4 @@
-TXT2TAGS PÉLDA
+TXT2TAGS PÃ‰LDA
 Aurelio Jargas
 %%mtime(%m/%d/%Y)
 
@@ -7,188 +7,188 @@ Aurelio Jargas
 % translation: Adam SCHMIDEG
 
 %!target: html
-%!encoding: iso-8859-2
+%!encoding: UTF-8
 
-                  =  Bevezetés  =
+                  =  BevezetÃ©s  =
 
-Szia, ez a txt2tags példa-fájl.
+Szia, ez a txt2tags pÃ©lda-fÃ¡jl.
 
-Itt mindegyik jelölésre találsz példákat és rövid magyarázatot is
-hozzájuk.
+Itt mindegyik jelÃ¶lÃ©sre talÃ¡lsz pÃ©ldÃ¡kat Ã©s rÃ¶vid magyarÃ¡zatot is
+hozzÃ¡juk.
 
-Ennek a fájlnak az elsô 3 sora fejléc,
-amely így épül fel:
+Ennek a fÃ¡jlnak az elsÃ´ 3 sora fejlÃ©c,
+amely Ã­gy Ã©pÃ¼l fel:
 ```
-1. sor: dokumentum címe
-2. sor: szerzô neve, email-címe
-3. sor: dátum, verzió
-```
-
-Ha egy sor mindkét szélén ugyanannyi egyenlôségjel = van, akkor az
-címsor lesz.
-
-% titkos megjegyzés!
-%TODO hivatkozni a program honlapjára http://txt2tags.org
-
-
-              = Fontok és egyéb szépítôszerek =
-
-Kétféle fontot használhatsz:
-
-Van a NORMÁL font, azt lehet tovább szépíteni.
-
-És van az ÍRÓGÉP font, amelyik fix szélességû, és az elôformázott
-szövegekhez lehet használni.
-
-Most pedig jöjjön egy alcím...
-
-                  ==  Szépítôszerek  ==
-
-A szöveget egyszerû jelekkel lehet szépíteni, ahogy emailt is írsz.
-
-Dupla * jelöli a **kövéret**, dupla / a //dôltet// és dupla _ az
-__aláhúzottat__.
-
-Keverni is lehet a **//kövéret a dôlttel//**.
-
-
-              ==  Elôformázott szöveg  ==
-
-Kódrészletet vagy más elôformázott szöveget írhatunk így:
-```
-  ez    itt   elôre   van   formázva
-a //jelölések// **nem** lesznek ``feloldva``
+1. sor: dokumentum cÃ­me
+2. sor: szerzÃ´ neve, email-cÃ­me
+3. sor: dÃ¡tum, verziÃ³
 ```
 
-Egysoros elôformázott szöveget is könnyen írhatsz:
+Ha egy sor mindkÃ©t szÃ©lÃ©n ugyanannyi egyenlÃ´sÃ©gjel = van, akkor az
+cÃ­msor lesz.
+
+% titkos megjegyzÃ©s!
+%TODO hivatkozni a program honlapjÃ¡ra http://txt2tags.org
+
+
+              = Fontok Ã©s egyÃ©b szÃ©pÃ­tÃ´szerek =
+
+KÃ©tfÃ©le fontot hasznÃ¡lhatsz:
+
+Van a NORMÃL font, azt lehet tovÃ¡bb szÃ©pÃ­teni.
+
+Ã‰s van az ÃRÃ“GÃ‰P font, amelyik fix szÃ©lessÃ©gÅ±, Ã©s az elÃ´formÃ¡zott
+szÃ¶vegekhez lehet hasznÃ¡lni.
+
+Most pedig jÃ¶jjÃ¶n egy alcÃ­m...
+
+                  ==  SzÃ©pÃ­tÃ´szerek  ==
+
+A szÃ¶veget egyszerÅ± jelekkel lehet szÃ©pÃ­teni, ahogy emailt is Ã­rsz.
+
+Dupla * jelÃ¶li a **kÃ¶vÃ©ret**, dupla / a //dÃ´ltet// Ã©s dupla _ az
+__alÃ¡hÃºzottat__.
+
+Keverni is lehet a **//kÃ¶vÃ©ret a dÃ´lttel//**.
+
+
+              ==  ElÃ´formÃ¡zott szÃ¶veg  ==
+
+KÃ³drÃ©szletet vagy mÃ¡s elÃ´formÃ¡zott szÃ¶veget Ã­rhatunk Ã­gy:
+```
+  ez    itt   elÃ´re   van   formÃ¡zva
+a //jelÃ¶lÃ©sek// **nem** lesznek ``feloldva``
+```
+
+Egysoros elÃ´formÃ¡zott szÃ¶veget is kÃ¶nnyen Ã­rhatsz:
 ``` prompt$ ls /etc
 
-Vagy ``ez egy elôformázott`` szöveg mondaton belül.
+Vagy ``ez egy elÃ´formÃ¡zott`` szÃ¶veg mondaton belÃ¼l.
 
 
-                ==  További szépségek  ==
+                ==  TovÃ¡bbi szÃ©psÃ©gek  ==
 
-Az olyan különlegességeket, mint email-cím (duh@somewhere.com) vagy
-internet-cím (http://www.duh.com) a rendszer magától felismeri.
-Egy kis szünetet is tarthatsz egy vékony vonallal:
+Az olyan kÃ¼lÃ¶nlegessÃ©geket, mint email-cÃ­m (duh@somewhere.com) vagy
+internet-cÃ­m (http://www.duh.com) a rendszer magÃ¡tÃ³l felismeri.
+Egy kis szÃ¼netet is tarthatsz egy vÃ©kony vonallal:
 
 --------------------------------------------------------
-^ vékony vagy vastag v
+^ vÃ©kony vagy vastag v
 ========================================================
 
-Cimkével is elláthatsz [egy hivatkozást http://duh.org].
+CimkÃ©vel is ellÃ¡thatsz [egy hivatkozÃ¡st http://duh.org].
 
-És ne feledd,
-	Ha TAB-bal kezdesz egy sort, az idézet lesz.
-		Több TAB-bal mélyebb lesz az idézet (ha ez támogatva van).
-Így ni.
+Ã‰s ne feledd,
+	Ha TAB-bal kezdesz egy sort, az idÃ©zet lesz.
+		TÃ¶bb TAB-bal mÃ©lyebb lesz az idÃ©zet (ha ez tÃ¡mogatva van).
+Ãgy ni.
 
-                      =  Felsorolások  =
+                      =  FelsorolÃ¡sok  =
 
-A felsorolást a sor eleji **kötôjel** vagy **pluszjel** jelöli.
+A felsorolÃ¡st a sor eleji **kÃ¶tÃ´jel** vagy **pluszjel** jelÃ¶li.
 
 
-                  ==  Sima felsorolás  ==
+                  ==  Sima felsorolÃ¡s  ==
 
-Alapértelmezetten a kötôjel jelöli a felsorolást.
-Listán belüli listához tegyél **szóközt** a sor elejére. Ha még azon
-belül is listát akarsz, tegyél még több szóközt.
+AlapÃ©rtelmezetten a kÃ¶tÃ´jel jelÃ¶li a felsorolÃ¡st.
+ListÃ¡n belÃ¼li listÃ¡hoz tegyÃ©l **szÃ³kÃ¶zt** a sor elejÃ©re. Ha mÃ©g azon
+belÃ¼l is listÃ¡t akarsz, tegyÃ©l mÃ©g tÃ¶bb szÃ³kÃ¶zt.
 
-- Föld
+- FÃ¶ld
  - Amerika
-  - Dél-Amerika
-   - Brazília
-    - Milyen mélyre mehetek?
- - Európa
-  - Sok más ország
+  - DÃ©l-Amerika
+   - BrazÃ­lia
+    - Milyen mÃ©lyre mehetek?
+ - EurÃ³pa
+  - Sok mÃ¡s orszÃ¡g
 - Mars
  - Ki tudja?!
 
 
-A lista végét **két** egymás utáni üres sor jelöli.
+A lista vÃ©gÃ©t **kÃ©t** egymÃ¡s utÃ¡ni Ã¼res sor jelÃ¶li.
 
 
-                 ==  Sorszámozott lista  ==
+                 ==  SorszÃ¡mozott lista  ==
 
-Ugyanaz, mint a sima lista, csak a jelölés más (pluszjel).
+Ugyanaz, mint a sima lista, csak a jelÃ¶lÃ©s mÃ¡s (pluszjel).
 
 + egy
-+ kettô
-+ három
++ kettÃ´
++ hÃ¡rom
   - keverni is lehet!
   - micsoda kupi
-    + számoljunk újra
+    + szÃ¡moljunk Ãºjra
     + ...
-+ négy
++ nÃ©gy
 
 
-                ==  Meghatározások  ==
+                ==  MeghatÃ¡rozÃ¡sok  ==
 
-A meghatározást kettôsponttal jelöljük, azt követi a meghatározandó
-kifejezés.  Majd a következô sorba jön maga a meghatározás.
+A meghatÃ¡rozÃ¡st kettÃ´sponttal jelÃ¶ljÃ¼k, azt kÃ¶veti a meghatÃ¡rozandÃ³
+kifejezÃ©s.  Majd a kÃ¶vetkezÃ´ sorba jÃ¶n maga a meghatÃ¡rozÃ¡s.
 
 : citrom
-  sárga gyümölcs
+  sÃ¡rga gyÃ¼mÃ¶lcs
 : alma
-  zöld vagy piros gyümölcs
-: más gyümölcsök
-  - hûha!
+  zÃ¶ld vagy piros gyÃ¼mÃ¶lcs
+: mÃ¡s gyÃ¼mÃ¶lcsÃ¶k
+  - hÅ±ha!
   - ezt is lehet keverni
-    + és még ezt is!
-    + és ezt is!
+    + Ã©s mÃ©g ezt is!
+    + Ã©s ezt is!
 
 
-                     =  Táblázatok  =
+                     =  TÃ¡blÃ¡zatok  =
 
-Függôleges vonallal | hozhatod létre a táblázat sorait
-és celláit.
-Amelyik sort dupla függôleges vonallal kezded, az
-címsorként fog viselkedni.
-A cellán belüli szóközökkel állíthatod, hogy balra,
-jobbra vagy középre legyen rendezve. 
+FÃ¼ggÃ´leges vonallal | hozhatod lÃ©tre a tÃ¡blÃ¡zat sorait
+Ã©s cellÃ¡it.
+Amelyik sort dupla fÃ¼ggÃ´leges vonallal kezded, az
+cÃ­msorkÃ©nt fog viselkedni.
+A cellÃ¡n belÃ¼li szÃ³kÃ¶zÃ¶kkel Ã¡llÃ­thatod, hogy balra,
+jobbra vagy kÃ¶zÃ©pre legyen rendezve. 
 
- || 1. címsor  |  2. címsor  |  3. címsor |
+ || 1. cÃ­msor  |  2. cÃ­msor  |  3. cÃ­msor |
   | 1.1 cella  |  1.2 cella  |  1.3 cella |
   | 2.1 cella  |  2.2 cella  |  2.3 cella |
 
-Ha a végérôl elhagyod a vonalat, akkor a táblázatnak
+Ha a vÃ©gÃ©rÃ´l elhagyod a vonalat, akkor a tÃ¡blÃ¡zatnak
 nem lesz kerete:
 
- || 1. címsor  |  2. címsor  |  3. címsor
+ || 1. cÃ­msor  |  2. cÃ­msor  |  3. cÃ­msor
   | 1.1 cella  |  1.2 cella  |  1.3 cella
   | 2.1 cella  |  2.2 cella  |  2.3 cella
 
 
-                =  Egyéb különlegességek  =
+                =  EgyÃ©b kÃ¼lÃ¶nlegessÃ©gek  =
 
-Mert eddig túl egyszerû volt.
+Mert eddig tÃºl egyszerÅ± volt.
 
 
-                    ==  Képek  ==
+                    ==  KÃ©pek  ==
 
-A képet ilyen egyszerû jelölni ``[képnév]``.
+A kÃ©pet ilyen egyszerÅ± jelÃ¶lni ``[kÃ©pnÃ©v]``.
 
                [../img/photo.jpg]  
 
-- A fájlnév kiterjesztése PNG, JPG, GIF, vagy hasonló
+- A fÃ¡jlnÃ©v kiterjesztÃ©se PNG, JPG, GIF, vagy hasonlÃ³
   legyen.
-- A zárójelen belül ne legyen szóköz!
+- A zÃ¡rÃ³jelen belÃ¼l ne legyen szÃ³kÃ¶z!
 
 
-                     ==  Egyéb  ==
+                     ==  EgyÃ©b  ==
 
-Jól jöhet a ``%%date`` makró, amibôl a mostani
-dátum lesz.
+JÃ³l jÃ¶het a ``%%date`` makrÃ³, amibÃ´l a mostani
+dÃ¡tum lesz.
 
-A mai dátum tehát %%date az ISO szerinti ``YYYYMMDD``
-formátumban.
+A mai dÃ¡tum tehÃ¡t %%date az ISO szerinti ``YYYYMMDD``
+formÃ¡tumban.
 
-A formátumot te is megadhatod %? paraméterek használatával,
-így lesz a ``%%date(%m-%d-%Y)`` eredménye: %%date(%m-%d-%Y).
+A formÃ¡tumot te is megadhatod %? paramÃ©terek hasznÃ¡latÃ¡val,
+Ã­gy lesz a ``%%date(%m-%d-%Y)`` eredmÃ©nye: %%date(%m-%d-%Y).
 
-Egyelôre ennyi.
+EgyelÃ´re ennyi.
 
 ----------------------------------------------------------
-Fordította Schmideg Adam.
+FordÃ­totta Schmideg Adam.
 ----------------------------------------------------------
 [../img/t2tpowered.png] ([%%infile %%infile])
