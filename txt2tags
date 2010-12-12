@@ -3862,6 +3862,10 @@ class ConfigMaster:
         if target == 'arts':
             target, config['slides'] = 'art', True
         if config['slides'] and target == 'art':
+            if not config['width'] and  not config['height'] and os.name == 'posix':
+                import fcntl, termios, struct
+                data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
+                config['height'], config['width'] = struct.unpack('4H',data)[:2]
             if not config['width']:
                 config['width'] = DFT_SLIDE_WIDTH
             if not config['height']:
