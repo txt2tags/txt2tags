@@ -156,6 +156,7 @@ FLAGS = {
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
+    'spread': 0,
     'fix-path': 0,
     }
 OPTIONS = {
@@ -254,6 +255,7 @@ TARGET_NAMES = {
   'txt'    : _('Plain Text'),
   'aat'    : _('ASCII Art Text'),
   'aap'    : _('ASCII Art Presentation'),
+  'aas'    : _('ASCII Art Spreadsheet'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
@@ -3002,7 +3004,9 @@ def aa_slide(title, char, width):
     return res
 
 
-def aa_table(table, chars, width, border, h_header, v_header, align):
+def aa_table(table, chars, width, border, h_header, v_header, align, spread):
+    if spread:
+        border, h_header, v_header, align = True, True, True, 'Center'
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3811,6 +3815,8 @@ class ConfigMaster:
             outfile = "%s.%s" % (basename, config['target'])
             if config['target'] == 'aat' and config['slides']:
                 outfile = "%s.%s" % (basename, 'aap')
+            if config['target'] == 'aat' and config['spread']:
+                outfile = "%s.%s" % (basename, 'aas')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -3861,6 +3867,8 @@ class ConfigMaster:
         # Slides needs width and height
         if target == 'aap':
             target, config['slides'] = 'aat', True
+        if target == 'aas':
+            target, config['spread'] = 'aat', True
         if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
                 import fcntl, termios, struct
@@ -5005,10 +5013,13 @@ class BlockMaster:
             if TARGET == 'aat':
                 final = []
                 for line in result:
-                    if not line or blockname == 'table':
+                    if blockname == 'table': 
                         final.append(line)
-                    else:
-                        final.extend(textwrap.wrap(line, CONF['width']))
+                    elif not CONF['spread']:
+                        if not line:
+                            final.append(line)
+                        else:
+                            final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
@@ -5218,7 +5229,7 @@ class BlockMaster:
         result = []
 
         if TARGET == 'aat':
-            return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align) + ['']
+            return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, CONF['spread']) + ['']
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
