@@ -3002,7 +3002,7 @@ def aa_slide(title, char, width):
     return res
 
 
-def aa_table(table, chars, width, border, header, align):
+def aa_table(table, chars, width, border, h_header, v_header, align):
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3031,20 +3031,23 @@ def aa_table(table, chars, width, border, header, align):
         side, corner = chars['side'], chars['corner']
     else:
         side = corner = ' '
+    vhead = '$'
     resh = res = corner
-    bord, head = chars['border'], chars['bar2']
+    bord, hhead = chars['border'], chars['bar2']
     for i in range(n):
         res = res + (length[i] + 2) * bord + corner
-        resh = resh + (length[i] + 2) * head + corner
+        resh = resh + (length[i] + 2) * hhead + corner
     ret = []
     for i, line in enumerate(data2):
         aff = side
-        if i == 1 and header:
+        if i == 1 and h_header:
             ret.append(resh)
         else:
             ret.append(res)
         for j, el in enumerate(line[0]):
             aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - len(el) - 2) * " " + side
+            if j == 0 and v_header:
+                aff = aff[:-1] + vhead
         ret.append(aff)
     ret.append(res)
     if align == 'Left':
@@ -5211,7 +5214,7 @@ class BlockMaster:
         result = []
 
         if TARGET == 'art':
-            return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.align) + ['']
+            return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align) + ['']
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
