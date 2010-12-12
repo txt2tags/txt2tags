@@ -16,9 +16,6 @@ css-reference.txt
 ctags
 	The ctags definition file for txt2tags markup.
 
-dynartslides
-	A Python script to generate art slides dynamically.
-
 gensite
 	A Python script to generate a site with txt2tags. It
 	copies all files over, except those with txt2tags extension,
