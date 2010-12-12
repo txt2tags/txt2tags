@@ -101,6 +101,7 @@ import time  # %%date, %%mtime
 import getopt
 import textwrap
 import csv
+import string
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
@@ -3005,8 +3006,6 @@ def aa_slide(title, char, width):
 
 
 def aa_table(table, chars, width, border, h_header, v_header, align, spread):
-    if spread:
-        border, h_header, v_header, align = True, True, True, 'Center'
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3031,6 +3030,13 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     for i in range(n):
         tab.append([line[i] for line in data3])
     length = [max([len(el) for el in line]) for line in tab]
+    if spread:
+        border, h_header, v_header, align = True, True, True, 'Center'
+        h = [string.ascii_uppercase[i].center(length[i]) for i in range(n)]
+        data2 = [[h, [1] * n]] + data2
+        data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
+        data2[0][0][0] = ''
+        length, n = [max(len(line[0][0]) for line in data2)] + length, n + 1
     if border:
         side, corner = chars['side'], chars['corner']
     else:
