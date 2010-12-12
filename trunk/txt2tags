@@ -252,8 +252,8 @@ TARGET_NAMES = {
   'moin'   : _('MoinMoin page'),
   'pm6'    : _('PageMaker document'),
   'txt'    : _('Plain Text'),
-  'art'    : _('ASCII Art document'),
-  'arts'   : _('ASCII Art slides'),
+  'aat'    : _('ASCII Art Text'),
+  'aap'    : _('ASCII Art Presentation'),
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
@@ -379,7 +379,7 @@ def Usage():
 #  - use %% to represent a literal %
 #
 HEADER_TEMPLATE = {
-    'art': """
+    'aat': """
 Fake template to respect the general process.
 """,
     'txt': """\
@@ -915,7 +915,7 @@ def getTags(config):
 
     alltags = {
 
-    'art': {
+    'aat': {
         'title1'               : '\a'                     ,
         'title2'               : '\a'                     ,
         'title3'               : '\a'                     ,
@@ -2245,7 +2245,7 @@ def getRules(config):
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
         },
-        'art': {
+        'aat': {
             #TIP art inherits all TXT rules
         },
         'html': {
@@ -2781,7 +2781,7 @@ def getRules(config):
     if config['target'] == 'xhtml':
         myrules = rules_bank['html'].copy()   # inheritance
         myrules.update(rules_bank['xhtml'])   # get XHTML specific
-    elif config['target'] == 'art':
+    elif config['target'] == 'aat':
         myrules = rules_bank['txt'].copy()    # inheritance
         myrules['tableable'] = 1
         if config['slides']:
@@ -3809,8 +3809,8 @@ class ConfigMaster:
             # .t2t and .txt are the only "official" source extensions
             basename = re.sub('\.t[2x]t$', '', infile)
             outfile = "%s.%s" % (basename, config['target'])
-            if config['target'] == 'art' and config['slides']:
-                outfile = "%s.%s" % (basename, 'arts')
+            if config['target'] == 'aat' and config['slides']:
+                outfile = "%s.%s" % (basename, 'aap')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -3859,9 +3859,9 @@ class ConfigMaster:
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         # Slides needs width and height
-        if target == 'arts':
-            target, config['slides'] = 'art', True
-        if config['slides'] and target == 'art':
+        if target == 'aap':
+            target, config['slides'] = 'aat', True
+        if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
                 import fcntl, termios, struct
                 data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
@@ -3871,9 +3871,9 @@ class ConfigMaster:
             if not config['height']:
                 config['height'] = DFT_SLIDE_HEIGHT
         # ASCII Art needs a width
-        if target == 'art' and not config['width']:
+        if target == 'aat' and not config['width']:
             config['width'] = DFT_TEXT_WIDTH
-        if target == 'art' and config['width'] < 5:
+        if target == 'aat' and config['width'] < 5:
             Error(_("--width: Expected width > 4, got %i") % config['width'])
         # Check/set user ASCII Art formatting characters
         if config['art-chars']:
@@ -4498,14 +4498,14 @@ class TitleMaster:
             else:
                 i = len(full_title)
             ret.append(regex['x'].sub('=' * i, self.tag))
-        elif TARGET == 'art' and self.level == 1:
+        elif TARGET == 'aat' and self.level == 1:
             if CONF['slides'] :
                 AA_TITLE = tagged
             else :
                 if BLOCK.count > 1:
                     ret.append('')  # blank line before
                 ret.extend(aa_box(tagged, AA, CONF['width']))
-        elif TARGET == 'art':
+        elif TARGET == 'aat':
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
@@ -4537,7 +4537,7 @@ class TitleMaster:
 
             # TOC will be plain text (no links)
             else:
-                if TARGET in ['txt', 'man', 'art']:
+                if TARGET in ['txt', 'man', 'aat']:
                     # For these, the list is not necessary, just dump the text
                     tocitem = '%s""%s""' % (indent, id_txt)
                 else:
@@ -5002,7 +5002,7 @@ class BlockMaster:
         # The next block will use it
         if result:
             self.last = blockname
-            if TARGET == 'art':
+            if TARGET == 'aat':
                 final = []
                 for line in result:
                     if not line or blockname == 'table':
@@ -5014,7 +5014,7 @@ class BlockMaster:
             Debug('BLOCK: %s' % result, 6)
 
         # ASCII Art processing
-        if TARGET == 'art' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
+        if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
@@ -5217,7 +5217,7 @@ class BlockMaster:
     def table(self):
         result = []
 
-        if TARGET == 'art':
+        if TARGET == 'aat':
             return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align) + ['']
 
         # Blank line before?
@@ -5782,7 +5782,7 @@ def toc_formatter(toc, config):
     ret = toc
 
     # Art: An automatic "Table of Contents" header is added to the TOC slide
-    if config['target'] == 'art' and config['slides']:
+    if config['target'] == 'aat' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
         toc = aa_slide(_("Table of Contents"), AA['bar2'], config['width']) + toc + ([''] * n)
         toc.append(aa_line(AA['bar2'], config['width']))
@@ -5800,7 +5800,7 @@ def toc_formatter(toc, config):
             para = TAGS['paragraphOpen'] + TAGS['paragraphClose']
             bar  = regex['x'].sub('-' * DFT_TEXT_WIDTH, TAGS['bar1'])
             tocbar = [para, bar, para]
-            if config['target'] == 'art' and config['headers']:
+            if config['target'] == 'aat' and config['headers']:
                 # exception: header already printed a bar
                 ret = [para] + ret + tocbar
             else:
@@ -5891,7 +5891,7 @@ def doHeader(headers, config):
     Debug("Header Data: %s" % head_data, 1)
 
     # ASCII Art does not use a header template, aa_header() formats the header
-    if target == 'art':
+    if target == 'aat':
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
         if not n_h :
             return config['fullBody']
@@ -6521,7 +6521,7 @@ def convert_this_files(configs):
             return
 
         # Close the last slide
-        if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'art':
+        if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'aat':
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
             target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
 
