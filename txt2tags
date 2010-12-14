@@ -258,6 +258,7 @@ TARGET_NAMES = {
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
   'adoc'   : _('AsciiDoc document'),
+  'csv'    : _('CSV spreadsheet'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
   'bbcode' : _('BBCode document'),
@@ -384,6 +385,8 @@ def Usage():
 HEADER_TEMPLATE = {
     'aat': """
 Fake template to respect the general process.
+""",
+    'csv': """
 """,
     'txt': """\
 %(HEADER1)s
@@ -959,6 +962,9 @@ def getTags(config):
         'email'                : '\a'        ,
         'emailMark'            : '\a (\a)'   ,
         'img'                  : '[\a]'      ,
+    },
+
+    'csv': {
     },
 
     'html': {
@@ -2250,6 +2256,9 @@ def getRules(config):
         },
         'aat': {
             #TIP art inherits all TXT rules
+        },
+        'csv': {
+            'tableable': 1,
         },
         'html': {
             'escapexmlchars': 1,
@@ -4996,6 +5005,10 @@ class BlockMaster:
         parsed = self.HLD.pop()
         self.PRP.pop()
         self.depth = len(self.BLK)
+        
+        if TARGET == 'csv' and blockname != 'table':
+            return []
+
         if blockname == 'table':
             del self.tableparser
 
@@ -5236,6 +5249,9 @@ class BlockMaster:
 
         if TARGET == 'aat':
             return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, CONF['spread']) + ['']
+
+        if TARGET == 'csv':
+            return [','.join(cell.strip() for cell in row['cells']) for row in self.tableparser.rows] + ['']
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
