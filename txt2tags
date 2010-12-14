@@ -3879,11 +3879,13 @@ class ConfigMaster:
         # Check split level value
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
-        # Slides needs width and height
+        if target == 'csv':
+            config['spread'] = True
         if target == 'aap':
             target, config['slides'] = 'aat', True
         if target == 'aas':
             target, config['spread'] = 'aat', True
+        # Slides needs width and height
         if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
                 import fcntl, termios, struct
@@ -5006,7 +5008,7 @@ class BlockMaster:
         self.PRP.pop()
         self.depth = len(self.BLK)
         
-        if TARGET == 'csv' and blockname != 'table':
+        if CONF['spread'] and blockname != 'table':
             return []
 
         if blockname == 'table':
@@ -5032,13 +5034,10 @@ class BlockMaster:
             if TARGET == 'aat':
                 final = []
                 for line in result:
-                    if blockname == 'table': 
+                    if not line or blockname == 'table': 
                         final.append(line)
-                    elif not CONF['spread']:
-                        if not line:
-                            final.append(line)
-                        else:
-                            final.extend(textwrap.wrap(line, CONF['width']))
+                    else:
+                        final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
