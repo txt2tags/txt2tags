@@ -16,6 +16,7 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --style=FILE    use FILE as the document style (like HTML CSS)
       --css-sugar     insert CSS-friendly tags for HTML/XHTML
       --css-inside    insert CSS file contents inside HTML/XHTML headers
+      --embed-images  embed image data inside RTF documents
   -H, --no-headers    suppress header and footer from the output
   -T, --template=FILE use FILE as the template for the output document
       --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>

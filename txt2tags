@@ -159,6 +159,7 @@ FLAGS = {
     'slides': 0,
     'spread': 0,
     'fix-path': 0,
+    'embed-images': 0,
     }
 OPTIONS = {
     'target': '',
@@ -340,6 +341,7 @@ def Usage():
         fmt1 % (''  , '--style=FILE'   , _("use FILE as the document style (like HTML CSS)")),
         fmt1 % (''  , '--css-sugar'    , _("insert CSS-friendly tags for HTML/XHTML")),
         fmt1 % (''  , '--css-inside'   , _("insert CSS file contents inside HTML/XHTML headers")),
+        fmt1 % (''  , '--embed-images' , _("embed image data inside RTF documents")),
         fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
         fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
         fmt1 % (''  , '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
@@ -2076,6 +2078,7 @@ def getTags(config):
         'numlistClose'          : '\\sa240',
         'numlistItemOpen'       : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
         'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}{\\fldrslt{(\a)}}}',
+        '_imgEmbed'             : '{\*\shppict{\pict\a}}',
         'deflistOpen'           : '\\sa240',
         'deflistClose'          : '\\sa240',
         'deflistItem1Open'      : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0\\fi-360\\li~V~{\\b\n',
@@ -2154,6 +2157,10 @@ def getTags(config):
     # Map strong line to pagebreak
     if rules['mapbar2pagebreak'] and tags['pageBreak']:
         tags['bar2'] = tags['pageBreak']
+
+    # Change img tag if embedding images in RTF
+    if config['embed-images'] and tags['_imgEmbed']:
+        tags['img'] = tags['_imgEmbed']
 
     # Map strong line to separator if not defined
     if not tags['bar2'] and tags['bar1']:
@@ -6588,8 +6595,103 @@ def convert_this_files(configs):
             finish_him(outlist, myconf)
 
 
+def getImageInfo(filename):
+    from struct import unpack
+    try:
+        f = open(filename, 'rb')
+        head = f.read(2)
+        if head == '\x89\x50':  # PNG format image
+            imgtype = 'png'
+            dpix = 0
+            dpiy = 0
+            magic, length, chunkid, width, height = unpack('!6sI4sIIxxxxxxxxx', f.read(31))
+            if (magic == '\x4e\x47\x0d\x0a\x1a\x0a') and \
+                    (length > 0) and \
+                    (chunkid == 'IHDR'):
+                        chunk = f.read(8)
+                        while chunk:
+                            length, chunkid = unpack('!I4s', chunk)
+                            if chunkid == 'pHYs':
+                                dpix, dpiy, units = unpack('!IIb', f.read(9))
+                                if units == 1:
+                                    dpix = dpix * 0.0257
+                                    dpiy = dpiy * 0.0257
+                                else:
+                                    dpix = 0
+                                    dpiy = 0
+                                f.close()
+                                return imgtype, width, height, dpix, dpiy
+                            else:
+                                f.seek(length + 4, 1)
+                                chunk = f.read(8)
+                        f.close()
+                        return imgtype, width, height, dpix, dpiy
+            else:
+                f.close()
+                Error('Cannot embed PNG image ' + filename + '. Badly formatted.')
+        
+        elif head == '\xff\xd8':  # JPG format image
+            imgtype = 'jpeg'
+            b = f.read(1)
+            dpix = 0
+            dpiy = 0
+            while (b != ''):
+                while (b != '\xff'):
+                    b = f.read(1)
+                while (b == '\xff'):
+                    b = f.read(1)
+                if (b >= '\xc0') and (b <= '\xc3'):
+                    height, width = unpack('!xxxHH', f.read(7))
+                    f.close()
+                    return imgtype, width, height, dpix, dpiy
+                elif b == '\xe0':
+                    size = unpack('!H', f.read(2))
+                    if f.read(5) == 'JFIF\0':
+                        units, dpix, dpiy = unpack('!xxbHH', f.read(7))
+                        if units == 0:
+                            dpix = 0
+                            dpiy = 0
+                        elif units == 2:
+                            dpix = dpix * 2.57
+                            dpiy = dpiy * 2.57
+                        f.seek(size[0] - 12, 1)
+                    else:
+                        f.seek(size[0] - 7, 1)
+                    b = f.read(1)
+                else:
+                    size = unpack('!H', f.read(2))
+                    f.seek(size[0] - 2, 1)
+                    b = f.read(1)
+            f.close()
+            Error('Cannot embed JPG image ' + filename + '. Badly formatted.')
+        else:  # Not a supported image format
+            f.close()
+            Error('Cannot embed image ' + filename + '. Unsupported format.')
+    except:
+        Error('Cannot embed image ' + filename + '. Unable to open file.')
+
+RTFIMGID = 1000  # Needed fo each embedded image can have a unique ID number
+
+def embedImageRtf(filename):
+    global RTFIMGID
+    RTFIMGID += 1
+    mytype, width, height, dpix, dpiy = getImageInfo(filename)
+    if dpix == 0 and dpiy == 0:
+        dpix = 72
+        dpiy = 72
+    try:
+        filein = open(filename, 'rb')
+        line = r'\\%sblip\\picw%d\\pich%d\\picwgoal%d\\picscalex100\\pichgoal%d\\picscaley100\\bliptag%d{\\*\\blipuid%016x}' \
+                % (mytype, width, height, int(float(width) / float(dpix) * 1440.0), int(float(height) / float(dpiy) * 1440.0), RTFIMGID, RTFIMGID)
+        line = line + filein.read().encode('hex')
+        filein.close()
+        return line
+    except:
+        Error('Unable to embed image: ' + filename)
+
 def parse_images(line):
     "Tag all images found"
+    global CONF
     while regex['img'].search(line):
         txt = regex['img'].search(line).group(1)
         tag = TAGS['img']
@@ -6621,11 +6723,18 @@ def parse_images(line):
 
         # Rtf needs some tweaking
         if TARGET == 'rtf':
-            # insert './' for relative paths if needed
-            if not re.match(r':/|:\\', txt):
-                tag = regex['x'].sub('./\a', tag, 1)
-            # insert image filename an extra time for readers that don't grok linked images
-            tag = regex['x'].sub(txt, tag, 1)
+            if CONF['embed-images']:
+                # Embedded images take paths relative tot he source, like include files
+                filename = regex['img'].search(line).group(1)
+                incpath = os.path.dirname(CONF['currentsourcefile'])
+                fullpath = PathMaster().join(incpath, filename)
+                txt = embedImageRtf(fullpath)
+            else:
+                # insert './' for relative paths if needed
+                if not re.match(r':/|:\\', txt):
+                    tag = regex['x'].sub('./\a', tag, 1)
+                # insert image filename an extra time for readers that don't grok linked images
+                tag = regex['x'].sub(txt, tag, 1)
 
         if TARGET == 'tex':
             tag = re.sub(r'\\b', r'\\\\b', tag)
