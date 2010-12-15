@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: txt2tags\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/txt2tags/issues\n"
 "POT-Creation-Date: 2010-12-09 13:30+BRST\n"
-"PO-Revision-Date: 2010-12-09 19:55+0000\n"
+"PO-Revision-Date: 2010-12-15 14:01+0000\n"
 "Last-Translator: aurelio <verde@aurelio.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgid "BBCode document"
 msgstr "Documento BBCode"
 
 msgid "Redmine Wiki page"
-msgstr ""
+msgstr "Página Wiki do Redmine"
 
 msgid "SPIP article"
 msgstr "Artigo SPIP"
@@ -135,7 +135,7 @@ msgid "suppress header and footer from the output"
 msgstr "remove os cabeçalhos e o rodapé do documento"
 
 msgid "use FILE as the template for the output document"
-msgstr ""
+msgstr "usa ARQUIVO como modelo para o documento"
 
 msgid "hide email from spam robots. x@y.z turns <x (a) y z>"
 msgstr "esconde e-mails dos robôs de SPAM. x@y.z vira <x (a) y z>"
@@ -183,7 +183,7 @@ msgid "file.t2t"
 msgstr "arquivo.t2t"
 
 msgid "The 'no-' prefix disables the option:"
-msgstr ""
+msgstr "O prefixo 'no-' desliga a opção:"
 
 msgid "By default, converted output is saved to 'infile.<target>'."
 msgstr "Normalmente a saída convertida é gravada em 'arquivo.<tipo>'."
@@ -222,7 +222,7 @@ msgid "%s (try --help)"
 msgstr "%s (tente o --help)"
 
 msgid "Ignored config"
-msgstr ""
+msgstr "Ignorada config"
 
 msgid "Loading source document"
 msgstr "Carregando o documento fonte"
@@ -261,7 +261,7 @@ msgid "Option --split must be 0, 1 or 2"
 msgstr "A opção --split deve ser 0, 1 ou 2"
 
 msgid "--width: Expected width > 4, got %i"
-msgstr ""
+msgstr "--width: Esperava width > 4, recebi %i"
 
 msgid "--art-chars: Expected %i chars, got %i"
 msgstr "--art-chars: Esperava %i caracteres, recebi %i"
@@ -315,10 +315,10 @@ msgid "Active filters"
 msgstr "Filtros ativos"
 
 msgid "No, no. Your PostVoodoo regex is wrong. Maybe you should call mommy?"
-msgstr ""
+msgstr "Não, não. Sua regex do PostVoodoo está errada. Que tal pedir ajuda para os universitários?"
 
 msgid "Dear PostVoodoo apprentice: You got the regex right, but messed the replacement"
-msgstr ""
+msgstr "Pequeno gafanhoto, você acertou a regex do PostVoodoo, mas fez caca na substituição"
 
 msgid "Invalid PostProc filter regex"
 msgstr "Filtro de PostProc inválido (regex quebrada)"
@@ -333,10 +333,10 @@ msgid "Table of Contents"
 msgstr "Sumário"
 
 msgid "Cannot find template file:"
-msgstr ""
+msgstr "Não consegui localizar o modelo:"
 
 msgid "CSS include failed for %s"
-msgstr ""
+msgstr "Falha na inclusão do CSS: %s"
 
 msgid "Source document contents stored"
 msgstr "Conteúdo do documento fonte guardado"
