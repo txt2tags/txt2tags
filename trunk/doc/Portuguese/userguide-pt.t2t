@@ -3,7 +3,8 @@ Aurelio, %%date(%c)
 Tradução para o português: César A. K. Grossman
 
 %!target: html
-%!options: --toc --toc-level 2 --encoding UTF-8
+%!encoding: UTF-8
+%!options: --toc --toc-level 2
 
 %!preproc: IMGPATH ../userguide
 
@@ -1022,7 +1023,7 @@ usam letras acentuadas e outros detalhes específicos, de forma que o
 (se possível).
 
 Os valores válidos para a configuração de Encoding são os mesmos que são
-válidos para documentos, HTML, como //iso-8859-1// e //koi8-r//. Se você
+válidos para documentos, HTML, como //UTF-8// e //koi8-r//. Se você
 não está certo de qual codificação quer usar,
 [esta lista completa (e longa!) http://www.iana.org/assignments/character-sets]
 poderá ser de ajuda.
@@ -1192,7 +1193,7 @@ utilizado em todas as diretrizes. Por exemplo, configurar diferentes
 valores de Encoding para HTML e LaTeX:
 
 ```
-%!encoding(html): iso-8859-1 
+%!encoding(html): UTF-8
 %!encoding(tex): latin1
 ```
 
@@ -1225,11 +1226,11 @@ usada, mas quando usar diretivas explícitas de tipo-destino, elas tem
 precedência sobre as genéricas, não importando qual vem antes. Assim:
 
 ```
-%!encoding(html): iso-8859-1 
+%!encoding(html): UTF-8
 %!encoding: latin1
 ```
 
-Irá expandir para 'iso-8859-1' quando chamado com ``-t html`` mesmo que
+Irá expandir para 'UTF-8' quando chamado com ``-t html`` mesmo que
 'latin1' seja definido logo após.
 
 === Filtros são Cumulativos ===
