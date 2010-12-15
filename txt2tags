@@ -384,7 +384,6 @@ def Usage():
 #
 HEADER_TEMPLATE = {
     'aat': """
-Fake template to respect the general process.
 """,
     'csv': """
 """,
@@ -5923,7 +5922,7 @@ def doHeader(headers, config):
     Debug("Header Data: %s" % head_data, 1)
 
     # ASCII Art does not use a header template, aa_header() formats the header
-    if target == 'aat':
+    if target == 'aat' and not config['spread']:
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
         if not n_h :
             return config['fullBody']
