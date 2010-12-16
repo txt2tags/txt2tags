@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Txt2tags
+GenericName=Txt2tags 
+Comment=A tool that converts text files with minimal markup to HTML, LaTeX, man page, and more.
+Icon=txt2tags.png
+Exec=txt2tags --gui
+Categories=Office;
+
