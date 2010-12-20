@@ -260,6 +260,7 @@ TARGET_NAMES = {
   'aas'    : _('ASCII Art Spreadsheet'),
   'adoc'   : _('AsciiDoc document'),
   'csv'    : _('CSV spreadsheet'),
+  'ods'    : _('Open Document Spreadsheet'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
   'bbcode' : _('BBCode document'),
@@ -388,6 +389,9 @@ HEADER_TEMPLATE = {
     'aat': """
 """,
     'csv': """
+""",
+    'ods': """<?xml version='1.0' encoding='UTF-8'?>
+<office:document xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.1" office:mimetype="application/vnd.oasis.opendocument.spreadsheet"><office:meta><meta:generator>Txt2tags www.txt2tags.org</meta:generator></office:meta><office:automatic-styles/><office:body><office:spreadsheet>
 """,
     'txt': """\
 %(HEADER1)s
@@ -966,6 +970,16 @@ def getTags(config):
     },
 
     'csv': {
+    },
+
+    'ods': {
+        'tableOpen'            : '<table:table table:name="Table">',
+        'tableClose'           : '</table:table>'                  ,
+        'tableRowOpen'         : '<table:table-row>'               ,
+        'tableRowClose'        : '</table:table-row>'              ,
+        'tableCellOpen'        : '<table:table-cell><text:p>'      ,
+        'tableCellClose'       : '</text:p></table:table-cell>'    ,
+        'EOD'                  : '</office:spreadsheet></office:body></office:document>',
     },
 
     'html': {
@@ -2265,6 +2279,10 @@ def getRules(config):
         },
         'csv': {
             'tableable': 1,
+        },
+        'ods': {
+            'tableable': 1,
+            'tablecellstrip': 1,
         },
         'html': {
             'escapexmlchars': 1,
@@ -3885,7 +3903,7 @@ class ConfigMaster:
         # Check split level value
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
-        if target == 'csv':
+        if target in ['csv', 'ods']:
             config['spread'] = True
         if target == 'aap':
             target, config['slides'] = 'aat', True
@@ -4916,6 +4934,7 @@ class BlockMaster:
         self.count = 0
         self.last = ''
         self.tableparser = None
+        self.tablecount = 0
         self.contains = {
             'para'    : ['comment', 'raw', 'tagged'],
             'verb'    : [],
@@ -5250,6 +5269,7 @@ class BlockMaster:
         return result
 
     def table(self):
+        self.tablecount += 1 
         result = []
 
         if TARGET == 'aat':
@@ -5272,6 +5292,9 @@ class BlockMaster:
         # Blank line after?
         if self._should_add_blank_line('after', 'table'):
             result.append('')
+
+        if TARGET == 'ods':
+            result[0] = result[0][:-2] + ' ' + str(self.tablecount) + '">'
 
         return result
 
