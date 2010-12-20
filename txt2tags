@@ -2281,6 +2281,7 @@ def getRules(config):
             'tableable': 1,
         },
         'ods': {
+            'escapexmlchars': 1,
             'tableable': 1,
             'tablecellstrip': 1,
         },
