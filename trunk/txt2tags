@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # txt2tags - generic text conversion tool
 # http://txt2tags.org
 #
@@ -238,6 +238,7 @@ CONFIG_KEYWORDS = [
 
 
 TARGET_NAMES = {
+  'txt2t'  : _('Txt2tags document'),
   'html'   : _('HTML page'),
   'html5'  : _('HTML5 page'),
   'xhtml'  : _('XHTML page'),
@@ -397,6 +398,14 @@ HEADER_TEMPLATE = {
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
+""",
+
+    'txt2t': """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
+%%! style    : %(STYLE)s
+%%! encoding : %(ENCODING)s
 """,
 
     'sgml': """\
@@ -906,6 +915,7 @@ def getTags(config):
     tableCellOpen       tableCellClose       tableCellSep
     tableTitleCellOpen  tableTitleCellClose  tableTitleCellSep
     _tableColAlignLeft  _tableColAlignRight  _tableColAlignCenter
+    tableCellAlignLeft  tableCellAlignRight  tableCellAlignCenter
     _tableCellAlignLeft _tableCellAlignRight _tableCellAlignCenter
     _tableCellColSpan   tableColAlignSep
     _tableCellColSpanChar                    _tableCellBorder
@@ -971,6 +981,62 @@ def getTags(config):
     },
 
     'csv': {
+    },
+
+    'txt2t': {
+        'title1' : '         = \a =~A~' ,
+        'title2' : '        == \a ==~A~' ,
+        'title3' : '       === \a ===~A~' ,
+        'title4' : '      ==== \a ====~A~' ,
+        'title5' : '     ===== \a =====~A~' ,
+        'numtitle1' : '         + \a +~A~' ,
+        'numtitle2' : '        ++ \a ++~A~' ,
+        'numtitle3' : '       +++ \a +++~A~' ,
+        'numtitle4' : '      ++++ \a ++++~A~' ,
+        'numtitle5' : '     +++++ \a +++++~A~' ,
+        'anchor' : '[\a]',
+        'blockVerbOpen' : '```' ,
+        'blockVerbClose' : '```' ,
+        'blockQuoteLine' : '\t' ,
+        'blockCommentOpen' : '%%%' ,
+        'blockCommentClose' : '%%%' ,
+        'fontMonoOpen' : '``' ,
+        'fontMonoClose' : '``' ,
+        'fontBoldOpen' : '**' ,
+        'fontBoldClose' : '**' ,
+        'fontItalicOpen' : '//' ,
+        'fontItalicClose' : '//' ,
+        'fontUnderlineOpen' : '__' ,
+        'fontUnderlineClose' : '__' ,
+        'fontStrikeOpen' : '--' ,
+        'fontStrikeClose' : '--' ,
+        'listItemOpen' : '- ' ,
+        'numlistItemOpen' : '+ ' ,
+        'deflistItem1Open' : ': ' ,
+        'bar1' : '-------------------------' ,
+        'bar2' : '=========================' ,
+        'url' : '\a' ,
+        'urlMark' : '[\a \a]' ,
+        #'urlMarkAnchor' : '' ,
+        'email' : '\a' ,
+        'emailMark' : '[\a \a]' ,
+        'img' : '[\a]' ,
+        '_tableBorder' : '|' ,
+        '_tableAlignLeft' : '' ,
+        '_tableAlignCenter' : '   ' ,
+        'tableRowOpen' : '~A~' ,
+        'tableRowClose' : '~B~' ,
+#        'tableRowSep' : '' ,
+        'tableTitleRowOpen' : '~A~|' ,
+        'tableCellOpen' : '| ' ,
+        'tableCellClose' : ' ~S~' ,
+#        'tableCellSep' : '' ,
+        'tableCellAlignLeft' : '\a  ' ,
+        'tableCellAlignRight' : '  \a' ,
+        'tableCellAlignCenter' : '  \a  ' ,
+#        '_tableCellColSpan' : '' ,
+        '_tableCellColSpanChar' : '|' ,
+        'comment' : '% \a' ,
     },
 
     'ods': {
@@ -2233,6 +2299,7 @@ def getRules(config):
         'listlevelzerobased',     # list levels start at 0 when encoding into tags
         'zerodepthparagraph',     # non-nested paras have block depth of 0 instead of 1
         'cellspancumulative',     # cell span value adds up for each cell of a row
+        'keepblankheaderline',    # template lines are not removed if headers are blank
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -2256,6 +2323,7 @@ def getRules(config):
         'blanksaroundbar',        # put a blank line before and after bars
         'blanksaroundtitle',      # put a blank line before and after titles
         'blanksaroundnumtitle',   # put a blank line before and after numtitles
+        'extrablankafterlist',    # put an extra blank line after [num/def]lists
 
         # Value settings
         'listmaxdepth',           # maximum depth for lists
@@ -2285,6 +2353,35 @@ def getRules(config):
             'blanksaroundbar': 1,
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
+        },
+        'txt2t': {
+            'linkable': 1,
+            'tableable': 1,
+            'imglinkable': 1,
+            # 'imgalignable',
+            'imgasdefterm': 1,
+            'autonumberlist': 1,
+            'autonumbertitle': 1,
+            'stylable': 1,
+            'spacedlistitem': 1,
+            'labelbeforelink': 1,
+            'tablecellstrip': 1,
+            'tablecellspannable': 1,
+            # 'tablecellmulticol',
+            'keepblankheaderline': 1,
+            'barinsidequote': 1,
+            'keeplistindent': 1,
+            'blankendautotoc': 1,
+            'blanksaroundpara': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            # 'blanksaroundbar',
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
+            'extrablankafterlist': 1,
+            'tablecellaligntype': 'cell',
         },
         'aat': {
             #TIP art inherits all TXT rules
@@ -4719,6 +4816,7 @@ class TableMaster:
         sep = TAGS['tableCellSep']
         head = TAGS['tableCellHead']
         calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
+        caligntag = map(lambda x: TAGS['tableCellAlign' + x], rowdata['cellalign'])
         calignsep = TAGS['tableColAlignSep']
         ncolumns = len(self.colalign)
 
@@ -4797,9 +4895,11 @@ class TableMaster:
 
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
-            this_align = this_span = this_mcopen = ''
+            this_align = this_cell = this_span = this_mcopen = ''
             if calign:
                 this_align = calign.pop(0)
+            if caligntag:
+                this_cell = caligntag.pop(0)
             if cspan:
                 this_span = cspan.pop(0)
             if multicol:
@@ -4810,6 +4910,10 @@ class TableMaster:
                 copen = regex['_tableCellAlign'].sub(this_align, copen)
                 cclose = regex['_tableCellAlign'].sub(this_align, cclose)
                 chead = regex['_tableCellAlign'].sub(this_align, chead)
+
+                # Insert cell data into cellAlign tags
+                if this_cell:
+                    cell = regex['x'].sub(cell, this_cell)
 
             # Insert cell span into open tag (if cell is spannable)
             if rules['tablecellspannable']:
@@ -5533,6 +5637,8 @@ class BlockMaster:
         # Blank line after?
         if self._should_add_blank_line('after', name):
             result.append('')
+            if rules['extrablankafterlist']:
+                result.append('')
 
         return result
 
@@ -6004,7 +6110,7 @@ def doHeader(headers, config):
         for line in template:
             if line.count('%%(%s)s' % key):
                 sline = line.replace('%%(%s)s' % key, '')
-                if not re.search(r'%\([A-Z0-9]+\)s', sline):
+                if not re.search(r'%\([A-Z0-9]+\)s', sline) and not rules['keepblankheaderline']:
                     template.remove(line)
 
     # Style is a multiple tag.
