@@ -2,9 +2,11 @@
 
 
 
-                +-------------------------+                 
-                | TXT2TAGS SAMPLE for Art |                 
-                +-------------------------+                 
+
+           +------------------------------------+           
+           | TXT2TAGS SAMPLE for Ascii Art Text |           
+           +------------------------------------+           
+
 
 
 
@@ -14,9 +16,12 @@
 
 
 
+
                        +------------+                       
                        | 2010-10-10 |                       
                        +------------+                       
+
+
 
 
 
@@ -45,6 +50,11 @@ Lines with balanced equal signs = around are titles.
 
 
 
+
+
+
+
+
 ============================================================
 ============================================================
 
@@ -68,6 +78,11 @@ Beautifiers
 The text marks for beautifiers are simple, just as you
 type on a plain text email message.
 
+We use double *, /, - and _ to represent *bold*,
+/italic/, -strike- and _underline_.
+
+The */bold italic/* style is also supported as a
+combination.
 
 ------------------------------------------------------------
 ============================================================
@@ -75,12 +90,6 @@ type on a plain text email message.
                    Fonts and Beautifiers                    
 
 ============================================================
-
-We use double *, /, - and _ to represent *bold*,
-/italic/, -strike- and _underline_.
-
-The */bold italic/* style is also supported as a
-combination.
 
 
 Pre-Formatted Text
@@ -90,15 +99,6 @@ We can put a code sample or other pre-formatted text:
 
     here    is     pre-formatted
   //marks// are  **not**  ``interpreted``
-
-
-
-------------------------------------------------------------
-============================================================
-
-                   Fonts and Beautifiers                    
-
-============================================================
 
 And also, it's easy to put a one line pre-formatted
 text:
@@ -111,11 +111,7 @@ Or use pre-formatted inside sentences.
 More Cosmetics
 ==============
 
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
 
-------------------------------------------------------------
 
 ------------------------------------------------------------
 ============================================================
@@ -123,6 +119,13 @@ as long as the horizontal line:
                    Fonts and Beautifiers                    
 
 ============================================================
+
+
+Special entities like email (duh@somewhere.com) and
+URL (http://www.duh.com) are detected automagically,
+as long as the horizontal line:
+
+------------------------------------------------------------
 
 ^ thin or large v
 
@@ -138,7 +141,34 @@ And remember,
                 More TABs, more depth (if allowed).
 
 
+
+------------------------------------------------------------
+============================================================
+
+                   Fonts and Beautifiers                    
+
+============================================================
+
 Nice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ============================================================
@@ -159,19 +189,6 @@ The dash is the default list identifier. For sublists,
 just add *spaces* at the beginning of the line. More
 spaces, more sublists.
 
-
-
-
-
-
-
-------------------------------------------------------------
-============================================================
-
-                           Lists                            
-
-============================================================
-
 - earth
   - america
     - south america
@@ -182,12 +199,6 @@ spaces, more sublists.
 - mars
   - who knows?
 
-The list ends with *two* consecutive blank lines.
-
-
-Numbered List
-=============
-
 
 ------------------------------------------------------------
 ============================================================
@@ -196,6 +207,11 @@ Numbered List
 
 ============================================================
 
+The list ends with *two* consecutive blank lines.
+
+
+Numbered List
+=============
 
 The same rules as the plain list, just a different
 identifier (plus).
@@ -237,6 +253,11 @@ other fruits
 
 
 
+
+
+
+
+
 ============================================================
 ============================================================
 
@@ -258,16 +279,6 @@ Natural spaces specify each cell alignment.
 
 Without the last pipe, no border:
 
-
-
-
-------------------------------------------------------------
-============================================================
-
-                           Tables                           
-
-============================================================
-
            ----------- ------------- ------------           
             heading 1    heading 2     heading 3            
            =========== ============= ============           
@@ -275,15 +286,6 @@ Without the last pipe, no border:
            ----------- ------------- ------------           
             cell 2.1     cell 2.2       cell 2.3            
            ----------- ------------- ------------           
-
-
-
-
-
-
-
-
-
 
 ============================================================
 ============================================================
@@ -309,28 +311,9 @@ The image mark is as simple as it can be: [filename].
 Other
 =====
 
-------------------------------------------------------------
-============================================================
-
-                      Special Entities                      
-
-============================================================
-
-
 The handy %%date macro expands to the current date.
 
 That's all for now.
-
-
-
-
-
-
-
-
-
-
-
 
 
 ============================================================
