@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # txt2tags - generic text conversion tool
 # http://txt2tags.org
 #
@@ -908,9 +908,10 @@ def getTags(config):
     _tableColAlignLeft  _tableColAlignRight  _tableColAlignCenter
     _tableCellAlignLeft _tableCellAlignRight _tableCellAlignCenter
     _tableCellColSpan   tableColAlignSep
-    _tableCellColSpanChar
+    _tableCellColSpanChar                    _tableCellBorder
     _tableCellMulticolOpen
     _tableCellMulticolClose
+    tableCellHead       tableTitleCellHead
 
     bodyOpen            bodyClose
     cssOpen             cssClose
@@ -2049,7 +2050,7 @@ def getTags(config):
     # http://en.wikipedia.org/wiki/Rich_Text_Format
     # Based on RTF Version 1.5 specification
     # Should be compatible with MS Word 97 and newer
-    # ~V~ and ~L~ are used to encode depth and nesting level formatting
+    # ~D~ and ~L~ are used to encode depth and nesting level formatting
     'rtf': {
         'title1'                : '\\par}~A~{\\pard\\plain\\s5\\qc\\f1\\fs48\\sb480\\sa240\\keepn \a',
         'title2'                : '\\par}~A~{\\pard\\plain\\s6\\qc\\f1\\fs40\\sb480\\sa240\\keepn \a',
@@ -2061,11 +2062,11 @@ def getTags(config):
         'numtitle3'             : '\\par}~A~{\\pard\\plain\\s7\\qc\\sb360\\sa120\\keepn\\ls3\\ilvl2\\f1\\fs36 \a\n',
         'numtitle4'             : '\\par}~A~{\\pard\\plain\\s8\\qc\\sb320\\keepn\\ls3\\ilvl3\\f1\\fs32 \a\n',
         'numtitle5'             : '\\par}~A~{\\pard\\plain\\s9\\qc\\sb240\\keepn\\ls3\\ilvl4\\f1\\fs24\b \a\n',
-        'paragraphOpen'         : '\\sa240\\par}{\\pard\\plain\\s2\\qj\\f0\\fs24\\li~V~',
+        'paragraphOpen'         : '\\sa240\\par}{\\pard\\plain\\s2\\qj\\f0\\fs24\\li~D~',
         'blockVerbOpen'         : '\\sa240',
         'blockVerbLine'         : '\\par}{\\pard\\plain\\s3\\li720\\ri720\\sb0\\sa0\\ql\\f2\\fs20\n',
         'blockVerbClose'        : '\\sa240',
-        'blockQuoteOpen'        : '\\sa240\\par}{\\pard\\plain\\s4\\li~V~\\ri720\\qj\\f0\\fs24',
+        'blockQuoteOpen'        : '\\sa240\\par}{\\pard\\plain\\s4\\li~D~\\ri720\\qj\\f0\\fs24',
         'blockQuoteClose'       : '\\sa240',
         'fontMonoOpen'          : '{\\f2\\fs20\n',
         'fontMonoClose'         : '}',
@@ -2087,32 +2088,37 @@ def getTags(config):
         'emailMark'             : '{\\field{\\*\\fldinst{HYPERLINK "mailto:\a"}}{\\fldrslt{\\ul\\cf1 \a}}}',
         'listOpen'              : '\\sa240',
         'listClose'             : '\\sa240',
-        'listItemOpen'          : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~\\\'95\\tab}\\ls1\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
+        'listItemOpen'          : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~D~\\\'95\\tab}\\ls1\\ilvl~L~\\fi-360\\li~D~\\f0\\fs24\n',
         'numlistOpen'           : '\\sa240',
         'numlistClose'          : '\\sa240',
-        'numlistItemOpen'       : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~V~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~V~\\f0\\fs24\n',
+        'numlistItemOpen'       : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~D~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~D~\\f0\\fs24\n',
         'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}{\\fldrslt{(\a)}}}',
         '_imgEmbed'             : '{\*\shppict{\pict\a}}',
         'deflistOpen'           : '\\sa240',
         'deflistClose'          : '\\sa240',
-        'deflistItem1Open'      : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0\\fi-360\\li~V~{\\b\n',
+        'deflistItem1Open'      : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0\\fi-360\\li~D~{\\b\n',
         'deflistItem1Close'     : ':}\\tab',
-        'tableOpen'             : '\\sa240\\par}{\\pard\\plain{\\trowd\\trgaph60~B~',
-        'tableClose'            : '\\row}\\pard\\sa240',
-        'tableRowClose'         : '',
-        'tableRowSep'           : '\\row\\trgaph60',
-        'tableTitleRowOpen'     : '\\trhdr\\trbrdrt\\brdrs\\brdrw20\\trbrdrb\\brdrs\\brdrw20',
+        'tableOpen'             : '\\sa240\\par}{\\pard\\plain',
+        'tableClose'            : '\\pard\\sa240',
+        'tableRowOpen'          : '{\\trowd\\trgaph60~A~~B~',
+        'tableRowClose'         : '\\row}',
+        'tableRowSep'           : '',
+        'tableTitleRowOpen'     : '{\\trowd\\trgaph60\\trhdr~A~~B~\\trbrdrt\\brdrs\\brdrw20\\trbrdrb\\brdrs\\brdrw20',
         'tableTitleRowClose'    : '',
-        'tableCellOpen'         : '~B~~S~xxSEPARATExx{\\intbl\\itap1\\f0\\fs20~A~ ',
+        'tableCellOpen'         : '{\\intbl\\itap1\\f0\\fs20~A~ ',
         'tableCellClose'        : '\\cell}',
-        'tableTitleCellOpen'    : '~B~\\clbrdrt\\brdrs\\brdrw20\\clbrdrb\\brdrs\\brdrw20~S~xxSEPARATExx{\\intbl\\itap1\\f0\\fs20~A~\\b ',
+        'tableCellHead'         : '~B~~S~',
+        'tableTitleCellOpen'    : '{\\intbl\\itap1\\f0\\fs20~A~\\b ',
         'tableTitleCellClose'   : '\\cell}',
+        'tableTitleCellHead'    : '~B~\\clbrdrt\\brdrs\\brdrw20\\clbrdrb\\brdrs\\brdrw20~S~',
         '_tableCellColSpan'     : '\\cellx\a',
+        '_tableAlignLeft'       : '\\trql',
+        '_tableAlignCenter'     : '\\trqc',
         '_tableBorder'          : '\\trbrdrt\\brdrs\\brdrw10\\trbrdrb\\brdrs\\brdrw10\\trbrdrl\\brdrs\\brdrw10\\trbrdrr\\brdrs\\brdrw10',
         '_tableCellAlignLeft'   : '\\ql',
         '_tableCellAlignRight'  : '\\qr',
         '_tableCellAlignCenter' : '\\qc',
-        '_cellBorder'           : '\\clbrdrt\\brdrs\\brdrw10\\clbrdrb\\brdrs\\brdrw10\\clbrdrl\\brdrs\\brdrw10\\clbrdrr\\brdrs\\brdrw10',
+        '_tableCellBorder'      : '\\clbrdrt\\brdrs\\brdrw10\\clbrdrb\\brdrs\\brdrw10\\clbrdrl\\brdrs\\brdrw10\\clbrdrr\\brdrs\\brdrw10',
         'bar1'                  : '\\sa240\\par}{\\pard\\plain\\s11\\brdrt\\brdrs\\brdrw10\\li1400\\sb120\\ri1400\\fs12',
         'bar2'                  : '\\sa240\\par}{\\pard\\plain\\s11\\brdrt\\brdrs\\brdrdb\\brdrw10\\sb120\\li1400\\ri1400\\fs12'
     },
@@ -2224,6 +2230,9 @@ def getRules(config):
         'titleblocks',            # titles must be on open/close section blocks
         'listlineafteropen',      # put listItemLine after listItemOpen
         'escapexmlchars',         # escape the XML special chars: < > &
+        'listlevelzerobased',     # list levels start at 0 when encoding into tags
+        'zerodepthparagraph',     # non-nested paras have block depth of 0 instead of 1
+        'cellspancumulative',     # cell span value adds up for each cell of a row
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -2252,6 +2261,9 @@ def getRules(config):
         'listmaxdepth',           # maximum depth for lists
         'quotemaxdepth',          # maximum depth for quotes
         'tablecellaligntype',     # type of table cell align: cell, column
+        'blockdepthmultiply',     # block depth multiple for encoding
+        'depthmultiplyplus',      # add to block depth before multiplying
+        'cellspanmultiplier',     # cell span is multiplied by this value
     ]
 
     rules_bank = {
@@ -2801,6 +2813,12 @@ def getRules(config):
             'tablecellspannable': 1,
             'tagnotindentable': 1,
             'deflisttextstrip': 1,
+            'encodeblockdepth': 1,
+            'zerodepthparagraph': 1,
+            'cellspancumulative': 1,
+            'blockdepthmultiply': 360,
+            'depthmultiplpyplus': 1,
+            'cellspanmultiplier': 1080,
             'listmaxdepth': 9,
             'tablecellaligntype': 'cell',
         },
@@ -2908,6 +2926,8 @@ def getRegexes():
     '_tableCellColSpan'  : re.compile(r'~S~', re.I),
     '_tableCellAlign'    : re.compile(r'~A~', re.I),
     '_tableAttrDelimiter': re.compile(r'~Z~', re.I),
+    '_blockDepth'        : re.compile(r'~D~', re.I),
+    '_listLevel'         : re.compile(r'~L~', re.I),
     }
 
     # Special char to place data on TAGs contents  (\a == bell)
@@ -4608,6 +4628,7 @@ class TitleMaster:
 # http://www.dokuwiki.org/syntax#tables
 # http://michelf.com/projects/php-markdown/extra/#table
 # http://code.google.com/p/support/wiki/WikiSyntax#Tables
+# http://www.biblioscape.com/rtf15_spec.htm
 #
 # Good reading:
 # http://www.wikicreole.org/wiki/ListOfTableMarkups
@@ -4645,8 +4666,8 @@ class TableMaster:
             colalign.extend([align] * span)
         return colalign
 
-    def _get_open_tag(self):
-        topen     = TAGS['tableOpen']
+    def _get_full_tag(self, topen):
+        # topen     = TAGS['tableOpen']
         tborder   = TAGS['_tableBorder']
         talign    = TAGS['_tableAlign' + self.align]
         calignsep = TAGS['tableColAlignSep']
@@ -4692,11 +4713,11 @@ class TableMaster:
         return ret
 
     def _tag_cells(self, rowdata):
-        row = []
         cells = rowdata['cells']
         open_ = TAGS['tableCellOpen']
         close = TAGS['tableCellClose']
         sep = TAGS['tableCellSep']
+        head = TAGS['tableCellHead']
         calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
         calignsep = TAGS['tableColAlignSep']
         ncolumns = len(self.colalign)
@@ -4706,8 +4727,11 @@ class TableMaster:
         multicol = []
         colindex = 0
 
-        rtfspan = 0
-        rtfcell = 1080  # width in twips of a single cell
+        thisspan = 0
+        spanmultiplier = rules['cellspanmultiplier'] or 1
+
+        cellhead = []
+        cellbody = []
 
         for cellindex in range(0, len(rowdata['cellspan'])):
 
@@ -4715,9 +4739,11 @@ class TableMaster:
             align = rowdata['cellalign'][cellindex]
 
             # hack to get cell size/span into rtf, in twips
-            if TARGET == 'rtf':
-                rtfspan += span
-                span = rtfcell * rtfspan
+            if rules['cellspancumulative']:
+                thisspan += span
+            else:
+                thisspan = span
+            span = thisspan * spanmultiplier
 
             if span > 1:
 
@@ -4751,6 +4777,7 @@ class TableMaster:
             open_ = TAGS['tableTitleCellOpen']  or open_
             close = TAGS['tableTitleCellClose'] or close
             sep   = TAGS['tableTitleCellSep']   or sep
+            head  = TAGS['tableTitleCellHead']  or head
 
         # Should we break the line on *each* table cell?
         if rules['breaktablecell']:
@@ -4766,6 +4793,7 @@ class TableMaster:
         for cell in cells:
             copen = open_
             cclose = close
+            chead = head
 
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
@@ -4780,10 +4808,14 @@ class TableMaster:
             # Insert cell align into open tag (if cell is alignable)
             if rules['tablecellaligntype'] == 'cell':
                 copen = regex['_tableCellAlign'].sub(this_align, copen)
+                cclose = regex['_tableCellAlign'].sub(this_align, cclose)
+                chead = regex['_tableCellAlign'].sub(this_align, chead)
 
             # Insert cell span into open tag (if cell is spannable)
             if rules['tablecellspannable']:
                 copen = regex['_tableCellColSpan'].sub(this_span, copen)
+                cclose = regex['_tableCellColSpan'].sub(this_span, cclose)
+                chead = regex['_tableCellColSpan'].sub(this_span, chead)
 
             # Use multicol tags instead (if multicol supported, and if
             # cell has a span or is aligned differently to column)
@@ -4791,6 +4823,14 @@ class TableMaster:
                 if this_mcopen:
                     copen = regex['_tableColAlign'].sub(this_align, this_mcopen)
                     cclose = TAGS['_tableCellMulticolClose']
+
+            # RTF target requires the border in each cell
+            border = ''
+            if self.border:
+                border = TAGS['_tableCellBorder']
+            copen = regex['_tableBorder'].sub(border, copen)
+            cclose = regex['_tableBorder'].sub(border, cclose)
+            chead = regex['_tableBorder'].sub(border, chead)
 
             # Attribute delimiter, added when align/span attributes were used
             # Example: Wikipedia table cell, without and with attributes:
@@ -4803,27 +4843,12 @@ class TableMaster:
                 else:
                     copen = regex['_tableAttrDelimiter'].sub('', copen)  # remove marker
 
-            row.append(copen + cell + cclose)
-
-        # Rtf tweak
-        if TARGET == 'rtf':
-            cformat = []
-            ctext = []
-            for cell in row:
-                # insert border if needed
-                border = ''
-                if self.border:
-                    border = TAGS['_cellBorder']
-                celltext = regex['_tableBorder'].sub(border, cell)
-
-                #separate cells from cell formatting
-                cellregex = re.compile(r'xxSEPARATExx(.*)')
-                ctext.append(cellregex.search(celltext).group(1))
-                cformat.append(cellregex.sub('', celltext))
-            row = cformat + ctext
+            if chead:
+                cellhead.append(chead)
+            cellbody.append(copen + cell + cclose)
 
         # Maybe there are cell separators?
-        return sep.join(row)
+        return ''.join(cellhead) + sep.join(cellbody)
 
     def add_row(self, cells):
         self.rows.append(cells)
@@ -4865,15 +4890,15 @@ class TableMaster:
         return ret
 
     def dump(self):
-        open_ = self._get_open_tag()
+        open_ = self._get_full_tag(TAGS['tableOpen'])
         rows  = self.rows
-        close = TAGS['tableClose']
+        close = self._get_full_tag(TAGS['tableClose'])
 
-        rowopen     = TAGS['tableRowOpen']
-        rowclose    = TAGS['tableRowClose']
-        rowsep      = TAGS['tableRowSep']
-        titrowopen  = TAGS['tableTitleRowOpen']  or rowopen
-        titrowclose = TAGS['tableTitleRowClose'] or rowclose
+        rowopen     = self._get_full_tag(TAGS['tableRowOpen'])
+        rowclose    = self._get_full_tag(TAGS['tableRowClose'])
+        rowsep      = self._get_full_tag(TAGS['tableRowSep'])
+        titrowopen  = self._get_full_tag(TAGS['tableTitleRowOpen'])  or rowopen
+        titrowclose = self._get_full_tag(TAGS['tableTitleRowClose']) or rowclose
 
         if rules['breaktablelineopen']:
             rowopen = rowopen + '\n'
@@ -5142,20 +5167,21 @@ class BlockMaster:
 
         return False
 
-    # function to help encode block depth into RTF formatting
-    def _apply_depth_rtf(self, line, level):
+    # functions to help encode block depth into RTF formatting
+    def _apply_depth(self, line, level):
         # convert block depth into an indent in twips
         depth = level
-        if depth > 0:
-            # 360 'twips' equals 1/4 inch in RTF
-            multiply = 360
-            add = 360
-            depth = (depth * multiply) + add
-        tagline = re.sub(r'~V~', str(depth), line)
+        multiply = rules['blockdepthmultiply']
+        add = rules['depthmultiplyplus'] or 0
+        if multiply:
+            depth = (depth + add) * multiply
+        return regex['_blockDepth'].sub(str(depth), line)
 
-        # list depth 'levels' are zero-based
-        depth = level - 1
-        return re.sub(r'~L~', str(depth), tagline)
+    def _apply_list_level(self, line, level):
+        mylevel = level
+        if rules['listlevelzerobased']:
+            mylevel = mylevel - 1
+        return regex['_listLevel'].sub(str(mylevel), line)
 
     def comment(self):
         return ''
@@ -5178,8 +5204,10 @@ class BlockMaster:
             result.append('')
 
         # RTF needs depth level encoded into nested paragraphs
-        if TARGET == 'rtf':
-            open_ = self._apply_depth_rtf(open_, 0)
+        mydepth = self.depth
+        if rules['zerodepthparagraph']:
+            mydepth = 0
+        open_ = self._apply_depth(open_, mydepth)
 
         # Open tag
         if open_:
@@ -5317,8 +5345,7 @@ class BlockMaster:
             result.append('')
 
         # RTF needs depth level encoded into almost everything
-        if TARGET == 'rtf':
-            open_ = self._apply_depth_rtf(open_, self.depth)
+        open_ = self._apply_depth(open_, self.depth)
 
         # Open tag
         if open_:
@@ -5405,8 +5432,8 @@ class BlockMaster:
             indent = tagindent = ''
 
         # RTF encoding depth
-        if TARGET == 'rtf':
-            itemopen = self._apply_depth_rtf(itemopen, self.depth)
+        itemopen = self._apply_depth(itemopen, self.depth)
+        itemopen = self._apply_list_level(itemopen, self.depth)
 
         # ItemLine: number of leading chars identifies list depth
         if listline:
@@ -5465,8 +5492,7 @@ class BlockMaster:
                         line = indent + TAGS['paragraphOpen'] + TAGS['paragraphClose']
 
                         # RTF encoding depth into nested paragraphs
-                        if TARGET == 'rtf':
-                            line = self._apply_depth_rtf(line, self.depth)
+                        line = self._apply_depth(line, self.depth)
 
                         line = line.rstrip()
                         widelist = 1
