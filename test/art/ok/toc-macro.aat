@@ -1,13 +1,10 @@
+
 ============================================================
 
 
-
-
-                +-------------------------+                 
-                | TXT2TAGS SAMPLE for Art |                 
-                +-------------------------+                 
-
-
+           +------------------------------------+           
+           | TXT2TAGS SAMPLE for Ascii Art Text |           
+           +------------------------------------+           
 
 
                      +----------------+                     
@@ -15,24 +12,37 @@
                      +----------------+                     
 
 
-
-
                        +------------+                       
                        | 2010-10-10 |                       
                        +------------+                       
 
 
-
-
-
-
-============================================================
 ============================================================
 
-                        Introduction                        
+                       +------------+
+                       | My Own TOC |
+                       +------------+
 
-============================================================
 
+  My Own TOC
+  Introduction
+  Fonts and Beautifiers
+    Beautifiers
+    Pre-Formatted Text
+    More Cosmetics
+  Lists
+    Plain List
+    Numbered List
+    Definition List
+  Tables
+  Special Entities
+    Images
+    Other
+
+
+                      +--------------+
+                      | Introduction |
+                      +--------------+
 
 Welcome to the txt2tags sample file.
 
@@ -49,18 +59,9 @@ on the following format:
 Lines with balanced equal signs = around are titles.
 
 
-
-
-
-
-
-
-============================================================
-============================================================
-
-                   Fonts and Beautifiers                    
-
-============================================================
+                 +-----------------------+
+                 | Fonts and Beautifiers |
+                 +-----------------------+
 
 We have two sets of fonts:
 
@@ -84,13 +85,6 @@ We use double *, /, - and _ to represent *bold*,
 The */bold italic/* style is also supported as a
 combination.
 
-------------------------------------------------------------
-============================================================
-
-                   Fonts and Beautifiers                    
-
-============================================================
-
 
 Pre-Formatted Text
 ==================
@@ -110,16 +104,6 @@ Or use pre-formatted inside sentences.
 
 More Cosmetics
 ==============
-
-
-
-------------------------------------------------------------
-============================================================
-
-                   Fonts and Beautifiers                    
-
-============================================================
-
 
 Special entities like email (duh@somewhere.com) and
 URL (http://www.duh.com) are detected automagically,
@@ -141,42 +125,12 @@ And remember,
                 More TABs, more depth (if allowed).
 
 
-
-------------------------------------------------------------
-============================================================
-
-                   Fonts and Beautifiers                    
-
-============================================================
-
 Nice.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-============================================================
-============================================================
-
-                           Lists                            
-
-============================================================
+                         +-------+
+                         | Lists |
+                         +-------+
 
 A list of items is natural, just putting a *dash* or
 a *plus* at the beginning of the line.
@@ -198,14 +152,6 @@ spaces, more sublists.
     - lots of countries
 - mars
   - who knows?
-
-
-------------------------------------------------------------
-============================================================
-
-                           Lists                            
-
-============================================================
 
 The list ends with *two* consecutive blank lines.
 
@@ -229,14 +175,6 @@ identifier (plus).
 Definition List
 ===============
 
-------------------------------------------------------------
-============================================================
-
-                           Lists                            
-
-============================================================
-
-
 The definition list identifier is a colon, followed by
 the term. The term contents is placed on the next line.
 
@@ -251,19 +189,9 @@ other fruits
     2. and again!
 
 
-
-
-
-
-
-
-
-============================================================
-============================================================
-
-                           Tables                           
-
-============================================================
+                         +--------+
+                         | Tables |
+                         +--------+
 
 Use pipes to compose table rows and cells.
 Double pipe at the line beginning starts a heading row.
@@ -287,12 +215,10 @@ Without the last pipe, no border:
             cell 2.1     cell 2.2       cell 2.3            
            ----------- ------------- ------------           
 
-============================================================
-============================================================
 
-                      Special Entities                      
-
-============================================================
+                    +------------------+
+                    | Special Entities |
+                    +------------------+
 
 Because things were too simple.
 
@@ -315,5 +241,3 @@ The handy %%date macro expands to the current date.
 
 That's all for now.
 
-
-============================================================
