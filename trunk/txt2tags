@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # txt2tags - generic text conversion tool
 # http://txt2tags.org
 #
@@ -1013,6 +1013,9 @@ def getTags(config):
         'listItemOpen' : '- ' ,
         'numlistItemOpen' : '+ ' ,
         'deflistItem1Open' : ': ' ,
+        'listClose': '-',
+        'numlistClose': '+',
+        'deflistClose': ':',
         'bar1' : '-------------------------' ,
         'bar2' : '=========================' ,
         'url' : '\a' ,
@@ -2323,7 +2326,6 @@ def getRules(config):
         'blanksaroundbar',        # put a blank line before and after bars
         'blanksaroundtitle',      # put a blank line before and after titles
         'blanksaroundnumtitle',   # put a blank line before and after numtitles
-        'extrablankafterlist',    # put an extra blank line after [num/def]lists
 
         # Value settings
         'listmaxdepth',           # maximum depth for lists
@@ -2367,7 +2369,6 @@ def getRules(config):
             'labelbeforelink': 1,
             'tablecellstrip': 1,
             'tablecellspannable': 1,
-            # 'tablecellmulticol',
             'keepblankheaderline': 1,
             'barinsidequote': 1,
             'keeplistindent': 1,
@@ -2377,10 +2378,8 @@ def getRules(config):
             'blanksaroundnumlist': 1,
             'blanksarounddeflist': 1,
             'blanksaroundtable': 1,
-            # 'blanksaroundbar',
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
-            'extrablankafterlist': 1,
             'tablecellaligntype': 'cell',
         },
         'aat': {
@@ -5637,8 +5636,6 @@ class BlockMaster:
         # Blank line after?
         if self._should_add_blank_line('after', name):
             result.append('')
-            if rules['extrablankafterlist']:
-                result.append('')
 
         return result
 
