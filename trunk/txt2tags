@@ -4062,7 +4062,7 @@ class ConfigMaster:
         # Set output file name
         config['outfile'] = self.get_outfile_name(config)
         # Checking suicide
-        if config['sourcefile'] == config['outfile'] and \
+        if os.path.abspath(config['sourcefile']) == os.path.abspath(config['outfile']) and \
            config['outfile'] not in [STDOUT, MODULEOUT] and not gui:
             Error(_("Input and Output files are the same: %s") % config['outfile'])
         return config
