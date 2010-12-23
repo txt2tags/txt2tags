@@ -173,7 +173,7 @@ OPTIONS = {
     'lang': '',
     'width': 0,
     'height': 0,
-    'art-chars': '',
+    'chars': '',
     'show-config-value': '',
     'template': '',
     'dirname': '',  # internal use only
@@ -285,7 +285,7 @@ DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
 AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
-AA_VALUES = '+-|-==-^"'  # do not edit here, please use --art-chars
+AA_VALUES = '+-|-==-^"'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
@@ -4042,12 +4042,13 @@ class ConfigMaster:
         if target == 'aat' and config['width'] < 5:
             Error(_("--width: Expected width > 4, got %i") % config['width'])
         # Check/set user ASCII Art formatting characters
-        if config['art-chars']:
-            if len(config['art-chars']) != len(AA_VALUES):
-                Error(_("--art-chars: Expected %i chars, got %i") % (
-                    len(AA_VALUES), len(config['art-chars'])))
-            else:
-                AA = dict(zip(AA_KEYS, config['art-chars']))
+        if config['chars']:
+            if target == 'aat':
+                if len(config['chars']) != len(AA_VALUES):
+                    Error(_("--chars: Expected %i chars, got %i") % (
+                        len(AA_VALUES), len(config['chars'])))
+                else:
+                    AA = dict(zip(AA_KEYS, config['chars']))
         # --toc-only is stronger than others
         if config['toc-only']:
             config['headers'] = 0
