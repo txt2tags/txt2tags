@@ -65,23 +65,22 @@ $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
     
 
 if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
-    $GUIButtonDirUrlFmt = $MyGuiEditor;
+	$GUIButtonDirUrlFmt = $MyGuiEditor;
                                        
     
-    $GUIButtons ['strong']      = array(10, "**", "**", '$[Strong Text]',
+	$GUIButtons ['strong']      = array(10, "**", "**", '$[Strong Text]',
                                     '$GUIButtonDirUrlFmt/strong.png"$[Strong]"');                                 
                                     
 	$GUIButtons ['underline']      = array(20, "__", "__", '$[Underline Text]',
                                     '$GUIButtonDirUrlFmt/underline.png"$[Underline]"');
 
-	
 	$GUIButtons ['em']      = array(30, "//", "//", '$[Emphasized Text]',
                                     '$GUIButtonDirUrlFmt/em.png"$[Italic]"');
                                     
-    $GUIButtons ['strike']      = array(40, "--", "--", '$[Strike Text]',
+	$GUIButtons ['strike']      = array(40, "--", "--", '$[Strike Text]',
                                     '$GUIButtonDirUrlFmt/strike.png"$[Strike]"');
   
-    $GUIButtons ['empty1'] = array(60, "", "", '',
+	$GUIButtons ['empty1'] = array(60, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
                                     
 
@@ -94,7 +93,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons['h3'] = array(120, "=== ", " ===", '$[Heading level 3]',
                      '$GUIButtonDirUrlFmt/h3.png"$[Heading level 3]"');
                     
-    $GUIButtons ['empty2'] = array(200, "", "", '',
+	$GUIButtons ['empty2'] = array(200, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
 	$GUIButtons ['extlink'] = array(300, '[',']', '$[link text http://]',
@@ -118,13 +117,13 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons ['hr'] = array(700, "--------------------", "", '',
                                     '$GUIButtonDirUrlFmt/hr.png"$[Separator line]"');
                                     
-    $GUIButtons ['comment'] = array(800, "% ", "", '',
+	$GUIButtons ['comment'] = array(800, "% ", "", '',
                                     '$GUIButtonDirUrlFmt/comment.png"$[Comment]"');
     
-    $GUIButtons ['empty5'] = array(850, "", "", '',
+	$GUIButtons ['empty5'] = array(850, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
                                     
-    $GUIButtons['sig'] = array(900, ' $CurrentTime', ' ', ' ',
+	$GUIButtons['sig'] = array(900, ' $CurrentTime', ' ', ' ',
                     '$GUIButtonDirUrlFmt/sig.gif"$[Insert <CurrentTime>]"');
                                     
     
@@ -132,13 +131,12 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
     //echo "rem";
     //$GUIButtonDirUrlFmt = '/../../pmwiki/pub/guiedit';
 
-    $GUIButtons ['strong']      = array($ArrayCount++, "**", "**", '$[Strong Text]',
+	$GUIButtons ['strong']      = array($ArrayCount++, "**", "**", '$[Strong Text]',
                                     '$GUIButtonDirUrlFmt/strong.gif"$[Strong]"');                                 
                                     
 	$GUIButtons ['underline']      = array($ArrayCount++, "__", "__", '$[Underline Text]',
                                     '$GUIButtonDirUrlFmt/underline.gif"$[Underline]"');
 
-	
 	$GUIButtons ['em']      = array($ArrayCount++, "//", "//", '$[Emphasized Text]',
                                     '$GUIButtonDirUrlFmt/em.gif"$[Italic]"');
       
