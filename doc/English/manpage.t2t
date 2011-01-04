@@ -300,7 +300,7 @@ Includes an already tagged file in the document.
 
 = MACROS =[macros]
 
-Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Except ``%%toc``, all macros can be customized with special directives, like ``%Y`` and ``%f``. See the txt2tags User Guide for details.
+Macros are handy shortcuts to insert dynamic contents in your document. They must be placed at the source document's Body. Most macros can be customized with special directives, like ``%Y`` and ``%f``. See the txt2tags User Guide for details.
 
 : **""%%date""**
 Insert the current date. The default format is ``%%date(%Y%m%d)``, which gives YYYYMMDD.
@@ -316,7 +316,30 @@ Insert the output file path. The default format is ``%%outfile(%f)``. Useful for
 
 : **""%%toc""**
 Specifies where the Table of Contents will be placed. You can even use it multiple times. Note that you must also use the ``--toc`` option.
+
+: **""%%appurl""**
+Insert the txt2tags URL: %%appurl.
+
+: **""%%appname""**
+Insert the %%appname name.
+
+: **""%%appversion""**
+Insert the current version number of txt2tags (currently %%appversion).
+
+: **""%%target""**
+Insert the target name being processed.
+
+: **""%%encoding""**
+Insert the encoding name choosen.
+
+: **""%%cmdline""**
+Insert the command line used to generate the target document.
+
+: **""%%header1""**, **""%%header2""**, **""%%header3""**, 
+Insert the headers.
 :
+
+
 
 = EXAMPLES =[examples]
 
