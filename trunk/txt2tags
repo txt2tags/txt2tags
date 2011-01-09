@@ -260,6 +260,7 @@ TARGET_NAMES = {
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
   'adoc'   : _('AsciiDoc document'),
+  'rst'    : _('ReStructuredText document'),
   'csv'    : _('CSV spreadsheet'),
   'ods'    : _('Open Document Spreadsheet'),
   'creole' : _('Creole 1.0 document'),
@@ -289,6 +290,12 @@ AA_VALUES = '+-|-==-^"'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
+
+# ReStructuredText config
+# http://docs.python.org/release/2.7/documenting/rest.html#sections
+RST_KEYS = 'title level1 level2 level3 level4 level5 bar1 bullet'.split()
+RST_VALUES = '#*=-^"--'  # do not edit here, please use --chars
+RST = dict(zip(RST_KEYS, RST_VALUES))
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -390,6 +397,8 @@ HEADER_TEMPLATE = {
     'aat': """\
 """,
     'csv': """\
+""",
+    'rst': """\
 """,
     'ods': """<?xml version='1.0' encoding='UTF-8'?>
 <office:document xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.1" office:mimetype="application/vnd.oasis.opendocument.spreadsheet"><office:meta><meta:generator>Txt2tags www.txt2tags.org</meta:generator></office:meta><office:automatic-styles/><office:body><office:spreadsheet>
@@ -961,6 +970,34 @@ def getTags(config):
         'fontUnderlineClose'   : '_'                      ,
         'fontStrikeOpen'       : '-'                      ,
         'fontStrikeClose'      : '-'                      ,
+    },
+
+    'rst': {
+        'title1'               : '\a'                     ,
+        'title2'               : '\a'                     ,
+        'title3'               : '\a'                     ,
+        'title4'               : '\a'                     ,
+        'title5'               : '\a'                     ,
+        'blockVerbOpen'        : '::\n'                   ,
+        'blockQuoteLine'       : '    '                   ,
+        'listItemOpen'         : RST['bullet'] + ' '      ,
+        'numlistItemOpen'      : '\a. '                   ,
+        'bar1'                 : aa_line(RST['bar1'], 10) ,
+        'url'                  : '\a'                     ,
+        'urlMark'              : '`\a <\a>`_'             ,
+        'email'                : '\a'                     ,
+        'emailMark'            : '\a (\a)'                ,
+        'img'                  : '\n\n.. image:: \a\n   :align: ~A~\n\nENDIMG',
+        '_imgAlignLeft'        : 'left'                   ,
+        '_imgAlignCenter'      : 'center'                 ,
+        '_imgAlignRight'       : 'right'                  ,
+        'fontMonoOpen'         : '``'                     ,
+        'fontMonoClose'        : '``'                     ,
+        'fontBoldOpen'         : '**'                     ,
+        'fontBoldClose'        : '**'                     ,
+        'fontItalicOpen'       : '*'                      ,
+        'fontItalicClose'      : '*'                      ,
+        'comment'              : '.. \a'                  ,
     },
 
     'txt': {
@@ -2322,6 +2359,7 @@ def getRules(config):
         'blanksaroundlist',       # put a blank line before and after lists
         'blanksaroundnumlist',    # put a blank line before and after numlists
         'blanksarounddeflist',    # put a blank line before and after deflists
+        'blanksaroundnestedlist', # put a blank line before and after all type of nested lists
         'blanksaroundtable',      # put a blank line before and after tables
         'blanksaroundbar',        # put a blank line before and after bars
         'blanksaroundtitle',      # put a blank line before and after titles
@@ -2381,6 +2419,29 @@ def getRules(config):
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
             'tablecellaligntype': 'cell',
+        },
+        'rst': {
+            'indentverbblock': 1,
+            'spacedlistitem': 1,
+            'parainsidelist': 1,
+            'keeplistindent': 1,
+            'barinsidequote': 1,
+            'autotocwithbars': 1,
+            'escapexmlchars': 1,
+            'imgalignable': 1,
+            'tableable': 1,
+
+            'blanksaroundpara': 1,
+            'blanksaroundverb': 1,
+            'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            'blanksaroundbar': 1,
+            'blanksaroundtitle': 1,
+            'blanksaroundnumtitle': 1,
+            'blanksaroundnestedlist': 1,
         },
         'aat': {
             #TIP art inherits all TXT rules
@@ -3117,8 +3178,10 @@ def aa_line(char, width):
     return char * width
 
 
-def aa_under(txt, char, width):
+def aa_under(txt, char, width, over):
     ret = []
+    if over:
+        ret.append(aa_line(char, aa_len(txt)))
     for line in textwrap.wrap(txt, width):
         ret.extend([line, aa_line(char, aa_len(line))])
     return ret
@@ -3981,6 +4044,7 @@ class ConfigMaster:
     def sanity(self, config, gui=0):
         "Basic config sanity checking"
         global AA
+        global RST
         if not config:
             return {}
         target = config.get('target')
@@ -4049,6 +4113,13 @@ class ConfigMaster:
                         len(AA_VALUES), len(config['chars'])))
                 else:
                     AA = dict(zip(AA_KEYS, config['chars']))
+            elif target == 'rst':
+                if len(config['chars']) != len(RST_VALUES):
+                    Error(_("--chars: Expected %i chars, got %i") % (
+                        len(RST_VALUES), len(config['chars'])))
+                else:
+                    RST = dict(zip(RST_KEYS, config['chars']))
+
         # --toc-only is stronger than others
         if config['toc-only']:
             config['headers'] = 0
@@ -4676,7 +4747,16 @@ class TitleMaster:
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            ret.extend(aa_under(tagged, AA[level], CONF['width']))
+            ret.extend(aa_under(tagged, AA[level], CONF['width'], False))
+        elif TARGET == 'rst' and self.level == 1:
+            if BLOCK.count > 1:
+                ret.append('')  # blank line before
+            ret.extend(aa_under(tagged, RST['level1'], 10000, True))
+        elif TARGET == 'rst':
+            level = 'level' + str(self.level)
+            if BLOCK.count > 1:
+                ret.append('')  # blank line before
+            ret.extend(aa_under(tagged, RST[level], 10000, False))
         else:
             ret.append(tagged)
         return ret
@@ -4726,6 +4806,7 @@ class TitleMaster:
 # http://michelf.com/projects/php-markdown/extra/#table
 # http://code.google.com/p/support/wiki/WikiSyntax#Tables
 # http://www.biblioscape.com/rtf15_spec.htm
+# http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#tables
 #
 # Good reading:
 # http://www.wikicreole.org/wiki/ListOfTableMarkups
@@ -5408,6 +5489,9 @@ class BlockMaster:
         if TARGET == 'aat':
             return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, CONF['spread']) + ['']
 
+        if TARGET == 'rst':
+            return aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', CONF['spread']) + ['']
+
         if TARGET == 'csv':
             return [','.join(cell.strip() for cell in row['cells']) for row in self.tableparser.rows] + ['']
 
@@ -5555,7 +5639,7 @@ class BlockMaster:
         items[-1] = self._remove_twoblanks(items[-1])
 
         # Blank line before?
-        if self._should_add_blank_line('before', name):
+        if self._should_add_blank_line('before', name) or rules['blanksaroundnestedlist']:
             result.append('')
 
         # Tag each list item (multiline items), store in listbody
@@ -5587,6 +5671,8 @@ class BlockMaster:
             # Process next lines for this item (if any)
             for line in item:
                 if type(line) == type([]):  # sublist inside
+                    if TARGET == 'rst' and name == 'deflist':
+                        del line[0]
                     listbody.extend(line)
                 else:
                     line = self._last_escapes(line)
@@ -5635,7 +5721,7 @@ class BlockMaster:
             result.append(tagindent + listclose)
 
         # Blank line after?
-        if self._should_add_blank_line('after', name):
+        if self._should_add_blank_line('after', name) or rules['blanksaroundnestedlist']:
             result.append('')
 
         return result
@@ -6082,7 +6168,7 @@ def doHeader(headers, config):
 
     Debug("Header Data: %s" % head_data, 1)
 
-    # ASCII Art does not use a header template, aa_header() formats the header
+    # ASCII Art and rst don't use a header template, aa_header() formats the header
     if target == 'aat' and not config['spread']:
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
         if not n_h :
@@ -6096,6 +6182,19 @@ def doHeader(headers, config):
             template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         # Header done, let's get out
         return template + config['fullBody']
+
+    if target =='rst':
+        if head_data:
+            template =[]
+            if head_data['HEADER1']:
+                template.extend(aa_under(head_data['HEADER1'], RST['title'], 10000, True))
+            if head_data['HEADER2']:
+                template.append(':Author: ' + head_data['HEADER2'])
+            if head_data['HEADER3']:
+                template.append(':Date: ' + head_data['HEADER3'])
+            return template + config['fullBody']
+        else:
+            return config['fullBody']
 
     # Scan for empty dictionary keys
     # If found, scan template lines for that key reference
@@ -6927,6 +7026,10 @@ def parse_images(line):
 
         line = regex['img'].sub(tag, line, 1)
         line = regex['x'].sub(txt, line, 1)
+
+        if TARGET == 'rst':
+            line = line.split('ENDIMG')[0] + line.split('ENDIMG')[1].strip()
+
     return line.replace('vvvvEscapeSquareBracketvvvv', '[')
 
 
