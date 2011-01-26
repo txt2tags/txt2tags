@@ -2,6 +2,7 @@
 // markItUp!
 // -------------------------------------------------------------------
 // Copyright (C) 2009 Florent Gallaire <fgallaire@gmail.com>  
+// License GNU GPLv3 or any later version.
 // Copyright (C) 2008 Jay Salvat
 // http://markitup.jaysalvat.com/
 // -------------------------------------------------------------------
