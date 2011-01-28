@@ -986,7 +986,7 @@ def getTags(config):
         'url'                  : '\a'                     ,
         'urlMark'              : '`\a <\a>`_'             ,
         'email'                : '\a'                     ,
-        'emailMark'            : '\a (\a)'                ,
+        'emailMark'            : '`\a <\a>`_'             ,
         'img'                  : '\n\n.. image:: \a\n   :align: ~A~\n\nENDIMG',
         '_imgAlignLeft'        : 'left'                   ,
         '_imgAlignCenter'      : 'center'                 ,
