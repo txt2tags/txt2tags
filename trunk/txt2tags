@@ -2199,7 +2199,7 @@ def getTags(config):
         'numlistClose'          : '\\sa240',
         'numlistItemOpen'       : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0{\\*\\listtext\\f0\\fs24\\fi-360\\li~D~ \a.\\tab}\\ls2\\ilvl~L~\\fi-360\\li~D~\\f0\\fs24\n',
         'img'                   : '{\\field{\\*\\fldinst{INCLUDEPICTURE "\a" \\\\* MERGEFORMAT \\\\d}}{\\fldrslt{(\a)}}}',
-        '_imgEmbed'             : '{\*\shppict{\pict\a}}',
+        'imgEmbed'             : '{\*\shppict{\pict\a}}',
         'deflistOpen'           : '\\sa240',
         'deflistClose'          : '\\sa240',
         'deflistItem1Open'      : '\\par}{\\pard\\plain\\s10\\f0\\fs24\\sa0\\fi-360\\li~D~{\\b\n',
@@ -2285,8 +2285,8 @@ def getTags(config):
         tags['bar2'] = tags['pageBreak']
 
     # Change img tag if embedding images in RTF
-    if config['embed-images'] and tags['_imgEmbed']:
-        tags['img'] = tags['_imgEmbed']
+    if config['embed-images'] and tags['imgEmbed']:
+        tags['img'] = tags['imgEmbed']
 
     # Map strong line to separator if not defined
     if not tags['bar2'] and tags['bar1']:
