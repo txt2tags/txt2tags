@@ -75,7 +75,7 @@ as long as the horizontal line:
 ========================================================
 
 You can also specify an [explicit link http://duh.org]
-with label.
+or an [explicit email duh@somewhere.com] with label.
 
 And remember,
 	A TAB in front of the line does a quotation.
