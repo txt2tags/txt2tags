@@ -2429,6 +2429,7 @@ def getRules(config):
             'autotocwithbars': 1,
             'escapexmlchars': 1,
             'imgalignable': 1,
+            'imglinkable': 1,
             'tableable': 1,
 
             'blanksaroundpara': 1,
