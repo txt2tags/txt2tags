@@ -59,8 +59,9 @@ Quick sample for the command line usage:
 Txt2tags package structure:
 
    ChangeLog             Changes from previous versions
-   COPYING               The GPL License contents
+   COPYING               The GNU GPL License contents
    README                This file
+   AUTHORS               The developers
    txt2tags              The program itself
                          (the only required file to run)
    doc/                  Documentation
