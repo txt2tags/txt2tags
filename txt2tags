@@ -2285,10 +2285,11 @@ def getTags(config):
         tags['bar2'] = tags['pageBreak']
 
     # Change img tag if embedding images in RTF
-    if config['embed-images'] and tags.get('imgEmbed'):
-        tags['img'] = tags['imgEmbed']
-    else:
-        Error(_("Invalid --embed-images option with target '%s'." % config['target']))
+    if config['embed-images']:
+        if tags.get('imgEmbed'):
+            tags['img'] = tags['imgEmbed']
+        else:
+            Error(_("Invalid --embed-images option with target '%s'." % config['target']))
 
     # Map strong line to separator if not defined
     if not tags['bar2'] and tags['bar1']:
