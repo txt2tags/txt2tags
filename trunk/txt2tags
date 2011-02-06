@@ -2285,8 +2285,10 @@ def getTags(config):
         tags['bar2'] = tags['pageBreak']
 
     # Change img tag if embedding images in RTF
-    if config['embed-images'] and tags['imgEmbed']:
+    if config['embed-images'] and tags.get('imgEmbed'):
         tags['img'] = tags['imgEmbed']
+    else:
+        Error(_("Invalid --embed-images option with target '%s'." % config['target']))
 
     # Map strong line to separator if not defined
     if not tags['bar2'] and tags['bar1']:
@@ -6950,26 +6952,27 @@ def getImageInfo(filename):
 
 RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
 
-def embedImageRtf(filename):
-    global RTFIMGID
-    RTFIMGID += 1
-    mytype, width, height, dpix, dpiy = getImageInfo(filename)
-    # Defalt DPI of images.
-    if dpix == 0 and dpiy == 0:
-        dpix = 72
-        dpiy = 72
-    try:
-        filein = open(filename, 'rb')
-        # RTF tags for an embedded bitmap image, with size in pixels and intended display size in twips.
-        # Size and dpi converted to float for division, as by default Python 2 will return an integer,
-        # probably truncated to 0 in most cases. This behavior is changed in Python3.
-        line = r'\\%sblip\\picw%d\\pich%d\\picwgoal%d\\picscalex100\\pichgoal%d\\picscaley100\\bliptag%d{\\*\\blipuid%016x}' \
-                % (mytype, width, height, int(float(width) / float(dpix) * 1440.0), int(float(height) / float(dpiy) * 1440.0), RTFIMGID, RTFIMGID)
-        line = line + filein.read().encode('hex')
-        filein.close()
-        return line
-    except:
-        Error('Unable to embed image: ' + filename)
+def embedImage(filename):
+    if TARGET == 'rtf':
+        global RTFIMGID
+        RTFIMGID += 1
+        mytype, width, height, dpix, dpiy = getImageInfo(filename)
+        # Defalt DPI of images.
+        if dpix == 0 and dpiy == 0:
+            dpix = 72
+            dpiy = 72
+        try:
+            filein = open(filename, 'rb')
+            # RTF tags for an embedded bitmap image, with size in pixels and intended display size in twips.
+            # Size and dpi converted to float for division, as by default Python 2 will return an integer,
+            # probably truncated to 0 in most cases. This behavior is changed in Python3.
+            line = r'\\%sblip\\picw%d\\pich%d\\picwgoal%d\\picscalex100\\pichgoal%d\\picscaley100\\bliptag%d{\\*\\blipuid%016x}' \
+                    % (mytype, width, height, int(float(width) / float(dpix) * 1440.0), int(float(height) / float(dpiy) * 1440.0), RTFIMGID, RTFIMGID)
+            line = line + filein.read().encode('hex')
+            filein.close()
+            return line
+        except:
+            Error('Unable to embed image: ' + filename)
 
 def parse_images(line):
     "Tag all images found"
@@ -7010,7 +7013,7 @@ def parse_images(line):
                 # for consistant behaviour.
                 basedir = os.path.dirname(CONF.get('outfile'))
                 fullpath = PathMaster().join(basedir, txt)
-                txt = embedImageRtf(fullpath)
+                txt = embedImage(fullpath)
             else:
                 # insert './' for relative paths if needed
                 if not re.match(r':/|:\\', txt):
