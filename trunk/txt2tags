@@ -6863,7 +6863,7 @@ def getImageInfo(filename):
         dpiy = 72
         if head == '\x89\x50':  # PNG format image
             imgtype = 'png'
-            magic, length, chunkid, width, height = unpack('!6sI4sIIxxxxxxxxx', f.read(31))
+            magic, length, chunkid, width, height, bit_depth, colour_type = unpack('!6sI4sIIBBxxxxxxx', f.read(31))
             if (magic == '\x4e\x47\x0d\x0a\x1a\x0a') and \
                     (length > 0) and \
                     (chunkid == 'IHDR'):
@@ -6872,7 +6872,7 @@ def getImageInfo(filename):
                         while chunk:
                             length, chunkid = unpack('!I4s', chunk)
                             if chunkid == 'pHYs':
-                                dpix, dpiy, units = unpack('!IIb', f.read(9))
+                                dpix, dpiy, units = unpack('!IIbxxxx', f.read(13))
                                 if units == 1:
                                     # PNG images have pixel dimensions in pixels per meter,
                                     # convert to pixels per inch
@@ -6882,15 +6882,14 @@ def getImageInfo(filename):
                                     # No pixel dimensions, set back to default
                                     dpix = 72
                                     dpiy = 72
-                                f.close()
-                                return imgtype, width, height, dpix, dpiy
+                            elif chunkid == 'IDAT':
+                                data = f.read(length)
+                                f.seek(4, 1)
                             else:
-                                # Not the right chunk, seek ahead to find 'pHYs'
                                 f.seek(length + 4, 1)
-                                chunk = f.read(8)
-                        # No pHYs chunk found, just return what data was found
+                            chunk = f.read(8)
                         f.close()
-                        return imgtype, width, height, dpix, dpiy
+                        return imgtype, width, height, bit_depth, colour_type, dpix, dpiy, data
             else:
                 f.close()
                 Error('Cannot embed PNG image ' + filename + '. Badly formatted.')
@@ -6957,7 +6956,7 @@ def embedImage(filename):
     if TARGET == 'rtf':
         global RTFIMGID
         RTFIMGID += 1
-        mytype, width, height, dpix, dpiy = getImageInfo(filename)
+        mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
         # Defalt DPI of images.
         if dpix == 0 and dpiy == 0:
             dpix = 72
