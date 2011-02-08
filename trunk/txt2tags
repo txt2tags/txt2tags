@@ -6934,7 +6934,7 @@ def getImageInfo(filename):
                     # Image info chunk, which should include size in pixels
                     height, width = unpack('!xxxHH', f.read(7))
                     f.close()
-                    return imgtype, width, height, dpix, dpiy
+                    return imgtype, width, height, 'bit_depth', 'colour_type', dpix, dpiy, 'data'
                 
                 else:
                     # Wrong chunk type. Get length of chunk and skip to the next one
