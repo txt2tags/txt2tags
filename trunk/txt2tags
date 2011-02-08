@@ -6991,8 +6991,8 @@ def embedImage(filename):
         decomp = zlib.decompress(data)
         n_byte = (colour_type + 1)
         image = []
+        end_line = n_byte * width + 1
         while decomp:
-            end_line = n_byte * width + 1
             line = decomp[1:end_line]
             while line:
                 image.append([char for char in line[:n_byte]])
@@ -7033,29 +7033,23 @@ def parse_images(line):
                     tag = '<div style="text-align: center;">%s</div>' % tag
 
         # Rtf needs some tweaking
-        if TARGET == 'rtf':
-            if CONF.get('embed-images'):
-                # Embedded images find files from the same location as linked images,
-                # for consistant behaviour.
-                basedir = os.path.dirname(CONF.get('outfile'))
-                fullpath = PathMaster().join(basedir, txt)
-                txt = embedImage(fullpath)
-            else:
-                # insert './' for relative paths if needed
-                if not re.match(r':/|:\\', txt):
-                    tag = regex['x'].sub('./\a', tag, 1)
-                # insert image filename an extra time for readers that don't grok linked images
-                tag = regex['x'].sub(txt, tag, 1)
-
-        if TARGET == 'aat':
-            if CONF.get('embed-images'):
-                basedir = os.path.dirname(CONF.get('outfile'))
-                fullpath = PathMaster().join(basedir, txt)
-                txt = embedImage(fullpath)
+        if TARGET == 'rtf' and not CONF.get('embed-images'):
+            # insert './' for relative paths if needed
+            if not re.match(r':/|:\\', txt):
+                tag = regex['x'].sub('./\a', tag, 1)
+            # insert image filename an extra time for readers that don't grok linked images
+            tag = regex['x'].sub(txt, tag, 1)
 
         if TARGET == 'tex':
             tag = re.sub(r'\\b', r'\\\\b', tag)
             txt = txt.replace('_', 'vvvvTexUndervvvv')
+
+        if CONF.get('embed-images'):
+            # Embedded images find files from the same location as linked images,
+            # for consistant behaviour.
+            basedir = os.path.dirname(CONF.get('outfile'))
+            fullpath = PathMaster().join(basedir, txt)
+            txt = embedImage(fullpath)
 
         # Ugly hack to avoid infinite loop when target's image tag contains []
         tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
