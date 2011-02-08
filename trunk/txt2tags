@@ -962,6 +962,7 @@ def getTags(config):
         'email'                : '\a'                     ,
         'emailMark'            : '\a (\a)'                ,
         'img'                  : '[\a]'                   ,
+        'imgEmbed'             : '\a'                     ,
         'fontBoldOpen'         : '*'                      ,
         'fontBoldClose'        : '*'                      ,
         'fontItalicOpen'       : '/'                      ,
@@ -3289,6 +3290,10 @@ def aa_len(txt):
         return len(txt.decode('utf-8'))
     else:
         return len(txt)
+
+
+def aa_image(image):
+    return "aa_image() isn't coded yet."
 
 
 ##############################################################################
@@ -6953,10 +6958,11 @@ def getImageInfo(filename):
 RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
 
 def embedImage(filename):
+    mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
+
     if TARGET == 'rtf':
         global RTFIMGID
         RTFIMGID += 1
-        mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
         # Defalt DPI of images.
         if dpix == 0 and dpiy == 0:
             dpix = 72
@@ -6973,6 +6979,26 @@ def embedImage(filename):
             return line
         except:
             Error('Unable to embed image: ' + filename)
+
+    elif TARGET == 'aat':
+        if mytype not in ['png']:
+            Error("Cannot embed image " + filename + ". Unsupported " + mytype + " format with Ascii Art targets. You should use PNG.")
+        if colour_type not in [0, 2]:
+            Error("Cannot embed image " + filename + ". Unsupported colour type with Ascii Art targets. You should use greyscale or RGB.")
+        if bit_depth not in [8]:
+            Error("Cannot embed image " + filename + ". Unsupported bit depth with Ascii Art targets. You should use 8-bit pixels.")
+        import zlib
+        decomp = zlib.decompress(data)
+        n_byte = (colour_type + 1)
+        image = []
+        while decomp:
+            end_line = n_byte * width + 1
+            line = decomp[1:end_line]
+            while line:
+                image.append([char for char in line[:n_byte]])
+                line = line[n_byte:]
+            decomp = decomp[end_line:]
+        return aa_image(image) 
 
 def parse_images(line):
     "Tag all images found"
@@ -7020,6 +7046,12 @@ def parse_images(line):
                     tag = regex['x'].sub('./\a', tag, 1)
                 # insert image filename an extra time for readers that don't grok linked images
                 tag = regex['x'].sub(txt, tag, 1)
+
+        if TARGET == 'aat':
+            if CONF.get('embed-images'):
+                basedir = os.path.dirname(CONF.get('outfile'))
+                fullpath = PathMaster().join(basedir, txt)
+                txt = embedImage(fullpath)
 
         if TARGET == 'tex':
             tag = re.sub(r'\\b', r'\\\\b', tag)
