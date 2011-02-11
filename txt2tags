@@ -3294,7 +3294,14 @@ def aa_len(txt):
 
 
 def aa_image(image):
-    return "aa_image() isn't coded yet."
+    art_table = '#$!;:,. '
+    art_image = []
+    for line in image:
+        art_line = ''
+        for pixel in line:
+            art_line = art_line + art_table[pixel/32]
+        art_image.append(art_line)
+    return art_image
 
 
 ##############################################################################
@@ -6994,6 +7001,7 @@ def embedImage(filename):
         end_line = n_byte * width + 1
         while decomp:
             line = decomp[1:end_line]
+            line_img = []
             while line:
                 if n_byte == 1:
                     L, = struct.unpack('!B', line[:n_byte])
@@ -7001,8 +7009,9 @@ def embedImage(filename):
                     R, G, B = struct.unpack('!BBB', line[:n_byte])
                     # ITU-R 601-2 luma transform
                     L = int(0.299 * R + 0.587 * G + 0.114 * B)
-                image.append(L)
+                line_img.append(L)
                 line = line[n_byte:]
+            image.append(line_img)
             decomp = decomp[end_line:]
         return aa_image(image) 
 
@@ -7056,6 +7065,8 @@ def parse_images(line):
             basedir = os.path.dirname(CONF.get('outfile'))
             fullpath = PathMaster().join(basedir, txt)
             txt = embedImage(fullpath)
+            if TARGET == 'aat':
+                return txt
 
         # Ugly hack to avoid infinite loop when target's image tag contains []
         tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
