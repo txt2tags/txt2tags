@@ -6990,15 +6990,17 @@ def embedImage(filename):
     elif TARGET == 'aat':
         if mytype not in ['png']:
             Error("Cannot embed image " + filename + ". Unsupported " + mytype + " format with Ascii Art targets. You should use PNG.")
-        if colour_type not in [0, 2]:
-            Error("Cannot embed image " + filename + ". Unsupported colour type with Ascii Art targets. You should use greyscale or RGB.")
+        if colour_type == 3:
+            Error("Cannot embed image " + filename + ". Unsupported indexed-colour image type with Ascii Art targets. You should use greyscale or RGB.")
         if bit_depth not in [8]:
             Error("Cannot embed image " + filename + ". Unsupported bit depth with Ascii Art targets. You should use 8-bit pixels.")
         import zlib
         decomp = zlib.decompress(data)
-        n_byte = (colour_type + 1)
+        n_byte = n_byte_alpha = (colour_type % 4 + 1)
+        if colour_type in [4, 6]:
+            n_byte_alpha = n_byte + 1
         image = []
-        end_line = n_byte * width + 1
+        end_line = n_byte_alpha * width + 1
         while decomp:
             line = decomp[1:end_line]
             line_img = []
@@ -7010,7 +7012,7 @@ def embedImage(filename):
                     # ITU-R 601-2 luma transform
                     L = int(0.299 * R + 0.587 * G + 0.114 * B)
                 line_img.append(L)
-                line = line[n_byte:]
+                line = line[n_byte_alpha:]
             image.append(line_img)
             decomp = decomp[end_line:]
         return aa_image(image) 
