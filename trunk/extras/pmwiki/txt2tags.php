@@ -18,7 +18,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2010-10-24';
+$RecipeInfo['txt2tags']['Version'] = '2011-04-22';
 
 // Check if the customized fonts were installed. Adapt it to your own path.
 $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
@@ -210,9 +210,15 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	Markup ('txt2tags_undeline' , 'directives', '/__(.*?)__/'              , "{+$1+}");
 	
 	
-	Markup ('txt2tags_italics0'  , '<directives', '/http:\/\//'              , "HTTPREP");
+	Markup ('txt2tags_http'  , '<directives', '/http:\/\//'              , "HTTPREP");
+	Markup ('txt2tags_https'  , '<directives', '/https:\/\//'              , "HTTPSREP");
+	Markup ('txt2tags_ftp'  , '<directives', '/ftp:\/\//'              , "FTPREP");
+	Markup ('txt2tags_ftps'  , '<directives', '/sftp:\/\//'              , "SFTPREP");
 	Markup ('txt2tags_italics'  , 'directives', '/\/\/(.*?)\/\//'              , "''$1''");
-	Markup ('txt2tags_italics1'  , 'inline', '/HTTPREP/'              , "http://");
+	Markup ('txt2tags_http2'  , 'inline', '/HTTPREP/'              , "http://");
+	Markup ('txt2tags_https2'  , 'inline', '/HTTPSREP/'              , "https://");
+	Markup ('txt2tags_ftp2'  , 'inline', '/FTPREP/'              , "ftp://");
+	Markup ('txt2tags_sftp2'  , 'inline', '/SFTPREP/'              , "sftp://");
 	
 	
 	Markup ('txt2tags_strike'    , 'directives', '/--(.*?)--/', "{-$1-}");	
@@ -299,7 +305,11 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	//Markup ('txt2tags_locallink'    , 'directives', '/\[(.*?) local:\/\/(.*?)\]/s', '[[http://$2|$1]]');
 	
 	Markup ('txt2tags_urllink'    , 'directives', '/\[(.*?) HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
-	// (beware this rule rely on the txt2tags_italics0 rule as well)
+	Markup ('txt2tags_urllink2'    , 'directives', '/\[(.*?) HTTPSREP(.*?)\]/s', '[[HTTPSREP$2|$1]]');	
+	Markup ('txt2tags_urllink3'    , 'directives', '/\[(.*?) FTPREP(.*?)\]/s', '[[FTPREP$2|$1]]');	
+	// not working (empty line) Markup ('txt2tags_urllink4'    , 'directives', '/\[(.*?) SFTPREP(.*?)\]/s', '[[SFTPREP$2|$1]]');	
+
+	// (beware this rule rely on the txt2tags_http/https/ftp/ftps (italics) rules as well)
 
 	//Markup ('txt2tags_urllink'    , '>_end', '/\[(.*?) <a class=\'urllink\' href=\'http:\/\/(.*?)\' title=\'\' rel=\'nofollow\'>(.*?)<\/a>\]/s', '<a href="http://$2">$1</a>');	// works but not that good	
 
