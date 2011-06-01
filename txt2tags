@@ -1116,15 +1116,15 @@ def getTags(config):
         'fontStrikeClose'      : '</S>'           ,
         'listOpen'             : '<UL>'           ,
         'listClose'            : '</UL>'          ,
-        'listItemOpen'         : '<LI>'           ,
+        'listItemOpen'         : '<LI><P>'           ,
         'numlistOpen'          : '<OL>'           ,
         'numlistClose'         : '</OL>'          ,
-        'numlistItemOpen'      : '<LI>'           ,
+        'numlistItemOpen'      : '<LI><P>'           ,
         'deflistOpen'          : '<DL>'           ,
         'deflistClose'         : '</DL>'          ,
         'deflistItem1Open'     : '<DT>'           ,
         'deflistItem1Close'    : '</DT>'          ,
-        'deflistItem2Open'     : '<DD>'           ,
+        'deflistItem2Open'     : '<DD><P>'           ,
         'bar1'                 : '<HR NOSHADE SIZE=1>'        ,
         'bar2'                 : '<HR NOSHADE SIZE=5>'        ,
         'url'                  : '<A HREF="\a">\a</A>'        ,
@@ -1158,9 +1158,9 @@ def getTags(config):
     #TIP http://www.w3.org/TR/xhtml1/#guidelines
     #TIP http://www.htmlref.com/samples/Chapt17/17_08.htm
     'xhtml': {
-        'listItemClose'        : '</li>'          ,
-        'numlistItemClose'     : '</li>'          ,
-        'deflistItem2Close'    : '</dd>'          ,
+        'listItemClose'        : '</p></li>'          ,
+        'numlistItemClose'     : '</p></li>'          ,
+        'deflistItem2Close'    : '</p></dd>'          ,
         'bar1'                 : '<hr class="light" />',
         'bar2'                 : '<hr class="heavy" />',
         'img'                  : '<img~A~ src="\a" border="0" alt=""/>',
@@ -1191,18 +1191,18 @@ def getTags(config):
         'fontStrikeClose'      : '</span>'        ,
         'listOpen'             : '<ul>'           ,
         'listClose'            : '</ul>'          ,
-        'listItemOpen'         : '<li>'           ,
-        'listItemClose'        : '</li>'          ,
+        'listItemOpen'         : '<li><p>'           ,
+        'listItemClose'        : '</p></li>'          ,
         'numlistOpen'          : '<ol>'           ,
         'numlistClose'         : '</ol>'          ,
-        'numlistItemOpen'      : '<li>'           ,
-        'numlistItemClose'     : '</li>'          ,
+        'numlistItemOpen'      : '<li><p>'           ,
+        'numlistItemClose'     : '</p></li>'          ,
         'deflistOpen'          : '<dl>'           ,
         'deflistClose'         : '</dl>'          ,
         'deflistItem1Open'     : '<dt>'           ,
         'deflistItem1Close'    : '</dt>'          ,
-        'deflistItem2Open'     : '<dd>'           ,
-        'deflistItem2Close'    : '</dd>'          ,
+        'deflistItem2Open'     : '<dd><p>'           ,
+        'deflistItem2Close'    : '</p></dd>'          ,
         'bar1'                 : '<hr class="light" />',
         'bar2'                 : '<hr class="heavy" />',
         'url'                  : '<a href="\a">\a</a>'        ,
@@ -1256,18 +1256,18 @@ def getTags(config):
         'fontStrikeClose'      : '</del>'         ,
         'listOpen'             : '<ul>'           ,
         'listClose'            : '</ul>'          ,
-        'listItemOpen'         : '<li>'           ,
-        'listItemClose'        : '</li>'          ,
+        'listItemOpen'         : '<li><p>'           ,
+        'listItemClose'        : '</p></li>'          ,
         'numlistOpen'          : '<ol>'           ,
         'numlistClose'         : '</ol>'          ,
-        'numlistItemOpen'      : '<li>'           ,
-        'numlistItemClose'     : '</li>'          ,
+        'numlistItemOpen'      : '<li><p>'           ,
+        'numlistItemClose'     : '</p></li>'          ,
         'deflistOpen'          : '<dl>'           ,
         'deflistClose'         : '</dl>'          ,
         'deflistItem1Open'     : '<dt>'           ,
         'deflistItem1Close'    : '</dt>'          ,
-        'deflistItem2Open'     : '<dd>'           ,
-        'deflistItem2Close'    : '</dd>'          ,
+        'deflistItem2Open'     : '<dd><p>'           ,
+        'deflistItem2Close'    : '</p></dd>'          ,
         'bar1'                 : '<hr class="light"/>'        ,
         'bar2'                 : '<hr class="heavy"/>'        ,
         'url'                  : '<a href="\a">\a</a>'        ,
@@ -5696,7 +5696,9 @@ class BlockMaster:
 
                     # Blank lines turns to <p>
                     if not line and rules['parainsidelist']:
-                        line = indent + TAGS['paragraphOpen'] + TAGS['paragraphClose']
+                        if TAGS['paragraphClose']:
+                            listbody.append(indent + TAGS['paragraphClose'])
+                        line = indent + TAGS['paragraphOpen']
 
                         # RTF encoding depth into nested paragraphs
                         line = self._apply_depth(line, self.depth)
