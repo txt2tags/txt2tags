@@ -680,8 +680,11 @@ difference bewteen wide and compact lists, and all lists are treated
 as wide lists.
 
 If the rule ['parainsidelist' #parainsidelist] is defined for a target, then the
-blank lines in wide lists are emitted as an empty paragraph. That
-is, [paragraphOpen #paragraphOpen] followed immediately by [paragraphClose #paragraphClose].
+target supports paragraph tags within a list item. For the blank lines of a wide
+list, [paragraphClose #paragraphClose] is emitted, followed by [paragraphOpen #paragraphOpen].
+It is assumed that [listItemOpen #listItemOpen], [numlistItemOpen #numlistItemOpen] and
+[deflistItem2Open #deflistItem2Open] will also open a paragraph, and that the
+corresponding ItemClose tags will also close a paragraph.
 
 The rule ['spacedlistitem' #spacedlistitem] appears to be intended to show that a
 target supports wide or spaced lists. However, at this time the rule
