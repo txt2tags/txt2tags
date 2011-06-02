@@ -2569,7 +2569,6 @@ def getRules(config):
             'tableable': 1,
             'tablecellstrip': 1,
             'blankendautotoc': 1,
-            'quotenotnested': 1,
             'keeplistindent': 1,
             'keepquoteindent': 1,
             'barinsidequote': 1,
@@ -2586,6 +2585,7 @@ def getRules(config):
             'blanksaroundbar': 1,
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
+            'quotemaxdepth': 1,
         },
         'dbk': {
             'escapexmlchars': 1,
@@ -2822,7 +2822,7 @@ def getRules(config):
             'autonumberlist': 1,
             'imgalignable': 1,
             'labelbeforelink': 1,
-            'quotenotnested': 1,
+            'quotemaxdepth': 1,
             'autonumbertitle': 1,
             'blanksaroundpara': 1,
             'blanksaroundverb': 1,
@@ -2971,6 +2971,7 @@ def getRules(config):
             'tableable': 1,
             'autonumbertitle': 1,
             'parainsidelist': 1,
+            'quotenotnested': 1,
             'onelinepara': 1,
             'tablecellstrip': 1,
             'tablecellspannable': 1,
@@ -2980,7 +2981,7 @@ def getRules(config):
             'zerodepthparagraph': 1,
             'cellspancumulative': 1,
             'blockdepthmultiply': 360,
-            'depthmultiplpyplus': 1,
+            'depthmultiplyplus': 1,
             'cellspanmultiplier': 1080,
             'listmaxdepth': 9,
             'tablecellaligntype': 'cell',
@@ -5374,9 +5375,10 @@ class BlockMaster:
         # convert block depth into an indent in twips
         depth = level
         multiply = rules['blockdepthmultiply']
-        add = rules['depthmultiplyplus'] or 0
+        if depth > 0 and rules['depthmultiplyplus']:
+            depth = depth + rules['depthmultiplyplus']
         if multiply:
-            depth = (depth + add) * multiply
+            depth = depth * multiply
         return regex['_blockDepth'].sub(str(depth), line)
 
     def _apply_list_level(self, line, level):
@@ -5556,18 +5558,25 @@ class BlockMaster:
         if open_:
             result.append(tagindent + open_)
 
+        itemisclosed = False
+
         # Get contents
         for item in self.hold():
             if type(item) == type([]):
+                if close and rules['quotenotnested']:
+                    result.append(tagindent + close)
+                    itemisclosed = True
                 result.extend(item)        # subquotes
             else:
+                if open_ and itemisclosed:
+                    result.append(tagindent + open_)
                 item = regex['quote'].sub('', item)  # del TABs
                 item = self._last_escapes(item)
                 item = qline * self.depth + item
                 result.append(indent + item)  # quote line
 
         # Close tag
-        if close:
+        if close and not itemisclosed:
             result.append(tagindent + close)
 
         # Blank line after?
@@ -7519,10 +7528,6 @@ def convert(bodylines, config, firstlinenr=1):
 
             # Store number of leading TABS
             quotedepth = len(regex['quote'].search(line).group(0))
-
-            # SGML doesn't support nested quotes
-            if rules['quotenotnested']:
-                quotedepth = 1
 
             # Don't cross depth limit
             maxdepth = rules['quotemaxdepth']
