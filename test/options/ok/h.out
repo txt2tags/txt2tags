@@ -5,7 +5,7 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
   -t, --target=TYPE   set target document type. currently supported:
                       aap, aas, aat, adoc, bbcode, creole, csv, dbk,
                       doku, gwiki, html, html5, lout, man, md, mgp, moin,
-                      ods, pm6, pmw, red, rtf, sgml, spip, tex, txt, txt2t, wiki, xhtml, xhtmls
+                      ods, pm6, pmw, red, rst, rtf, sgml, spip, tex, txt, txt2t, wiki, xhtml, xhtmls
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
       --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)

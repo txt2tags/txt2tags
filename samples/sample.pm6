@@ -21,7 +21,7 @@
 
 TXT2TAGS SAMPLE
 Aurelio Jargas
-11/18/2010
+02/28/2011
 
 
 <@Title1:>Introduction
@@ -99,7 +99,7 @@ Special entities like email (duh@somewhere.com) and URL (<U>http://www.duh.com<P
 ========================================================
 
 <@Normal:>
-You can also specify an explicit link <U>http://duh.org<P> with label.
+You can also specify an explicit link <U>http://duh.org<P> or an explicit email duh@somewhere.com with label.
 
 <@Normal:>
 And remember,
@@ -215,10 +215,10 @@ The image mark is as simple as it can be: <FONT "Lucida Console"><SIZE 9>[filena
 The handy <FONT "Lucida Console"><SIZE 9>%%date<SIZE$><FONT$> macro expands to the current date.
 
 <@Normal:>
-So today is 20101118 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
+So today is 20110602 on the ISO <FONT "Lucida Console"><SIZE 9>YYYYMMDD<SIZE$><FONT$> format.
 
 <@Normal:>
-You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 11-18-2010.
+You can also specify the date format with the %? flags, as <FONT "Lucida Console"><SIZE 9>%%date(%m-%d-%Y)<SIZE$><FONT$> which gives: 06-02-2011.
 
 <@Normal:>
 That's all for now.

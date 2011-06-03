@@ -281,6 +281,15 @@ after the spaces used for the indent, before the block text.
   None
 
 
+    ===blockVerbSep===[blockVerbSep]
+
+This tag is emitted, on a line by itself, in between each line of
+text in the verbatim block.
+
+: Macros:
+  None
+
+
     ===blockVerbClose===[blockVerbClose]
 
 This tag is emitted, on its own line, after each block of verbatim
@@ -693,6 +702,10 @@ of lists may be nested within one another for each target.
 If the rule ['listnotnested' #listnotnested] is defined for a target, then it does
 not support nested lists. Nested lists in the source are emitted as
 if all items belonged to the same, top-level list.
+
+If the rule ['listitemnotnested' #listitemnotnested] is defined for a target, then
+list items are closed before emitting a nested list, rather than wrapping
+around the nested list.
 
     ++Unordered Lists++[section-UnorderedLists]
 
@@ -1742,6 +1755,17 @@ This target does not support nested lists.
 
 If this is defined, then all lists are emitted as a single,
 top-level list. It affects the output of [lists #chapter-Lists].
+
+
+    ===listitemnotnested===[listitemnotnested]
+
+This target does not allow nested lists to be inside a list
+item.
+
+If this is defined, then list items are closed before sublists
+are emitted. If it is not defined, then list items are closed
+after the sublists they contain. It affects the output of
+[lists #chapter-Lists].
 
 
     ===quotenotnested===[quotenotnested]
