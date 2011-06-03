@@ -1,6 +1,6 @@
 = TXT2TAGS SAMPLE
 Aurelio Jargas
-11/18/2010
+02/28/2011
 
 
 == Introduction
@@ -74,7 +74,7 @@ as long as the horizontal line:
 
 
 You can also specify an http://duh.org[explicit link]
-with label.
+or an mailto:duh@somewhere.com[explicit email] with label.
 
 And remember,
 
@@ -172,10 +172,10 @@ The image mark is as simple as it can be: +[filename]+.
 
 The handy +%%date+ macro expands to the current date.
 
-So today is 20101118 on the ISO +YYYYMMDD+ format.
+So today is 20110602 on the ISO +YYYYMMDD+ format.
 
 You can also specify the date format with the %? flags,
-as +%%date(%m-%d-%Y)+ which gives: 11-18-2010.
+as +%%date(%m-%d-%Y)+ which gives: 06-02-2011.
 
 That's all for now.
 
