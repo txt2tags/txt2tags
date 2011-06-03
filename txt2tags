@@ -5730,12 +5730,12 @@ class BlockMaster:
                     # Blank lines turns to <p>
                     if not line and rules['parainsidelist']:
                         line = indent + TAGS['paragraphOpen'] + TAGS['paragraphClose']
-
-                        # RTF encoding depth into nested paragraphs
-                        line = self._apply_depth(line, self.depth)
-
                         line = line.rstrip()
                         widelist = 1
+                    elif not line and TARGET == 'rtf':
+                        listbody.append(TAGS['paragraphClose'])
+                        line = TAGS['paragraphOpen']
+                        line = self._apply_depth(line, self.depth)
 
                     # Some targets don't like identation here (wiki)
                     if not rules['keeplistindent'] or (name == 'deflist' and rules['deflisttextstrip']):
