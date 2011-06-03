@@ -165,23 +165,21 @@ much like the source document.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~D~</B></DT><DD><P>
+  <DT><B>~D~</B></DT><DD>
     If this macro is included in the tag, it will be expanded to the
     value of the depth of that particular paragraph. Most paragraphs
     have depth '1', pargraphs inside a top-level list will have
     depth level '2', and so on.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A> is defined for the target,
     the depth value will be multiplied by that amount before being
     emitted. If the rule <A HREF="#depthmultiplyplus">'depthmultiplyplus'</A> is defined, then that
     value will be added to the depth before multiplying by
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, but only if used with
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#zerodepthpara">'zerodepthpara'</A> is defined, then top-level
     paragraphs (those not nested inside a list) will always have
     <B>~D~</B> replaced with '0', regardless of the other rules.
@@ -196,7 +194,7 @@ text.
 </P>
 
 <DL>
-<DT>Macros</DT><DD><P>
+<DT>Macros</DT><DD>
   None
 </DL>
 
@@ -239,15 +237,14 @@ unless the rule <A HREF="#tagnotindentable">'tagnotindentable'</A> is defined.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~D~</B></DT><DD><P>
+  <DT><B>~D~</B></DT><DD>
     If this macro is included in the tag, it will be expanded to the
     value of the depth of that particular block quote paragraph. The
     first Block Quote has a depth level of '1'. A quote nested
     within the first will have a depth of '2', and so on.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A> is defined for the target,
     the depth value will be multiplied by that amount before being
     emitted. If the rule <A HREF="#depthmultiplyplus">'depthmultiplyplus'</A> is defined, then that
@@ -275,7 +272,7 @@ are emitted after the tab characters and before the quote text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -292,7 +289,7 @@ unless the rule <A HREF="#tagnotindentable">'tagnotindentable'</A> is defined.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -339,7 +336,7 @@ text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -356,7 +353,7 @@ after the spaces used for the indent, before the block text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -368,7 +365,7 @@ text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -453,9 +450,9 @@ This tag is used to insert a bare url without a label.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark within the tag will be expanded into the text of the
     url itself. For example, if the <CODE>url</CODE> tag is '[url=\a]'
     and the url in the source document in 'example.com', then
@@ -472,19 +469,17 @@ but it will function as a link to the url.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark should appear twice in the tag. The first instance is
     expanded to the text of the url, the second instance is expanded
     to the text of the label.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#labelbeforelink">'labelbeforelink'</A> is defined for the target, then
     the first instance is the label, and the second instance is the
     url.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#imglinkable">'imglinkable'</A> is defined for the target, then an
     <A HREF="#img">img</A> tag (see below) is allowed as the label.
   </DL>
@@ -515,9 +510,9 @@ defined.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded to the full text of the email address.
   </DL>
 </DL>
@@ -530,9 +525,9 @@ are assigned a label in the source document.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark appears twice in the tag, just like <A HREF="#urlMark">urlMark</A>. The
     first instance is expanded to the text of the email address, and
     the second instance to the text of the label. If the rule
@@ -563,14 +558,13 @@ remote files are not supported.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded to the text of the file path pointing to
     the inserted image.
-  </P>
-  <P>
-  <DT><B>~A~</B></DT><DD><P>
+  <P></P>
+  <DT><B>~A~</B></DT><DD>
     This mark represents the alignment of the image. If the rule
     <A HREF="#imgalignable">'imgalignable'</A> is defined for the target, then this mark will
     be replaced with the contents of <A HREF="#_imgAlign">_imgAlignLeft, _imgAlignRight, or _imgAlignCenter</A> as appropriate. (Note
@@ -591,7 +585,7 @@ confuse these with the <A HREF="#imgAlign">imgAlignLeft, imgAlignRight, and imgA
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -609,9 +603,9 @@ and they will not have <B>~A~</B> expanded.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded to the file path of the image file, just
     as in the <A HREF="#img">img</A> tag.
   </DL>
@@ -632,9 +626,9 @@ another target.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded into the full file data of the embedded
     image file, as well as whatever additional markup may be
     required to make it work with the target.
@@ -693,9 +687,9 @@ of the document.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded into the label text for the anchor, as
     specified by the user or generated automatically by Txt2tags if
     none has been specified and the <I>--toc</I> option is in effect.
@@ -724,13 +718,13 @@ will be emitted before and after this tag.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded into the text of the title itself,
     unchanged excepts for necessary escapes from the source
     document.
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This mark is expanded into the value of the <A HREF="#anchor">anchor</A> tag,
     along with the text of the label for that anchor. It is removed
     if the title does not have a label specified, and if txt2tags is
@@ -759,13 +753,13 @@ will be emitted before and after this tag.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded into the text of the title itself,
     unchanged excepts for necessary escapes from the source
     document.
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This mark is expanded into the value of the <A HREF="#anchor">anchor</A> tag,
     along with the text of the label for that anchor. It is removed
     if the title does not have a label specified, and if txt2tags is
@@ -795,13 +789,13 @@ will be emitted before and after this tag.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is expanded into the text of the title itself,
     unchanged excepts for necessary escapes from the source
     document.
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This mark is expanded into the value of the <A HREF="#anchor">anchor</A> tag,
     along with the text of the label for that anchor. It is removed
     if the title does not have a label specified, and if txt2tags is
@@ -825,7 +819,7 @@ the order of the tags will be: <CODE>title1Open</CODE>, <CODE>title2Open</CODE>,
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -839,7 +833,7 @@ before the first <A HREF="#title1Open">title*Open*</A>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -853,7 +847,7 @@ after the last <A HREF="#title1Close">title*Close*</A>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -880,11 +874,8 @@ as wide lists.
 </P>
 <P>
 If the rule <A HREF="#parainsidelist">'parainsidelist'</A> is defined for a target, then the
-target supports paragraph tags within a list item. For the blank lines of a wide
-list, <A HREF="#paragraphClose">paragraphClose</A> is emitted, followed by <A HREF="#paragraphOpen">paragraphOpen</A>.
-It is assumed that <A HREF="#listItemOpen">listItemOpen</A>, <A HREF="#numlistItemOpen">numlistItemOpen</A> and
-<A HREF="#deflistItem2Open">deflistItem2Open</A> will also open a paragraph, and that the
-corresponding ItemClose tags will also close a paragraph.
+blank lines in wide lists are emitted as an empty paragraph. That
+is, <A HREF="#paragraphOpen">paragraphOpen</A> followed immediately by <A HREF="#paragraphClose">paragraphClose</A>.
 </P>
 <P>
 The rule <A HREF="#spacedlistitem">'spacedlistitem'</A> appears to be intended to show that a
@@ -942,7 +933,7 @@ is only used for wide lists. Otherwise it is used for both.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -962,7 +953,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -980,7 +971,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1008,27 +999,25 @@ list item text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~D~</B></DT><DD><P>
+  <DT><B>~D~</B></DT><DD>
     If this macro is included in the tag, it will be expanded to the
     value of the depth of that particular list. Top level lists
     have depth '1', a nested list inside the top level would have
     depth level '2', and so on.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A> is defined for the target,
     the depth value will be multiplied by that amount before being
     emitted. If the rule <A HREF="#depthmultiplyplus">'depthmultiplyplus'</A> is defined, then that
     value will be added to the depth before multiplying by
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, but only if used with
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>.
-  <DT><B>~V~</B></DT><DD><P>
+  <DT><B>~V~</B></DT><DD>
     This macro will be expanded to the nesting level of the list. It
     is not affected by <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, so the numbers will
     always count one by one.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#listlevelzerobased">'listlevelzerobased'</A> is defined for a target, then
     the top level lists will be level '0', the next level '1',
     and so on. Otherwise, the top level is '1' and the next level
@@ -1054,7 +1043,7 @@ item, and not for every line of the item.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1065,7 +1054,7 @@ This tag is emitted after each item in the list.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1115,7 +1104,7 @@ is only used for wide lists. Otherwise it is used for both.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1135,7 +1124,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1153,7 +1142,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1189,30 +1178,28 @@ list item text.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     If the rule <A HREF="#autonumberlist">'autonumberlist'</A> is <I>not</I> defined, then this
     mark is expanded into the correct number for this list item.
-  <DT><B>~D~</B></DT><DD><P>
+  <DT><B>~D~</B></DT><DD>
     If this macro is included in the tag, it will be expanded to the
     value of the depth of that particular list. Top level lists
     have depth '1', a nested list inside the top level would have
     depth level '2', and so on.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A> is defined for the target,
     the depth value will be multiplied by that amount before being
     emitted. If the rule <A HREF="#depthmultiplyplus">'depthmultiplyplus'</A> is defined, then that
     value will be added to the depth before multiplying by
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, but only if used with
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>.
-  <DT><B>~V~</B></DT><DD><P>
+  <DT><B>~V~</B></DT><DD>
     This macro will be expanded to the nesting level of the list. It
     is not affected by <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, so the numbers will
     always count one by one.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#listlevelzerobased">'listlevelzerobased'</A> is defined for a target, then
     the top level lists will be level '0', the next level '1',
     and so on. Otherwise, the top level is '1' and the next level
@@ -1238,7 +1225,7 @@ item, and not for every line of the item.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1249,7 +1236,7 @@ This tag is emitted after each item in the list.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1299,7 +1286,7 @@ is only used for wide lists. Otherwise it is used for both.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1319,7 +1306,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1337,7 +1324,7 @@ not defined, these spaces are removed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1359,27 +1346,25 @@ allowed as the term to be defined. Otherwise, only text is allowed.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~D~</B></DT><DD><P>
+  <DT><B>~D~</B></DT><DD>
     If this macro is included in the tag, it will be expanded to the
     value of the depth of that particular list. Top level lists
     have depth '1', a nested list inside the top level would have
     depth level '2', and so on.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A> is defined for the target,
     the depth value will be multiplied by that amount before being
     emitted. If the rule <A HREF="#depthmultiplyplus">'depthmultiplyplus'</A> is defined, then that
     value will be added to the depth before multiplying by
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, but only if used with
     <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>.
-  <DT><B>~V~</B></DT><DD><P>
+  <DT><B>~V~</B></DT><DD>
     This macro will be expanded to the nesting level of the list. It
     is not affected by <A HREF="#blockdepthmultiply">'blockdepthmultiply'</A>, so the numbers will
     always count one by one.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#listlevelzerobased">'listlevelzerobased'</A> is defined for a target, then
     the top level lists will be level '0', the next level '1',
     and so on. Otherwise, the top level is '1' and the next level
@@ -1395,7 +1380,7 @@ definition itself, for each item in the list.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1407,7 +1392,7 @@ used right before the definition text of the item.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1428,7 +1413,7 @@ of the list.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1447,7 +1432,7 @@ entire list.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1570,24 +1555,21 @@ It replaces the macro <B>~S~</B>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This mark is used inside the tag to give the span of the cell.
     It is replaced with the numeric value of the number of columns
     that this cell spans.
-  </P>
-  <P>
+  <P></P>
     <CODE>_tableCellColSpan</CODE> will only be emitted for cells that have a
     span value greater than '1'.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#cellspancumulative">'cellspancumulative'</A> is defined for a target, then
     this value will grow for each cell in a row. That is, cell '1'
     will have a span value of '1', cell '2' will have a span value of
     '2', and so on, with spanned cells increasing the value more.
-  </P>
-  <P>
+  <P></P>
     If the rule <A HREF="#cellspanmultiplier">'cellspanmultiplier'</A> is defined for a target, then
     the span value will be multiplied by this value, after
     accumulation if appropriate.
@@ -1636,15 +1618,15 @@ emitted on lines of their own, and are emitted only once for each table.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This will be replaced with <A HREF="#_tableAlign">_tableAlign*</A> for a left or center
     aligned table.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     This will be replaced with the <A HREF="#_tableBorder">_tableBorder</A> tag for tables
     that have a border, or removed otherwise.
-  <DT><B>~C~</B></DT><DD><P>
+  <DT><B>~C~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to <A HREF="#column">'column'</A>, then
     this will be replaced with the column alignment group for the
     table. (See <A HREF="#_tableColAlign">_tableColAlign*</A> above.)
@@ -1663,15 +1645,15 @@ after this tag before the cells.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This will be replaced with <A HREF="#_tableAlign">_tableAlign*</A> for a left or center
     aligned table.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     This will be replaced with the <A HREF="#_tableBorder">_tableBorder</A> tag for tables
     that have a border, or removed otherwise.
-  <DT><B>~C~</B></DT><DD><P>
+  <DT><B>~C~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to <A HREF="#column">'column'</A>, then
     this will be replaced with the column alignment group for the
     table. (See <A HREF="#_tableColAlign">_tableColAlign*</A> above.)
@@ -1695,15 +1677,15 @@ be emitted after this tag before the cells.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This will be replaced with <A HREF="#_tableAlign">_tableAlign*</A> for a left or center
     aligned table.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     This will be replaced with the <A HREF="#_tableBorder">_tableBorder</A> tag for tables
     that have a border, or removed otherwise.
-  <DT><B>~C~</B></DT><DD><P>
+  <DT><B>~C~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to <A HREF="#column">'column'</A>, then
     this will be replaced with the column alignment group for the
     table. (See <A HREF="#_tableColAlign">_tableColAlign*</A> above.)
@@ -1722,15 +1704,15 @@ used instead.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This will be replaced with <A HREF="#_tableAlign">_tableAlign*</A> for a left or center
     aligned table.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     This will be replaced with the <A HREF="#_tableBorder">_tableBorder</A> tag for tables
     that have a border, or removed otherwise.
-  <DT><B>~C~</B></DT><DD><P>
+  <DT><B>~C~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to <A HREF="#column">'column'</A>, then
     this will be replaced with the column alignment group for the
     table. (See <A HREF="#_tableColAlign">_tableColAlign*</A> above.)
@@ -1748,15 +1730,15 @@ Note that if this tag is defined, then <A HREF="#tableRowOpen">tableRowOpen</A> 
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     This will be replaced with <A HREF="#_tableAlign">_tableAlign*</A> for a left or center
     aligned table.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     This will be replaced with the <A HREF="#_tableBorder">_tableBorder</A> tag for tables
     that have a border, or removed otherwise.
-  <DT><B>~C~</B></DT><DD><P>
+  <DT><B>~C~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to <A HREF="#column">'column'</A>, then
     this will be replaced with the column alignment group for the
     table. (See <A HREF="#_tableColAlign">_tableColAlign*</A> above.)
@@ -1795,21 +1777,21 @@ used for all cells.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to the value
     <A HREF="#cell">'cell'</A> for a target, then this will be replaced with the
     appropriate <A HREF="#_tableCellAlign">_tableCellAlign*</A> tag.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     If the table has a border, this will be replaced with the
     <A HREF="#_tableCellBorder">_tableCellBorder</A> tag, or removed if not.
-  <DT><B>~S~</B></DT><DD><P>
+  <DT><B>~S~</B></DT><DD>
     If the rule <A HREF="#tablecellspannable">'tablecellspannable'</A> is defined, and the cell
     spans multiple columns, then this tag will be replaced with the
     value of either <A HREF="#_tableCellColSpanChar">_tableCellColSpanChar</A> or
     <A HREF="#_tableCellColSpan">_tableCellColSpan</A> as appropriate.
-  <DT><B>~Z~</B></DT><DD><P>
+  <DT><B>~Z~</B></DT><DD>
     If the cell has and alignment or column span to be inserted,
     then this tag will be replaced with <A HREF="#_tableAttrDelimiter">_tableAttrDelimiter</A>. If
     the cell has neither, then it will be removed.
@@ -1826,16 +1808,16 @@ all cells.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to the value
     <A HREF="#cell">'cell'</A> for a target, then this will be replaced with the
     appropriate <A HREF="#_tableCellAlign">_tableCellAlign*</A> tag.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     If the table has a border, this will be replaced with the
     <A HREF="#_tableCellBorder">_tableCellBorder</A> tag, or removed if not.
-  <DT><B>~S~</B></DT><DD><P>
+  <DT><B>~S~</B></DT><DD>
     If the rule <A HREF="#tablecellspannable">'tablecellspannable'</A> is defined, and the cell
     spans multiple columns, then this tag will be replaced with the
     value of either <A HREF="#_tableCellColSpanChar">_tableCellColSpanChar</A> or
@@ -1863,7 +1845,7 @@ the next <CODE>tableCellOpen</CODE>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1876,17 +1858,17 @@ of <A HREF="#tableCellOpen">tableCellOpen</A>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This will be replaced with the current cell's column span value.
     See <A HREF="#_tableCellColSpan">_tableCellColSpan</A> above for an explanation of this
     value.
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to the value
     <A HREF="#cell">'cell'</A> for a target, then this will be replaced with the
     appropriate <A HREF="#_tableCellAlign">_tableCellAlign*</A> tag.
-  <DT><B>~Z~</B></DT><DD><P>
+  <DT><B>~Z~</B></DT><DD>
     If the cell has an alignment or column span to be inserted,
     then this tag will be replaced with <A HREF="#_tableAttrDelimiter">_tableAttrDelimiter</A>. If
     the cell has neither, then it will be removed.
@@ -1902,7 +1884,7 @@ of <A HREF="#tableCellClose">tableCellClose</A>.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   None
 </DL>
 
@@ -1923,16 +1905,16 @@ title row, otherwise <CODE>tableCellHead</CODE> will be used for all rows.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>~A~</B></DT><DD><P>
+  <DT><B>~A~</B></DT><DD>
     If the rule <A HREF="#tablecellaligntype">'tablecellaligntype'</A> is set to the value
     <A HREF="#cell">'cell'</A> for a target, then this will be replaced with the
     appropriate <A HREF="#_tableCellAlign">_tableCellAlign*</A> tag.
-  <DT><B>~B~</B></DT><DD><P>
+  <DT><B>~B~</B></DT><DD>
     If the table has a border, this will be replaced with the
     <A HREF="#_tableCellBorder">_tableCellBorder</A> tag, or removed if not.
-  <DT><B>~S~</B></DT><DD><P>
+  <DT><B>~S~</B></DT><DD>
     If the rule <A HREF="#tablecellspannable">'tablecellspannable'</A> is defined, and the cell
     spans multiple columns, then this tag will be replaced with the
     value of either <A HREF="#_tableCellColSpanChar">_tableCellColSpanChar</A> or
@@ -1954,9 +1936,9 @@ macros within the other cell tags.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This will be replaced by the text of the cell itself.
   </DL>
 </DL>
@@ -1999,9 +1981,9 @@ If the rule <A HREF="#mapbar2pagebreak">'mapbar2pagebreak'</A> is defined, then 
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     If this mark is present, it will be replaced with the text of
     the actual marks used for the bar in the source document.
   </DL>
@@ -2070,9 +2052,9 @@ the output document.
 </P>
 
 <DL>
-<DT>Macros:</DT><DD><P>
+<DT>Macros:</DT><DD>
   <DL>
-  <DT><B>\a</B></DT><DD><P>
+  <DT><B>\a</B></DT><DD>
     This is replaced with the text of the comment generated by
     Txt2tags.
   </DL>
@@ -2720,6 +2702,6 @@ affect the output of <A HREF="#tableCellOpen">tableCellOpen</A>, <A HREF="#table
 <A HREF="#_tableCellMulticolOpen">_tableCellMulticolOpen</A> and <A HREF="#tableCellHead">tableCellHead</A>.
 </P>
 
-<!-- html code generated by txt2tags 2.6.660 (http://txt2tags.org) -->
+<!-- html code generated by txt2tags 2.6.666 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -t html doc/English/tags-reference.t2t -->
 </BODY></HTML>
