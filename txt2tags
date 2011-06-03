@@ -867,7 +867,6 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 {\pard\plain\s10\keepn{\*\txttags maintitle}\f1\fs24\qc\sb2880\sa0\sl480\slmult1\li0\ri0\fi0 %(HEADER1)s\par}
 {\pard\plain\s10\keepn{\*\txttags maintitle}\f1\fs24\qc\sb0\sa0\sl480\slmult1\li0\ri0\fi0 %(HEADER2)s\par}
 {\pard\plain\s10\keepn{\*\txttags maintitle}\f1\fs24\qc\sb0\sa0\sl480\slmult1\li0\ri0\fi0 %(HEADER3)s\par}
-\sect
 """,
 
 }
