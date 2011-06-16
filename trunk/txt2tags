@@ -3269,6 +3269,8 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     length = [max([len(el) for el in line]) for line in tab]
     if spread:
         border, h_header, v_header, align = True, True, True, 'Center'
+        if n > 26:
+            Error(_("aas target doesn't support table with more than 26 columns."))        
         h = [string.ascii_uppercase[i].center(length[i]) for i in range(n)]
         data2 = [[h, [1] * n]] + data2
         data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
