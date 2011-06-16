@@ -4130,6 +4130,7 @@ class ConfigMaster:
             target, config['slides'] = 'aat', True
         if target == 'aas':
             target, config['spread'] = 'aat', True
+            exec('from math import *', globals())
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
