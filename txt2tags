@@ -3238,6 +3238,11 @@ def aa_slide(title, char, width):
 
 
 def aa_table(table, chars, width, border, h_header, v_header, align, spread):
+    if spread:
+        for row in table:
+            for i, el in enumerate(row['cells']):
+                if el.strip()[0] == '=':
+                    row['cells'][i] = str(eval(el.strip()[1:]))
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
