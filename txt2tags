@@ -3271,7 +3271,6 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         tab.append([line[i] for line in data3])
     length = [max([len(el) for el in line]) for line in tab]
     if spread:
-        border, h_header, v_header, align = True, True, True, 'Center'
         if n > 26:
             Error(_("aas target doesn't support table with more than 26 columns."))        
         h = [string.ascii_uppercase[i].center(length[i]) for i in range(n)]
@@ -5544,10 +5543,13 @@ class BlockMaster:
         result = []
 
         if TARGET == 'aat':
-            return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, CONF['spread']) + ['']
+            if CONF['spread']:
+                return aa_table(self.tableparser.rows, AA, CONF['width'], True, True, True, 'Center', True) + ['']
+            else:
+                return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False) + ['']
 
         if TARGET == 'rst':
-            return aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', CONF['spread']) + ['']
+            return aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False) + ['']
 
         if TARGET == 'csv':
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
