@@ -462,6 +462,7 @@ HEADER_TEMPLATE = {
 
     'html5': """\
 <!doctype html>
+<html>
 <head>
 <meta charset=%(ENCODING)s>
 <title>%(HEADER1)s</title>
@@ -495,6 +496,7 @@ table th,table td{padding:4px;}
 
     'html5css': """\
 <!doctype html>
+<html>
 <head>
 <meta charset=%(ENCODING)s>
 <title>%(HEADER1)s</title>
