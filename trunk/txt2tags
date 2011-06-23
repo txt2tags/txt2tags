@@ -275,6 +275,14 @@ TARGETS = TARGET_NAMES.keys()
 TARGETS.sort()
 
 
+TARGET_TYPES = {
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls')),
+  'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
+  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
+  'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
+}
+
+
 DEBUG = 0     # do not edit here, please use --debug
 VERBOSE = 0   # do not edit here, please use -v, -vv or -vvv
 QUIET = 0     # do not edit here, please use --quiet
@@ -5937,10 +5945,14 @@ class MacroMaster:
 
 def listTargets():
     """list all available targets"""
-    targets = TARGETS
-    targets.sort()
-    for target in targets:
-        print "%s\t%s" % (target, TARGET_NAMES.get(target))
+    for typ in TARGET_TYPES:
+        targets = list(TARGET_TYPES[typ][1])
+        targets.sort()
+        print
+        print TARGET_TYPES[typ][0] + ':'
+        for target in targets:
+            print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
+    print
 
 
 def dumpConfig(source_raw, parsed_config):
