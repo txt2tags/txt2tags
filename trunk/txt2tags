@@ -159,6 +159,7 @@ FLAGS = {
     'quiet': 0,
     'slides': 0,
     'spread': 0,
+    'web': 0,
     'fix-path': 0,
     'embed-images': 0,
     }
@@ -260,6 +261,7 @@ TARGET_NAMES = {
   'aat'    : _('ASCII Art Text'),
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
+  'aaw'    : _('ASCII Art Web'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
   'csv'    : _('CSV spreadsheet'),
@@ -276,7 +278,7 @@ TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aaw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -4085,6 +4087,8 @@ class ConfigMaster:
                 outfile = "%s.%s" % (basename, 'aap')
             if config['target'] == 'aat' and config['spread']:
                 outfile = "%s.%s" % (basename, 'aas')
+            if config['target'] == 'aat' and config['web']:
+                outfile = "%s.%s" % (basename, 'aaw')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -4140,6 +4144,8 @@ class ConfigMaster:
         if target == 'aas':
             target, config['spread'] = 'aat', True
             exec('from math import *', globals())
+        if target == 'aaw':
+            target, config['web'] = 'aat', True
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
@@ -6266,7 +6272,12 @@ def doHeader(headers, config):
             else:
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         # Header done, let's get out
-        return template + config['fullBody']
+        if config['web']:
+            head_web = ['<!doctype html><html><meta charset=UTF-8><title>' + config['header1'] + '</title><pre>']
+            foot_web = ['</pre></html>']
+            return head_web + template + config['fullBody'] + foot_web
+        else:
+            return template + config['fullBody']
 
     if target =='rst':
         if head_data:
