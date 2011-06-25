@@ -2297,6 +2297,7 @@ def getTags(config):
     if config['target'] == 'aat' and config['web']:
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
+        alltags['aat']['img'] = '<img src="\a" alt=""/>'
 
     # Compose the target tags dictionary
     tags = {}
@@ -3036,6 +3037,7 @@ def getRules(config):
             myrules['blanksaroundnumtitle'] = 0
         if config['web']:
             myrules['linkable'] = 1
+            myrules['imglinkable'] = 1
     else:
         myrules = rules_bank[config['target']].copy()
 

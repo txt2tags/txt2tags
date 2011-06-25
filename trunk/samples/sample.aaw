@@ -14,7 +14,7 @@
 
 
                              +------------+                             
-                             | 06/24/2011 |                             
+                             | 06/25/2011 |                             
                              +------------+                             
 
 
@@ -210,7 +210,7 @@ Images
 
 The image mark is as simple as it can be: [filename].
 
-                      [img/photo.jpg]
+                      <img src="img/photo.jpg" alt=""/>
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
@@ -230,6 +230,7 @@ That's all for now.
 
 ------------------------------------------------------------------------
 
-[img/t2tpowered.png] (<a href="sample.t2t">sample.t2t</a>)
+<img src="img/t2tpowered.png" alt=""/> (<a
+href="sample.t2t">sample.t2t</a>)
 
 </pre></html>
