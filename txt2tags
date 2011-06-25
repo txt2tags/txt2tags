@@ -6256,15 +6256,15 @@ def doHeader(headers, config):
     # ASCII Art and rst don't use a header template, aa_header() formats the header
     if target == 'aat' and not config['spread']:
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
-        if not n_h :
-            return config['fullBody']
-        if config['slides']:
-            x = config['height'] - 3 - (n_h * 3)
-            n = x / (n_h + 1)
-            end = x % (n_h + 1)
-            template = aa_header(head_data, AA, config['width'], n, end)
-        else:
-            template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
+        template = []
+        if n_h:
+            if config['slides']:
+                x = config['height'] - 3 - (n_h * 3)
+                n = x / (n_h + 1)
+                end = x % (n_h + 1)
+                template = aa_header(head_data, AA, config['width'], n, end)
+            else:
+                template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         # Header done, let's get out
         return template + config['fullBody']
 
