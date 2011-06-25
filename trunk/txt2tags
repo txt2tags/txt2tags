@@ -2294,6 +2294,10 @@ def getTags(config):
     #xhtmls.update(alltags['xhtmls'])
     #alltags['xhtmls'] = xhtmls.copy()
 
+    if config['target'] == 'aat' and 'web':
+        alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
+        alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
+
     # Compose the target tags dictionary
     tags = {}
     target_tags = alltags[config['target']].copy()
@@ -3030,6 +3034,8 @@ def getRules(config):
         if config['slides']:
             myrules['blanksaroundtitle'] = 0
             myrules['blanksaroundnumtitle'] = 0
+        if config['web']:
+            myrules['linkable'] = 1
     else:
         myrules = rules_bank[config['target']].copy()
 
