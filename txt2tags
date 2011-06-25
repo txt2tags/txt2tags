@@ -2294,7 +2294,7 @@ def getTags(config):
     #xhtmls.update(alltags['xhtmls'])
     #alltags['xhtmls'] = xhtmls.copy()
 
-    if config['target'] == 'aat' and 'web':
+    if config['target'] == 'aat' and config['web']:
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
 
