@@ -6940,6 +6940,9 @@ def convert_this_files(configs):
         Message(_("Composing target Headers"), 1)
         outlist = doHeader(source_head, myconf)
 
+        if myconf['target'] == 'aat' and myconf['web'] and not myconf['headers']:
+            outlist = ['<pre>'] + outlist + ['</pre>']
+
         # If on GUI, abort before finish_him
         # If module, return finish_him as list
         # Else, write results to file or STDOUT
