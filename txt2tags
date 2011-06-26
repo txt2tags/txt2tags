@@ -2298,6 +2298,7 @@ def getTags(config):
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
         alltags['aat']['img'] = '<img src="\a" alt=""/>'
+        alltags['aat']['anchor'] = '<div id="\a">'
 
     # Compose the target tags dictionary
     tags = {}
@@ -4815,12 +4816,20 @@ class TitleMaster:
             else :
                 if BLOCK.count > 1:
                     ret.append('')  # blank line before
-                ret.extend(aa_box(tagged, AA, CONF['width']))
+                box = aa_box(tagged, AA, CONF['width'])
+                if CONF['web'] and CONF['toc']:
+                    ret.extend([anchor + box[0]] + box[1:-1] + [box[-1] + '</div>'])
+                else:
+                    ret.extend(box)
         elif TARGET == 'aat':
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            ret.extend(aa_under(tagged, AA[level], CONF['width'], False))
+            under = aa_under(tagged, AA[level], CONF['width'], False)
+            if CONF['web'] and CONF['toc']:
+                ret.extend([anchor + under[0]] + under[1:-1] + [under[-1] + '</div>']) 
+            else:
+                ret.extend(under)
         elif TARGET == 'rst' and self.level == 1:
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
