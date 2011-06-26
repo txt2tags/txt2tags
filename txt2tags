@@ -5316,7 +5316,7 @@ class BlockMaster:
         parsed = self.HLD.pop()
         self.PRP.pop()
         self.depth = len(self.BLK)
-        
+
         if CONF['spread'] and blockname != 'table':
             return []
 
@@ -6995,7 +6995,7 @@ def getImageInfo(filename):
             else:
                 f.close()
                 Error('Cannot embed PNG image ' + filename + '. Badly formatted.')
-        
+
         elif head == '\xff\xd8':  # JPG format image
             imgtype = 'jpeg'
             # Jpeg format is insane. The image size chunk could be anywhere,
@@ -7037,7 +7037,7 @@ def getImageInfo(filename):
                     height, width = struct.unpack('!xxxHH', f.read(7))
                     f.close()
                     return imgtype, width, height, 'bit_depth', 'colour_type', dpix, dpiy, 'data'
-                
+
                 else:
                     # Wrong chunk type. Get length of chunk and skip to the next one
                     size = struct.unpack('!H', f.read(2))
@@ -7053,6 +7053,7 @@ def getImageInfo(filename):
         Error('Cannot embed image ' + filename + '. Unable to open file.')
 
 RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
+
 
 def embedImage(filename):
     mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
@@ -7105,7 +7106,8 @@ def embedImage(filename):
                 line = line[n_byte_alpha:]
             image.append(line_img)
             decomp = decomp[end_line:]
-        return aa_image(image) 
+        return aa_image(image)
+
 
 def parse_images(line):
     "Tag all images found"
@@ -7137,13 +7139,12 @@ def parse_images(line):
             if align == 'center' and TARGET == 'xhtmls':
                 rest = regex['img'].sub('', line, 1)
                 if re.match('^\s+$', rest):
-                    ## original (not validating): 
+                    ## original (not validating):
                     # tag = '<div style="text-align: center;">%s</div>' % tag
                     ## dirty fix:
                     # tag = '</p><div style="text-align: center;">%s</div><p>' % tag
                     ## will validate, though img won't be centered:
                     tag = '%s' % tag
-                    
 
         # Rtf needs some tweaking
         if TARGET == 'rtf' and not CONF.get('embed-images'):
