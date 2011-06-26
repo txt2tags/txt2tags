@@ -373,7 +373,7 @@ And you have a numbered list 						: works
 
 Definition list										: not working
 
-A quoted paragraph is prefixed by a TAB. 			: not working.  Do we need this? Is it relevant for a wiki?
+A quoted paragraph is prefixed by a TAB. 			: not working.  Do we need this? Is it relevant for a web form?
 
 raw area											: similar to verbatim area
 

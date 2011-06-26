@@ -1225,7 +1225,7 @@ def getTags(config):
         'urlMark'              : '<a href="\a">\a</a>'        ,
         'email'                : '<a href="mailto:\a">\a</a>' ,
         'emailMark'            : '<a href="mailto:\a">\a</a>' ,
-        'img'                  : '<img~a~ src="\a" style="border:0px" alt=""/>',
+        'img'                  : '<img~a~ src="\a" alt=""/>',
         '_imgAlignLeft'        : ' style="text-align:left"'  ,
         '_imgAlignCenter'      : ' style="text-align:center"',
         '_imgAlignRight'       : ' style="text-align:right"' ,
@@ -7137,7 +7137,13 @@ def parse_images(line):
             if align == 'center' and TARGET == 'xhtmls':
                 rest = regex['img'].sub('', line, 1)
                 if re.match('^\s+$', rest):
-                    tag = '<div style="text-align: center;">%s</div>' % tag
+                    ## original (not validating): 
+                    # tag = '<div style="text-align: center;">%s</div>' % tag
+                    ## dirty fix:
+                    # tag = '</p><div style="text-align: center;">%s</div><p>' % tag
+                    ## will validate, though img won't be centered:
+                    tag = '%s' % tag
+                    
 
         # Rtf needs some tweaking
         if TARGET == 'rtf' and not CONF.get('embed-images'):
