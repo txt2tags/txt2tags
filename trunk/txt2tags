@@ -3041,6 +3041,7 @@ def getRules(config):
         if config['web']:
             myrules['linkable'] = 1
             myrules['imglinkable'] = 1
+            myrules['escapexmlchars'] = 1
     else:
         myrules = rules_bank[config['target']].copy()
 
