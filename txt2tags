@@ -2529,65 +2529,10 @@ def getRules(config):
         },
 
         'xhtmls': {
-            'escapexmlchars': 1,
-            'indentverbblock': 1,
-            'linkable': 1,
-            'stylable': 1,
-            'escapeurl': 1,
-            'imglinkable': 1,
-            'imgalignable': 1,
-            'imgasdefterm': 1,
-            'autonumberlist': 1,
-            'spacedlistitem': 1,
-            'parainsidelist': 1,
-            'tableable': 1,
-            'tablecellstrip': 1,
-            'breaktablecell': 1,
-            'breaktablelineopen': 1,
-            'keeplistindent': 1,
-            'keepquoteindent': 1,
-            'barinsidequote': 1,
-            'autotocwithbars': 1,
-            'tablecellspannable': 1,
-            'tablecellaligntype': 'cell',
-            'blanksaroundverb': 1,
-            'blanksaroundlist': 1,
-            'blanksaroundnumlist': 1,
-            'blanksarounddeflist': 1,
-            'blanksaroundtable': 1,
-            'blanksaroundbar': 1,
-            'blanksaroundtitle': 1,
-            'blanksaroundnumtitle': 1,
+            #TIP xhtmls inherits all HTML rules
         },
         'html5': {
-            'escapexmlchars': 1,
-            'linkable': 1,
-            'stylable': 1,
-            'escapeurl': 1,
-            'imglinkable': 1,
-            'imgalignable': 1,
-            'imgasdefterm': 1,
-            'autonumberlist': 1,
-            'spacedlistitem': 1,
-            'parainsidelist': 1,
-            'tableable': 1,
-            'tablecellstrip': 1,
-            'breaktablecell': 1,
-            'breaktablelineopen': 1,
-            'keeplistindent': 1,
-            'keepquoteindent': 1,
-            'barinsidequote': 1,
-            'autotocwithbars': 1,
-            'tablecellspannable': 1,
-            'tablecellaligntype': 'cell',
-            'blanksaroundverb': 1,
-            'blanksaroundlist': 1,
-            'blanksaroundnumlist': 1,
-            'blanksarounddeflist': 1,
-            'blanksaroundtable': 1,
-            'blanksaroundbar': 1,
-            'blanksaroundtitle': 1,
-            'blanksaroundnumtitle': 1,
+            #TIP html5 inherits all HTML rules
         },
 
         'sgml': {
@@ -3021,17 +2966,13 @@ def getRules(config):
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls'):
+    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5'):
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
-    elif config['css-sugar'] and config['target'] in ('html5'):
-        rules_bank['html5']['indentverbblock'] = 0
-        rules_bank['html5']['autotocwithbars'] = 0
-
     # Get the target specific rules
-    if config['target'] == 'xhtml':
+    if config['target'] in ('xhtml', 'xhtmls', 'html5'):
         myrules = rules_bank['html'].copy()   # inheritance
-        myrules.update(rules_bank['xhtml'])   # get XHTML specific
+        myrules.update(rules_bank[config['target']])   # get specific
     elif config['target'] == 'aat':
         myrules = rules_bank['txt'].copy()    # inheritance
         myrules['tableable'] = 1
