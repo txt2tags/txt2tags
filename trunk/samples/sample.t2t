@@ -168,11 +168,17 @@ The image mark is as simple as it can be: ``[filename]``.
 
                       [img/photo.jpg]  
 
+And with some targets the image is linkable :
+
+                      [[img/photo.jpg] www.txt2tags.org]  
+
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
 
 
                      ==  Other  ==
+When the target needs, special chars like <, > and &
+are escaped.
 
 The handy ``%%date`` macro expands to the current date.
 
