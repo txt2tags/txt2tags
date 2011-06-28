@@ -1185,20 +1185,6 @@ def getTags(config):
     },
 
     'xhtmls': {
-        'paragraphOpen'        : '<p>'            ,
-        'paragraphClose'       : '</p>'           ,
-        'title1'               : '<h1~a~>\a</h1>' ,
-        'title2'               : '<h2~a~>\a</h2>' ,
-        'title3'               : '<h3~a~>\a</h3>' ,
-        'title4'               : '<h4~a~>\a</h4>' ,
-        'title5'               : '<h5~a~>\a</h5>' ,
-        'anchor'               : ' id="\a"',
-        'blockVerbOpen'        : '<pre>'          ,
-        'blockVerbClose'       : '</pre>'         ,
-        'blockQuoteOpen'       : '<blockquote>'   ,
-        'blockQuoteClose'      : '</blockquote>'  ,
-        'fontMonoOpen'         : '<code>'         ,
-        'fontMonoClose'        : '</code>'        ,
         'fontBoldOpen'         : '<strong>'       ,
         'fontBoldClose'        : '</strong>'      ,
         'fontItalicOpen'       : '<em>'           ,
@@ -1207,47 +1193,18 @@ def getTags(config):
         'fontUnderlineClose'   : '</span>'        ,
         'fontStrikeOpen'       : '<span style="text-decoration:line-through">',  # use <del> instead ?
         'fontStrikeClose'      : '</span>'        ,
-        'listOpen'             : '<ul>'           ,
-        'listClose'            : '</ul>'          ,
-        'listItemOpen'         : '<li>'           ,
         'listItemClose'        : '</li>'          ,
-        'numlistOpen'          : '<ol>'           ,
-        'numlistClose'         : '</ol>'          ,
-        'numlistItemOpen'      : '<li>'           ,
         'numlistItemClose'     : '</li>'          ,
-        'deflistOpen'          : '<dl>'           ,
-        'deflistClose'         : '</dl>'          ,
-        'deflistItem1Open'     : '<dt>'           ,
-        'deflistItem1Close'    : '</dt>'          ,
-        'deflistItem2Open'     : '<dd>'           ,
         'deflistItem2Close'    : '</dd>'          ,
         'bar1'                 : '<hr class="light" />',
         'bar2'                 : '<hr class="heavy" />',
-        'url'                  : '<a href="\a">\a</a>'        ,
-        'urlMark'              : '<a href="\a">\a</a>'        ,
-        'email'                : '<a href="mailto:\a">\a</a>' ,
-        'emailMark'            : '<a href="mailto:\a">\a</a>' ,
         'img'                  : '<img~a~ src="\a" alt=""/>',
         '_imgAlignLeft'        : ' style="text-align:left"'  ,
         '_imgAlignCenter'      : ' style="text-align:center"',
         '_imgAlignRight'       : ' style="text-align:right"' ,
-        'tableOpen'            : '<table~a~~b~ cellpadding="4">',
-        'tableClose'           : '</table>'       ,
-        'tableRowOpen'         : '<tr>'           ,
-        'tableRowClose'        : '</tr>'          ,
-        'tableCellOpen'        : '<td~a~~s~>'     ,
-        'tableCellClose'       : '</td>'          ,
-        'tableTitleCellOpen'   : '<th~s~>'        ,
-        'tableTitleCellClose'  : '</th>'          ,
-        '_tableBorder'         : ' border="1"'    ,
         '_tableAlignCenter'    : ' style="text-align:center"',
         '_tableCellAlignRight' : ' style="text-align:right"' ,
         '_tableCellAlignCenter': ' style="text-align:center"',
-        '_tableCellColSpan'    : ' colspan="\a"'  ,
-        'cssOpen'              : '<style type="text/css">',
-        'cssClose'             : '</style>'       ,
-        'comment'              : '<!-- \a -->'    ,
-        'EOD'                  : '</body></html>'
     },
     'html5': {
         'paragraphOpen'        : '<p>'            ,
@@ -2256,7 +2213,7 @@ def getTags(config):
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html', 'xhtml'):
+    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls'):
         # Change just HTML because XHTML inherits it
         htmltags = alltags['html']
         # Table with no cellpadding
@@ -2267,17 +2224,6 @@ def getTags(config):
         htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
         htmltags['bodyClose'] = '</DIV>'
 
-    if config['css-sugar'] and config['target'] in ('xhtmls'):
-        # load normal xhtmls tags
-        htmltags = alltags['xhtmls']
-        # Table with no cellpadding
-        htmltags['tableOpen'] = htmltags['tableOpen'].replace(' cellpadding="4"', '')
-        # DIVs
-        htmltags['tocOpen'] = '<div class="toc">'
-        htmltags['tocClose'] = '</div>'
-        htmltags['bodyOpen'] = '<div class="body" id="body">'
-        htmltags['bodyClose'] = '</div>'
-
     # Make the HTML -> XHTML inheritance
     xhtml = alltags['html'].copy()
     for key in xhtml.keys():
@@ -2285,16 +2231,9 @@ def getTags(config):
     # Some like HTML tags as lowercase, some don't... (headers out)
     if HTML_LOWER:
         alltags['html'] = xhtml.copy()
-    xhtml.update(alltags['xhtml'])
-    alltags['xhtml'] = xhtml.copy()
-
-    ## Make the HTML -> XHTMLS inheritance
-    #xhtmls = alltags['html'].copy()
-    #for key in xhtmls.keys(): xhtmls[key] = xhtmls[key].lower()
-    ## Some like HTML tags as lowercase, some don't... (headers out)
-    #if HTML_LOWER: alltags['html'] = xhtmls.copy()
-    #xhtmls.update(alltags['xhtmls'])
-    #alltags['xhtmls'] = xhtmls.copy()
+    if config['target'] in ('xhtml', 'xhtmls'):
+        xhtml.update(alltags[config['target']])
+        alltags[config['target']] = xhtml.copy()
 
     if config['target'] == 'aat' and config['web']:
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
