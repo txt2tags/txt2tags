@@ -6241,17 +6241,14 @@ def doHeader(headers, config):
             return template + config['fullBody']
 
     if target =='rst':
-        if head_data:
-            template =[]
-            if head_data['HEADER1']:
-                template.extend(aa_under(head_data['HEADER1'], RST['title'], 10000, True))
-            if head_data['HEADER2']:
-                template.append(':Author: ' + head_data['HEADER2'])
-            if head_data['HEADER3']:
-                template.append(':Date: ' + head_data['HEADER3'])
-            return template + config['fullBody']
-        else:
-            return config['fullBody']
+        template =[]
+        if head_data['HEADER1']:
+            template.extend(aa_under(head_data['HEADER1'], RST['title'], 10000, True))
+        if head_data['HEADER2']:
+            template.append(':Author: ' + head_data['HEADER2'])
+        if head_data['HEADER3']:
+            template.append(':Date: ' + head_data['HEADER3'])
+        return template + config['fullBody']
 
     # Scan for empty dictionary keys
     # If found, scan template lines for that key reference
