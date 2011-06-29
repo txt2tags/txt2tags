@@ -1019,6 +1019,7 @@ def getTags(config):
         'fontItalicOpen'       : '*'                      ,
         'fontItalicClose'      : '*'                      ,
         'comment'              : '.. \a'                  ,
+        'TOC'                  : '\n.. contents::'        ,
     },
 
     'txt': {
@@ -2363,8 +2364,6 @@ def getRules(config):
             'parainsidelist': 1,
             'keeplistindent': 1,
             'barinsidequote': 1,
-            'autotocwithbars': 1,
-            'escapexmlchars': 1,
             'imgalignable': 1,
             'imglinkable': 1,
             'tableable': 1,
