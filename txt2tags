@@ -154,7 +154,6 @@ FLAGS = {
     'toc': 0,
     'rc': 1,
     'css-sugar': 0,
-    'css-suggar': 0,
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
