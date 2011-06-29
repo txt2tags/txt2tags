@@ -296,8 +296,8 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5'.split()
-AA_VALUES = '+-|-==-^"'  # do not edit here, please use --chars
+AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 hhead vhead'.split()
+AA_VALUES = '+-|-==-^"=$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
@@ -369,6 +369,7 @@ def Usage():
         fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by aat, aap and aaw targets)")),
         fmt1 % (''  , '--height=N'     , _("set the output's height to N rows (used by aap target)")),
         fmt1 % (''  , '--chars=S'      , _("set the output's chars to S (used by all aa targets and rst)")),
+        fmt1 % (''  , ''               , _("aa default " + AA_VALUES + " rst default " + RST_VALUES)),
         fmt2 % ('-C', '--config-file=F', _("read configuration from file F")),
         fmt1 % (''  , '--fix-path'     , _("fix resources path (image, links, CSS) when needed")),
         fmt1 % (''  , '--gui'          , _("invoke Graphical Tk Interface")),
@@ -3148,9 +3149,8 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         side, corner = chars['side'], chars['corner']
     else:
         side = corner = ' '
-    vhead = '$'
+    bord, hhead, vhead = chars['border'], chars['hhead'], chars['vhead']
     resh = res = corner
-    bord, hhead = chars['border'], chars['bar2']
     for i in range(n):
         res = res + (length[i] + 2) * bord + corner
         resh = resh + (length[i] + 2) * hhead + corner
