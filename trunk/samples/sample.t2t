@@ -170,7 +170,7 @@ The image mark is as simple as it can be: ``[filename]``.
 
 And with some targets the image is linkable :
 
-                      [[img/photo.jpg] www.txt2tags.org]  
+                      [[img/photo.jpg] http://www.txt2tags.org]  
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
