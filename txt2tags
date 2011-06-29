@@ -932,7 +932,7 @@ def getTags(config):
     deflistItem2Open    deflistItem2Close deflistItem2LinePrefix
 
     bar1                bar2
-    url                 urlMark      urlMarkAnchor
+    url                 urlMark      urlMarkAnchor   urlImg
     email               emailMark
     img                 imgAlignLeft  imgAlignRight  imgAlignCenter
                        _imgAlignLeft _imgAlignRight _imgAlignCenter
@@ -1009,6 +1009,7 @@ def getTags(config):
         'email'                : '\a'                     ,
         'emailMark'            : '`\a <\a>`_'             ,
         'img'                  : '\n\n.. image:: \a\n   :align: ~A~\n\nENDIMG',
+        'urlImg'               : '\n   :target: '         ,
         '_imgAlignLeft'        : 'left'                   ,
         '_imgAlignCenter'      : 'center'                 ,
         '_imgAlignRight'       : 'right'                  ,
@@ -6568,6 +6569,9 @@ def get_tagged_link(label, url):
         # Add link data to tag (replace \a's)
         for data in urlorder:
             ret = regex['x'].sub(data, ret, 1)
+
+        if TARGET == 'rst' and '.. image::' in label:
+            ret = label[:-2] + TAGS['urlImg'] + url + label[-2:]
 
     return ret
 
