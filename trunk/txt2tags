@@ -6133,9 +6133,12 @@ def doHeader(headers, config):
             else:
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         if config['slides']:
+            total = len(config['fullBody']) / config['height'] + 1
+            l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
             for i, line in enumerate(config['fullBody']):
+                if i % (config['height'] - 1) == 1:
+                    config['fullBody'][i] = (str(i / (config['height'] - 1) + 1) + '/' + str(total)).rjust(config['width'] - 1)
                 if i % (config['height'] - 1) == 3:
-                    l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
                     if l < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
         # Header done, let's get out
