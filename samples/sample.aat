@@ -13,7 +13,7 @@
 
 
                              +------------+                             
-                             | 02/28/2011 |                             
+                             | 07/02/2011 |                             
                              +------------+                             
 
 
@@ -94,8 +94,8 @@ as long as the horizontal line:
 
 ========================================================================
 
-You can also specify an explicit link (http://duh.org)
-or an explicit email (duh@somewhere.com) with label.
+You can also specify an explicit link[1]
+or an explicit email[2] with label.
 
 And remember,
 
@@ -209,6 +209,10 @@ The image mark is as simple as it can be: [filename].
 
                       [img/photo.jpg]
 
+And with some targets the image is linkable :
+
+                      (img/photo.jpg)[3]
+
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
 
@@ -216,16 +220,23 @@ The image mark is as simple as it can be: [filename].
 Other
 =====
 
+When the target needs, special chars like <, > and &
+are escaped.
+
 The handy %%date macro expands to the current date.
 
-So today is 20110602 on the ISO YYYYMMDD format.
+So today is 20110702 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 06-02-2011.
+as %%date(%m-%d-%Y) which gives: 07-02-2011.
 
 That's all for now.
 
 ------------------------------------------------------------------------
 
-[img/t2tpowered.png] (sample.t2t (sample.t2t))
+[img/t2tpowered.png] (sample.t2t[4])
 
+[1] http://duh.org
+[2] duh@somewhere.com
+[3] http://www.txt2tags.org
+[4] vvvMACROvvv
