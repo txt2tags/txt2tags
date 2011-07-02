@@ -3097,7 +3097,7 @@ def aa_header(header_data, chars, width, n, end):
 def aa_slide(title, char, width):
     res = [aa_line(char, width)]
     res.append('')
-    res.append(title.center(width))
+    res.append(title.center(width)[:width])
     res.append('')
     res.append(aa_line(char, width))
     return res
@@ -6132,6 +6132,12 @@ def doHeader(headers, config):
                 template = aa_header(head_data, AA, config['width'], n, end)
             else:
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
+        if config['slides']:
+            for i, line in enumerate(config['fullBody']):
+                if i % (config['height'] - 1) == 3:
+                    l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
+                    if l < config['width']:
+                        config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
         # Header done, let's get out
         if config['web']:
             head_web = ['<!doctype html><html><meta charset=UTF-8><title>' + config['header1'] + '</title><pre>']
