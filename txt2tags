@@ -5202,7 +5202,10 @@ class BlockMaster:
                     if not line or blockname == 'table': 
                         final.append(line)
                     else:
-                        final.extend(textwrap.wrap(line, CONF['width']))
+                        if CONF['slides']:
+                            final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
+                        else:
+                            final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
