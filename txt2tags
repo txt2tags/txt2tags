@@ -5208,11 +5208,14 @@ class BlockMaster:
             Debug('BLOCK: %s' % result, 6)
 
         # ASCII Art processing
+        global AA_TITLE
         if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
-            if blockname in ["title", "numtitle"] and TITLE.level == 1:
+            if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
+                if not AA_TITLE:
+                    AA_TITLE = CONF['header1']
                 aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + ['']
                 if AA_COUNT:
                     aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
