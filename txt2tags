@@ -5202,7 +5202,7 @@ class BlockMaster:
                     if not line or blockname == 'table': 
                         final.append(line)
                     else:
-                        if CONF['slides']:
+                        if CONF['slides'] and not blockname == 'bar':
                             final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
                         else:
                             final.extend(textwrap.wrap(line, CONF['width']))
