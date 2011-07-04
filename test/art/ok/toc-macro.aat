@@ -115,7 +115,7 @@ as long as the horizontal line:
 
 ============================================================
 
-You can also specify an explicit link (http://duh.org)
+You can also specify an explicit link[1]
 with label.
 
 And remember,
@@ -241,3 +241,4 @@ The handy %%date macro expands to the current date.
 
 That's all for now.
 
+[1] http://duh.org

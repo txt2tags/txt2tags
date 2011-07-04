@@ -23,9 +23,9 @@
 
 ============================================================
 ============================================================
-
+                                                       1/14
                          My Own TOC                         
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
 
@@ -47,141 +47,141 @@
 
 ============================================================
 ============================================================
-
+                                                       2/14
                         Introduction                        
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
 
-Welcome to the txt2tags sample file.
+ Welcome to the txt2tags sample file.
 
-Here you have examples and a brief explanation of all
-marks.
+ Here you have examples and a brief explanation of all
+ marks.
 
-The first 3 lines of the this file are used as headers,
-on the following format:
+ The first 3 lines of the this file are used as headers,
+ on the following format:
 
-  line1: document title
-  line2: author name, email
-  line3: date, version
+   line1: document title
+   line2: author name, email
+   line3: date, version
 
-Lines with balanced equal signs = around are titles.
+ Lines with balanced equal signs = around are titles.
 
 
 
 ============================================================
 ============================================================
-
+                                                       3/14
                    Fonts and Beautifiers                    
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-We have two sets of fonts:
+ We have two sets of fonts:
 
-The NORMAL type that can be improved with beautifiers.
+ The NORMAL type that can be improved with beautifiers.
 
-The TYPEWRITER type that uses monospaced font for
-pre-formatted text.
+ The TYPEWRITER type that uses monospaced font for
+ pre-formatted text.
 
-We will now enter on a subtitle...
+ We will now enter on a subtitle...
 
 
-Beautifiers
-===========
+ Beautifiers
+ ===========
 
-The text marks for beautifiers are simple, just as you
-type on a plain text email message.
+ The text marks for beautifiers are simple, just as you
+ type on a plain text email message.
 
 
 ------------------------------------------------------------
 ============================================================
-
+                                                       4/14
                    Fonts and Beautifiers                    
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-We use double *, /, - and _ to represent *bold*,
-/italic/, -strike- and _underline_.
+ We use double *, /, - and _ to represent *bold*,
+ /italic/, -strike- and _underline_.
 
-The */bold italic/* style is also supported as a
-combination.
+ The */bold italic/* style is also supported as a
+ combination.
 
 
-Pre-Formatted Text
-==================
+ Pre-Formatted Text
+ ==================
 
-We can put a code sample or other pre-formatted text:
+ We can put a code sample or other pre-formatted text:
 
-    here    is     pre-formatted
-  //marks// are  **not**  ``interpreted``
+     here    is     pre-formatted
+   //marks// are  **not**  ``interpreted``
 
 
 
 ------------------------------------------------------------
 ============================================================
-
+                                                       5/14
                    Fonts and Beautifiers                    
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-And also, it's easy to put a one line pre-formatted
-text:
+ And also, it's easy to put a one line pre-formatted
+ text:
 
-  prompt$ ls /etc
+   prompt$ ls /etc
 
-Or use pre-formatted inside sentences.
+ Or use pre-formatted inside sentences.
 
 
-More Cosmetics
-==============
+ More Cosmetics
+ ==============
 
-Special entities like email (duh@somewhere.com) and
-URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
+ Special entities like email (duh@somewhere.com) and
+ URL (http://www.duh.com) are detected automagically,
+ as long as the horizontal line:
 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 ============================================================
-
+                                                       6/14
                    Fonts and Beautifiers                    
+ Aurelio Jargas                                  2010-10-10 
+============================================================
+
+ ^ thin or large v
 
 ============================================================
 
-^ thin or large v
+ You can also specify an explicit link (http://duh.org)
+ with label.
 
-============================================================
+ And remember,
 
-You can also specify an explicit link (http://duh.org)
-with label.
+         A TAB in front of the line does a quotation.
 
-And remember,
-
-        A TAB in front of the line does a quotation.
-
-                More TABs, more depth (if allowed).
+                 More TABs, more depth (if allowed).
 
 
-Nice.
+ Nice.
 
 
 ============================================================
 ============================================================
-
+                                                       7/14
                            Lists                            
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-A list of items is natural, just putting a *dash* or
-a *plus* at the beginning of the line.
+ A list of items is natural, just putting a *dash* or
+ a *plus* at the beginning of the line.
 
 
-Plain List
-==========
+ Plain List
+ ==========
 
-The dash is the default list identifier. For sublists,
-just add *spaces* at the beginning of the line. More
-spaces, more sublists.
+ The dash is the default list identifier. For sublists,
+ just add *spaces* at the beginning of the line. More
+ spaces, more sublists.
 
 
 
@@ -191,86 +191,86 @@ spaces, more sublists.
 
 ------------------------------------------------------------
 ============================================================
-
+                                                       8/14
                            Lists                            
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-- earth
-  - america
-    - south america
-      - brazil
-        - how deep can i go?
-  - europe
-    - lots of countries
-- mars
-  - who knows?
+ - earth
+   - america
+     - south america
+       - brazil
+         - how deep can i go?
+   - europe
+     - lots of countries
+ - mars
+   - who knows?
 
-The list ends with *two* consecutive blank lines.
+ The list ends with *two* consecutive blank lines.
 
 
-Numbered List
-=============
+ Numbered List
+ =============
 
 
 ------------------------------------------------------------
 ============================================================
-
+                                                       9/14
                            Lists                            
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
 
-The same rules as the plain list, just a different
-identifier (plus).
+ The same rules as the plain list, just a different
+ identifier (plus).
 
-1. one
-2. two
-3. three
-  - mixed lists!
-  - what a mess
-    1. counting again
-    2. ...
-4. four
+ 1. one
+ 2. two
+ 3. three
+   - mixed lists!
+   - what a mess
+     1. counting again
+     2. ...
+ 4. four
 
 
-Definition List
-===============
+ Definition List
+ ===============
 
 ------------------------------------------------------------
 ============================================================
-
+                                                      10/14
                            Lists                            
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
 
-The definition list identifier is a colon, followed by
-the term. The term contents is placed on the next line.
+ The definition list identifier is a colon, followed by
+ the term. The term contents is placed on the next line.
 
-orange
-  a yellow fruit
-apple
-  a green or red fruit
-other fruits
-  - wee!
-  - mixing lists
-    1. again!
-    2. and again!
+ orange
+   a yellow fruit
+ apple
+   a green or red fruit
+ other fruits
+   - wee!
+   - mixing lists
+     1. again!
+     2. and again!
 
 
 
 
 ============================================================
 ============================================================
-
+                                                      11/14
                            Tables                           
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-Use pipes to compose table rows and cells.
-Double pipe at the line beginning starts a heading row.
-Natural spaces specify each cell alignment.
+ Use pipes to compose table rows and cells.
+ Double pipe at the line beginning starts a heading row.
+ Natural spaces specify each cell alignment.
 
           +-----------+-------------+------------+          
           | heading 1 |  heading 2  |  heading 3 |          
@@ -280,16 +280,16 @@ Natural spaces specify each cell alignment.
           | cell 2.1  |  cell 2.2   |   cell 2.3 |          
           +-----------+-------------+------------+          
 
-Without the last pipe, no border:
+ Without the last pipe, no border:
 
 
 
 
 ------------------------------------------------------------
 ============================================================
-
+                                                      12/14
                            Tables                           
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
            ----------- ------------- ------------           
@@ -311,39 +311,39 @@ Without the last pipe, no border:
 
 ============================================================
 ============================================================
-
+                                                      13/14
                       Special Entities                      
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-Because things were too simple.
+ Because things were too simple.
 
 
-Images
-======
+ Images
+ ======
 
-The image mark is as simple as it can be: [filename].
+ The image mark is as simple as it can be: [filename].
 
-                      [img/photo.jpg]
+                       [img/photo.jpg]
 
-- The filename must end in PNG, JPG, GIF, or similar.
-- No spaces inside the brackets!
+ - The filename must end in PNG, JPG, GIF, or similar.
+ - No spaces inside the brackets!
 
 
-Other
-=====
+ Other
+ =====
 
 ------------------------------------------------------------
 ============================================================
-
+                                                      14/14
                       Special Entities                      
-
+ Aurelio Jargas                                  2010-10-10 
 ============================================================
 
 
-The handy %%date macro expands to the current date.
+ The handy %%date macro expands to the current date.
 
-That's all for now.
+ That's all for now.
 
 
 

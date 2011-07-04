@@ -9,9 +9,9 @@ cd $(dirname "$0")
 t2t="../../txt2tags --no-rc"
 
 $t2t -i sample.t2t -t aat                                   -o default.aat
-$t2t -i sample.t2t -t aat --slides                          -o slides.aat
+$t2t -i sample.t2t -t aat --slides --width 80               -o slides.aat
 $t2t -i sample.t2t -t aat --slides --width 60               -o slides-60.aat
-$t2t -i sample.t2t -t aat --slides --width 60 --height 30   -o slides-60x30.aat
+$t2t -i sample.t2t -t aat --slides --width 60 --height 30   -o slides-60.30.aat
 $t2t -i sample.t2t -t aat --toc                             -o toc.aat
 $t2t -i sample.t2t -t aat --toc --slides --width 60         -o toc-slide.aat
 $t2t -i sample.t2t -t aat --toc-only                        -o toc-only.aat
