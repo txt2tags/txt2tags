@@ -165,6 +165,7 @@ FLAGS = {
 OPTIONS = {
     'target': '',
     'toc-level': 3,
+    'toc-title': '',
     'style': '',
     'infile': '',
     'outfile': '',
@@ -356,6 +357,7 @@ def Usage():
         fmt2 % ('-o', '--outfile=FILE' , _("set FILE as the output file name ('-' for STDOUT)")),
         fmt1 % (''  , '--encoding=ENC' , _("inform source file encoding (UTF-8, iso-8859-1, etc)")),
         fmt1 % (''  , '--toc'          , _("add an automatic Table of Contents to the output")),
+        fmt1 % (''  , '--toc-title=S'  , _("set custom TOC title to S")),
         fmt1 % (''  , '--toc-level=N'  , _("set maximum TOC level (depth) to N")),
         fmt1 % (''  , '--toc-only'     , _("print the Table of Contents and exit")),
         fmt2 % ('-n', '--enum-title'   , _("enumerate all titles as 1, 1.1, 1.1.1, etc")),
@@ -6023,9 +6025,11 @@ def toc_formatter(toc, config):
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if config['target'] == 'aat' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
-        toc = aa_slide(_("Table of Contents"), AA['bar2'], config['width']) + toc + ([''] * n)
+        toc = aa_slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width']) + toc + ([''] * n)
         toc.append(aa_line(AA['bar2'], config['width']))
         return toc
+    if config['target'] == 'aat' and not config['slides']:
+        ret = aa_box(config['toc-title'] or _("Table of Contents"), AA, config['width']) + toc
 
     # TOC open/close tags (if any)
     if TAGS['tocOpen']:
