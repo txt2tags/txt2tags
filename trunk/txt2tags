@@ -5593,7 +5593,10 @@ class BlockMaster:
         items[-1] = self._remove_twoblanks(items[-1])
 
         # Blank line before?
-        if self._should_add_blank_line('before', name) or rules['blanksaroundnestedlist']:
+        if self._should_add_blank_line('before', name):
+            result.append('')
+
+        if rules['blanksaroundnestedlist']:
             result.append('')
 
         # Tag each list item (multiline items), store in listbody
@@ -5680,8 +5683,12 @@ class BlockMaster:
             result.append(tagindent + listclose)
 
         # Blank line after?
-        if self._should_add_blank_line('after', name) or rules['blanksaroundnestedlist']:
+        if self._should_add_blank_line('after', name):
             result.append('')
+
+        if rules['blanksaroundnestedlist']:
+            if result[-1]:
+                result.append('')
 
         return result
 
