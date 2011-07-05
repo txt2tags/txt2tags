@@ -13,11 +13,16 @@
 
 
                              +------------+                             
-                             | 07/02/2011 |                             
+                             | 07/04/2011 |                             
                              +------------+                             
 
 
 ========================================================================
+
+This text is before the introduction.
+
+But it's OK.
+
 
                             +--------------+
                             | Introduction |
@@ -225,10 +230,10 @@ are escaped.
 
 The handy %%date macro expands to the current date.
 
-So today is 20110702 on the ISO YYYYMMDD format.
+So today is 20110705 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 07-02-2011.
+as %%date(%m-%d-%Y) which gives: 07-05-2011.
 
 That's all for now.
 
@@ -239,4 +244,4 @@ That's all for now.
 [1] http://duh.org
 [2] duh@somewhere.com
 [3] http://www.txt2tags.org
-[4] vvvMACROvvv
+[4] sample.t2t
