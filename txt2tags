@@ -5219,10 +5219,12 @@ class BlockMaster:
             if TARGET == 'aat':
                 final = []
                 for line in result:
-                    if not line or blockname == 'table': 
+                    if not line or (blockname == 'table' and not CONF['slides']): 
                         final.append(line)
                     else:
-                        if CONF['slides'] and not blockname == 'bar':
+                        if CONF['slides'] and blockname == 'table':
+                            final.append(line[:CONF['width']])
+                        elif CONF['slides'] and not blockname == 'bar':
                             final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
                         else:
                             final.extend(textwrap.wrap(line, CONF['width']))
