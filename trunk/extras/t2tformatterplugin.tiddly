@@ -1,0 +1,955 @@
+/***
+|''Name:''|T2tFormatterPlugin|
+|''Description:''|Allows Tiddlers to use [[txt2tags|http://txt2tags.org/markup.html]] formatting|
+|''Author:''|David Young (david (dot) a (dot) young (at) gmail (dot) com)|
+|''Credit:''|Copied and modified from Martin Budden's http://www.martinswiki.com/#ExampleFormatterPlugin |
+|''CodeRepository:''|NA |
+|''Version:''|0.4|
+|''Status:''|Rough Draft|
+|''Date:''|Jul 5, 2011|
+|''Comments:''|Please make comments at http://groups.google.co.uk/group/TiddlyWikiDev |
+|''License:''|NA |
+|''~CoreVersion:''|2.6.1|
+
+! Installation Instructions
+
+Apply the following tags to this tiddler:
+
+* systemConfig
+* excludeLists
+* excludeSearch
+
+You can make a tiddler with the tag ''t2t'' and the Txt2Tags markup will be used instead of TiddlyWiki markup. You can eliminate the need to manually tag by modifying your ''Create New Tiddler'' macro in your [[MainMenu]] to set the //wikiformat// field to ''t2t'':
+
+{{{
+<<newTiddler
+label: "New t2t"
+title: "New t2t tiddler"
+fields: "wikiformat:t2t"
+prompt: "Create a new tiddler using the t2t formatter">>
+}}}
+
+You should also get into //backstage -> Tweaks -> chkInsertTabs// because that lets you hit the tab button in the tiddly text field.  Tab will still move your cursor around the page, from title input to tiddly text input, etc. It only effects the text field.  Vital for t2t blockquote syntax (prepending with tabs).
+
+!Features/ Progress
+
+| ''Markup'' | ''Feature'' | ''Status'' | ''Version'' | ''Comment'' |
+| several | \n vs. \r in input | ''WAITING'' | NA |Applied to tagged and raw, but I am uncertain if this is OK.<br>Emailed twdev mailing list. |
+| ''FONT/INLINE'' |||||
+|{{{**}}}''bold''{{{**}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{//}}}//italic//{{{//}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{__}}}__under__{{{__}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{--}}}--strike--{{{--}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.|
+|{{{^^}}}^^super^^{{{^^}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.<br>Not Official Markup.|
+|{{{,,}}}~~sub~~{{{,,}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.<br>Not Official Markup.|
+|{{{``monospace``}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.|
+|{{{''}}}tagged/html{{{''}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.|
+|{{{""}}}raw{{{""}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.<br>Overrides WikiWords and Markup.|
+| ''SINGLE-LINE'' |||||
+|{{{``` monospace}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{'''}}} tagged/html | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{"""}}} raw | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{%}}}comments | ALL | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+| ''BLOCKS'' |||||
+|{{{```}}}<br>{{{monospace}}}<br>{{{```}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{'''}}}<br>tagged/html<br>{{{'''}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{"""}}}<br>raw<br>{{{"""}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{%%%}}}<br>comments<br>{{{%%%}}} | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform |
+|\t<html>&nbsp;&nbsp;&nbsp;&nbsp;</html>block<br>\t<html>&nbsp;&nbsp;&nbsp;&nbsp;</html>quotes | All | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.<br>Tiddlywiki interprets all markup inside the block; unlike txt2tags (only some markup). |
+| ''HEADERS'' |||||
+|{{{=}}}un-numbered{{{=}}} | ALL | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{+}}}numbered{{{+}}} | HEADING | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{+}}}numbered{{{+}}} | NUMBERING | ''OK'' | 0.1 |Hasn't been heavily tested on any platform.<br>Unknown if array length modification or array[6] reassignment is faster on a per-iteration basis. |
+| ''MISC'' |||||
+|horizontal rule<br>{{{--------------------}}} | RULE | ''OK'' | 0.1 |Hasn't been heavily tested on any platform. |
+|{{{====================}}}<br>{{{____________________}}}| THICKNESS | ''??'' | 0.1 |The alternative rules are interpreted and classes //heavy// or //light// are assigned; but my theme doesn't use them so I can't tell.<br>Maybe tiddlywiki doesn't use those css classes at all?<br>If so, delete this functionality. |
+|Paragraphs | ALL | ''CAN'T FIX'' | 0.1 |Multiple newlines are concatenated into {{{<p><\p>}}}.<br>Visually they appear correctly (line spacing, etc), but it isn't a real paragraph.<br>If you try to make {{{<p>}}} elements wrap the text, then they are nested improperly if you look at the html.<br>This nesting lead to a stack busting on tiddlers if you have around 200 paragraphs or more.<br>This resulted in content truncation, so {{{<p><\p>}}} it shall be.<br>Historical bug in tiddlywiki's core, so I can't do much about it.<br>This is certainly a kludge, maybe {{{<br><br>}}} would be better, but that seems equally kludgy and all block-type syntax must be careful. |
+| ''LISTS'' |||||
+|{{{- }}}unordered | ALL | ''OK'' | 0.1 |t2t allows complex lists (paragraphs inside list items).<br>Can't figure out a good regex to match "X blank lines" that works with paragraph.<br>Interim solution: terminate list with empty item. |
+|{{{+ }}}ordered | ALL | ''OK'' | 0.1 |t2t allows complex lists (paragraphs inside list items).<br>Can't figure out a good regex to match "X blank lines" that works with paragraph.<br>Interim solution: terminate list with empty item.<br>INTERFERES WITH NUMBERED HEADINGS. |
+|{{{: }}}word<br><html>&nbsp;&nbsp;&nbsp;&nbsp;</html>definitions | ALL | ''TIDDLY'' | NA |Difficult to pull off since "definition" part of t2t uses whitespaces.<br>Interim solution: use tiddlywiki ; word \n : definition format. |
+| ''COMPLEX'' |||||
+|~WikiWords | ALL | ''TIDDLY'' | 0.1 |Self-updating link to core formatter.<br>Not Official Markup. |
+|{{{<<macros>>}}} | ALL | ''TIDDLY'' | 0.1 |Self-updating link to core formatter.<br>By changing the header syntax, the {{{<<tiddler##section>>}}} section transclusion macro won't work.<br>Not Official Markup. |
+|http url recognition | ALL | ''TIDDLY'' | 0.1 |Self-updating link to core formatter.<br>Not Official Markup. |
+|email recognition | ALL | ''NA'' | NA |Is this at all worth it?  t2t will mask or convert to mailto...<br>don't take this lightly- it wrecked the works last time. |
+|{{{[}}}links{{{]}}} | ALL | ''OK'' | 0.1 |Links to internal tiddlers (as long as their title has no spaces), links to external websites |
+|{{{[}}}named links{{{]}}} | ALL | ''OK'' | 0.1 |Links to internal tiddlers (as long as their title has no spaces), links to external websites |
+|'image-related' | ALL | ''OK'' | 0.1 |an image or image link supports whitespace-alignment.<br>If the {{{[}}} starts at the newline, the image will float to the left (equivalent to the {{{<}}} markup in tiddly images).<br>If the {{{]}}} ends the line, the image will float to the right (equivalent to the {{{>}}} markup in tiddly images).<br>If the image is both the start and end of line, it is neither left nor right.<br>No centering image support yet. |
+|{{{[}}}images{{{]}}} | ALL | ''OK'' | 0.1 |Supports .png .gif .jpg .jpeg, just grep for IMAGE-EXTENSION-REGEX in this tiddler to expand the list.<br>Works for local and external image files |
+|{{{[[image] links]}}} | ALL | ''OK'' | 0.1 |A twist here is that the link can have spaces in the name, but I don't recommend trying that. |
+|{{{|}}}tables{{{|}}} | ALL | ''TIDDLY'' | 0.1 |Tiddlywiki tables are supported. Self-updating link to core formatter. |
+
+***/
+
+//{{{
+/* reference
+function createTiddlyElement(parent,element,id,className,text,attribs)
+
+createElementAndWikify:(w)
+		w.subWikifyTerm(createTiddlyElement(w.output,this.element),this.termRegExp);
+
+//REGEXES found in txt2tags.py:1920 (getRegexes)
+*/
+// Ensure that the plugin is only installed once.
+
+if(!version.extensions.T2tFormatterPlugin) {
+version.extensions.T2tFormatterPlugin = {installed:true};
+
+//Should test this backwards until I find the revision that is actually useless
+if(version.major < 2 || (version.major == 2 && version.minor < 6))
+	{alertAndThrow('T2tFormatterPlugin requires TiddlyWiki 2.6 or later.');}
+
+t2tFormatter = {}; // 'namespace' for local functions
+
+t2tDebug = function(out,str)
+{
+	createTiddlyText(out,str.replace(/\n/mg,'\\n').replace(/\r/mg,'RR'));
+	createTiddlyElement(out,'br');
+};
+
+wikify = function(source,output,highlightRegExp,tiddler)
+{
+	if(source && source !== '') {
+		var w = new Wikifier(source,getParser(tiddler),highlightRegExp,tiddler);
+		w.output = tiddler ? createTiddlyElement(output,'p') : output;
+		w.subWikifyUnterm(w.output);
+	}
+};
+
+// COPY from EnclosedTextHelper Tiddlywiki v2.6.1 line 2923
+// If the lookaheadRegexp fails, use the string in "restore:"
+// define the element "restore:" as the static string equal to your
+// "match:"'s result.
+//
+// If your markup rules are more complex/less dynamic (like ==headers==);
+// then you must copy this and make up your own combo of parenthesis.
+config.formatterHelpers.nonDestructiveEnclosedTextHelper = function(w)
+{
+	this.lookaheadRegExp.lastIndex = w.matchStart;
+	var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+	if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+		//Everything that uses this function is a one-liner syntax
+		/*
+		var text = lookaheadMatch[1];
+		if(config.browser.isIE)
+			text = text.replace(/\n/g,"\r");
+		createTiddlyElement(w.output,this.element,null,null,text);
+		*/
+		//createTiddlyElement(w.output,this.element,null,null,lookaheadMatch[1]);
+		w.subWikifyTerm(createTiddlyElement(w.output,this.element),this.termRegExp);
+		w.nextMatch = lookaheadMatch.index + lookaheadMatch[0].length;
+	} else {
+		w.output.appendChild(document.createTextNode(w.matchText));
+	}
+};
+
+/*
+// Like nonDestructiveEnclosedTextHelper, only you can define what is
+// restored with a regular expression instead of a static string.
+// This is helpful for when the "match" is more dynamic. Just define
+// element "restoreRegExp:" and the first parenthesis in it will be used
+// to restore the consumed "match" text.
+// NOTE: this comes at the cost of ANOTHER grepping of your input!
+config.formatterHelpers.nonDestructiveEnclosedTextHelperRegEx = function(w)
+{
+	this.lookaheadRegExp.lastIndex = w.matchStart;
+	var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+	if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+		var text = lookaheadMatch[1];
+		if(config.browser.isIE)
+			text = text.replace(/\n/g,"\r");
+		createTiddlyElement(w.output,this.element,null,null,text);
+		w.nextMatch = lookaheadMatch.index + lookaheadMatch[0].length;
+	} else {
+		this.restoreRegExp.lastIndex = w.matchStart;
+		var restoreMatch = this.restoreRegExp.exec(w.source);
+		if (restoreMatch && restoreMatch.index == w.matchStart) {
+			w.output.appendChild(document.createTextNode(restoreMatch[1]));
+		} else {
+			//shouldn't be possible!
+			//Only if you don't define restoreRegExp: properly
+			w.output.appendChild(document.createTextNode("### SYNTAX ERROR ###"));
+		}
+	}
+};
+*/
+
+config.formatterHelpers.setAttributesFromParams = function(e,p)
+{
+	var re = /\s*(.*?)=(?:(?:"(.*?)")|(?:'(.*?)')|((?:\w|%|#)*))/mg;
+	var match = re.exec(p);
+	while(match) {
+		var s = match[1].unDash();
+		if(s=='bgcolor') {
+			s = 'backgroundColor';
+		}
+		try {
+			if(match[2]) {
+				e.setAttribute(s,match[2]);
+			} else if(match[3]) {
+				e.setAttribute(s,match[3]);
+			} else {
+				e.setAttribute(s,match[4]);
+			}
+		}
+		catch(ex) {}
+		match = re.exec(p);
+	}
+};
+
+config.t2tFormatters = [
+
+//SPEED: COMBINE ALL BEAUTIFIERS LIKE TIDDLY DOES ALREADY
+// bold uses syntax **bold** no whitespace in the bookends.
+{
+	name: 't2tBold',
+	match: '\\*\\*',
+	element: 'strong',
+	lookaheadRegExp: /\*\*([^\s](|.*?[^\s])\**)\*\*/mg,
+	termRegExp: /(\*\*)/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+// italic uses //italic//
+{
+	name: 't2tItalic',
+	match: '//',
+	element: 'em',
+	lookaheadRegExp: /\/\/([^\s](|.*?[^\s])[\/]*)(\/\/)/mg,
+	termRegExp: /(\/\/)/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+// Horizontal rules can be made up of 20 or more - characters on a line with
+// whitespace on the ends. Alternatively 20 or more _ characters is accepted.
+// 20 or more = characters also work, but that makes a "thicker" horizontal rule
+// see t2tHeavyRule.
+{
+	name: 't2tRule',
+	match: '^[ \\t]*[-_]{20,}[ \\t]*$',
+	handler: function(w)
+	{
+		createTiddlyElement(w.output,'hr',null,'light');
+	}
+},
+
+// Default tiddler theme doesn't differentiate between heavy and light.
+// TODO: Try some other themes otherwise roll this into t2tRule.
+{
+	name: 't2tHeavyRule',
+	match: '^[ \\t]*={20,}[ \\t]*$',
+	handler: function(w)
+	{
+		createTiddlyElement(w.output,'hr',null,'heavy');
+	}
+},
+
+// underline uses __underline__
+{
+	name: 't2tUnderline',
+	match: '__',
+	element: 'ins',
+	lookaheadRegExp: /__([^\s](|.*?[^\s])_*)__/mg,
+	termRegExp: /(__)/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+// strikethrough uses --strike--
+{
+	name: 't2tStrike',
+	match: '--',
+	element: 'del',
+	lookaheadRegExp: /--([^\s](|.*?[^\s])-*)--/mg,
+	termRegExp: /(--)/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+/*
+// superscript uses ^^super^^
+// this is unofficial
+{
+	name: 't2tSuperscript',
+	match: '\\^\\^',
+	element: 'sup',
+	lookaheadRegExp: /\^\^([^\s](|.*?[^\s])\^*)\^\^/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+// subscript uses ,,sub,,
+// this is unofficial
+{
+	name: 't2tSubscript',
+	match: ',,',
+	element: 'sub',
+	lookaheadRegExp: /,,([^\s](|.*?[^\s]),*),,/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+*/
+
+// Monospace uses different variants of backticks
+// blocks are bordered with lines containing only 3 backticks
+// ```
+{
+	name: 't2tMonospaceBlock',
+	match: '^```[ \\t]*$',
+	lookaheadRegExp: /^```[ \t]*(?:\n?((?:.|\n)*?\n)```[ \t]*$)|((?:.|\n)*$)/gm,
+	handler: function(w) {
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			if (lookaheadMatch[1]) {
+				var text = lookaheadMatch[1];
+			} else {
+				var text = lookaheadMatch[2].substr(w.matchLength+1);
+			}
+			if(config.browser.isIE)
+				text = text.replace(/\n/g,"\r");
+			createTiddlyElement(w.output,"pre",null,null,text);
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// lines prefixed with 3 backticks are preformatted blocks as well
+// one block per line! putting backtic-prefixed lines consecutively will
+// result in 2 preformatted blocks!
+//SPEED: this can be like tiddly's termregexp syntax like a "Heading"
+{
+	name: 't2tMonospaceLine',
+	match: '^``` ',
+	lookaheadRegExp: /^``` ((?:.)*?)$/mg,
+	element: 'pre',
+	handler: config.formatterHelpers.enclosedTextHelper
+},
+
+// inline monospaced text ``like this``.
+// terminates at the first newline without matching backtics.
+// this version uses code instead of pre.
+{
+	name: 't2tMonospace',
+	match: '``',
+	element: 'code',
+	lookaheadRegExp: /``([^\s](|.*?[^\s])`*)``/mg,
+	termRegExp: /(``)/mg,
+	handler: config.formatterHelpers.nonDestructiveEnclosedTextHelper
+},
+
+//t2tCommentblock
+{
+	name: 't2tCommentBlock',
+	match: '^%%%[ \\t]*\\n',
+	//emptyblock but no unclosed trailer
+	//lookaheadRegExp: /^%%%[ \t]*((?:.|\n)*?)\n%%%[ \t]*(\n|$)/mg,
+	//                           match next %%% line   OR match to EOF
+	lookaheadRegExp: /^%%%[ \t]*(?:(?:[.|\n]*?)\n%%%[ \t]*$)|(?:[.\n]*$)/gm,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+//SPEED: this can be like tiddly's termregexp syntax like a "Heading"
+{
+	name: 't2tCommentLine',
+	match: '^%' ,
+	lookaheadRegExp: /^%.*?$/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// nonstandard br insertion
+// I like tex's \\
+{
+	name: 't2tLineBreak',
+	match: '\\\\\\\\',
+	handler: function(w)
+	{
+		createTiddlyElement(w.output,'br');
+	}
+},
+
+//TODO: tagged text doesn't get the \n \r IE replacement... test in IE
+// t2t tagged text is "passthrough" so what you type is passed on to
+// the html interpreter. t2t formatting isn't converted into html.
+// Raw html is interpreted by your browser.
+// Tagged uses various forms of single-quotes.
+// multi-line blocks are bordered by lines containing only '''
+{
+	name: 't2tTaggedBlock',
+	match: '^\'\'\'[ \\t]*$',
+	lookaheadRegExp: /^'''[ \t]*(?:((?:.|\n)*?\n)'''[ \t]*$)|((?:.|\n)*$)/gm,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			if (lookaheadMatch[1]) {
+				var text = lookaheadMatch[1];
+			} else {
+				var text = lookaheadMatch[2].substr(w.matchLength+1);
+			}
+			if(config.browser.isIE)
+				text = text.replace(/\n/g,"\r");
+			createTiddlyElement(w.output,"span").innerHTML = text;
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// Single lines prepended with ''' will be considered "tagged"
+// Unlike monospace, tagged isn't really a "block" so having multiple
+// pre-pended lines won't look any different than one multi-line block.
+//SPEED: this can be like tiddly's termregexp syntax like a "Heading"
+{
+	name: 't2tTaggedLine',
+	match: '^\'\'\' ',
+	lookaheadRegExp: /^''' ((?:.)*?)$/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			createTiddlyElement(w.output,"span").innerHTML = lookaheadMatch[1];
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// inline tagged text is wrapped ''in 2 single quotes''.  This type ends at
+// the newline if there is no matching ''.
+{
+	name: 't2tTagged',
+	match: '\'\'',
+	lookaheadRegExp: /''([^\s](|.*?[^\s])'*)''/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			createTiddlyElement(w.output,"span").innerHTML = lookaheadMatch[1];
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+//TODO: RAW text doesn't get the \n \r IE replacement... test in IE
+// t2t Raw text ignores t2t formatting (any wiki formatting); but characters
+// are still 'escaped' out to be displayed by the brower.
+// e.g. ""**bold**"" isn't made bold; you see the astrices; while lines using
+// html tags will convert angle brackets to < >
+// This is synonymous with nowiki
+
+// Blocks of raw text are bordered with blank lines of 3 double quotes.
+{
+	name: 't2tRawBlock',
+	match: '^\\"\\"\\"[ \\t]*$',
+	lookaheadRegExp: /^"""[ \t]*(?:((?:.|\n)*?\n)"""[ \t]*$)|((?:.|\n)*$)/gm,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			if (lookaheadMatch[1]) {
+				var text = lookaheadMatch[1];
+			} else {
+				var text = lookaheadMatch[2].substr(w.matchLength+1);
+			}
+			//rawblock may not work with this properly?
+			if(config.browser.isIE)
+				text = text.replace(/\n/g,"\r");
+			createTiddlyElement(w.output,"span",null,null,text);
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// Any line prepended with 3 double quotes is interpreted as raw.
+// Unlike monospace, raw isn't really a "block" so consecutive pre-pended lines
+// will have no difference with a multi-line block.
+//SPEED: this can be like tiddly's termregexp syntax like a "Heading"
+{
+	name: 't2tRawLine',
+	match: '^\\"\\"\\" ',
+	lookaheadRegExp: /^""" ((?:.)*?)$/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			createTiddlyElement(w.output,'span',null,null,lookaheadMatch[1]);
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// The in-line format uses 2 double quotes ""raw"".
+// The end of the line terminates raw if there is no matching "".
+{
+	name: 't2tRaw',
+	match: '\\"\\"',
+	lookaheadRegExp: /""([^\s](|.*?[^\s])"*)""/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			createTiddlyElement(w.output,'span',null,null,lookaheadMatch[1]);
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// Section headings are bookended by matching sets of = signs.
+// It must all be on one line
+//SPEED: simplify match
+{
+	name: 't2tHeading',
+	//no whitespace at the start
+	//match: '^ *={1,6}[^=\n]',
+	//lookaheadRegExp: /^ *(={1,6})([^=\n][^\n]*[^=\n])\1[ \t]*$/mg,
+	match: '^={1,6}[^ =\n]',
+	lookaheadRegExp: /^(={1,6})([^ =\n][^\n]*[^=\n])\1[ \t]*$/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			//headings in t2t don't allow markup inside, so we DO NOT use the subwikifyterm here.
+			createTiddlyElement(w.output,'h'+lookaheadMatch[1].length,null,null,lookaheadMatch[2]);
+			w.nextMatch = lookaheadMatch.index + lookaheadMatch[0].length;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+/*
+//This breaks everything.  T2T converts emails into mailto:s or it masks them:
+// dave@gmail.com --> <dave (AT) gmail dOT com>
+{
+	name: 't2tEmailHiding',
+	match: '[\\w]+(\\.[\\w\\-\\+_]+)*\\@[\\w\\-\\+_]+\\.[\\w\\-\\+_]+(\\.[\\w\\-\\+_]+)*',
+	lookaheadRegExp: /([\w]+(?:\.[\w\-\+_]+)*)\@([\w\-\+_]+\.[\w\-\+_]+(?:\.[\w\-\+_]+)*)/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			var text = '<' + lookaheadMatch[1] + " (AT) " + lookaheadMatch[2] + '>';
+			text = text.replace(/\./g," DOT ");
+			createTiddlyElement(w.output,"span",null,null,text);
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+		}
+	}
+},
+*/
+
+// push-pop version keeps the array sized to whatever it should be.  This is
+// probably faster than the array reassignment (below this function) especially
+// in the simplest and more likely use case: only using top-level headings.
+// In practice, though, 10k numbered headings takes forever in BOTH cases.
+// HTML doesn't have an inherent number scheme for header tags. Just treat
+// them as unnumbered for now.
+// SPEED: simplify match. see what termregexp can do.
+{
+	name: 't2tNumberedHeading',
+	//no whitespace at the start.
+	//match: '^ *\\+{1,6}[^\\+\\n]',
+	//lookaheadRegExp: /^ *(\+{1,6})([^\+\n][^\n]*[^\+\n])\1[ \t]*$/mg,
+	match: '^\\+{1,6}[^ \\+\\n]',
+	lookaheadRegExp: /^(\+{1,6})([^ \+\n][^\n]*[^\+\n])\1[ \t]*$/mg,
+	handler: function(w)
+	{
+		if (! w.numheading) {
+			w.numheading = [0,0];
+		}
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			var text = lookaheadMatch[2];
+			// since length=1 == arrayindex 0
+			var headingindex = lookaheadMatch[1].length - 1;
+			// since length1 means we want 2 items in the array
+			var targetlength = headingindex + 2;
+			//add or remove values until numheading.length = lookaheadMatch[1].length
+			//push 0's first to add
+			for (var i = w.numheading.length; i < targetlength; i++) 
+				w.numheading.push(0);
+			//removing is eashy, you can just change length and it truncates array (garbage later)
+			w.numheading.length = targetlength;
+			//increment this heading
+			w.numheading[headingindex]++;
+			//reset the next level down to 0
+			w.numheading[headingindex + 1] = 0;
+			text = " " + text;
+			for (headingindex; headingindex >= 0; headingindex--) {
+				text = w.numheading[headingindex] + "." + text;
+			}
+			createTiddlyElement(w.output,'h'+lookaheadMatch[1].length,null,null,text);
+			w.nextMatch = lookaheadMatch.index + lookaheadMatch[0].length;
+		} else  w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// t2t concatenates newlines to make paragraphs.
+// WARNING: tiddly doesn't support this very well; the appearance is
+// OK but the dynamic HTML has oddly-nested paragraphs.
+{
+	name: 't2tParagraph',
+	match: '\\n{2,}',
+	handler: function(w)
+	{
+		//do you like stack overflows in your html engine?
+		//try making 200 paragraphs with this.
+		//createTiddlyElement(w.output,'p');
+
+		//Looks ok-ish, but now you have manual BR's mixed in
+		//with the implied whitespace by an <h1> or <quote>.
+		//createTiddlyElement(w.output,'br');
+		//createTiddlyElement(w.output,'br');
+
+		//ohh this is so wrong to do, but it works pretty well.
+		//no stack explosions, and it looks visually correct.
+		createTiddlyElement(w.output,"span").innerHTML = "<p></p>";
+	}
+},
+
+{
+	name: 't2tLinkImg',
+	match:  '(?:^\\[)|(?:\\[)',
+	// ([^\n\r]*?) matches 2 separate entities: [foo] and [soft]
+	// ([^\n\r]*) matches entity: [(foo] and [soft)]
+	// use *? or include [] us unallowed chaaracters
+	lookaheadRegExp: /(?:(^\[)|(?:\[))(?:(\[([^\[\]\n\r\f]+)\] ?([^\n\r\[\]]*))|([^\s\[\]]+)|(([^\[\]\n\r\f]+) ([^\[\]\s]+)))(?:(\]$)|(?:\]))/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart)
+		{
+			//first and last group match for alignment to be used for images.
+			if (lookaheadMatch[1] && (! lookaheadMatch[9]))
+			{
+				var imagealign = "left";
+
+			}
+			else if ( (! lookaheadMatch[1]) && lookaheadMatch[9])
+			{
+				var imagealign = "right";
+			}
+			//alignment discovered, now see what type of bracket link.
+
+			// [[image] link]
+			//2 = imglink; 3 img 4 link
+			if (lookaheadMatch[2])
+			{
+				var e = w.output;
+				// 4 may not exist, it could just be an image formatted [[image]]
+				if (lookaheadMatch[4]) {
+					var link = lookaheadMatch[4];
+					e = config.formatterHelpers.isExternalLink(link) ?
+						createExternalLink(w.output,link) :
+						createTiddlyLink(w.output,link,false,null,w.isStatic,w.tiddler);
+					addClass(e,"imageLink");
+				}
+				var img = createTiddlyElement(e,"img");
+				if (imagealign) img.align = imagealign;
+				img.src = lookaheadMatch[3];
+				img.title = lookaheadMatch[4];
+				img.setAttribute("alt",lookaheadMatch[4]);
+				w.nextMatch = this.lookaheadRegExp.lastIndex;
+				/*
+				if (align)
+				{
+					alert( align+"-ed image\nfile: '"+lookaheadMatch[3]+"'\nurl: '"+lookaheadMatch[4]+"'");
+				} else {
+					alert( "unaligned image\nfile: '"+lookaheadMatch[3]+"'\nurl: '"+lookaheadMatch[4]+"'");
+				}
+				*/
+			}
+
+			// [link] or [image] 
+			//5 = url or img
+			else if (lookaheadMatch[5])
+			{
+				// IMAGE-EXTENSION-REGEX
+				if (/\.((gif)|(je?pg)|(png)|(bmp)|(tif))$/i.exec(lookaheadMatch[5]))
+				{
+					//alert("image extension found");
+					var e = w.output;
+					var img = createTiddlyElement(e,"img");
+					if (imagealign) img.align = imagealign;
+					img.src = lookaheadMatch[5];
+					img.title = lookaheadMatch[5];
+					img.setAttribute("alt",lookaheadMatch[5]);
+					w.nextMatch = this.lookaheadRegExp.lastIndex;
+					/*
+					if (align)
+					{
+						alert( align+"-ed image\nfile: '"+lookaheadMatch[5]+"'");
+					} else {
+						alert( "unaligned image\nfile: '"+lookaheadMatch[5]+"'");
+					}
+					*/
+				}
+				else
+				{
+					//alert("no image extension found");
+					//obviously this isn't an image by the extension, so it is just a link.
+					var link = lookaheadMatch[5];
+					var e = (config.formatterHelpers.isExternalLink(link)) ?
+						createExternalLink(w.output,link) :
+						createTiddlyLink(w.output,link,false,null,w.isStatic,w.tiddler);
+					createTiddlyText(e,link);
+					w.nextMatch = this.lookaheadRegExp.lastIndex;
+					//alert("Simple link to url: '"+lookaheadMatch[5]+"'");
+				}
+			}
+			// [some name text linkWithNoSpaces] the existence of a space is the key!
+			//6 named link 7 = name 8 = link
+			else if (lookaheadMatch[6])
+			{
+				var text = lookaheadMatch[7];
+				var link = lookaheadMatch[8];
+				var e = (config.formatterHelpers.isExternalLink(link)) ?
+					createExternalLink(w.output,link) :
+					createTiddlyLink(w.output,link,false,null,w.isStatic,w.tiddler);
+				createTiddlyText(e,text);
+				w.nextMatch = this.lookaheadRegExp.lastIndex;
+				//alert( "name: '"+lookaheadMatch[8]+"'\nurl: '"+lookaheadMatch[9]+"'");
+			} else w.output.appendChild(document.createTextNode(w.matchText));
+		} else w.output.appendChild(document.createTextNode(w.matchText));
+	}
+},
+
+// COPY from tiddlywiki code
+{
+	name: "t2tList",
+	match: "^(?:[ ]*[\\+-;:] )",
+	//lookaheadRegExp: /^(?:[ ]*(?:(-)|(\+)|(:)|( )) )/mg,
+	lookaheadRegExp: /^(?:[ ]*(?:(-)|(\+)|(;)|(:)) )/mg,
+
+	//http://stackoverflow.com/questions/5531899/regex-do-not-include-a-substring-within-a-group/5531972#5531972
+	//                                V~do include this if it matched
+	termRegExp: /(\n(?:(?=[ ]*[\+;:-] )|[ ]*[\+;:-]))/mg,
+	//                  ^~lookahead for this but don't include it
+	handler: function(w)
+	{
+		//if (! w.lengths) {
+		w.lengths = [0];
+		//}
+		var stack = [w.output];
+		var currLevel = 0, currType = null;
+		var listLevel, listType, itemType, baseType;
+		w.nextMatch = w.matchStart;
+		this.lookaheadRegExp.lastIndex = w.nextMatch;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		while(lookaheadMatch && lookaheadMatch.index == w.nextMatch) {
+			if(lookaheadMatch[1]) {
+				listType = "ul";
+				itemType = "li";
+			} else if(lookaheadMatch[2]) {
+				listType = "ol";
+				itemType = "li";
+			} else if(lookaheadMatch[3]) {
+				listType = "dl";
+				itemType = "dt";
+			} else if(lookaheadMatch[4]) {
+				listType = "dl";
+				itemType = "dd";
+			}
+			if(!baseType)
+				baseType = listType;
+			//fill levelstack
+			var l = lookaheadMatch[0].length
+			while ( w.lengths[w.lengths.length-1] != l ) {
+				if ( l > w.lengths[w.lengths.length-1] ) {
+					w.lengths.push(l);
+					break;
+				} else {
+					w.lengths.pop();
+				}
+			}
+			listLevel = w.lengths.length-1;
+			w.nextMatch += l;
+			var t;
+			if(listLevel > currLevel) {
+				for(t=currLevel; t<listLevel; t++) {
+					var target = (currLevel == 0) ? stack[stack.length-1] : stack[stack.length-1].lastChild;
+					stack.push(createTiddlyElement(target,listType));
+				}
+			} else if(listType!=baseType && listLevel==1) {
+				w.nextMatch -= lookaheadMatch[0].length;
+				return;
+			} else if(listLevel < currLevel) {
+				for(t=currLevel; t>listLevel; t--)
+					stack.pop();
+			} else if(listLevel == currLevel && listType != currType) {
+				stack.pop();
+				stack.push(createTiddlyElement(stack[stack.length-1].lastChild,listType));
+			}
+			currLevel = listLevel;
+			currType = listType;
+			var e = createTiddlyElement(stack[stack.length-1],itemType);
+			w.subWikifyTerm(e,this.termRegExp);
+			this.lookaheadRegExp.lastIndex = w.nextMatch;
+			lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		}
+	}
+},
+
+/*
+//array reassignment version.  I think that the up-to-6 assignments per iteration
+//could have worse performance that resizing the array.
+//see above for array re-sizing.
+// HTML doesn't have an inherent number scheme for header tags. Just treat
+// them as unnumbered for now.
+{
+	name: 't2tNumberedHeading',
+	match: '^ *\\+{1,6}[^\\+\n]',
+	lookaheadRegExp: / *(\+{1,6})([^\+\n][^\n]*[^\+\n])\1[ \t]*$/mg,
+	handler: function(w)
+	{
+		if (! w.numheading) {
+			w.numheading = [0,0,0,0,0,0];
+		}
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart) {
+			var text = lookaheadMatch[2];
+			var headingindex = lookaheadMatch[1].length - 1;
+			w.numheading[headingindex]++;
+			//reset the next levels down to 0
+			for(var i = headingindex + 1; i<=5; i++){
+				w.numheading[i] = 0;
+			}
+			text = " " + text;
+			for (headingindex; headingindex >= 0; headingindex--) {
+				text = w.numheading[headingindex] + "." + text;
+			}
+			createTiddlyElement(w.output,'h'+lookaheadMatch[1].length,null,null,text);
+			w.nextMatch = lookaheadMatch.index + lookaheadMatch[0].length;
+		} else {
+			w.output.appendChild(document.createTextNode(w.matchText));
+		}
+	}
+},
+*/
+
+// t2t prepends TABs on lines that form blockquotes.
+// Consecutive lines of the same depth of tabs are in the same block.
+// This is just like tiddly markup, only they use angle brackets.
+// Thus, I am ripping this code from a 2.6.1 formatters.
+{
+	name: 't2tQuoteByLine',
+	match: '\\t+',
+	lookaheadRegExp: /^\t+/mg,
+	termRegExp: /(\n)/mg,
+	element: 'blockquote',
+	handler: function(w)
+	{
+		var stack = [w.output];
+		var currLevel = 0;
+		var newLevel = w.matchLength;
+		var t;
+		do {
+			if(newLevel > currLevel) {
+				for(t=currLevel; t<newLevel; t++)
+					stack.push(createTiddlyElement(stack[stack.length-1],this.element));
+			} else if(newLevel < currLevel) {
+				for(t=currLevel; t>newLevel; t--)
+					stack.pop();
+			}
+			currLevel = newLevel;
+			w.subWikifyTerm(stack[stack.length-1],this.termRegExp);
+			//originally they insert linebreaks... not in t2t
+			//createTiddlyElement(stack[stack.length-1],'br');
+			//replace the newline that was consumed
+			if(config.browser.isIE) {
+				var e = document.createTextNode('\r');
+			} else {
+				var e = document.createTextNode('\n');
+			}
+			stack[stack.length-1].appendChild(e);
+			this.lookaheadRegExp.lastIndex = w.nextMatch;
+			var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+			var matched = lookaheadMatch && lookaheadMatch.index == w.nextMatch;
+			if(matched) {
+				newLevel = lookaheadMatch[0].length;
+				w.nextMatch += lookaheadMatch[0].length;
+			}
+		} while(matched);
+	}
+},
+
+/*
+//COPY from tiddlywiki config.formatters
+{
+	name: "macro",
+	match: "<<",
+	////don't start new macro << HERE 
+	//lookaheadRegExp: /<<([^>\s(?:<<)]+)(?:\s*)((?:[^>]|(?:>(?!>)))*)>>/mg,
+	lookaheadRegExp: /<<([^>\s]+)(?:\s*)((?:[^>]|(?:>(?!>)))*)>>/mg,
+	handler: function(w)
+	{
+		this.lookaheadRegExp.lastIndex = w.matchStart;
+		var lookaheadMatch = this.lookaheadRegExp.exec(w.source);
+		if(lookaheadMatch && lookaheadMatch.index == w.matchStart && lookaheadMatch[1]) {
+			w.nextMatch = this.lookaheadRegExp.lastIndex;
+			invokeMacro(w.output,lookaheadMatch[1],lookaheadMatch[2],w,w.tiddler);
+		//with this modification for nondestructiveness.
+		} else {
+			w.output.appendChild(document.createTextNode(w.matchText));
+		}
+	}
+},
+*/
+
+
+];
+
+t2tReuse = function(name)
+{
+	var i;
+	for (i = 0; i < config.formatters.length; i++) {
+		if (name == config.formatters[i].name)
+			return config.formatters[i];
+	}
+	return null;
+			
+};
+
+//attach reused formatters from standard config.formatters.
+config.t2tFormatters.push(t2tReuse("macro"));
+config.t2tFormatters.push(t2tReuse("wikiLink"));
+config.t2tFormatters.push(t2tReuse("urlLink"));
+config.t2tFormatters.push(t2tReuse("htmlEntitiesEncoding"));
+//config.t2tFormatters.push(t2tReuse("mdash"));
+config.t2tFormatters.push(t2tReuse("table"));
+
+/*
+var text = "t2tFormatters:\n";
+for (var i=0; i < config.t2tFormatters.length; i++)
+	text = text + config.t2tFormatters[i].name + "\n";
+alert(text);
+*/
+
+config.parsers.t2tFormatter = new Formatter(config.t2tFormatters);
+
+config.parsers.t2tFormatter.format = 't2t';
+config.parsers.t2tFormatter.formatTag = 't2t';
+} // end of 'install only once'
+//}}}
+/***
+vim: ft=javascript
+***/
+
