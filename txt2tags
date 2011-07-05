@@ -6584,6 +6584,9 @@ def get_tagged_link(label, url):
                 label = "(%s)" % fix_relative_path(img_path)
 
         if TARGET == 'aat' and not CONF['slides'] and not CONF['web'] and not CONF['spread'] and not CONF['toc-only']:
+            for macro in MASK.macrobank:
+                macro = MASK.macroman.expand(macro)
+                url = url.replace(MASK.macromask, macro, 1)
             if url not in AA_MARKS:
                 AA_MARKS.append(url)
             url = str(AA_MARKS.index(url) + 1)
@@ -7114,7 +7117,7 @@ def set_global_config(config):
 
 
 def convert(bodylines, config, firstlinenr=1):
-    global BLOCK, TITLE
+    global BLOCK, TITLE, MASK
 
     set_global_config(config)
 
