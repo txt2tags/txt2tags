@@ -152,6 +152,7 @@ FLAGS = {
     'mask-email': 0,
     'toc-only': 0,
     'toc': 0,
+    'qa': 0,
     'rc': 1,
     'css-sugar': 0,
     'css-inside': 0,
@@ -302,6 +303,23 @@ AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
 AA_MARKS = []
+AA_QA = """       ________
+   /#**TXT2TAGS**#\\
+ /#####/      \####CC\\
+/###/            \#BY#|
+^-^               |NC#|
+                  /SA#|
+               /#####/
+            /#####/
+          /####/
+         /###/
+        |###|
+        |###|
+         \o/
+          
+         ___
+        F2.7G
+         (C)""".split('\n')
 
 # ReStructuredText config
 # http://docs.python.org/release/2.7/documenting/rest.html#sections
@@ -6810,6 +6828,12 @@ def convert_this_files(configs):
         if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'aat':
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
             target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
+            if myconf['qa']:
+                head = aa_slide(_("Q&A"), AA['bar2'], myconf['width'])
+                if myconf['height'] > 23 and myconf['width'] > 22:
+                    target_body = target_body + head + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * (myconf['height'] - 24) + [aa_line(AA['bar2'], myconf['width'])]
+                else:
+                    target_body = target_body + head + [''] * (myconf['height'] - 7) + [aa_line(AA['bar2'], myconf['width'])]
 
         if myconf['target'] and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
