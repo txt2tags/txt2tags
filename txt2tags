@@ -4667,7 +4667,7 @@ class TitleMaster:
                     ret.append('')  # blank line before
                 box = aa_box(tagged, AA, CONF['width'])
                 if CONF['web'] and CONF['toc']:
-                    ret.extend([anchor + box[0]] + box[1:-1] + [box[-1] + '</a>'])
+                    ret.extend([anchor] + box + ['</a>'])
                 else:
                     ret.extend(box)
         elif TARGET == 'aat':
@@ -4676,7 +4676,7 @@ class TitleMaster:
                 ret.append('')  # blank line before
             under = aa_under(tagged, AA[level], CONF['width'], False)
             if CONF['web'] and CONF['toc']:
-                ret.extend([anchor + under[0]] + under[1:-1] + [under[-1] + '</a>']) 
+                ret.extend([anchor] + under + ['</a>']) 
             else:
                 ret.extend(under)
         elif TARGET == 'rst' and self.level == 1:
