@@ -5842,7 +5842,7 @@ class MacroMaster:
             elif name in ('header1', 'header2', 'header3'):
                 txt = self.config[name]
             elif name == 'cc':
-                txt = cc_formatter(self.config)
+                txt = cc_formatter(self.config, fmt)
             else:
                 # Never reached because the macro regex list the valid keys
                 Error("Unknown macro name '%s'" % name)
@@ -5852,18 +5852,25 @@ class MacroMaster:
 
 ##############################################################################
 
-def cc_formatter(conf):
+def cc_formatter(conf, size):
     cc, target = conf['cc'], conf['target']
     licenses = 'by, by-sa, by-nc-sa, by-nd, by-nc-nd, by-nc'
     if cc not in licenses.split(', '):
-        Error(_("Please, choose one of the six valid Creative Commons licenses : %s.") % licenses)
+        Error(_('Please, choose one of the six valid Creative Commons licenses : %s.') % licenses)
     if target in ('html', 'xhtml', 'xhtmls', 'html5') or (target == 'aat' and conf['web']):
+        if size == 'small':
+            end_img = '/3.0/80x15.png'
+        else:
+            end_img = '/3.0/88x31.png'
         url = 'http://creativecommons.org/licenses/' + cc + '/3.0'
-        img = 'http://i.creativecommons.org/l/' + cc + '/3.0/88x31.png'
+        img = 'http://i.creativecommons.org/l/' + cc + end_img
         alt = 'Creative Commons ' + cc
         ret = '<a href="' + url + '"><img src="' + img + '" alt="' + alt + '"></a>' 
     else:
-        ret = cc
+        if size == 'small':
+            ret = 'Creative Commons %s' % cc
+        else:
+            ret = 'Creative Commons %s' % cc.upper()
     return ret
 
 
