@@ -29,7 +29,7 @@ fields: "wikiformat:t2t"
 prompt: "Create a new tiddler using the t2t formatter">>
 }}}
 
-You should also get into //backstage -> Tweaks -> chkInsertTabs// because that lets you hit the tab button in the tiddly text field.  Tab will still move your cursor around the page, from title input to tiddly text input, etc. It only effects the text field.  Vital for t2t blockquote syntax (prepending with tabs).
+You should also get into [[AdvancedOptions]] or //backstage -> Tweaks -> chkInsertTabs// because that lets you hit the tab button in the tiddly text field.  Tab will still move your cursor around the page, from title input to tiddly text input, etc. It only effects the text field.  Vital for t2t blockquote syntax (prepending with tabs).
 
 !Features/ Progress
 
@@ -83,14 +83,7 @@ You should also get into //backstage -> Tweaks -> chkInsertTabs// because that l
 ***/
 
 //{{{
-/* reference
-function createTiddlyElement(parent,element,id,className,text,attribs)
-
-createElementAndWikify:(w)
-		w.subWikifyTerm(createTiddlyElement(w.output,this.element),this.termRegExp);
-
 //REGEXES found in txt2tags.py:1920 (getRegexes)
-*/
 // Ensure that the plugin is only installed once.
 
 if(!version.extensions.T2tFormatterPlugin) {
@@ -108,6 +101,7 @@ t2tDebug = function(out,str)
 	createTiddlyElement(out,'br');
 };
 
+/*
 wikify = function(source,output,highlightRegExp,tiddler)
 {
 	if(source && source !== '') {
@@ -116,6 +110,7 @@ wikify = function(source,output,highlightRegExp,tiddler)
 		w.subWikifyUnterm(w.output);
 	}
 };
+*/
 
 // COPY from EnclosedTextHelper Tiddlywiki v2.6.1 line 2923
 // If the lookaheadRegexp fails, use the string in "restore:"
@@ -175,6 +170,7 @@ config.formatterHelpers.nonDestructiveEnclosedTextHelperRegEx = function(w)
 };
 */
 
+/*
 config.formatterHelpers.setAttributesFromParams = function(e,p)
 {
 	var re = /\s*(.*?)=(?:(?:"(.*?)")|(?:'(.*?)')|((?:\w|%|#)*))/mg;
@@ -197,6 +193,7 @@ config.formatterHelpers.setAttributesFromParams = function(e,p)
 		match = re.exec(p);
 	}
 };
+*/
 
 config.t2tFormatters = [
 
