@@ -211,6 +211,8 @@ MACROS = {
     'header1': '',
     'header2': '',
     'header3': '',
+    # Creative Commons license
+    'cc': '',
     }
 SETTINGS = {}  # for future use
 NO_TARGET = [
@@ -228,8 +230,8 @@ NO_MULTI_INPUT = [
     'dump-source'
     ]
 CONFIG_KEYWORDS = [
+    'cc',
     'target',
-    'encoding',
     'style',
     'stylepath',  # internal use only
     'options',
@@ -5838,6 +5840,8 @@ class MacroMaster:
                 txt = '%s %s' % (my_name, ' '.join(self.config['realcmdline']))
             elif name in ('header1', 'header2', 'header3'):
                 txt = self.config[name]
+            elif name == 'cc':
+                txt = cc_formatter(self.config)
             else:
                 # Never reached because the macro regex list the valid keys
                 Error("Unknown macro name '%s'" % name)
@@ -5846,6 +5850,20 @@ class MacroMaster:
 
 
 ##############################################################################
+
+def cc_formatter(conf):
+    cc, target = conf['cc'], conf['target']
+    licenses = 'by, by-sa, by-nc-sa, by-nd, by-nc-nd, by-nc'
+    if cc not in licenses.split(', '):
+        Error(_("Please, choose one of the six valid Creative Commons licenses : %s.") % licenses)
+    if target in ('html', 'xhtml', 'xhtmls', 'html5') or (target == 'aat' and conf['web']):
+        url = 'http://creativecommons.org/licenses/' + cc + '/3.0'
+        img = 'http://i.creativecommons.org/l/' + cc + '/3.0/88x31.png'
+        alt = 'Creative Commons ' + cc
+        ret = '<a href="' + url + '"><img src="' + img + '" alt="' + alt + '"></a>' 
+    else:
+        ret = cc
+    return ret
 
 
 def listTargets():
