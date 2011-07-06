@@ -232,6 +232,7 @@ NO_MULTI_INPUT = [
 CONFIG_KEYWORDS = [
     'cc',
     'target',
+    'encoding',
     'style',
     'stylepath',  # internal use only
     'options',
