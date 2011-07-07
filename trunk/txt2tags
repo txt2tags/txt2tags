@@ -3217,6 +3217,24 @@ def aa_image(image):
     return art_image
 
 
+def aa_webwrap(txt, width):
+    txt = re.split('(<a href=.*?>)|(</a>)|(<img src=.*?>)', txt)
+    line, length, ret = '', 0, []
+    for el in txt:
+        if el:
+            if el[0] != '<':
+                if length + len(el) <= width:
+                    length = length + len(el)
+                    line = line + el
+                else:
+                    ret.append(line)
+                    line, length = el, len(el)
+            else:
+                    line = line + el
+    ret.append(line)
+    return ret
+
+
 ##############################################################################
 
 class error(Exception):
@@ -5229,6 +5247,8 @@ class BlockMaster:
                             final.append(line[:CONF['width']])
                         elif CONF['slides'] and not blockname == 'bar':
                             final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
+                        elif CONF['web'] and '<' in line:
+                            final.extend(aa_webwrap(line, CONF['width']))
                         else:
                             final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
