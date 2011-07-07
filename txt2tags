@@ -3223,7 +3223,12 @@ def aa_webwrap(txt, width):
     for el in txt:
         if el:
             if el[0] != '<':
-                if length + len(el) <= width:
+                if len(el) > width:
+                    line = line + el
+                    multi = textwrap.wrap(line, width)
+                    ret.extend(multi[:-1])
+                    line = multi[-1]
+                elif length + len(el) <= width:
                     length = length + len(el)
                     line = line + el
                 else:
