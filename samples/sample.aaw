@@ -14,11 +14,16 @@
 
 
                              +------------+                             
-                             | 06/25/2011 |                             
+                             | 07/06/2011 |                             
                              +------------+                             
 
 
 ========================================================================
+
+This text is before the introduction.
+
+But it's OK.
+
 
                             +--------------+
                             | Introduction |
@@ -85,10 +90,8 @@ Or use pre-formatted inside sentences.
 More Cosmetics
 ==============
 
-Special entities like email (<a
-href="mailto:duh@somewhere.com">duh@somewhere.com</a>) and
-URL (<a href="http://www.duh.com">http://www.duh.com</a>) are detected
-automagically,
+Special entities like email (<a href="mailto:duh@somewhere.com">duh@somewhere.com</a>) and
+URL (<a href="http://www.duh.com">http://www.duh.com</a>) are detected automagically,
 as long as the horizontal line:
 
 ------------------------------------------------------------------------
@@ -210,7 +213,11 @@ Images
 
 The image mark is as simple as it can be: [filename].
 
-                      <img src="img/photo.jpg" alt=""/>
+                      <img src="img/photo.jpg" alt=""/>  
+
+And with some targets the image is linkable :
+
+                      <a href="http://www.txt2tags.org"><img src="img/photo.jpg" alt=""/></a>  
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
@@ -219,18 +226,20 @@ The image mark is as simple as it can be: [filename].
 Other
 =====
 
+When the target needs, special chars like &lt;, &gt; and &amp;
+are escaped.
+
 The handy %%date macro expands to the current date.
 
-So today is 20110625 on the ISO YYYYMMDD format.
+So today is 20110707 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 06-25-2011.
+as %%date(%m-%d-%Y) which gives: 07-07-2011.
 
 That's all for now.
 
 ------------------------------------------------------------------------
 
-<img src="img/t2tpowered.png" alt=""/> (<a
-href="sample.t2t">sample.t2t</a>)
+<img src="img/t2tpowered.png" alt=""/> (<a href="sample.t2t">sample.t2t</a>)
 
 </pre></html>
