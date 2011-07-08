@@ -2225,6 +2225,8 @@ def getTags(config):
 
     if config['target'] == 'aat' and config['slides']:
         alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
+        alltags['aat']['bar1'] = aa_line(AA['bar1'], config['width'] - 2)
+        alltags['aat']['bar2'] = aa_line(AA['bar2'], config['width'] - 2)
     if config['target'] == 'aat' and config['web']:
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
@@ -5250,7 +5252,7 @@ class BlockMaster:
                     else:
                         if CONF['slides'] and blockname == 'table':
                             final.append(line[:CONF['width']])
-                        elif CONF['slides'] and not blockname == 'bar':
+                        elif CONF['slides']:
                             final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
                         elif CONF['web'] and '<' in line:
                             final.extend(aa_webwrap(line, CONF['width']))
