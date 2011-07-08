@@ -26,7 +26,6 @@ $t2t -i toc-macro.t2t -t aat --width 60                     -o no-toc-macro.aat
 $t2t -i toc-macro.t2t -t aat --toc --width 60 --toc-title "My Own TOC, the title 1 above is not"   -o toc-macro.aat
 $t2t -i toc-macro.t2t -t aat --slides --width 60            -o no-toc-macro-slides.aat
 $t2t -i toc-macro.t2t -t aat --toc --slides --width 60      -o toc-macro-slides.aat
-# ^ bug: The "Table of Contents" is added together with custom TOC title
 
 errors=0
 for file in *.aat
