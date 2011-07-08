@@ -6057,14 +6057,29 @@ def toc_inside_body(body, toc, config):
         return body                     # nothing to expand
     toc_mark = MaskMaster().tocmask
     # Expand toc mark with TOC contents
-    for line in body:
+    flag, n = False, 0
+    for i,line in enumerate(body):
         if line.count(toc_mark):            # toc mark found
             if config['toc']:
-                ret.extend(toc)     # include if --toc
+                if config['target'] == 'aat' and config['slides']:
+                    j = i % (config['height'] - 1)
+                    title = body[i - j + 2 + n]
+                    ret.extend([''] * (config['height'] - j - 2 + n))
+                    ret.extend([aa_line(AA['bar1'], config['width'])] + toc + aa_slide(title, AA['bar2'], config['width']) + [''])
+                    flag = True
+                else:
+                    ret.extend(toc)     # include if --toc
             else:
                 pass                # or remove %%toc line
         else:
-            ret.append(line)            # common line
+            if flag and config['target'] == 'aat' and config['slides'] and body[i] == body[i + 4] == aa_line(AA['bar2'], config['width']):
+                end = [ret[-1]]
+                del ret[-1]
+                ret.extend([''] * (j - 6 - n) + end)
+                flag, n = False, n + 1
+                ret.append(line)            # common line
+            else:
+                ret.append(line)            # common line
     return ret
 
 
