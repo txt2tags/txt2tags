@@ -5550,8 +5550,11 @@ class BlockMaster:
                     result.append(tagindent + open_)
                 item = regex['quote'].sub('', item)  # del TABs
                 item = self._last_escapes(item)
-                item = qline * self.depth + item
-                result.append(indent + item)  # quote line
+                if CONF['target'] == 'aat' and CONF['slides']:
+                    result.extend(aa_box(item, AA, CONF['width'] - 2))
+                else:
+                    item = qline * self.depth + item
+                    result.append(indent + item)  # quote line
 
         # Close tag
         if close and not itemisclosed:
