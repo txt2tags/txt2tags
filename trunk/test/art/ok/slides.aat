@@ -196,23 +196,23 @@
  Aurelio Jargas                                                      2010-10-10 
 ================================================================================
 
- - earth
-   - america
-     - south america
-       - brazil
-         - how deep can i go?
-   - europe
-     - lots of countries
- - mars
-   - who knows?
+                        +------------------------------+                       
+                        | - earth                      |                       
+                        |   - america                  |                       
+                        |     - south america          |                       
+                        |       - brazil               |                       
+                        |         - how deep can i go? |                       
+                        |   - europe                   |                       
+                        |     - lots of countries      |                       
+                        | - mars                       |                       
+                        |   - who knows?               |                       
+                        +------------------------------+                       
 
  The list ends with *two* consecutive blank lines.
 
 
  Numbered List
  =============
-
-
 --------------------------------------------------------------------------------
 ================================================================================
                                                                            9/14
@@ -224,19 +224,19 @@
  The same rules as the plain list, just a different
  identifier (plus).
 
- 1. one
- 2. two
- 3. three
-   - mixed lists!
-   - what a mess
-     1. counting again
-     2. ...
- 4. four
-
+                           +-----------------------+                           
+                           | 1. one                |                           
+                           | 2. two                |                           
+                           | 3. three              |                           
+                           |   - mixed lists!      |                           
+                           |   - what a mess       |                           
+                           |     1. counting again |                           
+                           |     2. ...            |                           
+                           | 4. four               |                           
+                           +-----------------------+                           
 
  Definition List
  ===============
-
 --------------------------------------------------------------------------------
 ================================================================================
                                                                           10/14
@@ -248,17 +248,17 @@
  The definition list identifier is a colon, followed by
  the term. The term contents is placed on the next line.
 
- orange
-   a yellow fruit
- apple
-   a green or red fruit
- other fruits
-   - wee!
-   - mixing lists
-     1. again!
-     2. and again!
-
-
+                           +------------------------+                          
+                           | orange                 |                          
+                           |   a yellow fruit       |                          
+                           | apple                  |                          
+                           |   a green or red fruit |                          
+                           | other fruits           |                          
+                           |   - wee!               |                          
+                           |   - mixing lists       |                          
+                           |     1. again!          |                          
+                           |     2. and again!      |                          
+                           +------------------------+                          
 
 
 ================================================================================
@@ -267,6 +267,7 @@
                                      Tables                                     
  Aurelio Jargas                                                      2010-10-10 
 ================================================================================
+
 
  Use pipes to compose table rows and cells.
  Double pipe at the line beginning starts a heading row.
@@ -281,7 +282,6 @@
                     +-----------+-------------+------------+                    
 
  Without the last pipe, no border:
-
 
 
 
@@ -326,13 +326,13 @@
 
                        [img/photo.jpg]
 
- - The filename must end in PNG, JPG, GIF, or similar.
- - No spaces inside the brackets!
-
+           +-------------------------------------------------------+           
+           | - The filename must end in PNG, JPG, GIF, or similar. |           
+           | - No spaces inside the brackets!                      |           
+           +-------------------------------------------------------+           
 
  Other
  =====
-
 --------------------------------------------------------------------------------
 ================================================================================
                                                                           14/14
