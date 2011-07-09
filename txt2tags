@@ -3100,13 +3100,18 @@ def aa_under(txt, char, width, over):
     return ret
 
 
-def aa_box(txt, chars, width):
-    txt = textwrap.wrap(txt, width - 4)
-    len_txt = max([aa_len(line) for line in txt])
+def aa_box(txt, chars, width, centred=True):
+    wrap_txt = []
+    for line in txt:
+        wrap_txt.extend(textwrap.wrap(line, width - 4))
+    len_txt = max([aa_len(line) for line in wrap_txt])
     line_box = (chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']).center(width)
     line_txt = []
-    for line in txt:
-        line_txt.append((chars['side'] + ' ' + line.center(len_txt) + ' ' + chars['side']).center(width))
+    for line in wrap_txt:
+        if centred:
+            line_txt.append((chars['side'] + ' ' + line.center(len_txt) + ' ' + chars['side']).center(width))
+        else:
+            line_txt.append((chars['side'] + ' ' + line + ' ' * (len_txt - aa_len(line) + 1) + chars['side']).center(width))
     return [line_box] + line_txt + [line_box]
 
 
@@ -3115,7 +3120,7 @@ def aa_header(header_data, chars, width, n, end):
     header.extend([''] * n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
         if header_data[h]:
-            header.extend(aa_box(header_data[h], chars, width))
+            header.extend(aa_box([header_data[h]], chars, width))
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
@@ -4711,7 +4716,7 @@ class TitleMaster:
             else :
                 if BLOCK.count > 1:
                     ret.append('')  # blank line before
-                box = aa_box(tagged, AA, CONF['width'])
+                box = aa_box([tagged], AA, CONF['width'])
                 if CONF['web'] and CONF['toc']:
                     ret.extend([anchor] + box + ['</a>'])
                 else:
@@ -5551,7 +5556,7 @@ class BlockMaster:
                 item = regex['quote'].sub('', item)  # del TABs
                 item = self._last_escapes(item)
                 if CONF['target'] == 'aat' and CONF['slides']:
-                    result.extend(aa_box(item, AA, CONF['width'] - 2))
+                    result.extend(aa_box([item], AA, CONF['width'] - 2))
                 else:
                     item = qline * self.depth + item
                     result.append(indent + item)  # quote line
@@ -6127,7 +6132,7 @@ def toc_formatter(toc, config):
         toc.append(aa_line(AA['bar2'], config['width']))
         return toc
     if config['target'] == 'aat' and not config['slides']:
-        ret = aa_box(config['toc-title'] or _("Table of Contents"), AA, config['width']) + toc
+        ret = aa_box([config['toc-title'] or _("Table of Contents")], AA, config['width']) + toc
 
     # TOC open/close tags (if any)
     if TAGS['tocOpen']:
