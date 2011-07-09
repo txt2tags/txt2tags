@@ -2908,6 +2908,9 @@ def getRules(config):
         if config['slides']:
             myrules['blanksaroundtitle'] = 0
             myrules['blanksaroundnumtitle'] = 0
+            myrules['blanksaroundlist'] = 0
+            myrules['blanksaroundnumlist'] = 0
+            myrules['blanksarounddeflist'] = 0
         if config['web']:
             myrules['linkable'] = 1
             myrules['imglinkable'] = 1
@@ -5251,18 +5254,21 @@ class BlockMaster:
             self.last = blockname
             if TARGET == 'aat':
                 final = []
-                for line in result:
-                    if not line or (blockname == 'table' and not CONF['slides']): 
-                        final.append(line)
-                    else:
-                        if CONF['slides'] and blockname == 'table':
-                            final.append(line[:CONF['width']])
-                        elif CONF['slides']:
-                            final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
-                        elif CONF['web'] and '<' in line:
-                            final.extend(aa_webwrap(line, CONF['width']))
+                if CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
+                    final.extend(' ' + line for line in aa_box(result, AA, CONF['width'] - 2, False))
+                else:
+                    for line in result:
+                        if not line or (blockname == 'table' and not CONF['slides']): 
+                            final.append(line)
                         else:
-                            final.extend(textwrap.wrap(line, CONF['width']))
+                            if CONF['slides'] and blockname == 'table':
+                                final.append(line[:CONF['width']])
+                            elif CONF['slides']:
+                                final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
+                            elif CONF['web'] and '<' in line:
+                                final.extend(aa_webwrap(line, CONF['width']))
+                            else:
+                                final.extend(textwrap.wrap(line, CONF['width']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
