@@ -2518,6 +2518,7 @@ def getRules(config):
             'blanksarounddeflist': 1,
             'blanksaroundtable': 1,
             'blanksaroundbar': 1,
+            'tableable': 1,
             # 'blanksaroundtitle': 1,
             # 'blanksaroundnumtitle': 1,
         },
@@ -5499,6 +5500,9 @@ class BlockMaster:
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
             return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
+
+        if TARGET == 'mgp':
+            return ['%font "mono"'] + aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
 
         if TARGET == 'csv':
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
