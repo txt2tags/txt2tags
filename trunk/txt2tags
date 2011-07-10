@@ -1361,19 +1361,19 @@ def getTags(config):
         # '_imgAlignLeft'        : ''                                 ,  # Don't know
         # '_imgAlignCenter'      : ''                                 ,  # Don't know
         # '_imgAlignRight'       : ''                                 ,  # Don't know
-        # 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>',  # Don't work, need to know number of cols
-        # 'tableClose'           : '</tbody></tgroup></informaltable>' ,
-        # 'tableRowOpen'         : '<row>'                             ,
-        # 'tableRowClose'        : '</row>'                            ,
-        # 'tableCellOpen'        : '<entry>'                           ,
-        # 'tableCellClose'       : '</entry>'                          ,
-        # 'tableTitleRowOpen'    : '<thead>'                           ,
-        # 'tableTitleRowClose'   : '</thead>'                          ,
-        # '_tableBorder'         : ' frame="all"'                      ,
-        # '_tableAlignCenter'    : ' align="center"'                   ,
-        # '_tableCellAlignRight' : ' align="right"'                    ,
-        # '_tableCellAlignCenter': ' align="center"'                   ,
-        # '_tableCellColSpan'    : ' COLSPAN="\a"'                     ,
+        'tableOpenDbk'         : '<informaltable><tgroup cols="n_cols"><tbody>',
+        'tableClose'           : '</tbody></tgroup></informaltable>' ,
+        'tableRowOpen'         : '<row>'                             ,
+        'tableRowClose'        : '</row>'                            ,
+        'tableCellOpen'        : '<entry>'                           ,
+        'tableCellClose'       : '</entry>'                          ,
+        'tableTitleRowOpen'    : '<thead>'                           ,
+        'tableTitleRowClose'   : '</thead>'                          ,
+        '_tableBorder'         : ' frame="all"'                      ,
+        '_tableAlignCenter'    : ' align="center"'                   ,
+        '_tableCellAlignRight' : ' align="right"'                    ,
+        '_tableCellAlignCenter': ' align="center"'                   ,
+        '_tableCellColSpan'    : ' COLSPAN="\a"'                     ,
         'TOC'                  : '<index/>'                          ,
         'comment'              : '<!-- \a -->'                       ,
         'EOD'                  : '</article>'
@@ -2494,7 +2494,7 @@ def getRules(config):
         'dbk': {
             'escapexmlchars': 1,
             'linkable': 1,
-            'tableable': 0,  # activate when table tags are ready
+            'tableable': 1,  # activate when table tags are ready
             'imglinkable': 1,
             'imgalignable': 1,
             'imgasdefterm': 1,
@@ -4817,6 +4817,7 @@ class TableMaster:
             self.align     = prop['align']
             self.cellalign = prop['cellalign']
             self.cellspan  = prop['cellspan']
+            self.n_cols    = str(sum(self.cellspan))
             self.colalign  = self._get_col_align()
 
     def _get_col_align(self):
@@ -5510,6 +5511,10 @@ class BlockMaster:
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
             result.append('')
+
+        # DocBook needs to know the number of columns
+        if TARGET == 'dbk':
+            result.append(re.sub('n_cols', self.tableparser.n_cols, TAGS['tableOpenDbk']))
 
         # Rewrite all table cells by the unmasked and escaped data
         lines = self._get_escaped_hold()
