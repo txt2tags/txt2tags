@@ -3180,11 +3180,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
         data2[0][0][0] = ''
         length, n = [max([len(line[0][0]) for line in data2])] + length, n + 1
-    if border:
-        side, corner = chars['side'], chars['corner']
-    else:
-        side = corner = ' '
-    bord, hhead, vhead = chars['border'], chars['hhead'], chars['vhead']
+    bord, side, corner, hhead, vhead = chars['border'], chars['side'], chars['corner'], chars['hhead'], chars['vhead']
     resh = res = corner
     for i in range(n):
         res = res + (length[i] + 2) * bord + corner
@@ -3195,7 +3191,8 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         if i == 1 and h_header:
             ret.append(resh)
         else:
-            ret.append(res)
+            if i == 0 or border:
+                ret.append(res)
         for j, el in enumerate(line[0]):
             aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - len(el) - 2) * " " + side
             if j == 0 and v_header:
