@@ -5495,7 +5495,10 @@ class BlockMaster:
                 return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False) + ['']
 
         if TARGET == 'rst':
-            return aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False) + ['']
+            chars = AA.copy()
+            if not self.tableparser.border:
+                chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
+            return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
 
         if TARGET == 'csv':
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
