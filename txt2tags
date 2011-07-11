@@ -5507,7 +5507,7 @@ class BlockMaster:
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
-                aafigure.render(unicode('\n'.join(aa_t)), t_name, {'format':'png', 'textual':True})  
+                aafigure.render(unicode('\n'.join(aa_t)), t_name, {'format':'png', 'background':'#000000', 'foreground':'#FFFFFF', 'textual':True})  
                 return ['%center', '%newimage "' + t_name + '"']
             except:
                 return ['%font "mono"'] + aa_t + ['']
