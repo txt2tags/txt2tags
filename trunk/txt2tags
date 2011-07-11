@@ -5280,7 +5280,10 @@ class BlockMaster:
                 result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
-                    AA_TITLE = CONF['header1'] or ' '
+                    if CONF['headers']:
+                        AA_TITLE = CONF['header1'] or ' '
+                    else:
+                        AA_TITLE = ' '
                 aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + ['']
                 if AA_COUNT:
                     aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
