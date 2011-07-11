@@ -5503,7 +5503,14 @@ class BlockMaster:
             return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
 
         if TARGET == 'mgp':
-            return ['%font "mono"'] + aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
+            aa_t = aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False)
+            try:
+                import aafigure
+                t_name = 'table_' + str(self.tablecount) + '.png'
+                aafigure.render(unicode('\n'.join(aa_t)), t_name, {'format':'png', 'textual':True})  
+                return ['%center', '%newimage "' + t_name + '"']
+            except:
+                return ['%font "mono"'] + aa_t + ['']
 
         if TARGET == 'csv':
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
