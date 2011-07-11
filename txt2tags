@@ -3107,15 +3107,15 @@ def aa_under(txt, char, width, over):
 def aa_box(txt, chars, width, centred=True):
     wrap_txt = []
     for line in txt:
-        wrap_txt.extend(textwrap.wrap(line, width - 4))
-    len_txt = max([aa_len(line) for line in wrap_txt])
+        wrap_txt.extend(el.decode('utf-8') for el in textwrap.wrap(line, width - 4))
+    len_txt = max([len(line) for line in wrap_txt])
     line_box = (chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']).center(width)
     line_txt = []
     for line in wrap_txt:
         if centred:
             line_txt.append((chars['side'] + ' ' + line.center(len_txt) + ' ' + chars['side']).center(width))
         else:
-            line_txt.append((chars['side'] + ' ' + line + ' ' * (len_txt - aa_len(line) + 1) + chars['side']).center(width))
+            line_txt.append((chars['side'] + ' ' + line + ' ' * (len_txt - len(line) + 1) + chars['side']).center(width))
     return [line_box] + line_txt + [line_box]
 
 
@@ -3363,7 +3363,16 @@ def Savefile(file_path, contents):
         doit = f.writelines
     else:
         doit = f.write
-    doit(contents)
+    if CONF['target'] == 'aat':
+        cont = []
+        for line in contents:
+            if not isinstance(line, str):
+                cont.append(line.encode('utf-8'))
+            else:
+                cont.append(line)
+        doit(cont)
+    else:
+        doit(contents)
     f.close()
 
 
@@ -4118,7 +4127,10 @@ class ConfigMaster:
         "Returns the parsed config for the current target"
         raw = self.get_target_raw()
         for target, key, value in raw:
-            self.add(key, value)
+            if key == 'chars':
+                self.add(key, value.decode('utf-8'))
+            else:
+                self.add(key, value)
         Message(_("Added the following keys: %s") % ', '.join(self.parsed.keys()), 2)
         return self.parsed.copy()
 
@@ -6275,7 +6287,7 @@ def doHeader(headers, config):
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         if config['slides']:
             total = len(config['fullBody']) / (config['height'] - 1) 
-            l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
+            l = aa_len(head_data['HEADER2']) + aa_len(head_data['HEADER3']) + 2
             bar2 = aa_line(AA['bar2'], config['width'])
             for i, line in enumerate(config['fullBody']):
                 if i % (config['height'] -1 ) == 1 and config['fullBody'][i - 1] == config['fullBody'][i + 3] == bar2:
