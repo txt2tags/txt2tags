@@ -3134,7 +3134,7 @@ def aa_header(header_data, chars, width, n, end):
 def aa_slide(title, char, width):
     res = [aa_line(char, width)]
     res.append('')
-    res.append(title.center(width)[:width])
+    res.append(title.decode('utf-8').center(width)[:width])
     res.append('')
     res.append(aa_line(char, width))
     return res
@@ -3195,7 +3195,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
             if i == 0 or border:
                 ret.append(res)
         for j, el in enumerate(line[0]):
-            aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len(el) - 2) * " " + side
+            aff = aff + " " + el.decode('utf-8') + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len(el) - 2) * " " + side
             if j == 0 and v_header:
                 aff = aff[:-1] + vhead
         ret.append(aff)
