@@ -4739,7 +4739,10 @@ class TitleMaster:
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            under = aa_under(tagged, AA[level], CONF['width'], False)
+            if CONF['slides']:
+                under = aa_under(tagged, AA[level], CONF['width'] - 2, False)
+            else:
+                under = aa_under(tagged, AA[level], CONF['width'], False)
             if CONF['web'] and CONF['toc']:
                 ret.extend([anchor] + under + ['</a>']) 
             else:
