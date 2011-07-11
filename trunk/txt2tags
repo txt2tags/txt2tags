@@ -3097,10 +3097,11 @@ def aa_line(char, width):
 
 def aa_under(txt, char, width, over):
     ret = []
+    txt = txt.decode('utf-8')
     if over:
-        ret.append(aa_line(char, aa_len(txt)))
+        ret.append(aa_line(char, len(txt)))
     for line in textwrap.wrap(txt, width):
-        ret.extend([line, aa_line(char, aa_len(line))])
+        ret.extend([line, aa_line(char, len(line))])
     return ret
 
 
