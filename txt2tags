@@ -6948,9 +6948,11 @@ def convert_this_files(configs):
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
             target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
             if myconf['qa']:
+                n_before = (myconf['height'] - 24) / 2
+                n_after = myconf['height'] - 24 - n_before
                 head = aa_slide(_("Q&A"), AA['bar2'], myconf['width'])
                 if myconf['height'] > 23 and myconf['width'] > 22:
-                    target_body = target_body + head + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * (myconf['height'] - 24) + [aa_line(AA['bar2'], myconf['width'])]
+                    target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * n_after + [aa_line(AA['bar2'], myconf['width'])]
                 else:
                     target_body = target_body + head + [''] * (myconf['height'] - 7) + [aa_line(AA['bar2'], myconf['width'])]
 
