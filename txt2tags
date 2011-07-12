@@ -3108,7 +3108,7 @@ def aa_under(txt, char, width, over):
 def aa_box(txt, chars, width, centred=True):
     wrap_txt = []
     for line in txt:
-        wrap_txt.extend(el.decode('utf-8') for el in textwrap.wrap(line, width - 4))
+        wrap_txt.extend(el for el in textwrap.wrap(line.decode('utf-8'), width - 4))
     len_txt = max([len(line) for line in wrap_txt])
     line_box = (chars['corner'] + chars['border'] * (len_txt + 2) + chars['corner']).center(width)
     line_txt = []
