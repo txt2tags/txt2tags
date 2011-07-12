@@ -4098,11 +4098,11 @@ class ConfigMaster:
                     chars_section = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
                     for char in config['chars'][:7]:
                         if char not in chars_section :
-                            Error(_("--chars: Expected chars in : %s but got %s") % (chars_section, char))
+                            Error(_("--chars: Expected chars in : %s but got %s") % (chars_section, char.encode('utf-8')))
                     # http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#bullet-lists
                     chars_bullet = '*+-'
                     if config['chars'][7] not in chars_bullet :
-                        Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, config['chars'][7]))
+                        Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, config['chars'][7].encode('utf-8')))
                     RST = dict(zip(RST_KEYS, config['chars']))
 
         # --toc-only is stronger than others
