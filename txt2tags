@@ -3364,7 +3364,7 @@ def Savefile(file_path, contents):
         doit = f.writelines
     else:
         doit = f.write
-    if CONF['target'] == 'aat':
+    if CONF['target'] in ('aat', 'rst'):
         cont = []
         for line in contents:
             if not isinstance(line, str):
@@ -6352,7 +6352,16 @@ def doHeader(headers, config):
     # Expand macros on *all* lines of the template
     template = map(MacroMaster(config=config).expand, template)
     # Add Body contents to template data
-    head_data['BODY'] = '\n'.join(config['fullBody'])
+    if config['target'] == 'mgp':
+        li = []
+        for el in config['fullBody']:
+            if not isinstance(el, str):
+                li.append(el.encode('utf-8'))
+            else:
+                li.append(el)
+        head_data['BODY'] = '\n'.join(li)
+    else:
+        head_data['BODY'] = '\n'.join(config['fullBody'])
     # Populate template with data (dict expansion)
     template = '\n'.join(template) % head_data
 
