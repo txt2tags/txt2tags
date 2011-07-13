@@ -3142,14 +3142,15 @@ def aa_slide(title, char, width):
 
 
 def aa_table(table, chars, width, border, h_header, v_header, align, spread):
-    if spread:
-        for row in table:
-            for i, el in enumerate(row['cells']):
-                if el and el.strip() and el.strip()[0] == '=':
-                    try:
-                        row['cells'][i] = str(eval(el.strip()[1:]))
-                    except:
-                        row['cells'][i] = 'Error'
+    for row in table:
+        for i, el in enumerate(row['cells']):
+            if spread and el and el.strip() and el.strip()[0] == '=':
+                try:
+                    row['cells'][i] = str(eval(el.strip()[1:]))
+                except:
+                    row['cells'][i] = 'Error'
+            else:
+                row['cells'][i] = row['cells'][i].decode('utf-8') 
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3173,7 +3174,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     tab = []
     for i in range(n):
         tab.append([line[i] for line in data3])
-    length = [max([aa_len(el) for el in line]) for line in tab]
+    length = [max([len(el) for el in line]) for line in tab]
     if spread:
         if n > 26:
             Error(_("aas target doesn't support table with more than 26 columns."))        
@@ -3196,7 +3197,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
             if i == 0 or border:
                 ret.append(res)
         for j, el in enumerate(line[0]):
-            aff = aff + " " + el.decode('utf-8') + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len(el) - 2) * " " + side
+            aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - len(el) - 2) * " " + side
             if j == 0 and v_header:
                 aff = aff[:-1] + vhead
         ret.append(aff)
@@ -3206,13 +3207,6 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     elif align == 'Center':
         ret = [line.center(width) for line in ret]
     return ret
-
-
-def aa_len(txt):
-    if CONF['encoding'].lower() == 'utf-8':
-        return len(txt.decode('utf-8'))
-    else:
-        return len(txt)
 
 
 def aa_image(image):
@@ -6294,7 +6288,7 @@ def doHeader(headers, config):
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         if config['slides']:
             total = len(config['fullBody']) / (config['height'] - 1) 
-            l = aa_len(head_data['HEADER2']) + aa_len(head_data['HEADER3']) + 2
+            l = len(head_data['HEADER2'].decode('utf-8')) + len(head_data['HEADER3'].decode('utf-8')) + 2
             bar2 = aa_line(AA['bar2'], config['width'])
             for i, line in enumerate(config['fullBody']):
                 if i % (config['height'] -1 ) == 1 and config['fullBody'][i - 1] == config['fullBody'][i + 3] == bar2:
