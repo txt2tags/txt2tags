@@ -3176,7 +3176,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     tab = []
     for i in range(n):
         tab.append([line[i] for line in data3])
-    length = [max([len(el) for el in line]) for line in tab]
+    length = [max([aa_len_cjk(el) for el in line]) for line in tab]
     if spread:
         if n > 26:
             Error(_("aas target doesn't support table with more than 26 columns."))        
@@ -3199,7 +3199,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
             if i == 0 or border:
                 ret.append(res)
         for j, el in enumerate(line[0]):
-            aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - len(el) - 2) * " " + side
+            aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(el) - 2) * " " + side
             if j == 0 and v_header:
                 aff = aff[:-1] + vhead
         ret.append(aff)
@@ -3207,7 +3207,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     if align == 'Left':
         ret = [' ' * 2  + line for line in ret]
     elif align == 'Center':
-        ret = [line.center(width) for line in ret]
+        ret = [aa_center(line, width) for line in ret]
     return ret
 
 
