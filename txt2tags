@@ -301,8 +301,8 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 hhead vhead'.split()
-AA_VALUES = '+-|-==-^"=$'  # do not edit here, please use --chars
+AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
+AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
@@ -997,7 +997,7 @@ def getTags(config):
         'title4'               : '\a'                     ,
         'title5'               : '\a'                     ,
         'blockQuoteLine'       : '\t'                     ,
-        'listItemOpen'         : '- '                     ,
+        'listItemOpen'         : AA['bullet'] + ' '       ,
         'numlistItemOpen'      : '\a. '                   ,
         'bar1'                 : aa_line(AA['bar1'], config['width']),
         'bar2'                 : aa_line(AA['bar2'], config['width']),
@@ -5735,7 +5735,7 @@ class BlockMaster:
                 listbody.append(tagindent + itemopen + term + itemsep)
             else:
                 fullitem = tagindent + itemopen
-                if TARGET == 'rst':
+                if TARGET in ('rst', 'aat'):
                     listbody.append(item[0].decode('utf-8').replace(SEPARATOR, fullitem))
                 else:
                     listbody.append(item[0].replace(SEPARATOR, fullitem))
