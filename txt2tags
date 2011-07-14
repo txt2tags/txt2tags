@@ -2228,6 +2228,8 @@ def getTags(config):
         alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
         alltags['aat']['bar1'] = aa_line(AA['bar1'], config['width'] - 2)
         alltags['aat']['bar2'] = aa_line(AA['bar2'], config['width'] - 2)
+        if not config['chars']:
+            alltags['aat']['listItemOpen'] = '* '
     if config['target'] == 'aat' and config['web']:
         alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
