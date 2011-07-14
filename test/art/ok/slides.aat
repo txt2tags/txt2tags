@@ -221,15 +221,15 @@
 ================================================================================
 
                         +------------------------------+                       
-                        | - earth                      |                       
-                        |   - america                  |                       
-                        |     - south america          |                       
-                        |       - brazil               |                       
-                        |         - how deep can i go? |                       
-                        |   - europe                   |                       
-                        |     - lots of countries      |                       
-                        | - mars                       |                       
-                        |   - who knows?               |                       
+                        | * earth                      |                       
+                        |   * america                  |                       
+                        |     * south america          |                       
+                        |       * brazil               |                       
+                        |         * how deep can i go? |                       
+                        |   * europe                   |                       
+                        |     * lots of countries      |                       
+                        | * mars                       |                       
+                        |   * who knows?               |                       
                         +------------------------------+                       
 
  The list ends with *two* consecutive blank lines.
@@ -252,8 +252,8 @@
                            | 1. one                |                           
                            | 2. two                |                           
                            | 3. three              |                           
-                           |   - mixed lists!      |                           
-                           |   - what a mess       |                           
+                           |   * mixed lists!      |                           
+                           |   * what a mess       |                           
                            |     1. counting again |                           
                            |     2. ...            |                           
                            | 4. four               |                           
@@ -278,8 +278,8 @@
                            | apple                  |                          
                            |   a green or red fruit |                          
                            | other fruits           |                          
-                           |   - wee!               |                          
-                           |   - mixing lists       |                          
+                           |   * wee!               |                          
+                           |   * mixing lists       |                          
                            |     1. again!          |                          
                            |     2. and again!      |                          
                            +------------------------+                          
@@ -351,8 +351,8 @@
                        [img/photo.jpg]
 
            +-------------------------------------------------------+           
-           | - The filename must end in PNG, JPG, GIF, or similar. |           
-           | - No spaces inside the brackets!                      |           
+           | * The filename must end in PNG, JPG, GIF, or similar. |           
+           | * No spaces inside the brackets!                      |           
            +-------------------------------------------------------+           
 
  Other
