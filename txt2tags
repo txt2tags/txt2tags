@@ -5286,7 +5286,13 @@ class BlockMaster:
             if TARGET == 'aat':
                 final = []
                 if CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
-                    final.extend(' ' + line for line in aa_box(result, AA, CONF['width'] - 2, False))
+                    li = []
+                    for el in result:
+                       if not isinstance(el, str):
+                           li.append(el.encode('utf-8'))
+                       else:
+                           li.append(el)
+                    final.extend(' ' + line for line in aa_box(li, AA, CONF['width'] - 2, False))
                 else:
                     for line in result:
                         if not line or (blockname == 'table' and not CONF['slides']): 
