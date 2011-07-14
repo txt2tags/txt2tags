@@ -103,6 +103,7 @@ import textwrap
 import csv
 import string
 import struct
+import unicodedata
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
@@ -4082,6 +4083,9 @@ class ConfigMaster:
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(AA_VALUES), len(config['chars'])))
                 else:
+                    for char in config['chars']:
+                        if unicodedata.east_asian_width(char) in ('F', 'W'):
+                            Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
                     AA = dict(zip(AA_KEYS, config['chars']))
             elif target == 'rst':
                 if len(config['chars']) != len(RST_VALUES):
