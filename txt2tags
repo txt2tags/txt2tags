@@ -3110,13 +3110,12 @@ def aa_box(txt, chars, width, centred=True):
     wrap_txt = []
     for line in txt:
         wrap_txt.extend(el for el in textwrap.wrap(line.decode('utf-8'), width - 4))
-    len_txt = max([len(line) for line in wrap_txt])
     len_cjk = max([aa_len_cjk(line) for line in wrap_txt])
     line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
     line_txt = []
     for line in wrap_txt:
         if centred:
-            line_txt.append(aa_center(chars['side'] + ' ' + line.center(len_txt) + ' ' + chars['side'], width))
+            line_txt.append(aa_center(chars['side'] + ' ' + aa_center(line, len_cjk) + ' ' + chars['side'], width))
         else:
             line_txt.append(aa_center(chars['side'] + ' ' + line + ' ' * (len_cjk - aa_len_cjk(line) + 1) + chars['side'], width))
     return [line_box] + line_txt + [line_box]
