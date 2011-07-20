@@ -3377,16 +3377,19 @@ def Savefile(file_path, contents):
         doit = f.writelines
     else:
         doit = f.write
+    cont = []
     if CONF['target'] in ('aat', 'rst'):
-        cont = []
         for line in contents:
             if not isinstance(line, str):
                 cont.append(line.encode('utf-8'))
             else:
                 cont.append(line)
-        doit(cont)
+    elif CONF['target'] == 'mgp':
+        for line in contents:
+            cont.append(line.decode('utf-8').encode('latin1'))
     else:
-        doit(contents)
+        cont = contents
+    doit(cont)
     f.close()
 
 
