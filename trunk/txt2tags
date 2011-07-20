@@ -3386,7 +3386,7 @@ def Savefile(file_path, contents):
                 cont.append(line)
     elif CONF['target'] == 'mgp':
         for line in contents:
-            cont.append(line.decode('utf-8').encode('latin1'))
+            cont.append(line.decode('utf-8').encode('latin1', 'replace'))
     else:
         cont = contents
     doit(cont)
