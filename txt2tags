@@ -301,8 +301,8 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
-AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
+AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead hheadnob vhead'.split()
+AA_VALUES = '+-|-==-^"-=-$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_TITLE = ''
@@ -3186,7 +3186,11 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
         data2[0][0][0] = ''
         length, n = [max([len(line[0][0]) for line in data2])] + length, n + 1
-    bord, side, corner, hhead, vhead = chars['border'], chars['side'], chars['corner'], chars['hhead'], chars['vhead']
+    bord, side, corner, vhead = chars['border'], chars['side'], chars['corner'], chars['vhead']
+    if border:
+        hhead = chars['hhead']
+    else:
+        hhead = chars['hheadnob']
     resh = res = corner
     for i in range(n):
         res = res + (length[i] + 2) * bord + corner
@@ -5543,7 +5547,7 @@ class BlockMaster:
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
-                chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
+                chars['border'], chars['corner'], chars['side'], chars['hheadnob'] = '=', ' ', ' ', '='
             return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
 
         if TARGET == 'mgp':
