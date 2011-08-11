@@ -18,10 +18,11 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2011-04-22';
+$RecipeInfo['txt2tags']['Version'] = '2011-08-06';
 
 // Check if the customized fonts were installed. Adapt it to your own path.
 $MyGuiEditor = '/pmwiki/pub/t2tguiedit/';
+//$MyGuiEditor = '/pmwiki-efo/pub/t2tguiedit/';
 //$MyGuiEditor = '/pub/t2tguiedit/';
 
 
@@ -105,7 +106,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons ['empty3'] = array(400, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
-	$GUIButtons['ul'] = array(530, "- ", "", '$[Unordered list]',
+	$GUIButtons ['ul'] = array(530, "- ", "", '$[Unordered list]',
                      '$GUIButtonDirUrlFmt/ul.png"$[Unordered (bullet) list]"');
                      
 	$GUIButtons ['ol'] = array(531, "+ ", "", '$[Ordered list]',
@@ -123,9 +124,15 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons ['empty5'] = array(850, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
                                     
-	$GUIButtons['sig'] = array(900, ' $CurrentTime', ' ', ' ',
-                    '$GUIButtonDirUrlFmt/sig.gif"$[Insert <CurrentTime>]"');
-                                    
+	$GUIButtons ['sig'] = array(900, ' $CurrentTime', ' ', ' ',
+                    '$GUIButtonDirUrlFmt/sig.png"$[Insert <CurrentTime>]"');
+
+	$GUIButtons ['empty6'] = array(950, "", "", '',
+                                    '$GUIButtonDirUrlFmt/empty.png');
+
+	$GUIButtons ['attach'] = array(960, 'Attach:', '', '$[file.ext]',
+                    '$GUIButtonDirUrlFmt/attach.png"Attach File"');
+                             
     
 } else {
     //echo "rem";
@@ -152,7 +159,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons['h3'] = array(402, "=== ", " ===", '$[Heading level 3]',
                      '$GUIButtonDirUrlFmt/h3.gif"$[Heading level 3]"');
 
-	$GUIButtons ['extlink'] = array($ArrayCount++, '[',']', '$[link text http://]',
+	$GUIButtons ['extlink'] = array(450, '[',']', '$[link text http://]',
                                     '$GUIButtonDirUrlFmt/extlink.gif"Link to external page"');
 
 	$GUIButtons['ul'] = array(530, "- ", "", '$[Unordered list]',
@@ -160,6 +167,10 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
                      
 	$GUIButtons ['ol'] = array(531, "+ ", "", '$[Ordered list]',
                                     '$GUIButtonDirUrlFmt/ol.gif"$[Ordered (numbered) list]"');
+                                    
+    $GUIButtons ['attach'] = array(532, 'Attach:','', '$[file.ext]',
+                                    '$GUIButtonDirUrlFmt/attach.gif"Attach File"');
+
                                     
 }
 
@@ -176,7 +187,7 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	$GUIButtons['pagelink'] = array();
 	/*$GUIButtons['extlink'] = array();*/
 
-	$GUIButtons['attach'] = array();
+	/*$GUIButtons['attach'] = array();*/
 						 
 	$GUIButtons['sup'] = array();
 
@@ -302,11 +313,22 @@ if (file_exists($_SERVER{'DOCUMENT_ROOT'} . $MyGuiEditor)) {
 	
 // // // /    LINKS
 	
-	//Markup ('txt2tags_locallink'    , 'directives', '/\[(.*?) local:\/\/(.*?)\]/s', '[[http://$2|$1]]');
+	//Markup ('txt2tags_locallink3'    , 'directives', '/\[(.*?) local:\/\/(.*?)\]/s', '[[http://$2|$1]]');
+	
+	//Markup('txt2tags_locallink',  '>fulltext',  '/\[(.*?) \| (.*?)\]/s',  '<a href="$2">$1</a>');
+
+	// contrary to the normal txt2tags, we have to precise if the file is local with local://
+	// In the case $EnablePathInfo = 1; in local/config.php use ../../ after local:
+	//    [description local://../../subfolder/file.ext]
+	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/s',  '<a href="$2">$1</a>');
 	
 	Markup ('txt2tags_urllink'    , 'directives', '/\[(.*?) HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
+	//Markup ('txt2tags_urllink'    , '<inline', '/\[(.*?) http:\/\/(.*?)\]/s', '<a href="$2>$1</a>');	
+	
 	Markup ('txt2tags_urllink2'    , 'directives', '/\[(.*?) HTTPSREP(.*?)\]/s', '[[HTTPSREP$2|$1]]');	
 	Markup ('txt2tags_urllink3'    , 'directives', '/\[(.*?) FTPREP(.*?)\]/s', '[[FTPREP$2|$1]]');	
+
+
 	// not working (empty line) Markup ('txt2tags_urllink4'    , 'directives', '/\[(.*?) SFTPREP(.*?)\]/s', '[[SFTPREP$2|$1]]');	
 
 	// (beware this rule rely on the txt2tags_http/https/ftp/ftps (italics) rules as well)
