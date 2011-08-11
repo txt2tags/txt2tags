@@ -1519,7 +1519,7 @@ def getTags(config):
         'EOD'                  : '@End @Text'
     },
 
-    # http://moinmo.in/SyntaxReference
+    # http://moinmo.in/HelpOnMoinWikiSyntax
     'moin': {
         'title1'                : '= \a ='        ,
         'title2'                : '== \a =='      ,
@@ -1546,11 +1546,11 @@ def getTags(config):
         'deflistItem2LinePrefix': ' :: '          ,
         'bar1'                  : '----'          ,
         'bar2'                  : '--------'      ,
-        'url'                   : '[\a]'          ,
-        'urlMark'               : '[\a \a]'       ,
-        'email'                 : '[\a]'          ,
-        'emailMark'             : '[\a \a]'       ,
-        'img'                   : '[\a]'          ,
+        'url'                   : '[[\a]]'          ,
+        'urlMark'               : '[[\a|\a]]'       ,
+        'email'                 : '\a'          ,
+        'emailMark'             : '[[mailto:\a|\a]]'       ,
+        'img'                   : '{{\a}}'          ,
         'tableRowOpen'          : '||'            ,  # || one || two ||
         'tableCellOpen'         : '~S~~A~ '       ,
         'tableCellClose'        : ' ||'           ,
