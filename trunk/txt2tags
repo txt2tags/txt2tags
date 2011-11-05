@@ -621,7 +621,6 @@ table th,table td{padding:4px;}
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<body>
 <title>%(HEADER1)s</title>
 <meta name="generator" content="http://txt2tags.org" />
 <link rel="stylesheet" type="text/css" href="%(STYLE)s" />
