@@ -3099,7 +3099,8 @@ def aa_line(char, width):
 
 def aa_under(txt, char, width, over):
     ret = []
-    txt = txt.decode('utf-8')
+    if CONF['encoding'].lower() == 'utf-8':
+        txt = txt.decode('utf-8')
     if over:
         ret.append(aa_line(char, aa_len_cjk(txt)))
     for line in textwrap.wrap(txt, width):
@@ -3110,7 +3111,9 @@ def aa_under(txt, char, width, over):
 def aa_box(txt, chars, width, centred=True):
     wrap_txt = []
     for line in txt:
-        wrap_txt.extend(el for el in textwrap.wrap(line.decode('utf-8'), width - 4))
+        if CONF['encoding'].lower() == 'utf-8':
+            line = line.decode('utf-8')
+        wrap_txt.extend(el for el in textwrap.wrap(line, width - 4))
     len_cjk = max([aa_len_cjk(line) for line in wrap_txt])
     line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
     line_txt = []
@@ -3135,9 +3138,11 @@ def aa_header(header_data, chars, width, n, end):
 
 
 def aa_slide(title, char, width):
+    if CONF['encoding'].lower() == 'utf-8':
+        title = title.decode('utf-8')
     res = [aa_line(char, width)]
     res.append('')
-    res.append(aa_center(title.decode('utf-8'), width)[:width])
+    res.append(aa_center(title, width)[:width])
     res.append('')
     res.append(aa_line(char, width))
     return res
@@ -3152,7 +3157,8 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
                 except:
                     row['cells'][i] = 'Error'
             else:
-                row['cells'][i] = row['cells'][i].decode('utf-8') 
+                if CONF['encoding'].lower() == 'utf-8':
+                    row['cells'][i] = row['cells'][i].decode('utf-8') 
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3250,6 +3256,8 @@ def aa_webwrap(txt, width):
 
 
 def aa_len_cjk(txt):
+    if CONF['encoding'].lower != 'utf-8':
+        return len(txt)
     l = 0
     for char in txt:
         if unicodedata.east_asian_width(unicode(char)) in ('F', 'W'):
@@ -5749,7 +5757,7 @@ class BlockMaster:
                 listbody.append(tagindent + itemopen + term + itemsep)
             else:
                 fullitem = tagindent + itemopen
-                if TARGET in ('rst', 'aat'):
+                if TARGET in ('rst', 'aat') and CONF['encoding'].lower() == 'utf-8':
                     listbody.append(item[0].decode('utf-8').replace(SEPARATOR, fullitem))
                 else:
                     listbody.append(item[0].replace(SEPARATOR, fullitem))
@@ -6322,7 +6330,10 @@ def doHeader(headers, config):
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         if config['slides']:
             total = len(config['fullBody']) / (config['height'] - 1) 
-            l = aa_len_cjk(head_data['HEADER2'].decode('utf-8')) + aa_len_cjk(head_data['HEADER3'].decode('utf-8')) + 2
+            if CONF['encoding'].lower() == 'utf-8':
+                l = aa_len_cjk(head_data['HEADER2'].decode('utf-8')) + aa_len_cjk(head_data['HEADER3'].decode('utf-8')) + 2
+            else:
+                l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
             bar2 = aa_line(AA['bar2'], config['width'])
             for i, line in enumerate(config['fullBody']):
                 if i % (config['height'] -1 ) == 1 and config['fullBody'][i - 1] == config['fullBody'][i + 3] == bar2:
@@ -6332,7 +6343,10 @@ def doHeader(headers, config):
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
         # Header done, let's get out
         if config['web']:
-            head_web = ['<!doctype html><html><meta charset=UTF-8><title>' + config['header1'] + '</title><pre>']
+            encoding = ''
+            if CONF['encoding']:
+                encoding = '<meta charset=' + CONF['encoding'] + '>'
+            head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title><pre>']
             foot_web = ['</pre></html>']
             return head_web + template + config['fullBody'] + foot_web
         else:
