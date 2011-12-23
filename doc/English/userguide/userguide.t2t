@@ -828,7 +828,7 @@ marks on the [Txt2tags Markup Demo URLWEBSITE/markup.html].
 
 == The .t2t document Areas ==[areas]
 
-Txt2tags marked files are divided in 3 areas. Each area have its own
+Txt2tags marked files are divided in 3 areas. Each area has its own
 rules and purpose. They are:
 
 : //HEADAREA//
