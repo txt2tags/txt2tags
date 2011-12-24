@@ -97,6 +97,7 @@ HTML_LOWER  = 0   # use lowercased HTML tags instead upper? (default is 0)
 import re
 import os
 import sys
+import locale
 import time  # %%date, %%mtime
 import getopt
 import textwrap
@@ -4110,15 +4111,19 @@ class ConfigMaster:
             Error(_("--width: Expected width > 4, got %i") % config['width'])
         # Check/set user ASCII Art formatting characters
         if config['chars']:
+            if config['encoding'].lower() == 'utf-8' and locale.getpreferredencoding() != 'UTF-8':
+                Error(_("--chars: Expected chars from an UTF-8 terminal for your UTF-8 file"))
+            if config['encoding'].lower() != 'utf-8' and locale.getpreferredencoding() == 'UTF-8':
+                Error(_("--chars: Expected an UTF-8 file for your chars from an UTF-8 terminal (set %!encoding: UTF-8 ?)"))
             if target == 'aat':
                 if len(config['chars']) != len(AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(AA_VALUES), len(config['chars'])))
-                else:
+                if locale.getpreferredencoding() == 'UTF-8': 
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
                             Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
-                    AA = dict(zip(AA_KEYS, config['chars']))
+                AA = dict(zip(AA_KEYS, config['chars']))
             elif target == 'rst':
                 if len(config['chars']) != len(RST_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
@@ -4127,12 +4132,16 @@ class ConfigMaster:
                     # http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections
                     chars_section = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
                     for char in config['chars'][:7]:
-                        if char not in chars_section :
-                            Error(_("--chars: Expected chars in : %s but got %s") % (chars_section, char.encode('utf-8')))
+                        if char not in chars_section:
+                            if locale.getpreferredencoding() == 'UTF-8':
+                                char = char.encode('utf-8')
+                            Error(_("--chars: Expected chars in : %s but got %s") % (chars_section, char))
                     # http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#bullet-lists
-                    chars_bullet = '*+-'
-                    if config['chars'][7] not in chars_bullet :
-                        Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, config['chars'][7].encode('utf-8')))
+                    chars_bullet, char_8  = '*+-', config['chars'][7]
+                    if char_8 not in chars_bullet:
+                        if locale.getpreferredencoding() == 'UTF-8':
+                            char_8 = char_8.encode('utf-8') 
+                        Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, char_8))
                     RST = dict(zip(RST_KEYS, config['chars']))
 
         # --toc-only is stronger than others
@@ -4158,7 +4167,7 @@ class ConfigMaster:
         "Returns the parsed config for the current target"
         raw = self.get_target_raw()
         for target, key, value in raw:
-            if key == 'chars':
+            if key == 'chars' and locale.getpreferredencoding() == 'UTF-8':
                 self.add(key, value.decode('utf-8'))
             else:
                 self.add(key, value)
