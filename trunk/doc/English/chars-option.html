@@ -1,0 +1,165 @@
+<!doctype html><html><meta charset=UTF-8><title>The --chars option</title><pre>
+
+========================================================================
+
+
+                         +--------------------+                         
+                         | The --chars option |                         
+                         +--------------------+                         
+
+
+                          +------------------+                          
+                          | Florent Gallaire |                          
+                          +------------------+                          
+
+
+                             +------------+                             
+                             | 12/26/2011 |                             
+                             +------------+                             
+
+
+========================================================================
+
+                              +---------+
+                              | Targets |
+                              +---------+
+
+- All the ASCII-Art targets: aat, aap, aas and aaw. *12 chars length*.
+- The reStructuredText target: rst. *8 chars length*.
+
+
+ASCII-art targets
+=================
+
+
+Default values
+--------------
+
+  +--------+--------+------+------+------+--------+--------+--------+--------+--------+-------+-------+
+  | corner | border | side | bar1 | bar2 | level2 | level3 | level4 | level5 | bullet | hhead | vhead |
+  +--------+--------+------+------+------+--------+--------+--------+--------+--------+-------+-------+
+  | +      | -      | |    | -    | =    | =      | -      | ^      | "      | -      | =     | $     |
+  +--------+--------+------+------+------+--------+--------+--------+--------+--------+-------+-------+
+
+There is an exception: the bullet char default value is * for the aap
+target.
+
+
+Rendering
+---------
+
+corner, border and side define box for first level titles (quotes and
+lists are also boxed by the aap target). They are used for the tables
+too, with hhead the horizontal header char and vhead (only used in the
+aas target) the vertical header char:
+
+                  +------------------------------+
+                  | a first level title in a box |
+                  +------------------------------+
+  +---+-------+-------+
+  |   $   A   |   B   |
+  +===+=======+=======+
+  | 1 $ hhead | vhead |
+  +---+-------+-------+
+  | 2 $   =   |   $   |
+  +---+-------+-------+
+
+bar1 is a thin horizontal line char:
+
+------------------------------------------------------------------------
+
+bar2 is a large horizontal line char:
+
+========================================================================
+
+level2, level3, level4 and level5 are underlined title chars:
+
+  level2
+  ======
+  level3
+  ------
+  level4
+  ^^^^^^
+  level5
+  """"""
+
+bullet is the bullet list char:
+
+  - first item
+  - other item
+  - last item
+
+
+Valid chars
+-----------
+
+*The choice of the chars is completely free* in all the ASCII-Art
+targets.
+There's only one limitation, *in UTF-8 encoding, the CJK double width
+chars are forbidden*, because of their double size which make them
+useless for the job.
+
+
+reStructuredText target
+=======================
+
+
+Default values
+--------------
+
+  +-------+--------+--------+--------+--------+--------+------+--------+
+  | title | level1 | level2 | level3 | level4 | level5 | bar1 | bullet |
+  +-------+--------+--------+--------+--------+--------+------+--------+
+  | #     | *      | =      | -      | ^      | "      | -    | -      |
+  +-------+--------+--------+--------+--------+--------+------+--------+
+
+
+Rendering
+---------
+
+title is the underlined and overlined document title char :
+
+  #####
+  title
+  #####
+
+level1 is the underlined and overlined first level title char :
+
+  ******
+  level1
+  ******
+
+level2, level3, level4 and level5 are underlined title chars:
+
+  level2
+  ======
+  level3
+  ------
+  level4
+  ^^^^^^
+  level5
+  """"""
+
+bar1 is a horizontal line char:
+
+------------------------------------------------------------------------
+
+bullet is the bullet list char:
+
+  - first item
+  - other item
+  - last item
+
+
+Valid chars
+-----------
+
+*Bullet list char must be chosen from the * + - chars.*
+
+*All the others  must be chosen from the ! " # $ % &amp; \ ' ( ) * + , -
+. / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ chars*.
+The = - ` : . ' " ~ ^ _ * + # chars are recommended.
+
+<a href="http://creativecommons.org/licenses/by-sa/3.0"><img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="Creative Commons by-sa"></a>
+
+</pre></html>
