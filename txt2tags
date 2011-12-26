@@ -5981,7 +5981,7 @@ class MacroMaster:
 ##############################################################################
 
 def cc_formatter(conf, size):
-    cc, target = conf['cc'], conf['target']
+    cc, target = conf['cc'].lower(), conf['target']
     licenses = 'by, by-sa, by-nc-sa, by-nd, by-nc-nd, by-nc'
     if cc not in licenses.split(', '):
         Error(_('Please, choose one of the six valid Creative Commons licenses : %s.') % licenses)
