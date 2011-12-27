@@ -2235,6 +2235,9 @@ def getTags(config):
         alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
         alltags['aat']['img'] = '<img src="\a" alt=""/>'
         alltags['aat']['anchor'] = '<a id="\a">'
+        for beautifier  in ['Bold', 'Italic', 'Underline', 'Strike']:
+            open, close = 'font' + beautifier + 'Open', 'font' + beautifier + 'Close'
+            alltags['aat'][open], alltags['aat'][close] = alltags['html'][open].lower(), alltags['html'][close].lower()
 
     # Compose the target tags dictionary
     tags = {}
