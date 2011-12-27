@@ -14,7 +14,7 @@
 
 
                              +------------+                             
-                             | 07/29/2011 |                             
+                             | 12/26/2011 |                             
                              +------------+                             
 
 
@@ -64,10 +64,10 @@ Beautifiers
 The text marks for beautifiers are simple, just as you
 type on a plain text email message.
 
-We use double *, /, - and _ to represent *bold*,
-/italic/, -strike- and _underline_.
+We use double *, /, - and _ to represent <b>bold</b>,
+<i>italic</i>, <s>strike</s> and <u>underline</u>.
 
-The */bold italic/* style is also supported as a
+The <b><i>bold italic</i></b> style is also supported as a
 combination.
 
 
@@ -117,15 +117,15 @@ Nice.
                                | Lists |
                                +-------+
 
-A list of items is natural, just putting a *dash* or
-a *plus* at the beginning of the line.
+A list of items is natural, just putting a <b>dash</b> or
+a <b>plus</b> at the beginning of the line.
 
 
 Plain List
 ==========
 
 The dash is the default list identifier. For sublists,
-just add *spaces* at the beginning of the line. More
+just add <b>spaces</b> at the beginning of the line. More
 spaces, more sublists.
 
 - Earth
@@ -138,7 +138,7 @@ spaces, more sublists.
 - Mars
   - Who knows?
 
-The list ends with *two* consecutive blank lines.
+The list ends with <b>two</b> consecutive blank lines.
 
 
 Numbered List
@@ -230,10 +230,10 @@ are escaped.
 
 The handy %%date macro expands to the current date.
 
-So today is 20110729 on the ISO YYYYMMDD format.
+So today is 20111226 on the ISO YYYYMMDD format.
 
 You can also specify the date format with the %? flags,
-as %%date(%m-%d-%Y) which gives: 07-29-2011.
+as %%date(%m-%d-%Y) which gives: 12-26-2011.
 
 That's all for now.
 
