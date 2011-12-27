@@ -78,8 +78,12 @@ bullet is the bullet list char:
 === Valid chars ===
 
 **The choice of the chars is completely free** in all the ASCII-Art targets.
-There's only one limitation, **in UTF-8 encoding, the CJK double width chars are forbidden**, because of their double size which make them useless for the job.
+There's only one limitation, **in UTF-8 encoding, the CJK double width chars are forbidden**, because of their double size which make them useless for the job:
 
+```
+7 chars
+すすすす
+```
 
 == reStructuredText target ==
 
@@ -139,9 +143,9 @@ bullet is the bullet list char:
 
 === Valid chars ===
 
-**Bullet list char must be chosen from the * + - chars.**
+Bullet list char must be chosen from the *** + -** chars.
 
-**All the others  must be chosen from the ! " # $ % & \ ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ chars**.
+All the others  must be chosen from the **! " # $ % & \ ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~** chars.
 The = - ` : . ' " ~ ^ _ * + # chars are recommended.
 
 %%cc
