@@ -3384,7 +3384,7 @@ def Savefile(file_path, contents):
     else:
         doit = f.write
     cont = []
-    if CONF['target'] in ('aat', 'rst'):
+    if CONF['target'] in ('aat', 'rst', 'txt'):
         for line in contents:
             if not isinstance(line, str):
                 cont.append(line.encode('utf-8'))
@@ -4758,11 +4758,7 @@ class TitleMaster:
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
             ret.append(tagged)
-            # Get the right letter count for UTF
-            if CONF['encoding'].lower() == 'utf-8':
-                i = len(full_title.decode('utf-8'))
-            else:
-                i = len(full_title)
+            i = aa_len_cjk(full_title)
             ret.append(regex['x'].sub('=' * i, self.tag))
         elif TARGET == 'aat' and self.level == 1:
             if CONF['slides'] :
@@ -6983,7 +6979,7 @@ def convert_this_files(configs):
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
         
-        if myconf['target'] == 'aat' and myconf['encoding'].lower() == 'utf-8':
+        if myconf['target'] in ['aat', 'txt'] and myconf['encoding'].lower() == 'utf-8':
             for i, line in enumerate(source_head):
                 source_head[i] = line.decode('utf-8')
             for i, line in enumerate(source_body):
