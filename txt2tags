@@ -3103,8 +3103,6 @@ def aa_line(char, width):
 
 def aa_under(txt, char, width, over):
     ret = []
-    if CONF['encoding'].lower() == 'utf-8':
-        txt = txt.decode('utf-8')
     if over:
         ret.append(aa_line(char, aa_len_cjk(txt)))
     for line in textwrap.wrap(txt, width):
@@ -3115,8 +3113,6 @@ def aa_under(txt, char, width, over):
 def aa_box(txt, chars, width, centred=True):
     wrap_txt = []
     for line in txt:
-        if CONF['encoding'].lower() == 'utf-8':
-            line = line.decode('utf-8')
         wrap_txt.extend(el for el in textwrap.wrap(line, width - 4))
     len_cjk = max([aa_len_cjk(line) for line in wrap_txt])
     line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
@@ -3142,8 +3138,6 @@ def aa_header(header_data, chars, width, n, end):
 
 
 def aa_slide(title, char, width):
-    if CONF['encoding'].lower() == 'utf-8':
-        title = title.decode('utf-8')
     res = [aa_line(char, width)]
     res.append('')
     res.append(aa_center(title, width)[:width])
@@ -3160,9 +3154,6 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
                     row['cells'][i] = str(eval(el.strip()[1:]))
                 except:
                     row['cells'][i] = 'Error'
-            else:
-                if CONF['encoding'].lower() == 'utf-8':
-                    row['cells'][i] = row['cells'][i].decode('utf-8') 
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -6349,10 +6340,7 @@ def doHeader(headers, config):
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
         if config['slides']:
             total = len(config['fullBody']) / (config['height'] - 1) 
-            if CONF['encoding'].lower() == 'utf-8':
-                l = aa_len_cjk(head_data['HEADER2'].decode('utf-8')) + aa_len_cjk(head_data['HEADER3'].decode('utf-8')) + 2
-            else:
-                l = len(head_data['HEADER2']) + len(head_data['HEADER3']) + 2
+            l = aa_len_cjk(head_data['HEADER2']) + aa_len_cjk(head_data['HEADER3']) + 2
             bar2 = aa_line(AA['bar2'], config['width'])
             for i, line in enumerate(config['fullBody']):
                 if i % (config['height'] -1 ) == 1 and config['fullBody'][i - 1] == config['fullBody'][i + 3] == bar2:
@@ -6994,6 +6982,12 @@ def convert_this_files(configs):
         target_foot = []
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
+        
+        if myconf['target'] == 'aat' and myconf['encoding'].lower() == 'utf-8':
+            for i, line in enumerate(source_head):
+                source_head[i] = line.decode('utf-8')
+            for i, line in enumerate(source_body):
+                source_body[i] = line.decode('utf-8')
 
         # Save header info for %%header1..3 macros
         if not source_head:
