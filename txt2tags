@@ -267,7 +267,7 @@ TARGET_NAMES = {
   'aat'    : _('ASCII Art Text'),
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
-  'aaw'    : _('ASCII Art Web'),
+  'aatw'   : _('ASCII Art Text Web'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
   'csv'    : _('CSV spreadsheet'),
@@ -284,7 +284,7 @@ TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aaw')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -391,7 +391,7 @@ def Usage():
         fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
         fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
         fmt1 % (''  , '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
-        fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by aat, aap and aaw targets)")),
+        fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by aat, aap and aatw targets)")),
         fmt1 % (''  , '--height=N'     , _("set the output's height to N rows (used by aap target)")),
         fmt1 % (''  , '--chars=S'      , _("set the output's chars to S (used by all aa targets and rst)")),
         fmt1 % (''  , ''               , _("aa default " + AA_VALUES + " rst default " + RST_VALUES)),
@@ -4030,7 +4030,7 @@ class ConfigMaster:
             if config['target'] == 'aat' and config['spread']:
                 outfile = "%s.%s" % (basename, 'aas')
             if config['target'] == 'aat' and config['web']:
-                outfile = "%s.%s" % (basename, 'aaw')
+                outfile = "%s.%s" % (basename, 'aatw')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -4086,7 +4086,7 @@ class ConfigMaster:
         if target == 'aas':
             target, config['spread'] = 'aat', True
             exec('from math import *', globals())
-        if target == 'aaw':
+        if target == 'aatw':
             target, config['web'] = 'aat', True
         # Slides needs width and height
         if config['slides'] and target == 'aat':
