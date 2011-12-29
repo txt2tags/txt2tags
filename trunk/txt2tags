@@ -5308,10 +5308,7 @@ class BlockMaster:
                 if CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
                     li = []
                     for el in result:
-                       if not isinstance(el, str):
-                           li.append(el.encode('utf-8'))
-                       else:
-                           li.append(el)
+                        li.append(el)
                     final.extend(' ' + line for line in aa_box(li, AA, CONF['width'] - 2, False))
                 else:
                     for line in result:
