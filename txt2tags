@@ -268,6 +268,7 @@ TARGET_NAMES = {
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
   'aatw'   : _('ASCII Art Text Web'),
+  'aasw'   : _('ASCII Art Spreadsheet Web'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
   'csv'    : _('CSV spreadsheet'),
@@ -284,7 +285,7 @@ TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw', 'aasw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -4031,6 +4032,8 @@ class ConfigMaster:
                 outfile = "%s.%s" % (basename, 'aas')
             if config['target'] == 'aat' and config['web']:
                 outfile = "%s.%s" % (basename, 'aatw')
+            if config['target'] == 'aat' and config['spread'] and config['web']:
+                outfile = "%s.%s" % (basename, 'aasw')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -4088,6 +4091,9 @@ class ConfigMaster:
             exec('from math import *', globals())
         if target == 'aatw':
             target, config['web'] = 'aat', True
+        if target == 'aasw':
+            target, config['spread'], config['web'] = 'aat', True, True
+            exec('from math import *', globals())
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if not config['width'] and  not config['height'] and os.name == 'posix':
@@ -6317,7 +6323,7 @@ def doHeader(headers, config):
     Debug("Header Data: %s" % head_data, 1)
 
     # ASCII Art and rst don't use a header template, aa_header() formats the header
-    if target == 'aat' and not config['spread']:
+    if target == 'aat' and not (config['spread'] and not config['web']):
         n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
         template = []
         if n_h:
@@ -6345,7 +6351,10 @@ def doHeader(headers, config):
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
             head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title><pre>']
             foot_web = ['</pre></html>']
-            return head_web + template + config['fullBody'] + foot_web
+            if config['spread']:
+                return head_web + config['fullBody'] + foot_web
+            else:
+                return head_web + template + config['fullBody'] + foot_web
         else:
             return template + config['fullBody']
 
