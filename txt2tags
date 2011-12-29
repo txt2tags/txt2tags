@@ -5763,10 +5763,7 @@ class BlockMaster:
                 listbody.append(tagindent + itemopen + term + itemsep)
             else:
                 fullitem = tagindent + itemopen
-                if TARGET in ('rst', 'aat') and CONF['encoding'].lower() == 'utf-8':
-                    listbody.append(item[0].decode('utf-8').replace(SEPARATOR, fullitem))
-                else:
-                    listbody.append(item[0].replace(SEPARATOR, fullitem))
+                listbody.append(item[0].replace(SEPARATOR, fullitem))
                 del item[0]
 
             itemisclosed = False
