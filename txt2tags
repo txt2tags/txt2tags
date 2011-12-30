@@ -3152,7 +3152,10 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
         for i, el in enumerate(row['cells']):
             if spread and el and el.strip() and el.strip()[0] == '=':
                 try:
-                    row['cells'][i] = str(eval(el.strip()[1:]))
+                    if CONF['web']:
+                        row['cells'][i] = '<a title="' + el.strip()[1:] + '">' + str(eval(el.strip()[1:])) + '</a>'
+                    else:
+                        row['cells'][i] = str(eval(el.strip()[1:]))
                 except:
                     row['cells'][i] = 'Error'
     data = [[row['cells'], row['cellspan']] for row in table]
@@ -3178,7 +3181,10 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     tab = []
     for i in range(n):
         tab.append([line[i] for line in data3])
-    length = [max([aa_len_cjk(el) for el in line]) for line in tab]
+    if CONF['web']:
+        length = [max([aa_len_cjk(re.sub('<a.*">|</a>', '', el)) for el in line]) for line in tab]
+    else:
+        length = [max([aa_len_cjk(el) for el in line]) for line in tab]
     if spread:
         if n > 26:
             Error(_("aas target doesn't support table with more than 26 columns."))        
@@ -3205,14 +3211,17 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
             if i == 0 or border:
                 ret.append(res)
         for j, el in enumerate(line[0]):
-            aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(el) - 2) * " " + side
+            if CONF['web']:
+                aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(re.sub('<a.*">|</a>', '',el)) - 2) * " " + side
+            else:
+                aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(el) - 2) * " " + side
             if j == 0 and v_header:
                 aff = aff[:-1] + vhead
         ret.append(aff)
     ret.append(res)
     if align == 'Left':
         ret = [' ' * 2  + line for line in ret]
-    elif align == 'Center':
+    elif align == 'Center' and not (CONF['web'] and spread):
         ret = [aa_center(line, width) for line in ret]
     return ret
 
@@ -6349,7 +6358,11 @@ def doHeader(headers, config):
             encoding = ''
             if CONF['encoding']:
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
-            head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title><pre>']
+            if config['spread']:
+                pre = '<pre style="text-align:center">'
+            else:
+                pre = '<pre>'
+            head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title>' + pre]
             foot_web = ['</pre></html>']
             if config['spread']:
                 return head_web + config['fullBody'] + foot_web
