@@ -6996,10 +6996,13 @@ def convert_this_files(configs):
         myconf = ConfigMaster().sanity(myconf)
         
         if myconf['target'] in ['aat', 'txt', 'rst'] and myconf['encoding'].lower() == 'utf-8':
-            for i, line in enumerate(source_head):
-                source_head[i] = line.decode('utf-8')
-            for i, line in enumerate(source_body):
-                source_body[i] = line.decode('utf-8')
+            try:
+                for i, line in enumerate(source_head):
+                    source_head[i] = line.decode('utf-8')
+                for i, line in enumerate(source_body):
+                    source_body[i] = line.decode('utf-8')
+            except:
+                myconf['encoding'] = ''
 
         # Save header info for %%header1..3 macros
         if not source_head:
