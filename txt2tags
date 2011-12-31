@@ -4122,7 +4122,7 @@ class ConfigMaster:
         if config['chars']:
             try:
                 # Peace for ASCII 7-bits only
-                config['chars'].decode()
+                config['chars'] = config['chars'].encode()
             except:
                 if config['encoding'].lower() == 'utf-8' and locale.getpreferredencoding() != 'UTF-8':
                     Error(_("--chars: Expected chars from an UTF-8 terminal for your UTF-8 file"))
@@ -4135,7 +4135,7 @@ class ConfigMaster:
                 if len(config['chars']) != len(AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(AA_VALUES), len(config['chars'])))
-                if locale.getpreferredencoding() == 'UTF-8': 
+                if isinstance(config['chars'], unicode): 
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
                             Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
