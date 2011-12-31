@@ -6356,7 +6356,7 @@ def doHeader(headers, config):
         # Header done, let's get out
         if config['web']:
             encoding = ''
-            if CONF['encoding']:
+            if CONF['encoding'] and CONF['encoding'] != 'not_utf-8':
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
             if config['spread']:
                 pre = '<pre style="text-align:center">'
@@ -7004,7 +7004,8 @@ def convert_this_files(configs):
                     decode_body.append(line.decode('utf-8'))
                 source_head, source_body = decode_head, decode_body
             except:
-                myconf['encoding'] = ''
+                myconf['encoding'] = 'not_utf-8'
+                myconf = ConfigMaster().sanity(myconf)
 
         # Save header info for %%header1..3 macros
         if not source_head:
