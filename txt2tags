@@ -3261,7 +3261,7 @@ def aa_webwrap(txt, width):
 
 
 def aa_len_cjk(txt):
-    if CONF['encoding'].lower() != 'utf-8':
+    if isinstance(txt, str):
         return len(txt)
     l = 0
     for char in txt:
