@@ -6996,11 +6996,13 @@ def convert_this_files(configs):
         myconf = ConfigMaster().sanity(myconf)
         
         if myconf['target'] in ['aat', 'txt', 'rst'] and myconf['encoding'].lower() == 'utf-8':
+            decode_head, decode_body = [], []
             try:
-                for i, line in enumerate(source_head):
-                    source_head[i] = line.decode('utf-8')
-                for i, line in enumerate(source_body):
-                    source_body[i] = line.decode('utf-8')
+                for line in source_head:
+                    decode_head.append(line.decode('utf-8'))
+                for line in source_body:
+                    decode_body.append(line.decode('utf-8'))
+                source_head, source_body = decode_head, decode_body
             except:
                 myconf['encoding'] = ''
 
