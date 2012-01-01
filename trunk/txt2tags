@@ -3147,12 +3147,12 @@ def aa_slide(title, char, width):
     return res
 
 
-def aa_table(table, chars, width, border, h_header, v_header, align, spread):
+def aa_table(table, chars, width, border, h_header, v_header, align, spread, web):
     for row in table:
         for i, el in enumerate(row['cells']):
             if spread and el and el.strip() and el.strip()[0] == '=':
                 try:
-                    if CONF['web']:
+                    if web:
                         row['cells'][i] = '<a title="' + el.strip()[1:] + '">' + str(eval(el.strip()[1:])) + '</a>'
                     else:
                         row['cells'][i] = str(eval(el.strip()[1:]))
@@ -3181,7 +3181,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     tab = []
     for i in range(n):
         tab.append([line[i] for line in data3])
-    if CONF['web']:
+    if web:
         length = [max([aa_len_cjk(re.sub('<a.*">|</a>', '', el)) for el in line]) for line in tab]
     else:
         length = [max([aa_len_cjk(el) for el in line]) for line in tab]
@@ -3211,7 +3211,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
             if i == 0 or border:
                 ret.append(res)
         for j, el in enumerate(line[0]):
-            if CONF['web']:
+            if web:
                 aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(re.sub('<a.*">|</a>', '',el)) - 2) * " " + side
             else:
                 aff = aff + " " + el + (sum(length[j:(j + line[1][j])]) + line[1][j] * 3 - aa_len_cjk(el) - 2) * " " + side
@@ -3221,7 +3221,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread):
     ret.append(res)
     if align == 'Left':
         ret = [' ' * 2  + line for line in ret]
-    elif align == 'Center' and not (CONF['web'] and spread):
+    elif align == 'Center' and not (web and spread):
         ret = [aa_center(line, width) for line in ret]
     return ret
 
@@ -5568,18 +5568,18 @@ class BlockMaster:
 
         if TARGET == 'aat':
             if CONF['spread']:
-                return aa_table(self.tableparser.rows, AA, CONF['width'], True, True, True, 'Center', True) + ['']
+                return aa_table(self.tableparser.rows, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False) + ['']
+                return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
-            return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False) + ['']
+            return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp':
-            aa_t = aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False)
+            aa_t = aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
