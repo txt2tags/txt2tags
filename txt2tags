@@ -3396,13 +3396,16 @@ def Savefile(file_path, contents):
     cont = []
     if CONF['target'] in ('aat', 'rst', 'txt'):
         for line in contents:
-            if not isinstance(line, str):
+            if isinstance(line, unicode):
                 cont.append(line.encode('utf-8'))
             else:
                 cont.append(line)
     elif CONF['target'] == 'mgp':
         for line in contents:
-            cont.append(line.decode('utf-8').encode('latin1', 'replace'))
+            if isinstance(line, unicode):
+                cont.append(line.encode('latin1', 'replace'))
+            else:
+                cont.append(line)
     else:
         cont = contents
     doit(cont)
@@ -6413,16 +6416,7 @@ def doHeader(headers, config):
     # Expand macros on *all* lines of the template
     template = map(MacroMaster(config=config).expand, template)
     # Add Body contents to template data
-    if config['target'] == 'mgp':
-        li = []
-        for el in config['fullBody']:
-            if not isinstance(el, str):
-                li.append(el.encode('utf-8'))
-            else:
-                li.append(el)
-        head_data['BODY'] = '\n'.join(li)
-    else:
-        head_data['BODY'] = '\n'.join(config['fullBody'])
+    head_data['BODY'] = '\n'.join(config['fullBody'])
     # Populate template with data (dict expansion)
     template = '\n'.join(template) % head_data
 
@@ -6995,7 +6989,7 @@ def convert_this_files(configs):
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
         
-        if myconf['target'] in ['aat', 'txt', 'rst'] and myconf['encoding'].lower() == 'utf-8':
+        if myconf['target'] in ['aat', 'txt', 'rst', 'mgp'] and myconf['encoding'].lower() == 'utf-8':
             decode_head, decode_body = [], []
             try:
                 for line in source_head:
