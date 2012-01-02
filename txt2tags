@@ -268,6 +268,7 @@ TARGET_NAMES = {
   'aap'    : _('ASCII Art Presentation'),
   'aas'    : _('ASCII Art Spreadsheet'),
   'aatw'   : _('ASCII Art Text Web'),
+  'aapw'   : _('ASCII Art Presentation Web'),
   'aasw'   : _('ASCII Art Spreadsheet Web'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
@@ -285,7 +286,7 @@ TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw', 'aasw')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw', 'aapw', 'aasw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -3135,6 +3136,8 @@ def aa_header(header_data, chars, width, n, end):
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
+    if CONF['web']:
+        header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
     return header
 
 
@@ -3144,6 +3147,8 @@ def aa_slide(title, char, width):
     res.append(aa_center(title, width)[:width])
     res.append('')
     res.append(aa_line(char, width))
+    if CONF['web']:
+        res = ['<section><pre>' + res[0]] + res[1:]
     return res
 
 
@@ -4044,6 +4049,8 @@ class ConfigMaster:
                 outfile = "%s.%s" % (basename, 'aas')
             if config['target'] == 'aat' and config['web']:
                 outfile = "%s.%s" % (basename, 'aatw')
+            if config['target'] == 'aat' and config['slides'] and config['web']:
+                outfile = "%s.%s" % (basename, 'aapw')
             if config['target'] == 'aat' and config['spread'] and config['web']:
                 outfile = "%s.%s" % (basename, 'aasw')
 
@@ -4103,11 +4110,15 @@ class ConfigMaster:
             exec('from math import *', globals())
         if target == 'aatw':
             target, config['web'] = 'aat', True
+        if target == 'aapw':
+            target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
             exec('from math import *', globals())
         # Slides needs width and height
         if config['slides'] and target == 'aat':
+            if config['web']:
+                config['height'], config['width'] = 28, 80
             if not config['width'] and  not config['height'] and os.name == 'posix':
                 import fcntl, termios
                 data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
@@ -5350,7 +5361,10 @@ class BlockMaster:
         if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
-                result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
+                if CONF['web']:
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
+                else:
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
                     if CONF['headers']:
@@ -5359,7 +5373,10 @@ class BlockMaster:
                         AA_TITLE = ' '
                 aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + ['']
                 if AA_COUNT:
-                    aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
+                    if CONF['web']:
+                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
+                    else:
+                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
             AA_COUNT += len(result)
 
@@ -6363,10 +6380,14 @@ def doHeader(headers, config):
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
             if config['spread']:
                 pre = '<pre style="text-align:center">'
+            elif config['slides']:
+                pre = ''
             else:
                 pre = '<pre>'
             head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title>' + pre]
             foot_web = ['</pre></html>']
+            if config['slides']:
+                foot_web = ['</html>'] + Readfile('templates/dzslides-aapw.html', remove_linebreaks=1)
             if config['spread']:
                 return head_web + config['fullBody'] + foot_web
             else:
@@ -7025,7 +7046,10 @@ def convert_this_files(configs):
         # Close the last slide
         if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'aat':
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
-            target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
+            if myconf['web']:
+                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '</pre></section>']
+            else:
+                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
             if myconf['qa']:
                 n_before = (myconf['height'] - 24) / 2
                 n_after = myconf['height'] - 24 - n_before
