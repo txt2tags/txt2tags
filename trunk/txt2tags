@@ -3188,7 +3188,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread, web
     if spread:
         if n > 676:
             Error(_("ASCII Art Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)        
-        h = [(string.uppercase[i/26 - 1].replace('Z', '') + string.uppercase[i%26]).center(length[i]) for i in range(n)]
+        h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]).center(length[i]) for i in range(n)]
         data2 = [[h, [1] * n]] + data2
         data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
         data2[0][0][0] = ''
