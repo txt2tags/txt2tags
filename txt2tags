@@ -3127,7 +3127,7 @@ def aa_box(txt, chars, width, centred=True):
     return [line_box] + line_txt + [line_box]
 
 
-def aa_header(header_data, chars, width, n, end):
+def aa_header(header_data, chars, width, n, end, web):
     header = [aa_line(chars['bar2'], width)]
     header.extend([''] * n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
@@ -3136,18 +3136,18 @@ def aa_header(header_data, chars, width, n, end):
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
-    if CONF['web']:
+    if web:
         header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
     return header
 
 
-def aa_slide(title, char, width):
+def aa_slide(title, char, width, web):
     res = [aa_line(char, width)]
     res.append('')
     res.append(aa_center(title, width)[:width])
     res.append('')
     res.append(aa_line(char, width))
-    if CONF['web']:
+    if web:
         res = ['<section><pre>' + res[0]] + res[1:]
     return res
 
@@ -5362,16 +5362,16 @@ class BlockMaster:
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 if CONF['web']:
-                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
                 else:
-                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + [''] + result
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
                     if CONF['headers']:
                         AA_TITLE = CONF['header1'] or ' '
                     else:
                         AA_TITLE = ' '
-                aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width']) + ['']
+                aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web']) + ['']
                 if AA_COUNT:
                     if CONF['web']:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
@@ -6190,7 +6190,7 @@ def toc_inside_body(body, toc, config):
                     j = i % (config['height'] - 1)
                     title = body[i - j + 2 + n]
                     ret.extend([''] * (config['height'] - j - 2 + n))
-                    ret.extend([aa_line(AA['bar1'], config['width'])] + toc + aa_slide(title, AA['bar2'], config['width']) + [''])
+                    ret.extend([aa_line(AA['bar1'], config['width'])] + toc + aa_slide(title, AA['bar2'], config['width'], CONF['web']) + [''])
                     flag = True
                 else:
                     ret.extend(toc)     # include if --toc
@@ -6243,7 +6243,7 @@ def toc_formatter(toc, config):
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if config['target'] == 'aat' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
-        toc = aa_slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width']) + toc + ([''] * n)
+        toc = aa_slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width'], CONF['web']) + toc + ([''] * n)
         toc.append(aa_line(AA['bar2'], config['width']))
         return toc
     if config['target'] == 'aat' and not config['slides']:
@@ -6360,9 +6360,9 @@ def doHeader(headers, config):
                 x = config['height'] - 3 - (n_h * 3)
                 n = x / (n_h + 1)
                 end = x % (n_h + 1)
-                template = aa_header(head_data, AA, config['width'], n, end)
+                template = aa_header(head_data, AA, config['width'], n, end, CONF['web'])
             else:
-                template = [''] + aa_header(head_data, AA, config['width'], 2, 0)
+                template = [''] + aa_header(head_data, AA, config['width'], 2, 0, False)
         if config['slides']:
             total = len(config['fullBody']) / (config['height'] - 1) 
             l = aa_len_cjk(head_data['HEADER2']) + aa_len_cjk(head_data['HEADER3']) + 2
@@ -7053,7 +7053,7 @@ def convert_this_files(configs):
             if myconf['qa']:
                 n_before = (myconf['height'] - 24) / 2
                 n_after = myconf['height'] - 24 - n_before
-                head = aa_slide(_("Q&A"), AA['bar2'], myconf['width'])
+                head = aa_slide(_("Q&A"), AA['bar2'], myconf['width'], myconf['web'])
                 if myconf['height'] > 23 and myconf['width'] > 22:
                     target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * n_after + [aa_line(AA['bar2'], myconf['width'])]
                 else:
