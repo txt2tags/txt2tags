@@ -18,7 +18,10 @@ Florent Gallaire
 || corner | border | side | bar1 | bar2 | level2 | level3 | level4 | level5 | bullet | hhead | vhead
 | + | - | | | - | =  | = | - | ^ | " | - | = | $
 
-There is an exception: the bullet char default value is * for the aap target.
+There is two exceptions:
+- The hhead char of the tables with no border is bind to the border char, so its default value is **-**.
+- The bullet char default value is ***** for the aap target.
+
 
 === Rendering ===
 
