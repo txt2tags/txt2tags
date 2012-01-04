@@ -2,7 +2,7 @@
 
 // TXT2TAGS syntax for pmwiki
 //
-// Get the lastest version from http://www.pmwiki.org/wiki/Cookbook/Txt2tags
+// Get the lastest version from http://www.pmwiki.org/wiki/Cookbook/txt2tags
 // or from the svn: http://txt2tags.googlecode.com/svn/trunk/extras/pmwiki/txt2tags.php
 //
 // Installation :
@@ -17,7 +17,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2011-10-01';
+$RecipeInfo['txt2tags']['Version'] = '2011-12-24';
 
 $MyGuiEditor = '$FarmPubDirUrl/t2tguiedit/';
 
@@ -31,88 +31,94 @@ $MyGuiEditor = '$FarmPubDirUrl/t2tguiedit/';
 
 	$GUIButtonDirUrlFmt = $MyGuiEditor;
                                        
-    $GUIButtons['h1'] = array(100, "= ", " =", '$[Heading level 1]',
-                     '$GUIButtonDirUrlFmt/h1.png"$[Heading level 1]"');
+    $GUIButtons['h1']         = array(100, "= ", " =", '$[Heading level 1]',
+                                     '$GUIButtonDirUrlFmt/h1.png"$[Heading level 1]"');
                       
-	$GUIButtons['h2'] = array(110, "== ", " ==", '$[Heading level 2]',
-                     '$GUIButtonDirUrlFmt/h2.png"$[Heading level 2]"');
+	$GUIButtons['h2']         = array(110, "== ", " ==", '$[Heading level 2]',
+                                     '$GUIButtonDirUrlFmt/h2.png"$[Heading level 2]"');
 
-	$GUIButtons['h3'] = array(120, "=== ", " ===", '$[Heading level 3]',
-                     '$GUIButtonDirUrlFmt/h3.png"$[Heading level 3]"');
+	$GUIButtons['h3']         = array(120, "=== ", " ===", '$[Heading level 3]',
+                                     '$GUIButtonDirUrlFmt/h3.png"$[Heading level 3]"');
 
-	$GUIButtons['h4'] = array(130, "==== ", " ====", '$[Heading level 4]',
-                     '$GUIButtonDirUrlFmt/h4.png"$[Heading level 4]"');
+	$GUIButtons['h4']         = array(130, "==== ", " ====", '$[Heading level 4]',
+                                     '$GUIButtonDirUrlFmt/h4.png"$[Heading level 4]"');
 
-	$GUIButtons ['empty1'] = array(199, "", "", '',
+	$GUIButtons ['empty1']    = array(199, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
                                     
 
-	$GUIButtons ['strong']      = array(210, "**", "**", '$[Strong Text]',
+	$GUIButtons ['strong']    = array(210, "**", "**", '$[Strong Text]',
                                     '$GUIButtonDirUrlFmt/strong.png"$[Strong Text]"');                                 
                                     
-	$GUIButtons ['underline']      = array(230, "__", "__", '$[Underlined Text]',
+	$GUIButtons ['underline'] = array(230, "__", "__", '$[Underlined Text]',
                                     '$GUIButtonDirUrlFmt/underline.png"$[Underlined Text]"');
 
-	$GUIButtons ['em']      = array(220, "//", "//", '$[Italic Text]',
+	$GUIButtons ['em']        = array(220, "//", "//", '$[Italic Text]',
                                     '$GUIButtonDirUrlFmt/em.png"$[Italic Text]"');
                                     
-	$GUIButtons ['strike']      = array(240, "--", "--", '$[Striked Text]',
+	$GUIButtons ['strike']    = array(240, "--", "--", '$[Striked Text]',
                                     '$GUIButtonDirUrlFmt/strike.png"$[Striked Text]"');         
 
-	$GUIButtons ['empty3'] = array(299, "", "", '',
+	$GUIButtons ['empty3']    = array(299, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
 
-	$GUIButtons ['ul'] = array(310, "\\n- ", "", '$[Unordered list]',
-                     '$GUIButtonDirUrlFmt/ul.png"$[:: Unordered (bullet) list]"');
+	$GUIButtons ['ul']        = array(310, "\\n- ", "", '$[Unordered list]',
+                                    '$GUIButtonDirUrlFmt/ul.png"$[:: Unordered (bullet) list]"');
                      
-	$GUIButtons ['ol'] = array(320, "\\n+ ", "", '$[Ordered list]',
+	$GUIButtons ['ol']        = array(320, "\\n+ ", "", '$[Ordered list]',
                                     '$GUIButtonDirUrlFmt/ol.png"$[:: Ordered (numbered) list]"');
 
-	$GUIButtons ['empty2'] = array(399, "", "", '',
+	$GUIButtons ['empty2']    = array(399, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
 
-	$GUIButtons ['extlink'] = array(410, '[',']', '$[link description text http://]',
+	$GUIButtons ['extlink']   = array(410, '[',']', '$[link description text http://]',
                                     '$GUIButtonDirUrlFmt/extlink.png"$[:: Link to external page http://]"');
 
 	$GUIButtons ['innerlink'] = array(420, '[[',']]', '$[WikiPage | link description text]',
                                     '$GUIButtonDirUrlFmt/link.png"$[:: Link to a page in this wiki]"');
 
-	$GUIButtons ['empty4'] = array(499, "", "", '',
+	$GUIButtons ['empty4']    = array(499, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
                                     
 
                                    
-	$GUIButtons ['comment'] = array(510, "\\n% ", "\\n", 'commented text\\n\\n',
+	$GUIButtons ['comment']   = array(510, "\\n% ", "\\n", 'commented text\\n\\n',
                                     '$GUIButtonDirUrlFmt/comment.png"$[:: Comment (wont be interpreted)]"');
                                     
-    $GUIButtons ['code']   = array(520, '``', '``', '$[Preformated Code]',
+    $GUIButtons ['code']      = array(520, '``', '``', '$[Preformated Code]',
                                     '$GUIButtonDirUrlFmt/code.png"$[:: Preformated Code]"');
                                     
-    $GUIButtons ['rawtxt']   = array(530, '&quot&quot', '&quot&quot', '$[Raw text]',
+    $GUIButtons ['rawtxt']    = array(530, '&quot&quot', '&quot&quot', '$[Raw text]',
                                     '$GUIButtonDirUrlFmt/raw.png"$[:: Raw text]"');
                                     
-	$GUIButtons ['empty5'] = array(599, "", "", '',
+	$GUIButtons ['empty5']    = array(599, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
 
-	$GUIButtons ['hr'] = array(610, "\\n--------------------\\n", "", '',
+	$GUIButtons ['hr']        = array(610, "\\n--------------------\\n", "", '',
                                     '$GUIButtonDirUrlFmt/hr.png"$[:: Separator line]"');
  
-    $GUIButtons ['table'] = array(620, '\\n| table | table ||\\n| cell | cell ||\\n', '', '',
-                    '$GUIButtonDirUrlFmt/table.png"$[:: Add sample table]"');
+    $GUIButtons ['table']     = array(620, '\\n| table | table ||\\n| cell | cell ||\\n', '', '',
+                                    '$GUIButtonDirUrlFmt/table.png"$[:: Add sample table]"');
                     
-	$GUIButtons ['sig'] = array(630, ' $CurrentTime', ' ', ' ',
-                    '$GUIButtonDirUrlFmt/sig.png"$[:: Insert <CurrentTime>]"');
+	$GUIButtons ['sig']       = array(630, ' $CurrentTime', ' ', ' ',
+                                    '$GUIButtonDirUrlFmt/sig.png"$[:: Insert <CurrentTime>]"');
 
 
-	$GUIButtons ['empty6'] = array(699, "", "", '',
+	$GUIButtons ['empty6']    = array(699, "", "", '',
                                     '$GUIButtonDirUrlFmt/empty.png');
 
 
-	$GUIButtons ['attach'] = array(710, 'Attach:', '', '$[file.ext]',
-                    '$GUIButtonDirUrlFmt/attach.png"$[:: Attach File]"');
+	$GUIButtons ['attach']    = array(710, 'Attach:', '', '$[file.ext]',
+                                    '$GUIButtonDirUrlFmt/attach.png"$[:: Attach File]"');
+                    
+	$GUIButtons ['empty7']    = array(249, "", "", '',
+                                    '$GUIButtonDirUrlFmt/empty.png');
+                                    
+    $GUIButtons ['centering'] = array(250, "{ ~~ }", "{/~~ }", '$[Center Text]',
+                                    '$GUIButtonDirUrlFmt/text_align_center.png"$[Center Text]"');
                              
     
 # specific translation expression
@@ -286,14 +292,14 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	
 // // // /    LINKS
 	
-	//Markup ('txt2tags_locallink3'    , 'directives', '/\[(.*?) local:\/\/(.*?)\]/s', '[[http://$2|$1]]');
+	// (see below) Markup ('txt2tags_locallink3'    , 'directives', '/\[(.*?) local:\/\/(.*?)\]/s', '[[http://$2|$1]]');
 	
 	//Markup('txt2tags_locallink',  '>fulltext',  '/\[(.*?) \| (.*?)\]/s',  '<a href="$2">$1</a>');
 
 	// contrary to the normal txt2tags, we have to precise if the file is local with local://
 	// In the case $EnablePathInfo = 1; in local/config.php use ../../ after local:
 	//    [description local://../../subfolder/file.ext]
-	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/s',  '<a href="$2">$1</a>');
+	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/',  '<a href="$2">$1</a>');
 	
 	Markup ('txt2tags_urllink'    , 'directives', '/\[(.*?) HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
 	//Markup ('txt2tags_urllink'    , '<inline', '/\[(.*?) http:\/\/(.*?)\]/s', '<a href="$2>$1</a>');	
@@ -334,24 +340,6 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	
 	 
 
-// textallion specifics:
-// PmWiki allows some advanced formatting not in txt2tags. We can extend it using the textallion syntax (see http://code.google.com/p/textallion/)
-
-	Markup ('textallion_center' , 'directives', '/\{ ~~ \}(.*?)\{\/~~ \}/' , "%center% $1");
-	Markup ('textallion_rfloat' , '<directives', '/\{~~~~\}Attach:(.*?)/' , "%rfloat% Attach:$1");
-	Markup ('textallion_lfloat' , 'directives', '/(.*?)\{~~~~\}/' , "%lfloat% $1");
-	Markup ('textallion_linebreak' , '<directives', '/\{\/\/..\}/' , '<br/>');
-	
-	# ignore 4 characters surrounded by {}, for example {****}
-	Markup ('textallion_ignore_unknown_rule' , '>directives', '/\{(.{4})\}/' , '');
-
-	# ignore 3 characters surrounded by {}, for example {|1|} (columns)
-	Markup ('textallion_ignore_unknown_rule2' , '>directives', '/\{(.{3})\}/' , '');
-	
-	# ignore index mark
-	Markup ('textallion_ignore_indexrule' , '>directives', '/\{\^\}/' , '');
-	
-	
 
 /*
 
