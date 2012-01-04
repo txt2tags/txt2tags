@@ -389,7 +389,7 @@ def Usage():
         fmt1 % (''  , '--style=FILE'   , _("use FILE as the document style (like HTML CSS)")),
         fmt1 % (''  , '--css-sugar'    , _("insert CSS-friendly tags for HTML/XHTML")),
         fmt1 % (''  , '--css-inside'   , _("insert CSS file contents inside HTML/XHTML headers")),
-        fmt1 % (''  , '--embed-images' , _("embed image data inside RTF, aat and aap documents")),
+        fmt1 % (''  , '--embed-images' , _("embed image data inside HTML, RTF, aat and aap documents")),
         fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
         fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
         fmt1 % (''  , '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
@@ -1179,6 +1179,7 @@ def getTags(config):
         'email'                : '<A HREF="mailto:\a">\a</A>' ,
         'emailMark'            : '<A HREF="mailto:\a">\a</A>' ,
         'img'                  : '<IMG~A~ SRC="\a" BORDER="0" ALT="">',
+        'imgEmbed'             : '<IMG~A~ SRC="\a" BORDER="0" ALT="">', 
         '_imgAlignLeft'        : ' ALIGN="left"'  ,
         '_imgAlignCenter'      : ' ALIGN="middle"',
         '_imgAlignRight'       : ' ALIGN="right"' ,
@@ -3281,8 +3282,6 @@ def aa_center(txt, width):
     n_before = (width - aa_len_cjk(txt)) / 2
     n_after = width - aa_len_cjk(txt) - n_before
     return ' ' * n_before + txt + ' ' * n_after
-
-
 ##############################################################################
 
 class error(Exception):
@@ -7200,8 +7199,15 @@ RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
 
 def embedImage(filename):
     mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
-
-    if TARGET == 'rtf':
+    if TARGET == 'html':
+        ## return a data uri with the image embed.
+        ## see: http://en.wikipedia.org/wiki/Data_URI_scheme
+        import base64
+        line = "data: image/%s;base64,"%mytype
+        line = line+base64.b64encode(file(filename).read())
+        return line
+        
+    elif TARGET == 'rtf':
         global RTFIMGID
         RTFIMGID += 1
         # Defalt DPI of images.
