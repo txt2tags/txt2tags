@@ -3170,7 +3170,7 @@ class SpreadSheet:
             except:
                 return 'Error'
         else:
-            return self._cells[key]
+            return self._cells[key].strip()
 
 
 def aa_table(table, chars, width, border, h_header, v_header, align, spread, web):
