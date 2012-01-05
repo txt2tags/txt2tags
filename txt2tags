@@ -3156,17 +3156,39 @@ def aa_slide(title, char, width, web):
     return res
 
 
+# Raymond Hettinger's recipe
+class SpreadSheet:
+    _cells = {}
+    def __setitem__(self, key, formula):
+        self._cells[key] = formula
+    def getformula(self, key):
+        return self._cells[key]
+    def __getitem__(self, key):
+        if self._cells[key].strip()[0] == '=':
+            try:
+                return eval(self._cells[key].strip()[1:], globals(), self)
+            except:
+                return 'Error'
+        else:
+            return self._cells[key]
+
+
 def aa_table(table, chars, width, border, h_header, v_header, align, spread, web):
-    for row in table:
-        for i, el in enumerate(row['cells']):
-            if spread and el and el.strip() and el.strip()[0] == '=':
-                try:
+    if spread:
+        s = SpreadSheet()
+        for j, row in enumerate(table):
+            for i, el in enumerate(row['cells']):
+                ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
+                if el and el.strip():
+                    s[ind] = el
+        for j, row in enumerate(table):
+            for i, el in enumerate(row['cells']):
+                ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
+                if el and el.strip() and el.strip()[0] == '=':
                     if web:
-                        row['cells'][i] = '<a title="' + el.strip()[1:] + '">' + str(eval(el.strip()[1:])) + '</a>'
+                        row['cells'][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
                     else:
-                        row['cells'][i] = str(eval(el.strip()[1:]))
-                except:
-                    row['cells'][i] = 'Error'
+                        row['cells'][i] = str(s[ind])
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3285,6 +3307,8 @@ def aa_center(txt, width):
     n_before = (width - aa_len_cjk(txt)) / 2
     n_after = width - aa_len_cjk(txt) - n_before
     return ' ' * n_before + txt + ' ' * n_after
+
+
 ##############################################################################
 
 class error(Exception):
