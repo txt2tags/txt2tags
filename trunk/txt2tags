@@ -389,7 +389,7 @@ def Usage():
         fmt1 % (''  , '--style=FILE'   , _("use FILE as the document style (like HTML CSS)")),
         fmt1 % (''  , '--css-sugar'    , _("insert CSS-friendly tags for HTML/XHTML")),
         fmt1 % (''  , '--css-inside'   , _("insert CSS file contents inside HTML/XHTML headers")),
-        fmt1 % (''  , '--embed-images' , _("embed image data inside HTML, RTF, aat and aap documents")),
+        fmt1 % (''  , '--embed-images' , _("embed image data inside HTML, html5, xhtml, RTF, aat and aap documents")),
         fmt2 % ('-H', '--no-headers'   , _("suppress header and footer from the output")),
         fmt2 % ('-T', '--template=FILE', _("use FILE as the template for the output document")),
         fmt1 % (''  , '--mask-email'   , _("hide email from spam robots. x@y.z turns <x (a) y z>")),
@@ -1212,6 +1212,7 @@ def getTags(config):
         'bar1'                 : '<hr class="light" />',
         'bar2'                 : '<hr class="heavy" />',
         'img'                  : '<img~A~ src="\a" border="0" alt=""/>',
+        'imgEmbed'             : '<img~A~ SRC="\a" border="0" alt=""/>'
     },
 
     'xhtmls': {
@@ -1229,6 +1230,7 @@ def getTags(config):
         'bar1'                 : '<hr class="light" />',
         'bar2'                 : '<hr class="heavy" />',
         'img'                  : '<img~a~ src="\a" alt=""/>',
+        'imgEmbed'             : '<img~a~ src="\a" alt=""/>',
         '_imgAlignLeft'        : ' style="text-align:left"'  ,
         '_imgAlignCenter'      : ' style="text-align:center"',
         '_imgAlignRight'       : ' style="text-align:right"' ,
@@ -1251,6 +1253,7 @@ def getTags(config):
         'bar1'                 : '<hr class="light"/>'        ,
         'bar2'                 : '<hr class="heavy"/>'        ,
         'img'                  : '<img~a~ src="\a" alt=""/>'  ,
+        'imgEmbed'             : '<img~a~ src="\a" alt=""/>'  ,
         '_imgAlignLeft'        : ' class="left"'  ,
         '_imgAlignCenter'      : ' class="center"',
         '_imgAlignRight'       : ' class="right"' ,
@@ -7199,7 +7202,8 @@ RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
 
 def embedImage(filename):
     mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
-    if TARGET == 'html':
+    if TARGET in ('html','xhtml','xhtmls','html5'):
+
         ## return a data uri with the image embed.
         ## see: http://en.wikipedia.org/wiki/Data_URI_scheme
         import base64
