@@ -3184,7 +3184,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread, web
         for j, row in enumerate(table):
             for i, el in enumerate(row['cells']):
                 ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
-                if el and el.strip() and el.strip()[0] == '=':
+                if el and el.strip():
                     if web:
                         row['cells'][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
                     else:
