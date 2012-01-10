@@ -113,7 +113,7 @@ Features: simple, fast, automatic TOC, macros, filters, include, tools, extensiv
 			<Application_Info_URL>http://txt2tags.org</Application_Info_URL>
 			<Application_Order_URL/>
 			<Application_Screenshot_URL>http://txt2tags.org/userguide/firstdoc.png</Application_Screenshot_URL>
-			<Application_Icon_URL>http://aurelio.net/soft/img/icon32/txt2tags.png</Application_Icon_URL>
+			<Application_Icon_URL>http://aurelio.net/soft/img/icon/32/txt2tags.png</Application_Icon_URL>
 			<Application_XML_File_URL>http://aurelio.net/soft/padfiles/txt2tags-pad.xml</Application_XML_File_URL>
 		</Application_URLs>
 		<Download_URLs>
