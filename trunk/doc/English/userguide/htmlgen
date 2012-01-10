@@ -22,7 +22,8 @@ funcoeszz trocapalavra '</HEAD>' \
 	'<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>' *.html
 
 # Old links
-ln -sf index.html userguide.html
+#ln -sf index.html userguide.html
+# Disabled in 2012-01-10. I guess it's not needed anymore.
 
 open "$outdir/index.html"
 exit 0
