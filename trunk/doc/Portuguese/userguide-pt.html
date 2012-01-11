@@ -21,49 +21,50 @@ pre {border-style:solid; border-width:1px 1px;
      border-color:black;}                      
 </STYLE>
 <META NAME="generator" CONTENT="http://txt2tags.org">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
-<TITLE>Guia do Usuário Txt2tags</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Guia do UsuÃ¡rio Txt2tags</TITLE>
 </HEAD><BODY BGCOLOR="white" TEXT="black">
-<P ALIGN="center"><CENTER><H1>Guia do Usuário Txt2tags</H1>
-<FONT SIZE="4">
-<I>Aurelio, Mon Jun  6 23:58:31 2005</I><BR>
-Tradução para o português: César A. K. Grossman
-</FONT></CENTER>
+<CENTER>
+<H1>Guia do UsuÃ¡rio Txt2tags</H1>
+<FONT SIZE="4"><I>Aurelio, Wed Jan 11 20:53:37 2012</I></FONT><BR>
+<FONT SIZE="4">TraduÃ§Ã£o para o portuguÃªs: CÃ©sar A. K. Grossman</FONT>
+</CENTER>
 
 <P></P>
 <HR NOSHADE SIZE=1>
 <P></P>
+
   <UL>
   <LI><A HREF="#toc1">Sobre este documento</A>
-  <LI><A HREF="#toc2">Parte I - Introdução ao Txt2tags</A>
+  <LI><A HREF="#toc2">Parte I - IntroduÃ§Ã£o ao Txt2tags</A>
     <UL>
-    <LI><A HREF="#toc3">Suas Primeiras Questões</A>
-    <LI><A HREF="#toc4">Estruturas de Formatação Suportadas</A>
+    <LI><A HREF="#toc3">Suas Primeiras QuestÃµes</A>
+    <LI><A HREF="#toc4">Estruturas de FormataÃ§Ã£o Suportadas</A>
     <LI><A HREF="#toc5">Formatos Suportados</A>
-    <LI><A HREF="#estruturas">Situação dos Formatos-Destino para as Estruturas Suportadas</A>
-    <LI><A HREF="#toc7">As Três Interfaces ao Usuário: GUI, Web e Linha de Comando</A>
+    <LI><A HREF="#estruturas">SituaÃ§Ã£o dos Formatos-Destino para as Estruturas Suportadas</A>
+    <LI><A HREF="#toc7">As TrÃªs Interfaces ao UsuÃ¡rio: GUI, Web e Linha de Comando</A>
     </UL>
   <LI><A HREF="#instalacao">Parte II - OK, eu quero um. E agora?</A>
     <UL>
-    <LI><A HREF="#toc9">Download e Instalação do Python</A>
+    <LI><A HREF="#toc9">Download e InstalaÃ§Ã£o do Python</A>
     <LI><A HREF="#toc10">Copiando o txt2tags</A>
-    <LI><A HREF="#toc11">Instalação do txt2tags</A>
+    <LI><A HREF="#toc11">InstalaÃ§Ã£o do txt2tags</A>
     <LI><A HREF="#sintaxe">Instalar os Arquivos de Sintaxe dos Editores de Texto</A> <b>[NOVO!]</b>
     </UL>
   <LI><A HREF="#toc13">Parte III - Escrevendo e Convertendo Seu Primeiro Documento</A>
     <UL>
-    <LI><A HREF="#toc14">As Áreas do documento .t2t</A>
+    <LI><A HREF="#toc14">As Ãreas do documento .t2t</A>
     </UL>
   <LI><A HREF="#toc15">Parte IV - Dominando o Txt2tags</A>
     <UL>
-    <LI><A HREF="#toc16">A Área de Cabeçalho</A>
-    <LI><A HREF="#toc17">A Área de Configuração</A>
+    <LI><A HREF="#toc16">A Ãrea de CabeÃ§alho</A>
+    <LI><A HREF="#toc17">A Ãrea de ConfiguraÃ§Ã£o</A>
     <LI><A HREF="#toc18">O Corpo do Texto</A>
-    <LI><A HREF="#regras">Marcações (REGRAS)</A>
+    <LI><A HREF="#regras">MarcaÃ§Ãµes (REGRAS)</A>
     <LI><A HREF="#data">A macro %%date</A>
     <LI><A HREF="#include">O comando %!include</A>
     </UL>
-  <LI><A HREF="#settings">Parte V - Dominando as Diretivas de Configuração</A>
+  <LI><A HREF="#settings">Parte V - Dominando as Diretivas de ConfiguraÃ§Ã£o</A>
     <UL>
     <LI><A HREF="#toc23">%!Target</A> <b>[NOVO!]</b>
     <LI><A HREF="#toc24">%!Options</A> <b>[NOVO!]</b>
@@ -72,211 +73,217 @@ Tradução para o português: César A. K. Grossman
     <LI><A HREF="#toc27">%!PostProc</A>
     <LI><A HREF="#toc28">%!Style</A>
     <LI><A HREF="#toc29">Detalhes dos Filtros PreProc e PostProc</A>
-    <LI><A HREF="#toc30">Definindo uma Configuração para um Tipo-Destino Específico</A>
-    <LI><A HREF="#toc31">RC, CONF e a precedência de linha de comando</A> <b>[NOVO!]</b>
+    <LI><A HREF="#toc30">Definindo uma ConfiguraÃ§Ã£o para um Tipo-Destino EspecÃ­fico</A>
+    <LI><A HREF="#toc31">RC, CONF e a precedÃªncia de linha de comando</A> <b>[NOVO!]</b>
     </UL>
   <LI><A HREF="#toc32">Parte VI - Magia Negra</A>
     <UL>
-    <LI><A HREF="#toc33">Inserindo Múltiplas Linhas com %!PostProc (como regras CSS)</A>
-    <LI><A HREF="#toc34">Criando Conteúdo "Específico ao Tipo Destino", com %!PreProc</A>
+    <LI><A HREF="#toc33">Inserindo MÃºltiplas Linhas com %!PostProc (como regras CSS)</A>
+    <LI><A HREF="#toc34">Criando ConteÃºdo "EspecÃ­fico ao Tipo Destino", com %!PreProc</A>
     <LI><A HREF="#toc35">Mudando Marcas txt2tags com %!PreProc</A>
     </UL>
-  <LI><A HREF="#historia">Parte VII - História do txt2tags</A>
+  <LI><A HREF="#historia">Parte VII - HistÃ³ria do txt2tags</A>
     <UL>
-    <LI><A HREF="#toc37">Janeiro de 1999: Pré História</A>
-    <LI><A HREF="#toc38">Junho 1999: Ainda Pré-História</A>
-    <LI><A HREF="#toc39">Agosto de 2000: Não Mais Pré-História</A>
-    <LI><A HREF="#toc40">Julho de 2001: Debute das séries 0.x (Lançamento Mundial)</A>
-    <LI><A HREF="#toc41">Setembro de 2002: Debute das séries 1.x</A>
-    <LI><A HREF="#toc42">2002, 2003... e as História não pára</A>
+    <LI><A HREF="#toc37">Janeiro de 1999: PrÃ© HistÃ³ria</A>
+    <LI><A HREF="#toc38">Junho 1999: Ainda PrÃ©-HistÃ³ria</A>
+    <LI><A HREF="#toc39">Agosto de 2000: NÃ£o Mais PrÃ©-HistÃ³ria</A>
+    <LI><A HREF="#toc40">Julho de 2001: Debute das sÃ©ries 0.x (LanÃ§amento Mundial)</A>
+    <LI><A HREF="#toc41">Setembro de 2002: Debute das sÃ©ries 1.x</A>
+    <LI><A HREF="#toc42">2002, 2003... e as HistÃ³ria nÃ£o pÃ¡ra</A>
     </UL>
   </UL>
 
 <P></P>
 <HR NOSHADE SIZE=1>
 <P></P>
-<A NAME="toc1"></A>
-<H1>Sobre este documento</H1>
+
+<H1 ID="toc1">Sobre este documento</H1>
+
 	<BLOCKQUOTE>
-	Olá, eu sou o guia do usuário do txt2tags!
+	OlÃ¡, eu sou o guia do usuÃ¡rio do txt2tags!
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
-	Aqui você encontra toda a informação disponível sobre a
-	ferramenta de conversão de textos txt2tags.
+	Aqui vocÃª encontra toda a informaÃ§Ã£o disponÃ­vel sobre a
+	ferramenta de conversÃ£o de textos txt2tags.
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
-	Minha versão atualizada pode ser encontrada em
+	Minha versÃ£o atualizada pode ser encontrada em
 	<A HREF="http://txt2tags.org/userguide/">http://txt2tags.org/userguide/</A>
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
-	Para mais informações e versões recentes, visite
+	Para mais informaÃ§Ãµes e versÃµes recentes, visite
 	<A HREF="http://txt2tags.org/">o website do txt2tags</A>.
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
 	Bom proveito!
 	</BLOCKQUOTE>
-<P></P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="toc2"></A>
-<H1>Parte I - Introdução ao Txt2tags</H1>
-<A NAME="toc3"></A>
-<H2>Suas Primeiras Questões</H2>
+
+<H1 ID="toc2">Parte I - IntroduÃ§Ã£o ao Txt2tags</H1>
+
+<H2 ID="toc3">Suas Primeiras QuestÃµes</H2>
+
 <P>
-Este capítulo apresenta o txt2tags, introduzindo as funcionalidades e
+Este capÃ­tulo apresenta o txt2tags, introduzindo as funcionalidades e
 objetivo do programa.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<H3>O Que É?</H3>
+
+<H3>O Que Ã‰?</H3>
+
 <P>
-O txt2tags é uma ferramenta de formatação e conversão de texto.
+O txt2tags Ã© uma ferramenta de formataÃ§Ã£o e conversÃ£o de texto.
 </P>
 <P>
 O txt2tags converte um arquivo texto com algumas marcas para qualquer um
 dos tipos de arquivos suportados:
 </P>
+
 <UL>
 <LI>Documento HTML
 <LI>Documento XHTML
 <LI>Documento SGML
 <LI>Documento LaTeX
-<LI>Página man UNIX
-<LI>Apresentação Magic Point
-<LI>Página MoinMoin
+<LI>PÃ¡gina man UNIX
+<LI>ApresentaÃ§Ã£o Magic Point
+<LI>PÃ¡gina MoinMoin
 <LI>Documento PageMaker 6.0
-<LI>Texto Plano (sem marcações)
+<LI>Texto Plano (sem marcaÃ§Ãµes)
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<H3>Por Quê Eu Devo Usá-lo?</H3>
+
+<H3>Por QuÃª Eu Devo UsÃ¡-lo?</H3>
+
 <P>
-Você achará o txt2tags bastante útil se você:
+VocÃª acharÃ¡ o txt2tags bastante Ãºtil se vocÃª:
 </P>
+
 <UL>
 <LI>precisa publicar documentos em diferentes formatos
 <LI>precisa manter documentos atualizados em diferentes formatos
-<LI>escreve manuais ou documentos técnicos
-<LI>não sabe como escrever um documento em um formato específico
-<LI>não tem um editor específico para um certo formato.
+<LI>escreve manuais ou documentos tÃ©cnicos
+<LI>nÃ£o sabe como escrever um documento em um formato especÃ­fico
+<LI>nÃ£o tem um editor especÃ­fico para um certo formato.
 <LI>quer usar um editor de texto simples para atualizar seus documentos
 </UL>
 
 <P>
-E a motivação principal é:
+E a motivaÃ§Ã£o principal Ã©:
 </P>
+
 <UL>
-<LI>economizar tempo, escrevendo <B>conteúdo</B>, sem se preocupar com
-  <B>formatação</B>
+<LI>economizar tempo, escrevendo <B>conteÃºdo</B>, sem se preocupar com
+  <B>formataÃ§Ã£o</B>
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<H3>Quais vantagens oferece em relação a outras ferramentas?</H3>
+
+<H3>Quais vantagens oferece em relaÃ§Ã£o a outras ferramentas?</H3>
+
 <P>
 O txt2tags possui uma forma bem direta de crescimento, seguindo alguns
-conceitos básicos. Os conceitos a seguir se destacam:
+conceitos bÃ¡sicos. Os conceitos a seguir se destacam:
 </P>
+
 <TABLE CELLPADDING="4">
 <TR>
-<TD><I>Arquivo fonte legível</I></TD>
-<TD>As marcações do txt2tags são bastante simples, quase naturais.</TD>
+<TD><I>Arquivo fonte legÃ­vel</I></TD>
+<TD>As marcaÃ§Ãµes do txt2tags sÃ£o bastante simples, quase naturais.</TD>
 </TR>
 <TR>
-<TD><I>Documento destino legível</I></TD>
-<TD>Da mesma forma que o arquivo fonte, o código do documento gerado também é legível, alinhado e possui linhas curtas.</TD>
+<TD><I>Documento destino legÃ­vel</I></TD>
+<TD>Da mesma forma que o arquivo fonte, o cÃ³digo do documento gerado tambÃ©m Ã© legÃ­vel, alinhado e possui linhas curtas.</TD>
 </TR>
 <TR>
-<TD><I>Consistência na Marcação</I></TD>
-<TD>As marcações txt2tags são únicas, atendendo todos os tipos de documentos e não sendo confundidas com o conteúdo.</TD>
+<TD><I>ConsistÃªncia na MarcaÃ§Ã£o</I></TD>
+<TD>As marcaÃ§Ãµes txt2tags sÃ£o Ãºnicas, atendendo todos os tipos de documentos e nÃ£o sendo confundidas com o conteÃºdo.</TD>
 </TR>
 <TR>
 <TD><I>Regras Consistentes</I></TD>
-<TD>Da mesma forma que as marcas, as regras aplicadas a elas são uniformes, não há "exceções" ou "casos especiais".</TD>
+<TD>Da mesma forma que as marcas, as regras aplicadas a elas sÃ£o uniformes, nÃ£o hÃ¡ "exceÃ§Ãµes" ou "casos especiais".</TD>
 </TR>
 <TR>
 <TD><I>Estruturas Simples</I></TD>
-<TD>Toda a formatação suportada é <B>simples</B>, sem opções extras ou modificadores complexos de comportamento. Uma marcação é só uma marcação, sem opções adicionais.</TD>
+<TD>Toda a formataÃ§Ã£o suportada Ã© <B>simples</B>, sem opÃ§Ãµes extras ou modificadores complexos de comportamento. Uma marcaÃ§Ã£o Ã© sÃ³ uma marcaÃ§Ã£o, sem opÃ§Ãµes adicionais.</TD>
 </TR>
 <TR>
-<TD><I>Fácil de aprender</I></TD>
-<TD>Com marcações simples e o código fonte legível, a curva de aprendizado é bem amigável.</TD>
+<TD><I>FÃ¡cil de aprender</I></TD>
+<TD>Com marcaÃ§Ãµes simples e o cÃ³digo fonte legÃ­vel, a curva de aprendizado Ã© bem amigÃ¡vel.</TD>
 </TR>
 <TR>
 <TD><I>Bons Exemplos</I></TD>
-<TD>Os <B>arquivos de exemplo</B> incluídos com o pacote dão mostras reais de documentos simples e super-estruturados, escritos no formato txt2tags.</TD>
+<TD>Os <B>arquivos de exemplo</B> incluÃ­dos com o pacote dÃ£o mostras reais de documentos simples e super-estruturados, escritos no formato txt2tags.</TD>
 </TR>
 <TR>
 <TD><I>Ferramentas Valiosas</I></TD>
-<TD>Os <B>arquivos de sintaxe</B> incluídos com o pacote (para os editores vim, emacs, nano e kate) ajudam a escrever documentos sem erros sintáticos.</TD>
+<TD>Os <B>arquivos de sintaxe</B> incluÃ­dos com o pacote (para os editores vim, emacs, nano e kate) ajudam a escrever documentos sem erros sintÃ¡ticos.</TD>
 </TR>
 <TR>
-<TD><I>Três interfaces ao usuários</I></TD>
-<TD>Há uma <B>interface Gráfica Tk</B> que é bastante amigável, uma <B>inteface Web</B> para usar remotamente ou na intranet, e uma <B>interface de Linha de Comando</B>, para usuários avançados e scripts.</TD>
+<TD><I>TrÃªs interfaces ao usuÃ¡rios</I></TD>
+<TD>HÃ¡ uma <B>interface GrÃ¡fica Tk</B> que Ã© bastante amigÃ¡vel, uma <B>inteface Web</B> para usar remotamente ou na intranet, e uma <B>interface de Linha de Comando</B>, para usuÃ¡rios avanÃ§ados e scripts.</TD>
 </TR>
 <TR>
 <TD><I>Suporte a Scripts</I></TD>
-<TD>Com o modo completo de linha de comando, um usuário experiente pode <B>automatizar</B> tarefas e efetuar <B>pós-edições</B> nos arquivos convertidos.</TD>
+<TD>Com o modo completo de linha de comando, um usuÃ¡rio experiente pode <B>automatizar</B> tarefas e efetuar <B>pÃ³s-ediÃ§Ãµes</B> nos arquivos convertidos.</TD>
 </TR>
 <TR>
 <TD><I>Baixe e Execute / Multiplataforma</I></TD>
-<TD>O txt2tags é apenas um <B>script Python</B>. Não há necessidade de compilá-lo ou carregar módulos extras. Assim, ele pode ser executado sem problemas em máquinas *NIX, Linux, Windows e Macintosh.</TD>
+<TD>O txt2tags Ã© apenas um <B>script Python</B>. NÃ£o hÃ¡ necessidade de compilÃ¡-lo ou carregar mÃ³dulos extras. Assim, ele pode ser executado sem problemas em mÃ¡quinas *NIX, Linux, Windows e Macintosh.</TD>
 </TR>
 <TR>
-<TD><I>Atualizações Freqüentes</I></TD>
-<TD>O programa possui uma lista de discussões com usuários ativos que sugerem correções e melhorias. O próprio autor é um usuário intenso em casa e no trabalho, por isto o desenvolvimento não irá parar tão cedo.</TD>
+<TD><I>AtualizaÃ§Ãµes FreqÃ¼entes</I></TD>
+<TD>O programa possui uma lista de discussÃµes com usuÃ¡rios ativos que sugerem correÃ§Ãµes e melhorias. O prÃ³prio autor Ã© um usuÃ¡rio intenso em casa e no trabalho, por isto o desenvolvimento nÃ£o irÃ¡ parar tÃ£o cedo.</TD>
 </TR>
 </TABLE>
 
-<P></P>
 <HR NOSHADE SIZE=1>
-<P></P>
+
 <H3>Tenho que pagar por ele?</H3>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
-<TH>Absolutamente NÃO!</TH>
+<TH>Absolutamente NÃƒO!</TH>
 </TR>
 </TABLE>
 
-<P></P>
 <P>
-O txt2tags é um programa gratuito, GPL, open source, domínio público,
+O txt2tags Ã© um programa gratuito, GPL, open source, domÃ­nio pÃºblico,
 etc...
 </P>
 <P>
-Você pode copiar, usar, modificar, vender, liberar como seu. As
-políticas de software e copyright não são uma das maiores preocupações
+VocÃª pode copiar, usar, modificar, vender, liberar como seu. As
+polÃ­ticas de software e copyright nÃ£o sÃ£o uma das maiores preocupaÃ§Ãµes
 do autor.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc4"></A>
-<H2>Estruturas de Formatação Suportadas</H2>
+
+<H2 ID="toc4">Estruturas de FormataÃ§Ã£o Suportadas</H2>
+
 <P>
 Segue uma lista de todas as estruturas suportadas pelo txt2tags.
 </P>
+
 <UL>
-<LI>cabeçalho (título, nome do autor, data)
-<LI>títulos de seções (numeradas ou não)
-<LI>parágrafos
+<LI>cabeÃ§alho (tÃ­tulo, nome do autor, data)
+<LI>tÃ­tulos de seÃ§Ãµes (numeradas ou nÃ£o)
+<LI>parÃ¡grafos
 <LI>modificadores de fontes
   <UL>
   <LI>negrito
-  <LI>itálico
+  <LI>itÃ¡lico
   <LI>sublinhado
   </UL>
-<LI>fonte monoespaço (verbatim)
+<LI>fonte monoespaÃ§o (verbatim)
   <UL>
-  <LI>monoespaço no meio de um parágrafo
-  <LI>linha monoespaçada
-  <LI>trecho em monoespaçado
+  <LI>monoespaÃ§o no meio de um parÃ¡grafo
+  <LI>linha monoespaÃ§ada
+  <LI>trecho em monoespaÃ§ado
   </UL>
-<LI>citações
+<LI>citaÃ§Ãµes
 <LI>links
   <UL>
   <LI>Links de Internet (URL)
@@ -288,137 +295,137 @@ Segue uma lista de todas as estruturas suportadas pelo txt2tags.
   <UL>
   <LI>listas com marcadores
   <LI>listas numeradas
-  <LI>listas de definição
+  <LI>listas de definiÃ§Ã£o
   </UL>
-<LI>linha horizontal de separação
+<LI>linha horizontal de separaÃ§Ã£o
 <LI>imagems (com alinhamento inteligente)
 <LI>tabela (com ou sem borda, com alinhamento inteligente)
-<LI>marcação especial para texto que não deve ser formatado
-<LI>macro especial para a data atual (com formatação flexível)
-<LI>comentários (para notas, A FAZER, CORREÇÕES, etc.)
+<LI>marcaÃ§Ã£o especial para texto que nÃ£o deve ser formatado
+<LI>macro especial para a data atual (com formataÃ§Ã£o flexÃ­vel)
+<LI>comentÃ¡rios (para notas, A FAZER, CORREÃ‡Ã•ES, etc.)
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc5"></A>
-<H2>Formatos Suportados</H2>
+
+<H2 ID="toc5">Formatos Suportados</H2>
+
 <DL>
 <DT><B>HTML</B>                                                                </DT><DD>
-Todo mundo sabe o que o HTML é (dica: Internet).
+Todo mundo sabe o que o HTML Ã© (dica: Internet).
 <P></P>
-O txt2tags gera documentos HTML limpos, que tem boa apresentação e cujo
-código fonte é legível. Ele NÃO USA javascript, frames ou outras
-técnicas de formatação fúteis, que não são necessárias para documentos
-técnicos simples. Mas um arquivo CSS separado pode ser utilizado, se for
-desejado. O Txt2tags gera código "<I>HTML 4.0 Transitional</I>".
+O txt2tags gera documentos HTML limpos, que tem boa apresentaÃ§Ã£o e cujo
+cÃ³digo fonte Ã© legÃ­vel. Ele NÃƒO USA javascript, frames ou outras
+tÃ©cnicas de formataÃ§Ã£o fÃºteis, que nÃ£o sÃ£o necessÃ¡rias para documentos
+tÃ©cnicos simples. Mas um arquivo CSS separado pode ser utilizado, se for
+desejado. O Txt2tags gera cÃ³digo "<I>HTML 4.0 Transitional</I>".
 <P></P>
-Desde a versão 2.0, o código HTML gerado pelo txt2tags é 100% aprovado
+Desde a versÃ£o 2.0, o cÃ³digo HTML gerado pelo txt2tags Ã© 100% aprovado
 pelo <A HREF="vhttp://validator.w3.org/">validador w3c</A>.
 </DL>
 
 <DL>
 <DT><B>XHTML</B></DT><DD>
-Esta é a nova generação do HTML, com regras mais restritas, como fechar
-todas as marcas que forem abertas. Isto torna o código mas fácil de ser
-avaliado e entendido. Para propósitos gerais, considere como HTML. O
-txt2tags gera código "<I>HTML 4.0 Transitional</I>".
+Esta Ã© a nova generaÃ§Ã£o do HTML, com regras mais restritas, como fechar
+todas as marcas que forem abertas. Isto torna o cÃ³digo mas fÃ¡cil de ser
+avaliado e entendido. Para propÃ³sitos gerais, considere como HTML. O
+txt2tags gera cÃ³digo "<I>HTML 4.0 Transitional</I>".
 <P></P>
-Desde a versão 2.0, o código XHTML gerado pelo txt2tags é 100% aprovado
+Desde a versÃ£o 2.0, o cÃ³digo XHTML gerado pelo txt2tags Ã© 100% aprovado
 pelo <A HREF="vhttp://validator.w3.org/">validador w3c</A>.
 <P></P>
 <DT><B>SGML</B></DT><DD>
-O SGML é um formato de documento comum que possui aplicações de
-conversão, como <A HREF="http://www.sgmltools.org/">sgmltools</A>. De um arquivo
+O SGML Ã© um formato de documento comum que possui aplicaÃ§Ãµes de
+conversÃ£o, como <A HREF="http://www.sgmltools.org/">sgmltools</A>. De um arquivo
 sgml pode-se gerar documentos html, pdf, ps, info, latex, lyx, rtf e
-xml. As ferramentas sgml2* também criam índices (TOC) e quebra de seções
-em subpáginas (sgml2html).
+xml. As ferramentas sgml2* tambÃ©m criam Ã­ndices (TOC) e quebra de seÃ§Ãµes
+em subpÃ¡ginas (sgml2html).
 <P></P>
-O txt2tags gera arquivos SGML válidos para a DTD linuxdoc, prontos para
+O txt2tags gera arquivos SGML vÃ¡lidos para a DTD linuxdoc, prontos para
 serem convertidos com uma ferramenta sgml2* sem qualquer arquivo de
-catálogo extra ou outras exigências incômodas do SGML.
+catÃ¡logo extra ou outras exigÃªncias incÃ´modas do SGML.
 <P></P>
 <DT><B>LATEX</B></DT><DD>
-O formato de documentação preferido nos meios acadêmicos, é mais potente
-do que normalmente se considera. Livros completos, fórmulas complicadas
+O formato de documentaÃ§Ã£o preferido nos meios acadÃªmicos, Ã© mais potente
+do que normalmente se considera. Livros completos, fÃ³rmulas complicadas
 e qualquer texto complexo pode ser escrito em LaTeX. Mas se prepare para
-perder os cabelos se tentar escever as marcações à mão...
+perder os cabelos se tentar escever as marcaÃ§Ãµes Ã  mÃ£o...
 <P></P>
 O txt2tags gera arquivos LaTeX prontos para usar, realizando todos os
-complexos truques de escape e exceções. O escritor deve se preocupar
+complexos truques de escape e exceÃ§Ãµes. O escritor deve se preocupar
 exclusivamente com o texto.
 <P></P>
 <DT><B>MAN</B></DT><DD>
-As páginas man do UNIX resistiram pelos anos. Formatos de documento vem
-e vão, e elas estão aí, imbatíveis.
+As pÃ¡ginas man do UNIX resistiram pelos anos. Formatos de documento vem
+e vÃ£o, e elas estÃ£o aÃ­, imbatÃ­veis.
 <P></P>
 Existem outras ferramentas para gerar documentos man, mas o txt2tags tem
-uma vantagem: uma fonte, múltiplos formatos destino. Assim, o conteúdo
-da mesma página man pode ser convertido para uma página HTML, uma
-apresentação Magic Point, etc.
+uma vantagem: uma fonte, mÃºltiplos formatos destino. Assim, o conteÃºdo
+da mesma pÃ¡gina man pode ser convertido para uma pÃ¡gina HTML, uma
+apresentaÃ§Ã£o Magic Point, etc.
 <P></P>
 <DT><B>MGP</B></DT><DD>
-O <A HREF="http://www.mew.org/mgp/">Magic Point</A> é uma ferramenta de apresentação
-bastante útil (dica: Microsoft PowerPoint), que usa uma linguagem de
-marcação para definir todas as telas. Desta forma, você pode criar
-apresentações complexas no vi/emacs/notepad.
+O <A HREF="http://www.mew.org/mgp/">Magic Point</A> Ã© uma ferramenta de apresentaÃ§Ã£o
+bastante Ãºtil (dica: Microsoft PowerPoint), que usa uma linguagem de
+marcaÃ§Ã£o para definir todas as telas. Desta forma, vocÃª pode criar
+apresentaÃ§Ãµes complexas no vi/emacs/notepad.
 <P></P>
 O txt2tags gera um arquivo .mgp pronto para ser usado, definindo todos
-os cabeçalhos necessários para as definições de fontes e aparência, bem
-como o suporte aos caracteres acentuados da página de código ISO-8859.
+os cabeÃ§alhos necessÃ¡rios para as definiÃ§Ãµes de fontes e aparÃªncia, bem
+como o suporte aos caracteres acentuados da pÃ¡gina de cÃ³digo ISO-8859.
 <P></P>
-<B>Observação 1:</B> os arquivos .mgp criados pelo txt2tags usam as fontes
-Type1 do XFree86! Desta forma, não é necessário incluir fontes TrueType
-com sua apresentação.
+<B>ObservaÃ§Ã£o 1:</B> os arquivos .mgp criados pelo txt2tags usam as fontes
+Type1 do XFree86! Desta forma, nÃ£o Ã© necessÃ¡rio incluir fontes TrueType
+com sua apresentaÃ§Ã£o.
 <P></P>
-<B>Observação 2:</B> as definições de cor para as fontes são limpas, de
+<B>ObservaÃ§Ã£o 2:</B> as definiÃ§Ãµes de cor para as fontes sÃ£o limpas, de
 forma que mesmo com uma paleta de cores de sistema pobre (como em
-<CODE>startx -- -bpp 8</CODE>) a apresentação vai ter boa aparência.
+<CODE>startx -- -bpp 8</CODE>) a apresentaÃ§Ã£o vai ter boa aparÃªncia.
 <P></P>
-A chave é: converta e use. Não há necessidade de remendos ou de outros
+A chave Ã©: converta e use. NÃ£o hÃ¡ necessidade de remendos ou de outros
 requisitos.
 <P></P>
 <DT><B>MOIN</B></DT><DD>
-Você não sabe o que é o <A HREF="http://moin.sourceforge.net">MoinMoin</A>? Ele é
+VocÃª nÃ£o sabe o que Ã© o <A HREF="http://moin.sourceforge.net">MoinMoin</A>? Ele Ã©
 um <A HREF="http://www.c2.com/cgi/wiki">WikiWiki</A>!
 <P></P>
-A sintaxe do Moin é um pouco chata, quando você tem que ficar
+A sintaxe do Moin Ã© um pouco chata, quando vocÃª tem que ficar
 <CODE>{{{'''''acrescentando chaves e plicas'''''}}}</CODE>, mas o txt2tags vem
-com as marcações simplificadas e uma solução unificada: uma fonte,
-múltiplos formatos destino.
+com as marcaÃ§Ãµes simplificadas e uma soluÃ§Ã£o unificada: uma fonte,
+mÃºltiplos formatos destino.
 <P></P>
 <DT><B>PM6</B></DT><DD>
-Aposto que você não sabia, mas o Adobe PageMaker 6.0 tem sua própria
-linguagem de marcação! Estilos, tabelas de cores, embelezadores, e a
-maior parte das funcionalidades acessíveis via cliques de mouse também
-estão disponíveis em sua linguagem de marcação. Você só precisa acessar
-o item de menu "Import tagged text". Apenas para registro, é um formato
-de marcação semelhante ao HTML.
+Aposto que vocÃª nÃ£o sabia, mas o Adobe PageMaker 6.0 tem sua prÃ³pria
+linguagem de marcaÃ§Ã£o! Estilos, tabelas de cores, embelezadores, e a
+maior parte das funcionalidades acessÃ­veis via cliques de mouse tambÃ©m
+estÃ£o disponÃ­veis em sua linguagem de marcaÃ§Ã£o. VocÃª sÃ³ precisa acessar
+o item de menu "Import tagged text". Apenas para registro, Ã© um formato
+de marcaÃ§Ã£o semelhante ao HTML.
 <P></P>
-O txt2tags gera todas as tags e já define um cabeçalho extenso e
-funcional, configurando os estilos de parágrafo e formatações. Esta é a
-parte difícil. <B>EPA:</B> Sem quebras de linha! Um parágrafo deve ser uma
-única linha.
+O txt2tags gera todas as tags e jÃ¡ define um cabeÃ§alho extenso e
+funcional, configurando os estilos de parÃ¡grafo e formataÃ§Ãµes. Esta Ã© a
+parte difÃ­cil. <B>EPA:</B> Sem quebras de linha! Um parÃ¡grafo deve ser uma
+Ãºnica linha.
 <P></P>
 Nota do Autor:
-<I>Todo meu livro em português sobre <A HREF="http://guia-er.sf.net/">expressões regulares</A></I>
+<I>Todo meu livro em portuguÃªs sobre <A HREF="http://guia-er.sf.net/">expressÃµes regulares</A></I>
 <I>foi escrito no vi, convertido para o formato do PageMaker com o</I>
-<I>txt2tags e então mandado para o prelo.</I>
+<I>txt2tags e entÃ£o mandado para o prelo.</I>
 <P></P>
 <DT><B>TXT</B></DT><DD>
-TXT é texto. O único tipo de formatação verdadeiro.
+TXT Ã© texto. O Ãºnico tipo de formataÃ§Ã£o verdadeiro.
 <P></P>
-Apesar das marcações do txt2tags serem bem intuitivas e discretas,
-pode-se removê-las ao converter o arquivo para TXT puro.
+Apesar das marcaÃ§Ãµes do txt2tags serem bem intuitivas e discretas,
+pode-se removÃª-las ao converter o arquivo para TXT puro.
 <P></P>
-Os títulos são sublinhados, e o texto é basicamente deixado como está no
-código fonte.
+Os tÃ­tulos sÃ£o sublinhados, e o texto Ã© basicamente deixado como estÃ¡ no
+cÃ³digo fonte.
 </DL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="estruturas"></A>
-<H2>Situação dos Formatos-Destino para as Estruturas Suportadas</H2>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<H2 ID="estruturas">SituaÃ§Ã£o dos Formatos-Destino para as Estruturas Suportadas</H2>
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Estrutura</TH>
 <TH>html</TH>
@@ -432,7 +439,7 @@ código fonte.
 <TH>txt</TH>
 </TR>
 <TR>
-<TD>cabeçalhos</TD>
+<TD>cabeÃ§alhos</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -444,7 +451,7 @@ código fonte.
 <TD ALIGN="center">S</TD>
 </TR>
 <TR>
-<TD>título de seções</TD>
+<TD>tÃ­tulo de seÃ§Ãµes</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -456,7 +463,7 @@ código fonte.
 <TD ALIGN="center">S</TD>
 </TR>
 <TR>
-<TD>parágrafos</TD>
+<TD>parÃ¡grafos</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -480,7 +487,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>itálico</TD>
+<TD>itÃ¡lico</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -504,7 +511,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>pré-formatado</TD>
+<TD>prÃ©-formatado</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -516,7 +523,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>linha pré-formatada</TD>
+<TD>linha prÃ©-formatada</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -528,7 +535,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>área pré-formatada</TD>
+<TD>Ã¡rea prÃ©-formatada</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -540,7 +547,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>área cotada</TD>
+<TD>Ã¡rea cotada</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -600,7 +607,7 @@ código fonte.
 <TD ALIGN="center">-</TD>
 </TR>
 <TR>
-<TD>lista não-numerada</TD>
+<TD>lista nÃ£o-numerada</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -624,7 +631,7 @@ código fonte.
 <TD ALIGN="center">S</TD>
 </TR>
 <TR>
-<TD>lista de definições</TD>
+<TD>lista de definiÃ§Ãµes</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
 <TD ALIGN="center">S</TD>
@@ -709,7 +716,6 @@ código fonte.
 </TR>
 </TABLE>
 
-<P></P>
 <TABLE ALIGN="center" CELLPADDING="4">
 <TR>
 <TH></TH>
@@ -721,133 +727,136 @@ código fonte.
 </TR>
 <TR>
 <TD><B>N</B></TD>
-<TD><I>não suportada (talvez em uma versão futura)</I></TD>
+<TD><I>nÃ£o suportada (talvez em uma versÃ£o futura)</I></TD>
 </TR>
 <TR>
 <TD><B>-</B></TD>
-<TD><I>não suportada (não pode ser feita neste formato)</I></TD>
+<TD><I>nÃ£o suportada (nÃ£o pode ser feita neste formato)</I></TD>
 </TR>
 </TABLE>
 
-<P></P>
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc7"></A>
-<H2>As Três Interfaces ao Usuário: GUI, Web e Linha de Comando</H2>
+
+<H2 ID="toc7">As TrÃªs Interfaces ao UsuÃ¡rio: GUI, Web e Linha de Comando</H2>
+
 <P>
-Assim como diferentes usuários possuem diferentes necessidades e
-ambientes, o txt2tags é bastante flexivel na forma de ser usado.
+Assim como diferentes usuÃ¡rios possuem diferentes necessidades e
+ambientes, o txt2tags Ã© bastante flexivel na forma de ser usado.
 </P>
 <P>
-Existem três Interfaces de Usuário para o programa, cada uma atendendo a
-um objetivo definido e com funcionalidades próprias.
+Existem trÃªs Interfaces de UsuÃ¡rio para o programa, cada uma atendendo a
+um objetivo definido e com funcionalidades prÃ³prias.
 </P>
+
 <UL>
 <LI><B>GUI</B>: Escrita em Tk, traz as janelas e os cliques para o txt2tags.
-<LI><B>Web</B>: Escrita em PHP, permite que o usuário execute o txt2tags no
-           navegador, não exigindo instalação do lado do cliente.
-<LI><B>Linha de Comando</B>: Escrita em Python, é o núcleo do programa.
-           Todas as funcionalidades estão disponíveis como opções de
+<LI><B>Web</B>: Escrita em PHP, permite que o usuÃ¡rio execute o txt2tags no
+           navegador, nÃ£o exigindo instalaÃ§Ã£o do lado do cliente.
+<LI><B>Linha de Comando</B>: Escrita em Python, Ã© o nÃºcleo do programa.
+           Todas as funcionalidades estÃ£o disponÃ­veis como opÃ§Ãµes de
            linha de comando.
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="gui"></A>
-<H3>Interface Gráfica Tk</H3>
+
+<H3 ID="gui">Interface GrÃ¡fica Tk</H3>
+
 <P>
-Desde a versão 1.0, há uma bela Interface Gráfica, que funciona do
+Desde a versÃ£o 1.0, hÃ¡ uma bela Interface GrÃ¡fica, que funciona do
 Linux, Windows, Mac e outros.
 </P>
 <P>
 O programa automaticamente detecta se seu sistema pode apresentar a
-interface e a lança quando é chamado sem argumentos. Pode-se forçar a
-apresentação da Interfaca Gráfica com a opção <CODE>--gui</CODE>. Se estiver
-faltando algum recurso o programa irá alertar.
+interface e a lanÃ§a quando Ã© chamado sem argumentos. Pode-se forÃ§ar a
+apresentaÃ§Ã£o da Interfaca GrÃ¡fica com a opÃ§Ã£o <CODE>--gui</CODE>. Se estiver
+faltando algum recurso o programa irÃ¡ alertar.
 </P>
 	<BLOCKQUOTE>
-	<B>Nota:</B> O módulo Tkinter é necessário. Como ele vem com a
-	distribição padrão do Python você já deve tê-lo.
+	<B>Nota:</B> O mÃ³dulo Tkinter Ã© necessÃ¡rio. Como ele vem com a
+	distribiÃ§Ã£o padrÃ£o do Python vocÃª jÃ¡ deve tÃª-lo.
 	</BLOCKQUOTE>
-<P></P>
 <P>
-Ela é bastante simples e fácil de usar:
+Ela Ã© bastante simples e fÃ¡cil de usar:
 </P>
           <center><IMG ALIGN="middle" SRC="../userguide/gui.png" BORDER="0" ALT=""></center>          
+
 <OL>
-<LI>Você localiza o arquivo fonte .t2t no disco e suas opções são
+<LI>VocÃª localiza o arquivo fonte .t2t no disco e suas opÃ§Ãµes sÃ£o
   carregadas.
 <P></P>
-<LI>Se o destino ainda estiver vazio, você deve escolher um.
+<LI>Se o destino ainda estiver vazio, vocÃª deve escolher um.
 <P></P>
-<LI>Há algumas opões que podem ser escolhidas, mas nenhuma delas é
+<LI>HÃ¡ algumas opÃµes que podem ser escolhidas, mas nenhuma delas Ã©
   essencial.
 <P></P>
-<LI>Finalmente, pressione o botão "Converter!".
+<LI>Finalmente, pressione o botÃ£o "Converter!".
 </OL>
 
 <P>
-Uma boa opção a selecionar é "<I>Dump to screen</I>", assim se pode
-verificar o código resultante em uma janela separada, sem que o arquivo
-seja salvo. Quando o código estiver correto, basta desmarcá-la e o
-arquivo será gravado.
+Uma boa opÃ§Ã£o a selecionar Ã© "<I>Dump to screen</I>", assim se pode
+verificar o cÃ³digo resultante em uma janela separada, sem que o arquivo
+seja salvo. Quando o cÃ³digo estiver correto, basta desmarcÃ¡-la e o
+arquivo serÃ¡ gravado.
 </P>
 <P>
-As cores padrão podem ser mudadas no arquivo <CODE>~/.txt2tagsrc</CODE>,
+As cores padrÃ£o podem ser mudadas no arquivo <CODE>~/.txt2tagsrc</CODE>,
 configurando em <CODE>%!guicolors</CODE>. Por exemplo:
 </P>
+
 <PRE>
    % minhas cores para a interface (fundo1, texto1, fundo2, texto2)
    %!guicolors: blue white brown yellow
 </PRE>
-<P></P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="web"></A>
-<H3>Interface Web</H3>
+
+<H3 ID="web">Interface Web</H3>
+
 <P>
-A Interface Web está em funcionamento na Internet no endereço
+A Interface Web estÃ¡ em funcionamento na Internet no endereÃ§o
 <A HREF="http://txt2tags.org/online.php">http://txt2tags.org/online.php</A>, permitindo que o programa possa ser
 usado e testado antes de ser copiado.
 </P>
           <center><IMG ALIGN="middle" SRC="../userguide/web.png" BORDER="0" ALT=""></center>          
 <P>
-Esta interface também pode ser colocada na intrant para uso local,
-evitando a instalação do txt2tags em todas as máquinas.
+Esta interface tambÃ©m pode ser colocada na intrant para uso local,
+evitando a instalaÃ§Ã£o do txt2tags em todas as mÃ¡quinas.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="linhadecomando"></A>
-<H3>Interface de Linha de Comando</H3>
+
+<H3 ID="linhadecomando">Interface de Linha de Comando</H3>
+
 <P>
-Para usuários de linha de comando acostumados, o parâmetro --help deve
+Para usuÃ¡rios de linha de comando acostumados, o parÃ¢metro --help deve
 ser suficiente:
 </P>
+
 <PRE>
-  Uso: txt2tags [OPÇÕES] [arquivo.t2t ...]
+  Uso: txt2tags [OPÃ‡Ã•ES] [arquivo.t2t ...]
   
     -t, --target        define o formato do destino. tipos suportados:
                         html, xhtml, sgml, tex, man, mgp, moin, pm6, txt
     -i, --infile=ARQ    define ARQ como o arquivo fonte ('-' para STDIN)
     -0, --outfile=ARQ   define ARQ como o arquivo destino ('-' para STDOUT)
-    -n, --enum-title    numera todos os títulos como 1, 1.1, 1.1.1, etc
-    -H, --no-headers    suprime os cabeçalhos, título e rodapé
-        --headers       exibe os cabeçalhos, título e rodapé (padrão LIGADO)
-        --encoding      informa a codificação de destino (utf-8, iso-8859-1, etc)
+    -n, --enum-title    numera todos os tÃ­tulos como 1, 1.1, 1.1.1, etc
+    -H, --no-headers    suprime os cabeÃ§alhos, tÃ­tulo e rodapÃ©
+        --headers       exibe os cabeÃ§alhos, tÃ­tulo e rodapÃ© (padrÃ£o LIGADO)
+        --encoding      informa a codificaÃ§Ã£o de destino (utf-8, iso-8859-1, etc)
         --style=ARQ     utiliza ARQ como estilo do documento (CSS no Html)
-        --css-sugar     insere tags compatíveis com CSS em destinos HTML e XHTML
-        --mask-email    esconde e-mails dos robôs de SPAM. x@y.z vira &lt;x (a) y z&gt;
-        --toc           inclui o Índice (Table of Contents) no documento destino
-        --toc-only      exibe o Índice do documento e sai
-        --toc-level=N   define o nível máximo do Índice para N
-        --rc            lê a config do usuário em ~/.txt2tagsrc (padrão LIGADO)
-        --gui           carrega a interface gráfica escrita em TK
-    -v, --verbose       exibe mensagens informativas durante a conversão
+        --css-sugar     insere tags compatÃ­veis com CSS em destinos HTML e XHTML
+        --mask-email    esconde e-mails dos robÃ´s de SPAM. x@y.z vira &lt;x (a) y z&gt;
+        --toc           inclui o Ãndice (Table of Contents) no documento destino
+        --toc-only      exibe o Ãndice do documento e sai
+        --toc-level=N   define o nÃ­vel mÃ¡ximo do Ãndice para N
+        --rc            lÃª a config do usuÃ¡rio em ~/.txt2tagsrc (padrÃ£o LIGADO)
+        --gui           carrega a interface grÃ¡fica escrita em TK
+    -v, --verbose       exibe mensagens informativas durante a conversÃ£o
     -h, --help          exibe este texto de ajuda e sai
-    -V, --version       exibe a versão do programa e sai
-        --dump-config   exibe todas as configurações encontradas e sai
+    -V, --version       exibe a versÃ£o do programa e sai
+        --dump-config   exibe todas as configuraÃ§Ãµes encontradas e sai
   
-  Opções para DESLIGAR funcionalidades:
+  OpÃ§Ãµes para DESLIGAR funcionalidades:
        --no-outfile, --no-infile, --no-style, --no-encoding, --no-headers
        --no-toc, --no-toc-only, --no-mask-email, --no-enum-title, --no-rc
        --no-css-sugar
@@ -855,17 +864,19 @@ ser suficiente:
   Exemplo:
        txt2tags -t html --toc meuarquivo.t2t
   
-  Normalmente a saída convertida é gravada em 'arquivo.&lt;tipo&gt;'.
-  Utilize --outfile para forçar um nome para o arquivo de saída.
-  Se o arquivo de entrada é '-', lê de STDIN.
-  Se o arquivo de saída é '-', envia a saída para STDOUT.
+  Normalmente a saÃ­da convertida Ã© gravada em 'arquivo.&lt;tipo&gt;'.
+  Utilize --outfile para forÃ§ar um nome para o arquivo de saÃ­da.
+  Se o arquivo de entrada Ã© '-', lÃª de STDIN.
+  Se o arquivo de saÃ­da Ã© '-', envia a saÃ­da para STDOUT.
 </PRE>
-<P></P>
+
 <H4>Exemplos</H4>
+
 <P>
-Supondo que exista um arquivo de marcação chamado <CODE>file.t2t</CODE>, vamos nos
+Supondo que exista um arquivo de marcaÃ§Ã£o chamado <CODE>file.t2t</CODE>, vamos nos
 divertir um pouco.
 </P>
+
 <TABLE CELLPADDING="4">
 <TR>
 <TD><B>Convertendo para HTML</B></TD>
@@ -880,11 +891,11 @@ divertir um pouco.
 <TD>.</TD>
 </TR>
 <TR>
-<TD><B>Incluindo uma Tabela de Conteúdo</B></TD>
+<TD><B>Incluindo uma Tabela de ConteÃºdo</B></TD>
 <TD><CODE>$ txt2tags -t html --toc file.t2t</CODE></TD>
 </TR>
 <TR>
-<TD><B>Idem, numerando os títulos</B></TD>
+<TD><B>Idem, numerando os tÃ­tulos</B></TD>
 <TD><CODE>$ txt2tags -t html --toc --enum-title file.t2t</CODE></TD>
 </TR>
 <TR>
@@ -892,11 +903,11 @@ divertir um pouco.
 <TD>.</TD>
 </TR>
 <TR>
-<TD><B>Visualização Rápida do Conteúdo</B></TD>
+<TD><B>VisualizaÃ§Ã£o RÃ¡pida do ConteÃºdo</B></TD>
 <TD><CODE>$ txt2tags --toc-only file.t2t</CODE></TD>
 </TR>
 <TR>
-<TD><B>Quem sabe com números?</B></TD>
+<TD><B>Quem sabe com nÃºmeros?</B></TD>
 <TD><CODE>$ txt2tags --toc-only --enum-title file.t2t</CODE></TD>
 </TR>
 <TR>
@@ -912,120 +923,129 @@ divertir um pouco.
 <TD><CODE>$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -</CODE></TD>
 </TR>
 <TR>
-<TD><B>Edição pós-conversão</B></TD>
+<TD><B>EdiÃ§Ã£o pÃ³s-conversÃ£o</B></TD>
 <TD><CODE>$ txt2tags -t html -o- file.t2t | sed "s/&lt;BODY .*/&lt;BODY BGCOLOR=green&gt;/" &gt; file.html</CODE></TD>
 </TR>
 </TABLE>
 
-<P></P>
 <DL>
 <DT><I>Nota</I></DT><DD>
-Desde a versão 1.6 você pode fazer pre e pós processamento usando as
-macros de configuração <CODE>%!preproc</CODE> e <CODE>%!postproc</CODE>.
+Desde a versÃ£o 1.6 vocÃª pode fazer pre e pÃ³s processamento usando as
+macros de configuraÃ§Ã£o <CODE>%!preproc</CODE> e <CODE>%!postproc</CODE>.
 </DL>
 
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="instalacao"></A>
-<H1>Parte II - OK, eu quero um. E agora?</H1>
+
+<H1 ID="instalacao">Parte II - OK, eu quero um. E agora?</H1>
+
 <P>
 Basta baixar o programa e executar o mesmo no seu computador.
 </P>
-<A NAME="toc9"></A>
-<H2>Download e Instalação do Python</H2>
+
+<H2 ID="toc9">Download e InstalaÃ§Ã£o do Python</H2>
+
 <P>
 Antes de mais nada, deve-se baixar e instalar o interpretador Python
-para o seu sistema. Se você já o tem, então pule eset passo.
+para o seu sistema. Se vocÃª jÃ¡ o tem, entÃ£o pule eset passo.
 </P>
 <P>
-O Python é uma das melhores linguagens de programação que existem, ela
+O Python Ã© uma das melhores linguagens de programaÃ§Ã£o que existem, ela
 pode ser utilizada no Windows, Linux, UNIX, Macintosh, e outras
 plataformas, e pode ser baixada do
-<A HREF="http://www.python.org">web site do Python</A>. As dicas de instalação podem
+<A HREF="http://www.python.org">web site do Python</A>. As dicas de instalaÃ§Ã£o podem
 ser encontradas no mesmo site. O txt2tags funciona com o Python 1.5 ou
 posterior.
 </P>
 <P>
-Se você não tem certeza de ter o Python ou não, abra um console (tty,
-xterm, MSDOS) e escreva <CODE>python</CODE>. Se ele não estiver instalado, o
+Se vocÃª nÃ£o tem certeza de ter o Python ou nÃ£o, abra um console (tty,
+xterm, MSDOS) e escreva <CODE>python</CODE>. Se ele nÃ£o estiver instalado, o
 sistema vai lhe informar.
 </P>
-<A NAME="toc10"></A>
-<H2>Copiando o txt2tags</H2>
+
+<H2 ID="toc10">Copiando o txt2tags</H2>
+
 <P>
-O local oficial de distribuição do txt2tags é na homepage do programa,
+O local oficial de distribuiÃ§Ã£o do txt2tags Ã© na homepage do programa,
 em <A HREF="http://txt2tags.org/src">http://txt2tags.org/src</A>.
 </P>
 <P>
-Todos os arquivos do programa estão em um tarball (arquivo .tgz), que
-pode ser expandido pela maioria dos utilitários de compressão (incluindo
+Todos os arquivos do programa estÃ£o em um tarball (arquivo .tgz), que
+pode ser expandido pela maioria dos utilitÃ¡rios de compressÃ£o (incluindo
 o Winzip).
 </P>
 <P>
-Simplesmente pegue a <B>última</B> versão (data mais recente, número de
-versão maior). As versões anteriores estão lá apenas por razões
-históricas.
+Simplesmente pegue a <B>Ãºltima</B> versÃ£o (data mais recente, nÃºmero de
+versÃ£o maior). As versÃµes anteriores estÃ£o lÃ¡ apenas por razÃµes
+histÃ³ricas.
 </P>
-<A NAME="toc11"></A>
-<H2>Instalação do txt2tags</H2>
+
+<H2 ID="toc11">InstalaÃ§Ã£o do txt2tags</H2>
+
 <P>
-Como é apenas um script Python, o txt2tags não precisa ser instalado.
+Como Ã© apenas um script Python, o txt2tags nÃ£o precisa ser instalado.
 </P>
 <P>
-O único arquivo necessário para usar o programa é o script txt2tags. Os
-outros arquivos do tarball compreendem a documentação, ferramentas e
+O Ãºnico arquivo necessÃ¡rio para usar o programa Ã© o script txt2tags. Os
+outros arquivos do tarball compreendem a documentaÃ§Ã£o, ferramentas e
 arquivos de exemplo.
 </P>
 <P>
-O modo mais seguro de usar o txt2tags é chamar o Python com ele:
+O modo mais seguro de usar o txt2tags Ã© chamar o Python com ele:
 </P>
+
 <PRE>
   prompt$ python txt2tags 
 </PRE>
-<P></P>
+
 <P>
-Se você quiser "instalar" o txt2tags no sistema como um programa
+Se vocÃª quiser "instalar" o txt2tags no sistema como um programa
 independente, basta copiar (ou criar um link) o script txt2tags para um
-diretório que esteja no PATH do sistema e certificar-se que o sistema
+diretÃ³rio que esteja no PATH do sistema e certificar-se que o sistema
 saiba como executar o mesmo.
 </P>
+
 <DL>
 <DT><B>UNIX/Linux</B></DT><DD>
-  Torne o script executável (<CODE>chmod +x txt2tags</CODE>) e copie o mesmo para
-  um diretório no $PATH (<CODE>cp txt2tags /usr/local/bin</CODE>)
+  Torne o script executÃ¡vel (<CODE>chmod +x txt2tags</CODE>) e copie o mesmo para
+  um diretÃ³rio no $PATH (<CODE>cp txt2tags /usr/local/bin</CODE>)
 <P></P>
 <DT><B>Windows</B></DT><DD>
-  Renomeie o script, acrescentando a extensão .py
-  (<CODE>ren txt2tags txt2tags.py</CODE>) e o copie para um diretório que esteja
+  Renomeie o script, acrescentando a extensÃ£o .py
+  (<CODE>ren txt2tags txt2tags.py</CODE>) e o copie para um diretÃ³rio que esteja
   no PATH do sistema (<CODE>copy txt2tags.py C:\WINNT</CODE>)
 </DL>
 
 <P>
-Depois disto, pode-se criar um ícone no desktop para o programa, se
-quiser usar a Interface Gráfica do programa.
+Depois disto, pode-se criar um Ã­cone no desktop para o programa, se
+quiser usar a Interface GrÃ¡fica do programa.
 </P>
-<H3>Pacotes Especiais para Usuários Windows</H3>
+
+<H3>Pacotes Especiais para UsuÃ¡rios Windows</H3>
+
 <P>
-Existem dois arquivos de distribuição .EXE para o txt2tags, que instalam
-o programa em máquinas Windows com apenas alguns cliques:
+Existem dois arquivos de distribuiÃ§Ã£o .EXE para o txt2tags, que instalam
+o programa em mÃ¡quinas Windows com apenas alguns cliques:
 </P>
+
 <UL>
 <LI>O script txt2tags para aqueles que tem o interpretador Python
   instalado
-<LI>A versão stand-alone, que não requer a instalação do interpretador
-  Pyton para ser executada (já tem uma versão pequena incluída).
+<LI>A versÃ£o stand-alone, que nÃ£o requer a instalaÃ§Ã£o do interpretador
+  Pyton para ser executada (jÃ¡ tem uma versÃ£o pequena incluÃ­da).
 </UL>
 
 <P>
 Visite o site <I>Txt2tags-Win</I> para baixar estes pacotes:
 <A HREF="http://txt2tags-win.sf.net/">http://txt2tags-win.sf.net/</A>
 </P>
-<A NAME="sintaxe"></A>
-<H2>Instalar os Arquivos de Sintaxe dos Editores de Texto</H2>
+
+<H2 ID="sintaxe">Instalar os Arquivos de Sintaxe dos Editores de Texto</H2>
+
 <P>
-O txt2tags possui arquivos de sintaxe práticos que podem ser usados com
+O txt2tags possui arquivos de sintaxe prÃ¡ticos que podem ser usados com
 os seguintes editores de texto:
 </P>
+
 <UL>
 <LI>Vim (<A HREF="http://www.vim.org">www.vim.org</A>)
 <LI>Emacs (<A HREF="http://www.emacs.org">www.emacs.org</A>)
@@ -1034,12 +1054,13 @@ os seguintes editores de texto:
 </UL>
 
 <P>
-Os arquivos de sintaxe têm registro de todas as regras e marcações do
-txt2tags, ajudando ao usuário a escrever documentos sem erros. As marcas
-são mostradas coloridas, assim se pode ver se tudo foi escrito
+Os arquivos de sintaxe tÃªm registro de todas as regras e marcaÃ§Ãµes do
+txt2tags, ajudando ao usuÃ¡rio a escrever documentos sem erros. As marcas
+sÃ£o mostradas coloridas, assim se pode ver se tudo foi escrito
 corretamente.
 </P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TD ALIGN="center"><center><IMG ALIGN="middle" SRC="../userguide/vim.png" BORDER="0" ALT=""></center></TD>
 </TR>
@@ -1048,349 +1069,370 @@ corretamente.
 </TR>
 </TABLE>
 
-<P></P>
 <P>
 Cada editor tem um procedimento diferente para usar seu arquivo de
-sintaxe. Por favor verifique no cabeçalho de cada arquivo e na
-documentação do editor.
+sintaxe. Por favor verifique no cabeÃ§alho de cada arquivo e na
+documentaÃ§Ã£o do editor.
 </P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="toc13"></A>
-<H1>Parte III - Escrevendo e Convertendo Seu Primeiro Documento</H1>
+
+<H1 ID="toc13">Parte III - Escrevendo e Convertendo Seu Primeiro Documento</H1>
+
 <P>
-Desculpe, este capítulo ainda está em desenvolvimento.
+Desculpe, este capÃ­tulo ainda estÃ¡ em desenvolvimento.
 </P>
-<A NAME="toc14"></A>
-<H2>As Áreas do documento .t2t</H2>
+
+<H2 ID="toc14">As Ãreas do documento .t2t</H2>
+
 <P>
-Os arquivos de marcação txt2tags são divididos em 3 áreas. Cada área tem
-suas próprias regras e finalidade. São elas:
+Os arquivos de marcaÃ§Ã£o txt2tags sÃ£o divididos em 3 Ã¡reas. Cada Ã¡rea tem
+suas prÃ³prias regras e finalidade. SÃ£o elas:
 </P>
+
 <DL>
-<DT><I>Área de Cabeçalho</I></DT><DD>
-É o lugar para informações sobre o Título do Documento, Autor, Versão e
+<DT><I>Ãrea de CabeÃ§alho</I></DT><DD>
+Ã‰ o lugar para informaÃ§Ãµes sobre o TÃ­tulo do Documento, Autor, VersÃ£o e
 Data. (opcional)
 <P></P>
-<DT><I>Área de Configuração</I></DT><DD>
-É o local para colocar as configurações Gerais do documento e
+<DT><I>Ãrea de ConfiguraÃ§Ã£o</I></DT><DD>
+Ã‰ o local para colocar as configuraÃ§Ãµes Gerais do documento e
 modificadores do funcionamento do analisador. (opcional)
 <P></P>
 <DT><I>Corpo do Texto</I></DT><DD>
-É o local para o Conteúdo do Documento (requerida)
+Ã‰ o local para o ConteÃºdo do Documento (requerida)
 </DL>
 
 <P>
-Como vemos acima, as duas primeiras áreas são opcionais, sendo que o
-<I>Corpo do Texto</I> é a única área indispensável.
-(<I>Nota: A <B>Área de Configuração</B> foi introduzida no txt2tags na versão 1.3</I>)
+Como vemos acima, as duas primeiras Ã¡reas sÃ£o opcionais, sendo que o
+<I>Corpo do Texto</I> Ã© a Ãºnica Ã¡rea indispensÃ¡vel.
+(<I>Nota: A <B>Ãrea de ConfiguraÃ§Ã£o</B> foi introduzida no txt2tags na versÃ£o 1.3</I>)
 </P>
 <P>
-As áreas são delimitadas por regras especiais, que serão vistas em
-detalhe no próximo capítulo. Por enquanto, esta é uma representação
-gráfica das áreas de um documento:
+As Ã¡reas sÃ£o delimitadas por regras especiais, que serÃ£o vistas em
+detalhe no prÃ³ximo capÃ­tulo. Por enquanto, esta Ã© uma representaÃ§Ã£o
+grÃ¡fica das Ã¡reas de um documento:
 </P>
+
 <PRE>
                ____________
               |            |
-              |  CABEÇALHO |       1. Primeiro, o cabeçalho
+              |  CABEÃ‡ALHO |       1. Primeiro, o cabeÃ§alho
               |            |
-              |   CONFIG   |       2. Então a configuração
+              |   CONFIG   |       2. EntÃ£o a configuraÃ§Ã£o
               |            |
               |   CORPO    |       3. E, finalmente, o corpo do documento
               |            |
-              |    ...     |          que segue até o final do arquivo.
+              |    ...     |          que segue atÃ© o final do arquivo.
               |    ...     |
               |____________|
   
 </PRE>
-<P></P>
+
 <P>
-Em resumo, é assim que as áreas são definidas:
+Em resumo, Ã© assim que as Ã¡reas sÃ£o definidas:
 </P>
+
 <TABLE ALIGN="center" CELLPADDING="4">
 <TR>
-<TD><B>Cabeçalhos</B></TD>
-<TD>As primeiras 3 linhas do arquivo, ou a primeira linha é deixada em branco se não são usados cabeçalhos</TD>
+<TD><B>CabeÃ§alhos</B></TD>
+<TD>As primeiras 3 linhas do arquivo, ou a primeira linha Ã© deixada em branco se nÃ£o sÃ£o usados cabeÃ§alhos</TD>
 </TR>
 <TR>
-<TD><B>Configuração</B></TD>
-<TD>Começam logo depois do cabeçalho (4a. ou 2a. linha)  e termina quando a <I>Área de Conteúdo</I> começa.</TD>
+<TD><B>ConfiguraÃ§Ã£o</B></TD>
+<TD>ComeÃ§am logo depois do cabeÃ§alho (4a. ou 2a. linha)  e termina quando a <I>Ãrea de ConteÃºdo</I> comeÃ§a.</TD>
 </TR>
 <TR>
 <TD><B>Corpo</B></TD>
-<TD>A primeira linha de texto válida (que não é comentário ou configuração) após a <I>Área de Cabeçalho</I>.</TD>
+<TD>A primeira linha de texto vÃ¡lida (que nÃ£o Ã© comentÃ¡rio ou configuraÃ§Ã£o) apÃ³s a <I>Ãrea de CabeÃ§alho</I>.</TD>
 </TR>
 </TABLE>
 
-<P></P>
 <H3>Exemplo Completo</H3>
+
 <PRE>
-  Título do meu belo documento
+  TÃ­tulo do meu belo documento
   Sr. Fulano da Silva
-  Última atualização: %%date(%c)
+  Ãšltima atualizaÃ§Ã£o: %%date(%c)
   
   %! Target  : html
   %! Style   : fancy.css
-  %! Encoding: iso-8859-1
+  %! Encoding: UTF-8
   %! Options : --toc --enum--title
   
-  Oi! Este é o meu documento de teste.
-  E o seu conteúdo termina aqui.
+  Oi! Este Ã© o meu documento de teste.
+  E o seu conteÃºdo termina aqui.
 </PRE>
-<P></P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="toc15"></A>
-<H1>Parte IV - Dominando o Txt2tags</H1>
-<A NAME="toc16"></A>
-<H2>A Área de Cabeçalho</H2>
+
+<H1 ID="toc15">Parte IV - Dominando o Txt2tags</H1>
+
+<H2 ID="toc16">A Ãrea de CabeÃ§alho</H2>
+
 <P>
-Localização:
+LocalizaÃ§Ã£o:
 </P>
+
 <UL>
-<LI>Posição fixa: <B>Primeiras 3 linhas</B> do arquivo. Ponto.
-<LI>Posição fixa: <B>A Primeira Linha</B> do arquivo está em branco. Isto
-  significa que o cabeçalho está vazio.
+<LI>PosiÃ§Ã£o fixa: <B>Primeiras 3 linhas</B> do arquivo. Ponto.
+<LI>PosiÃ§Ã£o fixa: <B>A Primeira Linha</B> do arquivo estÃ¡ em branco. Isto
+  significa que o cabeÃ§alho estÃ¡ vazio.
 </UL>
 
 <P>
-A Área de Cabeçalho é a única que tem uma posição fixa, orientada a
-linhas. Ela está localizada nas três primeiras linhas do código fonte.
+A Ãrea de CabeÃ§alho Ã© a Ãºnica que tem uma posiÃ§Ã£o fixa, orientada a
+linhas. Ela estÃ¡ localizada nas trÃªs primeiras linhas do cÃ³digo fonte.
 </P>
 <P>
-O conteúdo destas linhas é livre, sem necessidade de nenhuma informação
-estática de nenhum tipo. Mas recomenda-se o seguinte para a maioria dos
+O conteÃºdo destas linhas Ã© livre, sem necessidade de nenhuma informaÃ§Ã£o
+estÃ¡tica de nenhum tipo. Mas recomenda-se o seguinte para a maioria dos
 documentos:
 </P>
+
    <UL>
-   <LI><I>linha 1</I>: título do documento
+   <LI><I>linha 1</I>: tÃ­tulo do documento
    <LI><I>linha 2</I>: nome e/ou email do autor
-   <LI><I>linha 3</I>: data e/ou versão do documento
+   <LI><I>linha 3</I>: data e/ou versÃ£o do documento
                  (um bom lugar para colocar <CODE>%%date</CODE>)
    </UL>
 
 <P>
-Tenha em mente que as 3 primeiras linhas do arquivo fonte serão as 3
+Tenha em mente que as 3 primeiras linhas do arquivo fonte serÃ£o as 3
 primeiras linhas no documento gerado, separadas e com um grande
-contraste em relação ao corpo do texto (ou seja, letras grandes,
-negrito). Se a paginação for permitida, os cabeçalhos estarão separados
-e centralizados na primeira página.
+contraste em relaÃ§Ã£o ao corpo do texto (ou seja, letras grandes,
+negrito). Se a paginaÃ§Ã£o for permitida, os cabeÃ§alhos estarÃ£o separados
+e centralizados na primeira pÃ¡gina.
 </P>
-<H4>Menos (ou Nenhuma) Linhas de Cabeçalho</H4>
+
+<H4>Menos (ou Nenhuma) Linhas de CabeÃ§alho</H4>
+
 <P>
-Às vezes os usuários querem especificar menos de três linhas nos
-cabeçalhos, dando apenas o título do documento e/ou informação de data.
-</P>
-<P>
-Basta deixar a 2a. e/ou a 3a. linhas em branco e estas linhas não serão
-incluídas no documento gerado. Mas tenha em mente que, mesmo em branco,
-estas linhas ainda são parte dos cabeçalho, e o corpo do documento deve
-começar <B>após</B> a 3a. linha.
+Ã€s vezes os usuÃ¡rios querem especificar menos de trÃªs linhas nos
+cabeÃ§alhos, dando apenas o tÃ­tulo do documento e/ou informaÃ§Ã£o de data.
 </P>
 <P>
-O título é o único cabeçalho requerido (a primeira linha), mas se você
-deixar ela em branco, está dizendo que seu documento
-<B>não tem cabeçalho</B>. Desta forma, a <I>Área de Texto</I> irá começar em
+Basta deixar a 2a. e/ou a 3a. linhas em branco e estas linhas nÃ£o serÃ£o
+incluÃ­das no documento gerado. Mas tenha em mente que, mesmo em branco,
+estas linhas ainda sÃ£o parte dos cabeÃ§alho, e o corpo do documento deve
+comeÃ§ar <B>apÃ³s</B> a 3a. linha.
+</P>
+<P>
+O tÃ­tulo Ã© o Ãºnico cabeÃ§alho requerido (a primeira linha), mas se vocÃª
+deixar ela em branco, estÃ¡ dizendo que seu documento
+<B>nÃ£o tem cabeÃ§alho</B>. Desta forma, a <I>Ãrea de Texto</I> irÃ¡ comeÃ§ar em
 seguida, na 2a. linha.
 </P>
 <P>
-Não usar cabeçalhos no documento é útil se você quiser especificar seus
-próprios cabeçalhos customizados após a conversão. A opção de linha de
-comando <CODE>--no-headers</CODE> é geralmente necessária para este tipo de coisa.
+NÃ£o usar cabeÃ§alhos no documento Ã© Ãºtil se vocÃª quiser especificar seus
+prÃ³prios cabeÃ§alhos customizados apÃ³s a conversÃ£o. A opÃ§Ã£o de linha de
+comando <CODE>--no-headers</CODE> Ã© geralmente necessÃ¡ria para este tipo de coisa.
 </P>
+
 <H4>Direto ao ponto</H4>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
-<TH>Em resumo: "Cabeçalhos são apenas <U>posições</U>, não conteúdo "</TH>
+<TH>Em resumo: "CabeÃ§alhos sÃ£o apenas <U>posiÃ§Ãµes</U>, nÃ£o conteÃºdo "</TH>
 </TR>
 </TABLE>
 
-<P></P>
 <P>
-Coloque um texto na primeira linha, ele irá aparecer na primeira linha
-do arquivo gerado. O mesmo para a 2a. e 3a. linhas de cabeçalho.
+Coloque um texto na primeira linha, ele irÃ¡ aparecer na primeira linha
+do arquivo gerado. O mesmo para a 2a. e 3a. linhas de cabeÃ§alho.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc17"></A>
-<H2>A Área de Configuração</H2>
+
+<H2 ID="toc17">A Ãrea de ConfiguraÃ§Ã£o</H2>
+
 <P>
-Localização:
+LocalizaÃ§Ã£o:
 </P>
+
 <UL>
-<LI>Começa logo após a Área de Cabeçalhos
+<LI>ComeÃ§a logo apÃ³s a Ãrea de CabeÃ§alhos
   <UL>
-  <LI>Começa na <B>4a. linha</B> do arquivo se forem especificados <B>Cabeçalhos</B>
-  <LI>Começa na <B>2a. linha</B> se <B>não</B> forem especificados <B>Cabeçalhos</B>
+  <LI>ComeÃ§a na <B>4a. linha</B> do arquivo se forem especificados <B>CabeÃ§alhos</B>
+  <LI>ComeÃ§a na <B>2a. linha</B> se <B>nÃ£o</B> forem especificados <B>CabeÃ§alhos</B>
   </UL>
-<LI>Termina quando a Área de Conteúdo começa
+<LI>Termina quando a Ãrea de ConteÃºdo comeÃ§a
   <UL>
-  <LI>Termina com uma linha que não seja de Configuração, ou de
-    Comentário, ou que seja uma linha em Branco.
+  <LI>Termina com uma linha que nÃ£o seja de ConfiguraÃ§Ã£o, ou de
+    ComentÃ¡rio, ou que seja uma linha em Branco.
   </UL>
 </UL>
 
 <P>
-A Área de Configuração é opcional. A maioria dos usuários pode escrever
+A Ãrea de ConfiguraÃ§Ã£o Ã© opcional. A maioria dos usuÃ¡rios pode escrever
 carradas de arquivos txt2tags mesmo sem saber que ela existe, mas os
-usuários experientes irão gostar do poder e controle que ela oferece.
+usuÃ¡rios experientes irÃ£o gostar do poder e controle que ela oferece.
 </P>
 <P>
-O uso primário desta área é para definir configurações que afetam o
+O uso primÃ¡rio desta Ã¡rea Ã© para definir configuraÃ§Ãµes que afetam o
 comportamento do programa.
 </P>
-<H4>Então, como configurar algo? Qual a sintaxe?</H4>
+
+<H4>EntÃ£o, como configurar algo? Qual a sintaxe?</H4>
+
 <P>
-As linhas de configuração são <I>linhas de comentário especiais</I>,
-marcadas com um identificador no início ("<CODE>!</CODE>") que torna estes
-comentários diferentes dos comentários normais. A sintaxe é tão simples
-quanto uma atribuição de valor a uma variável, composta por uma
-palavra-chave e um valor, separados um do outro pelo separador canônico
+As linhas de configuraÃ§Ã£o sÃ£o <I>linhas de comentÃ¡rio especiais</I>,
+marcadas com um identificador no inÃ­cio ("<CODE>!</CODE>") que torna estes
+comentÃ¡rios diferentes dos comentÃ¡rios normais. A sintaxe Ã© tÃ£o simples
+quanto uma atribuiÃ§Ã£o de valor a uma variÃ¡vel, composta por uma
+palavra-chave e um valor, separados um do outro pelo separador canÃ´nico
 dois-pontos ("<CODE>:</CODE>").
 </P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>%! palavra-chave : valor</TH>
 </TR>
 </TABLE>
 
-<P></P>
 <P>
-<B><CODE>Detalhes da Sintaxe:</CODE></B> O ponto de exclamação deve ser colocado
-junto com o caractere de comentário, sem espaço entre eles ("<CODE>%!</CODE>").
-Os espaços em torno da <I>palavra-chave</I> e o separador são opcionais, e
+<B><CODE>Detalhes da Sintaxe:</CODE></B> O ponto de exclamaÃ§Ã£o deve ser colocado
+junto com o caractere de comentÃ¡rio, sem espaÃ§o entre eles ("<CODE>%!</CODE>").
+Os espaÃ§os em torno da <I>palavra-chave</I> e o separador sÃ£o opcionais, e
 tanto a <I>palavra-chave</I> quanto o <I>valor</I> podem estar
-indiferentemente em maiúsculas ou minúsculas.
+indiferentemente em maiÃºsculas ou minÃºsculas.
 </P>
-<H4>O que eu posso configurar? Quais são as palavra-chave válidas?</H4>
+
+<H4>O que eu posso configurar? Quais sÃ£o as palavra-chave vÃ¡lidas?</H4>
+
 <P>
-As configurações que podem ser feitas são <I>Target</I>, <I>Options</I>, <I>Style</I>,
+As configuraÃ§Ãµes que podem ser feitas sÃ£o <I>Target</I>, <I>Options</I>, <I>Style</I>,
 <I>Encoding</I>, <I>PreProc</I> e <I>PostProc</I>.
 </P>
 <P>
-A configuração <B><I>Target</I></B> define o destino padrão na qual o
+A configuraÃ§Ã£o <B><I>Target</I></B> define o destino padrÃ£o na qual o
 documento deve ser convertido.
 </P>
 <P>
-A configuração <B><I>Options</I></B> é útil para especificar as opções de
-linha de comando padrão para o arquivo fonte. Estas opções podem ser
-sobrescritas pela linha de comando real. Usar esta opção juntamente com
+A configuraÃ§Ã£o <B><I>Options</I></B> Ã© Ãºtil para especificar as opÃ§Ãµes de
+linha de comando padrÃ£o para o arquivo fonte. Estas opÃ§Ãµes podem ser
+sobrescritas pela linha de comando real. Usar esta opÃ§Ã£o juntamente com
 <CODE>%!target</CODE> permite converter o documento simplesmente comandando:
 <CODE>txt2tags file.t2t</CODE>
 </P>
 <P>
-A configuração <B><I>Style</I></B> só é suportada pelo tipo de documento
+A configuraÃ§Ã£o <B><I>Style</I></B> sÃ³ Ã© suportada pelo tipo de documento
 destino HTML, para definir uma folha de estilo
 (<I>Cascading Style Sheets - CSS</I>).
 </P>
 <P>
-A configuração <B><I>Encoding</I></B> é necessária para escritores não
-ingleses, que usem letras acentuadas e outros detalhes específicos de
-localização, de forma que o <I>Conjunto de Caracteres</I> do documento seja
+A configuraÃ§Ã£o <B><I>Encoding</I></B> Ã© necessÃ¡ria para escritores nÃ£o
+ingleses, que usem letras acentuadas e outros detalhes especÃ­ficos de
+localizaÃ§Ã£o, de forma que o <I>Conjunto de Caracteres</I> do documento seja
 personalizado (se permitido).
 </P>
 <P>
-A configuração <B><I>PreProc</I></B> é um filtro. Ela define regras do tipo
-"busca e troca" que serão aplicadas ao arquivo original <U>antes</U> que
-qualquer análise por parte do txt2tags ocorra.
+A configuraÃ§Ã£o <B><I>PreProc</I></B> Ã© um filtro. Ela define regras do tipo
+"busca e troca" que serÃ£o aplicadas ao arquivo original <U>antes</U> que
+qualquer anÃ¡lise por parte do txt2tags ocorra.
 </P>
 <P>
-A configuração <B><I>PostProc</I></B> é um filtro. Ela define regras do tipo
-"busca e troca" que serão aplicadas ao arquivo destino <U>depois</U> de
+A configuraÃ§Ã£o <B><I>PostProc</I></B> Ã© um filtro. Ela define regras do tipo
+"busca e troca" que serÃ£o aplicadas ao arquivo destino <U>depois</U> de
 todo o processamento por parte do txt2tags.
 </P>
 <P>
 Exemplo:
 </P>
+
 <PRE>
   %! Target  : html
   %! Options : --toc --toc-level 3
   %! Style   : fancy.css
-  %! Encoding: iso-8859-1
+  %! Encoding: UTF-8
   %! PreProc : "amj"       "Aurelio Marinho Jargas"
   %! PostProc: '&lt;BODY.*?&gt;' '&lt;BODY bgcolor="yellow"&gt;'
 </PRE>
-<P></P>
-<H4>Algumas regras sobre as Configurações</H4>
+
+<H4>Algumas regras sobre as ConfiguraÃ§Ãµes</H4>
+
  <UL>
- <LI>As configurações são válidas somente dentro da Área de Configuração,
-   e serão consideradas comentários simples se forem encontradas no
+ <LI>As configuraÃ§Ãµes sÃ£o vÃ¡lidas somente dentro da Ãrea de ConfiguraÃ§Ã£o,
+   e serÃ£o consideradas comentÃ¡rios simples se forem encontradas no
    Corpo do documento.
  <P></P>
- <LI>Se a mesma palavra-chave aparece mais de uma vez na Área de
-   Configuração, apenas a última será usada. Exceção: options, preproc e
-   postproc, que são acumulativas.
+ <LI>Se a mesma palavra-chave aparece mais de uma vez na Ãrea de
+   ConfiguraÃ§Ã£o, apenas a Ãºltima serÃ¡ usada. ExceÃ§Ã£o: options, preproc e
+   postproc, que sÃ£o acumulativas.
  <P></P>
- <LI>Uma linha de configuração com uma palavra-chave inválida será
-   considerada um comentário.
+ <LI>Uma linha de configuraÃ§Ã£o com uma palavra-chave invÃ¡lida serÃ¡
+   considerada um comentÃ¡rio.
  <P></P>
- <LI>Estas configurações têm precedência sobre o arquivo <CODE>txt2tagsrc</CODE>,
-   as não sobre as opções de linha de comando.
+ <LI>Estas configuraÃ§Ãµes tÃªm precedÃªncia sobre o arquivo <CODE>txt2tagsrc</CODE>,
+   as nÃ£o sobre as opÃ§Ãµes de linha de comando.
  </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc18"></A>
-<H2>O Corpo do Texto</H2>
+
+<H2 ID="toc18">O Corpo do Texto</H2>
+
 <P>
-Localização:
+LocalizaÃ§Ã£o:
 </P>
+
 <UL>
-<LI>Começa na primeira linha válida de texto do arquivo
+<LI>ComeÃ§a na primeira linha vÃ¡lida de texto do arquivo
   <UL>
-  <LI>Cabeçalhos, Configurações e Comentários <B>não</B> são linhas de texto
-    válidas
+  <LI>CabeÃ§alhos, ConfiguraÃ§Ãµes e ComentÃ¡rios <B>nÃ£o</B> sÃ£o linhas de texto
+    vÃ¡lidas
   </UL>
 <LI>Termina no fim do arquivo (EOF)
 </UL>
 
 <P>
-Bem, o corpo do texto é tudo que estiver fora das Áreas de Cabeçalho e
-de Configuração.
+Bem, o corpo do texto Ã© tudo que estiver fora das Ãreas de CabeÃ§alho e
+de ConfiguraÃ§Ã£o.
 </P>
 <P>
-O corpo do texto é onde está o conteúdo do documento e todas as
-estruturas e formatações que o txt2tags reconhece. Dentro do corpo podem
-ser também colocados comentários para <I>A FAZER</I> e anotações
+O corpo do texto Ã© onde estÃ¡ o conteÃºdo do documento e todas as
+estruturas e formataÃ§Ãµes que o txt2tags reconhece. Dentro do corpo podem
+ser tambÃ©m colocados comentÃ¡rios para <I>A FAZER</I> e anotaÃ§Ãµes
 particulares.
 </P>
 <P>
-Pode-se utilizar a opção de linha de comando <CODE>--no-headers</CODE> para
-converter somente o corpo do documento, suprimindo os cabeçalhos. Esta
-opção é útil quando os cabeçalhos estão em um arquivo separado, que será
-unido ao corpo depois da conversão.
+Pode-se utilizar a opÃ§Ã£o de linha de comando <CODE>--no-headers</CODE> para
+converter somente o corpo do documento, suprimindo os cabeÃ§alhos. Esta
+opÃ§Ã£o Ã© Ãºtil quando os cabeÃ§alhos estÃ£o em um arquivo separado, que serÃ¡
+unido ao corpo depois da conversÃ£o.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="regras"></A>
-<H2>Marcações (REGRAS)</H2>
+
+<H2 ID="regras">MarcaÃ§Ãµes (REGRAS)</H2>
+
 <P>
-Todas as marcações e sintaxe usadas pelo txt2tags estão detalhadas em
+Todas as marcaÃ§Ãµes e sintaxe usadas pelo txt2tags estÃ£o detalhadas em
 um <A HREF="REGRAS">arquivo REGRAS a parte</A>.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="data"></A>
-<H2>A macro %%date</H2>
+
+<H2 ID="data">A macro %%date</H2>
+
 <P>
-A macro <CODE>%%date</CODE> chamada sem nenhum parâmetro adicional retorna a data
-atual no formato ISO <I>yyyymmdd</I>. Uma formatação opcional pode ser
+A macro <CODE>%%date</CODE> chamada sem nenhum parÃ¢metro adicional retorna a data
+atual no formato ISO <I>yyyymmdd</I>. Uma formataÃ§Ã£o opcional pode ser
 especificada usando a sintaxe <CODE>%%date(formato)</CODE>.
 </P>
 <P>
-O <I>formato</I> contém texto de diretivas de formatação, que são compostas
+O <I>formato</I> contÃ©m texto de diretivas de formataÃ§Ã£o, que sÃ£o compostas
 por um sinal de porcentagem (<CODE>%</CODE>) seguido por um caractere de
-identificação.
+identificaÃ§Ã£o.
 </P>
 <P>
 Segue uma lista de algumas diretivas comuns. A lista completa pode ser
 encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">http://www.python.org/doc/current/lib/module-time.html</A>.
 </P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Diretiva</TH>
-<TH>Descrição</TH>
+<TH>DescriÃ§Ã£o</TH>
 </TR>
 <TR>
 <TD ALIGN="center">%a</TD>
@@ -1402,11 +1444,11 @@ encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">h
 </TR>
 <TR>
 <TD ALIGN="center">%b</TD>
-<TD>Nome do mês abreviado.</TD>
+<TD>Nome do mÃªs abreviado.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%B</TD>
-<TD>Nome do mês.</TD>
+<TD>Nome do mÃªs.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%c</TD>
@@ -1414,23 +1456,23 @@ encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">h
 </TR>
 <TR>
 <TD ALIGN="center">%d</TD>
-<TD>Dia do mês como um número decimal [01,31].</TD>
+<TD>Dia do mÃªs como um nÃºmero decimal [01,31].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%H</TD>
-<TD>Hora (24 horas) como um número decimal [00,23].</TD>
+<TD>Hora (24 horas) como um nÃºmero decimal [00,23].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%I</TD>
-<TD>Hora (12 horas) como um número decimal [01,12].</TD>
+<TD>Hora (12 horas) como um nÃºmero decimal [01,12].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%m</TD>
-<TD>O mês como um número decimal [01,12].</TD>
+<TD>O mÃªs como um nÃºmero decimal [01,12].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%M</TD>
-<TD>O minuto como um número decimal [00,59].</TD>
+<TD>O minuto como um nÃºmero decimal [00,59].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%p</TD>
@@ -1438,23 +1480,23 @@ encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">h
 </TR>
 <TR>
 <TD ALIGN="center">%S</TD>
-<TD>Os segundos como um número decimal [00,61].  (1)</TD>
+<TD>Os segundos como um nÃºmero decimal [00,61].  (1)</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%x</TD>
-<TD>Representação local da data.</TD>
+<TD>RepresentaÃ§Ã£o local da data.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%X</TD>
-<TD>Representação local da hora.</TD>
+<TD>RepresentaÃ§Ã£o local da hora.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%y</TD>
-<TD>O ano sem o século como um número decimal [00,99].</TD>
+<TD>O ano sem o sÃ©culo como um nÃºmero decimal [00,99].</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%Y</TD>
-<TD>O ano com o século como um número decimal.</TD>
+<TD>O ano com o sÃ©culo como um nÃºmero decimal.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">%%</TD>
@@ -1462,9 +1504,9 @@ encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">h
 </TR>
 </TABLE>
 
-<P></P>
 <H4>Exemplos</H4>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH><CODE>%%date(format)</CODE></TH>
 <TH>Resultado para: 2004, Jul13, 18:49</TH>
@@ -1487,29 +1529,29 @@ encontrada em <A HREF="http://www.python.org/doc/current/lib/module-time.html">h
 </TR>
 </TABLE>
 
-<P></P>
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="include"></A>
-<H2>O comando %!include</H2>
+
+<H2 ID="include">O comando %!include</H2>
+
 <P>
-A partir da versão 1.7, é possível usar o comando <CODE>include</CODE> para
-inserir o conteúdo de um arquivo externo dentro do corpo do documento
+A partir da versÃ£o 1.7, Ã© possÃ­vel usar o comando <CODE>include</CODE> para
+inserir o conteÃºdo de um arquivo externo dentro do corpo do documento
 original.
 </P>
 <P>
-O <CODE>%!include</CODE> não é uma configuração, mas um comando, sendo somente
-válido na área de CORPO do texto.
+O <CODE>%!include</CODE> nÃ£o Ã© uma configuraÃ§Ã£o, mas um comando, sendo somente
+vÃ¡lido na Ã¡rea de CORPO do texto.
 </P>
 <P>
-O comando <CODE>include</CODE> é útil para dividir um documento grande em vários
-arquivos menores (como capítulos de um livro) ou para incluir todo o
-conteúdo de um arquivo qualquer no documento. Por exemplo:
+O comando <CODE>include</CODE> Ã© Ãºtil para dividir um documento grande em vÃ¡rios
+arquivos menores (como capÃ­tulos de um livro) ou para incluir todo o
+conteÃºdo de um arquivo qualquer no documento. Por exemplo:
 </P>
+
 <PRE>
   Meu Primeiro Livro
   Dr. Fulano da Silva
-  1ª Edição
+  1Âª EdiÃ§Ã£o
   
   %!include: introducao.t2t
   %!include: capitulo1.t2t
@@ -1518,167 +1560,181 @@ conteúdo de um arquivo qualquer no documento. Por exemplo:
   %!include: capitulo9.t2t
   %!include: conclusao.t2t
 </PRE>
-<P></P>
+
 <P>
-Como se pode ver, basta informar o nome do arquivo logo após o comando
-<CODE>%!include</CODE>. Também é possível atrelar o comando a um destino
-específico, como em:
+Como se pode ver, basta informar o nome do arquivo logo apÃ³s o comando
+<CODE>%!include</CODE>. TambÃ©m Ã© possÃ­vel atrelar o comando a um destino
+especÃ­fico, como em:
 </P>
+
 <PRE>
   %!include(html): arquivo.t2t
 </PRE>
-<P></P>
+
 <P>
 Note que o <CODE>include</CODE> vai inserir o CORPO do documento .t2t, ignorando
-seu CABEÇALHO e suas CONFIGURAÇÕES. Assim é possível converter o arquivo
-incluído de maneira isolada ou como parte do documento mãe.
+seu CABEÃ‡ALHO e suas CONFIGURAÃ‡Ã•ES. Assim Ã© possÃ­vel converter o arquivo
+incluÃ­do de maneira isolada ou como parte do documento mÃ£e.
 </P>
 <P>
-Além de incluir arquivos .t2t, há mais três tipos de inclusão:
+AlÃ©m de incluir arquivos .t2t, hÃ¡ mais trÃªs tipos de inclusÃ£o:
 </P>
+
 <UL>
-<LI>Inclusão de texto pré-formatado (Verbatim)
-<LI>Inclusão de texto protegido (Raw)
-<LI>Inclusão de texto já convertido (Tagged)
+<LI>InclusÃ£o de texto prÃ©-formatado (Verbatim)
+<LI>InclusÃ£o de texto protegido (Raw)
+<LI>InclusÃ£o de texto jÃ¡ convertido (Tagged)
 </UL>
 
 <P>
-No tipo <B>Verbatim</B> o texto é incluído preservado seus espaços e
-formatação originais. É como se esse texto estivesse entre as marcações
-(```) da área VERB do txt2tags. Para incluir um arquivo dessa maneira,
+No tipo <B>Verbatim</B> o texto Ã© incluÃ­do preservado seus espaÃ§os e
+formataÃ§Ã£o originais. Ã‰ como se esse texto estivesse entre as marcaÃ§Ãµes
+(```) da Ã¡rea VERB do txt2tags. Para incluir um arquivo dessa maneira,
 basta colocar seu nome entre crases:
 </P>
+
 <PRE>
   %!include: ``/etc/fstab``
 </PRE>
-<P></P>
+
 <P>
-No tipo <B>Raw</B> o texto é incluído "como está", sem tentar encontrar e
-avaliar as marcas do txt2tags dele. É como se esse texto estivesse entre
-as marcações (""") da área protegida. Para incluir um arquivo dessa
+No tipo <B>Raw</B> o texto Ã© incluÃ­do "como estÃ¡", sem tentar encontrar e
+avaliar as marcas do txt2tags dele. Ã‰ como se esse texto estivesse entre
+as marcaÃ§Ãµes (""") da Ã¡rea protegida. Para incluir um arquivo dessa
 maneira, basta colocar seu nome entre aspas
 </P>
+
 <PRE>
   %!include: ""bom_texto.txt""
 </PRE>
-<P></P>
+
 <P>
-Já no tipo <B>Tagged</B>, o texto é passado diretamente para o documento
-resultante, sem NENHUM tratamento pelo txt2tags. Assim é possível
-incluir tags adicionais, trechos já prontos ou estruturas mais
-complicadas que não são suportadas pelo programa. Outra aplicação é
-incluir um cabeçalho ou rodapé padrão em todos os documentos:
+JÃ¡ no tipo <B>Tagged</B>, o texto Ã© passado diretamente para o documento
+resultante, sem NENHUM tratamento pelo txt2tags. Assim Ã© possÃ­vel
+incluir tags adicionais, trechos jÃ¡ prontos ou estruturas mais
+complicadas que nÃ£o sÃ£o suportadas pelo programa. Outra aplicaÃ§Ã£o Ã©
+incluir um cabeÃ§alho ou rodapÃ© padrÃ£o em todos os documentos:
 </P>
+
 <PRE>
   %!include(html): ''rodape.html''
 </PRE>
-<P></P>
+
 <P>
-Note que o nome do arquivo está entre aspas simples (e não crases como o
-anterior). São estas aspas que indicam que o conteúdo deve ser passado
-diretamente. Como este conteúdo já contém tags, é primordial especificar
-o destino também, para evitar problemas.
+Note que o nome do arquivo estÃ¡ entre aspas simples (e nÃ£o crases como o
+anterior). SÃ£o estas aspas que indicam que o conteÃºdo deve ser passado
+diretamente. Como este conteÃºdo jÃ¡ contÃ©m tags, Ã© primordial especificar
+o destino tambÃ©m, para evitar problemas.
 </P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="settings"></A>
-<H1>Parte V - Dominando as Diretivas de Configuração</H1>
+
+<H1 ID="settings">Parte V - Dominando as Diretivas de ConfiguraÃ§Ã£o</H1>
+
 <P>
-As Diretivas de Configuração são todas opcionais. A maioria dos usuários
-pode muito bem passar sem elas. Mas elas são viciantes, se você começa a
-usá-las, não consegue parar :)
+As Diretivas de ConfiguraÃ§Ã£o sÃ£o todas opcionais. A maioria dos usuÃ¡rios
+pode muito bem passar sem elas. Mas elas sÃ£o viciantes, se vocÃª comeÃ§a a
+usÃ¡-las, nÃ£o consegue parar :)
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc23"></A>
-<H2>%!Target</H2>
+
+<H2 ID="toc23">%!Target</H2>
+
 <P>
-Usando a configuração Target define o destino padrão definido no
+Usando a configuraÃ§Ã£o Target define o destino padrÃ£o definido no
 documento:
 </P>
+
 <PRE>
   %!target: html
 </PRE>
-<P></P>
+
 <P>
-Assim o usuário pode simplesmente comandar
+Assim o usuÃ¡rio pode simplesmente comandar
 </P>
+
 <PRE>
   $ txt2tags file.t2t
 </PRE>
-<P></P>
+
 <P>
-E a conversão será efetuada para o destino especificado.
+E a conversÃ£o serÃ¡ efetuada para o destino especificado.
 </P>
 <P>
-A configuração Target não permite a especificação opcional de destino.
-Afinal, não faz sentido algo como <CODE>%!target(tex): html</CODE>.
+A configuraÃ§Ã£o Target nÃ£o permite a especificaÃ§Ã£o opcional de destino.
+Afinal, nÃ£o faz sentido algo como <CODE>%!target(tex): html</CODE>.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc24"></A>
-<H2>%!Options</H2>
+
+<H2 ID="toc24">%!Options</H2>
+
 <P>
-Escrever longas linhas de comando toda vez que for necessário converter
-um documento é maçante e sujeito a erros. A configuração Options permite
-que o usuário salve todas as opções de conversão juntas, no próprio
-documento. Desta forma também se garante que o documento sempre será
-convertido da mesma forma, com as mesmas opções.
+Escrever longas linhas de comando toda vez que for necessÃ¡rio converter
+um documento Ã© maÃ§ante e sujeito a erros. A configuraÃ§Ã£o Options permite
+que o usuÃ¡rio salve todas as opÃ§Ãµes de conversÃ£o juntas, no prÃ³prio
+documento. Desta forma tambÃ©m se garante que o documento sempre serÃ¡
+convertido da mesma forma, com as mesmas opÃ§Ãµes.
 </P>
 <P>
-Só é necessário escrevê-la sem erros de sintaxe, como se estivesse na
-linha de comando. Mas omita a chamada ao programa "txt2tags" no início e
+SÃ³ Ã© necessÃ¡rio escrevÃª-la sem erros de sintaxe, como se estivesse na
+linha de comando. Mas omita a chamada ao programa "txt2tags" no inÃ­cio e
 o nome do arquivo origem no fim da linha.
 </P>
 <P>
-Por exemplo, se você usa esta linha de comando para converter seu
+Por exemplo, se vocÃª usa esta linha de comando para converter seu
 documento:
 </P>
+
 <PRE>
   $ txt2tags -t html --toc --toc-level 2 --enum-title file.t2t
 </PRE>
-<P></P>
+
 <P>
-Pode-se economizar um bocado de digitação usando esta configuração de
+Pode-se economizar um bocado de digitaÃ§Ã£o usando esta configuraÃ§Ã£o de
 Options dentro do documento origem:
 </P>
+
 <PRE>
   %!target: html
   %!options(html): --toc --toc-level 2 --enum-title
 </PRE>
-<P></P>
+
 <P>
 A linha de comando real passa agora a ser apenas "<CODE>txt2tags file.t2t</CODE>",
-e a conversão pode ser executada dentro do seu editor de textos
-favorito, enquanto o conteúdo está sendo editado. No Vi, o comando é:
+e a conversÃ£o pode ser executada dentro do seu editor de textos
+favorito, enquanto o conteÃºdo estÃ¡ sendo editado. No Vi, o comando Ã©:
 </P>
+
 <PRE>
   :!txt2tags %
 </PRE>
-<P></P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc25"></A>
-<H2>%!Encoding</H2>
+
+<H2 ID="toc25">%!Encoding</H2>
+
 <P>
-A configuração de Encoding é necessária para autores não ingleses, que
-usam letras acentuadas e outros detalhes específicos, de forma que o
+A configuraÃ§Ã£o de Encoding Ã© necessÃ¡ria para autores nÃ£o ingleses, que
+usam letras acentuadas e outros detalhes especÃ­ficos, de forma que o
 <I>Conjunto de Caracteres</I> do documento gerado possa ser personalizado
-(se possível).
+(se possÃ­vel).
 </P>
 <P>
-Os valores válidos para a configuração de Encoding são os mesmos que são
-válidos para documentos, HTML, como <I>iso-8859-1</I> e <I>koi8-r</I>. Se você
-não está certo de qual codificação quer usar,
+Os valores vÃ¡lidos para a configuraÃ§Ã£o de Encoding sÃ£o os mesmos que sÃ£o
+vÃ¡lidos para documentos, HTML, como <I>UTF-8</I> e <I>koi8-r</I>. Se vocÃª
+nÃ£o estÃ¡ certo de qual codificaÃ§Ã£o quer usar,
 <A HREF="http://www.iana.org/assignments/character-sets">esta lista completa (e longa!)</A>
-poderá ser de ajuda.
+poderÃ¡ ser de ajuda.
 </P>
 <P>
-Quando for gerado documentos LaTeX, utiliza aliases para a codificação.
-Isto não deve ser problema para o usuário, já que o txt2tags faz a
-tradução internamente. Alguns exemplos:
+Quando for gerado documentos LaTeX, utiliza aliases para a codificaÃ§Ã£o.
+Isto nÃ£o deve ser problema para o usuÃ¡rio, jÃ¡ que o txt2tags faz a
+traduÃ§Ã£o internamente. Alguns exemplos:
 </P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>txt2tags/HTML</TH>
 <TH>&gt;</TH>
@@ -1721,136 +1777,145 @@ tradução internamente. Alguns exemplos:
 </TR>
 </TABLE>
 
-<P></P>
 <P>
-Se o valor é desconhecido do txt2tags, ele será passado sem tradução,
-permitindo que o usuário especifique codificações personalizadas.
+Se o valor Ã© desconhecido do txt2tags, ele serÃ¡ passado sem traduÃ§Ã£o,
+permitindo que o usuÃ¡rio especifique codificaÃ§Ãµes personalizadas.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc26"></A>
-<H2>%!PreProc</H2>
+
+<H2 ID="toc26">%!PreProc</H2>
+
 <P>
-O filtro de usuário PreProc é uma função "busca e troca" que é aplicada
-logo após a linha ter sido lida do arquivo original, antes de qualquer
+O filtro de usuÃ¡rio PreProc Ã© uma funÃ§Ã£o "busca e troca" que Ã© aplicada
+logo apÃ³s a linha ter sido lida do arquivo original, antes de qualquer
 tratamento pelo txt2tags.
 </P>
 <P>
-Ela é útil para definir algumas abreviações para texto que seja usado
+Ela Ã© Ãºtil para definir algumas abreviaÃ§Ãµes para texto que seja usado
 comumente, como:
 </P>
+
 <PRE>
   %!preproc amj          "Aurelio Marinho Jargas"
   %!preproc RELEASE_DATE "2004-07-13"
   %!preproc BOLOTA       "[images/tiny/bullet_blue.png]"
 </PRE>
-<P></P>
+
 <P>
-Desta forma, o usuário pode escrever uma linha como:
+Desta forma, o usuÃ¡rio pode escrever uma linha como:
 </P>
+
 <PRE>
-  Oi, eu sou amj. Hoje é RELEASE_DATE.
+  Oi, eu sou amj. Hoje Ã© RELEASE_DATE.
 </PRE>
-<P></P>
+
 <P>
-E o txt2tags irá ver esta linha como:
+E o txt2tags irÃ¡ ver esta linha como:
 </P>
+
 <PRE>
-  Oi, eu sou Aurelio Marinho Jargas. Hoje é 2004-07-13.
+  Oi, eu sou Aurelio Marinho Jargas. Hoje Ã© 2004-07-13.
 </PRE>
-<P></P>
+
 <P>
-Este filtro é um componente que trabalha entre o autor do documento e a
-conversão do txt2tags. É como uma primeira conversão antes da conversão
+Este filtro Ã© um componente que trabalha entre o autor do documento e a
+conversÃ£o do txt2tags. Ã‰ como uma primeira conversÃ£o antes da conversÃ£o
 "real". Este comportamento funciona exatamente como um filtro Sed/Perl
 externo, chamado assim:
 </P>
+
 <PRE>
   $ cat arquivo.t2t | preproc-script.sh | txt2tags -
 </PRE>
-<P></P>
+
 <P>
-Assim, o tratamento executado pelo txt2tags irá começar após todas as
-substituições PreProc terem sido feitas.
+Assim, o tratamento executado pelo txt2tags irÃ¡ comeÃ§ar apÃ³s todas as
+substituiÃ§Ãµes PreProc terem sido feitas.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc27"></A>
-<H2>%!PostProc</H2>
+
+<H2 ID="toc27">%!PostProc</H2>
+
 <P>
-O filtro de usuário PostProc é uma função do tipo "busca e troca" que é
-aplicada no arquivo resultante, após todos as conversões do txt2tags
+O filtro de usuÃ¡rio PostProc Ã© uma funÃ§Ã£o do tipo "busca e troca" que Ã©
+aplicada no arquivo resultante, apÃ³s todos as conversÃµes do txt2tags
 terem sido feitas.
 </P>
 <P>
-É útil para defintir alguns refinamentos no documento gerado, mudar
-algumas marcações e acrescentar algumas marcações ou texto extra.
+Ã‰ Ãºtil para defintir alguns refinamentos no documento gerado, mudar
+algumas marcaÃ§Ãµes e acrescentar algumas marcaÃ§Ãµes ou texto extra.
 Alguns exemplos breves:
 </P>
+
 <PRE>
   %!postproc(html): '&lt;BODY.*?&gt;' '&lt;BODY BGCOLOR="green"&gt;'
   %!postproc(tex) : "\\clearpage" ""
 </PRE>
-<P></P>
+
 <P>
-Estes filtros mudam a cor de fundo da página HTML e removem as quebras
-de página em arquivos LaTeX gerados.
+Estes filtros mudam a cor de fundo da pÃ¡gina HTML e removem as quebras
+de pÃ¡gina em arquivos LaTeX gerados.
 </P>
 <P>
-As regras do PostProc são iguais a filtros externos Sed/Perl, chamados
+As regras do PostProc sÃ£o iguais a filtros externos Sed/Perl, chamados
 desta forma:
 </P>
+
 <PRE>
   $ txt2tags -t html -o- arquivo.t2t | postproc-script.sh &gt; arquivo.html
 </PRE>
-<P></P>
+
 <P>
 Antes desta funcionalidade ter sido introduzida, era bastante comum ter
 pequenos scripts para "ajustar" os resultados gerados pelo txt2tags.
-Estes scripts eram, de fato, vários comandos sed (ou assemelhados), para
+Estes scripts eram, de fato, vÃ¡rios comandos sed (ou assemelhados), para
 fazer algo do tipo "substitua isto por aquilo". Agora estas trocas podem
-ser salvas junto com o texto do documento, e também aproveitar-se da
-poderosa máquina de Expressões Regulares do Python para encontrar os
-padrões.
+ser salvas junto com o texto do documento, e tambÃ©m aproveitar-se da
+poderosa mÃ¡quina de ExpressÃµes Regulares do Python para encontrar os
+padrÃµes.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc28"></A>
-<H2>%!Style</H2>
+
+<H2 ID="toc28">%!Style</H2>
+
 <UL>
-<LI>Esta opção é útil na geração de arquivos HTML e XHTML, definindo o
-  nome do arquivo CSS que será usado no documento gerado.
+<LI>Esta opÃ§Ã£o Ã© Ãºtil na geraÃ§Ã£o de arquivos HTML e XHTML, definindo o
+  nome do arquivo CSS que serÃ¡ usado no documento gerado.
 <P></P>
-<LI>No formato LaTeX, essa opção é usada para carregar módulos com o
+<LI>No formato LaTeX, essa opÃ§Ã£o Ã© usada para carregar mÃ³dulos com o
   <CODE>\usepackage</CODE>.
 <P></P>
-<LI>O mesmo efeito pode ser obtido com a opção de linha de comando
+<LI>O mesmo efeito pode ser obtido com a opÃ§Ã£o de linha de comando
   <CODE>--style</CODE>.
 <P></P>
-<LI>A opção de linha de comando --style tem precedência sobre a
-  configuração de %!style
+<LI>A opÃ§Ã£o de linha de comando --style tem precedÃªncia sobre a
+  configuraÃ§Ã£o de %!style
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc29"></A>
-<H2>Detalhes dos Filtros PreProc e PostProc</H2>
+
+<H2 ID="toc29">Detalhes dos Filtros PreProc e PostProc</H2>
+
 <UL>
-<LI>Estes filtros foram acrescentados ao txt2tags na versão 1.6.
+<LI>Estes filtros foram acrescentados ao txt2tags na versÃ£o 1.6.
 <P></P>
-<LI>Filtros são uma função do tipo "buscar e trocar" (pense no sed)
+<LI>Filtros sÃ£o uma funÃ§Ã£o do tipo "buscar e trocar" (pense no sed)
 <P></P>
-<LI>O PREproc é aplicado logo após a linha ser lida, e o POSTproc é
-  aplicado após todo o tratamento ter sido feito. Funcionam exatamente
-  como em (UUOC à frente):
+<LI>O PREproc Ã© aplicado logo apÃ³s a linha ser lida, e o POSTproc Ã©
+  aplicado apÃ³s todo o tratamento ter sido feito. Funcionam exatamente
+  como em (UUOC Ã  frente):
 <P></P>
 <PRE>
   $ cat file.t2t | preproc.sh | txt2tags | postproc.sh
 </PRE>
+
 <P></P>
-<LI>Escapes especiais como <CODE>\n</CODE> e <CODE>\t</CODE> são interpretados
+<LI>Escapes especiais como <CODE>\n</CODE> e <CODE>\t</CODE> sÃ£o interpretados
 <P></P>
-<LI>Os filtros são cumulativos e são aplicados na mesma ordem em que são
+<LI>Os filtros sÃ£o cumulativos e sÃ£o aplicados na mesma ordem em que sÃ£o
   definidos
 <P></P>
 <LI>Os filtros devem receber exatamente DOIS argumentos
@@ -1859,203 +1924,218 @@ padrões.
 <PRE>
   %!postproc: "undesired string" ""
 </PRE>
+
 <P></P>
 <LI>Para evitar problemas, sempre use informar explicitamente para que
   destino se aplica o filtro quando estiver usando o PostProc para mudar
-  marcações: <CODE>%!PostProc(destino): &lt;isto&gt; &lt;aquilo&gt;</CODE>
+  marcaÃ§Ãµes: <CODE>%!PostProc(destino): &lt;isto&gt; &lt;aquilo&gt;</CODE>
 <P></P>
-<LI>As Expressões Regulares do Python podem ser utilizadas! Elas são
-  similares às Regex do Perl. Por exemplo: troque todas as marcações "B"
+<LI>As ExpressÃµes Regulares do Python podem ser utilizadas! Elas sÃ£o
+  similares Ã s Regex do Perl. Por exemplo: troque todas as marcaÃ§Ãµes "B"
   para "STRONG" no HTML:
 <P></P>
 <PRE>
   %!postproc(html):   '(&lt;/?)B&gt;'   '\1STRONG&gt;'
 </PRE>
+
 <P></P>
 <LI>Os argumentos dos filtros podem ser passados de 3 formas:
    <OL>
-   <LI>Uma palavra simples, sem aspas ou plicas, como FOO (sem espaços)
+   <LI>Uma palavra simples, sem aspas ou plicas, como FOO (sem espaÃ§os)
    <LI>Uma string com aspas duplas, como em "FOO"
-   <LI>Uma string com plicas ou apóstrofos, como em 'FOO'
+   <LI>Uma string com plicas ou apÃ³strofos, como em 'FOO'
    <P></P>
    </OL>
-<LI>Se seu padrão tem aspas, proteja as mesmas com plicas, e vice-versa.
-  Alguns exemplos válidos:
+<LI>Se seu padrÃ£o tem aspas, proteja as mesmas com plicas, e vice-versa.
+  Alguns exemplos vÃ¡lidos:
 <PRE>
-  %!postproc:   PADRÃO    TROCA
-  %!postproc:  "PADRÃO"  "TROCA"
-  %!postproc:  'PADRÃO'  'TROCA'
-  %!postproc:   PADRÃO   "TROCA"
-  %!postproc:  "PADRÃO"  'TROCA'
+  %!postproc:   PADRÃƒO    TROCA
+  %!postproc:  "PADRÃƒO"  "TROCA"
+  %!postproc:  'PADRÃƒO'  'TROCA'
+  %!postproc:   PADRÃƒO   "TROCA"
+  %!postproc:  "PADRÃƒO"  'TROCA'
 </PRE>
+
 </UL>
 
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc30"></A>
-<H2>Definindo uma Configuração para um Tipo-Destino Específico</H2>
+
+<H2 ID="toc30">Definindo uma ConfiguraÃ§Ã£o para um Tipo-Destino EspecÃ­fico</H2>
+
 <P>
-Desde a versão 1.6 do txt2tags, todas as Diretivas de Configuração podem
-ser especificadas para um destino específico, usando a sintaxe
-<CODE>%!key(target): value</CODE>. Desta forma, o usuário pode definir diferentes
-configurações para diverentes tipos de arquivos gerados.
+Desde a versÃ£o 1.6 do txt2tags, todas as Diretivas de ConfiguraÃ§Ã£o podem
+ser especificadas para um destino especÃ­fico, usando a sintaxe
+<CODE>%!key(target): value</CODE>. Desta forma, o usuÃ¡rio pode definir diferentes
+configuraÃ§Ãµes para diverentes tipos de arquivos gerados.
 </P>
 <P>
-Este aspecto é especialmente útil nos filtros pre/postproc, mas pode ser
+Este aspecto Ã© especialmente Ãºtil nos filtros pre/postproc, mas pode ser
 utilizado em todas as diretrizes. Por exemplo, configurar diferentes
 valores de Encoding para HTML e LaTeX:
 </P>
+
 <PRE>
-  %!encoding(html): iso-8859-1
+  %!encoding(html): UTF-8
   %!encoding(tex): latin1
 </PRE>
-<P></P>
+
 	<BLOCKQUOTE>
-	<B>Nota:</B> O mapeamento de codificações para os nomes especiais
-	LaTeX já é parte do txt2tags, o trecho acima é apenas um
+	<B>Nota:</B> O mapeamento de codificaÃ§Ãµes para os nomes especiais
+	LaTeX jÃ¡ Ã© parte do txt2tags, o trecho acima Ã© apenas um
 	exemplo.
 	</BLOCKQUOTE>
-<P></P>
 <P>
 Para o <CODE>%!options</CODE>, pode ser interessante:
 </P>
+
 <PRE>
   %!target: sgml
   %!options(sgml): --toc
   %!options(html): --style foo.css
   %!options(txt ): --toc-only --toc-level 2
 </PRE>
-<P></P>
+
 <P>
-Desta forma, o tipo de destino padrão é o SGML, com TOC. Se o usuário
+Desta forma, o tipo de destino padrÃ£o Ã© o SGML, com TOC. Se o usuÃ¡rio
 executar:
 </P>
+
 <PRE>
   $ txt2tags -t html file.t2t
 </PRE>
-<P></P>
+
 <P>
-O tipo de destino HTML será feito, e <B>somente</B> as opções de
-<CODE>%!options(html)</CODE> serão usadas. Desta forma, a opçõa --style será
-usada e o arquivo HTML não terá TOC.
+O tipo de destino HTML serÃ¡ feito, e <B>somente</B> as opÃ§Ãµes de
+<CODE>%!options(html)</CODE> serÃ£o usadas. Desta forma, a opÃ§Ãµa --style serÃ¡
+usada e o arquivo HTML nÃ£o terÃ¡ TOC.
 </P>
-<H3>A Precedência é Diferente</H3>
+
+<H3>A PrecedÃªncia Ã© Diferente</H3>
+
 <P>
-Em geral, para as diretivas de configuração, a última encontrada é a
-usada, mas quando usar diretivas explícitas de tipo-destino, elas tem
-precedência sobre as genéricas, não importando qual vem antes. Assim:
+Em geral, para as diretivas de configuraÃ§Ã£o, a Ãºltima encontrada Ã© a
+usada, mas quando usar diretivas explÃ­citas de tipo-destino, elas tem
+precedÃªncia sobre as genÃ©ricas, nÃ£o importando qual vem antes. Assim:
 </P>
+
 <PRE>
-  %!encoding(html): iso-8859-1
+  %!encoding(html): UTF-8
   %!encoding: latin1
 </PRE>
-<P></P>
+
 <P>
-Irá expandir para 'iso-8859-1' quando chamado com <CODE>-t html</CODE> mesmo que
-'latin1' seja definido logo após.
+IrÃ¡ expandir para 'UTF-8' quando chamado com <CODE>-t html</CODE> mesmo que
+'latin1' seja definido logo apÃ³s.
 </P>
-<H3>Filtros são Cumulativos</H3>
+
+<H3>Filtros sÃ£o Cumulativos</H3>
+
 <P>
-Os filtros pre/postproc não tem precedência e não se encaixam no esquema
-"último encontrado", eles são cumulativos. O usuário pode configurar
-múltiplos filtros, e eles serão aplicados na ordem em que são definidos.
+Os filtros pre/postproc nÃ£o tem precedÃªncia e nÃ£o se encaixam no esquema
+"Ãºltimo encontrado", eles sÃ£o cumulativos. O usuÃ¡rio pode configurar
+mÃºltiplos filtros, e eles serÃ£o aplicados na ordem em que sÃ£o definidos.
 </P>
 <P>
 Por exemplo:
 </P>
+
 <PRE>
   %!postproc     : ^ \t
   %!postproc(txt): ^ '&gt; '
 </PRE>
-<P></P>
+
 <P>
-Com estes filtros, todos os tipos-destino serão indentados por uma TAB.
-Se o tipo-destino é TXT, ele também receberá citações, como mensagens
+Com estes filtros, todos os tipos-destino serÃ£o indentados por uma TAB.
+Se o tipo-destino Ã© TXT, ele tambÃ©m receberÃ¡ citaÃ§Ãµes, como mensagens
 de email.
 </P>
+
 <PRE>
   Desta forma        Minha bela linha.
-  se tornará         \t&gt; Minha bela linha.
+  se tornarÃ¡         \t&gt; Minha bela linha.
 </PRE>
-<P></P>
+
 <H3>Em Resumo</H3>
+
 <UL>
-<LI>Para filtros, a ordem faz diferença e as regras genéricas <U>e</U>
-  específicas ao tipo-destino serão usadas
+<LI>Para filtros, a ordem faz diferenÃ§a e as regras genÃ©ricas <U>e</U>
+  especÃ­ficas ao tipo-destino serÃ£o usadas
 <P></P>
-<LI>Para outras configurações, <U>somente</U> o tipo-destino especificado é
-  usado (se definido, é claro), não importando a ordem
+<LI>Para outras configuraÃ§Ãµes, <U>somente</U> o tipo-destino especificado Ã©
+  usado (se definido, Ã© claro), nÃ£o importando a ordem
 </UL>
 
-<A NAME="toc31"></A>
-<H2>RC, CONF e a precedência de linha de comando</H2>
+<H2 ID="toc31">RC, CONF e a precedÃªncia de linha de comando</H2>
+
 <P>
-Há três maneiras de dizer ao txt2tags quais opções e configurações usar:
+HÃ¡ trÃªs maneiras de dizer ao txt2tags quais opÃ§Ãµes e configuraÃ§Ãµes usar:
 </P>
+
 <OL>
-<LI>O arquivo de usuário RC  (<CODE>.txt2tagsrc</CODE>)
-<LI>A Área de Configurações CONF do documento
-<LI>As opções de linha de comando
+<LI>O arquivo de usuÃ¡rio RC  (<CODE>.txt2tagsrc</CODE>)
+<LI>A Ãrea de ConfiguraÃ§Ãµes CONF do documento
+<LI>As opÃ§Ãµes de linha de comando
 </OL>
 
 <P>
-E esta é a ordem exata de como as configurações são lidas e aplicadas.
-Logo, as configuraçõe dp arquivo RC são lidas primeiro, daí as
-configurações do fonte do documento vêm a seguir, sobreescrevendo as do
-RC e finalmente as opções da linha de comando, mais fortes do que as
+E esta Ã© a ordem exata de como as configuraÃ§Ãµes sÃ£o lidas e aplicadas.
+Logo, as configuraÃ§Ãµe dp arquivo RC sÃ£o lidas primeiro, daÃ­ as
+configuraÃ§Ãµes do fonte do documento vÃªm a seguir, sobreescrevendo as do
+RC e finalmente as opÃ§Ãµes da linha de comando, mais fortes do que as
 outras duas.
 </P>
 <P>
-Então se o "encoding" do documento foi definido nas três opções, a da
-linha de comando será a utilizada.
+EntÃ£o se o "encoding" do documento foi definido nas trÃªs opÃ§Ãµes, a da
+linha de comando serÃ¡ a utilizada.
 </P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="toc32"></A>
-<H1>Parte VI - Magia Negra</H1>
+
+<H1 ID="toc32">Parte VI - Magia Negra</H1>
+
 <P>
-Este capítulo não é recomendado para novatos. Ele demonstra como fazer
-coisas estranhas com os filtros txt2tags, abusando de padrões complexos
-e Expressões Regulares.
+Este capÃ­tulo nÃ£o Ã© recomendado para novatos. Ele demonstra como fazer
+coisas estranhas com os filtros txt2tags, abusando de padrÃµes complexos
+e ExpressÃµes Regulares.
 </P>
 	<BLOCKQUOTE>
-	<B>CUIDADO!</B> Os procedimentos detalhados a seguir NÃO são
-	encorajados e podem acarretar danos. Até mesmo algum texto do
-	arquivo fonte pode ser perdido no processo de conversão, não
-	aparecendo no arquivo gerado. Use estas táticas se você
-	realmente precisa delas e sabe o que está fazendo.
+	<B>CUIDADO!</B> Os procedimentos detalhados a seguir NÃƒO sÃ£o
+	encorajados e podem acarretar danos. AtÃ© mesmo algum texto do
+	arquivo fonte pode ser perdido no processo de conversÃ£o, nÃ£o
+	aparecendo no arquivo gerado. Use estas tÃ¡ticas se vocÃª
+	realmente precisa delas e sabe o que estÃ¡ fazendo.
 	</BLOCKQUOTE>
-<P></P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
-<TH>Filtros são um recurso poderoso, mas podem ser perigosos!</TH>
+<TH>Filtros sÃ£o um recurso poderoso, mas podem ser perigosos!</TH>
 </TR>
 </TABLE>
 
-<P></P>
-<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TABLE ALIGN="center" BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Filtros mal-feitos geram resultados inesperados.</TH>
 </TR>
 </TABLE>
 
-<P></P>
 <P>
 Tenha isto em mente, sempre.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc33"></A>
-<H2>Inserindo Múltiplas Linhas com %!PostProc (como regras CSS)</H2>
+
+<H2 ID="toc33">Inserindo MÃºltiplas Linhas com %!PostProc (como regras CSS)</H2>
+
 <P>
-Nos filtros, o padrão de troca pode incluir múltiplas linhas usando o
+Nos filtros, o padrÃ£o de troca pode incluir mÃºltiplas linhas usando o
 caractere de quebra de linha, <CODE>\n</CODE>.
 </P>
 <P>
-Esta funcionalidade pode ser útil para incluir regras CSS curtas em um
+Esta funcionalidade pode ser Ãºtil para incluir regras CSS curtas em um
 arquivo HTML gerado, sem a necessidade de se criar um arquivo separado.
-É o caso deste Guia do Usuário, que usa estes filtros:
+Ã‰ o caso deste Guia do UsuÃ¡rio, que usa estes filtros:
 </P>
+
 <PRE>
   %!postproc: &lt;HEAD&gt;      '&lt;HEAD&gt;\n&lt;STYLE TYPE="text/css"&gt;\n&lt;/STYLE&gt;'
   %!postproc: (&lt;/STYLE&gt;)  'body     { margin:3em               ;} \n\1'
@@ -2063,11 +2143,12 @@ arquivo HTML gerado, sem a necessidade de se criar um arquivo separado.
   %!postproc: (&lt;/STYLE&gt;)  'pre,code { background-color:#ffffcc ;} \n\1'
   %!postproc: (&lt;/STYLE&gt;)  'th       { background-color:yellow  ;} \n\1'
 </PRE>
-<P></P>
+
 <P>
-Todos os filtros estão presos ao primeiro, ao substituir uma string que
+Todos os filtros estÃ£o presos ao primeiro, ao substituir uma string que
 ele inseriu. desta forma, um simples "&lt;HEAD&gt;" torna-se:
 </P>
+
 <PRE>
   &lt;HEAD&gt;
   &lt;STYLE TYPE="text/css"&gt;
@@ -2077,211 +2158,219 @@ ele inseriu. desta forma, um simples "&lt;HEAD&gt;" torna-se:
   th       { background-color:yellow  ;}
   &lt;/STYLE&gt;
 </PRE>
-<P></P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc34"></A>
-<H2>Criando Conteúdo "Específico ao Tipo Destino", com %!PreProc</H2>
+
+<H2 ID="toc34">Criando ConteÃºdo "EspecÃ­fico ao Tipo Destino", com %!PreProc</H2>
+
 <P>
-Algumas vezes é necessário inserir algum texto só para um tipo destino
-específico, e não para outros. Este tipo de comportamento estranho pode
+Algumas vezes Ã© necessÃ¡rio inserir algum texto sÃ³ para um tipo destino
+especÃ­fico, e nÃ£o para outros. Este tipo de comportamento estranho pode
 ser feito usando alguns truques de PreProc.
 </P>
 <P>
-A idéia é inserir este texto extra no arquivo original como comentário,
-mas marcá-lo de forma que um filtro específico para aquele tipo destino
-irá "descomentar" aquelas linhas.
+A idÃ©ia Ã© inserir este texto extra no arquivo original como comentÃ¡rio,
+mas marcÃ¡-lo de forma que um filtro especÃ­fico para aquele tipo destino
+irÃ¡ "descomentar" aquelas linhas.
 </P>
 <P>
-Por exemplo, se um parágrafo extra deve ser acrescentado somente no tipo
-destino HTML. Coloque o texto em um comentário especial, como este:
+Por exemplo, se um parÃ¡grafo extra deve ser acrescentado somente no tipo
+destino HTML. Coloque o texto em um comentÃ¡rio especial, como este:
 </P>
+
 <PRE>
-  %html% Esta página HTML foi produzida pelo [txt2tags http://txt2tags.org].
+  %html% Esta pÃ¡gina HTML foi produzida pelo [txt2tags http://txt2tags.org].
   %html% Veja o arquivo fonte TXT [aqui fonte.t2t].
 </PRE>
-<P></P>
+
 <P>
-Como todas estas linhas começam com <CODE>%</CODE>, elas são linhas de comentário e
-serão ignoradas. Mas se acrescentarmos este filtro especial:
+Como todas estas linhas comeÃ§am com <CODE>%</CODE>, elas sÃ£o linhas de comentÃ¡rio e
+serÃ£o ignoradas. Mas se acrescentarmos este filtro especial:
 </P>
+
 <PRE>
   %preproc(html): '^%html% ' ''
 </PRE>
-<P></P>
+
 <P>
-A string inicial é removida e aquelas linhas serão "ativadas", deixando
-de ser comentários. Como uma configuração específica a um tipo, este
-filtro será processado apenas quando for gerado um arquivo HTML.
+A string inicial Ã© removida e aquelas linhas serÃ£o "ativadas", deixando
+de ser comentÃ¡rios. Como uma configuraÃ§Ã£o especÃ­fica a um tipo, este
+filtro serÃ¡ processado apenas quando for gerado um arquivo HTML.
 </P>
+
 <HR NOSHADE SIZE=1>
-<P></P>
-<A NAME="toc35"></A>
-<H2>Mudando Marcas txt2tags com %!PreProc</H2>
+
+<H2 ID="toc35">Mudando Marcas txt2tags com %!PreProc</H2>
+
 <P>
-Se o usuário for um guru de Expressões Regulares, ele pode personalizar
-a sintaxe do documento, mudando as marcações txt2tags padrão para algo
-que ele achar mais confortável.
+Se o usuÃ¡rio for um guru de ExpressÃµes Regulares, ele pode personalizar
+a sintaxe do documento, mudando as marcaÃ§Ãµes txt2tags padrÃ£o para algo
+que ele achar mais confortÃ¡vel.
 </P>
 <P>
-Por exemplo, uma TAB é a marca de citação. Se o usuário não gostar
+Por exemplo, uma TAB Ã© a marca de citaÃ§Ã£o. Se o usuÃ¡rio nÃ£o gostar
 disto, ou se seu texto tenha um estranho relacionamento com as TABs, ele
 pode definir uma nova marca para texto citado. Digamos que colocar "&gt;&gt;&gt;"
-seja sua escolha. Então ele irá precisar deste filtro simples:
+seja sua escolha. EntÃ£o ele irÃ¡ precisar deste filtro simples:
 </P>
+
 <PRE>
   %!PreProc: '&gt;&gt;&gt; ' \t
 </PRE>
-<P></P>
+
 <P>
 E no documento original, o texto citado vai parecer algo tipo:
 </P>
+
 <PRE>
-  &gt;&gt;&gt; Este é um texto de citação.
-  &gt;&gt;&gt; O usuário definiu esta marca esquisita.
-  &gt;&gt;&gt; Mas elas serão convertidas para TABs pelo PreProc.
+  &gt;&gt;&gt; Este Ã© um texto de citaÃ§Ã£o.
+  &gt;&gt;&gt; O usuÃ¡rio definiu esta marca esquisita.
+  &gt;&gt;&gt; Mas elas serÃ£o convertidas para TABs pelo PreProc.
 </PRE>
-<P></P>
+
 <P>
-Antes que a análise do programa comece, os "&gt;&gt;&gt; " esquisitos serão
-convertidos em TABs e o txt2tags irá reconhecer a marca de citação.
+Antes que a anÃ¡lise do programa comece, os "&gt;&gt;&gt; " esquisitos serÃ£o
+convertidos em TABs e o txt2tags irÃ¡ reconhecer a marca de citaÃ§Ã£o.
 </P>
 	<BLOCKQUOTE>
 	<B>CUIDADO!</B> Regras PreProc extremas podem eventualmente mudar
-	toda a sintaxe de marcação, e até mesmo gerar conflitos entre as
-	marcações. Tenha muito cuidado quando trabalhar com estas
+	toda a sintaxe de marcaÃ§Ã£o, e atÃ© mesmo gerar conflitos entre as
+	marcaÃ§Ãµes. Tenha muito cuidado quando trabalhar com estas
 	regras.
 	</BLOCKQUOTE>
-<P></P>
+
 <HR NOSHADE SIZE=5>
-<P></P>
-<A NAME="historia"></A>
-<H1>Parte VII - História do txt2tags</H1>
+
+<H1 ID="historia">Parte VII - HistÃ³ria do txt2tags</H1>
+
 <P>
-Em julho de 2001, foi lançada a primeira versão ao público do txt2tags
+Em julho de 2001, foi lanÃ§ada a primeira versÃ£o ao pÃºblico do txt2tags
 (v0.1). Mas suas origens vem de mais de um ano antes daquele dia...
 </P>
 <P>
-Este capítulo ilustra em algumas palavras o desenvolvimento desta
-ferramenta desde a primeira linha ser escrita até a série atual.
+Este capÃ­tulo ilustra em algumas palavras o desenvolvimento desta
+ferramenta desde a primeira linha ser escrita atÃ© a sÃ©rie atual.
 </P>
-<A NAME="toc37"></A>
-<H2>Janeiro de 1999: Pré História</H2>
+
+<H2 ID="toc37">Janeiro de 1999: PrÃ© HistÃ³ria</H2>
+
 <P>
 Do autor:
 </P>
 	<BLOCKQUOTE>
 	<I>"Minha primeira tentativa de fazer uma ferramenta de</I>
-	<I>conversão começou em 1999, como um script Bourne Shell</I>
-	<I>que convertia texto com marcação em uma página HTML. Sim,</I>
-	<I>Mais Outra ferramenta txt2html. Todo mundo já deve ter feito</I>
-	<I>uma destas... Em resumo, ele reconhecia marcações simples</I>
+	<I>conversÃ£o comeÃ§ou em 1999, como um script Bourne Shell</I>
+	<I>que convertia texto com marcaÃ§Ã£o em uma pÃ¡gina HTML. Sim,</I>
+	<I>Mais Outra ferramenta txt2html. Todo mundo jÃ¡ deve ter feito</I>
+	<I>uma destas... Em resumo, ele reconhecia marcaÃ§Ãµes simples</I>
 	<I>como <CODE>*bold*</CODE>, <CODE>/italic/</CODE>, <CODE>_under_</CODE>, e escapava os</I>
-	<I>caracteres especiais <CODE>&lt; &amp; &gt;</CODE> do HTML. Não muito</I>
+	<I>caracteres especiais <CODE>&lt; &amp; &gt;</CODE> do HTML. NÃ£o muito</I>
 	<I>impressionante, mas ei, eu era novinho ;)"</I>
 	</BLOCKQUOTE>
-<P></P>
-<A NAME="toc38"></A>
-<H2>Junho 1999: Ainda Pré-História</H2>
+
+<H2 ID="toc38">Junho 1999: Ainda PrÃ©-HistÃ³ria</H2>
+
 <P>
 O autor tem mais a dizer:
 </P>
 	<BLOCKQUOTE>
 	<I>"Passaram-se alguns meses, e um grande hype em torno de</I>
-	<I>Sgml chegou à companhia que eu trabalhava (Conectiva). Então o</I>
+	<I>Sgml chegou Ã  companhia que eu trabalhava (Conectiva). EntÃ£o o</I>
 	<I>txt2html tornou-se um script txt2sgml. Eu estava realmente</I>
 	<I>tentando aprender sobre o SED* naquele tempo, de forma que o</I>
-	<I>txt2tags na época era um script Bourne Shell com muito</I>
-	<I>código SED."</I>
+	<I>txt2tags na Ã©poca era um script Bourne Shell com muito</I>
+	<I>cÃ³digo SED."</I>
 	</BLOCKQUOTE>
-<P></P>
 	<BLOCKQUOTE>
-	* <B>SED:</B> UNIX Stream EDitor - uma ferramenta de edição
-	automática de textos
+	* <B>SED:</B> UNIX Stream EDitor - uma ferramenta de ediÃ§Ã£o
+	automÃ¡tica de textos
 	</BLOCKQUOTE>
-<P></P>
 <P>
-Esta versão melhorada, com suporte a Sgml, oferecia suporte a mais
+Esta versÃ£o melhorada, com suporte a Sgml, oferecia suporte a mais
 estruturas como listas e texto preformatado. No seguinte arquivo
-exemplo, pode-se ver as origens das marcações txt2tags:
+exemplo, pode-se ver as origens das marcaÃ§Ãµes txt2tags:
 </P>
+
 <PRE>
-  		 * Esta é uma linha em negrito  (NEGRITO orientado a linha? bem...)
+  		 * Esta Ã© uma linha em negrito  (NEGRITO orientado a linha? bem...)
   
   		   --
-  		 - lista não numerada muito semelhante à lista do txt2tags 
+  		 - lista nÃ£o numerada muito semelhante Ã  lista do txt2tags 
   		 - mas com estes -- para iniciar e terminar a lista
   		   --
   
   		 =----------------------
-  		 Texto preformatado era delimitado pelo =-- padrão.
-  		 Os outros ------- eram apenas cosméticos.
+  		 Texto preformatado era delimitado pelo =-- padrÃ£o.
+  		 Os outros ------- eram apenas cosmÃ©ticos.
   		 =----------------------
 </PRE>
-<P></P>
+
 <P>
-Ainda não era impressionante, mas o grande passo está chegando...
+Ainda nÃ£o era impressionante, mas o grande passo estÃ¡ chegando...
 </P>
-<A NAME="toc39"></A>
-<H2>Agosto de 2000: Não Mais Pré-História</H2>
+
+<H2 ID="toc39">Agosto de 2000: NÃ£o Mais PrÃ©-HistÃ³ria</H2>
+
 <P>
 TODO (txt2sgml.sed)
 </P>
-<A NAME="toc40"></A>
-<H2>Julho de 2001: Debute das séries 0.x (Lançamento Mundial)</H2>
+
+<H2 ID="toc40">Julho de 2001: Debute das sÃ©ries 0.x (LanÃ§amento Mundial)</H2>
+
 <P>
 TODO
 </P>
-<A NAME="toc41"></A>
-<H2>Setembro de 2002: Debute das séries 1.x</H2>
+
+<H2 ID="toc41">Setembro de 2002: Debute das sÃ©ries 1.x</H2>
+
 <DL>
-<DT><B>Anúncio</B></DT><DD>
-  Este release inicia a minha <I>série 1.x</I>.
+<DT><B>AnÃºncio</B></DT><DD>
+  Este release inicia a minha <I>sÃ©rie 1.x</I>.
 <P></P>
-  Mais de um ano de atualizaçõs quase mensais e a <I>série 0.x</I>
+  Mais de um ano de atualizaÃ§Ãµs quase mensais e a <I>sÃ©rie 0.x</I>
   proporcionou-me muitos bons recursos, como Linha de Comando e
-  interface Web, criação de Sumário (TOC), títulos e listas numerados,
+  interface Web, criaÃ§Ã£o de SumÃ¡rio (TOC), tÃ­tulos e listas numerados,
   facilidades STDIN e STDOUT, arquivos de sintaxe vim/emacs e sete
   formatos de destino suportados.
 <P></P>
-  Para a iniciar a <I>série 1.x</I> vou tentar me espalhar por aí, com uma
-  boa interface GUI, muita documentação, lista de discussão, base de
-  usuários, compatibilidade Unix/Windows/Mac e incluir mais destinos
+  Para a iniciar a <I>sÃ©rie 1.x</I> vou tentar me espalhar por aÃ­, com uma
+  boa interface GUI, muita documentaÃ§Ã£o, lista de discussÃ£o, base de
+  usuÃ¡rios, compatibilidade Unix/Windows/Mac e incluir mais destinos
   (como tex, rtf e xhtml).
 <P></P>
-  Nesta versão 1.0 já estou com a corda toda, com uma roupa nova
-  (Interface Gráfica Tk) e compatibilidade com Unix/Windows/Mac,
-  manipulação de quebras de linhas e outros detalhes específicos de cada
+  Nesta versÃ£o 1.0 jÃ¡ estou com a corda toda, com uma roupa nova
+  (Interface GrÃ¡fica Tk) e compatibilidade com Unix/Windows/Mac,
+  manipulaÃ§Ã£o de quebras de linhas e outros detalhes especÃ­ficos de cada
   plataforma. Felizmente agora meu mestre pode usar os sistemas Linux,
   Windows 2000, Cygwin e MacOS 8.6 para me testar.
 </DL>
 
-<A NAME="toc42"></A>
-<H2>2002, 2003... e as História não pára</H2>
+<H2 ID="toc42">2002, 2003... e as HistÃ³ria nÃ£o pÃ¡ra</H2>
+
 <DL>
-<DT><I>06 Novembro 2002</I> - <B>Liberada minha nova versão 1.1</B></DT><DD>
+<DT><I>06 Novembro 2002</I> - <B>Liberada minha nova versÃ£o 1.1</B></DT><DD>
 <P></P>
-  Atenção! Por favor leia <I>cuidadosamnte</I> antes de me atualizar!
+  AtenÃ§Ã£o! Por favor leia <I>cuidadosamnte</I> antes de me atualizar!
 <P></P>
-  Esta nova v1.1 é uma <U><B>quebra de compatibilidade</B></U> .
+  Esta nova v1.1 Ã© uma <U><B>quebra de compatibilidade</B></U> .
 <P></P>
-  Isto significa que antes de atualizar você deve verificar seus
-  arquivos txt2tags atuais, e, possivelmente ajustá-los. Ignorar esta
-  versão não é uma opção :) porque as próximas versões consideram que
-  você arrumou os seus arquivos.
+  Isto significa que antes de atualizar vocÃª deve verificar seus
+  arquivos txt2tags atuais, e, possivelmente ajustÃ¡-los. Ignorar esta
+  versÃ£o nÃ£o Ã© uma opÃ§Ã£o :) porque as prÃ³ximas versÃµes consideram que
+  vocÃª arrumou os seus arquivos.
 <P></P>
-  Por favor leia o "Guia de Sobrevivência de Atualização para a v1.1"
-  para mais informações mais detalhadas sobre <I>o que</I> foi mudado e
+  Por favor leia o "Guia de SobrevivÃªncia de AtualizaÃ§Ã£o para a v1.1"
+  para mais informaÃ§Ãµes mais detalhadas sobre <I>o que</I> foi mudado e
   <I>como</I> ajustar os seus arquivos.
 <P></P>
-  Mas há algumas boas novas, como:
+  Mas hÃ¡ algumas boas novas, como:
     <UL>
     <LI>imagens agora podem apontar links, como <CODE>[[img.gif] www.abc.com]</CODE>
     <LI>novas regras de foldmethod=syntax no arquivo de sintaxe do Vim
     <LI>melhorias no detector de URL
     <P></P>
     </UL>
-<DT><I>03 Dezembro 2002</I> - <B>Lançamento da nova versão 1.2 (versão LaTeX)</B></DT><DD>
+<DT><I>03 Dezembro 2002</I> - <B>LanÃ§amento da nova versÃ£o 1.2 (versÃ£o LaTeX)</B></DT><DD>
 <P></P>
   Oi! Finalmente aprendi um dos formatos de documento mais usado pelos
   geeks: <B><I>LaTeX</I></B>. Me execute com "<CODE>-t tex</CODE>" e veja seus arquivos
@@ -2290,30 +2379,30 @@ TODO
   Ah! Estou ficando esperto e agora posso cuidar de mais de um arquivo
   ao mesmo tempo. Dica: "<CODE>*.t2t</CODE>"
 <P></P>
-  E meu último novo recurso é a habilidade de tornar um arquivo HTML em
-  um arquivo .t2t "quase pronto". Desculpem-me os não-usuários do vim
-  porque isso só funciona neste editor.
+  E meu Ãºltimo novo recurso Ã© a habilidade de tornar um arquivo HTML em
+  um arquivo .t2t "quase pronto". Desculpem-me os nÃ£o-usuÃ¡rios do vim
+  porque isso sÃ³ funciona neste editor.
 <P></P>
-  O que você está esperando? Baixe-me agora e teste meus novos recursos:
+  O que vocÃª estÃ¡ esperando? Baixe-me agora e teste meus novos recursos:
   <CODE>txt2tags --toc -t tex *.t2t</CODE>
 <P></P>
-<DT><I>20 Dezembro 2002</I> - <B>Lançamento da nova versão 1.3</B></DT><DD>
+<DT><I>20 Dezembro 2002</I> - <B>LanÃ§amento da nova versÃ£o 1.3</B></DT><DD>
 <P></P>
-  Ufa, estou cansado! Muitas modificações foram feitas para esta versão
+  Ufa, estou cansado! Muitas modificaÃ§Ãµes foram feitas para esta versÃ£o
   e agora preciso de um tempo!
 <P></P>
   A novidade inclui uma nova marca (coisa rara de acontecer!) para texto
-  protegido. Desta forma você pode facilmente incluir marcas no
-  documento destino e eu prometo que não as vou considerar!
+  protegido. Desta forma vocÃª pode facilmente incluir marcas no
+  documento destino e eu prometo que nÃ£o as vou considerar!
 <P></P>
-  Um novo comando <I>Encoding</I> está disponível para permitir que
-  usuários de todo o mundo especifiquem suas próprias codificações em
+  Um novo comando <I>Encoding</I> estÃ¡ disponÃ­vel para permitir que
+  usuÃ¡rios de todo o mundo especifiquem suas prÃ³prias codificaÃ§Ãµes em
   seus documentos.
 <P></P>
-  E há mais melhorias e ajustes, mas, por favor leia o arquivo ChangeLog
+  E hÃ¡ mais melhorias e ajustes, mas, por favor leia o arquivo ChangeLog
   por que agora vou dormir. zzZZzzzzZZZZzz...
 <P></P>
-<DT><I>18 Fevereiro 2003</I> - <B>Lançamento da nova versão 1.4</B></DT><DD>
+<DT><I>18 Fevereiro 2003</I> - <B>LanÃ§amento da nova versÃ£o 1.4</B></DT><DD>
 <P></P>
   I've enjoyed my <I>X-mas/New Year</I> vacation, then some lazy days on
   a hot Brazilian beach, what a great time! But now it is time to get
@@ -2336,7 +2425,7 @@ TODO
   Mmmmmm, there were some bug fixes also, but let's forget about them,
   you know I'm not buggy! ;)
 <P></P>
-<DT><I>09 Maio 2003</I> - <B>Lançamento da nova versão 1.5</B></DT><DD>
+<DT><I>09 Maio 2003</I> - <B>LanÃ§amento da nova versÃ£o 1.5</B></DT><DD>
 <P></P>
   Tsc, Tsc... Almost three months from the last version, what a shame!
   But the new features will worth the delay.
@@ -2359,10 +2448,11 @@ TODO
   txt2tags-v1.4 -t html --enumtitle --stdout file.t2t &gt; new.html
   txt2tags-v1.5 -t html -n -o new.html file.t2t
 </PRE>
+
 <P></P>
   Ah! LaTeX target now supports images :)
 <P></P>
-<DT><I>23 Jul 2003</I> - <B>Lançamento da nova versão 1.6</B></DT><DD>
+<DT><I>23 Jul 2003</I> - <B>LanÃ§amento da nova versÃ£o 1.6</B></DT><DD>
 <P></P>
   Hi there! Here I am again with fresh news.
 <P></P>
@@ -2383,30 +2473,31 @@ TODO
   file is loaded. Gui also can receive options from the command line, as
   in <CODE>txt2tags --gui -n file.t2t</CODE>
 <P></P>
-<DT><I>30 Novembro 2003</I> - <B>Lançamento da nova versão 1.7</B></DT><DD>
+<DT><I>30 Novembro 2003</I> - <B>LanÃ§amento da nova versÃ£o 1.7</B></DT><DD>
 <P></P>
-   Saiu a minha versão 1.7! Agora tenho o comando que os usuários mais
-   pediram: <CODE>%!include</CODE>. Com ele você pode incluir texto, tags e até
+   Saiu a minha versÃ£o 1.7! Agora tenho o comando que os usuÃ¡rios mais
+   pediram: <CODE>%!include</CODE>. Com ele vocÃª pode incluir texto, tags e atÃ©
    mesmo outro arquivo .t2t no documento original. Veja como fazer isso
-   no <A HREF="#include">Guia do Usuário</A>.
+   no <A HREF="#include">Guia do UsuÃ¡rio</A>.
 <P></P>
    Fora isso mais checagens foram adicionadas e bugs foram corrigidos.
-   Os usuários do Emacs ficarão felizes com o arquivo novo de sintaxe.
-   Os usuários do Vim continuarão felizes com o arquivo de sintaxe
+   Os usuÃ¡rios do Emacs ficarÃ£o felizes com o arquivo novo de sintaxe.
+   Os usuÃ¡rios do Vim continuarÃ£o felizes com o arquivo de sintaxe
    atualizado.
 <P></P>
-   <B>MUITO IMPORTANTE:</B> Essa versão fecha a minha série 1.x, então não
-   haverão versões 1.8 e 1.9. A próxima será a tão esperada 2.0, com
-   código reescrito, conversões mais ricas e enxutas e suporte ao
+   <B>MUITO IMPORTANTE:</B> Essa versÃ£o fecha a minha sÃ©rie 1.x, entÃ£o nÃ£o
+   haverÃ£o versÃµes 1.8 e 1.9. A prÃ³xima serÃ¡ a tÃ£o esperada 2.0, com
+   cÃ³digo reescrito, conversÃµes mais ricas e enxutas e suporte ao
    destino XHTML. Eu serei mais massa!
 <P></P>
-<HR NOSHADE SIZE=5>
 </DL>
 
+<HR NOSHADE SIZE=5>
+
 <P>
-Fim. (<A HREF="guia-usuario.t2t">veja o fonte</A>)
+Fim. (<A HREF="userguide-pt.t2t">veja o fonte</A>)
 </P>
 
-<!-- html code generated by txt2tags 2.3 (http://txt2tags.org) -->
-<!-- cmdline: txt2tags doc/pt_BR/exemplo.t2t doc/pt_BR/guia-usuario.t2t doc/pt_BR/manual.t2t -->
+<!-- html code generated by txt2tags 2.6.641 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags userguide-pt.t2t -->
 </BODY></HTML>
