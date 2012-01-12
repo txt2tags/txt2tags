@@ -55,6 +55,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 % getTags() new keys: listOpenCompact, listCloseCompact, numlistOpenCompact, numlistCloseCompact, deflistOpenCompact, deflistCloseCompact, _tableCellMulticolOpen, _tableCellMulticolClose
 % getRules() new rules: compactlist, labelbeforelink, tablecellmulticol, blanksaroundpara, blanksaroundverb, blanksaroundquote, blanksaroundlist, blanksaroundnumlist, blanksarounddeflist, blanksaroundtable, blanksaroundbar, blanksaroundtitle, blanksaroundnumtitle
 
+- Read [the announce http://txt2tags.wordpress.com/2010/11/05/txt2tags-26/].
+
 - New target: art (ASCII Art). <thanks Florent Gallaire> [r27]
 - New target: adoc (AsciiDoc). <thanks Neil Voss> [r69]
 - New target: creole (Creole 1.0). <thanks Eric Forgeot> [r169]
@@ -142,6 +144,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 % mgp: removed: if name == 'numlist': itemopen = itemopen + '\a. '
 % extras/t2tconv removed
 
+- Read [the announce http://txt2tags.wordpress.com/2008/07/26/7-years-of-txt2tags/].
+
 - New target: wiki (Wikipedia) <thanks Eric Forgeot @ .fr for the idea>
 - New target: gwiki (Google Code Wiki)
 - New target: doku (DokuWiki) <thanks Joerg Desch @ .de for the patch>
@@ -174,6 +178,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 -
 
 = Version 2.4 (2006-12-24) =
+
+- Read [the announce http://txt2tags.wordpress.com/2006/12/24/new-version-24-released/].
 
 - New mark ``%%%`` for commented blocks <thanks Leo Rosa @ .br for the patch>
 - The Style config now may be used multiple times (i.e. two CSS files) <thanks Cesar Grossman @ .br for requesting>
@@ -210,6 +216,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 = Version 2.3 (2005-06-17) =
 
+- Read [the announce http://txt2tags.org/v23-news.html].
+
 - New rule to allow COLSPAN in table cells (for HTML, XHTML) <thanks Elias Dorneles @ .br for requesting>
 - New option ``--dump-source`` to show source file with t2t includes expanded <thanks Peter Valach @ .net for requesting>
 - New options ``--config-file`` and ``-C`` to include an external config file <thanks Tristan Chabredier (wwp) @ .fr for requesting>
@@ -235,6 +243,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 
 = Version 2.2 (2004-12-30) =
+
+- Read [the announce http://txt2tags.org/v22-news.html].
 
 - New target: lout (Lout document) <thanks Tamas Ivan @ .hu for requesting>
 - New option ``--css-inside`` to include the CSS file contents inside
@@ -263,6 +273,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 
 = Version 2.1 (2004-11-13) =
+
+- Read [the announce http://txt2tags.org/v21-news.html].
 
 - New ``%%toc`` macro to specify the TOC position
 - New ``%%infile`` and ``%%outfile`` macros, to get file information <thanks Jose Inacio Coelho @ .br for requesting>
@@ -296,6 +308,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 
 = Version 2.0 (2004-07-25) =
+
+- Read [the announce http://txt2tags.org/v2/] and the [upgrade guide http://txt2tags.org/v2/upgrade.html].
 
 - Program internationalized (i18n) and translated to Portuguese
 - New user configuration file ``~/.txt2tagsrc``
