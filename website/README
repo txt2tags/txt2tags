@@ -56,7 +56,7 @@ There's two caveats:
 Docs path
 =========
 
-The 'doc' folder is special for the website. It's location changes in
+The 'doc' folder is special for the website. Its location changes in
 the web server, to be contained inside the root folder.
 
 SVN structure:
