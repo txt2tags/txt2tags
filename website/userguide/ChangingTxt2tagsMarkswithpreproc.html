@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="CreatingTargetSpecificContentswithpreproc.html">
+<LINK REL="Next" HREF="TheEnd.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="CreatingTargetSpecificContentswithpreproc.html">Previous</A>
+<A HREF="TheEnd.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="9_3">Changing Txt2tags Marks with %!preproc</A></H2>
+<P> Being a Regular Expressions guru, the user can customize the
+ document source syntax, changing the txt2tags default marks to some he
+ find more comfortable.</P>
+<P> For example, a leading TAB is the Quotation mark. If the user
+ doesn't like it, or his text editor has some strange relationship with
+ TABs, he can define a new mark for Quoted text. Say a leading &quot;&gt;&gt;&gt; &quot;
+ was his choice. Then he will do this simple filter:</P>
+<PRE>
+%!preproc: '^&gt;&gt;&gt; ' '\t'
+</PRE>
+<P> And on the document source, the quoted text will be something like:</P>
+<PRE>
+&gt;&gt;&gt; This is a quoted text.
+&gt;&gt;&gt; The user defined this strange mark.
+&gt;&gt;&gt; But they will be converted to TABs by PreProc.
+</PRE>
+<P> Before the parsing begins, the strange &quot;&gt;&gt;&gt; &quot; will be converted to
+ TABs and txt2tags will recognize the Quote mark.</P>
+<BLOCKQUOTE><B> BEWARE!</B> Extreme PreProc rules could eventually
+ change the entire marks syntax, even generating conflicts between
+ marks. Be really really careful when doing this.</BLOCKQUOTE><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="CreatingTargetSpecificContentswithpreproc.html">Previous</A>
+<A HREF="TheEnd.html">Next</A>
+</BODY>
+</HTML>

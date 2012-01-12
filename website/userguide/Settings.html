@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="BodyArea.html">
+<LINK REL="Next" HREF="CommandLineOptions.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="BodyArea.html">Previous</A>
+<A HREF="CommandLineOptions.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="5_5">Settings</A></H2>
+<P> Settings are special configurations placed at the source document's
+ Config Area that can affect the conversion process. Their syntax is:</P>
+<PRE>
+%! keyword : value
+</PRE>
+<P> List of valid keywords:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>Keyword</TH><TH>Description</TH></TR>
+<TR><TD ALIGN="center">Target</TD><TD>Set the default target to the
+ document be converted to.</TD></TR>
+<TR><TD ALIGN="center">Options</TD><TD>Set the default options to be
+ used on the conversion. The format is the same as the command line
+ options.</TD></TR>
+<TR><TD ALIGN="center">Style</TD><TD>Set the document style. Used to
+ define a CSS file for HTML/XHTML and to load a package in LaTeX.</TD></TR>
+<TR><TD ALIGN="center">Encoding</TD><TD>Set the document Character Set.
+ Used if the document contains accented letters or other not-ASCII
+ characters.</TD></TR>
+<TR><TD ALIGN="center">PreProc</TD><TD>Input filter. Sets &quot;find and
+ replace&quot; rules to be applied on the Body Area of the source document.</TD>
+</TR>
+<TR><TD ALIGN="center">PostProc</TD><TD>Output filter. Sets &quot;find and
+ replace&quot; rules to be applied on the converted document.</TD></TR>
+</TABLE>
+<P> Example:</P>
+<PRE>
+%!target  : html
+%!options : --toc --toc-level 3
+%!style   : fancy.css
+%!encoding: UTF-8
+%!preproc : &quot;AMJ&quot;        &quot;Aurelio Marinho Jargas&quot;
+%!postproc: '&lt;BODY.*?&gt;'  '&lt;BODY bgcolor=&quot;yellow&quot;&gt;'
+</PRE>
+<P> Note that the spacing and capitalization of the keyword are ignored.
+ So you can also do <CODE>%!Target:html</CODE> and <CODE>%! TARGET :html</CODE>
+.</P>
+<P> Learn more about settings in <A HREF="toc.html#settings">Part VII -
+ Mastering Settings</A>.</P>
+ <A NAME="options"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="BodyArea.html">Previous</A>
+<A HREF="CommandLineOptions.html">Next</A>
+</BODY>
+</HTML>

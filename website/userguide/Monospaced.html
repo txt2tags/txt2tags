@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="BoldItalicUnderlineStrike.html">
+<LINK REL="Next" HREF="VerbatimLineVerbatimArea.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="BoldItalicUnderlineStrike.html">Previous</A>
+<A HREF="VerbatimLineVerbatimArea.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="6_7">Monospaced</A></H2>
+<UL>
+<LI><B>Description:</B> Used to insert a monospaced text inside a
+ paragraph, table, list or quote</LI>
+<LI><B>Properties:</B> !Multiline, !FreeSpaces, !Align, !Nesting</LI>
+<LI><B>Contains:</B> -</LI>
+<LI><B>Syntax:</B>
+<UL>
+<LI>Two backquotes around, <CODE>``like this``</CODE></LI>
+<LI>The marks must be glued with the contents (no spaces): <CODE>`` this
+ `` is invalid</CODE></LI>
+</UL>
+</LI>
+<LI><B>Details:</B>
+<UL>
+<LI>Marks are NOT interpreted</LI>
+<LI>Macros are NOT interpreted</LI>
+<LI>All the monospaced text must be on a single line of the source file,
+ no line breaks inside</LI>
+<LI>In some targets, the internal spacing is maintained, in others the
+ consecutive spaces are squeezed to one</LI>
+<LI>You can make a bold monospaced text enclosing it inside bold marks: <CODE>
+&quot;&quot;**</CODE>monobold<CODE>**&quot;&quot;</CODE>. The same applies to the other
+ beautifiers such as <CODE>&quot;&quot;//</CODE>italic<CODE>//&quot;&quot;</CODE> and <CODE>
+&quot;&quot;__</CODE>underline<CODE>__&quot;&quot;</CODE>.</LI>
+</UL>
+</LI>
+</UL>
+ <A NAME="mark-verbatim"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="BoldItalicUnderlineStrike.html">Previous</A>
+<A HREF="VerbatimLineVerbatimArea.html">Next</A>
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="PartVIMasteringMacros.html">
+<LINK REL="Next" HREF="mtime.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="PartVIMasteringMacros.html">Previous</A>
+<A HREF="mtime.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="7_1">%%date</A></H2>
+<P> The <CODE>%%date</CODE> macro expands to the current date and time.
+ It is very useful on the document headers or footer, to register the
+ date when the document was generated. To expand to the source document
+ last modification time, see the <A HREF="#macro-mtime">%%mtime macro</A>
+.</P>
+<P> This macros accepts several formatting directives. The full list can
+ be found in the <A HREF="http://docs.python.org/library/time.html">
+Python site</A>. Here are the most commonly used:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>Directive</TH><TH>Description</TH></TR>
+<TR><TD ALIGN="center">%a</TD><TD>Locale's abbreviated weekday name.</TD>
+</TR>
+<TR><TD ALIGN="center">%A</TD><TD>Locale's full weekday name.</TD></TR>
+<TR><TD ALIGN="center">%b</TD><TD>Locale's abbreviated month name.</TD></TR>
+<TR><TD ALIGN="center">%B</TD><TD>Locale's full month name.</TD></TR>
+<TR><TD ALIGN="center">%c</TD><TD>Locale's appropriate date and time
+ representation.</TD></TR>
+<TR><TD ALIGN="center">%d</TD><TD>Day of the month as a decimal number
+ [01,31].</TD></TR>
+<TR><TD ALIGN="center">%H</TD><TD>Hour (24-hour clock) as a decimal
+ number [00,23].</TD></TR>
+<TR><TD ALIGN="center">%I</TD><TD>Hour (12-hour clock) as a decimal
+ number [01,12].</TD></TR>
+<TR><TD ALIGN="center">%m</TD><TD>Month as a decimal number [01,12].</TD>
+</TR>
+<TR><TD ALIGN="center">%M</TD><TD>Minute as a decimal number [00,59].</TD>
+</TR>
+<TR><TD ALIGN="center">%p</TD><TD>Locale's equivalent of either AM or
+ PM.</TD></TR>
+<TR><TD ALIGN="center">%S</TD><TD>Second as a decimal number [00,61].
+ (1)</TD></TR>
+<TR><TD ALIGN="center">%x</TD><TD>Locale's appropriate date
+ representation.</TD></TR>
+<TR><TD ALIGN="center">%X</TD><TD>Locale's appropriate time
+ representation.</TD></TR>
+<TR><TD ALIGN="center">%y</TD><TD>Year without century as a decimal
+ number [00,99].</TD></TR>
+<TR><TD ALIGN="center">%Y</TD><TD>Year with century as a decimal number.</TD>
+</TR>
+<TR><TD ALIGN="center">%%</TD><TD>A literal &quot;%&quot; character.</TD></TR>
+</TABLE>
+<P> Examples:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>Macro</TH><TH>--&gt;</TH><TH>Results for on 2010, Nov 04 at 08:09</TH>
+</TR>
+<TR><TD>%%date(Converted on: %c)</TD><TD ALIGN="center">--&gt;</TD><TD>
+Converted on: Thu Nov 4 08:09:04 2010</TD></TR>
+<TR><TD>%%date(%Y-%m-%d)</TD><TD ALIGN="center">--&gt;</TD><TD>2010-11-04</TD>
+</TR>
+<TR><TD>%%date(%I:%M %p)</TD><TD ALIGN="center">--&gt;</TD><TD>08:09 AM</TD>
+</TR>
+<TR><TD>%%date(Today is %A, on %B.)</TD><TD ALIGN="center">--&gt;</TD><TD>
+Today is Thursday, on November.</TD></TR>
+</TABLE>
+ <A NAME="macro-mtime"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="PartVIMasteringMacros.html">Previous</A>
+<A HREF="mtime.html">Next</A>
+</BODY>
+</HTML>

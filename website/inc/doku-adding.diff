@@ -1,0 +1,100 @@
+--- txt2tags	2007-11-08 15:10:58.000000000 -0200
++++ txt2tags-doku	2007-11-11 23:09:11.000000000 -0200
+@@ -175,6 +175,7 @@
+   'mgp'  : _('MagicPoint presentation'),
+   'wiki' : _('Wikipedia page'),
+   'gwiki': _('Google Wiki page'),
++  'doku' : _('DokuWiki page'),
+   'moin' : _('MoinMoin page'),
+   'pm6'  : _('PageMaker document'),
+   'txt'  : _('Plain Text'),
+@@ -438,6 +439,14 @@
+ 
+ """,
+ 
++  'doku': """\
++===== %(HEADER1)s =====
++
++**//%(HEADER2)s//**
++
++//%(HEADER3)s//
++""",
++
+   'wiki': """\
+ '''%(HEADER1)s'''
+ 
+@@ -895,6 +905,52 @@
+ 	   'tableCellSep'        : ' || '          ,
+ 	},
+ 
++	# http://wiki.splitbrain.org/wiki:syntax
++	# Hint: <br> is \\ $
++	# Hint: You can add footnotes ((This is a footnote))
++	'doku': {
++	   'title1'              : '===== \a =====',
++	   'title2'              : '==== \a ===='  ,
++	   'title3'              : '=== \a ==='    ,
++	   'title4'              : '== \a =='      ,
++	   'title5'              : '= \a ='        ,
++	   # DokuWiki uses '  ' identation to mark verb blocks (see indentverbblock)
++	   'blockQuoteLine'      : '>'             ,
++	   'fontMonoOpen'        : "''"            ,
++	   'fontMonoClose'       : "''"            ,
++	   'fontBoldOpen'        : "**"            ,
++	   'fontBoldClose'       : "**"            ,
++	   'fontItalicOpen'      : "//"            ,
++	   'fontItalicClose'     : "//"            ,
++	   'fontUnderlineOpen'   : "__"            ,
++	   'fontUnderlineClose'  : "__"            ,
++	   'fontStrikeOpen'      : '<del>'         ,
++	   'fontStrikeClose'     : '</del>'        ,
++	   'listItemOpen'        : '  * '          ,
++	   'numlistItemOpen'     : '  - '          ,
++	   'bar1'                : '----'          ,
++	   'url'                 : '[[\a]]'        ,
++	   'urlMark'             : '[[\a|\a]]'     ,
++	   'email'               : '[[\a]]'        ,
++	   'emailMark'           : '[[\a|\a]]'     ,
++	   'img'                 : '{{\a}}'        ,
++	   'imgAlignLeft'        : '{{\a }}'       ,
++	   'imgAlignRight'       : '{{ \a}}'       ,
++	   'imgAlignCenter'      : '{{ \a }}'      ,
++	   'tableTitleRowOpen'   : '^ '            ,
++	   'tableTitleRowClose'  : ' ^'            ,
++	   'tableTitleCellSep'   : ' ^ '           ,
++	   'tableRowOpen'        : '| '            ,
++	   'tableRowClose'       : ' |'            ,
++	   'tableCellSep'        : ' | '           ,
++# DokuWiki has no attributes. The content must be aligned!
++#	   '_tableCellAlignRight' : '<)>'           , # ??
++#	   '_tableCellAlignCenter': '<:>'           , # ??
++# DokuWiki colspan is the same as txt2tags' with multiple |||
++	   # 'comment'             : '## \a'         , # ??
++	   # TOC is automatic
++	},
++	
+ 	# http://en.wikipedia.org/wiki/Help:Editing
+ 	'wiki': {
+ 	   'title1'              : '== \a =='        ,
+@@ -1266,8 +1323,23 @@
+	    'autonumberlist':1,
+ 	    'breaktitleopen':1,
+ 	    },
++	  'doku': {
++	    'indentverbblock':1,           # DokuWiki uses '  ' to mark verb blocks
++	    'spacedlistitem':1,
++	    'linkable':1,
++	    'blankendmotherlist':1,
++	    'keeplistindent':1,
++	    'tableable':1,
++	    'barinsidequote':1,
++	    'blankendtable':1,
++	    'tablecellstrip':1,
++	    'autotocwithbars':1,
++	    'autonumberlist':1,
++	    'imgalignable':1,
++	    'tablecellaligntype':'cell',
++	    },	
+ 	  'wiki': {
+ 	    'linkable':1,
+ 	    'blankendmotherlist':1,

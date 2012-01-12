@@ -1,0 +1,72 @@
+1ª Enquete sobre Contribuições ao Txt2tags
+Outubro de 2004
+
+%!postproc: SITEROOT ..
+
+% Aplica a configuracao global do site
+%!includeconf: ../inc/config.t2t
+
+% Insere o menu lateral
+%!include: ../inc/menu.t2t
+
+== Pergunta ==
+
+Quais contribuições de usuários brasileiros ao projeto txt2tags você
+considera mais valorosas/úteis? Assinale até 5 alternativas.
+
+== Resultado Final ==
+
+- Data de fechamento: 13-Out-2004
+- Total de votos: 129
+- Total de participantes: 25
+
+
+ || Votos | % | Contribuição | Autor |
+ |  13 |  10.08% | Tradução do Guia do Usuário para português | Cesar A. K. Grossman
+ |  12 |   9.30% | FAQ (original em português) | Wilson Freitas
+ |  12 |   9.30% | Arquivos CSS de exemplo (samples/css) | Osvaldo Santana Neto
+ |  11 |   8.53% | Tradução da Página de Manual para português | Mauricio Teixeira (netmask)
+ |  11 |   8.53% | Página de Manual (original em inglês) | Jose Inacio Coelho da Silva (jic)
+ |  11 |   8.53% | Pacote RPM | Ielton Ferreira Carneiro Pinto
+ |   8 |   6.20% | Instalador para windows (EXE) | Guaracy Monteiro
+ |   8 |   6.20% | Criação do canal de IRC #txt2tags na FreeNode | Ielton Ferreira Carneiro Pinto
+ |   8 |   6.20% | Criação da comunidade txt2tags no Orkut | Ielton Ferreira Carneiro Pinto
+ |   7 |   5.43% | Tradução do arquivo ABUSE-ME para português | Anamim Thuler Schuwarte
+ |   6 |   4.65% | Botão "Powered by txt2tags" (bolas coloridas) | Fabianne Balvedi
+ |   6 |   4.65% | Arquivo de compilação para o editor Vim (extras/txt2tags-compiler.vim) | Wilson Freitas
+ |   5 |   3.88% | Automatizador em Ruby (extras/t2tmake.rb) | Guaracy Monteiro
+ |   3 |   2.33% | Pacote Slackware | Tiago Machado (gar0t0)
+ |   3 |   2.33% | Instalador para handheld (IPK) | Anamim Thuler Schuwarte
+ |   3 |   2.33% | Arquivo de sintaxe para o editor Emacs (extras/txt2tags-mode.el) | Leslie Harlley Watter
+ |   2 |   1.55% | Arquivo de sintaxe para o editor Kate (extras/txt2tags-kate.xml) | Juliano Dorneles dos Santos
+
+== Objetivos da Enquete ==
+
++ Conhecer o que os usuários mais preferem para ajudar a guiar o
+  desenvolvimento do programa
+
++ Recompensar de maneira simbólica os contribuidores, ganhando o
+  reconhecimento dos usuários por seu trabalho
+
++ Recompensar FINANCEIRAMENTE o mais votado, com o valor de R$ 150,00
+
+
+== Discurso de Entrega do Prêmio ==
+
+	"Amigo Cesar A. K. Grossman,
+	
+	Pela sua Tradução do Guia do Usuário do txt2tags para
+	português, um trabalho pesado reconhecido pelos usuários como
+	a contribuição mais valorosa ao programa, desde seu início até
+	a versão 2.0, tenho a honra de premiá-lo com a quantia de R$
+	150,00.
+	
+	Meus parabéns, tenho certeza que o Guia em português é lido
+	por muitos usuários e eu concordo plenamente com o resultado
+	da enquete.
+	
+	Abração, Aurélio."
+
+
+% Insere o rodape
+%!include: ../inc/footer.t2t

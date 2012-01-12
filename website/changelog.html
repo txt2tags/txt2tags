@@ -1,0 +1,676 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta name="author" content="Aurelio Jargas www.aurelio.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="inc/site.css">
+<TITLE>txt2tags changelog</TITLE>
+<link rel="icon" type="image/png" href="/favicon.png">
+</HEAD>
+<BODY id="changelog">
+
+<DIV CLASS="header" ID="header">
+<h1><a href="/">txt2tags</a></h1>
+<H3>Getting better, not bloated</H3>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<div id="sidebar">
+Hot
+  <ul>
+  <li id="menuonline"><a href="./online.php">Txt2tags Online</a></li>
+  <li id="menumarkup"><a href="./markup.html">Markup Demo</a></li>
+  </ul>
+About
+  <ul>
+  <!-- <li id="menuhome"><a href="/">Home</a></li> -->
+  <li id="menufeatures"><a href="./features.html">Features</a></li>
+  <li id="menusample"><a href="./sample.html">Example</a></li>
+  <li id="menushots"><a href="./shots.html">Screenshots</a></li>
+  <li id="menudocs"><a href="./docs.html">Documentation</a></li>
+  <li id="menutips"><a href="./tips.html">Tips &amp; Tricks</a></li>
+<!--
+  <li id="menuoldnews"><a href="./misc/oldnews.html">Old News</a></li>
+-->
+  </ul>
+Code
+  <ul>
+  <li id="menudownload"><a href="./download.html">Download</a></li>
+  <li id="menuchangelog"><a href="./changelog.html">Changelog</a></li>
+  <li id="menutools"><a href="./tools.html">Tools</a></li>
+  <li><a href="http://bugs.txt2tags.org">Bug tracker</a></li>
+  <li><a href="http://svn.txt2tags.org">SVN</a></li>
+  </ul>
+Community
+  <ul>
+  <li id="menuwiki"><a href="http://wiki.txt2tags.org">Wiki</a></li>
+  <li id="menublog"><a href="http://txt2tags.wordpress.com">Blog</a></li>
+  <li id="menuteam"><a href="./team/index.html">The Team</a></li>
+  <li id="menuchildren"><a href="./children.html">The Children</a></li>
+  <li id="menucomments"><a href="http://txt2tags.wordpress.com/user-comments/">User Comments</a></li>
+  <li id="menuart"><a href="./art.html">Artwork</a></li>
+  </ul>
+Social
+  <ul>
+  <li id="menuml"><a href="./ml.html">Mailing List</a></li>
+  <li><a href="http://www.facebook.com/pages/txt2tags/335201827209">Facebook</a></li>
+  <li><a href="http://twitter.com/aureliojargas">twitter</a></li>
+  <!-- <li><a href="http://www.orkut.com.br/Main#Community?cmm=87935">Orkut</a></li> -->
+  <li><a href="http://identi.ca/group/txt2tags">identi.ca</a></li>
+  </ul>
+
+<P>
+<A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=verde%40aurelio%2enet&amp;item_name=txt2tags%20donation&amp;no_shipping=1&amp;return=http%3a%2f%2faurelio%2enet%2fdonate%2dthanks%2ehtml&amp;cn=&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><IMG ALIGN="middle" SRC="img/donate.png" BORDER="0" alt="DONATE"></A>
+</P>
+</div>
+
+<H2>Version 2.6 (2010-11-05)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.wordpress.com/2010/11/05/txt2tags-26/">the announce</A>.
+<P></P>
+<LI>New target: art (ASCII Art). <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=27">r27</a> 
+<LI>New target: adoc (AsciiDoc). <em>thanks Neil Voss</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=69">r69</a> 
+<LI>New target: creole (Creole 1.0). <em>thanks Eric Forgeot</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=169">r169</a> 
+<LI>New target: dbk (DocBook). <em>thanks David Hajage</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=64">r64</a> 
+<LI>New target: pmw (PmWiki). <em>thanks Ritesh Sood</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=70">r70</a> 
+<P></P>
+<LI>New mark: <CODE>''tagged''</CODE> for inline tagged text. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=12">r12</a> 
+<LI>New mark: <CODE>'''</CODE> for blocks of tagged text. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=12">r12</a> 
+<P></P>
+<LI>New option: <CODE>--targets</CODE> to list all the available targets. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=127">r127</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=230">r230</a> 
+<LI>New option: <CODE>--slides</CODE> to format output as presentation slides (-t art). <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=188">r188</a> 
+<LI>New option: <CODE>--width</CODE> to set the document's width (used by -t art). <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=188">r188</a> 
+<LI>New option: <CODE>--height</CODE> to set the document's height (used by -t art). <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=188">r188</a> 
+<LI>New option: <CODE>--art-chars</CODE> to set the ASCII Art decorations. <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=27">r27</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=155">r155</a> 
+<LI>New options (turn off): <CODE>--no-slides</CODE>, <CODE>--no-targets</CODE>. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=127">r127</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=188">r188</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=230">r230</a> 
+<P></P>
+<LI>New command: <CODE>%!csv</CODE> to include an external CSV file as a table. <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=146">r146</a> 
+<P></P>
+<LI>HTML/XHTML: Removed those random <CODE>&lt;P&gt;&lt;/P&gt;</CODE> that used to appear on the output. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=47">r47</a> 
+<LI>HTML: Headers changed to avoid orphan tags when not using <CODE>--css-sugar</CODE>. <em>thanks Thomas Hafner</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=66">r66</a> 
+<LI>HTML: Removed <CODE>id="toc"</CODE> from the toc DIV, but <CODE>class="toc"</CODE> still remains. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=94">r94</a> 
+<LI>LaTeX: New compact lists with no paragraph breaks between items. <em>thanks Mark White</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=59">r59</a> 
+<LI>LaTeX: Added column span and cell alignment to tables. <em>thanks Mark White</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=62">r62</a> 
+<LI>LaTeX: UTF-8 encoding is now correctly set as <CODE>utf8</CODE> instead <CODE>utf-8</CODE>. <em>thanks Aad Mathijssen</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=82">r82</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=10">bug#10</a>
+<LI>Lout: Removed list indent to avoid gaps in text. <em>thanks Barrie Stott</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=63">r63</a> 
+<LI>Lout: Now paragraphs are allowed inside lists. <em>thanks Barrie Stott</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=77">r77</a> 
+<LI>Man: Removed indentation in verbatim blocks. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=245">r245</a> 
+<P></P>
+<LI>i18n: Sample files converted to UTF-8. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=208">r208</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=214">r214</a> 
+<LI>i18n: Manual Pages converted to UTF-8. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=208">r208</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=287">r287</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=288">r288</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=361">r361</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=362">r362</a> 
+<LI>i18n: All .po files converted to UTF-8. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=124">r124</a> 
+<LI>i18n: Added po/tools folder and po/stats.txt file. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=123">r123</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=234">r234</a> 
+<LI>i18n: Added Basque translations. <em>thanks Ales Zabala Alava</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=83">r83</a> 
+<LI>i18n: Added Ukrainian translations. <em>thanks Bunyk Taras</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=182">r182</a> 
+<LI>Docs: the Manual Page was rewritten: now a reference not a guide. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=250">r250</a> 
+<LI>Docs: Markup Demo, Sample File, Manual Page translated to Basque. <em>thanks Ales Zabala Alava</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=35">r35</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=36">r36</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=84">r84</a> 
+<LI>Docs: User Guide translated to Chinese (simplified). <em>thanks Chris Leng</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=78">r78</a> 
+<LI>Docs: Sample File translated to Ukrainian. <em>thanks Bunyk Taras</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=183">r183</a> 
+<P></P>
+<LI>extras: Added syntax files for JOE, "ne", "le" text editors. <em>thanks Stefano D'Archino</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=80">r80</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=81">r81</a> 
+<LI>extras: Added a txt2tags markup set for markItUp! <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=85">r85</a> 
+<LI>extras: Added "dynartslides", a script to generate art slides dynamically. <em>thanks Florent Gallaire</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=282">r282</a> 
+<LI>extras: Added the Cookbook to use txt2tags markup in a PmWiki website. <em>thanks Eric Forgeot</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=329">r329</a> 
+<LI>extras: t2tmake.rb: Now compatible with ruby 1.9. <em>thanks Lucas Buchala</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=177">r177</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=26">bug#26</a>
+<LI>extras: Improved txt2tags.vim, unhtml.vim and txt2tagsrc files. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=79">r79</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=93">r93</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=322">r322</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=325">r325</a> 
+<LI>extras: Removed TextMate Bundle, it's already available at TextMate's SVN. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=346">r346</a> 
+<P></P>
+<LI>PHP Web interface improved: targets in alphabetical order, new $dfttarget. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=323">r323</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=324">r324</a> 
+<LI>Blank lines were added/removed to improve the generated code of all targets. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=41">r41</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=52">r52</a> 
+<LI>No more several blank lines at the end of the document. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=204">r204</a> 
+<LI>Raw and tagged blocks are allowed inside paragraphs, they don't close it. <em>thanks Kruzslicz Ferenc</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=15">r15</a> 
+<LI>If called with no arguments, don't load the Gui. Must use <CODE>--gui</CODE> to load it. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=118">r118</a> 
+<LI>The ":" char is now allowed in the query component of a URI (link). <em>thanks sphaira, Chris lavabit</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=184">r184</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=9">bug#9</a>
+<LI>Added TOC formatting example in samples/module/module-body.py file. <em>thanks Jendrik Seipp</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=75">r75</a> 
+<LI>Test-suite: 256 tests. New modules: art, csv, include, includeconf, sample. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=142">r142</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=146">r146</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=195">r195</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=202">r202</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=224">r224</a> 
+<LI>Improved some error messages. <em>thanks Leo Rosa</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=119">r119</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=6">bug#6</a>
+<LI>Raise error when using <CODE>(target)</CODE> in <CODE>%!target</CODE> and <CODE>%!includeconf</CODE>. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=221">r221</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=48">bug#48</a>
+<LI>The program code is now cleaner/safer with the help of <CODE>pychecker</CODE>. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=132">r132</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=133">r133</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=134">r134</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=135">r135</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=136">r136</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=137">r137</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=138">r138</a> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=140">r140</a> 
+<LI>Removed string module import: using <CODE>foo.upper()</CODE> instead <CODE>string.upper(foo)</CODE>. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=11">r11</a> 
+<LI>Bugfix: Now <CODE>-C</CODE>,<CODE>--config-file</CODE> respects <CODE>(target)</CODE> in the config file settings. <em>thanks Emmanuel Godard</em> <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=229">r229</a> <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=23">bug#23</a>
+<LI>Bugfix: Now inline verbatim, raw and tagged marks are really mutually
+  exclusive. No marks are interpreted inside them. <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=54">r54</a> 
+<P></P>
+<LI><B>IMPORTANT:</B> This release requires Python 2.2 or newer. The only exception
+  is the new %!csv command that requires Python 2.3 or newer. <a class="bug" href="http://code.google.com/p/txt2tags/issues/detail?id=39">bug#39</a>
+<P></P>
+<LI>New website: <A HREF="http://txt2tags.org">http://txt2tags.org</A> - Thanks <A HREF="http://fgallaire.flext.net">Florent Gallaire</A> for the domain! <a class="rev" href="http://code.google.com/p/txt2tags/source/detail?r=304">r304</a> 
+<P></P>
+<LI>This release was sponsored by <A HREF="http://www.dicas-l.com.br">Rubens Queiroz de Almeida</A>.
+</UL>
+
+<H2>Version 2.5 (2008-07-26)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.wordpress.com/2008/07/26/7-years-of-txt2tags/">the announce</A>.
+<P></P>
+<LI>New target: wiki (Wikipedia) <em>thanks Eric Forgeot</em>
+<LI>New target: gwiki (Google Code Wiki)
+<LI>New target: doku (DokuWiki) <em>thanks Joerg Desch</em>
+<LI>New mark <CODE>--</CODE> for <S>strikeout</S> text, currently implemented for:
+  html, xhtml, tex, wiki, gwiki, doku, moin
+<LI>New document: <A HREF="http://txt2tags.org/new-target.html">How to add a new target to txt2tags</A>
+<LI>New tools: TextMate bundle, Gedit language file, gensite program
+  (see 'extras' folder)
+<P></P>
+<LI>Improved Unicode (UTF-8) support
+<LI>PHP Web interface rewrote: now configurable, clean and modular
+<LI>Moin target improved: added support for definition list and strong line
+<LI>LaTeX target improved: Added support for anchors and local links <em>thanks Eric Forgeot</em>
+<LI>Lout target improved: Added support for anchors in titles <em>thanks Jonatan Liljedahl</em>
+<LI>Added PreProc sample on the samples/module/module-body.py file <em>thanks Fred Pacquier</em>
+<P></P>
+<LI>i18n: Added Finnish translations <em>thanks Mikko J Piippo</em>
+<LI>Docs: Sample file translated to Finnish <em>thanks Mikko J Piippo</em>
+<LI>Docs: Man Page translated to Chinese <em>thanks Abby Pan</em>
+<LI>Docs: Portuguese Man Page updated
+<P></P>
+<LI>Bugfix: Fixed title underline length on txt target for UTF-8 files <em>thanks Jan Rejlek</em>
+<LI>Bugfix: Fixed fatal error on sources files with UTF-8 encoding <em>thanks Miguel Filho</em>
+<P></P>
+<LI><B>IMPORTANT:</B> Txt2tags is not compatible with old Python 1.5.2 anymore,
+  because Unicode strings were added in Python 2.0. If your Python is
+  older than 2.0, please use txt2tags version 2.4.
+<P></P>
+<LI>This release was sponsored by <A HREF="http://www.nothickmanuals.info">Dmitri Popov</A>.
+</UL>
+
+<H2>Version 2.4 (2006-12-24)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.wordpress.com/2006/12/24/new-version-24-released/">the announce</A>.
+<P></P>
+<LI>New mark <CODE>%%%</CODE> for commented blocks <em>thanks Leo Rosa</em>
+<LI>The Style config now may be used multiple times (i.e. two CSS files) <em>thanks Cesar Grossman</em>
+<LI>Different list types on the same indent now forces previous to close
+<LI>Empty anchor is now part of a link (i.e. foo.html#) <em>thanks Fabiano Engler</em>
+<LI>tex: Default headers cleanup, now it's minimalist
+<LI>tex: Now limiting the maximum quote depth to six
+<LI>tex: User-defined styles now overwrite default formatting on headers <em>thanks Bob Tennent</em>
+<LI>(x)html: New header comment showing the CSS file path, when using
+  <CODE>--css-inside</CODE>
+<P></P>
+<LI>i18n: Added Chinese translations <em>thanks wfifi</em>
+<P></P>
+<LI>Bugfix: xhtml: Fixed encoding declaration when using <CODE>--css-sugar</CODE>
+<LI>Bugfix: (x)html: No empty <CODE>&lt;STYLE&gt;</CODE> tag on <CODE>--css-inside</CODE> when CSS file is missing
+<LI>Bugfix: (x)html: Removed useless <CODE>&lt;P&gt;&lt;/P&gt;</CODE> after table followed by blank line
+<LI>Bugfix: tex: Now removing <CODE>.sty</CODE> extension of user style files
+<LI>Bugfix: Macro at line beginning now closes Quote
+<LI>Bugfix: Verbatim and Raw areas are now mutually exclusive
+<LI>Bugfix: Fixed protocol adding to uppercased URLs like WWW.FOO.COM
+<LI>Bugfix: Fixed fatal error on macro after table (i.e. "| x |\n%%date")
+<LI>Bugfix: Fixed fatal error on table inside deflist (i.e. ": | foo")
+<LI>Bugfix: Fixed fatal error on empty table (i.e. "| |") <em>thanks Stern Andreas</em>
+<LI>Bugfix: Fixed fatal error on malformed lists (i.e. ": foo\n- bar") <em>thanks Daniele Furlan</em>
+<P></P>
+<LI>Raw doesn't close Quote anymore
+<LI>Optimization changes made the program execution slightly faster <em>thanks Campbell Barton</em>
+<LI>Unknown errors now sent to STDERR and exiting 1
+<LI>Gui: Now using a green theme, following the new website colors
+<LI>Test-suite with new modules and a total of 152 tests
+<LI>Tarball clean up (less files, easier to generate and package)
+<LI>Spell check and Capitalization on the code comments :)
+</UL>
+
+<H2>Version 2.3 (2005-06-17)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.org/v23-news.html">the announce</A>.
+<P></P>
+<LI>New rule to allow COLSPAN in table cells (for HTML, XHTML) <em>thanks Elias Dorneles</em>
+<LI>New option <CODE>--dump-source</CODE> to show source file with t2t includes expanded <em>thanks Peter Valach</em>
+<LI>New options <CODE>--config-file</CODE> and <CODE>-C</CODE> to include an external config file <em>thanks Tristan Chabredier (wwp)</em>
+<LI>New options (turn off): <CODE>--no-infile</CODE>, <CODE>--no-dump-config</CODE>, <CODE>--no-dump-source</CODE>
+<LI>New 'test' folder with the program test-suite
+<LI>tex: FitV changed to FitH in hyperref package PDF settings <em>thanks Guaracy Monteiro</em>
+<P></P>
+<LI>Docs: New "Markup Rules" document, obsoleting old RULES and Abuse Me docs
+<LI>Docs: All documentation translated to French <em>thanks Claude Hiebel</em>
+<LI>Docs: Sample file translated to Hungarian <em>thanks Adam Schmideg</em>
+<LI>Docs: Sample file and Markup Demo translated to Chinese <em>thanks Zoom Quiet</em>
+<LI>Docs: Little fixes at the program man page and pt_BR.po potfile <em>thanks Jose Avila</em>
+<P></P>
+<LI>Bugfix: Option <CODE>--css-inside</CODE> now working for xhtml target also
+<LI>Bugfix: Macros names are case insensitive again (it was broken on v2.1)
+<LI>Bugfix: Not dumping traceback when input file is empty
+<LI>Bugfix: Now identifying invalid filter replacement (as \1 with no group)
+<LI>Bugfix: Outfile buffer \n's expanded *before* postproc filters
+<LI>Bugfix: Detection when <CODE>%!includeconf</CODE> is including itself (loop)
+<LI>Bugfix: Module: Improved support, samples/module/* updated
+<LI>Bugfix: Module: finish_him() has not module-aware <em>thanks Ulysses Almeida</em>
+<LI>Bugfix: Module: Using <CODE>%%mtime</CODE> was dumping error <em>thanks Ulysses Almeida</em>
+</UL>
+
+<H2>Version 2.2 (2004-12-30)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.org/v22-news.html">the announce</A>.
+<P></P>
+<LI>New target: lout (Lout document) <em>thanks Tamas Ivan</em>
+<LI>New option <CODE>--css-inside</CODE> to include the CSS file contents inside
+  HTML/XHTML headers
+<LI>New T2TCONFIG environment variable to specify RC file location
+<LI>The strong bar (===) now is mapped to a page break in paged targets <em>thanks Sandor Markon</em>
+<LI>tex: Now links are blue and clickable on PDF, using 'hyperref' package <em>thanks Rahul Bhargava</em>
+<P></P>
+<LI>Debug messages revamped: categorized with IDs, background color setting
+<LI>The <CODE>--help</CODE> message was improved with metavars (i.e. <CODE>--target=TYPE</CODE>)
+<LI>The "wrote file" message now shows the full path if -o was used on
+  the command line
+<LI>Module: New samples/module dir with sample Python scripts
+<LI>Module: Better interface to use a string as a full marked file <em>thanks Cesar Gimenes</em>
+<LI>Gui: Now all errors are printed *and* placed inside windows <em>thanks Guaracy Monteiro</em>
+<P></P>
+<LI>i18n: Added French translations <em>thanks Claude Hiebel</em>
+<LI>i18n: Added German translations <em>thanks Manfred Schreiweis (manne)</em>
+<LI>i18n: Added Spanish translations <em>thanks Ielton Ferreira</em>
+<LI>Docs: "Markup Demo" translated to portuguese
+<P></P>
+<LI>Bugfix: outfile location inside %!options now respects infile path
+<LI>Bugfix: xhtml: now the enconding is defined on &lt;?xml&gt; tag, not &lt;meta&gt; <em>thanks Ielton Ferreira</em>
+<LI>Bugfix: tex: not escaping the underscore char '_' on image paths anymore <em>thanks Marcus Aurelius Farias</em>
+<LI>Bugfix: Module: now raising exceptions on errors instead print/sys.exit <em>thanks Marcus Aurelius Farias</em>
+</UL>
+
+<H2>Version 2.1 (2004-11-13)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.org/v21-news.html">the announce</A>.
+<P></P>
+<LI>New <CODE>%%toc</CODE> macro to specify the TOC position
+<LI>New <CODE>%%infile</CODE> and <CODE>%%outfile</CODE> macros, to get file information <em>thanks Jose Inacio Coelho</em>
+<LI>New <CODE>%%mtime</CODE> macro, for source file modification time <em>thanks Tamas Ivan</em>
+<LI>New options <CODE>-q</CODE> and <CODE>--quiet</CODE> for quiet operation (no messages) <em>thanks Hudson Reis</em>
+<LI>New extras/gvim-menu.vim file for the gVim text editor <em>thanks Otavio Correa</em>
+<P></P>
+<LI>Pre/Postproc regexes now compiled once (faster conversion!) <em>thanks Gustavo Niemeyer and Ruda Moura</em>
+<LI>Now an empty item closes the current list
+<LI>Option <CODE>--toc-only</CODE> now respecting <CODE>--outfile</CODE> (if any)
+<LI>Tables with no "cellpadding" declaration when using <CODE>--css-sugar</CODE>
+<LI>URL matcher: char "+" added on address and ";$" added for form data
+<LI>The hyphen char "-" now can be used in anchors <em>thanks Stefano Spinucci</em>
+<LI>Misspelled option<CODE>--css-suggar</CODE> changed to <CODE>--css-sugar</CODE> (both works now) <em>thanks Marcus Aurelius Farias</em>
+<P></P>
+<LI>i18n: Added Italian translations <em>thanks Stefano Spinucci</em>
+<LI>i18n: Added Hungarian translations <em>thanks Tamas Ivan</em>
+<LI>Docs: New "Markup Demo" document, which obsoleted old RULES file
+<LI>Docs: New "Writing Books with Txt2tags" document
+<LI>Docs: New "Reference Card" document in portuguese <em>thanks Jose Inacio Coelho and Leslie Watter</em>
+<LI>Docs: New "FAQ" document in portuguese <em>thanks Wilson Freitas</em>
+<LI>Docs: User Guide revamped: new chapters and now is a PDF
+<LI>Docs: Abuseme and sample files translated to Spanish <em>thanks Luis Cortazar</em>
+<LI>Docs: Fixed typo on the program manpage <em>thanks Christof Boeckler and Stefano Spinucci</em>
+<P></P>
+<LI>Bugfix: Detecting when input file is empty (zero sized) <em>thanks Paulo Oliveira</em>
+<LI>Bugfix: Now deals with user malformed list: sublist before list <em>thanks Guaracy Monteiro</em>
+<LI>Bugfix: Windows RC file directory now pointing to %homepath% <em>thanks Marcus Widerberg</em>
+<LI>Bugfix: Maximize result window on Gui now working <em>thanks Marcus Aurelius Farias</em>
+<LI>Bugfix: A macro right after the headers begins Body
+</UL>
+
+<H2>Version 2.0 (2004-07-25)</H2>
+
+<UL>
+<LI>Read <A HREF="http://txt2tags.org/v2/">the announce</A> and the <A HREF="http://txt2tags.org/v2/upgrade.html">upgrade guide</A>.
+<P></P>
+<LI>Program internationalized (i18n) and translated to Portuguese
+<LI>New user configuration file <CODE>~/.txt2tagsrc</CODE>
+<LI>New mark <CODE>"""</CODE> for Raw Text Area
+<LI>New <CODE>%!includeconf</CODE> command to insert external file config
+<LI>New <CODE>%!include: ""file""</CODE> command to include raw text
+<LI>New pre-checking on Pre/Post Proc filters for regex errors
+<LI>Graphical interface color configurable via <CODE>%!guicolors</CODE>
+<LI>The program is now an importable Python module
+<LI>Code changes to make pychecker happy (from 123 warnings to 10)
+<LI>HTML and XHTML codes approved by w3c validator
+<LI>New options: --dump-config, --debug, -v, --verbose, --encoding,
+  -i, --infile, --rc, --css-suggar
+<LI>New options (turn off): --no-style, --no-toc, --no-toc-only,
+  --no-enum-title, --no-mask-email, --no-rc, --no-css-suggar,
+  --no-encoding, --no-infile, --no-outfile
+<P></P>
+<LI>Bugfix: fixed the program description on the documentation <em>thanks Mahesh T. Pai</em>
+<LI>Bugfix: sgml: removed useless &lt;rowsep&gt; from table last row <em>thanks Rodrigo Sobrinho</em>
+<LI>Bugfix: tex: now escaping correctly &lt;, &gt; and | chars <em>thanks Leo Rosa</em>
+<LI>Bugfix: TOC and list errors when inverting order <em>thanks Leo Rosa</em>
+<LI>New optional anchor specification for title: <CODE>=title=[anchor]</CODE> <em>thanks Jose Inacio Coelho</em>
+<LI>New CSS sample files to help CSS beginners <em>thanks Osvaldo Santana</em>
+<LI>New target: xhtml (XHTML page) <em>thanks Peter Valach and Christian Zuckschwerdt</em>
+<LI>Tex: now using <CODE>--style</CODE> to load <CODE>\usepackage</CODE> modules <em>thanks Leo Rosa</em>
+<LI>User Guide images on the tarball <em>thanks Guaracy Monteiro</em>
+<P></P>
+<LI>Man target improved: added support for lists, quote and tables
+<LI>Mgp target improved: image is now alignable
+<LI>Moin target improved: added support for underline, quote, table
+  cell align, comment and TOC
+<LI>Tex target improved: removed amssymb from headers, not breaking
+  pages anymore, mapping <CODE>--style</CODE> do \usepackage, using \clearpage,
+  image tag not using {figure} anymore <em>thanks Leo Rosa, Leslie Watter and Sandor Markon</em>
+<P></P>
+<LI>Graphical and web interfaces improved (blue theme)
+<LI>Error messages improved and prefixed by txt2tags string
+<LI>New rules for beautifiers: glued and greedy
+<LI>Solo centered images now requires spaces on both sides
+<LI>Added &amp; to URL filename valid chars (~michaelreaves/D&amp;Dpreface.html)
+<LI>User config on source code for i18n, debug and HTML lowered tags
+<P></P>
+<LI>Old <CODE>--type</CODE> option changed to <CODE>--target</CODE>
+<LI>Old <CODE>--noheaders</CODE> option changed to <CODE>--no-headers</CODE>
+<LI>Old <CODE>--enumtitle</CODE> option changed to <CODE>--enum-title</CODE>
+<LI>Old <CODE>--maskemail</CODE> option changed to <CODE>--mask-email</CODE>
+<LI>Old <CODE>--toclevel</CODE> option changed to <CODE>--toc-level</CODE>
+<LI>Old <CODE>--toconly</CODE> option changed to <CODE>--toc-only</CODE>
+<P></P>
+<LI>Old <CODE>`pre`</CODE> mark changed to <CODE>``pre``</CODE>
+<LI>Old <CODE>``raw``</CODE> mark changed to <CODE>""""raw""""</CODE>
+<LI>Old <CODE>---</CODE> mark changed to <CODE>```</CODE> for Verbatim Area
+<LI>Old <CODE>= term:</CODE> mark changed to <CODE>: term</CODE> for definition list term
+<LI>Old bolditalic mark removed, use <CODE>**//bold+italic//**</CODE> instead
+<P></P>
+<LI>Old <CODE>%!cmdline</CODE> config changed to <CODE>%!target</CODE> and <CODE>%!options</CODE>
+<LI>Old <CODE>%!include: `file.txt`</CODE> changed to <CODE>%!include: ``file.txt``</CODE>
+  when including a text file
+<LI>Old <CODE>%!include: 'file.html'</CODE> changed to <CODE>%!include: ''file.html''</CODE>
+  when including a tagged file
+</UL>
+
+<H2>Version 1.7 (2003-11-30)</H2>
+
+<UL>
+<LI>New <CODE>%!include</CODE> command to insert external files <em>thanks Guaracy Monteiro</em>
+<LI>Command line options errors now more descriptive
+<LI>Regex errors now detected on Pre/Post proc filters
+<LI>Program man page added to the tarball <em>thanks Jose Inacio Coelho</em>
+<LI>Rewritten the Emacs syntax highlight file <em>thanks Leslie Watter</em>
+<P></P>
+<LI>Bugfix: moin: first level lists must have a leading space
+<LI>Bugfix: man: headers using quotes
+<LI>Bugfix: Footer composer on Windows was dumping error <em>thanks Guaracy Monteiro</em>
+<LI>Bugfix: Gui + STDOUT not showing <CODE>%!postproc</CODE> edits <em>thanks Guaracy Monteiro</em>
+</UL>
+
+<H2>Version 1.6 (2003-07-23)</H2>
+
+<UL>
+<LI>New mark <CODE>+</CODE> for explicit numbered titles, +like this+ <em>thanks Sandor Markon</em>
+<LI>New <CODE>%!preproc:</CODE> and <CODE>%!postproc:</CODE> user defined filters <em>thanks Peter Valach</em>
+<LI>New <CODE>%!key(target):</CODE> optional format to apply a config to a target,
+  as in <CODE>%!encoding(html): iso-8859-1</CODE>
+<LI>Removed accented letter from Author's name (newer Python complains about it) <em>thanks Ola Samuelson</em>
+<LI>Added separator blank line before and after titles for txt target
+<P></P>
+<LI>Bugfix: <CODE>--toconly</CODE> now respects <CODE>--toclevel</CODE> setting
+<LI>Bugfix: no more double spaced lines on Windows <em>thanks Guaracy Monteiro</em>
+<LI>Bugfix: man: escaping \ with \e
+<LI>Bugfix: man: escaping lines that begin with . and '
+<LI>Bugfix: tex: solved lots of LaTeX special chars issues: ~ ^ \
+<LI>Bugfix: tex: the _ char is now escaped on titles
+<LI>Bugfix: html: escaping '--' on comment lines
+<LI>Bugfix: html: <CODE>&lt;IMG ALIGN="middle"&gt;</CODE> (not "center")
+<LI>Bugfix: html: closing <CODE>&lt;A NAME&gt;</CODE> tag with <CODE>&lt;/A&gt;</CODE> <em>thanks Guaracy Monteiro</em>
+<LI>Bugfix: tex: now using \section* as the (unnumbered) title tag <em>thanks Miek Gieben</em>
+<LI>Bugfix: tex: now respecting <CODE>--enumtitle</CODE> <em>thanks Sandor Markon</em>
+<P></P>
+<LI>Gui: now showing (and checking) <CODE>%!cmdline</CODE> contents (if any) <em>thanks Guaracy Monteiro</em>
+<LI>Gui: refresh checkboxes when a new file is loaded <em>thanks Guaracy Monteiro</em>
+<LI>Gui: accepts extra options when called via command line, example:
+  <CODE>txt2tags --gui -n file.t2t</CODE>
+</UL>
+
+<H2>Version 1.5.1 (2003-05-14)</H2>
+
+<UL>
+<LI>Just a patch for v1.5, in which the GUI was broken <em>thanks Guaracy Monteiro</em>
+</UL>
+
+<H2>Version 1.5 (2003-05-09)</H2>
+
+<UL>
+<LI>New <CODE>%!cmdline:</CODE> setting to specify a default command line <em>thanks Jose Inacio Coelho</em>
+<LI>Target LaTeX now supporting images <em>thanks Leslie Watter</em>
+<LI>New option <CODE>-n</CODE>, short for <CODE>--enumtitle</CODE>
+<LI>New option <CODE>-H</CODE>, short for <CODE>--noheaders</CODE>
+<LI>New options <CODE>-o</CODE> and <CODE>--outfile</CODE> to set the output filename
+  (Note: <CODE>--stdout</CODE> option now is deprecated by <CODE>-o-</CODE>) <em>thanks Lukasz Grabun</em>
+<LI>New <CODE>&lt;!DOCTYPE&gt;</CODE> declaration on HTML target headers <em>thanks Lukasz Grabun</em>
+<LI>Now the TODO file is public, included on the tarball
+<LI>Some improvements on extras/unhtml.vim file
+<P></P>
+<LI>Syntax: Headers are parsed as plain text, except <CODE>%%date</CODE>
+<LI>Syntax: Comma added as valid URL form data char <em>thanks Rodrigo Sobrinho</em>
+<P></P>
+<LI>Bugfix: Masking of encoding name on tex was not working <em>thanks Leslie Watter</em>
+<LI>Bugfix: \1, \2, \N special chars was not correctly escaped <em>thanks Thobias Trevisan</em>
+<LI>Bugfix: '1linePre' regex was matching empty line as '--- ' <em>thanks Rodrigo Sobrinho</em>
+<LI>Bugfix: Some targets don't support images as links <em>thanks Rodrigo Sobrinho</em>
+<LI>Bugfix: URL special chars was not escaped on Sgml target <em>thanks Rodrigo Sobrinho</em>
+<LI>Bugfix: Marks was being parsed on TOC items on man,pm6,moin,mgp,txt
+<LI>Bugfix: Most targets don't support images as definition list term
+<LI>Bugfix: Fixed escape char \ issues (now it is masked)
+</UL>
+
+<H2>Version 1.4 (2003-02-18)</H2>
+
+<UL>
+<LI>New table smart align for the full table (left,center)
+<LI>New table smart align for each table cell (left,center,right) <em>thanks Jose Inacio Coelho</em>
+<LI>New option <CODE>--style</CODE> and <CODE>%!style:</CODE> setting for doc style (like HTML CSS) <em>thanks Maksim Ischenko</em>
+<LI>New option <CODE>--toclevel</CODE> to set the maximum TOC deepness
+<LI>Syntax: now comment lines doesn't close tables
+<LI>If no headers, now the title is left empty (no more "<CODE>-NO TITLE-</CODE>")
+<P></P>
+<LI>Bugfix: <CODE>--maskemail</CODE> was not working since v1.2  :/
+<LI>Bugfix: \t,\n,\r &amp; friends was parsed as specials inside tables
+<LI>Bugfix: Paragraph+comment+blankline+paragraph was parsed as one
+  paragraph
+</UL>
+
+<H2>Version 1.3 (2002-12-20)</H2>
+
+<UL>
+<LI>New "Txt2tags User Guide" document
+<LI>New mark <CODE>""</CODE> for RAW strings (pass-thru txt2tags parsing) <em>thanks Leslie Watter</em>
+<LI>New <CODE>%!encoding:</CODE> command to specify the document charset
+<LI>New 'contrib' dir for user contributed stuff
+<LI>Improvements on SGML target: now using <CODE>&lt;toc&gt;</CODE> and <CODE>&lt;descrip&gt;</CODE>
+<LI>Added '$' and '@' chars to the URL matcher, so <A HREF="http://this.is/valid@$99">http://this.is/valid@$99</A> <em>thanks Hubert Chan</em>
+<P></P>
+<LI>Sanity: Removed from code structures marked as obsoleted on v1.1
+<LI>Sanity: Removed <CODE>\email{}</CODE> tag from LaTeX headers. Using <CODE>\url{}</CODE>.
+<LI>Sanity: <CODE>\usepackage[latin1]{inputenc}</CODE> is not default anymore on
+  LaTeX headers. If needed, use new <I>encoding</I> command.
+<P></P>
+<LI>Bugfix: LaTeX target added on the Web Interface menu
+<LI>Bugfix: \n, \t and other special pairs escaped under `inline mono`
+<LI>Bugfix: TOC anchor respecting maximum TOC level
+<LI>Bugfix: Beautifiers not parsed on TOC items
+<LI>Bugfix: Special chars not double escaped on TOC items
+</UL>
+
+<H2>Version 1.2 (2002-12-03)</H2>
+
+<UL>
+<LI>New target: tex (LaTeX document) <em>thanks Leslie Watter</em>
+<LI>Now multiple source files can be specified on the command line
+  as <CODE>txt2tags -t html *.t2t</CODE> <em>thanks Maksim Ischenko</em>
+<LI>URL matcher was improved and now gets valid insane paths as
+  <A HREF="http://this.com///">http://this.com///</A> and <A HREF="http://this.com?var=abc#anchor">http://this.com?var=abc#anchor</A> <em>thanks Hubert Chan</em>
+<LI>Added a COPYING file on the tarball, with the GPL license
+<LI>Added a handy unhtml.vim script to the extras directory, to
+  convert by brute force an HTML file to a txt2tags file on Vim.
+<LI>Bugfix: Special chars escaped on link label
+</UL>
+
+<H2>Version 1.1 (2002-11-06)</H2>
+
+<UL>
+<LI>Images can now point to links, as: <CODE>[[img.gif] www.abc.com]</CODE>
+<LI>New foldmethod=syntax rules on the Vim syntax file <em>thanks Peter Valach</em>
+<LI>Now any non-table line closes a table (blank line or not)
+<LI>Begin of the major code-cleanup (aka complete rewrite) <em>thanks EVERYBODY ;)</em>
+<P></P>
+<LI>Sanity: New RULE for headers: if the very first line of the file
+  is blank, this means 'this file has no header information'
+<LI>Sanity: New comment char: % at the line beginning (no leading spaces!)
+<LI>Sanity: Marks are not parsed on title lines <em>thanks Maksim Ischenko</em>
+<LI>Sanity: // as comment mark is obsoleted, due conflicts with
+  italic mark. will be removed on version 1.3
+<LI>Sanity: TAB-made tables are marked as obsoleted, will be removed on
+  version 1.3. Use the PIPE-made tables instead.
+<LI>Sanity: Removed support for filename with spaces on the image mark,
+  due conflicts with named URL mark, <CODE>[like this.gif]</CODE>
+<LI>New option <CODE>--fixme</CODE> (temporary) to update obsoleted structures and
+  automatically fix all this Sanity changes
+<P></P>
+<LI>Bugfix: <CODE>--noheaders</CODE> now act just as 'suppress headers from output',
+  and not 'treat headers as plain text'
+<LI>Bugfix: Trailing . is now part of the URL when it contains anchor
+  location or form data (as #abc. and ?var=abc.)
+<LI>Bugfix: Trailing / added to the URL matcher (as <A HREF="http://www.abc.com/">www.abc.com/</A>) <em>thanks Rubens Queiroz</em>
+<LI>Bugfix: Title with \ char now is correctly handled
+</UL>
+
+<H2>Version 1.0 (2002-09-25)</H2>
+
+<UL>
+<LI>New Graphical Tk Interface
+<LI>Fixed target file format on Windows and Mac platforms
+<LI>TOC deepness now is limited to level 3
+<LI>RULES file sync'ed with actual rules (sorry!) <em>thanks Grigory Bakunov</em>
+<LI>ChangeLog (this file) is now a txt2tags file <em>thanks Grigory Bakunov</em>
+<LI>Added underscore char _ to anchor on URL regex
+<P></P>
+<LI>Bugfix: Closing any open list or table at EOF
+<LI>Bugfix: HTML anchor name have no # <em>thanks Grigory Bakunov</em>
+</UL>
+
+<H2>Version 0.9 (2002-08-23)</H2>
+
+<UL>
+<LI>Now txt2tags is a 100% pure Python script. The bash part has gone
+  so now it runs nicely on MS Windows and other Python aware platforms <em>thanks Ramon Felciano</em>
+<LI>New options <CODE>--toc</CODE> and <CODE>--toconly</CODE> to generate Table Of Contents
+<LI>Defined <CODE>.t2t</CODE> as the official txt2tags file extension <em>thanks Leslie Watter</em>
+<LI>Txt.vim file renamed to txt2tags.vim, and added instructions
+<LI>Now titles are underlined on target txt <em>thanks Ramon Felciano</em>
+<LI>Cmdline used to generate the document is inserted as a comment on it
+<LI>Tarball reorganized, adding 'extras' and 'samples' directories
+<P></P>
+<LI>Bugfix: When all ok, force system exit status to 0 <em>thanks Marcelo Marcal</em>
+</UL>
+
+<H2>Version 0.8 (2002-07-03)</H2>
+
+<UL>
+<LI>New abuseme.txt complex sample file (test-suite)
+<LI>New smart image align feature for HTML (see abuseme.t2t) <em>thanks Rubens Queiroz</em>
+<LI>New option <CODE>--maskemail</CODE> to hide email from SPAM robots <em>thanks Rubens Queiroz</em>
+<LI>Table now can have border or no on HTML
+<LI>Improvements on txt.vim syntax file, now colors works on gui also
+<LI>Image mark can't accept filename with spaces (conflicts named link)
+<P></P>
+<LI>Bugfix: Parse more than one <CODE>%%date</CODE> on the same line
+<LI>Bugfix: Special chars now escaped inside <CODE>preformatted</CODE>
+<LI>Bugfix: Closing quote mark was kinda broken
+</UL>
+
+<H2>Version 0.7 (2002-06-20)</H2>
+
+<UL>
+<LI>New Emacs syntax highlight file for txt2tags rules <em>thanks Leslie Watter</em>
+<LI>New mark <CODE>:</CODE> for definition lists (&lt;DL&gt; on HTML)
+<LI>Now adding protocol to guessed link like <A HREF="http://www.abc.com">www.abc.com</A>
+<LI>Explicit link mark changed from <CODE>["label" url]</CODE> to <CODE>[label url]</CODE>
+  in other words, quotes are not necessary anymore
+<LI>Image mark now correctly handles filenames with space for html
+<LI>Corrected typos on sample.txt file <em>thanks Rodrigo Stulzer</em>
+<LI>Named links now can point to local links as file.html, #anchor
+  and file.html#anchor <em>thanks Rubens Queiroz</em>
+</UL>
+
+<H2>Version 0.6 (2002-04-10)</H2>
+
+<UL>
+<LI>Tables are now supported for sgml and moin targets
+<LI>New option <CODE>--enumtitle</CODE> to enumerate all titles as 1, 1.1, 1.1.1, etc
+<LI>New mark ``+ `` for numbered list type for all targets
+<LI>Better pre-formatted font escaping (won't parse marks)
+<LI>URL matcher now supports <A HREF="ftp://user:passwd@domain.com">ftp://user:passwd@domain.com</A> login URLs
+  and <A HREF="mailto:user@domain.com?subject=test&amp;cc=me@domain.com">user@domain.com?subject=test&amp;cc=me@domain.com</A> filled emails <em>thanks Rubens Queiroz</em>
+</UL>
+
+<H2>Version 0.5 (2002-03-22)</H2>
+
+<UL>
+<LI>New handy Web interface to use it online (Internet or Intranet)
+<LI>New option <CODE>--noheaders</CODE> to suppress headers information
+<LI>Now it can read the marked text from STDIN (specify - as file)
+<LI>Adapted to work on python old v1.5 also
+</UL>
+
+<H2>Version 0.4 (2002-03-11)</H2>
+
+<UL>
+<LI>New simple table support (just for HTML by now)
+<LI>Fixed lots of bugs on the man target, now it's kinda usable
+<LI>The preformatted line mark must have a space after the dashes: '--- '
+<LI>The preformatted line now has leading spaces
+<LI>New options <CODE>-h</CODE>, <CODE>--help</CODE>, <CODE>-V</CODE> and <CODE>--version</CODE>
+<LI>URL matcher is smarter, supporting <CODE>#local_anchors</CODE> and <CODE>?form=data</CODE> <em>thanks Rubens Queiroz</em>
+</UL>
+
+<H2>Version 0.3 (2001-11-09)</H2>
+
+<UL>
+<LI>New mark <CODE>["my label" http://duh.com]</CODE> for explicit URL/email with label <em>thanks Mark Stankus</em>
+<LI>Date macro now supports format string like <CODE>%%date(%m/%d/%Y)</CODE> <em>thanks Mark Stankus</em>
+</UL>
+
+<H2>Version 0.2 (2001-10-01)</H2>
+
+<UL>
+<LI>New target: man (UNIX man page)
+<LI>Nice shell wrapper to deal with files/directories/options.
+  in fact, the python code is now "embedded" on the sh script.
+<LI>New options <CODE>--lang</CODE> and <CODE>--split</CODE> (for sgml2html)
+</UL>
+
+<H2>Version 0.1 (2001-07-26)</H2>
+
+<UL>
+<LI>Initial release
+</UL>
+
+</div><div id="footer">
+<P>
+<IMG ALIGN="middle" SRC="img/t2tpowered-white.png" BORDER="0" ALT="">
+</P>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a>
+<P>
+Last modified on 11 January 2012 at 13:20
+(<A HREF="changelog.t2t">See sources</A>,
+<A HREF="http://validator.w3.org/check?uri=referer">Validate HTML</A>)
+</P>
+</div><div id="fake">
+<!-- Google Analytics code -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-280222-14']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</DIV>
+
+<!-- html code generated by txt2tags 2.6.641 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html ./changelog.t2t -->
+</BODY></HTML>

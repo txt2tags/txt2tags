@@ -1,0 +1,426 @@
+txt2tags
+
+We have the Dream Team
+
+%!postproc: SITEROOT ..
+%!includeconf: ../inc/config.t2t
+
+%!postproc: '(?i)(<body)'	'\1 id="team"'
+%!postproc: '(?i)(</title>)'	' team\1'
+
+% Team CSS file
+%!style: team.css
+
+% Gravatar remote images
+%!preproc: '<gravatar:([0-9a-f]+)>'     '<gravatar/\1.png>'
+%!postproc: '(?i)src=".*?gravatar/([0-9a-f]+).png"'  'src="http://www.gravatar.com/avatar/\1?d=mm&amp;s=96"'
+
+% Magic (no country, with country)
+%!preproc: '^<><(.*?)><(.*?)> (.*)'        ''<tr>''\n''<td class="pic">''[[img/\1] \2]''</td>''\n''<td valign="top">''**\3**
+%!preproc: '^<(..)><(.*?)><(.*?)> (.*)'    ''<tr>''\n''<td class="pic">''[[img/\2] \3]''</td>''\n''<td valign="top">''**\4**''<br>''\n[../img/flag/\1.gif]
+
+% Remove empty links from pictures
+%!preproc: '\[(\[img/.*?\]) \]'	\1
+
+% Put the country names after the flag
+%!preproc: '(flag/br.gif])'	\1 Brazil
+%!preproc: '(flag/ch.gif])'	\1 Chile
+%!preproc: '(flag/cs.gif])'	\1 Czech Republic
+%!preproc: '(flag/de.gif])'	\1 Germany
+%!preproc: '(flag/dk.gif])'	\1 Denmark
+%!preproc: '(flag/es.gif])'	\1 Spain
+%!preproc: '(flag/eu.gif])'	\1 Basque
+%!preproc: '(flag/fi.gif])'	\1 Finland
+%!preproc: '(flag/fr.gif])'	\1 France
+%!preproc: '(flag/hu.gif])'	\1 Hungary
+%!preproc: '(flag/it.gif])'	\1 Italy
+%!preproc: '(flag/ja.gif])'	\1 Japan
+%!preproc: '(flag/lu.gif])'	\1 Luxembourg
+%!preproc: '(flag/ms.gif])'	\1 Malaysia
+%!preproc: '(flag/mx.gif])'	\1 Mexico
+%!preproc: '(flag/ru.gif])'	\1 Russia
+%!preproc: '(flag/sv.gif])'	\1 Sweden
+%!preproc: '(flag/uk.gif])'	\1 Ukraine
+%!preproc: '(flag/us.gif])'	\1 United States
+%!preproc: '(flag/zh.gif])'	\1 China
+
+% Add class to flags
+%!postproc: '(flag/...gif")'	\1 class="flag"
+
+% Close table cell when closing lists
+%!postproc: (</UL>)		\1</td></tr>
+
+% Paragraphs are not welcome
+%!postproc: </*P>		''
+
+
+%!include: ../inc/menu.t2t
+
+== The Team ==
+
+''' <table align="center">
+
+<zh><abbypan.png><http://if.ustc.edu.cn/~abbypan/index.html> Abby Pan
+- Manual page translation   (Chinese)
+-
+<us><adam-miller.jpg><http://maxamillion.googlepages.com> Adam Miller
+- Fedora package (for v2.5)
+-
+<hu><adam.jpg><http://adam.schmideg.net> Adam Schmideg
+- Sample file translation (Hungarian)
+-
+<eu><shagi.jpg><> Ales Zabala Alava
+- Markup Demo translation (Basque)
+- Sample file translation (Basque)
+- Manual page translation (Basque)
+- Quick Reference translation (Basque)
+- Program Messages translation (Basque)
+- Program Messages translation, v2.6 (Spanish)
+-
+<br><anamim.jpg><> Anamim Thuler Schuwarte
+- Handheld (PDA) port - Installer and tests
+- English documentation revision
+- Abuseme file translation (Portuguese)
+-
+<de><andreas.jpg><> Andreas Deininger
+- User Guide translation      (German)
+- Quick Reference translation (German)
+- Program Messages revision   (German)
+-
+<es><antoni.jpg><> Antoni Serra Devecchi
+- User Guide translation      (Spanish)
+- Manual page translation     (Spanish)
+- Writing Books translation   (Spanish)
+- Markup Demo translation     (Catalan)
+- Sample file translation     (Catalan)
+- Quick Reference translation (Catalan)
+- Manual page translation     (Catalan)
+-
+<br><gravatar:e583bca48acb877efd4a29229bf7927f><http://aurelio.net/en/> Aurelio Jargas
+- Author, programmer, tester, documenter, .*
+-
+<fr><booba.jpg><> Booba Skaya
+- Redmine Wiki target implementation
+-
+<uk><bunyk.jpg><http://bunyk.wordpress.com> Bunyk Taras (Тарас Буник)
+- Program Messages translation (Ukrainian)
+- Sample File translation      (Ukrainian)
+- User Guide translation       (Ukrainian)
+-
+<br><grossman.jpg><http://www.LinuxByGrossmann.cjb.net> Cesar A. K. Grossman
+- User Guide v1.6 translation (Portuguese)
+-
+<br><gimenes.jpg><crgimenes@terra.com.br> Cesar Gimenes
+- Apache module mod_t2t
+-
+<zh><chrisleng.jpg><> Chris Leng [img/chrisleng-name.png]
+- User Guide translation (Chinese)
+-
+<it><surchi.jpg><csurchi@debian.org> Christian Surchi
+- Debian package (since v0.6)
+-
+<de><tum-de.jpg><http://home.in.tum.de/~boeckler/> Christof Böckler
+- User-made German Quick Reference
+-
+<fr><claude.jpg><> Claude Hiebel
+- User Guide translation       (French)
+- Program Messages translation (French)
+- Markup Demo translation      (French)
+- Sample file translation      (French)
+- Quick Reference translation  (French)
+- Manual page translation      (French)
+- Writing Books translation    (French)
+-
+<br><daniel.jpg><dbolgheroni@gmail.com> Daniel Bolgheroni
+- NetBSD package (since v2.3)
+-
+<us><fancella.jpg><http://www.davefancella.com> Dave Fancella
+- gensite tool
+-
+<fr><gravatar:74b9393e3a438735da6cb0e8766897d5><> David Hajage
+- DocBook target implementation
+-
+<us><gravatar:471c9422e79baaa86a3937042d1e2b17><> David Young
+- txt2tags markup for TiddlyWiki (plugin)
+-
+<br><gravatar:21d1ad3c31f01562510c8592d0bfb04d><> Douglas Soares de Andrade
+- ArchLinux package (since v2.3)
+-
+<dk><dmitri.png><http://www.nothickmanuals.info> Dmitri Popov
+- OpenOffice.org txt2tags extension (QuasiWiki)
+- Sponsor for version 2.5
+-
+<br><eder.jpg><http://blog.edermarques.net> Eder Marques
+- Debian package (since v2.5)
+-
+<fr><eric.jpg><http://anamnese.online.fr/site2/index.php?page=txt2tags> Eric Forgeot
+- Creole target implementation
+- txt2tags Wiki maintainer
+- txt2tags markup for PmWiki (cookbook)
+- Kate Editor syntax file improvements
+- Geany editor plugin
+- TeXtallion tool
+- txt2CYOA
+-
+<br><fabianne.jpg><http://fabs.tk> Fabianne Balvedi
+- Button "txt2tags powered"
+-
+<fr><fgallaire.jpg><http://fgallaire.flext.net> Florent Gallaire
+- txt2tags.org domain name
+- Ascii Art target implementation
+- Slides mode idea and implementation
+- Txt2tags markup set for markItUp!
+- Script to generate art slides dynamically (dynartslides)
+-
+<fr><kerneis.jpg><http://kerneis.info> Gabriel Kerneis
+- NanoBlogger plugin
+-
+<br><gleydson.jpg><> Gleydson Soares
+- OpenBSD port (v2.2)
+-
+<br><gravatar:ee5bef27ce2f0f2aa0df86e710fec7f8><http://cadafalso.deusexmachina.com.br> Guaracy Bellaver Monteiro
+- Windows port - Installer and tests
+- Ruby batch script (t2tmake.rb)
+-
+<br><ielton.png><> Ielton Ferreira Carneiro Pinto
+- Program Messages translation, v2.2 (Spanish)
+- Quick Reference translation (Portuguese)
+- Writing Books translation   (Portuguese)
+- IRC channel #txt2tags @ Freenode
+- Txt2tags Orkut community
+- RPM package for v1.x
+- XHTML consulting
+-
+<us><jason.png><> Jason Seeley
+- RTF target implementation
+-
+<br><joaobernardo.jpg><http://twitter.com/jbvsmo> João Bernardo Vianna
+- Ported txt2tags-2.6 code to Python 3
+-
+<de><gravatar:ea73995fe003f96c9eb6037edefd80cc><> Joerg Desch
+- DokuWiki target implementation
+-
+<sv><liljedahl.jpg><http://kymatica.com> Jonatan Liljedahl
+- Lout consulting
+-
+<br><gravatar:4def53729cef7871cfef7cfd384890b0><> Jose de Avila Jr.
+- Slackware package (since v2.1)
+-
+<br><jic.jpg><> José Inácio Coelho da Silva
+- Manual page writer
+- User Guide translation (Portuguese)
+- User-made Portuguese Quick Reference
+- 
+<br><juliano.jpg><http://geocities.yahoo.com.br/juliano_dorneles/> Juliano Dorneles dos Santos
+- Kate Editor syntax file
+-
+<ru><gravatar:7da4ca34a212342469458a52f2ca3ae3><> Kato Kontenta
+- Markup Demo translation     (Russian)
+-
+<br><leslie.jpg><http://lezz.org> Leslie Harlley Watter
+- Emacs Editor syntax file
+- User-made Portuguese Quick Reference
+- LaTeX consulting
+-
+<mx><cortazar.png><http://paginaweb.de/lcortazar> Luis Cortázar
+- Markup Demo translation     (Spanish)
+- Sample file translation     (Spanish)
+- Quick Reference translation (Spanish)
+- Abuseme file translation    (Spanish)
+-
+<ja><gravatar:11de3b84e2fd1b21ec2f48670887e76b><http://twitter.com/Magepa> Mage Whopper
+- Markup Demo translation (Japanese)
+- Sample File translation (Japanese)
+-
+<de><manfred.jpg><http://mannemade.de> Manfred Schreiweis
+- Program Messages translation (German)
+-
+<de><matthias-h.jpg><> Matthias Haase
+- Fedora package (for v2.4)
+-
+<de><gravatar:2fd42653ed6f7a7b88d65601caa07eed><> Matthias Kilian
+- OpenBSD package (since v2.3)
+-
+<br><mteixeira.png><http://mteixeira.webset.net> Mauricio Teixeira
+- Manual page translation   (Portuguese)
+- RPM package (since v2.3)
+-
+<de><gravatar:f60c4085e4718b9ff712dd30f1de1d1f><> Michael Malien
+- Writing Books translation   (German)
+- Manual page translation     (German)
+-
+<fr><gravatar:45d6fc1848e2e890311758ed2ae81dda><> Mickael Brangeon
+- SPIP target implementation
+-
+<fi><mikko.jpg><> Mikko J Piippo
+- Sample file translation (Finnish)
+- Program Messages translation (Finnish)
+-
+<ms><gravatar:5d036640cbf92784186070c8761b2c07><http://simplelinux.tk> Muhammad Fariz
+- Program Messages translation (Malay)
+-
+<us><neilvoss.jpg><> Neil Voss
+- AsciiDoc target implementation
+-
+<fr><nicolas.png><http://bobuse.webhop.net> Nicolas Dumoulin
+- French documentation revision
+- Kate Editor syntax file improvements
+- ktxt2tags KDE front-end
+-
+<br><osvaldo.jpg><http://pythonologia.blogspot.com> Osvaldo Santana Neto
+- CSS sample files
+- CSS consulting
+-
+<br><otavio.jpg><> Otávio Corrêa Cordeiro
+- gVim menu
+- txt2tags blog-like button
+-
+<de><gravatar:26839619320a581e5177cf009d62e233><> Otto Dassau
+- OpenSUSE package (since v2.6)
+-
+<lu><pascal.png><http://pst.libre.lu> Pascal Steichen
+- Markup Demo translation (German)
+- Markup Demo translation (Luxembourgish)
+- Sample file translation (German)
+-
+<sv><per.jpg><http://www.pererikstrandberg.se> Per Erik Strandberg
+- Sample file translation (Swedish)
+-
+<br><rafaelmartins.jpg><http://rafaelmartins.eng.br> Rafael Martins
+- Gentoo package (since v2.6)
+-
+<ch><gravatar:928852a05e8a0098397e42b90ac31b1f><http://twitter.com/rahermosillac> Ricardo A. Hermosilla Carrillo
+- Program Messages translation (Spanish - Chile)
+-
+<us><ritesh.jpg><> Ritesh Sood
+- PmWiki target implementation
+-
+<it><gravatar:c2c356b523bbf8bcf7ca8fde893eb5c8><> Ruggero Furlanetto
+- Sample file translation (Italian)
+-
+<br><cacilhas.jpg><http://www3.serraon.com.br/~rodrigocacilhas/> Rodrigo Cacilhas
+- Markup Demo translation (Esperanto)
+- Sample file translation (Esperanto)
+-
+<br><queiroz.jpg><http://www.dicas-l.unicamp.br> Rubens Queiroz de Almeida
+- Marketing in Brazil
+-
+<br><ruda.jpg><http://www.rudix.org> Rudá Moura
+- Mac OS X installer
+-
+<fi><gravatar:35f7c5c6e4d77982dcda5813f92f0176><> Sami Hostikka
+- HTML5 target implementation
+-
+<it><darchino.jpg><http://lugbregaglia.ch> Stefano D'Archino
+- gedit Editor syntax file
+- JOE Editor syntax file
+- le Editor syntax file
+- 
+<it><stefano.jpg><> Stefano Spinucci
+- Program Messages translation (Italian)
+- Manual page translation      (Italian)
+-
+<hu><tamas.jpg><> Tamás Iván
+- Program Messages translation (Hungarian)
+- Markup Demo translation      (Hungarian)
+- Quick Reference translation  (Hungarian)
+- Patch for ""%%mtime"" macro
+-
+<de><gravatar:b2728d2cd85e1bec77f7ce0900b98ea9><> Thomas Bauer
+- Sample file revision     (German)
+-
+<br><tiago.jpg><> Tiago Machado
+- Slackware package (v2.0)
+-
+<mx><martin.jpg><http://www.prodigyweb.net.mx/tmjp/> Tomás Martín Jimarez Ponce
+- Program Messages translation, v2.4 (Spanish)
+-
+<zh><gravatar:31ce1a601194afc10d2e060a23babfc5><> Tony Gu (digitalsatori)
+- Tips page translation (Chinese)
+-
+<cs><vlastimil.jpg><http://www.e-ott.info> Vlastimil Ott
+- Markup Demo translation     (Czech)
+- Sample file translation     (Czech)
+- Quick Reference translation (Czech)
+-
+<br><wilson.png><http://www.aboutwilson.net> Wilson Freitas
+- FAQ writer (Portuguese)
+- Vim Editor compiler
+-
+<zh><wfifi.jpg><http://wiki.woodpecker.org.cn/moin/wfifi> wfifi [img/wfifi-name.jpg]
+- Program Messages translation (Chinese)
+-
+<zh><zoom.png><http://wiki.woodpecker.org.cn/moin/ZoomQuiet> Zoom Quiet [img/zoomquiet-name.png]
+- Markup Demo translation     (Chinese)
+- Sample file translation     (Chinese)
+- Quick Reference translation (Chinese)
+-
+
+''' </table>
+
+''' <br><br>
+
+Other people contributed with valuable help, sending bug reports, patches and nice ideas. Txt2tags was greatly improved by the hands and minds of many people, specially:
+
++ Aad Mathijssen
++ Alexandre Lima
++ Allan Odgaard
++ Anand Vaidya
++ Barrie Stott
++ Bob Tennent
++ Campbell Barton
++ Christian Zuckschwerdt
++ Daniele Furlan
++ Didier Bretin
++ Elias Dorneles da Silveira Junior
++ Emmanuel Godard
++ Enderson Maia
++ Fabiano Engler
++ Fred Pacquier
++ Grigory Bakunov
++ Gustavo Niemeyer
++ Gustavo Roberto Rodrigues Gonçalves
++ Hubert Chan
++ Hudson Reis
++ Isis Binder
++ Jan Rejlek
++ Jendrik Seipp
++ Jiří Pinkava
++ Kruzslicz Ferenc
++ Leandro Lisboa Penz
++ Leonardo Machado da Rosa
++ Lucas Buchala
++ Lucas Lueders
++ Lukasz Grabun
++ Mahesh T. Pai
++ Maksim Ischenko
++ Marcelo Subtil Marcal
++ Marco Túlio Gontijo e Silva
++ Marcus Aurelius Farias
++ Marcus Widerberg
++ Mark Stankus
++ Mark White
++ Miek Gieben
++ Miguel Filho
++ Ola Samuelson
++ Paul Hammant
++ Paulo R. Oliveira Júnior
++ Peter Valach
++ Rahul Bhargava
++ Raicho Nikolov
++ Ramon Felciano
++ Rodrigo Sobrinho
++ Rodrigo Stulzer
++ Sandor Markon
++ Sérgio Berlotto Jr.
++ sphaira
++ Stern Andreas
++ Thobias Salazar Trevisan
++ Thomas Hafner
++ Tristan Chabredier
++ Ulysses Almeida
++ wjaguar
++ Wolf Bronski
+
+
+%!include: ../inc/footer.t2t

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="ListNumberedListDefinitionList.html">
+<LINK REL="Next" HREF="Table.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="ListNumberedListDefinitionList.html">Previous</A>
+<A HREF="Table.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="6_13">Image</A></H2>
+<UL>
+<LI><B>Description:</B> Identifies an image</LI>
+<LI><B>Properties:</B> !Multiline, !FreeSpaces, Align, !Nesting</LI>
+<LI><B>Contains:</B> Macros</LI>
+<LI><B>Syntax:</B>
+<UL>
+<LI>An image filename enclosed between brackets, <CODE>[likethis.jpg]</CODE>
+</LI>
+<LI>The filename must end in an image extension like PNG, JPG, GIF, ...
+ (case doesn't matter)</LI>
+<LI>Symbols are allowed on the filename, <CODE>[likethis!~1.jpg]</CODE></LI>
+<LI>Macros are allowed on the filename, <CODE>
+[report-%%date(%Y-%m-%d).png]</CODE></LI>
+<LI>NO spaces allowed on the filename, <CODE>[like this.jpg]</CODE></LI>
+<LI>NO spaces allowed on the brackets, <CODE>[ likethis.jpg ]</CODE></LI>
+</UL>
+</LI>
+<LI><B>Details:</B>
+<UL>
+<LI>If the target does not have image support, the image filename is
+ shown inside (parenthesis).</LI>
+<LI>The position of the mark on the line defines the image alignment:
+<UL>
+<LI><CODE>[LEFT.jpg]</CODE> blablablabla</LI>
+<LI>blablablabla <CODE>[CENTER.jpg]</CODE> blablablabla</LI>
+<LI>blablablabla <CODE>[RIGHT.jpg]</CODE></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+</UL>
+ <A NAME="mark-table"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="ListNumberedListDefinitionList.html">Previous</A>
+<A HREF="Table.html">Next</A>
+</BODY>
+</HTML>

@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta name="author" content="Aurelio Jargas www.aurelio.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../inc/site.css">
+<TITLE>txt2tags Upgrade Guide: from 1.x to 2.0</TITLE>
+<link rel="icon" type="image/png" href="/favicon.png">
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>txt2tags Upgrade Guide: from 1.x to 2.0</H1>
+<H3>July, 2004</H3>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<div id="sidebar">
+Hot
+  <ul>
+  <li id="menuonline"><a href="../online.php">Txt2tags Online</a></li>
+  <li id="menumarkup"><a href="../markup.html">Markup Demo</a></li>
+  </ul>
+About
+  <ul>
+  <!-- <li id="menuhome"><a href="/">Home</a></li> -->
+  <li id="menufeatures"><a href="../features.html">Features</a></li>
+  <li id="menusample"><a href="../sample.html">Example</a></li>
+  <li id="menushots"><a href="../shots.html">Screenshots</a></li>
+  <li id="menudocs"><a href="../docs.html">Documentation</a></li>
+  <li id="menutips"><a href="../tips.html">Tips &amp; Tricks</a></li>
+<!--
+  <li id="menuoldnews"><a href="../misc/oldnews.html">Old News</a></li>
+-->
+  </ul>
+Code
+  <ul>
+  <li id="menudownload"><a href="../download.html">Download</a></li>
+  <li id="menuchangelog"><a href="../changelog.html">Changelog</a></li>
+  <li id="menutools"><a href="../tools.html">Tools</a></li>
+  <li><a href="http://bugs.txt2tags.org">Bug tracker</a></li>
+  <li><a href="http://svn.txt2tags.org">SVN</a></li>
+  </ul>
+Community
+  <ul>
+  <li id="menuwiki"><a href="http://wiki.txt2tags.org">Wiki</a></li>
+  <li id="menublog"><a href="http://txt2tags.wordpress.com">Blog</a></li>
+  <li id="menuteam"><a href="../team/index.html">The Team</a></li>
+  <li id="menuchildren"><a href="../children.html">The Children</a></li>
+  <li id="menucomments"><a href="http://txt2tags.wordpress.com/user-comments/">User Comments</a></li>
+  <li id="menuart"><a href="../art.html">Artwork</a></li>
+  </ul>
+Social
+  <ul>
+  <li id="menuml"><a href="../ml.html">Mailing List</a></li>
+  <li><a href="http://www.facebook.com/pages/txt2tags/335201827209">Facebook</a></li>
+  <li><a href="http://twitter.com/aureliojargas">twitter</a></li>
+  <!-- <li><a href="http://www.orkut.com.br/Main#Community?cmm=87935">Orkut</a></li> -->
+  <li><a href="http://identi.ca/group/txt2tags">identi.ca</a></li>
+  </ul>
+
+<P>
+<A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=verde%40aurelio%2enet&amp;item_name=txt2tags%20donation&amp;no_shipping=1&amp;return=http%3a%2f%2faurelio%2enet%2fdonate%2dthanks%2ehtml&amp;cn=&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><IMG ALIGN="middle" SRC="../img/donate.png" BORDER="0" alt="DONATE"></A>
+</P>
+</div>
+<DIV CLASS="toc">
+
+  <UL>
+  <LI><A HREF="#toc1">About</A>
+  <LI><A HREF="#toc2">Intro</A>
+  <LI><A HREF="#toc3">The t2tconv tool</A>
+  <LI><A HREF="#toc4">The Changes</A>
+    <UL>
+    <LI><A HREF="#toc5">Old %!cmdline setting splitted into %!target and %!options</A>
+    <LI><A HREF="#toc6">Definition list mark</A>
+    <LI><A HREF="#toc7">Image centralizing</A>
+    <LI><A HREF="#toc8">New rules for beautifiers</A>
+    <LI><A HREF="#toc9">Mark for bolditalic was removed</A>
+    <LI><A HREF="#toc10">Changes on command line options</A>
+    <LI><A HREF="#toc11">Changes on marks</A>
+    </UL>
+  <LI><A HREF="#toc12">Okay</A>
+  </UL>
+
+</DIV>
+
+<H1 ID="toc1">About</H1>
+
+<P>
+This document is intended for those who already use txt2tags version
+1.7 or older, and has some .t2t files written. If you never used the
+program, don't mind reading it.
+</P>
+
+<H1 ID="toc2">Intro</H1>
+
+<P>
+First of all, thank you for being a txt2tags user. The program would
+not exist without all the user support.
+</P>
+<P>
+The new txt2tags 2.0 version starts a new development cycle of the
+program. Lots of innovations were made since the last 1.7 version.
+</P>
+<P>
+To make sure the program will keep evolving, some design decisions had
+to be made. As a result, there are changes on command line options,
+settings and marks, so v2.0 <B>BREAKS BACKWARDS COMPATIBILITY</B>.
+</P>
+<P>
+Your old .t2t files may NOT work as expected.
+</P>
+<P>
+This document details all the changes that do affect the already
+existent .t2t files. Read it with attention before upgrade.
+</P>
+
+<H1 ID="toc3">The t2tconv tool</H1>
+
+<P>
+To help you on the upgrade, there is a handy <CODE>t2tconv</CODE> tool on
+the v2.0 tarball. It converts your .t2t files to the new format.
+</P>
+<P>
+It is a Python script, so run it the same way you run txt2tags.
+Considering it is on the environment PATH, for most systems it is
+just:
+</P>
+
+<PRE>
+t2tconv file1.t2t file2.t2t ...
+</PRE>
+
+<P>
+The original file is saved with the .old extension. Just run it
+<U><B>once</B></U> for all your existing .t2t files.
+</P>
+<P>
+This is a sample old <CODE>ancient.t2t</CODE> file:
+</P>
+
+<PRE>
+My ancient document
+John Doe
+Summer, 2004
+
+%!cmdline: -t html --noheaders
+
+Hi, today i am  */really/* happy, i've installed `txt2tags` here.
+</PRE>
+
+<P>
+And now see t2tconv in action:
+</P>
+
+<PRE>
+<b>prompt$</b> t2tconv -n ancient.t2t
+File ancient.t2t has 5 fixes to be made
+<b>prompt$</b> 
+</PRE>
+
+<P>
+Use the <CODE>-n</CODE> command line option if you just want a report if the
+file has some changes to be made or not. The file is NOT changed.
+</P>
+
+<PRE>
+<b>prompt$</b> t2tconv -n -v ancient.t2t
++ [line 0006] Added %!target from old %!cmdline
++ [line 0006] Old --noheaders option changed to --no-headers
++ [line 0006] Old %!cmdline setting changed to %!options
++ [line 0008] Old */bolditalic/* mark is dead, now using **//bold+italic//**
++ [line 0008] Old `verb` inline mark changed to ``verb``
+File ancient.t2t has 5 fixes to be made
+<b>prompt$</b>
+</PRE>
+
+<P>
+Add the <CODE>-v</CODE> command line option if you want a detailed report of
+the changes to be made.
+</P>
+<P>
+With no options, the file is converted:
+</P>
+
+<PRE>
+<b>prompt$</b> t2tconv ancient.t2t
+Rewritten ancient.t2t (5 fixes) - backup saved as ancient.t2t.old
+<b>prompt$</b>
+</PRE>
+
+<P>
+And now ancient.t2t is upgraded to be used with txt2tags v2.0:
+</P>
+
+<PRE>
+My ancient document
+John Doe
+Summer, 2004
+
+%!target: html
+%!options: --no-headers
+
+Hi, today i am  **//really//** happy, i've installed ``txt2tags`` here.
+</PRE>
+
+<H1 ID="toc4">The Changes</H1>
+
+<H2 ID="toc5">Old %!cmdline setting splitted into %!target and %!options</H2>
+
+<P>
+There is no <CODE>%!cmdline</CODE> setting anymore. The default options are now
+specified with <CODE>%!options</CODE>. And the default document target is now
+specified with <CODE>%!target</CODE>.
+</P>
+<P>
+Version 1.7:
+</P>
+
+<PRE>
+%!cmdline: -t html --toc --toclevel 3
+</PRE>
+
+<P>
+Version 2.0:
+</P>
+
+<PRE>
+%!target: html
+%!options(html): --toc --toc-level 3
+</PRE>
+
+<P>
+If multiple <CODE>%!target</CODE> were given, only the last one will be used.
+If multiple <CODE>%!options</CODE> were given, all of them will be used, in
+sequence (they are cumulative).
+</P>
+
+<H2 ID="toc6">Definition list mark</H2>
+
+<P>
+The definition list is now specified with the <CODE>&lt;colon&gt;&lt;space&gt;</CODE>
+prefix. Oneliners are not valid anymore, as old "= term: description"
+were.
+</P>
+<P>
+Version 1.7:
+</P>
+
+<PRE>
+= banana: yellow tropical fruit
+</PRE>
+
+<P>
+Version 2.0:
+</P>
+
+<PRE>
+: banana
+yellow tropical fruit
+</PRE>
+
+<H2 ID="toc7">Image centralizing</H2>
+
+<P>
+To make an image centralized, we used to let is alone in a paragraph.
+Now it is necessary make it clearer, placing at least one space before
+and other after it.
+</P>
+<P>
+Version 1.7:
+</P>
+
+<PRE>
+&lt;start-of-line&gt;[image.jpg]&lt;end-of-line&gt;
+</PRE>
+
+<P>
+Version 2.0:
+</P>
+
+<PRE>
+&lt;start-of-line&gt;<b>&lt;space&gt;</b>[image.jpg]<b>&lt;space&gt;</b>&lt;end-of-line&gt;
+</PRE>
+
+<H2 ID="toc8">New rules for beautifiers</H2>
+
+<P>
+There are new rules used to recognize a valid beautifier. Beautifiers
+are: bold, italic, underline and monospaced text.
+</P>
+
+<UL>
+<LI>Marks must be glued with the contents, no boundary spaces
+
+<PRE>
+** bold **    ---&gt;   NOT bold
+**bold**      ---&gt;   bold OK
+</PRE>
+
+<P></P>
+<LI>Marks are greedy, always getting as must as they can (just like .*
+  in Regular Expressions):
+
+<PRE>
+****bold****  ---&gt;   &lt;b&gt;**bold**&lt;/b&gt;
+</PRE>
+
+</UL>
+
+<H2 ID="toc9">Mark for bolditalic was removed</H2>
+
+<P>
+There is no mark for bolditalic anymore. Just use the italic mark
+together with the bold one to get the same behavior.
+</P>
+<P>
+Version 1.7:
+</P>
+
+<PRE>
+*/bolditalic/*
+</PRE>
+
+<P>
+Version 2.0:
+</P>
+
+<PRE>
+**//bolditalic//**
+</PRE>
+
+<H2 ID="toc10">Changes on command line options</H2>
+
+<P>
+The <CODE>--type</CODE> has changed to <CODE>--target</CODE> and the dash was added to
+separate words, making it clearer to read. Here is the complete list:
+</P>
+
+<TABLE ALIGN="center" BORDER="1">
+<TR>
+<TH>version 1.7</TH>
+<TH>version 2.0</TH>
+</TR>
+<TR>
+<TD><S>type</TD>
+<TD></S>target</TD>
+</TR>
+<TR>
+<TD><S>noheaders</TD>
+<TD></S>no-headers</TD>
+</TR>
+<TR>
+<TD><S>enumtitle</TD>
+<TD></S>enum-title</TD>
+</TR>
+<TR>
+<TD><S>maskemail</TD>
+<TD></S>mask-email</TD>
+</TR>
+<TR>
+<TD><S>toclevel</TD>
+<TD></S>toc-level</TD>
+</TR>
+<TR>
+<TD><S>toconly</TD>
+<TD></S>toc-only</TD>
+</TR>
+</TABLE>
+
+<H2 ID="toc11">Changes on marks</H2>
+
+<TABLE ALIGN="center" BORDER="1">
+<TR>
+<TH>Type</TH>
+<TH>version 1.7</TH>
+<TH>version 2.0</TH>
+</TR>
+<TR>
+<TD>Monospaced text</TD>
+<TD ALIGN="center"><CODE>`text`</CODE></TD>
+<TD ALIGN="center"><CODE>``text``</CODE></TD>
+</TR>
+<TR>
+<TD>Raw text</TD>
+<TD ALIGN="center"><CODE>``text``</CODE></TD>
+<TD ALIGN="center"><CODE>""text""</CODE></TD>
+</TR>
+<TR>
+<TD>Verbatim text</TD>
+<TD ALIGN="center"><CODE>---</CODE></TD>
+<TD ALIGN="center"><CODE>```</CODE></TD>
+</TR>
+<TR>
+<TD>Definition List</TD>
+<TD ALIGN="center"><CODE>= term:</CODE></TD>
+<TD ALIGN="center"><CODE>: term</CODE></TD>
+</TR>
+<TR>
+<TD>Include text file</TD>
+<TD ALIGN="center"><CODE>%!include: `file.txt`</CODE></TD>
+<TD ALIGN="center"><CODE>%!include: ``file.txt``</CODE></TD>
+</TR>
+<TR>
+<TD>Include tagged file</TD>
+<TD ALIGN="center"><CODE>%!include: 'file.html'</CODE></TD>
+<TD ALIGN="center"><CODE>%!include: ''file.html''</CODE></TD>
+</TR>
+</TABLE>
+
+<H1 ID="toc12">Okay</H1>
+
+<P>
+Now that you have read it all,
+</P>
+
+<OL>
+<LI><A HREF="../download.html">Download the new version</A>
+<P></P>
+<LI>Change your existing .t2t files to the new format with the
+  <CODE>t2tconv</CODE> command
+<P></P>
+<LI>Convert your documents and check the results
+<P></P>
+<LI>Enjoy!
+</OL>
+
+<P>
+And check out the <A HREF="news.html">"What's New" document</A> also.
+</P>
+<P>
+In doubt, please write to the <A HREF="../ml.html">program mailing list</A> to get
+technical support.
+</P>
+<P>
+<B>TIP:</B> Save the program as <CODE>txt2tags2</CODE>, so you can use both v1.7
+and v2.0 at the same time in this transitional period.
+</P>
+</div><div id="footer">
+<P>
+<IMG ALIGN="middle" SRC="../img/t2tpowered-white.png" BORDER="0" ALT="">
+</P>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a>
+<P>
+Last modified on 11 January 2012 at 12:00
+(<A HREF="upgrade.t2t">See sources</A>,
+<A HREF="http://validator.w3.org/check?uri=referer">Validate HTML</A>)
+</P>
+</div><div id="fake">
+<!-- Google Analytics code -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-280222-14']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</DIV>
+
+<!-- html code generated by txt2tags 2.6.641 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html ./v2/upgrade.t2t -->
+</BODY></HTML>

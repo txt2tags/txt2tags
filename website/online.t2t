@@ -1,0 +1,30 @@
+txt2tags
+
+Free online conversion
+
+%!includeconf: inc/config.t2t
+%!options: -o online.php
+%!style: online.css
+
+%!postproc: '(?i)(<body)'	'\1 id="online"'
+%!postproc: '(?i)(</title>)'	' online\1'
+
+%!include: inc/menu.t2t
+
+== Txt2tags Online ==
+
+- Play with txt2tags even before downloading it.
+
+- You can alter the text source or type/paste your own.
+
+- The [PHP sources online.phps] are available, you can customize it
+ and use on your intranet.
+
+% NOT FOUND
+% - See also: [Txt2tags Web Editor http://davidarea.com/t2twebeditor/] made by
+% David Area, which has "live" formatting as in phpBB forums.
+
+
+''' <? require("online.phps"); ?>
+
+%!include: inc/footer.t2t

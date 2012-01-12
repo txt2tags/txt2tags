@@ -1,0 +1,105 @@
+txt2tags version 2.0
+July 25, 2004
+
+%!postproc: SITEROOT ..
+%!includeconf: ../inc/config.t2t
+
+%!include: ../inc/menu.t2t
+
+= Links =[links]
+
+- **[Screenshot gui.png]**: Check out the new GUI interface look.
+
+- **[What's New news.html]**: A complete and detailed document
+  showing the new features of the 2.0 version. Read it to take
+  advantage of all the news.
+
+- **[Upgrade Guide upgrade.html]**: A nice guide to help users of
+  previous txt2tags versions for a smooth upgrade. It is a MUST READ.
+
+
+%= Download =[download]
+%
+%  || Format | Size | Link |
+%  |   TGZ    |  293 Kb  | http://txt2tags.sf.net/src/txt2tags-2.0.tgz
+%  |   RPM    |  306 Kb  | http://txt2tags.sf.net/src/rpm/txt2tags-2.0-1cl.noarch.rpm
+%  |   DEB    |  313 Kb  | http://packages.debian.org/txt2tags
+%  |  SLACK   |  294 Kb  | http://txt2tags.sf.net/src/slack/txt2tags-2.0-noarch-1.tgz
+%  |  EBUILD  |     -    | http://packages.gentoo.org/ebuilds/?txt2tags-2.0
+%  |   EXE    |  308 Kb  | http://txt2tags-win.sourceforge.net
+%  |   IPK    |   41 Kb  | http://txt2tags-pda.sourceforge.net
+%
+%[Read the ChangeLog changelog.html]
+
+= Official Announce =[announce]
+
+``` 
+
+Txt2tags version 2.0 Released
+July 25, 2004 by Aurelio Jargas
+
+After more than a year of spare time coding and lots of
+mailing list messages, the version 2.0 of txt2tags was
+finished. It is the beginning of a new cycle, resulting
+in a code rewrite that improved the program quality and
+brought many new features.
+
+Some hot spots are: XHTML support, code approved by W3C
+validator (for HTML and XHTML), user configuration file
+~/.txt2tagsrc, many new command line options, i18n, CSS
+facilities and extra tools to help site managing.
+
+Please go to the program site for a detailed description
+of all new features and links to download it:
+
+   http://txt2tags.sf.net
+
+Hope you like it!
+
+-- 
+Txt2tags is a generic text conversion tool that generates
+documents in various formats. It is a 3 years old free
+software, part of the GNU project with a large user base.
+
+```
+
+= Author Testimonial =[author]
+
+```
+
+Hi,
+
+The last released version of txt2tags is 1.7, dated Nov 30,
+2003. After 8 months of silence, the 2.0 version is ready.
+
+The work for this new 2.x series began in May 2003, when
+I've forked the code of txt2tags version 1.5. That was
+necessary to support the XHTML target, which required deep
+changes on the program core.
+
+It took me all this time (14 months) to finish it because
+I'm a spare-time programmer, and the "spare" was really
+rare in that period. Plus, versions 1.6 and 1.7 were coded
+and released in parallel with v2.0 coding.
+
+After intensive testing of the new code on my personal docs
+and homepage, the first ALPHA release came out on Sep 2003.
+There were a total of 5 ALPHA and 4 BETA releases tested by
+the mailing list users, making this the most stressed and
+polished txt2tags version.
+
+As the first 0.1 version was released in Jul 26, 2001, this
+2.0 release also marks 3 years of coding. I think now the
+program reached a mature state, with a good base to keep
+evolving, always following the sacred KISS principle.
+
+I am also really excited with all the user contributions.
+The program team grew and the tarball is full of goodies.
+
+Take a time to test v2.0, I guess you will like it.
+
+                 Aurelio Jargas, txt2tags author.
+
+```
+
+%!include: ../inc/footer.t2t

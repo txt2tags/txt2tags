@@ -1,0 +1,233 @@
+txt2tags
+ONE source, MULTI targets
+
+%!target  : html
+%!encoding: iso-8859-1
+
+% the URLs are loaded from this file, on the {NAME} format
+%!includeconf: inc/config.t2t
+
+%!options : --no-style --css-sugar
+%!style   : inc/site-v23.css
+
+% This file should NOT be reconverted. It's here for historic purposes.
+%!options: --outfile /tmp/foo
+
+%!postproc: SFlogo.gif		http://sflogo.sourceforge.net/sflogo.php?group_id=32237&amp;type=1
+%!postproc: donate.gif		http://sourceforge.net/images/project-support.jpg
+
+%!postproc: @COUNTER@		<!-- <? require "../cgi-bin/txt2tags.cnt";?> -->
+%!postproc: (<HEAD>)		\1\n<link rel="alternate" href="txt2tags.rss" type="application/rss+xml">
+
+%!postproc: {{(.*?)}}		<\1>
+%%!preproc : !!!			**__/!\__**
+%!preproc : !!!			(hot)
+
+%!postproc: BOOKANNOUNCE   http://www.picocontainer.org/Contructor+Dependency+Injection+...+Book+Announcement
+%!postproc: OPNANNOUNCE    http://doc.openphpnuke.info/system/article/index.php?opnparams=CHBWOgo1WT4CZQ
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+""" {{div class="left"}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+[[img/flag/br.gif] pt/] [em português pt/]
+
+------------------------------------------------------------------------
+
+//txt2tags:// Text formatting tool, simple, Linux/Mac/Win, CLI/Web/GUI,
+Python, GPL, since 2001
+
+------------------------------------------------------------------------
+
+- **Info**
+  - [Markup Demo {DOCMARKUP}] !!!
+  - [Text {DOCSAMPLESRC}] -> [HTML {DOCSAMPLE}]
+  - [Screenshots screenshots.html]
+  - [Web Interface {URLONLINE}] !!!
+  - [Documentation docs.html]
+- **Download**
+  - [Latest Version download.html] (2.3)
+  - [ChangeLog changelog.html]
+  - [Timeline timeline.html]
+- **Community**
+  - [The Team team/] !!!
+  - [The Children children.html]
+  - [User Comments users.php]
+  - [Mailing List ml.html]
+  - [Orkut {URLORKUT}]
+
+
+------------------------------------------------------------------------
+
+[[img/minioctus.jpg] img/octus.gif]
+
+[img/t2tpowered.png]
+
+[img/t2tbutton.png]
+
+``O>OOOO``
+
+------------------------------------------------------------------------
+
+[[img/aurelio.jpg] http://aurelio.net]
+
+[Aurelio Marinho Jargas http://aurelio.net/en/]{{br}}
+txt2tags author
+
+------------------------------------------------------------------------
+
+[img/multiplat.png]
+
+[img/madeinbr.png]
+
+[[img/valid-html.png] {URLHTMLVALIDATOR}]
+
+[[img/valid-css.png] {URLCSSVALIDATOR}]
+
+[[SFlogo.gif] {URLSF}]
+
+[[donate.gif] {URLDONATE}]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+""" {{/div}}{{div class="news"}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+: 2005-12-26: Writing Books translated to Spanish
+
+  //Antoni Serra Devecchi// has translated the Writing Books to Spanish.
+  See [Documentation page docs.html].
+
+: 2005-09-28: Czech translation combo
+
+  Spotlights on, it's //Vlastimil Ott// show time! He translated at
+  once the Sample File, Markup Demo and Quick Reference documents to
+  Czech. See [Documentation page docs.html].
+
+: 2005-09-05: User Guide translated to German
+
+  //Andreas Deininger// has translated the big User Guide to German.
+  See [Documentation page docs.html].
+
+: 2005-08-12: Txt2tags project and donations
+
+  After 4 years of txt2tags, donations are now turned ON. SourceForge
+  has a nice built-in donate feature (via PayPal), so I thought "Why
+  not?". If you like to donate to Open Source software,
+  [now you can {URLDONATE}]. If you don't, just ignore the Donate
+  button.
+  {{br}}{{br}}
+  **FAQ:** Nothing changes. Txt2tags will never be paid-software.
+  I don't expect to become rich. The site won't be spammed with Donate
+  buttons. Txt2tags continues to be a one-man spare-time project, with
+  the help of [many volunteers team/].
+
+: 2005-08-05: The Txt2tags Team Gallery
+
+  As you may have noticed by the latest news, the translators are
+  working very hard, even fighting the big 50-page User Guide. Doing so,
+  they have their nice happy picture placed on the brand-new
+  [Txt2tags Team Gallery team/]. Don't miss this link, see them all! But
+  I'm wondering... Why they keep translating even when their picture is
+  already there? Maybe they are trying to impress Fabianne, the only
+  girl on the team? ;)
+
+: 2005-07-21: RSS feed for txt2tags news
+
+  Now you can be notified of txt2tags news using the site's
+  [RSS feed txt2tags.rss]. Please don't abuse the refresh rate, "1 day"
+  should be enough. //Nerd Note:// the feed is generated from a
+  [SED script rss.sed] that parses this page.
+
+: 2005-07-11: Wanna contribute to the txt2tags project? Translate!
+
+  Check out the new [Documentation page docs.html], now with links to
+  the document sources and instructions on how to translate them. The
+  most important documents are the shorter, so it is **very** quick to
+  make a translation. Do you have some 15 or 30 spare minutes? Help us!
+
+: 2005-07-11: New document: Quick Reference
+
+  There is a new document to help novice and experienced txt2tags users,
+  the [Txt2tags Quick Reference {DOCQUICKREF}]. It is a one-page PDF
+  ready to print and stick to a wall around your desk. Don't think,
+  download :) Thanks //José Inácio Coelho da Silva//,
+  //Leslie Harlley Watter// and //Christof Böckler//
+  for making their own quick references which inspired this one.
+
+: 2005-06-17: Released 2.3 version
+
+""" {{div class="yellow"}}
+  Guess what? New txt2tags release! After some months of silence, the
+  red octopus rises again. This time there are new command line options
+  --dump-source and --config-file, and a really nice table column span
+  feature. You are a long time txt2tags user? So you will appreciate the
+  new "Markup Rules" document. English is not your mother tongue? Maybe
+  you should try the documents translated to French, Chinese and
+  Hungarian. [Read more v23-news.html] about the news and
+  [download download.html] the new version!
+""" {{/div}}
+
+%: 2005-03-21: [All program documentation translated to French docs.html]
+%: 2004-11-30: [Program translated to Spanish, German and French download.html]
+%: 2004-11-17: [OpenPHPNuke Doc Team using txt2tags OPNANNOUNCE]
+%: 2004-10-12: [A full book being written with txt2tags BOOKANNOUNCE]
+:
+
+[Older news news.html]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+""" {{/div}}{{div class="right"}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+== About txt2tags ==
+
+Txt2tags is a document generator. It reads a text file with minimal
+markup as ``**bold**`` and ``//italic//`` and converts it to the
+following formats:
+
+- HTML document
+- XHTML document
+- SGML document
+- LaTeX document
+- Lout document [img/new.gif] 
+- UNIX man page [img/kiss.jpg]
+- MoinMoin page (wiki)
+- Magic Point presentation (mgp)
+- PageMaker 6.0 document
+-
+
+The program follows the sacred KISS principle
+("//Keep It Simple, Stupid//"), being a simple, fast-learning and
+easy-to-use tool. [Read more... features.html]
+
+
+== About this Site ==
+
+All the pages of this site are generated by txt2tags. The source files
+are also available, just change the ``.html`` extension by ``.t2t`` on
+the page URL. [See the source of this one index.t2t]. The appearance
+config is made on [this CSS file site.css].
+
+
+== See Also ==
+
+- [txt2regex http://txt2regex.sourceforge.net]: Console regex wizard
+- [sedsed http://sedsed.sourceforge.net]: The SED debugger
+- [sokoban.sed http://aurelio.net/sed/sokoban]: The Sokoban game
+  written in SED!
+-
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+""" {{/div}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+@COUNTER@
+
+% vim: tw=72
