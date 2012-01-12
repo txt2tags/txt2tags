@@ -697,6 +697,10 @@ We are a BIG family
 %!preproc: HOME60_URL http://www.monteburroughs.com
 %!preproc: HOME60_LNG english
 
+%!preproc: HOME61_SRC -
+%!preproc: HOME61_TXT Site de Claude Hiebel
+%!preproc: HOME61_URL http://chiebel.free.fr/
+%!preproc: HOME61_LNG french
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% MISC %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -770,6 +774,7 @@ We are a BIG family
 %!preproc: MISC15_TXT Site de grimpe d'Epinay sur Seine
 %!preproc: MISC15_URL http://chiebel.free.fr/escalade/
 %!preproc: MISC15_LNG french
+
 
 %!preproc: MISC16_SRC http://mail.grad.icmc.usp.br/~helder/cv/curriculum.t2t
 %!preproc: MISC16_TXT Hélder Máximo Botter Ribas' Curriculum
@@ -880,6 +885,11 @@ We are a BIG family
 %!preproc: MISC38_TXT B2CK
 %!preproc: MISC38_URL http://www.b2ck.com
 %!preproc: MISC38_LNG english
+
+%!preproc: MISC39_SRC http://ifiction.free.fr/txt2tags
+%!preproc: MISC39_TXT La fiction interactive francophone
+%!preproc: MISC39_URL http://ifiction.free.fr/
+%!preproc: MISC39_LNG french
 
 
 %
@@ -1067,6 +1077,7 @@ to compose a database and generate the table automatically.
  | HOME58
  | HOME59
  | HOME60
+ | HOME61
  || ASSORTED JELLY BEANS
  | MISC01
  | MISC02
@@ -1082,7 +1093,7 @@ to compose a database and generate the table automatically.
  | MISC12
  | MISC13
  | MISC14
- | MISC15
+% | MISC15
  | MISC16
  | MISC17
  | MISC18
@@ -1106,6 +1117,7 @@ to compose a database and generate the table automatically.
  | MISC36
  | MISC37
  | MISC38
+ | MISC39
 
 
 %!include: inc/footer.t2t
