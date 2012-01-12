@@ -1,0 +1,49 @@
+/* 
+   Formatting for the txt2tags site, Txt2tags Online page
+   http://txt2tags.org
+   
+   Author: Aurelio Jargas
+   http://aurelio.net
+   
+   License: Public Domain
+*/
+
+form	{
+	margin-top	: 3em;
+	}
+fieldset
+	{
+	background	: #ffc;
+	margin		: 0 0 1em 0;
+	border		: 1px solid #ddd;
+	width		: 35em;
+	}
+textarea
+	{
+	font-size	: 90%;
+	}
+table#markuphint
+	{
+	float		: right;
+	background	: #ffa;
+	border		: 1px solid #ccc;
+	font-size	: 90%;
+	}
+table#markuphint tr
+	{
+	line-height	: 100%;
+	}
+pre#output
+	{
+	overflow	: auto; /* IE mac: hides the content :( */
+	}
+#parsed
+	{
+	border		: 1px solid #999;
+	margin		: 0 2em 2em 3em;
+	padding		: 1em;
+	}
+#parsed td
+	{
+	border-style	: solid;
+	}

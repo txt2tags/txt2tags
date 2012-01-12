@@ -1,0 +1,171 @@
+News on Txt2tags v2.1
+
+Nov 2004
+
+%!includeconf: inc/config.t2t
+%!options(html): --toc
+
+%!include: inc/menu.t2t
+
+A quick guide showing the new features for this version.
+For a complete list of all the changes, see the
+[ChangeLog SITEROOT/changelog.html].
+
+--------------------------------------------------------
+
+Contents of this document (using %%toc):
+
+%%toc
+
+--------------------------------------------------------
+
+= New %%toc macro =[toc]
+
+The %%toc macro specifies where the TOC of the document will be
+placed. So you can place it wherever needed inside the document.
+
+NOTE: %%toc will be expanded only when given the --toc option
+
+Rules:
+- Valid at the document BODY
+- Starts body if it is found on the CONF area
+- Must be alone on the line (leading and trailing spaces are allowed)
+- Must be used together with --toc, if not, it is ignored
+- Multi %%toc macros, on different parts of the document are allowed
+- The default automatic TOC positioning/formatting is disabled when a
+  %%toc is found
+
+
+= New %%infile and %%outfile macros =[inoutfile]
+
+The ""%%infile"" and ""%%outfile"" macros are used to get information
+about the source and converted file. Useful for footer link like
+"``[See source %%infile]``" and self mentioning like
+"``This is the %%outfile file``". So you can change the filename and
+the references to it will be updated.
+
+Examples:
+- This is the **%%outfile** page, which originally resides on the
+  **%%outfile(%d)** dir.
+- The source of this page is the **%%infile** file.
+
+
+Rules:
+- Valid at the document HEADER and BODY
+- Starts body if it is found on the CONF area
+- Can be at any part of the line, various per line
+- Can be used inside links and images marks
+- Are expanded to '-' if the file is STDIN or STDOUT
+- They accept some % formatters, on the ""%%infile(formatter)"" form
+-
+Formatters:
+ || %<char> | Description | Output for /tmp/txt2tags/mydoc.t2t |
+ |    %f    | The file name                     | mydoc.t2t
+ |    %F    | The file name (without extension) | mydoc
+ |    %e    | The file extension                | t2t
+ |    %p    | The absolute file path            | /tmp/txt2tags/mydoc.t2t
+ |    %d    | The file path (directories only)  | /tmp/txt2tags
+ |    %D    | The file path (parent dir only)   | txt2tags
+ |    %%    | The literal percent char          | %
+
+
+= New %%mtime macro =[mtime]
+
+The ""%%mtime"" macro gets information about the source file
+modification time. It uses the same formatters accepted by the
+""%%date"" macro.
+
+Example:
+- The last change on the source of this page was made in
+  **%%mtime(%c)**.
+
+
+Rules:
+- Valid at the document HEADER and BODY
+- Starts body if it is found on the CONF area
+- Can be at any part of the line, various per line
+- Can be used inside links and images marks
+- Accept some % formatters, on the ""%%mtime(formatter)"" form
+
+
+= Now an empty item closes the current list =[emptyitem]
+
+The two blank lines are currently used to close all the open lists.
+Now there is a lighter alternative, which closes only the currently
+opened list or sublist. Just leave an empty list item.
+
+Rules:
+- The empty list item must have the same type and indentation of the
+  previous list items
+- You can close just the current opened list, not its parents
+- Useful mainly for closing sublists without closing the mother list
+- This list is closed this way, for a sample ([see source %%infile]).
+-
+% list closed
+
+= New options -q and --quiet =[quiet]
+
+They are used for quiet operation, where txt2tags shows no messages on
+the STDOUT. Can be disabled with the --no-quiet option.
+
+= Option --toc-only now respecting --outfile =[toconly]
+
+Historically, the --toc-only option always dumped the TOC to the
+STDOUT. Now, if --outfile was also specified, the TOC is saved to that
+file. If no --outfile was specified, or if "-o -" was given, the TOC
+is sent to the STDOUT.
+
+= Program Translated to New Languages =
+
+Besides English and Portuguese, now the program interface and messages
+are also translated to:
+
+- [Italian SITEROOT/img/gui-it_IT.png] (it_IT)
+
+- [Hungarian SITEROOT/img/gui-hu.png] (hu)
+-
+
+**Add your language!** Get [this potfile {URLPOTFILE}] and
+translate the messages. More info on the [i18n README file {URLPO}/README].
+
+= Documentation News =
+
+- New [Markup Demo {DOCMARKUP}] document showing all the txt2tags
+  marks and their resulting HTML pair. Beautiful! This document and
+  the new User Guide "Mastering Marks" section have obsoleted the
+  old RULES file.
+
+- New [Writing Books with Txt2tags {DOCBOOK}] document
+  showing tips on using txt2tags on the book writing process.
+
+- [User Guide {DOCUSERGUIDE}] now is a PDF file on the tarball and was revamped with
+  new chapters:
+  - Writing and Converting Your First Document
+   (a step-by-step very recommended for beginners)
+  - Mastering Txt2tags Concepts
+  - Mastering Marks
+  - Mastering Macros
+
+- New portuguese docs: FAQ and Reference Card.
+
+- New spanish docs: translated sample and abuseme files.
+
+
+= Other =
+
+- Misspelled option --css-suggar now changed to --css-sugar. Now both
+  forms are accepted. Please, do not use --css-suGGar anymore.
+
+- Now the hyphen char "-" can be used in title anchors.
+
+
+--------------------------------------------------------------
+
+What about the TOC repeated at the end? Strange, but now you can:
+
+%%toc
+
+--------------------------------------------------------------
+Powered by txt2tags ([see source %%infile])
+
+%!include: inc/footer.t2t

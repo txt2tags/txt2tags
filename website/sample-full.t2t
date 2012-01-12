@@ -1,0 +1,32 @@
+txt2tags
+
+Comprehensive samples
+
+%!includeconf: inc/config.t2t
+%!postproc: '(?i)(<body)'	'\1 id="sample"'
+%!postproc: '(?i)(</title>)'	' sample\1'
+
+% Set the output filename
+%!options: -o sample.html
+
+% In this specific case, the --fix-path option is unwanted.
+% We don't want the path for images and relative links to be fixed.
+%!options: --no-fix-path
+
+% Since we're not using --fix-path, we need to fix it by hand
+%!postproc: site.css  inc/site.css
+
+% Remove original footer
+%!preproc: '^\[img/t2tpowered.png\].*'	''
+
+% Add link to sources in the first sentence
+%!preproc: '(sample file)'		'\1 ([sources sample.t2t])'
+
+% Add the website sidebar menu
+%!include: inc/menu.t2t
+
+% Read Sample File contents directly from SVN
+%!include: ../samples/sample.t2t
+
+% Add the website footer
+%!include: inc/footer.t2t

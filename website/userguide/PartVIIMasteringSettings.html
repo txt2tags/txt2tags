@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="toc.html">
+<LINK REL="Next" HREF="target.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="toc.html">Previous</A>
+<A HREF="target.html">Next</A>
+<HR NOSHADE>
+
+<H1><A NAME="8">Part VII - Mastering Settings</A></H1>
+<P> Settings are special configurations placed at the source document's
+ Config Area that can affect the conversion process. The Settings are
+ all optional. The average user can live fine without them. But they are
+ addictive, if you start using them, you'll never stop :)</P>
+<P> Setting lines are<I> special comment lines</I>, marked by a leading
+ identifier (&quot;!&quot;) that makes them different from plain comments. The
+ syntax is just as simple as variable setting, composed by a keyword and
+ a value, separated from each by a colon (&quot;:&quot;).</P>
+<BLOCKQUOTE><B> %! keyword : value</B></BLOCKQUOTE>
+<P> Syntax details:</P>
+<UL>
+<LI>The exclamation mark must be placed together with the comment char
+ (%!), no spaces between them.
+<P></P>
+</LI>
+<LI>The spaces around the keyword and the separator are optional.
+<P></P>
+</LI>
+<LI>Keywords are case insensitive (case doesn't matter).</LI>
+</UL>
+<P> Rules:</P>
+<UL>
+<LI>Settings are valid only inside the Config Area, and are considered
+ plain comments if found on the document Body.
+<P></P>
+</LI>
+<LI>If the same keyword appears more than one time on the Config Area,
+ the last found will be the one used. Exception: options, preproc and
+ postproc, which are cumulative.
+<P></P>
+</LI>
+<LI>A setting line with an invalid keyword will be considered a plain
+ comment line.
+<P></P>
+</LI>
+<LI>This settings have precedence over RC file, but not on command line
+ options.</LI>
+</UL>
+ <A NAME="setting-target"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="toc.html">Previous</A>
+<A HREF="target.html">Next</A>
+</BODY>
+</HTML>

@@ -1,0 +1,71 @@
+
+% This is the txt2tags site main configuration file.
+% All the pages of the website use these configs.
+
+% Some self-explanatory options (I guess)
+%!target: html
+%!encoding: UTF-8
+
+% The CSS style file for this site.
+%!style: site.css
+
+% The --css-sugar is a nice option when you use CSS for formatting.
+% It adds <div> tags on the HTML code: header, toc and body,
+% making it easy to format each document area. It also removes some
+% little formatting information that txt2tags adds, leaving the code
+% clear for all your CSS trips.
+%!options: --css-sugar
+
+% New option in SVN version of txt2tags to fix the path of CSS files,
+% images and local links. Thanks to this option, I can refer to
+% site.css in the %!style setting above and each converted file will
+% have the CSS file relative path correctly set.
+%!options: --fix-path
+
+% The SITEROOT is a wildcard that refers to the site root folder (/)
+% using relative folder paths. Here it is expanded to the current
+% folder (dot). Other files may redefine it to .. or ../.. depending
+% how deep they are in the folder structure. But remember to do it
+% *before* calling this file. For example, to use this config file,
+% the foo/bar/baz.t2t file should use:
+%
+%    %!postproc: SITEROOT  ../..
+%    %!includeconf: ../../inc/config.t2t
+%
+% This wildcard is used to compose *relative* links to other files
+% from this site. So always compose relative links as SITEROOT/file.html
+% Another use is for referring to images in the /img folder. Always
+% use SITEROOT/img/myimage.png
+%!postproc: SITEROOT	.
+
+% Trick to add the author meta tag right after the <head> tag.
+%!postproc: '(?i)(<head>)'	'\1\n<meta name="author" content="Aurelio Jargas www.aurelio.net">'
+
+% Trick to add the favicon meta tag right before the </head> tag.
+%!postproc: '(?i)(</head>)'	'<link rel="icon" type="image/png" href="/favicon.png">\n\1'
+
+% Trick to add the TITLE/ALT attribute to an image
+%!postproc: '(?i)(src="[^"]*t2tpowered.png")'         '\1 title="O>OOOO"'
+%!postproc: '(?i)(src="[^"]*donate.png".*?) ALT=""'   '\1 alt="DONATE"'
+
+% Trick to add an automatic link to the page top title
+%!postproc: '^<H1>txt2tags</H1>$'   '<h1><a href="/">txt2tags</a></h1>'
+
+% Real nice trick to transform a link into a SPAN with TITLE.
+% Used when you want a tooltip to appear when the mouse hovers some words.
+%
+% On the .t2t file, create a fake link like [CSS #tooltip1]
+% Then make a filter like %!postproc: {tooltip1} Cascading Style Sheets
+% If you need more tooltips, just increase the number: tooltip2, tooltip3...
+% Also, make a span.tooltip rule on the CSS to highlight the words.
+%
+%!postproc: '(?i)<a href="#(tooltip[0-9]*)">(.*?)</a>'	'<span class="tooltip" title="{\1}">\2</span>'
+
+% A nice database of links, in a separate file. An interesting read, go for it!
+%!includeconf: urls.t2t
+
+% This fixes a bug in %%infile path when inside included file.
+% In this case, the %%infile inside footer.t2t incorrectly gets footer.t2t
+% path instead the original file's path.
+%!postproc: '(<A HREF=")inc/(.*?.t2t">See sources</A>)'  '\1\2'
+%!postproc: '(<A HREF=")../inc/(.*?.t2t">See sources</A>)'  '\1\2'

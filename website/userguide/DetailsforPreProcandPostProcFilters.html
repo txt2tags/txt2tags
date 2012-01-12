@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="DefiningaSettingforaSpecificTarget.html">
+<LINK REL="Next" HREF="PartVIIIBlackMagic.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="DefiningaSettingforaSpecificTarget.html">Previous</A>
+<A HREF="PartVIIIBlackMagic.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="8_8">Details for PreProc and PostProc Filters</A></H2>
+<UL>
+<LI>Filters are a &quot;find and replace&quot; feature (think SED)
+<P></P>
+</LI>
+<LI>Filters do not follow the &quot;last found, one used&quot; schema, they're
+ cumulative. You can define as many filters as needed, with no limit.
+ They will be applied on the same order as defined.
+<P></P>
+</LI>
+<LI>Different from other settings, both the target specific filters and
+ the generic ones (all targets) are used. On the following example, both
+ filters are used on the HTML target:
+<PRE>
+%!postproc      :   this   that
+%!postproc(html):   that   other
+</PRE>
+<P></P>
+</LI>
+<LI>The filters must receive exactly TWO arguments
+<P></P>
+</LI>
+<LI>Special escapes as <CODE>\n</CODE> (line break) and <CODE>\t</CODE>
+ (tabulation) are interpreted
+<P></P>
+</LI>
+<LI>To delete some text, change it by an empty string
+<PRE>
+%!postproc: &quot;undesired string&quot; &quot;&quot;
+</PRE>
+<P></P>
+</LI>
+<LI>To avoid problems, always use the explicit target form when using
+ PostProc to change tags: <CODE>%!postproc(target): &lt;this&gt; &lt;that&gt;</CODE>
+<P></P>
+</LI>
+<LI>PREproc is applied right after the line is read, and POSTproc is
+ applied after all the parsing was made. This is similar to (UUOC
+ ahead):
+<PRE>
+$ cat file.t2t | preproc.sh | txt2tags | postproc.sh
+</PRE>
+<P></P>
+</LI>
+<LI>The first part of a filter (the &quot;search for&quot; part) is not read as a
+ regular string, but as a Regular Expression pattern. If you don't know
+ what these expressions do, don't worry, you may never have to. Just
+ keep in mind that you will need to &quot;escape&quot; some characters to use
+ them. To escape is to prefix the character with a backslash &quot;\&quot;. Here
+ is the list:
+<PRE>
+\*  \+  \.  \^  \$  \?  \(  \)  \{  \[  \|  \\
+</PRE>
+<P></P>
+</LI>
+<LI>Python Regular Expressions are available! They're similar to Perl
+ Regexes (PCRE). Example: Change all opening and closing &quot;B&quot; tags to
+ &quot;STRONG&quot; on HTML:
+<PRE>
+%!postproc(html):   '(&lt;/?)B&gt;'   '\1STRONG&gt;'
+</PRE>
+<P></P>
+</LI>
+<LI>The filter arguments can be passed on 3 ways:
+<OL>
+<LI>A single unquoted word such as FOO (no spaces)</LI>
+<LI>A string double quoted such as &quot;FOO&quot;</LI>
+<LI>A string single quoted such as 'FOO'
+<P></P>
+</LI>
+</OL>
+</LI>
+<LI>If your pattern has double quotes, protect it with single quotes and
+ vice-versa. Some valid samples:
+<PRE>
+%!postproc:   PATT    REPLACEMENT
+%!postproc:  &quot;PATT&quot;  &quot;REPLACEMENT&quot;
+%!postproc:  'PATT'  'REPLACEMENT'
+%!postproc:   PATT   &quot;REPLACEMENT&quot;
+%!postproc:  &quot;PATT&quot;  'REPLACEMENT'
+</PRE>
+</LI>
+</UL>
+ <A NAME="black-magic"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="DefiningaSettingforaSpecificTarget.html">Previous</A>
+<A HREF="PartVIIIBlackMagic.html">Next</A>
+</BODY>
+</HTML>

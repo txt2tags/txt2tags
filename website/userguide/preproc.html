@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="encoding.html">
+<LINK REL="Next" HREF="postproc.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="encoding.html">Previous</A>
+<A HREF="postproc.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="8_4">%!preproc</A></H2>
+<P> The PreProc is an input filter that changes the Body Area of the
+ source document. It is a &quot;find and replace&quot; feature, applied right
+ after the line is read from the document source, before any parsing by
+ txt2tags.</P>
+<P> It is useful to define some abbreviations for common typed text, as:</P>
+<PRE>
+%!preproc: JJS          &quot;John J. Smith&quot;
+%!preproc: RELEASE_DATE &quot;2003-05-01&quot;
+%!preproc: BULLET       &quot;[images/tiny/bullet_blue.png]&quot;
+</PRE>
+<P> So the user can write a line like:</P>
+<PRE>
+Hi, I'm JJS. Today is RELEASE_DATE.
+</PRE>
+<P> And txt2tags will &quot;see&quot; this line as:</P>
+<PRE>
+Hi, I'm John J. Smith. Today is 2003-05-01.
+</PRE>
+<P> This filter is a component that acts between the document author and
+ the txt2tags conversion. It's like a first conversion before the &quot;real&quot;
+ one. This behavior is similar to an external Sed/Perl filter, called
+ this way:</P>
+<PRE>
+$ cat file.t2t | preproc-script.sh | txt2tags -
+</PRE>
+<P> So the txt2tags parsing will begin after all the PreProc
+ substitutions were applied.</P>
+<BLOCKQUOTE><B> Note:</B> Remember that the preprocessing is applied
+ only to the BODY of the source document, not including the Header Area
+ and Config Area.</BLOCKQUOTE> <A NAME="setting-postproc"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="encoding.html">Previous</A>
+<A HREF="postproc.html">Next</A>
+</BODY>
+</HTML>

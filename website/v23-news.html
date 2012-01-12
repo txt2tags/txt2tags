@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta name="author" content="Aurelio Jargas www.aurelio.net">
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="inc/site.css">
+<TITLE>News on Txt2tags v2.3</TITLE>
+<link rel="icon" type="image/png" href="/favicon.png">
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>News on Txt2tags v2.3</H1>
+<H3>Jun 2005</H3>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<div id="sidebar">
+Hot
+  <ul>
+  <li id="menuonline"><a href="./online.php">Txt2tags Online</a></li>
+  <li id="menumarkup"><a href="./markup.html">Markup Demo</a></li>
+  </ul>
+About
+  <ul>
+  <!-- <li id="menuhome"><a href="/">Home</a></li> -->
+  <li id="menufeatures"><a href="./features.html">Features</a></li>
+  <li id="menusample"><a href="./sample.html">Example</a></li>
+  <li id="menushots"><a href="./shots.html">Screenshots</a></li>
+  <li id="menudocs"><a href="./docs.html">Documentation</a></li>
+  <li id="menutips"><a href="./tips.html">Tips &amp; Tricks</a></li>
+<!--
+  <li id="menuoldnews"><a href="./misc/oldnews.html">Old News</a></li>
+-->
+  </ul>
+Code
+  <ul>
+  <li id="menudownload"><a href="./download.html">Download</a></li>
+  <li id="menuchangelog"><a href="./changelog.html">Changelog</a></li>
+  <li id="menutools"><a href="./tools.html">Tools</a></li>
+  <li><a href="http://bugs.txt2tags.org">Bug tracker</a></li>
+  <li><a href="http://svn.txt2tags.org">SVN</a></li>
+  </ul>
+Community
+  <ul>
+  <li id="menuwiki"><a href="http://wiki.txt2tags.org">Wiki</a></li>
+  <li id="menublog"><a href="http://txt2tags.wordpress.com">Blog</a></li>
+  <li id="menuteam"><a href="./team/index.html">The Team</a></li>
+  <li id="menuchildren"><a href="./children.html">The Children</a></li>
+  <li id="menucomments"><a href="http://txt2tags.wordpress.com/user-comments/">User Comments</a></li>
+  <li id="menuart"><a href="./art.html">Artwork</a></li>
+  </ul>
+Social
+  <ul>
+  <li id="menuml"><a href="./ml.html">Mailing List</a></li>
+  <li><a href="http://www.facebook.com/pages/txt2tags/335201827209">Facebook</a></li>
+  <li><a href="http://twitter.com/aureliojargas">twitter</a></li>
+  <!-- <li><a href="http://www.orkut.com.br/Main#Community?cmm=87935">Orkut</a></li> -->
+  <li><a href="http://identi.ca/group/txt2tags">identi.ca</a></li>
+  </ul>
+
+<P>
+<A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=verde%40aurelio%2enet&amp;item_name=txt2tags%20donation&amp;no_shipping=1&amp;return=http%3a%2f%2faurelio%2enet%2fdonate%2dthanks%2ehtml&amp;cn=&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><IMG ALIGN="middle" SRC="img/donate.png" BORDER="0" alt="DONATE"></A>
+</P>
+</div>
+<P>
+A quick guide showing the new features for this version.
+For a complete list of all the changes, see the
+<A HREF="./changelog.html">ChangeLog</A>.
+</P>
+
+<HR NOSHADE SIZE=1>
+
+<DIV CLASS="toc">
+
+  <UL>
+  <LI><A HREF="#colspan">Table Column Span in (X)HTML Target</A>
+  <LI><A HREF="#options">New Options --dump-source and --config-file</A>
+  <LI><A HREF="#test">Program test-suite</A>
+  <LI><A HREF="#rules">New Document "Markup Rules"</A>
+  <LI><A HREF="#doc">Docs Translations</A>
+  </UL>
+
+</DIV>
+<HR NOSHADE SIZE=1>
+
+<H1 ID="colspan">Table Column Span in (X)HTML Target</H1>
+
+<P>
+The table mark was improved to allow column span. To "span" a table
+column is to make it fill the space of two or more columns. The span
+can occur in any place of the table row and the mark syntax is as
+simple as adding trailing pipes "|" to the cell closing.
+</P>
+<P>
+Example (span pipes in blue):
+</P>
+
+<PRE>
+|  1  |  2  |  3  |  4  |
+|  1  |  2  |    3+4   <strong><font color="blue">|</font></strong>|
+|  1  |    2+3   <strong><font color="blue">|</font></strong>|  4  |
+|      1+2+3    <strong><font color="blue">||</font></strong>|  4  |
+|        1+2+3+4     <strong><font color="blue">|||</font></strong>|
+</PRE>
+
+<P>
+Is converted to:
+</P>
+
+<TABLE ALIGN="center" BORDER="1">
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center" COLSPAN="2">3+4</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center" COLSPAN="2">2+3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center" COLSPAN="3">1+2+3</TD>
+<TD ALIGN="center">4</TD>
+</TR>
+<TR>
+<TD ALIGN="center" COLSPAN="4">1+2+3+4</TD>
+</TR>
+</TABLE>
+
+<P>
+The number of pipes at the cell closing define the number of cells to
+be joined and spanned. If there is two or more consecutive pipes, the
+span will occur.
+</P>
+<P>
+<B>Note:</B> Currently HTML and XHTML are the only targets with column
+span support.
+</P>
+
+<H1 ID="options">New Options --dump-source and --config-file</H1>
+
+<P>
+The new <CODE>--dump-source</CODE> option shows the .t2t source file with all the
+<CODE>%!include</CODE> commands expanded. If your source includes lots of
+separate files (like chapters in a book), with this command you can
+join them all in a single .t2t file. <B>Note:</B> Only the "t2t-type"
+includes are expanded, raw and verbatim aren't.
+</P>
+	<BLOCKQUOTE>
+	Example: <CODE>$ txt2tags --dump-source book-index.t2t &gt; full-book.t2t</CODE>
+	</BLOCKQUOTE>
+<P>
+The new <CODE>--config-file</CODE> option reads configuration from an external
+file. It is the command line pair for the <CODE>%!includeconf</CODE> command.
+There is also a short alias <CODE>-C</CODE> for this option.
+</P>
+	<BLOCKQUOTE>
+	Example: <CODE>$ txt2tags -C myconfig.cfg book.t2t</CODE>
+	</BLOCKQUOTE>
+
+<H1 ID="test">Program test-suite</H1>
+
+<P>
+Now the full program test-suite is included on the distribution, under
+the "test" folder. It is a collection of Python scripts and txt2tags
+source files. The scripts convert the files and check the results,
+reporting the number of passed/failed tests. If your txt2tags is ok,
+no test will fail.
+</P>
+<P>
+You don't need to run this test-suite to use txt2tags. It is just a
+handy self-check tool that tells if the program is behaving fine. Use
+it if you are experiencing problems.
+</P>
+
+<H1 ID="rules">New Document "Markup Rules"</H1>
+
+<P>
+There is a brand new document on the txt2tags world. It is an
+"experts guide", listing all the rules and behavior of all marks. If
+you are new to txt2tags, prefer the <A HREF="/markup.html">Markup Demo</A>, this
+guide is intended for experienced users.
+</P>
+<P>
+The "<A HREF="/rules.html">Markup Rules</A>" document is generated automatically
+from the test-suite sources. All the rules listed on it are 100%
+sync'ed with the current program code.
+</P>
+<P>
+<B>Note:</B> This document obsoletes the old RULES and "Abuse Me" docs.
+</P>
+
+<H1 ID="doc">Docs Translations</H1>
+
+<P>
+The translators worked hard on the last months. Full documents were
+translated, including the big User Guide! They are
+<A HREF="./docs.html">available online</A> on the txt2tags site and under the
+"doc" folder of the program distribution.
+</P>
+
+<UL>
+<LI><B>French:</B> Sample file, Markup Demo, Man Page, Writing Books, User
+  Guide
+<P></P>
+<LI><B>Chinese:</B> Sample file, Markup Demo
+<P></P>
+<LI><B>Hungarian:</B> Sample file
+<P></P>
+</UL>
+
+<P>
+<A HREF="./download.html">Download the new version!</A>
+</P>
+</div><div id="footer">
+<P>
+<IMG ALIGN="middle" SRC="img/t2tpowered-white.png" BORDER="0" ALT="">
+</P>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a>
+<P>
+Last modified on 11 January 2012 at 21:17
+(<A HREF="v23-news.t2t">See sources</A>,
+<A HREF="http://validator.w3.org/check?uri=referer">Validate HTML</A>)
+</P>
+</div><div id="fake">
+<!-- Google Analytics code -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-280222-14']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</DIV>
+
+<!-- html code generated by txt2tags 2.6.641 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t html ./v23-news.t2t -->
+</BODY></HTML>

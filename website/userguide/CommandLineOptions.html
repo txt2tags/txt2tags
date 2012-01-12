@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="Settings.html">
+<LINK REL="Next" HREF="UserConfigurationFileRCFile.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="Settings.html">Previous</A>
+<A HREF="UserConfigurationFileRCFile.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="5_6">Command Line Options</A></H2>
+<P> The fastest way of changing the txt2tags default behavior is to use
+ command line options. This options are available on the Command Line
+ Interface only, not on Gui or Web.</P>
+<P> Just like the other system's tools, the program do accept a set of
+ predefined options. An option is an hyphen followed by a letter or two
+ hyphens followed by one or more words, like <CODE>-t</CODE> and <CODE>
+--target</CODE>.</P>
+<P> Options that are generally used are <CODE>--outfile</CODE> to define
+ a customized output file name, <CODE>--toc</CODE> to turn on the
+ automatic TOC generation and <CODE>--encoding</CODE> to set the
+ document character set. Most of the options can be turned off prefixing
+ a &quot;no-&quot; before its name, for example: <CODE>--no-encoding</CODE> and <CODE>
+--no-toc</CODE>.</P>
+<P> You can register the desired options for a source file inside its
+ Config Area, using the <CODE>%!options</CODE> setting. This way you
+ don't have to type them on the command line anymore. Example:</P>
+<PRE>
+%!options: --toc -o mydoc.html
+</PRE>
+<P> The exception is the target specification, that has its own setting:</P>
+<PRE>
+%!target: html
+</PRE>
+<P> Use the <CODE>--help</CODE> option to get a complete list of all the
+ options available in txt2tags.</P>
+<P> Learn more about <A HREF="target.html#setting-options">%!options</A>
+ and <A HREF="PartVIIMasteringSettings.html#setting-target">%!target</A>
+.</P>
+ <A NAME="rc"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="Settings.html">Previous</A>
+<A HREF="UserConfigurationFileRCFile.html">Next</A>
+</BODY>
+</HTML>

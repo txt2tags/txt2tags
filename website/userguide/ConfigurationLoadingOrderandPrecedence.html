@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="UserConfigurationFileRCFile.html">
+<LINK REL="Next" HREF="includecommand.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="UserConfigurationFileRCFile.html">Previous</A>
+<A HREF="includecommand.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="5_8">Configuration Loading Order and Precedence</A></H2>
+<P> There are three ways of telling txt2tags which options and settings
+ to use, and this is the order that they are read and applied:</P>
+<OL>
+<LI>The user configuration file (RC) settings</LI>
+<LI>The source document Config Area settings</LI>
+<LI>The command line options</LI>
+</OL>
+<P> First txt2tags reads the RC file contents (if any) and apply its
+ configurations on the current source file. Then it scans the source
+ document Config Area for settings and if found, they are applied also,
+ overriding the RC ones in case of conflict. Finally comes the command
+ line options, stronger than the other two.</P>
+<P> So, if the document encoding was defined on the three resources, the
+ command line will be the one used.</P>
+ <A NAME="include"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="UserConfigurationFileRCFile.html">Previous</A>
+<A HREF="includecommand.html">Next</A>
+</BODY>
+</HTML>

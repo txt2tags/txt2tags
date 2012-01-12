@@ -1,0 +1,102 @@
+txt2tags
+
+Less is More
+
+%!includeconf: inc/config.t2t
+%!postproc: '(?i)(<body)'	'\1 id="features"'
+%!postproc: '(?i)(</title>)'	' features\1'
+
+% A nice shortcut
+%!preproc: URLWIKIPEDIA		http://en.wikipedia.org/wiki
+
+% Mark people names for CSS formatting
+%!preproc: '^(-- .*)'		''<br><span class="name">\1</span>''
+
+%!include: inc/menu.t2t
+%!include: inc/testimonials.t2t
+
+== Features ==
+
+=== Many supported formats ===
++ [ASCII Art text                 URLWIKIPEDIA/ASCII_art]
++ [AsciiDoc document              URLWIKIPEDIA/AsciiDoc]
++ [Creole 1.0 document            URLWIKIPEDIA/""Creole_(markup)""]
++ [DocBook document               URLWIKIPEDIA/DocBook]
++ [DokuWiki page                  URLWIKIPEDIA/Dokuwiki]
++ [Google Code Wiki page          URLWIKIPEDIA/Google_code]
++ [HTML document                  URLWIKIPEDIA/HTML]
++ [LaTeX document                 URLWIKIPEDIA/LaTeX]
++ [Lout document                  URLWIKIPEDIA/Lout]
++ [MagicPoint presentation (mgp)  URLWIKIPEDIA/MagicPoint]
++ [MoinMoin page                  URLWIKIPEDIA/MoinMoin]
++ [PageMaker document             URLWIKIPEDIA/Pagemaker]
++ [Plain text                     URLWIKIPEDIA/Plain_text]
++ [PmWiki page                    URLWIKIPEDIA/PmWiki]
++ [SGML document                  URLWIKIPEDIA/SGML]
++ [UNIX manual page (manpage)     URLWIKIPEDIA/Man_page]
++ [Wikipedia page (MediaWiki)     URLWIKIPEDIA/MediaWiki]
++ [XHTML document                 URLWIKIPEDIA/XHTML]
+
+
+...and even more in [SVN {URLT2TGCODE}]!
+
+=== Simple ===
+- **KISS:** The program follows the sacred [KISS Principle URLWIKIPEDIA/KISS_Principle].
+- **Ready To Use:** No configuration, no compiling. Just download and run.
+- **Save Your Hair:** No more library, catalog, schema and DTD nightmares.
+- **Straight Edge:** Aimed for documents and websites, not books.
+- **Sanity:** No flow control, system() or other programming capabilities.
+- **Beauty:** Being simple is feature, not a bug.
+
+
+=== Techie ===
+- **Clean Results:** The generated code is clean, [readable %%infile], and [valid {URLHTMLVALIDATOR}].
+- **Multi-platform:** Runs on Linux, Mac, Windows and many others.
+- **User Interfaces:** Command line (--options), GUI (Tk) and Web (PHP).
+- **Any Text editor:** Use the editor you like most.
+- **Spellcheck Friendly:** Marks are symbols, the spell checker will ignore them.
+- **Light Resources:** It does not index, compile, compress, draw or do any strong processing.
+- **License:** GPL.
+
+
+=== More than just code ===
+- **Complete Documentation:** Guides, samples, reference. Translated to many languages.
+- **Extras:** Syntax files for text editors, Wiki plugins, auto-update tools.
+% - **Support:** Mailing list with friendly users and the program author.
+- **Team work:** The user community [contributes team/] actively to the project.
+- **User base:** The txt2tags [user base children.html] is large and world-wide.
+- **Experience:** Born in 2001, today txt2tags is very stable and mature.
+
+
+=== Minimalist markup ===
+- **Less Typing:** Marks are symbols like ``+``, ``:`` and ``=``.
+- **Natural Marks:** You already use some of them in e-mails.
+- **Uncomplicated:** No keywords, no parameters, no attributes.
+- **Readable:** The source file remains readable, unpolluted.
+- **Consistent:** Simple and consistent rules, no "special cases".
+- **Strong:** Marks are unique enough to don't confuse with contents.
+- **Rich:** We have marks for tables, images, lists, comments and more.
+- **Easy:** Learn fast, [learn now markup.html].
+
+
+=== Diet Python ===
+- **One-file Program:** Just a single [Python http://python.org] script, no extra files.
+- **Standard Library:** Works on default Python install, no extra modules are required.
+% - **Careful Coding:** Backwards compatible, runs even on ancient Python version 1.5.
+- **Very Fast:** Even real big documents take a blink of an eye to convert.
+
+
+=== Simple but not limited ===
+- **TOC Generation:** Automatic Table of Contents.
+- **Automatic Numbering:** Never number lists/topics/headings by hand anymore.
+- **Include:** You can include external files as marked or tagged text.
+- **Filters:** Use regular expressions for Pre and Post processing filters.
+- **Scripting Friendly:** It can read from STDIN and write to STDOUT.
+- **Configuration:** Optional config file can store preferences and filters.
+
+
+Txt2tags, the last markup you will ever learn. Hope so :)
+
+[Play with Txt2tags Online now! {URLONLINE}]
+
+%!include: inc/footer.t2t

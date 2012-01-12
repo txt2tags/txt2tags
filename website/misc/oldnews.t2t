@@ -1,0 +1,602 @@
+txt2tags
+
+The Past
+
+%!postproc: SITEROOT ..
+%!includeconf: ../inc/config.t2t
+%!postproc: '(?i)(<body)'	'\1 id="oldnews"'
+%!postproc: '(?i)(</title>)'	' oldnews\1'
+
+% Breaks the news date to next line
+%!postproc: '<DT>(<I>.*</I>) (.*)</DT>'	'<DT>\2<br>\1</DT>'
+
+% Identify the special news talking about releases
+%!postproc: '(<DT>Released.*<DD)>'	'\1 class="release">'
+
+% Some URLs
+%!postproc: BOOKPREVIEW    http://www.picocontainer.org/cdi-book.html
+%!postproc: BOOKCOMMENT    http://www.abstractplain.net/mt-archives/000585.html
+%!postproc: BOOKANNOUNCE   http://www.picocontainer.org/Contructor+Dependency+Injection+...+Book+Announcement
+%!postproc: OPNANNOUNCE    http://doc.openphpnuke.info/system/article/index.php?opnparams=CHBWOgo1WT4CZQ
+%!postproc: URLRERO        http://www.catb.org/esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html
+
+%!include: ../inc/menu.t2t
+
+
+: //26 Jul 2006// Blog? Blog.
+
+Hi there.
+
+There is a new place to stay in touch with the latest news about the
+project: [the txt2tags Blog {URLBLOG}]. Stay updated about releases,
+files, documents, translations, site updates.
+
+The good old do-it-yourself news/RSS by hand worked until today, but
+using a Blog system like WordPress, we get some advantages:
+
+ - Feeds (RSS) with HTML code. The old "by hand" was text-only.
+ - Automatic feeds for: whole blog, each category, each post, all
+   comments, comments by post.
+ - Permanent (readable) URL for each post, important to keep things
+   organized and easy to find.
+ - Multiple categories (tags) to mark each post, so you can monitor
+   just want interests you.
+ - And more.
+ -
+
+Talking about feeds, subscribe to the txt2tags blog now!
+
+But my favorite feature is having **comments for each post**. Now
+everybody can talk and contribute, changing the monologue to a nice
+conversation.
+
+It's up and running. Enjoy!
+
+: //11 Jul 2006// NetBSD txt2tags package
+
+__Daniel Bolgheroni__ packaged txt2tags for the NetBSD system
+(pkgsrc). Got interested? Check the [download page SITEROOT/download.html].
+
+: //06 Feb 2006// New Apache module mod_t2t
+
+__Cesar Gimenes__ created a new module for the Apache web server,
+[mod_t2t http://sourceforge.net/projects/mod-t2t/]. Using this module
+you can upload just the .t2t files to the web server, and the HTML
+files will be generated on demand. It saves disk space since the
+source files are smaller, and maybe some interesting uses of the
+""%%date"" macro may appear!
+
+: //26 Dec 2005// Writing Books translated to Spanish
+
+  __Antoni Serra Devecchi__ has translated the Writing Books to Spanish.
+
+: //28 Sep 2005// Czech translation combo
+
+  Spotlights on, it's __Vlastimil Ott__ show time! He translated at
+  once the Sample File, Markup Demo and Quick Reference documents to
+  Czech.
+
+: //05 Sep 2005// User Guide translated to German
+
+  __Andreas Deininger__ has translated the big User Guide to German.
+
+: //24 Aug 2005// Quick Reference translated to French
+
+  __Claude Hiebel__ has translated the Quick Reference to French.
+
+: //17 Aug 2005// ArchLinux txt2tags package
+
+  If you're an ArchLinux user, you will like to know that
+  __Douglas Soares__ has made a txt2tags package for your system.
+  Get the package on the [download page SITEROOT/download.html].
+
+: //17 Aug 2005// Markup Demo translated to Esperanto
+
+  __Rodrigo Cacilhas__ has translated the Markup Demo to Esperanto.
+
+: //16 Aug 2005// Sample File translated to Esperanto
+
+  __Rodrigo Cacilhas__ has translated the Sample File to Esperanto.
+
+: //14 Aug 2005// Manual Page translated to Italian
+
+  __Stefano Spinucci__ has translated the Manual Page to Italian.
+
+: //12 Aug 2005// Txt2tags project and donations
+
+  After 4 years of txt2tags, donations are now turned ON. SourceForge
+  has a nice built-in donate feature (via PayPal), so I thought "Why
+  not?". If you like to donate to Open Source software,
+  [now you can {URLDONATE}]. If you don't, just ignore the Donate
+  button.
+
+  **FAQ:** Nothing changes. Txt2tags will never be paid-software.
+  I don't expect to become rich. The site won't be spammed with Donate
+  buttons. Txt2tags continues to be a one-man spare-time project, with
+  the help of [many volunteers SITEROOT/team/].
+
+: //07 Aug 2005// Quick Reference translated to Catalan
+
+  __Antoni Serra Devecchi__ has translated the Quick Reference to Catalan.
+
+: //05 Aug 2005// The Txt2tags Team Gallery
+
+  As you may have noticed by the latest news, the translators are
+  working very hard, even fighting the big 50-page User Guide. Doing so,
+  they have their nice happy picture placed on the brand-new
+  [Txt2tags Team Gallery SITEROOT/team/]. Don't miss this link, see them all! But
+  I'm wondering... Why they keep translating even when their picture is
+  already there? Maybe they are trying to impress Fabianne, the only
+  girl on the team? ;)
+
+: //05 Aug 2005// Writing Books translated to Brazilian Portuguese
+
+  __Ielton Ferreira__ has translated the Writing Books to Brazilian Portuguese.
+
+: //04 Aug 2005// Markup Demo translated to Luxembourgish
+
+  __Pascal Steichen__ has translated the Markup Demo to Luxembourgish.
+
+: //30 Jul 2005// Catalan translation combo
+
+  __Antoni Serra Devecchi__ pressed his "full-speed ahead" pedal and
+  translated at once the Sample File, Markup Demo and Manual Page
+  documents to Catalan.
+
+: //28 Jul 2005// Quick Reference translated to Hungarian
+
+  __Tamás Iván__ has translated the Quick Reference to Hungarian.
+
+: //28 Jul 2005// Quick Reference translated to German
+
+  __Andreas Deininger__ has translated the Quick Reference to German.
+
+: //28 Jul 2005// Manual Page translated to Spanish
+
+  __Antoni Serra Devecchi__ has translated the Manual Page to Spanish.
+
+: //27 Jul 2005// Sample File translated to German
+
+  __Pascal Steichen__ has translated the Sample File to German.
+
+: //24 Jul 2005// User Guide translated to Spanish
+
+  __Antoni Serra Devecchi__ has translated the big User Guide to Spanish.
+
+: //24 Jul 2005// Quick Reference translated to Chinese
+
+  __Zoom Quiet__ has translated the Quick Reference to Chinese.
+
+: //23 Jul 2005// Quick Reference translated to Brazilian Portuguese
+
+  __Ielton Ferreira__ has translated the Quick Reference to Brazilian Portuguese.
+
+: //22 Jul 2005// Quick Reference translated to Spanish
+
+  __Luis Cortázar__ has translated the Quick Reference to Spanish.
+
+: //21 Jul 2005// RSS feed for txt2tags news
+
+  Now you can be notified of txt2tags news using the site's
+  RSS feed. Please don't abuse the refresh rate, "1 day"
+  should be enough. //Nerd Note:// the feed is generated from a
+  SED script that parses this page.
+
+: //20 Jul 2005// Markup Demo translated to German
+
+  __Pascal Steichen__ has translated the Markup Demo to German.
+
+: //12 Jul 2005// Markup Demo translated to Spanish
+
+  __Luis Cortázar__ has translated the Markup Demo to Spanish.
+
+: //11 Jul 2005// Wanna contribute to the txt2tags project? Translate!
+
+  Check out the new [Documentation page SITEROOT/docs.html], now with links to
+  the document sources and instructions on how to translate them. The
+  most important documents are the shorter, so it is **very** quick to
+  make a translation. Do you have some 15 or 30 spare minutes? Help us!
+
+: //11 Jul 2005// New document: Quick Reference
+
+  There is a new document to help novice and experienced txt2tags users,
+  the [Txt2tags Quick Reference {DOCQUICKREF}]. It is a one-page PDF
+  ready to print and stick to a wall around your desk. Don't think,
+  download :) Thanks __José Inácio Coelho da Silva__,
+  __Leslie Harlley Watter__ and __Christof Böckler__
+  for making their own quick references which inspired this one.
+
+: //08 Jul 2005// Markup Demo translated to Hungarian
+
+  __Tamás Iván__ has translated the Markup Demo to Hungarian.
+
+: //17 Jun 2005// Released 2.3 version
+
+  Guess what? New txt2tags release! After some months of silence, the
+  red octopus rises again. This time there are new command line options
+  --dump-source and --config-file, and a really nice table column span
+  feature. You are a long time txt2tags user? So you will appreciate the
+  new "Markup Rules" document. English is not your mother tongue? Maybe
+  you should try the documents translated to French, Chinese and
+  Hungarian. [Read more SITEROOT/v23-news.html] about the news and
+  download the new version!
+
+: //26 May 2005// Sample document and Markup Demo translated to Chinese
+
+  __Zoom Quiet__ has translated the sample document and the Markup Demo
+  to Chinese.
+
+: //21 Mar 2005// All program documentation translated to French
+
+  __Claude Hiebel__ has made an accomplishment. First he translated the
+  program messages, now he has translated ALL the program documentation
+  to French, including the big User Guide. French users are encouraged
+  to send him gifts or at least a "Merci Beaucoup" for that (chiebel (a)
+  free fr).
+
+: //15 Feb 2005// Sample document translated to Hungarian
+
+  __Adam Schmideg__ has translated the sample document to Hungarian.
+
+: //01 Feb 2005// The program was ported to the OpenBSD system
+
+  __Gleydson Soares__ has ported txt2tags to be installed on the OpenBSD
+  operating system. It is now part of the official tree. The link is on
+  the [Download page SITEROOT/download.html].
+
+: //30 Dec 2004// Released 2.2 version
+
+  The txt2tags 2.2 version was released. All the new features are
+  described in [this page SITEROOT/v22-news.html]. The big highlight is the new
+  supported target: **Lout documents**. Other news are the --css-inside
+  command line option, the T2TCONFIG environment variable and
+  translations to French, German and Spanish.
+
+: //30 Nov 2004// Program translated to Spanish, German and French
+
+  The translations are full speed ahead! The program was translated to
+  Spanish by __Ielton Ferreira Carneiro Pinto__, to German by
+  __Manfred Schreiweis__ and to French by __Claude Hiebel__. These
+  translations will be present on the next release.
+
+: //17 Nov 2004// OpenPHPNuke Doc Team using txt2tags
+
+  The [OpenPHPNuke http://openphpnuke.com/] documentation team
+  [has announced OPNANNOUNCE] that they are switching all the program
+  docs from LaTeX to txt2tags format. Some of the reasons were: source
+  readable, quick editing and version control via SVN.
+
+: //13 Nov 2004// Released 2.1 version
+
+  The txt2tags 2.1 version was released. All the new features are
+  described in [this page SITEROOT/v21-news.html]. The highlights are the
+  ""%%infile"", ""%%outfile"", ""%%mtime"" and ""%%toc"" macros and the
+  --quiet command line option. The program was also translated to
+  Hungarian and Italian and the documentation was improved.
+
+: //15 Oct 2004// "Writing Books with Txt2tags" document
+
+  Inspired by the previous book announce, there is a new
+  [Writing Books with Txt2tags {DOCBOOK}] document, showing the
+  benefits of using txt2tags on the book writing process. If you plan to
+  write a book, or is using txt2tags just for tiny documents, save 5
+  minutes for the reading. I promise it worths!
+
+: //12 Oct 2004// A full book being written with txt2tags
+
+  The [PicoContainer http://www.picocontainer.org] team announced that
+  they decided to use txt2tags as the writing tool for their
+  "Constructor Dependency Injection" book. Links:
+  [Full announce BOOKANNOUNCE], [book preview BOOKPREVIEW],
+  [some thoughts about it BOOKCOMMENT].
+
+: //07 Oct 2004// gVim editor menu
+
+  __Otávio Cordeiro__ has made a [txt2tags gVim menu {URLGVIMMENU}]. So
+  gVim editor users can easily insert txt2tags marks into documents just
+  clicking on menu items. For example, selecting some words and clicking
+  on the "bold" menu item makes the text marked as bold.
+  [See the screenshot! http://img.photobucket.com/albums/v106/teivan/Computador/t2tmenu.png]
+
+: //09 Set 2004// Program translated to Italian
+
+  __Stefano Spinucci__ translated all the program messages to Italian
+  (it). The translations will be present in the next release. Curious?
+  [See the screenshot! SITEROOT/img/gui-it_IT.png]
+
+: //08 Set 2004// Program listed on the python.org site
+
+  Txt2tags was listed under the "HTML Shorthand Processors" section of the
+  [WebProgramming page http://www.python.org/cgi-bin/moinmoin/WebProgramming],
+  part of the major [Python.org http://www.python.org] site.
+
+: //26 Ago 2004// New "User Comments" section on the site
+
+  Today is the debut of the User Comments section of the
+  site, to register the user impressions about the program. Are you
+  already a txt2tags user? Please send your comments!
+
+: //18 Ago 2004// Version 2.0 also packaged to Debian and Gentoo
+
+  If you are a Debian or Gentoo user, now you can download txt2tags
+  [version 2.0 SITEROOT/v2/] already packaged to your distro. Tgz, RPM,
+  Slackware, IPK packages and the Windows installer are also available.
+
+: //11 Ago 2004// Sample and "Abuse me" files translated to Spanish
+
+  __Luis Cortázar__ translated the txt2tags sample and "Abuse me" files
+  to Spanish. He also made his own version of both, available on his site:
+  [Sample http://paginaweb.de/lcortazar/samples.html],
+  [Abuse me http://paginaweb.de/lcortazar/abusemes.html].
+  The translation of the original files will be present in the next
+  release.
+
+: //06 Ago 2004// IPK package to install txt2tags in Linux PDAs
+
+  __Anamim Thuler Schuwarte__ has packaged the program to the IPK
+  format, used in PDAs running Linux. Please go to the project site
+  at {URLPDA} for the download link and more information about the
+  package.
+
+: //27 Jul 2004// Program translated to Hungarian
+
+  __Tamás Iván__ translated all the program messages to Hungarian (hu).
+  The translations will be present in the next release. Curious?
+  [See the screenshot! SITEROOT/img/gui-hu.png]
+
+: //26 Jul 2004// Aurelio interview on Linux Reviews site
+
+  Program history and future, Python, tips and more, check it out!
+  http://linuxreviews.org/features/2004-07-26_verde/
+
+: //25 Jul 2004// Released 2.0 version
+
+  After more than a year of coding now version 2.0 is ready. There are
+  lots of news and they are all described in
+  [this document SITEROOT/v2/]. The highlights are the XHTML format, W3C
+  validated code, ~/.txt2tagsrc RC file, new command line options and
+  i18n.
+
+: //09 Jun 2004// Txt2tags Orkut community
+
+  __Ielton__, a txt2tags contributor has created an
+  [Orkut community {URLORKUT}] for txt2tags. If you have an account on
+  this site, join us.
+
+: //30 Nov 2003// Released my new version 1.7
+
+Release time, version 1.7 is out!
+
+The users most requested command was added: %!include. Now you can
+insert text, parsed tags or even another .t2t file into the document
+source. See the User Guide related topic for details.
+
+More checkins were added and some bugs fixed. Emacs users will like
+the brand new rewritten syntax highlight file! Vim users can also
+count with the up-to-date syntax file.
+
+**VERY IMPORTANT:** This release closes my 1.x series, no 1.8 or 1.9
+versions will come out. The next one will be the so waited 2.0, with
+rewritten Python code, more polished conversions and the new target
+XHTML. I will be cooler!
+
+: //19 Set 2003// Finally I have a Man Page!
+
+  __José Inácio Coelho__ wrote a man page for me. Try it right now!
+
+  prompt$ [man txt2tags {DOCMAN}]
+
+: //11 Set 2003// Guess what -  an IRC channel for me
+
+  There is a brand new ``#txt2tags`` channel on the ``irc.freenode.net``
+  server. Use your favorite Chat client and join us! On this channel you
+  can talk to other users of the nicer conversion program ever ;)
+
+: //23 Aug 2003// Created that strange bright red octopus
+
+  I'm not an octopus, I'm a robot. I don't know why my master did that
+  strange image and put it here... But it's kinda cool :)
+
+: //22 Aug 2003// Portuguese translation of the website and documentation
+
+  The new Portuguese mailing list joined together the Brazilian
+  txt2tags users and lots of program documentation was translated.
+  The new portuguese site is a portal to all these documents.
+
+: //23 Jul 2003// Released my new version 1.6
+
+Hi there! Here I am again with fresh news.
+
+Today my v1.6 was released. The main improvements are the new
+ %!preproc: and %!postproc: user defined filters. They are used to
+do some strange things on documents (see User Guide). There's also a
+new mark + for explicit numbered titles, //+like this+//, so now you
+can mix normal titles with numbered ones, like a book with Appendix.
+
+Now all the config settings can be linked with a specific target,
+using the new //%!key(target): value// syntax. The target specification
+is optional, so the parenthesis and its contents can be omitted. A nice
+sample: //%!encoding(html): iso-8859-1//
+
+Lots of user reported bugs were fixed, titles on LaTeX are unnumbered
+by default (as other targets) and the Gui was improved, showing
+ %!cmdline contents (if any) and refreshing checkboxes when a new
+file is loaded. Gui also can receive options from the command line, as
+in //txt2tags --gui -n file.t2t//
+
+: //21 Jul 2003// My site is now using some CSS
+
+  I'm feeling weird...
+
+: //18 Jul 2003// New portuguese Mailing List
+
+  My user base is growing a lot! Specially by Brazilians, nice people
+  of my master's land. So there's a brand new
+  [Mailing List {URLMAILINGPT}] for you Portuguese speakers! And prepare
+  yourself for more surprises, as sample files and documentation also in
+  portuguese. Just don't hold your breath ;)
+
+: //12 Jul 2003// New txt2tags for Windows project
+
+  I have a brother! Mr. __Guaracy Monteiro__ from Brazil created a new
+  project called [txt2tags-win {URLWIN}], which purpose is to provide
+  handy .EXE files for Windows users use me. If you do use Windows (with
+  Python installed or not), check out the nice distribution files from
+  his site!
+
+: //15 May 2003// New txt2tags.EXE install file for Windows
+
+  Please go to the txt2tags-win page: {URLWIN}
+
+: //14 May 2003// GUI patch for version 1.5 (turns to v1.5.1)
+
+  I'm sad :( My master released me with a critical bug on my Graphical
+  Interface. Command line & Web users has no reason to worry.
+
+  If you do use me on the GUI mode (the orange one),
+  please apply the patch to fix me.
+
+
+: //09 May 2003// Released my new version 1.5
+
+Tsc, Tsc... Almost three months from the last version, what a shame!
+But the new features will worth the delay.
+
+The most important improvement is my new %!cmdline setting. Using
+it you can define default options for each document, and when
+converting, you can call me with no options at all! Example: You place
+a "//%!cmdline: -t html --toc//" line on your source document, then you
+can convert it with the simple "//txt2tags file.t2t//" command.
+
+There is also a new --outfile option (-o for short) to set the
+output filename. If you specify "//-o -//", you get the same behavior
+of the old --stdout option (which is now deprecated).
+
+Talking about options, there are the new short -H and -n for the
+existing --noheaders and --enumtitle options. A nice quick
+example:
+
+```
+txt2tags-v1.4 -t html --enumtitle --stdout file.t2t > new.html
+txt2tags-v1.5 -t html -n -o new.html file.t2t
+```
+
+Ah! LaTeX target now supports images :)
+
+: //18 February 2003// Released my new version 1.4
+
+I've enjoyed my X-mas/New Year vacation, then some lazy days on
+a hot Brazilian beach, what a great time! But now it is time to get
+back to work, so there's a new release of the most sexy text eater
+out there: **me!**
+
+The burning sun has made lots of changes on me. I'm specially proud
+of my new ability to master table alignment. I can place the table
+centered or not, and I can place //each table cell// contents wherever
+I want! Left, Right, Centered... See AbuseMe! file for a
+demonstration.
+
+The good news for HTML users is that now I've learned about that
+Cascading thing... SCC, CCS, CSS, I don't remember... Just use my
+new --style command line option or the %!Style: setting.
+
+There's a new --toclevel option also, and I promise I'll not make
+TOC deeper than the number you pass me.
+
+Mmmmmm, there were some bug fixes also, but let's forget about them,
+you know I'm not buggy! ;)
+
+: //01 January 2003// I was forked! Oops, ported!
+
+  Hey! I was "ported" (or something like that) to a system called
+  FreeBSD. Mmmmm, they have a demon... But I don't wanna go to hell!!!
+
+: //20 December 2002// Released my new version 1.3
+
+Weeee, I'm tired! Lots of changes were made on me for this release and
+now I need a break!
+
+The news include a brand new mark (rare to happen!) for raw text, this
+way you can easily include marks on the document target and I promise
+I won't parse them!
+
+A new //Encoding// command is available also for worldwide users
+specify their own Character Set for their documents.
+
+And there are more improvements and fixes, but please read the
+ChangeLog file because now I'll go to sleep. zzZZzzzzZZZZzz...
+
+: //20 December 2002// My new User Guide
+
+  My dear master released a new document, and it talks about me!
+  This doc is still on the larval stage, but it will be cool someday.
+  [Read all about me {DOCUSERGUIDE}], contribute, fix typos, enjoy!
+
+: //03 December 2002// Released my new version 1.2 (LaTeX release)
+
+Hi! Finally I've learned one of the geek's most used document
+formatting: **LaTeX**. Just run me with "//-t tex//" and see your
+current .t2t files turn into LaTeX, ready for compiling!
+
+Ah! I'm getting smart, and now I can handle more than one file at the
+same time. Hint: *.t2t
+
+And my last new feature is the ability of strip down an HTML file to
+an "almost finished" .t2t file. Sorry !Vimmers, because this works on
+Vim only.
+
+What are you waiting for? Download me right now and test my new
+features: //txt2tags --toc -t tex *.t2t//
+
+: //06 November 2002// Released my new version 1.1
+
+Attention! Please read //carefully// before upgrade me!
+
+This new v1.1 is a **compatibility break** release.
+
+This means that after upgrading, you will have to check your current
+txt2tags files, and possibly fix them. Ignoring this release is not an
+option :) because the next versions will assume you have fixed your
+files.
+
+Please read the "Survivor's Guide for v1.1 Upgrade" for more detailed
+information about what has changed and how to fix your files.
+
+But there are nice news also:
+ - Images can now point to links, as: ""[[img.gif] www.abc.com]""
+ - New foldmethod=syntax rules on the Vim syntax file
+ - Improvements on the URL matcher
+ -
+
+: //23 October, 2002// My own mailing list
+
+  Today I woke up from bed surprised with a brand new
+  [mailing list {URLMAILING}] about me! Please subscribe, please,
+  pleeeeeeease ;)
+
+: //01 October, 2002// My new web page
+
+  Today my dear master gave me a new site. Now I'm sexy!
+
+: //25 September, 2002// Released my new version 1.0
+
+This release starts my //1.x series//.
+
+More than a year of almost-monthly updates, and the //0.x series//
+provided me a nice set of features, as Command Line and Web interface,
+TOC handling, numbering titles and lists, STDIN/STDOUT facilities,
+vim/emacs syntax files and seven supported target formats.
+
+For the incoming //1.x series//, I'll try to spread myself out,
+providing a nice GUI, extensive documentation, mailing list, user
+base, Unix/Windows/Mac full compatibility and including more targets
+(as tex, rtf and xhtml).
+
+On this 1.0 release I'm already at full speed ahead, with a new suit
+(Graphical Tk Interface) and compatibility with Unix/Windows/Mac,
+handling line breaks and other platform specific issues. Fortunately,
+now my master can reach Linux, Windows 2000, Cygwin and MacOS 8.6
+systems for testing me.
+
+
+%!include: ../inc/footer.t2t
