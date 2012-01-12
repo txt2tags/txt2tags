@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="Image.html">
+<LINK REL="Next" HREF="RawRawLineRawArea.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="Image.html">Previous</A>
+<A HREF="RawRawLineRawArea.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="6_14">Table</A></H2>
+<UL>
+<LI><B>Description:</B> Delimits a table row, with any number of columns</LI>
+<LI><B>Properties:</B> Multiline, FreeSpaces, Align, !Nesting</LI>
+<LI><B>Contains:</B> Macros, Beautifiers, Raw, Tagged, Links, Image,
+ Comment</LI>
+<LI><B>Syntax:</B>
+<UL>
+<LI>A leading pipe &quot;|&quot; identifies a table row</LI>
+<LI>A leading double pipe &quot;||&quot; identifies a table title row</LI>
+<LI>Leading spaces before first pipe identifies table centered align</LI>
+<LI>The fields are separated by the &quot; | &quot; string (space pipe space)</LI>
+<LI>A final pipe &quot;|&quot; at the first table row sets visible borders</LI>
+<LI>A final pipe &quot;|&quot; at the other table rows are ignored (just cosmetic)</LI>
+<LI>Closing a cell with more than one pipe &quot;|&quot; identifies column span:
+ &quot;||&quot; for 2 columns, &quot;|||&quot; for 3 and so on</LI>
+<LI>Natural spaces inside each cell identifies its alignment</LI>
+<LI>Example: <CODE>| table | row | with | five | columns |</CODE></LI>
+</UL>
+</LI>
+<LI><B>Details:</B>
+<UL>
+<LI>All the table row data must be on a single line of the source file,
+ no line breaks inside</LI>
+<LI>Targets with column-oriented align (like sgml and LaTeX), uses the
+ first table row align as the default for the other rows</LI>
+<LI>Any non-table line closes the opened table, except comment lines</LI>
+<LI>The cell count is flexible, each table row can have a different
+ number of cells</LI>
+<LI>Currently there's no way to specify row span</LI>
+<LI>If the target does not have table support, the table lines are
+ considered a Verbatim Area</LI>
+</UL>
+</LI>
+</UL>
+ <A NAME="mark-raw"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="Image.html">Previous</A>
+<A HREF="RawRawLineRawArea.html">Next</A>
+</BODY>
+</HTML>

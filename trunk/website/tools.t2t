@@ -1,0 +1,68 @@
+txt2tags
+
+Valuable tools to save your time
+
+%!includeconf: inc/config.t2t
+%!postproc: '(?i)(<body)'	'\1 id="tools"'
+%!postproc: '(?i)(</title>)'	' tools\1'
+
+%!include: inc/menu.t2t
+
+== Tools ==
+
+- Text Editors support / Syntax Highlighting
+
+  - [Emacs tools/txt2tags-mode.el]
+  - [Geany {URLBLOG}/2009/09/17/txt2tags-in-geany-editor/]
+  - [Gedit tools/txt2tags-gedit.lang] ([instructions {URLBLOG}/2007/06/19/txt2tags-and-gedit/])
+  - [JOE editor tools/txt2tags.jsf]
+  - [Kate {URLKATE}]
+  - [le editor tools/txt2tags.le]
+  - [Nano tools/nanorc]
+  - [ne editor tools/txt2tags.jsf]
+  - [TextMate tools/txt2tags-textmate.zip] ([instructions {URLBLOG}/2007/03/30/textmate-txt2tags-bundle/])
+  - [Vim tools/txt2tags.vim]
+    - [gVim Menu {URLGVIMMENU}]
+    - [Vim Compiler Plugin {URLVIMCOMPPT}]
+    - [Vim script to convert HTML to t2t tools/unhtml.vim]
+
+- Use txt2tags markup in these softwares:
+
+  - [markitUp! - jQuery markup editor http://etxt2tags.appspot.com/]
+  - [NanoBlogger http://kerneis.info/blog/archives/2007/10/06/txt2tags_plugin_for_nanoblogger/]
+  - [OpenOffice.org http://quasiwiki.sourceforge.net] ([instructions http://code.google.com/p/txt2tags/wiki/OpenOfficeExtension])
+  - [Plone {URLBLOG}/2010/08/31/use-txt2tags-markup-in-plone/]
+  - [PmWiki http://www.pmwiki.org/wiki/Cookbook/Txt2tags]
+  - [Wixi - Desktop wiki http://wixi.sourceforge.net]
+
+- Other
+
+  - [Apache module mod_t2t http://sourceforge.net/projects/mod-t2t/]
+  - [ctags tools/ctags]
+  - [dislines - Multiple language text files http://www.danielclemente.com/dislines/]
+  - [dynartslides - Python script to generate ASCII Art slides dynamically tools/dynartslides]
+  - [gensite - Python script to automate coversion http://www.davefancella.com/software/gensite.html]
+  - [ktxt2tags - KDE front-end http://kde-apps.org/content/show.php?content=48474&vote=good&tan=16002470]
+  - [Konqueror Service Menu for ktxt2tags http://www.kde-apps.org/content/show.php?content=50459]
+  - [Ruby script to automate conversion {URLT2TMAKEPT}]
+  - [Shell script to automate conversion tools/html-update.sh]
+  - [TeXtallion - publish prose, literature, poetry in html, pdf or epub http://anamnese.online.fr/site2/textallion/samples/presentation.html]
+
+
+% 404:  - [Web Editor http://davidarea.com/t2twebeditor]
+
+== Notes ==
+
+- These are free tools to improve your user experience. They are
+  optional, not required to run txt2tags.
+
+- In links that point to the tool code, it's best to choose "Save as"
+  instead making a copy & paste.
+
+- Some tools were made by the txt2tags author, some by kind users.
+
+- Wanna contribute? Just send your work (or a link) to the author at
+  <verde (@) aurelio net> and you will be part of our [team team/].
+
+
+%!include: inc/footer.t2t

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="mtime.html">
+<LINK REL="Next" HREF="outfile.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="mtime.html">Previous</A>
+<A HREF="outfile.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="7_3">%%infile</A></H2>
+<P> The <CODE>%%infile</CODE> macro expands to the source file location
+ on the system. It is useful to make those &quot;<I>see the source of this
+ file</I>&quot; links on HTML pages. Providing such link is a friendly
+ attitude with beginners, so they can use your source as a sample for
+ their own page.</P>
+<P> This macro accepts the following formatting directives:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>%&lt;char&gt;</TH><TH>Description</TH><TH>Output for this User Guide
+ source</TH></TR>
+<TR><TD ALIGN="center">%f</TD><TD>File name</TD><TD>userguide.t2t</TD></TR>
+<TR><TD ALIGN="center">%F</TD><TD>File name (without extension)</TD><TD>
+userguide</TD></TR>
+<TR><TD ALIGN="center">%e</TD><TD>File extension</TD><TD>t2t</TD></TR>
+<TR><TD ALIGN="center">%p</TD><TD>Absolute file path</TD><TD>
+/a/txt2tags/svn/doc/English/userguide/userguide.t2t</TD></TR>
+<TR><TD ALIGN="center">%d</TD><TD>File path (directories only)</TD><TD>
+/a/txt2tags/svn/doc/English/userguide</TD></TR>
+<TR><TD ALIGN="center">%D</TD><TD>File path (parent dir only)</TD><TD>
+userguide</TD></TR>
+<TR><TD ALIGN="center">%%</TD><TD>Literal percent char</TD><TD>%</TD></TR>
+</TABLE>
+<P> Examples:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>Source</TH><TH>--&gt;</TH><TH>Expanded</TH></TR>
+<TR><TD>This Guide parent dir is %%infile(%D).</TD><TD ALIGN="center">
+--&gt;</TD><TD>This Guide parent dir is userguide.</TD></TR>
+<TR><TD>I do use the %%infile(%e) file extension.</TD><TD ALIGN="center">
+--&gt;</TD><TD>I do use the t2t file extension.</TD></TR>
+<TR><TD>[See the source %%infile]</TD><TD ALIGN="center">--&gt;</TD><TD><A HREF="userguide.t2t">
+See the source</A></TD></TR>
+<TR><TD>Converted to XHTML, I'll be %%infile(%F).xhtml</TD><TD ALIGN="center">
+--&gt;</TD><TD>Converted to XHTML, I'll be userguide.xhtml</TD></TR>
+</TABLE>
+<BLOCKQUOTE><B> Note:</B> The macro is expanded to &quot;-&quot; if the source
+ file is STDIN.</BLOCKQUOTE> <A NAME="macro-outfile"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="mtime.html">Previous</A>
+<A HREF="outfile.html">Next</A>
+</BODY>
+</HTML>

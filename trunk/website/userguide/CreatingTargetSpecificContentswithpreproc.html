@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="InsertingMultipleLineswithpostprocsuchasCSSrules.html">
+<LINK REL="Next" HREF="ChangingTxt2tagsMarkswithpreproc.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="InsertingMultipleLineswithpostprocsuchasCSSrules.html">Previous</A>
+<A HREF="ChangingTxt2tagsMarkswithpreproc.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="9_2">Creating &quot;Target-Specific&quot; Contents with %!preproc</A></H2>
+<P> Sometimes you need to insert some text on a specific target, but not
+ on the others. This kind of strange behavior can be done using some
+ PreProc tricks.</P>
+<P> The idea is to insert this extra text on the document source as
+ comments, but mark it in a way that a target-specific filter will
+ &quot;uncomment&quot; those lines.</P>
+<P> For example, if an extra paragraph must be added only in HTML
+ target. Place the text as special comments, like this:</P>
+<PRE>
+%html% This HTML page is Powered by [txt2tags http://txt2tags.org].
+%html% See the source TXT file [here source.t2t].
+</PRE>
+<P> As those lines start with <CODE>%</CODE>, they are plain comments
+ lines and will be ignored. But when adding this special filter:</P>
+<PRE>
+%preproc(html): '^%html% ' ''
+</PRE>
+<P> The leading string is removed and those lines will be &quot;activated&quot;,
+ not being comments anymore. As a explicit target config, this filter
+ will be processed for HTML targets only.</P>
+ <A NAME="creating-marks"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="InsertingMultipleLineswithpostprocsuchasCSSrules.html">Previous</A>
+<A HREF="ChangingTxt2tagsMarkswithpreproc.html">Next</A>
+</BODY>
+</HTML>

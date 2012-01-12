@@ -1,0 +1,49 @@
+txt2tags
+
+Shots to get you shocked
+
+%!includeconf: inc/config.t2t
+%!postproc: '(?i)(<body)'	'\1 id="shots"'
+%!postproc: '(?i)(</title>)'	' shots\1'
+
+%!include: inc/menu.t2t
+
+== Graphical Interface ==[gui]
+
+ [userguide/gui.png] 
+
+== Command Line Interface ==[cli]
+
+ [img/help.png] 
+
+== Command Line Action ==[action]
+
+ [img/converting.png] 
+
+== Vim Syntax Highlight ==[vim]
+
+ [userguide/vim.png] 
+
+== Running on Zaurus PDA ==[pda]
+
+ [img/pda.png] 
+
+== Sample file as t2t, Man page, MagicPoint and HTML ==[multi]
+
+ [img/multitargets.png] 
+
+== Tags sample for all targets ==[all]
+
+ [img/all-targets.png] 
+
+% OFF
+%== Web Interface ==[web]
+% [img/web.png] 
+%== gVim Menu ==[gvim]
+% [img/gvim.jpg] 
+%== Emacs Syntax Highlight, plus t2tmake ==[emacs]
+% [img/emacs-t2tmake.png] 
+%== Kate Syntax Highlight (KDE) ==[kate]
+% [img/kate.png] 
+
+%!include: inc/footer.t2t

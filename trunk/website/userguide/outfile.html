@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Txt2tags User Guide</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-iso-8859-1">
+<LINK REL="Start" HREF="index.html">
+<LINK REL="Contents" HREF="index.html">
+<LINK REL="Prev" HREF="infile.html">
+<LINK REL="Next" HREF="toc.html">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="userguide.css"></HEAD>
+<BODY>
+<A HREF="index.html">Contents</A>
+<A HREF="infile.html">Previous</A>
+<A HREF="toc.html">Next</A>
+<HR NOSHADE>
+
+<H2><A NAME="7_4">%%outfile</A></H2>
+<P> The <CODE>%%outfile</CODE> macro expands to the converted file
+ location on the system. It is useful to its name inside the document
+ Body or Headers. This macro is a sister of the <A HREF="mtime.html#macro-infile">
+%%infile macro</A> and do accept exactly the same formatting directives.</P>
+<P> Examples:</P>
+<TABLE ALIGN="center" BORDER="1">
+<TR><TH>Source</TH><TH>--&gt;</TH><TH>Expanded</TH></TR>
+<TR><TD>You are reading the %%outfile file.</TD><TD ALIGN="center">--&gt;</TD><TD>
+You are reading the userguide.html file.</TD></TR>
+<TR><TD>txt2tags -t %%outfile(%e) -i %%infile -o %%outfile</TD><TD ALIGN="center">
+--&gt;</TD><TD>txt2tags -t html -i userguide.t2t -o userguide.html</TD></TR>
+</TABLE>
+<BLOCKQUOTE><B> Note:</B> The macro is expanded to &quot;-&quot; if the output
+ file is STDOUT.</BLOCKQUOTE> <A NAME="macro-toc"></A><HR NOSHADE>
+<A HREF="index.html">Contents</A>
+<A HREF="infile.html">Previous</A>
+<A HREF="toc.html">Next</A>
+</BODY>
+</HTML>

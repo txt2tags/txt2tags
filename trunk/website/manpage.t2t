@@ -1,0 +1,19 @@
+txt2tags(1) man page
+
+
+% No website header, menu nor footer here.
+% This is a classic sacred man page.
+
+
+% Settings copied from the original manpage.t2t file
+%!target: html
+%!encoding: UTF-8
+%!options(html): --mask-email --toc
+%!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
+
+% Adds a link back to the txt2tags website
+%!postproc: '(</BODY>)'   '<a style="position:fixed;top:0;left:5;background:white;" href="/">« txt2tags.org</a>\1'
+
+% Get man page contents directly from the original source
+%!include: ../doc/English/manpage.t2t
+
