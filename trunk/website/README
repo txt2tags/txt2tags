@@ -12,7 +12,7 @@ IMPORTANT: Please preview the results in your browser before
 
 After the commit, your changes will take some time to appear at
 the txt2tags website. A cronjob at the web server will do a
-"svn update" regularly. You don't need to worry about it.
+"svn update" once a day at noon. You don't need to worry about it.
 
 Some files seems to be missing. But they're not! They're included
 directly from the SVN. See .htaccess for details.
