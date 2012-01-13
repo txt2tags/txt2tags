@@ -122,7 +122,7 @@ We are a BIG family
 
 %!preproc: SOFT13_SRC -
 %!preproc: SOFT13_TXT TinyCOBOL FAQ
-%!preproc: SOFT13_URL http://tiny-cobol.sourceforge.net/faq.htm
+%!preproc: SOFT13_URL http://tiny-cobol.sourceforge.net/docs/faq/
 %!preproc: SOFT13_LNG english
 
 %!preproc: SOFT14_SRC -
@@ -202,7 +202,7 @@ We are a BIG family
 
 %!preproc: SOFT29_SRC -
 %!preproc: SOFT29_TXT Syzygy Documentation
-%!preproc: SOFT29_URL http://www.isl.uiuc.edu/szg/doc/
+%!preproc: SOFT29_URL http://syzygy.isl.uiuc.edu/szg/doc/
 %!preproc: SOFT29_LNG english
 
 %!preproc: SOFT30_SRC -
@@ -483,9 +483,9 @@ We are a BIG family
 %!preproc: HOME15_URL http://sergioflima.pro.br/
 %!preproc: HOME15_LNG portuguese
 
-%!preproc: HOME16_SRC http://www.geocities.com/fabiounix/files/index.txt
+%!preproc: HOME16_SRC -
 %!preproc: HOME16_TXT Fabio Machado de Oliveira
-%!preproc: HOME16_URL http://www.geocities.com/fabiounix/
+%!preproc: HOME16_URL http://www.geocities.ws/fabiounix/
 %!preproc: HOME16_LNG portuguese
 
 %%!preproc: HOME17_SRC http://www.fisica.ufpb.br/~kelon/index.t2t
@@ -967,30 +967,30 @@ to compose a database and generate the table automatically.
  | SOFT05
 % | SOFT06
 % | SOFT07
- | SOFT08
+% | SOFT08
 % | SOFT09
  | SOFT10
- | SOFT11
- | SOFT12
+% | SOFT11
+% | SOFT12
  | SOFT13
- | SOFT14
+% | SOFT14
  | SOFT15
- | SOFT16
+% | SOFT16
  | SOFT17
- | SOFT18
- | SOFT19
+% | SOFT18
+% | SOFT19
  | SOFT20
  | SOFT21
  | SOFT22
  | SOFT23
- | SOFT24
+% | SOFT24
  | SOFT25
  | SOFT26
- | SOFT27
+% | SOFT27
  | SOFT28
  | SOFT29
  | SOFT30
- | SOFT31
+% | SOFT31
  | SOFT32
  | SOFT33
  | SOFT34
@@ -1002,11 +1002,11 @@ to compose a database and generate the table automatically.
  | TECH03
  | TECH04
  | TECH05
- | TECH06
- | TECH07
- | TECH08
- | TECH09
- | TECH10
+% | TECH06
+% | TECH07
+% | TECH08
+% | TECH09
+% | TECH10
  | TECH11
  | TECH12
  | TECH13
@@ -1017,84 +1017,85 @@ to compose a database and generate the table automatically.
  | TECH18
  | TECH19
  | TECH20
- | TECH21
- | TECH22
- | TECH23
- | TECH24
- | TECH25
- | TECH26
- | TECH27
- | TECH28
+% | TECH21
+% | TECH22
+% | TECH23
+% | TECH24
+% | TECH25
+% | TECH26
+% | TECH27
+% | TECH28
  | TECH29
- | TECH30
+% | TECH30
  | TECH31
  | TECH32
  || PERSONAL SITES
  | HOME01
  | HOME02
- | HOME03
- | HOME04
- | HOME05
- | HOME06
- | HOME07
- | HOME08
- | HOME09
- | HOME10
+% | HOME03
+% | HOME04
+% | HOME05
+% | HOME06
+% | HOME07
+% | HOME08
+% | HOME09
+% | HOME10
  | HOME11
- | HOME12
- | HOME13
- | HOME14
+% | HOME12
+% | HOME13
+% | HOME14
  | HOME15
  | HOME16
 % | HOME17
- | HOME18
- | HOME19
- | HOME20
- | HOME21
+% | HOME18
+% | HOME19
+% | HOME20
+% | HOME21
  | HOME22
- | HOME23
- | HOME24
- | HOME25
- | HOME26
- | HOME27
- | HOME28
- | HOME29
+% | HOME23
+% | HOME24
+% | HOME25
+% | HOME26
+% | HOME27
+% | HOME28
+% | HOME29
  | HOME30
- | HOME31
- | HOME32
- | HOME33
+% | HOME31
+% | HOME32
+% | HOME33
  | HOME34
- | HOME35
- | HOME36
- | HOME37
- | HOME38
- | HOME39
- | HOME40
- | HOME41
- | HOME42
- | HOME43
- | HOME44
- | HOME45
- | HOME46
- | HOME47
- | HOME48
- | HOME49
+% | HOME35
+% | HOME36
+% | HOME37
+% | HOME38
+% | HOME39
+% | HOME40
+% | HOME41
+% | HOME42
+% | HOME43
+% | HOME44
+% | HOME45
+% | HOME46
+% | HOME47
+% | HOME48
+% | HOME49
+% this one is probably no longer using t2t:
  | HOME50
- | HOME51
- | HOME52
+% | HOME51
+% | HOME52
  | HOME53
 % | HOME54
- | HOME55
- | HOME56
+% | HOME55
+% | HOME56
  | HOME57
  | HOME58
  | HOME59
- | HOME60
+% | HOME60
  | HOME61
  || ASSORTED JELLY BEANS
  | MISC01
  | MISC02
- | MISC03
+% | MISC03
 % | MISC04
  | MISC05
  | MISC06
