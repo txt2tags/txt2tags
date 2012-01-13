@@ -937,7 +937,9 @@ We are a BIG family
 
 == The Children ==
 
-This **used to be** the list of websites using txt2tags, but it's not updated for ages.
+% This **used to be** the list of websites using txt2tags, but it's not updated for ages.
+
+This page collects websites using txt2tags. It **used to be** bigger in the past, but several homepages disappeared since the first release of this list.
 
 But what is really cool about this page, is how this big table is generated.
 
@@ -1097,37 +1099,40 @@ to compose a database and generate the table automatically.
  | MISC02
 % | MISC03
 % | MISC04
- | MISC05
- | MISC06
- | MISC07
- | MISC08
- | MISC09
- | MISC10
- | MISC11
- | MISC12
- | MISC13
- | MISC14
+% | MISC05
+% | MISC06
+% | MISC07
+% | MISC08
+% | MISC09
+% | MISC10
+% | MISC11
+% | MISC12
+% | MISC13
+% | MISC14
 % | MISC15
- | MISC16
+% | MISC16
  | MISC17
- | MISC18
- | MISC19
- | MISC20
+% | MISC18
+% | MISC19
+% | MISC20
  | MISC21
  | MISC22
+% may not use t2t:
  | MISC23
- | MISC24
+% | MISC24
+% may not use t2t:
  | MISC25
+% may not use t2t:
  | MISC26
  | MISC27
  | MISC28
- | MISC29
- | MISC30
+% | MISC29
+% | MISC30
  | MISC31
  | MISC32
  | MISC33
 %  | MISC34
- | MISC35
+% | MISC35
  | MISC36
  | MISC37
  | MISC38
