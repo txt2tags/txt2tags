@@ -236,6 +236,12 @@ We are a BIG family
 %!preproc: SOFT35_LNG english
 
 
+%!preproc: SOFT36_SRC -
+%!preproc: SOFT36_TXT The Z-Machine Preservation Project
+%!preproc: SOFT36_URL http://zmpp.sourceforge.net/
+%!preproc: SOFT36_LNG english
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% TECHIE  %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -393,6 +399,11 @@ We are a BIG family
 %!preproc: TECH31_TXT CMPH - C Minimal Perfect Hashing Library
 %!preproc: TECH31_URL http://cmph.sourceforge.net/
 %!preproc: TECH31_LNG english
+
+%!preproc: TECH32_SRC http://informfr.tuxfamily.org/informfr_tuxfamily.t2t
+%!preproc: TECH32_TXT Inform et les jeux d'aventure textuels en français
+%!preproc: TECH32_URL http://informfr.tuxfamily.org/
+%!preproc: TECH32_LNG french
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% HOMEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -954,8 +965,8 @@ to compose a database and generate the table automatically.
  | SOFT03
  | SOFT04
  | SOFT05
- | SOFT06
- | SOFT07
+% | SOFT06
+% | SOFT07
  | SOFT08
 % | SOFT09
  | SOFT10
@@ -984,6 +995,7 @@ to compose a database and generate the table automatically.
  | SOFT33
  | SOFT34
  | SOFT35
+ | SOFT36
  || TECHNICAL DOCUMENTATION
  | TECH01
  | TECH02
@@ -1016,6 +1028,7 @@ to compose a database and generate the table automatically.
  | TECH29
  | TECH30
  | TECH31
+ | TECH32
  || PERSONAL SITES
  | HOME01
  | HOME02
@@ -1070,7 +1083,7 @@ to compose a database and generate the table automatically.
  | HOME51
  | HOME52
  | HOME53
- | HOME54
+% | HOME54
  | HOME55
  | HOME56
  | HOME57
