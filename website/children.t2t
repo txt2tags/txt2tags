@@ -713,6 +713,11 @@ We are a BIG family
 %!preproc: HOME61_URL http://chiebel.free.fr/
 %!preproc: HOME61_LNG french
 
+%!preproc: HOME62_SRC -
+%!preproc: HOME62_TXT Jim Brown 
+%!preproc: HOME62_URL http://wm.jcby.com/howmade.html
+%!preproc: HOME62_LNG english
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% MISC %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1094,6 +1099,7 @@ to compose a database and generate the table automatically.
  | HOME59
 % | HOME60
  | HOME61
+ | HOME62
  || ASSORTED JELLY BEANS
  | MISC01
  | MISC02
