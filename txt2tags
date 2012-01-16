@@ -105,6 +105,10 @@ import csv
 import string
 import struct
 import unicodedata
+# base64 is required by embedImage, so I import it here // by Chaos
+
+import base64 
+
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
@@ -7230,7 +7234,7 @@ def embedImage(filename):
 
         ## return a data uri with the image embed.
         ## see: http://en.wikipedia.org/wiki/Data_URI_scheme
-        import base64
+
         line = "data: image/%s;base64,"%mytype
         line = line+base64.b64encode(file(filename).read())
         return line
