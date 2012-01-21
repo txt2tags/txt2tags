@@ -99,7 +99,7 @@ msgid "print a list of all the available targets and exit"
 msgstr "imprime una lisita de todos los destinos disponibles y sale"
 
 msgid "set target document type. currently supported:"
-msgstr "establece el tipo de documento de destino, sólo de admiten:"
+msgstr "establece el tipo de documento de destino, solo se admiten:"
 
 msgid "set FILE as the input file name ('-' for STDIN)"
 msgstr "establece FILE como el nombre de archivo de entrada ('-' para STDIN)"
