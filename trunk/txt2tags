@@ -274,6 +274,7 @@ TARGET_NAMES = {
   'aatw'   : _('ASCII Art Text Web'),
   'aapw'   : _('ASCII Art Presentation Web'),
   'aasw'   : _('ASCII Art Spreadsheet Web'),
+  'db'     : _('SQLite database'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
   'csv'    : _('CSV spreadsheet'),
@@ -292,7 +293,7 @@ TARGETS.sort()
 TARGET_TYPES = {
   'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw', 'aapw', 'aasw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
-  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf')),
+  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
 }
 
@@ -442,6 +443,8 @@ HEADER_TEMPLATE = {
     'aat': """\
 """,
     'csv': """\
+""",
+    'db': """\
 """,
     'rst': """\
 """,
@@ -1071,6 +1074,9 @@ def getTags(config):
     },
 
     'csv': {
+    },
+
+    'db': {
     },
 
     'txt2t': {
@@ -2428,6 +2434,9 @@ def getRules(config):
             #TIP art inherits all TXT rules
         },
         'csv': {
+            'tableable': 1,
+        },
+        'db': {
             'tableable': 1,
         },
         'ods': {
@@ -4221,6 +4230,19 @@ class ConfigMaster:
         if os.path.abspath(config['sourcefile']) == os.path.abspath(config['outfile']) and \
            config['outfile'] not in [STDOUT, MODULEOUT] and not gui:
             Error(_("Input and Output files are the same: %s") % config['outfile'])
+        if target == 'db':
+            try:
+                import sqlite3
+            except:
+                Error('No sqlite3 module')
+            config['spread'] = True
+            global DB, DBC
+            try:
+                os.remove(config['outfile'])
+            except:
+                pass
+            DB = sqlite3.connect(config['outfile'])
+            DBC = DB.cursor()
         return config
 
     def parse(self):
@@ -5638,6 +5660,23 @@ class BlockMaster:
         if TARGET == 'csv':
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
+        if TARGET == 'db':
+            data = [[row['cells'], row['cellspan']] for row in self.tableparser.rows]
+            n = max([len(line[0]) for line in data])
+            table = 'table_' + str(self.tablecount)
+            rows = ''
+            for i in range(n):
+                rows = rows + 'row_' + str(i + 1) + ', '
+            rows_create = rows.replace(', ', ' text, ')[:-2]
+            rows_insert = rows[:-2]
+            sql_create = 'create table ' + table + ' (id integer primary key, ' +  rows_create + ')'
+            DBC.execute(sql_create)
+            sql_insert = 'insert into ' + table + ' (' +  rows_insert + ') values' + ' (' + ('?,' * n)[:-1] + ')'
+            for line in data:
+                DBC.execute(sql_insert, line[0])
+            DB.commit()
+            DBC.close()
+
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
             result.append('')
@@ -6183,6 +6222,10 @@ def finish_him(outlist, config):
     if config['postvoodoo']:
         outlist = post_voodoo(outlist, config)
 
+    if config['target'] == 'db' and outfile in [MODULEOUT, STDOUT]:
+        outlist = [open(config['outfile']).read()]
+        os.remove(config['outfile'])
+
     if outfile == MODULEOUT:
         return outlist
     elif outfile == STDOUT:
@@ -6192,7 +6235,8 @@ def finish_him(outlist, config):
             for line in outlist:
                 print line
     else:
-        Savefile(outfile, addLineBreaks(outlist))
+        if not config['target'] == 'db':
+            Savefile(outfile, addLineBreaks(outlist))
         if not GUI and not QUIET:
             print _('%s wrote %s') % (my_name, outfile)
 
