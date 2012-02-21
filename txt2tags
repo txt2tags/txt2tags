@@ -5675,7 +5675,6 @@ class BlockMaster:
             for line in data:
                 DBC.execute(sql_insert, line[0])
             DB.commit()
-            DBC.close()
 
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
@@ -6222,9 +6221,11 @@ def finish_him(outlist, config):
     if config['postvoodoo']:
         outlist = post_voodoo(outlist, config)
 
-    if config['target'] == 'db' and outfile in [MODULEOUT, STDOUT]:
-        outlist = [open(config['outfile']).read()]
-        os.remove(config['outfile'])
+    if config['target'] == 'db':
+        DBC.close()
+        if outfile in [MODULEOUT, STDOUT]:
+            outlist = [open(config['outfile']).read()]
+            os.remove(config['outfile'])
 
     if outfile == MODULEOUT:
         return outlist
