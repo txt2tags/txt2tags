@@ -5665,17 +5665,17 @@ class BlockMaster:
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
             if self.tableparser.title:
-                rows = [s.strip().replace(' ', '_') for s in data[0][0]]
+                cols = [s.strip().replace(' ', '_') for s in data[0][0]]
                 del data[0]
             else:
-                rows = []
+                cols = []
                 for i in range(n):
-                    rows.append('row_' + str(i + 1))
-            rows_insert = ', '.join(rows)
-            rows_create = ' text, '.join(rows) + ' text'
-            sql_create = 'create table ' + table + ' (id integer primary key, ' +  rows_create + ')'
+                    cols.append('col_' + str(i + 1))
+            cols_insert = ', '.join(cols)
+            cols_create = ' text, '.join(cols) + ' text'
+            sql_create = 'create table ' + table + ' (id integer primary key, ' +  cols_create + ')'
             DBC.execute(sql_create)
-            sql_insert = 'insert into ' + table + ' (' +  rows_insert + ') values' + ' (' + ('?,' * n)[:-1] + ')'
+            sql_insert = 'insert into ' + table + ' (' +  cols_insert + ') values' + ' (' + ('?,' * n)[:-1] + ')'
             for line in data:
                 DBC.execute(sql_insert, line[0])
             DB.commit()
