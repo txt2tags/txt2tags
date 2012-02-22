@@ -5664,11 +5664,11 @@ class BlockMaster:
             data = [[row['cells'], row['cellspan']] for row in self.tableparser.rows]
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
-            rows = ''
+            rows = []
             for i in range(n):
-                rows = rows + 'row_' + str(i + 1) + ', '
-            rows_create = rows.replace(', ', ' text, ')[:-2]
-            rows_insert = rows[:-2]
+                rows.append('row_' + str(i + 1))
+            rows_insert = ', '.join(rows)
+            rows_create = ' text, '.join(rows) + ' text'
             sql_create = 'create table ' + table + ' (id integer primary key, ' +  rows_create + ')'
             DBC.execute(sql_create)
             sql_insert = 'insert into ' + table + ' (' +  rows_insert + ') values' + ' (' + ('?,' * n)[:-1] + ')'
