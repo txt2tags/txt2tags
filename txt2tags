@@ -3186,29 +3186,28 @@ class SpreadSheet:
             return self._cells[key].strip()
 
 
-def spreadsheet(table, web):
-    data = [[row['cells'], row['cellspan']] for row in table]
+def spreadsheet(data, web):
     n = max([len(line[0]) for line in data])
     if n > 676:
         Error(_("ASCII Art Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)        
     s = SpreadSheet()
-    for j, row in enumerate(table):
-        for i, el in enumerate(row['cells']):
+    for j, row in enumerate(data):
+        for i, el in enumerate(row[0]):
             ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
                 s[ind] = el
-    for j, row in enumerate(table):
-        for i, el in enumerate(row['cells']):
+    for j, row in enumerate(data):
+        for i, el in enumerate(row[0]):
             ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
                 if web:
-                    row['cells'][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
+                    row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
                 else:
-                    row['cells'][i] = str(s[ind])
-    return table
+                    row[0][i] = str(s[ind])
+    return data
 
 
-def aa_table(table, chars, width, border, h_header, v_header, align, spread, web):
+def completes_table(table):
     data = [[row['cells'], row['cellspan']] for row in table]
     n = max([len(line[0]) for line in data])
     data2 = []
@@ -3217,8 +3216,13 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread, web
             data2.append([n * [''], n * [1]])
         else:
             data2.append([line[0] + (n - sum(line[1])) * [''], line[1] + (n - sum(line[1])) * [1]])
+    return data2
+
+
+def aa_table(data, chars, width, border, h_header, v_header, align, spread, web):
+    n = max([len(line[0]) for line in data])
     data3 = []
-    for line in data2:
+    for line in data:
         if  max(line[1]) == 1:
             data3.append(line[0])
         else:
@@ -3238,10 +3242,10 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread, web
         length = [max([aa_len_cjk(el) for el in line]) for line in tab]
     if spread:
         h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]).center(length[i]) for i in range(n)]
-        data2 = [[h, [1] * n]] + data2
-        data2 = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data2)]
-        data2[0][0][0] = ''
-        length, n = [max([len(line[0][0]) for line in data2])] + length, n + 1
+        data = [[h, [1] * n]] + data
+        data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
+        data[0][0][0] = ''
+        length, n = [max([len(line[0][0]) for line in data])] + length, n + 1
     bord, side, corner, vhead = chars['border'], chars['side'], chars['corner'], chars['vhead']
     if border:
         hhead = chars['hhead']
@@ -3252,7 +3256,7 @@ def aa_table(table, chars, width, border, h_header, v_header, align, spread, web
         res = res + (length[i] + 2) * bord + corner
         resh = resh + (length[i] + 2) * hhead + corner
     ret = []
-    for i, line in enumerate(data2):
+    for i, line in enumerate(data):
         aff = side
         if i == 1 and h_header:
             ret.append(resh)
@@ -5642,19 +5646,19 @@ class BlockMaster:
 
         if TARGET == 'aat':
             if CONF['spread']:
-                table = spreadsheet(self.tableparser.rows, CONF['web'])
-                return aa_table(table, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
+                data = spreadsheet(completes_table(self.tableparser.rows), CONF['web'])
+                return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa_table(self.tableparser.rows, AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
+                return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
-            return aa_table(self.tableparser.rows, chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
+            return aa_table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp':
-            aa_t = aa_table(self.tableparser.rows, AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
+            aa_t = aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
