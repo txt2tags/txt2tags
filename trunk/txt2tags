@@ -5671,7 +5671,7 @@ class BlockMaster:
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
         if TARGET == 'db':
-            data = [[row['cells'], row['cellspan']] for row in self.tableparser.rows]
+            data = completes_table(self.tableparser.rows)
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
             if self.tableparser.title:
