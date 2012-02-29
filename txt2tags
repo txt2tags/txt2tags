@@ -255,6 +255,7 @@ TARGET_NAMES = {
   'html5'  : _('HTML5 page'),
   'xhtml'  : _('XHTML page'),
   'xhtmls' : _('XHTML Strict page'),
+  'htmls'  : _('HTML Spreadsheet'),
   'sgml'   : _('SGML document'),
   'dbk'    : _('DocBook document'),
   'tex'    : _('LaTeX document'),
@@ -291,7 +292,7 @@ TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'aatw', 'aapw', 'aasw')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -558,6 +559,33 @@ table th,table td{padding:4px;}
 <h3>%(HEADER3)s</h3>
 </hgroup>
 </header>
+<article>
+""",
+
+    'htmls': """\
+<!doctype html>
+<html>
+<head>
+<meta charset=%(ENCODING)s>
+<title>%(HEADER1)s</title>
+<meta name="generator" content="http://txt2tags.org"/>
+<link rel="stylesheet" href="%(STYLE)s"/>
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+table,img.center{border:0;margin:0 auto;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+.right{text-align:right;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
+</head>
+<body>
 <article>
 """,
 
@@ -1276,6 +1304,8 @@ def getTags(config):
         'tocOpen'              : '<nav>'          ,
         'tocClose'             : '</nav>'         ,
         'EOD'                  : '</article></body></html>'
+    },
+    'htmls': {
     },
 
     'sgml': {
@@ -2236,7 +2266,9 @@ def getTags(config):
     # Some like HTML tags as lowercase, some don't... (headers out)
     if HTML_LOWER:
         alltags['html'] = xhtml.copy()
-    if config['target'] in ('xhtml', 'xhtmls', 'html5'):
+    if config['target'] == 'htmls':
+        alltags['htmls'] = alltags['html5'].copy()
+    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
 
@@ -2487,6 +2519,9 @@ def getRules(config):
         },
         'html5': {
             #TIP html5 inherits all HTML rules
+        },
+        'htmls': {
+            #TIP htmls inherits all HTML rules
         },
 
         'sgml': {
@@ -2925,7 +2960,7 @@ def getRules(config):
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
     # Get the target specific rules
-    if config['target'] in ('xhtml', 'xhtmls', 'html5'):
+    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls'):
         myrules = rules_bank['html'].copy()   # inheritance
         myrules.update(rules_bank[config['target']])   # get specific
     elif config['target'] == 'aat':
@@ -4162,6 +4197,9 @@ class ConfigMaster:
             target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
+            exec('from math import *', globals())
+        if target == 'htmls':
+            config['spread'], config['web'] = True, True
             exec('from math import *', globals())
         # Slides needs width and height
         if config['slides'] and target == 'aat':
@@ -5703,6 +5741,12 @@ class BlockMaster:
         for i in xrange(len(lines)):
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
+        if TARGET == 'htmls':
+            data = spreadsheet(completes_table(self.tableparser.rows), CONF['web'])
+            self.tableparser.border, len_line = True, len(data[0][0])
+            self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
+            for i, row in enumerate(self.tableparser.rows[1:]):
+                row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i+1][0], data[i+1][1], ['Left']*len_line, 0
         result.extend(self.tableparser.dump())
 
         # Blank line after?
@@ -6435,7 +6479,7 @@ def doHeader(headers, config):
     # When using --css-inside, the template's <STYLE> line must be removed.
     # Template line removal for empty header keys is made some lines above.
     # That's why we will clean STYLE now.
-    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and config.get('style'):
+    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls') and config.get('css-inside') and config.get('style'):
         head_data['STYLE'] = []
 
     Debug("Header Data: %s" % head_data, 1)
@@ -6532,7 +6576,7 @@ def doHeader(headers, config):
 
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
-    if target in ('html', 'xhtml', 'xhtmls', 'html5') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls') and config.get('css-inside') and \
        config.get('stylepath'):
         set_global_config(config)  # usually on convert(), needed here
         for i in xrange(len(config['stylepath'])):
@@ -7289,7 +7333,7 @@ RTFIMGID = 1000  # Needed so each embedded image can have a unique ID number
 
 def embedImage(filename):
     mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(filename)
-    if TARGET in ('html','xhtml','xhtmls','html5'):
+    if TARGET in ('html','xhtml','xhtmls','html5', 'htmls'):
 
         ## return a data uri with the image embed.
         ## see: http://en.wikipedia.org/wiki/Data_URI_scheme
