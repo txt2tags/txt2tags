@@ -19,7 +19,7 @@
 
 
                                  +------------+                                 
-                                 | 01/02/2012 |                                 
+                                 | 03/09/2012 |                                 
                                  +------------+                                 
 
 
@@ -392,16 +392,16 @@
 
  The handy %%date macro expands to the current date.
 
- So today is 20120102 on the ISO YYYYMMDD format.
+ So today is 20120309 on the ISO YYYYMMDD format.
 
  You can also specify the date format with the %? flags,
- as %%date(%m-%d-%Y) which gives: 01-02-2012.
+ as %%date(%m-%d-%Y) which gives: 03-09-2012.
 
  That's all for now.
 
  ------------------------------------------------------------------------------
 
- <img src="img/t2tpowered.png" alt=""/> (<a href="s.t2t">s.t2t</a>)
+ <img src="img/t2tpowered.png" alt=""/> (<a href="sample.t2t">sample.t2t</a>)
 
 ================================================================================</pre></section>
 </html>
