@@ -3221,7 +3221,7 @@ class SpreadSheet:
             return self._cells[key].strip()
 
 
-def spreadsheet(data, web):
+def spreadsheet(data, option):
     n = max([len(line[0]) for line in data])
     if n > 676:
         Error(_("ASCII Art Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)        
@@ -3235,9 +3235,9 @@ def spreadsheet(data, web):
         for i, el in enumerate(row[0]):
             ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
-                if web:
+                if option == 'web':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
-                else:
+                elif option == 'text':
                     row[0][i] = str(s[ind])
     h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
     data = [[h, [1] * n]] + data
@@ -5684,7 +5684,10 @@ class BlockMaster:
 
         if TARGET == 'aat':
             if CONF['spread']:
-                data = spreadsheet(completes_table(self.tableparser.rows), CONF['web'])
+                if CONF['web']:
+                    data = spreadsheet(completes_table(self.tableparser.rows), 'web')
+                else:
+                    data = spreadsheet(completes_table(self.tableparser.rows), 'text')
                 return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
                 return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
@@ -5742,7 +5745,7 @@ class BlockMaster:
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
         if TARGET == 'htmls':
-            data = spreadsheet(completes_table(self.tableparser.rows), CONF['web'])
+            data = spreadsheet(completes_table(self.tableparser.rows), 'web')
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
             for i, row in enumerate(self.tableparser.rows[1:]):
