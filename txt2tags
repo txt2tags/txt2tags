@@ -259,6 +259,7 @@ TARGET_NAMES = {
   'sgml'   : _('SGML document'),
   'dbk'    : _('DocBook document'),
   'tex'    : _('LaTeX document'),
+  'texs'   : _('LaTeX Spreadsheet'),
   'lout'   : _('Lout document'),
   'man'    : _('UNIX Manual page'),
   'mgp'    : _('MagicPoint presentation'),
@@ -294,7 +295,7 @@ TARGETS.sort()
 TARGET_TYPES = {
   'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
-  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db')),
+  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
 }
 
@@ -820,6 +821,15 @@ r"""\documentclass{article}
 \date{%(HEADER3)s}
 \maketitle
 \clearpage
+""",
+    'texs': \
+r"""\documentclass{article}
+\usepackage{graphicx}
+\usepackage[urlcolor=black,colorlinks=true]{hyperref}
+\usepackage[%(ENCODING)s]{inputenc}  %% char encoding
+\usepackage{%(STYLE)s}  %% user defined
+
+\begin{document}
 """,
 
     'lout': """\
@@ -1493,6 +1503,8 @@ def getTags(config):
         'TOC'                  : '\\tableofcontents',
         'pageBreak'            : '\\clearpage',
         'EOD'                  : '\\end{document}'
+    },
+    'texs': {
     },
 
     'lout': {
@@ -2268,6 +2280,8 @@ def getTags(config):
         alltags['html'] = xhtml.copy()
     if config['target'] == 'htmls':
         alltags['htmls'] = alltags['html5'].copy()
+    if config['target'] == 'texs':
+        alltags['texs'] = alltags['tex'].copy()
     if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
@@ -2614,6 +2628,8 @@ def getRules(config):
             'blanksaroundbar': 1,
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
+        },
+        'texs': {
         },
         'lout': {
             'keepquoteindent': 1,
@@ -2976,6 +2992,8 @@ def getRules(config):
             myrules['linkable'] = 1
             myrules['imglinkable'] = 1
             myrules['escapexmlchars'] = 1
+    elif config['target'] == 'texs':
+        myrules = rules_bank['tex'].copy()    # inheritance
     else:
         myrules = rules_bank[config['target']].copy()
 
@@ -3237,6 +3255,8 @@ def spreadsheet(data, option):
             if el and el.strip():
                 if option == 'web':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
+                elif option == 'tex':
+                    row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{formula: ' + el.strip() + '}'
                 elif option == 'text':
                     row[0][i] = str(s[ind])
     h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
@@ -4200,6 +4220,9 @@ class ConfigMaster:
             exec('from math import *', globals())
         if target == 'htmls':
             config['spread'], config['web'] = True, True
+            exec('from math import *', globals())
+        if target == 'texs':
+            config['spread'] = True
             exec('from math import *', globals())
         # Slides needs width and height
         if config['slides'] and target == 'aat':
@@ -5254,7 +5277,7 @@ class TableMaster:
             titrowopen = titrowopen + '\n'
 
         # Tex gotchas
-        if TARGET == 'tex':
+        if TARGET in ['tex', 'texs']:
             if not self.border:
                 rowopen = titrowopen = ''
             else:
@@ -5744,9 +5767,14 @@ class BlockMaster:
         for i in xrange(len(lines)):
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
-        if TARGET == 'htmls':
-            data = spreadsheet(completes_table(self.tableparser.rows), 'web')
+        if TARGET in  ['htmls', 'texs']:
+            if TARGET == 'htmls':
+                data = spreadsheet(completes_table(self.tableparser.rows), 'web')
+            elif TARGET == 'texs':
+                data = spreadsheet(completes_table(self.tableparser.rows), 'tex')
             self.tableparser.border, len_line = True, len(data[0][0])
+            self.tableparser.cellalign = len_line
+            self.tableparser.colalign = len_line * ['Left']
             self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
             for i, row in enumerate(self.tableparser.rows[1:]):
                 row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i+1][0], data[i+1][1], ['Left']*len_line, 0
@@ -6460,7 +6488,7 @@ def doHeader(headers, config):
             val = config.get('stylepath_out') or []
         # Remove .sty extension from each style filename (freaking tex)
         # XXX Can't handle --style foo.sty, bar.sty
-        if target == 'tex' and key == 'STYLE':
+        if target in ['tex', 'texs'] and key == 'STYLE':
             val = map(lambda x: re.sub('(?i)\.sty$', '', x), val)
         if key == 'ENCODING':
             val = get_encoding_string(val, target)
@@ -6471,8 +6499,8 @@ def doHeader(headers, config):
         # Expand macros
         contents = MacroMaster(config=config).expand(headers[i])
         # Escapes - on tex, just do it if any \tag{} present
-        if target != 'tex' or \
-          (target == 'tex' and re.search(r'\\\w+{', contents)):
+        if target not in ['tex', 'texs'] or \
+          (target in ['tex', 'texs'] and re.search(r'\\\w+{', contents)):
             contents = doEscape(target, contents)
         if target == 'lout':
             contents = doFinalEscape(target, contents)
@@ -6683,7 +6711,7 @@ def doEscape(target, txt):
         txt = txt.replace('"', '"%s""' % ESCCHAR)           # "\""
         txt = re.sub('([|&{}@#^~])', '"\\1"', txt)          # "@"
         txt = txt.replace(tmpmask, '"%s"' % (ESCCHAR * 2))  # "\\"
-    elif target == 'tex':
+    elif target in ['tex', 'texs']:
         # Mark literal \ to be changed to $\backslash$ later
         txt = txt.replace(ESCCHAR, tmpmask)
         txt = re.sub('([#$&%{}])', ESCCHAR + r'\1'  , txt)  # \%
@@ -6724,7 +6752,7 @@ def doFinalEscape(target, txt):
         txt = txt.replace('[', '&lsqb;')
     elif target == 'lout':
         txt = txt.replace('/', '"/"')
-    elif target == 'tex' :
+    elif target in ['tex', 'texs'] :
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
     elif target == 'rtf':
@@ -7025,6 +7053,8 @@ def get_image_align(line):
 def get_encoding_string(enc, target):
     if not enc:
         return ''
+    if target == 'texs':
+        target = 'tex'
     # Target specific translation table
     translate = {
         'tex': {
@@ -7441,7 +7471,7 @@ def parse_images(line):
             # insert image filename an extra time for readers that don't grok linked images
             tag = regex['x'].sub(txt, tag, 1)
 
-        if TARGET == 'tex':
+        if TARGET in  ['tex', 'texs']:
             tag = re.sub(r'\\b', r'\\\\b', tag)
             txt = txt.replace('_', 'vvvvTexUndervvvv')
 
