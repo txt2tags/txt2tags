@@ -19,7 +19,7 @@
 
 
                                  +------------+                                 
-                                 | 03/09/2012 |                                 
+                                 | 03/04/2012 |                                 
                                  +------------+                                 
 
 
@@ -392,10 +392,10 @@
 
  The handy %%date macro expands to the current date.
 
- So today is 20120309 on the ISO YYYYMMDD format.
+ So today is 20120313 on the ISO YYYYMMDD format.
 
  You can also specify the date format with the %? flags,
- as %%date(%m-%d-%Y) which gives: 03-09-2012.
+ as %%date(%m-%d-%Y) which gives: 03-13-2012.
 
  That's all for now.
 
@@ -787,11 +787,15 @@
     aWin.postMessage(aMsg.join(" "), "*");
   }
 
-  window.onload = Dz.init.bind(Dz);
-  window.onkeydown = Dz.onkeydown.bind(Dz);
-  window.onresize = Dz.onresize.bind(Dz);
-  window.onhashchange = Dz.onhashchange.bind(Dz);
-  window.onmessage = Dz.onmessage.bind(Dz);
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
 </script>
 
 
