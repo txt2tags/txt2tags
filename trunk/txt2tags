@@ -3256,7 +3256,11 @@ def spreadsheet(data, option):
                 if option == 'web':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
                 elif option == 'tex':
-                    row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{formula: ' + el.strip() + '}'
+                    if el.strip()[0] == '=':
+                        tooltip = 'formula: '
+                    else:
+                        tooltip = 'value: '
+                    row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{' + tooltip + el.strip() + '}'
                 elif option == 'text':
                     row[0][i] = str(s[ind])
     h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
