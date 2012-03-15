@@ -3239,7 +3239,7 @@ class SpreadSheet:
             return self._cells[key].strip()
 
 
-def spreadsheet(data, option):
+def spreadsheet(data, format):
     n = max([len(line[0]) for line in data])
     if n > 676:
         Error(_("ASCII Art Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)        
@@ -3253,15 +3253,15 @@ def spreadsheet(data, option):
         for i, el in enumerate(row[0]):
             ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
-                if option == 'web':
+                if format == 'html':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
-                elif option == 'tex':
+                elif format == 'tex':
                     if el.strip()[0] == '=':
                         tooltip = 'formula: '
                     else:
                         tooltip = 'value: '
                     row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{' + tooltip + el.strip() + '}'
-                elif option == 'text':
+                elif format == 'txt':
                     row[0][i] = str(s[ind])
     h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
     data = [[h, [1] * n]] + data
@@ -5712,9 +5712,9 @@ class BlockMaster:
         if TARGET == 'aat':
             if CONF['spread']:
                 if CONF['web']:
-                    data = spreadsheet(completes_table(self.tableparser.rows), 'web')
+                    data = spreadsheet(completes_table(self.tableparser.rows), 'html')
                 else:
-                    data = spreadsheet(completes_table(self.tableparser.rows), 'text')
+                    data = spreadsheet(completes_table(self.tableparser.rows), 'txt')
                 return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
                 return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
@@ -5773,7 +5773,7 @@ class BlockMaster:
             self.tableparser.rows[i]['cells'] = cells
         if TARGET in  ['htmls', 'texs']:
             if TARGET == 'htmls':
-                data = spreadsheet(completes_table(self.tableparser.rows), 'web')
+                data = spreadsheet(completes_table(self.tableparser.rows), 'html')
             elif TARGET == 'texs':
                 data = spreadsheet(completes_table(self.tableparser.rows), 'tex')
             self.tableparser.border, len_line = True, len(data[0][0])
