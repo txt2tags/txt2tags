@@ -287,13 +287,14 @@ TARGET_NAMES = {
   'red'    : _('Redmine Wiki page'),
   'spip'   : _('SPIP article'),
   'rtf'    : _('RTF document'),
+  'wp'     : _('WordPress post'),
 }
 TARGETS = TARGET_NAMES.keys()
 TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw')),
+  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp')),
   'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip')),
   'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db')),
   'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
@@ -954,7 +955,16 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 {\pard\plain\s10\keepn{\*\txttags maintitle}\f1\fs24\qc\sb0\sa0\sl480\slmult1\li0\ri0\fi0 %(HEADER2)s\par}
 {\pard\plain\s10\keepn{\*\txttags maintitle}\f1\fs24\qc\sb0\sa0\sl480\slmult1\li0\ri0\fi0 %(HEADER3)s\par}
 """,
-
+    'wp': """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
+""",
+    'wpcss': """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
+""",
 }
 
 
@@ -1248,6 +1258,28 @@ def getTags(config):
         'cssClose'             : '</STYLE>'       ,
         'comment'              : '<!-- \a -->'    ,
         'EOD'                  : '</BODY></HTML>'
+    },
+
+    #TIP wp inherits all HTML tags
+    'wp': {
+        # Exclusions to let the WordPress code cleaner
+        'bodyOpen'             : '',
+        'bodyClose'            : '',
+        'paragraphOpen'        : '',
+        'paragraphClose'       : '',
+        'comment'              : '',
+        'EOD'                  : '',
+        # All list items must be closed
+        'listItemClose'        : '</li>'          ,
+        'numlistItemClose'     : '</li>'          ,
+        'deflistItem2Close'    : '</dd>'          ,
+        # WP likes tags this way
+        'bar1'                 : '<hr>',
+        'bar2'                 : '<hr>',
+        'fontBoldOpen'         : '<strong>'       ,
+        'fontBoldClose'        : '</strong>'      ,
+        'fontItalicOpen'       : '<em>'           ,
+        'fontItalicClose'      : '</em>'          ,
     },
 
     #TIP xhtml inherits all HTML definitions (lowercased)
@@ -2260,7 +2292,7 @@ def getTags(config):
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls'):
+    if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls')) or config['target'] == 'wp':
         # Change just HTML because XHTML inherits it
         htmltags = alltags['html']
         # Table with no cellpadding
@@ -2282,7 +2314,7 @@ def getTags(config):
         alltags['htmls'] = alltags['html5'].copy()
     if config['target'] == 'texs':
         alltags['texs'] = alltags['tex'].copy()
-    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls'):
+    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
 
@@ -2357,6 +2389,8 @@ def getRules(config):
         'escapeurl',              # escape special in link URL
         'labelbeforelink',        # label comes before the link on the tag
         'onelinepara',            # dump paragraph as a single long line
+        'onelinequote',           # dump quote as a single long line (EXPERIMENTAL)
+        'notbreaklistitemclose',  # do not break line before the list item close tag (EXPERIMENTAL)
         'tabletitlerowinbold',    # manually bold any cell on table titles
         'tablecellstrip',         # strip extra spaces from each table cell
         'tablecellspannable',     # the table cells can have span attribute
@@ -2526,6 +2560,16 @@ def getRules(config):
         },
         'xhtml': {
             #TIP xhtml inherits all HTML rules
+        },
+        'wp': {
+            #TIP wp inherits all HTML rules
+            'onelinepara': 1,
+            'onelinequote': 1,
+            'tagnotindentable': 1,
+            'blanksaroundpara': 1,
+            'keepquoteindent': 0,
+            'keeplistindent': 0,
+            'notbreaklistitemclose': 1,
         },
 
         'xhtmls': {
@@ -2972,11 +3016,11 @@ def getRules(config):
     }
 
     # Exceptions for --css-sugar
-    if config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5'):
+    if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5')) or config['target'] == 'wp':
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
     # Get the target specific rules
-    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls'):
+    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
         myrules = rules_bank['html'].copy()   # inheritance
         myrules.update(rules_bank[config['target']])   # get specific
     elif config['target'] == 'aat':
@@ -5634,7 +5678,7 @@ class BlockMaster:
         # Needed because <center> can't appear inside <p>
         try:
             if len(lines) == 1 and \
-               TARGET in ('html', 'xhtml', 'xhtmls') and \
+               TARGET in ('html', 'xhtml', 'xhtmls', 'wp') and \
                re.match('^\s*<center>.*</center>\s*$', lines[0]):
                 result = [lines[0]]
         except:
@@ -5820,22 +5864,26 @@ class BlockMaster:
         itemisclosed = False
 
         # Get contents
-        for item in self.hold():
-            if type(item) == type([]):
-                if close and rules['quotenotnested']:
-                    result.append(tagindent + close)
-                    itemisclosed = True
-                result.extend(item)        # subquotes
-            else:
-                if open_ and itemisclosed:
-                    result.append(tagindent + open_)
-                item = regex['quote'].sub('', item)  # del TABs
-                item = self._last_escapes(item)
-                if CONF['target'] == 'aat' and CONF['slides']:
-                    result.extend(aa_box([item], AA, CONF['width'] - 2))
+        if rules['onelinequote']:
+            # XXX Dirty hack, won't work for nested blocks inside quote, even subquotes
+            result.append(' '.join([regex['quote'].sub('', x) for x in self.hold()]))
+        else:
+            for item in self.hold():
+                if type(item) == type([]):
+                    if close and rules['quotenotnested']:
+                        result.append(tagindent + close)
+                        itemisclosed = True
+                    result.extend(item)        # subquotes
                 else:
-                    item = qline * self.depth + item
-                    result.append(indent + item)  # quote line
+                    if open_ and itemisclosed:
+                        result.append(tagindent + open_)
+                    item = regex['quote'].sub('', item)  # del TABs
+                    item = self._last_escapes(item)
+                    if CONF['target'] == 'aat' and CONF['slides']:
+                        result.extend(aa_box([item], AA, CONF['width'] - 2))
+                    else:
+                        item = qline * self.depth + item
+                        result.append(indent + item)  # quote line
 
         # Close tag
         if close and not itemisclosed:
@@ -5995,7 +6043,10 @@ class BlockMaster:
 
             # Close item (if needed)
             if itemclose and not itemisclosed:
-                listbody.append(tagindent + itemclose)
+                if rules['notbreaklistitemclose']:
+                    listbody[-1] += itemclose
+                else:
+                    listbody.append(tagindent + itemclose)
 
         if not widelist and rules['compactlist']:
             listopen = TAGS.get(name + 'OpenCompact')
@@ -6517,7 +6568,7 @@ def doHeader(headers, config):
     # When using --css-inside, the template's <STYLE> line must be removed.
     # Template line removal for empty header keys is made some lines above.
     # That's why we will clean STYLE now.
-    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls') and config.get('css-inside') and config.get('style'):
+    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls', 'wp') and config.get('css-inside') and config.get('style'):
         head_data['STYLE'] = []
 
     Debug("Header Data: %s" % head_data, 1)
@@ -6616,7 +6667,7 @@ def doHeader(headers, config):
 
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
-    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls') and config.get('css-inside') and \
+    if target in ('html', 'xhtml', 'xhtmls', 'html5', 'htmls', 'wp') and config.get('css-inside') and \
        config.get('stylepath'):
         set_global_config(config)  # usually on convert(), needed here
         for i in xrange(len(config['stylepath'])):
