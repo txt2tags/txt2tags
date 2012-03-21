@@ -5532,6 +5532,14 @@ class BlockMaster:
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 if CONF['web']:
+                    if len(result) > CONF['height']:
+                        result[CONF['height'] - 8] = result[CONF['height'] - 8] + '</pre></section>'
+                        for i, line in enumerate(result[CONF['height'] - 7:]):
+                            j = i % (CONF['height'] - 1)
+                            if j == 0:
+                                result[i + CONF['height'] - 7] = '<section><pre>' + line
+                            elif j == CONF['height'] - 2:
+                                result[i + CONF['height'] - 7] = line + '</pre></section>'
                     result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
                 else:
                     result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
