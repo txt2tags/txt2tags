@@ -4262,7 +4262,7 @@ class ConfigMaster:
         if target == 'aatw':
             target, config['web'] = 'aat', True
         if target == 'aapw':
-            target, config['slides'], config['web'] = 'aat', True, True
+            target, config['slides'], config['web'], config['toc-level'] = 'aat', True, True, 1
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
             exec('from math import *', globals())
