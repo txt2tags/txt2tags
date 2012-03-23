@@ -3226,18 +3226,18 @@ def aa_under(txt, char, width, over):
     return ret
 
 
-def aa_box(txt, chars, width, centred=True):
+def aa_box(txt, chars, width, centred=True, web=False):
     wrap_txt = []
     for line in txt:
-        wrap_txt.extend(el for el in textwrap.wrap(line, width - 4))
-    len_cjk = max([aa_len_cjk(line) for line in wrap_txt])
+        wrap_txt.extend(el for el in aa_webwrap(line, width - 4, web))
+    len_cjk = max([aa_len_cjk(line, web) for line in wrap_txt])
     line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
     line_txt = []
     for line in wrap_txt:
         if centred:
-            line_txt.append(aa_center(chars['side'] + ' ' + aa_center(line, len_cjk) + ' ' + chars['side'], width))
+            line_txt.append(aa_center(chars['side'] + ' ' + aa_center(line, len_cjk, web) + ' ' + chars['side'], width, web))
         else:
-            line_txt.append(aa_center(chars['side'] + ' ' + line + ' ' * (len_cjk - aa_len_cjk(line) + 1) + chars['side'], width))
+            line_txt.append(aa_center(chars['side'] + ' ' + line + ' ' * (len_cjk - aa_len_cjk(line, web) + 1) + chars['side'], width, web))
     return [line_box] + line_txt + [line_box]
 
 
@@ -3393,7 +3393,9 @@ def aa_image(image):
     return art_image
 
 
-def aa_webwrap(txt, width):
+def aa_webwrap(txt, width, web=True):
+    if not web:
+        return textwrap.wrap(txt, width)
     txt = re.split('(<a href=.*?>)|(</a>)|(<img src=.*?>)', txt)
     line, length, ret = '', 0, []
     for el in txt:
@@ -3416,9 +3418,11 @@ def aa_webwrap(txt, width):
     return ret
 
 
-def aa_len_cjk(txt):
+def aa_len_cjk(txt, web=False):
     if isinstance(txt, str):
         return len(txt)
+    if web:
+        txt = re.sub('(<a href=.*?>)|(</a>)|(<img src=.*?>)', '', txt)
     l = 0
     for char in txt:
         if unicodedata.east_asian_width(unicode(char)) in ('F', 'W'):
@@ -3428,9 +3432,9 @@ def aa_len_cjk(txt):
     return l
 
 
-def aa_center(txt, width):
-    n_before = (width - aa_len_cjk(txt)) / 2
-    n_after = width - aa_len_cjk(txt) - n_before
+def aa_center(txt, width, web=False):
+    n_before = (width - aa_len_cjk(txt, web)) / 2
+    n_after = width - aa_len_cjk(txt, web) - n_before
     return ' ' * n_before + txt + ' ' * n_after
 
 
@@ -5508,7 +5512,7 @@ class BlockMaster:
                     li = []
                     for el in result:
                         li.append(el)
-                    final.extend(' ' + line for line in aa_box(li, AA, CONF['width'] - 2, False))
+                    final.extend(' ' + line for line in aa_box(li, AA, CONF['width'] - 2, False, web=CONF['web']))
                 else:
                     for line in result:
                         if not line or (blockname == 'table' and not CONF['slides']): 
@@ -5888,7 +5892,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if CONF['target'] == 'aat' and CONF['slides']:
-                        result.extend(aa_box([item], AA, CONF['width'] - 2))
+                        result.extend(aa_box([item], AA, CONF['width'] - 2, web=CONF['web']))
                     else:
                         item = qline * self.depth + item
                         result.append(indent + item)  # quote line
