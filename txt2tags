@@ -7300,6 +7300,9 @@ def convert_this_files(configs):
                 else:
                     target_body = target_body + head + [''] * (myconf['height'] - 7) + [end_qa]
 
+        if myconf['target'] == 'mgp' and myconf['qa']:
+                target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "templates/QA.png"', '']
+
         if myconf['target'] == 'aat' and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
                 target_body.extend(textwrap.wrap('[' + str(i + 1) + '] ' + url, myconf['width']))
