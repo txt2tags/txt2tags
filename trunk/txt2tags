@@ -316,6 +316,7 @@ AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead
 AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
+AA_PW_TOC = {}
 AA_TITLE = ''
 AA_MARKS = []
 AA_QA = """       ________
@@ -5003,11 +5004,16 @@ class TitleMaster:
         "Dumps all toc itens as a valid t2t-marked list"
         ret = []
         toc_count = 1
+        head = 0
+        if CONF['headers'] and CONF['header1']:
+            head = 1
         for level, count_id, txt, label in self.toc:
             if level > max_level:  # ignore
                 continue
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
+            if CONF['target'] == 'aat' and CONF['slides'] and CONF['web']:
+                label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
@@ -5473,8 +5479,6 @@ class BlockMaster:
         return ret
 
     def blockout(self):
-        global AA_COUNT
-
         if not self.BLK:
             Error('No block to pop')
         blockname = self.BLK.pop()
@@ -5531,7 +5535,7 @@ class BlockMaster:
             Debug('BLOCK: %s' % result, 6)
 
         # ASCII Art processing
-        global AA_TITLE
+        global AA_TITLE, AA_COUNT, AA_PW_TOC
         if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
@@ -5561,6 +5565,8 @@ class BlockMaster:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
             AA_COUNT += len(result)
+            if blockname in ["title", "numtitle"] and TITLE.level == 1 and not AA_PW_TOC.get(AA_TITLE):
+                AA_PW_TOC[AA_TITLE] = AA_COUNT
 
         return result
 
