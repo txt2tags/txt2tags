@@ -5013,7 +5013,8 @@ class TitleMaster:
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
             if CONF['target'] == 'aat' and CONF['slides'] and CONF['web']:
-                label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
+                indent = ''
+                label = str(AA_PW_TOC[id_txt] / (CONF['height'] - 1) + head + 2) + '.0' 
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
