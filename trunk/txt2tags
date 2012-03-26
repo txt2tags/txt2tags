@@ -3420,10 +3420,10 @@ def aa_webwrap(txt, width, web=True):
 
 
 def aa_len_cjk(txt, web=False):
-    if isinstance(txt, str):
-        return len(txt)
     if web:
         txt = re.sub('(<a href=.*?>)|(</a>)|(<img src=.*?>)', '', txt)
+    if isinstance(txt, str):
+        return len(txt)
     l = 0
     for char in txt:
         if unicodedata.east_asian_width(unicode(char)) in ('F', 'W'):
