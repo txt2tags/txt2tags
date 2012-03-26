@@ -4983,7 +4983,7 @@ class TitleMaster:
                 under = aa_under(tagged, AA[level], CONF['width'] - 2, False)
             else:
                 under = aa_under(tagged, AA[level], CONF['width'], False)
-            if CONF['web'] and CONF['toc']:
+            if CONF['web'] and CONF['toc'] and self.level <= CONF['toc-level']:
                 ret.extend([anchor] + under + ['</a>']) 
             else:
                 ret.extend(under)
