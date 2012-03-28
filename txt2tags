@@ -4267,7 +4267,7 @@ class ConfigMaster:
         if target == 'aatw':
             target, config['web'] = 'aat', True
         if target == 'aapw':
-            target, config['slides'], config['web'], config['toc-level'] = 'aat', True, True, 1
+            target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
             exec('from math import *', globals())
@@ -5013,8 +5013,8 @@ class TitleMaster:
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
             if CONF['target'] == 'aat' and CONF['slides'] and CONF['web']:
-                indent = ''
-                label = str(AA_PW_TOC[id_txt] / (CONF['height'] - 1) + head + 2) + '.0' 
+                indent = '  ' * (level - 1)
+                label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
@@ -5566,8 +5566,8 @@ class BlockMaster:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
             AA_COUNT += len(result)
-            if blockname in ["title", "numtitle"] and TITLE.level == 1 and not AA_PW_TOC.get(AA_TITLE):
-                AA_PW_TOC[AA_TITLE] = AA_COUNT
+            if blockname in ["title", "numtitle"]:
+                AA_PW_TOC[TITLE.txt] = AA_COUNT
 
         return result
 
