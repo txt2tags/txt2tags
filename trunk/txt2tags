@@ -5012,9 +5012,10 @@ class TitleMaster:
                 continue
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
-            if CONF['target'] == 'aat' and CONF['slides'] and CONF['web']:
+            if CONF['target'] == 'aat' and CONF['slides']:
                 indent = '  ' * (level - 1)
-                label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
+                if CONF['web']:
+                    label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
@@ -5029,9 +5030,11 @@ class TitleMaster:
 
             # TOC will be plain text (no links)
             else:
-                if TARGET in ['txt', 'man', 'aat']:
+                if TARGET in ['txt', 'man', 'aat'] and not CONF['slides']:
                     # For these, the list is not necessary, just dump the text
                     tocitem = '%s""%s""' % (indent, id_txt)
+                elif TARGET == 'aat' and CONF['enum-title'] and level == 1:
+                    tocitem = '%s+ ""%s""' % (indent, txt)
                 else:
                     tocitem = '%s- ""%s""' % (indent, id_txt)
             ret.append(tocitem)
