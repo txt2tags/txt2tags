@@ -25,6 +25,6 @@ Free online conversion
 % David Area, which has "live" formatting as in phpBB forums.
 
 
-''' <? require("online.phps"); ?>
+''' <?php require("online.phps"); ?>
 
 %!include: inc/footer.t2t
