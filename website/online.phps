@@ -18,7 +18,7 @@
 #
 # The txt2tags program location (PATH)
 #
-$prog = "./txt2tags";
+$prog = "./txt2tags-2.6.py";
 
 # Set to 1 to use this file alone (will print page headers)
 # Set to 0 to use this file inserted on another .php (embedded)
