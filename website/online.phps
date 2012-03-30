@@ -1,4 +1,4 @@
-<? # txt2tags.php (http://txt2tags.org)
+<?php # txt2tags.php (http://txt2tags.org)
    # A handy web interface for the txt2tags conversion tool
    # License: GPL
    #
@@ -149,16 +149,16 @@ if ($is_standalone) {
 
 <h1>txt2tags WEB Interface</h1>
 
-<?
+<?php
 }
 
 #------------------------------[ FORM ]------------------------------
 ?>
-<form id="userinput" method="post" action="<? $myself ?>">
+<form id="userinput" method="post" action="<?php echo $myself; ?>">
 
 <fieldset>
 	<legend>Text Source</legend>
-	<textarea name="txt" rows="8" cols="53"><? echo $txt ?></textarea>
+	<textarea name="txt" rows="8" cols="53"><?php echo $txt; ?></textarea>
 </fieldset>
 <br>
 <fieldset>
@@ -183,9 +183,9 @@ if ($is_standalone) {
 		<td>``code``</td>
 		<td>| table |</td>
 	</tr>
-	</table>	
-	
-	<?
+	</table>
+
+	<?php
 	echo FormLabel('target').FormSelect('target', $targets, $target ? $target : $dtftarget, 1);
 	echo '<br><br>';
 	echo FormCheck('noheaders', '--no-headers', $noheaders);
@@ -202,8 +202,8 @@ if ($is_standalone) {
 <br>
 <input type="submit" value="Convert!">
 </form>
-   
-<?
+
+<?php
 #----------------------------[ PROCESSING ]--------------------------
 
 if ($target){
@@ -227,20 +227,20 @@ if ($target){
 
 	# Show results
 	?>	
-	<h3>Text converted to <? echo strtoupper($target) ?></h3>
+	<h3>Text converted to <?php echo strtoupper($target); ?></h3>
 
-	<pre id="output"><? echo htmlspecialchars(`echo $txt | $prog $cmd`) ?>
+	<pre id="output"><?php echo htmlspecialchars(`echo $txt | $prog $cmd`); ?>
 	</pre>
-	
-	<?
+
+	<?php
 	if ($target == 'html' || $target == 'xhtml') {
 	?>
-		<h3><? echo strtoupper($target) ?> parsed</h3>
+		<h3><?php echo strtoupper($target); ?> parsed</h3>
 
 		<div id="parsed">
-		<? echo `echo $txt | $prog -H $cmd` ?>
+		<?php echo `echo $txt | $prog -H $cmd`; ?>
 		</div>
-	<?
+	<?php
 	}
 }
 
@@ -256,6 +256,6 @@ Author: <a href="http://aurelio.net/en/">Aurelio Jargas</a>
 
 </body>
 </html>
-<?
+<?php
 }
 ?>
