@@ -5523,7 +5523,7 @@ class BlockMaster:
                     final.extend(' ' + line for line in aa_box(li, AA, CONF['width'] - 2, False, web=CONF['web']))
                 else:
                     for line in result:
-                        if not line or (blockname == 'table' and not CONF['slides']): 
+                        if not line or (blockname == 'table' and not CONF['slides']) or (blockname == 'quote' and CONF['slides']): 
                             final.append(line)
                         else:
                             if CONF['slides'] and blockname == 'table':
