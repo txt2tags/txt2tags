@@ -5902,7 +5902,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if CONF['target'] == 'aat' and CONF['slides']:
-                        result.extend(aa_box([item], AA, CONF['width'] - 2, web=CONF['web']))
+                        result.extend(' ' + line for line in aa_box([item], AA, CONF['width'] - 2, web=CONF['web']))
                     else:
                         item = qline * self.depth + item
                         result.append(indent + item)  # quote line
