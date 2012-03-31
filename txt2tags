@@ -5530,7 +5530,7 @@ class BlockMaster:
                             if CONF['slides'] and blockname == 'table':
                                 final.append(line[:CONF['width']])
                             elif CONF['slides']:
-                                final.extend(' ' + line for line in textwrap.wrap(line, CONF['width'] - 2))
+                                final.extend(' ' + line for line in aa_webwrap(line, CONF['width'] - 2, CONF['web']))
                             elif CONF['web'] and '<' in line:
                                 final.extend(aa_webwrap(line, CONF['width']))
                             else:
