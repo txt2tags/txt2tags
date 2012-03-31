@@ -5014,7 +5014,7 @@ class TitleMaster:
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
             if CONF['target'] == 'aat' and CONF['slides']:
                 indent = '  ' * (level - 1)
-                if CONF['web']:
+                if CONF['web'] and not CONF['toc-only']:
                     label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
