@@ -317,6 +317,7 @@ AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_PW_TOC = {}
+AA_IMG = 0 
 AA_TITLE = ''
 AA_MARKS = []
 AA_QA = """       ________
@@ -5539,12 +5540,16 @@ class BlockMaster:
             Debug('BLOCK: %s' % result, 6)
 
         # ASCII Art processing
-        global AA_TITLE, AA_COUNT, AA_PW_TOC
+        global AA_TITLE, AA_COUNT, AA_PW_TOC, AA_IMG
         if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
+            len_res = len(result)
+            for el in result:
+                if '<img' in el:
+                    len_res = len_res + AA_IMG
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
-            if n < len(result) and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
+            if n < len_res and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 if CONF['web']:
-                    if len(result) > CONF['height']:
+                    if len_res > CONF['height']:
                         result[CONF['height'] - 8] = result[CONF['height'] - 8] + '</pre></section>'
                         for i, line in enumerate(result[CONF['height'] - 7:]):
                             j = i % (CONF['height'] - 1)
@@ -5568,7 +5573,8 @@ class BlockMaster:
                     else:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
-            AA_COUNT += len(result)
+            AA_COUNT += len(result) + AA_IMG
+            AA_IMG = 0
             if blockname in ["title", "numtitle"]:
                 AA_PW_TOC[TITLE.txt] = AA_COUNT
 
@@ -7571,6 +7577,11 @@ def parse_images(line):
             txt = embedImage(fullpath)
             if TARGET == 'aat':
                 return txt
+        
+        if TARGET == 'aat' and CONF['slides'] and CONF['web']:
+            global AA_IMG
+            mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(txt)
+            AA_IMG = int((height / 600.0) * (CONF['height'] - 1))
 
         # Ugly hack to avoid infinite loop when target's image tag contains []
         tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
