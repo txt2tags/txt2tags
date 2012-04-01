@@ -6620,7 +6620,10 @@ def doHeader(headers, config):
             page = 1
             for i, line in enumerate(config['fullBody']):
                 if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
-                    config['fullBody'][i] = (str(page) + '/' + str(AA_PAGE)).rjust(config['width'] - 1)
+                    pages = str(page) + '/' + str(AA_PAGE)
+                    l1 = aa_len_cjk(head_data['HEADER1']) + len(pages) + 2
+                    if l1 < config['width']:
+                        config['fullBody'][i] = ' ' + head_data['HEADER1'] + ' ' * (config['width'] - l1) + pages + ' '
                     page += 1
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
