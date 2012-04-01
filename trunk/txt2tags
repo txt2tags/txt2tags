@@ -6615,9 +6615,9 @@ def doHeader(headers, config):
             if config['web']:
                 bar_1 = '<section><pre>' + bar_1
             for i, line in enumerate(config['fullBody']):
-                if i % (config['height'] -1 ) == 1 and config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
+                if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
                     config['fullBody'][i] = (str(i / (config['height'] - 1) + 1) + '/' + str(total)).rjust(config['width'] - 1)
-                if i % (config['height'] -1 ) == 3 and config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
+                if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
         # Header done, let's get out
