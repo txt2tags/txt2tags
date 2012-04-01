@@ -3231,7 +3231,7 @@ def aa_under(txt, char, width, over):
 def aa_box(txt, chars, width, centred=True, web=False):
     wrap_txt = []
     for line in txt:
-        wrap_txt.extend(el for el in aa_webwrap(line, width - 4, web))
+        wrap_txt.extend(el for el in aa_textwrap(line, width - 4, web))
     len_cjk = max([aa_len_cjk(line, web) for line in wrap_txt])
     line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
     line_txt = []
@@ -3395,7 +3395,7 @@ def aa_image(image):
     return art_image
 
 
-def aa_webwrap(txt, width, web=True):
+def aa_textwrap(txt, width, web):
     if not web:
         return textwrap.wrap(txt, width)
     txt = re.split('(<a href=.*?>)|(</a>)|(<img src=.*?>)', txt)
@@ -5527,11 +5527,9 @@ class BlockMaster:
                             if CONF['slides'] and blockname == 'table':
                                 final.append(line[:CONF['width']])
                             elif CONF['slides']:
-                                final.extend(' ' + line for line in aa_webwrap(line, CONF['width'] - 2, CONF['web']))
-                            elif CONF['web'] and '<' in line:
-                                final.extend(aa_webwrap(line, CONF['width']))
+                                final.extend(' ' + line for line in aa_textwrap(line, CONF['width'] - 2, CONF['web']))
                             else:
-                                final.extend(textwrap.wrap(line, CONF['width']))
+                                final.extend(aa_textwrap(line, CONF['width'], CONF['web']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
@@ -7318,7 +7316,7 @@ def convert_this_files(configs):
 
         if myconf['target'] == 'aat' and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
-                target_body.extend(textwrap.wrap('[' + str(i + 1) + '] ' + url, myconf['width']))
+                target_body.extend(aa_textwrap('[' + str(i + 1) + '] ' + url, myconf['width'], myconf['web']))
 
         # Compose the target file Footer
         Message(_("Composing target Footer"), 1)
