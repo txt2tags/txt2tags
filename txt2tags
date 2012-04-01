@@ -316,6 +316,7 @@ AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead
 AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
+AA_PAGE = 0
 AA_PW_TOC = {}
 AA_IMG = 0 
 AA_TITLE = ''
@@ -3259,6 +3260,8 @@ def aa_header(header_data, chars, width, n, end, web):
 
 
 def aa_slide(title, char, width, web):
+    global AA_PAGE
+    AA_PAGE += 1
     res = [aa_line(char, width)]
     res.append('')
     res.append(aa_center(title, width)[:width])
@@ -6610,14 +6613,15 @@ def doHeader(headers, config):
             else:
                 template = [''] + aa_header(head_data, AA, config['width'], 2, 0, False)
         if config['slides']:
-            total = len(config['fullBody']) / (config['height'] - 1) 
             l = aa_len_cjk(head_data['HEADER2']) + aa_len_cjk(head_data['HEADER3']) + 2
             bar_1 = bar_2 = aa_line(AA['bar2'], config['width'])
             if config['web']:
                 bar_1 = '<section><pre>' + bar_1
+            page = 1
             for i, line in enumerate(config['fullBody']):
                 if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
-                    config['fullBody'][i] = (str(i / (config['height'] - 1) + 1) + '/' + str(total)).rjust(config['width'] - 1)
+                    config['fullBody'][i] = (str(page) + '/' + str(AA_PAGE)).rjust(config['width'] - 1)
+                    page += 1
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
