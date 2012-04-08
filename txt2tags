@@ -5546,10 +5546,10 @@ class BlockMaster:
                     final.extend(' ' + line for line in aa_box(result, AA, CONF['width'] - 2, False, web=CONF['web']))
                 else:
                     for line in result:
-                        if not line or (blockname == 'table' and not CONF['slides']) or (blockname == 'quote' and CONF['slides']): 
+                        if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']): 
                             final.append(line)
                         else:
-                            if CONF['slides'] and blockname == 'table':
+                            if CONF['slides'] and blockname in ('table', 'tagged', 'verb'):
                                 final.append(line[:CONF['width']])
                             elif CONF['slides']:
                                 final.extend(' ' + line for line in aa_textwrap(line, CONF['width'] - 2, CONF['web']))
