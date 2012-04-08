@@ -2446,6 +2446,7 @@ def getRules(config):
         'blanksaroundbar',        # put a blank line before and after bars
         'blanksaroundtitle',      # put a blank line before and after titles
         'blanksaroundnumtitle',   # put a blank line before and after numtitles
+        'iswrapped',              # wrap with the --width value
 
         # Value settings
         'listmaxdepth',           # maximum depth for lists
@@ -2475,6 +2476,7 @@ def getRules(config):
             'blanksaroundbar': 1,
             'blanksaroundtitle': 1,
             'blanksaroundnumtitle': 1,
+            'iswrapped': 1,
         },
         'txt2t': {
             'linkable': 1,
@@ -3059,6 +3061,9 @@ def getRules(config):
     for key in allrules:
         ret[key] = 0                         # reset all
     ret.update(myrules)                      # get rules
+
+    if ret['iswrapped'] and not config['width']:
+        config['width'] = DFT_TEXT_WIDTH
 
     return ret
 
@@ -5529,9 +5534,15 @@ class BlockMaster:
         # The next block will use it
         if result:
             self.last = blockname
-            if TARGET == 'aat':
+            if rules['iswrapped']:
                 final = []
-                if CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
+                if TARGET != 'aat':
+                    for line in result:
+                        if not line or blockname in ('verb', 'tagged'):
+                            final.append(line)
+                        else:
+                            final.extend(aa_textwrap(line, CONF['width'], False))
+                elif CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
                     final.extend(' ' + line for line in aa_box(result, AA, CONF['width'] - 2, False, web=CONF['web']))
                 else:
                     for line in result:
