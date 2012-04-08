@@ -1066,7 +1066,7 @@ def getTags(config):
         'title3'               : '\a'                     ,
         'title4'               : '\a'                     ,
         'title5'               : '\a'                     ,
-        'blockQuoteLine'       : '\t'                     ,
+        'blockQuoteLine'       : '        '               ,
         'listItemOpen'         : AA['bullet'] + ' '       ,
         'numlistItemOpen'      : '\a. '                   ,
         'bar1'                 : aa_line(AA['bar1'], config['width']),
