@@ -3260,7 +3260,16 @@ def aa_box(txt, chars, width, centred=True, web=False):
     return [line_box] + line_txt + [line_box]
 
 
-def aa_header(header_data, chars, width, n, end, web):
+def aa_header(header_data, chars, width, height, web, slides):
+    n_h = len([v for v in header_data if v.startswith("HEADER") and header_data[v]])
+    if not n_h:
+        return []
+    if not slides:
+        n, end = 2, 0
+    else:
+        x = height - 3 - (n_h * 3)
+        n = x / (n_h + 1)
+        end = x % (n_h + 1)
     header = [aa_line(chars['bar2'], width)]
     header.extend([''] * n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
@@ -3269,8 +3278,10 @@ def aa_header(header_data, chars, width, n, end, web):
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
-    if web:
+    if web and slides:
         header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
+    if not slides:
+        header = [''] + header
     return header
 
 
@@ -6623,16 +6634,7 @@ def doHeader(headers, config):
 
     # ASCII Art and rst don't use a header template, aa_header() formats the header
     if target == 'aat' and not (config['spread'] and not config['web']):
-        n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
-        template = []
-        if n_h:
-            if config['slides']:
-                x = config['height'] - 3 - (n_h * 3)
-                n = x / (n_h + 1)
-                end = x % (n_h + 1)
-                template = aa_header(head_data, AA, config['width'], n, end, CONF['web'])
-            else:
-                template = [''] + aa_header(head_data, AA, config['width'], 2, 0, False)
+        template = aa_header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'])
         if config['slides']:
             l = aa_len_cjk(head_data['HEADER2']) + aa_len_cjk(head_data['HEADER3']) + 2
             bar_1 = bar_2 = aa_line(AA['bar2'], config['width'])
