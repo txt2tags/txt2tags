@@ -5250,10 +5250,13 @@ class TableMaster:
             cells = map(lambda x: enclose_me('fontBold', x), cells)
 
         # Add cell BEGIN/END tags
-        for cell in cells:
+        for i, cell in enumerate(cells):
             copen = open_
             cclose = close
             chead = head
+            if self.vert_head and i == 0:
+                copen = TAGS['tableTitleCellOpen']
+                cclose = TAGS['tableTitleCellClose'] + '\n'
 
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
