@@ -3261,13 +3261,15 @@ def aa_box(txt, chars, width, centred=True, web=False):
 
 
 def aa_header(header_data, chars, width, height, web, slides):
-    n_h = len([v for v in header_data if v.startswith("HEADER") and header_data[v]])
+    h = [header_data[v] for v in header_data if v.startswith("HEADER") and header_data[v]]
+    n_h = len(h)
+    height_box = sum([len(aa_box([header], chars, width)) for header in h])
     if not n_h:
         return []
     if not slides:
         n, end = 2, 0
     else:
-        x = height - 3 - (n_h * 3)
+        x = height - 3 - height_box
         n = x / (n_h + 1)
         end = x % (n_h + 1)
     header = [aa_line(chars['bar2'], width)]
