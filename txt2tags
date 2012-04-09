@@ -3126,7 +3126,7 @@ def getRegexes():
     'bar':
         re.compile(r'^(\s*)([_=-]{20,})\s*$'),
     'table':
-        re.compile(r'^ *\|\|? '),
+        re.compile(r'^ *\|(\||_|/)? '),
     'blankline':
         re.compile(r'^\s*$'),
     'comment':
@@ -5110,6 +5110,7 @@ class TableMaster:
             prop = self.parse_row(line)
             self.border    = prop['border']
             self.title     = prop['title']
+            self.vert_head = prop['vert_head']
             self.align     = prop['align']
             self.cellalign = prop['cellalign']
             self.cellspan  = prop['cellspan']
@@ -5321,13 +5322,21 @@ class TableMaster:
     def parse_row(self, line):
         # Default table properties
         ret = {
-            'border': 0, 'title': 0, 'align': 'Left',
+            'border': 0, 'title': 0, 'vert_head': 0, 'align': 'Left',
             'cells': [], 'cellalign': [], 'cellspan': []
         }
         # Detect table align (and remove spaces mark)
         if line[0] == ' ':
             ret['align'] = 'Center'
         line = line.lstrip()
+        # Detect vertical header mark
+        if line[1] == '_':
+            ret['vert_head'] = 1
+            line = line[0] + line[2:]
+        # Detect horizontal and vertical headers mark
+        if line[1] == '/':
+            ret['vert_head'] = 1
+            line = line[0] + '|' + line[2:]
         # Detect title mark
         if line[1] == '|':
             ret['title'] = 1
