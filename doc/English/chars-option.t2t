@@ -25,7 +25,7 @@ There is two exceptions:
 
 === Rendering ===
 
-corner, border and side define box for first level titles (quotes and lists are also boxed by the aap target). They are used for the tables too, with hhead the horizontal header char and vhead (only used in the aas target) the vertical header char:
+corner, border and side define box for first level titles (quotes and lists are also boxed by the aap target). They are used for the tables too, with hhead the horizontal header char and vhead the vertical header char:
 
 ```
                 +------------------------------+
