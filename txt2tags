@@ -5829,7 +5829,7 @@ class BlockMaster:
                     data = spreadsheet(completes_table(self.tableparser.rows), 'txt')
                 return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, False, self.tableparser.align, False, False) + ['']
+                return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
