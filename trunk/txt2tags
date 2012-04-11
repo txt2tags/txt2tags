@@ -5896,6 +5896,7 @@ class BlockMaster:
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.cellalign = len_line
             self.tableparser.colalign = len_line * ['Left']
+            self.tableparser.vert_head = True
             self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
             for i, row in enumerate(self.tableparser.rows[1:]):
                 row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i+1][0], data[i+1][1], ['Left']*len_line, 0
