@@ -3317,6 +3317,19 @@ class SpreadSheet:
             return self._cells[key].strip()
 
 
+def office():
+    global SIN, COS, TAN, ASIN, ACOS, ATAN, SINH, COSH, TANH
+    SIN = sin
+    COS = cos
+    TAN = tan
+    ASIN = asin
+    ACOS = acos
+    ATAN = atan
+    SINH = sinh
+    COSH = cosh
+    TANH = tanh
+
+
 def spreadsheet(data, format):
     n = max([len(line[0]) for line in data])
     if n > 676:
@@ -4297,6 +4310,7 @@ class ConfigMaster:
         if target == 'aas':
             target, config['spread'] = 'aat', True
             exec('from math import *', globals())
+            office()
         if target == 'aatw':
             target, config['web'] = 'aat', True
         if target == 'aapw':
@@ -4304,12 +4318,15 @@ class ConfigMaster:
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
             exec('from math import *', globals())
+            office()
         if target == 'htmls':
             config['spread'], config['web'] = True, True
             exec('from math import *', globals())
+            office()
         if target == 'texs':
             config['spread'] = True
             exec('from math import *', globals())
+            office()
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if config['web']:
