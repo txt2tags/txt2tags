@@ -3245,25 +3245,29 @@ def aa_under(txt, char, width, over):
     return ret
 
 
-def aa_box(txt, chars, width, centred=True, web=False):
+def aa_box(txt, chars, width, centred=True, web=False, slides=False):
     wrap_txt = []
+    char_start = ''
+    if slides:
+        width = width - 2
+        char_start = ' '
     for line in txt:
         wrap_txt.extend(aa_textwrap(line, width - 4, web))
     len_cjk = max([aa_len_cjk(line, web) for line in wrap_txt])
-    line_box = aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
+    line_box = char_start + aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
     line_txt = []
     for line in wrap_txt:
         if centred:
-            line_txt.append(aa_center(chars['side'] + ' ' + aa_center(line, len_cjk, web) + ' ' + chars['side'], width, web))
+            line_txt.append(char_start + aa_center(chars['side'] + ' ' + aa_center(line, len_cjk, web) + ' ' + chars['side'], width, web))
         else:
-            line_txt.append(aa_center(chars['side'] + ' ' + line + ' ' * (len_cjk - aa_len_cjk(line, web) + 1) + chars['side'], width, web))
+            line_txt.append(char_start + aa_center(chars['side'] + ' ' + line + ' ' * (len_cjk - aa_len_cjk(line, web) + 1) + chars['side'], width, web))
     return [line_box] + line_txt + [line_box]
 
 
 def aa_header(header_data, chars, width, height, web, slides):
     h = [header_data[v] for v in header_data if v.startswith("HEADER") and header_data[v]]
     n_h = len(h)
-    height_box = sum([len(aa_box([header], chars, width)) for header in h])
+    height_box = sum([len(aa_box([header], chars, width, slides=slides)) for header in h])
     if not n_h:
         return []
     if not slides:
@@ -3276,7 +3280,7 @@ def aa_header(header_data, chars, width, height, web, slides):
     header.extend([''] * n)
     for h in 'HEADER1', 'HEADER2', 'HEADER3':
         if header_data[h]:
-            header.extend(aa_box([header_data[h]], chars, width))
+            header.extend(aa_box([header_data[h]], chars, width, slides=slides))
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
@@ -5585,7 +5589,7 @@ class BlockMaster:
                         else:
                             final.extend(aa_textwrap(line, CONF['width'], False))
                 elif CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
-                    final.extend(' ' + line for line in aa_box(result, AA, CONF['width'] - 2, False, web=CONF['web']))
+                    final.extend(aa_box(result, AA, CONF['width'], False, web=CONF['web'], slides=CONF['slides']))
                 else:
                     for line in result:
                         if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']): 
@@ -5971,7 +5975,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if CONF['target'] == 'aat' and CONF['slides']:
-                        result.extend(' ' + line for line in aa_box([item], AA, CONF['width'] - 2, web=CONF['web']))
+                        result.extend(aa_box([item], AA, CONF['width'], web=CONF['web'], slides=CONF['slides']))
                     else:
                         item = qline * self.depth + item
                         result.append(indent + item)  # quote line
