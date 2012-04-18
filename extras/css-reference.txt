@@ -32,7 +32,7 @@ background-image      : none, url(file.jpg)
 background-repeat     : repeat, repeat-x, repeat-y, no-repeat
 background-attachment : scroll, fixed
 background-position   : top, center, bottom, left, center, right
-background            : white url(file.jpg) repeat-y
+background            : white url(file.jpg) no-repeat top left
 
 %
 %%% Text Properties
