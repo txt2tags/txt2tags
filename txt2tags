@@ -1667,7 +1667,7 @@ def getTags(config):
         # Just appending attributes doesn't work:
         # ||<-2><:> no no no ||
         'comment'               : '/* \a */'      ,
-        'TOC'                   : '[[TableOfContents]]'
+        'TOC'                   : '<<TableOfContents>>'
     },
 
     # http://code.google.com/p/support/wiki/WikiSyntax
