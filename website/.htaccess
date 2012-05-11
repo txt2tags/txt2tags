@@ -85,6 +85,7 @@ Redirect permanent /pt/comments.html /misc/pt-comentarios.html
 Redirect permanent /pt/comments.t2t  /misc/pt-comentarios.t2t
 
 # Redirect some important old Portuguese pages to the english version
+RedirectMatch permanent ^/pt/?$      /
 Redirect permanent /pt/index.html    /
 Redirect permanent /pt/online.php    /online.php
 
