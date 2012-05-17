@@ -117,7 +117,7 @@ import struct
 import unicodedata
 # base64 is required by embedImage, so I import it here // by Chaos
 
-import base64 
+import base64
 
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
@@ -328,7 +328,7 @@ AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_PAGE = 0
 AA_PW_TOC = {}
-AA_IMG = 0 
+AA_IMG = 0
 AA_TITLE = ''
 AA_MARKS = []
 AA_QA = """       ________
@@ -344,7 +344,7 @@ AA_QA = """       ________
         |###|
         |###|
          \o/
-          
+
          ___
         F2.7G
          (C)""".split('\n')
@@ -1250,7 +1250,7 @@ def getTags(config):
         'email'                : '<A HREF="mailto:\a">\a</A>' ,
         'emailMark'            : '<A HREF="mailto:\a">\a</A>' ,
         'img'                  : '<IMG~A~ SRC="\a" BORDER="0" ALT="">',
-        'imgEmbed'             : '<IMG~A~ SRC="\a" BORDER="0" ALT="">', 
+        'imgEmbed'             : '<IMG~A~ SRC="\a" BORDER="0" ALT="">',
         '_imgAlignLeft'        : ' ALIGN="left"'  ,
         '_imgAlignCenter'      : ' ALIGN="middle"',
         '_imgAlignRight'       : ' ALIGN="right"' ,
@@ -3417,7 +3417,7 @@ def aa_center(txt, width, web=False):
 
 
 ##############################################################################
- 
+
 ########################## SpreadSheet engine ################################
 
 
@@ -3454,7 +3454,7 @@ def office():
 def spreadsheet(data, format):
     n = max([len(line[0]) for line in data])
     if n > 676:
-        Error(_("Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)        
+        Error(_("Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)
     s = SpreadSheet()
     for j, row in enumerate(data):
         for i, el in enumerate(row[0]):
@@ -4342,7 +4342,7 @@ class ConfigMaster:
                 config['height'], config['width'] = 28, 73
             if not config['width'] and  not config['height'] and os.name == 'posix':
                 import fcntl, termios
-                data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00') 
+                data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
                 config['height'], config['width'] = struct.unpack('4H',data)[:2]
             if not config['width']:
                 config['width'] = DFT_SLIDE_WIDTH
@@ -4370,7 +4370,7 @@ class ConfigMaster:
                 if len(config['chars']) != len(AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(AA_VALUES), len(config['chars'])))
-                if isinstance(config['chars'], unicode): 
+                if isinstance(config['chars'], unicode):
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
                             Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
@@ -4391,7 +4391,7 @@ class ConfigMaster:
                     chars_bullet, char_8  = '*+-', config['chars'][7]
                     if char_8 not in chars_bullet:
                         if locale.getpreferredencoding() == 'UTF-8':
-                            char_8 = char_8.encode('utf-8') 
+                            char_8 = char_8.encode('utf-8')
                         Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, char_8))
                     RST = dict(zip(RST_KEYS, config['chars']))
 
@@ -5043,7 +5043,7 @@ class TitleMaster:
             else:
                 under = aa_under(tagged, AA[level], CONF['width'], False)
             if CONF['web'] and CONF['toc'] and self.level <= CONF['toc-level'] and not CONF['slides']:
-                ret.extend([anchor] + under + ['</a>']) 
+                ret.extend([anchor] + under + ['</a>'])
             else:
                 ret.extend(under)
         elif TARGET == 'rst' and self.level == 1:
@@ -5074,7 +5074,7 @@ class TitleMaster:
             if CONF['target'] == 'aat' and CONF['slides']:
                 indent = '  ' * (level - 1)
                 if CONF['web'] and not CONF['toc-only']:
-                    label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0' 
+                    label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0'
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
@@ -5597,7 +5597,7 @@ class BlockMaster:
                     final.extend(aa_box(result, AA, CONF['width'], False, web=CONF['web'], slides=CONF['slides']))
                 else:
                     for line in result:
-                        if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']): 
+                        if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']):
                             final.append(line)
                         else:
                             if CONF['slides'] and blockname in ('table', 'tagged', 'verb'):
@@ -5849,7 +5849,7 @@ class BlockMaster:
         return result
 
     def table(self):
-        self.tablecount += 1 
+        self.tablecount += 1
         result = []
 
         if TARGET == 'aat':
@@ -5873,7 +5873,7 @@ class BlockMaster:
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
-                aafigure.render(unicode('\n'.join(aa_t)), t_name, {'format':'png', 'background':'#000000', 'foreground':'#FFFFFF', 'textual':True})  
+                aafigure.render(unicode('\n'.join(aa_t)), t_name, {'format':'png', 'background':'#000000', 'foreground':'#FFFFFF', 'textual':True})
                 return ['%center', '%newimage "' + t_name + '"']
             except:
                 return ['%font "mono"'] + aa_t + ['']
@@ -6327,7 +6327,7 @@ def cc_formatter(conf, size):
         url = 'http://creativecommons.org/licenses/' + cc + '/3.0'
         img = 'http://i.creativecommons.org/l/' + cc + end_img
         alt = 'Creative Commons ' + cc
-        ret = '<a href="' + url + '"><img src="' + img + '" alt="' + alt + '"></a>' 
+        ret = '<a href="' + url + '"><img src="' + img + '" alt="' + alt + '"></a>'
     else:
         if size == 'small':
             ret = 'Creative Commons %s' % cc
@@ -7332,7 +7332,7 @@ def convert_this_files(configs):
         target_foot = []
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
-        
+
         if myconf['target'] in ['aat', 'txt', 'rst', 'mgp'] and myconf['encoding'].lower() == 'utf-8':
             decode_head, decode_body = [], []
             try:
@@ -7537,7 +7537,7 @@ def embedImage(filename):
         line = "data: image/%s;base64,"%mytype
         line = line+base64.b64encode(file(filename).read())
         return line
-        
+
     elif TARGET == 'rtf':
         global RTFIMGID
         RTFIMGID += 1
@@ -7646,7 +7646,7 @@ def parse_images(line):
             txt = embedImage(fullpath)
             if TARGET == 'aat':
                 return txt
-        
+
         if TARGET == 'aat' and CONF['slides'] and CONF['web']:
             global AA_IMG
             mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(txt)
