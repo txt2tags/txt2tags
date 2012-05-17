@@ -380,6 +380,15 @@ SEPARATOR = '\x01'
 LISTNAMES = {'-': 'list', '+': 'numlist', ':': 'deflist'}
 LINEBREAK = {'default': '\n', 'win': '\r\n', 'mac': '\r'}
 
+ESCAPES = {  'pm6':  [(ESCCHAR + '<', 'vvvvPm6Bracketvvvv', r'<\#92><')],
+             'man':  [('-', 'vvvvManDashvvvv', r'\-')],
+             'sgml': [('[', 'vvvvSgmlBracketvvvv', '&lsqb;')],
+             'lout': [('/', 'vvvvLoutSlashvvvv', '"/"')],
+             'tex':  [('_', 'vvvvTexUndervvvv', r'\_'),
+                      ('\\', 'vvvvTexBackslashvvvv', r'$\backslash$')],
+             'rtf':  [('\t', 'vvvvRtfTabvvvv', ESCCHAR + 'tab')],
+          }
+
 # Platform specific settings
 LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']
 
@@ -4722,6 +4731,7 @@ class MaskMaster:
             # Protect tagged text
             if t >= 0 and t < r and t < v:
                 txt = regex['tagged'].search(line).group(1)
+                txt = doProtect(TARGET, txt)
                 self.taggedbank.append(txt)
                 line = regex['tagged'].sub(self.taggedmask, line, 1)
 
@@ -6843,6 +6853,19 @@ def convertUnicodeRTF(match):
     return ESCCHAR + 'u' + str(num) + '?'
 
 
+def get_escapes(target):
+    if target == 'texs':
+        target = 'tex'
+    return ESCAPES.get(target, [])
+
+
+def doProtect(target, txt):
+    "Protect text in tagged blocks from being escaped."
+    for before, protected, after in get_escapes(target):
+        txt = txt.replace(before, protected)
+    return txt
+
+
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = 'vvvvThisEscapingSuxvvvv'
@@ -6901,19 +6924,11 @@ def doEscape(target, txt):
 # TODO man: where - really needs to be escaped?
 def doFinalEscape(target, txt):
     "Last escapes of each line"
-    if   target == 'pm6' :
-        txt = txt.replace(ESCCHAR + '<', r'<\#92><')
-    elif target == 'man' :
-        txt = txt.replace('-', r'\-')
-    elif target == 'sgml':
-        txt = txt.replace('[', '&lsqb;')
-    elif target == 'lout':
-        txt = txt.replace('/', '"/"')
-    elif target in ['tex', 'texs'] :
-        txt = txt.replace('_', r'\_')
-        txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
-    elif target == 'rtf':
-        txt = txt.replace('\t', ESCCHAR + 'tab')
+    for before, protected, after in get_escapes(target):
+        # If the string has not been protected, replace it.
+        txt = txt.replace(before, after)
+        # If the string has been protected, restore it.
+        txt = txt.replace(protected, before)
     return txt
 
 
