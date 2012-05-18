@@ -4,6 +4,8 @@
 # Quick tests to spot changes in samples.
 # NOT integrated into main test suite, you must run it alone.
 #
+# Just add the new target sample to SVN-ROOT/samples/ and it will be tested.
+#
 # Tip: regenerate affected samples:
 # cd ../../ && for t in TARGETS; do txt2tags -t $t samples/sample.t2t; done
 
