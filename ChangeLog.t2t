@@ -35,6 +35,70 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 % ----------------------------------------------------------------------------
 
+
+= Version 2.7 (2012-##-##) =
+
+% Development cycle: r383-r###
+
+- Read [the announce http://txt2tags.wordpress.com/].
+
+	
+- New target: bbcode (bbcode). <thanks Eric Forgeot> [r410]
+- New target: HTML5 (html5). <thanks Sami Hostikka> [r445]
+- New target: markdown (md). <thanks Eric Forgeot> [r408]
+- New target: Redmine Wiki (red). <thanks Booba §kaya> [r448] 
+- New target: Spip (spip). <thanks Mickael Brangeon> [r449]
+- New target: xhtml strict (xhtmls). <thanks Eric Forgeot> [r409]
+- New target: RTF (rtf). <thanks Jason Seeley> [r498][r499][r502]-[r504]
+
+- New option: ``-T,--template`` to apply user-defined templates. <thanks Emmanuel Godard> [r407]
+- New option: ``--fix-path`` to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with ``--outfile``. Use ``--no-fix-path`` to turn it off. [r564]
+- New option: ``--verbose message`` for ignored configs. [r529]
+
+- New rule: ``'listlineafteropen'`` to be used by targets where listItemLine defines the nesting and listItemOpen defines the list item id char. [r451]
+- New rule: ``'escapexmlchars'`` to escape XML chars. [r569]
+
+- New filter: ``%!PostVoodoo``. [r446]
+
+- New command ``%!csvheader`` to include an external CSV file as a table with its first line as header. <thanks Florent Gallaire> [r522]
+
+- New macros: ``%%appname``, ``%%appversion``, ``%%appurl``. [r469] [#68]
+- New macros: ``%%target``, ``%%cmdline``. [r474][r479][r480] [#68]
+- New macros: ``%%header1``, ``%%header2``, ``%%header3``. [r483] [#68]
+- New macro: ``%%encoding``. [r482]
+
+- art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [515], bold/italic/underline/strike support [r521]
+
+- Wikipedia: Now escaping <, > and & chars. [r568] [#93]
+
+
+- i18n: Portuguese documentation converted to UTF-8. [r403][r404][r405][r406]
+- i18n: Portuguese sample File updated. [r494]
+- i18n: Web interface: Now the input text is expected to be in UTF-8. <thanks jesuscanonavarro> [r497] [#70]
+
+- Docs: Markup Demo in Japanese. <thanks Mage Whopper> [r393]
+- Docs: Sample File in Japanese. <thanks Mage Whopper> [r402]
+
+- txt2tags code ported to Python 3 branch. <thanks João Bernardo Vianna> [r384][r385] [r386]	
+
+- New dev tool dist/compare-targets.py to quickly spot differences between two or more targets. [r447]
+- Code reformatting to check for python style deviations (PEP-8), as discussed in [#67]. [r463]-[r467]  [r534]-[r555]
+
+- Now remote URLs (http:// and https:// can be loaded as local files. [r525]
+- Now supporting remote http templates. [r526]
+
+- Bugfix: ``%!include`` path bug, with patches from Emmanuel Godard. [r422] [r423]
+- Bugfix: Fixed image handling code. Now TXT and other targets whose image tag is ''[image.png]'' also benefit from the path adjustment code. [r442]
+- Bugfix: The path adjustment is now also applied to links as ``[Foo foo.html]``. [r443]
+- Bugfix: art target [r472] [r477]
+- Bugfix: HTML, XHTML and XHTMLS: moved anchors as title ids [r475]
+- Bugfix: Fixed the problem with CSS files path when using ``%!includeconf`` from a different folder. [#71]
+- Bugfix: ``%%mtime`` now working for remote files. [r530] [# 84]
+- Bugfix: Now detects missing remote files (404). [r531] [# 84]
+
+- **IMPORTANT:** This release requires Python 2.4 or newer, Python 2.5 adviced to use the SQLite target.
+
+
 = Version 2.6 (2010-11-05) =
 
 % Development cycle: r9-r367
