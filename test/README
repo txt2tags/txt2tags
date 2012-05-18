@@ -1,0 +1,158 @@
+txt2tags test-suite
+http://txt2tags.org
+
+Txt2tags features are automatically tested here.
+
+---------------------------------------------------------------------
+
+Usage:
+
+    ./run.py                  # perform all the tests
+    ./run.py headers          # just test the 'headers' module
+    ./run.py headers marks    # test 'headers' and 'marks'
+
+Config:
+
+    If the txt2tags executable is not in the default location (..),
+    you can set the path at the top of lib.py:
+
+    TXT2TAGS = '../txt2tags'
+
+Extra tests, not yet integrated into main suite:
+
+    ./sample/run.sh
+    ./art/run.sh
+    ./path/run.sh
+    ./outfile/run.sh
+
+---------------------------------------------------------------------
+
+MODULES
+
+There are several test modules (the folders). Inside them you will
+find these files/folders:
+
+run.py
+    The script that will be run to perform the module's tests. It's
+    called by the main ../run.py file and can't be run alone.
+
+ok/
+    The OK-templates folder. Each file here holds the correct output
+    for a performed test.
+
+error/
+    The error folder, created automatically when a test fails. The
+    output of each failed test is saved to a file, making it easy to
+    compare with the desired output in the 'ok' folder.
+
+*.t2t
+    The tests.
+
+    Note: If there are no t2t files, they're generated on the fly by
+          the module's run.py.
+
+---------------------------------------------------------------------
+
+HOW IT WORKS
+
+The main run.py script runs the modulename/run.py script for all the
+informed modules.
+
+The module's run.py script perform all the module's tests. Basically
+it converts each of the .t2t files and compares the results with the
+template inside the 'ok' folder. If they match, the test is OK. If
+there's any difference, the test results is saved to a file inside
+the 'error' folder.
+
+    Note: Some modules are not yet integrated into the test suite.
+          They use a special run.sh shell script and must be run alone:
+          art/run.sh
+          outfile/run.sh
+          path/run.sh
+          sample/run.sh
+
+---------------------------------------------------------------------
+
+HOW TO FIX ERRORS
+
+For example, let's say the test marks/link.t2t is broken. You run:
+
+    $ ./run.py marks
+    txt2tags version 2.6.891 <http://txt2tags.org>
+
+    Base command used for all tests:
+      /a/txt2tags/svn-current/txt2tags -q --no-rc
+
+    Entering on module marks
+      Testing comment ... OK
+      Testing image ... OK
+      Testing inline ... OK
+      Testing line ... OK
+      Testing link ... FAILED                <----------------
+      Testing list ... OK
+      Testing paragraph ... OK
+      Testing quote ... OK
+      Testing table ... OK
+      Testing title ... OK
+      Testing verbatim ... OK
+      Testing raw ... OK
+      Testing deflist ... OK
+      Testing tagged ... OK
+      Testing numtitle ... OK
+      Testing numlist ... OK
+
+    Totals: 16 tests (15 ok / 1 failed)
+
+    Check out the files with errors:         <----------------
+    marks/error/link.html
+
+Now the marks/error folder was created and the test results
+was saved to the marks/error/link.html file. To check what
+is wrong, just diff it with the OK file:
+
+    cd marks
+    diff ok/link.html error/link.html
+
+Now analyze the differences.
+
+If it's a bug in the txt2tags code, fix it and run the test
+again until it's OK.
+
+If the txt2tags behavior changed and now that's the desired
+output, you should update the OK template.
+
+---------------------------------------------------------------------
+
+HOW TO ADD A NEW TEST
+
+Just create a new .t2t file inside the related module, and put the
+desired output inside the 'ok' folder.
+
+For example, if a new mark 'foobar' is created, you should add a
+marks/foobar.t2t file to test the feature, and a marks/ok/foobar.html
+file with the correct output. And that's it.
+
+    Note: The new file will be tested because marks/run.py tests *.t2t
+
+    Note: HTML is the default target in 'marks' module. But it varies
+          in other modules.
+
+Each module's run.py have its own way of doing tests. Read it to
+understand how the tests are performed. In the 'headers' module for
+example, there are no t2t files, they're generated on the fly.
+
+Except special cases, each .t2t file inside a module is a full
+txt2tags file. So you can tweak it as needed, adding %!settings,
+%!postproc, everything.
+
+---------------------------------------------------------------------
+
+HANDY COMMANDS
+
+Remove all the error files:
+
+    rm -rf */error/
+
+Review (diff) all the errors in one step:
+
+    for f in */error/*; do diff -u ${f/error/ok} $f; done
