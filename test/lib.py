@@ -16,7 +16,7 @@ DIR_ERROR = 'error'
 OK = FAILED = 0
 ERROR_FILES = []
 
-MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be runned alone."
+MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
 
 # force absolute path to avoid problems, set default options
 TXT2TAGS = os.path.abspath(TXT2TAGS) + ' -q --no-rc'
