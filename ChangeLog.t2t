@@ -50,10 +50,15 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New target: Spip (spip). <thanks Mickael Brangeon> [r449]
 - New target: xhtml strict (xhtmls). <thanks Eric Forgeot> [r409]
 - New target: RTF (rtf). <thanks Jason Seeley> [r498][r499][r502]-[r504]
+- New target: ASCII Art slides (arts, renamed later aap). <thanks Florent Gallaire> [r612][r618]
+- New target: ASCII Art Spreadsheet (aas). <thanks Florent Gallaire> [r618]
+- New target: CSV spreadsheet (csv). <thanks Florent Gallaire> [r621]
+- New target: ODS Open Document Spreadsheet (ods). <thanks Florent Gallaire> [r632][r634]
 
 - New option: ``-T,--template`` to apply user-defined templates. <thanks Emmanuel Godard> [r407]
 - New option: ``--fix-path`` to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with ``--outfile``. Use ``--no-fix-path`` to turn it off. [r564]
 - New option: ``--verbose message`` for ignored configs. [r529]
+- New option: ``--embed-images`` for RTF files. [r629][r631]
 
 - New rule: ``'listlineafteropen'`` to be used by targets where listItemLine defines the nesting and listItemOpen defines the list item id char. [r451]
 - New rule: ``'escapexmlchars'`` to escape XML chars. [r569]
@@ -67,22 +72,33 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New macros: ``%%header1``, ``%%header2``, ``%%header3``. [r483] [#68]
 - New macro: ``%%encoding``. [r482]
 
-- art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [515], bold/italic/underline/strike support [r521]
-
-- Wikipedia: Now escaping <, > and & chars. [r568] [#93]
+- Art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618]
 
 
-- i18n: Portuguese documentation converted to UTF-8. [r403][r404][r405][r406]
-- i18n: Portuguese sample File updated. [r494]
+- Wikipedia: Now escaping ``<``, ``>`` and ``&`` chars. [r568] [#93]
+
+
+- i18n: Portuguese documentation converted to UTF-8. [r403][r404][r405][r406][r628] [#98]
+- i18n: Portuguese sample file and po updated. [r494][r627]
 - i18n: Web interface: Now the input text is expected to be in UTF-8. <thanks jesuscanonavarro> [r497] [#70]
+- i18n: Now using Transifex to handle PO files translation (on http://www.transifex.net/projects/p/txt2tags). [r603] [#81]
+- i18n: Program messages in Malay. <thanks Muhammad Fariz> [r610]
+- i18n: Program messages in Spanish (Chile). <thanks Ricardo A. Hermosilla Carrillo> [r626]
 
 - Docs: Markup Demo in Japanese. <thanks Mage Whopper> [r393]
 - Docs: Sample File in Japanese. <thanks Mage Whopper> [r402]
+- Docs: Sample File in Italian. <thanks Ruggero Furlanetto> [r586]
+- Docs: Markup Demo in Russian. <thanks Kato Kontenta> [r587]
+- Docs: Markup Demo: New cleaner style. Original and all translations now using a default remote CSS file [r588], All translations converted to UTF-8 [r589]
+- Docs: All manpages converted to UTF-8. [r590]
+- Docs: Updated docs to UTF-8. [r615]
+
+- extras: Updated Kate text editor definition. [r623]
 
 - txt2tags code ported to Python 3 branch. <thanks João Bernardo Vianna> [r384][r385] [r386]	
 
 - New dev tool dist/compare-targets.py to quickly spot differences between two or more targets. [r447]
-- Code reformatting to check for python style deviations (PEP-8), as discussed in [#67]. [r463]-[r467]  [r534]-[r555]
+- Code reformatting to check for python style deviations (PEP-8), as discussed in [#67]. [r463]-[r467]  [r534]-[r555] [r602]
 
 - Now remote URLs (http:// and https:// can be loaded as local files. [r525]
 - Now supporting remote http templates. [r526]
@@ -95,6 +111,10 @@ HTML: The full version, used in the txt2tags website. This file contents
 - Bugfix: Fixed the problem with CSS files path when using ``%!includeconf`` from a different folder. [#71]
 - Bugfix: ``%%mtime`` now working for remote files. [r530] [# 84]
 - Bugfix: Now detects missing remote files (404). [r531] [# 84]
+- Bugfix: Moin target. [r578][r582]
+- Bugfix: Refactoring for speed. [r607][r608]
+
+
 
 - **IMPORTANT:** This release requires Python 2.4 or newer, Python 2.5 adviced to use the SQLite target.
 
