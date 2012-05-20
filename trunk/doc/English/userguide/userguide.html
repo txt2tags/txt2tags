@@ -225,6 +225,15 @@ The following is a list of all the structures supported by txt2tags.
   data files remain readable outside the Wiki and eases the creation of
   structured texts. All data is stored in plain text files - no
   database is required.
+</DL>
+
+<DL>
+<DT><B>Foswiki / TWiki</B></DT><DD>
+  <A HREF="http://foswiki.org/">Foswiki, or Twiki</A>, is a flexible, powerful, 
+  and easy to use enterprise wiki and collaboration platform. 
+  The structured wiki is typically used to run a project development 
+  space, a document management system, a knowledge base, or any other 
+  groupware tool, on an intranet or on the internet.
 <P></P>
 <DT><B>GWIKI</B></DT><DD>
   Now you can easily paste your project's current documentation into the
@@ -419,17 +428,6 @@ The following is a list of all the structures supported by txt2tags.
   The titles are underlined, and the text is basically left as is on the
   source.
 </DL>
-<DT><B>Foswiki / TWiki</B></DT><DD>
-Foswiki, or Twiki, is a flexible, powerful, and easy to use enterprise
-wiki and collaboration platform. The structured wiki is typically used
-to run a project development space, a document management system, a
-knowledge base, or any other groupware tool, on an intranet or on the
-internet.
-<P></P>
-tx2tags provides texts that can be inserted into pages. Foswiki and
-TWiki provides the ability to attach images to pages, so images 
-references are made on the attached images.
-<P></P>
 
 <P>
 Tip: Use the <CODE>--targets</CODE> command line option to get a complete list of
@@ -943,7 +941,7 @@ all the available targets.
 <TH>adoc</TH>
 <TH>art</TH>
 <TH>txt</TH>
-<TH>tml</TH>
+<TH>Y</TH>
 </TR>
 <TR>
 <TD>image align</TD>
@@ -965,7 +963,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
-<TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>table cell align</TD>
@@ -987,7 +985,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
-<TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>table column span</TD>
@@ -2670,8 +2668,8 @@ Full example (bold text are expanded macros):
 <P>
 This is the Txt2tags User Guide, converted to <B>html</B>
 by txt2tags from the <B>userguide.t2t</B> source file. The conversion
-was done at <B>2012-05-20 11:46:51</B>, but the last change on the
-source document was made on <B>2012-05-20 11:45:58</B>. Both
+was done at <B>2012-05-20 12:54:40</B>, but the last change on the
+source document was made on <B>2012-05-20 12:54:09</B>. Both
 source and converted file reside on the <B>userguide</B>
 directory.
 </P>
@@ -2774,12 +2772,12 @@ Examples:
 <TR>
 <TH>Macro</TH>
 <TH>--&gt;</TH>
-<TH>Results for on 2012, May 20 at 11:46</TH>
+<TH>Results for on 2012, May 20 at 12:54</TH>
 </TR>
 <TR>
 <TD>%%date(Converted on: %c)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>Converted on: Sun May 20 11:46:51 2012</TD>
+<TD>Converted on: Sun May 20 12:54:40 2012</TD>
 </TR>
 <TR>
 <TD>%%date(%Y-%m-%d)</TD>
@@ -2789,7 +2787,7 @@ Examples:
 <TR>
 <TD>%%date(%I:%M %p)</TD>
 <TD ALIGN="center">--&gt;</TD>
-<TD>11:46 AM</TD>
+<TD>12:54 PM</TD>
 </TR>
 <TR>
 <TD>%%date(Today is %A, on %B.)</TD>
@@ -2808,7 +2806,7 @@ accepts exactly the same formatting directives.
 </P>
 <P>
 As an example, this User Guide source file was last edited on
-<B>Sun May 20 11:45:58 2012</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
+<B>Sun May 20 12:54:09 2012</B>. This date was expanded from <CODE>%%mtime(%c)</CODE>.
 </P>
 
 <H2 ID="macro-infile">%%infile</H2>

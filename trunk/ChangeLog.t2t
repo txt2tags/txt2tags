@@ -54,6 +54,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New target: ASCII Art Spreadsheet (aas). <thanks Florent Gallaire> [r618]
 - New target: CSV spreadsheet (csv). <thanks Florent Gallaire> [r621]
 - New target: ODS Open Document Spreadsheet (ods). <thanks Florent Gallaire> [r632][r634]
+- New target: Foswiki or TWiki page (tml). <thanks Thierry Pasquier> [r904]
 
 - New option: ``-T,--template`` to apply user-defined templates. <thanks Emmanuel Godard> [r407]
 - New option: ``--fix-path`` to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with ``--outfile``. Use ``--no-fix-path`` to turn it off. [r564]
