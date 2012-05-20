@@ -122,28 +122,18 @@ purpose and features.
 
 Txt2tags is a text formatting and conversion tool.
 
-Txt2tags converts a plain text file with little marks, to any
-of the supported targets:
+Txt2tags converts a plain text file with little marks, to several supported [targets #targets]. Amongs others, there are:
 
-- HTML document
-- XHTML document
-- SGML document
-- DocBook document
-- LaTeX document
-- Lout document
-- UNIX man page
-- MagicPoint presentation
-- Creole 1.0 document
-- Wikipedia page (MediaWiki)
-- Google Wiki page
-- PmWiki page
-- DokuWiki page
-- MoinMoin page
-- PageMaker 6.0 document
-- AsciiDoc document
-- ASCII Art text
-- Plain Text (no marks)
--
+- popular Wiki markups, such as bbcode, wikipedia pages, markdown, restructuredtext and spip.
+
+- html variations: html transitional, xhtml, html5...
+
+- office documents: RTF, LaTeX documents, Open Document Spreadsheet, SQLite database (imported from tables)
+
+- plain text, including ASCII art variations.
+
+
+//See the [targets chapter #targets] to discover the full list.//
 
 ------------------------------------------------------------------------
 
@@ -243,8 +233,76 @@ The following is a list of all the structures supported by txt2tags.
 
 == Supported Targets ==[targets]
 
-: **HTML**
-  Everybody knows what HTML is. (hint: Internet)
+=== Wiki ===
+
+: **adoc**
+  AsciiDoc document
+  
+: **bbcode**
+  BBCode document
+  
+: **creole**
+  Creole 1.0 document
+
+: **DOKU**
+  [DokuWiki http://www.dokuwiki.org/dokuwiki] is a standards
+  compliant, simple to use Wiki, mainly aimed at creating documentation
+  of any kind. It is targeted at developer teams, workgroups and small
+  companies. It has a simple but powerful syntax which makes sure the
+  data files remain readable outside the Wiki and eases the creation of
+  structured texts. All data is stored in plain text files - no
+  database is required.
+
+: **GWIKI**
+  Now you can easily paste your project's current documentation into the
+  [Google Code http://code.google.com/] Wiki.
+  
+: **md**
+  Markdown document
+
+: **MOIN**
+  You don't know what [MoinMoin http://moinmo.in/] is?
+  It is a [WikiWiki http://www.c2.com/cgi/wiki]!
+
+  Moin syntax is kinda boring when you need to keep
+  ``{{{'''''adding braces and quotes'''''}}}``, so txt2tags comes with the
+  simplified marks and unified solution: one source, multi targets.
+  
+: **[PMWIKI http://en.wikipedia.org/wiki/PmWiki]**
+  [PmWiki http://www.pmwiki.org/] is a light and free wiki software written in PHP, and using no SQL database.
+  
+: **red** 
+  Redmine Wiki page
+  
+: **rst**
+  ReStructuredText document
+  
+: **spip**
+  SPIP article
+  
+: **txt2t**
+  Txt2tags document
+
+: **WIKI**
+  You've heard about the [Wikipedia http://wikipedia.org], right? So you
+  don't need to learn yet-another markup syntax. Just stick with txt2tags
+  and let it convert your text to the Wikipedia format, called
+  [MediaWiki http://en.wikipedia.org/wiki/MediaWiki].
+
+
+=== HTML ===
+
+: **aapw**
+  ASCII Art Presentation Web
+  
+: **aasw**
+  ASCII Art Spreadsheet Web
+  
+: **aatw**
+  ASCII Art Text Web
+
+: **[HTML http://en.wikipedia.org/wiki/HTML]**
+  You maybe know what HTML is. (hint: Internet)
 
   Txt2tags generates clean HTML documents, that look pretty and have
   its source readable. It DOES NOT use javascript, frames or other
@@ -253,35 +311,38 @@ The following is a list of all the structures supported by txt2tags.
   generates "//HTML 4.0 Transitional//" code.
 
   Txt2tags HTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
+  
+: **html5**
+  HTML5 page
+  
+: **htmls**
+  HTML Spreadsheet
+  
+: **wp**
+  WordPress post
 
-: **XHTML**
+: **[XHTML http://en.wikipedia.org/wiki/XHTML]**
   It is the new generation of HTML, with more strict rules.
   This makes the code easier to parse and
   understand. For the general purpose, consider it HTML. Txt2tags
   generates "//XHTML 1.0 Transitional//" code.
 
   Txt2tags XHTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
+  
+: **xhtmls**
+  XHTML Strict page
+  
 
-: **SGML**
-  It is a common document format which has powerful conversion applications
-  ([linuxdoc-tools http://packages.debian.org/linuxdoc-tools]). From a
-  single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
-  and XML documents. The tools also does automatic TOC and break
-  sections into subpages.
+=== Office ===
 
-  Txt2tags generates SGML files in the LinuxDoc system type, ready to
-  be converted with linuxdoc-tools without any extra catalog files or any
-  SGML annoying requirements.
-
-: **LATEX**
-  The preferred academic document format, it is more powerful than you
-  ever wondered. Full books, complicated formulas and any complex text
-  can be written in LaTeX. But prepare to loose your hair when you try
-  to write the tags by hand...
-
-  Txt2tags generates ready-to-use LaTeX files, doing all the complex
-  escaping tricks and exceptions. The writer just need to worry about
-  the text.
+: **csv**
+  CSV spreadsheet
+  
+: **db**
+  SQLite database
+  
+: **dbk**
+  DocBook document
 
 : **LOUT**
   Very similar to LaTeX in power, but with an easier syntax using "@"
@@ -290,15 +351,7 @@ The following is a list of all the structures supported by txt2tags.
 
   Txt2tags generates ready-to-use Lout files, which can be converted do
   PS or PDF files using the "lout" command.
-
-: **MAN**
-  UNIX man pages resist over the years. Document formats come and go,
-  and there they are, unbeatable.
-
-  There are other tools to generate man documents, but txt2tags has
-  one advantage: one source, multi targets. So the same man page
-  contents can be converted to an HTML page, Wiki document and plain text.
-
+  
 : **MGP**
   [MagicPoint http://en.wikipedia.org/wiki/MagicPoint] is a very handy presentation tool
   (hint: Microsoft PowerPoint), that uses a tagged language to define all
@@ -314,33 +367,9 @@ The following is a list of all the structures supported by txt2tags.
   ``startx -- -bpp 8``), the presentation will look pretty!
 
   The key is: convert and use. No quick fixes or requirements needed.
-
-: **WIKI**
-  You've heard about the [Wikipedia http://wikipedia.org], right? So you
-  don't need to learn yet-another markup syntax. Just stick with txt2tags
-  and let it convert your text to the Wikipedia format, called
-  [MediaWiki http://en.wikipedia.org/wiki/MediaWiki].
-
-: **GWIKI**
-  Now you can easily paste your project's current documentation into the
-  [Google Code http://code.google.com/] Wiki.
-
-: **DOKU**
-  [DokuWiki http://www.dokuwiki.org/dokuwiki] is a standards
-  compliant, simple to use Wiki, mainly aimed at creating documentation
-  of any kind. It is targeted at developer teams, workgroups and small
-  companies. It has a simple but powerful syntax which makes sure the
-  data files remain readable outside the Wiki and eases the creation of
-  structured texts. All data is stored in plain text files - no
-  database is required.
-
-: **MOIN**
-  You don't know what [MoinMoin http://moinmo.in/] is?
-  It is a [WikiWiki http://www.c2.com/cgi/wiki]!
-
-  Moin syntax is kinda boring when you need to keep
-  ``{{{'''''adding braces and quotes'''''}}}``, so txt2tags comes with the
-  simplified marks and unified solution: one source, multi targets.
+  
+: **ods**
+  Open Document Spreadsheet
 
 : **PM6**
   Adobe PageMaker 6.0 has its own tagged
@@ -357,7 +386,54 @@ The following is a list of all the structures supported by txt2tags.
   My entire portuguese [regular expression's book http://guia-er.sf.net]
   was written in VI, then converted to PageMaker with txt2tags and went to
   the publisher. It works :)
+  
+: **rtf**
+  RTF document
 
+: **[SGML http://en.wikipedia.org/wiki/SGML]**
+  It is a common document format which has powerful conversion applications
+  ([linuxdoc-tools http://packages.debian.org/linuxdoc-tools]). From a
+  single SGML file you can generate HTML, PDF, PostScript, Info, LaTeX, LyX, RTF
+  and XML documents. The tools also does automatic TOC and break
+  sections into subpages.
+
+  Txt2tags generates SGML files in the LinuxDoc system type, ready to
+  be converted with linuxdoc-tools without any extra catalog files or any
+  SGML annoying requirements.
+  
+: **[LATEX  http://en.wikipedia.org/wiki/LaTeX]**
+  The preferred academic document format, it is more powerful than you
+  ever wondered. Full books, complicated formulas and any complex text
+  can be written in LaTeX. But prepare to loose your hair when you try
+  to write the tags by hand...
+
+  Txt2tags generates ready-to-use LaTeX files, doing all the complex
+  escaping tricks and exceptions. The writer just need to worry about
+  the text.
+  
+: **texs**
+  LaTeX Spreadsheet
+  
+
+=== Text ===
+
+: **aap**
+  ASCII Art Presentation
+  
+: **aas**
+  ASCII Art Spreadsheet
+  
+: **aat**
+  ASCII Art Text
+
+: **MAN**
+  UNIX man pages resist over the years. Document formats come and go,
+  and there they are, unbeatable.
+
+  There are other tools to generate man documents, but txt2tags has
+  one advantage: one source, multi targets. So the same man page
+  contents can be converted to an HTML page, Wiki document and plain text.
+  
 : **TXT**
   TXT is text. Simple, pure, beautiful.
 
@@ -366,6 +442,7 @@ The following is a list of all the structures supported by txt2tags.
 
   The titles are underlined, and the text is basically left as is on the
   source.
+  
 
 
 Tip: Use the ``--targets`` command line option to get a complete list of
