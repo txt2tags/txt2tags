@@ -419,6 +419,17 @@ The following is a list of all the structures supported by txt2tags.
   The titles are underlined, and the text is basically left as is on the
   source.
 </DL>
+<DT><B>Foswiki / TWiki</B></DT><DD>
+Foswiki, or Twiki, is a flexible, powerful, and easy to use enterprise
+wiki and collaboration platform. The structured wiki is typically used
+to run a project development space, a document management system, a
+knowledge base, or any other groupware tool, on an intranet or on the
+internet.
+<P></P>
+tx2tags provides texts that can be inserted into pages. Foswiki and
+TWiki provides the ability to attach images to pages, so images 
+references are made on the attached images.
+<P></P>
 
 <P>
 Tip: Use the <CODE>--targets</CODE> command line option to get a complete list of
@@ -448,6 +459,7 @@ all the available targets.
 <TH>adoc</TH>
 <TH>art</TH>
 <TH>txt</TH>
+<TH>tml</TH>
 </TR>
 <TR>
 <TD>headers</TD>
@@ -469,9 +481,11 @@ all the available targets.
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>section title</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
@@ -511,6 +525,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>bold</TD>
@@ -532,6 +547,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>italic</TD>
@@ -553,6 +569,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>underline</TD>
@@ -574,6 +591,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>strike</TD>
@@ -595,6 +613,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>monospaced font</TD>
@@ -616,6 +635,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>verbatim line</TD>
@@ -635,6 +655,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
 </TR>
@@ -658,6 +679,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>quoted area</TD>
@@ -679,6 +701,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">-</TD>
 </TR>
 <TR>
 <TD>internet links</TD>
@@ -700,6 +723,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>e-mail links</TD>
@@ -721,6 +745,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>local links</TD>
@@ -742,6 +767,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>named links</TD>
@@ -763,9 +789,11 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>bulleted list</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
@@ -805,6 +833,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>definition list</TD>
@@ -824,6 +853,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
 </TR>
@@ -847,6 +877,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>image</TD>
@@ -868,6 +899,7 @@ all the available targets.
 <TD ALIGN="center">Y</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TD>table</TD>
@@ -889,6 +921,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 <TR>
 <TH>Extras</TH>
@@ -910,6 +943,7 @@ all the available targets.
 <TH>adoc</TH>
 <TH>art</TH>
 <TH>txt</TH>
+<TH>tml</TH>
 </TR>
 <TR>
 <TD>image align</TD>
@@ -931,6 +965,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">-</TD>
+<TD ALIGN="center">-</TD>
 </TR>
 <TR>
 <TD>table cell align</TD>
@@ -948,6 +983,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">-</TD>
 <TD ALIGN="center">Y</TD>
+<TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
@@ -973,6 +1009,7 @@ all the available targets.
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
 <TD ALIGN="center">N</TD>
+<TD ALIGN="center">Y</TD>
 </TR>
 </TABLE>
 
