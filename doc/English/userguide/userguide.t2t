@@ -9,7 +9,7 @@ Aurelio, %%mtime(%c)
 % - Just comment the following lines when translating
 %!options: --css-sugar --no-toc --style userguide.css
 
-%!preproc(html): '<HTML>' '<!-- This document was generated from userguide.t2t -->\n<HTML>'
+%!postproc(html): '<HTML>' '<!-- This document was generated from userguide.t2t -->\n<HTML>'
 %!postproc: '<H1>Txt2tags User Guide.*'  ''
 %!postproc: '<H3>Aurelio, .*'  ''
 
@@ -124,7 +124,11 @@ purpose and features.
 
 Txt2tags is a text formatting and conversion tool.
 
-Txt2tags converts a plain text file with little marks, to several supported [targets #targets]. Amongs others, there are:
+: **A text formatting tool**: The txt2tags wiki-like syntax is easy to use and to remember. You can use it for every purpose, like storing your notes and formatting your documents.
+
+: **A conversion tool**: You can use the txt2tags python program to converts your txt2tags documents to several supported [targets #targets]. //(Further reference to the txt2tags python program will simply be labelled "txt2tags".)//
+
+Amongs others, there are:
 
 - popular Wiki markups, such as bbcode, wikipedia pages, markdown, restructuredtext and spip.
 
@@ -136,6 +140,11 @@ Txt2tags converts a plain text file with little marks, to several supported [tar
 
 
 //See the [targets chapter #targets] to discover the full list.//
+
+
+: **And more**: Beyond those 2 aspects, which deals with defined features and syntax, txt2tags can also manipulate your document with [powerful input and output filters #setting-preproc].
+
+
 
 ------------------------------------------------------------------------
 
