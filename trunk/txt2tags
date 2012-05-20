@@ -1209,7 +1209,7 @@ def getTags(config):
     },
 
     'ods': {
-        'tableOpen'            : '<table:table table:name="Table">',
+        'tableOpen'            : '<table:table table:name="' + _('Sheet') + '">',
         'tableClose'           : '</table:table>'                  ,
         'tableRowOpen'         : '<table:table-row>'               ,
         'tableRowClose'        : '</table:table-row>'              ,
@@ -5943,7 +5943,7 @@ class BlockMaster:
             result.append('')
 
         if TARGET == 'ods':
-            result[0] = result[0][:-2] + ' ' + str(self.tablecount) + '">'
+            result[0] = result[0][:-2] + str(self.tablecount) + '">'
 
         return result
 
