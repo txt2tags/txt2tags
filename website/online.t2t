@@ -5,6 +5,9 @@ Free online conversion
 %!includeconf: inc/config.t2t
 %!options: -o online.php
 %!style: online.css
+%!style: markitup/skins/markitup/style.css
+%!style: markitup/sets/default/style.css
+
 
 %!postproc: '(?i)(<body)'	'\1 id="online"'
 %!postproc: '(?i)(</title>)'	' online\1'

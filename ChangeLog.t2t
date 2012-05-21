@@ -55,6 +55,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New target: CSV spreadsheet (csv). <thanks Florent Gallaire> [r621]
 - New target: ODS Open Document Spreadsheet (ods). <thanks Florent Gallaire> [r632][r634]
 - New target: Foswiki or TWiki page (tml). <thanks Thierry Pasquier> [r904]
+- New target: Txt2tags (txt2t), which export to t2t after expanding preprocs and includes macros. <thanks Jason Seeley> [r639]
+- New target: ReStructuredText (rst). <thanks Florent Gallaire> [r646]
 
 - New option: ``-T,--template`` to apply user-defined templates. <thanks Emmanuel Godard> [r407]
 - New option: ``--fix-path`` to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with ``--outfile``. Use ``--no-fix-path`` to turn it off. [r564]
@@ -73,14 +75,14 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New macros: ``%%header1``, ``%%header2``, ``%%header3``. [r483] [#68]
 - New macro: ``%%encoding``. [r482]
 
-- Art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618]
-
+- Art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618], ``--art-chars`` option becomes ``--chars`` [r643],
 
 - Wikipedia: Now escaping ``<``, ``>`` and ``&`` chars. [r568] [#93]
 
 
 - i18n: Portuguese documentation converted to UTF-8. [r403][r404][r405][r406][r628] [#98]
-- i18n: Portuguese sample file and po updated. [r494][r627]
+- i18n: Portuguese sample file and po updated. [r494][r627][r637]
+- i18n: Malay translation. [r636]
 - i18n: Web interface: Now the input text is expected to be in UTF-8. <thanks jesuscanonavarro> [r497] [#70]
 - i18n: Now using Transifex to handle PO files translation (on http://www.transifex.net/projects/p/txt2tags). [r603] [#81]
 - i18n: Program messages in Malay. <thanks Muhammad Fariz> [r610]
@@ -114,7 +116,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - Bugfix: Now detects missing remote files (404). [r531] [# 84]
 - Bugfix: Moin target. [r578][r582]
 - Bugfix: Refactoring for speed. [r607][r608]
-
+- Bugfix: input file == output file bug. [r642] [#110]
 
 
 - **IMPORTANT:** This release requires Python 2.4 or newer, Python 2.5 adviced to use the SQLite target.
