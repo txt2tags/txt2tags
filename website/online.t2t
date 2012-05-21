@@ -14,6 +14,8 @@ Free online conversion
 
 %!include: inc/menu.t2t
 
+''' <?php include("script_markitup.php"); ?>
+
 == Txt2tags Online ==
 
 - Play with txt2tags even before downloading it.
@@ -27,6 +29,7 @@ Free online conversion
 % - See also: [Txt2tags Web Editor http://davidarea.com/t2twebeditor/] made by
 % David Area, which has "live" formatting as in phpBB forums.
 
+''' <p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
 
 ''' <?php require("online.phps"); ?>
 
