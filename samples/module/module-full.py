@@ -7,6 +7,8 @@
 #   No post config or setting is made.
 #
 
+import sys
+
 # Remember to place the 'txt2tags.py' file on the same dir
 import txt2tags
 
@@ -26,7 +28,9 @@ try:
 # Txt2tags error, show the message to the user
 except txt2tags.error, msg:
     print msg
+    sys.exit(1)
 
 # Unknown error, show the traceback to the user
 except:
     print txt2tags.getUnknownErrorMessage()
+    sys.exit(1)
