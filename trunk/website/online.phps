@@ -158,7 +158,7 @@ if ($is_standalone) {
 
 <fieldset>
 	<legend>Text Source</legend>
-	<textarea name="txt" rows="8" cols="53"><?php echo $txt; ?></textarea>
+	<textarea name="txt" rows="8" cols="53" id="markItUp"><?php echo $txt; ?></textarea>
 </fieldset>
 <br>
 <fieldset>
