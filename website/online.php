@@ -8,6 +8,44 @@
 <LINK REL="stylesheet" TYPE="text/css" HREF="online.css">
 <TITLE>txt2tags online</TITLE>
 <link rel="icon" type="image/png" href="/favicon.png">
+<script type="text/javascript" src="markitup/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="markitup/sets/default/set.js"></script>
+<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css" />
+<script type="text/javascript" >
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#markItUp').markItUp(mySettings);
+	
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );	
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+	
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#markItUp.markItUpEditor").length === 1) {
+ 			$("#markItUp").markItUpRemove();
+			$("span", this).text("get markItUp! back");
+		} else {
+			$('#markItUp').markItUp(mySettings);
+			$("span", this).text("remove markItUp!");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
 </HEAD>
 <BODY id="online">
 
@@ -76,6 +114,8 @@ Social
 <LI>The <A HREF="online.phps">PHP sources</A> are available, you can customize it
  and use on your intranet.
 </UL>
+
+<p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
 
 <?php require("online.phps"); ?>
 </div><div id="footer">
