@@ -8641,7 +8641,7 @@ class Gui:
             errormsg = getUnknownErrorMessage()
             print errormsg
             showerror(_('%s FATAL ERROR!') % my_name, errormsg)
-            self.exit()
+            self.exit(1)
         CMDLINE_RAW = cmdline_raw_orig
 
     def mainwindow(self):
