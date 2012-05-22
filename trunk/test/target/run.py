@@ -13,9 +13,9 @@ del sys.path[0]
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
-all_targets = 'aap aas aat aaw adoc bbcode creole dbk doku gwiki html html5 lout man md mgp moin pm6 pmw ods red rst rtf sgml spip tex txt txt2t wiki xhtml xhtmls'.split()
+all_targets = 'aap aapw aas aasw aat aatw adoc bbcode creole dbk doku gwiki html html5 lout man md mgp moin pm6 pmw ods red rst rtf sgml spip tex txt txt2t wiki xhtml xhtmls'.split()
 
-tableable = 'aat aas aaw creole doku gwiki html html5 man md moin pmw ods red rst rtf sgml spip tex wiki xhtml xhtmls'.split()
+tableable = 'aat aatw aas aasw aap aapw creole doku gwiki html html5 man md moin pmw ods red rst rtf sgml spip tex wiki xhtml xhtmls'.split()
 
 def run():
     # test all .t2t files found
@@ -34,6 +34,8 @@ def run():
                 cmdline = []
                 cmdline.extend(['-i', infile])
                 cmdline.extend(['-t', target])
+                if target == 'aap':
+                    cmdline.extend(['--width', '80'])
                 lib.convert(cmdline)
                 lib.diff(outfile)
     return lib.OK, lib.FAILED, lib.ERROR_FILES
