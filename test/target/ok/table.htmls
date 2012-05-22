@@ -1,0 +1,624 @@
+<!doctype html>
+<html>
+<head>
+<meta name="generator" content="http://txt2tags.org"/>
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+table,img.center{border:0;margin:0 auto;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+.right{text-align:right;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
+</head>
+<body>
+<article>
+
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1-1">Head 1-1</a></td>
+<td><a title="Head 1-2">Head 1-2</a></td>
+<td><a title="Head 1-3">Head 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1-1">Head 1-1</a></td>
+<td><a title="Head 1-2">Head 1-2</a></td>
+<td><a title="Head 1-3">Head 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1-1">Head 1-1</a></td>
+<td><a title="Head 1-2">Head 1-2</a></td>
+<td><a title="Head 1-3">Head 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+<tr>
+<th>5</th>
+<td><a title="Foot 1-1">Foot 1-1</a></td>
+<td><a title="Foot 1-2">Foot 1-2</a></td>
+<td><a title="Foot 1-3">Foot 1-3</a></td>
+</tr>
+</table>
+
+<table style="text-align:center" class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1-1">Head 1-1</a></td>
+<td><a title="Head 1-2">Head 1-2</a></td>
+<td><a title="Head 1-3">Head 1-3</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="Cell 1-1">Cell 1-1</a></td>
+<td><a title="Cell 1-2">Cell 1-2</a></td>
+<td><a title="Cell 1-3">Cell 1-3</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="Cell 2-1">Cell 2-1</a></td>
+<td><a title="Cell 2-2">Cell 2-2</a></td>
+<td><a title="Cell 2-3">Cell 2-3</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="Cell 3-1">Cell 3-1</a></td>
+<td><a title="Cell 3-2">Cell 3-2</a></td>
+<td><a title="Cell 3-3">Cell 3-3</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="&lt;">&lt;</a></td>
+<td><a title="&gt;">&gt;</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="&gt;">&gt;</a></td>
+<td><a title="&lt;">&lt;</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="&lt;">&lt;</a></td>
+<td><a title="&gt;">&gt;</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="&gt;">&gt;</a></td>
+<td><a title="&lt;">&lt;</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td colspan="2"><a title="3 + 4">3 + 4</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td colspan="3"><a title="1 + 2 + 3">1 + 2 + 3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="1">1</a></td>
+<td colspan="2"><a title="2 + 3">2 + 3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>5</th>
+<td colspan="4"><a title="1 + 2 + 3 + 4">1 + 2 + 3 + 4</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td colspan="2"><a title="3 + 4">3 + 4</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td colspan="3"><a title="1 + 2 + 3">1 + 2 + 3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="1">1</a></td>
+<td colspan="2"><a title="2 + 3">2 + 3</a></td>
+<td><a title="4">4</a></td>
+</tr>
+<tr>
+<th>5</th>
+<td colspan="4"><a title="1 + 2 + 3 + 4">1 + 2 + 3 + 4</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td colspan="2"><a title="&lt;">&lt;</a></td>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td colspan="3"><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+<td colspan="2"><a title="&gt;">&gt;</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+<td><a title="=======">invalid syntax (<string>, line 1)</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td colspan="2"><a title="&lt;">&lt;</a></td>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td colspan="3"><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="=">unexpected EOF while parsing (<string>, line 0)</a></td>
+<td colspan="2"><a title="&gt;">&gt;</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="A">A</a></td>
+<td><a title="B">B</a></td>
+<td><a title="C">C</a></td>
+<td><a title="D">D</a></td>
+<td></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="F">F</a></td>
+<td><a title="G">G</a></td>
+<td><a title="H">H</a></td>
+<td></td>
+<td><a title="J">J</a></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="K">K</a></td>
+<td><a title="L">L</a></td>
+<td></td>
+<td><a title="N">N</a></td>
+<td><a title="O">O</a></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="P">P</a></td>
+<td></td>
+<td><a title="R">R</a></td>
+<td><a title="S">S</a></td>
+<td><a title="T">T</a></td>
+</tr>
+<tr>
+<th>5</th>
+<td></td>
+<td><a title="V">V</a></td>
+<td><a title="W">W</a></td>
+<td><a title="X">X</a></td>
+<td><a title="Y">Y</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="1">1</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+<td></td>
+</tr>
+<tr>
+<th>5</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+<td><a title="5">5</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+<td><a title="5">5</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td><a title="4">4</a></td>
+<td></td>
+</tr>
+<tr>
+<th>3</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td><a title="3">3</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>4</th>
+<td><a title="1">1</a></td>
+<td><a title="2">2</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>5</th>
+<td><a title="1">1</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Cell 1">Cell 1</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Cell 1">Cell 1</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1">Head 1</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a title="Head 1">Head 1</a></td>
+</tr>
+</table>
+
+<table class="tableborder">
+<tr>
+<th></th>
+<th>A</th>
+</tr>
+<tr>
+<th>1</th>
+<td></td>
+</tr>
+<tr>
+<th>2</th>
+<td></td>
+</tr>
+<tr>
+<th>3</th>
+<td></td>
+</tr>
+</table>
+
+<!-- htmls code generated by txt2tags (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -q -\-no-rc -i table.t2t -t htmls -->
+</article></body></html>
