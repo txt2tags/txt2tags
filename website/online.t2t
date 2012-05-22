@@ -29,8 +29,11 @@ Free online conversion
 % - See also: [Txt2tags Web Editor http://davidarea.com/t2twebeditor/] made by
 % David Area, which has "live" formatting as in phpBB forums.
 
-''' <p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
-
 ''' <?php require("online.phps"); ?>
+
+''' <p><a href="#" class="toggle">Click this link to <span>remove markItUp!</span></a> in this demo</p>.
+
+- See full live preview of the MarkItUp effect on http://etxt2tags.appspot.com/
+
 
 %!include: inc/footer.t2t

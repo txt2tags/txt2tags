@@ -35,7 +35,7 @@ mySettings = {
 		{name:'Quote', openWith:'\t'},
 		{name:'Code', openWith:'``', closeWith:'``'},
 		{name:'Raw', key:'R', openWith:'""', closeWith:'""', placeHolder:'No txt2tags in here!'},		
-		{separator:'---------------' },
-		{name:'Preview', call:'preview', className:'preview'}
+		//{separator:'---------------' },
+		//{name:'Preview', call:'preview', className:'preview'}
 	]
 }
