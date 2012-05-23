@@ -298,7 +298,7 @@ TARGET_NAMES = {
   'spip'   : _('SPIP article'),
   'rtf'    : _('RTF document'),
   'wp'     : _('WordPress post'),
-  'tml'     : _('Foswiki or TWiki page'),
+  'tml'    : _('Foswiki or TWiki page'),
 }
 TARGETS = TARGET_NAMES.keys()
 TARGETS.sort()
@@ -1375,6 +1375,7 @@ def getTags(config):
         'EOD'                  : '</article></body></html>'
     },
     'htmls': {
+        #TIP htmls inherits all html5 tags
     },
 
     'sgml': {
@@ -1564,6 +1565,7 @@ def getTags(config):
         'EOD'                  : '\\end{document}'
     },
     'texs': {
+        #TIP texs inherits all tex tags
     },
 
     'lout': {
@@ -2769,6 +2771,7 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'texs': {
+            #TIP texs inherits all tex rules
         },
         'lout': {
             'keepquoteindent': 1,
@@ -3553,7 +3556,7 @@ def office():
     TANH = tanh
 
 
-def spreadsheet(data, format):
+def spreadsheet(data, markup):
     n = max([len(line[0]) for line in data])
     if n > 676:
         Error(_("Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)
@@ -3567,15 +3570,15 @@ def spreadsheet(data, format):
         for i, el in enumerate(row[0]):
             ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
-                if format == 'html':
+                if markup == 'html':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
-                elif format == 'tex':
+                elif markup == 'tex':
                     if el.strip()[0] == '=':
                         tooltip = 'formula: '
                     else:
                         tooltip = 'value: '
                     row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{' + tooltip + el.strip() + '}'
-                elif format == 'txt':
+                elif markup == 'txt':
                     row[0][i] = str(s[ind])
     h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
     data = [[h, [1] * n]] + data
