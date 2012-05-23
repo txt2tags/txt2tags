@@ -2461,6 +2461,7 @@ def getRules(config):
         # target rules (ON/OFF)
         'linkable',               # target supports external links
         'tableable',              # target supports tables
+        'tableonly',              # target computes only the tables
         'imglinkable',            # target supports images as links
         'imgalignable',           # target supports image alignment
         'imgasdefterm',           # target supports image as definition term
@@ -2606,13 +2607,16 @@ def getRules(config):
         },
         'csv': {
             'tableable': 1,
+            'tableonly': 1,
         },
         'db': {
             'tableable': 1,
+            'tableonly': 1,
         },
         'ods': {
             'escapexmlchars': 1,
             'tableable': 1,
+            'tableonly': 1,
             'tablecellstrip': 1,
         },
         'html': {
@@ -3150,6 +3154,10 @@ def getRules(config):
         myrules = rules_bank['tex'].copy()    # inheritance
     else:
         myrules = rules_bank[config['target']].copy()
+   
+    # spread targets are tableonly
+    if config['spread']:
+        myrules['tableonly'] = 1
 
     # Populate return dictionary
     for key in allrules:
@@ -4406,8 +4414,6 @@ class ConfigMaster:
         # Check split level value
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
-        if target in ['csv', 'ods']:
-            config['spread'] = True
         if target == 'aap':
             target, config['slides'] = 'aat', True
         if target == 'aas':
@@ -4511,7 +4517,6 @@ class ConfigMaster:
                 import sqlite3
             except:
                 Error('No sqlite3 module')
-            config['spread'] = True
             global DB, DBC
             try:
                 os.remove(config['outfile'])
@@ -5657,7 +5662,7 @@ class BlockMaster:
         self.PRP.pop()
         self.depth = len(self.BLK)
 
-        if CONF['spread'] and blockname != 'table':
+        if rules['tableonly'] and blockname != 'table':
             return []
 
         if blockname == 'table':
