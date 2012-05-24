@@ -3157,7 +3157,7 @@ def getRules(config):
         myrules = rules_bank['tex'].copy()    # inheritance
     else:
         myrules = rules_bank[config['target']].copy()
-   
+
     # spread targets are tableonly
     if config['spread']:
         myrules['tableonly'] = 1
@@ -4717,8 +4717,6 @@ class ConfigLines:
         if not line:
             return empty
         no_target = ['target', 'includeconf']
-        re_name   = keyname or '[a-z]+'
-        re_target = target  or '[a-z]*'
         # XXX TODO <value>\S.+?  requires TWO chars, breaks %!include:a
         cfgregex  = ConfigLines._parse_cfg
         prepostregex = ConfigLines._parse_prepost
@@ -4932,7 +4930,6 @@ class TitleMaster:
         self.tag_hold = []
         self.last_level = 0
         self.count_id = ''
-        self.user_labels = {}
         self.anchor_count = 0
         self.anchor_prefix = 'toc'
 
@@ -7433,7 +7430,6 @@ def get_infiles_config(infiles):
 def convert_this_files(configs):
     global CONF
     for myconf, doc in configs:                 # multifile support
-        target_head = []
         target_toc  = []
         target_body = []
         target_foot = []
