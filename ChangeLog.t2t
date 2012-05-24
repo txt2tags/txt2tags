@@ -14,24 +14,21 @@ HTML: The full version, used in the txt2tags website. This file contents
       filters here.
 %%% 
 
-%!target: txt
+%!target: aat
 %!encoding: utf-8
 
 % Output file name contains no .txt extension
-%!options(txt): -o ChangeLog
+%!options(aat): -o ChangeLog
 
 % Stars as list bullets are nicer
-%!postproc(txt): '^-'	'*'
+%!postproc(aat): '^-'	'*'
 
 % Remove "thank you" messages
-%!preproc(txt): ' <thanks .*'	''
+%!preproc(aat): ' <thanks .*'	''
 
 % Remove revision [r123] and issue [#123] numbers
-%!preproc(txt): ' ?\[r\d+\]'	''
-%!preproc(txt): ' ?\[#\d+\]'	''
-
-% Remove URLs from links: Site Name (http://example.com)
-%!postproc(txt): ' \(http://\w.*?\w\)'	''
+%!preproc(aat): ' ?\[r\d+\]'	''
+%!preproc(aat): ' ?\[#\d+\]'	''
 
 % ----------------------------------------------------------------------------
 
@@ -75,7 +72,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New macros: ``%%header1``, ``%%header2``, ``%%header3``. [r483] [#68]
 - New macro: ``%%encoding``. [r482]
 
-- Art: Several improvements: multiline support in aa_under() [r505], table support [514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618], ``--art-chars`` option becomes ``--chars`` [r643],
+- Art: Several improvements: multiline support in aa_under() [r505], table support [r514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618], ``--art-chars`` option becomes ``--chars`` [r643],
 
 - Wikipedia: Now escaping ``<``, ``>`` and ``&`` chars. [r568] [#93]
 
@@ -112,8 +109,8 @@ HTML: The full version, used in the txt2tags website. This file contents
 - Bugfix: art target [r472] [r477]
 - Bugfix: HTML, XHTML and XHTMLS: moved anchors as title ids [r475]
 - Bugfix: Fixed the problem with CSS files path when using ``%!includeconf`` from a different folder. [#71]
-- Bugfix: ``%%mtime`` now working for remote files. [r530] [# 84]
-- Bugfix: Now detects missing remote files (404). [r531] [# 84]
+- Bugfix: ``%%mtime`` now working for remote files. [r530] [#84]
+- Bugfix: Now detects missing remote files (404). [r531] [#84]
 - Bugfix: Moin target. [r578][r582]
 - Bugfix: Refactoring for speed. [r607][r608]
 - Bugfix: input file == output file bug. [r642] [#110]
