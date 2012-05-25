@@ -17,7 +17,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 %!target: aat
 %!encoding: utf-8
 
-% Output file name contains no .txt extension
+% Output file name contains no .aat extension
 %!options(aat): -o ChangeLog
 
 % Stars as list bullets are nicer
