@@ -1,13 +1,11 @@
-
-========================================================================
-
-
-                      +-------------------------+                       
-                      | txt2tags website README |                       
-                      +-------------------------+                       
+txt2tags website README
 
 
-========================================================================
+%!target: aat
+%!encoding: utf-8
+
+% Output file name contains no .aat extension
+%!options(aat): -o README
 
 Here you will find the files for the full txt2tags website.
 
@@ -25,12 +23,9 @@ the txt2tags website. A cronjob at the web server will do a
 Some files seems to be missing. But they're not! They're included
 directly from the SVN. See .htaccess for details.
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                         +-------------------+
-                         | Linking SVN files |
-                         +-------------------+
+= Linking SVN files =
 
 There's a copy of trunk/doc/ inside the web server root, so just use:
 
@@ -61,12 +56,9 @@ There's two caveats:
 
    http://txt2tags.googlecode.com/svn/trunk/po/fr.po
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                             +-----------+
-                             | Docs path |
-                             +-----------+
+= Docs path =
 
 The 'doc' folder is special for the website. Its location changes in
 the web server, to be contained inside the root folder.
@@ -88,14 +80,11 @@ the 'doc/' path. Example:
 
     %!include: ../doc/English/markup/markup.t2t
 
-    See the Markup Demo[1] document.
+    See the [Markup Demo doc/English/markup/markup.html] document.
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                             +-----------+
-                             | .htaccess |
-                             +-----------+
+= .htaccess =
 
 The magic of using other SVN files in the website happens here.
 Redirection of moved and deleted files too.
@@ -106,12 +95,9 @@ You may break the full website doing so.
 If you're comfortable with htaccess, the comments inside the file
 should be enough to guide you.
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                         +-------------------+
-                         | Convert full site |
-                         +-------------------+
+= Convert full site =
 
 If you alter files inside the 'inc' folder, such as config.t2t or
 footer.t2t, you will need to reconvert all the files.
@@ -123,12 +109,9 @@ footer.t2t, you will need to reconvert all the files.
 Note: An error will appear when converting index-old.t2t.
       That's ok, this file isn't meant to be converted.
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                            +-------------+
-                            | Update docs |
-                            +-------------+
+= Update docs =
 
 The docs and their translations are read directly from SVN. A cronjob
 at the web server will keep them updated. You don't need to worry
@@ -142,49 +125,42 @@ trunk/website/markup.t2t
 
 Because they add the website layout around the SVN document.
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                          +-----------------+
-                          | Special updates |
-                          +-----------------+
+= Special updates =
 
 Update txt2tags online (PHP version)
 
     The only difference from SVN is the $is_standalone = 0. Run this:
 
     cd txt2tags-svn/website/
-    sed '/^\$is_standalone = 1;$/ s/1/0/' ../extras/txt2tags.php >
-online.phps
+    sed '/^\$is_standalone = 1;$/ s/1/0/' ../extras/txt2tags.php > online.phps
+
 
 Update executable version (http://txt2tags.org/txt2tags.py)
 
     It must always point to the current stable release.
     Edit .htaccess and search for these lines:
 
-    Redirect temp /txt2tags
-http://txt2tags.googlecode.com/svn/trunk/old/txt2tags-2.6.py
-    Redirect temp /txt2tags.py
-http://txt2tags.googlecode.com/svn/trunk/old/txt2tags-2.6.py
+    Redirect temp /txt2tags     http://txt2tags.googlecode.com/svn/trunk/old/txt2tags-2.6.py
+    Redirect temp /txt2tags.py  http://txt2tags.googlecode.com/svn/trunk/old/txt2tags-2.6.py
+
 
 Update markup.zip
 
     cd txt2tags-svn/website/
     rm -f markup.zip
-    cd ../doc/English && zip -q -r $OLDPWD/markup.zip markup -x
-"markup/.svn/*" && cd -
+    cd ../doc/English && zip -q -r $OLDPWD/markup.zip markup -x "markup/.svn/*" && cd -
     unzip -l markup.zip
+
 
 Update User Guide
 
     ./txt2tags-svn/doc/English/userguide/htmlgen
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-
-                            +--------------+
-                            | Legacy files |
-                            +--------------+
+= Legacy files =
 
 index-old.html
 index-old.t2t
@@ -202,4 +178,3 @@ These are old files that are kept for history purposes.
 
 DO NOT convert index-old.t2t. Leave it untouched.
 
-[1] doc/English/markup/markup.html
