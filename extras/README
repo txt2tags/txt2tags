@@ -1,7 +1,18 @@
-                         Txt2tags EXTRAS
-                       -------------------
-                       http://txt2tags.org
 
+========================================================================
+
+
+                          +-----------------+                           
+                          | Txt2tags EXTRAS |                           
+                          +-----------------+                           
+
+
+                        +---------------------+                         
+                        | http://txt2tags.org |                         
+                        +---------------------+                         
+
+
+========================================================================
 
 This directory contains some extra files distributed with the
 txt2tags program. All of them share the same license as the
@@ -10,81 +21,100 @@ program: GPL, unless specified on its headers.
 See even more extras at the txt2tags website.
 
 css-reference.txt
-	A short and quick document showing the CSS attributes and
-	its parameters. One per line, "grep" friendly.
+
+        A short and quick document showing the CSS attributes and
+        its parameters. One per line, "grep" friendly.
 
 ctags
-	The ctags definition file for txt2tags markup.
+
+        The ctags definition file for txt2tags markup.
 
 gensite
-	A Python script to generate a site with txt2tags. It
-	copies all files over, except those with txt2tags extension,
-	which are automatically converted.
+
+        A Python script to generate a site with txt2tags. It
+        copies all files over, except those with txt2tags extension,
+        which are automatically converted.
 
 gvim-menu.vim
-	The gVim editor menu file. It adds the "txt2tags" menu to
-	the editor, making easy for the user to insert the t2t
-	marks on the source file. Very useful for beginners.
+
+        The gVim editor menu file. It adds the "txt2tags" menu to
+        the editor, making easy for the user to insert the t2t
+        marks on the source file. Very useful for beginners.
 
 html-update.sh
-	A simple Shell script to automate the conversion of
-	files in a directory. It scans and convert only the .t2t
-	that has changed since the last conversion. There some
-	options to use, as an interactive mode.
+
+        A simple Shell script to automate the conversion of
+        files in a directory. It scans and convert only the .t2t
+        that has changed since the last conversion. There some
+        options to use, as an interactive mode.
 
 markitup
-	A Txt2tags markup set for markItUp!, the jQuery universal
-	markup editor.
-	Demo : http://etxt2tags.appspot.com/
+
+        A Txt2tags markup set for markItUp!, the jQuery universal
+        markup editor.
+        Demo : http://etxt2tags.appspot.com/
 
 nanorc
-	The nano editor syntax highlight rules for txt2tags
-	marks.
+
+        The nano editor syntax highlight rules for txt2tags
+        marks.
 
 pagemaker.vim
-	The Vim editor syntax highlight rules for PageMaker
-	tagged files.
+
+        The Vim editor syntax highlight rules for PageMaker
+        tagged files.
 
 t2tmake.rb
-	A powerful Ruby script that automate the conversion of
-	txt2tags files. It scans directories, convert needed
-	files and generate logs. It also has a nice batch
-	feature, to store different sets of configurations.
+
+        A powerful Ruby script that automate the conversion of
+        txt2tags files. It scans directories, convert needed
+        files and generate logs. It also has a nice batch
+        feature, to store different sets of configurations.
 
 txt2tags-compiler.vim
-	The Vim editor config file for using the single command
-	':make' to convert the opened document.
+
+        The Vim editor config file for using the single command
+        ':make' to convert the opened document.
 
 txt2tags-gedit.lang
-	The Gedit editor syntax highlight rules for txt2tags
-	marks.
+
+        The Gedit editor syntax highlight rules for txt2tags
+        marks.
 
 txt2tags-kate.xml
-	The Kate editor syntax highlight rules for txt2tags
-	marks.
+
+        The Kate editor syntax highlight rules for txt2tags
+        marks.
 
 txt2tags-mode.el
-	The Emacs editor syntax highlight rules for txt2tags
-	marks.
+
+        The Emacs editor syntax highlight rules for txt2tags
+        marks.
 
 txt2tags.jsf
-	The JOE and "ne" editor syntax highlight rules for txt2tags
-	
+
+        The JOE and "ne" editor syntax highlight rules for txt2tags
+
 txt2tags.le
-	The "le" editor syntax highlight rules for txt2tags
-	
+
+        The "le" editor syntax highlight rules for txt2tags
+
 txt2tags.php
-	The txt2tags web interface, written in the PHP language.
-	Useful for intranet use and quick tests.
+
+        The txt2tags web interface, written in the PHP language.
+        Useful for intranet use and quick tests.
 
 txt2tags.vim
-	The Vim editor syntax highlight rules for txt2tags marks.
+
+        The Vim editor syntax highlight rules for txt2tags marks.
 
 txt2tagsrc
-	A sample user config file for txt2tags
+
+        A sample user config file for txt2tags
 
 unhtml.vim
-	A handy Vim editor script to convert an HTML file to a
-	txt2tags marked file. See instructions on the file
-	header.
+
+        A handy Vim editor script to convert an HTML file to a
+        txt2tags marked file. See instructions on the file
+        header.
 
