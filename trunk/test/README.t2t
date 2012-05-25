@@ -1,22 +1,15 @@
+txt2tags test-suite
+http://txt2tags.org
 
-========================================================================
+%!target: aat
+%!encoding: utf-8
 
-
-                        +---------------------+                         
-                        | txt2tags test-suite |                         
-                        +---------------------+                         
-
-
-                        +---------------------+                         
-                        | http://txt2tags.org |                         
-                        +---------------------+                         
-
-
-========================================================================
+% Output file name contains no .aat extension
+%!options(aat): -o README
 
 Txt2tags features are automatically tested here.
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 Usage:
 
@@ -38,7 +31,7 @@ Extra tests, not yet integrated into main suite:
     ./path/run.sh
     ./outfile/run.sh
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 MODULES
 
@@ -64,7 +57,7 @@ error/
     Note: If there are no t2t files, they're generated on the fly by
           the module's run.py.
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 HOW IT WORKS
 
@@ -84,7 +77,7 @@ the 'error' folder.
           path/run.sh
           sample/run.sh
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 HOW TO FIX ERRORS
 
@@ -101,7 +94,7 @@ For example, let's say the test marks/link.t2t is broken. You run:
       Testing image ... OK
       Testing inline ... OK
       Testing line ... OK
-      Testing link ... FAILED                <--------------
+      Testing link ... FAILED                <----------------
       Testing list ... OK
       Testing paragraph ... OK
       Testing quote ... OK
@@ -116,7 +109,7 @@ For example, let's say the test marks/link.t2t is broken. You run:
 
     Totals: 16 tests (15 ok / 1 failed)
 
-    Check out the files with errors:         <--------------
+    Check out the files with errors:         <----------------
     marks/error/link.html
 
 Now the marks/error folder was created and the test results
@@ -134,7 +127,7 @@ again until it's OK.
 If the txt2tags behavior changed and now that's the desired
 output, you should update the OK template.
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 HOW TO ADD A NEW TEST
 
@@ -155,10 +148,9 @@ understand how the tests are performed. In the 'headers' module for
 example, there are no t2t files, they're generated on the fly.
 
 Except special cases, each .t2t file inside a module is a full
-txt2tags file. So you can tweak it as needed, adding %!settings,
-%!postproc, everything.
+txt2tags file. So you can tweak it as needed, adding %!settings, %!postproc, everything.
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------
 
 HANDY COMMANDS
 
@@ -169,4 +161,3 @@ Remove all the error files:
 Review (diff) all the errors in one step:
 
     for f in */error/*; do diff -u ${f/error/ok} $f; done
-
