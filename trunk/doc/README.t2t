@@ -1,18 +1,11 @@
+Txt2tags Documentation
+http://txt2tags.org
 
-========================================================================
+%!target: aat
+%!encoding: utf-8
 
-
-                       +------------------------+                       
-                       | Txt2tags Documentation |                       
-                       +------------------------+                       
-
-
-                        +---------------------+                         
-                        | http://txt2tags.org |                         
-                        +---------------------+                         
-
-
-========================================================================
+% Output file name contains no .aat extension
+%!options(aat): -o README
 
 This folder contains the txt2tags main documentation files.
 The original files (sources) are in the English folder.
