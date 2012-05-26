@@ -122,6 +122,7 @@ import base64
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
+from targets import *
 
 # Program information
 my_url = 'http://txt2tags.org'
@@ -301,17 +302,21 @@ TARGET_NAMES = {
   'tml'    : _('Foswiki or TWiki page'),
   'mom'    : _('MOM groff macro'),
 }
-TARGETS = TARGET_NAMES.keys()
-TARGETS.sort()
 
 
 TARGET_TYPES = {
-  'html'   : (_('HTML'), ('html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp')),
-  'wiki'   : (_('WIKI'), ('txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml')),
-  'office' : (_('OFFICE'), ('sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db', 'mom')),
-  'text'   : (_('TEXT'), ('man', 'txt', 'aat', 'aap', 'aas')),
+  'html'   : (_('HTML'), ['html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp']),
+  'wiki'   : (_('WIKI'), ['txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml']),
+  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db', 'mom']),
+  'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
+for target in targets_config.TARGETS_LIST:
+    TARGET_NAMES[target] = eval(target).NAME
+    TARGET_TYPES[eval(target).TYPE][1].append(target)
+
+TARGETS = TARGET_NAMES.keys()
+TARGETS.sort()
 
 DEBUG = 0     # do not edit here, please use --debug
 VERBOSE = 0   # do not edit here, please use -v, -vv or -vvv
@@ -1085,6 +1090,8 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 
 }
 
+for target in targets_config.TARGETS_LIST:
+    HEADER_TEMPLATE[target] = eval(target).HEADER
 
 ##############################################################################
 
@@ -2566,6 +2573,8 @@ def getTags(config):
         'EOD'                  : '.FINIS'
     },
     }
+    for target in targets_config.TARGETS_LIST:
+        alltags[target] = eval(target).TAGS
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls')) or config['target'] == 'wp':
@@ -3343,6 +3352,8 @@ def getRules(config):
         'tagnotindentable': 1,       # tags must be placed at the line beginning
         },
     }
+    for target in targets_config.TARGETS_LIST:
+        rules_bank[target] = eval(target).RULES
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5')) or config['target'] == 'wp':
