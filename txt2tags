@@ -311,7 +311,9 @@ TARGET_TYPES = {
   'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
-for target in targets_config.TARGETS_LIST:
+TARGETS_LIST  = targets_config.TARGETS_LIST
+
+for target in TARGETS_LIST:
     TARGET_NAMES[target] = eval(target).NAME
     TARGET_TYPES[eval(target).TYPE][1].append(target)
 
@@ -1090,7 +1092,7 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 
 }
 
-for target in targets_config.TARGETS_LIST:
+for target in TARGETS_LIST:
     HEADER_TEMPLATE[target] = eval(target).HEADER
 
 ##############################################################################
@@ -2573,7 +2575,7 @@ def getTags(config):
         'EOD'                  : '.FINIS'
     },
     }
-    for target in targets_config.TARGETS_LIST:
+    for target in TARGETS_LIST:
         alltags[target] = eval(target).TAGS
 
     # Exceptions for --css-sugar
@@ -3352,7 +3354,7 @@ def getRules(config):
         'tagnotindentable': 1,       # tags must be placed at the line beginning
         },
     }
-    for target in targets_config.TARGETS_LIST:
+    for target in TARGETS_LIST:
         rules_bank[target] = eval(target).RULES
 
     # Exceptions for --css-sugar
