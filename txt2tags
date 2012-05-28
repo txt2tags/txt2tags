@@ -1101,7 +1101,10 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 }
 
 for target in TARGETS_LIST:
-    HEADER_TEMPLATE[target] = eval('targets.' + target).HEADER
+    try:
+        HEADER_TEMPLATE[target] = eval('targets.' + target).HEADER
+    except:
+        HEADER_TEMPLATE[target] = ''
 
 ##############################################################################
 
@@ -2584,7 +2587,10 @@ def getTags(config):
     },
     }
     for target in TARGETS_LIST:
-        alltags[target] = eval('targets.' + target).TAGS
+        try:
+            alltags[target] = eval('targets.' + target).TAGS
+        except:
+            alltags[target] = {}
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls')) or config['target'] == 'wp':
@@ -3363,7 +3369,10 @@ def getRules(config):
         },
     }
     for target in TARGETS_LIST:
-        rules_bank[target] = eval('targets.' + target).RULES
+        try:
+            rules_bank[target] = eval('targets.' + target).RULES
+        except:
+            rules_bank[target] = {}
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5')) or config['target'] == 'wp':
