@@ -266,7 +266,7 @@ The following is a list of all the structures supported by txt2tags.
 
 
 : **Foswiki / TWiki**
-  [Foswiki, or Twiki http://foswiki.org/], is a flexible, powerful, 
+  [Foswiki http://foswiki.org/] or [TWiki http://twiki.org], is a flexible, powerful, 
   and easy to use enterprise wiki and collaboration platform. 
   The structured wiki is typically used to run a project development 
   space, a document management system, a knowledge base, or any other 
