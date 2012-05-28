@@ -313,9 +313,17 @@ TARGET_TYPES = {
 
 TARGETS_LIST  = targets.TARGETS_LIST
 
+OTHER_TARGETS = []
+
 for target in TARGETS_LIST:
-    TARGET_NAMES[target] = eval('targets.' + target).NAME
-    TARGET_TYPES[eval('targets.' + target).TYPE][1].append(target)
+    try:
+        TARGET_NAMES[target] = eval('targets.' + target).NAME
+    except:
+        TARGET_NAMES[target] = target.capitalize() + ' target'
+    try:
+        TARGET_TYPES[eval('targets.' + target).TYPE][1].append(target)
+    except:
+        OTHER_TARGETS.append(target)
 
 TARGETS = TARGET_NAMES.keys()
 TARGETS.sort()
@@ -6669,6 +6677,11 @@ def listTargets():
         print
         print TARGET_TYPES[typ][0] + ':'
         for target in targets:
+            print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
+    if OTHER_TARGETS:
+        print
+        print 'OTHERS:'
+        for target in OTHER_TARGETS:
             print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
     print
 
