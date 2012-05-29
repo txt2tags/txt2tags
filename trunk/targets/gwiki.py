@@ -4,7 +4,7 @@ A Google Wiki target.
 
 NAME = 'Google Wiki page'
 
-TARGET = 'wiki'
+TYPE = 'wiki'
 
 HEADER = """\
 *%(HEADER1)s*
