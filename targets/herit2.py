@@ -3,20 +3,18 @@ A target which inherits from the mark target.
 """
 
 # import of the base target
-import mark
+from mark import *
 
 # NAME inherits from mark.NAME
-NAME = 'Inherits from ' + mark.NAME 
+NAME = 'Inherits from ' + NAME 
 
 # TYPE inherits from mark.TYPE
-TYPE = mark.TYPE
 
 # HEADER inherits from mark.HEADER
 HEADER = """\
-Header inherits from: """ + mark.HEADER
+Header inherits from: """ + HEADER
 
 # TAGS inherits from  mark.TAGS
-TAGS = mark.TAGS.copy()
 # Adds new tags to TAGS
 NEW_TAGS = {
     'title1'        : 'HERIT \a',
@@ -26,7 +24,6 @@ NEW_TAGS = {
 TAGS.update(NEW_TAGS)
 
 # RULES inherits from mark.RULES
-RULES = mark.RULES.copy()
 # Adds new rules to RULES
 RULES['autotocwithbars'] = 0
 RULES['iswrapped']       = 0
