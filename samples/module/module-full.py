@@ -9,7 +9,10 @@
 
 import sys
 
-# Remember to place the 'txt2tags.py' file on the same dir
+import setup
+
+setup.setup_paths()
+
 import txt2tags
 
 # Here is the marked text, it must be a list.
