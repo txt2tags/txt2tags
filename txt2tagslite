@@ -4014,7 +4014,7 @@ def listTargets():
             print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
     if OTHER_TARGETS:
         print
-        print 'OTHERS:'
+        print _('OTHERS:')
         for target in OTHER_TARGETS:
             print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
     print
