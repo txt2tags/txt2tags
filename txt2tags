@@ -122,6 +122,7 @@ import base64
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
+from lib import *
 import targets
 
 # Program information
