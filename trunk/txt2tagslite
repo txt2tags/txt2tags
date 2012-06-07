@@ -1088,83 +1088,6 @@ def aa_center(txt, width, web=False):
 
 ##############################################################################
 
-########################## SpreadSheet engine ################################
-
-
-# Raymond Hettinger's recipe
-class SpreadSheet:
-    _cells = {}
-    def __setitem__(self, key, formula):
-        self._cells[key] = formula
-    def getformula(self, key):
-        return self._cells[key]
-    def __getitem__(self, key):
-        if self._cells[key].strip()[0] == '=':
-            try:
-                return eval(self._cells[key].strip()[1:], globals(), self)
-            except Exception, e:
-                return e
-        else:
-            return self._cells[key].strip()
-
-
-def office():
-    global SIN, COS, TAN, ASIN, ACOS, ATAN, SINH, COSH, TANH
-    SIN = sin
-    COS = cos
-    TAN = tan
-    ASIN = asin
-    ACOS = acos
-    ATAN = atan
-    SINH = sinh
-    COSH = cosh
-    TANH = tanh
-
-
-def spreadsheet(data, markup):
-    n = max([len(line[0]) for line in data])
-    if n > 676:
-        Error(_("Spreadsheet tables are limited to 676 columns, and your table has %i columns.") % n)
-    s = SpreadSheet()
-    for j, row in enumerate(data):
-        for i, el in enumerate(row[0]):
-            ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
-            if el and el.strip():
-                s[ind] = el
-    for j, row in enumerate(data):
-        for i, el in enumerate(row[0]):
-            ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
-            if el and el.strip():
-                if markup == 'html':
-                    row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
-                elif markup == 'tex':
-                    if el.strip()[0] == '=':
-                        tooltip = 'formula: '
-                    else:
-                        tooltip = 'value: '
-                    row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{' + tooltip + el.strip() + '}'
-                elif markup == 'txt':
-                    row[0][i] = str(s[ind])
-    h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
-    data = [[h, [1] * n]] + data
-    data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
-    data[0][0][0] = ''
-    return data
-
-
-def completes_table(table):
-    data = [[row['cells'], row['cellspan']] for row in table]
-    n = max([len(line[0]) for line in data])
-    data2 = []
-    for line in data:
-        if not line[1]:
-            data2.append([n * [''], n * [1]])
-        else:
-            data2.append([line[0] + (n - sum(line[1])) * [''], line[1] + (n - sum(line[1])) * [1]])
-    return data2
-
-
-##############################################################################
 
 class error(Exception):
     pass
@@ -1986,24 +1909,16 @@ class ConfigMaster:
             target, config['slides'] = 'aat', True
         if target == 'aas':
             target, config['spread'] = 'aat', True
-            exec('from math import *', globals())
-            office()
         if target == 'aatw':
             target, config['web'] = 'aat', True
         if target == 'aapw':
             target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
-            exec('from math import *', globals())
-            office()
         if target == 'htmls':
             config['spread'], config['web'] = True, True
-            exec('from math import *', globals())
-            office()
         if target == 'texs':
             config['spread'] = True
-            exec('from math import *', globals())
-            office()
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if config['web']:
@@ -3520,21 +3435,21 @@ class BlockMaster:
         if TARGET == 'aat':
             if CONF['spread']:
                 if CONF['web']:
-                    data = spreadsheet(completes_table(self.tableparser.rows), 'html')
+                    data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'html')
                 else:
-                    data = spreadsheet(completes_table(self.tableparser.rows), 'txt')
+                    data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'txt')
                 return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
+                return aa_table(spread.completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
-            return aa_table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
+            return aa_table(spread.completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp':
-            aa_t = aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
+            aa_t = aa_table(spread.completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
@@ -3547,7 +3462,7 @@ class BlockMaster:
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
         if TARGET == 'db':
-            data = completes_table(self.tableparser.rows)
+            data = spread.completes_table(self.tableparser.rows)
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
             if self.tableparser.title:
@@ -3581,9 +3496,9 @@ class BlockMaster:
             self.tableparser.rows[i]['cells'] = cells
         if TARGET in  ['htmls', 'texs']:
             if TARGET == 'htmls':
-                data = spreadsheet(completes_table(self.tableparser.rows), 'html')
+                data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'html')
             elif TARGET == 'texs':
-                data = spreadsheet(completes_table(self.tableparser.rows), 'tex')
+                data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'tex')
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.cellalign = len_line
             self.tableparser.colalign = len_line * ['Left']
