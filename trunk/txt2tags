@@ -2676,6 +2676,7 @@ def getRules(config):
         'linkable',               # target supports external links
         'tableable',              # target supports tables
         'tableonly',              # target computes only the tables
+        'spread',                 # target uses the spread.py engine
         'imglinkable',            # target supports images as links
         'imgalignable',           # target supports image alignment
         'imgasdefterm',           # target supports image as definition term
@@ -2889,6 +2890,8 @@ def getRules(config):
         },
         'htmls': {
             #TIP htmls inherits all HTML rules
+            'tableonly': 1,
+            'spread': 1,
         },
 
         'sgml': {
@@ -2984,6 +2987,8 @@ def getRules(config):
         },
         'texs': {
             #TIP texs inherits all tex rules
+            'tableonly': 1,
+            'spread': 1,
         },
         'lout': {
             'keepquoteindent': 1,
@@ -3396,14 +3401,14 @@ def getRules(config):
             myrules['linkable'] = 1
             myrules['imglinkable'] = 1
             myrules['escapexmlchars'] = 1
+        if config['spread']:
+            myrules['tableonly'] = 1
+            myrules['spread'] = 1
     elif config['target'] == 'texs':
         myrules = rules_bank['tex'].copy()    # inheritance
+        myrules.update(rules_bank[config['target']])   # get specific
     else:
         myrules = rules_bank[config['target']].copy()
-
-    # spread targets are tableonly
-    if config['spread']:
-        myrules['tableonly'] = 1
 
     # Populate return dictionary
     for key in allrules:
@@ -4407,10 +4412,6 @@ class ConfigMaster:
             target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
-        if target == 'htmls':
-            config['spread'], config['web'] = True, True
-        if target == 'texs':
-            config['spread'] = True
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if config['web']:
@@ -5986,7 +5987,7 @@ class BlockMaster:
         for i in xrange(len(lines)):
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
-        if TARGET in  ['htmls', 'texs']:
+        if rules['spread']:
             if TARGET == 'htmls':
                 data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'html')
             elif TARGET == 'texs':
