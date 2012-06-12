@@ -2750,6 +2750,7 @@ def getRules(config):
         'blockdepthmultiply',     # block depth multiple for encoding
         'depthmultiplyplus',      # add to block depth before multiplying
         'cellspanmultiplier',     # cell span is multiplied by this value
+        'spreadmarkup',           # the markup spread engine option: 'txt', 'html' or 'tex'
     ]
 
     rules_bank = {
@@ -2896,6 +2897,7 @@ def getRules(config):
             #TIP htmls inherits all HTML rules
             'tableonly': 1,
             'spread': 1,
+            'spreadmarkup': 'html',
         },
 
         'sgml': {
@@ -2993,6 +2995,7 @@ def getRules(config):
             #TIP texs inherits all tex rules
             'tableonly': 1,
             'spread': 1,
+            'spreadmarkup': 'tex',
         },
         'lout': {
             'keepquoteindent': 1,
@@ -3408,6 +3411,9 @@ def getRules(config):
         if config['spread']:
             myrules['tableonly'] = 1
             myrules['spread'] = 1
+            myrules['spreadmarkup'] = 'txt'
+            if config['web']:
+                myrules['spreadmarkup'] = 'html'
     elif config['target'] == 'texs':
         myrules = rules_bank['tex'].copy()    # inheritance
         myrules.update(rules_bank[config['target']])   # get specific
@@ -5943,10 +5949,7 @@ class BlockMaster:
 
         if TARGET == 'aat':
             if CONF['spread']:
-                if CONF['web']:
-                    data = spread.spreadsheet(completes_table(self.tableparser.rows), 'html')
-                else:
-                    data = spread.spreadsheet(completes_table(self.tableparser.rows), 'txt')
+                data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'])
                 return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
                 return aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
@@ -6004,10 +6007,7 @@ class BlockMaster:
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
         if rules['spread']:
-            if TARGET == 'htmls':
-                data = spread.spreadsheet(completes_table(self.tableparser.rows), 'html')
-            elif TARGET == 'texs':
-                data = spread.spreadsheet(completes_table(self.tableparser.rows), 'tex')
+            data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'])
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.cellalign = len_line
             self.tableparser.colalign = len_line * ['Left']
