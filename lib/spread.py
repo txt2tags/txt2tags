@@ -77,15 +77,3 @@ def spreadsheet(data, markup):
     data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
     data[0][0][0] = ''
     return data
-
-
-def completes_table(table):
-    data = [[row['cells'], row['cellspan']] for row in table]
-    n = max([len(line[0]) for line in data])
-    data2 = []
-    for line in data:
-        if not line[1]:
-            data2.append([n * [''], n * [1]])
-        else:
-            data2.append([line[0] + (n - sum(line[1])) * [''], line[1] + (n - sum(line[1])) * [1]])
-    return data2

@@ -122,7 +122,11 @@ import base64
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
-from lib import *
+try:
+    from lib import *
+except:
+    pass
+
 import targets
 
 # Program information
@@ -897,6 +901,18 @@ def getRegexes():
     bank['special'] = re.compile(r'^%!\s*')
     return bank
 ### END OF regex nightmares
+
+
+def completes_table(table):
+    data = [[row['cells'], row['cellspan']] for row in table]
+    n = max([len(line[0]) for line in data])
+    data2 = []
+    for line in data:
+        if not line[1]:
+            data2.append([n * [''], n * [1]])
+        else:
+            data2.append([line[0] + (n - sum(line[1])) * [''], line[1] + (n - sum(line[1])) * [1]])
+    return data2
 
 
 ##############################################################################
@@ -3244,21 +3260,21 @@ class BlockMaster:
         if TARGET == 'aat':
             if CONF['spread']:
                 if CONF['web']:
-                    data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'html')
+                    data = spread.spreadsheet(completes_table(self.tableparser.rows), 'html')
                 else:
-                    data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'txt')
+                    data = spread.spreadsheet(completes_table(self.tableparser.rows), 'txt')
                 return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa.table(spread.completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
+                return aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
-            return aa.table(spread.completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
+            return aa.table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp':
-            aa_t = aa.table(spread.completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
+            aa_t = aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
@@ -3271,7 +3287,7 @@ class BlockMaster:
             return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
         if TARGET == 'db':
-            data = spread.completes_table(self.tableparser.rows)
+            data = completes_table(self.tableparser.rows)
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
             if self.tableparser.title:
@@ -3305,9 +3321,9 @@ class BlockMaster:
             self.tableparser.rows[i]['cells'] = cells
         if rules['spread']:
             if TARGET == 'htmls':
-                data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'html')
+                data = spread.spreadsheet(completes_table(self.tableparser.rows), 'html')
             elif TARGET == 'texs':
-                data = spread.spreadsheet(spread.completes_table(self.tableparser.rows), 'tex')
+                data = spread.spreadsheet(completes_table(self.tableparser.rows), 'tex')
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.cellalign = len_line
             self.tableparser.colalign = len_line * ['Left']
