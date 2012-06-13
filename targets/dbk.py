@@ -1,6 +1,5 @@
 """
 A DocBook target.
-Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'DocBook document'
@@ -105,4 +104,5 @@ RULES = {
     'parainsidelist': 1,
     'spacedlistitem': 1,
     'titleblocks': 1,
+    'tablecolumnsnumber': 1,
 }
