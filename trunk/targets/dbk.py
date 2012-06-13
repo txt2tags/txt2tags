@@ -75,7 +75,7 @@ TAGS = {
     # '_imgAlignLeft'        : ''                                 ,  # Don't know
     # '_imgAlignCenter'      : ''                                 ,  # Don't know
     # '_imgAlignRight'       : ''                                 ,  # Don't know
-    'tableOpenDbk'         : '<informaltable><tgroup cols="n_cols"><tbody>',
+    'tableOpen'            : '<informaltable><tgroup cols="n_cols"><tbody>',
     'tableClose'           : '</tbody></tgroup></informaltable>' ,
     'tableRowOpen'         : '<row>'                             ,
     'tableRowClose'        : '</row>'                            ,
@@ -96,7 +96,7 @@ TAGS = {
 RULES = {
     'escapexmlchars': 1,
     'linkable': 1,
-    'tableable': 1,  # activate when table tags are ready
+    'tableable': 1,
     'imglinkable': 1,
     'imgalignable': 1,
     'imgasdefterm': 1,

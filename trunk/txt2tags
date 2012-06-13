@@ -1595,7 +1595,7 @@ def getTags(config):
         # '_imgAlignLeft'        : ''                                 ,  # Don't know
         # '_imgAlignCenter'      : ''                                 ,  # Don't know
         # '_imgAlignRight'       : ''                                 ,  # Don't know
-        'tableOpenDbk'         : '<informaltable><tgroup cols="n_cols"><tbody>',
+        'tableOpen'            : '<informaltable><tgroup cols="n_cols"><tbody>',
         'tableClose'           : '</tbody></tgroup></informaltable>' ,
         'tableRowOpen'         : '<row>'                             ,
         'tableRowClose'        : '</row>'                            ,
@@ -2933,7 +2933,7 @@ def getRules(config):
         'dbk': {
             'escapexmlchars': 1,
             'linkable': 1,
-            'tableable': 1,  # activate when table tags are ready
+            'tableable': 1, 
             'imglinkable': 1,
             'imgalignable': 1,
             'imgasdefterm': 1,
@@ -5496,6 +5496,8 @@ class TableMaster:
 
     def dump(self):
         open_ = self._get_full_tag(TAGS['tableOpen'])
+        if TARGET == 'dbk':
+            open_ = re.sub('n_cols', self.n_cols, open_)
         rows  = self.rows
         close = self._get_full_tag(TAGS['tableClose'])
 
@@ -5998,10 +6000,6 @@ class BlockMaster:
         # Blank line before?
         if self._should_add_blank_line('before', 'table'):
             result.append('')
-
-        # DocBook needs to know the number of columns
-        if TARGET == 'dbk':
-            result.append(re.sub('n_cols', self.tableparser.n_cols, TAGS['tableOpenDbk']))
 
         # Rewrite all table cells by the unmasked and escaped data
         lines = self._get_escaped_hold()
