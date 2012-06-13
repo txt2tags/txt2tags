@@ -1,6 +1,5 @@
 """
 An Open Document Spreadsheet target.
-Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'Open Document Spreadsheet'
@@ -13,7 +12,7 @@ HEADER = """\
 """
 
 TAGS = {
-    'tableOpen'            : '<table:table table:name="' + 'Sheet' + 'n_sheet">',
+    'tableOpen'            : '<table:table table:name="' + 'Sheet' + 'n_table">',
     'tableClose'           : '</table:table>'                  ,
     'tableRowOpen'         : '<table:table-row>'               ,
     'tableRowClose'        : '</table:table-row>'              ,
@@ -27,4 +26,5 @@ RULES = {
     'tableable': 1,
     'tableonly': 1,
     'tablecellstrip': 1,
+    'tablenumber': 1,
 }
