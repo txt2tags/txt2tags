@@ -13,7 +13,7 @@ HEADER = """\
 """
 
 TAGS = {
-    'tableOpen'            : '<table:table table:name="' + 'Sheet' + '">',
+    'tableOpen'            : '<table:table table:name="' + 'Sheet' + 'n_sheet">',
     'tableClose'           : '</table:table>'                  ,
     'tableRowOpen'         : '<table:table-row>'               ,
     'tableRowClose'        : '</table:table-row>'              ,

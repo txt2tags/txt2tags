@@ -2548,7 +2548,7 @@ class TableMaster:
             self.align     = prop['align']
             self.cellalign = prop['cellalign']
             self.cellspan  = prop['cellspan']
-            self.n_cols    = str(sum(self.cellspan))
+            self.n_cols    = sum(self.cellspan)
             self.colalign  = self._get_col_align()
 
     def _get_col_align(self):
@@ -2804,8 +2804,10 @@ class TableMaster:
 
     def dump(self):
         open_ = self._get_full_tag(TAGS['tableOpen'])
+        if TARGET == 'ods':
+            open_ = re.sub('n_sheet', str(BLOCK.tablecount), open_)
         if TARGET == 'dbk':
-            open_ = re.sub('n_cols', self.n_cols, open_)
+            open_ = re.sub('n_cols', str(self.n_cols), open_)
         rows  = self.rows
         close = self._get_full_tag(TAGS['tableClose'])
 
@@ -3328,9 +3330,6 @@ class BlockMaster:
         # Blank line after?
         if self._should_add_blank_line('after', 'table'):
             result.append('')
-
-        if TARGET == 'ods':
-            result[0] = result[0][:-2] + str(self.tablecount) + '">'
 
         return result
 
