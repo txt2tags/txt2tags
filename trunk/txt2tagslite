@@ -2690,7 +2690,9 @@ class TableMaster:
             chead = head
             if self.vert_head and i == 0:
                 copen = TAGS['tableTitleCellOpen']
-                cclose = TAGS['tableTitleCellClose'] + '\n'
+                cclose = TAGS['tableTitleCellClose']
+                if rules['breaktablecell']:
+                    cclose = cclose + '\n'
 
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
@@ -3280,9 +3282,6 @@ class BlockMaster:
                 return ['%center', '%newimage "' + t_name + '"']
             except:
                 return ['%font "mono"'] + aa_t + ['']
-
-        if TARGET == 'csv':
-            return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
         if TARGET == 'db':
             data = completes_table(self.tableparser.rows)
