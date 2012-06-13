@@ -1,13 +1,18 @@
 """
 A CSV spreadsheet target.
-Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'CSV spreadsheet'
 
 TYPE = 'office'
 
+TAGS = {
+    'tableCellSep' : ',' ,
+}
+
 RULES = {
     'tableable': 1,
     'tableonly': 1,
+    'tablecellstrip': 1,
+    'blanksaroundtable': 1,
 }
