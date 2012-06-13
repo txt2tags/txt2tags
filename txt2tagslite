@@ -649,6 +649,7 @@ def getRules(config):
         'tablecellspannable',     # the table cells can have span attribute
         'tablecellmulticol',      # separate open+close tags for multicol cells
         'tablecolumnsnumber',     # set the number of columns in place of n_cols in tableOpen
+        'tablenumber',            # set the number of the table in place of n_table in tableOpen
         'barinsidequote',         # bars are allowed inside quote blocks
         'finalescapetitle',       # perform final escapes on title lines
         'autotocnewpagebefore',   # break page before automatic TOC
@@ -2805,8 +2806,8 @@ class TableMaster:
 
     def dump(self):
         open_ = self._get_full_tag(TAGS['tableOpen'])
-        if TARGET == 'ods':
-            open_ = re.sub('n_sheet', str(BLOCK.tablecount), open_)
+        if rules['tablenumber']:
+            open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
         if rules['tablecolumnsnumber']:
             open_ = re.sub('n_cols', str(self.n_cols), open_)
         rows  = self.rows
