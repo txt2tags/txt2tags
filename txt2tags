@@ -1265,6 +1265,7 @@ def getTags(config):
     },
 
     'csv': {
+        'tableCellSep' : ',' ,
     },
 
     'db': {
@@ -2828,6 +2829,8 @@ def getRules(config):
         'csv': {
             'tableable': 1,
             'tableonly': 1,
+            'tablecellstrip': 1,
+            'blanksaroundtable': 1,
         },
         'db': {
             'tableable': 1,
@@ -5971,9 +5974,6 @@ class BlockMaster:
                 return ['%center', '%newimage "' + t_name + '"']
             except:
                 return ['%font "mono"'] + aa_t + ['']
-
-        if TARGET == 'csv':
-            return [','.join([cell.strip() for cell in row['cells']]) for row in self.tableparser.rows] + ['']
 
         if TARGET == 'db':
             data = completes_table(self.tableparser.rows)
