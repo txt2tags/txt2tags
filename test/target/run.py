@@ -13,9 +13,9 @@ del sys.path[0]
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
-all_targets = 'aap aapw aas aasw aat aatw adoc bbcode creole dbk doku gwiki html html5 htmls lout man md mgp moin pm6 pmw csv ods red rst rtf sgml spip tex texs txt txt2t wiki xhtml xhtmls'.split()
+all_targets = 'aap aapw aas aasw aat aatw adoc bbcode creole dbk doku gwiki html html5 htmls lout man md mgp moin pm6 pmw csv csvs ods red rst rtf sgml spip tex texs txt txt2t wiki xhtml xhtmls'.split()
 
-tableable = 'aat aatw aas aasw aap aapw creole doku gwiki html html5 htmls man md moin pmw csv ods red rst rtf sgml spip tex texs wiki xhtml xhtmls'.split()
+tableable = 'aat aatw aas aasw aap aapw creole doku gwiki html html5 htmls man md moin pmw csv csvs ods red rst rtf sgml spip tex texs wiki xhtml xhtmls'.split()
 
 def run():
     # test all .t2t files found

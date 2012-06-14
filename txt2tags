@@ -295,7 +295,8 @@ TARGET_NAMES = {
   'db'     : _('SQLite database'),
   'adoc'   : _('AsciiDoc document'),
   'rst'    : _('ReStructuredText document'),
-  'csv'    : _('CSV spreadsheet'),
+  'csv'    : _('CSV table'),
+  'csvs'   : _('CSV Spreadsheet'),
   'ods'    : _('Open Document Spreadsheet'),
   'creole' : _('Creole 1.0 document'),
   'md'     : _('Markdown document'),
@@ -312,7 +313,7 @@ TARGET_NAMES = {
 TARGET_TYPES = {
   'html'   : (_('HTML'), ['html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp']),
   'wiki'   : (_('WIKI'), ['txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml']),
-  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'ods', 'rtf', 'db', 'mom']),
+  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom']),
   'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
@@ -489,6 +490,8 @@ HEADER_TEMPLATE = {
     'aat': """\
 """,
     'csv': """\
+""",
+    'csvs': """\
 """,
     'db': """\
 """,
@@ -1266,6 +1269,9 @@ def getTags(config):
 
     'csv': {
         'tableCellSep' : ',' ,
+    },
+    'csvs': {
+        #TIP csvs inherits all csv tags
     },
 
     'db': {
@@ -2621,6 +2627,8 @@ def getTags(config):
         alltags['htmls'] = alltags['html5'].copy()
     if config['target'] == 'texs':
         alltags['texs'] = alltags['tex'].copy()
+    if config['target'] == 'csvs':
+        alltags['csvs'] = alltags['csv'].copy()
     if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
@@ -2834,6 +2842,11 @@ def getRules(config):
             'tableonly': 1,
             'tablecellstrip': 1,
             'blanksaroundtable': 1,
+        },
+        'csvs': {
+            #TIP csvs inherits all csv rules
+            'spread': 1,
+            'spreadmarkup': 'txt',
         },
         'db': {
             'tableable': 1,
@@ -3427,6 +3440,9 @@ def getRules(config):
                 myrules['spreadmarkup'] = 'html'
     elif config['target'] == 'texs':
         myrules = rules_bank['tex'].copy()    # inheritance
+        myrules.update(rules_bank[config['target']])   # get specific
+    elif config['target'] == 'csvs':
+        myrules = rules_bank['csv'].copy()    # inheritance
         myrules.update(rules_bank[config['target']])   # get specific
     else:
         myrules = rules_bank[config['target']].copy()

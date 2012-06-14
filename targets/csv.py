@@ -1,8 +1,8 @@
 """
-A CSV spreadsheet target.
+A CSV table target.
 """
 
-NAME = 'CSV spreadsheet'
+NAME = 'CSV table'
 
 TYPE = 'office'
 
