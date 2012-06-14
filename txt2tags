@@ -2682,6 +2682,7 @@ def getRules(config):
         'tableable',              # target supports tables
         'tableonly',              # target computes only the tables
         'spread',                 # target uses the spread.py engine
+        'spreadgrid',             # target adds the reference grid to the sheet
         'imglinkable',            # target supports images as links
         'imgalignable',           # target supports image alignment
         'imgasdefterm',           # target supports image as definition term
@@ -2903,6 +2904,7 @@ def getRules(config):
             #TIP htmls inherits all HTML rules
             'tableonly': 1,
             'spread': 1,
+            'spreadgrid': 1,
             'spreadmarkup': 'html',
         },
 
@@ -3002,6 +3004,7 @@ def getRules(config):
             #TIP texs inherits all tex rules
             'tableonly': 1,
             'spread': 1,
+            'spreadgrid': 1,
             'spreadmarkup': 'tex',
         },
         'lout': {
@@ -3418,6 +3421,7 @@ def getRules(config):
         if config['spread']:
             myrules['tableonly'] = 1
             myrules['spread'] = 1
+            myrules['spreadgrid'] = 1,
             myrules['spreadmarkup'] = 'txt'
             if config['web']:
                 myrules['spreadmarkup'] = 'html'
@@ -5962,7 +5966,7 @@ class BlockMaster:
 
         if TARGET == 'aat':
             if CONF['spread']:
-                data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'])
+                data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'], rules['spreadgrid'])
                 return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
                 return aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
@@ -6013,14 +6017,18 @@ class BlockMaster:
             cells = lines[i].split(SEPARATOR)
             self.tableparser.rows[i]['cells'] = cells
         if rules['spread']:
-            data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'])
+            data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'], rules['spreadgrid'])
             self.tableparser.border, len_line = True, len(data[0][0])
             self.tableparser.cellalign = len_line
             self.tableparser.colalign = len_line * ['Left']
-            self.tableparser.vert_head = True
-            self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
-            for i, row in enumerate(self.tableparser.rows[1:]):
-                row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i+1][0], data[i+1][1], ['Left']*len_line, 0
+            if rules['spreadgrid']:
+                self.tableparser.vert_head = True
+                self.tableparser.rows = [{'cells':data[0][0], 'cellspan':data[0][1], 'cellalign':['Left']*len_line, 'title':1}] + self.tableparser.rows
+                for i, row in enumerate(self.tableparser.rows[1:]):
+                    row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i+1][0], data[i+1][1], ['Left']*len_line, 0
+            else:
+                for i, row in enumerate(self.tableparser.rows):
+                    row['cells'], row['cellspan'], row['cellalign'], row['title'] = data[i][0], data[i][1], ['Left']*len_line, 0
         result.extend(self.tableparser.dump())
 
         # Blank line after?

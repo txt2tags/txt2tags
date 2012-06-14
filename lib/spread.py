@@ -48,7 +48,7 @@ class SpreadSheet:
             return self._cells[key].strip()
 
 
-def spreadsheet(data, markup):
+def spreadsheet(data, markup, grid):
     n = max([len(line[0]) for line in data])
     if n > 676:
         Error("Spreadsheet tables are limited to 676 columns, and your table has %i columns." % n)
@@ -72,8 +72,9 @@ def spreadsheet(data, markup):
                     row[0][i] = '\htmladdnormallink{' + str(s[ind]) + '}{' + tooltip + el.strip() + '}'
                 elif markup == 'txt':
                     row[0][i] = str(s[ind])
-    h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
-    data = [[h, [1] * n]] + data
-    data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
-    data[0][0][0] = ''
+    if grid:
+        h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
+        data = [[h, [1] * n]] + data
+        data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
+        data[0][0][0] = ''
     return data
