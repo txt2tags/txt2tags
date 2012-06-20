@@ -562,8 +562,6 @@ def getTags(config):
         alltags['html'] = xhtml.copy()
     if config['target'] == 'htmls':
         alltags['htmls'] = alltags['html5'].copy()
-    if config['target'] == 'texs':
-        alltags['texs'] = alltags['tex'].copy()
     if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
@@ -729,8 +727,6 @@ def getRules(config):
             myrules['linkable'] = 1
             myrules['imglinkable'] = 1
             myrules['escapexmlchars'] = 1
-    elif config['target'] == 'texs':
-        myrules = rules_bank['tex'].copy()    # inheritance
     else:
         myrules = rules_bank[config['target']].copy()
 
