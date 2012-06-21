@@ -1,7 +1,7 @@
 """
 A Lout target.
 http://savannah.nongnu.org/projects/lout
-Target specific occurrence number in txt2tags core: 3.
+Target specific occurrence number in txt2tags core: 2.
 """
 
 NAME = 'Lout document'
@@ -117,3 +117,5 @@ RULES = {
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
 }
+
+ESCAPES = [('/', 'vvvvLoutSlashvvvv', '"/"')]

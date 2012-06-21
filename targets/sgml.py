@@ -1,6 +1,6 @@
 """
 A SGML target.
-Target specific occurrence number in txt2tags core: 2.
+Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'SGML document'
@@ -90,3 +90,5 @@ RULES = {
     'blanksaroundnumtitle': 1,
     'quotemaxdepth': 1,
 }
+             
+ESCAPES = [('[', 'vvvvSgmlBracketvvvv', '&lsqb;')]
