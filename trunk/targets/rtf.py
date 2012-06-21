@@ -1,6 +1,6 @@
 """
 A RTF target.
-Target specific occurrence number in txt2tags core: 7.
+Target specific occurrence number in txt2tags core: 6.
 """
 
 NAME = 'RTF document'
@@ -185,3 +185,5 @@ RULES = {
     'listmaxdepth': 9,
     'tablecellaligntype': 'cell',
 }
+
+ESCAPES = [('\t', 'vvvvRtfTabvvvv', '\x00' + 'tab')]
