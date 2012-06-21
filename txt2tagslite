@@ -361,14 +361,13 @@ SEPARATOR = '\x01'
 LISTNAMES = {'-': 'list', '+': 'numlist', ':': 'deflist'}
 LINEBREAK = {'default': '\n', 'win': '\r\n', 'mac': '\r'}
 
-ESCAPES = {  'pm6':  [(ESCCHAR + '<', 'vvvvPm6Bracketvvvv', r'<\#92><')],
-             'man':  [('-', 'vvvvManDashvvvv', r'\-')],
-             'sgml': [('[', 'vvvvSgmlBracketvvvv', '&lsqb;')],
-             'lout': [('/', 'vvvvLoutSlashvvvv', '"/"')],
-             'tex':  [('_', 'vvvvTexUndervvvv', r'\_'),
-                      ('\\', 'vvvvTexBackslashvvvv', r'$\backslash$')],
-             'rtf':  [('\t', 'vvvvRtfTabvvvv', ESCCHAR + 'tab')],
-          }
+ESCAPES = {}
+
+for target in TARGETS_LIST:
+    try:
+        ESCAPES[target] = eval('targets.' + target).ESCAPES
+    except:
+        pass
 
 # Platform specific settings
 LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']

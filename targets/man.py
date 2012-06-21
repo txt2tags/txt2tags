@@ -1,6 +1,6 @@
 """
 A Man target.
-Target specific occurrence number in txt2tags core: 3.
+Target specific occurrence number in txt2tags core: 2.
 """
 
 NAME = 'UNIX Manual page'
@@ -73,3 +73,5 @@ RULES = {
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
 }
+
+ESCAPES = [('-', 'vvvvManDashvvvv', r'\-')]
