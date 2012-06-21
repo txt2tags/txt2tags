@@ -1,6 +1,6 @@
 """
 A Man target.
-Target specific occurrence number in txt2tags core: 2.
+Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'UNIX Manual page'
@@ -61,6 +61,7 @@ RULES = {
     'tablecellstrip': 1,
     'barinsidequote': 1,
     'parainsidelist': 0,
+    'plaintexttoc': 1,
 
     'blanksaroundpara': 1,
     'blanksaroundverb': 1,
