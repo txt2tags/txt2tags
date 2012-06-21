@@ -1,7 +1,7 @@
 """
 A LaTeX target.
 http://www.latex-project.org
-Target specific occurrence number in txt2tags core: 8.
+Target specific occurrence number in txt2tags core: 7.
 """
 
 NAME = 'LaTeX document'
@@ -127,3 +127,5 @@ RULES = {
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
 }
+
+ESCAPES = [('_', 'vvvvTexUndervvvv', r'\_'), ('\\', 'vvvvTexBackslashvvvv', r'$\backslash$')]
