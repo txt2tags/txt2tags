@@ -1,6 +1,6 @@
 """
 A PageMaker target.
-Target specific occurrence number in txt2tags core: 2.
+Target specific occurrence number in txt2tags core: 1.
 """
 
 NAME = 'PageMaker document'
@@ -84,3 +84,5 @@ RULES = {
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
 }
+
+ESCAPES = [('\x00' + '<', 'vvvvPm6Bracketvvvv', r'<\#92><')]
