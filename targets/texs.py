@@ -4,7 +4,7 @@ Target specific occurrence number in txt2tags core: 7.
 """
 
 # inherits from the LaTeX target
-from tex import TYPE, TAGS, RULES
+from tex import TYPE, TAGS, RULES, ESCAPES
 
 NAME = 'LaTeX Spreadsheet'
 
