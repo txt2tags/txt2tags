@@ -2727,6 +2727,7 @@ def getRules(config):
         'autotocnewpagebefore',   # break page before automatic TOC
         'autotocnewpageafter',    # break page after automatic TOC
         'autotocwithbars',        # automatic TOC surrounded by bars
+        'plaintexttoc',           # TOC will be plain text (no links)
         'mapbar2pagebreak',       # map the strong bar to a page break
         'titleblocks',            # titles must be on open/close section blocks
         'listlineafteropen',      # put listItemLine after listItemOpen
@@ -2779,6 +2780,7 @@ def getRules(config):
             'keeplistindent': 1,
             'barinsidequote': 1,
             'autotocwithbars': 1,
+            'plaintexttoc': 1,
 
             'blanksaroundpara': 1,
             'blanksaroundverb': 1,
@@ -3220,6 +3222,7 @@ def getRules(config):
             'tablecellstrip': 1,
             'barinsidequote': 1,
             'parainsidelist': 0,
+            'plaintexttoc': 1,
 
             'blanksaroundpara': 1,
             'blanksaroundverb': 1,
@@ -5217,7 +5220,7 @@ class TitleMaster:
 
             # TOC will be plain text (no links)
             else:
-                if TARGET in ['txt', 'man', 'aat'] and not CONF['slides']:
+                if rules['plaintexttoc'] and not CONF['slides']:
                     # For these, the list is not necessary, just dump the text
                     tocitem = '%s""%s""' % (indent, id_txt)
                 elif TARGET == 'aat' and CONF['enum-title'] and level == 1:
