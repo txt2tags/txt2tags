@@ -345,12 +345,6 @@ regex = {}
 TAGS = {}
 rules = {}
 
-# Gui globals
-askopenfilename = None
-showinfo = None
-showwarning = None
-showerror = None
-
 lang = 'english'
 TARGET = ''
 
@@ -5749,8 +5743,6 @@ def exec_command_line(user_cmdline=[]):
         except:
             Error(_('gui_tk module not found, so GUI is not available, use CLI instead.'))
         try:
-            gui_tk.load_GUI_resources()
-            Debug("GUI resources OK (Tk module is installed)")
             winbox = gui_tk.Gui(my_name, my_version, my_url, STDOUT, TARGETS, TARGET_NAMES)
             Debug("GUI display OK")
             GUI = 1

@@ -16,13 +16,9 @@
 # label align: justify=left,right,center
 
 import sys
-
-def load_GUI_resources():
-    "Load all extra modules and methods used by GUI"
-    global askopenfilename, showinfo, showwarning, showerror, Tkinter
-    from tkFileDialog import askopenfilename
-    from tkMessageBox import showinfo, showwarning, showerror
-    import Tkinter
+import Tkinter
+from tkFileDialog import askopenfilename
+from tkMessageBox import showinfo, showwarning, showerror
 
 
 class Gui:
