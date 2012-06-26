@@ -1,31 +1,50 @@
-aap	ASCII Art Presentation
-aas	ASCII Art Spreadsheet
-aat	ASCII Art Text
-adoc	AsciiDoc document
-bbcode	BBCode document
-creole	Creole 1.0 document
-csv	CSV spreadsheet
-dbk	DocBook document
-doku	DokuWiki page
-gwiki	Google Wiki page
-html	HTML page
-html5	HTML5 page
-lout	Lout document
-man	UNIX Manual page
-md	Markdown document
-mgp	MagicPoint presentation
-moin	MoinMoin page
-ods	Open Document Spreadsheet
-pm6	PageMaker document
-pmw	PmWiki page
-red	Redmine Wiki page
-rst	ReStructuredText document
-rtf	RTF document
-sgml	SGML document
-spip	SPIP article
-tex	LaTeX document
-txt	Plain Text
-txt2t	Txt2tags document
-wiki	Wikipedia page
-xhtml	XHTML page
-xhtmls	XHTML Strict page
+
+WIKI:
+	adoc	AsciiDoc document
+	bbcode	BBCode document
+	creole	Creole 1.0 document
+	doku	DokuWiki page
+	gwiki	Google Wiki page
+	md	Markdown document
+	moin	MoinMoin page
+	pmw	PmWiki page
+	red	Redmine Wiki page
+	rst	ReStructuredText document
+	spip	SPIP article
+	tml	Foswiki or TWiki page
+	txt2t	Txt2tags document
+	wiki	Wikipedia page
+
+TEXT:
+	aap	ASCII Art Presentation
+	aas	ASCII Art Spreadsheet
+	aat	ASCII Art Text
+	man	UNIX Manual page
+	txt	Plain Text
+
+HTML:
+	aapw	ASCII Art Presentation Web
+	aasw	ASCII Art Spreadsheet Web
+	aatw	ASCII Art Text Web
+	html	HTML page
+	html5	HTML5 page
+	htmls	HTML Spreadsheet
+	wp	WordPress post
+	xhtml	XHTML page
+	xhtmls	XHTML Strict page
+
+OFFICE:
+	csv	CSV table
+	csvs	CSV Spreadsheet
+	db	SQLite database
+	dbk	DocBook document
+	lout	Lout document
+	mgp	MagicPoint presentation
+	mom	MOM groff macro
+	ods	Open Document Spreadsheet
+	pm6	PageMaker document
+	rtf	RTF document
+	sgml	SGML document
+	tex	LaTeX document
+	texs	LaTeX Spreadsheet
+

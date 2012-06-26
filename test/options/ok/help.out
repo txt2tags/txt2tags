@@ -3,25 +3,29 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
 
       --targets       print a list of all the available targets and exit
   -t, --target=TYPE   set target document type. currently supported:
-                      aap, aas, aat, adoc, bbcode, creole, csv, dbk,
-                      doku, gwiki, html, html5, lout, man, md, mgp, moin,
-                      ods, pm6, pmw, red, rst, rtf, sgml, spip, tex, txt, txt2t, wiki, xhtml, xhtmls
+                      aap, aapw, aas, aasw, aat, aatw, adoc, bbcode,
+                      creole, csv, csvs, db, dbk, doku, gwiki, html, html5,
+                      htmls, lout, man, md, mgp, moin, mom, ods, pm6,
+                      pmw, red, rst, rtf, sgml, spip, tex, texs, tml, txt, txt2t, wiki, wp, xhtml, xhtmls
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
       --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)
       --toc           add an automatic Table of Contents to the output
+      --toc-title=S   set custom TOC title to S
       --toc-level=N   set maximum TOC level (depth) to N
       --toc-only      print the Table of Contents and exit
   -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc
       --style=FILE    use FILE as the document style (like HTML CSS)
       --css-sugar     insert CSS-friendly tags for HTML/XHTML
       --css-inside    insert CSS file contents inside HTML/XHTML headers
-      --embed-images  embed image data inside RTF documents
+      --embed-images  embed image data inside HTML, html5, xhtml, RTF, aat and aap documents
   -H, --no-headers    suppress header and footer from the output
   -T, --template=FILE use FILE as the template for the output document
       --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>
-      --width=N       set the output's width to N columns (used by -t art)
-      --height=N      set the output's height to N rows (used by -t art)
+      --width=N       set the output's width to N columns (used by aat, aap and aatw targets)
+      --height=N      set the output's height to N rows (used by aap target)
+      --chars=S       set the output's chars to S (used by all aa targets and rst)
+                      aa default +-|-==-^"-=$ rst default #*=-^"--
   -C, --config-file=F read configuration from file F
       --fix-path      fix resources path (image, links, CSS) when needed
       --gui           invoke Graphical Tk Interface
