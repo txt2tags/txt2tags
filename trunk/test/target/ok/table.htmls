@@ -180,7 +180,7 @@ table th,table td{padding:4px;}
 </tr>
 </table>
 
-<table style="text-align:center" class="tableborder">
+<table style="margin-left: auto; margin-right: auto;" class="tableborder">
 <tr>
 <th></th>
 <th>A</th>
