@@ -2,8 +2,12 @@
 A target which inherits from the mark target.
 """
 
-# import of the base target
-from mark import *
+# direct import of strings
+from mark import  NAME, TYPE, HEADER
+# direct import of dictionnary if you don't modify it
+from mark import TAGS
+# no direct import of dictionnary if you modify it
+import mark
 
 # NAME inherits from mark.NAME
 NAME = 'Inherits from ' + NAME 
@@ -15,15 +19,9 @@ HEADER = """\
 Header inherits from: """ + HEADER
 
 # TAGS inherits from  mark.TAGS
-# Adds new tags to TAGS
-NEW_TAGS = {
-    'title1'        : 'HERIT \a',
-    'fontBoldOpen'  : '%%'      ,
-    'fontBoldClose' : '%%'      ,
-}
-TAGS.update(NEW_TAGS)
 
 # RULES inherits from mark.RULES
+RULES = mark.RULES.copy()
 # Adds new rules to RULES
 RULES['autotocwithbars'] = 0
 RULES['iswrapped']       = 0
