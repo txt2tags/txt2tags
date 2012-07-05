@@ -4,7 +4,8 @@ Target specific occurrence number in txt2tags core: 7.
 """
 
 # inherits from the LaTeX target
-from tex import TYPE, TAGS, RULES, ESCAPES
+from tex import TYPE, TAGS, ESCAPES
+import tex
 
 NAME = 'LaTeX Spreadsheet'
 
@@ -18,6 +19,7 @@ r"""\documentclass{article}
 \begin{document}
 """
 
+RULES = tex.RULES.copy()
 RULES['tableonly'] = 1
 RULES['spread'] = 1
 RULES['spreadgrid'] = 1
