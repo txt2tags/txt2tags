@@ -1119,6 +1119,10 @@ for target in TARGETS_LIST:
         HEADER_TEMPLATE[target] = eval('targets.' + target).HEADER
     except:
         HEADER_TEMPLATE[target] = ''
+    try:
+        HEADER_TEMPLATE[target + 'css'] = eval('targets.' + target).HEADERCSS
+    except:
+        pass
 
 ##############################################################################
 
