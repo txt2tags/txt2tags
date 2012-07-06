@@ -8,4 +8,4 @@ TARGETS_LIST = []
 #TARGETS_LIST = ['mark', 'herit', 'herit2', 'herit3', 'herit4', 'mama', 'null']
 
 # For txt2tagslite use
-#TARGETS_LIST = ['db', 'tex', 'texs', 'rtf', 'mgp', 'man', 'adoc', 'csv', 'csvs', 'doku', 'moin', 'pm6', 'red', 'spip', 'txt2t', 'bbcode', 'creole', 'dbk', 'gwiki', 'lout', 'md', 'mom', 'ods', 'pmw', 'sgml', 'tml', 'wiki']
+#TARGETS_LIST = ['html', 'db', 'tex', 'texs', 'rtf', 'mgp', 'man', 'adoc', 'csv', 'csvs', 'doku', 'moin', 'pm6', 'red', 'spip', 'txt2t', 'bbcode', 'creole', 'dbk', 'gwiki', 'lout', 'md', 'mom', 'ods', 'pmw', 'sgml', 'tml', 'wiki']
