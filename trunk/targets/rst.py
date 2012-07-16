@@ -1,3 +1,8 @@
+"""
+A reStructuredText target.
+http://docutils.sourceforge.net/rst.html
+"""
+
 from lib import aa
 import targets
 
