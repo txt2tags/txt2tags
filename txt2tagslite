@@ -534,6 +534,8 @@ def getTags(config):
     }
     for target in TARGETS_LIST:
         try:
+            if eval('targets.' + target).RULES['confdependenttags']:
+                exec('reload(targets.' + target + ')')
             alltags[target] = eval('targets.' + target).TAGS
         except:
             alltags[target] = {}
@@ -660,6 +662,7 @@ def getRules(config):
         'zerodepthparagraph',     # non-nested paras have block depth of 0 instead of 1
         'cellspancumulative',     # cell span value adds up for each cell of a row
         'keepblankheaderline',    # template lines are not removed if headers are blank
+        'confdependenttags',      # tags are configuration dependent
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
