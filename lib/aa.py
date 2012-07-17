@@ -19,6 +19,27 @@ import textwrap
 import unicodedata
 
 
+QA = """\
+       ________
+   /#**TXT2TAGS**#\\
+ /#####/      \####CC\\
+/###/            \#BY#|
+^-^               |NC#|
+                  /SA#|
+               /#####/
+            /#####/
+          /####/
+         /###/
+        |###|
+        |###|
+         \o/
+
+         ___
+        F2.7G
+         (C)\
+""".split('\n')
+
+
 def line(char, width):
     return char * width
 
