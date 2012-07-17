@@ -312,23 +312,6 @@ AA_PW_TOC = {}
 AA_IMG = 0
 AA_TITLE = ''
 AA_MARKS = []
-AA_QA = """       ________
-   /#**TXT2TAGS**#\\
- /#####/      \####CC\\
-/###/            \#BY#|
-^-^               |NC#|
-                  /SA#|
-               /#####/
-            /#####/
-          /####/
-         /###/
-        |###|
-        |###|
-         \o/
-
-         ___
-        F2.7G
-         (C)""".split('\n')
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -4786,7 +4769,7 @@ def convert_this_files(configs):
                 if myconf['web']:
                     end_qa = end_qa + '</pre></section>'
                 if myconf['height'] > 23 and myconf['width'] > 22:
-                    target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * n_after + [end_qa]
+                    target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in aa.QA] + [''] * n_after + [end_qa]
                 else:
                     target_body = target_body + head + [''] * (myconf['height'] - 7) + [end_qa]
 
