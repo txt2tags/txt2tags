@@ -130,7 +130,8 @@ except:
 try:
     import targets
 except:
-    TARGETS_OFF = True
+    targets = None
+    TARGETS_LIST = []
 
 # Program information
 my_url = 'http://txt2tags.org'
@@ -320,8 +321,7 @@ TARGET_TYPES = {
   'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
-TARGETS_LIST = []
-if not TARGETS_OFF:
+if targets:
     TARGETS_LIST = targets.TARGETS_LIST
 
 OTHER_TARGETS = []
