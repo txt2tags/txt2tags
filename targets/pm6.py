@@ -3,7 +3,9 @@ A PageMaker target.
 Target specific occurrence number in txt2tags core: 1.
 """
 
-NAME = 'PageMaker document'
+from targets import _
+
+NAME = _('PageMaker document')
 
 TYPE = 'office'
 

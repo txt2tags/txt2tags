@@ -6,8 +6,9 @@ Target specific occurrence number in txt2tags core: 7.
 # inherits from the LaTeX target
 from tex import TYPE, TAGS, ESCAPES
 import tex
+from targets import _
 
-NAME = 'LaTeX Spreadsheet'
+NAME = _('LaTeX Spreadsheet')
 
 HEADER = \
 r"""\documentclass{article}

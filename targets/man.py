@@ -3,7 +3,9 @@ A Man target.
 Target specific occurrence number in txt2tags core: 1.
 """
 
-NAME = 'UNIX Manual page'
+from targets import _
+
+NAME = _('UNIX Manual page')
 
 TYPE = 'text'
 

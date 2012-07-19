@@ -3,7 +3,9 @@ A MoinMoin target.
 http://moinmo.in
 """
 
-NAME = 'MoinMoin page'
+from targets import _
+
+NAME = _('MoinMoin page')
 
 TYPE = 'wiki'
 

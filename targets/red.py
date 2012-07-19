@@ -3,7 +3,9 @@ A Redmine target.
 http://www.redmine.org
 """
 
-NAME = 'Redmine Wiki page'
+from targets import _
+
+NAME = _('Redmine Wiki page')
 
 TYPE = 'wiki'
 

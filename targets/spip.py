@@ -3,7 +3,9 @@ A SPIP target.
 http://www.spip.net
 """
 
-NAME = 'SPIP article'
+from targets import _
+
+NAME = _('SPIP article')
 
 TYPE = 'wiki'
 

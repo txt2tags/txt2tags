@@ -2,7 +2,9 @@
 A HTML 4.0 target.
 """
 
-NAME = 'HTML page'
+from targets import _
+
+NAME = _('HTML page')
 
 TYPE = 'html'
 

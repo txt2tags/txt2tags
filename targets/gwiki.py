@@ -2,7 +2,9 @@
 A Google Wiki target.
 """
 
-NAME = 'Google Wiki page'
+from targets import _
+
+NAME = _('Google Wiki page')
 
 TYPE = 'wiki'
 

@@ -3,7 +3,9 @@ A MediaWiki (Wikipedia) target.
 http://www.mediawiki.org
 """
 
-NAME = 'Wikipedia page'
+from targets import _
+
+NAME = _('Wikipedia page')
 
 TYPE = 'wiki'
 
