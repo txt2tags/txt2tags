@@ -304,9 +304,6 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'corner border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
-AA_VALUES = '+-|-==-^"-=$'  # do not edit here, please use --chars
-AA = dict(zip(AA_KEYS, AA_VALUES))
 AA_COUNT = 0
 AA_PW_TOC = {}
 AA_IMG = 0
@@ -377,7 +374,7 @@ def Usage():
         fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by aat, aap and aatw targets)")),
         fmt1 % (''  , '--height=N'     , _("set the output's height to N rows (used by aap target)")),
         fmt1 % (''  , '--chars=S'      , _("set the output's chars to S (used by all aa targets and rst)")),
-        fmt1 % (''  , ''               , _("aa default " + AA_VALUES + " rst default " + targets.RST_VALUES)),
+        fmt1 % (''  , ''               , _("aa default " + targets.AA_VALUES + " rst default " + targets.RST_VALUES)),
         fmt2 % ('-C', '--config-file=F', _("read configuration from file F")),
         fmt1 % (''  , '--fix-path'     , _("fix resources path (image, links, CSS) when needed")),
         fmt1 % (''  , '--gui'          , _("invoke Graphical Tk Interface")),
@@ -1738,6 +1735,7 @@ class ConfigMaster:
             config['width'] = DFT_TEXT_WIDTH
         if target == 'aat' and config['width'] < 5:
             Error(_("--width: Expected width > 4, got %i") % config['width'])
+        targets.CONF['width'] = config['width']
         # Check/set user ASCII Art formatting characters
         if config['chars']:
             try:
@@ -1752,14 +1750,15 @@ class ConfigMaster:
                     else:
                         Error(_("--chars: Expected an UTF-8 file for your chars from an UTF-8 terminal"))
             if target == 'aat':
-                if len(config['chars']) != len(AA_VALUES):
+                if len(config['chars']) != len(targets.AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(AA_VALUES), len(config['chars'])))
                 if isinstance(config['chars'], unicode):
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
                             Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
-                AA = dict(zip(AA_KEYS, config['chars']))
+                targets.AA = dict(zip(targets.AA_KEYS, config['chars']))
+                AA = targets.AA
             elif target == 'rst':
                 if len(config['chars']) != len(targets.RST_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
