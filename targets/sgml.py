@@ -3,7 +3,9 @@ A SGML target.
 Target specific occurrence number in txt2tags core: 1.
 """
 
-NAME = 'SGML document'
+from targets import _
+
+NAME = _('SGML document')
 
 TYPE = 'office'
 

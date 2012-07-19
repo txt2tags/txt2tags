@@ -4,7 +4,9 @@ http://www.latex-project.org
 Target specific occurrence number in txt2tags core: 7.
 """
 
-NAME = 'LaTeX document'
+from targets import _
+
+NAME = _('LaTeX document')
 
 TYPE = 'office'
 

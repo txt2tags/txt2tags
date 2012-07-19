@@ -3,7 +3,9 @@ A Markdown target.
 http://daringfireball.net/projects/markdown
 """
 
-NAME = 'Markdown document'
+from targets import _
+
+NAME = _('Markdown document')
 
 TYPE = 'wiki'
 

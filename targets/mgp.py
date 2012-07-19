@@ -4,7 +4,9 @@ http://member.wide.ad.jp/wg/mgp
 Target specific occurrence number in txt2tags core: 5.
 """
 
-NAME = 'MagicPoint presentation'
+from targets import _
+
+NAME = _('MagicPoint presentation')
 
 TYPE = 'office'
 

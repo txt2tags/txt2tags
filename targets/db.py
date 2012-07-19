@@ -4,7 +4,9 @@ http://www.sqlite.org
 Target VERY specific occurrence number in txt2tags core: 4.
 """
 
-NAME = 'SQLite database'
+from targets import _
+
+NAME = _('SQLite database')
 
 TYPE = 'office'
 

@@ -4,7 +4,9 @@ http://savannah.nongnu.org/projects/lout
 Target specific occurrence number in txt2tags core: 2.
 """
 
-NAME = 'Lout document'
+from targets import _
+
+NAME = _('Lout document')
 
 TYPE = 'office'
 

@@ -3,7 +3,9 @@ A Creole 1.0 target.
 http://www.wikicreole.org
 """
 
-NAME = 'Creole 1.0 document'
+from targets import _
+
+NAME = _('Creole 1.0 document')
 
 TYPE = 'wiki'
 

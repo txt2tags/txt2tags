@@ -3,7 +3,9 @@ A MOM target.
 http://www.schaffter.ca/mom/mom-01.html
 """
 
-NAME = 'MOM groff macro'
+from targets import _
+
+NAME = _('MOM groff macro')
 
 TYPE = 'office'
 

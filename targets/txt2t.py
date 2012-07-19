@@ -3,7 +3,9 @@ A Txt2tags target.
 http://www.txt2tags.org
 """
 
-NAME = 'Txt2tags document'
+from targets import _
+
+NAME = _('Txt2tags document')
 
 TYPE = 'wiki'
 

@@ -2,7 +2,9 @@
 A Plain Text target.
 """
 
-NAME = 'Plain Text'
+from targets import _
+
+NAME = _('Plain Text')
 
 TYPE = 'text'
 

@@ -5,8 +5,9 @@ http://docutils.sourceforge.net/rst.html
 
 from lib import aa
 import targets
+from targets import _
 
-NAME = 'ReStructuredText document'
+NAME = _('ReStructuredText document')
 
 TYPE = 'wiki'
 
