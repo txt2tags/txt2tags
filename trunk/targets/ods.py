@@ -2,7 +2,9 @@
 An Open Document Spreadsheet target.
 """
 
-NAME = 'Open Document Spreadsheet'
+from targets import _
+
+NAME = _('Open Document Spreadsheet')
 
 TYPE = 'office'
 
@@ -12,7 +14,7 @@ HEADER = """\
 """
 
 TAGS = {
-    'tableOpen'            : '<table:table table:name="' + 'Sheet' + 'n_table">',
+    'tableOpen'            : '<table:table table:name="' + _('Sheet') + 'n_table">',
     'tableClose'           : '</table:table>'                  ,
     'tableRowOpen'         : '<table:table-row>'               ,
     'tableRowClose'        : '</table:table-row>'              ,

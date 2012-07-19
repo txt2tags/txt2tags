@@ -1,8 +1,9 @@
 from lib import aa
 import txt
 import targets
+from targets import _
 
-NAME = 'ASCII Art Text'
+NAME = _('ASCII Art Text')
 
 TYPE = 'text'
 

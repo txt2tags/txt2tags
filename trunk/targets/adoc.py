@@ -3,7 +3,9 @@ An AsciiDoc target.
 http://www.methods.co.nz/asciidoc
 """
 
-NAME = 'AsciiDoc document'
+from targets import _
+
+NAME = _('AsciiDoc document')
 
 TYPE = 'wiki'
 

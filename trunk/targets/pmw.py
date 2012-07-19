@@ -3,7 +3,9 @@ A PmWiki target.
 http://www.pmwiki.org
 """
 
-NAME = 'PmWiki page'
+from targets import _
+
+NAME = _('PmWiki page')
 
 TYPE = 'wiki'
 

@@ -1,5 +1,19 @@
 from config import TARGETS_LIST
 
+USE_I18N = 1   # use gettext for i18ned messages?        (default is 1)
+
+# i18n - just use if available
+if USE_I18N:
+    try:
+        import gettext
+        # If your locale dir is different, change it here
+        cat = gettext.Catalog('txt2tags', localedir='/usr/share/locale/')
+        _ = cat.gettext
+    except:
+        _ = lambda x: x
+else:
+    _ = lambda x: x
+
 CONF = {
     'width': 72,
 }

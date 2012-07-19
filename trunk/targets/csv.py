@@ -2,7 +2,9 @@
 A CSV table target.
 """
 
-NAME = 'CSV table'
+from targets import _
+
+NAME = _('CSV table')
 
 TYPE = 'office'
 

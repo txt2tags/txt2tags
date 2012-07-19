@@ -4,7 +4,9 @@ http://foswiki.org
 http://twiki.org
 """
 
-NAME = 'Foswiki or TWiki page'
+from targets import _
+
+NAME = _('Foswiki or TWiki page')
 
 TYPE = 'wiki'
 

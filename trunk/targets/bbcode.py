@@ -3,7 +3,9 @@ A BBCode target.
 http://www.bbcode.org
 """
 
-NAME = 'BBCode document'
+from targets import _
+
+NAME = _('BBCode document')
 
 TYPE = 'wiki'
 

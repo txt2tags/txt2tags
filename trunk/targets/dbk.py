@@ -2,7 +2,9 @@
 A DocBook target.
 """
 
-NAME = 'DocBook document'
+from targets import _
+
+NAME = _('DocBook document')
 
 TYPE = 'office'
 

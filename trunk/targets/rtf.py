@@ -3,7 +3,9 @@ A RTF target.
 Target specific occurrence number in txt2tags core: 6.
 """
 
-NAME = 'RTF document'
+from targets import _
+
+NAME = _('RTF document')
 
 TYPE = 'office'
 

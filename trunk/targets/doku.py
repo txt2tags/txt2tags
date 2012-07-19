@@ -3,7 +3,9 @@ A DokuWiki target.
 http://www.dokuwiki.org
 """
 
-NAME = 'DokuWiki page'
+from targets import _
+
+NAME = _('DokuWiki page')
 
 TYPE = 'wiki'
 
