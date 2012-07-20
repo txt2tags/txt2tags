@@ -292,6 +292,7 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
+AA = targets.AA
 AA_COUNT = 0
 AA_PW_TOC = {}
 AA_IMG = 0
