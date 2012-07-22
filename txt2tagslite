@@ -90,16 +90,6 @@
 # Two complete body scans will be *slow*, don't know if it worths.
 # One solution may be add the titles as postproc rules
 
-
-##############################################################################
-
-# User config (1=ON, 0=OFF)
-
-HTML_LOWER  = 0   # use lowercased HTML tags instead upper? (default is 0)
-
-##############################################################################
-
-
 # These are all the core Python modules used by txt2tags (KISS!)
 import re
 import os
@@ -518,8 +508,6 @@ def getTags(config):
     for key in xhtml.keys():
         xhtml[key] = xhtml[key].lower()
     # Some like HTML tags as lowercase, some don't... (headers out)
-    if HTML_LOWER:
-        alltags['html'] = xhtml.copy()
     if config['target'] == 'htmls':
         alltags['htmls'] = alltags['html5'].copy()
     if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
