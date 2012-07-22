@@ -11,4 +11,6 @@ TARGETS_LIST = []
 #TARGETS_LIST = ['txt', 'aat', 'rst', 'html', 'db', 'tex', 'texs', 'rtf', 'mgp', 'man', 'adoc', 'csv', 'csvs', 'doku', 'moin', 'pm6', 'red', 'spip', 'txt2t', 'bbcode', 'creole', 'dbk', 'gwiki', 'lout', 'md', 'mom', 'ods', 'pmw', 'sgml', 'tml', 'wiki']
 
 # User config (1=ON, 0=OFF)
-USE_I18N = 1   # use gettext for i18ned messages?        (default is 1)
+USE_I18N    = 1   # use gettext for i18ned messages?        (default is 1)
+COLOR_DEBUG = 1   # show debug messages in colors?          (default is 1)
+BG_LIGHT    = 0   # your terminal background color is light (default is 0)

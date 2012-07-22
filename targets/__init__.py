@@ -1,4 +1,4 @@
-from config import TARGETS_LIST, USE_I18N
+from config import TARGETS_LIST, USE_I18N, COLOR_DEBUG, BG_LIGHT
 
 
 ################################################################################
