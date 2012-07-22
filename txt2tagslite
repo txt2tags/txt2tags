@@ -495,7 +495,7 @@ def getTags(config):
     }
     for target in TARGETS_LIST:
         try:
-            if eval('targets.' + target).RULES['confdependenttags']:
+            if eval('targets.' + target).RULES.get('confdependenttags'):
                 exec('reload(targets.' + target + ')')
             alltags[target] = eval('targets.' + target).TAGS
         except:
