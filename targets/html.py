@@ -107,6 +107,7 @@ TAGS = {
     'EOD'                  : '</BODY></HTML>'
 }
 
+# Some like HTML tags as lowercase, some don't... (headers out)
 if HTML_LOWER:
     for tag in TAGS:
         TAGS[tag] = TAGS[tag].lower()
