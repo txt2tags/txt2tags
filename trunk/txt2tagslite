@@ -507,7 +507,6 @@ def getTags(config):
     xhtml = alltags['html'].copy()
     for key in xhtml.keys():
         xhtml[key] = xhtml[key].lower()
-    # Some like HTML tags as lowercase, some don't... (headers out)
     if config['target'] == 'htmls':
         alltags['htmls'] = alltags['html5'].copy()
     if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
