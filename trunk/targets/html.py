@@ -3,6 +3,7 @@ A HTML 4.0 target.
 """
 
 from targets import _
+from config import HTML_LOWER
 
 NAME = _('HTML page')
 
@@ -105,6 +106,10 @@ TAGS = {
     'comment'              : '<!-- \a -->'    ,
     'EOD'                  : '</BODY></HTML>'
 }
+
+if HTML_LOWER:
+    for tag in TAGS:
+        TAGS[tag] = TAGS[tag].lower()
 
 RULES = {
     'escapexmlchars': 1,
