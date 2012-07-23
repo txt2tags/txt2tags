@@ -507,9 +507,7 @@ def getTags(config):
     xhtml = alltags['html'].copy()
     for key in xhtml.keys():
         xhtml[key] = xhtml[key].lower()
-    if config['target'] == 'htmls':
-        alltags['htmls'] = alltags['html5'].copy()
-    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
+    if config['target'] in ('xhtml', 'xhtmls', 'wp'):
         xhtml.update(alltags[config['target']])
         alltags[config['target']] = xhtml.copy()
 
@@ -660,7 +658,7 @@ def getRules(config):
         rules_bank['html']['indentverbblock'] = 0
         rules_bank['html']['autotocwithbars'] = 0
     # Get the target specific rules
-    if config['target'] in ('xhtml', 'xhtmls', 'html5', 'htmls', 'wp'):
+    if config['target'] in ('xhtml', 'xhtmls', 'wp'):
         myrules = rules_bank['html'].copy()   # inheritance
         myrules.update(rules_bank[config['target']])   # get specific
     elif config['target'] == 'aat':
