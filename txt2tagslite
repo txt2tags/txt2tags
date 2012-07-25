@@ -152,7 +152,7 @@ FLAGS = {
     'toc': 0,
     'qa': 0,
     'rc': 1,
-    'css-sugar': targets.CSS_SUGAR,
+    'css-sugar': targets.CONF['css-sugar'],
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
@@ -1624,7 +1624,7 @@ class ConfigMaster:
                     target = 'txt'
                     break
         if config.get('css-sugar'):
-            targets.CSS_SUGAR = 1
+            targets.CONF['css-sugar'] = 1
         # On GUI, some checking are skipped
         if not gui:
             # We *need* a target
