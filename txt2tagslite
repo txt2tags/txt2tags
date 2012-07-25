@@ -479,10 +479,7 @@ def getTags(config):
     # TIP: \a represents the current text inside the mark
     # TIP: ~A~, ~B~ and ~C~ are expanded to other tags parts
 
-    alltags = {
-        'html' : {
-        },
-    }
+    alltags = {}
     for target in TARGETS_LIST:
         try:
             if eval('targets.' + target).RULES.get('confdependenttags'):
@@ -625,8 +622,7 @@ def getRules(config):
         'spreadmarkup',           # the markup spread engine option: 'txt', 'html' or 'tex'
     ]
 
-    rules_bank = {
-    }
+    rules_bank = {}
     for target in TARGETS_LIST:
         try:
             rules_bank[target] = eval('targets.' + target).RULES
