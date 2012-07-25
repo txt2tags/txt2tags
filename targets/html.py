@@ -109,13 +109,13 @@ TAGS = {
 }
 
 if targets.CSS_SUGAR:
-        # Table with no cellpadding
-        TAGS['tableOpen'] = TAGS['tableOpen'].replace(' CELLPADDING="4"', '')
-        # DIVs
-        TAGS['tocOpen'] = '<DIV CLASS="toc">'
-        TAGS['tocClose'] = '</DIV>'
-        TAGS['bodyOpen'] = '<DIV CLASS="body" ID="body">'
-        TAGS['bodyClose'] = '</DIV>'
+    # Table with no cellpadding
+    TAGS['tableOpen'] = TAGS['tableOpen'].replace(' CELLPADDING="4"', '')
+    # DIVs
+    TAGS['tocOpen'] = '<DIV CLASS="toc">'
+    TAGS['tocClose'] = '</DIV>'
+    TAGS['bodyOpen'] = '<DIV CLASS="body" ID="body">'
+    TAGS['bodyClose'] = '</DIV>'
 
 # Some like HTML tags as lowercase, some don't... (headers out)
 if HTML_LOWER:
