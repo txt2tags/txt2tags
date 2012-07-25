@@ -493,8 +493,7 @@ def getTags(config):
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls')) or config['target'] == 'wp':
-        # Change just HTML because XHTML inherits it
-        htmltags = alltags['html']
+        htmltags = alltags[config['target']]
         # Table with no cellpadding
         htmltags['tableOpen'] = htmltags['tableOpen'].replace(' CELLPADDING="4"', '')
         # DIVs
@@ -502,14 +501,6 @@ def getTags(config):
         htmltags['tocClose'] = '</DIV>'
         htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
         htmltags['bodyClose'] = '</DIV>'
-
-    # Make the HTML -> XHTML inheritance
-    xhtml = alltags['html'].copy()
-    for key in xhtml.keys():
-        xhtml[key] = xhtml[key].lower()
-    if config['target'] in ('xhtml', 'xhtmls', 'wp'):
-        xhtml.update(alltags[config['target']])
-        alltags[config['target']] = xhtml.copy()
 
     if config['target'] == 'aat' and config['slides']:
         alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
@@ -655,12 +646,9 @@ def getRules(config):
 
     # Exceptions for --css-sugar
     if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5')) or config['target'] == 'wp':
-        rules_bank['html']['indentverbblock'] = 0
-        rules_bank['html']['autotocwithbars'] = 0
-    # Get the target specific rules
-    if config['target'] in ('xhtml', 'xhtmls', 'wp'):
-        myrules = rules_bank['html'].copy()   # inheritance
-        myrules.update(rules_bank[config['target']])   # get specific
+        rules_bank[config['target']]['indentverbblock'] = 0
+        rules_bank[config['target']]['autotocwithbars'] = 0
+        myrules = rules_bank[config['target']].copy()
     elif config['target'] == 'aat':
         myrules = rules_bank['txt'].copy()    # inheritance
         myrules['tableable'] = 1
