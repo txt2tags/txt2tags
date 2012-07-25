@@ -108,7 +108,7 @@ TAGS = {
     'EOD'                  : '</BODY></HTML>'
 }
 
-if targets.CSS_SUGAR:
+if targets.CONF['css-sugar']:
     # Table with no cellpadding
     TAGS['tableOpen'] = TAGS['tableOpen'].replace(' CELLPADDING="4"', '')
     # DIVs
