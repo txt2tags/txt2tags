@@ -625,16 +625,13 @@ def getRules(config):
     rules_bank = {}
     for target in TARGETS_LIST:
         try:
+            if eval('targets.' + target).RULES.get('confdependentrules'):
+                exec('reload(targets.' + target + ')')
             rules_bank[target] = eval('targets.' + target).RULES
         except:
             rules_bank[target] = {}
 
-    # Exceptions for --css-sugar
-    if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls', 'html5')) or config['target'] == 'wp':
-        rules_bank[config['target']]['indentverbblock'] = 0
-        rules_bank[config['target']]['autotocwithbars'] = 0
-        myrules = rules_bank[config['target']].copy()
-    elif config['target'] == 'aat':
+    if config['target'] == 'aat':
         myrules = rules_bank['txt'].copy()    # inheritance
         myrules['tableable'] = 1
         if config['slides']:
