@@ -152,7 +152,7 @@ FLAGS = {
     'toc': 0,
     'qa': 0,
     'rc': 1,
-    'css-sugar': 0,
+    'css-sugar': targets.CSS_SUGAR,
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
@@ -490,18 +490,6 @@ def getTags(config):
             alltags[target] = eval('targets.' + target).TAGS
         except:
             alltags[target] = {}
-
-    # Exceptions for --css-sugar
-    if (config['css-sugar'] and config['target'] in ('html', 'xhtml', 'xhtmls')) or config['target'] == 'wp':
-        htmltags = alltags[config['target']]
-        # Table with no cellpadding
-        htmltags['tableOpen'] = htmltags['tableOpen'].replace(' CELLPADDING="4"', '')
-        htmltags['tableOpen'] = htmltags['tableOpen'].replace(' cellpadding="4"', '')
-        # DIVs
-        htmltags['tocOpen'] = '<DIV CLASS="toc">'
-        htmltags['tocClose'] = '</DIV>'
-        htmltags['bodyOpen'] = '<DIV CLASS="body" ID="body">'
-        htmltags['bodyClose'] = '</DIV>'
 
     if config['target'] == 'aat' and config['slides']:
         alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
@@ -1639,6 +1627,8 @@ class ConfigMaster:
                 if config.get(action):
                     target = 'txt'
                     break
+        if config.get('css-sugar'):
+            targets.CSS_SUGAR = 1
         # On GUI, some checking are skipped
         if not gui:
             # We *need* a target
