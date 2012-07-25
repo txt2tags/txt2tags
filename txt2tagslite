@@ -496,6 +496,7 @@ def getTags(config):
         htmltags = alltags[config['target']]
         # Table with no cellpadding
         htmltags['tableOpen'] = htmltags['tableOpen'].replace(' CELLPADDING="4"', '')
+        htmltags['tableOpen'] = htmltags['tableOpen'].replace(' cellpadding="4"', '')
         # DIVs
         htmltags['tocOpen'] = '<DIV CLASS="toc">'
         htmltags['tocClose'] = '</DIV>'
