@@ -3,6 +3,7 @@ A HTML 4.0 target.
 """
 
 from targets import _
+import targets
 from config import HTML_LOWER
 
 NAME = _('HTML page')
@@ -107,6 +108,15 @@ TAGS = {
     'EOD'                  : '</BODY></HTML>'
 }
 
+if targets.CSS_SUGAR:
+        # Table with no cellpadding
+        TAGS['tableOpen'] = TAGS['tableOpen'].replace(' CELLPADDING="4"', '')
+        # DIVs
+        TAGS['tocOpen'] = '<DIV CLASS="toc">'
+        TAGS['tocClose'] = '</DIV>'
+        TAGS['bodyOpen'] = '<DIV CLASS="body" ID="body">'
+        TAGS['bodyClose'] = '</DIV>'
+
 # Some like HTML tags as lowercase, some don't... (headers out)
 if HTML_LOWER:
     for tag in TAGS:
@@ -145,4 +155,5 @@ RULES = {
     'blanksaroundbar': 1,
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
+    'confdependenttags':1,
 }
