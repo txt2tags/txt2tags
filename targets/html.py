@@ -156,4 +156,9 @@ RULES = {
     'blanksaroundtitle': 1,
     'blanksaroundnumtitle': 1,
     'confdependenttags':1,
+    'confdependentrules':1,
 }
+
+if targets.CONF['css-sugar']:
+    RULES['indentverbblock'] = 0
+    RULES['autotocwithbars'] = 0
