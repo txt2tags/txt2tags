@@ -6,9 +6,9 @@ from config import TARGETS_LIST, USE_I18N, COLOR_DEBUG, BG_LIGHT
 
 CONF = {
     'width': 72,
+    'css-sugar': 0,
 }
 
-CSS_SUGAR = 0
 
 ################################################################################
 # Target specific sharing
