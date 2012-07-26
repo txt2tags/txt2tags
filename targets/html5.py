@@ -23,10 +23,12 @@ hr.heavy{height:5px;}
 hr.light{height:1px;}
 img{border:0;display:block;}
 img.right{margin:0 0 0 auto;}
-table,img.center{border:0;margin:0 auto;}
+img.center{border:0;margin:0 auto;}
 table th,table td{padding:4px;}
 .center,header{text-align:center;}
+table.center {margin-left:auto; margin-right:auto;}
 .right{text-align:right;}
+.left{text-align:left;}
 .tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
 .underline{text-decoration:underline;}
 </style>
