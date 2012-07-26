@@ -35,4 +35,5 @@ TAGS = {
 }
 
 RULES = txt.RULES.copy()
+RULES['tableable'] = 1
 RULES['confdependenttags'] = 1
