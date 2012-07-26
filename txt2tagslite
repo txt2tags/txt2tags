@@ -488,22 +488,6 @@ def getTags(config):
         except:
             alltags[target] = {}
 
-    if config['target'] == 'aat' and config['slides']:
-        alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
-        alltags['aat']['bar1'] = aa.line(AA['bar1'], config['width'] - 2)
-        alltags['aat']['bar2'] = aa.line(AA['bar2'], config['width'] - 2)
-        if not config['chars']:
-            alltags['aat']['listItemOpen'] = '* '
-    if config['target'] == 'aat' and config['web']:
-        alltags['aat']['url'] = alltags['aat']['urlMark'] = '<a href="\a">\a</a>'
-        alltags['aat']['email'] = alltags['aat']['emailMark'] = '<a href="mailto:\a">\a</a>'
-        alltags['aat']['img'] = '<img src="\a" alt=""/>'
-        alltags['aat']['anchor'] = '<a id="\a">'
-        alltags['aat']['comment'] = '<!-- \a -->'
-        for beautifier  in ['Bold', 'Italic', 'Underline', 'Strike']:
-            open, close = 'font' + beautifier + 'Open', 'font' + beautifier + 'Close'
-            alltags['aat'][open], alltags['aat'][close] = alltags['html'][open].lower(), alltags['html'][close].lower()
-
     # Compose the target tags dictionary
     tags = {}
     target_tags = alltags[config['target']].copy()
@@ -631,21 +615,7 @@ def getRules(config):
         except:
             rules_bank[target] = {}
 
-    if config['target'] == 'aat':
-        myrules = rules_bank['txt'].copy()    # inheritance
-        myrules['tableable'] = 1
-        if config['slides']:
-            myrules['blanksaroundtitle'] = 0
-            myrules['blanksaroundnumtitle'] = 0
-            myrules['blanksaroundlist'] = 0
-            myrules['blanksaroundnumlist'] = 0
-            myrules['blanksarounddeflist'] = 0
-        if config['web']:
-            myrules['linkable'] = 1
-            myrules['imglinkable'] = 1
-            myrules['escapexmlchars'] = 1
-    else:
-        myrules = rules_bank[config['target']].copy()
+    myrules = rules_bank[config['target']].copy()
 
     # Populate return dictionary
     for key in allrules:
@@ -1696,7 +1666,7 @@ class ConfigMaster:
             if target == 'aat':
                 if len(config['chars']) != len(targets.AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
-                        len(AA_VALUES), len(config['chars'])))
+                        len(targets.AA_VALUES), len(config['chars'])))
                 if isinstance(config['chars'], unicode):
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
