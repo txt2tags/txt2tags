@@ -6082,7 +6082,7 @@ class BlockMaster:
 
         # Get contents
         if rules['onelinequote']:
-            # XXX Dirty hack, won't work for nested blocks inside quote, even subquotes
+            # XXX Dirty hack, won't work for nested blocks inside quote (when TABS are used in your t2t source), even subquotes
             result.append(' '.join([regex['quote'].sub('', x) for x in self.hold()]))
         else:
             for item in self.hold():
