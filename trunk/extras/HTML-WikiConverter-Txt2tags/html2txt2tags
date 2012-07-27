@@ -24,6 +24,11 @@ case $1 in
 		echo " "
 		cp ./html2txt2tags ${INSTALLPATH}
 	;;
+	release)
+		cd ..
+		zip -r HTML-WikiConverter-Txt2tags.zip ./HTML-WikiConverter-Txt2tags
+		echo "Release version is ../HTML-WikiConverter-Txt2tags.zip"
+	;;
 	*)
 	html2wiki --dialect Txt2tags $1
 	;;
