@@ -20,6 +20,7 @@ import Tkinter
 import tkFileDialog
 import tkMessageBox
 
+_ = lambda x: x  # i18n placeholder
 
 class Gui:
     "Graphical Tk Interface"
@@ -149,7 +150,7 @@ class Gui:
         return z
 
     def askfile(self):
-        ftypes = [('txt2tags files', ('*.t2t', '*.txt')), ('All files', '*')]
+        ftypes = [(_('txt2tags files'), ('*.t2t', '*.txt')), (_('All files'), '*')]
         newfile = tkFileDialog.askopenfilename(filetypes=ftypes)
         if newfile:
             self.infile.set(newfile)
@@ -172,7 +173,7 @@ class Gui:
         # Config
         text.insert(Tkinter.END, '\n'.join(txt))
         scroll.config(command=text.yview)
-        button.config(text='Close', command=win.destroy)
+        button.config(text=_('Close'), command=win.destroy)
         button.focus_set()
         # Packing
         text.pack(side='left', fill='both', expand=1)
@@ -187,10 +188,10 @@ class Gui:
         infile, target = self.infile.get(), self.target.get()
         # Sanity
         if not target:
-            tkMessageBox.showwarning(self.my_name, "You must select a target type!")
+            tkMessageBox.showwarning(self.my_name, _("You must select a target type!"))
             return
         if not infile:
-            tkMessageBox.showwarning(self.my_name, "You must provide the source file location!")
+            tkMessageBox.showwarning(self.my_name, _("You must provide the source file location!"))
             return
         # Compose cmdline
         guiflags = []
@@ -250,7 +251,7 @@ class Gui:
             # Show outlist in s a nice new window
             if result:
                 outlist, config = result
-                title = '%s: %s converted to %s' % (
+                title = _('%s: %s converted to %s') % (
                     self.my_name,
                     os.path.basename(infile),
                     config['target'].upper())
@@ -258,40 +259,40 @@ class Gui:
             # Show the "file saved" message
             else:
                 msg = "%s\n\n  %s\n%s\n\n  %s\n%s" % (
-                    'Conversion done!',
-                    'FROM:', infile,
-                    'TO:', config['outfile'])
+                    _('Conversion done!'),
+                    _('FROM:'), infile,
+                    _('TO:'), config['outfile'])
                 tkMessageBox.showinfo(self.my_name, msg)
         except error:         # common error (windowed), not quit
             pass
         except:               # fatal error (windowed and printed)
             errormsg = getUnknownErrorMessage()
             print errormsg
-            tkMessageBox.showerror('%s FATAL ERROR!' % self.my_name, errormsg)
+            tkMessageBox.showerror(_('%s FATAL ERROR!') % self.my_name, errormsg)
             self.exit()
         CMDLINE_RAW = cmdline_raw_orig
 
     def mainwindow(self):
         self.infile.set(self.conf.get('sourcefile') or '')
-        self.target.set(self.conf.get('target') or '-- select one --')
+        self.target.set(self.conf.get('target') or _('-- select one --'))
         outfile = self.conf.get('outfile')
         if outfile == self.STDOUT:                  # map -o-
             self.conf['stdout'] = 1
         if self.conf.get('headers') == None:
             self.conf['headers'] = 1       # map default
 
-        action1 = "Enter the source file location:"
-        action2 = "Choose the target document type:"
-        action3 = "Some options you may check:"
-        action4 = "Some extra options:"
+        action1 = _("Enter the source file location:")
+        action2 = _("Choose the target document type:")
+        action3 = _("Some options you may check:")
+        action4 = _("Some extra options:")
         checks_txt = {
-            'headers'   : "Include headers on output",
-            'enum-title': "Number titles (1, 1.1, 1.1.1, etc)",
-            'toc'       : "Do TOC also (Table of Contents)",
-            'mask-email': "Hide e-mails from SPAM robots",
+            'headers'   : _("Include headers on output"),
+            'enum-title': _("Number titles (1, 1.1, 1.1.1, etc)"),
+            'toc'       : _("Do TOC also (Table of Contents)"),
+            'mask-email': _("Hide e-mails from SPAM robots"),
 
-            'toc-only'  : "Just do TOC, nothing more",
-            'stdout'    : "Dump to screen (Don't save target file)"
+            'toc-only'  : _("Just do TOC, nothing more"),
+            'stdout'    : _("Dump to screen (Don't save target file)")
         }
         targets_menu = map(lambda x: self.TARGET_NAMES[x], self.TARGETS)
         if not targets_menu:
@@ -303,7 +304,7 @@ class Gui:
         # Header
         self.label("%s %s" % (self.my_name.upper(), self.my_version),
             bg=self.bg2, fg=self.fg2).grid(columnspan=2, ipadx=10)
-        self.label("ONE source, MULTI targets" + '\n%s\n' % self.my_url,
+        self.label(_("ONE source, MULTI targets") + '\n%s\n' % self.my_url,
             bg=self.bg1, fg=self.fg1).grid(columnspan=2)
         self.row = 2
         # Choose input file
@@ -313,15 +314,15 @@ class Gui:
         e_infile.grid(row=self.row, column=0, sticky='e')
         if not self.infile.get():
             e_infile.focus_set()
-        self.button("Browse", self.askfile).grid(
+        self.button(_("Browse"), self.askfile).grid(
             row=self.row, column=1, sticky='w', padx=10)
         # Show outfile name, style and encoding (if any)
         txt = ''
         if outfile:
             txt = outfile
             if outfile == STDOUT:
-                txt = '<screen>'
-            l_output = self.label('Output: ' + txt, fg=self.fg2, bg=self.bg2)
+                txt = _('<screen>')
+            l_output = self.label(_('Output: ') + txt, fg=self.fg2, bg=self.bg2)
             l_output.grid(columnspan=2, sticky='w')
         for setting in ['style', 'encoding']:
             if self.conf.get(setting):
@@ -357,9 +358,9 @@ class Gui:
         # Spacer and buttons
         self.label('').grid()
         self.row += 1
-        b_quit = self.button("Quit", self.exit)
+        b_quit = self.button(_("Quit"), self.exit)
         b_quit.grid(row=self.row, column=0, sticky='w', padx=30)
-        b_conv = self.button("Convert!", self.runprogram)
+        b_conv = self.button(_("Convert!"), self.runprogram)
         b_conv.grid(row=self.row, column=1, sticky='e', padx=30)
         if self.target.get() and self.infile.get():
             b_conv.focus_set()
