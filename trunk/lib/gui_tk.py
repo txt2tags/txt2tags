@@ -17,8 +17,8 @@
 
 import sys
 import Tkinter
-from tkFileDialog import askopenfilename
-from tkMessageBox import showinfo, showwarning, showerror
+import tkFileDialog
+import tkMessageBox
 
 
 class Gui:
@@ -150,7 +150,7 @@ class Gui:
 
     def askfile(self):
         ftypes = [('txt2tags files', ('*.t2t', '*.txt')), ('All files', '*')]
-        newfile = askopenfilename(filetypes=ftypes)
+        newfile = tkFileDialog.askopenfilename(filetypes=ftypes)
         if newfile:
             self.infile.set(newfile)
             newconf = process_source_file(newfile)[0]
@@ -187,10 +187,10 @@ class Gui:
         infile, target = self.infile.get(), self.target.get()
         # Sanity
         if not target:
-            showwarning(self.my_name, "You must select a target type!")
+            tkMessageBox.showwarning(self.my_name, "You must select a target type!")
             return
         if not infile:
-            showwarning(self.my_name, "You must provide the source file location!")
+            tkMessageBox.showwarning(self.my_name, "You must provide the source file location!")
             return
         # Compose cmdline
         guiflags = []
@@ -261,13 +261,13 @@ class Gui:
                     'Conversion done!',
                     'FROM:', infile,
                     'TO:', config['outfile'])
-                showinfo(self.my_name, msg)
+                tkMessageBox.showinfo(self.my_name, msg)
         except error:         # common error (windowed), not quit
             pass
         except:               # fatal error (windowed and printed)
             errormsg = getUnknownErrorMessage()
             print errormsg
-            showerror('%s FATAL ERROR!' % self.my_name, errormsg)
+            tkMessageBox.showerror('%s FATAL ERROR!' % self.my_name, errormsg)
             self.exit()
         CMDLINE_RAW = cmdline_raw_orig
 
@@ -295,7 +295,7 @@ class Gui:
         }
         targets_menu = map(lambda x: self.TARGET_NAMES[x], self.TARGETS)
         if not targets_menu:
-            showerror('%s FATAL ERROR!' % self.my_name,
+            tkMessageBox.showerror('%s FATAL ERROR!' % self.my_name,
                       'The target list is empty.')
             self.exit()
             return
