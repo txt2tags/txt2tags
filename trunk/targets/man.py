@@ -65,7 +65,7 @@ RULES = {
     'parainsidelist': 0,
     'plaintexttoc': 1,
 
-    'blanksaroundpara': 1,
+    'blanksaroundpara': 0,
     'blanksaroundverb': 1,
     # 'blanksaroundquote': 1,
     'blanksaroundlist': 1,
@@ -73,7 +73,7 @@ RULES = {
     'blanksarounddeflist': 1,
     'blanksaroundtable': 1,
     # 'blanksaroundbar': 1,
-    'blanksaroundtitle': 1,
+    'blanksaroundtitle': 0,
     'blanksaroundnumtitle': 1,
 }
 
