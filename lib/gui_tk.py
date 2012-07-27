@@ -31,6 +31,7 @@ class Gui:
         self.STDOUT = STDOUT
         self.TARGETS = TARGETS
         self.TARGET_NAMES = TARGET_NAMES
+
         self.create_window(conf)
 
     def create_window(self, conf={}):
@@ -213,11 +214,11 @@ class Gui:
             on_config  = self.conf.get(opt) or 0
             on_cmdline = real_cmdline_conf.get(opt) or 0
             if opt == 'outfile':
-                if on_config  == STDOUT:
+                if on_config  == self.STDOUT:
                     on_config = 1
                 else:
                     on_config = 0
-                if on_cmdline == STDOUT:
+                if on_cmdline == self.STDOUT:
                     on_cmdline = 1
                 else:
                     on_cmdline = 0
@@ -323,7 +324,7 @@ class Gui:
         txt = ''
         if outfile:
             txt = outfile
-            if outfile == STDOUT:
+            if outfile == self.STDOUT:
                 txt = _('<screen>')
             l_output = self.label(_('Output: ') + txt, fg=self.fg2, bg=self.bg2)
             l_output.grid(columnspan=2, sticky='w')
