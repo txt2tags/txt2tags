@@ -2904,6 +2904,7 @@ def getRules(config):
             'onelinequote': 1,
             'tagnotindentable': 1,
             'blanksaroundpara': 1,
+            'quotemaxdepth': 1,
             'keepquoteindent': 0,
             'keeplistindent': 0,
             'notbreaklistitemclose': 1,
