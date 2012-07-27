@@ -31,8 +31,11 @@ class Gui:
         self.STDOUT = STDOUT
         self.TARGETS = TARGETS
         self.TARGET_NAMES = TARGET_NAMES
+        self.create_window(conf)
+
+    def create_window(self, conf={}):
         self.root = Tkinter.Tk()    # mother window, come to butthead
-        self.root.title(my_name)    # window title bar text
+        self.root.title(self.my_name)  # window title bar text
         self.window = self.root     # variable "focus" for inclusion
         self.row = 0                # row count for grid()
 
@@ -159,7 +162,7 @@ class Gui:
             # Restate all checkboxes after file selection
             #TODO how to make a refresh without killing it?
             self.root.destroy()
-            self.__init__(newconf)
+            self.create_window(newconf)
             self.mainwindow()
 
     def scrollwindow(self, txt='no text!', title=''):
@@ -236,7 +239,7 @@ class Gui:
                     else:
                         opt = '--no-%s' % opt
                 guiflags.append(opt)
-        cmdline = [slef.my_name, '-t', target] + real_cmdline + guiflags + [infile]
+        cmdline = [self.my_name, '-t', target] + real_cmdline + guiflags + [infile]
         Debug('Gui/Tk cmdline: %s' % cmdline, 5)
         # Run!
         cmdline_raw_orig = CMDLINE_RAW
