@@ -375,10 +375,7 @@ TAGS = {}
 rules = {}
 
 # Gui globals
-askopenfilename = None
-showinfo = None
-showwarning = None
-showerror = None
+Tkinter = tkFileDialog = tkMessageBox = None
 
 lang = 'english'
 TARGET = ''
@@ -8427,10 +8424,10 @@ def convert(bodylines, config, firstlinenr=1):
 
 def load_GUI_resources():
     "Load all extra modules and methods used by GUI"
-    global askopenfilename, showinfo, showwarning, showerror, Tkinter
-    from tkFileDialog import askopenfilename
-    from tkMessageBox import showinfo, showwarning, showerror
+    global Tkinter, tkFileDialog, tkMessageBox
     import Tkinter
+    import tkFileDialog
+    import tkMessageBox
 
 
 class Gui:
@@ -8556,7 +8553,7 @@ class Gui:
 
     def askfile(self):
         ftypes = [(_('txt2tags files'), ('*.t2t', '*.txt')), (_('All files'), '*')]
-        newfile = askopenfilename(filetypes=ftypes)
+        newfile = tkFileDialog.askopenfilename(filetypes=ftypes)
         if newfile:
             self.infile.set(newfile)
             newconf = process_source_file(newfile)[0]
@@ -8593,10 +8590,10 @@ class Gui:
         infile, target = self.infile.get(), self.target.get()
         # Sanity
         if not target:
-            showwarning(my_name, _("You must select a target type!"))
+            tkMessageBox.showwarning(my_name, _("You must select a target type!"))
             return
         if not infile:
-            showwarning(my_name, _("You must provide the source file location!"))
+            tkMessageBox.showwarning(my_name, _("You must provide the source file location!"))
             return
         # Compose cmdline
         guiflags = []
@@ -8667,13 +8664,13 @@ class Gui:
                     _('Conversion done!'),
                     _('FROM:'), infile,
                     _('TO:'), config['outfile'])
-                showinfo(my_name, msg)
+                tkMessageBox.showinfo(my_name, msg)
         except error:         # common error (windowed), not quit
             pass
         except:               # fatal error (windowed and printed)
             errormsg = getUnknownErrorMessage()
             print errormsg
-            showerror(_('%s FATAL ERROR!') % my_name, errormsg)
+            tkMessageBox.showerror(_('%s FATAL ERROR!') % my_name, errormsg)
             self.exit()
         CMDLINE_RAW = cmdline_raw_orig
 
@@ -8857,7 +8854,7 @@ def exec_command_line(user_cmdline=[]):
 
         # Redefine Error function to raise exception instead sys.exit()
         def Error(msg):
-            showerror(_('txt2tags ERROR!'), msg)
+            tkMessageBox.showerror(_('txt2tags ERROR!'), msg)
             raise error
 
         # If no input file, get RC+cmdline config, else full config
