@@ -294,6 +294,11 @@ class Gui:
             'stdout'    : "Dump to screen (Don't save target file)"
         }
         targets_menu = map(lambda x: self.TARGET_NAMES[x], self.TARGETS)
+        if not targets_menu:
+            showerror('%s FATAL ERROR!' % self.my_name,
+                      'The target list is empty.')
+            self.exit()
+            return
 
         # Header
         self.label("%s %s" % (self.my_name.upper(), self.my_version),
