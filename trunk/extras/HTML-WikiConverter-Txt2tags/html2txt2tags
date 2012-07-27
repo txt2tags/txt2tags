@@ -1,0 +1,33 @@
+#!/bin/sh
+
+INSTALLPATH=/usr/local/bin
+
+# allow to pause the script until a keypress 
+pause(){
+   read -s -n 1 -p "$*"
+}
+
+case $1 in
+	"")
+	echo -e "Usage: html2txt2tags http://URL (requires curl)\n       html2txt2tags file.html"
+	;;
+	http://*)
+	curl -s $1 | html2wiki --dialect Txt2tags
+	;;
+	install)
+	echo "We'll install this html3txt2tags script to:" ${INSTALLPATH}
+		echo "(If you run this script with the correct rights)"
+		echo " "
+		echo "If you want to change the path, please edit this script."
+		echo " "
+		pause "Press a touch to begin (or ctrl+c to cancel the installation)..."
+		echo " "
+		cp ./html2txt2tags ${INSTALLPATH}
+	;;
+	*)
+	html2wiki --dialect Txt2tags $1
+	;;
+esac
+
+
+

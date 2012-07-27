@@ -1,0 +1,14 @@
+# Change log for HTML::WikiConverter::Txt2tags
+
+version: 0.02
+date:    2012-07-27
+changes:
+  - most txt2tags sytax is coverted
+  - inclusion in the main txt2tags svn
+
+
+version: 0.01
+date:    2012-07-24
+changes:
+  - Require H::WC 0.68 
+  - Branched from HTML::WikiConverter dokuwiki codebase.
