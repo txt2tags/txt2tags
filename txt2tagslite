@@ -257,12 +257,9 @@ TARGETS_LIST  = targets.TARGETS_LIST
 OTHER_TARGETS = []
 
 for target in TARGETS_LIST:
+    TARGET_NAMES[target] = getattr(getattr(targets, target), 'NAME', target.capitalize() + ' target')
     try:
-        TARGET_NAMES[target] = eval('targets.' + target).NAME
-    except:
-        TARGET_NAMES[target] = target.capitalize() + ' target'
-    try:
-        TARGET_TYPES[eval('targets.' + target).TYPE][1].append(target)
+        TARGET_TYPES[getattr(targets, target).TYPE][1].append(target)
     except:
         OTHER_TARGETS.append(target)
 
@@ -309,10 +306,7 @@ LINEBREAK = {'default': '\n', 'win': '\r\n', 'mac': '\r'}
 ESCAPES = {}
 
 for target in TARGETS_LIST:
-    try:
-        ESCAPES[target] = eval('targets.' + target).ESCAPES
-    except:
-        pass
+    ESCAPES[target] = getattr(getattr(targets, target), 'ESCAPES', [])
 
 # Platform specific settings
 LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK['default']
@@ -393,14 +387,8 @@ HEADER_TEMPLATE = {
 }
 
 for target in TARGETS_LIST:
-    try:
-        HEADER_TEMPLATE[target] = eval('targets.' + target).HEADER
-    except:
-        HEADER_TEMPLATE[target] = ''
-    try:
-        HEADER_TEMPLATE[target + 'css'] = eval('targets.' + target).HEADERCSS
-    except:
-        pass
+    HEADER_TEMPLATE[target] = getattr(getattr(targets, target), 'HEADER', '')
+    HEADER_TEMPLATE[target + 'css'] = getattr(getattr(targets, target), 'HEADERCSS', '')
 
 ##############################################################################
 
@@ -481,12 +469,9 @@ def getTags(config):
 
     alltags = {}
     for target in TARGETS_LIST:
-        try:
-            if eval('targets.' + target).RULES.get('confdependenttags'):
-                exec('reload(targets.' + target + ')')
-            alltags[target] = eval('targets.' + target).TAGS
-        except:
-            alltags[target] = {}
+        if getattr(getattr(targets, target), 'RULES', {}).get('confdependenttags'):
+            reload(getattr(targets, target))
+        alltags[target] = getattr(getattr(targets, target), 'TAGS', {})
 
     # Compose the target tags dictionary
     tags = {}
@@ -570,6 +555,7 @@ def getRules(config):
         'cellspancumulative',     # cell span value adds up for each cell of a row
         'keepblankheaderline',    # template lines are not removed if headers are blank
         'confdependenttags',      # tags are configuration dependent
+        'confdependentrules',     # rules are configuration dependent
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -608,12 +594,9 @@ def getRules(config):
 
     rules_bank = {}
     for target in TARGETS_LIST:
-        try:
-            if eval('targets.' + target).RULES.get('confdependentrules'):
-                exec('reload(targets.' + target + ')')
-            rules_bank[target] = eval('targets.' + target).RULES
-        except:
-            rules_bank[target] = {}
+        if getattr(getattr(targets, target), 'RULES', {}).get('confdependentrules'):
+            reload(getattr(targets, target))
+        rules_bank[target] = getattr(getattr(targets, target), 'RULES', {})
 
     myrules = rules_bank[config['target']].copy()
 
