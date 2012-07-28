@@ -4554,7 +4554,7 @@ def get_encoding_string(enc, target):
 ##############################################################################
 
 
-def process_source_file(file_='', noconf=0, contents=[]):
+def process_source_file(file_='', noconf=0, contents=[], gui_raw=[]):
     """
     Find and Join all the configuration available for a source file.
     No sanity checking is done on this step.
@@ -4583,7 +4583,7 @@ def process_source_file(file_='', noconf=0, contents=[]):
         # Read document config
         source_raw = source.get_raw_config()
         # Join all the config directives found, then parse it
-        full_raw = RC_RAW + source_raw + CMDLINE_RAW
+        full_raw = RC_RAW + source_raw + CMDLINE_RAW + gui_raw
         Message(_("Parsing and saving all config found (%03d items)") % (len(full_raw)), 1)
         full_parsed = ConfigMaster(full_raw).parse()
         # Add manually the filename to the conf dic
@@ -5639,7 +5639,7 @@ def exec_command_line(user_cmdline=[]):
         except:
             Error(_('gui_tk module not found, so GUI is not available, use CLI instead.'))
         try:
-            winbox = gui_tk.Gui(my_name, my_version, my_url, STDOUT, TARGETS, TARGET_NAMES)
+            winbox = gui_tk.Gui(globals())
             Debug("GUI display OK")
             GUI = 1
         except:
@@ -5661,7 +5661,7 @@ def exec_command_line(user_cmdline=[]):
 
         # Redefine Error function to raise exception instead sys.exit()
         def Error(msg):
-            showerror(_('txt2tags ERROR!'), msg)
+            gui_tk.tkMessageBox.showerror(_('txt2tags ERROR!'), msg)
             raise error
 
         # If no input file, get RC+cmdline config, else full config
