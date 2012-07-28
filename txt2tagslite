@@ -156,7 +156,6 @@ FLAGS = {
     'css-inside': 0,
     'quiet': 0,
     'slides': 0,
-    'spread': 0,
     'web': 0,
     'fix-path': 0,
     'embed-images': 0,
@@ -1548,8 +1547,6 @@ class ConfigMaster:
             outfile = "%s.%s" % (basename, config['target'])
             if config['target'] == 'aat' and config['slides']:
                 outfile = "%s.%s" % (basename, 'aap')
-            if config['target'] == 'aat' and config['spread']:
-                outfile = "%s.%s" % (basename, 'aas')
             if config['target'] == 'aat' and config['web']:
                 outfile = "%s.%s" % (basename, 'aatw')
             if config['target'] == 'aat' and config['slides'] and config['web']:
@@ -1607,8 +1604,6 @@ class ConfigMaster:
             Error(_('Option --split must be 0, 1 or 2'))
         if target == 'aap':
             target, config['slides'] = 'aat', True
-        if target == 'aas':
-            target, config['spread'] = 'aat', True
         if target == 'aatw':
             target, config['web'] = 'aat', True
         if target == 'aapw':
@@ -2871,7 +2866,7 @@ class BlockMaster:
             self.last = blockname
             if rules['iswrapped']:
                 final = []
-                if TARGET != 'aat':
+                if not TARGET.startswith('aa'):
                     for line in result:
                         if not line or blockname in ('verb', 'tagged'):
                             final.append(line)
@@ -3136,8 +3131,8 @@ class BlockMaster:
         self.tablecount += 1
         result = []
 
-        if TARGET == 'aat':
-            if CONF['spread']:
+        if TARGET.startswith('aa'):
+            if rules['spread']:
                 data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'], rules['spreadgrid'])
                 return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
@@ -3951,7 +3946,7 @@ def doHeader(headers, config):
     Debug("Header Data: %s" % head_data, 1)
 
     # ASCII Art and rst don't use a header template, aa.header() formats the header
-    if target == 'aat' and not (config['spread'] and not config['web']):
+    if target.startswith('aa') and not (rules['spread'] and not config['web']):
         template = aa.header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'])
         if config['slides']:
             l = aa.lencjk(head_data['HEADER2']) + aa.lencjk(head_data['HEADER3']) + 2
@@ -3978,7 +3973,7 @@ def doHeader(headers, config):
             encoding = ''
             if CONF['encoding'] and CONF['encoding'] != 'not_utf-8':
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
-            if config['spread']:
+            if rules['spread']:
                 pre = '<pre style="text-align:center">'
             elif config['slides']:
                 pre = ''
@@ -3988,7 +3983,7 @@ def doHeader(headers, config):
             foot_web = ['</pre></html>']
             if config['slides']:
                 foot_web = ['</html>'] + Readfile('templates/dzslides-aapw.html', remove_linebreaks=1)
-            if config['spread']:
+            if rules['spread']:
                 return head_web + config['fullBody'] + foot_web
             else:
                 return head_web + template + config['fullBody'] + foot_web
@@ -4414,7 +4409,7 @@ def get_tagged_link(label, url):
                 img_path = image_re.match(label).group(1)
                 label = "(%s)" % fix_relative_path(img_path)
 
-        if TARGET == 'aat' and not CONF['slides'] and not CONF['web'] and not CONF['spread'] and not CONF['toc-only']:
+        if TARGET.startswith('aa') and not CONF['slides'] and not CONF['web'] and not rules['spread'] and not CONF['toc-only']:
             for macro in MASK.macrobank:
                 macro = MASK.macroman.expand(macro)
                 url = url.replace(MASK.macromask, macro, 1)
@@ -4672,7 +4667,7 @@ def convert_this_files(configs):
         if myconf['target'] == 'mgp' and myconf['qa']:
                 target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "templates/QA.png"', '']
 
-        if myconf['target'] == 'aat' and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
+        if myconf['target'].startswith('aa') and not myconf['slides'] and not myconf['web'] and not rules['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
                 target_body.extend(aa.wrap('[' + str(i + 1) + '] ' + url, myconf['width'], myconf['web']))
 
