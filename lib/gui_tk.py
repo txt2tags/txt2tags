@@ -16,6 +16,7 @@
 # label align: justify=left,right,center
 
 import sys
+import os
 import Tkinter
 import tkFileDialog
 import tkMessageBox
@@ -24,7 +25,13 @@ _ = lambda x: x  # i18n placeholder
 
 class Gui:
     "Graphical Tk Interface"
-    def __init__(self, my_name, my_version, my_url, STDOUT, TARGETS, TARGET_NAMES, conf={}):
+    def __init__(self, txt2tags_globals, conf=None):
+
+        # XXX Dirty hack to import txt2tags globals.
+        # The correct implementation would be a separate
+        # txt2tags-gui script using txt2tags as a module
+        globals().update(txt2tags_globals)
+
         self.my_name = my_name
         self.my_version = my_version
         self.my_url = my_url
@@ -34,7 +41,7 @@ class Gui:
 
         self.create_window(conf)
 
-    def create_window(self, conf={}):
+    def create_window(self, conf=None):
         self.root = Tkinter.Tk()    # mother window, come to butthead
         self.root.title(self.my_name)  # window title bar text
         self.window = self.root     # variable "focus" for inclusion
@@ -64,8 +71,9 @@ class Gui:
             setattr(self, 'f_' + check, self.setvar(''))
 
         # Load RC config
-        self.conf = {}
-        if conf:
+        if conf == None:
+            self.conf = {}
+        else:
             self.load_config(conf)
 
     def load_config(self, conf):
@@ -247,7 +255,7 @@ class Gui:
         try:
             # Fake the GUI cmdline as the real one, and parse file
             CMDLINE_RAW = CommandLine().get_raw_config(cmdline[1:])
-            data = process_source_file(infile)
+            data = process_source_file(infile, gui_raw=CMDLINE_RAW)
             # On GUI, convert_* returns the data, not finish_him()
             outlist, config = convert_this_files([data])
             # On GUI and STDOUT, finish_him() returns the data
