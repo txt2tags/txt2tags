@@ -8,6 +8,8 @@ from targets import _
 
 NAME = _('LaTeX document')
 
+ALIASES = ['latex']
+
 TYPE = 'office'
 
 HEADER = \

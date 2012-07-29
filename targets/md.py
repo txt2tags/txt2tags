@@ -7,6 +7,8 @@ from targets import _
 
 NAME = _('Markdown document')
 
+ALIASES = ['mdown', 'markdown']
+
 TYPE = 'wiki'
 
 HEADER = """\
