@@ -1554,8 +1554,6 @@ class ConfigMaster:
                 outfile = "%s.%s" % (basename, 'aatw')
             if config['target'] == 'aat' and config['slides'] and config['web']:
                 outfile = "%s.%s" % (basename, 'aapw')
-            if config['target'] == 'aat' and config['spread'] and config['web']:
-                outfile = "%s.%s" % (basename, 'aasw')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -1614,8 +1612,6 @@ class ConfigMaster:
             target, config['web'] = 'aat', True
         if target == 'aapw':
             target, config['slides'], config['web'] = 'aat', True, True
-        if target == 'aasw':
-            target, config['spread'], config['web'] = 'aat', True, True
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if config['web']:
