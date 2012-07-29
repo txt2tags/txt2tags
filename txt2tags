@@ -2676,9 +2676,9 @@ def getTags(config):
         alltags['aat']['img'] = '<img src="\a" alt=""/>'
         alltags['aat']['anchor'] = '<a id="\a">'
         alltags['aat']['comment'] = '<!-- \a -->'
-        for beautifier  in ['Bold', 'Italic', 'Underline', 'Strike']:
-            open, close = 'font' + beautifier + 'Open', 'font' + beautifier + 'Close'
-            alltags['aat'][open], alltags['aat'][close] = alltags['html'][open].lower(), alltags['html'][close].lower()
+        for beautifier in ['Bold', 'Italic', 'Underline', 'Strike']:
+            _open, close = 'font' + beautifier + 'Open', 'font' + beautifier + 'Close'
+            alltags['aat'][_open], alltags['aat'][close] = alltags['html'][_open].lower(), alltags['html'][close].lower()
 
     # Compose the target tags dictionary
     tags = {}
