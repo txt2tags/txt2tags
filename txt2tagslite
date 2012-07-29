@@ -254,9 +254,12 @@ TARGET_TYPES = {
 TARGETS_LIST  = targets.TARGETS_LIST
 
 OTHER_TARGETS = []
+TARGET_ALIASES = {}
 
 for target in TARGETS_LIST:
     TARGET_NAMES[target] = getattr(getattr(targets, target), 'NAME', target.capitalize() + ' target')
+    for alias in getattr(getattr(targets, target), 'ALIASES', []):
+        TARGET_ALIASES[alias] = target
     try:
         TARGET_TYPES[getattr(targets, target).TYPE][1].append(target)
     except:
@@ -1585,9 +1588,12 @@ class ConfigMaster:
             if not config.get('infile'):
                 Error(_('Missing input file (try --help)'))
             # Is the target valid?
-            if not TARGETS.count(target):
+            if target not in TARGETS + TARGET_ALIASES.keys():
                 Error(_("Invalid target '%s'") % target + '\n\n' +
                 _("Run 'txt2tags --targets' to see all the available targets."))
+            # alias becomes the target
+            if target in TARGET_ALIASES.keys():
+                target = TARGET_ALIASES[target]
         # Ensure all keys are present
         empty = self.defaults.copy()
         empty.update(config)
