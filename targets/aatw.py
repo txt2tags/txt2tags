@@ -4,7 +4,7 @@ from targets import _
 
 NAME = _('ASCII Art Text Web')
 
-TYPE = 'text'
+TYPE = 'html'
 
 TAGS = aat.TAGS.copy()
 TAGS['url'] = TAGS['urlMark'] = '<a href="\a">\a</a>'
