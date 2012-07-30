@@ -3575,7 +3575,7 @@ def getRegexes():
     'bar':
         re.compile(r'^(\s*)([_=-]{20,})\s*$'),
     'table':
-        re.compile(r'^ *\|(\||_|/)? '),
+        re.compile(r'^ *\|([|_/])? '),
     'blankline':
         re.compile(r'^\s*$'),
     'comment':
