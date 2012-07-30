@@ -13,6 +13,7 @@ WIKI:
 	spip	SPIP article
 	tml	Foswiki or TWiki page
 	txt2t	Txt2tags document
+	vimwiki	Vimwiki document
 	wiki	Wikipedia page
 
 TEXT:
