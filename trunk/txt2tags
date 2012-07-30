@@ -115,9 +115,7 @@ import csv
 import string
 import struct
 import unicodedata
-# base64 is required by embedImage, so I import it here // by Chaos
-
-import base64
+import base64  # used by embedImage()
 
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
