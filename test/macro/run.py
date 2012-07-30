@@ -52,6 +52,8 @@ def run():
         if lib.initTest(basename, infile, outfile):
             cmdline = []
             cmdline = addFilters(FILTERS)
+            if basename == 'path':
+                cmdline.extend(['--width', '200'])
             if basename.endswith('-H'):
                 cmdline.append('-H')
                 cmdline.extend(['-o', outfile])
