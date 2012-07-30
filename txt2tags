@@ -127,7 +127,7 @@ except:
 
 try:
     import targets
-except:
+except ImportError:
     targets = None
     TARGETS_LIST = []
 
