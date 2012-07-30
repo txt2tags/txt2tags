@@ -1,6 +1,6 @@
 
-	Raw: No marks are parsed inside
-	===============================
+        Raw: No marks are parsed inside
+        ===============================
 
 **bold**
 //italic//
@@ -14,8 +14,8 @@ __under__
 ``verb1 ''tagged1'' verb2``
 
 
-	Tagged: No marks are parsed inside
-	==================================
+        Tagged: No marks are parsed inside
+        ==================================
 
 **bold**
 //italic//
@@ -29,8 +29,8 @@ __under__
 ``verb1 ""raw1"" verb2``
 
 
-	Verbatim: No marks are parsed inside
-	====================================
+        Verbatim: No marks are parsed inside
+        ====================================
 
 **bold**
 //italic//
