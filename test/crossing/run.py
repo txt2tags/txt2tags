@@ -54,7 +54,8 @@ def run():
     basename = 'bar'
     outfile = basename + '.txt'
     if lib.initTest(basename, infile, outfile):
-        cmdline = ['-t', 'txt', infile]
+        cmdline = ['-t', 'txt', '-i', infile]
+        cmdline.extend(['--width', '150'])  # to avoid wrapping
         lib.convert(cmdline)
         lib.diff(outfile)
 
@@ -76,6 +77,7 @@ def run():
     if lib.initTest(alias, infile, outfile):
         cmdline = addFilters(FILTERS.get(alias))
         cmdline.append('-H')
+        cmdline.extend(['--width', '150'])  # to avoid wrapping
         cmdline.extend(['-t', 'txt', '-o', outfile, infile])
         lib.convert(cmdline)
         lib.diff(outfile)
