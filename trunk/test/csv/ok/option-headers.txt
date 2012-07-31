@@ -1,0 +1,19 @@
+
+With headers:
+
+  || one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
+Without headers:
+
+  | one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
+Without headers (default):
+
+  | one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
