@@ -1,6 +1,5 @@
 .TH "" 1 "" ""
 
-
 .SH Simple table
 
 .TS
