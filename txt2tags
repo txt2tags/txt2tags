@@ -115,7 +115,8 @@ import csv
 import string
 import struct
 import unicodedata
-import base64  # used by embedImage()
+import base64  # embedImage()
+import shlex  # CommandLine.tokenize()
 
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
@@ -4400,23 +4401,23 @@ class CommandLine:
         #Debug('Valid SHORT options: %s' % ret)
         return ''.join(ret)
 
-    def _compose_long_opts(self):
+    def _compose_long_opts(self, extra=True):
         "Returns a list with all the valid long options/flags"
         ret = map(lambda x: x + '=', self.all_options)        # add =
         ret.extend(self.all_flags)                            # flag ON
         ret.extend(self.all_actions)                          # actions
         ret.extend(map(lambda x: 'no-' + x, self.all_flags))  # add no-*
-        ret.extend(['no-style', 'no-encoding'])               # turn OFF
-        ret.extend(['no-outfile', 'no-infile'])               # turn OFF
-        ret.extend(['no-dump-config', 'no-dump-source'])      # turn OFF
-        ret.extend(['no-targets'])                            # turn OFF
+        if extra:
+            ret.extend(['no-style', 'no-encoding'])           # turn OFF
+            ret.extend(['no-outfile', 'no-infile'])           # turn OFF
+            ret.extend(['no-dump-config', 'no-dump-source'])  # turn OFF
+            ret.extend(['no-targets'])                        # turn OFF
         #Debug('Valid LONG options: %s' % ret)
         return ret
 
-    def _tokenize(self, cmd_string=''):
+    def tokenize(self, cmdline=''):
         "Convert a command line string to a list"
-        #TODO protect quotes contents -- Don't use it, pass cmdline as list
-        return cmd_string.split()
+        return shlex.split(cmdline)
 
     def parse(self, cmdline=[]):
         "Check/Parse a command line list     TIP: no program name!"
@@ -4438,7 +4439,7 @@ class CommandLine:
 
         # We need lists, not strings (such as from %!options)
         if type(cmdline) in (type(''), type(u'')):
-            cmdline = self._tokenize(cmdline)
+            cmdline = self.tokenize(cmdline)
 
         # Extract name/value pair of all configs, check for invalid names
         options, arguments = self.parse(cmdline[:])
@@ -4565,6 +4566,100 @@ class CommandLine:
         return args
 
 
+class CsvOptions(CommandLine):
+    """Tokenize and parse the %!CSV command arguments.
+    
+    When you find this line in the user document:
+    
+        %!CSV: -s tab foo.csv
+    
+    Just feed everything after the first : to this class,
+    as a single string. It will be tokenized, parsed and
+    saved to self.raw and self.parsed.
+    
+    Use the self.get() method to get the value of a config.
+    If missing, the default value will be returned.
+    
+    Example:
+        >>> import txt2tags, pprint
+        >>> csvopt = txt2tags.CsvOptions('-s tab foo.csv')
+        >>> pprint.pprint(csvopt.raw)
+        [['all', 'separator', 'tab'],
+         ['all', 'infile', 'foo.csv'],
+         ['all', 'realcmdline', ['-s', 'tab', 'foo.csv']]]
+        >>> pprint.pprint(csvopt.parsed)
+        {'infile': 'foo.csv',
+         'realcmdline': ['-s', 'tab', 'foo.csv'],
+         'separator': 'tab'}
+        >>> csvopt.get('separator')
+        'tab'
+        >>>
+    """
+
+    def __init__(self, cmdline=None):
+
+        # Available options for %!CSV
+        self.dft_options = {
+            'separator': ',',
+            'infile': '',
+        }
+        self.dft_flags = {
+            'headers': 0,
+        }
+        self.short_long = {
+            's': 'separator',
+            'H': 'no-headers',
+        }
+
+        # Default values for all options
+        self.defaults = {}
+        self.defaults.update(self.dft_options)
+        self.defaults.update(self.dft_flags)
+
+        # Needed by self._compose_*_opts()
+        self.all_flags = self.dft_flags.keys()
+        self.all_options = self.dft_options.keys()
+        self.all_actions = []
+
+        # Compose valid short and long options data for getopt
+        self.short_opts = self._compose_short_opts()
+        self.long_opts = self._compose_long_opts(extra=False)
+
+        # Got data? Parse it!
+        if cmdline:
+            self.raw = self.get_raw_config(cmdline)
+            self.parsed = self.parse_raw()
+        else:
+            self.raw = []
+            self.parsed = {}
+
+    def get(self, key):
+        return self.parsed.get(key, self.defaults[key])
+
+    def parse(self, cmdline):
+        try:
+            opts, args = getopt.getopt(cmdline, self.short_opts, self.long_opts)
+        except getopt.error, errmsg:
+            Error(_("%s in %%!CSV command") % errmsg)
+        return (opts, args)
+
+    def parse_raw(self, raw=None):
+        if not raw:
+            raw = self.raw
+        # Reset attributes to our modest needs
+        cm = ConfigMaster(raw)
+        cm.dft_options  = self.dft_options.copy()
+        cm.dft_flags    = self.dft_flags.copy()
+        cm.dft_actions  = {}
+        cm.dft_settings = {}
+        cm.incremental  = []
+        cm.numeric      = []
+        cm.multi        = []  # maybe in the future: ['infile']
+        cm.defaults     = self.defaults.copy()
+        cm.off          = cm._get_off()
+        return cm.parse()
+
+
 ##############################################################################
 
 class SourceDocument:
@@ -4681,8 +4776,7 @@ class SourceDocument:
                rgx['macros'].match(buf[i]) or  # ... %%macro
                rgx['toc'].match(buf[i])    or  # ... %%toc
                cfg_parser(buf[i], 'include')[1] or  # ... %!include
-               cfg_parser(buf[i], 'csv')[1] or      # ... %!csv
-               cfg_parser(buf[i], 'csvheader')[1]   # ... %!csvheader
+               cfg_parser(buf[i], 'csv')[1]    # ... %!csv
             ):
                 ref[2] = i
                 break
@@ -4750,7 +4844,7 @@ class ConfigMaster:
       config. The configs of other targets are ignored.
 
     The CommandLine and ConfigLines classes have the get_raw_config()
-    method which convert the configuration found to the RAW format.
+    method to convert the configuration found to the RAW format.
     Just feed it to parse() and get a brand-new ready-to-use config
     dictionary. Example:
 
@@ -8628,25 +8722,31 @@ def convert(bodylines, config, firstlinenr=1):
                 continue
 
             # %!csv command
-            elif key in ['csv', 'csvheader']:
+            elif key == 'csv':
+
+                # Handle options and arguments
+                csvopt = CsvOptions(val)
+                filename = csvopt.get('infile')
+                separator = csvopt.get('separator')
+                use_headers = csvopt.get('headers')
+
+                if not filename:
+                    Error(_('%!CSV command: Missing CSV file path:') + ' ' + val)
+
+                if separator == 'space':
+                    separator = ' '
+                elif separator == 'tab':
+                    separator = '\t'
+
+                reader = csv.reader(Readfile(filename), delimiter=separator)
 
                 table = []
-                try:
-                    filename, delimiter = val.split()
-                except:
-                    filename, delimiter = val, ','
-                if delimiter == 'space':
-                    delimiter = ' '
-                elif delimiter == 'tab':
-                    delimiter = '\t'
-                reader = csv.reader(Readfile(filename), delimiter=delimiter)
-
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
                 try:
                     for row in reader:
                         table.append('| %s |' % ' | '.join(row))
-                    if key == 'csvheader':
+                    if use_headers:
                         table[0] = '|' + table[0]
                 except csv.Error, e:
                     Error('CSV: file %s: %s' % (filename, e))
