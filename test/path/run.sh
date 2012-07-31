@@ -8,7 +8,9 @@
 # Using txt to test targets not image-aware.
 # Using HTML to test styles.
 
-cd $(dirname "$0")
+# -P option needed to avoid errors by symlinks in path
+cd -P $(dirname "$0")
+
 my_path=$PWD
 svn_root='../..'
 
