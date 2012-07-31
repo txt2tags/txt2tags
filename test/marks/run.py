@@ -20,7 +20,11 @@ ALIASES = {
     'numtitle': 'title',
     'raw'     : 'verbatim',
     'tagged'  : 'verbatim',
+    'tagged-inline': 'raw-inline',
+    'verbatim-inline': 'raw-inline',
 }
+
+# XXX Known bug (issue 167): ``verbatim`` is parsed inside [image.png] and [link url] marks.
 
 # smart filters to allow source inheritance
 FILTERS = {
@@ -29,6 +33,10 @@ FILTERS = {
     'numtitle': [ ('pre', 'equal'   , 'plus'  ), ('pre', '='     ,  '+'  ) ],
     'raw'     : [ ('pre', 'verbatim', 'raw'   ), ('pre', '`'     ,  '"'  ) ],
     'tagged'  : [ ('pre', 'verbatim', 'tagged'), ('pre', '`'     ,  "\'" ) ],
+    'tagged-inline':
+                [ ('pre', 'raw'     , 'tagged'), ('pre', '"'     ,  "'"  ) ],
+    'verbatim-inline':
+                [ ('pre', 'raw'   , 'verbatim'), ('pre', '"'     ,  "`"  ) ],
 }
 
 # convert FILTERS tuples to txt2tags pre/postproc rules

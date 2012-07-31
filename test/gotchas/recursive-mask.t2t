@@ -1,0 +1,22 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% What if the protected contents is exactly the same as its own mask?
+""vvvRAW0vvv""
+''vvvTAGGED0vvv''
+``vvvMONO0vvv``
+[""vvvRAW1vvv"" ""vvvRAW2vvv""]
+
+%%% What if the protected contents is the same as other's mask?
+""vvvRAW0vvv""
+''vvvTAGGED0vvv''
+``vvvMONO0vvv``
+[""vvvRAW0vvv"" ""vvvRAW0vvv""]
+
+%%% What if the protected contents is a fake off-limits mask?
+""vvvRAW999vvv""
+''vvvTAGGED999vvv''
+``vvvMONO999vvv``
+[""vvvRAW999vvv"" ""vvvRAW999vvv""]
+
