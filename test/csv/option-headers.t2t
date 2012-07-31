@@ -1,0 +1,7 @@
+
+With headers:
+%!csv: --headers simple.csv
+Without headers:
+%!csv: --no-headers simple.csv
+Without headers (default):
+%!csv: simple.csv

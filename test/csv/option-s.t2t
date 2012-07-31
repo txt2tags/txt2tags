@@ -1,0 +1,7 @@
+
+Tab separated:
+%!csv: -s tab simple-tab.csv
+Space separated:
+%!csv: -s space simple-space.csv
+Semicolon separated:
+%!csv: -s ; simple-semicolon.csv

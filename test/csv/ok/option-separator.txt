@@ -1,0 +1,19 @@
+
+Tab separated:
+
+  | one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
+Space separated:
+
+  | one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
+Semicolon separated:
+
+  | one | two | three |
+  | um | dois | tres |
+  | ichi | ni | san |
+
