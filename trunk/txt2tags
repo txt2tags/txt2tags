@@ -5283,14 +5283,35 @@ class ConfigLines:
 ##############################################################################
 
 class MaskMaster:
-    "(Un)Protect important structures from escaping and formatting"
+    """(Un)Protect important structures from escaping and formatting.
+
+    Some inline markup must be protected, because its contents may match
+    other markup, or because we should not escape or format its contents
+    in any way.
+
+    When the source line is read, we call the mask() method to identify
+    those inliners (link, mono, macro, raw, tagged) and change each one
+    for an (ugly) internal identifier.
+
+    For example, ''<b>this</b>'' will become vvvTAGGED0vvv. The number
+    increases as other inliners of the same type are found. 
+
+    The method undo() is called at the end of the line processing,
+    expanding all masks back to their original (untouched) content.
+    """
+
     def __init__(self):
-        self.linkmask   = 'vvvLINKvvv'
-        self.monomask   = 'vvvMONOvvv'
-        self.macromask  = 'vvvMACROvvv'
-        self.rawmask    = 'vvvRAWvvv'
-        self.taggedmask = 'vvvTAGGEDvvv'
+        self.linkmask   = 'vvvLINKNNNvvv'  # NNN will be replaced by the index
+        self.monomask   = 'vvvMONONNNvvv'
+        self.macromask  = 'vvvMACRONNNvvv'
+        self.rawmask    = 'vvvRAWNNNvvv'
+        self.taggedmask = 'vvvTAGGEDNNNvvv'
         self.tocmask    = 'vvvTOCvvv'
+        self.linkmaskre   = re.compile('vvvLINK(\d+)vvv')
+        self.monomaskre   = re.compile('vvvMONO(\d+)vvv')
+        self.macromaskre  = re.compile('vvvMACRO(\d+)vvv')
+        self.rawmaskre    = re.compile('vvvRAW(\d+)vvv')
+        self.taggedmaskre = re.compile('vvvTAGGED(\d+)vvv')
         self.macroman   = MacroMaster()
         self.reset()
 
@@ -5317,7 +5338,7 @@ class MaskMaster:
         while True:
 
             # Try to match the line for the three marks
-            # Note: 'z' > 999999
+            # Note: 'z' > 99999999...
             #
             t = r = v = 'z'
             try:
@@ -5337,30 +5358,38 @@ class MaskMaster:
             if t >= 0 and t < r and t < v:
                 txt = regex['tagged'].search(line).group(1)
                 txt = doProtect(TARGET, txt)
+                i = len(self.taggedbank)
                 self.taggedbank.append(txt)
-                line = regex['tagged'].sub(self.taggedmask, line, 1)
+                mask = self.taggedmask.replace('NNN', str(i))
+                line = regex['tagged'].sub(mask, line, 1)
 
             # Protect raw text
             elif r >= 0 and r < t and r < v:
                 txt = regex['raw'].search(line).group(1)
                 txt = doEscape(TARGET, txt)
+                i = len(self.rawbank)
                 self.rawbank.append(txt)
-                line = regex['raw'].sub(self.rawmask, line, 1)
+                mask = self.rawmask.replace('NNN', str(i))
+                line = regex['raw'].sub(mask, line, 1)
 
             # Protect verbatim text
             elif v >= 0 and v < t and v < r:
                 txt = regex['fontMono'].search(line).group(1)
                 txt = doEscape(TARGET, txt)
+                i = len(self.monobank)
                 self.monobank.append(txt)
-                line = regex['fontMono'].sub(self.monomask, line, 1)
+                mask = self.monomask.replace('NNN', str(i))
+                line = regex['fontMono'].sub(mask, line, 1)
             else:
                 break
 
         # Protect macros
         while regex['macros'].search(line):
             txt = regex['macros'].search(line).group()
+            i = len(self.macrobank)
             self.macrobank.append(txt)
-            line = regex['macros'].sub(self.macromask, line, 1)
+            mask = self.macromask.replace('NNN', str(i))
+            line = regex['macros'].sub(mask, line, 1)
 
         # Protect TOC location
         while regex['toc'].search(line):
@@ -5394,36 +5423,57 @@ class MaskMaster:
                 link = fix_relative_path(m.group('link'))
                 label = m.group('label').rstrip()
                 link_re = regex['linkmark']
-            line = link_re.sub(self.linkmask, line, 1)
 
             # Save link data to the link bank
+            i = len(self.linkbank)
             self.linkbank.append((label, link))
+
+            # Mask the link mark in the original line
+            mask = self.linkmask.replace('NNN', str(i))
+            line = link_re.sub(mask, line, 1)
+
         return line
 
     def undo(self, line):
 
         # url & email
-        for label, url in self.linkbank:
+        matches = list(self.linkmaskre.finditer(line))
+        while matches:
+            m = matches.pop()
+            i = int(m.group(1))
+            label, url = self.linkbank[i]
             link = get_tagged_link(label, url)
-            line = line.replace(self.linkmask, link, 1)
+            line = line[0:m.start()] + link + line[m.end():]
 
         # Expand macros
-        for macro in self.macrobank:
-            macro = self.macroman.expand(macro)
-            line = line.replace(self.macromask, macro, 1)
+        matches = list(self.macromaskre.finditer(line))
+        while matches:
+            m = matches.pop()
+            i = int(m.group(1))
+            macro = self.macroman.expand(self.macrobank[i])
+            line = line[0:m.start()] + macro + line[m.end():]
 
         # Expand verb
-        for mono in self.monobank:
+        matches = list(self.monomaskre.finditer(line))
+        while matches:
+            m = matches.pop()
+            i = int(m.group(1))
             open_, close = TAGS['fontMonoOpen'], TAGS['fontMonoClose']
-            line = line.replace(self.monomask, open_ + mono + close, 1)
+            line = line[0:m.start()] + open_ + self.monobank[i] + close + line[m.end():]
 
         # Expand raw
-        for raw in self.rawbank:
-            line = line.replace(self.rawmask, raw, 1)
+        matches = list(self.rawmaskre.finditer(line))
+        while matches:
+            m = matches.pop()
+            i = int(m.group(1))
+            line = line[0:m.start()] + self.rawbank[i] + line[m.end():]
 
         # Expand tagged
-        for tagged in self.taggedbank:
-            line = line.replace(self.taggedmask, tagged, 1)
+        matches = list(self.taggedmaskre.finditer(line))
+        while matches:
+            m = matches.pop()
+            i = int(m.group(1))
+            line = line[0:m.start()] + self.taggedbank[i] + line[m.end():]
 
         return line
 
@@ -8351,7 +8401,6 @@ def convert(bodylines, config, firstlinenr=1):
     lineref = 0
     while lineref < len(bodylines):
         # Defaults
-        MASK.reset()
         results_box = ''
 
         untouchedline = bodylines[lineref]

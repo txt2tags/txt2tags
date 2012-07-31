@@ -1,0 +1,37 @@
+
+%!includeconf: test.conf
+BODYINIT
+
+%%% Test: raw at title (not parsed)
+= ""raw1"" =
++ ""raw1"" +
+
+
+%%% Test: raw at paragraph
+""raw1"" ""raw2"" ""raw3"" ""raw4""
+
+""raw1"" [""raw2"".png] ""raw3"" [""raw4"".jpg]
+
+""raw1"" [label""raw2"" url""raw3""] ""raw4"" [label2""raw5"" url""raw6""]
+
+""raw1"" [[""raw2"".png] url""raw3""] ""raw4"" [[""raw5"".jpg] url""raw6""]
+
+
+%%% Test: raw at table
+| ""raw1"" | ""raw2"" | ""raw3"" | ""raw4"" |
+| ""raw1"" | [""raw2"".png] | ""raw3"" | [""raw4"".jpg] |
+| ""raw1"" | [label""raw2"" url""raw3""] | ""raw4"" | [label2""raw5"" url""raw6""] |
+| ""raw1"" | [[""raw2"".png] url""raw3""] | ""raw4"" | [[""raw5"".jpg] url""raw6""] |
+
+
+%%% Test: raw escapes
+= ""<&>"" =
+Foo ""<&>"" bar.
+[""<&>"" www.example.com]
+[label ""<&>""]
+[""<&>"" ""<&>""]
+[""IMAGE<&>"".png]
+[[""IMAGE<&>"".png] www.example.com]
+[[""IMAGE<&>"".png] ""<&>""]
+| table | ""<&>"" | [""<&>"" ""<&>""]
+
