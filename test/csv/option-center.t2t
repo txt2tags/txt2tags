@@ -1,0 +1,7 @@
+
+Centered:
+%!csv: --center simple.csv
+Centered:
+%!csv: -c simple.csv
+Left aligned (default):
+%!csv: simple.csv

@@ -1,23 +1,23 @@
 
 Line 1.
 
-  | **bold** |
-  | //italic// |
-  | __under__ |
-  | --stroke-- |
-  | ``mono`` |
-  | raw"" |
-  | ''tagged'' |
-  | [image.png] |
-  | [link www.abc.com] |
-  | date-macro |
-  | -------------------- |
-  | = title = |
-  | - list |
-  | + numlit |
-  | : deflist |
-  | % comment |
-  | 	quote |
+  | **bold**
+  | //italic//
+  | __under__
+  | --stroke--
+  | ``mono``
+  | raw""
+  | ''tagged''
+  | [image.png]
+  | [link www.abc.com]
+  | date-macro
+  | --------------------
+  | = title =
+  | - list
+  | + numlit
+  | : deflist
+  | % comment
+  | 	quote
 
 Line 2.
 

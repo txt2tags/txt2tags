@@ -1,7 +1,7 @@
 
 Line 1.
 
-  | one |
+  | one
 
 Line 2.
 

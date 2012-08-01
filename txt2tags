@@ -4605,10 +4605,14 @@ class CsvOptions(CommandLine):
         }
         self.dft_flags = {
             'headers': 0,
+            'borders': 0,
+            'center': 0,
         }
         self.short_long = {
+            'b': 'borders',
+            'c': 'center',
+            'h': 'headers',
             's': 'separator',
-            'H': 'no-headers',
         }
 
         # Default values for all options
@@ -8727,27 +8731,37 @@ def convert(bodylines, config, firstlinenr=1):
                 # Handle options and arguments
                 csvopt = CsvOptions(val)
                 filename = csvopt.get('infile')
-                separator = csvopt.get('separator')
-                use_headers = csvopt.get('headers')
+                csv_separator = csvopt.get('separator')
+                csv_headers = csvopt.get('headers')
+                csv_borders = csvopt.get('borders')
+                csv_center = csvopt.get('center')
 
                 if not filename:
                     Error(_('%!CSV command: Missing CSV file path:') + ' ' + val)
 
-                if separator == 'space':
-                    separator = ' '
-                elif separator == 'tab':
-                    separator = '\t'
+                if csv_separator == 'space':
+                    csv_separator = ' '
+                elif csv_separator == 'tab':
+                    csv_separator = '\t'
 
-                reader = csv.reader(Readfile(filename), delimiter=separator)
+                reader = csv.reader(Readfile(filename), delimiter=csv_separator)
 
                 table = []
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
                 try:
+                    if csv_center:
+                        row_ini = ' | '
+                    else:
+                        row_ini = '| '
+                    if csv_borders:
+                        row_end = ' |'
+                    else:
+                        row_end = ''
                     for row in reader:
-                        table.append('| %s |' % ' | '.join(row))
-                    if use_headers:
-                        table[0] = '|' + table[0]
+                        table.append(row_ini + ' | '.join(row) + row_end)
+                    if csv_headers:
+                        table[0] = table[0].replace('|', '||', 1)
                 except csv.Error, e:
                     Error('CSV: file %s: %s' % (filename, e))
 
