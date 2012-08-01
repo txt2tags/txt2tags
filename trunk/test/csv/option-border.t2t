@@ -1,0 +1,7 @@
+
+With borders:
+%!csv: --borders simple.csv
+With borders:
+%!csv: -b simple.csv
+Without borders (default)
+%!csv: simple.csv

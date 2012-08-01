@@ -1,0 +1,19 @@
+
+Centered:
+
+   | one | two | three
+   | um | dois | tres
+   | ichi | ni | san
+
+Centered:
+
+   | one | two | three
+   | um | dois | tres
+   | ichi | ni | san
+
+Left aligned (default):
+
+  | one | two | three
+  | um | dois | tres
+  | ichi | ni | san
+
