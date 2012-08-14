@@ -8202,8 +8202,10 @@ def convert_this_files(configs):
                 else:
                     target_body = target_body + head + [''] * (myconf['height'] - 7) + [end_qa]
 
-        if myconf['target'] == 'mgp' and myconf['qa']:
-                target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "templates/QA.png"', '']
+        # Uncomment the three next lines and specify your qa_image to use --qa option with the mgp target
+        #if myconf['target'] == 'mgp' and myconf['qa']:
+        #        qa_image = path_to_your_qa_image
+        #        target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "' + qa_image + '"', '']
 
         if myconf['target'] == 'aat' and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
