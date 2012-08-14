@@ -255,9 +255,11 @@ TARGETS_LIST  = targets.TARGETS_LIST
 
 OTHER_TARGETS = []
 TARGET_ALIASES = {}
+TARGET_EXTENSIONS = {}
 
 for target in TARGETS_LIST:
     TARGET_NAMES[target] = getattr(getattr(targets, target), 'NAME', target.capitalize() + ' target')
+    TARGET_EXTENSIONS[target] = getattr(getattr(targets, target), 'EXTENSION', target)
     for alias in getattr(getattr(targets, target), 'ALIASES', []):
         TARGET_ALIASES[alias] = target
     try:
@@ -1545,10 +1547,10 @@ class ConfigMaster:
             outfile = MODULEOUT
 
         # Automatic outfile name: infile.target
-        if not outfile and (infile and config.get('target')):
+        if not outfile and (infile and TARGET_EXTENSIONS[config['target']]):
             # .t2t and .txt are the only "official" source extensions
             basename = re.sub('\.t[2x]t$', '', infile)
-            outfile = "%s.%s" % (basename, config['target'])
+            outfile = "%s.%s" % (basename, TARGET_EXTENSIONS[config['target']])
             if config['target'] == 'aat' and config['slides']:
                 outfile = "%s.%s" % (basename, 'aap')
             if config['target'] == 'aat' and config['slides'] and config['web']:

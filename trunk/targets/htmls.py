@@ -8,6 +8,8 @@ import html5
 
 NAME =  _('HTML Spreadsheet')
 
+EXTENSION = 'html'
+
 HEADER = """\
 <!doctype html>
 <html>
