@@ -14,7 +14,6 @@
 # GNU General Public License for more details.
 #
 
-import string
 from math import *
 
 # LibreOffice compatibility
@@ -28,6 +27,7 @@ SINH = sinh
 COSH = cosh
 TANH = tanh
 
+ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 class SpreadSheet:
     """Raymond Hettinger's recipe
@@ -55,12 +55,12 @@ def spreadsheet(data, markup, grid):
     s = SpreadSheet()
     for j, row in enumerate(data):
         for i, el in enumerate(row[0]):
-            ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
+            ind = ascii_uppercase[i/26 - 1].replace('Z', '') + ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
                 s[ind] = el
     for j, row in enumerate(data):
         for i, el in enumerate(row[0]):
-            ind = string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26] + str(j+1)
+            ind = ascii_uppercase[i/26 - 1].replace('Z', '') + ascii_uppercase[i%26] + str(j+1)
             if el and el.strip():
                 if markup == 'html':
                     row[0][i] = '<a title="' + el.strip() + '">' + str(s[ind]) + '</a>'
@@ -73,7 +73,7 @@ def spreadsheet(data, markup, grid):
                 elif markup == 'txt':
                     row[0][i] = str(s[ind])
     if grid:
-        h = [(string.ascii_uppercase[i/26 - 1].replace('Z', '') + string.ascii_uppercase[i%26]) for i in range(n)]
+        h = [(ascii_uppercase[i/26 - 1].replace('Z', '') + ascii_uppercase[i%26]) for i in range(n)]
         data = [[h, [1] * n]] + data
         data = [[[str(i)] + line[0], [1] + line[1]] for i, line in enumerate(data)]
         data[0][0][0] = ''
