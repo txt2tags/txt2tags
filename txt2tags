@@ -8524,6 +8524,20 @@ def set_global_config(config):
     regex  = getRegexes()
     TARGET = config['target']  # save for buggy functions that need global
 
+    if rules.get('spread'):
+        # Python math functions
+        exec('from math import *', globals())
+        # LibreOffice compatibility
+        global SIN, COS, TAN, ASIN, ACOS, ATAN, SINH, COSH, TANH
+        SIN = sin
+        COS = cos
+        TAN = tan
+        ASIN = asin
+        ACOS = acos
+        ATAN = atan
+        SINH = sinh
+        COSH = cosh
+        TANH = tanh
 
 def convert(bodylines, config, firstlinenr=1):
     global BLOCK, TITLE, MASK
