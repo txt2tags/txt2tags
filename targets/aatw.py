@@ -6,6 +6,8 @@ NAME = _('ASCII Art Text Web')
 
 TYPE = 'html'
 
+EXTENSION = 'html'
+
 TAGS = aat.TAGS.copy()
 TAGS['url'] = TAGS['urlMark'] = '<a href="\a">\a</a>'
 TAGS['email'] = TAGS['emailMark'] = '<a href="mailto:\a">\a</a>'

@@ -8,6 +8,8 @@ import html
 
 NAME = _('XHTML Strict page')
 
+EXTENSION = 'html'
+
 HEADER = """\
 <?xml version="1.0"
       encoding="%(ENCODING)s"
