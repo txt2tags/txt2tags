@@ -1,5 +1,5 @@
 import aat
-from aat import TYPE, TAGS
+from aat import TYPE, EXTENSION, TAGS
 from targets import _
 
 NAME = _('ASCII Art Spreadsheet')

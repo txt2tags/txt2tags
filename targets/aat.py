@@ -7,6 +7,8 @@ NAME = _('ASCII Art Text')
 
 TYPE = 'text'
 
+EXTENSION = 'txt'
+
 TAGS = {
     'title1'               : '\a'                     ,
     'title2'               : '\a'                     ,

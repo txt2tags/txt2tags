@@ -8,6 +8,8 @@ import html
 
 NAME = _('HTML5 page')
 
+EXTENSION = 'html'
+
 HEADER = """\
 <!doctype html>
 <html>
