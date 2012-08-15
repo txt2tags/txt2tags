@@ -1592,6 +1592,7 @@ class ConfigMaster:
                 _("Run 'txt2tags --targets' to see all the available targets."))
             # alias becomes the target
             if target in TARGET_ALIASES.keys():
+                TARGET_EXTENSIONS[TARGET_ALIASES[target]] = target
                 target = TARGET_ALIASES[target]
         # Ensure all keys are present
         empty = self.defaults.copy()
