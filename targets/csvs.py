@@ -9,6 +9,8 @@ from targets import _
 
 NAME = _('CSV Spreadsheet')
 
+EXTENSION = 'csv'
+
 RULES = csv.RULES.copy()
 RULES['spread'] = 1
 RULES['spreadmarkup'] = 'txt'
