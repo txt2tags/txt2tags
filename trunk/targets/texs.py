@@ -10,6 +10,8 @@ from targets import _
 
 NAME = _('LaTeX Spreadsheet')
 
+EXTENSION = 'tex'
+
 HEADER = \
 r"""\documentclass{article}
 \usepackage{graphicx}
