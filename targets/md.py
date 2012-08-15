@@ -7,7 +7,7 @@ from targets import _
 
 NAME = _('Markdown document')
 
-ALIASES = ['mdown', 'markdown']
+ALIASES = ['mdwn', 'mdown', 'markdown']
 
 TYPE = 'wiki'
 

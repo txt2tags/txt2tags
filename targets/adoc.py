@@ -7,6 +7,8 @@ from targets import _
 
 NAME = _('AsciiDoc document')
 
+ALIASES = ['asc', 'asciidoc']
+
 TYPE = 'wiki'
 
 HEADER = """\
