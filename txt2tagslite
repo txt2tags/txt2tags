@@ -173,7 +173,7 @@ OPTIONS = {
     'lang': '',
     'width': 0,
     'height': 0,
-    'chars': '',
+    'chars': targets.CONF['chars'],
     'show-config-value': '',
     'template': '',
     'dirname': '',  # internal use only
@@ -561,6 +561,7 @@ def getRules(config):
         'confdependenttags',      # tags are configuration dependent
         'confdependentrules',     # rules are configuration dependent
         'web',                    # html ascii art target
+        'slides',                 # slides target
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -1551,8 +1552,6 @@ class ConfigMaster:
             # .t2t and .txt are the only "official" source extensions
             basename = re.sub('\.t[2x]t$', '', infile)
             outfile = "%s.%s" % (basename, TARGET_EXTENSIONS[config['target']])
-            if config['target'] == 'aat' and config['slides']:
-                outfile = "%s.%s" % (basename, 'aap')
             if config['target'] == 'aat' and config['slides'] and config['web']:
                 outfile = "%s.%s" % (basename, 'aapw')
 
@@ -1609,11 +1608,11 @@ class ConfigMaster:
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
         if target == 'aap':
-            target, config['slides'] = 'aat', True
+            config['slides'] = True
         if target == 'aapw':
             target, config['slides'], config['web'] = 'aat', True, True
         # Slides needs width and height
-        if config['slides'] and target == 'aat':
+        if config['slides'] and target.startswith('aa'):
             if config['web']:
                 config['height'], config['width'] = 28, 73
             if not config['width'] and  not config['height'] and os.name == 'posix':
@@ -1632,6 +1631,7 @@ class ConfigMaster:
         targets.CONF['width'] = config['width']
         # Check/set user ASCII Art formatting characters
         if config['chars']:
+            targets.CONF['chars'] = config['chars']
             try:
                 # Peace for ASCII 7-bits only
                 config['chars'] = config['chars'].encode()
@@ -2299,7 +2299,7 @@ class TitleMaster:
             i = aa.lencjk(full_title)
             ret.append(regex['x'].sub('=' * i, self.tag))
         elif TARGET.startswith('aa') and self.level == 1:
-            if CONF['slides'] :
+            if rules['slides'] :
                 AA_TITLE = tagged
             else :
                 if BLOCK.count > 1:
@@ -2313,11 +2313,11 @@ class TitleMaster:
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            if CONF['slides']:
+            if rules['slides']:
                 under = aa.under(tagged, AA[level], CONF['width'] - 2, False)
             else:
                 under = aa.under(tagged, AA[level], CONF['width'], False)
-            if rules['web'] and CONF['toc'] and self.level <= CONF['toc-level'] and not CONF['slides']:
+            if rules['web'] and CONF['toc'] and self.level <= CONF['toc-level'] and not rules['slides']:
                 ret.extend([anchor] + under + ['</a>'])
             else:
                 ret.extend(under)
@@ -2346,7 +2346,7 @@ class TitleMaster:
                 continue
             indent = '  ' * level
             id_txt = ('%s %s' % (count_id, txt)).lstrip()
-            if CONF['target'] == 'aat' and CONF['slides']:
+            if CONF['target'].startswith('aa') and rules['slides']:
                 indent = '  ' * (level - 1)
                 if rules['web'] and not CONF['toc-only']:
                     label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0'
@@ -2364,10 +2364,10 @@ class TitleMaster:
 
             # TOC will be plain text (no links)
             else:
-                if rules['plaintexttoc'] and not CONF['slides']:
+                if rules['plaintexttoc'] and not rules['slides']:
                     # For these, the list is not necessary, just dump the text
                     tocitem = '%s""%s""' % (indent, id_txt)
-                elif TARGET.startswith('aat') and CONF['enum-title'] and level == 1:
+                elif TARGET.startswith('aa') and CONF['enum-title'] and level == 1:
                     tocitem = '%s+ ""%s""' % (indent, txt)
                 else:
                     tocitem = '%s- ""%s""' % (indent, id_txt)
@@ -2874,16 +2874,16 @@ class BlockMaster:
                             final.append(line)
                         else:
                             final.extend(aa.wrap(line, CONF['width'], False))
-                elif CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
-                    final.extend(aa.box(result, AA, CONF['width'], False, web=rules['web'], slides=CONF['slides']))
+                elif rules['slides'] and blockname in ('list', 'numlist', 'deflist'):
+                    final.extend(aa.box(result, AA, CONF['width'], False, web=rules['web'], slides=rules['slides']))
                 else:
                     for line in result:
-                        if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']):
+                        if not line or (blockname in ('table', 'tagged', 'verb') and not rules['slides']) or (blockname == 'quote' and rules['slides']):
                             final.append(line)
                         else:
-                            if CONF['slides'] and blockname in ('table', 'tagged', 'verb'):
+                            if rules['slides'] and blockname in ('table', 'tagged', 'verb'):
                                 final.append(line[:CONF['width']])
-                            elif CONF['slides']:
+                            elif rules['slides']:
                                 final.extend(' ' + line for line in aa.wrap(line, CONF['width'] - 2, rules['web']))
                             else:
                                 final.extend(aa.wrap(line, CONF['width'], rules['web']))
@@ -2893,7 +2893,7 @@ class BlockMaster:
 
         # ASCII Art processing
         global AA_TITLE, AA_COUNT, AA_PW_TOC, AA_IMG
-        if TARGET == 'aat' and CONF['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
+        if TARGET.startswith('aa') and rules['slides'] and not CONF['toc-only'] and not CONF.get('art-no-title'):
             len_res = len(result)
             for el in result:
                 if '<img' in el:
@@ -3248,8 +3248,8 @@ class BlockMaster:
                         result.append(tagindent + open_)
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
-                    if CONF['target'] == 'aat' and CONF['slides']:
-                        result.extend(aa.box([item], AA, CONF['width'], web=rules['web'], slides=CONF['slides']))
+                    if CONF['target'].startswith('aa') and rules['slides']:
+                        result.extend(aa.box([item], AA, CONF['width'], web=rules['web'], slides=rules['slides']))
                     else:
                         item = qline * self.depth + item
                         result.append(indent + item)  # quote line
@@ -3779,7 +3779,7 @@ def toc_inside_body(body, toc, config):
     for i,line in enumerate(body):
         if line.count(toc_mark):            # toc mark found
             if config['toc']:
-                if config['target'] == 'aat' and config['slides']:
+                if config['target'].startswith('aa') and rules['slides']:
                     j = i % (config['height'] - 1)
                     title = body[i - j + 2 + n]
                     ret.extend([''] * (config['height'] - j - 2 + n))
@@ -3790,7 +3790,7 @@ def toc_inside_body(body, toc, config):
             else:
                 pass                # or remove %%toc line
         else:
-            if flag and config['target'] == 'aat' and config['slides'] and body[i] == body[i + 4] == aa.line(AA['bar2'], config['width']):
+            if flag and config['target'].startswith('aa') and rules['slides'] and body[i] == body[i + 4] == aa.line(AA['bar2'], config['width']):
                 end = [ret[-1]]
                 del ret[-1]
                 ret.extend([''] * (j - 6 - n) + end)
@@ -3834,7 +3834,7 @@ def toc_formatter(toc, config):
     ret = toc
 
     # Art: An automatic "Table of Contents" header is added to the TOC slide
-    if config['target'] == 'aat' and config['slides']:
+    if config['target'].startswith('aa') and rules['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
         toc = aa.slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width'], rules['web']) + toc + ([''] * n)
         end_toc = aa.line(AA['bar2'], config['width'])
@@ -3842,7 +3842,7 @@ def toc_formatter(toc, config):
             end_toc = end_toc + '</pre></section>'
         toc.append(end_toc)
         return toc
-    if config['target'] == 'aat' and not config['slides']:
+    if config['target'].startswith('aa') and not rules['slides']:
         ret = aa.box([config['toc-title'] or _("Table of Contents")], AA, config['width']) + toc
 
     # TOC open/close tags (if any)
@@ -3949,8 +3949,8 @@ def doHeader(headers, config):
 
     # ASCII Art and rst don't use a header template, aa.header() formats the header
     if target.startswith('aa') and not (rules['spread'] and not rules['web']):
-        template = aa.header(head_data, AA, config['width'], config['height'], rules['web'], CONF['slides'])
-        if config['slides']:
+        template = aa.header(head_data, AA, config['width'], config['height'], rules['web'], rules['slides'])
+        if rules['slides']:
             l = aa.lencjk(head_data['HEADER2']) + aa.lencjk(head_data['HEADER3']) + 2
             bar_1 = bar_2 = aa.line(AA['bar2'], config['width'])
             if rules['web']:
@@ -3977,13 +3977,13 @@ def doHeader(headers, config):
                 encoding = '<meta charset=' + CONF['encoding'] + '>'
             if rules['spread']:
                 pre = '<pre style="text-align:center">'
-            elif config['slides']:
+            elif rules['slides']:
                 pre = ''
             else:
                 pre = '<pre>'
             head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title>' + pre]
             foot_web = ['</pre></html>']
-            if config['slides']:
+            if rules['slides']:
                 foot_web = ['</html>'] + Readfile('templates/dzslides-aapw.html', remove_linebreaks=1)
             if rules['spread']:
                 return head_web + config['fullBody'] + foot_web
@@ -4411,7 +4411,7 @@ def get_tagged_link(label, url):
                 img_path = image_re.match(label).group(1)
                 label = "(%s)" % fix_relative_path(img_path)
 
-        if TARGET.startswith('aa') and not CONF['slides'] and not rules['web'] and not rules['spread'] and not CONF['toc-only']:
+        if TARGET.startswith('aa') and not rules['slides'] and not rules['web'] and not rules['spread'] and not CONF['toc-only']:
             for macro in MASK.macrobank:
                 macro = MASK.macroman.expand(macro)
                 url = url.replace(MASK.macromask, macro, 1)
@@ -4648,7 +4648,7 @@ def convert_this_files(configs):
             return
 
         # Close the last slide
-        if myconf['slides'] and not myconf['toc-only'] and myconf['target'].startswith('aa'):
+        if rules['slides'] and not myconf['toc-only'] and myconf['target'].startswith('aa'):
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
             if rules['web']:
                 target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width']) + '</pre></section>']
@@ -4669,7 +4669,7 @@ def convert_this_files(configs):
         if myconf['target'] == 'mgp' and myconf['qa']:
                 target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "templates/QA.png"', '']
 
-        if myconf['target'].startswith('aa') and not myconf['slides'] and not rules['web'] and not rules['spread'] and not myconf['toc-only']:
+        if myconf['target'].startswith('aa') and not rules['slides'] and not rules['web'] and not rules['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
                 target_body.extend(aa.wrap('[' + str(i + 1) + '] ' + url, myconf['width'], rules['web']))
 
@@ -4928,7 +4928,7 @@ def parse_images(line):
             if TARGET == 'aat':
                 return txt
 
-        if TARGET.startswith('aa') and CONF['slides'] and rules['web']:
+        if TARGET.startswith('aa') and rules['slides'] and rules['web']:
             global AA_IMG
             mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(txt)
             AA_IMG = int((height / 600.0) * (CONF['height'] - 1))
