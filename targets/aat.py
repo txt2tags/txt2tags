@@ -37,5 +37,6 @@ TAGS = {
 }
 
 RULES = txt.RULES.copy()
+RULES['asciiart'] = 1
 RULES['tableable'] = 1
 RULES['confdependenttags'] = 1
