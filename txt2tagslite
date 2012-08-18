@@ -1552,8 +1552,6 @@ class ConfigMaster:
             # .t2t and .txt are the only "official" source extensions
             basename = re.sub('\.t[2x]t$', '', infile)
             outfile = "%s.%s" % (basename, TARGET_EXTENSIONS[config['target']])
-            if config['target'] == 'aat' and config['slides'] and config['web']:
-                outfile = "%s.%s" % (basename, 'aapw')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -1610,7 +1608,7 @@ class ConfigMaster:
         if target == 'aap':
             config['slides'] = True
         if target == 'aapw':
-            target, config['slides'], config['web'] = 'aat', True, True
+            config['slides'], config['web'] = True, True
         # Slides needs width and height
         if config['slides'] and target.startswith('aa'):
             if config['web']:
@@ -3857,7 +3855,7 @@ def toc_formatter(toc, config):
             para = TAGS['paragraphOpen'] + TAGS['paragraphClose']
             bar  = regex['x'].sub('-' * DFT_TEXT_WIDTH, TAGS['bar1'])
             tocbar = [para, bar, para]
-            if config['target'] == 'aat' and config['headers']:
+            if config['target'].startswith('aa') and config['headers']:
                 # exception: header already printed a bar
                 ret = [para] + ret + tocbar
             else:
@@ -3984,7 +3982,7 @@ def doHeader(headers, config):
             head_web = ['<!doctype html><html>' + encoding + '<title>' + config['header1'] + '</title>' + pre]
             foot_web = ['</pre></html>']
             if rules['slides']:
-                foot_web = ['</html>'] + Readfile('templates/dzslides-aapw.html', remove_linebreaks=1)
+                foot_web = [HEADER_TEMPLATE[target]]
             if rules['spread']:
                 return head_web + config['fullBody'] + foot_web
             else:
@@ -4839,7 +4837,7 @@ def embedImage(filename):
         except:
             Error('Unable to embed image: ' + filename)
 
-    elif TARGET == 'aat':
+    elif TARGET.startswith('aa'):
         if mytype not in ['png']:
             Error("Cannot embed image " + filename + ". Unsupported " + mytype + " format with Ascii Art targets. You should use PNG.")
         if colour_type == 3:
@@ -4925,7 +4923,7 @@ def parse_images(line):
             basedir = os.path.dirname(CONF.get('outfile'))
             fullpath = PathMaster().join(basedir, txt)
             txt = embedImage(fullpath)
-            if TARGET == 'aat':
+            if TARGET.startswith('aa'):
                 return txt
 
         if TARGET.startswith('aa') and rules['slides'] and rules['web']:
