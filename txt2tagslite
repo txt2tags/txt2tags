@@ -155,8 +155,6 @@ FLAGS = {
     'css-sugar': targets.CONF['css-sugar'],
     'css-inside': 0,
     'quiet': 0,
-    'slides': 0,
-    'web': 0,
     'fix-path': 0,
     'embed-images': 0,
     }
@@ -611,9 +609,6 @@ def getRules(config):
     for key in allrules:
         ret[key] = 0                         # reset all
     ret.update(myrules)                      # get rules
-
-    if ret['iswrapped'] and not config['width']:
-        config['width'] = DFT_TEXT_WIDTH
 
     return ret
 
@@ -1606,28 +1601,6 @@ class ConfigMaster:
         # Check split level value
         if config['split'] not in (0, 1, 2):
             Error(_('Option --split must be 0, 1 or 2'))
-        if target == 'aap':
-            config['slides'] = True
-        if target == 'aapw':
-            config['slides'], config['web'] = True, True
-        # Slides needs width and height
-        if config['slides'] and target.startswith('aa'):
-            if config['web']:
-                config['height'], config['width'] = 28, 73
-            if not config['width'] and  not config['height'] and os.name == 'posix':
-                import fcntl, termios
-                data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
-                config['height'], config['width'] = struct.unpack('4H',data)[:2]
-            if not config['width']:
-                config['width'] = DFT_SLIDE_WIDTH
-            if not config['height']:
-                config['height'] = DFT_SLIDE_HEIGHT
-        # ASCII Art needs a width
-        if target.startswith('aa') and not config['width']:
-            config['width'] = DFT_TEXT_WIDTH
-        if target.startswith('aa') and config['width'] < 5:
-            Error(_("--width: Expected width > 4, got %i") % config['width'])
-        targets.CONF['width'] = config['width']
         # Check/set user ASCII Art formatting characters
         if config['chars']:
             targets.CONF['chars'] = config['chars']
@@ -4983,6 +4956,26 @@ def set_global_config(config):
     global CONF, TAGS, regex, rules, TARGET
     CONF   = config
     rules  = getRules(CONF)
+
+    # ASCII Art slides need width and height
+    if rules['slides'] and rules['asciiart']:
+        if rules['web']:
+            config['height'], config['width'] = 28, 73
+        if not config['width'] and  not config['height'] and os.name == 'posix':
+            import fcntl, termios
+            data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
+            config['height'], config['width'] = struct.unpack('4H',data)[:2]
+        if not config['width']:
+            config['width'] = DFT_SLIDE_WIDTH
+        if not config['height']:
+            config['height'] = DFT_SLIDE_HEIGHT
+    # Wrapped targets need width
+    if rules['iswrapped'] and not config['width']:
+        config['width'] = DFT_TEXT_WIDTH
+    if rules['asciiart'] and config['width'] < 5:
+        Error(_("--width: Expected width > 4, got %i") % config['width'])
+    targets.CONF['width'] = config['width']
+
     TAGS   = getTags(CONF)
     regex  = getRegexes()
     TARGET = config['target']  # save for buggy functions that need global
