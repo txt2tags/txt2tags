@@ -12,7 +12,7 @@ case $1 in
 	echo -e "Usage: html2txt2tags http://URL (requires curl)\n       html2txt2tags file.html"
 	;;
 	http://*)
-	curl -s $1 | html2wiki --dialect Txt2tags | sed -r -e "s@^=@\n=@g"
+	echo -e "\n\n\n" && curl -s $1 | html2wiki --dialect Txt2tags | sed -r -e "s@^=@\n=@g" 
 	# add ' | sed -r -e "s@^=@\n=@g" ' to create a new line for broken headers
 	;;
 	install)
