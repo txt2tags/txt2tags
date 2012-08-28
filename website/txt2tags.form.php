@@ -35,6 +35,9 @@ require_once('txt2tags.class.php');
 # note, we write in the %!postproc below \\n\\1 because it is in a
 # PHP variable; in a text file or in a web form, we would write just
 # \n for newline and \1 for the first match
+#
+# $page =  file_get_contents("sample.t2t");
+#
 $page = <<<EOF
 txt2tags.class.php - online convertor
  
@@ -54,7 +57,8 @@ Write or paste some ``t2t markup`` in the text area below.
 
 '''
 <form action="txt2tags.form.php" method="post">
-<textarea name="text" rows="12" cols="50">{(TEXT)}</textarea><br/>
+<textarea name="text" rows="12" cols="50">
+{(TEXT)}</textarea><br/>
 <input type="submit" value="Convert!"/> <a href="txt2tags.form.php">Reset</a>
 </form>
 '''
@@ -78,7 +82,9 @@ $x = new T2T($page);
 $x->mtime = filemtime(__FILE__);
 
 $x->go();
-$html = $x->fullhtml;
+$html = $x->bodyhtml;
+# for including in an HTML page: $html = $x->bodyhtml;
+# for a complete HTML page:      $html = $x->fullhtml;
 
 $search = array('{(CODE)}', '{(HTML)}', '{(TEXT)}');
 

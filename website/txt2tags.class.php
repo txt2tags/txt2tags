@@ -1,6 +1,6 @@
 <?php
 /**
-  txt2tags.class.php version 20120827
+  txt2tags.class.php version 20120828a
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
   Development sponsored by Eric Forgeot.
   
@@ -93,7 +93,7 @@ class T2T {
   'verbatim'        => "<pre>\n%s</pre>", # content
   'mono'            => '<code>%s</code>', # content
   'center'          => "<center>%s</center>", # content
-  'img'             => '<img src="%s" align="%s" alt=""/>', # url, align
+  'img'             => '<img align="%s" src="%s" border="0" alt=""/>', # align, url
   'link'            => '<a href="%s">%s</a>', # url, text
   
   '**'              => '<b>%s</b>', # bold content
@@ -342,7 +342,7 @@ class T2T {
         continue;
       }
       elseif($table) { # close table
-        $lines2[] = "\033\033". $this->Keep($table . sprintf($snippets['tableclose'], $attr));
+        $lines2[] = "\033\033". $this->Keep($table . $snippets['tableclose']);
         $table = '';
       }
       # horizontal rule (bar1, bar2)
@@ -368,7 +368,7 @@ class T2T {
       $lines2[] = $this->closeRTV($openarea, $areacontent);
     
     if($table) 
-      $lines2[] = $table . $snippets['tableclose']."\n";
+      $lines2[] = "\033\033". $this->Keep($table . $snippets['tableclose']."\n");
       
     if($this->enabletoc && count($toc)) {
       if($postoc) { # there is %%toc in the page
@@ -549,7 +549,7 @@ class T2T {
     }
     # close ALL
     if($blockquote) 
-      $lines2[] = $blockquotecontent . $this->fixblockquote($blockquote, 0);
+      $lines2[] = $this->Keep($blockquotecontent . $this->fixblockquote($blockquote, 0));
     if($openlist) {
       while(count($ListLevels)>1) {
         list($plevel, $pspaces, $ptype) = array_pop($ListLevels);
@@ -584,13 +584,13 @@ class T2T {
     $imgrx = "\\[([\034\\w_,.+%$#@!?+~\\/-]+\\.(?:png|jpe?g|gif|bmp))\\]";
     
     $line = preg_replace("/^$imgrx(?=.)/ei",
-      "\$this->Keep(sprintf(\$snippets['img'], '$1', 'left'))", $line);
+      "\$this->Keep(sprintf(\$snippets['img'], 'left', '$1'))", $line);
     $line = preg_replace("/(?<=.)$imgrx$/ei",
-      "\$this->Keep(sprintf(\$snippets['img'], '$1', 'right'))", $line);
+      "\$this->Keep(sprintf(\$snippets['img'], 'right', '$1'))", $line);
       
       
     $line = preg_replace("/$imgrx/ei",
-      "\$this->Keep(sprintf(\$snippets['img'], '$1', 'middle'))", $line);
+      "\$this->Keep(sprintf(\$snippets['img'], 'middle', '$1', 'middle'))", $line);
     
     $UEX = '<>"{}|\\\\^`()\\[\\]\''; # UrlExcludeChars
     $PRT = '(?:https?|ftp|news|telnet|gopher|wais|mailto):';
