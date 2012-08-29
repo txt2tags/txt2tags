@@ -1,6 +1,6 @@
 <?php
 /**
-  txt2tags.class.php version 20120828a
+  txt2tags.class.php version 20120829
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
   Development sponsored by Eric Forgeot.
   
@@ -279,8 +279,8 @@ class T2T {
       }
     
       # Title, Numbered Title 
-      if(preg_match('/^ *((=){1,5})(?!=)\\s*(\\S.*[^=])\\1(?:\\[([\\w-]+)\\])?\\s*$/', $line, $m) ||
-        preg_match('/^ *((\\+){1,5})(?!\\+)\\s*(\\S.*[^+])\\1(?:\\[([\\w-]+)\\])?\\s*$/', $line, $m)  ) {
+      if(preg_match('/^ *((=){1,5})(?!=)\\s*(\\S.*[^=]|[^\\s=])\\1(?:\\[([\\w-]+)\\])?\\s*$/', $line, $m) ||
+        preg_match('/^ *((\\+){1,5})(?!\\+)\\s*(\\S.*[^+]|[^\\s=])\\1(?:\\[([\\w-]+)\\])?\\s*$/', $line, $m)  ) {
         $toccnt++;
         $anchor = @$m[4] ? $m[4] : "toc$toccnt";
         $txt = $this->esc(trim($m[3]));
