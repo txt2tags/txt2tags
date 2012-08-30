@@ -1,6 +1,6 @@
 <?php
 /**
-  txt2tags.class.php version 20120829
+  txt2tags.class.php version 20120830
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
   Development sponsored by Eric Forgeot.
   
@@ -738,7 +738,7 @@ class T2T {
       array_shift($lines);
     }
     else {
-      for ($i=0; $i<3 && $i<count($lines); $i++) {
+      for ($i=0; $i<3 && isset($lines[0]); $i++) {
         $R["header"][$i] = array_shift($lines);
       }
     }
