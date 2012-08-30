@@ -1,7 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
+<TITLE>txt2tags.class.php - online convertor</TITLE>
 <LINK REL="stylesheet" TYPE="text/css" HREF="inc/site.css">
+<style type='text/css'><!--
+div.demo, pre {width: 90%; border: 2px solid #ddd; margin: 1em; padding: 1em;}
+textarea {width: 90%; border: 2px solid #ddd; margin: 1em;}
+hr.light { height: 2px; }
+hr.heavy { height: 6px; }
+--></style>
 </HEAD>
 <BODY id="online">
 
@@ -40,15 +47,8 @@ require_once('txt2tags.class.php');
 #
 $page = <<<EOF
 txt2tags.class.php - online convertor
- 
- 
 
-%!postproc: (</head>) <style type='text/css'></style>\\n\\1
-%!postproc: (</style>) div.demo, pre {width: 90%; border: 2px solid #ddd; margin: 1em; padding: 1em;}\\n\\1
-%!postproc: (</style>) textarea {width: 90%; border: 2px solid #ddd; margin: 1em;}\\n\\1
-%!postproc: (</style>) hr {  color: #f00; background-color: #f00; width: 90%; }\\n\\1
-%!postproc: (</style>) hr.light { height: 2px; }\\n\\1
-%!postproc: (</style>) hr.heavy { height: 6px; }\\n\\1
+
 
 
 Here you can test the [txt2tags.class.php txt2tags-php.zip] script.
