@@ -20,9 +20,44 @@ require_once('txt2tags.class.php');
 # note, we write in the %!postproc below \\n\\1 because it is in a
 # PHP variable; in a text file or in a web form, we would write just
 # \n for newline and \1 for the first match
+
+# OPTION 1: serve a single file:
 #
 # $page =  file_get_contents("sample.t2t");
+
+
+# OPTION 2: serve a file called by 'txt2tags.form.php?id='
+#           Use 'switch' for defined files
+#           <!> change $fichier = "$id"; for default switch
+#               if you don't want your visitors to be able 
+#               to execute random code. 
+#           See txt2tags.sample.php for an example of use.
 #
+# foreach ($_POST as $key => $value) $$key = addslashes($value);
+# foreach ($_GET as $key => $value) $$key = addslashes($value);
+#
+#   $id = $_GET['id'];
+#	if ($_GET['id'] != "undefined")
+#    {
+#        switch($id) {
+#				case "file1":
+#					$fichier = "file1.t2t";
+#					break;
+#				case "file2":
+#					$fichier = "file2.t2t";
+#					break;
+#				case "sample":
+#					$fichier = "sample.t2t";
+#					break;
+#				default:
+#					$fichier = "$id";
+#					break;
+#				}
+#	}
+#	
+# $page =  $text = file_get_contents($fichier);
+
+# OPTION 3: serve a form which visitors can fill themselves (for testing purpose)
 $page = <<<EOF
 txt2tags.php - online convertor
 Petko Yotov 
