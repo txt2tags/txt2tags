@@ -40,6 +40,13 @@ $valid_ext[2] = "t2t";
 $valid_ext[3] = "T2T";
 $valid_ext[4] = "txt2tags";
 $valid_ext[5] = "TXT2TAGS";
+/*$valid_ext[6] = "php";
+$valid_ext[7] = "PHP";
+$valid_ext[8] = "htm";
+$valid_ext[9] = "HTM";
+$valid_ext[10] = "html";
+$valid_ext[11] = "HTML";
+*/
 
 //That should cover what most people use!  I hope anyhow :)
 
