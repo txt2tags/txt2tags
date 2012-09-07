@@ -1,6 +1,6 @@
 <?php
 /**
-  txt2tags.class.php version 20120830
+  txt2tags.class.php version 20120907
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
   Development sponsored by Eric Forgeot.
   
@@ -95,6 +95,7 @@ class T2T {
   'center'          => "<center>%s</center>", # content
   'img'             => '<img align="%s" src="%s" border="0" alt=""/>', # align, url
   'link'            => '<a href="%s">%s</a>', # url, text
+  'cssfile'         => '<link rel="stylesheet" href="%s" type="text/css"/>',
   
   '**'              => '<b>%s</b>', # bold content
   '//'              => '<i>%s</i>', # italics content
@@ -138,7 +139,7 @@ class T2T {
 <head>
 <title>%s</title>
 <meta http-equiv="Content-Type" content="text/html; charset=%s"/>
-<link rel="stylesheet" href="%s" type="text/css"/>
+%s
 </head>
 <body bgcolor="white" text="black">
 %s
@@ -201,7 +202,7 @@ class T2T {
         list(, $setting, $val) = $m;
         switch(strtolower($setting)) {
           case "encoding" : $this->encoding = trim($val); break;
-          case "style" : $this->cssfile = trim($val); 
+          case "style" : $this->cssfile = sprintf($this->snippets['cssfile'], trim($val)); 
           case "preproc"  : $this->preproc[]  = $this->add_proc($setting, trim($val)); break;
           case "postproc" : $this->postproc[] = $this->add_proc($setting, trim($val)); break;
           case "options": 
@@ -209,7 +210,8 @@ class T2T {
             if(preg_match('/--toc(?!-)/', $val)) $this->enabletoc = 1;
             if(preg_match('/--toc-level[= ]+([1-5])/', $val, $n)) $this->maxtoclevels = $n[1];
             if(preg_match('/--encoding[= ]+(\\S+)/', $val, $n)) $this->encoding = $n[1];
-            if(preg_match('/--style[= ]+(\\S+)/', $val, $n)) $this->cssfile = trim($n[1]); 
+            if(preg_match('/--style[= ]+(\\S+)/', $val, $n)) 
+              $this->cssfile = sprintf($this->snippets['cssfile'], trim($val)); 
             break; 
         }
       }

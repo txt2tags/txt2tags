@@ -1,25 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-<TITLE>txt2tags.class.php - online convertor</TITLE>
-<LINK REL="stylesheet" TYPE="text/css" HREF="inc/site.css">
-<style type='text/css'><!--
-div.demo, pre {width: 90%; border: 2px solid #ddd; margin: 1em; padding: 1em;}
-textarea {width: 90%; border: 2px solid #ddd; margin: 1em;}
-hr.light { height: 2px; }
-hr.heavy { height: 6px; }
---></style>
-</HEAD>
-<BODY id="online">
-
-<DIV CLASS="header" ID="header">
-<h1><a href="/">txt2tags</a></h1>
-<H3>Free online php conversion</H3>
-by <a href="http://notamment.fr/">Petko Yotov</a>
-</DIV>
-
-
-<DIV CLASS="body" ID="body">
 <?php
 /**
   txt2tags.class.php : text to HTML convertor in PHP
@@ -39,25 +17,72 @@ function stripmagic($x) # form helper function from PmWiki
 require_once('txt2tags.class.php');
 
 
-# note, we write in the %!postproc below \\n\\1 because it is in a
-# PHP variable; in a text file or in a web form, we would write just
-# \n for newline and \1 for the first match
+# OPTION 1: serve a single file:
 #
 # $page =  file_get_contents("sample.t2t");
+
+
+# OPTION 2: serve a file called by 'txt2tags.form.php?id='
+#           Use 'switch' for defined files
+#           <!> change $fichier = "$id"; for default switch
+#               if you don't want your visitors to be able 
+#               to execute random code. 
+#           See txt2tags.sample.php for an example of use.
 #
+# foreach ($_POST as $key => $value) $$key = addslashes($value);
+# foreach ($_GET as $key => $value) $$key = addslashes($value);
+#
+#   $id = $_GET['id'];
+#	if ($_GET['id'] != "undefined")
+#    {
+#        switch($id) {
+#				case "file1":
+#					$fichier = "file1.t2t";
+#					break;
+#				case "file2":
+#					$fichier = "file2.t2t";
+#					break;
+#				case "sample":
+#					$fichier = "sample.t2t";
+#					break;
+#				default:
+#					$fichier = "$id";
+#					break;
+#				}
+#	}
+#	
+# $page =  $text = file_get_contents($fichier);
+
+# OPTION 3: serve a form which visitors can fill themselves (for testing purpose)
 $page = <<<EOF
-txt2tags.class.php - online convertor
+txt2tags
 
+Free online php conversion
 
+%!style: inc/site.css
+%%%
+  Note, we write in the %!postproc below \\n\\1 because it is
+  inside a PHP variable. In a text file or in a web form, we
+  would write just \n for newline and \1 for the first match.
+%%%
+%!postproc: (</head>) <style type='text/css'></style>\\n\\1
+%!postproc: (</style>) div.demo, pre {width: 90%; border: 2px solid #ddd; margin: 1em; padding: 1em;}\\n\\1
+%!postproc: (</style>) textarea {width: 90%; border: 2px solid #ddd; margin: 1em;}\\n\\1
+%!postproc: (</style>) hr {  color: #f00; background-color: #f00; width: 90%; }\\n\\1
+%!postproc: (</style>) hr.light { height: 2px; }\\n\\1
+%!postproc: (</style>) hr.heavy { height: 6px; }\\n\\1
+%!postproc: "<div style='text-align:center;'>" <div class='header' id='header'>
+%!postproc: "(<h1>)(.+.)(</h1>)" \\1<a href="/">\\2</a>\\3
+%!postproc: "(<h3>.*</h3>)" \\1\\nby <a href="http://notamment.fr/">Petko Yotov</a>
 
-
+''' <div class="body" id="body">
 Here you can test the [txt2tags.class.php txt2tags-php.zip] script.
 
 Write or paste some ``t2t markup`` in the text area below.
 
 '''
 <form action="txt2tags.form.php" method="post">
-<textarea name="text" rows="12" cols="50">
+<textarea name="text" rows="12" cols="80">
 {(TEXT)}</textarea><br/>
 <input type="submit" value="Convert!"/> <a href="txt2tags.form.php">Reset</a>
 </form>
@@ -73,6 +98,8 @@ Write or paste some ``t2t markup`` in the text area below.
 {(HTML)}
 ''' </div>
 
+% </div class=body>
+''' </div>
 EOF;
 
 # create the form page
@@ -82,7 +109,7 @@ $x = new T2T($page);
 $x->mtime = filemtime(__FILE__);
 
 $x->go();
-$html = $x->bodyhtml;
+$html = $x->fullhtml;
 # for including in an HTML page: $html = $x->bodyhtml;
 # for a complete HTML page:      $html = $x->fullhtml;
 
@@ -107,7 +134,4 @@ $html = str_replace($search, $replace, $html);
 echo $html;
 
 
-?>
 
-</DIV>
-</HTML>
