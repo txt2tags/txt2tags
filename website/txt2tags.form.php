@@ -71,11 +71,14 @@ Free online php conversion
 %!postproc: (</style>) hr {  color: #f00; background-color: #f00; width: 90%; }\\n\\1
 %!postproc: (</style>) hr.light { height: 2px; }\\n\\1
 %!postproc: (</style>) hr.heavy { height: 6px; }\\n\\1
+%!postproc: (</title>) ".class.php - online convertor\\1"
 %!postproc: "<div style='text-align:center;'>" <div class='header' id='header'>
 %!postproc: "(<h1>)(.+.)(</h1>)" \\1<a href="/">\\2</a>\\3
 %!postproc: "(<h3>.*</h3>)" \\1\\nby <a href="http://notamment.fr/">Petko Yotov</a>
 
 ''' <div class="body" id="body">
+= txt2tags.class.php - online convertor =
+
 Here you can test the [txt2tags.class.php txt2tags-php.zip] script.
 
 Write or paste some ``t2t markup`` in the text area below.
