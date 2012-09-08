@@ -117,6 +117,7 @@ $html = $x->fullhtml;
 # for a complete HTML page:      $html = $x->fullhtml;
 
 $search = array('{(CODE)}', '{(HTML)}', '{(TEXT)}');
+ $replace = array("The result will appear here.", "The result will appear here.", '');
 
 if(@$_POST['text']) {
   $text = stripmagic($_POST['text']);
@@ -126,11 +127,8 @@ if(@$_POST['text']) {
   $fullhtml = $z->fullhtml;
   $onlybody = $z->bodyhtml;
   
-  $replace = array( htmlspecialchars($fullhtml), $onlybody, htmlspecialchars($text));
-  
+  $replace = array( htmlspecialchars($fullhtml), $onlybody, htmlspecialchars($text)); 
 }
-else
-  $replace = array("The result will appear here.", "The result will appear here.", '');
 
 $html = str_replace($search, $replace, $html);
 
