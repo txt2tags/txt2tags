@@ -1,6 +1,6 @@
-<?php
+<?php $T2TVersion = "20120908";
 /**
-  txt2tags.class.php version 20120907
+  txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
   Development sponsored by Eric Forgeot.
   
@@ -133,12 +133,13 @@ class T2T {
   ':itemclose'      => "</dd>\n",
   'listindent'      => '   ', # nicer HTML output
   
-  # title, encoding, styles, body
+  # title, encoding, version, styles, body
   'html'            => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>%s</title>
 <meta http-equiv="Content-Type" content="text/html; charset=%s"/>
+<meta name="generator" content="txt2tags.class.php version %s"/>
 %s
 </head>
 <body bgcolor="white" text="black">
@@ -168,7 +169,7 @@ class T2T {
     $this->bodytext = implode("\n", $this->R['body']);
   }
   
-  function go($output = '') {
+  function go($output = '') { # run the full processing
     
     $this->parse_config($this->R['config']); # read config settings
     $lines = $this->run_preproc($this->R['body']); # run %!preproc replacements
@@ -187,7 +188,8 @@ class T2T {
     # public variables 
     $this->title = $this->esc($this->run_macros($this->R['header'][0]));
     $this->bodyhtml = $this->run_postproc($body); # %!postproc replacements
-    $html = sprintf($this->snippets['html'], $this->title, $this->encoding, $this->cssfile, $body);
+    $html = sprintf($this->snippets['html'], $this->title, $this->encoding, 
+      $GLOBALS['T2TVersion'], $this->cssfile, $body);
     $this->fullhtml = $this->run_postproc($html); # %!postproc replacements
     
     if($output=='body') return $this->bodyhtml;
@@ -195,7 +197,7 @@ class T2T {
     return;
   }
   
-  function parse_config($lines) {
+  function parse_config($lines) { # try to read the supported configuration options
     foreach($lines as $c){
       if(preg_match('/^%!\\s*(encoding|style|postproc|preproc|options)(?:\\(x?html\\))?\\s*:\\s*(.*)$/i', $c, $m)) {
         # options, preproc and postproc are cumulative
@@ -300,7 +302,7 @@ class T2T {
         }
         
         $txt = $this->Keep($txt);
-        $lines2[] = "\032\032".sprintf($snippets['title'], $level, $anchor, $txt);
+        $lines2[] = "\032\032".sprintf($snippets['title'], $level, $anchor, $txt); # \032: block that cannot be nested in lists
         
         # collect toc entries
         if($this->maxtoclevels>=$level)
@@ -344,7 +346,7 @@ class T2T {
         continue;
       }
       elseif($table) { # close table
-        $lines2[] = "\033\033". $this->Keep($table . $snippets['tableclose']);
+        $lines2[] = "\033\033". $this->Keep($table . $snippets['tableclose']); # \033: block that can be nested in lists
         $table = '';
       }
       # horizontal rule (bar1, bar2)
@@ -520,7 +522,7 @@ class T2T {
         continue;
       }
       
-      if(preg_match("/^[\032\033]{2}/", $line)) {
+      if(preg_match("/^[\032\033]{2}/", $line)) { 
         if($para) { 
           $para = false;
           $lines2[] = $snippets['paraclose'];
