@@ -19,7 +19,7 @@ Or from the command line:
 
 There's also a web interface if you're so inclined:
 
-  http://diberri.dyndns.org/wikipedia/html2wiki/
+  http://diberri.dyndns.org/wikipedia/html2wiki/ (this module is not online now)
 
 
 
@@ -29,12 +29,20 @@ DEPENDENCIES
 
 INSTALLATION
 
+Install html-wikiconverter and curl first. 
+
+On Debian/Ubuntu: sudo apt-get install libhtml-wikiconverter-perl curl
+
+
 To install this module, run the following commands:
 
     perl Makefile.PL
     make
     make test
     make install
+
+You can also copy html2txt2tags into your $PATH (for example /usr/local/bin)
+
 
 SUPPORT AND DOCUMENTATION
 
