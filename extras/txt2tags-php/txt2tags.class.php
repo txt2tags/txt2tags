@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20120908";
+<?php $T2TVersion = "20120922";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -82,7 +82,8 @@ class T2T {
   var $date;             # timestamp of the current date
   var $cssfile = '';     # the css file to be included in the HTML header
   var $maskemail = 0;    # rewrite plaintext e-mail links
-  var $encoding = "UTF-8";
+  var $encoding = "UTF-8";             # assume default encoding if none in file
+  var $parsetargets = "html|xhtml";    # accept %!command(html) and %!command(xhtml)
   var $snippets = array(
   'header1'         => "<h1>%s</h1>\n",# text (first line of file)
   'header2'         => "<h2>%s</h2>\n",# text
@@ -164,8 +165,8 @@ class T2T {
     $this->R = $this->head_conf_body($this->content);
     
     # public variables 
-    $this->headers = implode("\n", $this->R['header']);
-    $this->config = implode("\n", $this->R['config']);
+    $this->headers  = implode("\n", $this->R['header']);
+    $this->config   = implode("\n", $this->R['config']);
     $this->bodytext = implode("\n", $this->R['body']);
   }
   
@@ -198,8 +199,10 @@ class T2T {
   }
   
   function parse_config($lines) { # try to read the supported configuration options
+    $opts = "encoding|style|postproc|preproc|options";
+    $tgts = $this->parsetargets;
     foreach($lines as $c){
-      if(preg_match('/^%!\\s*(encoding|style|postproc|preproc|options)(?:\\(x?html\\))?\\s*:\\s*(.*)$/i', $c, $m)) {
+      if(preg_match("/^%!\\s*({$opts})(?:\\((?:{$tgts})\\))?\\s*:\\s*(.*)$/i", $c, $m)) {
         # options, preproc and postproc are cumulative
         list(, $setting, $val) = $m;
         switch(strtolower($setting)) {
