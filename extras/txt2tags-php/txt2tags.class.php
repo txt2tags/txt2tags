@@ -153,6 +153,7 @@ class T2T {
   var $postproc = array();
   var $KPV = array();
   var $KPCount = 0;
+  var $csslink = '';
   function T2T($input, $isfile = 0) {    
     
     $this->set_macros($input, $isfile);     # macros
@@ -190,7 +191,7 @@ class T2T {
     $this->title = $this->esc($this->run_macros($this->R['header'][0]));
     $this->bodyhtml = $this->run_postproc($body); # %!postproc replacements
     $html = sprintf($this->snippets['html'], $this->title, $this->encoding, 
-      $GLOBALS['T2TVersion'], $this->cssfile, $body);
+      $GLOBALS['T2TVersion'], $this->csslink, $body);
     $this->fullhtml = $this->run_postproc($html); # %!postproc replacements
     
     if($output=='body') return $this->bodyhtml;
@@ -207,7 +208,7 @@ class T2T {
         list(, $setting, $val) = $m;
         switch(strtolower($setting)) {
           case "encoding" : $this->encoding = trim($val); break;
-          case "style" : $this->cssfile = sprintf($this->snippets['cssfile'], trim($val)); 
+          case "style" : $this->csslink = sprintf($this->snippets['cssfile'], trim($val)); 
           case "preproc"  : $this->preproc[]  = $this->add_proc($setting, trim($val)); break;
           case "postproc" : $this->postproc[] = $this->add_proc($setting, trim($val)); break;
           case "options": 
@@ -216,7 +217,7 @@ class T2T {
             if(preg_match('/--toc-level[= ]+([1-5])/', $val, $n)) $this->maxtoclevels = $n[1];
             if(preg_match('/--encoding[= ]+(\\S+)/', $val, $n)) $this->encoding = $n[1];
             if(preg_match('/--style[= ]+(\\S+)/', $val, $n)) 
-              $this->cssfile = sprintf($this->snippets['cssfile'], trim($val)); 
+              $this->csslink = sprintf($this->snippets['cssfile'], trim($val)); 
             break; 
         }
       }
