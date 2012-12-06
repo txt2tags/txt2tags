@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20120922";
+<?php $T2TVersion = "20121206";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
