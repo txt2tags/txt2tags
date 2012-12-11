@@ -15,7 +15,7 @@ require_once (DOKU_PLUGIN . 'txt2tags/txt2tags.class.php');
 
 $T2TVersion = "20121206";
 
-class syntax_plugin_t2t extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_txt2tags extends DokuWiki_Syntax_Plugin {
 
     function getType() {
         return 'protected';
@@ -30,11 +30,11 @@ class syntax_plugin_t2t extends DokuWiki_Syntax_Plugin {
     }
 
     function connectTo($mode) {
-        $this->Lexer->addEntryPattern('<t2t>(?=.*</t2t>)', $mode, 'plugin_t2t');
+        $this->Lexer->addEntryPattern('<t2t>(?=.*</t2t>)', $mode, 'plugin_txt2tags');
     }
 
     function postConnect() {
-        $this->Lexer->addExitPattern('</t2t>', 'plugin_t2t');
+        $this->Lexer->addExitPattern('</t2t>', 'plugin_txt2tags');
     }
 
     function handle($match, $state, $pos, &$handler) {    
