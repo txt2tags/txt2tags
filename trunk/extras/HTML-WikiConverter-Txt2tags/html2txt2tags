@@ -16,7 +16,7 @@ case $1 in
 	# add ' | sed -r -e "s@^=@\n=@g" ' to create a new line for broken headers
 	;;
 	install)
-	echo "We'll install this html3txt2tags script to:" ${INSTALLPATH}
+	echo "We'll install this html2txt2tags script to:" ${INSTALLPATH}
 		echo "(If you run this script with the correct rights)"
 		echo " "
 		echo "If you want to change the path, please edit this script."

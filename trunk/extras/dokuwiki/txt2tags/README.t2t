@@ -1,0 +1,52 @@
+# txt2tags plugin for DokuWiki
+    ---- plugin ----
+    description: Parses txt2tags.
+    author     : Eric Forgeot, based on work by Joonas Pulakka and Jiang Le
+    email      : 
+    type       : syntax
+    lastupdate : 2012-12-11
+    compatible : 2012-10-13 “Adora Belle” and newer
+    depends    : 
+    conflicts  :
+    similar    :  
+    tags       : formatting, markup_language
+    downloadurl: 
+    ----
+
+== Download and Installation ==
+
+Download and install the plugin using the Plugin Manager using the following URL. Refer to [[:Plugins]] on how to install plugins manually.
+
+
+
+== Usage ==
+
+If the page name ends with //.t2t// suffix, it gets automatically parsed using txt2tags-php. To use that markup in other pages, the content must be embedded in a txt2tags block. For example:
+
+    <t2t>
+    = Header =
+
+    ```
+    some code
+    ```
+
+    Paragraph
+
+    == Header ==
+
+    - A
+    - simple
+    - list
+
+    + And
+    + numbered
+    + list
+
+    Quite intuitive? 
+    
+    //italic//, **strong**, __underlined__ etc.
+    
+    </t2t>
+
+
+For syntax, refer to http://www.txt2tags.org
