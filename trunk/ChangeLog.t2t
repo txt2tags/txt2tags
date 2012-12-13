@@ -41,19 +41,20 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 	
 - New target: bbcode (bbcode). <thanks Eric Forgeot> [r410]
-- New target: HTML5 (html5). <thanks Sami Hostikka> [r445]
+- New target: HTML5 (html5). <thanks Sami Hostikka> [r445][r695][r698]
 - New target: markdown (md). <thanks Eric Forgeot> [r408]
 - New target: Redmine Wiki (red). <thanks Booba §kaya> [r448] 
 - New target: Spip (spip). <thanks Mickael Brangeon> [r449]
 - New target: xhtml strict (xhtmls). <thanks Eric Forgeot> [r409]
-- New target: RTF (rtf). <thanks Jason Seeley> [r498][r499][r502]-[r504]
+- New target: RTF (rtf). <thanks Jason Seeley> [r498][r499][r502]-[r504][r666]-[r668]
 - New target: ASCII Art slides (arts, renamed later aap). <thanks Florent Gallaire> [r612][r618]
-- New target: ASCII Art Spreadsheet (aas). <thanks Florent Gallaire> [r618]
+- New target: ASCII Art Spreadsheet (aas). <thanks Florent Gallaire> [r618][r671]
+- New target: ASCII Art Web, aaw (html5 valid). <thanks Florent Gallaire> [r681]-[r685][r688]
 - New target: CSV spreadsheet (csv). <thanks Florent Gallaire> [r621]
 - New target: ODS Open Document Spreadsheet (ods). <thanks Florent Gallaire> [r632][r634]
 - New target: Foswiki or TWiki page (tml). <thanks Thierry Pasquier> [r904]
 - New target: Txt2tags (txt2t), which export to t2t after expanding preprocs and includes macros. <thanks Jason Seeley> [r639]
-- New target: ReStructuredText (rst). <thanks Florent Gallaire> [r646]
+- New target: ReStructuredText (rst). <thanks Florent Gallaire> [r646][r696][r700][r701][r715][r734][r747]-[r749]
 
 - New option: ``-T,--template`` to apply user-defined templates. <thanks Emmanuel Godard> [r407]
 - New option: ``--fix-path`` to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with ``--outfile``. Use ``--no-fix-path`` to turn it off. [r564]
@@ -72,7 +73,13 @@ HTML: The full version, used in the txt2tags website. This file contents
 - New macros: ``%%header1``, ``%%header2``, ``%%header3``. [r483] [#68]
 - New macro: ``%%encoding``. [r482]
 
-- Art: Several improvements: multiline support in aa_under() [r505], table support [r514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618], ``--art-chars`` option becomes ``--chars`` [r643],
+- Art: Several improvements: multiline support in aa_under() [r505], table support [r514], header support for table [r515], bold/italic/underline/strike support [r521], column span support for table [r584], vertical header support for table [r616], dynamic width and height for slides [r617], new names for AAOffice : art become aat and arts become aap [r618], ``--art-chars`` option becomes ``--chars`` [r643], supports embed-images option [r656], supports alpha channel [r660], various fix and improvements [r703]-[r713], [r725]-[r733], [r739]-[r746] [r751]-[r757] [r770][r771][r773][r774]
+
+- Dbk: tableable [r736]
+
+- Mgp: Improvements in tables. [r735][r737][r738][r758][r759]
+
+- Moin: Corrected the moin output. <thanks meismo> [r764]
 
 - Wikipedia: Now escaping ``<``, ``>`` and ``&`` chars. [r568] [#93]
 
@@ -92,13 +99,19 @@ HTML: The full version, used in the txt2tags website. This file contents
 - Docs: Markup Demo: New cleaner style. Original and all translations now using a default remote CSS file [r588], All translations converted to UTF-8 [r589]
 - Docs: All manpages converted to UTF-8. [r590]
 - Docs: Updated docs to UTF-8. [r615]
+- Docs: French translation of Writing Books and sample file converted to UTF-8 and regenerated. <Thanks Nicolas Quiniou for the warning> [r767][r768]. Updated French doc [r769]
+- Docs: Added new documentation tags-reference.t2t and .html. <thanks Jason Seeley> [r661]
+- Docs: Fixed and updated English docs <thanks HansBKK> [r772]
+- Docs: All what you need to know about the ""--chars option"".  <thanks Florent Gallaire> [r775]
+
 
 - extras: Updated Kate text editor definition. [r623]
+- extras: Updated PmWiki cookbook and icons. [r760][r765]
 
 - txt2tags code ported to Python 3 branch. <thanks João Bernardo Vianna> [r384][r385] [r386]	
 
 - New dev tool dist/compare-targets.py to quickly spot differences between two or more targets. [r447]
-- Code reformatting to check for python style deviations (PEP-8), as discussed in [#67]. [r463]-[r467]  [r534]-[r555] [r602]
+- Code reformatting to check for python style deviations (PEP-8), as discussed in [#67]. [r463]-[r467]  [r534]-[r555] [r602] [r687]
 
 - Now remote URLs (http:// and https:// can be loaded as local files. [r525]
 - Now supporting remote http templates. [r526]
@@ -117,6 +130,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 
 - **IMPORTANT:** This release requires Python 2.4 or newer, Python 2.5 adviced to use the SQLite target.
+
 
 
 = Version 2.6 (2010-11-05) =
@@ -174,7 +188,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - i18n: Manual Pages converted to UTF-8. [r208][r287][r288][r361][r362]
 - i18n: All .po files converted to UTF-8. [r124]
 - i18n: Added po/tools folder and po/stats.txt file. [r123][r234]
-- i18n: Added Basque translations. <thanks Ales Zabala Alava> [r83]
+- i18n: Added Basque translations. <thanks Ales Zabala Alava> [r83][r662]
 - i18n: Added Ukrainian translations. <thanks Bunyk Taras> [r182]
 - Docs: the Manual Page was rewritten: now a reference not a guide. [r250]
 - Docs: Markup Demo, Sample File, Manual Page translated to Basque. <thanks Ales Zabala Alava> [r35][r36][r84]
