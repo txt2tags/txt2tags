@@ -4,7 +4,7 @@
  *
  * @license GPL 3 (http://www.gnu.org/licenses/gpl.html) - NOTE: PHP txt2tags
  *  is licensed under the GPL license. See License.text for details.
- * @version 1.00 - 2012-12-12 - PHP txt2tags 20121206 included.
+ * @version 1.02 - 2012-12-14 - PHP txt2tags 20121206 included.
  * @author Eric Forgeot, heavily derived from markdownextra plugin by Joonas Pulakka and Jiang Le 
  */
 
@@ -146,6 +146,8 @@ class syntax_plugin_txt2tags extends DokuWiki_Syntax_Plugin {
         $html = str_replace('<!DOCTYPE html>','',$html);
         $html = preg_replace('/.+<body>/', '', $html);
         $html = str_replace('</body>','', $html);
+        $html = preg_replace('/.+<html>/', '', $html);
+        $html = str_replace('</html>','', $html);
         return $html;
     }
 
