@@ -7,5 +7,5 @@ include-tagged
 
   include-verb
 
-  | one | two | three | four |
+  | one | two | three | four
 
