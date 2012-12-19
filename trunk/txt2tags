@@ -546,7 +546,7 @@ HEADER_TEMPLATE = {
 <!doctype html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="http://txt2tags.org"/>
 <link rel="stylesheet" href="%(STYLE)s"/>
@@ -582,7 +582,7 @@ table.center {margin-left:auto; margin-right:auto;}
 <!doctype html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="http://txt2tags.org"/>
 <link rel="stylesheet" href="%(STYLE)s"/>
@@ -602,7 +602,7 @@ table.center {margin-left:auto; margin-right:auto;}
 <!doctype html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="http://txt2tags.org"/>
 <link rel="stylesheet" href="%(STYLE)s"/>
