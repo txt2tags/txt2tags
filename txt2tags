@@ -543,7 +543,7 @@ HEADER_TEMPLATE = {
 """,
 
     'html5': """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="%(ENCODING)s">
@@ -579,7 +579,7 @@ table.center {margin-left:auto; margin-right:auto;}
 """,
 
     'html5css': """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="%(ENCODING)s">
@@ -599,7 +599,7 @@ table.center {margin-left:auto; margin-right:auto;}
 """,
 
     'htmls': """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="%(ENCODING)s">
