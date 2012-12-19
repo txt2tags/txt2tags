@@ -542,6 +542,9 @@ HEADER_TEMPLATE = {
 </DIV>
 """,
 
+# HTML5 reference code:
+# https://github.com/h5bp/html5-boilerplate/blob/master/index.html
+# https://github.com/murtaugh/HTML5-Reset/blob/master/index.html
     'html5': """\
 <!DOCTYPE html>
 <html>
