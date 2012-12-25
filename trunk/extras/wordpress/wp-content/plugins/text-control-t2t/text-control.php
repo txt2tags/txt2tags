@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Text Control
+Plugin Name: Text Control t2t
 Plugin URI: http://dev.wp-plugins.org/wiki/TextControl
 Description: Take total control of how your blog formats text: Textile 1+2, Markdown, Txt2tags, AutoP, nl2br, SmartyPant, and Texturize. Blog wide, individual posts, and defaults for comments.
-Author: Jeff Minard, Frank B&uuml;ltge
+Author: Jeff Minard, Frank B&uuml;ltge, Eric Forgeot
 Author URI: http://bueltge.de
 Version: 2.3.2
 Date: 2012-12-23
@@ -42,7 +42,7 @@ function tc_filter_plugin_actions($links, $file) {
 		$this_plugin = plugin_basename(__FILE__);
 
 	if ( $file == $this_plugin )
-		$links = array_merge( array('<a href="options-general.php?page=text-control-2/text-control.php">' . __('Settings') . '</a>'), $links); // before other links
+		$links = array_merge( array('<a href="options-general.php?page=text-control-t2t/text-control.php">' . __('Settings') . '</a>'), $links); // before other links
 	
 	return $links;
 }

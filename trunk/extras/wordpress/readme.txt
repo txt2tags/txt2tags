@@ -1,7 +1,15 @@
 
 
 
-This plugin can add Txt2tags (among others) lightweight markup to WordPress. To install, just download the complete version from https://wordpress.org/extend/plugins/text-control-2 or just create a text-control folder into /wp-content/plugins, and put the txt2tags.class.php extension into /wp-content/plugins/text-control-2/text-control
+This plugin can add Txt2tags (among others) lightweight markup to WordPress. 
+
+- To install, just download the complete version from https://wordpress.org/extend/plugins/text-control-2 
+
+- or just create a text-control folder into /wp-content/plugins
+
+- replace text-control.php with this present version 
+
+- put the txt2tags.class.php extension into /wp-content/plugins/text-control-2/text-control (in this case, only txt2tags will be available)
 
 
 
