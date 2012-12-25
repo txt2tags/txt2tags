@@ -17,7 +17,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2011-12-24';
+$RecipeInfo['txt2tags']['Version'] = '2012-12-01';
 
 $MyGuiEditor = '$FarmPubDirUrl/t2tguiedit/';
 
@@ -188,26 +188,28 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	Markup ('txt2tags_bold'     , 'directives', '/\*\*(.*?)\*\*/'       , "'''$1'''");
 	Markup ('txt2tags_undeline' , 'directives', '/__(.*?)__/'           , "{+$1+}");	
 	
-	Markup ('txt2tags_http'  , '<directives', '/http:\/\//'             , "HTTPREP");
-	Markup ('txt2tags_https'  , '<directives', '/https:\/\//'           , "HTTPSREP");
-	Markup ('txt2tags_ftp'  , '<directives', '/ftp:\/\//'               , "FTPREP");
-	Markup ('txt2tags_ftps'  , '<directives', '/sftp:\/\//'             , "SFTPREP");
+	Markup ('txt2tags_http'     , '<directives', '/http:\/\//'          , "HTTPREP");
+	Markup ('txt2tags_https'    , '<directives', '/https:\/\//'         , "HTTPSREP");
+	Markup ('txt2tags_ftp'      , '<directives', '/ftp:\/\//'           , "FTPREP");
+	Markup ('txt2tags_ftps'     , '<directives', '/sftp:\/\//'          , "SFTPREP");
 	Markup ('txt2tags_italics'  , 'directives', '/\/\/(.*?)\/\//'       , "''$1''");
-	Markup ('txt2tags_http2'  , 'inline', '/HTTPREP/'                   , "http://");
-	Markup ('txt2tags_https2'  , 'inline', '/HTTPSREP/'                 , "https://");
-	Markup ('txt2tags_ftp2'  , 'inline', '/FTPREP/'                     , "ftp://");
-	Markup ('txt2tags_sftp2'  , 'inline', '/SFTPREP/'                   , "sftp://");
+
+	Markup ('txt2tags_https2'   , 'inline', '/HTTPSREP/'                , "https://");	
+	Markup ('txt2tags_http2'    , 'inline', '/HTTPREP/'                 , "http://");
+
+	Markup ('txt2tags_ftp2'     , 'inline', '/FTPREP/'                  , "ftp://");
+	Markup ('txt2tags_sftp2'    , 'inline', '/SFTPREP/'                 , "sftp://");
 	
 	
-	Markup ('txt2tags_strike'    , 'directives', '/--(.*?)--/', "{-$1-}");	
+	Markup ('txt2tags_strike'   , 'directives', '/--(.*?)--/'           , "{-$1-}");	
 	// mono : see below
 
 
 // HR Lines
 	
 	DisableMarkup("^----");
-	Markup ('txt2tags_hr'    , '<txt2tags_strike', '/^--------------------+/', '<:block,1><hr style="height: 1px; border: none; color: gray; background: gray;"/>');		
-	Markup ('txt2tags_hr5'    , '_begin', '/^====================+/', '<:block,1><hr style="height: 4px; border: none; color: gray; background: gray;"/>');	
+	Markup ('txt2tags_hr'       , '<txt2tags_strike', '/^--------------------+/', '<:block,1><hr style="height: 1px; border: none; color: gray; background: gray;"/>');		
+	Markup ('txt2tags_hr5'      , '_begin', '/^====================+/', '<:block,1><hr style="height: 4px; border: none; color: gray; background: gray;"/>');	
 
 // Headings
 	
@@ -220,22 +222,22 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	
 	Markup ('txt2tags_h4','<txt2tags_h3'    , '/( *)====[^=](.*?)[^=]====/', "!!!!$2");		
 	Markup ('txt2tags_h3','<txt2tags_h2'    , '/( *)===[^=](.*?)[^=]===/', "!!!$2");	
-	Markup ('txt2tags_h2','<txt2tags_h1'    , '/( *)==[^=](.*?)[^=]==/', "!!$2");	
-	Markup ('txt2tags_h1'    , '<split', '/( *)= (.*?) =/', "!$2");	
+	Markup ('txt2tags_h2','<txt2tags_h1'    , '/( *)==[^=](.*?)[^=]==/' , "!!$2");	
+	Markup ('txt2tags_h1', '<split'         , '/( *)= (.*?) =/'         , "!$2");	
 	
 
 	Markup ('txt2tags_nh4','<txt2tags_nh3'    ,  '/\+\+\+\+(.*?)\+\+\+\+/', "!!!!$1");		
 	Markup ('txt2tags_nh3','<txt2tags_nh2'    ,  '/\+\+\+(.*?)\+\+\+/', "!!!$1");	
 	Markup ('txt2tags_nh2','<txt2tags_nh1'    ,  '/\+\+(.*?)\+\+/', "!!$1");	
 	//Markup ('txt2tags_nh1'    , '<txt2tags_numberedlist', '/\+ (.*?) \+/', "!$1");	
-	Markup ('txt2tags_nh1'    , '<split', '/\+ (.*?) \+/', "!$1");	
+	Markup ('txt2tags_nh1'    , '<split', '/^\+ (.*?) \+/', "!$1");	  // please use the + header + at the beginning of a line
 
 // <!> if adding a leading ^ for ex. /^( *)===[^=] it will break pagetoc.php...
 	
 // Lists (^ = occurs at the beginning of a line only)
 
 	// correct lists beginning by a bold markup, like "- **bold**"
-	Markup ('txt2tags_correctbulletlist'    , '<directives', '/^- \*\*/', "-  **");
+	Markup ('txt2tags_correctbulletlist'     , '<directives', '/^- \*\*/', "-  **");
 	Markup ('txt2tags_correctbulletlist2'    , '>directives', '/^ - \*\*(.*?)\*\*/', "** **$1**");
 	//Markup ('txt2tags_correctbulletlist2'    , '<directives', '/^ - \*\*/', " -  **");
 	Markup ('txt2tags_correctbulletlist3'    , '<directives', '/^  - \*\*/', "  -  **");
@@ -245,16 +247,16 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	// TODO: not working as expected at the moment
 	
 	// transformation to the pmwiki syntax
-	Markup ('txt2tags_bulletlist'    , 'directives', '/^- (.*?)/', "*$1");	
+	Markup ('txt2tags_bulletlist'     , 'directives', '/^- (.*?)/', "*$1");	
 	Markup ('txt2tags_bulletlist2'    , 'directives', '/^ - (.*?)/', "**$1");	
 	Markup ('txt2tags_bulletlist3'    , 'directives', '/^  - (.*?)/', "***$1");	
 	Markup ('txt2tags_bulletlist4'    , 'directives', '/^   - (.*?)/', "****$1");	
 	
 
-	Markup ('txt2tags_numberedlist'    , 'directives', '/^\+ (.*?)/', "#$1");	
-	Markup ('txt2tags_numberedlist2'    , 'directives', '/^ \+ (.*?)/', "##$1");	
-	Markup ('txt2tags_numberedlist3'    , 'directives', '/^  \+ (.*?)/', "###$1");	
-	Markup ('txt2tags_numberedlist4'    , 'directives', '/^   \+ (.*?)/', "####$1");	
+	Markup ('txt2tags_numberedlist'   , 'directives', '/^\+ (.*?)/', "#$1");	
+	Markup ('txt2tags_numberedlist2'  , 'directives', '/^ \+ (.*?)/', "##$1");	
+	Markup ('txt2tags_numberedlist3'  , 'directives', '/^  \+ (.*?)/', "###$1");	
+	Markup ('txt2tags_numberedlist4'  , 'directives', '/^   \+ (.*?)/', "####$1");	
 	
 // Definition list
 
@@ -283,11 +285,11 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	//Markup ('txt2tags_tablehead'    , '<^||||', '/\|\|/', "||!");		// doesnt work
 	//Markup ('txt2tags_table'    , '>txt2tags_tablehead', '/\|(.*?)\|/', "|| $1 ||");	// doesnt work
 	
-	Markup ('txt2tags_table0'    , 'directives', '/\|\|/', "BARTAB");	// 
+	Markup ('txt2tags_table0'     , 'directives', '/\|\|/', "BARTAB");	// 
 	//Markup ('txt2tags_table_2'    , '>txt2tags_table0', '/\| (.*?) \| (.*?) \|/', "|| $1 || $2 ||");	//  doesnt works well
 	//Markup ('txt2tags_table_end'    , '<txt2tags_table0', '/\|$/', "||");	//  
 	Markup ('txt2tags_table_1'    , '>txt2tags_table0', '/\| (.*?) \|/', "|| $1 ||");	//  almost works
-	Markup ('txt2tags_table1'    , '>txt2tags_table_1', '/BARTAB/', "||");	//  
+	Markup ('txt2tags_table1'     , '>txt2tags_table_1', '/BARTAB/', "||");	//  
 	
 	
 // // // /    LINKS
@@ -300,15 +302,28 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	// In the case $EnablePathInfo = 1; in local/config.php use ../../ after local:
 	//    [description local://../../subfolder/file.ext]
 	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/',  '<a href="$2">$1</a>');
+
+# with simple "directive", pb link with images
+	Markup ('txt2tags_urllink_var'    , '<directives', '/\[(.*?) \|[ ]HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
+	Markup ('txt2tags_urllink_var2'    , '<directives', '/\[(.*?)\| HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
+	Markup ('txt2tags_urllink_var3'    , '<directives', '/\[(.*?)\|HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
 	
 	Markup ('txt2tags_urllink'    , 'directives', '/\[(.*?) HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
+	
+
+	
 	//Markup ('txt2tags_urllink'    , '<inline', '/\[(.*?) http:\/\/(.*?)\]/s', '<a href="$2>$1</a>');	
 	
-	Markup ('txt2tags_urllink2'    , 'directives', '/\[(.*?) HTTPSREP(.*?)\]/s', '[[HTTPSREP$2|$1]]');	
+	Markup ('txt2tags_urllink2'    , '<txt2tags_urllink', '/\[(.*?) HTTPSREP(.*?)\]/s', '[[HTTPSREP$2|$1]]');
+		
 	Markup ('txt2tags_urllink3'    , 'directives', '/\[(.*?) FTPREP(.*?)\]/s', '[[FTPREP$2|$1]]');	
-
-
 	// not working (empty line) Markup ('txt2tags_urllink4'    , 'directives', '/\[(.*?) SFTPREP(.*?)\]/s', '[[SFTPREP$2|$1]]');	
+
+	// fix for using both https and http URL. Works only for maximum 2 mixed links.
+	Markup ('txt2tags_urllink-fix'    , '<txt2tags_urllink2', '/\[(.*?) HTTPREP(.*?)\](.*?)\[(.*?) HTTPSREP(.*?)\]/s', '[[HTTPREP$2|$1]] $3 [[HTTPSREP$5|$4]]');	
+	Markup ('txt2tags_urllink2-fix'    , '<txt2tags_urllink2', '/\[(.*?) HTTPSREP(.*?)\](.*?)\[(.*?) HTTPREP(.*?)\]/s', '[[HTTPSREP$2|$1]] $3 [[HTTPREP$5|$4]]');	
+
+	
 
 	// (beware this rule rely on the txt2tags_http/https/ftp/ftps (italics) rules as well)
 
@@ -336,7 +351,7 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 
 // Macros
 
-	Markup ('txt2tags_toc'    , '_begin', '/%%toc/', '(:*toc:)');
+	Markup ('txt2tags_toc'       , '_begin', '/%%toc/', '(:*toc:)');
 	
 	 
 
