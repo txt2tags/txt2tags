@@ -43,7 +43,7 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 3.2.0-23-generic
+OSVERS = 3.2.0-29-generic
 RANLIB = :
 SITELIBEXP = /usr/local/share/perl/5.14.2
 SITEARCHEXP = /usr/local/lib/perl/5.14.2
@@ -162,8 +162,7 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/HTML/WikiConverter/DokuWiki.pm \
-	lib/HTML/WikiConverter/Txt2tags.pm
+MAN3PODS = lib/HTML/WikiConverter/Txt2tags.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIB)$(DFSEP)Config.pm $(PERL_INC)$(DFSEP)config.h
@@ -185,13 +184,10 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/HTML/WikiConverter/DokuWiki.pm \
-	lib/HTML/WikiConverter/Txt2tags.pm
+TO_INST_PM = lib/HTML/WikiConverter/Txt2tags.pm
 
 PM_TO_BLIB = lib/HTML/WikiConverter/Txt2tags.pm \
-	blib/lib/HTML/WikiConverter/Txt2tags.pm \
-	lib/HTML/WikiConverter/DokuWiki.pm \
-	blib/lib/HTML/WikiConverter/DokuWiki.pm
+	blib/lib/HTML/WikiConverter/Txt2tags.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -414,11 +410,9 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
-	lib/HTML/WikiConverter/Txt2tags.pm \
-	lib/HTML/WikiConverter/DokuWiki.pm
+	lib/HTML/WikiConverter/Txt2tags.pm
 	$(NOECHO) $(POD2MAN) --section=$(MAN3EXT) --perm_rw=$(PERM_RW) \
-	  lib/HTML/WikiConverter/Txt2tags.pm $(INST_MAN3DIR)/HTML::WikiConverter::Txt2tags.$(MAN3EXT) \
-	  lib/HTML/WikiConverter/DokuWiki.pm $(INST_MAN3DIR)/HTML::WikiConverter::DokuWiki.$(MAN3EXT) 
+	  lib/HTML/WikiConverter/Txt2tags.pm $(INST_MAN3DIR)/HTML::WikiConverter::Txt2tags.$(MAN3EXT) 
 
 
 
@@ -788,8 +782,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  lib/HTML/WikiConverter/Txt2tags.pm blib/lib/HTML/WikiConverter/Txt2tags.pm \
-	  lib/HTML/WikiConverter/DokuWiki.pm blib/lib/HTML/WikiConverter/DokuWiki.pm 
+	  lib/HTML/WikiConverter/Txt2tags.pm blib/lib/HTML/WikiConverter/Txt2tags.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 
