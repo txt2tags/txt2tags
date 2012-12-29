@@ -56,13 +56,13 @@ sub rules {
     pre => { start => "```\n", end => "\n```", block => 1, line_format => 'blocks', trim => 'none' },
     blockquote => { start => "\n", line_prefix => "\t", block => 1, line_format => 'multi', trim => 'leading' },
 
-    p => { block => 1, trim => 'both', line_format => 'multi' },
+    p => { block => 1, trim => 'none', line_format => 'multi' },
     br => { start => "\n", trim => 'leading'  },
     hr => { replace => "\n--------------------\n" },
 
     sup => { preserve => 1 },
     sub => { preserve => 1 },
-    del => { preserve => 1 },
+    del => { alias => 's' },
 
 
     ul => { line_format => 'multi', block => 1, line_prefix => ' ' },
@@ -76,13 +76,21 @@ sub rules {
     
     dt => { start => ":", end => "\n"},
     dd => { start => "  ", end => "\n"},
+    span => { preserve => 0 },
   );
 
-  for( 1..5 ) {
-    my $str = ( '=' ) x ( $_ );
-    $rules{"h$_"} = { start => "\n$str ", end => " $str", block => 1, trim => 'both', line_format => 'single' };
-  }
-  $rules{h6} = { start => '====== ', end => ' ======', block => 1, trim => 'both', line_format => 'single' };
+ 
+  $rules{h1} = { start => "LINEBREAK= ", end => ' =LINEBREAK', block => 1, trim => 'both', line_format => 'single', line_prefix => "" };
+  
+  $rules{h2} = { start => "LINEBREAK== ", end => " ==LINEBREAK", block => 1, trim => 'both', line_format => 'single', line_prefix => ""};
+  
+  $rules{h3} = { start => "LINEBREAK=== ", end => " ===LINEBREAK", block => 1, trim => 'both', line_format => 'single', line_prefix => "" };
+  
+  $rules{h4} = { start => "LINEBREAK==== ", end => ' ====LINEBREAK', block => 1, trim => 'both', line_format => 'single', line_prefix => "" };
+  
+  $rules{h5} = { start => "LINEBREAK===== ", end => ' =====LINEBREAK', block => 1, trim => 'both', line_format => 'single' };  
+  
+  $rules{h6} = { start => "LINEBREAK====== ", end => ' ======LINEBREAK', block => 1, trim => 'both', line_format => 'single' };
 
   return \%rules;
 }
@@ -91,6 +99,8 @@ sub postprocess_output {
   my( $self, $outref ) = @_;
   $$outref =~ s~^>+\s+~~gm; # rm empty blockquote prefixes
   $$outref =~ s~^(>+)~$1 ~gm; # add space after prefix for clarity
+  $$outref =~ s/LINEBREAK/\n\n/gm; # forces linebreak when \n are not enough
+  
 }
 
 sub _li_start {
