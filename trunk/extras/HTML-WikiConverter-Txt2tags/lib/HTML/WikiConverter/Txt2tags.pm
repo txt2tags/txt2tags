@@ -5,7 +5,7 @@ use strict;
 
 use base 'HTML::WikiConverter';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -45,6 +45,7 @@ sub rules {
     strong => { alias => 'b' },
     i => { start => '//', end => '//' },
     em => { alias => 'i' },
+    cite => { alias => 'i' },
     u => { start => '__', end => '__' },
     s => { start => '--', end => '--' },
 
@@ -183,16 +184,15 @@ sub _td_end {
 
 =head1 AUTHOR
 
-David J. Iberri, C<< <diberri at cpan.org> >>
+Eric Forgeot, based on David J. Iberri's work 
 
 =head1 BUGS
 
-Please report any bugs or feature requests to
-C<bug-html-wikiconverter-dokuwiki at rt.cpan.org>, or through the web
+Please report any bugs or feature requests through the web
 interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-WikiConverter-Txt2tags>.
-I will be notified, and then you'll automatically be notified of
-progress on your bug as I make changes.
+L<https://code.google.com/p/txt2tags/issues/list>.
+
+
 
 =head1 SUPPORT
 
