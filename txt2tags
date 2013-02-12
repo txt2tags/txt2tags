@@ -2263,7 +2263,7 @@ def getTags(config):
         'tableCellSep'         : ' || '          ,
     },
 
-    # http://powerman.name/doc/asciidoc
+    # http://asciidoc.org/asciidoc.css-embedded.html
     'adoc': {
         'title1'               : '== \a'         ,
         'title2'               : '=== \a'        ,
@@ -2272,15 +2272,19 @@ def getTags(config):
         'title5'               : '===== \a'      ,
         'blockVerbOpen'        : '----'          ,
         'blockVerbClose'       : '----'          ,
+        'deflistItem1Close'          : '::'              ,
+        'deflistClose'         : ''            ,
+        'deflistItem2Open'         : '	'            ,
+        'deflistItem2LinePrefix'         : '	'            ,
         'fontMonoOpen'         : '+'             ,
         'fontMonoClose'        : '+'             ,
         'fontBoldOpen'         : '*'             ,
         'fontBoldClose'        : '*'             ,
         'fontItalicOpen'       : '_'             ,
         'fontItalicClose'      : '_'             ,
-        'listItemOpen'         : '- '            ,
-        'listItemLine'         : '\t'            ,
-        'numlistItemOpen'      : '. '            ,
+        'listItemOpen'         : ' '            ,
+        'listItemLine'         : '*'            ,
+        'numlistItemOpen'      : '1. '            ,
         'url'                  : '\a'            ,
         'urlMark'              : '\a[\a]'        ,
         'email'                : 'mailto:\a'     ,
@@ -3584,7 +3588,7 @@ def getRules(config):
         'adoc': {
             'spacedlistitem': 1,
             'linkable': 1,
-            'keeplistindent': 1,
+            'keeplistindent': 0,
             'autonumberlist': 1,
             'autonumbertitle': 1,
             'listnotnested': 1,
