@@ -31,6 +31,8 @@ or
 This module contains rules for converting HTML into Txt2tags
 markup. See L<HTML::WikiConverter> for additional usage details.
 
+See L<http://www.txt2tags.org> for more information on Txt2tags.
+
 
 
 =cut
@@ -184,7 +186,7 @@ sub _td_end {
 
 =head1 AUTHOR
 
-Eric Forgeot, based on David J. Iberri's work 
+Eric Forgeot C<< <eforgeot@cpan.org> >>, based on David J. Iberri's work 
 
 =head1 BUGS
 
@@ -224,7 +226,7 @@ L<http://search.cpan.org/dist/HTML-WikiConverter-Txt2tags>
 
 =head1 COPYRIGHT & LICENSE
 
-Based on the DokuWiki.pm converter.
+Based on the DokuWiki.pm converter. Many thanks to David J. Iberri, C<< <diberri at cpan.org> >> for writing HTML::WikiConverter.
 
 Copyright 2006 David J. Iberri, all rights reserved.
 
