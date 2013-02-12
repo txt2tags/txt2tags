@@ -30,20 +30,32 @@ amenu &txt2tags.Header                                 <Esc><Esc>aTitle<CR>Autho
 "amenu &txt2tags.Settings.Options(target)
 "amenu &txt2tags.Settings.Include
 "amenu &txt2tags.Settings.Style
-amenu &txt2tags.Settings.Encoding\ (iso-8859-1)        <Esc><Esc>a%!encoding: iso-8859-1<CR>
-imenu &txt2tags.Settings.Encoding\ (iso-8859-1)        <Esc><Esc>a%!encoding: iso-8859-1<CR>
+amenu &txt2tags.Settings.Encoding\ (utf-8)        <Esc><Esc>a%!encoding: utf-8<CR>
+imenu &txt2tags.Settings.Encoding\ (utf-8)        <Esc><Esc>a%!encoding: utf-8<CR>
 "amenu &txt2tags.Settings.IncludeConf
 "amenu &txt2tags.Settings.GuiColors
 "amenu &txt2tags.Settings.ProProc
 
 amenu &txt2tags.-SEP1-                                 :
 
-amenu &txt2tags.Section                                <Esc><Esc>a=  =<Esc><Left>i
-imenu &txt2tags.Section                                <Esc><Esc>a=  =<Esc><Left>i
-vmenu &txt2tags.Section                                di=  =<Esc><Left>Pla
-amenu &txt2tags.SubSection                             <Esc><Esc>a==  ==<Esc><Left><Left>i
-imenu &txt2tags.SubSection                             <Esc><Esc>a==  ==<Esc><Left><Left>i
-vmenu &txt2tags.SubSection                             di==  ==<Esc><Left><Left>Pla
+amenu &txt2tags.Heading.H1                             <Esc><Esc>a=  =<Esc><Left>i
+imenu &txt2tags.Heading.H1                             <Esc><Esc>a=  =<Esc><Left>i
+vmenu &txt2tags.Heading.H1                             di=  =<Esc><Left>Pla
+amenu &txt2tags.Heading.H2                             <Esc><Esc>a==  ==<Esc><Left><Left>i
+imenu &txt2tags.Heading.H2                             <Esc><Esc>a==  ==<Esc><Left><Left>i
+vmenu &txt2tags.Heading.H2                             di==  ==<Esc><Left><Left>Pla
+amenu &txt2tags.Heading.H3                             <Esc><Esc>a===  ===<Esc><Left><Left>i
+imenu &txt2tags.Heading.H3                             <Esc><Esc>a===  ===<Esc><Left><Left>i
+vmenu &txt2tags.Heading.H3                             di===  ===<Esc><Left><Left>Pla
+amenu &txt2tags.Heading.H4                             <Esc><Esc>a====  ====<Esc><Left><Left>i
+imenu &txt2tags.Heading.H4                             <Esc><Esc>a====  ====<Esc><Left><Left>i
+vmenu &txt2tags.Heading.H4                             di====  ====<Esc><Left><Left>Pla
+amenu &txt2tags.Heading.H5                             <Esc><Esc>a=====  =====<Esc><Left><Left>i
+imenu &txt2tags.Heading.H5                             <Esc><Esc>a=====  =====<Esc><Left><Left>i
+vmenu &txt2tags.Heading.H5                             di=====  =====<Esc><Left><Left>Pla
+
+
+
 
 amenu &txt2tags.-SEP2-                                 :
 
@@ -51,10 +63,16 @@ amenu &txt2tags.Beautifiers.Bold                       <Esc><Esc>a****<Esc><Left
 vmenu &txt2tags.Beautifiers.Bold                       di****<Esc><Left>Pla
 amenu &txt2tags.Beautifiers.Italic                     <Esc><Esc>a////<Esc><Left>i
 vmenu &txt2tags.Beautifiers.Italic                     di////<Esc><Left>Pla
+amenu &txt2tags.Beautifiers.Strikethrough              <Esc><Esc>a----<Esc><Left>i
+vmenu &txt2tags.Beautifiers.Strikethrough              di----<Esc><Left>Pla
 amenu &txt2tags.Beautifiers.Underline                  <Esc><Esc>a____<Esc><Left>i
 vmenu &txt2tags.Beautifiers.Underline                  di____<Esc><Left>Pla
 amenu &txt2tags.Beautifiers.Verbatim                   <Esc><Esc>a````<Esc><Left>i
 vmenu &txt2tags.Beautifiers.Verbatim                   di````<Esc><Left>Pla
+amenu &txt2tags.Beautifiers.Raw                        <Esc><Esc>a""""<Esc><Left>i
+vmenu &txt2tags.Beautifiers.Raw                        di""""<Esc><Left>Pla
+amenu &txt2tags.Beautifiers.Tagged                     <Esc><Esc>a''''<Esc><Left>i
+vmenu &txt2tags.Beautifiers.Tagged                     di''''<Esc><Left>Pla
 
 amenu &txt2tags.-SEP3-                                 :
 
