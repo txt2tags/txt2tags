@@ -121,7 +121,7 @@ import shlex  # CommandLine.tokenize()
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
 try:
-    from lib import *
+    from lib import aa
 except:
     pass
 
@@ -1626,8 +1626,8 @@ def getTags(config):
         'blockQuoteLine'       : '        '               ,
         'listItemOpen'         : AA['bullet'] + ' '       ,
         'numlistItemOpen'      : '\a. '                   ,
-        #AAPB 'bar1'                 : aa.line(AA['bar1'], config['width']),
-        #AAPB 'bar2'                 : aa.line(AA['bar2'], config['width']),
+        'bar1'                 : aa.line(AA['bar1'], config['width']),
+        'bar2'                 : aa.line(AA['bar2'], config['width']),
         'url'                  : '\a'                     ,
         'urlMark'              : '\a[\a]'                 ,
         'email'                : '\a'                     ,
@@ -9558,11 +9558,14 @@ def exec_command_line(user_cmdline=[]):
         try:
             load_GUI_resources()
             Debug("GUI resources OK (Tk module is installed)")
+        except:
+            Error(_('Tkinter module not found, so GUI is not available, use CLI instead.'))
+        try:
             winbox = Gui()
             Debug("GUI display OK")
             GUI = 1
         except:
-            Debug("GUI Error: no Tk module or no DISPLAY")
+            Debug("GUI Error: no DISPLAY")
             GUI = 0
 
     # User forced --gui, but it's not available
