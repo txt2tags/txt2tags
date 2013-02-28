@@ -5615,7 +5615,7 @@ def exec_command_line(user_cmdline=[]):
             Debug("GUI display OK")
             GUI = 1
         except:
-            Debug("GUI Error: no Tk module or no DISPLAY")
+            Debug("GUI Error: no DISPLAY")
             GUI = 0
 
     # User forced --gui, but it's not available
