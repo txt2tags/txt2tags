@@ -121,11 +121,6 @@ import shlex  # CommandLine.tokenize()
 # import email  # %%mtime for remote files -- postponed, see issue 96
 
 try:
-    from lib import aa
-except:
-    pass
-
-try:
     import targets
 except ImportError:
     targets = None
@@ -354,6 +349,26 @@ AA_PW_TOC = {}
 AA_IMG = 0
 AA_TITLE = ''
 AA_MARKS = []
+
+AA_QA = """\
+       ________
+   /#**TXT2TAGS**#\\
+ /#####/      \####CC\\
+/###/            \#BY#|
+^-^               |NC#|
+                  /SA#|
+               /#####/
+            /#####/
+          /####/
+         /###/
+        |###|
+        |###|
+         \o/
+
+         ___
+        F2.7G
+         (C)\
+""".split('\n')
 
 # ReStructuredText config
 # http://docs.python.org/release/2.7/documenting/rest.html#sections
@@ -1626,8 +1641,8 @@ def getTags(config):
         'blockQuoteLine'       : '        '               ,
         'listItemOpen'         : AA['bullet'] + ' '       ,
         'numlistItemOpen'      : '\a. '                   ,
-        'bar1'                 : aa.line(AA['bar1'], config['width']),
-        'bar2'                 : aa.line(AA['bar2'], config['width']),
+        'bar1'                 : aa_line(AA['bar1'], config['width']),
+        'bar2'                 : aa_line(AA['bar2'], config['width']),
         'url'                  : '\a'                     ,
         'urlMark'              : '\a[\a]'                 ,
         'email'                : '\a'                     ,
@@ -1654,7 +1669,7 @@ def getTags(config):
         'blockQuoteLine'       : '    '                   ,
         'listItemOpen'         : RST['bullet'] + ' '      ,
         'numlistItemOpen'      : '\a. '                   ,
-        #AAPB 'bar1'                 : aa.line(RST['bar1'], 10) ,
+        'bar1'                 : aa_line(RST['bar1'], 10) ,
         'url'                  : '\a'                     ,
         'urlMark'              : '`\a <\a>`_'             ,
         'email'                : '\a'                     ,
@@ -3104,8 +3119,8 @@ def getTags(config):
 
     if config['target'] == 'aat' and config['slides']:
         alltags['aat']['urlMark'] = alltags['aat']['emailMark'] = '\a (\a)'
-        alltags['aat']['bar1'] = aa.line(AA['bar1'], config['width'] - 2)
-        alltags['aat']['bar2'] = aa.line(AA['bar2'], config['width'] - 2)
+        alltags['aat']['bar1'] = aa_line(AA['bar1'], config['width'] - 2)
+        alltags['aat']['bar2'] = aa_line(AA['bar2'], config['width'] - 2)
         if not config['chars']:
             alltags['aat']['listItemOpen'] = '* '
     if config['target'] == 'aat' and config['web']:
@@ -4117,6 +4132,192 @@ def getRegexes():
     bank['special'] = re.compile(r'^%!\s*')
     return bank
 ### END OF regex nightmares
+
+# The ASCII Art library
+
+def aa_line(char, width):
+    return char * width
+
+
+def aa_under(txt, char, width, over):
+    ret = []
+    if over:
+        ret.append(aa_line(char, aa_lencjk(txt)))
+    for lin in textwrap.wrap(txt, width):
+        ret.extend([lin, aa_line(char, aa_lencjk(lin))])
+    return ret
+
+
+def aa_box(txt, chars, width, centred=True, web=False, slides=False):
+    wrap_txt = []
+    char_start = ''
+    if slides:
+        width = width - 2
+        char_start = ' '
+    for lin in txt:
+        wrap_txt.extend(aa_wrap(lin, width - 4, web))
+    len_cjk = max([aa_lencjk(lin, web) for lin in wrap_txt])
+    line_box = char_start + aa_center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
+    line_txt = []
+    for lin in wrap_txt:
+        if centred:
+            line_txt.append(char_start + aa_center(chars['side'] + ' ' + aa_center(lin, len_cjk, web) + ' ' + chars['side'], width, web))
+        else:
+            line_txt.append(char_start + aa_center(chars['side'] + ' ' + lin + ' ' * (len_cjk - aa_lencjk(lin, web) + 1) + chars['side'], width, web))
+    return [line_box] + line_txt + [line_box]
+
+
+def aa_header(header_data, chars, width, height, web, slides):
+    h = [header_data[v] for v in header_data if v.startswith("HEADER") and header_data[v]]
+    n_h = len(h)
+    height_box = sum([len(aa_box([header], chars, width, slides=slides)) for header in h])
+    if not n_h:
+        return []
+    if not slides:
+        n, end = 2, 0
+    else:
+        x = height - 3 - height_box
+        n = x / (n_h + 1)
+        end = x % (n_h + 1)
+    header = [aa_line(chars['bar2'], width)]
+    header.extend([''] * n)
+    for h in 'HEADER1', 'HEADER2', 'HEADER3':
+        if header_data[h]:
+            header.extend(aa_box([header_data[h]], chars, width, slides=slides))
+            header.extend([''] * n)
+    header.extend([''] * end)
+    header.append(aa_line(chars['bar2'], width))
+    if web and slides:
+        header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
+    if not slides:
+        header = [''] + header
+    return header
+
+
+def aa_slide(title, char, width, web):
+    res = [aa_line(char, width)]
+    res.append('')
+    res.append(aa_center(title, width)[:width])
+    res.append('')
+    res.append(aa_line(char, width))
+    if web:
+        res = ['<section><pre>' + res[0]] + res[1:]
+    return res
+
+
+def aa_table(data, chars, width, border, h_header, v_header, align, spread, web):
+    n = max([len(lin[0]) for lin in data])
+    data3 = []
+    for lin in data:
+        if  max(lin[1]) == 1:
+            data3.append(lin[0])
+        else:
+            newline = []
+            for i, el in enumerate(lin[0]):
+                if lin[1][i] == 1:
+                    newline.append(el)
+                else:
+                    newline.extend(lin[1][i] * [''])
+            data3.append(newline)
+    tab = []
+    for i in range(n):
+        tab.append([lin[i] for lin in data3])
+    if web:
+        length = [max([aa_lencjk(re.sub('<a.*">|</a>', '', el)) for el in lin]) for lin in tab]
+    else:
+        length = [max([aa_lencjk(el) for el in lin]) for lin in tab]
+    if spread:
+        data[0][0] = [data[0][0][i].center(length[i]) for i in range(n)]
+    bord, side, corner, vhead = chars['border'], chars['side'], chars['corner'], chars['vhead']
+    if border:
+        hhead = chars['hhead']
+    else:
+        hhead = chars['border']
+    resh = res = corner
+    for i in range(n):
+        res = res + (length[i] + 2) * bord + corner
+        resh = resh + (length[i] + 2) * hhead + corner
+    ret = []
+    for i, lin in enumerate(data):
+        aff = side
+        if i == 1 and h_header:
+            ret.append(resh)
+        else:
+            if i == 0 or border:
+                ret.append(res)
+        for j, el in enumerate(lin[0]):
+            if web:
+                aff = aff + " " + el + (sum(length[j:(j + lin[1][j])]) + lin[1][j] * 3 - aa_lencjk(re.sub('<a.*">|</a>', '',el)) - 2) * " " + side
+            else:
+                aff = aff + " " + el + (sum(length[j:(j + lin[1][j])]) + lin[1][j] * 3 - aa_lencjk(el) - 2) * " " + side
+            if j == 0 and v_header:
+                aff = aff[:-1] + vhead
+        ret.append(aff)
+    ret.append(res)
+    if align == 'Left':
+        ret = [' ' * 2  + lin for lin in ret]
+    elif align == 'Center' and not (web and spread):
+        ret = [aa_center(lin, width) for lin in ret]
+    return ret
+
+
+def aa_image(image):
+    art_table = '#$!;:,. '
+    art_image = []
+    for lin in image:
+        art_line = ''
+        for pixel in lin:
+            art_line = art_line + art_table[pixel/32]
+        art_image.append(art_line)
+    return art_image
+
+
+def aa_wrap(txt, width, web):
+    if not web:
+        return textwrap.wrap(txt, width)
+    txt = re.split('(<a href=.*?>)|(</a>)|(<img src=.*?>)', txt)
+    lin, length, ret = '', 0, []
+    for el in txt:
+        if el:
+            if el[0] != '<':
+                if len(el) > width:
+                    lin = lin + el
+                    multi = textwrap.wrap(lin, width)
+                    ret.extend(multi[:-1])
+                    lin = multi[-1]
+                elif length + len(el) <= width:
+                    length = length + len(el)
+                    lin = lin + el
+                else:
+                    ret.append(lin)
+                    lin, length = el, len(el)
+            else:
+                    lin = lin + el
+    ret.append(lin)
+    return ret
+
+
+def aa_lencjk(txt, web=False):
+    if web:
+        txt = re.sub('(<a href=.*?>)|(</a>)|(<img src=.*?>)', '', txt)
+    if isinstance(txt, str):
+        return len(txt)
+    l = 0
+    for char in txt:
+        if unicodedata.east_asian_width(unicode(char)) in ('F', 'W'):
+            l = l + 2
+        else:
+            l = l + 1
+    return l
+
+
+def aa_center(txt, width, web=False):
+    n_before = (width - aa_lencjk(txt, web)) / 2
+    n_after = width - aa_lencjk(txt, web) - n_before
+    return ' ' * n_before + txt + ' ' * n_after
+
+
+# The Spreadsheet library
 
 ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -5841,7 +6042,7 @@ class TitleMaster:
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
             ret.append(tagged)
-            i = aa.lencjk(full_title)
+            i = aa_lencjk(full_title)
             ret.append(regex['x'].sub('=' * i, self.tag))
         elif TARGET == 'aat' and self.level == 1:
             if CONF['slides'] :
@@ -5849,7 +6050,7 @@ class TitleMaster:
             else :
                 if BLOCK.count > 1:
                     ret.append('')  # blank line before
-                box = aa.box([tagged], AA, CONF['width'])
+                box = aa_box([tagged], AA, CONF['width'])
                 if CONF['web'] and CONF['toc']:
                     ret.extend([anchor] + box + ['</a>'])
                 else:
@@ -5859,9 +6060,9 @@ class TitleMaster:
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
             if CONF['slides']:
-                under = aa.under(tagged, AA[level], CONF['width'] - 2, False)
+                under = aa_under(tagged, AA[level], CONF['width'] - 2, False)
             else:
-                under = aa.under(tagged, AA[level], CONF['width'], False)
+                under = aa_under(tagged, AA[level], CONF['width'], False)
             if CONF['web'] and CONF['toc'] and self.level <= CONF['toc-level'] and not CONF['slides']:
                 ret.extend([anchor] + under + ['</a>'])
             else:
@@ -5869,12 +6070,12 @@ class TitleMaster:
         elif TARGET == 'rst' and self.level == 1:
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            ret.extend(aa.under(tagged, RST['level1'], 10000, True))
+            ret.extend(aa_under(tagged, RST['level1'], 10000, True))
         elif TARGET == 'rst':
             level = 'level' + str(self.level)
             if BLOCK.count > 1:
                 ret.append('')  # blank line before
-            ret.extend(aa.under(tagged, RST[level], 10000, False))
+            ret.extend(aa_under(tagged, RST[level], 10000, False))
         else:
             ret.append(tagged)
         return ret
@@ -6418,9 +6619,9 @@ class BlockMaster:
                         if not line or blockname in ('verb', 'tagged'):
                             final.append(line)
                         else:
-                            final.extend(aa.wrap(line, CONF['width'], False))
+                            final.extend(aa_wrap(line, CONF['width'], False))
                 elif CONF['slides'] and blockname in ('list', 'numlist', 'deflist'):
-                    final.extend(aa.box(result, AA, CONF['width'], False, web=CONF['web'], slides=CONF['slides']))
+                    final.extend(aa_box(result, AA, CONF['width'], False, web=CONF['web'], slides=CONF['slides']))
                 else:
                     for line in result:
                         if not line or (blockname in ('table', 'tagged', 'verb') and not CONF['slides']) or (blockname == 'quote' and CONF['slides']):
@@ -6429,9 +6630,9 @@ class BlockMaster:
                             if CONF['slides'] and blockname in ('table', 'tagged', 'verb'):
                                 final.append(line[:CONF['width']])
                             elif CONF['slides']:
-                                final.extend(' ' + line for line in aa.wrap(line, CONF['width'] - 2, CONF['web']))
+                                final.extend(' ' + line for line in aa_wrap(line, CONF['width'] - 2, CONF['web']))
                             else:
-                                final.extend(aa.wrap(line, CONF['width'], CONF['web']))
+                                final.extend(aa_wrap(line, CONF['width'], CONF['web']))
                 result = final[:]
 
             Debug('BLOCK: %s' % result, 6)
@@ -6454,21 +6655,21 @@ class BlockMaster:
                                 result[i + CONF['height'] - 7] = '<section><pre>' + line
                             elif j == CONF['height'] - 2:
                                 result[i + CONF['height'] - 7] = line + '</pre></section>'
-                    result = ([''] * n) + [aa.line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
                 else:
-                    result = ([''] * n) + [aa.line(AA['bar1'], CONF['width'])] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
                     if CONF['headers']:
                         AA_TITLE = CONF['header1'] or ' '
                     else:
                         AA_TITLE = ' '
-                aa_title = aa.slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web']) + ['']
+                aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web']) + ['']
                 if AA_COUNT:
                     if CONF['web']:
-                        aa_title = ([''] * n) + [aa.line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
+                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
                     else:
-                        aa_title = ([''] * n) + [aa.line(AA['bar2'], CONF['width'])] + aa_title
+                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
             AA_COUNT += len(result) + AA_IMG
             AA_IMG = 0
@@ -6681,18 +6882,18 @@ class BlockMaster:
         if TARGET == 'aat':
             if CONF['spread']:
                 data = spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'], rules['spreadgrid'])
-                return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
+                return aa_table(data, AA, CONF['width'], True, True, True, 'Center', True, CONF['web']) + ['']
             else:
-                return aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
+                return aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
 
         if TARGET == 'rst':
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
-            return aa.table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
+            return aa_table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp':
-            aa_t = aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
+            aa_t = aa_table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
                 t_name = 'table_' + str(self.tablecount) + '.png'
@@ -6794,7 +6995,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if CONF['target'] == 'aat' and CONF['slides']:
-                        result.extend(aa.box([item], AA, CONF['width'], web=CONF['web'], slides=CONF['slides']))
+                        result.extend(aa_box([item], AA, CONF['width'], web=CONF['web'], slides=CONF['slides']))
                     else:
                         item = qline * self.depth + item
                         result.append(indent + item)  # quote line
@@ -7328,14 +7529,14 @@ def toc_inside_body(body, toc, config):
                     j = i % (config['height'] - 1)
                     title = body[i - j + 2 + n]
                     ret.extend([''] * (config['height'] - j - 2 + n))
-                    ret.extend([aa.line(AA['bar1'], config['width'])] + toc + aa.slide(title, AA['bar2'], config['width'], CONF['web']) + [''])
+                    ret.extend([aa_line(AA['bar1'], config['width'])] + toc + aa_slide(title, AA['bar2'], config['width'], CONF['web']) + [''])
                     flag = True
                 else:
                     ret.extend(toc)     # include if --toc
             else:
                 pass                # or remove %%toc line
         else:
-            if flag and config['target'] == 'aat' and config['slides'] and body[i] == body[i + 4] == aa.line(AA['bar2'], config['width']):
+            if flag and config['target'] == 'aat' and config['slides'] and body[i] == body[i + 4] == aa_line(AA['bar2'], config['width']):
                 end = [ret[-1]]
                 del ret[-1]
                 ret.extend([''] * (j - 6 - n) + end)
@@ -7381,14 +7582,14 @@ def toc_formatter(toc, config):
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if config['target'] == 'aat' and config['slides']:
         n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
-        toc = aa.slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width'], CONF['web']) + toc + ([''] * n)
-        end_toc = aa.line(AA['bar2'], config['width'])
+        toc = aa_slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width'], CONF['web']) + toc + ([''] * n)
+        end_toc = aa_line(AA['bar2'], config['width'])
         if config['web']:
             end_toc = end_toc + '</pre></section>'
         toc.append(end_toc)
         return toc
     if config['target'] == 'aat' and not config['slides']:
-        ret = aa.box([config['toc-title'] or _("Table of Contents")], AA, config['width']) + toc
+        ret = aa_box([config['toc-title'] or _("Table of Contents")], AA, config['width']) + toc
 
     # TOC open/close tags (if any)
     if TAGS['tocOpen']:
@@ -7492,12 +7693,12 @@ def doHeader(headers, config):
 
     Debug("Header Data: %s" % head_data, 1)
 
-    # ASCII Art and rst don't use a header template, aa.header() formats the header
+    # ASCII Art and rst don't use a header template, aa_header() formats the header
     if target == 'aat' and not (config['spread'] and not config['web']):
-        template = aa.header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'])
+        template = aa_header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'])
         if config['slides']:
-            l = aa.lencjk(head_data['HEADER2']) + aa.lencjk(head_data['HEADER3']) + 2
-            bar_1 = bar_2 = aa.line(AA['bar2'], config['width'])
+            l = aa_lencjk(head_data['HEADER2']) + aa_lencjk(head_data['HEADER3']) + 2
+            bar_1 = bar_2 = aa_line(AA['bar2'], config['width'])
             if config['web']:
                 bar_1 = '<section><pre>' + bar_1
             n_page = 0
@@ -7508,7 +7709,7 @@ def doHeader(headers, config):
             for i, line in enumerate(config['fullBody']):
                 if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
                     pages = str(page) + '/' + str(n_page)
-                    l1 = aa.lencjk(head_data['HEADER1']) + len(pages) + 2
+                    l1 = aa_lencjk(head_data['HEADER1']) + len(pages) + 2
                     if l1 < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER1'] + ' ' * (config['width'] - l1) + pages + ' '
                     page += 1
@@ -7540,7 +7741,7 @@ def doHeader(headers, config):
     if target =='rst':
         template =[]
         if head_data['HEADER1']:
-            template.extend(aa.under(head_data['HEADER1'], RST['title'], 10000, True))
+            template.extend(aa_under(head_data['HEADER1'], RST['title'], 10000, True))
         if head_data['HEADER2']:
             template.append(':Author: ' + head_data['HEADER2'])
         if head_data['HEADER3']:
@@ -8194,18 +8395,18 @@ def convert_this_files(configs):
         if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'aat':
             n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
             if myconf['web']:
-                target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width']) + '</pre></section>']
+                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '</pre></section>']
             else:
-                target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width'])]
+                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
             if myconf['qa']:
                 n_before = (myconf['height'] - 24) / 2
                 n_after = myconf['height'] - 24 - n_before
-                head = aa.slide(_("Q&A"), AA['bar2'], myconf['width'], myconf['web'])
-                end_qa = aa.line(AA['bar2'], myconf['width'])
+                head = aa_slide(_("Q&A"), AA['bar2'], myconf['width'], myconf['web'])
+                end_qa = aa_line(AA['bar2'], myconf['width'])
                 if myconf['web']:
                     end_qa = end_qa + '</pre></section>'
                 if myconf['height'] > 23 and myconf['width'] > 22:
-                    target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in aa.QA] + [''] * n_after + [end_qa]
+                    target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in AA_QA] + [''] * n_after + [end_qa]
                 else:
                     target_body = target_body + head + [''] * (myconf['height'] - 7) + [end_qa]
 
@@ -8216,7 +8417,7 @@ def convert_this_files(configs):
 
         if myconf['target'] == 'aat' and not myconf['slides'] and not myconf['web'] and not myconf['spread'] and not myconf['toc-only']:
             for i, url in enumerate(AA_MARKS):
-                target_body.extend(aa.wrap('[' + str(i + 1) + '] ' + url, myconf['width'], myconf['web']))
+                target_body.extend(aa_wrap('[' + str(i + 1) + '] ' + url, myconf['width'], myconf['web']))
 
         # Compose the target file Footer
         Message(_("Composing target Footer"), 1)
@@ -8412,7 +8613,7 @@ def embedImage(filename):
                 line = line[n_byte_alpha:]
             image.append(line_img)
             decomp = decomp[end_line:]
-        return aa.image(image)
+        return aa_image(image)
 
 
 def parse_images(line):
