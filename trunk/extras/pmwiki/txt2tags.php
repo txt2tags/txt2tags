@@ -17,7 +17,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2012-12-01';
+$RecipeInfo['txt2tags']['Version'] = '2013-03-10';
 
 $MyGuiEditor = '$FarmPubDirUrl/t2tguiedit/';
 
@@ -185,14 +185,15 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	
 // beautifiers
 	
-	Markup ('txt2tags_bold'     , 'directives', '/\*\*(.*?)\*\*/'       , "'''$1'''");
-	Markup ('txt2tags_undeline' , 'directives', '/__(.*?)__/'           , "{+$1+}");	
+	Markup ('txt2tags_bold'     , 'directives', '/\*\*([^\s](.*?[^\s])?)\*\*/'       , "'''$1'''");
+	Markup ('txt2tags_undeline' , 'directives', '/__([^\s](.*?[^\s])?)__/'           , "{+$1+}");	
+	Markup ('txt2tags_strike'   , 'directives', '/--([^\s](.*?[^\s])?)--/'           , "{-$1-}");
 	
 	Markup ('txt2tags_http'     , '<directives', '/http:\/\//'          , "HTTPREP");
 	Markup ('txt2tags_https'    , '<directives', '/https:\/\//'         , "HTTPSREP");
 	Markup ('txt2tags_ftp'      , '<directives', '/ftp:\/\//'           , "FTPREP");
 	Markup ('txt2tags_ftps'     , '<directives', '/sftp:\/\//'          , "SFTPREP");
-	Markup ('txt2tags_italics'  , 'directives', '/\/\/(.*?)\/\//'       , "''$1''");
+	Markup ('txt2tags_italics'  , 'directives', '/\/\/([^\s](.*?[^\s])?)\/\//'       , "''$1''");
 
 	Markup ('txt2tags_https2'   , 'inline', '/HTTPSREP/'                , "https://");	
 	Markup ('txt2tags_http2'    , 'inline', '/HTTPREP/'                 , "http://");
@@ -200,8 +201,7 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	Markup ('txt2tags_ftp2'     , 'inline', '/FTPREP/'                  , "ftp://");
 	Markup ('txt2tags_sftp2'    , 'inline', '/SFTPREP/'                 , "sftp://");
 	
-	
-	Markup ('txt2tags_strike'   , 'directives', '/--(.*?)--/'           , "{-$1-}");	
+		
 	// mono : see below
 
 
@@ -302,6 +302,9 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	// In the case $EnablePathInfo = 1; in local/config.php use ../../ after local:
 	//    [description local://../../subfolder/file.ext]
 	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/',  '<a href="$2">$1</a>');
+	
+	//TODO
+	Markup('txt2tags_attachlink',  '<directives',  '/\[(.*?) Attach:(.*?)\]/',  '<a href="$UploadUrlFmt/$2">$1</a>');
 
 # with simple "directive", pb link with images
 	Markup ('txt2tags_urllink_var'    , '<directives', '/\[(.*?) \|[ ]HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
