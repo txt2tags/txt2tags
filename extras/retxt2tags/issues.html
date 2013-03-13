@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ReTxt2tags: limitations and known issues</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" href="retxt2tags.css">
+</head>
+<body class="rt2t-on rmd-h1-underline rmd-h2-underline rmd-ul-minus
+rmd-hr-center rmd-a-bracket">
+
+<p style="margin: 1.4em 0 2.8em;">
+  ReTxt2tags:
+  <a href="index.html">about</a>,
+  <a href="details.html">details</a>,
+  <a href="sampler.html">sampler</a>,
+  <a href="sample.html">Original txt2tags sample</a>,
+  <em>issues</em>
+</p>
+
+<p style="margin: 1.4em 0 2.8em;">
+  ReTxt2tags:
+  <a href="index.html">about</a>,
+  <a href="details.html">details</a>,
+  <a href="sampler.html">sampler</a>,
+  <em>Original txt2tags sample</em>
+</p>
+
+<h1>
+  Limitations and known issues
+</h1>
+
+<p>Disclamer: As the reTxt2tags tool is derived from reMarkdown CSS, most of the details here are no longer relevant.</p>
+
+<p>
+  ReTxt2tags was tested on recent versions of modern browsers. It works well
+  in all browsers with complete CSS 2.1 support, including IE8. It will
+  degrade not-so-gracefully in IE7.
+</p>
+
+<h2>
+  Browser-specific issues
+</h2>
+
+<ul>
+  <li>
+    IE8 does not render generated content in HR elements. Your horizontal
+    rules will be invisible in that browser.
+  </li>
+  <li>
+    IE8, in print mode, has trouble with the overflowing “&gt;” signs of
+    blockquotes.
+  </li>
+  <li>
+    Spotted a few issues when printing in Firefox 4b on OSX. I opened two bug
+    reports and both were fixed (yay!), so Firefox 4 final should be ok.
+  </li>
+  <li>
+    Spotted a few minor issues when printing in Opera 11 on OSX.
+  </li>
+</ul>
+
+<h2>
+  Underlined headings
+</h2>
+
+<p>
+  To achieve the style of underlined H1 and H2 elements, I had to pick one of
+  the various position schemes/behaviors/display modes/etc. of CSS that
+  restrict an element’s width to the width of its contents. All of the options
+  I could figure out had unwanted side effects. I settled for
+  <code>display:inline-block</code> but it’s far from a perfect solution. Two
+  consequences:
+</p>
+
+<ol>
+  <li>
+    Spacing above and below titles may be off in a few configurations (issues
+    caused by the lack of margin collapsing).
+  </li>
+  <li>
+    Having two underlined headings in a row is dangerous. Typically, an
+    underlined H2 following an underlined H1 might end up on the same line. So
+    such H2 elements are switched back to <code>display:block</code> (a very
+    dirty fix).
+  </li>
+</ol>
+
+<h2>
+  Lists
+</h2>
+
+<ul>
+  <li>
+    Ordered lists use a custom CSS counter, not the default counter. Only way
+    to change the counter style (from numeric to roman or something else) is
+    to change the CSS for “retxt2tagsed” OLs.
+  </li>
+  <li>
+    The <code>start</code> attribute of OL elements is ignored. If you know a
+    way to use it in a CSS counter, email me.
+  </li>
+</ul>
+
+<h2>
+  Reporting issues
+</h2>
+
+<p>
+  Please visit <a href="https://code.google.com/p/txt2tags/issues/list">the bugtracker</a>
+</p>
+
+
+</body>
+</html>

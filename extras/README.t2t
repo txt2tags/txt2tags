@@ -38,12 +38,14 @@ gensite
 	copies all files over, except those with txt2tags extension,
 	which are automatically converted.
 
-
 html-update.sh
 	A simple Shell script to automate the conversion of
 	files in a directory. It scans and convert only the .t2t
 	that has changed since the last conversion. There some
 	options to use, as an interactive mode.
+
+HTML-WikiConverter-Txt2tags
+    Convert html to txt2tags.
 
 markitup
 	A Txt2tags markup set for markItUp!, the jQuery universal
@@ -53,6 +55,12 @@ markitup
 nanorc
 	The nano editor syntax highlight rules for txt2tags
 	marks.
+
+pmwiki
+	Txt2tags syntax for the pmwiki CMS and wiki engine.
+
+retxt2tags
+	A CSS file which display html pages with the txt2tags syntax instead.
 
 t2tmake.rb
 	A powerful Ruby script that automate the conversion of
@@ -77,13 +85,18 @@ txt2tags.jsf
 	
 txt2tags.le
 	The "le" editor syntax highlight rules for txt2tags
+
+txt2tags-php
+	The txt2tags implementation in PHP (convert to HTML only)
 	
+
 txt2tags.php
 	The txt2tags web interface, written in the PHP language.
 	Useful for intranet use and quick tests.
 
 txt2tagsrc
 	A sample user config file for txt2tags
+
 
 vim
 	Various stuff for using with vim:
@@ -109,6 +122,7 @@ vim
 	unhtml.vim
 		A handy Vim editor script to convert an HTML file to a 
 		txt2tags marked file. See instructions on the file header.
+
 
 
 
