@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ReTxt2tags: HTML as Txt2tags text using CSS</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" href="retxt2tags.css">
+</head>
+<!--<body class="rt2t-on rmd-h1-underline rmd-h2-underline rmd-ul-minus rmd-hr-center rmd-a-bracket">-->
+
+<body class="rt2t-on">
+
+<p style="margin: 1.4em 0 2.8em;">
+  ReTxt2tags:
+  <em>about</em>,
+  <a href="details.html">details</a>,
+  <a href="sampler.html">sampler</a>,
+  <a href="sample.html">Original txt2tags sample</a>,
+  <a href="issues.html">issues</a>
+</p>
+
+<h1>ReTxt2tags — Display HTML as Txt2tags text</h1>
+
+<p>
+  ReTxt2tags is a CSS experiment and reusable stylesheet for displaying simple
+  HTML text as its <a
+  href="http://www.txt2tags.org">Txt2tags</a> equivalent.
+  To get a feel of what it does, look at the HTML source of this very page.
+</p>
+
+<p>It is entirely based on the excellent <a href="http://fvsch.com/code/remarkdown/">ReMarkdown</a> CSS style, which was made for the lesser excellent Markdown markup language.
+</p>
+
+<p>
+  <strong>What’s the point?</strong><br>
+  Well, if you love Txt2tags, or want your simple HTML pages to look
+  deceptively like good old plain text, the <a
+  href="retxt2tags.css">retxt2tags.css</a> stylesheet is for you!
+</p>
+
+<p>
+  Another feature is you can "convert" an html document to txt2tags using it.<br/>
+  Unfortunately, the CSS doesn't allow to select the txt2tagsisation made to the html, but you can still print the HTML to PDF, then convert the PDF to plain txt.
+</p>
+
+<p>If you need a maybe more reliable tool, you can see this <a href="http://wiki.txt2tags.org/index.php/Main/Html2wiki">one, based on html2wiki</a>.</p>
+
+<p>
+  I don’t really expect this stylesheet to be widely used, and don’t even know
+  if I’ll use it myself. But it was a nice CSS challenge to work on: no
+  background images, no borders, only plain text characters.
+</p>
+
+<p>
+  <strong>Browser support:</strong><br>
+  All modern, CSS 2.1-compliant browsers should handle these styles with ease.
+  There might be minor issues on IE8. IE7 is not supported.
+</p>
+
+<h2>
+  Basic usage
+</h2>
+
+<p>
+  An example HTML page using ReTxt2tags would look like this:
+</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;title&gt;Using ReTxt2tags&lt;/title&gt;
+  &lt;link rel="stylesheet" href="retxt2tags.css"&gt;
+&lt;/head&gt;
+&lt;body class="rt2t-on"&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;p&gt;Goodnight, and good luck.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>
+  You will need to download a copy of <a
+  href="retxt2tags.css">retxt2tags.css</a>, and put it in the same directory
+  as your HTML page. Note that we <em>need</em> to declare the
+  <code>rt2t-on</code> class somewhere in the document: on the body element, on
+  a container article or div element, your call.
+</p>
+
+<p>
+  See the <a href="details.html">details page</a> for available options.
+</p>
+
+<h2>
+  Copyright and stuff
+</h2>
+
+<p>
+  Both <a href="retxt2tags.css">retxt2tags.css</a> and the optional script
+  <a href="rmd-print.js">rmd-print.js</a> are free software under the
+  <a href="COPYING">DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE</a>.
+</p>
+
+
+
+</body>
+</html>
