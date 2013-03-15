@@ -15,7 +15,7 @@ Welcome to the txt2tags sample file.
 Here you have examples and a brief explanation of all
 marks.
 
-The first 3 lines of the this file are used as headers,
+The first 3 lines of this file are used as headers,
 on the following format:
 ```
 line1: document title
