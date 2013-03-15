@@ -307,7 +307,7 @@
 
 /* --- QUOTATIONS --- */
 
-.rt2t-on blockquote {
+.rt2t-on block {
   position: relative;
   overflow: hidden;
   margin: 1.4em 0;
@@ -318,10 +318,10 @@
   position: absolute;
   top: 0; left: 0;
   white-space: pre;
-  content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
-  ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
-  ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A"
-  ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A";
+  content: "    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A"
+  "    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A"
+  "    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A"
+  "    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A    \A";
 }
 .rt2t-on blockquote > *:first-child {
   margin-top: 0;
@@ -386,4 +386,43 @@
 }
 .rmd-hr-center hr, hr.rmd-center {
   text-align: center;
+}
+
+/* --- TABLES --- */
+
+.rt2t-on tr > th:before {
+  margin-left: 0.0em;
+  margin-left: 0ch;
+  content: " | ";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+}
+
+
+.rt2t-on th:before {
+  margin-left: 0.0em;
+  margin-left: 0ch;
+  content: "";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+}
+
+.rt2t-on td:before {
+  margin-left: 0.0em;
+  margin-left: 0ch;
+  content: " | ";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+}
+
+.rt2t-on tr:after {
+  margin-left: 0.0em;
+  margin-left: 0ch;
+  content: "|";  
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
 }
