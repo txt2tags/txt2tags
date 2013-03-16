@@ -23,6 +23,8 @@ MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
 TXT2TAGS = os.path.abspath(TXT2TAGS) + ' -q --no-rc'
 TXT2TAGSLITE = os.path.abspath(TXT2TAGSLITE) + ' -q --no-rc'
 
+EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'} 
+
 #
 # file tools
 #
