@@ -109,5 +109,5 @@ then
 else
 	echo
 	echo "Found errors here (compare with 'ok' folder):"
-	ls -1 *.aat
+	ls -1 *.txt
 fi
