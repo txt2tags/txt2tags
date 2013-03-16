@@ -121,7 +121,7 @@ from targets import _
 my_url = 'http://txt2tags.org'
 my_name = 'txt2tags'
 my_email = 'verde@aurelio.net'
-my_revision = '$Revision: 932 $'  # automatic, from SVN
+my_revision = '$Revision$'  # automatic, from SVN
 my_version = '2.6'
 
 # Add SVN revision number to version: 1.2.345
