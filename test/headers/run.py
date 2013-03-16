@@ -58,6 +58,8 @@ def run():
             # convert and check results
             lib.convert(cmdline)
             lib.diff(outfile)
+            lib.convert(cmdline, True)
+            lib.diff(outfile)
             # remove the trash
             os.remove(infile)
     return lib.OK, lib.FAILED, lib.ERROR_FILES

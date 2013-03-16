@@ -54,6 +54,8 @@ def run():
                 cmdline.append('--fix-path')
             lib.convert(cmdline)
             lib.diff(outfile)
+            lib.convert(cmdline, True)
+            lib.diff(outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
