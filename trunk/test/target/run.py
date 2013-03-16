@@ -29,6 +29,7 @@ def run():
         
         for target in targets:
             outfile = basename + '.' + target
+            outfilelite = basename + '.' + (lib.EXTENSION.get(target) or target)
             testname = '%s in %s' % (basename, target)
             if lib.initTest(testname, infile, outfile):
                 cmdline = []
@@ -38,6 +39,8 @@ def run():
                     cmdline.extend(['--width', '80'])
                 lib.convert(cmdline)
                 lib.diff(outfile)
+                lib.convert(cmdline, True)
+                lib.diff(outfilelite, os.path.join(lib.DIR_OK, outfile))
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':

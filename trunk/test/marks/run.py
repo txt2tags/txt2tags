@@ -61,6 +61,8 @@ def run():
             cmdline.append(infile)
             lib.convert(cmdline)
             lib.diff(outfile)
+            lib.convert(cmdline, True)
+            lib.diff(outfile)
     # using smart filters, same files generate more than one output
     for alias in ALIASES.keys():
         infile = ALIASES[alias] + '.t2t'
@@ -69,6 +71,8 @@ def run():
             cmdline = addFilters(FILTERS.get(alias))
             cmdline.extend(['-o', outfile, infile])
             lib.convert(cmdline)
+            lib.diff(outfile)
+            lib.convert(cmdline, True)
             lib.diff(outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
