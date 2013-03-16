@@ -320,12 +320,19 @@ if targets:
 
 OTHER_TARGETS = []
 
+NOT_LOADED = []
+LOADED = []
 for target in TARGETS_LIST:
-    TARGET_NAMES[target] = getattr(getattr(targets, target), 'NAME', target.capitalize() + ' target')
-    try:
-        TARGET_TYPES[getattr(targets, target).TYPE][1].append(target)
-    except:
-        OTHER_TARGETS.append(target)
+    if target not in TARGET_NAMES:
+        LOADED.append(target)
+        TARGET_NAMES[target] = getattr(getattr(targets, target), 'NAME', target.capitalize() + ' target')
+        try:
+            TARGET_TYPES[getattr(targets, target).TYPE][1].append(target)
+        except:
+            OTHER_TARGETS.append(target)
+    else:
+        NOT_LOADED.append(target)
+TARGETS_LIST = LOADED
 
 TARGETS = TARGET_NAMES.keys()
 TARGETS.sort()
@@ -7366,6 +7373,9 @@ def listTargets():
         for target in OTHER_TARGETS:
             print "\t%s\t%s" % (target, TARGET_NAMES.get(target))
     print
+    if NOT_LOADED:
+        print _('Targets %s from the targets directory not loaded, because there is already targets with the same name in txt2tags core.') % ', '.join(NOT_LOADED)
+        print
 
 
 def dumpConfig(source_raw, parsed_config):
