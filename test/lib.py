@@ -7,6 +7,7 @@ import os, time
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
+TXT2TAGSLITE = '../txt2tagslite'
 
 CONFIG_FILE = 'config'
 CSS_FILE = 'css'
@@ -20,6 +21,7 @@ MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
 
 # force absolute path to avoid problems, set default options
 TXT2TAGS = os.path.abspath(TXT2TAGS) + ' -q --no-rc'
+TXT2TAGSLITE = os.path.abspath(TXT2TAGSLITE) + ' -q --no-rc'
 
 #
 # file tools
@@ -62,10 +64,13 @@ def getCurrentDate():
 #
 # the hot tools
 #
-def convert(options):
+def convert(options, lite=False):
     if type(options) in [type(()), type([])]:
         options = ' '.join(options)
-    cmdline = TXT2TAGS + ' ' + options
+    if lite:
+        cmdline = TXT2TAGSLITE + ' ' + options
+    else:
+        cmdline = TXT2TAGS + ' ' + options
     # print "\n**Executing: %s" % cmdline
     return os.system(cmdline)
 

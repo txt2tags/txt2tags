@@ -29,8 +29,9 @@ if len(sys.argv) > 1:
 
 # Show which version is being tested
 os.system(lib.TXT2TAGS + " -V")
+os.system(lib.TXT2TAGSLITE + " -V")
 print
-print 'Base command used for all tests:\n  ' + lib.TXT2TAGS
+print 'Base commands used for all tests:\n  ' + lib.TXT2TAGS + '\n  ' +  lib.TXT2TAGSLITE
 print
 
 for module in MODULES:

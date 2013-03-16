@@ -101,6 +101,8 @@ def run():
         if lib.initTest(basename, infile, outfile, okfile):
             lib.convert(cmdline)
             lib.diff(outfile, okfile)
+            lib.convert(cmdline, True)
+            lib.diff(outfile, okfile)
 
     ### Now test -C and --config-file command line options
 
@@ -137,6 +139,8 @@ def run():
             # convert and check results
             if lib.initTest(name, infile, outfile, okfile):
                 lib.convert(cmdline)
+                lib.diff(outfile, okfile)
+                lib.convert(cmdline, True)
                 lib.diff(outfile, okfile)
 
     # clean up
