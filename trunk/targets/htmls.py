@@ -11,13 +11,13 @@ NAME =  _('HTML Spreadsheet')
 EXTENSION = 'html'
 
 HEADER = """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org"/>
-<link rel="stylesheet" href="%(STYLE)s"/>
+<meta name="generator" content="http://txt2tags.org">
+<link rel="stylesheet" href="%(STYLE)s">
 <style>
 body{background-color:#fff;color:#000;}
 hr{background-color:#000;border:0;color:#000;}
