@@ -23,31 +23,31 @@
 
 ============================================================
 ============================================================
-                                                       1/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    1/16 
                      Table of Contents                      
  Aurelio Jargas                                  2010-10-10 
 ============================================================
-
-   Introduction
-   Fonts and Beautifiers
-     Beautifiers
-     Pre-Formatted Text
-     More Cosmetics
-   Lists
-     Plain List
-     Numbered List
-     Definition List
-   Tables
-   Special Entities
-     Images
-     Other
-
+                +-------------------------+                 
+                | * Introduction          |                 
+                | * Fonts and Beautifiers |                 
+                |   * Beautifiers         |                 
+                |   * Pre-Formatted Text  |                 
+                |   * More Cosmetics      |                 
+                | * Lists                 |                 
+                |   * Plain List          |                 
+                |   * Numbered List       |                 
+                |   * Definition List     |                 
+                | * Tables                |                 
+                | * Special Entities      |                 
+                |   * Images              |                 
+                |   * Other               |                 
+                +-------------------------+                 
 
 
 
 ============================================================
 ============================================================
-                                                       2/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    2/16 
              TXT2TAGS SAMPLE for Ascii Art Text             
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -71,7 +71,7 @@
 
 ============================================================
 ============================================================
-                                                       3/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    3/16 
                         Introduction                        
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -84,9 +84,9 @@
  The first 3 lines of the this file are used as headers,
  on the following format:
 
-   line1: document title
-   line2: author name, email
-   line3: date, version
+  line1: document title
+  line2: author name, email
+  line3: date, version
 
  Lines with balanced equal signs = around are titles.
 
@@ -95,7 +95,7 @@
 
 ============================================================
 ============================================================
-                                                       4/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    4/16 
                    Fonts and Beautifiers                    
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -119,7 +119,7 @@
 
 ------------------------------------------------------------
 ============================================================
-                                                       5/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    5/16 
                    Fonts and Beautifiers                    
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -136,14 +136,14 @@
 
  We can put a code sample or other pre-formatted text:
 
-     here    is     pre-formatted
-   //marks// are  **not**  ``interpreted``
+    here    is     pre-formatted
+  //marks// are  **not**  ``interpreted``
 
 
 
 ------------------------------------------------------------
 ============================================================
-                                                       6/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    6/16 
                    Fonts and Beautifiers                    
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -151,7 +151,7 @@
  And also, it's easy to put a one line pre-formatted
  text:
 
-   prompt$ ls /etc
+  prompt$ ls /etc
 
  Or use pre-formatted inside sentences.
 
@@ -167,7 +167,7 @@
 
 ------------------------------------------------------------
 ============================================================
-                                                       7/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    7/16 
                    Fonts and Beautifiers                    
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -191,18 +191,18 @@
 
 ------------------------------------------------------------
 ============================================================
-                                                       8/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    8/16 
                    Fonts and Beautifiers                    
  Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-      +----------------------------------------------+
-      | A TAB in front of the line does a quotation. |
-      +----------------------------------------------+
+      +----------------------------------------------+      
+      | A TAB in front of the line does a quotation. |      
+      +----------------------------------------------+      
 
-          +-------------------------------------+
-          | More TABs, more depth (if allowed). |
-          +-------------------------------------+
+          +-------------------------------------+           
+          | More TABs, more depth (if allowed). |           
+          +-------------------------------------+           
 
 
  Nice.
@@ -215,7 +215,7 @@
 
 ============================================================
 ============================================================
-                                                       9/16
+ TXT2TAGS SAMPLE for Ascii Art Text                    9/16 
                            Lists                            
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -239,22 +239,22 @@
 
 ------------------------------------------------------------
 ============================================================
-                                                      10/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   10/16 
                            Lists                            
  Aurelio Jargas                                  2010-10-10 
 ============================================================
 
-              +------------------------------+             
-              | * earth                      |             
-              |   * america                  |             
-              |     * south america          |             
-              |       * brazil               |             
-              |         * how deep can i go? |             
-              |   * europe                   |             
-              |     * lots of countries      |             
-              | * mars                       |             
-              |   * who knows?               |             
-              +------------------------------+             
+              +------------------------------+              
+              | * earth                      |              
+              |   * america                  |              
+              |     * south america          |              
+              |       * brazil               |              
+              |         * how deep can i go? |              
+              |   * europe                   |              
+              |     * lots of countries      |              
+              | * mars                       |              
+              |   * who knows?               |              
+              +------------------------------+              
 
  The list ends with *two* consecutive blank lines.
 
@@ -263,7 +263,7 @@
  =============
 ------------------------------------------------------------
 ============================================================
-                                                      11/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   11/16 
                            Lists                            
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -272,22 +272,22 @@
  The same rules as the plain list, just a different
  identifier (plus).
 
-                 +-----------------------+                 
-                 | 1. one                |                 
-                 | 2. two                |                 
-                 | 3. three              |                 
-                 |   * mixed lists!      |                 
-                 |   * what a mess       |                 
-                 |     1. counting again |                 
-                 |     2. ...            |                 
-                 | 4. four               |                 
-                 +-----------------------+                 
+                 +-----------------------+                  
+                 | 1. one                |                  
+                 | 2. two                |                  
+                 | 3. three              |                  
+                 |   * mixed lists!      |                  
+                 |   * what a mess       |                  
+                 |     1. counting again |                  
+                 |     2. ...            |                  
+                 | 4. four               |                  
+                 +-----------------------+                  
 
  Definition List
  ===============
 ------------------------------------------------------------
 ============================================================
-                                                      12/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   12/16 
                            Lists                            
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -296,22 +296,22 @@
  The definition list identifier is a colon, followed by
  the term. The term contents is placed on the next line.
 
-                 +------------------------+                
-                 | orange                 |                
-                 |   a yellow fruit       |                
-                 | apple                  |                
-                 |   a green or red fruit |                
-                 | other fruits           |                
-                 |   * wee!               |                
-                 |   * mixing lists       |                
-                 |     1. again!          |                
-                 |     2. and again!      |                
-                 +------------------------+                
+                 +------------------------+                 
+                 | orange                 |                 
+                 |   a yellow fruit       |                 
+                 | apple                  |                 
+                 |   a green or red fruit |                 
+                 | other fruits           |                 
+                 |   * wee!               |                 
+                 |   * mixing lists       |                 
+                 |     1. again!          |                 
+                 |     2. and again!      |                 
+                 +------------------------+                 
 
 
 ============================================================
 ============================================================
-                                                      13/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   13/16 
                            Tables                           
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -335,7 +335,7 @@
 
 ------------------------------------------------------------
 ============================================================
-                                                      14/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   14/16 
                            Tables                           
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -359,7 +359,7 @@
 
 ============================================================
 ============================================================
-                                                      15/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   15/16 
                       Special Entities                      
  Aurelio Jargas                                  2010-10-10 
 ============================================================
@@ -374,16 +374,16 @@
 
                        [img/photo.jpg]
 
- +-------------------------------------------------------+ 
- | * The filename must end in PNG, JPG, GIF, or similar. | 
- | * No spaces inside the brackets!                      | 
- +-------------------------------------------------------+ 
+ +-------------------------------------------------------+  
+ | * The filename must end in PNG, JPG, GIF, or similar. |  
+ | * No spaces inside the brackets!                      |  
+ +-------------------------------------------------------+  
 
  Other
  =====
 ------------------------------------------------------------
 ============================================================
-                                                      16/16
+ TXT2TAGS SAMPLE for Ascii Art Text                   16/16 
                       Special Entities                      
  Aurelio Jargas                                  2010-10-10 
 ============================================================

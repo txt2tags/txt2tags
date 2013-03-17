@@ -3,21 +3,21 @@
                      Table of Contents                      
 
 ============================================================
-
-   Introduction
-   Fonts and Beautifiers
-     Beautifiers
-     Pre-Formatted Text
-     More Cosmetics
-   Lists
-     Plain List
-     Numbered List
-     Definition List
-   Tables
-   Special Entities
-     Images
-     Other
-
+                +-------------------------+                 
+                | * Introduction          |                 
+                | * Fonts and Beautifiers |                 
+                |   * Beautifiers         |                 
+                |   * Pre-Formatted Text  |                 
+                |   * More Cosmetics      |                 
+                | * Lists                 |                 
+                |   * Plain List          |                 
+                |   * Numbered List       |                 
+                |   * Definition List     |                 
+                | * Tables                |                 
+                | * Special Entities      |                 
+                |   * Images              |                 
+                |   * Other               |                 
+                +-------------------------+                 
 
 
 
@@ -60,9 +60,9 @@
  The first 3 lines of the this file are used as headers,
  on the following format:
 
-   line1: document title
-   line2: author name, email
-   line3: date, version
+  line1: document title
+  line2: author name, email
+  line3: date, version
 
  Lines with balanced equal signs = around are titles.
 
@@ -112,8 +112,8 @@
 
  We can put a code sample or other pre-formatted text:
 
-     here    is     pre-formatted
-   //marks// are  **not**  ``interpreted``
+    here    is     pre-formatted
+  //marks// are  **not**  ``interpreted``
 
 
 
@@ -127,7 +127,7 @@
  And also, it's easy to put a one line pre-formatted
  text:
 
-   prompt$ ls /etc
+  prompt$ ls /etc
 
  Or use pre-formatted inside sentences.
 
@@ -172,13 +172,13 @@
 
 ============================================================
 
-      +----------------------------------------------+
-      | A TAB in front of the line does a quotation. |
-      +----------------------------------------------+
+      +----------------------------------------------+      
+      | A TAB in front of the line does a quotation. |      
+      +----------------------------------------------+      
 
-          +-------------------------------------+
-          | More TABs, more depth (if allowed). |
-          +-------------------------------------+
+          +-------------------------------------+           
+          | More TABs, more depth (if allowed). |           
+          +-------------------------------------+           
 
 
  Nice.
@@ -220,17 +220,17 @@
 
 ============================================================
 
-              +------------------------------+             
-              | * earth                      |             
-              |   * america                  |             
-              |     * south america          |             
-              |       * brazil               |             
-              |         * how deep can i go? |             
-              |   * europe                   |             
-              |     * lots of countries      |             
-              | * mars                       |             
-              |   * who knows?               |             
-              +------------------------------+             
+              +------------------------------+              
+              | * earth                      |              
+              |   * america                  |              
+              |     * south america          |              
+              |       * brazil               |              
+              |         * how deep can i go? |              
+              |   * europe                   |              
+              |     * lots of countries      |              
+              | * mars                       |              
+              |   * who knows?               |              
+              +------------------------------+              
 
  The list ends with *two* consecutive blank lines.
 
@@ -248,16 +248,16 @@
  The same rules as the plain list, just a different
  identifier (plus).
 
-                 +-----------------------+                 
-                 | 1. one                |                 
-                 | 2. two                |                 
-                 | 3. three              |                 
-                 |   * mixed lists!      |                 
-                 |   * what a mess       |                 
-                 |     1. counting again |                 
-                 |     2. ...            |                 
-                 | 4. four               |                 
-                 +-----------------------+                 
+                 +-----------------------+                  
+                 | 1. one                |                  
+                 | 2. two                |                  
+                 | 3. three              |                  
+                 |   * mixed lists!      |                  
+                 |   * what a mess       |                  
+                 |     1. counting again |                  
+                 |     2. ...            |                  
+                 | 4. four               |                  
+                 +-----------------------+                  
 
  Definition List
  ===============
@@ -272,17 +272,17 @@
  The definition list identifier is a colon, followed by
  the term. The term contents is placed on the next line.
 
-                 +------------------------+                
-                 | orange                 |                
-                 |   a yellow fruit       |                
-                 | apple                  |                
-                 |   a green or red fruit |                
-                 | other fruits           |                
-                 |   * wee!               |                
-                 |   * mixing lists       |                
-                 |     1. again!          |                
-                 |     2. and again!      |                
-                 +------------------------+                
+                 +------------------------+                 
+                 | orange                 |                 
+                 |   a yellow fruit       |                 
+                 | apple                  |                 
+                 |   a green or red fruit |                 
+                 | other fruits           |                 
+                 |   * wee!               |                 
+                 |   * mixing lists       |                 
+                 |     1. again!          |                 
+                 |     2. and again!      |                 
+                 +------------------------+                 
 
 
 ============================================================
@@ -350,10 +350,10 @@
 
                        [img/photo.jpg]
 
- +-------------------------------------------------------+ 
- | * The filename must end in PNG, JPG, GIF, or similar. | 
- | * No spaces inside the brackets!                      | 
- +-------------------------------------------------------+ 
+ +-------------------------------------------------------+  
+ | * The filename must end in PNG, JPG, GIF, or similar. |  
+ | * No spaces inside the brackets!                      |  
+ +-------------------------------------------------------+  
 
  Other
  =====
