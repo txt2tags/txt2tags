@@ -11,13 +11,13 @@ NAME = _('HTML5 page')
 EXTENSION = 'html'
 
 HEADER = """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org"/>
-<link rel="stylesheet" href="%(STYLE)s"/>
+<meta name="generator" content="http://txt2tags.org">
+<link rel="stylesheet" href="%(STYLE)s">
 <style>
 body{background-color:#fff;color:#000;}
 hr{background-color:#000;border:0;color:#000;}
@@ -47,13 +47,13 @@ table.center {margin-left:auto; margin-right:auto;}
 """
 
 HEADERCSS = """\
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset=%(ENCODING)s>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org"/>
-<link rel="stylesheet" href="%(STYLE)s"/>
+<meta name="generator" content="http://txt2tags.org">
+<link rel="stylesheet" href="%(STYLE)s">
 </head>
 <body>
 <header>
@@ -81,10 +81,10 @@ HTML5TAGS = {
     'listItemClose'        : '</li>'          ,
     'numlistItemClose'     : '</li>'          ,
     'deflistItem2Close'    : '</dd>'          ,
-    'bar1'                 : '<hr class="light"/>'        ,
-    'bar2'                 : '<hr class="heavy"/>'        ,
-    'img'                  : '<img~a~ src="\a" alt=""/>'  ,
-    'imgEmbed'             : '<img~a~ src="\a" alt=""/>'  ,
+    'bar1'                 : '<hr class="light">'        ,
+    'bar2'                 : '<hr class="heavy">'        ,
+    'img'                  : '<img~a~ src="\a" alt="">'  ,
+    'imgEmbed'             : '<img~a~ src="\a" alt="">'  ,
     '_imgAlignLeft'        : ' class="left"'  ,
     '_imgAlignCenter'      : ' class="center"',
     '_imgAlignRight'       : ' class="right"' ,
