@@ -55,20 +55,20 @@ def under(txt, char, width, over):
 
 def box(txt, chars, width, centred=True, web=False, slides=False):
     wrap_txt = []
-    char_start = ''
+    char_side = ''
     if slides:
         width = width - 2
-        char_start = ' '
+        char_side = ' '
     for lin in txt:
         wrap_txt.extend(wrap(lin, width - 4, web))
     len_cjk = max([lencjk(lin, web) for lin in wrap_txt])
-    line_box = char_start + center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width)
+    line_box = char_side + center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width) + char_side
     line_txt = []
     for lin in wrap_txt:
         if centred:
-            line_txt.append(char_start + center(chars['side'] + ' ' + center(lin, len_cjk, web) + ' ' + chars['side'], width, web))
+            line_txt.append(char_side + center(chars['side'] + ' ' + center(lin, len_cjk, web) + ' ' + chars['side'], width, web) + char_side)
         else:
-            line_txt.append(char_start + center(chars['side'] + ' ' + lin + ' ' * (len_cjk - lencjk(lin, web) + 1) + chars['side'], width, web))
+            line_txt.append(char_side + center(chars['side'] + ' ' + lin + ' ' * (len_cjk - lencjk(lin, web) + 1) + chars['side'], width, web) + char_side)
     return [line_box] + line_txt + [line_box]
 
 
