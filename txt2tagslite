@@ -597,6 +597,9 @@ def getRules(config):
     ]
 
     rules_bank = {}
+
+    targets.CONF['css-sugar'] = config['css-sugar']
+    
     for target in TARGETS_LIST:
         if getattr(getattr(targets, target), 'RULES', {}).get('confdependentrules'):
             reload(getattr(targets, target))
