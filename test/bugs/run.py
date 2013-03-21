@@ -44,6 +44,16 @@ def run():
             print "FAILED"
             lib.FAILED = lib.FAILED + 1
             continue
+        cmdline = lib.TXT2TAGSLITE + ' ' + infile
+        code, output = syscommand(cmdline)
+        if not output:
+            print "OK"
+            lib.OK = lib.OK + 1
+            os.remove(outfile)
+        else:
+            print "FAILED"
+            lib.FAILED = lib.FAILED + 1
+            continue
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
