@@ -3254,20 +3254,20 @@ class BlockMaster:
         self.tablecount += 1
         result = []
 
-        if rules['asciiart']:
+        if rules['asciiart'] and self.tableparser.rows:
             if rules['spread']:
                 data = spread.spreadsheet(completes_table(self.tableparser.rows), rules['spreadmarkup'], rules['spreadgrid'])
                 return aa.table(data, AA, CONF['width'], True, True, True, 'Center', True, rules['web']) + ['']
             else:
                 return aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], self.tableparser.border, self.tableparser.title, self.tableparser.vert_head, self.tableparser.align, False, False) + ['']
 
-        if TARGET == 'rst':
+        if TARGET == 'rst' and self.tableparser.rows:
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
             return aa.table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
-        if TARGET == 'mgp':
+        if TARGET == 'mgp' and self.tableparser.rows:
             aa_t = aa.table(completes_table(self.tableparser.rows), AA, CONF['width'], True, self.tableparser.title, False, 'Left', False, False)
             try:
                 import aafigure
@@ -3277,7 +3277,7 @@ class BlockMaster:
             except:
                 return ['%font "mono"'] + aa_t + ['']
 
-        if TARGET == 'db':
+        if TARGET == 'db' and self.tableparser.rows:
             data = completes_table(self.tableparser.rows)
             n = max([len(line[0]) for line in data])
             table = 'table_' + str(self.tablecount)
