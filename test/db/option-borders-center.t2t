@@ -1,0 +1,3 @@
+
+%!db: --borders --center sample.db
+%!db: -b -c sample.db

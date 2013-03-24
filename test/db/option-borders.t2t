@@ -1,0 +1,3 @@
+
+%!db: --borders sample.db
+%!db: -b sample.db

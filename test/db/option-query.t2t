@@ -1,0 +1,5 @@
+
+%!db: --query "select * from table_1" sample.db
+%!db: -q "select * from table_1" sample.db
+%!db: --query "select * from table_1 order by col_1 desc" sample.db
+%!db: -q "select * from table_1 order by col_1 desc" sample.db
