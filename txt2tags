@@ -4930,6 +4930,101 @@ class CsvOptions(CommandLine):
         return cm.parse()
 
 
+class DbOptions(CommandLine):
+    """Tokenize and parse the %!DB command arguments.
+    
+    When you find this line in the user document:
+    
+        %!DB: -q "select * from table" foo.db
+    
+    Just feed everything after the first : to this class,
+    as a single string. It will be tokenized, parsed and
+    saved to self.raw and self.parsed.
+    
+    Use the self.get() method to get the value of a config.
+    If missing, the default value will be returned.
+    
+    Example:
+        >>> import txt2tags, pprint
+        >>> dbopt = txt2tags.DbOptions('-q "select * from table" foo.db')
+        >>> pprint.pprint(dbopt.raw)
+        [['all', 'query', 'select * from table'],
+         ['all', 'infile', 'foo.db'],
+         ['all', 'realcmdline', ['-q', 'select * from table', 'foo.db']]]
+        >>> pprint.pprint(dbopt.parsed)
+        {'infile': 'foo.db',
+         'query': 'select * from table'}
+        >>> dbopt.get('query')
+        'select * from table'
+        >>>
+    """
+
+    def __init__(self, cmdline=None):
+
+        # Available options for %!DB
+        self.dft_options = {
+            'query': '',
+            'infile': '',
+        }
+        self.dft_flags = {
+            'borders': 0,
+            'center': 0,
+        }
+        self.short_long = {
+            'b': 'borders',
+            'c': 'center',
+            'q': 'query',
+        }
+
+        # Default values for all options
+        self.defaults = {}
+        self.defaults.update(self.dft_options)
+        self.defaults.update(self.dft_flags)
+
+        # Needed by self._compose_*_opts()
+        self.all_flags = self.dft_flags.keys()
+        self.all_options = self.dft_options.keys()
+        self.all_actions = []
+
+        # Compose valid short and long options data for getopt
+        self.short_opts = self._compose_short_opts()
+        self.long_opts = self._compose_long_opts(extra=False)
+
+        # Got data? Parse it!
+        if cmdline:
+            self.raw = self.get_raw_config(cmdline)
+            self.parsed = self.parse_raw()
+        else:
+            self.raw = []
+            self.parsed = {}
+
+    def get(self, key):
+        return self.parsed.get(key, self.defaults[key])
+
+    def parse(self, cmdline):
+        try:
+            opts, args = getopt.getopt(cmdline, self.short_opts, self.long_opts)
+        except getopt.error, errmsg:
+            Error(_("%s in %%!DB command") % errmsg)
+        return (opts, args)
+
+    def parse_raw(self, raw=None):
+        if not raw:
+            raw = self.raw
+        # Reset attributes to our modest needs
+        cm = ConfigMaster(raw)
+        cm.dft_options  = self.dft_options.copy()
+        cm.dft_flags    = self.dft_flags.copy()
+        cm.dft_actions  = {}
+        cm.dft_settings = {}
+        cm.incremental  = []
+        cm.numeric      = []
+        cm.multi        = []  # maybe in the future: ['infile']
+        cm.defaults     = self.defaults.copy()
+        cm.off          = cm._get_off()
+        return cm.parse()
+
+
 ##############################################################################
 
 class SourceDocument:
@@ -5046,7 +5141,8 @@ class SourceDocument:
                rgx['macros'].match(buf[i]) or  # ... %%macro
                rgx['toc'].match(buf[i])    or  # ... %%toc
                cfg_parser(buf[i], 'include')[1] or  # ... %!include
-               cfg_parser(buf[i], 'csv')[1]    # ... %!csv
+               cfg_parser(buf[i], 'csv')[1] or # ... %!csv
+               cfg_parser(buf[i], 'db')[1]     # ... %!db
             ):
                 ref[2] = i
                 break
@@ -9006,6 +9102,72 @@ def convert(bodylines, config, firstlinenr=1):
                 if key:
                     Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
                     CONF['currentsourcefile'] = val
+                # This line is done, go to next
+                continue
+            
+            # %!db command
+            elif key == 'db':
+
+                try:
+                    import sqlite3
+                except:
+                    Error('No sqlite3 module')
+
+                # Handle options and arguments
+                dbopt = DbOptions(val)
+                filename = dbopt.get('infile')
+                db_query = dbopt.get('query')
+                db_borders = dbopt.get('borders')
+                db_center = dbopt.get('center')
+                
+                sqlite3.register_converter('NULL', unicode)
+                sqlite3.register_converter('INTEGER', unicode)
+                sqlite3.register_converter('REAL', unicode)
+                sqlite3.register_converter('BLOB', unicode)
+
+                db = sqlite3.connect(filename, detect_types=sqlite3.PARSE_DECLTYPES)
+                dbc = db.cursor()
+                res = dbc.execute(db_query)
+                result = res.fetchall()
+                db.close()
+
+                table = []
+                # Convert each DB line to a txt2tags' table line
+                if db_center:
+                    row_ini = ' | '
+                else:
+                    row_ini = '| '
+                if db_borders:
+                    row_end = ' |'
+                else:
+                    row_end = ''
+                for row in result:
+                    table.append(row_ini + ' | '.join(row) + row_end)
+
+                # Parse and convert the new table
+                # Note: cell contents is raw, no t2t marks are parsed
+                if rules['tableable']:
+                    ret.extend(BLOCK.blockin('table'))
+                    if table:
+                        BLOCK.tableparser.__init__(table[0])
+                        for row in table:
+                            tablerow = TableMaster().parse_row(row)
+                            BLOCK.tableparser.add_row(tablerow)
+
+                            # Very ugly, but necessary for escapes
+                            line = SEPARATOR.join(tablerow['cells'])
+                            BLOCK.holdadd(doEscape(target, line))
+                        ret.extend(BLOCK.blockout())
+
+                # Tables are mapped to verb when target is not table-aware
+                else:
+                    ret.extend(BLOCK.blockin('verb'))
+                    BLOCK.propset('mapped', 'table')
+                    for row in table:
+                        BLOCK.holdadd(row)
+                    ret.extend(BLOCK.blockout())
+
+
                 # This line is done, go to next
                 continue
 
