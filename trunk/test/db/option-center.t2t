@@ -1,0 +1,3 @@
+
+%!db: --center sample.db
+%!db: -c sample.db

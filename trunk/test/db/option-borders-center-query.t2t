@@ -1,0 +1,5 @@
+
+%!db: --borders --center --query "select * from table_1" sample.db
+%!db: -b -c -q "select * from table_1" sample.db
+%!db: --borders --center --query "select * from table_1 order by col_1 desc" sample.db
+%!db: -b -c -q "select * from table_1 order by col_1 desc" sample.db
