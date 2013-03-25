@@ -4969,10 +4969,12 @@ class DbOptions(CommandLine):
         self.dft_flags = {
             'borders': 0,
             'center': 0,
+            'headers': 0,
         }
         self.short_long = {
             'b': 'borders',
             'c': 'center',
+            'h': 'headers',
             'q': 'query',
         }
 
@@ -9119,6 +9121,7 @@ def convert(bodylines, config, firstlinenr=1):
                 db_query = dbopt.get('query')
                 db_borders = dbopt.get('borders')
                 db_center = dbopt.get('center')
+                db_headers = dbopt.get('headers')
                 
                 sqlite3.register_converter('NULL', unicode)
                 sqlite3.register_converter('INTEGER', unicode)
@@ -9130,14 +9133,20 @@ def convert(bodylines, config, firstlinenr=1):
 
                 if db_query:
                     res = dbc.execute(db_query)
-                    result = [res.fetchall()]
+                    if db_headers:
+                        result = [[[header[0] for header in dbc.description]] + res.fetchall()]
+                    else:
+                        result = [res.fetchall()]
                 else:
                     result = []
                     table_names = dbc.execute("select name from sqlite_master").fetchall()
                     for table_name in table_names:
-                        res = dbc.execute("select * from  " + table_name[0])
-                        result.append(res.fetchall())
-                    
+                        res = dbc.execute("select * from " + table_name[0])
+                        if db_headers:
+                            result.append([[header[0] for header in dbc.description]] + res.fetchall())
+                        else:
+                            result.append(res.fetchall())
+
                 db.close()
 
                 for tab in result:
@@ -9153,6 +9162,8 @@ def convert(bodylines, config, firstlinenr=1):
                         row_end = ''
                     for row in tab:
                         table.append(row_ini + ' | '.join(row) + row_end)
+                    if db_headers:
+                        table[0] = table[0].replace('|', '||', 1)
 
                     # Parse and convert the new table
                     # Note: cell contents is raw, no t2t marks are parsed
