@@ -8,10 +8,11 @@ With headers:
   | ichi | ni   | san   |
   +------+------+-------+
 
-Without headers:
+With headers:
 
   +------+------+-------+
   | one  | two  | three |
+  +------+------+-------+
   | um   | dois | tres  |
   | ichi | ni   | san   |
   +------+------+-------+
