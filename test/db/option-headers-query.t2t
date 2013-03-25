@@ -1,0 +1,5 @@
+
+%!db: --headers --query "select * from table_1" sample.db
+%!db: -h -q "select * from table_1" sample.db
+%!db: --headers --query "select * from table_1 order by col_1 desc" sample.db
+%!db: -h -q "select * from table_1 order by col_1 desc" sample.db
