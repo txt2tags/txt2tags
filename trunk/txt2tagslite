@@ -5589,7 +5589,6 @@ def convert(bodylines, config, firstlinenr=1):
 
                 reader = csv.reader(Readfile(filename), delimiter=csv_separator)
 
-                table = []
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
                 try:
