@@ -4391,6 +4391,23 @@ def completes_table(table):
     return data2
 
 
+def convert_to_table(itera, headers, borders, center):
+    if center:
+        row_ini = ' | '
+    else:
+        row_ini = '| '
+    if borders:
+        row_end = ' |'
+    else:
+        row_end = ''
+    table = []
+    for row in itera:
+        table.append(row_ini + ' | '.join(row) + row_end)
+    if headers:
+        table[0] = table[0].replace('|', '||', 1)
+    return table
+
+
 ##############################################################################
 
 
@@ -9150,20 +9167,8 @@ def convert(bodylines, config, firstlinenr=1):
                 db.close()
 
                 for tab in result:
-                    table = []
                     # Convert each DB line to a txt2tags' table line
-                    if db_center:
-                        row_ini = ' | '
-                    else:
-                        row_ini = '| '
-                    if db_borders:
-                        row_end = ' |'
-                    else:
-                        row_end = ''
-                    for row in tab:
-                        table.append(row_ini + ' | '.join(row) + row_end)
-                    if db_headers:
-                        table[0] = table[0].replace('|', '||', 1)
+                    table = convert_to_table(tab, db_headers, db_borders, db_center)
 
                     # Parse and convert the new table
                     # Note: cell contents is raw, no t2t marks are parsed
@@ -9213,22 +9218,10 @@ def convert(bodylines, config, firstlinenr=1):
 
                 reader = csv.reader(Readfile(filename), delimiter=csv_separator)
 
-                table = []
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
                 try:
-                    if csv_center:
-                        row_ini = ' | '
-                    else:
-                        row_ini = '| '
-                    if csv_borders:
-                        row_end = ' |'
-                    else:
-                        row_end = ''
-                    for row in reader:
-                        table.append(row_ini + ' | '.join(row) + row_end)
-                    if csv_headers:
-                        table[0] = table[0].replace('|', '||', 1)
+                    table = convert_to_table(reader, csv_headers, csv_borders, csv_center)
                 except csv.Error, e:
                     Error('CSV: file %s: %s' % (filename, e))
 
