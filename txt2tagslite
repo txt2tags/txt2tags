@@ -809,7 +809,7 @@ def convert_to_table(itera, headers, borders, center):
 def parse_convert_table(table, tableable):
     ret = []
     # Note: cell contents is raw, no t2t marks are parsed
-    if rules['tableable']:
+    if tableable:
         ret.extend(BLOCK.blockin('table'))
         if table:
             BLOCK.tableparser.__init__(table[0])
@@ -5519,7 +5519,7 @@ def convert(bodylines, config, firstlinenr=1):
                         result = [res.fetchall()]
                 else:
                     result = []
-                    table_names = dbc.execute("select name from sqlite_master").fetchall()
+                    table_names = dbc.execute("select name from sqlite_master where type='table'").fetchall()
                     for table_name in table_names:
                         res = dbc.execute("select * from " + table_name[0])
                         if db_headers:
