@@ -1822,6 +1822,8 @@ class ConfigMaster:
                     else:
                         Error(_("--chars: Expected an UTF-8 file for your chars from an UTF-8 terminal"))
             if target.startswith('aa'):
+                if config['chars'] == 'unicode':
+                    config['chars'] = unichr(0x250c) + unichr(0x2510) + unichr(0x253c)  + unichr(0x2514) + unichr(0x2518) + unichr(0x252C) + unichr(0x2500)+unichr(0x2534) +unichr(0x251c) + unichr(0x2502) + unichr(0x2524)+ unichr(0x2500) + unichr(0x2550)+unichr(0x2550)+unichr(0x2500)+'^"' + unichr(0x2043) + unichr(0x255e) + unichr(0x2550) + unichr(0x256a) + unichr(0x2561) + unichr(0x256c) + unichr(0x2565) + unichr(0x2551) + unichr(0x256b) + unichr(0x2568)
                 if len(config['chars']) != len(targets.AA_VALUES):
                     Error(_("--chars: Expected %i chars, got %i") % (
                         len(targets.AA_VALUES), len(config['chars'])))
@@ -3371,7 +3373,8 @@ class BlockMaster:
         if TARGET == 'rst' and self.tableparser.rows:
             chars = AA.copy()
             if not self.tableparser.border:
-                chars['border'], chars['corner'], chars['side'] = '=', ' ', ' '
+                chars['border'] = '='
+                chars['tlcorner'] = chars['trcorner'] = chars['corner'] = chars['blcorner'] = chars['brcorner'] = chars['side'] = chars['tborder'] = chars['bborder'] = chars['lhhead'] = chars['rhhead'] = ' '
             return aa.table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp' and self.tableparser.rows:

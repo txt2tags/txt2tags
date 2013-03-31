@@ -62,14 +62,15 @@ def box(txt, chars, width, centred=True, web=False, slides=False):
     for lin in txt:
         wrap_txt.extend(wrap(lin, width - 4, web))
     len_cjk = max([lencjk(lin, web) for lin in wrap_txt])
-    line_box = char_side + center(chars['corner'] + chars['border'] * (len_cjk + 2) + chars['corner'], width) + char_side
+    tline_box = char_side + center(chars['tlcorner'] + chars['border'] * (len_cjk + 2) + chars['trcorner'], width) + char_side
+    bline_box = char_side + center(chars['blcorner'] + chars['border'] * (len_cjk + 2) + chars['brcorner'], width) + char_side
     line_txt = []
     for lin in wrap_txt:
         if centred:
             line_txt.append(char_side + center(chars['side'] + ' ' + center(lin, len_cjk, web) + ' ' + chars['side'], width, web) + char_side)
         else:
             line_txt.append(char_side + center(chars['side'] + ' ' + lin + ' ' * (len_cjk - lencjk(lin, web) + 1) + chars['side'], width, web) + char_side)
-    return [line_box] + line_txt + [line_box]
+    return [tline_box] + line_txt + [bline_box]
 
 
 def header(header_data, chars, width, height, web, slides):
@@ -133,23 +134,42 @@ def table(data, chars, width, border, h_header, v_header, align, spread, web):
         length = [max([lencjk(el) for el in lin]) for lin in tab]
     if spread:
         data[0][0] = [data[0][0][i].center(length[i]) for i in range(n)]
-    bord, side, corner, vhead = chars['border'], chars['side'], chars['corner'], chars['vhead']
-    if border:
-        hhead = chars['hhead']
-    else:
-        hhead = chars['border']
-    resh = res = corner
-    for i in range(n):
+    tbord, bord, bbord, lside, side, rside, tlcorner, trcorner, corner, blcorner, brcorner, tvhead, vhead, vheadcross, bvhead ,headerscross, hhead, hheadcorn, lhhead, rhhead= chars['tborder'], chars['border'], chars['bborder'], chars['lside'], chars['side'], chars['rside'], chars['tlcorner'], chars['trcorner'], chars['corner'], chars['blcorner'], chars['brcorner'], chars['tvhead'], chars['vhead'], chars['vheadcross'], chars['bvhead'], chars['headerscross'], chars['hhead'], chars['hheadcorn'], chars['lhhead'], chars['rhhead']
+    if not v_header:
+        tvhead, bvhead = tbord, bbord
+        if border:
+            vheadcross = corner
+            if h_header:
+                headerscross = hheadcorn
+    if not border:
+        hhead, hheadcorn, lhhead, rhhead, headerscross = bord, corner, lside, rside, vheadcross
+        if h_header and not v_header:
+                headerscross = corner
+    if v_header and not h_header:
+        headerscross = vheadcross
+    len0 = length[0] + 2
+    res = lside + len0 * bord + vheadcross
+    resh = lhhead + len0 * hhead + headerscross
+    rest = tlcorner + len0 * bord + tvhead
+    resb = blcorner + len0 * bord + bvhead
+    for i in range(1, n):
         res = res + (length[i] + 2) * bord + corner
-        resh = resh + (length[i] + 2) * hhead + corner
+        resh = resh + (length[i] + 2) * hhead + hheadcorn
+        rest = rest + (length[i] + 2) * bord + tbord
+        resb = resb + (length[i] + 2) * bord + bbord
+    res = res[:-1] + rside
+    resh = resh[:-1] + rhhead
+    rest = rest[:-1] + trcorner
+    resb = resb[:-1] + brcorner
     ret = []
     for i, lin in enumerate(data):
         aff = side
         if i == 1 and h_header:
             ret.append(resh)
-        else:
-            if i == 0 or border:
-                ret.append(res)
+        elif i == 0:
+            ret.append(rest)
+        elif border:
+            ret.append(res)
         for j, el in enumerate(lin[0]):
             if web:
                 aff = aff + " " + el + (sum(length[j:(j + lin[1][j])]) + lin[1][j] * 3 - lencjk(re.sub('<a.*">|</a>', '',el)) - 2) * " " + side
@@ -158,7 +178,7 @@ def table(data, chars, width, border, h_header, v_header, align, spread, web):
             if j == 0 and v_header:
                 aff = aff[:-1] + vhead
         ret.append(aff)
-    ret.append(res)
+    ret.append(resb)
     if align == 'Left':
         ret = [' ' * 2  + lin for lin in ret]
     elif align == 'Center' and not (web and spread):
