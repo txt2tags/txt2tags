@@ -7027,7 +7027,7 @@ class BlockMaster:
             chars = AA.copy()
             if not self.tableparser.border:
                 chars['border'] = '='
-                chars['tlcorner'] = chars['trcorner'] = chars['corner'] = chars['blcorner'] = chars['brcorner'] = chars['side'] = chars['tborder'] = chars['bborder'] = chars['lhhead'] = chars['rhhead'] = ' '
+                chars['tlcorner'] = chars['trcorner'] = chars['corner'] = chars['blcorner'] = chars['brcorner'] = chars['lside'] = chars['side'] = chars['rside'] = chars['tborder'] = chars['bborder'] = chars['lhhead'] = chars['rhhead'] = ' '
             return aa_table(completes_table(self.tableparser.rows), chars, CONF['width'], self.tableparser.border, self.tableparser.title, False, 'Left', False, False) + ['']
 
         if TARGET == 'mgp' and self.tableparser.rows:
