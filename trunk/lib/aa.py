@@ -111,7 +111,7 @@ def slide(title, char, width, web):
     return res
 
 
-def table(data, chars, width, border, h_header, v_header, align, spread, web):
+def table(data, chars, width, borders, h_header, v_header, align, spread, web):
     n = max([len(lin[0]) for lin in data])
     data3 = []
     for lin in data:
@@ -134,30 +134,30 @@ def table(data, chars, width, border, h_header, v_header, align, spread, web):
         length = [max([lencjk(el) for el in lin]) for lin in tab]
     if spread:
         data[0][0] = [data[0][0][i].center(length[i]) for i in range(n)]
-    tbord, bord, bbord, lside, side, rside, tlcorner, trcorner, corner, blcorner, brcorner, tvhead, vhead, vheadcross, bvhead ,headerscross, hhead, hheadcorn, lhhead, rhhead= chars['tborder'], chars['border'], chars['bborder'], chars['lside'], chars['side'], chars['rside'], chars['tlcorner'], chars['trcorner'], chars['corner'], chars['blcorner'], chars['brcorner'], chars['tvhead'], chars['vhead'], chars['vheadcross'], chars['bvhead'], chars['headerscross'], chars['hhead'], chars['hheadcorn'], chars['lhhead'], chars['rhhead']
+    tcross, border, bcross, lcross, side, rcross, tlcorner, trcorner, cross, blcorner, brcorner, tvhead, vhead, vheadcross, bvhead ,headerscross, hhead, hheadcross, lhhead, rhhead= chars['tcross'], chars['border'], chars['bcross'], chars['lcross'], chars['side'], chars['rcross'], chars['tlcorner'], chars['trcorner'], chars['cross'], chars['blcorner'], chars['brcorner'], chars['tvhead'], chars['vhead'], chars['vheadcross'], chars['bvhead'], chars['headerscross'], chars['hhead'], chars['hheadcross'], chars['lhhead'], chars['rhhead']
     if not v_header:
-        tvhead, bvhead = tbord, bbord
-        if border:
-            vheadcross = corner
+        tvhead, bvhead = tcross, bcross
+        if borders:
+            vheadcross = cross
             if h_header:
-                headerscross = hheadcorn
-    if not border:
-        hhead, hheadcorn, lhhead, rhhead, headerscross = bord, corner, lside, rside, vheadcross
+                headerscross = hheadcross
+    if not borders:
+        hhead, hheadcross, lhhead, rhhead, headerscross = border, cross, lcross, rcross, vheadcross
         if h_header and not v_header:
-                headerscross = corner
+                headerscross = cross
     if v_header and not h_header:
         headerscross = vheadcross
     len0 = length[0] + 2
-    res = lside + len0 * bord + vheadcross
+    res = lcross + len0 * border + vheadcross
     resh = lhhead + len0 * hhead + headerscross
-    rest = tlcorner + len0 * bord + tvhead
-    resb = blcorner + len0 * bord + bvhead
+    rest = tlcorner + len0 * border + tvhead
+    resb = blcorner + len0 * border + bvhead
     for i in range(1, n):
-        res = res + (length[i] + 2) * bord + corner
-        resh = resh + (length[i] + 2) * hhead + hheadcorn
-        rest = rest + (length[i] + 2) * bord + tbord
-        resb = resb + (length[i] + 2) * bord + bbord
-    res = res[:-1] + rside
+        res = res + (length[i] + 2) * border + cross
+        resh = resh + (length[i] + 2) * hhead + hheadcross
+        rest = rest + (length[i] + 2) * border + tcross
+        resb = resb + (length[i] + 2) * border + bcross
+    res = res[:-1] + rcross
     resh = resh[:-1] + rhhead
     rest = rest[:-1] + trcorner
     resb = resb[:-1] + brcorner
@@ -168,7 +168,7 @@ def table(data, chars, width, border, h_header, v_header, align, spread, web):
             ret.append(resh)
         elif i == 0:
             ret.append(rest)
-        elif border:
+        elif borders:
             ret.append(res)
         for j, el in enumerate(lin[0]):
             if web:
