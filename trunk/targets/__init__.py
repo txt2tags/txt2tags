@@ -15,9 +15,10 @@ CONF = {
 # Target specific sharing
 
 # ASCII Art config
-AA_KEYS = 'tlcorner trcorner cross blcorner brcorner tcross border bcross lcross side rcross bar1 bar2 level2 level3 level4 level5 bullet lhhead hhead hheadcross rhhead headerscross tvhead vhead vheadcross bvhead'.split()
-AA_VALUES = '++++++-++|+-==-^"-+=++++$++'  # do not edit here, please use --chars
-AA = dict(zip(AA_KEYS, AA_VALUES))
+AA_KEYS = 'tlcorner trcorner blcorner brcorner tcross bcross lcross rcross lhhead hheadcross rhhead headerscross tvhead vheadcross bvhead cross border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
+AA_SIMPLE = '+-|-==-^"-=$'  # do not edit here, please use --chars
+AA_ADVANCED = '+++++++++++++++' + AA_SIMPLE  # do not edit here, please use --chars
+AA = dict(zip(AA_KEYS, AA_ADVANCED))
 
 # ReStructuredText config
 # http://docs.python.org/release/2.7/documenting/rest.html#sections
