@@ -348,9 +348,10 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'tlcorner trcorner cross blcorner brcorner tcross border bcross lcross side rcross bar1 bar2 level2 level3 level4 level5 bullet lhhead hhead hheadcross rhhead headerscross tvhead vhead vheadcross bvhead'.split()
-AA_VALUES = '++++++-++|+-==-^"-+=++++$++'  # do not edit here, please use --chars
-AA = dict(zip(AA_KEYS, AA_VALUES))
+AA_KEYS = 'tlcorner trcorner blcorner brcorner tcross bcross lcross rcross lhhead hheadcross rhhead headerscross tvhead vheadcross bvhead cross border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
+AA_SIMPLE = '+-|-==-^"-=$'  # do not edit here, please use --chars
+AA_ADVANCED = '+++++++++++++++' + AA_SIMPLE  # do not edit here, please use --chars
+AA = dict(zip(AA_KEYS, AA_ADVANCED))
 AA_COUNT = 0
 AA_PW_TOC = {}
 AA_IMG = 0
@@ -5477,14 +5478,16 @@ class ConfigMaster:
                         Error(_("--chars: Expected an UTF-8 file for your chars from an UTF-8 terminal"))
             if target == 'aat':
                 if config['chars'] == 'unicode':
-                    config['chars'] = unichr(0x250c) + unichr(0x2510) + unichr(0x253c)  + unichr(0x2514) + unichr(0x2518) + unichr(0x252C) + unichr(0x2500)+unichr(0x2534) +unichr(0x251c) + unichr(0x2502) + unichr(0x2524)+ unichr(0x2500) + unichr(0x2550)+unichr(0x2550)+unichr(0x2500)+'^"' + unichr(0x2043) + unichr(0x255e) + unichr(0x2550) + unichr(0x256a) + unichr(0x2561) + unichr(0x256c) + unichr(0x2565) + unichr(0x2551) + unichr(0x256b) + unichr(0x2568)
-                if len(config['chars']) != len(AA_VALUES):
-                    Error(_("--chars: Expected %i chars, got %i") % (
-                        len(AA_VALUES), len(config['chars'])))
+                    config['chars'] = unichr(0x250c) + unichr(0x2510) + unichr(0x2514) + unichr(0x2518) + unichr(0x252C) + unichr(0x2534) + unichr(0x251c) + unichr(0x2524) + unichr(0x255e) + unichr(0x256a) + unichr(0x2561) + unichr(0x256c) + unichr(0x2565) + unichr(0x256b) + unichr(0x2568) + unichr(0x253c) + unichr(0x2500) + unichr(0x2502) + unichr(0x2500) + unichr(0x2550) + unichr(0x2550) + unichr(0x2500) + '^"' + unichr(0x2043) + unichr(0x2550) + unichr(0x2551)
+                if len(config['chars']) != len(AA_SIMPLE) and len(config['chars']) != len(AA_ADVANCED):
+                    Error(_("--chars: Expected %i or %i chars, got %i") % (
+                        len(AA_SIMPLE), len(AA_ADVANCED), len(config['chars'])))
                 if isinstance(config['chars'], unicode):
                     for char in config['chars']:
                         if unicodedata.east_asian_width(char) in ('F', 'W'):
                             Error(_("--chars: Expected no CJK double width chars, but got %s") % char.encode('utf-8'))
+                if len(config['chars']) == len(AA_SIMPLE):
+                    config['chars'] = 15 * config['chars'][0] + config['chars']
                 AA = dict(zip(AA_KEYS, config['chars']))
             elif target == 'rst':
                 if len(config['chars']) != len(RST_VALUES):
