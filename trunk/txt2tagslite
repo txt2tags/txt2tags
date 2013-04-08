@@ -346,7 +346,7 @@ def Usage():
         fmt1 % (''  , '--width=N'      , _("set the output's width to N columns (used by aat, aap and aatw targets)")),
         fmt1 % (''  , '--height=N'     , _("set the output's height to N rows (used by aap target)")),
         fmt1 % (''  , '--chars=S'      , _("set the output's chars to S (used by all aa targets and rst)")),
-        fmt1 % (''  , ''               , _("aa default " + targets.AA_VALUES + " rst default " + targets.RST_VALUES)),
+        fmt1 % (''  , ''               , _("aa default " + targets.AA_SIMPLE + " rst default " + targets.RST_VALUES)),
         fmt2 % ('-C', '--config-file=F', _("read configuration from file F")),
         fmt1 % (''  , '--fix-path'     , _("fix resources path (image, links, CSS) when needed")),
         fmt1 % (''  , '--gui'          , _("invoke Graphical Tk Interface")),
