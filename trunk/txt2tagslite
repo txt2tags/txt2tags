@@ -949,7 +949,7 @@ def Savefile(file_path, contents):
     else:
         doit = f.write
     cont = []
-    if CONF['target'] in ('aat', 'rst', 'txt'):
+    if CONF['encoding'].lower() == 'utf-8' and CONF['target'] != 'mgp':
         for line in contents:
             if isinstance(line, unicode):
                 cont.append(line.encode('utf-8'))
@@ -5523,6 +5523,8 @@ def convert(bodylines, config, firstlinenr=1):
                 fen_unicode = fenopt.get('unicode')
 
                 if fen_unicode:
+                    if CONF['encoding'].lower() != 'utf-8':
+                        Error(_("%!fen: Expected an UTF-8 file to use unicode fen option, you could set %!encoding: UTF-8"))
                     unicode_chars = [unichr(char) for char in range(0x2654,0x2660)]
                     uni = dict(zip('KQRBNPkqrbnp', unicode_chars))
 
