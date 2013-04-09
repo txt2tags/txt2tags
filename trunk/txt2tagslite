@@ -1146,6 +1146,8 @@ class CommandLine:
 
         # We need lists, not strings (such as from %!options)
         if type(cmdline) in (type(''), type(u'')):
+            if isinstance(cmdline, unicode):
+                cmdline = cmdline.encode('utf-8')
             cmdline = self.tokenize(cmdline)
 
         # Extract name/value pair of all configs, check for invalid names
