@@ -28,8 +28,7 @@ def run():
         outfile = outfile.replace('ok/', '')
 
         if lib.initTest(basename, infile, outfile):
-            cmdline = ['-H']
-            cmdline.extend(['-t', target])
+            cmdline = ['-t', target]
             cmdline.extend(['-i', infile])
             if stderr:
                 cmdline.extend(['-o', '-'])
