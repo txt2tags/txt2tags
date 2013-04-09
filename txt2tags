@@ -5060,6 +5060,24 @@ class DbOptions(BaseOptions):
         BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
 
 
+class FenOptions(BaseOptions):
+
+    def __init__(self, cmdline=None):
+
+        # Available options for %!FEN
+        self.dft_options = {
+            'infile': '',
+        }
+        self.dft_flags = {
+            'unicode': 0,
+        }
+        self.short_long = {
+            'u': 'unicode',
+        }
+
+        BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
+
+
 ##############################################################################
 
 class SourceDocument:
@@ -5177,7 +5195,8 @@ class SourceDocument:
                rgx['toc'].match(buf[i])    or  # ... %%toc
                cfg_parser(buf[i], 'include')[1] or  # ... %!include
                cfg_parser(buf[i], 'csv')[1] or # ... %!csv
-               cfg_parser(buf[i], 'db')[1]     # ... %!db
+               cfg_parser(buf[i], 'db')[1]  or # ... %!db
+               cfg_parser(buf[i], 'fen')[1]    # ... %!fen
             ):
                 ref[2] = i
                 break
@@ -9142,6 +9161,32 @@ def convert(bodylines, config, firstlinenr=1):
                 if key:
                     Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
                     CONF['currentsourcefile'] = val
+                # This line is done, go to next
+                continue
+            
+            # %!fen command
+            # Forsyth-Edward Notation
+            elif key == 'fen':
+
+                # Handle options and arguments
+                fenopt = FenOptions(val)
+                filename = fenopt.get('infile')
+                fen_unicode = fenopt.get('unicode')
+
+                if fen_unicode:
+                    unicode_chars = [unichr(char) for char in range(0x2654,0x2660)]
+                    uni = dict(zip('KQRBNPkqrbnp', unicode_chars))
+
+                for line in Readfile(filename):
+                    board = line.split()[0]
+                    for i in range(1, 9):
+                        board = board.replace(str(i), i * ' ')
+                    if fen_unicode:
+                        for piece in uni:
+                            board = board.replace(piece, uni[piece])
+                    board = board.split('/')
+                    table = convert_to_table(board, False, True, True)
+                    ret.extend(parse_convert_table(table, rules['tableable']))
                 # This line is done, go to next
                 continue
             
