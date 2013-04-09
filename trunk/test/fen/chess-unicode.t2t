@@ -1,0 +1,3 @@
+
+%!fen: --unicode test.fen
+%!fen: -u test.fen
