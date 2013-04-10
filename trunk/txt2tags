@@ -4430,7 +4430,7 @@ def convert_to_table(itera, headers, borders, center):
     return table
 
 
-def parse_convert_table(table, tableable):
+def parse_convert_table(table, tableable, target):
     ret = []
     # Note: cell contents is raw, no t2t marks are parsed
     if tableable:
@@ -9196,7 +9196,7 @@ def convert(bodylines, config, firstlinenr=1):
                             board = board.replace(piece, uni[piece])
                     board = board.split('/')
                     table = convert_to_table(board, False, True, True)
-                    ret.extend(parse_convert_table(table, rules['tableable']))
+                    ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
                 # This line is done, go to next
                 continue
             
@@ -9246,7 +9246,7 @@ def convert(bodylines, config, firstlinenr=1):
                     # Convert each DB line to a txt2tags' table line
                     table = convert_to_table(tab, db_headers, db_borders, db_center)
                     # Parse and convert the new table
-                    ret.extend(parse_convert_table(table, rules['tableable']))
+                    ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
 
                 # This line is done, go to next
                 continue
@@ -9280,7 +9280,7 @@ def convert(bodylines, config, firstlinenr=1):
                     Error('CSV: file %s: %s' % (filename, e))
 
                 # Parse and convert the new table
-                ret.extend(parse_convert_table(table, rules['tableable']))
+                ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
 
                 # This line is done, go to next
                 continue
