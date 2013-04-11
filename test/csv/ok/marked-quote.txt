@@ -6,7 +6,7 @@ Line 1.
   | __under__
   | --stroke--
   | ``mono``
-  | ""raw""
+  | raw""
   | ''tagged''
   | [image.png]
   | [link www.abc.com]

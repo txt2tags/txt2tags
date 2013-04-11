@@ -1,0 +1,6 @@
+
+% Bug at macro expansion. See issue 31.
+%!postproc(txt): \d{8} date-macro
+Line 1.
+%!csv: -q '"' marked.csv
+Line 2.
