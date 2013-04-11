@@ -4992,6 +4992,7 @@ class CsvOptions(BaseOptions):
         # Available options for %!CSV
         self.dft_options = {
             'separator': ',',
+            'quotechar': '',
             'infile': '',
         }
         self.dft_flags = {
@@ -5004,6 +5005,7 @@ class CsvOptions(BaseOptions):
             'c': 'center',
             'h': 'headers',
             's': 'separator',
+            'q': 'quotechar',
         }
 
         BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
@@ -9258,6 +9260,7 @@ def convert(bodylines, config, firstlinenr=1):
                 csvopt = CsvOptions(val)
                 filename = csvopt.get('infile')
                 csv_separator = csvopt.get('separator')
+                csv_quotechar = csvopt.get('quotechar')
                 csv_headers = csvopt.get('headers')
                 csv_borders = csvopt.get('borders')
                 csv_center = csvopt.get('center')
@@ -9270,7 +9273,10 @@ def convert(bodylines, config, firstlinenr=1):
                 elif csv_separator == 'tab':
                     csv_separator = '\t'
 
-                reader = csv.reader(Readfile(filename), delimiter=csv_separator)
+                if csv_quotechar:
+                    reader = csv.reader(Readfile(filename), delimiter=csv_separator, quotechar=csv_quotechar, quoting=csv.QUOTE_MINIMAL)
+                else:
+                    reader = csv.reader(Readfile(filename), delimiter=csv_separator, quoting=csv.QUOTE_NONE)
 
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
