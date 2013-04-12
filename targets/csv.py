@@ -11,6 +11,8 @@ TYPE = 'office'
 
 TAGS = {
     'tableCellSep' : targets.CSV['separator'] ,
+    'tableCellOpen' : targets.CSV.get('quotechar') or '' ,
+    'tableCellClose' : targets.CSV.get('quotechar') or '' ,
 }
 
 RULES = {

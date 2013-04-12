@@ -1882,10 +1882,10 @@ class ConfigMaster:
                             char_8 = char_8.encode('utf-8')
                         Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, char_8))
                     targets.RST = dict(zip(targets.RST_KEYS, config['chars']))
-            elif target == 'csv':
-                if len(config['chars']) != len(targets.CSV_VALUES):
-                    Error(_("--chars: Expected %i chars, got %i") % (
-                        len(targets.CSV_VALUES), len(config['chars'])))
+            elif target in ('csv', 'csvs'):
+                if len(config['chars']) != len(targets.CSV_VALUES) and len(config['chars']) != len(targets.CSV_VALUES) + 1:
+                    Error(_("--chars: Expected %i or %i chars, got %i") % (
+                        len(targets.CSV_VALUES), len(targets.CSV_VALUES) + 1, len(config['chars'])))
                 else:
                     targets.CSV = dict(zip(targets.CSV_KEYS, config['chars']))
 
