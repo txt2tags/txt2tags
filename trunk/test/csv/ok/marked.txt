@@ -17,7 +17,7 @@ Line 1.
   | + numlit
   | : deflist
   | % comment
-  | 	quote
+  |         quote
 
 Line 2.
 

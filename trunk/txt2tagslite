@@ -800,7 +800,7 @@ def convert_to_table(itera, headers, borders, center):
         row_end = ''
     table = []
     for row in itera:
-        table.append(row_ini + ' | '.join(row) + row_end)
+        table.append(row_ini + ' | '.join(row).expandtabs() + row_end)
     if headers:
         table[0] = table[0].replace('|', '||', 1)
     return table
