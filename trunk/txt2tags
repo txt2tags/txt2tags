@@ -384,6 +384,10 @@ RST_KEYS = 'title level1 level2 level3 level4 level5 bar1 bullet'.split()
 RST_VALUES = '#*=-^"--'  # do not edit here, please use --chars
 RST = dict(zip(RST_KEYS, RST_VALUES))
 
+CSV_KEYS = 'separator'.split()
+CSV_VALUES = ','  # do not edit here, please use --chars
+CSV = dict(zip(CSV_KEYS, CSV_VALUES))
+
 RC_RAW = []
 CMDLINE_RAW = []
 CONF = {}
@@ -1715,7 +1719,7 @@ def getTags(config):
     },
 
     'csv': {
-        'tableCellSep' : ',' ,
+        'tableCellSep' : CSV['separator'] ,
     },
     'csvs': {
         #TIP csvs inherits all csv tags
@@ -5420,6 +5424,7 @@ class ConfigMaster:
         "Basic config sanity checking"
         global AA
         global RST
+        global CSV
         if not config:
             return {}
         target = config.get('target')
@@ -5536,6 +5541,12 @@ class ConfigMaster:
                             char_8 = char_8.encode('utf-8')
                         Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, char_8))
                     RST = dict(zip(RST_KEYS, config['chars']))
+            elif target == 'csv':
+                if len(config['chars']) != len(CSV_VALUES):
+                    Error(_("--chars: Expected %i chars, got %i") % (
+                        len(CSV_VALUES), len(config['chars'])))
+                else:
+                    CSV = dict(zip(CSV_KEYS, config['chars']))
 
         # --toc-only is stronger than others
         if config['toc-only']:

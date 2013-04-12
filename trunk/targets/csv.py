@@ -2,6 +2,7 @@
 A CSV table target.
 """
 
+import targets
 from targets import _
 
 NAME = _('CSV table')
@@ -9,7 +10,7 @@ NAME = _('CSV table')
 TYPE = 'office'
 
 TAGS = {
-    'tableCellSep' : ',' ,
+    'tableCellSep' : targets.CSV['separator'] ,
 }
 
 RULES = {
@@ -17,4 +18,5 @@ RULES = {
     'tableonly': 1,
     'tablecellstrip': 1,
     'blanksaroundtable': 1,
+    'confdependenttags': 1,
 }
