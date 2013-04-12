@@ -384,7 +384,7 @@ RST_KEYS = 'title level1 level2 level3 level4 level5 bar1 bullet'.split()
 RST_VALUES = '#*=-^"--'  # do not edit here, please use --chars
 RST = dict(zip(RST_KEYS, RST_VALUES))
 
-CSV_KEYS = 'separator'.split()
+CSV_KEYS = 'separator quotechar'.split()
 CSV_VALUES = ','  # do not edit here, please use --chars
 CSV = dict(zip(CSV_KEYS, CSV_VALUES))
 
@@ -1720,6 +1720,8 @@ def getTags(config):
 
     'csv': {
         'tableCellSep' : CSV['separator'] ,
+        'tableCellOpen' : CSV.get('quotechar') or '' ,
+        'tableCellClose' : CSV.get('quotechar') or '' ,
     },
     'csvs': {
         #TIP csvs inherits all csv tags
@@ -5541,10 +5543,10 @@ class ConfigMaster:
                             char_8 = char_8.encode('utf-8')
                         Error(_("--chars: Expected chars in : %s but got %s") % (chars_bullet, char_8))
                     RST = dict(zip(RST_KEYS, config['chars']))
-            elif target == 'csv':
-                if len(config['chars']) != len(CSV_VALUES):
-                    Error(_("--chars: Expected %i chars, got %i") % (
-                        len(CSV_VALUES), len(config['chars'])))
+            elif target in ('csv', 'csvs'):
+                if len(config['chars']) != len(CSV_VALUES) and len(config['chars']) != len(CSV_VALUES) + 1:
+                    Error(_("--chars: Expected %i or %i chars, got %i") % (
+                        len(CSV_VALUES), len(CSV_VALUES) + 1, len(config['chars'])))
                 else:
                     CSV = dict(zip(CSV_KEYS, config['chars']))
 

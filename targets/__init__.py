@@ -27,7 +27,7 @@ RST_VALUES = '#*=-^"--'  # do not edit here, please use --chars
 RST = dict(zip(RST_KEYS, RST_VALUES))
 
 # CSV config
-CSV_KEYS = 'separator'.split()
+CSV_KEYS = 'separator quotechar'.split()
 CSV_VALUES = ','  # do not edit here, please use --chars
 CSV = dict(zip(CSV_KEYS, CSV_VALUES))
 
