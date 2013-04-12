@@ -26,6 +26,11 @@ RST_KEYS = 'title level1 level2 level3 level4 level5 bar1 bullet'.split()
 RST_VALUES = '#*=-^"--'  # do not edit here, please use --chars
 RST = dict(zip(RST_KEYS, RST_VALUES))
 
+# CSV config
+CSV_KEYS = 'separator'.split()
+CSV_VALUES = ','  # do not edit here, please use --chars
+CSV = dict(zip(CSV_KEYS, CSV_VALUES))
+
 
 ################################################################################
 # i18n - just use if available
