@@ -1,0 +1,5 @@
+
+%!encoding: UTF-8
+%!options: --chars unicode
+%!fen: --unicode test.fen
+%!fen: -u test.fen
