@@ -92,51 +92,9 @@
   content: " ======";
 }
 
-/* Titles - with underlines for H1, H2 */
-.rmd-h1-underline h1, h1.rmd-underline,
-.rmd-h2-underline h2, h2.rmd-underline {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  vertical-align: top;
-  padding-bottom: 1.4em;
-}
-/* Because of display:inline-block, heading and paragraph margins won't
-   collapse anymore, which may result in doubled margins. Fixing that.
-*/
-.rmd-h1-underline h1 + *, h1.rmd-underline + *,
-.rmd-h2-underline h2 + *, h2.rmd-underline + * {
-  margin-top: 0 !important;
-}
-/* Another dirty fix for display:inline-block woes: when we have a H1
-   followed by a H2, they may end up on the same line. Not really a fix. */
-.rmd-h2-underline h1 + h2, h1.rmd-underline + h2.rmd-underline {
-  display: block !important;
-}
-/* The top offset can be trashed if you want a full empty line before AND
-   after the H2. The offset value here is half the line-height. */
-.rmd-h2-underline h2, h2.rmd-underline {
-  top: .7em;
-  margin-top: 0;
-}
-.rmd-h1-underline h1:before, h1.rmd-underline:before,
-.rmd-h2-underline h2:before, h2.rmd-underline:before {
-  position: absolute;
-  bottom: 0; left: 0;
-  height: 1.4em;
-  overflow: hidden;
-}
-.rmd-h1-underline h1:before, h1.rmd-underline:before {
-  content: "================================================================"
-  "=========================================================================";
-}
-.rmd-h2-underline h2:before, h2.rmd-underline:before {
-  content: "----------------------------------------------------------------"
-  "-------------------------------------------------------------------------";
-}
 
 /* Titles - option for H1 */
-.rmd-h1-uppercase h1, h1.rmd-uppercase {
+.rt2t-h1-uppercase h1, h1.rt2t-uppercase {
   text-transform: uppercase;
 }
 
@@ -159,25 +117,22 @@
   font-variant: normal;
   text-decoration: none;
 }
-.rt2t-on i:before, .rt2t-on em:before, .rmd-em-star em:before, em.rmd-star:before,
-.rt2t-on i:after, .rt2t-on em:after, .rmd-em-star em:after, em.rmd-star:after {
+.rt2t-on i:before, .rt2t-on em:before, 
+.rt2t-on i:after, .rt2t-on em:after {
   content: "//";
 }
-.rt2t-on u:before, em.rmd-underscore:before,
-.rt2t-on u:after, em.rmd-underscore:after {
+.rt2t-on u:before, .rt2t-on strong:before
+.rt2t-on u:after, .rt2t-on strong:after {
   content: "__";
 }
-.rt2t-on strong:before, .rt2t-on b:before, strong.rmd-star:before,
-.rt2t-on strong:after, .rt2t-on b:after, strong.rmd-star:after {
+.rt2t-on strong:before, .rt2t-on b:before, 
+.rt2t-on strong:after, .rt2t-on b:after, {
   content: "**";
 }
-.rmd-strong-underscore strong:before, strong.rmd-underscore:before,
-.rmd-strong-underscore strong:after, strong.rmd-underscore:after {
-  content: "__";
-}
 
-.rt2t-on s:before, .rmd-s-star s:before, s.rmd-star:before,
-.rt2t-on s:after, .rmd-s-star s:after, s.rmd-star:after {
+
+.rt2t-on s:before,
+.rt2t-on s:after {
   content: "--";
 }
 
