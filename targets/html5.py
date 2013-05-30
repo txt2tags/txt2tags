@@ -3,7 +3,7 @@ A HTML5 target.
 """
 
 from targets import _
-from html import TYPE, RULES
+from html import TYPE
 import html
 
 NAME = _('HTML5 page')
@@ -70,6 +70,16 @@ TAGS = html.TAGS.copy()
 for tag in TAGS:
     TAGS[tag] = TAGS[tag].lower()
 HTML5TAGS = {
+    'title1Open'           : '<section~A~>\n<h1>\a</h1>' ,
+    'title1Close'          : '</section>'                ,
+    'title2Open'           : '<section~A~>\n<h2>\a</h2>' ,
+    'title2Close'          : '</section>'                ,
+    'title3Open'           : '<section~A~>\n<h3>\a</h3>' ,
+    'title3Close'          : '</section>'                ,
+    'title4Open'           : '<section~A~>\n<h4>\a</h4>' ,
+    'title4Close'          : '</section>'                ,
+    'title5Open'           : '<section~A~>\n<h5>\a</h5>' ,
+    'title5Close'          : '</section>'                ,
     'fontBoldOpen'         : '<strong>'       ,
     'fontBoldClose'        : '</strong>'      ,
     'fontItalicOpen'       : '<em>'           ,
@@ -99,3 +109,10 @@ HTML5TAGS = {
     'EOD'                  : '</article></body></html>'
 }
 TAGS.update(HTML5TAGS)
+
+RULES = html.RULES.copy()
+#Update the rules to use explicit <section> </section> tags
+HTML5RULES = {
+              'titleblocks' : 1,
+             }
+RULES.update(HTML5RULES)
