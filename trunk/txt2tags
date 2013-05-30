@@ -1922,6 +1922,16 @@ def getTags(config):
         '_tableCellAlignCenter': ' style="text-align:center"',
     },
     'html5': {
+        'title1Open'           : '<section~A~>\n<h1>\a</h1>' ,
+        'title1Close'          : '</section>'                ,
+        'title2Open'           : '<section~A~>\n<h2>\a</h2>' ,
+        'title2Close'          : '</section>'                ,
+        'title3Open'           : '<section~A~>\n<h3>\a</h3>' ,
+        'title3Close'          : '</section>'                ,
+        'title4Open'           : '<section~A~>\n<h4>\a</h4>' ,
+        'title4Close'          : '</section>'                ,
+        'title5Open'           : '<section~A~>\n<h5>\a</h5>' ,
+        'title5Close'          : '</section>'                ,
         'fontBoldOpen'         : '<strong>'       ,
         'fontBoldClose'        : '</strong>'      ,
         'fontItalicOpen'       : '<em>'           ,
@@ -3415,6 +3425,7 @@ def getRules(config):
         },
         'html5': {
             #TIP html5 inherits all HTML rules
+            'titleblocks' : 1,
         },
         'htmls': {
             #TIP htmls inherits all HTML rules
