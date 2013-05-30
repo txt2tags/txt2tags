@@ -17,7 +17,7 @@
 // - For your users, you should edit the '''/pmwiki/index.php/Site/EditQuickReference''' file and add for example:
 //    //Visit [txt2tags' website http://txt2tags.sourceforge.net/markup.html] to learn more about the syntax, or use the icons for quick formatting.//
 
-$RecipeInfo['txt2tags']['Version'] = '2013-03-10';
+$RecipeInfo['txt2tags']['Version'] = '2013-05-03';
 
 $MyGuiEditor = '$FarmPubDirUrl/t2tguiedit/';
 
@@ -304,7 +304,8 @@ XLSDV('fr', array(':: Attach File'=>':: Attacher un fichier'));
 	Markup('txt2tags_locallink2',  '>fulltext',  '/\[(.*?) local:\/\/(.*?)\]/',  '<a href="$2">$1</a>');
 	
 	//TODO
-	Markup('txt2tags_attachlink',  '<directives',  '/\[(.*?) Attach:(.*?)\]/',  '<a href="$UploadUrlFmt/$2">$1</a>');
+	//Markup('txt2tags_attachlink0',  '<directives',  '/\[(.*?) Attach:(.*?)\]/',  '<a href="$UploadUrlFmt/$2">$1</a>');
+	Markup('txt2tags_attachlink',  '<inline', '/\[(.*?) Attach:(.*?)\]/s', '[[http://intranet.local/pmwiki/uploads/$2|$1]]');
 
 # with simple "directive", pb link with images
 	Markup ('txt2tags_urllink_var'    , '<directives', '/\[(.*?) \|[ ]HTTPREP(.*?)\]/s', '[[HTTPREP$2|$1]]');	
