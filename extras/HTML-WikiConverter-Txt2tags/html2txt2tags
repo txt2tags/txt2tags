@@ -1,22 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 INSTALLPATH=/usr/local/bin
 
 # allow to pause the script until a keypress 
-pause(){
-   read -s -n 1 -p "$*"
+function pause(){
+   read -p "$*"
 }
 
 case $1 in
 	"")
-	echo -e "Usage: html2txt2tags http://URL (requires curl)\n       html2txt2tags file.html"
+	echo -e "Usage:\n       html2txt2tags http://URL (requires curl)\n       html2txt2tags file.html\n       html2txt2tags install (to install it into /usr/local/bin)"
 	;;
 	http://*)
-		echo "\n\n\n" && curl -s $1 | html2wiki --dialect Txt2tags  
+		echo -e "\n\n\n" && curl -s $1 | html2wiki --dialect Txt2tags
+        echo -e "\n\n[src $1]\n\n"
 		# add ' | sed -r -e "s@^=@\n=@g" ' to create a new line for broken headers
 	;;
 	install)
-	echo "We'll install this html2txt2tags script to:" ${INSTALLPATH}
+	echo -e "We\'ll install this html2txt2tags script to:" ${INSTALLPATH}
 		echo "(If you run this script with the correct rights)"
 		echo " "
 		echo "If you want to change the path, please edit this script."
@@ -31,7 +32,7 @@ case $1 in
 		echo "Release version is ../HTML-WikiConverter-Txt2tags.zip"
 	;;
 	*)
-		echo "\n\n\n" && cat $1 |  html2wiki --dialect Txt2tags  
+		echo "\n\n\n" && cat $1 |  html2wiki --dialect Txt2tags 
 	;;
 esac
 
