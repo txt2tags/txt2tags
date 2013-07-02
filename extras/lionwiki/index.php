@@ -314,6 +314,11 @@ if(!$action || $preview) { // page parsing
 	// This part will load the txt2tags class, and parse the txt file with it
 
 	require_once('txt2tags.class.php');
+	$CON = preg_replace("/=== (.*) ===/m", "!!$1", $CON);
+	$CON = preg_replace("/== (.*) ==/m", "!$1", $CON);
+	//$CON = str_replace("== (.*) ==", "!", $CON); 
+	//preg_match_all('/^(!+)(.*)$/m', $CON, $matches, PREG_SET_ORDER);
+	$stack = array();
 					$x = new T2T($CON);
 					$x->go();
 					$CON = $x->bodyhtml;
@@ -550,7 +555,8 @@ function get_paragraph($text, $par_id) {
 	$lines = explode("\n", $text);
 
 	foreach($lines as $l) {
-		if($l[0] == '!' && !$inside_html && !$inside_code) {
+		// t2t hack
+		if(($l[0] == '!' || $l[0] == '=') && !$inside_html && !$inside_code) {
 			for($excl = 1, $c = strlen($l); $excl < $c && $l[$excl] == '!'; $excl++);
 
 			if($count == $par_id) {
