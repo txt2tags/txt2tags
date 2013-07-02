@@ -4,6 +4,10 @@
 // and uses txt2tags.class.php to render the pages.
 // Don't forget to include txt2tags.class.php in the same folder as this file!
 
+// Use: Download and extract LionWiki from http://lionwiki.0o.cz/
+//      Add those files instead of the ones in the original installation.
+
+
 foreach($_REQUEST as $k => $v)
 	unset($$k); // register_globals = off
 
@@ -314,14 +318,16 @@ if(!$action || $preview) { // page parsing
 	// This part will load the txt2tags class, and parse the txt file with it
 
 	require_once('txt2tags.class.php');
-	$CON = preg_replace("/=== (.*) ===/m", "!!$1", $CON);
-	$CON = preg_replace("/== (.*) ==/m", "!$1", $CON);
-	//$CON = str_replace("== (.*) ==", "!", $CON); 
-	//preg_match_all('/^(!+)(.*)$/m', $CON, $matches, PREG_SET_ORDER);
-	$stack = array();
-					$x = new T2T($CON);
-					$x->go();
-					$CON = $x->bodyhtml;
+		$CON = preg_replace("/=====(.*)=====/m", "!!!$1", $CON);
+		$CON = preg_replace("/====(.*)====/m", "!!!$1", $CON);
+		$CON = preg_replace("/===(.*)===/m", "!!$1", $CON);
+		$CON = preg_replace("/==(.*)==/m", "!$1", $CON);
+		$stack = array();
+		$x = new T2T($CON);
+		//$x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
+		$x->go();
+		$CON = $x->bodyhtml;
+		
 	// end txt2tags part
 					
 	// subpages
@@ -555,7 +561,7 @@ function get_paragraph($text, $par_id) {
 	$lines = explode("\n", $text);
 
 	foreach($lines as $l) {
-		// t2t hack
+		// t2t hack to be able to edit a single paragraph. We don't include the numbered heading (+)
 		if(($l[0] == '!' || $l[0] == '=') && !$inside_html && !$inside_code) {
 			for($excl = 1, $c = strlen($l); $excl < $c && $l[$excl] == '!'; $excl++);
 
