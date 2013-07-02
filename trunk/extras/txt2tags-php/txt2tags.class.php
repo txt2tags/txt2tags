@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20121206";
+<?php $T2TVersion = "20130702";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -71,6 +71,7 @@ class T2T {
   var $title = '';       # the document title
   var $content = '';     # the content of the t2t file
   var $headers = '';     # the first 3 lines of the t2t file
+  var $disableheaders = 0; # disables the headers (default=0)
   var $config = '';      # the full config area, including ext.ref.
   var $bodytext = '';    # the full body text after inclusions
   var $bodyhtml = '';    # the innerHTML of the body of the output, no <html>...<head>
@@ -741,7 +742,10 @@ class T2T {
     $R = array();
     $R['header'] = $R['config'] = $R['body'] = array();
     # headers 
-    if($lines[0]=='') {
+	if ($this->disableheaders) {
+		$R['header'][0] = $R['header'][1] = $R['header'][2] = '';
+	}
+    else if($lines[0]=='') {
       $R['header'][0] = $R['header'][1] = $R['header'][2] = '';
       array_shift($lines);
     }
