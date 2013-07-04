@@ -1,11 +1,16 @@
-<?php // LionWiki-t2t 3.2.9b, (c) Adam Zivner, licensed under GNU/GPL v2
+<?php // LionWiki-t2t 3.2.9b
 
-// This version is a modified version of LionWiki 3.2.9 by Adam Zivner
+// This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
 // Don't forget to include txt2tags.class.php in the same folder as this file!
 
+
 // Use: Download and extract LionWiki from http://lionwiki.0o.cz/
 //      Add those files instead of the ones in the original installation.
+
+// If you set a password in this file, convert it to SHA1 first, or 
+//      if you use config.php, put your real password
+//      in plain text into $PASSWORD = sha1("password");
 
 
 foreach($_REQUEST as $k => $v)
