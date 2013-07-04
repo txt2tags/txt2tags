@@ -1,12 +1,13 @@
 <?php
 /**
  * BetterEditor is plugin for LionWiki which adds:
- * 1) toolbar with a few formatting buttons (bold, italics etc.)
+ * 1) toolbar with a few formatting buttons (bold, italics, headings etc.)
  * 2) resizing arrows which allow to resize the textarea
  *
  * Both are used for classical editing, Ajax editing and comments.
  *
  * (c) 2009, Adam Zivner, <adam.zivner@gmail.com>. GPL'd
+ *     modified in 2013 by Eric Forgeot for using with txt2tags
  */
 
 class BetterEditor
@@ -37,6 +38,11 @@ class BetterEditor
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'\\\/\\\/\', \'\\\/\\\/\', \''.$this->TP_ITALIC[2].'\');" title="'.$this->TP_ITALIC[1].'"><i style="font-family: serif;">'.$this->TP_ITALIC[0].'</i></a>
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'__\', \'__\', \''.$this->TP_UNDERLINED[2].'\');" title="'.$this->TP_UNDERLINED[1].'" style="text-decoration: underline;">'.$this->TP_UNDERLINED[0].'</a>
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'--\', \'--\', \''.$this->TP_STRIKETHROUGH[2].'\');" title="'.$this->TP_STRIKETHROUGH[1].'" style="text-decoration: line-through;">'.$this->TP_STRIKETHROUGH[0].'</a>
+	
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'== \', \' ==\', \''.$this->TP_H2[2].'\');" title="'.$this->TP_H2[1].'"><span style="font-variant: small-caps;">'.$this->TP_H2[0].'</span></a>
+	
+	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'=== \', \' ===\', \''.$this->TP_H3[2].'\');" title="'.$this->TP_H3[1].'"><span style="font-variant: small-caps;">'.$this->TP_H3[0].'</span></a>
+	
 	<a class="toolbarTextareaItem" href="javascript:" onclick="insertSyntax(this, \'[title \', \']\', \''.$this->TP_LINK[2].'\');" title="'.$this->TP_LINK[1].'" style="text-decoration: underline;">'.$this->TP_LINK[0].'</a>';
 
     // basic toolbar is used in comments plugin
@@ -80,6 +86,8 @@ class BetterEditor
 		array("TP_ITALIC", array("I", "Kurzíva", "kurzíva")),
 		array("TP_UNDERLINED", array("U", "Podtržení", "podtržení")),
 		array("TP_STRIKETHROUGH", array("S", "Přeškrtnutí", "přeškrtnutí")),
+		array("TP_H2", array("h2", "h2", "Heading level 2")),
+		array("TP_H3", array("h3", "h3", "Heading level 3")),
 		array("TP_LINK", array("link", "Wiki/Web odkaz", "http://")),
 		array("TP_IMAGE", array("obr", "Obrázek", "http://path/to/image")),
 		array("TP_CODE", array("kód", "Kód", "kód")),
@@ -94,6 +102,8 @@ class BetterEditor
 		array("TP_ITALIC", array("I", "Italic", "italic")),
 		array("TP_UNDERLINED", array("U", "Underlined", "underlined")),
 		array("TP_STRIKETHROUGH", array("S", "Strikethrough", "strikethrough")),
+		array("TP_H2", array("h2", "h2", "Heading level 2")),
+		array("TP_H3", array("h3", "h3", "Heading level 3")),
 		array("TP_LINK", array("link", "Wiki/Web link", "http://")),
 		array("TP_IMAGE", array("image", "Image", "http://path/to/image")),
 		array("TP_CODE", array("code", "Code", "code")),
@@ -108,6 +118,8 @@ class BetterEditor
 		array("TP_ITALIC", array("I", "Caractère italique", "italique")),
 		array("TP_UNDERLINED", array("S", "Caractère souligné", "souligné")),
 		array("TP_STRIKETHROUGH", array("B", "Caractère barré", "barré")),
+		array("TP_H2", array("h2", "h2", "Titre niveau 2")),
+		array("TP_H3", array("h3", "h3", "Titre niveau 3")),
 		array("TP_LINK", array("lien", "Lien Web/Wiki", "http://")),
 		array("TP_IMAGE", array("image", "Insérer une image", "http://path/to/image")),
 		array("TP_CODE", array("code", "Insérer un paragraphe en mode Code", "code")),
