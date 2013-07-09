@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130702";
+<?php $T2TVersion = "20130709";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -68,32 +68,37 @@
 
 class T2T {
   # these variables could be read or forced
-  var $title = '';       # the document title
-  var $content = '';     # the content of the t2t file
-  var $headers = '';     # the first 3 lines of the t2t file
-  var $disableheaders = 0; # disables the headers (default=0)
-  var $config = '';      # the full config area, including ext.ref.
-  var $bodytext = '';    # the full body text after inclusions
-  var $bodyhtml = '';    # the innerHTML of the body of the output, no <html>...<head>
-  var $fullhtml = '';    # the full <html>...</html> output
-  var $enabletoc = 0;    # automatically enabled if %%toc or %!options: --toc
-  var $enableinclude = 0;# allow file inclusions
-  var $maxtoclevels = 5; # h1-h? titles go into toc, same as %!options: --toc-level 1
-  var $mtime;            # last modified timestamp of the input file
-  var $date;             # timestamp of the current date
-  var $cssfile = '';     # the css file to be included in the HTML header
-  var $maskemail = 0;    # rewrite plaintext e-mail links
+  var $title = '';        # the document title
+  var $content = '';      # the content of the t2t file
+  var $headers = '';      # the first 3 lines of the t2t file
+  var $enableheaders = 1; # enables the first 3 lines headers    (default=1)
+  var $enableproc = 1;    # enables the pre and post processor   (default=1)
+  var $enabletagged = 1;  # enables the tagged mark (''tagged'') (default=1)
+  var $enableraw = 1;     # enables the raw mark (""raw"")       (default=1)
+  var $enableverbatim = 1;# enables the verbatim mark (``raw``)  (default=1)
+  var $config = '';       # the full config area, including ext.ref.
+  var $bodytext = '';     # the full body text after inclusions
+  var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
+  var $fullhtml = '';     # the full <html>...</html> output
+  var $enabletoc = 0;     # automatically enabled if %%toc or %!options: --toc
+  var $enableinclude = 0; # allow file inclusions
+  var $maxtoclevels = 5;  # h1-h? titles go into toc, same as %!options: --toc-level 1
+  var $mtime;             # last modified timestamp of the input file
+  var $date;              # timestamp of the current date
+  var $cssfile = '';      # the css file to be included in the HTML header
+  var $maskemail = 0;     # rewrite plaintext e-mail links
   var $encoding = "UTF-8";             # assume default encoding if none in file
   var $parsetargets = "html|xhtml";    # accept %!command(html) and %!command(xhtml)
   var $snippets = array(
-  'header1'         => "<h1>%s</h1>\n",# text (first line of file)
-  'header2'         => "<h2>%s</h2>\n",# text
-  'header3'         => "<h3>%s</h3>\n",# text
-  'headerwrap'      => "<div style='text-align:center;'>\n%s</div>\n",# headers
-  'title'           => '<h%d id="%s">%s</h%1$d>',# level, id, text
+  'header1'         => "<h1>%s</h1>\n", # text (first line of file)
+  'header2'         => "<h2>%s</h2>\n", # text
+  'header3'         => "<h3>%s</h3>\n", # text
+  'headerwrap'      => "<div style='text-align:center;'>\n%s</div>\n", # headers
+  'title'           => '<h%d id="%s">%s</h%1$d>', # level, id, text
+  'title'           => '<h%d id="%s">%s</h%1$d>', # level, id, text
   'hrule'           => '<hr class="%s"/>', # light|heavy
-  'verbatim'        => "<pre>\n%s</pre>", # content
-  'mono'            => '<code>%s</code>', # content
+  'verbatim'        => "<pre>\n%s</pre>",  # content
+  'mono'            => '<code>%s</code>',  # content
   'center'          => "<center>%s</center>", # content
   'img'             => '<img align="%s" src="%s" border="0" alt=""/>', # align, url
   'link'            => '<a href="%s">%s</a>', # url, text
@@ -210,8 +215,16 @@ class T2T {
         switch(strtolower($setting)) {
           case "encoding" : $this->encoding = trim($val); break;
           case "style" : $this->csslink = sprintf($this->snippets['cssfile'], trim($val)); 
-          case "preproc"  : $this->preproc[]  = $this->add_proc($setting, trim($val)); break;
-          case "postproc" : $this->postproc[] = $this->add_proc($setting, trim($val)); break;
+          case "preproc"  : 
+			if ($this->enableproc == 1) {
+				$this->preproc[]  = $this->add_proc($setting, trim($val)); 
+				break;
+			}
+          case "postproc" : 
+			if ($this->enableproc == 1) {
+				$this->postproc[] = $this->add_proc($setting, trim($val)); 
+				break;
+			}
           case "options": 
             if(strpos(" $val", '--mask-email')) $this->maskemail = 1;
             if(preg_match('/--toc(?!-)/', $val)) $this->enabletoc = 1;
@@ -678,15 +691,31 @@ class T2T {
   function closeRTV(&$type, &$x) { # Raw, Tagged or Verbadim lines/areas
     switch($type{0}) {
       case '%': $type = $x = ''; return '';
-      case "'": $y = $x; break;
+      case "'": 
+		if ($this->enabletagged == 1) {
+			$y = $x; 
+			break;
+		}
+			
       case '"': # raw
-        $y = $this->esc($x);
-        break;
+		if ($this->enableraw == 1) {
+			$y = $this->esc($x);
+			break;
+		}
       case '`': # verbatim, mono
-        $s = $this->snippets;
-        $fmt = (strlen($type)==2) ? $s['mono'] : $s['verbatim'];
-        $y = sprintf($fmt, $this->esc($x));
-        break;
+		if ($this->enableverbatim == 1) {
+			$s = $this->snippets;
+			$fmt = (strlen($type)==2) ? $s['mono'] : $s['verbatim'];
+			$y = sprintf($fmt, $this->esc($x));
+			break;
+		}
+		else {
+			/*$s = $this->snippets;*/
+			$y = $this->esc($x);
+			/*$fmt = (strlen($type)==2) ? $s['mono'] : $s['verbatim'];
+			$y = sprintf($fmt, $this->esc($x));
+			break;*/
+		}
     }
     $block = (strlen($type)==3) ? "\033\033" : '';
     $type = $x = '';
@@ -742,7 +771,7 @@ class T2T {
     $R = array();
     $R['header'] = $R['config'] = $R['body'] = array();
     # headers 
-	if ($this->disableheaders) {
+	if ($this->enableheaders == 0) {
 		$R['header'][0] = $R['header'][1] = $R['header'][2] = '';
 	}
     else if($lines[0]=='') {
