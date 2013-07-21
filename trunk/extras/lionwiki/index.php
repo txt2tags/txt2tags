@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.9b
+<?php // LionWiki-t2t 3.2.9c
 
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
@@ -323,12 +323,18 @@ if(!$action || $preview) { // page parsing
 	// This part will load the txt2tags class, and parse the txt file with it
 
 	require_once('txt2tags.class.php');
+		$CON = preg_replace("/=================(.*)/", "--------------------", $CON);
 		$CON = preg_replace("/=====(.*)=====/m", "!!!$1", $CON);
 		$CON = preg_replace("/====(.*)====/m", "!!!$1", $CON);
 		$CON = preg_replace("/===(.*)===/m", "!!$1", $CON);
 		$CON = preg_replace("/==(.*)==/m", "!$1", $CON);
+		// heading 1 = heading 2 here:
+		$CON = preg_replace("/=(.*)=/m", "!$1", $CON);
+		$CON = preg_replace("/%%toc/m", "{TOC}", $CON);
 		$stack = array();
 		$x = new T2T($CON);
+	// doesn't work yet, you have to enable it in the txt2tags.class.php:
+		$x->enableheaders = 0;
 		//$x->snippets['**'] = "<strong>%s</strong>"; # instead of <b>
 		$x->go();
 		$CON = $x->bodyhtml;
@@ -417,7 +423,8 @@ if(!$action || $preview) { // page parsing
 		$CON = str_replace($img[0], $tag, $CON);
 	}
 
-	$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
+	// txt2tags is already doing that so we remove this part:
+	//$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
 
 	// links
 	$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
