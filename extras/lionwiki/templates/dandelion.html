@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- CSS based on template of Dandelion wiki engine by Radomir Dopieralski who released this
+	template under the terms of GNU GPL. http://dandelion.sheep.art.pl/ -->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>{PAGE_TITLE_HEAD  - }{WIKI_TITLE}</title>
+	<style type="text/css">
+html{font:96% sans-serif;background:#f7f7f7;line-height:1.4}
+body{color:#333}
+#wrapper{margin:auto;max-width:60em;position:relative}
+#header{padding:0px 0px 7px 0px}
+#content{background:white;padding:1em;border:1px solid #e0d78a;outline:0.5em solid #fef4a4;margin:0.5em 0;padding:20px;min-height:20em}
+#content *{outline: 0}
+h1{margin-top:0px;}
+h1,h2,h3,h4,h5,h6{letter-spacing:0.05em;color:#1474CA;font-weight:normal}
+h2 span.par-edit,h3 span.par-edit,h4 span.par-edit,h5 span.par-edit,h6 span.par-edit{display:none}
+h2:hover span.par-edit,h3:hover span.par-edit,h4:hover span.par-edit,h5:hover span.par-edit,h6:hover span.par-edit{display:inline;font-size:x-small}
+a{color:#1474CA;text-decoration:none}
+a:visited{color:#1474CA}
+a.pending{color:#c174a0}
+a:hover{text-decoration:underline}
+a img{border:none}
+a.external:after{content: "\2197";}
+input,textarea{font-size:94%;border:1px solid #999;background:#fff;color:#666;outline:0.2em solid #eee;padding:0px;line-height:1.2;margin:0.5em;vertical-align:middle}
+textarea{display:block;margin:0.5em auto;width:100%}
+pre{padding:0.5em;margin:0.5em;border:1px solid #e0d78a;background:#fef4a4;color:#644e22;overflow:auto;outline:0.4em solid #eee !important;}
+img{border:1px solid #ccc;outline:0.25em solid #eee;padding:0.25em;margin:0.25em 0 0.25em 0.5em;background:#fff}
+hr{height:0;border:none;color:#fff;background:transparent;border-bottom:1px solid #ccc; margin:0.5em 0}
+#diff{outline:none;border:none;background:#fff;line-height:1.25;padding:1em;white-space:pre-wrap;word-wrap:break-word;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;width:97%}
+#diff ins{color:green;text-decoration:none;font-weight:bold}
+#diff del{color:red;text-decoration:line-through}
+hr{margin:10px 0 10px 0;height:0px;overflow:hidden;border:0px;border-top:2px solid #1474CA}
+.error{color:#F25A5A;font-weight:bold}
+form{display:inline}
+#contentTextarea{height:44em}
+#toc{margin:5px 0 5px 10px;padding:6px 5px 7px 0px;float:right;list-style:none;outline:0.4em solid #eee;background:#fef4a4;border:1px solid #e0d78a}
+#toc ul{list-style:none;padding:3px 0 3px 10px}
+#toc li{font-size:11px;padding-left:10px}
+.rc-diff, .rc-date, .rc-ip, .rc-size {font-size: smaller}
+/* Following are plugin specific styles */
+.pageVersionsList{letter-spacing:0px;font-variant:normal;font-size:12px}
+#renameForm{float:left}
+.clear{clear:both}
+.tagList{padding:0.2em 0.4em 0.2em 0.4em;margin-top:0.5em;border:1px dashed #e0d78a;background:#fef4a4;color:#644e22}
+.tagCloud{padding:0.4em 0.6em 0.4em 0.6em;float:right;width:200px;margin:1em;border:1px dashed #e0d78a;background:#fef4a4;color:#644e22}
+#fileTable{border-collapse:collapse}
+#fileTable td{border:1px solid #FEF4A4;padding:2px 6px 2px 6px}
+.comment-item{border:1px solid #999;color:#666;outline:0.2em solid #eee}
+.resizeTextareaDiv{margin-top: 5px}
+a.toolbarTextareaItem{padding-right: 10px}
+.wikitable{border-collapse:collapse}
+.wikitable td{border: 1px solid #DDDDDD;padding:1px 5px 1px 5px}
+	</style>
+  {HEAD}
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div align="right">{HOME} {&nbsp;&nbsp; RECENT_CHANGES}</div>
+	</div>
+	<div id="content">
+		<h1 id="page-title">{PAGE_TITLE} {<span class="pageVersionsList">( plugin:VERSIONS_LIST )</span>}</h1>
+		{<div class="error"> ERROR </div>}
+		{CONTENT}
+		{plugin:TAG_LIST}
+		{CONTENT_FORM}
+		<table style="width: 100%;">
+			<tr>
+				<td>{RENAME_TEXT }{RENAME_INPUT }{plugin:TOOLBAR_TEXTAREA}</td>
+				<td colspan="2" style="text-align: right;" nowrap="nowrap">{SHOW_PAGE  &nbsp; }{SYNTAX}</td>
+			</tr>
+			<tr>
+				<td colspan="3">{CONTENT_TEXTAREA}</td>
+			</tr>
+			<tr>
+				<td colspan="2">{FORM_PASSWORD}{  FORM_PASSWORD_INPUT}{  plugin:CAPTCHA_QUESTION}{  plugin:CAPTCHA_INPUT}{  EDIT_SUMMARY_TEXT}{  EDIT_SUMMARY_INPUT}{  CONTENT_SUBMIT}{  CONTENT_PREVIEW}</td>
+				<td style="text-align: right; vertical-align: top;">{plugin:RESIZE_TEXTAREA}</td>
+			</tr>
+		</table>
+		{/CONTENT_FORM}
+
+		{plugin:COMMENTS}
+	</div>
+	<div id="footer">
+		<div style="float:left;">
+		{SEARCH_FORM}{SEARCH_INPUT}{SEARCH_SUBMIT}{/SEARCH_FORM} Powered by <a href="http://lionwiki.0o.cz/">LionWiki</a>
+		</div>
+		<div style="float:right;padding:7px;">{EDIT} {&nbsp;&nbsp; HISTORY}</div>
+	</div>
+</div>
+</body>
+</html>

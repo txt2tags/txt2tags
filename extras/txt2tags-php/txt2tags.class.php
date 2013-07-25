@@ -710,11 +710,7 @@ class T2T {
 			break;
 		}
 		else {
-			/*$s = $this->snippets;*/
 			$y = $this->esc($x);
-			/*$fmt = (strlen($type)==2) ? $s['mono'] : $s['verbatim'];
-			$y = sprintf($fmt, $this->esc($x));
-			break;*/
 		}
     }
     $block = (strlen($type)==3) ? "\033\033" : '';
