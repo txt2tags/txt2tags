@@ -398,7 +398,8 @@ if(!$action || $preview) { // page parsing
 	$CON = preg_replace("/\{small\}(.*)\{\/small\}/U", "<small>$1</small>", $CON); // small
 	$CON = preg_replace("/\{su([bp])\}(.*)\{\/su([bp])\}/U", "<su$1>$2</su$3>", $CON); // sup and sub
 
-	$CON = preg_replace("/^([^!\*#\n][^\n]+)$/Um", '<p>$1</p>', $CON); // paragraphs
+	// txt2tags.class.php is already doing this part:
+	//$CON = preg_replace("/^([^!\*#\n][^\n]+)$/Um", '<p>$1</p>', $CON); // paragraphs
 
 	// images
 	preg_match_all("#\[((https?://|\./)[^|\]\"]+\.(jpeg|jpg|gif|png))(\|[^\]]+)?\]#", $CON, $imgs, PREG_SET_ORDER);
@@ -427,8 +428,8 @@ if(!$action || $preview) { // page parsing
 	//$CON = preg_replace('#([0-9a-zA-Z\./~\-_]+@[0-9a-z/~\-_]+\.[0-9a-z\./~\-_]+)#i', '<a href="mailto:$0">$0</a>', $CON); // mail recognition
 
 	// links
-	$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
-	$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
+	//$CON = preg_replace("#\[([^\]\|]+)\|(\./([^\]]+)|(https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*))\]#U", '<a href="$2" class="external">$1</a>', $CON);
+	//$CON = preg_replace("#(?<!\")https?://[0-9a-zA-Z\.\#/~\-_%=\?\&,\+\:@;!\(\)\*\$']*#i", '<a href="$0" class="external">$0</a>', $CON);
 
 	preg_match_all("/\[(?:([^|\]\"]+)\|)?([^\]\"#]+)(?:#([^\]\"]+))?\]/", $CON, $matches, PREG_SET_ORDER); // matching Wiki links
 
