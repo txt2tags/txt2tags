@@ -5016,6 +5016,7 @@ class CsvOptions(BaseOptions):
             'headers': 0,
             'borders': 0,
             'center': 0,
+            'utf8': 0,
         }
         self.short_long = {
             'b': 'borders',
@@ -5023,6 +5024,7 @@ class CsvOptions(BaseOptions):
             'h': 'headers',
             's': 'separator',
             'q': 'quotechar',
+            'u': 'utf8',
         }
 
         BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
@@ -9288,6 +9290,7 @@ def convert(bodylines, config, firstlinenr=1):
                 csv_headers = csvopt.get('headers')
                 csv_borders = csvopt.get('borders')
                 csv_center = csvopt.get('center')
+                csv_utf8 = csvopt.get('utf8')
 
                 if not filename:
                     Error(_('%!CSV command: Missing CSV file path:') + ' ' + val)
@@ -9301,6 +9304,15 @@ def convert(bodylines, config, firstlinenr=1):
                     reader = csv.reader(Readfile(filename), delimiter=csv_separator, quotechar=csv_quotechar, quoting=csv.QUOTE_MINIMAL)
                 else:
                     reader = csv.reader(Readfile(filename), delimiter=csv_separator, quoting=csv.QUOTE_NONE)
+
+                if csv_utf8: 
+                    reader_utf8 = []
+                    for line in reader:
+                        line_utf8 = []
+                        for el in line:
+                            line_utf8.append(el.decode('utf-8'))
+                        reader_utf8.append(line_utf8)
+                    reader = reader_utf8
 
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
