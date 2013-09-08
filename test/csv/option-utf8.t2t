@@ -1,0 +1,8 @@
+
+%!encoding: utf-8
+With utf-8 support:
+%!csv: -h --utf8 utf8.csv
+With utf-8 support:
+%!csv: -h -u utf8.csv
+Without utf-8 support (default):
+%!csv: -h utf8.csv
