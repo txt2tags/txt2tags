@@ -198,6 +198,7 @@ OPTIONS = {
     'chars': '',
     'show-config-value': '',
     'template': '',
+    'mailing': '',
     'dirname': '',  # internal use only
     }
 ACTIONS = {
@@ -7662,6 +7663,7 @@ def post_voodoo(lines, config):
 def finish_him(outlist, config):
     "Writing output to screen or file"
     outfile = config['outfile']
+    file_dict = {}
     outlist = unmaskEscapeChar(outlist)
     outlist = expandLineBreaks(outlist)
 
@@ -7683,15 +7685,45 @@ def finish_him(outlist, config):
     if config['postvoodoo']:
         outlist = post_voodoo(outlist, config)
 
+    if config['mailing']:
+        reader = csv.reader(Readfile(config['mailing']), quoting=csv.QUOTE_NONE)
+        header = reader.next()
+        repl_dict = {}
+        for i, el in enumerate(header):
+            repl_dict[el] = i
+        for i, val in enumerate(reader):
+            write_file = outfile
+            for key in repl_dict:
+                write_file = write_file.replace('<<%s>>' % key, val[repl_dict[key]])
+            point = outfile.rfind('.')
+            if write_file == outfile:
+                if point == -1:
+                    write_file = outfile + '_' + str(i + 1)
+                else:
+                    write_file = outfile[:point] + '_' + str(i + 1) + outfile[point:]
+            newout = []
+            for line in outlist:
+                for key in repl_dict:
+                    line = line.replace('<<%s>>' % key, val[repl_dict[key]])
+                newout.append(line)
+            file_dict[write_file] = newout
+    else:
+        file_dict[outfile] = outlist
+
     if config['target'] == 'db':
         DBC.close()
         if outfile in [MODULEOUT, STDOUT]:
             outlist = [open(config['outfile']).read()]
             os.remove(config['outfile'])
 
+    outlist = []
     if outfile == MODULEOUT:
+        for write_file in file_dict:
+            outlist.append(file_dict[write_file])
         return outlist
     elif outfile == STDOUT:
+        for write_file in file_dict:
+            outlist.extend(file_dict[write_file])
         if GUI:
             return outlist, config
         else:
@@ -7699,9 +7731,11 @@ def finish_him(outlist, config):
                 print line
     else:
         if not config['target'] == 'db':
-            Savefile(outfile, addLineBreaks(outlist))
+            for write_file in file_dict:
+                Savefile(write_file, addLineBreaks(file_dict[write_file]))
         if not GUI and not QUIET:
-            print _('%s wrote %s') % (my_name, outfile)
+            for write_file in file_dict:
+                print _('%s wrote %s') % (my_name, write_file)
 
     if config['split']:
         if not QUIET:
