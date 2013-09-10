@@ -4020,12 +4020,12 @@ def finish_him(outlist, config):
             write_file = outfile
             for key in repl_dict:
                 write_file = write_file.replace('<<%s>>' % key, val[repl_dict[key]])
-            point = outfile.rfind('.')
-            if write_file == outfile:
+            point = write_file.rfind('.')
+            if write_file == outfile or write_file in file_dict:
                 if point == -1:
-                    write_file = outfile + '_' + str(i + 1)
+                    write_file = write_file + '_' + str(i + 1)
                 else:
-                    write_file = outfile[:point] + '_' + str(i + 1) + outfile[point:]
+                    write_file = write_file[:point] + '_' + str(i + 1) + write_file[point:]
             newout = []
             for line in outlist:
                 for key in repl_dict:
