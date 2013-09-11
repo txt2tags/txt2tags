@@ -4017,8 +4017,8 @@ def finish_him(outlist, config):
         repl_dict = {}
         for i, val in enumerate(reader):
             if i == 0:
-                for i, el in enumerate(val):
-                    repl_dict[el] = i
+                for j, el in enumerate(val):
+                    repl_dict[el] = j
             else:     
                 write_file = outfile
                 for key in repl_dict:
