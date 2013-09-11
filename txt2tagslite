@@ -4053,6 +4053,8 @@ def finish_him(outlist, config):
             return outlist, config
         else:
             for line in outlist:
+                if isinstance(line, unicode):
+                    line = line.encode('utf-8')
                 print line
     else:
         if not config['target'] == 'db':
