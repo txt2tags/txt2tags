@@ -198,7 +198,6 @@ OPTIONS = {
     'chars': '',
     'show-config-value': '',
     'template': '',
-    'mailing': '',
     'dirname': '',  # internal use only
     }
 ACTIONS = {
@@ -397,6 +396,7 @@ TITLE = None
 regex = {}
 TAGS = {}
 rules = {}
+MAILING = ''
 
 # Gui globals
 Tkinter = tkFileDialog = tkMessageBox = None
@@ -5018,6 +5018,7 @@ class CsvOptions(BaseOptions):
             'borders': 0,
             'center': 0,
             'utf8': 0,
+            'mailing': 0,
         }
         self.short_long = {
             'b': 'borders',
@@ -5026,6 +5027,7 @@ class CsvOptions(BaseOptions):
             's': 'separator',
             'q': 'quotechar',
             'u': 'utf8',
+            'm': 'mailing',
         }
 
         BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
@@ -7685,28 +7687,29 @@ def finish_him(outlist, config):
     if config['postvoodoo']:
         outlist = post_voodoo(outlist, config)
 
-    if config['mailing']:
-        reader = csv.reader(Readfile(config['mailing']), quoting=csv.QUOTE_NONE)
-        header = reader.next()
+    if MAILING and not rules['tableonly']:
+        reader = MAILING
         repl_dict = {}
-        for i, el in enumerate(header):
-            repl_dict[el] = i
         for i, val in enumerate(reader):
-            write_file = outfile
-            for key in repl_dict:
-                write_file = write_file.replace('<<%s>>' % key, val[repl_dict[key]])
-            point = write_file.rfind('.')
-            if write_file == outfile or write_file in file_dict:
-                if point == -1:
-                    write_file = write_file + '_' + str(i + 1)
-                else:
-                    write_file = write_file[:point] + '_' + str(i + 1) + write_file[point:]
-            newout = []
-            for line in outlist:
+            if i == 0:
+                for i, el in enumerate(val):
+                    repl_dict[el] = i
+            else:     
+                write_file = outfile
                 for key in repl_dict:
-                    line = line.replace('<<%s>>' % key, val[repl_dict[key]])
-                newout.append(line)
-            file_dict[write_file] = newout
+                    write_file = write_file.replace('<<%s>>' % key, val[repl_dict[key]])
+                point = write_file.rfind('.')
+                if write_file == outfile or write_file in file_dict:
+                    if point == -1:
+                        write_file = write_file + '_' + str(i)
+                    else:
+                        write_file = write_file[:point] + '_' + str(i) + write_file[point:]
+                newout = []
+                for line in outlist:
+                    for key in repl_dict:
+                        line = line.replace('<<%s>>' % key, val[repl_dict[key]])
+                    newout.append(line)
+                file_dict[write_file] = newout
     else:
         file_dict[outfile] = outlist
 
@@ -9327,6 +9330,7 @@ def convert(bodylines, config, firstlinenr=1):
                 csv_borders = csvopt.get('borders')
                 csv_center = csvopt.get('center')
                 csv_utf8 = csvopt.get('utf8')
+                csv_mailing = csvopt.get('mailing')
 
                 if not filename:
                     Error(_('%!CSV command: Missing CSV file path:') + ' ' + val)
@@ -9352,13 +9356,20 @@ def convert(bodylines, config, firstlinenr=1):
 
                 # Convert each CSV line to a txt2tags' table line
                 # foo,bar,baz -> | foo | bar | baz |
-                try:
-                    table = convert_to_table(reader, csv_headers, csv_borders, csv_center)
-                except csv.Error, e:
-                    Error('CSV: file %s: %s' % (filename, e))
-
-                # Parse and convert the new table
-                ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
+                if not csv_mailing:
+                    try:
+                        table = convert_to_table(reader, csv_headers, csv_borders, csv_center)
+                    except csv.Error, e:
+                        Error('CSV: file %s: %s' % (filename, e))
+                    else:
+                        # Parse and convert the new table
+                        ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
+                else:
+                    global MAILING
+                    if not MAILING:
+                        MAILING = reader
+                    else:
+                        Error("Mailing: a document can't be linked to more than one db")
 
                 # This line is done, go to next
                 continue
