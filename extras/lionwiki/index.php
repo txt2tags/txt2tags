@@ -1,4 +1,4 @@
-<?php // LionWiki-t2t 3.2.9c
+<?php // LionWiki-t2t 3.2.9d - 2013-08-14
 
 // This version (modified by Eric Forgeot) is an altered version of LionWiki 3.2.9 (c) Adam Zivner, licensed under GNU/GPL v2
 // and uses txt2tags.class.php to render the pages.
@@ -11,7 +11,16 @@
 // If you set a password in this file, convert it to SHA1 first, or 
 //      if you use config.php, put your real password
 //      in plain text into $PASSWORD = sha1("password");
-
+//
+// <!> SECURITY WARNING: You should install this wiki in its current 
+//        configuration for personal webpages or notepad only.
+//        if you intend to use this wiki for a public wiki, with edit access
+//        for everyone, it could lead to some potential security gap:
+//          - Txt2tags allows to alter virtually everything with its pre
+//               and postproc feature. You can disable it in txt2tags.class.php
+//          - It's possible to include php code with this current lionwiki
+//               version. You should disable this in the part labelled 
+//               "security warning" below.
 
 foreach($_REQUEST as $k => $v)
 	unset($$k); // register_globals = off
@@ -172,7 +181,8 @@ if($action == 'save' && !$preview && authentified()) { // do we have page to sav
 		if(!$file = @fopen("$PG_DIR$page.txt", 'w'))
 			die("Could not write page $PG_DIR$page.txt!");
 
-		$content = str_replace("<", "&lt;", $content); // prevetion of php code inclusion
+		// Security warning: if you don't protect your wiki to public edition, people might be able to include php code. Uncomment the following line to prevent this:
+        //$content = str_replace("<", "&lt;", $content); // prevention of php code inclusion
 		
 		fwrite($file, $content); fclose($file);
 
