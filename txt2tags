@@ -5073,12 +5073,14 @@ class DbOptions(BaseOptions):
             'borders': 0,
             'center': 0,
             'headers': 0,
+            'mailing': 0,
         }
         self.short_long = {
             'b': 'borders',
             'c': 'center',
             'h': 'headers',
             'q': 'query',
+            'm': 'mailing',
         }
 
         BaseOptions.__init__(self, cmdline, self.dft_options, self.dft_flags, self.short_long)
@@ -9194,6 +9196,7 @@ def convert(bodylines, config, firstlinenr=1):
         if regex['special'].search(line):
 
             targ, key, val = ConfigLines().parse_line(line, None, target)
+            global MAILING
 
             if key:
                 Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
@@ -9282,7 +9285,10 @@ def convert(bodylines, config, firstlinenr=1):
                 db_borders = dbopt.get('borders')
                 db_center = dbopt.get('center')
                 db_headers = dbopt.get('headers')
-                
+                db_mailing = dbopt.get('mailing')
+                if db_mailing:           
+                    db_headers = True
+
                 sqlite3.register_converter('NULL', unicode)
                 sqlite3.register_converter('INTEGER', unicode)
                 sqlite3.register_converter('REAL', unicode)
@@ -9309,11 +9315,17 @@ def convert(bodylines, config, firstlinenr=1):
 
                 db.close()
 
-                for tab in result:
-                    # Convert each DB line to a txt2tags' table line
-                    table = convert_to_table(tab, db_headers, db_borders, db_center)
-                    # Parse and convert the new table
-                    ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
+                if not db_mailing:
+                    for tab in result:
+                        # Convert each DB line to a txt2tags' table line
+                        table = convert_to_table(tab, db_headers, db_borders, db_center)
+                        # Parse and convert the new table
+                        ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
+                else:
+                    if not MAILING and not len(result) > 1:
+                        MAILING = result[0]
+                    else:
+                        Error("Mailing: a document can't be linked to more than one db")
 
                 # This line is done, go to next
                 continue
@@ -9365,7 +9377,6 @@ def convert(bodylines, config, firstlinenr=1):
                         # Parse and convert the new table
                         ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
                 else:
-                    global MAILING
                     if not MAILING:
                         MAILING = reader
                     else:
