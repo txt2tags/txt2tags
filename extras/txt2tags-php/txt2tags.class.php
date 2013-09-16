@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130709";
+<?php $T2TVersion = "20130814";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -71,7 +71,7 @@ class T2T {
   var $title = '';        # the document title
   var $content = '';      # the content of the t2t file
   var $headers = '';      # the first 3 lines of the t2t file
-  var $enableheaders = 1; # enables the first 3 lines headers    (default=1)
+  var $enableheaders = 0; # enables the first 3 lines headers    (default=1)
   var $enableproc = 1;    # enables the pre and post processor   (default=1)
   var $enabletagged = 1;  # enables the tagged mark (''tagged'') (default=1)
   var $enableraw = 1;     # enables the raw mark (""raw"")       (default=1)
@@ -81,7 +81,7 @@ class T2T {
   var $bodyhtml = '';     # the innerHTML of the body of the output, no <html>...<head>
   var $fullhtml = '';     # the full <html>...</html> output
   var $enabletoc = 0;     # automatically enabled if %%toc or %!options: --toc
-  var $enableinclude = 0; # allow file inclusions
+  var $enableinclude = 1; # allow file inclusions 
   var $maxtoclevels = 5;  # h1-h? titles go into toc, same as %!options: --toc-level 1
   var $mtime;             # last modified timestamp of the input file
   var $date;              # timestamp of the current date
@@ -94,7 +94,6 @@ class T2T {
   'header2'         => "<h2>%s</h2>\n", # text
   'header3'         => "<h3>%s</h3>\n", # text
   'headerwrap'      => "<div style='text-align:center;'>\n%s</div>\n", # headers
-  'title'           => '<h%d id="%s">%s</h%1$d>', # level, id, text
   'title'           => '<h%d id="%s">%s</h%1$d>', # level, id, text
   'hrule'           => '<hr class="%s"/>', # light|heavy
   'verbatim'        => "<pre>\n%s</pre>",  # content
@@ -291,7 +290,7 @@ class T2T {
         continue;
       }
       
-      if($line!='' && $line{0}=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|toc\\s*$)/i', $line) )
+      if($line!='' && $line{0}=='%' && ! preg_match('/^%%(infile|outfile|date|mtime|rand|toc\\s*$)/i', $line) )
         continue; # remove comment lines
         
       # special lines raw, tagged, verbatim
@@ -677,6 +676,11 @@ class T2T {
     $line = preg_replace('/%%outfile(?:\\((.*?)\\))?/ie', 
       '"$1" ? str_replace(array_keys($this->outfile), array_values($this->outfile), "$1")
       : $this->outfile["%f"]', $line);
+     $regexx = '%%rand\([0-9]+,[0-9]+\)';
+    $line = preg_replace_callback('/%%rand\([0-9]+,[0-9]+\)/', 
+      'create_function(return(rand($1,$2);))', $line);
+    //$line = preg_replace_callback('/%%rand\\(([0-9]+),([0-9]+)\\)/', 
+     // 'return(rand($1,$2);)', $line);
     return $line;
   }
   
@@ -798,7 +802,7 @@ class T2T {
         continue;
       }
       
-      if($line{0} != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile)|! *include)/i', $line)) {
+      if($line{0} != '%' || preg_match('/^%(%(date|mtime|toc|infile|outfile|rand)|! *include)/i', $line)) {
         array_unshift($lines, $line); 
         break;
       }
