@@ -1,4 +1,4 @@
-.TH "TXT2TAGS SAMPLE" 1 "03/19/2013" "Aurelio Jargas"
+.TH "TXT2TAGS SAMPLE" 1 "03/15/2013" "Aurelio Jargas"
 
 .P
 This text is before the introduction.
@@ -294,10 +294,10 @@ are escaped.
 .P
 The handy %%date macro expands to the current date.
 .P
-So today is 20131001 on the ISO YYYYMMDD format.
+So today is 20131107 on the ISO YYYYMMDD format.
 .P
 You can also specify the date format with the %? flags,
-as %%date(%m\-%d\-%Y) which gives: 10\-01\-2013.
+as %%date(%m\-%d\-%Y) which gives: 11\-07\-2013.
 .P
 That's all for now.
 

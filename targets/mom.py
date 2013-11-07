@@ -15,7 +15,7 @@ TYPE = 'office'
 # commands and variables to customize for specific needs.
 # These few lines of commands are sufficient anyway for a good
 # postscript typesetted document (and so also pdf): the author
-# of "mom" is a professional typoghrapher so the typesetting
+# of "mom" is a professional typographer so the typesetting
 # defaults are pleasant and sane.  See mom's author site:
 # http://www.schaffter.ca/mom/mom-01.html that's a good
 # example of documentation too!
@@ -23,6 +23,8 @@ TYPE = 'office'
 # I put here a lot of options, commented or not, to let you
 # see the possibilities but there many more...
 # NB: use "-k" option for groff if input/output is UTF-8
+#
+# usage: groff -k -m mom sample.mom > sample.ps
 #
 HEADER = """\
 \# Cover and title
