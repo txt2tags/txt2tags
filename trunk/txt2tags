@@ -275,6 +275,7 @@ TARGET_NAMES = {
   'texs'    : _('LaTeX Spreadsheet'),
   'lout'    : _('Lout document'),
   'man'     : _('UNIX Manual page'),
+  'uroff'   : _('utroff document'),
   'mgp'     : _('MagicPoint presentation'),
   'wiki'    : _('Wikipedia page'),
   'gwiki'   : _('Google Wiki page'),
@@ -311,7 +312,7 @@ TARGET_NAMES = {
 TARGET_TYPES = {
   'html'   : (_('HTML'), ['html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp']),
   'wiki'   : (_('WIKI'), ['txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml', 'vimwiki']),
-  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom']),
+  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom', 'utroff']),
   'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
@@ -759,6 +760,10 @@ table th,table td{padding:4px;}
 .TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
 """,
 
+    'roff': """\
+.TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
+""",
+
 # TODO style to <HR>
     'pm6': """\
 <PMTags1.0 win><C-COLORTABLE ("Preto" 1 0 0 0)
@@ -1044,7 +1049,7 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 # commands and variables to customize for specific needs.
 # These few lines of commands are sufficient anyway for a good
 # postscript typesetted document (and so also pdf): the author
-# of "mom" is a professional typoghrapher so the typesetting
+# of "mom" is a professional typographer so the typesetting
 # defaults are pleasant and sane.  See mom's author site:
 # http://www.schaffter.ca/mom/mom-01.html that's a good
 # example of documentation too!
@@ -1052,6 +1057,8 @@ r"""{\rtf1\ansi\ansicpg1252\deff0
 # I put here a lot of options, commented or not, to let you
 # see the possibilities but there many more...
 # NB: use "-k" option for groff if input/output is UTF-8
+#
+# usage: groff -k -m mom sample.mom > sample.ps
 #
     'mom': """\
 \# Cover and title
@@ -2668,6 +2675,47 @@ def getTags(config):
         'comment'               : '.\\" \a'
     },
 
+    # see http://utroff.org
+    'utroff': {
+        'paragraphOpen'         : '.P'     ,
+        'title1'                : '.SH \a' ,
+        'title2'                : '.SS \a' ,
+        'title3'                : '.SS \a' ,
+        'title4'                : '.SS \a' ,
+        'title5'                : '.SS \a' ,
+        'blockVerbOpen'         : '.nf'    ,
+        'blockVerbClose'        : '.fi\n'  ,
+        'blockQuoteOpen'        : '.RS'    ,
+        'blockQuoteClose'       : '.RE'    ,
+        'fontBoldOpen'          : '\\fB'   ,
+        'fontBoldClose'         : '\\fR'   ,
+        'fontItalicOpen'        : '\\fI'   ,
+        'fontItalicClose'       : '\\fR'   ,
+        'listOpen'              : '.RS'    ,
+        'listItemOpen'          : '.IP \(bu 3\n',
+        'listClose'             : '.RE\n.IP',
+        'numlistOpen'           : '.RS'    ,
+        'numlistItemOpen'       : '.IP \a. 3\n',
+        'numlistClose'          : '.RE\n.IP',
+        'deflistItem1Open'      : '.TP\n'  ,
+        'bar1'                  : '\n\n'   ,
+        'url'                   : '\a'     ,
+        'urlMark'               : '\a (\a)',
+        'email'                 : '\a'     ,
+        'emailMark'             : '\a (\a)',
+        'img'                   : '\a'     ,
+        'tableOpen'             : '.TS\n~A~~B~tab(^); ~C~.',
+        'tableClose'            : '.TE'     ,
+        'tableRowOpen'          : ' '       ,
+        'tableCellSep'          : '^'       ,
+        '_tableAlignCenter'     : 'center, ',
+        '_tableBorder'          : 'allbox, ',
+        '_tableColAlignLeft'    : 'l'       ,
+        '_tableColAlignRight'   : 'r'       ,
+        '_tableColAlignCenter'  : 'c'       ,
+        'comment'               : '.\\" \a'
+    },
+    
     # http://www.spip-contrib.net/Les-raccourcis-typographiques-en
     # http://www.spip-contrib.net/Carnet-Bac-a-Sable
     # some tags are not implemented by spip tags, but spip accept html tags.
@@ -3746,6 +3794,28 @@ def getRules(config):
             'blanksaroundnumtitle': 1,
         },
         'man': {
+            'spacedlistitem': 1,
+            'tagnotindentable': 1,
+            'tableable': 1,
+            'tablecellaligntype': 'column',
+            'tabletitlerowinbold': 1,
+            'tablecellstrip': 1,
+            'barinsidequote': 1,
+            'parainsidelist': 0,
+            'plaintexttoc': 1,
+
+            'blanksaroundpara': 0,
+            'blanksaroundverb': 1,
+            # 'blanksaroundquote': 1,
+            'blanksaroundlist': 1,
+            'blanksaroundnumlist': 1,
+            'blanksarounddeflist': 1,
+            'blanksaroundtable': 1,
+            # 'blanksaroundbar': 1,
+            'blanksaroundtitle': 0,
+            'blanksaroundnumtitle': 1,
+        },
+        'utroff': {
             'spacedlistitem': 1,
             'tagnotindentable': 1,
             'tableable': 1,
