@@ -2,7 +2,7 @@
 # txt2tags - generic text conversion tool
 # http://txt2tags.org
 #
-# Copyright 2001-2010 Aurelio Jargas
+# Copyright 2001-2013 Aurelio Jargas
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -275,7 +275,7 @@ TARGET_NAMES = {
   'texs'    : _('LaTeX Spreadsheet'),
   'lout'    : _('Lout document'),
   'man'     : _('UNIX Manual page'),
-  'uroff'   : _('utroff document'),
+  'utmac'   : _('Utmac (utroff) document'),
   'mgp'     : _('MagicPoint presentation'),
   'wiki'    : _('Wikipedia page'),
   'gwiki'   : _('Google Wiki page'),
@@ -312,7 +312,7 @@ TARGET_NAMES = {
 TARGET_TYPES = {
   'html'   : (_('HTML'), ['html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp']),
   'wiki'   : (_('WIKI'), ['txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml', 'vimwiki']),
-  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom', 'utroff']),
+  'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom', 'utmac']),
   'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
 }
 
@@ -763,6 +763,25 @@ table th,table td{padding:4px;}
     'roff': """\
 .TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
 """,
+
+
+    'utmac': """\
+.DT "%(HEADER1)s"
+.DA "%(HEADER2)s"
+.DI "%(HEADER3)s"
+.H1 "%(HEADER1)s"
+.H* "%(HEADER2)s"
+.
+.\\" txt2tags shortcuts
+.ds url \\W'\\\\$2'\\\\$1\\W
+.ds mail \\W'mailto:\\\\$2'\\\\$1\\W
+.ds underl \\Z'\\\\$*'\\v'.25m'\\l"\\w'\\\\$*'u"\\v'-.25m'
+.ds strike \\Z'\\\\$*'\\v'-.25m'\\l"\w'\\\\$*'u"\\v'.25m'
+.\\"ds underl \\X'SetColor blue'\\\\$1\\X'SetColor black'
+.\\"ds strike \\X'SetColor red'\\\\$1\\X'SetColor black'
+.\
+""",
+
 
 # TODO style to <HR>
     'pm6': """\
@@ -2676,44 +2695,48 @@ def getTags(config):
     },
 
     # see http://utroff.org
-    'utroff': {
-        'paragraphOpen'         : '.P'     ,
-        'title1'                : '.SH \a' ,
-        'title2'                : '.SS \a' ,
-        'title3'                : '.SS \a' ,
-        'title4'                : '.SS \a' ,
-        'title5'                : '.SS \a' ,
-        'blockVerbOpen'         : '.nf'    ,
-        'blockVerbClose'        : '.fi\n'  ,
-        'blockQuoteOpen'        : '.RS'    ,
-        'blockQuoteClose'       : '.RE'    ,
-        'fontBoldOpen'          : '\\fB'   ,
-        'fontBoldClose'         : '\\fR'   ,
-        'fontItalicOpen'        : '\\fI'   ,
-        'fontItalicClose'       : '\\fR'   ,
-        'listOpen'              : '.RS'    ,
-        'listItemOpen'          : '.IP \(bu 3\n',
-        'listClose'             : '.RE\n.IP',
-        'numlistOpen'           : '.RS'    ,
-        'numlistItemOpen'       : '.IP \a. 3\n',
-        'numlistClose'          : '.RE\n.IP',
-        'deflistItem1Open'      : '.TP\n'  ,
-        'bar1'                  : '\n\n'   ,
-        'url'                   : '\a'     ,
-        'urlMark'               : '\a (\a)',
-        'email'                 : '\a'     ,
-        'emailMark'             : '\a (\a)',
-        'img'                   : '\a'     ,
+    'utmac': {
+        'paragraphOpen'         : '.PP'      ,
+        'title1'                : '.\n.H2 \a',
+        'title2'                : '.\n.H3 \a',
+        'title3'                : '.\n.H4 \a',
+        'title4'                : '.PP\n\\*B\a\\*R\n.br\n',
+        'title5'                : '.PP\n\\*B\a\\*R',
+        'blockVerbOpen'         : '.PX'      ,
+        'blockQuoteOpen'        : '.PQ'      ,
+        'fontBoldOpen'          : '\\*B'     ,
+        'fontBoldClose'         : '\\*R'     ,
+        'fontItalicOpen'        : '\\*I'     ,
+        'fontItalicClose'       : '\\*R'     ,
+        'fontUnderlineOpen'    : '\\*[underl ',
+        'fontUnderlineClose'   : ']',
+        'fontStrikeOpen'       : '\\*[strike ',
+        'fontStrikeClose'      : ']'         ,
+        'listItemOpen'          : '.PI \n'   ,
+        'numlistItemOpen'       : '.PI \a\n' ,
+        'deflistItem1Open'      : '.PI '     ,
+        'bar1'                  : '.sp 2v'   ,
+        'bar2'                  : '.bp'      ,
+        'anchor'                : '\a\\A"\a"',
+        'url'                   : '\\*[url "\a" "\a"]',
+        'urlMark'               : '\\*[url "\a" "\a"]',
+        'email'                 : '\\*[mail "\a" "\a"]',
+        'emailMark'             : '\\*[mail "\a" "\a"]',
+        'img'                   : '\n.\\" \a'  ,
         'tableOpen'             : '.TS\n~A~~B~tab(^); ~C~.',
-        'tableClose'            : '.TE'     ,
-        'tableRowOpen'          : ' '       ,
-        'tableCellSep'          : '^'       ,
-        '_tableAlignCenter'     : 'center, ',
-        '_tableBorder'          : 'allbox, ',
-        '_tableColAlignLeft'    : 'l'       ,
-        '_tableColAlignRight'   : 'r'       ,
-        '_tableColAlignCenter'  : 'c'       ,
-        'comment'               : '.\\" \a'
+        'tableClose'            : '.TE'      ,
+        'tableRowOpen'          : ' '        ,
+        'tableCellSep'          : '^'        ,
+        '_tableAlignCenter'     : 'center, ' ,
+        '_tableBorder'          : 'allbox, ' ,
+        '_tableColAlignLeft'    : 'l'        ,
+        '_tableColAlignRight'   : 'r'        ,
+        '_tableColAlignCenter'  : 'c'        ,
+        'comment'               : '.\\" \a'  ,
+        'blockCommentOpen'      : '.ig'      ,
+        'blockCommentClose'     : '..'       ,
+        'pageBreak'             : '.bp'      ,
+        'TOC'                   : '.XT'      ,
     },
     
     # http://www.spip-contrib.net/Les-raccourcis-typographiques-en
@@ -3815,27 +3838,32 @@ def getRules(config):
             'blanksaroundtitle': 0,
             'blanksaroundnumtitle': 1,
         },
-        'utroff': {
-            'spacedlistitem': 1,
+        'utmac': {
             'tagnotindentable': 1,
+            'autonumbertitle': 1,
+            'quotenotnested' : 1,
+            'barinsidequote': 1,
+            'parainsidelist': 0,
+            'spacedlistitem': 0,
+            'labelbeforelink' : 0, # is that work ?
+            'imgalignable': 1,
+            'plaintexttoc': 0,
+        
             'tableable': 1,
             'tablecellaligntype': 'column',
             'tabletitlerowinbold': 1,
             'tablecellstrip': 1,
-            'barinsidequote': 1,
-            'parainsidelist': 0,
-            'plaintexttoc': 1,
-
+        
             'blanksaroundpara': 0,
-            'blanksaroundverb': 1,
-            # 'blanksaroundquote': 1,
-            'blanksaroundlist': 1,
-            'blanksaroundnumlist': 1,
-            'blanksarounddeflist': 1,
-            'blanksaroundtable': 1,
-            # 'blanksaroundbar': 1,
+            'blanksaroundverb': 0,
+            'blanksaroundquote': 0,
+            'blanksaroundlist': 0,
+            'blanksaroundnumlist': 0,
+            'blanksarounddeflist': 0,
+            'blanksaroundtable': 0,
+            'blanksaroundbar': 0,
             'blanksaroundtitle': 0,
-            'blanksaroundnumtitle': 1,
+            'blanksaroundnumtitle': 0,
         },
         'pm6': {
             'keeplistindent': 1,
