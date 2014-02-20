@@ -760,11 +760,6 @@ table th,table td{padding:4px;}
 .TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
 """,
 
-    'roff': """\
-.TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
-""",
-
-
     'utmac': """\
 .DT "%(HEADER1)s"
 .DA "%(HEADER2)s"

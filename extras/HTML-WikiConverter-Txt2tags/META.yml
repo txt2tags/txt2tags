@@ -6,7 +6,7 @@ version_from: lib/HTML/WikiConverter/Txt2tags.pm
 installdirs:  site
 requires:
     HTML::WikiConverter:           0.68
-    Test::More:                    0
+#    Test::More:                    0
 
 distribution_type: module
 generated_by: ExtUtils::MakeMaker version 6.17

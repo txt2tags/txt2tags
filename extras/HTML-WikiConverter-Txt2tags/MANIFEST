@@ -3,6 +3,10 @@ MANIFEST
 META.yml # Will be created by "make dist"
 Makefile.PL
 README
+html2txt2tags
+sample/sample.html 
+sample/sample_org.t2t
+sample/sample_test.t2t
 lib/HTML/WikiConverter/Txt2tags.pm
 t/00-load.t
 t/boilerplate.t
