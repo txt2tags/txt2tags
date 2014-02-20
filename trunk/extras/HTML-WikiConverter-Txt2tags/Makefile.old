@@ -43,7 +43,7 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 3.2.0-29-generic
+OSVERS = 3.2.0-37-generic
 RANLIB = :
 SITELIBEXP = /usr/local/share/perl/5.14.2
 SITEARCHEXP = /usr/local/lib/perl/5.14.2
@@ -449,8 +449,8 @@ clean :: clean_subdirs
 	  pm_to_blib $(INST_ARCHAUTODIR)/extralibs.ld \
 	  blibdirs.ts core.[0-9][0-9][0-9][0-9][0-9] \
 	  *perl.core core.*perl.*.? \
-	  $(MAKE_APERL_FILE) perl \
-	  $(BASEEXT).def core.[0-9][0-9][0-9] \
+	  $(MAKE_APERL_FILE) $(BASEEXT).def \
+	  perl core.[0-9][0-9][0-9] \
 	  mon.out lib$(BASEEXT).def \
 	  perlmain.c perl.exe \
 	  so_locations $(BASEEXT).exp 
@@ -772,7 +772,7 @@ ppd :
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTML::WikiConverter" VERSION="0.68" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::More" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-gnu-thread-multi-64int-5.14" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.14" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

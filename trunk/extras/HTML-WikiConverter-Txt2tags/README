@@ -1,4 +1,4 @@
-HTML::WikiConverter::Txt2tags version 0.03
+HTML::WikiConverter::Txt2tags version 0.04
 ==========================================
 
 HTML::WikiConverter::Txt2tags adds the Txt2tags dialect to
@@ -33,8 +33,10 @@ Install html-wikiconverter and curl first.
 
 On Debian/Ubuntu: sudo apt-get install libhtml-wikiconverter-perl curl
 
+Then:
+    cpan install HTML::WikiConverter::Txt2tags 
 
-To install this module, run the following commands:
+Alternatively, to install this module, download the HTML-WikiConverter-Txt2tags-0.##.zip archive, extract it and run the following commands:
 
     perl Makefile.PL
     make
@@ -44,9 +46,14 @@ To install this module, run the following commands:
 You can also copy html2txt2tags into your $PATH (for example /usr/local/bin)
 
 
+KNOWN BUGS
+
 In the case you don't get correct line break in some HTML files, you can call this kind of command which may correct the problem:
 
 for i in *.html ; do cat $i | sed 's@<P>@<p>@g' | sed 's@</P>@</p><br/><br/>\n\n\nLINEBREAK@g' | html2wiki --dialect Txt2tags | sed 's@LINEBREAK@\n\n@g' > {i%%.*}.t2t ; done
+
+
+Some left/right/center align for images might not convert as expected in txt2tags
 
 
 SUPPORT AND DOCUMENTATION

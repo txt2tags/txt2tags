@@ -9,7 +9,7 @@ WriteMakefile(
     ABSTRACT_FROM       => 'lib/HTML/WikiConverter/Txt2tags.pm',
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More' => 0,
+#        'Test::More' => 0,
         'HTML::WikiConverter' => 0.68,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
