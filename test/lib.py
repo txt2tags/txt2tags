@@ -5,6 +5,18 @@
 
 import os, time
 
+# Python 2.7 or 2.6 needed
+
+if os.system('python2.7 --version') == 0:
+    PYTHON = 'python2.7'
+elif os.system('python2.6 --version') == 0:
+    PYTHON = 'python2.6'
+else:
+    print "You need Python 2.6 or 2.7 to successfully all the test suite."
+    PYTHON = 'python default'
+
+print "Running " + PYTHON
+
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
 TXT2TAGSLITE = '../txt2tagslite'
@@ -70,9 +82,9 @@ def convert(options, lite=False):
     if type(options) in [type(()), type([])]:
         options = ' '.join(options)
     if lite:
-        cmdline = TXT2TAGSLITE + ' ' + options
+        cmdline = PYTHON + ' ' + TXT2TAGSLITE + ' ' + options
     else:
-        cmdline = TXT2TAGS + ' ' + options
+        cmdline = PYTHON + ' ' + TXT2TAGS + ' ' + options
     # print "\n**Executing: %s" % cmdline
     return os.system(cmdline)
 
