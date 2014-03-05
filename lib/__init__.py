@@ -1,1 +1,1 @@
-__all__ = ['aa', 'spread', 'gui_tk']
+__all__ = ['aa', 'spread']

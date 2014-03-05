@@ -6040,7 +6040,7 @@ def exec_command_line(user_cmdline=[]):
     # Try to load and start GUI interface for --gui
     if GUI:
         try:
-            gui_tk
+            from lib import gui_tk
         except:
             Error(_('gui_tk module not found, so GUI is not available, use CLI instead.'))
         try:
