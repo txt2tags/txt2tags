@@ -13,7 +13,7 @@ elif os.system('python2.6 --version') == 0:
     PYTHON = 'python2.6'
 else:
     print "You need Python 2.6 or 2.7 to successfully all the test suite."
-    PYTHON = 'python default'
+    PYTHON = 'python'
 
 print "Running " + PYTHON
 
