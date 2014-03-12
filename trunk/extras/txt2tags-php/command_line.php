@@ -34,8 +34,10 @@ for($i=1; $i<$argc; $i++) {
     $html = $x->fullhtml;
     
     # do whatever you have to with it
-    file_put_contents("$f.html", $html);
-    echo "$f.html written.\n";
+    $basename = preg_replace('#\.t[2x]t$#', '', $f);
+    $outfile = "$basename.html";
+    file_put_contents($outfile, $html);
+    echo "$outfile written.\n";
     
   }
 
