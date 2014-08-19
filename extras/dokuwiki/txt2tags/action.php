@@ -20,7 +20,7 @@ class action_plugin_txt2tags extends DokuWiki_Action_Plugin {
 
    function handle_parser_wikitext_preprocess(&$event, $param) {
 		global $ID;
-      // The next line enables txt2tags markup only on pages which has the .t2t extension. 
+      // The next line enables txt2tags markup ONLY on pages which have the .t2t extension. 
        // If you want it for the whole website, just delete or comment out the line below:
 		if(substr($ID,-4) != '.t2t') return true;
 	  // The next line will only be useful when the previous line is commented and txt2tags syntax

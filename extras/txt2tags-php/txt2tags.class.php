@@ -1,4 +1,4 @@
-<?php $T2TVersion = "20130924";
+<?php $T2TVersion = "20140518";
 /**
   txt2tags.class.php
   Written by (c) Petko Yotov 2012 www.pmwiki.org/Petko
@@ -627,7 +627,8 @@ class T2T {
     }
     else {
 		$Links = array(
-		  "www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links
+		  //"{$PRT}[^\\s$UEX]+" =>'',  # allows hotlinks by disabling this part
+		  //"www\\d?\\.[^\\s$UEX]+" =>'http://', # lazy links won't work here
 		  "ftp\\d?\\.[^\\s$UEX]+" =>'ftp://',  # lazy links
 		  "\\w[\\w.-]+@[\\w-.]+[^\\s$UEX]+" =>'mailto:',  # lazy links
 			); #  
