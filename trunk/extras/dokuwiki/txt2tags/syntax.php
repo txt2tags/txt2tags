@@ -3,8 +3,8 @@
  * PHP txt2tags plugin for DokuWiki.
  *
  * @license GPL 3 (http://www.gnu.org/licenses/gpl.html) - NOTE: PHP txt2tags
- *  is licensed under the GPL license. See License.text for details.
- * @version 1.02 - 2012-12-14 - PHP txt2tags 20121206 included.
+ *  is licensed under the GPL license.
+ * @version 1.04 - 2014-05-18 - PHP txt2tags 20140518 included.
  * @author Eric Forgeot, heavily derived from markdownextra plugin by Joonas Pulakka and Jiang Le 
  */
 
@@ -13,7 +13,7 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 require_once (DOKU_PLUGIN . 'syntax.php');
 require_once (DOKU_PLUGIN . 'txt2tags/txt2tags.class.php');
 
-$T2TVersion = "20121206";
+$T2TVersion = "20140518"; 
 
 class syntax_plugin_txt2tags extends DokuWiki_Syntax_Plugin {
 
@@ -40,8 +40,11 @@ class syntax_plugin_txt2tags extends DokuWiki_Syntax_Plugin {
     function handle($match, $state, $pos, &$handler) {    
         switch ($state) {
             case DOKU_LEXER_ENTER :      return array($state, '');
-            case DOKU_LEXER_UNMATCHED :  
+            case DOKU_LEXER_UNMATCHED : 
+				// add a config.t2t file for tweaking your installation
+				$match = "\n\n\n%!includeconf: lib/plugins/txt2tags/config.t2t \n".$match ; 
 				$x = new T2T($match);
+                		$x->enableinclude = 1; 
 				$x->go();
 				$html = $x->bodyhtml;
 				return array($state, $html);
@@ -74,6 +77,11 @@ class syntax_plugin_txt2tags extends DokuWiki_Syntax_Plugin {
                     if (!$renderer->meta['title']){
                         $renderer->meta['title'] = $this->_t2t_header($match);
                     }
+/** line below includes TOC in the main page. 
+ You can tweak this in other places in dokuwiki 
+(in your template, add <?php tpl_toc()?> where you need it), so we disable it below
+**/
+// $this->_toc($renderer, $match); 
                     $internallinks = $this->_internallinks($match);
                     #dbg($internallinks);
                     if (count($internallinks)>0){
