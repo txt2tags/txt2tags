@@ -38,8 +38,8 @@ TAGS = {
     'fontItalicClose'      : "*"             ,
     'fontUnderlineOpen'    : ""              ,
     'fontUnderlineClose'   : ""              ,
-    'fontStrikeOpen'       : ""              ,
-    'fontStrikeClose'      : ""              ,
+    'fontStrikeOpen'       : "~~"            ,
+    'fontStrikeClose'      : "~~"            ,
     # Lists
     #'listOpenCompact'             : '*'     ,
     'listItemLine'          : ' '            ,

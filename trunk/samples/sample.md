@@ -1,7 +1,11 @@
 TXT2TAGS SAMPLE
 Aurelio Jargas
-02/28/2011
+03/19/2013
 
+
+This text is before the introduction.
+
+But it's OK.
 
 # Introduction 
 
@@ -10,7 +14,7 @@ Welcome to the txt2tags sample file.
 Here you have examples and a brief explanation of all
 marks.
 
-The first 3 lines of the this file are used as headers,
+The first 3 lines of this file are used as headers,
 on the following format:
 
     line1: document title
@@ -36,7 +40,7 @@ The text marks for beautifiers are simple, just as you
 type on a plain text email message.
 
 We use double *, /, - and _ to represent **bold**,
-*italic*, strike and underline.
+*italic*, ~~strike~~ and underline.
 
 The ***bold italic*** style is also supported as a
 combination.
@@ -135,17 +139,43 @@ Use pipes to compose table rows and cells.
 Double pipe at the line beginning starts a heading row.
 Natural spaces specify each cell alignment.
 
+|cell 1.1 |cell 1.2 |cell 1.3|
+|cell 2.1 |cell 2.2 |cell 2.3|
+|cell 3.1 |cell 3.2 |cell 3.3|
+
 | heading 1 |heading 2 |heading 3|
 |---------------|
 |cell 1.1 |cell 1.2 |cell 1.3|
 |cell 2.1 |cell 2.2 |cell 2.3|
+
+|heading 1 |cell 1.1 |cell 1.2|
+|heading 2 |cell 2.1 |cell 2.2|
+|heading 3 |cell 3.1 |cell 3.2|
+
+| heading |heading 1 |heading 2|
+|---------------|
+|heading 1 |cell 1.1 |cell 1.2|
+|heading 2 |cell 2.1 |cell 2.2|
 
 Without the last pipe, no border:
 
+|cell 1.1 |cell 1.2 |cell 1.3|
+|cell 2.1 |cell 2.2 |cell 2.3|
+|cell 3.1 |cell 3.2 |cell 3.3|
+
 | heading 1 |heading 2 |heading 3|
 |---------------|
 |cell 1.1 |cell 1.2 |cell 1.3|
 |cell 2.1 |cell 2.2 |cell 2.3|
+
+|heading 1 |cell 1.1 |cell 1.2|
+|heading 2 |cell 2.1 |cell 2.2|
+|heading 3 |cell 3.1 |cell 3.2|
+
+| heading |heading 1 |heading 2|
+|---------------|
+|heading 1 |cell 1.1 |cell 1.2|
+|heading 2 |cell 2.1 |cell 2.2|
 
 # Special Entities 
 
@@ -157,17 +187,24 @@ The image mark is as simple as it can be: `[filename]`.
 
                       ![](img/photo.jpg)  
 
+And with some targets the image is linkable :
+
+                      [![](img/photo.jpg)](http://www.txt2tags.org)  
+
  * The filename must end in PNG, JPG, GIF, or similar.
  * No spaces inside the brackets!
 
 ## Other 
 
+When the target needs, special chars like <, > and &
+are escaped.
+
 The handy `%%date` macro expands to the current date.
 
-So today is 20110602 on the ISO `YYYYMMDD` format.
+So today is 20140819 on the ISO `YYYYMMDD` format.
 
 You can also specify the date format with the %? flags,
-as `%%date(%m-%d-%Y)` which gives: 06-02-2011.
+as `%%date(%m-%d-%Y)` which gives: 08-19-2014.
 
 That's all for now.
 
