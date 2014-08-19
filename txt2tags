@@ -2,7 +2,7 @@
 # txt2tags - generic text conversion tool
 # http://txt2tags.org
 #
-# Copyright 2001-2013 Aurelio Jargas
+# Copyright 2001-2014 Aurelio Jargas
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2861,15 +2861,15 @@ def getTags(config):
         'fontItalicClose'      : "*"             ,
         'fontUnderlineOpen'    : ""              ,
         'fontUnderlineClose'   : ""              ,
-        'fontStrikeOpen'       : ""              ,
-        'fontStrikeClose'      : ""              ,
+        'fontStrikeOpen'       : "~~"            ,
+        'fontStrikeClose'      : "~~"            ,
         # Lists
-        #'listOpenCompact'             : '*'     ,
-        'listItemLine'          : ' '            ,
-        'listItemOpen'          : '*'            ,
-        #'numlistItemLine'       : '1.'          ,
-        'numlistItemOpen'       : '1.'           ,
-        'deflistItem1Open'      : ': '           ,
+        #'listOpenCompact'     : '*'             ,
+        'listItemLine'         : ' '             ,
+        'listItemOpen'         : '*'             ,
+        #'numlistItemLine'     : '1.'            ,
+        'numlistItemOpen'      : '1.'            ,
+        'deflistItem1Open'     : ': '            ,
         #'deflistItem1Close'     : ':'           ,
         #'deflistItem2LineOpen'  : '::'          ,
         #'deflistItem2LineClose' : ':'           ,
