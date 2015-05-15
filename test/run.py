@@ -15,47 +15,63 @@
 # TIP: To quickly check the errors, run:
 #      for f in */error/*; do diff -u ${f/error/ok} $f; done
 
-import os, sys
+import os.path
+import subprocess
+import sys
+
 import lib
 
-MODULES = 'headers marks options nesting crossing gotchas bugs include csv db fen includeconf macro table module settings'.split()
-MODULES.append('http')  # should always be the last, requires internet connection
-SCRIPT_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
+DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(DIR)
+
+PYTHON_TEST_MODULES = []
+BASH_TEST_MODULES = []
+for path in sorted(os.listdir(DIR)):
+    if not os.path.isdir(path):
+        continue
+    if os.path.exists(os.path.join(path, 'run.py')):
+        PYTHON_TEST_MODULES.append(path)
+    elif os.path.exists(os.path.join(path, 'run.sh')):
+        BASH_TEST_MODULES.append(path)
+    else:
+        sys.exit('test module %s contains neither run.py nor run.sh' % path)
+
 TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
 
 if len(sys.argv) > 1:
-    MODULES = sys.argv[1:]
+    PYTHON_TEST_MODULES = sys.argv[1:]
 
 # Show which version is being tested
-os.system(lib.TXT2TAGS + " -V")
-os.system(lib.TXT2TAGSLITE + " -V")
+print "Tested txt2tags version:", subprocess.check_output(lib.TXT2TAGS + ["-V"]).strip()
+print "Tested txt2tagslite version:", subprocess.check_output(lib.TXT2TAGSLITE + ["-V"]).strip()
 print
-print 'Base commands used for all tests:\n  ' + lib.TXT2TAGS + '\n  ' +  lib.TXT2TAGSLITE
+print 'Base commands used for all tests:'
+print lib.TXT2TAGS
+print lib.TXT2TAGSLITE
 print
 
-for module in MODULES:
-    print 'Entering on module', module
+for module in PYTHON_TEST_MODULES:
+    os.chdir(DIR)
 
-    # loading test module
-    os.chdir(SCRIPT_DIR)
+    print 'Entering module', module
+    if not os.path.isdir(module):
+        sys.exit('ERROR: Invalid module %s' % module)
+
+    # load test module
     sys.path.insert(0, module)
     import run
 
-    # do what you have to do
-    if not os.path.isdir(module):
-        print 'ERROR: Invalid module %s' % module
-        sys.exit()
     os.chdir(module)
     ok, failed, errors = run.run()
 
     # update count
-    TOTAL_OK = TOTAL_OK + ok
-    TOTAL_FAILED = TOTAL_FAILED + failed
+    TOTAL_OK += ok
+    TOTAL_FAILED += failed
     for err in errors:
         ERRORS.append(os.path.join(module, lib.DIR_ERROR, err))
 
-    # cleaning the house
+    # cleanup
     del sys.path[0]
     del run
     del sys.modules['run']
@@ -77,7 +93,5 @@ if ERRORS:
 if len(sys.argv) == 1:
     print
     print "Don't forget to run the extra tests:"
-    print 'sample/run.sh'
-    print 'art/run.sh'
-    print 'path/run.sh'
-    print 'outfile/run.sh'
+    for module in BASH_TEST_MODULES:
+        print '%s/run.sh' % module

@@ -63,10 +63,7 @@ def run():
                 cmdline.extend(['-o', '-'])
                 cmdline.append('>' + outfile)
                 cmdline.append('2>&1')
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)

@@ -7,7 +7,7 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
                       creole, csv, csvs, db, dbk, doku, gwiki, html,
                       html5, htmls, lout, man, md, mgp, moin, mom, ods,
                       pm6, pmw, red, rst, rtf, sgml, slidy, spip, tex,
-                      texs, tml, txt, txt2t, vimwiki, wiki, wp, xhtml, xhtmls
+                      texs, tml, txt, txt2t, utmac, vimwiki, wiki, wp, xhtml, xhtmls
   -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)
   -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)
       --encoding=ENC  inform source file encoding (UTF-8, iso-8859-1, etc)

@@ -3,7 +3,10 @@
 # See also: run.py, */run.py
 #
 
-import os, time
+import os
+import re
+import subprocess
+import time
 
 # Python 2.7 or 2.6 needed
 
@@ -32,21 +35,21 @@ ERROR_FILES = []
 MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
 
 # force absolute path to avoid problems, set default options
-TXT2TAGS = os.path.abspath(TXT2TAGS) + ' -q --no-rc'
-TXT2TAGSLITE = os.path.abspath(TXT2TAGSLITE) + ' -q --no-rc'
+TXT2TAGS = [os.path.abspath(TXT2TAGS), '-q', '--no-rc']
+TXT2TAGSLITE = [os.path.abspath(TXT2TAGSLITE), '-q', '--no-rc']
 
-EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'} 
+EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'}
 
 #
 # file tools
 #
 def ReadFile(filename):
-    return open(filename, 'r').read()
+    with open(filename, 'r') as f:
+        return f.read()
 
 def WriteFile(filename, content=''):
-    f = open(filename, 'w')
-    f.write(content)
-    f.close()
+    with open(filename, 'w') as f:
+        f.write(content)
 
 def MoveFile(orig, target):
     if os.path.isfile(target):
@@ -54,13 +57,10 @@ def MoveFile(orig, target):
     os.link(orig, target)
     os.remove(orig)
 
-#
-# auxiliar tools
-#
 def initTest(name, infile, outfile, okfile=None):
     if not okfile:
         okfile  = os.path.join(DIR_OK, outfile)
-    print '  Testing %s ...' % name,
+    print '  %s' % name,
     if not os.path.isfile(okfile):
         print 'Skipping test (missing %s)' % okfile
         return False
@@ -75,34 +75,52 @@ def getFileMtime(file):
 def getCurrentDate():
     return time.strftime('%Y%m%d', time.localtime(time.time()))
 
-#
-# the hot tools
-#
-def convert(options, lite=False):
-    if type(options) in [type(()), type([])]:
-        options = ' '.join(options)
-    if lite:
-        cmdline = PYTHON + ' ' + TXT2TAGSLITE + ' ' + options
-    else:
-        cmdline = PYTHON + ' ' + TXT2TAGS + ' ' + options
-    # print "\n**Executing: %s" % cmdline
-    return os.system(cmdline)
+def _convert(options, lite=False):
+    txt2tags = TXT2TAGSLITE if lite else TXT2TAGS
+    cmdline = ' '.join([PYTHON] + txt2tags + options)
+    return subprocess.call(cmdline, shell=True)
 
-def diff(outfile, okfile=None):
+def remove_version(text):
+    version_re = r'\d+\.\d+\.?(\d+)?'
+    for regex in [r'(Txt2tags) %(version_re)s',
+                  r'(txt2tags version) %(version_re)s',
+                  r'(%%%%appversion) "%(version_re)s"']:
+        text = re.sub(regex % locals(), '\1', text)
+    return text
+
+def mark_failed(outfile):
+    global FAILED
+    print 'FAILED'
+    FAILED += 1
+    if not os.path.isdir(DIR_ERROR):
+        os.mkdir(DIR_ERROR)
+    if os.path.exists(outfile):
+        MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
+        ERROR_FILES.append(outfile)
+
+def _diff(outfile, okfile=None):
     global OK, FAILED, ERROR_FILES
     if not okfile:
         okfile = os.path.join(DIR_OK, outfile)
-    # print "\n**Diff: %s %s" % (outfile, okfile)
     out = ReadFile(outfile)
+    out = remove_version(out)
     ok = ReadFile(okfile)
+    ok = remove_version(ok)
     if out != ok:
-        print 'FAILED'
-        FAILED = FAILED + 1
-        if not os.path.isdir(DIR_ERROR):
-            os.mkdir(DIR_ERROR)
-        MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
-        ERROR_FILES.append(outfile)
+        mark_failed(outfile)
     else:
         print 'OK'
         OK = OK + 1
         os.remove(outfile)
+
+def test(cmdline, outfile, okfile=None):
+    _convert(cmdline)
+    if not okfile:
+        okfile = os.path.join(DIR_OK, outfile)
+    _diff(outfile, okfile=okfile)
+
+    basename, extension = os.path.splitext(os.path.basename(outfile))
+    target = extension.lstrip('.')
+    outfilelite = basename + '.' + EXTENSION.get(target, target)
+    _convert(cmdline, lite=True)
+    _diff(outfilelite, okfile=okfile)
