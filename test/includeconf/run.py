@@ -54,7 +54,7 @@ tests = [
     }, {
     'name'   : 'C-nesting-folder-back',
     'cmdline': ["-C folder/subfolder/_folder-back.inc"],
-    
+
     # This checking is never made because the infile may not be known without
     # reading the config file. In other words, you can set %!options: -i foo.t2t
     # inside the config file and just call: txt2tags -C config.t2t
@@ -99,10 +99,7 @@ def run():
             cmdline = ['-H', '-i', infile, '-o', outfile]
 
         if lib.initTest(basename, infile, outfile, okfile):
-            lib.convert(cmdline)
-            lib.diff(outfile, okfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile, okfile)
+            lib.test(cmdline, outfile, okfile=okfile)
 
     ### Now test -C and --config-file command line options
 
@@ -138,10 +135,7 @@ def run():
 
             # convert and check results
             if lib.initTest(name, infile, outfile, okfile):
-                lib.convert(cmdline)
-                lib.diff(outfile, okfile)
-                lib.convert(cmdline, True)
-                lib.diff(outfile, okfile)
+                lib.test(cmdline, outfile, okfile=okfile)
 
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):

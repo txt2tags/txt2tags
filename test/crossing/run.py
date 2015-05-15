@@ -46,10 +46,7 @@ def run():
         outfile = basename + '.html'
         if lib.initTest(basename, infile, outfile):
             cmdline = [infile]
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
 
     # extra: bar.t2t as TXT
     infile = 'bar.t2t'
@@ -58,10 +55,7 @@ def run():
     if lib.initTest(basename, infile, outfile):
         cmdline = ['-t', 'txt', '-i', infile]
         cmdline.extend(['--width', '150'])  # to avoid wrapping
-        lib.convert(cmdline)
-        lib.diff(outfile)
-        lib.convert(cmdline, True)
-        lib.diff(outfile)
+        lib.test(cmdline, outfile)
 
     # using smart filters, same files generate more than one output
     for alias in ALIASES.keys():
@@ -71,10 +65,7 @@ def run():
             cmdline = addFilters(FILTERS.get(alias))
             cmdline.append('-H')
             cmdline.extend(['-o', outfile, infile])
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
 
     # extra: bar2.t2t as TXT
     alias = 'bar2'
@@ -85,10 +76,7 @@ def run():
         cmdline.append('-H')
         cmdline.extend(['--width', '150'])  # to avoid wrapping
         cmdline.extend(['-t', 'txt', '-o', outfile, infile])
-        lib.convert(cmdline)
-        lib.diff(outfile)
-        lib.convert(cmdline, True)
-        lib.diff(outfile)
+        lib.test(cmdline, outfile)
 
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
