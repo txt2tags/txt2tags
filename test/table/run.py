@@ -3,7 +3,8 @@
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, re, glob
+import glob
+import sys
 
 sys.path.insert(0, '..')
 import lib
@@ -21,15 +22,14 @@ def run():
     # test all .t2t files found
     for infile in glob.glob("*.t2t"):
         basename = infile.replace('.t2t', '')
-        
+
         # Choose targets
         targets = all_targets
         if basename == 'table':
             targets = tableable
-        
+
         for target in targets:
             outfile = basename + '.' + target
-            outfilelite = basename + '.' + (lib.EXTENSION.get(target) or target)
             testname = '%s in %s' % (basename, target)
             if lib.initTest(testname, infile, outfile):
                 cmdline = []
@@ -37,10 +37,7 @@ def run():
                 cmdline.extend(['-t', target])
                 if target == 'aap':
                     cmdline.extend(['--width', '80'])
-                lib.convert(cmdline)
-                lib.diff(outfile)
-                lib.convert(cmdline, True)
-                lib.diff(outfilelite, os.path.join(lib.DIR_OK, outfile))
+                lib.test(cmdline, outfile)
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':

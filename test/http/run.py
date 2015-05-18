@@ -28,7 +28,6 @@ def run():
     # test all OK files found
     for outfile in glob.glob("ok/*"):
         basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
-        target = re.sub('.*\.', '', outfile)
         infile = basename + ".t2t"
         if infile in remote_infiles:
             infile = remote_root + infile
@@ -52,10 +51,7 @@ def run():
             elif basename == 'relative-path':
                 cmdline.extend(['-t', 'html'])
                 cmdline.append('--fix-path')
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)

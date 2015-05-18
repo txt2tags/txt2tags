@@ -49,6 +49,7 @@ OFFICE:
 	slidy	Slidy slides
 	tex	LaTeX document
 	texs	LaTeX Spreadsheet
+	utmac	Utmac (utroff) document
 
-Targets txt, aat, aap, aas, aatw, aapw, aasw, rst, html, html5, xhtml, xhtmls, htmls, wp, db, tex, texs, rtf, mgp, man, adoc, csv, csvs, doku, moin, pm6, red, spip, txt2t, bbcode, creole, dbk, gwiki, lout, md, mom, ods, pmw, sgml, tml, wiki, vimwiki from the targets directory not loaded, because there is already targets with the same name in txt2tags core.
+Targets txt, aat, aap, aas, aatw, aapw, aasw, rst, html, html5, xhtml, xhtmls, htmls, wp, db, tex, texs, rtf, mgp, man, adoc, csv, csvs, doku, moin, pm6, red, spip, txt2t, bbcode, creole, dbk, gwiki, lout, md, mom, utmac, ods, pmw, sgml, tml, wiki, vimwiki from the targets directory not loaded, because there is already targets with the same name in txt2tags core.
 
