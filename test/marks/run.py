@@ -59,10 +59,7 @@ def run():
         if lib.initTest(basename, infile, outfile):
             cmdline = addFilters(FILTERS.get(basename))
             cmdline.append(infile)
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
     # using smart filters, same files generate more than one output
     for alias in ALIASES.keys():
         infile = ALIASES[alias] + '.t2t'
@@ -70,10 +67,7 @@ def run():
         if lib.initTest(alias, infile, outfile):
             cmdline = addFilters(FILTERS.get(alias))
             cmdline.extend(['-o', outfile, infile])
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)

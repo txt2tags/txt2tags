@@ -331,10 +331,7 @@ def run():
             # create the source file
             lib.WriteFile(infile, EMPTY_HEADER + content + '\n' + SIMPLE_BODY)
             # convert and check results
-            lib.convert(cmdline)
-            lib.diff(outfile)
-            lib.convert(cmdline, True)
-            lib.diff(outfile)
+            lib.test(cmdline, outfile)
             # remove the trash
             os.remove(infile)
             if os.path.isfile(lib.CSS_FILE):
