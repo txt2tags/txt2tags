@@ -2225,7 +2225,7 @@ def getTags(config):
         'url'                  : '{blue @Colour { \a }}'      ,
         'urlMark'              : '\a ({blue @Colour { \a }})' ,
         'email'                : '{blue @Colour { \a }}'      ,
-        'emailMark'            : '\a ({blue Colour{ \a }})'   ,
+        'emailMark'            : '\a ({blue @Colour{ \a }})'   ,
         'img'                  : '~A~@IncludeGraphic { \a }'  ,  # eps only!
         '_imgAlignLeft'        : '@LeftDisplay '              ,
         '_imgAlignRight'       : '@RightDisplay '             ,
