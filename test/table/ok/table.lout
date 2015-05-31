@@ -1,0 +1,743 @@
+@SysInclude { doc }
+@SysInclude { tbl }
+@Document
+  @InitialFont { Times Base 12p }  # Times, Courier, Helvetica, ...
+  @PageOrientation { Portrait }    # Portrait, Landscape
+  @ColumnNumber { 1 }              # Number of columns (2, 3, ...)
+  @PageHeaders { Simple }          # None, Simple, Titles, NoTitles
+  @InitialLanguage { English }     # German, French, Portuguese, ...
+  @OptimizePages { Yes }           # Yes/No smart page break feature
+//
+@Text @Begin
+#@NP                               # Break page after Headers
+
+
+@BeginSections
+@Section @Title { Simple table } @Begin
+
+@LP
+@CentredDisplay @Tbl
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+
+}
+
+@End @Section
+@Section @Title { Simple table + border } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+
+}
+
+@End @Section
+@Section @Title { Simple table + heading } @Begin
+
+@LP
+@CentredDisplay @Tbl
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+
+}
+
+@End @Section
+@Section @Title { Simple table + heading + border } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+
+}
+
+@End @Section
+@Section @Title { Simple table + heading + border + footer } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Foot 1-1 } }
+B { @B { Foot 1-2 } }
+C { @B { Foot 1-3 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Foot 1-1 } }
+B { @B { Foot 1-2 } }
+C { @B { Foot 1-3 } }
+
+
+}
+
+@End @Section
+@Section @Title { Simple table + heading + border + centralized } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { Head 1-1 } }
+B { @B { Head 1-2 } }
+C { @B { Head 1-3 } }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 1-1 }
+B { Cell 1-2 }
+C { Cell 1-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 2-1 }
+B { Cell 2-2 }
+C { Cell 2-3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { Cell 3-1 }
+B { Cell 3-2 }
+C { Cell 3-3 }
+
+
+}
+
+@End @Section
+@Section @Title { Cell alignment } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B  }
+A { ======= }
+B { ======= }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { right } B  }
+A { < }
+B { > }
+
+@Row
+format {  @Cell  indent { ctr } A | @Cell  indent { ctr } B  }
+A { = }
+B { = }
+
+@Row
+format {  @Cell  indent { right } A | @Cell  indent { left } B  }
+A { > }
+B { < }
+
+
+}
+
+@End @Section
+@Section @Title { Heading alignment } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B  }
+A { @B { ======= } }
+B { @B { ======= } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B  }
+A { @B { ======= } }
+B { @B { ======= } }
+
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { right } B  }
+A { @B { < } }
+B { @B { > } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { right } B  }
+A { @B { < } }
+B { @B { > } }
+
+@HeaderRow
+format {  @Cell  indent { ctr } A | @Cell  indent { ctr } B  }
+A { @B { = } }
+B { @B { = } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { ctr } A | @Cell  indent { ctr } B  }
+A { @B { = } }
+B { @B { = } }
+
+@HeaderRow
+format {  @Cell  indent { right } A | @Cell  indent { left } B  }
+A { @B { > } }
+B { @B { < } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { right } A | @Cell  indent { left } B  }
+A { @B { > } }
+B { @B { < } }
+
+
+}
+
+@End @Section
+@Section @Title { Column span for cells } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D  }
+A { 1 }
+B { 2 }
+C { 3 }
+D { 4 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @StartHVSpan @Cell  indent { left } C | @HSpan }
+A { 1 }
+B { 2 }
+C { 3 + 4 }
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @Cell  indent { left } D }
+A { 1 + 2 + 3 }
+D { 4 }
+
+@Row
+format {  @Cell  indent { left } A | @StartHVSpan @Cell  indent { left } B | @HSpan | @Cell  indent { left } D }
+A { 1 }
+B { 2 + 3 }
+D { 4 }
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @HSpan }
+A { 1 + 2 + 3 + 4 }
+
+
+}
+
+@End @Section
+@Section @Title { Column span for headings } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D  }
+A { @B { 1 } }
+B { @B { 2 } }
+C { @B { 3 } }
+D { @B { 4 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D  }
+A { @B { 1 } }
+B { @B { 2 } }
+C { @B { 3 } }
+D { @B { 4 } }
+
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @StartHVSpan @Cell  indent { left } C | @HSpan }
+A { @B { 1 } }
+B { @B { 2 } }
+C { @B { 3 + 4 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @StartHVSpan @Cell  indent { left } C | @HSpan }
+A { @B { 1 } }
+B { @B { 2 } }
+C { @B { 3 + 4 } }
+
+@HeaderRow
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @Cell  indent { left } D }
+A { @B { 1 + 2 + 3 } }
+D { @B { 4 } }
+@EndHeaderRow
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @Cell  indent { left } D }
+A { @B { 1 + 2 + 3 } }
+D { @B { 4 } }
+
+@HeaderRow
+format {  @Cell  indent { left } A | @StartHVSpan @Cell  indent { left } B | @HSpan | @Cell  indent { left } D }
+A { @B { 1 } }
+B { @B { 2 + 3 } }
+D { @B { 4 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @StartHVSpan @Cell  indent { left } B | @HSpan | @Cell  indent { left } D }
+A { @B { 1 } }
+B { @B { 2 + 3 } }
+D { @B { 4 } }
+
+@HeaderRow
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @HSpan }
+A { @B { 1 + 2 + 3 + 4 } }
+@EndHeaderRow
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @HSpan | @HSpan }
+A { @B { 1 + 2 + 3 + 4 } }
+
+
+}
+
+@End @Section
+@Section @Title { Cell alignment + column span } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { ======= }
+B { ======= }
+C { ======= }
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @Cell  indent { ctr } C }
+A { < }
+C { = }
+
+@Row
+format {  @StartHVSpan @Cell  indent { ctr } A | @HSpan | @HSpan }
+A { = }
+
+@Row
+format {  @Cell  indent { ctr } A | @StartHVSpan @Cell  indent { right } B | @HSpan }
+A { = }
+B { > }
+
+
+}
+
+@End @Section
+@Section @Title { Heading alignment + column span } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { ======= } }
+B { @B { ======= } }
+C { @B { ======= } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { @B { ======= } }
+B { @B { ======= } }
+C { @B { ======= } }
+
+@HeaderRow
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @Cell  indent { ctr } C }
+A { @B { < } }
+C { @B { = } }
+@EndHeaderRow
+
+@Row
+format {  @StartHVSpan @Cell  indent { left } A | @HSpan | @Cell  indent { ctr } C }
+A { @B { < } }
+C { @B { = } }
+
+@HeaderRow
+format {  @StartHVSpan @Cell  indent { ctr } A | @HSpan | @HSpan }
+A { @B { = } }
+@EndHeaderRow
+
+@Row
+format {  @StartHVSpan @Cell  indent { ctr } A | @HSpan | @HSpan }
+A { @B { = } }
+
+@HeaderRow
+format {  @Cell  indent { ctr } A | @StartHVSpan @Cell  indent { right } B | @HSpan }
+A { @B { = } }
+B { @B { > } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { ctr } A | @StartHVSpan @Cell  indent { right } B | @HSpan }
+A { @B { = } }
+B { @B { > } }
+
+
+}
+
+@End @Section
+@Section @Title { Some empty cells } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { A }
+B { B }
+C { C }
+D { D }
+E {  }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { F }
+B { G }
+C { H }
+D {  }
+E { J }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { K }
+B { L }
+C {  }
+D { N }
+E { O }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { P }
+B {  }
+C { R }
+D { S }
+E { T }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A {  }
+B { V }
+C { W }
+D { X }
+E { Y }
+
+
+}
+
+@End @Section
+@Section @Title { Lines with different number of cells, increase } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A  }
+A { 1 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B  }
+A { 1 }
+B { 2 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C  }
+A { 1 }
+B { 2 }
+C { 3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D  }
+A { 1 }
+B { 2 }
+C { 3 }
+D { 4 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { 1 }
+B { 2 }
+C { 3 }
+D { 4 }
+E { 5 }
+
+
+}
+
+@End @Section
+@Section @Title { Lines with different number of cells, decrease } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D | @Cell  indent { left } E  }
+A { 1 }
+B { 2 }
+C { 3 }
+D { 4 }
+E { 5 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C | @Cell  indent { left } D }
+A { 1 }
+B { 2 }
+C { 3 }
+D { 4 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B | @Cell  indent { left } C }
+A { 1 }
+B { 2 }
+C { 3 }
+
+@Row
+format {  @Cell  indent { left } A | @Cell  indent { left } B }
+A { 1 }
+B { 2 }
+
+@Row
+format {  @Cell  indent { left } A }
+A { 1 }
+
+
+}
+
+@End @Section
+@Section @Title { One cell table } @Begin
+
+@LP
+@CentredDisplay @Tbl
+{
+@Row
+format {  @Cell  indent { left } A  }
+A { Cell 1 }
+
+
+}
+
+@End @Section
+@Section @Title { One cell table + border } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A  }
+A { Cell 1 }
+
+
+}
+
+@End @Section
+@Section @Title { One cell table + heading } @Begin
+
+@LP
+@CentredDisplay @Tbl
+{
+@HeaderRow
+format {  @Cell  indent { left } A  }
+A { @B { Head 1 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A  }
+A { @B { Head 1 } }
+
+
+}
+
+@End @Section
+@Section @Title { One cell table + heading + border } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@HeaderRow
+format {  @Cell  indent { left } A  }
+A { @B { Head 1 } }
+@EndHeaderRow
+
+@Row
+format {  @Cell  indent { left } A  }
+A { @B { Head 1 } }
+
+
+}
+
+@End @Section
+@Section @Title { Empty lines } @Begin
+
+@LP
+@CentredDisplay @Tbl
+rule {yes}
+{
+@Row
+format {  @Cell  indent { left } A  }
+A {  }
+
+@Row
+format {  @Cell  indent { left } A  }
+A {  }
+
+@Row
+format {  }
+A {  }
+
+
+}
+
+@End @Section
+@EndSections
+# lout code generated by txt2tags (http://txt2tags.org)
+# cmdline: txt2tags -q --no-rc -i table.t2t -t lout
+@End @Text
