@@ -27,7 +27,7 @@ os.chdir(DIR)
 PYTHON_TEST_MODULES = []
 BASH_TEST_MODULES = []
 for path in sorted(os.listdir(DIR)):
-    if not os.path.isdir(path):
+    if path.startswith('__') or not os.path.isdir(path):
         continue
     if os.path.exists(os.path.join(path, 'run.py')):
         PYTHON_TEST_MODULES.append(path)

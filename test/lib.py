@@ -4,21 +4,15 @@
 #
 
 import os
+import platform
 import re
 import subprocess
+import sys
 import time
 
-# Python 2.7 or 2.6 needed
+PYTHON = sys.executable
 
-if os.system('python2.7 --version') == 0:
-    PYTHON = 'python2.7'
-elif os.system('python2.6 --version') == 0:
-    PYTHON = 'python2.6'
-else:
-    print "You need Python 2.6 or 2.7 to successfully all the test suite."
-    PYTHON = 'python'
-
-print "Running " + PYTHON
+print "Testing txt2tags on", platform.python_implementation(), platform.python_version()
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
