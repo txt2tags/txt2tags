@@ -34,6 +34,12 @@ TXT2TAGSLITE = [os.path.abspath(TXT2TAGSLITE), '-q', '--no-rc']
 
 EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'}
 
+def get_output(cmd):
+    return subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT).communicate()[0].strip()
+
 #
 # file tools
 #

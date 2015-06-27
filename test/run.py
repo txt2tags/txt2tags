@@ -43,8 +43,8 @@ if len(sys.argv) > 1:
     PYTHON_TEST_MODULES = sys.argv[1:]
 
 # Show which version is being tested
-print "Tested txt2tags version:", subprocess.check_output(lib.TXT2TAGS + ["-V"]).strip()
-print "Tested txt2tagslite version:", subprocess.check_output(lib.TXT2TAGSLITE + ["-V"]).strip()
+print "Tested txt2tags version:", lib.get_output(lib.TXT2TAGS + ["-V"])
+print "Tested txt2tagslite version:", lib.get_output(lib.TXT2TAGSLITE + ["-V"])
 print
 print 'Base commands used for all tests:'
 print lib.TXT2TAGS

@@ -27,7 +27,7 @@ def run():
         print '  Testing %s ...' % basename,
         for txt2tags in [lib.TXT2TAGS, lib.TXT2TAGSLITE]:
             cmdline = txt2tags + [infile]
-            output = subprocess.check_output(cmdline)
+            output = lib.get_output(cmdline)
             if not output:
                 print "OK"
                 lib.OK = lib.OK + 1
