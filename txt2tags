@@ -923,6 +923,7 @@ r"""\documentclass{article}
 
     'lout': """\
 @SysInclude { doc }
+@SysInclude { tbl }
 @Document
   @InitialFont { Times Base 12p }  # Times, Courier, Helvetica, ...
   @PageOrientation { Portrait }    # Portrait, Landscape
@@ -1548,7 +1549,7 @@ AAPW_FOOT = """\
     Function.prototype.bind = function (oThis) {
 
       // closest thing possible to the ECMAScript 5 internal IsCallable
-      // function 
+      // function
       if (typeof this !== "function")
       throw new TypeError(
         "Function.prototype.bind - what is trying to be fBound is not callable"
@@ -2225,20 +2226,27 @@ def getTags(config):
         'url'                  : '{blue @Colour { \a }}'      ,
         'urlMark'              : '\a ({blue @Colour { \a }})' ,
         'email'                : '{blue @Colour { \a }}'      ,
-        'emailMark'            : '\a ({blue Colour{ \a }})'   ,
+        'emailMark'            : '\a ({blue @Colour{ \a }})'   ,
         'img'                  : '~A~@IncludeGraphic { \a }'  ,  # eps only!
         '_imgAlignLeft'        : '@LeftDisplay '              ,
         '_imgAlignRight'       : '@RightDisplay '             ,
         '_imgAlignCenter'      : '@CentredDisplay '           ,
-        # lout tables are *way* complicated, no support for now
-        #'tableOpen'            : '~A~@Tbl~B~\naformat{ @Cell A | @Cell B } {',
-        #'tableClose'           : '}'     ,
-        #'tableRowOpen'         : '@Rowa\n'       ,
-        #'tableTitleRowOpen'    : '@HeaderRowa'       ,
-        #'tableCenterAlign'     : '@CentredDisplay '         ,
-        #'tableCellOpen'        : '\a {'                     ,  # A, B, ...
-        #'tableCellClose'       : '}'                        ,
-        #'_tableBorder'         : '\nrule {yes}'             ,
+        # Tables are centred, otherwise last cell spans to right page margin
+        'tableOpen'            : '@LP\n~A~@CentredDisplay @Tbl~B~\n{',
+        'tableClose'           : '\n}'     ,
+        'tableRowOpen'         : '@Row\n'       ,
+        'tableTitleRowOpen'    : '@HeaderRow\n'       ,
+        'tableTitleRowClose'   : '@EndHeaderRow\n'            ,
+        'tableCenterAlign'     : '@CentredDisplay '         ,
+        'tableCellOpen'        : '\a { '                     ,  # A, B, ...
+        'tableCellClose'       : ' }'                        ,
+        'tableTitleCellOpen'   : ' { @B { '                     ,
+        'tableTitleCellClose'  : ' } }'                       ,
+        '_tableCellAlignRight' : ' indent { right } '       ,
+        '_tableCellAlignLeft' : ' indent { left } '       ,
+        '_tableCellAlignCenter' : ' indent { ctr } '       ,
+        '_tableAlign'          : '@CentredDisplay '         ,
+        '_tableBorder'         : '\nrule {yes}'             ,
         'comment'              : '# \a'                     ,
         # @MakeContents must be on the config file
         'TOC'                  : '@DP @ContentsGoesHere @DP',
@@ -3103,7 +3111,7 @@ def getTags(config):
         'blockVerbLine '       : '.QUOTE\n.CODE\n\a\n.CODE OFF\n.QUOTE OFF' ,
         'blockQuoteOpen'       : '.BLOCKQUOTE'   ,
         'blockQuoteClose'      : '.BLOCKQUOTE OFF'  ,
-#        'blockQuoteLine'       : '.BLOCKQUOTE\n\a\.BLOCKQUOTE OFF' , 
+#        'blockQuoteLine'       : '.BLOCKQUOTE\n\a\.BLOCKQUOTE OFF' ,
         'fontMonoOpen'         : '\\f[CR]' ,
         'fontMonoClose'        : '\\f[]'  ,
         'fontBoldOpen'         : '\\f[B]'  ,
@@ -3156,7 +3164,7 @@ def getTags(config):
         'imgAlignRight'       : '.PSPIC -R "\a"\n.SHIM\n' ,
 # All table stuff copied from man target! Tables need
 # preprocessing with "tbl" using option "-t" with groff
-        'tableOpen'             : '.TS\n~A~~B~tab(^); ~C~.', 
+        'tableOpen'             : '.TS\n~A~~B~tab(^); ~C~.',
         'tableClose'            : '.TE'     ,
         'tableRowOpen'          : ' '       ,
         'tableCellSep'          : '^'       ,
@@ -3532,7 +3540,7 @@ def getRules(config):
         'dbk': {
             'escapexmlchars': 1,
             'linkable': 1,
-            'tableable': 1, 
+            'tableable': 1,
             'imglinkable': 1,
             'imgalignable': 1,
             'imgasdefterm': 1,
@@ -3627,12 +3635,18 @@ def getRules(config):
             'spreadmarkup': 'tex',
         },
         'lout': {
+            'tableable': 1,
+            'tablecolumnsnumber': 1,
+            'tablecellspannable': 1,
+            'tablecellaligntype': 'cell',
+            'tablecellstrip': 1,
+            'breaktablecell': 1,
             'keepquoteindent': 1,
             'deflisttextstrip': 1,
             'escapeurl': 1,
             'verbblocknotescaped': 1,
             'imgalignable': 1,
-            'mapbar2pagebreak': 1,
+            #'mapbar2pagebreak': 1,
             'titleblocks': 1,
             'autonumberlist': 1,
             'parainsidelist': 1,
@@ -5943,7 +5957,7 @@ class MaskMaster:
     for an (ugly) internal identifier.
 
     For example, ''<b>this</b>'' will become vvvTAGGED0vvv. The number
-    increases as other inliners of the same type are found. 
+    increases as other inliners of the same type are found.
 
     The method undo() is called at the end of the line processing,
     expanding all masks back to their original (untouched) content.
@@ -6530,6 +6544,7 @@ class TableMaster:
 
         thisspan = 0
         spanmultiplier = rules['cellspanmultiplier'] or 1
+        spanprofil = []
 
         cellhead = []
         cellbody = []
@@ -6592,12 +6607,22 @@ class TableMaster:
 
         # Add cell BEGIN/END tags
         for i, cell in enumerate(cells):
-            copen = open_
+
+            # Lout requires special routines, cells are labeled according alphabet
+            if TARGET == 'lout':
+                alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                if len(rowdata['cellspan']) < self.n_cols:
+                    tblabel = alphabet[sum(rowdata['cellspan'][0:i])]
+                else:
+                    tblabel = alphabet[i]
+                copen = re.sub('[\x07]', '', tblabel + open_ )
+            else:
+                copen = open_
             cclose = close
             chead = head
             if self.vert_head and i == 0:
-                copen = TAGS['tableTitleCellOpen']
-                cclose = TAGS['tableTitleCellClose']
+                copen = (copen if TARGET == 'lout' else '') + TAGS['tableTitleCellOpen']
+                cclose = (cclose if TARGET == 'lout' else '') + TAGS['tableTitleCellClose']
                 if rules['breaktablecell']:
                     cclose = cclose + '\n'
 
@@ -6714,7 +6739,9 @@ class TableMaster:
         if rules['tablenumber']:
             open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
         if rules['tablecolumnsnumber']:
-            open_ = re.sub('n_cols', str(self.n_cols), open_)
+             # Lout requires alphabetical index
+             alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+             open_ = re.sub('n_cols', str(self.n_cols), open_)
         rows  = self.rows
         close = self._get_full_tag(TAGS['tableClose'])
 
@@ -6758,7 +6785,48 @@ class TableMaster:
                 else:
                     o, c = rowopen, rowclose
                 row = tagged_cells.pop(0)
-                tagged_rows.append(o + row + c)
+                if TARGET == 'lout':
+                    calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
+                    element = rowdata['cellspan']
+                    spandef = ''
+                    regdef = ''
+                    # In Lout the format of a row can be defined once after table
+                    # setup or for each row separately. For automatization the
+                    # second approach is chosen.
+                    formatdef = 'format { '
+
+                    for i in range(0, len(element)):
+                        regdef += ' @Cell '+ calign[i] + alphabet[i] + ' |'
+                    regdef = formatdef + re.sub('\|$','',regdef) + ' }\n'
+
+                    # Set up Lout definition for spanning cells
+                    if 1 <= len(element) < self.n_cols:
+                        spandef += formatdef
+                        inccol = 0
+                        for i in range(0, len(element)):
+                            if (element[i] == 1 and i == 0) or (element[i] == 1 and element[i-1] == 1):
+                                spandef += ' @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                            if element[i] == 1 and i > 0 and element[i-1] > 1:
+                                spandef += ' @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                            if element[i] > 1:
+                                spandef += ' @StartHVSpan @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                                for j in range(1, element[i]):
+                                    spandef += ' @HSpan |'
+                                    inccol += 1
+                        spandef = re.sub('\|$','',spandef)
+                        spandef += '}\n'
+                        regdef = spandef
+
+                    if rowdata['title']:
+                        # Necessary to get a heading over every page on Multi-page
+                        # tables AND over first row
+                        tagged_rows.append(titrowopen + regdef + row + titrowclose)
+                        tagged_rows.append(rowopen + regdef + row + rowclose)
+                    else:
+                        tagged_rows.append(o + regdef + row + c)
+
+                else:
+                    tagged_rows.append(o + row + c)
 
         # Join the pieces together
         fulltable = []
@@ -7789,7 +7857,7 @@ def finish_him(outlist, config):
             if i == 0:
                 for j, el in enumerate(val):
                     repl_dict[el] = j
-            else:     
+            else:
                 write_file = outfile
                 for key in repl_dict:
                     write_file = write_file.replace('<<%s>>' % key, val[repl_dict[key]])
@@ -9331,7 +9399,7 @@ def convert(bodylines, config, firstlinenr=1):
                     CONF['currentsourcefile'] = val
                 # This line is done, go to next
                 continue
-            
+
             # %!fen command
             # Forsyth-Edward Notation
             elif key == 'fen':
@@ -9345,7 +9413,7 @@ def convert(bodylines, config, firstlinenr=1):
                     if CONF['encoding'].lower() != 'utf-8':
                         if not config['encoding']:
                             Error(_("%!fen: Expected an UTF-8 file to use unicode fen option, you could set %!encoding: UTF-8"))
-                        else: 
+                        else:
                             Error(_("%!fen: Expected an UTF-8 file to use unicode fen option"))
                     unicode_chars = [unichr(char) for char in range(0x2654,0x2660)]
                     uni = dict(zip('KQRBNPkqrbnp', unicode_chars))
@@ -9379,7 +9447,7 @@ def convert(bodylines, config, firstlinenr=1):
                 db_center = dbopt.get('center')
                 db_headers = dbopt.get('headers')
                 db_mailing = dbopt.get('mailing')
-                if db_mailing:           
+                if db_mailing:
                     db_headers = True
 
                 sqlite3.register_converter('NULL', unicode)
@@ -9450,7 +9518,7 @@ def convert(bodylines, config, firstlinenr=1):
                 else:
                     reader = csv.reader(Readfile(filename), delimiter=csv_separator, quoting=csv.QUOTE_NONE)
 
-                if csv_utf8: 
+                if csv_utf8:
                     reader_utf8 = []
                     for line in reader:
                         line_utf8 = []

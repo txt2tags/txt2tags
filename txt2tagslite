@@ -2827,12 +2827,22 @@ class TableMaster:
 
         # Add cell BEGIN/END tags
         for i, cell in enumerate(cells):
-            copen = open_
+
+            # Lout requires special routines, cells are labeled according alphabet
+            if TARGET == 'lout':
+                alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                if len(rowdata['cellspan']) < self.n_cols:
+                    tblabel = alphabet[sum(rowdata['cellspan'][0:i])]
+                else:
+                    tblabel = alphabet[i]
+                copen = re.sub('[\x07]', '', tblabel + open_ )
+            else:
+                copen = open_
             cclose = close
             chead = head
             if self.vert_head and i == 0:
-                copen = TAGS['tableTitleCellOpen']
-                cclose = TAGS['tableTitleCellClose']
+                copen = (copen if TARGET == 'lout' else '') + TAGS['tableTitleCellOpen']
+                cclose = (cclose if TARGET == 'lout' else '') + TAGS['tableTitleCellClose']
                 if rules['breaktablecell']:
                     cclose = cclose + '\n'
 
@@ -2949,7 +2959,9 @@ class TableMaster:
         if rules['tablenumber']:
             open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
         if rules['tablecolumnsnumber']:
-            open_ = re.sub('n_cols', str(self.n_cols), open_)
+             # Lout requires alphabetical index
+             alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+             open_ = re.sub('n_cols', str(self.n_cols), open_)
         rows  = self.rows
         close = self._get_full_tag(TAGS['tableClose'])
 
@@ -2993,7 +3005,48 @@ class TableMaster:
                 else:
                     o, c = rowopen, rowclose
                 row = tagged_cells.pop(0)
-                tagged_rows.append(o + row + c)
+                if TARGET == 'lout':
+                    calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
+                    element = rowdata['cellspan']
+                    spandef = ''
+                    regdef = ''
+                    # In Lout the format of a row can be defined once after table
+                    # setup or for each row separately. For automatization the
+                    # second approach is chosen.
+                    formatdef = 'format { '
+
+                    for i in range(0, len(element)):
+                        regdef += ' @Cell '+ calign[i] + alphabet[i] + ' |'
+                    regdef = formatdef + re.sub('\|$','',regdef) + ' }\n'
+
+                    # Set up Lout definition for spanning cells
+                    if 1 <= len(element) < self.n_cols:
+                        spandef += formatdef
+                        inccol = 0
+                        for i in range(0, len(element)):
+                            if (element[i] == 1 and i == 0) or (element[i] == 1 and element[i-1] == 1):
+                                spandef += ' @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                            if element[i] == 1 and i > 0 and element[i-1] > 1:
+                                spandef += ' @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                            if element[i] > 1:
+                                spandef += ' @StartHVSpan @Cell ' + calign[i] + alphabet[i+inccol] + ' |'
+                                for j in range(1, element[i]):
+                                    spandef += ' @HSpan |'
+                                    inccol += 1
+                        spandef = re.sub('\|$','',spandef)
+                        spandef += '}\n'
+                        regdef = spandef
+
+                    if rowdata['title']:
+                        # Necessary to get a heading over every page on Multi-page
+                        # tables AND over first row
+                        tagged_rows.append(titrowopen + regdef + row + titrowclose)
+                        tagged_rows.append(rowopen + regdef + row + rowclose)
+                    else:
+                        tagged_rows.append(o + regdef + row + c)
+
+                else:
+                    tagged_rows.append(o + row + c)
 
         # Join the pieces together
         fulltable = []
