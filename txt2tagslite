@@ -4974,7 +4974,7 @@ def convert_this_files(configs):
         source_head, source_conf, source_body = doc
         myconf = ConfigMaster().sanity(myconf)
 
-        if myconf['target'] in ['aat', 'txt', 'rst', 'mgp'] and myconf['encoding'].lower() == 'utf-8':
+        if (myconf['target'] in ['txt', 'rst', 'mgp'] or myconf['target'].startswith('aa')) and myconf['encoding'].lower() == 'utf-8':
             decode_head, decode_body = [], []
             try:
                 for line in source_head:
