@@ -1,0 +1,9 @@
+[submodule "doc"]
+	path = doc
+	url = https://github.com/txt2tags/doc
+[submodule "website"]
+	path = website
+	url = https://github.com/txt2tags/website
+[submodule "old"]
+	path = old
+	url = https://github.com/txt2tags/old

@@ -1,8 +1,0 @@
-
-"""
- Un área sin refinar ("raw") está encerrada
- por tres comillas dobles ("doublequotes").
-
-           **Las marcas** no se interpretan
-            y los espacios no se mantienen.
-"""

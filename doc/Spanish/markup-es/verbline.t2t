@@ -1,4 +1,0 @@
-
-Una línea literal es ideal para anotar comandos:
-``` $ cat /etc/passwd | tr : ,
-Y solamente está precedida de tres comillas.

@@ -1,9 +1,0 @@
-
-"""
-       A három idézőjel közé zárt sorokat
-       "nyers" területnek nevezünk.
-
-A nyers területen belül a **jelek** elvesztik
-különleges jelentésüket, de a tördelés
-bekapcsolva marad.
-"""

@@ -1,5 +1,0 @@
-
-Výpis na řádku se hodí pro příkazy:
-``` $ cat /etc/passwd | tr : ,
-Stačí jej začít třemi obrácenými uvozovkami.
-

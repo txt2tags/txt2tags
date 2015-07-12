@@ -1,4 +1,0 @@
-
-Verbatime Zeilen sind super für Kommandos:
-``` $ cat /etc/passwd | tr : ,
-Einfach 3 "backquotes" davor setzen.
