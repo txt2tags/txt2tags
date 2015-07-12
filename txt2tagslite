@@ -4774,12 +4774,10 @@ def get_tagged_link(label, url):
                 label = "(%s)" % fix_relative_path(img_path)
 
         if rules['asciiart'] and not rules['slides'] and not rules['web'] and not rules['spread'] and not CONF['toc-only']:
-            for macro in MASK.macrobank:
-                macro = MASK.macroman.expand(macro)
-                url = url.replace(MASK.macromask, macro, 1)
-            if url not in AA_MARKS:
-                AA_MARKS.append(url)
-            url = str(AA_MARKS.index(url) + 1)
+            url_unmasked = MASK.undo(url)
+            if url_unmasked not in AA_MARKS:
+                AA_MARKS.append(url_unmasked)
+            url = str(AA_MARKS.index(url_unmasked) + 1)
 
         # Putting data on the right appearance order
         if rules['labelbeforelink'] or not rules['linkable']:
