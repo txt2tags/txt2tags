@@ -4702,11 +4702,10 @@ def fix_css_out_path(config):
     return stylepath_out
 
 
-def beautify_me(name, font, line):
-    "where name is: bold, italic, underline or strike"
+def beautify_me(font, line):
 
     # Exception: Doesn't parse an horizontal bar as strike
-    if name == 'strike' and regex['bar'].search(line):
+    if font == 'fontStrike' and regex['bar'].search(line):
         return line
 
     open_ = TAGS['%sOpen' % font]
@@ -5313,10 +5312,9 @@ def parse_images(line):
 def add_inline_tags(line):
     # We can't use beauti.capitalize() for the beautifiers, because
     # 'i'.capitalize != 'I' for turkish locales.
-    for beauti, font in [('bold', 'fontBold'), ('italic', 'fontItalic'),
-                          ('underline', 'fontUnderline'), ('strike', 'fontStrike')]:
+    for font in ('fontBold', 'fontItalic', 'fontUnderline', 'fontStrike'):
         if regex[font].search(line):
-            line = beautify_me(beauti, font, line)
+            line = beautify_me(font, line)
 
     line = parse_images(line)
     return line
