@@ -47,7 +47,8 @@ The text marks for beautifiers are simple, just as you
 type on a plain text email message.
 
 We use double *, /, - and _ to represent **bold**,
-//italic//, --strike-- and __underline__.
+//italic//, --strike--, __underline__,
+^^superscript^^ and ,,subscript,,.
 
 The **//bold italic//** style is also supported as a
 combination.

@@ -424,6 +424,8 @@ def getTags(config):
     fontItalicOpen      fontItalicClose
     fontUnderlineOpen   fontUnderlineClose
     fontStrikeOpen      fontStrikeClose
+    fontSuperOpen       fontSuperClose
+    fontSubOpen         fontSubClose
 
     listOpen            listClose
     listOpenCompact     listCloseCompact
@@ -663,6 +665,10 @@ def getRegexes():
         re.compile(r'__([^\s](|.*?[^\s])_*)__'),
     'fontStrike':
         re.compile(r'--([^\s](|.*?[^\s])-*)--'),
+    'fontSuper':
+        re.compile(r'\^\^([^\s](|.*?[^\s])\^*)\^\^'),
+    'fontSub':
+        re.compile(r',,([^\s](|.*?[^\s]),*),,'),
     'list':
         re.compile(r'^( *)(-) (?=[^ ])'),
     'numlist':
@@ -5312,7 +5318,7 @@ def parse_images(line):
 def add_inline_tags(line):
     # We can't use beauti.capitalize() for the beautifiers, because
     # 'i'.capitalize != 'I' for turkish locales.
-    for font in ('fontBold', 'fontItalic', 'fontUnderline', 'fontStrike'):
+    for font in ('fontBold', 'fontItalic', 'fontUnderline', 'fontStrike', 'fontSuper', 'fontSub'):
         if regex[font].search(line):
             line = beautify_me(font, line)
 
