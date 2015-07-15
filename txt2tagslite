@@ -2845,8 +2845,8 @@ class TableMaster:
                     copen = copen + TAGS['tableTitleCellOpen']
                     cclose = cclose + TAGS['tableTitleCellClose']
                 else:
-                    copen = TAGS['tableTitleCellOpen']
-                    cclose = TAGS['tableTitleCellClose']
+                    copen = TAGS['tableTitleCellOpen'] or copen
+                    cclose = TAGS['tableTitleCellClose'] or cclose
 
                 if rules['breaktablecell']:
                     cclose = cclose + '\n'
