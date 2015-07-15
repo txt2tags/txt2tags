@@ -6621,8 +6621,13 @@ class TableMaster:
             cclose = close
             chead = head
             if self.vert_head and i == 0:
-                copen = (copen if TARGET == 'lout' else '') + TAGS['tableTitleCellOpen']
-                cclose = (cclose if TARGET == 'lout' else '') + TAGS['tableTitleCellClose']
+                if TARGET == 'lout':
+                    copen = copen + TAGS['tableTitleCellOpen']
+                    cclose = cclose + TAGS['tableTitleCellClose']
+                else:
+                    copen = TAGS['tableTitleCellOpen']
+                    cclose = TAGS['tableTitleCellClose']
+
                 if rules['breaktablecell']:
                     cclose = cclose + '\n'
 
