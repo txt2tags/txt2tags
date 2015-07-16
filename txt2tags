@@ -4150,6 +4150,8 @@ def getRegexes():
         re.compile(r'""([^\s](|.*?[^\s])"*)""'),
     'tagged':
         re.compile(r"''([^\s](|.*?[^\s])'*)''"),
+    'math':
+        re.compile(r'\$\$([^\s](|.*?[^\s])\$*)\$\$'),
     'fontBold':
         re.compile(r'\*\*([^\s](|.*?[^\s])\**)\*\*'),
     'fontItalic':
@@ -4589,6 +4591,23 @@ def parse_convert_table(table, tableable, target):
             BLOCK.holdadd(row)
         ret.extend(BLOCK.blockout())
     return ret
+
+def math_print(target, txt):
+    try:
+        exec('import sympy')
+    except:
+        Error(_("$$math$$: You need SymPy to use math formula"))
+    if sympy.__version__ < '0.7.4':
+        Error(_("$$math$$: You need SymPy 0.7.4 or > to use math formula"))
+    exec('from sympy import *')
+    if target == 'aat':
+        return pretty(sympify(txt, evaluate=False), use_unicode=CONF['unicode_art'])
+    elif target == "tex":
+        return latex(sympify(txt, evaluate=False))
+    elif target == "html5":
+        exec('from sympy.printing.mathml import mathml')
+        exec('from sympy.utilities.mathml import c2p')
+        return c2p(mathml(sympify(txt, evaluate=False)))
 
 
 ##############################################################################
@@ -5629,6 +5648,7 @@ class ConfigMaster:
         if target == 'aat' and config['width'] < 5:
             Error(_("--width: Expected width > 4, got %i") % config['width'])
         # Check/set user ASCII Art formatting characters
+        config['unicode_art'] = False
         if config['chars']:
             try:
                 # Peace for ASCII 7-bits only
@@ -5643,6 +5663,7 @@ class ConfigMaster:
                         Error(_("--chars: Expected an UTF-8 file for your chars from an UTF-8 terminal"))
             if target == 'aat':
                 if config['chars'] == 'unicode':
+                    config['unicode_art'] = True
                     if config['encoding'].lower() != 'utf-8':
                         if not config['encoding']:
                             Error(_("--chars: Expected an UTF-8 file for the unicode chars set, you could set %!encoding: UTF-8"))
@@ -5979,12 +6000,14 @@ class MaskMaster:
         self.macromask  = 'vvvMACRONNNvvv'
         self.rawmask    = 'vvvRAWNNNvvv'
         self.taggedmask = 'vvvTAGGEDNNNvvv'
+        self.mathmask   = 'vvvMATHNNNvvv'
         self.tocmask    = 'vvvTOCvvv'
         self.linkmaskre   = re.compile('vvvLINK(\d+)vvv')
         self.monomaskre   = re.compile('vvvMONO(\d+)vvv')
         self.macromaskre  = re.compile('vvvMACRO(\d+)vvv')
         self.rawmaskre    = re.compile('vvvRAW(\d+)vvv')
         self.taggedmaskre = re.compile('vvvTAGGED(\d+)vvv')
+        self.mathmaskre   = re.compile('vvvMATH(\d+)vvv')
         self.macroman   = MacroMaster()
         self.reset()
 
@@ -5994,18 +6017,20 @@ class MaskMaster:
         self.macrobank = []
         self.rawbank = []
         self.taggedbank = []
+        self.mathbank = []
+        self.math_masks = []
 
     def mask(self, line=''):
         global AUTOTOC
 
-        # The verbatim, raw and tagged inline marks are mutually exclusive.
+        # The verbatim, raw, tagged and math inline marks are mutually exclusive.
         # This means that one can't appear inside the other.
         # If found, the inner marks must be ignored.
         # Example: ``foo ""bar"" ''baz''``
         # In HTML: <code>foo ""bar"" ''baz''</code>
         #
         # The trick here is to protect the mark who appears first on the line.
-        # The three regexes are tried and the one with the lowest index wins.
+        # The four regexes are tried and the one with the lowest index wins.
         # If none is found (else), we get out of the loop.
         #
         while True:
@@ -6013,7 +6038,7 @@ class MaskMaster:
             # Try to match the line for the three marks
             # Note: 'z' > 99999999...
             #
-            t = r = v = 'z'
+            t = r = v = m = 'z'
             try:
                 t = regex['tagged'].search(line).start()
             except:
@@ -6026,9 +6051,13 @@ class MaskMaster:
                 v = regex['fontMono'].search(line).start()
             except:
                 pass
+            try:
+                m = regex['math'].search(line).start()
+            except:
+                pass
 
             # Protect tagged text
-            if t >= 0 and t < r and t < v:
+            if t >= 0 and t < r and t < v and t < m:
                 txt = regex['tagged'].search(line).group(1)
                 txt = doProtect(TARGET, txt)
                 i = len(self.taggedbank)
@@ -6037,7 +6066,7 @@ class MaskMaster:
                 line = regex['tagged'].sub(mask, line, 1)
 
             # Protect raw text
-            elif r >= 0 and r < t and r < v:
+            elif r >= 0 and r < t and r < v and r < m:
                 txt = regex['raw'].search(line).group(1)
                 txt = doEscape(TARGET, txt)
                 i = len(self.rawbank)
@@ -6046,13 +6075,23 @@ class MaskMaster:
                 line = regex['raw'].sub(mask, line, 1)
 
             # Protect verbatim text
-            elif v >= 0 and v < t and v < r:
+            elif v >= 0 and v < t and v < r and v < m:
                 txt = regex['fontMono'].search(line).group(1)
                 txt = doEscape(TARGET, txt)
                 i = len(self.monobank)
                 self.monobank.append(txt)
                 mask = self.monomask.replace('NNN', str(i))
                 line = regex['fontMono'].sub(mask, line, 1)
+
+            # Protect math formula
+            elif m >= 0 and m < t and m < v and m < r:
+                txt = regex['math'].search(line).group(1)
+                txt = doEscape(TARGET, txt)
+                i = len(self.mathbank)
+                self.mathbank.append(txt)
+                mask = self.mathmask.replace('NNN', str(i))
+                self.math_masks.append(mask)
+                line = regex['math'].sub(mask, line, 1)
             else:
                 break
 
@@ -6147,6 +6186,47 @@ class MaskMaster:
             m = matches.pop()
             i = int(m.group(1))
             line = line[0:m.start()] + self.taggedbank[i] + line[m.end():]
+
+        # Expand math
+        matches = list(self.mathmaskre.finditer(line))
+        while matches:
+            mask = self.math_masks.pop() 
+            m = matches.pop()
+            i = int(m.group(1))
+            if TARGET in ['aat', 'tex', 'html5']:
+                mathp = math_print(TARGET, self.mathbank[i]).split("\n")
+            mstart = m.start()
+            mend = m.end()
+            if TARGET == 'aat':
+                if len(mathp) > 1:
+                    if not isinstance(line, list):
+                        line = [" " * len(line[0:mstart]) + l for l in mathp[:-1]] + [line[0:mstart] + mathp[-1] + line[mend:]]
+                    else:
+                        diff_mask = len(mask) - len(mathp[-1])
+                        diff_line = len(line) - len(mathp)
+                        if diff_line < 0:
+                            line = [''] * abs(diff_line) + line
+                        else:
+                            mathp = [''] * diff_line + mathp
+                        if diff_mask < 0:
+                            line = [" " * len(line[-1][0:mstart]) + m + " " * abs(diff_mask) + l[len(line[-1][0:mstart] + m):] for m, l in zip(mathp[:-1], line[:-1])] + [line[-1][0:mstart] + mathp[-1] + line[-1][mend:]]
+                        else:
+                            line = [" " * len(line[-1][0:mstart]) + m + l[len(line[-1][0:mstart] + m) + diff_mask:] for m, l in zip(mathp[:-1], line[:-1])] + [line[-1][0:mstart] + mathp[-1] + line[-1][mend:]]
+                else:
+                    if not isinstance(line, list):
+                        line = line[0:mstart] + mathp[0] + line[mend:]
+                    else:
+                        diff_mask = len(mask) - len(mathp[0])
+                        if diff_mask < 0:
+                            line = [" " * abs(diff_mask) + l for l in line[:-1]] + [line[-1][0:mstart] + mathp[0] + line[-1][mend:]]
+                        else:
+                            line = [l[diff_mask:] for l in line[:-1]] + [line[-1][0:mstart] + mathp[0] + line[-1][mend:]]
+            elif TARGET == 'tex':
+                line = line[0:mstart] + '$' + mathp[0] + '$' + line[mend:]
+            elif TARGET == 'html5':
+                line = '\n'.join([line[0:mstart], '<math>'] + mathp[2:-1] + [line[mend:]])
+            else:
+                line = line[0:mstart] + self.mathbank[i] + line[mend:]
 
         return line
 

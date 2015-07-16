@@ -1,0 +1,325 @@
+
+<section>
+<h1>Math formulas</h1>
+
+<p>
+A "one line" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <mi>y</mi>
+    <mo> + </mo>
+    <mi>z</mi>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "two lines" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>2</mn>
+    </msup>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>y</mi>
+      <mn>3</mn>
+    </msup>
+    <mo> + </mo>
+    <msup>
+      <mi>z</mi>
+      <mn>4</mn>
+    </msup>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "two lines" + greek formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>δ</mi>
+      <mn>3</mn>
+    </msup>
+    <mo> + </mo>
+    <mi>ε</mi>
+    <mo> + </mo>
+    <mn>4</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>y</mi>
+      <mi>α</mi>
+    </msup>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "multiline" formula: 
+<math>
+  <mrow>
+    <mo>&#x222B;</mo>
+    <msqrt>
+      <msup>
+        <mi>x</mi>
+        <mn>-1</mn>
+      </msup>
+    </msqrt>
+    <mrow>
+      <mo>&#x2146;</mo>
+      <mrow>
+        <mi>x</mi>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+
+</p>
+<p>
+Several "one line" formulas: 
+<math>
+  <mrow>
+    <mn>4</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+  </mrow>
+</math>
+ &gt; 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+  </mrow>
+</math>
+ &lt; 
+<math>
+  <mrow>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+  </mrow>
+</math>
+
+</p>
+<p>
+Several "two lines" formulas: 
+<math>
+  <mrow>
+    <mn>4</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>4</mn>
+    </msup>
+  </mrow>
+</math>
+ &gt; 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>2</mn>
+    </msup>
+  </mrow>
+</math>
+ &lt; 
+<math>
+  <mrow>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>3</mn>
+    </msup>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "one line" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <mi>y</mi>
+    <mo> + </mo>
+    <mi>z</mi>
+  </mrow>
+</math>
+, then a "two lines" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>2</mn>
+    </msup>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>y</mi>
+      <mn>3</mn>
+    </msup>
+    <mo> + </mo>
+    <msup>
+      <mi>z</mi>
+      <mn>4</mn>
+    </msup>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "two lines" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>x</mi>
+      <mn>2</mn>
+    </msup>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <msup>
+      <mi>y</mi>
+      <mn>3</mn>
+    </msup>
+    <mo> + </mo>
+    <msup>
+      <mi>z</mi>
+      <mn>4</mn>
+    </msup>
+  </mrow>
+</math>
+, then a "one line" formula: 
+<math>
+  <mrow>
+    <mn>2</mn>
+    <mo>&#x2062;</mo>
+    <mi>x</mi>
+    <mo> + </mo>
+    <mn>3</mn>
+    <mo>&#x2062;</mo>
+    <mi>y</mi>
+    <mo> + </mo>
+    <mi>z</mi>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "three lines" formula: 
+<math>
+  <mrow>
+    <mfrac>
+      <mrow>
+        <mrow>
+          <mi>x</mi>
+          <mo> + </mo>
+          <mn>1</mn>
+        </mrow>
+      </mrow>
+      <mrow>
+        <mrow>
+          <mi>x</mi>
+          <mo> - </mo>
+          <mn>1</mn>
+        </mrow>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "five lines" formula: 
+<math>
+  <mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <mi>x</mi>
+            <mo> + </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <mi>x</mi>
+            <mo> - </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+
+</p>
+<p>
+A "seven lines" formula: 
+<math>
+  <mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <msup>
+              <mi>x</mi>
+              <mn>3</mn>
+            </msup>
+            <mo> + </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+            <mo> - </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+
+</p>
+</section>
