@@ -1262,7 +1262,7 @@ AAPW_FOOT = """\
     this.setupTouchEvents();
     this.onresize();
   }
-  
+
   Dz.setupParams = function() {
     var p = window.location.search.substr(1).split('&');
     p.forEach(function(e, i, a) {
@@ -1524,7 +1524,7 @@ AAPW_FOOT = """\
     }
     return next;
   }
-  
+
   Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
     aMsg = [aMsg];
     for (var i = 2; i < arguments.length; i++)
@@ -2747,7 +2747,7 @@ def getTags(config):
         'pageBreak'             : '.bp'      ,
         'TOC'                   : '.XT'      ,
     },
-    
+
     # http://www.spip-contrib.net/Les-raccourcis-typographiques-en
     # http://www.spip-contrib.net/Carnet-Bac-a-Sable
     # some tags are not implemented by spip tags, but spip accept html tags.
@@ -3863,12 +3863,12 @@ def getRules(config):
             'labelbeforelink' : 0, # is that work ?
             'imgalignable': 1,
             'plaintexttoc': 0,
-        
+
             'tableable': 1,
             'tablecellaligntype': 'column',
             'tabletitlerowinbold': 1,
             'tablecellstrip': 1,
-        
+
             'blanksaroundpara': 0,
             'blanksaroundverb': 0,
             'blanksaroundquote': 0,
@@ -5113,18 +5113,18 @@ class BaseOptions(CommandLine):
 
 class CsvOptions(BaseOptions):
     """Tokenize and parse the %!CSV command arguments.
-    
+
     When you find this line in the user document:
-    
+
         %!CSV: -s tab foo.csv
-    
+
     Just feed everything after the first : to this class,
     as a single string. It will be tokenized, parsed and
     saved to self.raw and self.parsed.
-    
+
     Use the self.get() method to get the value of a config.
     If missing, the default value will be returned.
-    
+
     Example:
         >>> import txt2tags, pprint
         >>> csvopt = txt2tags.CsvOptions('-s tab foo.csv')
@@ -5171,18 +5171,18 @@ class CsvOptions(BaseOptions):
 
 class DbOptions(BaseOptions):
     """Tokenize and parse the %!DB command arguments.
-    
+
     When you find this line in the user document:
-    
+
         %!DB: -q "select * from table" foo.db
-    
+
     Just feed everything after the first : to this class,
     as a single string. It will be tokenized, parsed and
     saved to self.raw and self.parsed.
-    
+
     Use the self.get() method to get the value of a config.
     If missing, the default value will be returned.
-    
+
     Example:
         >>> import txt2tags, pprint
         >>> dbopt = txt2tags.DbOptions('-q "select * from table" foo.db')
@@ -6190,7 +6190,7 @@ class MaskMaster:
         # Expand math
         matches = list(self.mathmaskre.finditer(line))
         while matches:
-            mask = self.math_masks.pop() 
+            mask = self.math_masks.pop()
             m = matches.pop()
             i = int(m.group(1))
             if TARGET in ['aat', 'tex', 'html5']:
@@ -9523,7 +9523,7 @@ def convert(bodylines, config, firstlinenr=1):
                     ret.extend(parse_convert_table(table, rules['tableable'], CONF['target']))
                 # This line is done, go to next
                 continue
-            
+
             # %!db command
             elif key == 'db':
 
