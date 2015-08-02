@@ -44,11 +44,7 @@ if len(sys.argv) > 1:
 
 # Show which version is being tested
 print "Tested txt2tags version:", lib.get_output(lib.TXT2TAGS + ["-V"])
-print "Tested txt2tagslite version:", lib.get_output(lib.TXT2TAGSLITE + ["-V"])
-print
-print 'Base commands used for all tests:'
-print lib.TXT2TAGS
-print lib.TXT2TAGSLITE
+print 'Base command used for all tests:', lib.TXT2TAGS
 print
 
 for module in PYTHON_TEST_MODULES:

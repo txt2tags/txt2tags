@@ -14,9 +14,8 @@ PYTHON = sys.executable
 
 print "Testing txt2tags on", platform.python_implementation(), platform.python_version()
 
-# Path for txt2tags (change here if your txt2tags is in a different location)
+# Path to txt2tags (change to '../txt2tagslite' for testing txt2tagslite)
 TXT2TAGS = '../txt2tags'
-TXT2TAGSLITE = '../txt2tagslite'
 
 CONFIG_FILE = 'config'
 CSS_FILE = 'css'
@@ -30,7 +29,6 @@ MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
 
 # force absolute path to avoid problems, set default options
 TXT2TAGS = [os.path.abspath(TXT2TAGS), '-q', '--no-rc']
-TXT2TAGSLITE = [os.path.abspath(TXT2TAGSLITE), '-q', '--no-rc']
 
 EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'}
 
@@ -75,8 +73,8 @@ def getFileMtime(file):
 def getCurrentDate():
     return time.strftime('%Y%m%d', time.localtime(time.time()))
 
-def _convert(options, lite=False):
-    txt2tags = TXT2TAGSLITE if lite else TXT2TAGS
+def _convert(options):
+    txt2tags = TXT2TAGS
     cmdline = ' '.join([PYTHON] + txt2tags + options)
     return subprocess.call(cmdline, shell=True)
 
@@ -118,9 +116,3 @@ def test(cmdline, outfile, okfile=None):
     if not okfile:
         okfile = os.path.join(DIR_OK, outfile)
     _diff(outfile, okfile=okfile)
-
-    basename, extension = os.path.splitext(os.path.basename(outfile))
-    target = extension.lstrip('.')
-    outfilelite = basename + '.' + EXTENSION.get(target, target)
-    _convert(cmdline, lite=True)
-    _diff(outfilelite, okfile=okfile)
