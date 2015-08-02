@@ -97,7 +97,6 @@ import sys
 import locale
 import time  # %%date, %%mtime
 import getopt
-import textwrap
 import csv
 import struct
 import unicodedata
