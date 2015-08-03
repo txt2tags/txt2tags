@@ -1,7 +1,7 @@
 # aa.py
 # The ASCII Art library for Python
 #
-# Copyright 2008-2012 Florent Gallaire <fgallaire@gmail.com>
+# Copyright 2008-2015 Florent Gallaire <fgallaire@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ def under(txt, char, width, over):
     ret = []
     if over:
         ret.append(line(char, lencjk(txt)))
-    for lin in textwrap.wrap(txt, width):
+    for lin in wrap(txt, width, False):
         ret.extend([lin, line(char, lencjk(lin))])
     return ret
 
@@ -198,8 +198,9 @@ def image(image):
 
 
 def wrap(txt, width, web):
+    twcjk = TextWrapperCJK(width=width)
     if not web:
-        return textwrap.wrap(txt, width)
+        return twcjk.wrap(txt)
     txt = re.split('(<a href=.*?>)|(</a>)|(<img src=.*?>)', txt)
     lin, length, ret = '', 0, []
     for el in txt:
@@ -207,7 +208,7 @@ def wrap(txt, width, web):
             if el[0] != '<':
                 if len(el) > width:
                     lin = lin + el
-                    multi = textwrap.wrap(lin, width)
+                    multi = twcjk.wrap(lin)
                     ret.extend(multi[:-1])
                     lin = multi[-1]
                 elif length + len(el) <= width:
@@ -234,6 +235,61 @@ def lencjk(txt, web=False):
         else:
             l = l + 1
     return l
+
+
+def slicecjk(txt, space_left):
+    if isinstance(txt, str):
+        return txt[:space_left], txt[space_left:]
+    i = 1
+    while lencjk(txt[:i]) <= space_left:
+        # <= and index i-1
+        # to catch the last double length char of odd line
+        i = i + 1
+    return txt[:i-1], txt[i-1:]
+
+
+class TextWrapperCJK(textwrap.TextWrapper):
+    # CJK fix for the Greg Ward textwrap lib. 
+    def _handle_long_word(self, reversed_chunks, cur_line, cur_len, width):
+        if width < 1:
+            space_left = 1
+        else:
+            space_left = width - cur_len
+        if self.break_long_words:
+            chunk_start, chunk_end = slicecjk(reversed_chunks[-1], space_left)
+            cur_line.append(chunk_start)
+            reversed_chunks[-1] = chunk_end
+        elif not cur_line:
+            cur_line.append(reversed_chunks.pop())
+    def _wrap_chunks(self, chunks):
+        lines = []
+        if self.width <= 0:
+            raise ValueError("invalid width %r (must be > 0)" % self.width)
+        chunks.reverse()
+        while chunks:
+            cur_line = []
+            cur_len = 0
+            if lines:
+                indent = self.subsequent_indent
+            else:
+                indent = self.initial_indent
+            width = self.width - len(indent)
+            if self.drop_whitespace and chunks[-1].strip() == '' and lines:
+                del chunks[-1]
+            while chunks:
+                l = lencjk(chunks[-1])
+                if cur_len + l <= width:
+                    cur_line.append(chunks.pop())
+                    cur_len += l
+                else:
+                    break
+            if chunks and lencjk(chunks[-1]) > width:
+                self._handle_long_word(chunks, cur_line, cur_len, width)
+            if self.drop_whitespace and cur_line and cur_line[-1].strip() == '':
+                del cur_line[-1]
+            if cur_line:
+                lines.append(indent + ''.join(cur_line))
+        return lines
 
 
 def center(txt, width, web=False):

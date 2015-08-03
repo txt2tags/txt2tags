@@ -97,7 +97,6 @@ import sys
 import locale
 import time  # %%date, %%mtime
 import getopt
-import textwrap
 import csv
 import struct
 import unicodedata
@@ -5427,6 +5426,12 @@ def get_include_contents(file_, path=''):
         lines.insert(0, '%%!currentfile: %s' % (filepath))
         # This appears when included hit EOF with verbatim area open
         #lines.append('%%INCLUDED(%s) ends here: %s' % (id_, file_))
+    conf = process_source_file(filepath)[0]
+    if conf.get('encoding') and conf.get('encoding').lower() == 'utf-8':
+        decode = []
+        for line in lines:
+            decode.append(line.decode('utf-8'))
+        lines = decode
     return id_, lines
 
 
