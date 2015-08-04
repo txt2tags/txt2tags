@@ -42,7 +42,7 @@ def addFilters(filters):
     for filter in filters:
         config.append("%%!%sproc: '%s' %s"%filter) # don't quote 2nd -- breaks tagged filter
     if config:
-        lib.WriteFile(lib.CONFIG_FILE, '\n'.join(config))
+        lib.write_file(lib.CONFIG_FILE, '\n'.join(config))
         cmdline = ['-C', lib.CONFIG_FILE]
     return cmdline
 

@@ -51,7 +51,7 @@ def run():
                 infile_txt.append(txt[letter])
             infile_txt = '\n'.join(infile_txt)
             # create the source file
-            lib.WriteFile(infile, infile_txt)
+            lib.write_file(infile, infile_txt)
             # convert and check results
             lib.test(DIR, cmdline, outfile)
             # remove the trash

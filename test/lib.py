@@ -1,21 +1,19 @@
 # txt2tags test-suite library (http://txt2tags.org)
 
 # TODO: Remove initTest().
-# TODO: Remove some global variables.
 # TODO: Don't write output to disk (easier code and faster execution)
+# TODO: Only run http test module if --slow is passed to py.test
 
 import os
-import platform
 import re
 import subprocess
 import sys
 import time
 
+
 DIR = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(DIR)
 PYTHON = sys.executable
-
-print "Testing txt2tags on", platform.python_implementation(), platform.python_version()
 
 # Path to txt2tags (change to '../txt2tagslite' for testing txt2tagslite)
 TXT2TAGS = os.path.join(REPO, 'txt2tags')
@@ -24,10 +22,15 @@ CONFIG_FILE = 'config'
 CSS_FILE = 'css'
 DIR_OK = 'ok'
 
-# force absolute path to avoid problems, set default options
+# Force absolute path and set default options.
 TXT2TAGS = [os.path.abspath(TXT2TAGS), '-q', '--no-rc']
 
-EXTENSION = {'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt', 'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html', 'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv', 'texs': 'tex'}
+EXTENSION = {
+    'aat': 'txt', 'aap': 'txt', 'aas': 'txt', 'txt': 'txt',
+    'aatw': 'html', 'aapw': 'html', 'aasw': 'html', 'html5': 'html',
+    'htmls': 'html', 'xhtml': 'html', 'xhtmls': 'html', 'csvs': 'csv',
+    'texs': 'tex'}
+
 
 def get_output(cmd):
     return subprocess.Popen(
@@ -35,29 +38,20 @@ def get_output(cmd):
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT).communicate()[0].strip()
 
-#
-# file tools
-#
-def ReadFile(filename):
+
+def read_file(filename):
     with open(filename, 'r') as f:
         return f.read()
 
-def WriteFile(filename, content=''):
+
+def write_file(filename, content=''):
     with open(filename, 'w') as f:
         f.write(content)
 
-def MoveFile(orig, target):
-    if os.path.isfile(target):
-        os.remove(target)
-    os.link(orig, target)
-    os.remove(orig)
 
 def initTest(name, infile, outfile, okfile=None):
-    if not okfile:
-        okfile  = os.path.join(DIR_OK, outfile)
-    okfile = os.path.abspath(okfile)
-    #assert os.path.isfile(okfile), okfile
     return True
+
 
 def getFileMtime(file):
     ret = "-NO-MTIME-"
@@ -65,13 +59,25 @@ def getFileMtime(file):
         ret = time.strftime('%Y%m%d', time.localtime(os.path.getmtime(file)))
     return ret
 
+
 def getCurrentDate():
     return time.strftime('%Y%m%d', time.localtime(time.time()))
 
+
 def _convert(options, module_dir):
     cmdline = ' '.join([PYTHON] + TXT2TAGS + options)
-    print 'Call "%s" in "%s"' % (cmdline, module_dir)
+    print 'Calling "%s" in "%s"' % (cmdline, module_dir)
     return subprocess.call(cmdline, shell=True, cwd=module_dir)
+
+
+def _diff(outfile, okfile):
+    out = read_file(outfile)
+    os.remove(outfile)
+    out = remove_version(out)
+    ok = read_file(okfile)
+    ok = remove_version(ok)
+    assert out == ok
+
 
 def remove_version(text):
     version_re = r'\d+\.\d+\.?(\d+)?'
@@ -80,6 +86,7 @@ def remove_version(text):
                   r'(%%%%appversion) "%(version_re)s"']:
         text = re.sub(regex % locals(), '\1', text)
     return text
+
 
 def get_ok_files(module_dir):
     ok_dir = os.path.join(module_dir, DIR_OK)
@@ -95,13 +102,6 @@ def get_ok_files(module_dir):
         okfile = os.path.join(ok_dir, filename)
         yield name, target, infile, outfile, okfile, stderr
 
-def _diff(outfile, okfile):
-    out = ReadFile(outfile)
-    os.remove(outfile)
-    out = remove_version(out)
-    ok = ReadFile(okfile)
-    ok = remove_version(ok)
-    assert out == ok
 
 def test(module_dir, cmdline, outfile, okfile=None):
     assert os.path.isabs(module_dir), module_dir

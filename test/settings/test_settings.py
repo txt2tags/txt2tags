@@ -313,9 +313,9 @@ def run():
         if lib.initTest(test['name'], infile, outfile):
             # create the extra files (if needed for this test)
             if 'config' in extra:
-                lib.WriteFile(lib.CONFIG_FILE, CONFIG_FILE_TXT)
+                lib.write_file(lib.CONFIG_FILE, CONFIG_FILE_TXT)
             if 'css' in extra:
-                lib.WriteFile(lib.CSS_FILE, CSS_FILE_TXT)
+                lib.write_file(lib.CSS_FILE, CSS_FILE_TXT)
             # may I add the -t target automatically?
             if not 'notarget' in extra:
                 cmdline = ['-t', target] + cmdline
@@ -327,7 +327,7 @@ def run():
             # always catch the error output
             cmdline.append('2>&1')
             # create the source file
-            lib.WriteFile(infile, EMPTY_HEADER + content + '\n' + SIMPLE_BODY)
+            lib.write_file(infile, EMPTY_HEADER + content + '\n' + SIMPLE_BODY)
             # convert and check results
             lib.test(DIR, cmdline, outfile)
             # remove the trash
