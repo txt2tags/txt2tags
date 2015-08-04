@@ -1,0 +1,11 @@
+#! /bin/bash
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+py.test-2.7
+
+for SCRIPT in $(find . -name "run.sh"); do
+    "./$SCRIPT"
+done
