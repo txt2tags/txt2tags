@@ -1,12 +1,12 @@
-#
 # txt2tags crossing marks tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
-import os, sys, glob
+import glob
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 # left files are generated from right ones (using smart filters)
 ALIASES = {
@@ -35,13 +35,13 @@ def addFilters(filters):
     return cmdline
 
 def run():
-    # test all .t2t files found
+    os.chdir(DIR)
     for infile in glob.glob("*.t2t"):
         basename = infile.replace('.t2t', '')
         outfile = basename + '.html'
         if lib.initTest(basename, infile, outfile):
             cmdline = [infile]
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
 
     # extra: bar.t2t as TXT
     infile = 'bar.t2t'
@@ -50,7 +50,7 @@ def run():
     if lib.initTest(basename, infile, outfile):
         cmdline = ['-t', 'txt', '-i', infile]
         cmdline.extend(['--width', '150'])  # to avoid wrapping
-        lib.test(cmdline, outfile)
+        lib.test(DIR, cmdline, outfile)
 
     # using smart filters, same files generate more than one output
     for alias in ALIASES.keys():
@@ -60,7 +60,7 @@ def run():
             cmdline = addFilters(FILTERS.get(alias))
             cmdline.append('-H')
             cmdline.extend(['-o', outfile, infile])
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
 
     # extra: bar2.t2t as TXT
     alias = 'bar2'
@@ -71,13 +71,11 @@ def run():
         cmdline.append('-H')
         cmdline.extend(['--width', '150'])  # to avoid wrapping
         cmdline.extend(['-t', 'txt', '-o', outfile, infile])
-        lib.test(cmdline, outfile)
+        lib.test(DIR, cmdline, outfile)
 
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
-
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 
 if __name__ == '__main__':

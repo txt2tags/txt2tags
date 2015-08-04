@@ -5,10 +5,12 @@
 # Note: The .t2t files are generated dynamicaly, based on 'tests' dict data
 #
 
-import sys, os
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 # text patterns to compose source files
 EMPTY_HEADER    = "\n"
@@ -296,6 +298,7 @@ tests = [
 ]
 
 def run():
+    os.chdir(DIR)
     for test in tests:
         target  = test.get('target') or 'txt'
         infile  = test['name'] + '.t2t'
@@ -320,20 +323,19 @@ def run():
             if test.get('redir'):
                 cmdline.extend(test['redir'])
             elif 'error' in extra:
-                cmdline.append('> %s.out' % test['name'])
+                cmdline.append('> %s' % outfile)
             # always catch the error output
             cmdline.append('2>&1')
             # create the source file
             lib.WriteFile(infile, EMPTY_HEADER + content + '\n' + SIMPLE_BODY)
             # convert and check results
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
             # remove the trash
             os.remove(infile)
             if os.path.isfile(lib.CSS_FILE):
                 os.remove(lib.CSS_FILE)
             if os.path.isfile(lib.CONFIG_FILE):
                 os.remove(lib.CONFIG_FILE)
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
     run()

@@ -1,7 +1,8 @@
-#
 # txt2tags test-suite library (http://txt2tags.org)
-# See also: run.py, */run.py
-#
+
+# TODO: Remove initTest().
+# TODO: Remove some global variables.
+# TODO: Don't write output to disk (easier code and faster execution)
 
 import os
 import platform
@@ -22,10 +23,6 @@ TXT2TAGS = os.path.join(REPO, 'txt2tags')
 CONFIG_FILE = 'config'
 CSS_FILE = 'css'
 DIR_OK = 'ok'
-DIR_ERROR = 'error'
-
-OK = FAILED = 0
-ERROR_FILES = []
 
 # force absolute path to avoid problems, set default options
 TXT2TAGS = [os.path.abspath(TXT2TAGS), '-q', '--no-rc']
@@ -58,9 +55,8 @@ def MoveFile(orig, target):
 def initTest(name, infile, outfile, okfile=None):
     if not okfile:
         okfile  = os.path.join(DIR_OK, outfile)
-    if not os.path.isfile(okfile):
-        print 'Skipping test (missing %s)' % okfile
-        return False
+    okfile = os.path.abspath(okfile)
+    #assert os.path.isfile(okfile), okfile
     return True
 
 def getFileMtime(file):
@@ -72,10 +68,10 @@ def getFileMtime(file):
 def getCurrentDate():
     return time.strftime('%Y%m%d', time.localtime(time.time()))
 
-def _convert(options):
-    txt2tags = TXT2TAGS
-    cmdline = ' '.join([PYTHON] + txt2tags + options)
-    return subprocess.call(cmdline, shell=True)
+def _convert(options, module_dir):
+    cmdline = ' '.join([PYTHON] + TXT2TAGS + options)
+    print 'Call "%s" in "%s"' % (cmdline, module_dir)
+    return subprocess.call(cmdline, shell=True, cwd=module_dir)
 
 def remove_version(text):
     version_re = r'\d+\.\d+\.?(\d+)?'
@@ -85,10 +81,21 @@ def remove_version(text):
         text = re.sub(regex % locals(), '\1', text)
     return text
 
-def _diff(outfile, okfile=None):
-    global OK, FAILED, ERROR_FILES
-    if not okfile:
-        okfile = os.path.join(DIR_OK, outfile)
+def get_ok_files(module_dir):
+    ok_dir = os.path.join(module_dir, DIR_OK)
+    for filename in sorted(os.listdir(ok_dir)):
+        name, extension = os.path.splitext(filename)
+        target = extension.lstrip('.')
+        stderr = False
+        if target == 'out':
+            target = 'txt'
+            stderr = True
+        infile = name + ".t2t"
+        outfile = filename
+        okfile = os.path.join(ok_dir, filename)
+        yield name, target, infile, outfile, okfile, stderr
+
+def _diff(outfile, okfile):
     out = ReadFile(outfile)
     os.remove(outfile)
     out = remove_version(out)
@@ -96,8 +103,20 @@ def _diff(outfile, okfile=None):
     ok = remove_version(ok)
     assert out == ok
 
-def test(cmdline, outfile, okfile=None):
-    _convert(cmdline)
+def test(module_dir, cmdline, outfile, okfile=None):
+    assert os.path.isabs(module_dir), module_dir
+    _convert(cmdline, module_dir)
+
+    if not os.path.isabs(outfile):
+        outfile = os.path.join(module_dir, outfile)
+    assert os.path.isabs(outfile)
+
     if not okfile:
-        okfile = os.path.join(DIR_OK, outfile)
-    _diff(outfile, okfile=okfile)
+        dirname, basename = os.path.split(outfile)
+        assert dirname == module_dir
+        okfile = basename
+    # Make path absolute if it isn't already.
+    okfile = os.path.join(module_dir, DIR_OK, okfile)
+    assert os.path.isabs(okfile)
+
+    _diff(outfile, okfile)

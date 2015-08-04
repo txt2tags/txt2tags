@@ -1,14 +1,14 @@
-#
 # txt2tags headers tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
 #
 # Note: The .t2t files are generated dynamicaly, based on 'tests' data.
 #       Each character is expanded to a 'txt' dict text.
-#
 
-import sys, os
+import os
 
 import lib
+
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # text patterns to compose source files
@@ -39,6 +39,7 @@ m     mm    mmm    1mm    12m
 
 
 def run():
+    os.chdir(DIR)
     for testid in tests.split():
         infile  = testid + '.t2t'
         outfile = testid + '.html'
@@ -52,10 +53,10 @@ def run():
             # create the source file
             lib.WriteFile(infile, infile_txt)
             # convert and check results
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
             # remove the trash
             os.remove(infile)
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+
 
 if __name__ == '__main__':
     run()

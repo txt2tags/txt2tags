@@ -1,11 +1,12 @@
-#
 # txt2tags %!includeconf command tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
-import os, sys, glob
+import glob
+import os
 
 import lib
+
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Tests for the command line option -C
@@ -62,7 +63,9 @@ tests = [
     }
 ]
 
+
 def run():
+    os.chdir(DIR)
 
     ### First test the %!includeconf command
 
@@ -82,19 +85,19 @@ def run():
         outfile = basename + '.html'
 
         if basename in unnumbered:
-            okfile = 'ok/not-numbered.html'
+            okfile = 'not-numbered.html'
         else:
-            okfile = 'ok/numbered.html'
+            okfile = 'numbered.html'
 
         if basename in errors:
             outfile = basename + '.out'
-            okfile = 'ok/' + outfile
+            okfile = outfile
             cmdline = ['-H', '-i', infile, '-o- >', outfile, '2>&1']
         else:
             cmdline = ['-H', '-i', infile, '-o', outfile]
 
         if lib.initTest(basename, infile, outfile, okfile):
-            lib.test(cmdline, outfile, okfile=okfile)
+            lib.test(DIR, cmdline, outfile, okfile=okfile)
 
     ### Now test -C and --config-file command line options
 
@@ -105,9 +108,9 @@ def run():
 
         # --enum-title is used by this test?
         if test.get('not-numbered'):
-            okfile = 'ok/not-numbered.html'
+            okfile = 'not-numbered.html'
         else:
-            okfile = 'ok/numbered.html'
+            okfile = 'numbered.html'
 
         # 1st turn (-C), 2nd turn (--config-file)
         for i in (1, 2):
@@ -123,14 +126,14 @@ def run():
 
             if test['name'] in errors:
                 outfile = name + '.out'
-                okfile = 'ok/' + outfile
+                okfile = outfile
                 cmdline = default_cmdline + cmdline + ['-o- >', outfile, '2>&1']
             else:
                 cmdline = default_cmdline + cmdline + ['-o', outfile]
 
             # convert and check results
             if lib.initTest(name, infile, outfile, okfile):
-                lib.test(cmdline, outfile, okfile=okfile)
+                lib.test(DIR, cmdline, outfile, okfile=okfile)
 
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):

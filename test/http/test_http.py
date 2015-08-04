@@ -1,12 +1,11 @@
-#
 # txt2tags http loading tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
-import os, sys, re, glob
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 remote_root = 'http://txt2tags.org/test/'
 remote_infiles = [
@@ -19,39 +18,33 @@ remote_mapping = {
     'stdout': 'simple.t2t',
     }
 
+
 def run():
-    # test all OK files found
-    for outfile in glob.glob("ok/*"):
-        basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
-        infile = basename + ".t2t"
+    os.chdir(DIR)
+    for name, target, infile, outfile, okfile, stderr in lib.get_ok_files(DIR):
         if infile in remote_infiles:
             infile = remote_root + infile
-        if basename in remote_mapping:
-            infile = remote_root + remote_mapping[basename]
-        outfile = outfile.replace('ok/', '')
-        if lib.initTest(basename, infile, outfile):
+        if name in remote_mapping:
+            infile = remote_root + remote_mapping[name]
+        if lib.initTest(name, infile, outfile):
             cmdline = []
             cmdline.extend(['-i', infile])
-            if infile.startswith(remote_root) \
-                and basename != 'remote-outfile':
+            if (infile.startswith(remote_root) and
+                    name != 'remote-outfile'):
                 cmdline.extend(['-o', outfile])
-            if basename == 'not-found':
+            if name == 'not-found':
                 cmdline.append('>' + outfile)
                 cmdline.append('2>&1')
-            elif basename == 'stdout':
+            elif name == 'stdout':
                 cmdline.extend(['-o', '-'])
                 cmdline.append('>' + outfile)
-            elif basename == 'remote-outfile':
+            elif name == 'remote-outfile':
                 cmdline.append('2>' + outfile)
-            elif basename == 'relative-path':
+            elif name == 'relative-path':
                 cmdline.extend(['-t', 'html'])
                 cmdline.append('--fix-path')
-            lib.test(cmdline, outfile)
-    # clean up
-    if os.path.isfile(lib.CONFIG_FILE):
-        os.remove(lib.CONFIG_FILE)
+            lib.test(DIR, cmdline, outfile)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
     run()

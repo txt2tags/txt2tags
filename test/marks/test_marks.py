@@ -1,12 +1,12 @@
-#
 # txt2tags marks parsing tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
-import os, sys, glob
+import glob
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 # left files are generated from right ones (using smart filters)
 ALIASES = {
@@ -47,6 +47,7 @@ def addFilters(filters):
     return cmdline
 
 def run():
+    os.chdir(DIR)
     # test all .t2t files found
     for infile in glob.glob("*.t2t"):
         basename = infile.replace('.t2t', '')
@@ -54,7 +55,7 @@ def run():
         if lib.initTest(basename, infile, outfile):
             cmdline = addFilters(FILTERS.get(basename))
             cmdline.append(infile)
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
     # using smart filters, same files generate more than one output
     for alias in ALIASES.keys():
         infile = ALIASES[alias] + '.t2t'
@@ -62,12 +63,11 @@ def run():
         if lib.initTest(alias, infile, outfile):
             cmdline = addFilters(FILTERS.get(alias))
             cmdline.extend(['-o', outfile, infile])
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
     run()

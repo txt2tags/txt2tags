@@ -1,12 +1,11 @@
-#
 # txt2tags %%macro command tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
-import os, sys, re, glob
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 # smart filters to perform macros normalization
 FILTERS = [
@@ -32,26 +31,17 @@ def addFilters(filters):
 
 
 def run():
-    # test all OK files found
-    for outfile in glob.glob("ok/*"):
-        stderr = 0
-        basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
-        target = re.sub('.*\.', '', outfile)
-        if target == 'out':
-            target = 'txt'
-            stderr = 1
-        infile = basename + ".t2t"
-        # Using filename -H suffix to run new tests using -H option
-        if basename.endswith('-H'):
-            infile = basename.replace('-H', '') + ".t2t"
-        outfile = outfile.replace('ok/', '')
+    os.chdir(DIR)
+    for name, target, infile, outfile, okfile, stderr in lib.get_ok_files(DIR):
+        if name.endswith('-H'):
+            infile = name[:-2] + ".t2t"
 
-        if lib.initTest(basename, infile, outfile):
+        if lib.initTest(name, infile, outfile):
             cmdline = []
             cmdline = addFilters(FILTERS)
-            if basename == 'path':
+            if name == 'path':
                 cmdline.extend(['--width', '200'])
-            if basename.endswith('-H'):
+            if name.endswith('-H'):
                 cmdline.append('-H')
                 cmdline.extend(['-o', outfile])
             cmdline.extend(['-t', target])
@@ -60,7 +50,7 @@ def run():
                 cmdline.extend(['-o', '-'])
                 cmdline.append('>' + outfile)
                 cmdline.append('2>&1')
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)

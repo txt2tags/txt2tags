@@ -1,14 +1,13 @@
-#
 # txt2tags command line options tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
 #
 # Note: The .t2t files are generated dynamicaly, based on 'tests' dict data
-#
 
-import sys, os
+import os
 
 import lib
 
+
+DIR = os.path.dirname(os.path.abspath(__file__))
 
 # text patterns to compose source files
 EMPTY_HEADER    = "\n"
@@ -634,10 +633,13 @@ tests = [
     }
 ]
 
+
 def run():
+    os.chdir(DIR)
     for test in tests:
         infile  = test['name'] + '.t2t'
         outfile = test['name'] + '.' + (test.get('target') or 'out')
+        outfile = os.path.join(DIR, outfile)
         extra   = test.get('extra') or []
         cmdline = test['cmdline']
         if not 'noinfile' in extra:
@@ -665,7 +667,7 @@ def run():
             # create the source file
             lib.WriteFile(infile, test['content'])
             # convert and check results
-            lib.test(cmdline, outfile)
+            lib.test(DIR, cmdline, outfile)
             # remove the trash
             os.remove(infile)
             if os.path.isfile(lib.CSS_FILE):
