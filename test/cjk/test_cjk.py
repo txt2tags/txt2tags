@@ -8,20 +8,16 @@ import os
 import re
 import sys
 
-DIR = os.path.dirname(os.path.abspath(__file__))
-TEST_DIR = os.path.dirname(DIR)
-sys.path.insert(0, TEST_DIR)
 import lib
 
-os.chdir(DIR)
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
+DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 def run():
     # test all OK files found
     # Note: txt target is to test the table-to-verbatim mapping
+    os.chdir(DIR)
     for outfile in glob.glob("ok/*"):
         stderr = 0
         basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))

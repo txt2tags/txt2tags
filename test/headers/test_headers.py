@@ -8,13 +8,8 @@
 
 import sys, os
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 # text patterns to compose source files
 txt = {
@@ -42,6 +37,7 @@ ekb   123kb ek     123k   ekkkb
 m     mm    mmm    1mm    12m
 """
 
+
 def run():
     for testid in tests.split():
         infile  = testid + '.t2t'
@@ -62,4 +58,4 @@ def run():
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()

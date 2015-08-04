@@ -6,22 +6,17 @@
 import glob
 import os
 import re
-import sys
 
-DIR = os.path.dirname(os.path.abspath(__file__))
-TEST_DIR = os.path.dirname(DIR)
-sys.path.insert(0, TEST_DIR)
 import lib
 
-os.chdir(DIR)
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
+DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 def run():
     # test all OK files found
     # Note: txt target is to test the table-to-verbatim mapping
+    os.chdir(DIR)
     for outfile in glob.glob("ok/*"):
         stderr = 0
         basename, extension = os.path.splitext(os.path.basename(outfile))
@@ -44,7 +39,6 @@ def run():
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
     run()

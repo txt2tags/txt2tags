@@ -5,13 +5,8 @@
 
 import os, sys, re, glob
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 remote_root = 'http://txt2tags.org/test/'
 remote_infiles = [
@@ -59,4 +54,4 @@ def run():
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()

@@ -5,13 +5,8 @@
 
 import os, sys, re, glob
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 # smart filters to perform macros normalization
 FILTERS = [
@@ -23,6 +18,7 @@ FILTERS = [
     ('post', '^(..appversion +"\d\.\d+)\.\d+', r'\1'),  # Remove SVN release
 ]
 
+
 # convert FILTERS tuples to txt2tags pre/postproc rules
 def addFilters(filters):
     config = []
@@ -33,6 +29,7 @@ def addFilters(filters):
         lib.WriteFile(lib.CONFIG_FILE, '\n'.join(config))
         cmdline = ['-C', lib.CONFIG_FILE]
     return cmdline
+
 
 def run():
     # test all OK files found
@@ -68,7 +65,6 @@ def run():
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()

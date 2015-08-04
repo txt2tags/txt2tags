@@ -7,13 +7,8 @@
 
 import sys, os
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 # text patterns to compose source files
 EMPTY_HEADER    = "\n"
@@ -677,7 +672,7 @@ def run():
                 os.remove(lib.CSS_FILE)
             if os.path.isfile(lib.CONFIG_FILE):
                 os.remove(lib.CONFIG_FILE)
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()

@@ -1,18 +1,10 @@
-#
 # txt2tags target code tester (http://txt2tags.org)
-# See also: ../run.py ../lib.py
-#
 
 import glob
 import sys
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 all_targets = 'aap aapw aas aasw aat aatw adoc bbcode creole dbk doku gwiki html html5 htmls lout man md mgp moin pm6 pmw csv csvs ods red rst rtf sgml spip tex texs txt txt2t wiki xhtml xhtmls'.split()
 
@@ -41,4 +33,4 @@ def run():
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()

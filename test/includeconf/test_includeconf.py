@@ -5,13 +5,8 @@
 
 import os, sys, glob
 
-sys.path.insert(0, '..')
 import lib
-del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
 
 # Tests for the command line option -C
 # Note: --config-file is also tested automatically from these tests
@@ -141,7 +136,6 @@ def run():
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    run()
