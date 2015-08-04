@@ -10,12 +10,14 @@ import subprocess
 import sys
 import time
 
+DIR = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(DIR)
 PYTHON = sys.executable
 
 print "Testing txt2tags on", platform.python_implementation(), platform.python_version()
 
 # Path to txt2tags (change to '../txt2tagslite' for testing txt2tagslite)
-TXT2TAGS = '../txt2tags'
+TXT2TAGS = os.path.join(REPO, 'txt2tags')
 
 CONFIG_FILE = 'config'
 CSS_FILE = 'css'
