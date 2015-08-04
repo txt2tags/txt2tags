@@ -58,7 +58,6 @@ def MoveFile(orig, target):
 def initTest(name, infile, outfile, okfile=None):
     if not okfile:
         okfile  = os.path.join(DIR_OK, outfile)
-    print '  %s' % name,
     if not os.path.isfile(okfile):
         print 'Skipping test (missing %s)' % okfile
         return False
@@ -86,30 +85,16 @@ def remove_version(text):
         text = re.sub(regex % locals(), '\1', text)
     return text
 
-def mark_failed(outfile):
-    global FAILED
-    print 'FAILED'
-    FAILED += 1
-    if not os.path.isdir(DIR_ERROR):
-        os.mkdir(DIR_ERROR)
-    if os.path.exists(outfile):
-        MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
-        ERROR_FILES.append(outfile)
-
 def _diff(outfile, okfile=None):
     global OK, FAILED, ERROR_FILES
     if not okfile:
         okfile = os.path.join(DIR_OK, outfile)
     out = ReadFile(outfile)
+    os.remove(outfile)
     out = remove_version(out)
     ok = ReadFile(okfile)
     ok = remove_version(ok)
-    if out != ok:
-        mark_failed(outfile)
-    else:
-        print 'OK'
-        OK = OK + 1
-        os.remove(outfile)
+    assert out == ok
 
 def test(cmdline, outfile, okfile=None):
     _convert(cmdline)

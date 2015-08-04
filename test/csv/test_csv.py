@@ -1,13 +1,19 @@
 #
-# txt2tags CJK wrapping tester (http://txt2tags.org)
+# txt2tags %!csv command tester (http://txt2tags.org)
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, re, glob
+import glob
+import os
+import re
+import sys
 
-sys.path.insert(0, '..')
+DIR = os.path.dirname(os.path.abspath(__file__))
+TEST_DIR = os.path.dirname(DIR)
+sys.path.insert(0, TEST_DIR)
 import lib
-del sys.path[0]
+
+os.chdir(DIR)
 
 # sux
 lib.OK = lib.FAILED = 0
@@ -18,16 +24,16 @@ def run():
     # Note: txt target is to test the table-to-verbatim mapping
     for outfile in glob.glob("ok/*"):
         stderr = 0
-        basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
-        target = re.sub('.*\.', '', outfile)
+        basename, extension = os.path.splitext(os.path.basename(outfile))
+        target = extension.lstrip('.')
         if target == 'out':
             target = 'txt'
             stderr = 1
         infile = basename + ".t2t"
         outfile = outfile.replace('ok/', '')
-
         if lib.initTest(basename, infile, outfile):
-            cmdline = ['-t', target]
+            cmdline = ['-H']
+            cmdline.extend(['-t', target])
             cmdline.extend(['-i', infile])
             if stderr:
                 cmdline.extend(['-o', '-'])
