@@ -6,6 +6,7 @@ cd "$(dirname "$0")"
 
 py.test-2.7
 
-for SCRIPT in $(find . -name "run.sh"); do
-    "./$SCRIPT"
-done
+# Uncomment the following lines to include the bash tests.
+#for SCRIPT in $(find . -name "run.sh"); do
+#    "./$SCRIPT"
+#done
