@@ -33,8 +33,6 @@ for path in sorted(os.listdir(DIR)):
         PYTHON_TEST_MODULES.append(path)
     elif os.path.exists(os.path.join(path, 'run.sh')):
         BASH_TEST_MODULES.append(path)
-    else:
-        sys.exit('test module %s contains neither run.py nor run.sh' % path)
 
 TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
