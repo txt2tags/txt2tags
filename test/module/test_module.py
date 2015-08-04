@@ -5,19 +5,19 @@
 # Checks whether both scripts that use txt2tags as a module return 0.
 #
 
-import os
+import os.path
 import subprocess
 import sys
 
-FILE = os.path.abspath(__file__)
-REPO = os.path.abspath(os.path.join(FILE, '..', '..', '..'))
-
-SCRIPTS_DIR = os.path.join(REPO, 'samples', 'module')
-SCRIPTS = ['module-full.py', 'module-body.py']
-
-sys.path.insert(0, '..')
+DIR = os.path.dirname(os.path.abspath(__file__))
+TEST_DIR = os.path.dirname(DIR)
+sys.path.insert(0, TEST_DIR)
 import lib
-del sys.path[0]
+
+os.chdir(DIR)
+
+SCRIPTS_DIR = os.path.join(lib.REPO, 'samples', 'module')
+SCRIPTS = ['module-full.py', 'module-body.py']
 
 # sux
 lib.OK = lib.FAILED = 0
@@ -28,12 +28,7 @@ def run():
         print '  Testing %s ...' % script,
         retcode = subprocess.call(['python', script], cwd=SCRIPTS_DIR,
                                   stdout=subprocess.PIPE)
-        if retcode == 0:
-            lib.OK += 1
-            print 'OK'
-        else:
-            lib.FAILED += 1
-            print 'FAILED'
+        assert retcode == 0
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
