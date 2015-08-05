@@ -18,9 +18,9 @@ class PyTest(TestCommand):
         self.test_suite = True
 
     def run_tests(self):
-        import subprocess
+        import pytest
         import sys
-        errno = subprocess.call([sys.executable, 'run.py'], cwd='test')
+        errno = pytest.main(self.pytest_args + ["test"])
         sys.exit(errno)
 
 setup(
@@ -33,5 +33,6 @@ setup(
     long_description=open('README').read(),
     include_package_data = True,
     scripts = ['txt2tags',],
+    tests_require=['pytest'],
     cmdclass = {'test': PyTest},
 )
