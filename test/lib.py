@@ -2,7 +2,6 @@
 
 # TODO: Remove initTest().
 # TODO: Don't write output to disk (easier code and faster execution)
-# TODO: Only run http test module if --slow is passed to py.test
 
 import os
 import re

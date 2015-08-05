@@ -2,6 +2,8 @@
 
 import os
 
+import py.test
+
 import lib
 
 
@@ -19,6 +21,7 @@ remote_mapping = {
     }
 
 
+@py.test.mark.slow
 def run():
     os.chdir(DIR)
     for name, target, infile, outfile, okfile, stderr in lib.get_ok_files(DIR):
