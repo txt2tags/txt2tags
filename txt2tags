@@ -7171,10 +7171,7 @@ class BlockMaster:
                     result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
-                    if CONF['headers']:
-                        AA_TITLE = CONF['header1'] or ' '
-                    else:
-                        AA_TITLE = ' '
+                    AA_TITLE = os.path.splitext(CONF['sourcefile'])[0].capitalize()
                 aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web']) + ['']
                 if AA_COUNT:
                     if CONF['web']:
