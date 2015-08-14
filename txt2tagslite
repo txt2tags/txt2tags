@@ -274,6 +274,8 @@ AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 DFT_TEXT_WIDTH   = 72  # do not edit here, please use --width
 DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
+DFT_SLIDE_WEB_WIDTH  = 73  # do not edit here, please use --width
+DFT_SLIDE_WEB_HEIGHT = 28  # do not edit here, please use --height
 
 # ASCII Art config
 AA = targets.AA
@@ -5442,8 +5444,11 @@ def set_global_config(config):
     # ASCII Art slides need width and height
     if rules['slides'] and rules['asciiart']:
         if rules['web']:
-            config['height'], config['width'] = 28, 73
-        if not config['width'] and  not config['height'] and os.name == 'posix':
+            if not config['width']:
+                config['width'] = DFT_SLIDE_WEB_WIDTH
+            if not config['height']:
+                config['height'] = DFT_SLIDE_WEB_HEIGHT
+        if not config['width'] and not config['height'] and os.name == 'posix':
             import fcntl, termios
             data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
             config['height'], config['width'] = struct.unpack('4H',data)[:2]
