@@ -8896,8 +8896,10 @@ def get_infiles_config(infiles):
 
 
 def convert_this_files(configs):
-    global CONF
+    global CONF, AA_COUNT, AA_TITLE
     for myconf, doc in configs:                 # multifile support
+        AA_COUNT = 0
+        AA_TITLE = ''
         target_toc  = []
         target_body = []
         target_foot = []
