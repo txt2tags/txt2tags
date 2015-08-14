@@ -1925,6 +1925,10 @@ class ConfigMaster:
                 else:
                     targets.CSV = dict(zip(targets.CSV_KEYS, config['chars']))
 
+        if target == 'ods':
+            if not config['encoding']:
+                config['encoding'] = 'UTF-8'
+
         # --toc-only is stronger than others
         if config['toc-only']:
             config['headers'] = 0

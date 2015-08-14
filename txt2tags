@@ -514,7 +514,7 @@ HEADER_TEMPLATE = {
     'rst': """\
 """,
     'ods': """\
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='%(ENCODING)s'?>
 <office:document xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.1" office:mimetype="application/vnd.oasis.opendocument.spreadsheet"><office:meta><meta:generator>Txt2tags www.txt2tags.org</meta:generator></office:meta><office:automatic-styles/><office:body><office:spreadsheet>
 """,
     'txt': """\
@@ -5766,6 +5766,10 @@ class ConfigMaster:
                         len(CSV_VALUES), len(CSV_VALUES) + 1, len(config['chars'])))
                 else:
                     CSV = dict(zip(CSV_KEYS, config['chars']))
+        
+        if target == 'ods':
+            if not config['encoding']:
+                config['encoding'] = 'UTF-8'
 
         # --toc-only is stronger than others
         if config['toc-only']:
