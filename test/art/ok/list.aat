@@ -1,0 +1,137 @@
+<pre>
+<section><pre>=========================================================================
+
+                                  Lists                                  
+
+=========================================================================
+
+
+ A list of items is natural, just putting a <b>dash</b> or
+ a <b>plus</b> at the beginning of the line.
+
+
+ Plain List
+ ==========
+
+ The dash is the default list identifier. For sublists,
+ just add <b>spaces</b> at the beginning of the line. More
+ spaces, more sublists.
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------</pre></section>
+<section><pre>=========================================================================
+
+                                  Lists                                  
+
+=========================================================================
+
+                    +------------------------------+                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    | * Earth                      |                     
+                    |   * America                  |                     
+                    |     * South America          |                     
+                    |       * Brazil               |                     
+                    |         * How deep can I go? |                     
+                    |   * Europe                   |                     
+                    |     * Lots of countries      |                     
+                    | * Mars                       |                     
+                    |   * Who knows?               |                     
+                    +------------------------------+                     
+-------------------------------------------------------------------------</pre></section>
+<section><pre>=========================================================================
+
+                                  Lists                                  
+
+=========================================================================
+
+
+ The list ends with <b>two</b> consecutive blank lines.
+
+
+ Numbered List
+ =============
+
+ The same rules as the plain list, just a different
+ identifier (plus).
+
+                        +-----------------------+                        
+                        | 1. one                |                        
+                        | 2. two                |                        
+                        | 3. three              |                        
+                        |   * mixed lists!      |                        
+                        |   * what a mess       |                        
+                        |     1. counting again |                        
+                        |     2. ...            |                        
+                        | 4. four               |                        
+                        +-----------------------+                        
+-------------------------------------------------------------------------</pre></section>
+<section><pre>=========================================================================
+
+                                  Lists                                  
+
+=========================================================================
+
+
+ Definition List
+ ===============
+
+ The definition list identifier is a colon, followed by
+ the term. The term contents is placed on the next line.
+
+                       +------------------------+                        
+                       | orange                 |                        
+                       |   a yellow fruit       |                        
+                       | apple                  |                        
+                       |   a green or red fruit |                        
+                       | other fruits           |                        
+                       |   * wee!               |                        
+                       |   * mixing lists       |                        
+                       |     1. again!          |                        
+                       |     2. and again!      |                        
+                       +------------------------+                        
+
+
+-------------------------------------------------------------------------</pre></section>
+<section><pre>=========================================================================
+
+                                  Lists                                  
+
+=========================================================================
+
+
+ -----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========================================================================</pre></section>
+</pre>

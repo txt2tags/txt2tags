@@ -30,6 +30,10 @@ $t2t -i toc-macro.t2t -t aat --toc --width 60 --toc-title "My Own TOC, the title
 $t2t -i toc-macro.t2t -t aat --slides --width 60            -o no-toc-macro-slides.aat
 $t2t -i toc-macro.t2t -t aat --toc --slides --width 60      -o toc-macro-slides.aat
 
+$t2t -i list.t2t        -t aat --no-headers --slides --web         -o list.aat
+$t2t -i biglist.t2t     -t aat --no-headers --slides --web         -o biglist.aat
+$t2t -i verybiglist.t2t -t aat --no-headers --slides --web         -o verybiglist.aat
+
 errors=0
 for file in *.aat
 do
@@ -82,6 +86,10 @@ $t2tlite -i toc-macro.t2t -t aat --width 60                     -o no-toc-macro.
 $t2tlite -i toc-macro.t2t -t aat --toc --width 60 --toc-title "My Own TOC, the title 1 above is not"   -o toc-macro.txt
 $t2tlite -i toc-macro.t2t -t aap          --width 60            -o no-toc-macro-slides.txt
 $t2tlite -i toc-macro.t2t -t aap --toc          --width 60      -o toc-macro-slides.txt
+
+$t2tlite -i list.t2t        -t aapw --no-headers          -o list.txt
+$t2tlite -i biglist.t2t     -t aapw --no-headers          -o biglist.txt
+$t2tlite -i verybiglist.t2t -t aapw --no-headers          -o verybiglist.txt
 
 errors=0
 for file in *.txt

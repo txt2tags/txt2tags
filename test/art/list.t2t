@@ -1,0 +1,76 @@
+TXT2TAGS SAMPLE
+Aurelio Jargas
+%%mtime(%m/%d/%Y)
+
+%!encoding: UTF-8
+
+                      =  Lists  =
+
+A list of items is natural, just putting a **dash** or
+a **plus** at the beginning of the line.
+
+
+                  ==  Plain List  ==
+
+The dash is the default list identifier. For sublists,
+just add **spaces** at the beginning of the line. More
+spaces, more sublists.
+
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+- Earth
+  - America
+    - South America
+      - Brazil
+        - How deep can I go?
+  - Europe
+    - Lots of countries
+- Mars
+  - Who knows?
+
+
+The list ends with **two** consecutive blank lines.
+
+
+                 ==  Numbered List  ==
+
+The same rules as the plain list, just a different
+identifier (plus).
+
++ one
++ two
++ three
+  - mixed lists!
+  - what a mess
+    + counting again
+    + ...
++ four
+
+
+                ==  Definition List  ==
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+: orange
+  a yellow fruit
+: apple
+  a green or red fruit
+: other fruits
+  - wee!
+  - mixing lists
+    + again!
+    + and again!
+
+
+
+-------------------------------------------------------
+
+% vim: tw=55

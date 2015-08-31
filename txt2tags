@@ -7157,7 +7157,7 @@ class BlockMaster:
             n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
             if n < len_res and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 if CONF['web']:
-                    if len_res > CONF['height']:
+                    if len_res > CONF['height'] - 7:
                         result[CONF['height'] - 8] = result[CONF['height'] - 8] + '</pre></section>'
                         for i, line in enumerate(result[CONF['height'] - 7:]):
                             j = i % (CONF['height'] - 1)
