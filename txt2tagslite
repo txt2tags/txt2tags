@@ -273,9 +273,9 @@ AUTOTOC = 1   # do not edit here, please use --no-toc or %%toc
 
 DFT_TEXT_WIDTH   = 72  # do not edit here, please use --width
 DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
-DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
+DFT_SLIDE_HEIGHT = 24  # do not edit here, please use --height
 DFT_SLIDE_WEB_WIDTH  = 73  # do not edit here, please use --width
-DFT_SLIDE_WEB_HEIGHT = 28  # do not edit here, please use --height
+DFT_SLIDE_WEB_HEIGHT = 27  # do not edit here, please use --height
 
 # ASCII Art config
 AA = targets.AA
@@ -2708,7 +2708,7 @@ class TitleMaster:
             if rules['asciiart'] and rules['slides']:
                 indent = '  ' * (level - 1)
                 if rules['web'] and not CONF['toc-only']:
-                    label = str(AA_PW_TOC[txt] / (CONF['height'] - 1) + head + 2) + '.0'
+                    label = str(AA_PW_TOC[txt] / CONF['height'] + head + 2) + '.0'
             label = label or self.anchor_prefix + str(toc_count)
             toc_count += 1
 
@@ -3315,17 +3315,17 @@ class BlockMaster:
             for el in result:
                 if '<img' in el:
                     len_res = len_res + AA_IMG
-            n = (CONF['height'] - 1) - (AA_COUNT % (CONF['height'] - 1) + 1)
+            n = CONF['height'] - (AA_COUNT % CONF['height'] + 1)
             if n < len_res and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
                 if rules['web']:
-                    if len_res > CONF['height'] - 7:
-                        result[CONF['height'] - 8] = result[CONF['height'] - 8] + '</pre></section>'
-                        for i, line in enumerate(result[CONF['height'] - 7:]):
-                            j = i % (CONF['height'] - 1)
+                    if len_res > CONF['height'] - 6:
+                        result[CONF['height'] - 7] = result[CONF['height'] - 7] + '</pre></section>'
+                        for i, line in enumerate(result[CONF['height'] - 6:]):
+                            j = i % CONF['height']
                             if j == 0:
-                                result[i + CONF['height'] - 7] = '<section><pre>' + line
-                            elif j == CONF['height'] - 2:
-                                result[i + CONF['height'] - 7] = line + '</pre></section>'
+                                result[i + CONF['height'] - 6] = '<section><pre>' + line
+                            elif j == CONF['height'] - 1:
+                                result[i + CONF['height'] - 6] = line + '</pre></section>'
                     result = ([''] * n) + [aa.line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
                 else:
                     result = ([''] * n) + [aa.line(AA['bar1'], CONF['width'])] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
@@ -4231,9 +4231,9 @@ def toc_inside_body(body, toc, config):
         if line.count(toc_mark):            # toc mark found
             if config['toc']:
                 if rules['asciiart'] and rules['slides']:
-                    j = i % (config['height'] - 1)
+                    j = i % config['height']
                     title = body[i - j + 2 + n]
-                    ret.extend([''] * (config['height'] - j - 2 + n))
+                    ret.extend([''] * (config['height'] - j - 1 + n))
                     ret.extend([aa.line(AA['bar1'], config['width'])] + toc + aa.slide(title, AA['bar2'], config['width'], rules['web']) + [''])
                     flag = True
                 else:
@@ -4286,7 +4286,7 @@ def toc_formatter(toc, config):
 
     # Art: An automatic "Table of Contents" header is added to the TOC slide
     if rules['asciiart'] and rules['slides']:
-        n = (config['height'] - 1) - (len(toc) + 6) % (config['height'] - 1)
+        n = config['height'] - (len(toc) + 6) % config['height']
         toc = aa.slide(config['toc-title'] or _("Table of Contents"), AA['bar2'], config['width'], rules['web']) + toc + ([''] * n)
         end_toc = aa.line(AA['bar2'], config['width'])
         if rules['web']:
@@ -5098,22 +5098,22 @@ def convert_this_files(configs):
 
         # Close the last slide
         if rules['slides'] and not myconf['toc-only'] and rules['asciiart']:
-            n = (myconf['height'] - 1) - (AA_COUNT % (myconf['height'] - 1) + 1)
+            n = myconf['height'] - (AA_COUNT % myconf['height'] + 1)
             if rules['web']:
                 target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width']) + '</pre></section>']
             else:
                 target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width'])]
             if myconf['qa']:
-                n_before = (myconf['height'] - 24) / 2
-                n_after = myconf['height'] - 24 - n_before
+                n_before = (myconf['height'] - 23) / 2
+                n_after = myconf['height'] - 23 - n_before
                 head = aa.slide(_("Q&A"), AA['bar2'], myconf['width'], rules['web'])
                 end_qa = aa.line(AA['bar2'], myconf['width'])
                 if rules['web']:
                     end_qa = end_qa + '</pre></section>'
-                if myconf['height'] > 23 and myconf['width'] > 22:
+                if myconf['height'] > 22 and myconf['width'] > 22:
                     target_body = target_body + head + [''] * n_before + [(myconf['width'] - 23) / 2 * ' ' + line for line in aa.QA] + [''] * n_after + [end_qa]
                 else:
-                    target_body = target_body + head + [''] * (myconf['height'] - 7) + [end_qa]
+                    target_body = target_body + head + [''] * (myconf['height'] - 6) + [end_qa]
 
         if myconf['target'] == 'mgp' and myconf['qa']:
                 target_body = target_body + ['%page', '', 'Q&A', '', '%center', '%newimage "templates/QA.png"', '']
@@ -5380,7 +5380,7 @@ def parse_images(line):
         if rules['asciiart'] and rules['slides'] and rules['web']:
             global AA_IMG
             mytype, width, height, bit_depth, colour_type, dpix, dpiy, data = getImageInfo(txt)
-            AA_IMG = int((height / 600.0) * (CONF['height'] - 1))
+            AA_IMG = int((height / 600.0) * CONF['height'])
 
         # Ugly hack to avoid infinite loop when target's image tag contains []
         tag = tag.replace('[', 'vvvvEscapeSquareBracketvvvv')
@@ -5449,7 +5449,8 @@ def set_global_config(config):
         if not config['width'] and not config['height'] and os.name == 'posix':
             import fcntl, termios
             data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
-            config['height'], config['width'] = struct.unpack('4H',data)[:2]
+            term_height, term_width = struct.unpack('4H',data)[:2]
+            config['height'], config['width'] = term_height - 1, term_width
         if not config['width']:
             config['width'] = DFT_SLIDE_WIDTH
         if not config['height']:

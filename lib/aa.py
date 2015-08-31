@@ -82,7 +82,7 @@ def header(header_data, chars, width, height, web, slides):
     if not slides:
         n, end = 2, 0
     else:
-        x = height - 3 - height_box
+        x = height - 2 - height_box
         n = x / (n_h + 1)
         end = x % (n_h + 1)
     header = [line(chars['bar2'], width)]
