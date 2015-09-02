@@ -8,7 +8,7 @@ TARGETS_LIST = []
 #TARGETS_LIST = ['mark', 'herit', 'herit2', 'herit3', 'herit4', 'mama', 'null']
 
 # For txt2tagslite use
-TARGETS_LIST = ['txt', 'aat', 'aap', 'aas', 'aatw', 'aapw', 'aasw', 'rst', 'html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'wp', 'slidy', 'db', 'tex', 'texs', 'rtf', 'mgp', 'man', 'adoc', 'csv', 'csvs', 'doku', 'moin', 'pm6', 'red', 'spip', 'txt2t', 'bbcode', 'creole', 'dbk', 'gwiki', 'lout', 'md', 'mom', 'utmac', 'ods', 'pmw', 'sgml', 'tml', 'wiki', 'vimwiki']
+TARGETS_LIST = ['txt', 'aat', 'aap', 'aas', 'aatw', 'aapw', 'aasw', 'aapp', 'rst', 'html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'wp', 'slidy', 'db', 'tex', 'texs', 'rtf', 'mgp', 'man', 'adoc', 'csv', 'csvs', 'doku', 'moin', 'pm6', 'red', 'spip', 'txt2t', 'bbcode', 'creole', 'dbk', 'gwiki', 'lout', 'md', 'mom', 'utmac', 'ods', 'pmw', 'sgml', 'tml', 'wiki', 'vimwiki']
 
 # User config (1=ON, 0=OFF)
 USE_I18N    = 1   # use gettext for i18ned messages?        (default is 1)

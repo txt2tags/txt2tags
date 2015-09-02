@@ -179,6 +179,7 @@ FLAGS = {
     'slides': 0,
     'spread': 0,
     'web': 0,
+    'print': 0,
     'fix-path': 0,
     'embed-images': 0,
     }
@@ -290,6 +291,7 @@ TARGET_NAMES = {
   'aatw'    : _('ASCII Art Text Web'),
   'aapw'    : _('ASCII Art Presentation Web'),
   'aasw'    : _('ASCII Art Spreadsheet Web'),
+  'aapp'    : _('ASCII Art Presentation Print'),
   'db'      : _('SQLite database'),
   'adoc'    : _('AsciiDoc document'),
   'rst'     : _('ReStructuredText document'),
@@ -313,7 +315,7 @@ TARGET_TYPES = {
   'html'   : (_('HTML'), ['html', 'html5', 'xhtml', 'xhtmls', 'htmls', 'aatw', 'aapw', 'aasw', 'wp']),
   'wiki'   : (_('WIKI'), ['txt2t', 'wiki', 'gwiki', 'doku', 'pmw', 'moin', 'adoc', 'rst', 'creole', 'md', 'bbcode', 'red', 'spip', 'tml', 'vimwiki']),
   'office' : (_('OFFICE'), ['sgml', 'dbk', 'tex', 'texs', 'lout', 'mgp', 'pm6', 'csv', 'csvs', 'ods', 'rtf', 'db', 'mom', 'utmac']),
-  'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas']),
+  'text'   : (_('TEXT'), ['man', 'txt', 'aat', 'aap', 'aas', 'aapp']),
 }
 
 if targets:
@@ -349,6 +351,8 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 24  # do not edit here, please use --height
 DFT_SLIDE_WEB_WIDTH  = 73  # do not edit here, please use --width
 DFT_SLIDE_WEB_HEIGHT = 27  # do not edit here, please use --height
+DFT_SLIDE_PRINT_WIDTH  = 112  # do not edit here, please use --width
+DFT_SLIDE_PRINT_HEIGHT = 46  # do not edit here, please use --height
 
 # ASCII Art config
 AA_KEYS = 'tlcorner trcorner blcorner brcorner tcross bcross lcross rcross lhhead hheadcross rhhead headerscross tvhead vheadcross bvhead cross border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
@@ -4305,7 +4309,7 @@ def aa_box(txt, chars, width, centred=True, web=False, slides=False):
     return [tline_box] + line_txt + [bline_box]
 
 
-def aa_header(header_data, chars, width, height, web, slides):
+def aa_header(header_data, chars, width, height, web, slides, printing):
     h = [header_data[v] for v in header_data if v.startswith("HEADER") and header_data[v]]
     n_h = len(h)
     height_box = sum([len(aa_box([header], chars, width, slides=slides)) for header in h])
@@ -4325,9 +4329,12 @@ def aa_header(header_data, chars, width, height, web, slides):
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(aa_line(chars['bar2'], width))
-    if web and slides:
-        header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
-    if not slides:
+    if slides:
+        if web:
+            header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
+        elif printing:
+            header = header[:-1] + [header[-1] + '']
+    if not slides or printing:
         header = [''] + header
     return header
 
@@ -5619,6 +5626,8 @@ class ConfigMaster:
                 outfile = "%s.%s" % (basename, 'aapw')
             if config['target'] == 'aat' and config['spread'] and config['web']:
                 outfile = "%s.%s" % (basename, 'aasw')
+            if config['target'] == 'aat' and config['slides'] and config['print']:
+                outfile = "%s.%s" % (basename, 'aapp')
 
         Debug(" infile: '%s'" % infile , 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -5678,6 +5687,8 @@ class ConfigMaster:
             target, config['slides'], config['web'] = 'aat', True, True
         if target == 'aasw':
             target, config['spread'], config['web'] = 'aat', True, True
+        if target == 'aapp':
+            target, config['slides'], config['print'] = 'aat', True, True
         # Slides needs width and height
         if config['slides'] and target == 'aat':
             if config['web']:
@@ -5685,6 +5696,11 @@ class ConfigMaster:
                     config['width'] = DFT_SLIDE_WEB_WIDTH
                 if not config['height']:
                     config['height'] = DFT_SLIDE_WEB_HEIGHT
+            if config['print']:
+                if not config['width']:
+                    config['width'] = DFT_SLIDE_PRINT_WIDTH
+                if not config['height']:
+                    config['height'] = DFT_SLIDE_PRINT_HEIGHT
             if not config['width'] and not config['height'] and os.name == 'posix':
                 import fcntl, termios
                 data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
@@ -7167,6 +7183,8 @@ class BlockMaster:
                             elif j == CONF['height'] - 1:
                                 result[i + CONF['height'] - 6] = line + '</pre></section>'
                     result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
+                elif CONF['print']:
+                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + ''] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
                 else:
                     result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
@@ -7176,6 +7194,8 @@ class BlockMaster:
                 if AA_COUNT:
                     if CONF['web']:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
+                    elif CONF['print']:
+                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + ''] + aa_title
                     else:
                         aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
@@ -8170,7 +8190,10 @@ def doHeader(headers, config):
     if not config['headers']:
         return config['fullBody']
     if not headers:
+        empty_headers = True
         headers = ['', '', '']
+    else:
+        empty_headers = False
     target = config['target']
     if target not in HEADER_TEMPLATE:
         Error("doHeader: Unknown target '%s'" % target)
@@ -8243,7 +8266,7 @@ def doHeader(headers, config):
 
     # ASCII Art and rst don't use a header template, aa_header() formats the header
     if target == 'aat' and not (config['spread'] and not config['web']):
-        template = aa_header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'])
+        template = aa_header(head_data, AA, config['width'], config['height'], CONF['web'], CONF['slides'], CONF['print'])
         if config['slides']:
             l = aa_lencjk(head_data['HEADER2']) + aa_lencjk(head_data['HEADER3']) + 2
             bar_1 = bar_2 = aa_line(AA['bar2'], config['width'])
@@ -8263,6 +8286,8 @@ def doHeader(headers, config):
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
+            if config['print'] and empty_headers:
+                config['fullBody'] = [''] + config['fullBody']
         # Header done, let's get out
         if config['web']:
             encoding = ''
@@ -8944,6 +8969,8 @@ def convert_this_files(configs):
             n = myconf['height'] - (AA_COUNT % myconf['height'] + 1)
             if myconf['web']:
                 target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '</pre></section>']
+            elif myconf['print'] and myconf['qa']:
+                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '']
             else:
                 target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
             if myconf['qa']:

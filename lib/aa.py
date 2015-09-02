@@ -73,7 +73,7 @@ def box(txt, chars, width, centred=True, web=False, slides=False):
     return [tline_box] + line_txt + [bline_box]
 
 
-def header(header_data, chars, width, height, web, slides):
+def header(header_data, chars, width, height, web, slides, printing):
     h = [header_data[v] for v in header_data if v.startswith("HEADER") and header_data[v]]
     n_h = len(h)
     height_box = sum([len(box([header], chars, width, slides=slides)) for header in h])
@@ -93,9 +93,12 @@ def header(header_data, chars, width, height, web, slides):
             header.extend([''] * n)
     header.extend([''] * end)
     header.append(line(chars['bar2'], width))
-    if web and slides:
-        header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
-    if not slides:
+    if slides:
+        if web:
+            header = ['<section><pre>' + header[0]] + header[1:-1] + [header[-1] + '</pre></section>']
+        elif printing:
+            header = header[:-1] + [header[-1] + '']
+    if not slides or printing:
         header = [''] + header
     return header
 

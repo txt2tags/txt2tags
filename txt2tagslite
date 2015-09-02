@@ -276,6 +276,8 @@ DFT_SLIDE_WIDTH  = 80  # do not edit here, please use --width
 DFT_SLIDE_HEIGHT = 24  # do not edit here, please use --height
 DFT_SLIDE_WEB_WIDTH  = 73  # do not edit here, please use --width
 DFT_SLIDE_WEB_HEIGHT = 27  # do not edit here, please use --height
+DFT_SLIDE_PRINT_WIDTH  = 112  # do not edit here, please use --width
+DFT_SLIDE_PRINT_HEIGHT = 46  # do not edit here, please use --height
 
 # ASCII Art config
 AA = targets.AA
@@ -562,6 +564,7 @@ def getRules(config):
         'asciiart',               # ascii art target
         'web',                    # html ascii art target
         'slides',                 # slides target
+        'print',                  # print target
 
         # Target code beautify (ON/OFF)
         'indentverbblock',        # add leading spaces to verb block lines
@@ -3327,6 +3330,8 @@ class BlockMaster:
                             elif j == CONF['height'] - 1:
                                 result[i + CONF['height'] - 6] = line + '</pre></section>'
                     result = ([''] * n) + [aa.line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
+                elif rules['print']:
+                    result = ([''] * n) + [aa.line(AA['bar1'], CONF['width']) + ''] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
                 else:
                     result = ([''] * n) + [aa.line(AA['bar1'], CONF['width'])] + aa.slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
@@ -3336,6 +3341,8 @@ class BlockMaster:
                 if AA_COUNT:
                     if rules['web']:
                         aa_title = ([''] * n) + [aa.line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
+                    elif rules['print']:
+                        aa_title = ([''] * n) + [aa.line(AA['bar2'], CONF['width']) + ''] + aa_title
                     else:
                         aa_title = ([''] * n) + [aa.line(AA['bar2'], CONF['width'])] + aa_title
                 result = aa_title + result
@@ -4327,7 +4334,10 @@ def doHeader(headers, config):
     if not config['headers']:
         return config['fullBody']
     if not headers:
+        empty_headers = True
         headers = ['', '', '']
+    else:
+        empty_headers = False
     target = config['target']
     if target not in HEADER_TEMPLATE:
         Error("doHeader: Unknown target '%s'" % target)
@@ -4400,7 +4410,7 @@ def doHeader(headers, config):
 
     # ASCII Art and rst don't use a header template, aa.header() formats the header
     if rules['asciiart'] and not (rules['spread'] and not rules['web']):
-        template = aa.header(head_data, AA, config['width'], config['height'], rules['web'], rules['slides'])
+        template = aa.header(head_data, AA, config['width'], config['height'], rules['web'], rules['slides'], rules['print'])
         if rules['slides']:
             l = aa.lencjk(head_data['HEADER2']) + aa.lencjk(head_data['HEADER3']) + 2
             bar_1 = bar_2 = aa.line(AA['bar2'], config['width'])
@@ -4420,6 +4430,8 @@ def doHeader(headers, config):
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
                         config['fullBody'][i] = ' ' + head_data['HEADER2'] + ' ' * (config['width'] - l) + head_data['HEADER3'] + ' '
+            if rules['print'] and empty_headers:
+                config['fullBody'] = [''] + config['fullBody']
         # Header done, let's get out
         if rules['web']:
             encoding = ''
@@ -5101,6 +5113,8 @@ def convert_this_files(configs):
             n = myconf['height'] - (AA_COUNT % myconf['height'] + 1)
             if rules['web']:
                 target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width']) + '</pre></section>']
+            elif rules['print'] and myconf['qa']:
+                target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width']) + '']
             else:
                 target_body = target_body + ([''] * n) + [aa.line(AA['bar2'], myconf['width'])]
             if myconf['qa']:
@@ -5446,6 +5460,11 @@ def set_global_config(config):
                 config['width'] = DFT_SLIDE_WEB_WIDTH
             if not config['height']:
                 config['height'] = DFT_SLIDE_WEB_HEIGHT
+        if rules['print']:
+            if not config['width']:
+                config['width'] = DFT_SLIDE_PRINT_WIDTH
+            if not config['height']:
+                config['height'] = DFT_SLIDE_PRINT_HEIGHT
         if not config['width'] and not config['height'] and os.name == 'posix':
             import fcntl, termios
             data = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, 4*'00')
