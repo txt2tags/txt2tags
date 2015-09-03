@@ -7172,7 +7172,10 @@ class BlockMaster:
                 if '<img' in el:
                     len_res = len_res + AA_IMG
             n = CONF['height'] - (AA_COUNT % CONF['height'] + 1)
+            spaces = [''] * n
             if n < len_res and not (TITLE.level == 1 and blockname in ["title", "numtitle"]):
+                end_line = aa_line(AA['bar1'], CONF['width'])
+                slide_head = aa_slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web'])
                 if CONF['web']:
                     if len_res > CONF['height'] - 6:
                         result[CONF['height'] - 7] = result[CONF['height'] - 7] + '</pre></section>'
@@ -7182,22 +7185,23 @@ class BlockMaster:
                                 result[i + CONF['height'] - 6] = '<section><pre>' + line
                             elif j == CONF['height'] - 1:
                                 result[i + CONF['height'] - 6] = line + '</pre></section>'
-                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + '</pre></section>'] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], True) + [''] + result
+                    result = spaces + [end_line + '</pre></section>'] + slide_head + [''] + result
                 elif CONF['print']:
-                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width']) + ''] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
+                    result = spaces + [end_line + ''] + slide_head + [''] + result
                 else:
-                    result = ([''] * n) + [aa_line(AA['bar1'], CONF['width'])] + aa_slide(AA_TITLE, AA['bar2'], CONF['width'], False) + [''] + result
+                    result = spaces + [end_line] + slide_head + [''] + result
             if (blockname in ["title", "numtitle"] and TITLE.level == 1) or not AA_TITLE:
                 if not AA_TITLE:
                     AA_TITLE = os.path.splitext(CONF['sourcefile'])[0].capitalize()
+                end_line = aa_line(AA['bar2'], CONF['width'])
                 aa_title = aa_slide(AA_TITLE, AA['bar2'], CONF['width'], CONF['web']) + ['']
                 if AA_COUNT:
                     if CONF['web']:
-                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + '</pre></section>'] + aa_title
+                        aa_title = spaces + [end_line + '</pre></section>'] + aa_title
                     elif CONF['print']:
-                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width']) + ''] + aa_title
+                        aa_title = spaces + [end_line + ''] + aa_title
                     else:
-                        aa_title = ([''] * n) + [aa_line(AA['bar2'], CONF['width'])] + aa_title
+                        aa_title = spaces + [end_line] + aa_title
                 result = aa_title + result
             AA_COUNT += len(result) + AA_IMG
             AA_IMG = 0
@@ -8967,12 +8971,14 @@ def convert_this_files(configs):
         # Close the last slide
         if myconf['slides'] and not myconf['toc-only'] and myconf['target'] == 'aat':
             n = myconf['height'] - (AA_COUNT % myconf['height'] + 1)
+            spaces = [''] * n
+            end_line = aa_line(AA['bar2'], CONF['width'])
             if myconf['web']:
-                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '</pre></section>']
+                target_body = target_body + spaces + [end_line + '</pre></section>']
             elif myconf['print'] and myconf['qa']:
-                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width']) + '']
+                target_body = target_body + spaces + [end_line + '']
             else:
-                target_body = target_body + ([''] * n) + [aa_line(AA['bar2'], myconf['width'])]
+                target_body = target_body + spaces + [end_line]
             if myconf['qa']:
                 n_before = (myconf['height'] - 23) / 2
                 n_after = myconf['height'] - 23 - n_before
