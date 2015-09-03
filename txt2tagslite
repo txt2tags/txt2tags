@@ -2415,12 +2415,16 @@ class MaskMaster:
             i = int(m.group(1))
             if TARGET in ['aat', 'tex', 'html5']:
                 mathp = math_print(TARGET, self.mathbank[i]).split("\n")
-            mstart = m.start()
-            mend = m.end()
+            if not isinstance(line, list):
+                line_start = line[0:m.start()]
+                line_end = line[m.end():]
+            else:
+                last_line_start = line[-1][0:m.start()]
+                last_line_end = line[-1][m.end():]
             if TARGET == 'aat':
                 if len(mathp) > 1:
                     if not isinstance(line, list):
-                        line = [" " * len(line[0:mstart]) + l for l in mathp[:-1]] + [line[0:mstart] + mathp[-1] + line[mend:]]
+                        line = [" " * len(line_start) + l for l in mathp[:-1]] + [line_start + mathp[-1] + line_end]
                     else:
                         diff_mask = len(mask) - len(mathp[-1])
                         diff_line = len(line) - len(mathp)
@@ -2429,24 +2433,24 @@ class MaskMaster:
                         else:
                             mathp = [''] * diff_line + mathp
                         if diff_mask < 0:
-                            line = [" " * len(line[-1][0:mstart]) + m + " " * abs(diff_mask) + l[len(line[-1][0:mstart] + m):] for m, l in zip(mathp[:-1], line[:-1])] + [line[-1][0:mstart] + mathp[-1] + line[-1][mend:]]
+                            line = [" " * len(last_line_start) + m + " " * abs(diff_mask) + l[len(last_line_start + m):] for m, l in zip(mathp[:-1], line[:-1])] + [last_line_start + mathp[-1] + last_line_end]
                         else:
-                            line = [" " * len(line[-1][0:mstart]) + m + l[len(line[-1][0:mstart] + m) + diff_mask:] for m, l in zip(mathp[:-1], line[:-1])] + [line[-1][0:mstart] + mathp[-1] + line[-1][mend:]]
+                            line = [" " * len(last_line_start) + m + l[len(last_line_start + m) + diff_mask:] for m, l in zip(mathp[:-1], line[:-1])] + [last_line_start + mathp[-1] + last_line_end]
                 else:
                     if not isinstance(line, list):
-                        line = line[0:mstart] + mathp[0] + line[mend:]
+                        line = line_start + mathp[0] + line_end
                     else:
                         diff_mask = len(mask) - len(mathp[0])
                         if diff_mask < 0:
-                            line = [" " * abs(diff_mask) + l for l in line[:-1]] + [line[-1][0:mstart] + mathp[0] + line[-1][mend:]]
+                            line = [" " * abs(diff_mask) + l for l in line[:-1]] + [last_line_start + mathp[0] + last_line_end]
                         else:
-                            line = [l[diff_mask:] for l in line[:-1]] + [line[-1][0:mstart] + mathp[0] + line[-1][mend:]]
+                            line = [l[diff_mask:] for l in line[:-1]] + [last_line_start + mathp[0] + last_line_end]
             elif TARGET == 'tex':
-                line = line[0:mstart] + '$' + mathp[0] + '$' + line[mend:]
+                line = line_start + '$' + mathp[0] + '$' + line_end
             elif TARGET == 'html5':
-                line = '\n'.join([line[0:mstart], '<math>'] + mathp[2:-1] + [line[mend:]])
+                line = '\n'.join([line_start, '<math>'] + mathp[2:-1] + [line_end])
             else:
-                line = line[0:mstart] + self.mathbank[i] + line[mend:]
+                line = line_start + self.mathbank[i] + line_end
 
         return line
 
