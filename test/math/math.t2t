@@ -10,7 +10,7 @@ A "two lines" formula: $$2*x**2+3*y**3+z**4$$
 
 A "two lines" + greek formula: $$4*y**alpha+2*delta**3+epsilon$$
 
-A "multiline" formula: $$Integral(sqrt(1/x), x)$$
+Two "multiline" formulas: $$Integral(sqrt(1/x), x)$$ and $$Integral(sqrt(1/x**2), x)$$
 
 Several "one line" formulas: $$4*x$$ > $$2*x$$ < $$3*x$$
 
@@ -20,8 +20,4 @@ A "one line" formula: $$2*x+3*y+z$$, then a "two lines" formula: $$2*x**2+3*y**3
 
 A "two lines" formula: $$2*x**2+3*y**3+z**4$$, then a "one line" formula: $$2*x+3*y+z$$
 
-A "three lines" formula: $$(x+1)/(x-1)$$
-
-A "five lines" formula: $$(x+1)**2/(x-1)**2$$
-
-A "seven lines" formula: $$(x**3+1)**2/(x**2-1)**2$$
+Multiline: $$(x+1)/(x-1)$$ < $$(x**3+1)**2/(x**2-1)**2$$ < $$(x+1)**2/(x-1)**2$$

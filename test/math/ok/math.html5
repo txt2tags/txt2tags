@@ -69,13 +69,34 @@ A "two lines" + greek formula:
 
 </p>
 <p>
-A "multiline" formula: 
+Two "multiline" formulas: 
 <math>
   <mrow>
     <mo>&#x222B;</mo>
     <msqrt>
       <msup>
         <mi>x</mi>
+        <mn>-1</mn>
+      </msup>
+    </msqrt>
+    <mrow>
+      <mo>&#x2146;</mo>
+      <mrow>
+        <mi>x</mi>
+      </mrow>
+    </mrow>
+  </mrow>
+</math>
+ and 
+<math>
+  <mrow>
+    <mo>&#x222B;</mo>
+    <msqrt>
+      <msup>
+        <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+        </msup>
         <mn>-1</mn>
       </msup>
     </msqrt>
@@ -233,7 +254,7 @@ A "two lines" formula:
 
 </p>
 <p>
-A "three lines" formula: 
+Multiline: 
 <math>
   <mrow>
     <mfrac>
@@ -254,40 +275,7 @@ A "three lines" formula:
     </mfrac>
   </mrow>
 </math>
-
-</p>
-<p>
-A "five lines" formula: 
-<math>
-  <mrow>
-    <mfrac>
-      <mrow>
-        <msup>
-          <mfenced separators="">
-            <mi>x</mi>
-            <mo> + </mo>
-            <mn>1</mn>
-          </mfenced>
-          <mn>2</mn>
-        </msup>
-      </mrow>
-      <mrow>
-        <msup>
-          <mfenced separators="">
-            <mi>x</mi>
-            <mo> - </mo>
-            <mn>1</mn>
-          </mfenced>
-          <mn>2</mn>
-        </msup>
-      </mrow>
-    </mfrac>
-  </mrow>
-</math>
-
-</p>
-<p>
-A "seven lines" formula: 
+ &lt; 
 <math>
   <mrow>
     <mfrac>
@@ -311,6 +299,33 @@ A "seven lines" formula:
               <mi>x</mi>
               <mn>2</mn>
             </msup>
+            <mo> - </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+ &lt; 
+<math>
+  <mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <mi>x</mi>
+            <mo> + </mo>
+            <mn>1</mn>
+          </mfenced>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+      <mrow>
+        <msup>
+          <mfenced separators="">
+            <mi>x</mi>
             <mo> - </mo>
             <mn>1</mn>
           </mfenced>

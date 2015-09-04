@@ -1,0 +1,22 @@
+
+  Math formulas
+  =============
+
+A "one line" formula: 2*x+3*y+z
+
+A "two lines" formula: 2*x**2+3*y**3+z**4
+
+A "two lines" + greek formula: 4*y**alpha+2*delta**3+epsilon
+
+Two "multiline" formulas: Integral(sqrt(1/x), x) and Integral(sqrt(1/x**2), x)
+
+Several "one line" formulas: 4*x > 2*x < 3*x
+
+Several "two lines" formulas: 4*x**4 > 2*x**2 < 3*x**3
+
+A "one line" formula: 2*x+3*y+z, then a "two lines" formula: 2*x**2+3*y**3+z**4
+
+A "two lines" formula: 2*x**2+3*y**3+z**4, then a "one line" formula: 2*x+3*y+z
+
+Multiline: (x+1)/(x-1) < (x**3+1)**2/(x**2-1)**2 < (x+1)**2/(x-1)**2
+

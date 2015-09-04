@@ -11,12 +11,13 @@ A "two lines" formula: 2⋅x  + 3⋅y  + z
                                   3          α
 A "two lines" + greek formula: 2⋅δ  + ε + 4⋅y
 
-                       ⌠
-                       ⎮     ___
-                       ⎮    ╱ 1
-                       ⎮   ╱  ─  dx
-                       ⎮ ╲╱   x
-A "multiline" formula: ⌡
+                          ⌠                ⌠
+                          ⎮     ___        ⎮      ____
+                          ⎮    ╱ 1         ⎮     ╱ 1
+Two "multiline" formulas: ⎮   ╱  ─  dx and ⎮    ╱  ──  dx
+                          ⎮ ╲╱   x         ⎮   ╱    2
+                          ⌡                ⎮ ╲╱    x
+                                           ⌡
 
 Several "one line" formulas: 4⋅x > 2⋅x < 3⋅x
 
@@ -29,21 +30,11 @@ A "one line" formula: 2⋅x + 3⋅y + z, then a "two lines" formula: 2⋅x  + 3�
                           2      3    4
 A "two lines" formula: 2⋅x  + 3⋅y  + z , then a "one line" formula: 2⋅x + 3⋅y + z
 
-                         x + 1
-                         ─────
-A "three lines" formula: x - 1
-
-                               2
-                        (x + 1)
-                        ────────
-                               2
-A "five lines" formula: (x - 1)
-
-                                 2
-                         ⎛ 3    ⎞
-                         ⎝x  + 1⎠
-                         ─────────
-                                 2
-                         ⎛ 2    ⎞
-A "seven lines" formula: ⎝x  - 1⎠
+                           2
+                   ⎛ 3    ⎞           2
+           x + 1   ⎝x  + 1⎠    (x + 1)
+Multiline: ───── < ───────── < ────────
+           x - 1           2          2
+                   ⎛ 2    ⎞    (x - 1)
+                   ⎝x  - 1⎠
 
