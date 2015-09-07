@@ -15,7 +15,7 @@ TAGS = {
     'title3'               : '\a'                     ,
     'title4'               : '\a'                     ,
     'title5'               : '\a'                     ,
-    'blockQuoteLine'       : '        '               ,
+    'blockQuoteLine'       : targets.AA['quote']      ,
     'listItemOpen'         : targets.AA['bullet'] + ' ',
     'numlistItemOpen'      : '\a. '                   ,
     'bar1'                 : aa.line(targets.AA['bar1'], targets.CONF['width']),

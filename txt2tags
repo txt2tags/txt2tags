@@ -355,8 +355,8 @@ DFT_SLIDE_PRINT_WIDTH  = 112  # do not edit here, please use --width
 DFT_SLIDE_PRINT_HEIGHT = 46  # do not edit here, please use --height
 
 # ASCII Art config
-AA_KEYS = 'tlcorner trcorner blcorner brcorner tcross bcross lcross rcross lhhead hheadcross rhhead headerscross tvhead vheadcross bvhead cross border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead'.split()
-AA_SIMPLE = '+-|-==-^"-=$'  # do not edit here, please use --chars
+AA_KEYS = 'tlcorner trcorner blcorner brcorner tcross bcross lcross rcross lhhead hheadcross rhhead headerscross tvhead vheadcross bvhead cross border side bar1 bar2 level2 level3 level4 level5 bullet hhead vhead quote'.split()
+AA_SIMPLE = '+-|-==-^"-=$8'  # do not edit here, please use --chars
 AA_ADVANCED = '+++++++++++++++' + AA_SIMPLE  # do not edit here, please use --chars
 AA = dict(zip(AA_KEYS, AA_ADVANCED))
 AA_COUNT = 0
@@ -1679,7 +1679,7 @@ def getTags(config):
         'title3'               : '\a'                     ,
         'title4'               : '\a'                     ,
         'title5'               : '\a'                     ,
-        'blockQuoteLine'       : '        '               ,
+        'blockQuoteLine'       : AA['quote']              ,
         'listItemOpen'         : AA['bullet'] + ' '       ,
         'numlistItemOpen'      : '\a. '                   ,
         'bar1'                 : aa_line(AA['bar1'], config['width']),
@@ -4289,6 +4289,18 @@ def aa_under(txt, char, width, over):
     return ret
 
 
+def aa_quote(txt, char, width, depth, web):
+    if char in '123456789':
+        prefix = int(char) * depth * ' '
+        wrap_depth = width - int(char) * depth
+    else:
+        prefix = char * depth + ' '
+        wrap_depth = width - depth - 1
+    wrap_txt = aa_wrap(txt, wrap_depth, web)
+    block_txt = [prefix + line for line in wrap_txt]
+    return block_txt
+
+
 def aa_box(txt, chars, width, centred=True, web=False, slides=False):
     wrap_txt = []
     char_side = ''
@@ -5737,7 +5749,7 @@ class ConfigMaster:
                             Error(_("--chars: Expected an UTF-8 file for the unicode chars set, you could set %!encoding: UTF-8"))
                         else:
                             Error(_("--chars: Expected an UTF-8 file for the unicode chars set"))
-                    config['chars'] = unichr(0x250c) + unichr(0x2510) + unichr(0x2514) + unichr(0x2518) + unichr(0x252C) + unichr(0x2534) + unichr(0x251c) + unichr(0x2524) + unichr(0x255e) + unichr(0x256a) + unichr(0x2561) + unichr(0x256c) + unichr(0x2565) + unichr(0x256b) + unichr(0x2568) + unichr(0x253c) + unichr(0x2500) + unichr(0x2502) + unichr(0x2500) + unichr(0x2550) + unichr(0x2550) + unichr(0x2500) + '^"' + unichr(0x2043) + unichr(0x2550) + unichr(0x2551)
+                    config['chars'] = unichr(0x250c) + unichr(0x2510) + unichr(0x2514) + unichr(0x2518) + unichr(0x252C) + unichr(0x2534) + unichr(0x251c) + unichr(0x2524) + unichr(0x255e) + unichr(0x256a) + unichr(0x2561) + unichr(0x256c) + unichr(0x2565) + unichr(0x256b) + unichr(0x2568) + unichr(0x253c) + unichr(0x2500) + unichr(0x2502) + unichr(0x2500) + unichr(0x2550) + unichr(0x2550) + unichr(0x2500) + '^"' + unichr(0x2043) + unichr(0x2550) + unichr(0x2551) + '8'
                 if len(config['chars']) != len(AA_SIMPLE) and len(config['chars']) != len(AA_ADVANCED):
                     Error(_("--chars: Expected %i or %i chars, got %i") % (
                         len(AA_SIMPLE), len(AA_ADVANCED), len(config['chars'])))
@@ -7536,7 +7548,9 @@ class BlockMaster:
                         result.append(tagindent + open_)
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
-                    if CONF['target'] == 'aat' and CONF['slides']:
+                    if CONF['target'] == 'aat' and not CONF['slides']:
+                        result.extend(aa_quote(item, qline, CONF['width'], self.depth, CONF['web']))
+                    elif CONF['target'] == 'aat' and CONF['slides']:
                         result.extend(aa_box([item], AA, CONF['width'], web=CONF['web'], slides=CONF['slides']))
                     else:
                         item = qline * self.depth + item

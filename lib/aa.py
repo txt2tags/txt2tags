@@ -53,6 +53,18 @@ def under(txt, char, width, over):
     return ret
 
 
+def quote(txt, char, width, depth, web):
+    if char in '123456789':
+        prefix = int(char) * depth * ' '
+        wrap_depth = width - int(char) * depth
+    else:
+        prefix = char * depth + ' '
+        wrap_depth = width - depth - 1
+    wrap_txt = wrap(txt, wrap_depth, web)
+    block_txt = [prefix + line for line in wrap_txt]
+    return block_txt
+
+
 def box(txt, chars, width, centred=True, web=False, slides=False):
     wrap_txt = []
     char_side = ''
