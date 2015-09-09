@@ -3790,6 +3790,10 @@ class BlockMaster:
         itemopenorig = itemopen
         listbody = []
         widelist = 0
+        if rules['slides']:
+            width = CONF['width'] - 6
+        else:
+            width = CONF['width']
         for item in items:
 
             # Add "manual" item count for noautonum targets
@@ -3809,7 +3813,10 @@ class BlockMaster:
                 listbody.append(tagindent + itemopen + term + itemsep)
             else:
                 fullitem = tagindent + itemopen
-                listbody.append(item[0].replace(SEPARATOR, fullitem))
+                if rules['asciiart']:
+                    listbody.extend(aa.quote(item[0].replace(SEPARATOR, ''), tagindent, itemopen, width, 1, rules['web'], True))
+                else:
+                    listbody.append(item[0].replace(SEPARATOR, fullitem))
                 del item[0]
 
             itemisclosed = False
@@ -3844,7 +3851,11 @@ class BlockMaster:
                     if name == 'deflist' and TAGS['deflistItem2LinePrefix']:
                         line = TAGS['deflistItem2LinePrefix'] + line
 
-                    listbody.append(line)
+                    if rules['asciiart']:
+                        indent = ' ' * (len(line) - len(line.lstrip()))
+                        listbody.extend(aa.quote(line.lstrip(), indent, '', width, 1, rules['web']))
+                    else:
+                        listbody.append(line)
 
             # Close item (if needed)
             if itemclose and not itemisclosed:

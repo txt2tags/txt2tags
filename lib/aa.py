@@ -53,14 +53,18 @@ def under(txt, char, width, over):
     return ret
 
 
-def quote(txt, quote_char, prefix_char, width, depth, web):
-    if quote_char in '123456789':
+def quote(txt, quote_char, prefix_char, width, depth, web, blank=False):
+    if quote_char and quote_char in '123456789':
         prefix = int(quote_char) * depth * prefix_char
     else:
         prefix = quote_char * depth + prefix_char
     wrap_width = width - lencjk(prefix)
     wrap_txt = wrap(txt, wrap_width, web)
-    block_txt = [prefix + line for line in wrap_txt]
+    if blank:
+        blank_prefix = lencjk(prefix) * ' '
+        block_txt = [prefix + wrap_txt[0]] + [blank_prefix + line for line in wrap_txt[1:]]
+    else:
+        block_txt = [prefix + line for line in wrap_txt]
     return block_txt
 
 
