@@ -3683,7 +3683,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if rules['asciiart'] and not rules['slides']:
-                        result.extend(aa.quote(item, qline, CONF['width'], self.depth, rules['web']))
+                        result.extend(aa.quote(item, qline, ' ', CONF['width'], self.depth, rules['web']))
                     elif rules['asciiart'] and rules['slides']:
                         result.extend(aa.box([item], AA, CONF['width'], web=rules['web'], slides=rules['slides']))
                     else:

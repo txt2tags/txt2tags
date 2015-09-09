@@ -4290,14 +4290,13 @@ def aa_under(txt, char, width, over):
     return ret
 
 
-def aa_quote(txt, char, width, depth, web):
-    if char in '123456789':
-        prefix = int(char) * depth * ' '
-        wrap_depth = width - int(char) * depth
+def aa_quote(txt, quote_char, prefix_char, width, depth, web):
+    if quote_char in '123456789':
+        prefix = int(quote_char) * depth * prefix_char
     else:
-        prefix = char * depth + ' '
-        wrap_depth = width - depth - 1
-    wrap_txt = aa_wrap(txt, wrap_depth, web)
+        prefix = quote_char * depth + prefix_char
+    wrap_width = width - aa_lencjk(prefix)
+    wrap_txt = aa_wrap(txt, wrap_width, web)
     block_txt = [prefix + line for line in wrap_txt]
     return block_txt
 
@@ -7550,7 +7549,7 @@ class BlockMaster:
                     item = regex['quote'].sub('', item)  # del TABs
                     item = self._last_escapes(item)
                     if CONF['target'] == 'aat' and not CONF['slides']:
-                        result.extend(aa_quote(item, qline, CONF['width'], self.depth, CONF['web']))
+                        result.extend(aa_quote(item, qline, ' ', CONF['width'], self.depth, CONF['web']))
                     elif CONF['target'] == 'aat' and CONF['slides']:
                         result.extend(aa_box([item], AA, CONF['width'], web=CONF['web'], slides=CONF['slides']))
                     else:
