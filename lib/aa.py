@@ -294,7 +294,7 @@ class TextWrapperCJK(textwrap.TextWrapper):
             else:
                 indent = self.initial_indent
             width = self.width - len(indent)
-            if self.drop_whitespace and chunks[-1].strip() == '' and lines:
+            if chunks[-1].strip() == '' and lines:
                 del chunks[-1]
             while chunks:
                 l = lencjk(chunks[-1])
@@ -305,7 +305,7 @@ class TextWrapperCJK(textwrap.TextWrapper):
                     break
             if chunks and lencjk(chunks[-1]) > width:
                 self._handle_long_word(chunks, cur_line, cur_len, width)
-            if self.drop_whitespace and cur_line and cur_line[-1].strip() == '':
+            if cur_line and cur_line[-1].strip() == '':
                 del cur_line[-1]
             if cur_line:
                 lines.append(indent + ''.join(cur_line))
