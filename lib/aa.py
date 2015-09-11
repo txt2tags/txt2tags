@@ -121,7 +121,7 @@ def header(header_data, chars, width, height, web, slides, printing):
 def slide(title, char, width, web):
     res = [line(char, width)]
     res.append('')
-    res.append(center(title, width)[:width])
+    res.append(slicecjk(center(title, width), width)[0])
     res.append('')
     res.append(line(char, width))
     if web:
@@ -258,6 +258,8 @@ def lencjk(txt, web=False):
 def slicecjk(txt, space_left):
     if isinstance(txt, str):
         return txt[:space_left], txt[space_left:]
+    if lencjk(txt) <= space_left:
+        return txt, ''
     i = 1
     while lencjk(txt[:i]) <= space_left:
         # <= and index i-1

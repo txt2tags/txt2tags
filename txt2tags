@@ -4358,7 +4358,7 @@ def aa_header(header_data, chars, width, height, web, slides, printing):
 def aa_slide(title, char, width, web):
     res = [aa_line(char, width)]
     res.append('')
-    res.append(aa_center(title, width)[:width])
+    res.append(aa_slicecjk(aa_center(title, width), width)[0])
     res.append('')
     res.append(aa_line(char, width))
     if web:
@@ -4496,6 +4496,8 @@ def aa_lencjk(txt, web=False):
 def aa_slicecjk(txt, space_left):
     if isinstance(txt, str):
         return txt[:space_left], txt[space_left:]
+    if aa_lencjk(txt) <= space_left:
+        return txt, ''
     i = 1
     while aa_lencjk(txt[:i]) <= space_left:
         # <= and index i-1
@@ -8325,7 +8327,7 @@ def doHeader(headers, config):
                 if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
                     pages = str(page) + '/' + str(n_page)
                     l1 = aa_lencjk(head_data['HEADER1']) + len(pages) + 3
-                    config['fullBody'][i] = ' ' + head_data['HEADER1'][:config['width'] - len(pages) - 3] + ' ' * (config['width'] - l1) + ' ' + pages + ' '
+                    config['fullBody'][i] = ' ' + aa_slicecjk(head_data['HEADER1'], config['width'] - len(pages) - 3)[0] + ' ' * (config['width'] - l1) + ' ' + pages + ' '
                     page += 1
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:

@@ -4450,7 +4450,7 @@ def doHeader(headers, config):
                 if config['fullBody'][i - 1] == bar_1 and config['fullBody'][i + 3] == bar_2:
                     pages = str(page) + '/' + str(n_page)
                     l1 = aa.lencjk(head_data['HEADER1']) + len(pages) + 3
-                    config['fullBody'][i] = ' ' + head_data['HEADER1'][:config['width'] - len(pages) - 3] + ' ' * (config['width'] - l1) + ' ' + pages + ' '
+                    config['fullBody'][i] = ' ' + aa.slicecjk(head_data['HEADER1'], config['width'] - len(pages) - 3)[0] + ' ' * (config['width'] - l1) + ' ' + pages + ' '
                     page += 1
                 if config['fullBody'][i - 3] == bar_1 and config['fullBody'][i + 1] == bar_2:
                     if l < config['width']:
