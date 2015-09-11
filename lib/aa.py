@@ -283,6 +283,8 @@ class TextWrapperCJK(textwrap.TextWrapper):
         lines = []
         if self.width <= 0:
             raise ValueError("invalid width %r (must be > 0)" % self.width)
+        if self.width == 1 and sum(lencjk(chunk) for chunk in chunks) > sum(len(chunk) for chunk in chunks):
+            raise ValueError("invalid width %r (must be > 1 if CJK chars)" % self.width)
         chunks.reverse()
         while chunks:
             cur_line = []
