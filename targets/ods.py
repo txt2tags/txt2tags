@@ -10,7 +10,7 @@ TYPE = 'office'
 
 HEADER = """\
 <?xml version='1.0' encoding='%(ENCODING)s'?>
-<office:document xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.1" office:mimetype="application/vnd.oasis.opendocument.spreadsheet"><office:meta><meta:generator>Txt2tags www.txt2tags.org</meta:generator></office:meta><office:automatic-styles><style:style style:name="ce1" style:family="table-cell"><style:text-properties fo:font-weight="bold"/></style:style></office:automatic-styles><office:body><office:spreadsheet>
+<office:document xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.1" office:mimetype="application/vnd.oasis.opendocument.spreadsheet"><office:meta><meta:generator>Txt2tags www.txt2tags.org</meta:generator></office:meta><office:automatic-styles><style:style style:name="T1" style:family="text"><style:text-properties fo:font-weight="bold"/></style:style><style:style style:name="ce1" style:family="table-cell"><style:paragraph-properties fo:text-align="center"/></style:style><style:style style:name="ce2" style:family="table-cell"><style:paragraph-properties fo:text-align="end"/></style:style></office:automatic-styles><office:body><office:spreadsheet>
 """
 
 TAGS = {
@@ -18,9 +18,12 @@ TAGS = {
     'tableClose'           : '</table:table>'                  ,
     'tableRowOpen'         : '<table:table-row>'               ,
     'tableRowClose'        : '</table:table-row>'              ,
-    'tableCellOpen'        : '<table:table-cell><text:p>'      ,
+    'tableCellOpen'        : '<table:table-cell~A~><text:p>'   ,
     'tableCellClose'       : '</text:p></table:table-cell>'    ,
-    'tableTitleCellOpen'   : '<table:table-cell table:style-name="ce1"><text:p>',
+    'tableTitleCellOpen'   : '<table:table-cell ~A~><text:p><text:span text:style-name="T1">',
+    'tableTitleCellClose'  : '</text:span></text:p></table:table-cell>',
+    '_tableCellAlignCenter': ' table:style-name="ce1"',
+    '_tableCellAlignRight' : ' table:style-name="ce2"',
     'EOD'                  : '</office:spreadsheet></office:body></office:document>',
 }
 
@@ -29,4 +32,5 @@ RULES = {
     'tableable': 1,
     'tableonly': 1,
     'tablecellstrip': 1,
+    'tablecellaligntype': 'cell',
 }
