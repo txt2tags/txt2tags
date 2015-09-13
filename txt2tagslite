@@ -2645,7 +2645,7 @@ class TitleMaster:
 
     def get(self):
         "Returns the tagged title as a list."
-        global AA_TITLE
+        global AA_TITLE, AA_COUNT
         ret = []
 
         # Maybe some anchoring before?
@@ -2661,6 +2661,10 @@ class TitleMaster:
 
         tagged = regex['x'].sub(full_title, self.tag)
 
+        if rules['tableonly']:
+            AA_TITLE = full_title.replace(' ', '_')
+            AA_COUNT = 0
+
         # Adds "underline" on TXT target
         if TARGET == 'txt':
             if BLOCK.count > 1:
@@ -2669,7 +2673,7 @@ class TitleMaster:
             i = aa.lencjk(full_title)
             ret.append(regex['x'].sub('=' * i, self.tag))
         elif rules['asciiart'] and self.level == 1:
-            if rules['slides'] :
+            if rules['slides']:
                 AA_TITLE = tagged
             else :
                 if BLOCK.count > 1:
@@ -3058,6 +3062,20 @@ class TableMaster:
 
     def dump(self):
         open_ = self._get_full_tag(TAGS['tableOpen'])
+        if TARGET == 'ods':
+            global AA_COUNT
+            if AA_TITLE:
+                if AA_COUNT:
+                    open_ = re.sub('table_name', AA_TITLE + '_', open_)
+                    open_ = re.sub('n_table', str(AA_COUNT), open_)
+                    AA_COUNT += 1
+                else:
+                    open_ = re.sub('table_name', AA_TITLE, open_)
+                    open_ = re.sub('n_table', '', open_)
+                    AA_COUNT = 2
+            else:
+                open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
+                open_ = re.sub('table_name', _('Sheet'), open_)
         if rules['tablenumber']:
             open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
         if rules['tablecolumnsnumber']:
