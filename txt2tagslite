@@ -454,6 +454,7 @@ def getTags(config):
     _tableColAlignLeft  _tableColAlignRight  _tableColAlignCenter
     tableCellAlignLeft  tableCellAlignRight  tableCellAlignCenter
     _tableCellAlignLeft _tableCellAlignRight _tableCellAlignCenter
+    _tableCellAlignLeftBorder _tableCellAlignRightBorder _tableCellAlignCenterBorder
     _tableCellColSpan   tableColAlignSep
     _tableCellColSpanChar                    _tableCellBorder
     _tableCellMulticolOpen
@@ -2854,8 +2855,10 @@ class TableMaster:
         close = TAGS['tableCellClose']
         sep = TAGS['tableCellSep']
         head = TAGS['tableCellHead']
-        calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
         caligntag = map(lambda x: TAGS['tableCellAlign' + x], rowdata['cellalign'])
+        if TARGET == 'ods' and self.border:
+            rowdata['cellalign'] = [align + 'Border' for align in rowdata['cellalign']]
+        calign = map(lambda x: TAGS['_tableCellAlign' + x], rowdata['cellalign'])
         calignsep = TAGS['tableColAlignSep']
         ncolumns = len(self.colalign)
 
