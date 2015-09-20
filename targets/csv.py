@@ -19,6 +19,5 @@ RULES = {
     'tableable': 1,
     'tableonly': 1,
     'tablecellstrip': 1,
-    'blanksaroundtable': 1,
     'confdependenttags': 1,
 }

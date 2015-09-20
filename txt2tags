@@ -411,6 +411,7 @@ Tkinter = tkFileDialog = tkMessageBox = None
 lang = 'english'
 TARGET = ''
 
+file_dict = {}
 STDIN = STDOUT = '-'
 MODULEIN = MODULEOUT = '-module-'
 ESCCHAR   = '\x00'
@@ -3442,7 +3443,6 @@ def getRules(config):
             'tableable': 1,
             'tableonly': 1,
             'tablecellstrip': 1,
-            'blanksaroundtable': 1,
         },
         'csvs': {
             #TIP csvs inherits all csv rules
@@ -6945,20 +6945,29 @@ class TableMaster:
 
     def dump(self):
         open_ = self._get_full_tag(TAGS['tableOpen'])
-        if TARGET == 'ods':
+        if TARGET in ['ods', 'csv', 'csvs']:
             global AA_COUNT
             if AA_TITLE:
                 if AA_COUNT:
-                    open_ = re.sub('table_name', AA_TITLE + '_', open_)
-                    open_ = re.sub('n_table', str(AA_COUNT), open_)
+                    if TARGET == 'ods':
+                        open_ = re.sub('table_name', AA_TITLE + '_', open_)
+                        open_ = re.sub('n_table', str(AA_COUNT), open_)
+                    else:
+                        csv_file = AA_TITLE + '_' + str(AA_COUNT)
                     AA_COUNT += 1
                 else:
-                    open_ = re.sub('table_name', AA_TITLE, open_)
-                    open_ = re.sub('n_table', '', open_)
+                    if TARGET == 'ods':
+                        open_ = re.sub('table_name', AA_TITLE, open_)
+                        open_ = re.sub('n_table', '', open_)
+                    else:
+                        csv_file = AA_TITLE
                     AA_COUNT = 2
             else:
-                open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
-                open_ = re.sub('table_name', _('Sheet'), open_)
+                if TARGET == 'ods':
+                    open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
+                    open_ = re.sub('table_name', _('Sheet'), open_)
+                else:
+                    csv_file = _('Sheet') + str(BLOCK.tablecount)
         if rules['tablenumber']:
             open_ = re.sub('n_table', str(BLOCK.tablecount), open_)
         if rules['tablecolumnsnumber']:
@@ -7058,6 +7067,9 @@ class TableMaster:
         fulltable.extend(tagged_rows)
         if close:
             fulltable.append(close)
+
+        if TARGET in ['csv', 'csvs']:
+            file_dict[csv_file + '.' + TARGET] = fulltable
 
         return fulltable
 
@@ -8069,7 +8081,6 @@ def post_voodoo(lines, config):
 def finish_him(outlist, config):
     "Writing output to screen or file"
     outfile = config['outfile']
-    file_dict = {}
     outlist = unmaskEscapeChar(outlist)
     outlist = expandLineBreaks(outlist)
 
@@ -8114,7 +8125,7 @@ def finish_him(outlist, config):
                         line = line.replace('<<%s>>' % key, val[repl_dict[key]])
                     newout.append(line)
                 file_dict[write_file] = newout
-    else:
+    elif config['target'] not in ['csv', 'csvs']:
         file_dict[outfile] = outlist
 
     if config['target'] == 'db':
