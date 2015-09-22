@@ -1656,7 +1656,7 @@ def getTags(config):
     _tableCellAlignLeft _tableCellAlignRight _tableCellAlignCenter
     _tableCellAlignLeftBorder _tableCellAlignRightBorder _tableCellAlignCenterBorder
     _tableCellColSpan   tableColAlignSep
-    _tableCellColSpanChar                    _tableCellBorder
+    _tableCellColSpanChar tableCellCovered _tableCellBorder
     _tableCellMulticolOpen
     _tableCellMulticolClose
     tableCellHead       tableTitleCellHead
@@ -1825,15 +1825,17 @@ def getTags(config):
         'tableClose'           : '</table:table>'                  ,
         'tableRowOpen'         : '<table:table-row>'               ,
         'tableRowClose'        : '</table:table-row>'              ,
-        'tableCellOpen'        : '<table:table-cell~A~><text:p>'   ,
+        'tableCellOpen'        : '<table:table-cell~A~~S~><text:p>'   ,
         'tableCellClose'       : '</text:p></table:table-cell>'    ,
-        'tableTitleCellOpen'   : '<table:table-cell~A~><text:p><text:span text:style-name="T1">',
+        'tableTitleCellOpen'   : '<table:table-cell~A~~S~><text:p><text:span text:style-name="T1">',
         'tableTitleCellClose'  : '</text:span></text:p></table:table-cell>',
+        'tableCellCovered'     : '<table:covered-table-cell table:number-columns-repeated="\a"/>' ,
         '_tableCellAlignCenter': ' table:style-name="ce1"',
         '_tableCellAlignRight' : ' table:style-name="ce2"',
         '_tableCellAlignLeftBorder'  : ' table:style-name="ce3"',
         '_tableCellAlignCenterBorder': ' table:style-name="ce4"',
         '_tableCellAlignRightBorder' : ' table:style-name="ce5"',
+        '_tableCellColSpan'    : ' table:number-columns-spanned="\a"',
         'EOD'                  : '</office:spreadsheet></office:body></office:document>',
     },
 
@@ -3311,6 +3313,7 @@ def getRules(config):
         'tabletitlerowinbold',    # manually bold any cell on table titles
         'tablecellstrip',         # strip extra spaces from each table cell
         'tablecellspannable',     # the table cells can have span attribute
+        'tablecellcovered',       # covered cell follows the cell span
         'tablecellmulticol',      # separate open+close tags for multicol cells
         'tablecolumnsnumber',     # set the number of columns in place of n_cols in tableOpen
         'tablenumber',            # set the number of the table in place of n_table in tableOpen
@@ -3458,6 +3461,8 @@ def getRules(config):
             'tableable': 1,
             'tableonly': 1,
             'tablecellstrip': 1,
+            'tablecellspannable': 1,
+            'tablecellcovered': 1,
             'tablecellaligntype': 'cell',
         },
         'html': {
@@ -6743,6 +6748,7 @@ class TableMaster:
 
         # Populate the span and multicol open tags
         cspan = []
+        ccovered = []
         multicol = []
         colindex = 0
 
@@ -6774,11 +6780,13 @@ class TableMaster:
                 else:
                     # \a replaced by n
                     cspan.append(regex['x'].sub(str(span), TAGS['_tableCellColSpan']))
+                    ccovered.append(regex['x'].sub(str(span - 1), TAGS['tableCellCovered']))
 
                 mcopen = regex['x'].sub(str(span), TAGS['_tableCellMulticolOpen'])
                 multicol.append(mcopen)
             else:
                 cspan.append('')
+                ccovered.append('')
 
                 if colindex < ncolumns and align != self.colalign[colindex]:
                     mcopen = regex['x'].sub('1', TAGS['_tableCellMulticolOpen'])
@@ -6844,6 +6852,8 @@ class TableMaster:
                 this_cell = caligntag.pop(0)
             if cspan:
                 this_span = cspan.pop(0)
+            if ccovered:
+                this_covered = ccovered.pop(0)
             if multicol:
                 this_mcopen = multicol.pop(0)
 
@@ -6862,6 +6872,9 @@ class TableMaster:
                 copen = regex['_tableCellColSpan'].sub(this_span, copen)
                 cclose = regex['_tableCellColSpan'].sub(this_span, cclose)
                 chead = regex['_tableCellColSpan'].sub(this_span, chead)
+
+            if rules['tablecellcovered']:
+                cclose = cclose + this_covered
 
             # Use multicol tags instead (if multicol supported, and if
             # cell has a span or is aligned differently to column)
