@@ -4681,7 +4681,7 @@ def parse_convert_table(table, tableable, target):
 
 def math_print(target, txt):
     try:
-        exec('import sympy')
+        import sympy
     except:
         Error(_("$$math$$: You need SymPy to use math formula"))
     if sympy.__version__ < '0.7.4':
@@ -4692,8 +4692,8 @@ def math_print(target, txt):
     elif target == "tex":
         return latex(sympify(txt, evaluate=False))
     elif target == "html5":
-        exec('from sympy.printing.mathml import mathml')
-        exec('from sympy.utilities.mathml import c2p')
+        from sympy.printing.mathml import mathml
+        from sympy.utilities.mathml import c2p
         return c2p(mathml(sympify(txt, evaluate=False)))
 
 
