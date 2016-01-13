@@ -3,6 +3,7 @@
 # See also: run.py, */run.py
 #
 
+from __future__ import with_statement
 import os
 import platform
 import re
@@ -12,7 +13,7 @@ import time
 
 PYTHON = sys.executable
 
-print "Testing txt2tags on", platform.python_implementation(), platform.python_version()
+print "Testing txt2tags on Python", platform.python_version()
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
