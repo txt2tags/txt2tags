@@ -7,3 +7,9 @@
 [submodule "old"]
 	path = old
 	url = https://github.com/txt2tags/old
+[submodule "plugins"]
+	path = plugins
+	url = https://github.com/txt2tags/plugins.git
+[submodule "tools"]
+	path = tools
+	url = https://github.com/txt2tags/tools
