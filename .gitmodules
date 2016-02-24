@@ -13,3 +13,6 @@
 [submodule "tools"]
 	path = tools
 	url = https://github.com/txt2tags/tools
+[submodule "txt2tags.php"]
+	path = txt2tags.php
+	url = https://github.com/txt2tags/txt2tags.php.git
