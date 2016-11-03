@@ -1,0 +1,2609 @@
+------------------------------------------------------------------------
+r611 | aureliojargas | 2010-12-10 14:03:39 -0200 (Sex, 10 Dez 2010) | 2 lines
+
+Removing po/stats.txt, since now Transifex gives us pretty statistics.
+
+------------------------------------------------------------------------
+r610 | aureliojargas | 2010-12-10 11:04:16 -0200 (Sex, 10 Dez 2010) | 2 lines
+
+i18n: New translation: program messages in Malay, by Muhammad Fariz
+
+------------------------------------------------------------------------
+r609 | aureliojargas | 2010-12-10 10:40:06 -0200 (Sex, 10 Dez 2010) | 4 lines
+
+Postponing 'email' module load, because it's just used in a specific situation: using %%mtime inside a remote http file.
+
+Moved the module loading inside the try block, because if it fails, it's a minor issue and we default to the current date.
+
+------------------------------------------------------------------------
+r608 | aureliojargas | 2010-12-10 10:09:01 -0200 (Sex, 10 Dez 2010) | 7 lines
+
+Fixing issues in r607:
+Changed %% to % because the string escaping is not needed anymore.
+Improved target matching code, that was missing the "empty target == all targets" condition.
+
+The change from [a-z] to \w is to contemplate numbers, such as in pm6 and html5 targets. This was a previous bug, not related to r607.
+
+Now the test suite runs 100% again.
+------------------------------------------------------------------------
+r607 | jamiseeley | 2010-12-10 01:15:04 -0200 (Sex, 10 Dez 2010) | 10 lines
+
+Refactoring for speed
+
+Two main changes:
+1. urllib is now only imported if required
+2. a couple regexes are factored out of parse_line into the
+   class definition, so that they are now compiled more than
+   once.
+
+See issue 96.
+
+------------------------------------------------------------------------
+r606 | aureliojargas | 2010-12-09 17:57:51 -0200 (Qui, 09 Dez 2010) | 1 line
+
+i18n: some little PO updates, I'm testing Transifex.
+------------------------------------------------------------------------
+r605 | aureliojargas | 2010-12-09 16:24:00 -0200 (Qui, 09 Dez 2010) | 2 lines
+
+po/tools/stats.sh: Dumps results to STDOUT instead ../stats.txt
+
+------------------------------------------------------------------------
+r604 | aureliojargas | 2010-12-09 16:11:48 -0200 (Qui, 09 Dez 2010) | 2 lines
+
+po/README: Adding Transifex instructions.
+
+------------------------------------------------------------------------
+r603 | aureliojargas | 2010-12-09 15:37:10 -0200 (Qui, 09 Dez 2010) | 3 lines
+
+i18n: Now using Transifex to handle PO files translation.
+See http://www.transifex.net/projects/p/txt2tags
+Closes issue 81.
+------------------------------------------------------------------------
+r602 | aureliojargas | 2010-12-09 13:40:18 -0200 (Qui, 09 Dez 2010) | 1 line
+
+PEP-8: minimal spacing changes.
+------------------------------------------------------------------------
+r601 | aureliojargas | 2010-12-09 13:33:29 -0200 (Qui, 09 Dez 2010) | 1 line
+
+--help: Simplified the "turn off options" part.
+------------------------------------------------------------------------
+r600 | aureliojargas | 2010-12-09 13:12:05 -0200 (Qui, 09 Dez 2010) | 1 line
+
+--help message improvements: Message composing moved to a function Usage() so now it's just used when necessary. Help messages are now marked better for i18n, with just the messages, not -f and --foo options. POT file and PO files were updated accordingly.
+------------------------------------------------------------------------
+r598 | aureliojargas | 2010-12-09 01:00:38 -0200 (Qui, 09 Dez 2010) | 1 line
+
+PEP-8: Little spacing fixes.
+------------------------------------------------------------------------
+r597 | aureliojargas | 2010-12-09 00:56:52 -0200 (Qui, 09 Dez 2010) | 1 line
+
+test/art: updating ok templates with the new features.
+------------------------------------------------------------------------
+r596 | aureliojargas | 2010-12-09 00:44:35 -0200 (Qui, 09 Dez 2010) | 1 line
+
+Art: updated sample files.
+------------------------------------------------------------------------
+r595 | aureliojargas | 2010-12-09 00:34:39 -0200 (Qui, 09 Dez 2010) | 1 line
+
+doc: Markup Demo: Normalized spacing and comments of all translations.
+------------------------------------------------------------------------
+r594 | aureliojargas | 2010-12-09 00:06:26 -0200 (Qui, 09 Dez 2010) | 1 line
+
+doc: Markup Demo: Removed old hack to insert HTML tags with {foo} marks in all translations.
+------------------------------------------------------------------------
+r593 | aureliojargas | 2010-12-08 23:31:38 -0200 (Qua, 08 Dez 2010) | 1 line
+
+doc: Markup Demo: Normalized the header of all translations.
+------------------------------------------------------------------------
+r592 | aureliojargas | 2010-12-08 23:18:31 -0200 (Qua, 08 Dez 2010) | 1 line
+
+doc: markup demo (Esperanto): removed unnecessary postprocs.
+------------------------------------------------------------------------
+r591 | aureliojargas | 2010-12-08 20:36:30 -0200 (Qua, 08 Dez 2010) | 1 line
+
+manpage (it): updating HTML version.
+------------------------------------------------------------------------
+r590 | aureliojargas | 2010-12-08 20:32:41 -0200 (Qua, 08 Dez 2010) | 1 line
+
+manpage: All manpages converted to UTF-8 (just Italian was missing). Header cleanup in all manpages.
+------------------------------------------------------------------------
+r589 | aureliojargas | 2010-12-08 20:15:42 -0200 (Qua, 08 Dez 2010) | 1 line
+
+doc: Markup Demo: All translations converted to UTF-8. Thanks Jiří Pinkava for requesting.
+------------------------------------------------------------------------
+r588 | aureliojargas | 2010-12-08 19:51:08 -0200 (Qua, 08 Dez 2010) | 1 line
+
+doc: Markup Demo: New cleaner style. Original and all translations now using a default remote CSS file. Thanks Jiří Pinkava for telling me that the old style sucked :)
+------------------------------------------------------------------------
+r587 | aureliojargas | 2010-12-08 17:43:10 -0200 (Qua, 08 Dez 2010) | 1 line
+
+New translation: Markup Demo in Russian, by Kato Kontenta.
+------------------------------------------------------------------------
+r586 | aureliojargas | 2010-12-08 16:44:55 -0200 (Qua, 08 Dez 2010) | 1 line
+
+New translation: Sample File in Italian, by Ruggero Furlanetto.
+------------------------------------------------------------------------
+r585 | aureliojargas | 2010-12-08 16:37:25 -0200 (Qua, 08 Dez 2010) | 1 line
+
+Bugfix in --fix-path option: now it behaves the same regardless if the input file was informed as a relative or absolute path. New tests added to trunk/test/path to check for this specific case.
+------------------------------------------------------------------------
+r584 | fgallaire | 2010-12-08 08:22:27 -0200 (Qua, 08 Dez 2010) | 3 lines
+
+Art: column span support for table !
+Voodoo code equivalent to 1300 lines of C in links code source.
+
+------------------------------------------------------------------------
+r583 | aureliojargas | 2010-12-07 19:10:56 -0200 (Ter, 07 Dez 2010) | 1 line
+
+test: Added --no-rc option to shell script tests, to avoid trouble with user configurations.
+------------------------------------------------------------------------
+r582 | aureliojargas | 2010-12-03 13:30:23 -0200 (Sex, 03 Dez 2010) | 4 lines
+
+Moin: Added support for column span in tables.
+Tests updated.
+New tag key _tableCellColSpanChar to define a span char that will be repeated the necessary number of times.
+
+------------------------------------------------------------------------
+r581 | aureliojargas | 2010-12-03 12:45:20 -0200 (Sex, 03 Dez 2010) | 1 line
+
+get_outfile_name() - added comments, improved file extension regex.
+------------------------------------------------------------------------
+r580 | aureliojargas | 2010-12-03 12:40:09 -0200 (Sex, 03 Dez 2010) | 1 line
+
+New test module 'outfile' to check if txt2tags got the output file path/name right. Not integrated to main test-suite.
+------------------------------------------------------------------------
+r579 | aureliojargas | 2010-12-03 12:36:06 -0200 (Sex, 03 Dez 2010) | 1 line
+
+Outfile path fix. With the recently added path routines, it's not necessary to join paths inside get_outfile_name() anymore.
+------------------------------------------------------------------------
+r578 | aureliojargas | 2010-12-02 21:27:15 -0200 (Qui, 02 Dez 2010) | 1 line
+
+Moin: Now using spaces around table cell delimiter ' || ' to avoid confusion with alignment chars as '<'.
+------------------------------------------------------------------------
+r577 | aureliojargas | 2010-12-02 20:58:47 -0200 (Qui, 02 Dez 2010) | 1 line
+
+test-suite: the 'http' module should always be the last to be executed.
+------------------------------------------------------------------------
+r576 | aureliojargas | 2010-12-02 20:49:58 -0200 (Qui, 02 Dez 2010) | 4 lines
+
+Wikipedia: Added support for internal links to anchors. See issue 93.
+
+Added new tag key urlMarkAnchor, for those cases were the link to anchor tag is different from the normal link tag.
+
+------------------------------------------------------------------------
+r575 | aureliojargas | 2010-12-02 19:59:11 -0200 (Qui, 02 Dez 2010) | 1 line
+
+New test module 'target', used to stress generated target code. Currently only testing table markup.
+------------------------------------------------------------------------
+r574 | aureliojargas | 2010-12-02 19:36:14 -0200 (Qui, 02 Dez 2010) | 4 lines
+
+Wikipedia: Added cell span and cell alignment to tables. Sample file updated. See issue 93.
+
+New regex/key called _tableAttrDelimiter, to place a delimiter into the table cell opening tag only when attributes (as align and span) were used.
+
+------------------------------------------------------------------------
+r573 | aureliojargas | 2010-12-02 19:30:03 -0200 (Qui, 02 Dez 2010) | 2 lines
+
+New comments adding references to target syntax or Wiki sandbox.
+Some code whitespace cleanup.
+------------------------------------------------------------------------
+r572 | aureliojargas | 2010-12-02 15:29:06 -0200 (Qui, 02 Dez 2010) | 1 line
+
+Wikipedia: Changed table syntax for cells. Now using "one cell per line" syntax, to make it easier to add alignment and colspan. Also, this syntax seems to be the preferred in MediaWiki docs. Sample file updated. See issue 93.
+------------------------------------------------------------------------
+r571 | aureliojargas | 2010-12-02 15:08:30 -0200 (Qui, 02 Dez 2010) | 1 line
+
+sample.xhtmls updated with <th>
+------------------------------------------------------------------------
+r570 | aureliojargas | 2010-12-02 14:19:09 -0200 (Qui, 02 Dez 2010) | 2 lines
+
+XHTML strict: Fixed table heading tag <th>. It was not working because of mispelled key name.
+
+------------------------------------------------------------------------
+r569 | aureliojargas | 2010-12-02 14:06:56 -0200 (Qui, 02 Dez 2010) | 3 lines
+
+New rule 'escapexmlchars' to... escape XML chars :)
+
+Since many targets need to escape < > & chars, it makes sense to create a rule for it.
+------------------------------------------------------------------------
+r568 | aureliojargas | 2010-12-02 10:15:01 -0200 (Qui, 02 Dez 2010) | 1 line
+
+Wikipedia: Now escaping <, > and & chars. See issue 93.
+------------------------------------------------------------------------
+r567 | aureliojargas | 2010-12-02 10:13:33 -0200 (Qui, 02 Dez 2010) | 1 line
+
+sample.xhtmls: Updated program URL.
+------------------------------------------------------------------------
+r566 | aureliojargas | 2010-12-01 17:05:21 -0200 (Qua, 01 Dez 2010) | 1 line
+
+The TARGETS global var is not defined "by hand" anymore. Now the target ids come directly from TARGET_NAMES. A silly change that should have been made years ago :)
+------------------------------------------------------------------------
+r565 | aureliojargas | 2010-12-01 16:53:36 -0200 (Qua, 01 Dez 2010) | 1 line
+
+Comments improved.
+------------------------------------------------------------------------
+r564 | aureliojargas | 2010-12-01 16:40:08 -0200 (Qua, 01 Dez 2010) | 3 lines
+
+New option --fix-path to enable the path adjustment for images, local links and CSS files when saving output file to a different folder with --outfile. Use --no-fix-path to turn it off. Tests updated.
+
+This reverts txt2tags to v2.6 state, when resources path in output is not touched at all. This way we don't break existing setups. See discussion in issue 62 for details. See also: issue 63, issue 71.
+------------------------------------------------------------------------
+r563 | jamiseeley | 2010-11-25 03:18:04 -0200 (Qui, 25 Nov 2010) | 1 line
+
+Rtf: fixed error in escapes
+------------------------------------------------------------------------
+r562 | fgallaire | 2010-11-25 00:03:35 -0200 (Qui, 25 Nov 2010) | 2 lines
+
+Art: tables don't respect --width (and probably will never do).
+
+------------------------------------------------------------------------
+r561 | fgallaire | 2010-11-24 23:54:21 -0200 (Qua, 24 Nov 2010) | 2 lines
+
+Art: width value tests in the right order.
+
+------------------------------------------------------------------------
+r560 | fgallaire | 2010-11-24 23:44:43 -0200 (Qua, 24 Nov 2010) | 2 lines
+
+Art: multiline support in aa_box().
+
+------------------------------------------------------------------------
+r559 | fgallaire | 2010-11-24 09:16:56 -0200 (Qua, 24 Nov 2010) | 2 lines
+
+Art: --art-chars support for table.
+
+------------------------------------------------------------------------
+r558 | fgallaire | 2010-11-24 08:47:33 -0200 (Qua, 24 Nov 2010) | 2 lines
+
+Art: borderless support for table.
+
+------------------------------------------------------------------------
+r557 | fgallaire | 2010-11-24 07:42:31 -0200 (Qua, 24 Nov 2010) | 2 lines
+
+Art: Left and Center align support for table.
+
+------------------------------------------------------------------------
+r556 | fgallaire | 2010-11-23 21:46:16 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+Txt2tags 2.7 targets Python 2.3.
+
+------------------------------------------------------------------------
+r554 | aureliojargas | 2010-11-23 20:52:35 -0200 (Ter, 23 Nov 2010) | 1 line
+
+dist/check-code.sh: Adding pep8.py checkings, for PEP-8 compliance.
+------------------------------------------------------------------------
+r553 | aureliojargas | 2010-11-23 20:29:57 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E201 whitespace after '[' and '{' (issue 67)
+------------------------------------------------------------------------
+r552 | aureliojargas | 2010-11-23 20:27:18 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E201 whitespace after '(' (issue 67)
+------------------------------------------------------------------------
+r551 | aureliojargas | 2010-11-23 20:23:53 -0200 (Ter, 23 Nov 2010) | 1 line
+
+Replacing "if key in dic.keys()" to "if key in dic".
+------------------------------------------------------------------------
+r550 | aureliojargas | 2010-11-23 19:49:36 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+PEP-8: W601 .has_key() is deprecated, use 'in' (issue 67)
+Note that "key in dict" was introduced in Python 2.3.
+------------------------------------------------------------------------
+r549 | aureliojargas | 2010-11-23 19:27:41 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: W602 deprecated form of raising exception (issue 67)
+------------------------------------------------------------------------
+r548 | aureliojargas | 2010-11-23 19:26:24 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: quickies (issue 67)
+------------------------------------------------------------------------
+r547 | aureliojargas | 2010-11-23 19:02:41 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: W604 backticks are deprecated (issue 67)
+------------------------------------------------------------------------
+r546 | aureliojargas | 2010-11-23 18:57:49 -0200 (Ter, 23 Nov 2010) | 5 lines
+
+PEP-8:
+E303 too many blank lines
+E302 expected 2 blank lines, found 1
+E301 expected 1 blank line, found 0
+(issue 67)
+------------------------------------------------------------------------
+r545 | aureliojargas | 2010-11-23 18:44:51 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E262 inline comment should start with '# ' (issue 67)
+------------------------------------------------------------------------
+r544 | aureliojargas | 2010-11-23 18:41:36 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E261 at least two spaces before inline comment (issue 67)
+------------------------------------------------------------------------
+r543 | aureliojargas | 2010-11-23 18:32:49 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: W293 blank line contains whitespace, W291 trailing whitespace (issue 67)
+------------------------------------------------------------------------
+r542 | aureliojargas | 2010-11-23 18:29:41 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E251 no spaces around keyword / parameter equals (issue 67)
+------------------------------------------------------------------------
+r541 | aureliojargas | 2010-11-23 18:27:20 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E225 missing whitespace around operator (issue 67)
+------------------------------------------------------------------------
+r540 | aureliojargas | 2010-11-23 18:16:14 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E225 missing whitespace around operator '+' (issue 67)
+------------------------------------------------------------------------
+r539 | aureliojargas | 2010-11-23 18:01:22 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: E225 missing whitespace around operator '%' (issue 67)
+------------------------------------------------------------------------
+r538 | aureliojargas | 2010-11-23 17:39:55 -0200 (Ter, 23 Nov 2010) | 1 line
+
+Now using os.path.splitext() instead regexes to extract filename extension.
+------------------------------------------------------------------------
+r537 | aureliojargas | 2010-11-23 17:29:03 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: indentation TABs converted to 4 spaces in other .py files. (issue 67)
+------------------------------------------------------------------------
+r536 | aureliojargas | 2010-11-23 17:17:06 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+Adding test/http/web/relative-path.t2t, which is a symlink to test/path/relative-path.t2t. This file should have been added in r533.
+
+------------------------------------------------------------------------
+r535 | aureliojargas | 2010-11-23 17:13:57 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: More spacing adjustments in test-suite. (issue 67)
+------------------------------------------------------------------------
+r534 | aureliojargas | 2010-11-23 16:54:22 -0200 (Ter, 23 Nov 2010) | 1 line
+
+PEP-8: Test-suite indentation TABs converted to 4 spaces. (issue 67)
+------------------------------------------------------------------------
+r533 | aureliojargas | 2010-11-23 16:31:15 -0200 (Ter, 23 Nov 2010) | 1 line
+
+test: http: Added new tests for relative paths. Closes issue 84.
+------------------------------------------------------------------------
+r532 | aureliojargas | 2010-11-23 16:05:54 -0200 (Ter, 23 Nov 2010) | 1 line
+
+test: http: Added new tests.
+------------------------------------------------------------------------
+r531 | aureliojargas | 2010-11-23 15:23:29 -0200 (Ter, 23 Nov 2010) | 1 line
+
+Now detects missing remote files (404). Added tests. See issue 84.
+------------------------------------------------------------------------
+r530 | aureliojargas | 2010-11-23 14:34:44 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+%%mtime now working for remote files. Added tests. See issue 84.
+Using Python module 'email', added in python-2.2.
+------------------------------------------------------------------------
+r529 | aureliojargas | 2010-11-23 10:49:49 -0200 (Ter, 23 Nov 2010) | 1 line
+
+New --verbose message for ignored configs, and improved i18n for added configs. Potfile and PO files were updated.
+------------------------------------------------------------------------
+r528 | aureliojargas | 2010-11-23 10:47:31 -0200 (Ter, 23 Nov 2010) | 1 line
+
+test/run.py: Added modules macro and http to the automatic run.
+------------------------------------------------------------------------
+r527 | aureliojargas | 2010-11-23 10:27:56 -0200 (Ter, 23 Nov 2010) | 1 line
+
+Improved comments in the %!options parsing code
+------------------------------------------------------------------------
+r526 | aureliojargas | 2010-11-23 10:25:08 -0200 (Ter, 23 Nov 2010) | 1 line
+
+Now supporting remote http templates. Tests added. See issue 84.
+------------------------------------------------------------------------
+r525 | aureliojargas | 2010-11-23 09:32:44 -0200 (Ter, 23 Nov 2010) | 3 lines
+
+Now remote URLs (http:// and https://) can be loaded as local files.
+test: Added new module 'http'.
+See issue 84.
+------------------------------------------------------------------------
+r524 | fgallaire | 2010-11-23 03:52:28 -0200 (Ter, 23 Nov 2010) | 7 lines
+
+Choose the delimiter for a CSV file : char | "space" | "tab". Default is ",".
+Examples :
+%!csvheader: file.csv
+%!csv: file.csv ;
+%!csvheader: file.csv space
+%!csv: file.csv tab
+
+------------------------------------------------------------------------
+r523 | fgallaire | 2010-11-23 02:10:51 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+Revert unwanted changes in test/csv.
+
+------------------------------------------------------------------------
+r522 | fgallaire | 2010-11-23 02:04:36 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+New command %!csvheader to include an external CSV file as a table with its first line as header.
+
+------------------------------------------------------------------------
+r521 | fgallaire | 2010-11-23 00:37:06 -0200 (Ter, 23 Nov 2010) | 2 lines
+
+Art: light bold/italic/underline/strike support.
+
+------------------------------------------------------------------------
+r520 | eforgeot | 2010-11-22 21:30:59 -0200 (Seg, 22 Nov 2010) | 2 lines
+
+corrected the txt2tags url in the xhtmls target
+
+------------------------------------------------------------------------
+r519 | aureliojargas | 2010-11-22 21:10:42 -0200 (Seg, 22 Nov 2010) | 5 lines
+
+New class PathMaster to help solving the path issues.
+New tests in test/path to check %!option: --style and config nesting.
+New ghost option --dirname (for internal use only) to help tracking the original folder for %!options settings.
+Closes issue 85.
+
+------------------------------------------------------------------------
+r518 | aureliojargas | 2010-11-22 17:31:39 -0200 (Seg, 22 Nov 2010) | 1 line
+
+test/path: Now testing absolute paths for %!style.
+------------------------------------------------------------------------
+r517 | aureliojargas | 2010-11-22 16:44:37 -0200 (Seg, 22 Nov 2010) | 1 line
+
+New fix_css_out_path() to fix inconsistent behavior with relative CSS paths. Now these paths are handled the same way as image paths. Added new tests in test/path for %!style. See issue 71.
+------------------------------------------------------------------------
+r516 | eforgeot | 2010-11-22 04:17:20 -0200 (Seg, 22 Nov 2010) | 2 lines
+
+Slidy: automatic inclusion of css and default link to both the online slidy.js and the local slidy.js so with an internet connection the slidy output should be self suffisant (and without internet connection, the local slidy.js will be used)
+
+------------------------------------------------------------------------
+r515 | fgallaire | 2010-11-22 03:13:22 -0200 (Seg, 22 Nov 2010) | 2 lines
+
+Art: header support for table.
+
+------------------------------------------------------------------------
+r514 | fgallaire | 2010-11-22 02:44:51 -0200 (Seg, 22 Nov 2010) | 2 lines
+
+Art: table support for art target !
+
+------------------------------------------------------------------------
+r513 | aureliojargas | 2010-11-21 19:30:49 -0200 (Dom, 21 Nov 2010) | 1 line
+
+test: path: Added headers to the 'html' result templates.
+------------------------------------------------------------------------
+r512 | aureliojargas | 2010-11-21 19:24:51 -0200 (Dom, 21 Nov 2010) | 1 line
+
+test: path: Added target 'html' to the tests, for future CSS tests.
+------------------------------------------------------------------------
+r511 | aureliojargas | 2010-11-21 16:34:57 -0200 (Dom, 21 Nov 2010) | 1 line
+
+--css-inside: Now txt2tags raises an error if the CSS file is not found.
+------------------------------------------------------------------------
+r510 | jamiseeley | 2010-11-20 19:33:39 -0200 (Sáb, 20 Nov 2010) | 20 lines
+
+RTF: Added character escapes and (hackish) encoding support.
+
+RTF does not really support character encodings, but it does
+support a form of unicode. If an encoding is declared, t2t
+will attempt to convert this into unicode before escaping
+the text for Rtf readers to use.
+
+In Rtf readers that do not support Unicode, all unicode characters
+will appear as '?'
+
+Not all encodings are supported. In particular, some mutli-byte
+encodings (Shift-JIS is one known offender) will use byte 0x0D
+as part of a character, but t2t will interpret this as a newline.
+This will usually cause an exception to be thrown and the script
+to abort.
+
+If there is no encoding declared, t2t should assume the text is
+plain ascii and pass it through untouched.
+
+
+------------------------------------------------------------------------
+r509 | eforgeot | 2010-11-20 09:33:28 -0200 (Sáb, 20 Nov 2010) | 2 lines
+
+added rtf unicode for some languages (external configuration file, could be included in txt2tags later). Use it with 'txt2tags -t rtf -C extras/rtf_unicode.t2t'
+
+------------------------------------------------------------------------
+r508 | fgallaire | 2010-11-20 04:31:14 -0200 (Sáb, 20 Nov 2010) | 2 lines
+
+Art: only one char is needed in aa_slide().
+
+------------------------------------------------------------------------
+r507 | fgallaire | 2010-11-20 04:22:18 -0200 (Sáb, 20 Nov 2010) | 2 lines
+
+Art: aa_* functions cleaned of AA global.
+
+------------------------------------------------------------------------
+r506 | fgallaire | 2010-11-20 04:06:10 -0200 (Sáb, 20 Nov 2010) | 2 lines
+
+Art: rename "length" variables in "width" (as the option).
+
+------------------------------------------------------------------------
+r505 | fgallaire | 2010-11-20 03:50:15 -0200 (Sáb, 20 Nov 2010) | 2 lines
+
+Art: multiline support in aa_under().
+
+------------------------------------------------------------------------
+r504 | jamiseeley | 2010-11-19 19:04:36 -0200 (Sex, 19 Nov 2010) | 1 line
+
+Rtf: Added table support.
+------------------------------------------------------------------------
+r503 | jamiseeley | 2010-11-19 14:26:23 -0200 (Sex, 19 Nov 2010) | 1 line
+
+Rtf: Now supports changing stylesheet in word processors
+------------------------------------------------------------------------
+r502 | jamiseeley | 2010-11-19 02:05:56 -0200 (Sex, 19 Nov 2010) | 8 lines
+
+Rtf: Image improvements.
+
+* Linked images work in OpenOffice 3.2
+  (and probably other versions as well)
+* Image filename is printed in readers
+  that do not support linked images
+
+
+------------------------------------------------------------------------
+r501 | fgallaire | 2010-11-18 20:33:53 -0200 (Qui, 18 Nov 2010) | 2 lines
+
+Art: new function aa_len(), with hackish UTF-8 support for aa_under() and aa_box().
+
+------------------------------------------------------------------------
+r500 | fgallaire | 2010-11-18 20:16:21 -0200 (Qui, 18 Nov 2010) | 2 lines
+
+Art: new function aa_under().
+
+------------------------------------------------------------------------
+r499 | jamiseeley | 2010-11-18 12:05:40 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Sample file (rtf) added
+------------------------------------------------------------------------
+r498 | jamiseeley | 2010-11-18 11:32:42 -0200 (Qui, 18 Nov 2010) | 1 line
+
+New target: RTF (-t rtf). Experimental
+------------------------------------------------------------------------
+r497 | aureliojargas | 2010-11-18 11:16:07 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Web interface: Now the input text is expected to be in UTF-8. Thanks jesuscanonavarro. See issue 70.
+------------------------------------------------------------------------
+r496 | aureliojargas | 2010-11-18 11:01:48 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Updated --encoding documentation to make clear that the encoding setting is relative to the INPUT file. Also, make it clear that the OUTPUT file keeps the same encoding of input. Thanks jesuscanonavarro. See issue 70.
+------------------------------------------------------------------------
+r495 | aureliojargas | 2010-11-18 09:02:56 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Adding samples/sample.xhtmls that was missing.
+------------------------------------------------------------------------
+r494 | aureliojargas | 2010-11-18 08:50:40 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Sample File (pt) updated.
+------------------------------------------------------------------------
+r493 | aureliojargas | 2010-11-18 08:49:22 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Sample File: Fixed case in some sentences, samples updated.
+------------------------------------------------------------------------
+r492 | aureliojargas | 2010-11-18 08:43:45 -0200 (Qui, 18 Nov 2010) | 1 line
+
+Moving textwrap import to the top, fixing spacing.
+------------------------------------------------------------------------
+r491 | fgallaire | 2010-11-18 04:41:46 -0200 (Qui, 18 Nov 2010) | 2 lines
+
+Art: best wrapping algorithm (use textwrap module).
+
+------------------------------------------------------------------------
+r490 | aureliojargas | 2010-11-17 18:01:08 -0200 (Qua, 17 Nov 2010) | 1 line
+
+Fixed the problem with CSS files path when using %!includeconf from a different folder. Closes issue 71.
+------------------------------------------------------------------------
+r489 | aureliojargas | 2010-11-17 16:36:06 -0200 (Qua, 17 Nov 2010) | 1 line
+
+test: Updated templates to the new HTML anchor as ID= inside <H1..6> tags.
+------------------------------------------------------------------------
+r488 | aureliojargas | 2010-11-17 16:25:44 -0200 (Qua, 17 Nov 2010) | 1 line
+
+test: macro: new tests.
+------------------------------------------------------------------------
+r487 | aureliojargas | 2010-11-17 15:24:01 -0200 (Qua, 17 Nov 2010) | 1 line
+
+test: option: updated --verbose tests due a change in Message() order that went on r483.
+------------------------------------------------------------------------
+r486 | aureliojargas | 2010-11-17 15:18:54 -0200 (Qua, 17 Nov 2010) | 1 line
+
+Oops. Forgot some files in the last commit.
+------------------------------------------------------------------------
+r485 | aureliojargas | 2010-11-17 15:17:36 -0200 (Qua, 17 Nov 2010) | 1 line
+
+test: macro: new tests
+------------------------------------------------------------------------
+r484 | aureliojargas | 2010-11-17 13:12:50 -0200 (Qua, 17 Nov 2010) | 1 line
+
+test: marks/macro.t2t test moved to 'macro' module and renamed to syntax.t2t.
+------------------------------------------------------------------------
+r483 | aureliojargas | 2010-11-17 12:30:49 -0200 (Qua, 17 Nov 2010) | 1 line
+
+New macros %%header1, %%header2, %%header3, with new test-suite module 'macro' to test them. Closes issue 68.
+------------------------------------------------------------------------
+r482 | aureliojargas | 2010-11-17 11:27:54 -0200 (Qua, 17 Nov 2010) | 1 line
+
+New macro %%encoding, with tests.
+------------------------------------------------------------------------
+r481 | aureliojargas | 2010-11-17 11:21:21 -0200 (Qua, 17 Nov 2010) | 1 line
+
+Reordered the MACROS global dict contents.
+------------------------------------------------------------------------
+r480 | aureliojargas | 2010-11-17 11:17:19 -0200 (Qua, 17 Nov 2010) | 1 line
+
+Removed global variable CMDLINE added in r474. We're using config['realcmdline'] since r479.
+------------------------------------------------------------------------
+r479 | aureliojargas | 2010-11-17 11:07:10 -0200 (Qua, 17 Nov 2010) | 1 line
+
+Improved the support for the new macros (%%appname, %%appversion, %%appurl, %%target, %%cmdline) and added tests. See issue 68.
+------------------------------------------------------------------------
+r478 | aureliojargas | 2010-11-16 23:44:51 -0200 (Ter, 16 Nov 2010) | 1 line
+
+Improved comments inside doHeader().
+------------------------------------------------------------------------
+r477 | fgallaire | 2010-11-15 01:00:33 -0200 (Seg, 15 Nov 2010) | 2 lines
+
+Art: Complete the r472's fix.
+
+------------------------------------------------------------------------
+r476 | fgallaire | 2010-11-14 17:36:59 -0200 (Dom, 14 Nov 2010) | 2 lines
+
+test: add two new art tests (about %%TOC).
+
+------------------------------------------------------------------------
+r475 | hostikka@gmail.com | 2010-11-14 13:58:15 -0200 (Dom, 14 Nov 2010) | 1 line
+
+HTML, XHTML and XHTMLS: moved anchors as title ids
+------------------------------------------------------------------------
+r474 | eforgeot | 2010-11-14 05:56:36 -0200 (Dom, 14 Nov 2010) | 2 lines
+
+New macros: %%target, %%cmdline. See issue 68.
+
+------------------------------------------------------------------------
+r473 | fgallaire | 2010-11-14 03:00:41 -0200 (Dom, 14 Nov 2010) | 2 lines
+
+Art: text never exceed --width, so art documents are "centred" and art slides are never broken. (dumber algorithm) 
+
+------------------------------------------------------------------------
+r472 | fgallaire | 2010-11-13 23:04:34 -0200 (Sáb, 13 Nov 2010) | 2 lines
+
+Fix art target (broken since r407).
+
+------------------------------------------------------------------------
+r471 | hostikka@gmail.com | 2010-11-13 18:00:04 -0200 (Sáb, 13 Nov 2010) | 1 line
+
+HTML5: Added css-sugar support and special escapes
+------------------------------------------------------------------------
+r470 | hostikka@gmail.com | 2010-11-13 14:31:30 -0200 (Sáb, 13 Nov 2010) | 1 line
+
+HTML5: Added html5css and css-inside support
+------------------------------------------------------------------------
+r469 | eforgeot | 2010-11-13 11:57:41 -0200 (Sáb, 13 Nov 2010) | 2 lines
+
+New macros: %%appname, %%appversion, %%appurl. See issue 68.
+
+------------------------------------------------------------------------
+r468 | hostikka@gmail.com | 2010-11-13 06:14:05 -0200 (Sáb, 13 Nov 2010) | 1 line
+
+HTML5: fixed table heading, added _imgAlignRight and _imgAlignCenter
+------------------------------------------------------------------------
+r467 | aureliojargas | 2010-11-12 21:23:17 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: FIxed indentation of initial configuration (issue 67)
+------------------------------------------------------------------------
+r466 | aureliojargas | 2010-11-12 21:11:20 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: E231 missing whitespace after ':' and ',' (issue 67)
+------------------------------------------------------------------------
+r465 | aureliojargas | 2010-11-12 20:43:34 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: E202 whitespace before ']' (issue 67)
+------------------------------------------------------------------------
+r464 | aureliojargas | 2010-11-12 20:35:08 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: E222 multiple spaces after operator (issue 67)
+------------------------------------------------------------------------
+r463 | aureliojargas | 2010-11-12 20:31:50 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: E701 multiple statements on one line (colon) (issue 67)
+------------------------------------------------------------------------
+r462 | hostikka@gmail.com | 2010-11-12 19:53:02 -0200 (Sex, 12 Nov 2010) | 1 line
+
+HTML5: Changed anchors to inside of titles, changed style attributes to classes, added CSS and fixed table border.
+------------------------------------------------------------------------
+r461 | aureliojargas | 2010-11-12 19:36:59 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: Removed useless spaces with reindent.py (issue 67)
+------------------------------------------------------------------------
+r460 | aureliojargas | 2010-11-12 19:34:47 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: One import per line (issue 67)
+------------------------------------------------------------------------
+r459 | aureliojargas | 2010-11-12 19:30:26 -0200 (Sex, 12 Nov 2010) | 1 line
+
+PEP-8: All indentation TABs converted to 4 spaces. (issue 67)
+------------------------------------------------------------------------
+r458 | aureliojargas | 2010-11-12 19:28:25 -0200 (Sex, 12 Nov 2010) | 1 line
+
+test: path: Fixed bug that this module couldn't be run from another folder. YES, now it's fixed.
+------------------------------------------------------------------------
+r457 | aureliojargas | 2010-11-12 19:18:41 -0200 (Sex, 12 Nov 2010) | 1 line
+
+test: path: Fixed bug that this module couldn't be run from another folder.
+------------------------------------------------------------------------
+r456 | aureliojargas | 2010-11-12 19:16:34 -0200 (Sex, 12 Nov 2010) | 1 line
+
+Little typo in test/run.py
+------------------------------------------------------------------------
+r455 | aureliojargas | 2010-11-12 18:40:31 -0200 (Sex, 12 Nov 2010) | 1 line
+
+Little code formatting adjustments.
+------------------------------------------------------------------------
+r454 | aureliojargas | 2010-11-12 18:29:02 -0200 (Sex, 12 Nov 2010) | 1 line
+
+test: include: New test for the image+link path adjustment.
+------------------------------------------------------------------------
+r453 | aureliojargas | 2010-11-12 16:28:55 -0200 (Sex, 12 Nov 2010) | 1 line
+
+SPIP: updating comments, nothing interesting here.
+------------------------------------------------------------------------
+r452 | aureliojargas | 2010-11-12 16:20:16 -0200 (Sex, 12 Nov 2010) | 1 line
+
+test/sample/run.sh updated to strip link paths either (it was stripping image paths only).
+------------------------------------------------------------------------
+r451 | aureliojargas | 2010-11-12 16:16:29 -0200 (Sex, 12 Nov 2010) | 11 lines
+
+New rule 'listlineafteropen' to be used by targets where listItemLine defines the nesting and listItemOpen defines the list item id char. An example are SPIP lists, which are now fixed:
+
+-* list
+-** sublist
+-*** subsublist
+
+and
+
+-# numlist
+-## subnumlist
+
+------------------------------------------------------------------------
+r450 | aureliojargas | 2010-11-12 15:48:55 -0200 (Sex, 12 Nov 2010) | 1 line
+
+SPIP: Fixed the link/label order, now the named link tag is correct.
+------------------------------------------------------------------------
+r449 | aureliojargas | 2010-11-12 15:46:12 -0200 (Sex, 12 Nov 2010) | 1 line
+
+New target SPIP (-t spip), by Mickael Brangeon.
+------------------------------------------------------------------------
+r448 | aureliojargas | 2010-11-12 15:06:00 -0200 (Sex, 12 Nov 2010) | 1 line
+
+New target Redmine Wiki (-t red), by Booba §kaya.
+------------------------------------------------------------------------
+r447 | aureliojargas | 2010-11-12 12:58:27 -0200 (Sex, 12 Nov 2010) | 1 line
+
+New dev tool dist/compare-targets.py. Very useful to quickly spot differences between two or more targets. See file headers for instructions and examples.
+------------------------------------------------------------------------
+r446 | aureliojargas | 2010-11-12 11:06:31 -0200 (Sex, 12 Nov 2010) | 1 line
+
+New experimental feature: %!PostVoodoo filter, for insane people :)
+------------------------------------------------------------------------
+r445 | aureliojargas | 2010-11-11 20:31:41 -0200 (Qui, 11 Nov 2010) | 1 line
+
+New target HTML5 (-t html5), by Sami Hostikka.
+------------------------------------------------------------------------
+r444 | eforgeot | 2010-11-11 20:01:27 -0200 (Qui, 11 Nov 2010) | 4 lines
+
+added templates folder.
+working beamer template
+working slidy template
+
+------------------------------------------------------------------------
+r443 | aureliojargas | 2010-11-11 19:33:14 -0200 (Qui, 11 Nov 2010) | 4 lines
+
+The path adjustment is now also applied to links as [Foo foo.html].
+The function fix_relative_path() now also ignores URLs and #anchors.
+Test-suite was updated to test links.
+Closes issue 63.
+------------------------------------------------------------------------
+r442 | aureliojargas | 2010-11-11 18:12:23 -0200 (Qui, 11 Nov 2010) | 1 line
+
+Fixed image handling code. Now TXT and other targets whose image tag is [image.png] also benefit from the path adjustment code. Test-suite updated with new tests for this feature. Closes issue 62.
+------------------------------------------------------------------------
+r441 | aureliojargas | 2010-11-11 17:51:52 -0200 (Qui, 11 Nov 2010) | 2 lines
+
+New function fix_relative_path() to handle the path adjustment code. See issue 62.
+
+------------------------------------------------------------------------
+r440 | aureliojargas | 2010-11-11 17:02:37 -0200 (Qui, 11 Nov 2010) | 1 line
+
+Skip path adjustment for images when the image path is absolute. See issue 62.
+------------------------------------------------------------------------
+r439 | aureliojargas | 2010-11-11 16:52:10 -0200 (Qui, 11 Nov 2010) | 2 lines
+
+test: New module 'path' to test everything related to path handling, now testing the relative image path adjustment. Module 'image' was obsoleted. See issue 62.
+
+------------------------------------------------------------------------
+r438 | aureliojargas | 2010-11-11 16:50:24 -0200 (Qui, 11 Nov 2010) | 1 line
+
+The path adjustment for images now is not done when source or output files are STDIN/STDOUT. See issue 62.
+------------------------------------------------------------------------
+r437 | aureliojargas | 2010-11-11 14:53:56 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: include: Oops, restoring file contents that was committed empty in r432.
+------------------------------------------------------------------------
+r436 | aureliojargas | 2010-11-11 11:55:08 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: Adding new 'image' module to check the images relative path fixing feature. See issue 62.
+------------------------------------------------------------------------
+r435 | aureliojargas | 2010-11-11 11:34:09 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: Added reminder for the extra tests (still not integrated into main tester)
+------------------------------------------------------------------------
+r434 | aureliojargas | 2010-11-11 11:26:35 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: header: Added %%currentfile macro to Headers tests.
+------------------------------------------------------------------------
+r433 | aureliojargas | 2010-11-11 11:20:06 -0200 (Qui, 11 Nov 2010) | 1 line
+
+Fixed Markdown-extra URL.
+------------------------------------------------------------------------
+r432 | aureliojargas | 2010-11-11 11:14:29 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: include: Adding new tests to check the images relative path fixing feature. See issue 62.
+------------------------------------------------------------------------
+r431 | aureliojargas | 2010-11-11 11:11:00 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: include: Adding new tests to check when the included file is not found.
+------------------------------------------------------------------------
+r430 | aureliojargas | 2010-11-11 11:02:04 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: include: Renaming included file (added the _ prefix)
+------------------------------------------------------------------------
+r429 | aureliojargas | 2010-11-11 09:35:20 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: New test for %%currentfile macro.
+------------------------------------------------------------------------
+r428 | aureliojargas | 2010-11-11 09:17:27 -0200 (Qui, 11 Nov 2010) | 1 line
+
+s/MarkDown/Markdown/
+------------------------------------------------------------------------
+r427 | aureliojargas | 2010-11-11 09:06:40 -0200 (Qui, 11 Nov 2010) | 1 line
+
+test: sample: Added fix for the images relative path, that changed behavior in r422.
+------------------------------------------------------------------------
+r426 | aureliojargas | 2010-11-11 09:04:01 -0200 (Qui, 11 Nov 2010) | 1 line
+
+Adding cd $(dirname "$0") to all shell scripts, to make them executable from any folder.
+------------------------------------------------------------------------
+r425 | aureliojargas | 2010-11-11 00:53:35 -0200 (Qui, 11 Nov 2010) | 1 line
+
+Removed TODO comments, this image path fix was made in r422.
+------------------------------------------------------------------------
+r422 | aureliojargas | 2010-11-11 00:44:59 -0200 (Qui, 11 Nov 2010) | 2 lines
+
+Fixed %!include path bug, with patches from Emmanuel Godard (restored r338, r339, r340, r341 from branch 'issue27') and additional fixes for the loop checking when in nested include (see "Infinite loop detection"). Test-suite updated and added new test. This revision also changes the relative paths of images, when the output file is in a different folder than the source: now the paths are relative to the sourcefile location. Closes issue 27. Closes issue 62.
+
+------------------------------------------------------------------------
+r421 | aureliojargas | 2010-11-10 23:41:17 -0200 (Qua, 10 Nov 2010) | 1 line
+
+More whitespace fixes, now dist/check-code.sh doesn't show any error.
+------------------------------------------------------------------------
+r420 | aureliojargas | 2010-11-10 23:36:30 -0200 (Qua, 10 Nov 2010) | 3 lines
+
+Markdown: Fixed quote blocks, added verbatim blocks.
+getTags(): Added new keyword blockVerbLine, for blocks defined by indentation, as in Markdown.
+
+------------------------------------------------------------------------
+r419 | aureliojargas | 2010-11-10 23:25:30 -0200 (Qua, 10 Nov 2010) | 1 line
+
+BBCode: Disabling table support until we have its tags. This way, the table is rendered as verbatim block.
+------------------------------------------------------------------------
+r418 | aureliojargas | 2010-11-10 23:15:47 -0200 (Qua, 10 Nov 2010) | 2 lines
+
+Adding samples for Markdown and BBCode.
+
+------------------------------------------------------------------------
+r417 | aureliojargas | 2010-11-10 23:12:46 -0200 (Qua, 10 Nov 2010) | 1 line
+
+--help: improved --template description and changed its location.
+------------------------------------------------------------------------
+r416 | aureliojargas | 2010-11-10 23:00:36 -0200 (Qua, 10 Nov 2010) | 1 line
+
+Markdown: changing identifier/extension from 'mdwn' to 'md'.
+------------------------------------------------------------------------
+r415 | aureliojargas | 2010-11-10 22:56:48 -0200 (Qua, 10 Nov 2010) | 1 line
+
+More little fixes in template code
+------------------------------------------------------------------------
+r414 | aureliojargas | 2010-11-10 22:37:40 -0200 (Qua, 10 Nov 2010) | 1 line
+
+Little fixes in template code
+------------------------------------------------------------------------
+r413 | aureliojargas | 2010-11-10 22:19:56 -0200 (Qua, 10 Nov 2010) | 1 line
+
+templates: fixing the extra blank lines problem at the end
+------------------------------------------------------------------------
+r412 | eforgeot | 2010-11-10 19:44:39 -0200 (Qua, 10 Nov 2010) | 3 lines
+
+Removed some \n so the test check with pass better.
+Cleaned some extra whitespace with check-code.sh
+
+------------------------------------------------------------------------
+r411 | eforgeot | 2010-11-09 21:11:38 -0200 (Ter, 09 Nov 2010) | 2 lines
+
+corrected the TAGS['EOD'] part
+
+------------------------------------------------------------------------
+r410 | eforgeot | 2010-11-09 20:12:17 -0200 (Ter, 09 Nov 2010) | 2 lines
+
+New target BBCode (-t bbcode)
+
+------------------------------------------------------------------------
+r409 | eforgeot | 2010-11-09 20:11:04 -0200 (Ter, 09 Nov 2010) | 2 lines
+
+xhtml strict target addition
+
+------------------------------------------------------------------------
+r408 | eforgeot | 2010-11-09 20:08:23 -0200 (Ter, 09 Nov 2010) | 2 lines
+
+New target Markdown (-t md)
+
+------------------------------------------------------------------------
+r407 | eforgeot | 2010-11-09 20:04:36 -0200 (Ter, 09 Nov 2010) | 2 lines
+
+New options -T,--template to apply user-defined templates, by Emmanuel Godard
+
+------------------------------------------------------------------------
+r406 | aureliojargas | 2010-11-09 18:20:09 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: Writing Books (pt): Updated from iso-8859-1 to UTF-8.
+------------------------------------------------------------------------
+r405 | aureliojargas | 2010-11-09 18:04:28 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: Markup Demo (pt): Updated to v2.6, removed old {tags} to the new tagged mark, added tagged.t2t.
+------------------------------------------------------------------------
+r404 | aureliojargas | 2010-11-09 17:49:41 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: Markup Demo (pt): Updated from iso-8859-1 to UTF-8.
+------------------------------------------------------------------------
+r403 | aureliojargas | 2010-11-09 17:39:43 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: sample file (pt): Updated from iso-8859-1 to UTF-8.
+------------------------------------------------------------------------
+r402 | aureliojargas | 2010-11-09 15:15:05 -0200 (Ter, 09 Nov 2010) | 1 line
+
+New translation: Sample File in Japanese, by Mage Whopper.
+------------------------------------------------------------------------
+r401 | aureliojargas | 2010-11-09 15:07:20 -0200 (Ter, 09 Nov 2010) | 1 line
+
+Oops. markup-ja/tagged.t2t was missing in the last commit.
+------------------------------------------------------------------------
+r400 | aureliojargas | 2010-11-09 15:03:42 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: markup-ja: Updated to v2.6: added tagged sample (by Mage Whopper), removed rawline, updated website URL.
+------------------------------------------------------------------------
+r399 | aureliojargas | 2010-11-09 14:52:47 -0200 (Ter, 09 Nov 2010) | 1 line
+
+doc: markup-ja: removed undesired file;
+------------------------------------------------------------------------
+r397 | aureliojargas | 2010-11-09 03:01:02 -0200 (Ter, 09 Nov 2010) | 1 line
+
+Removed 'Marinho' from my name in documentation. Just 'Aurelio Jargas' (no accent) is best for an international identity.
+------------------------------------------------------------------------
+r396 | aureliojargas | 2010-11-09 02:47:20 -0200 (Ter, 09 Nov 2010) | 1 line
+
+test/options/run.py updated to remove the SVN revision number from program version (added in r395) in the test results.
+------------------------------------------------------------------------
+r395 | aureliojargas | 2010-11-09 02:15:04 -0200 (Ter, 09 Nov 2010) | 1 line
+
+Now program version also shows SVN release number: 2.6.123
+------------------------------------------------------------------------
+r394 | aureliojargas | 2010-11-09 02:12:47 -0200 (Ter, 09 Nov 2010) | 1 line
+
+setup: Updating url, author.
+------------------------------------------------------------------------
+r393 | aureliojargas | 2010-11-09 00:08:36 -0200 (Ter, 09 Nov 2010) | 1 line
+
+New translation: Markup Demo in Japanese, by Mage Whopper.
+------------------------------------------------------------------------
+r391 | ametaireau | 2010-11-08 21:30:57 -0200 (Seg, 08 Nov 2010) | 1 line
+
+added basic setup.py for packaging.
+------------------------------------------------------------------------
+r388 | aureliojargas | 2010-11-06 20:31:23 -0200 (Sáb, 06 Nov 2010) | 1 line
+
+Adding 'dist' folder, with the tools used to generate the .tgz package for a new txt2tags version. The folder also have the txt2tags PAD file and the Freshmeat site contents.
+------------------------------------------------------------------------
+r387 | aureliojargas | 2010-11-06 20:13:52 -0200 (Sáb, 06 Nov 2010) | 1 line
+
+test: art: New variable to store txt2tags script path.
+------------------------------------------------------------------------
+r382 | aureliojargas | 2010-11-05 08:32:58 -0200 (Sex, 05 Nov 2010) | 1 line
+
+changelog: little cleanup
+------------------------------------------------------------------------
+r381 | aureliojargas | 2010-11-05 08:30:43 -0200 (Sex, 05 Nov 2010) | 1 line
+
+changelog: s/Leonardo/Leo/, which was the name used in previous Thanks.
+------------------------------------------------------------------------
+r380 | aureliojargas | 2010-11-05 08:20:57 -0200 (Sex, 05 Nov 2010) | 1 line
+
+changelog: Added more Thanks messages, added link for Florent website, improved link removal in txt target.
+------------------------------------------------------------------------
+r379 | aureliojargas | 2010-11-04 08:10:32 -0200 (Qui, 04 Nov 2010) | 1 line
+
+v2.6: User Guide in HTML updated for release. Used in the website.
+------------------------------------------------------------------------
+r378 | aureliojargas | 2010-11-04 07:56:21 -0200 (Qui, 04 Nov 2010) | 1 line
+
+v2.6: Manpages in HTML updated for release. They're used in the website.
+------------------------------------------------------------------------
+r377 | aureliojargas | 2010-11-04 07:47:48 -0200 (Qui, 04 Nov 2010) | 1 line
+
+doc: Removing bogus files from SVN.
+------------------------------------------------------------------------
+r375 | aureliojargas | 2010-10-31 01:23:06 -0200 (Dom, 31 Out 2010) | 1 line
+
+ChangeLog converted to UTF-8.
+------------------------------------------------------------------------
+r374 | aureliojargas | 2010-10-31 01:13:41 -0200 (Dom, 31 Out 2010) | 1 line
+
+Adding ChangeLog file (and its sources) to SVN.
+------------------------------------------------------------------------
+r373 | aureliojargas | 2010-10-31 00:44:09 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: Test-suite updated for release.
+------------------------------------------------------------------------
+r372 | aureliojargas | 2010-10-31 00:38:50 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: po/stats.txt updated for release.
+------------------------------------------------------------------------
+r371 | aureliojargas | 2010-10-31 00:31:01 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: All samples updated for release.
+------------------------------------------------------------------------
+r370 | aureliojargas | 2010-10-31 00:29:26 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: samples/css/* updated for release.
+------------------------------------------------------------------------
+r369 | aureliojargas | 2010-10-31 00:19:29 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: User Guide updated for release.
+------------------------------------------------------------------------
+r368 | aureliojargas | 2010-10-31 00:18:27 -0200 (Dom, 31 Out 2010) | 1 line
+
+v2.6: All man pages updated for release.
+------------------------------------------------------------------------
+r367 | aureliojargas | 2010-10-31 00:16:45 -0200 (Dom, 31 Out 2010) | 1 line
+
+HOORAY! Program version changed to 2.6.
+------------------------------------------------------------------------
+r366 | aureliojargas | 2010-10-30 23:48:06 -0200 (Sáb, 30 Out 2010) | 1 line
+
+doc: userguide: Changed month of PDF cover to November/2010.
+------------------------------------------------------------------------
+r365 | aureliojargas | 2010-10-30 23:42:10 -0200 (Sáb, 30 Out 2010) | 1 line
+
+doc/README: minor correction.
+------------------------------------------------------------------------
+r364 | aureliojargas | 2010-10-30 23:39:14 -0200 (Sáb, 30 Out 2010) | 1 line
+
+test-suite: module options: updated OK files to reflect typo correction made by  r348.
+------------------------------------------------------------------------
+r363 | aureliojargas | 2010-10-30 23:26:51 -0200 (Sáb, 30 Out 2010) | 2 lines
+
+i18n: German manpage: Added the .man file to SVN.
+
+------------------------------------------------------------------------
+r362 | aureliojargas | 2010-10-30 23:19:35 -0200 (Sáb, 30 Out 2010) | 1 line
+
+i18n: Portuguese manpage: converted to UTF-8.
+------------------------------------------------------------------------
+r361 | aureliojargas | 2010-10-30 23:10:54 -0200 (Sáb, 30 Out 2010) | 1 line
+
+i18n: German manpage: converted to UTF-8, updated settings.
+------------------------------------------------------------------------
+r360 | aureliojargas | 2010-10-30 23:04:21 -0200 (Sáb, 30 Out 2010) | 1 line
+
+doc: manpage: added verbatim mark to a word.
+------------------------------------------------------------------------
+r359 | aureliojargas | 2010-10-30 23:02:50 -0200 (Sáb, 30 Out 2010) | 1 line
+
+i18n: updated Portuguese manpage to 2.6.
+------------------------------------------------------------------------
+r358 | aureliojargas | 2010-10-30 19:37:37 -0200 (Sáb, 30 Out 2010) | 1 line
+
+Removing commented line in code to avoid confusion.
+------------------------------------------------------------------------
+r357 | aureliojargas | 2010-10-30 18:29:08 -0200 (Sáb, 30 Out 2010) | 1 line
+
+po/README: Removed instructions to update the .po file "by hand" with new translations, since now po/tools/update-po.sh will do it.
+------------------------------------------------------------------------
+r356 | aureliojargas | 2010-10-30 18:26:51 -0200 (Sáb, 30 Out 2010) | 1 line
+
+samples/css/gen: Now this script can be run from any folder.
+------------------------------------------------------------------------
+r355 | aureliojargas | 2010-10-30 18:07:47 -0200 (Sáb, 30 Out 2010) | 1 line
+
+samples/module/*: Fixed typos.
+------------------------------------------------------------------------
+r354 | aureliojargas | 2010-10-30 17:49:14 -0200 (Sáb, 30 Out 2010) | 1 line
+
+doc: userguide: Added table column span to LaTeX in topic Status of Supported Structures by Target.
+------------------------------------------------------------------------
+r353 | aureliojargas | 2010-10-30 17:46:07 -0200 (Sáb, 30 Out 2010) | 1 line
+
+doc: manpages: Changed bug tracker URL from Google Code to http://bugs.txt2tags.org.
+------------------------------------------------------------------------
+r352 | aureliojargas | 2010-10-30 16:59:38 -0200 (Sáb, 30 Out 2010) | 1 line
+
+extra: Adding txt2tags.jsf and txt2tags.le files to the README.
+------------------------------------------------------------------------
+r351 | shagi.refugio | 2010-10-30 16:46:00 -0200 (Sáb, 30 Out 2010) | 1 line
+
+spanish translation update
+------------------------------------------------------------------------
+r350 | aureliojargas | 2010-10-29 16:38:18 -0200 (Sex, 29 Out 2010) | 1 line
+
+Removed hidden spaces between TABs on the code
+------------------------------------------------------------------------
+r349 | aureliojargas | 2010-10-29 16:33:50 -0200 (Sex, 29 Out 2010) | 1 line
+
+Removed useless spaces and TABs at the line ends of the code
+------------------------------------------------------------------------
+r348 | aureliojargas | 2010-10-29 16:26:10 -0200 (Sex, 29 Out 2010) | 1 line
+
+Fixed typos in code comments
+------------------------------------------------------------------------
+r347 | aureliojargas | 2010-10-29 16:19:37 -0200 (Sex, 29 Out 2010) | 1 line
+
+Improved code headers: now show ULRs of SVN and bug tracker, new URL to GPLv2 text and Copyright message summarized.
+------------------------------------------------------------------------
+r346 | aureliojargas | 2010-10-29 12:21:52 -0200 (Sex, 29 Out 2010) | 1 line
+
+extra: Removed TextMate Bundle, because it's already in TextMate's SVN: http://svn.textmate.org/trunk/Bundles/Txt2tags.tmbundle/
+------------------------------------------------------------------------
+r345 | aureliojargas | 2010-10-29 11:49:01 -0200 (Sex, 29 Out 2010) | 1 line
+
+i18n: updated Czech quickref to 2.6, by Vlastimil Ott.
+------------------------------------------------------------------------
+r344 | aureliojargas | 2010-10-29 11:37:28 -0200 (Sex, 29 Out 2010) | 2 lines
+
+doc: quickref: Minor fixes in cell aligment
+
+------------------------------------------------------------------------
+r343 | aureliojargas | 2010-10-29 11:28:59 -0200 (Sex, 29 Out 2010) | 1 line
+
+Undoing changes commited in r338, r339, r340, r341 because they can't appear in 2.6 release due no more testing/documentation time left. These changes were saved in a separate branch in r342.
+------------------------------------------------------------------------
+r341 | godev@laposte.net | 2010-10-28 17:41:26 -0200 (Qui, 28 Out 2010) | 2 lines
+
+Final fix for issue 27
+  Correct test suite : include-nesting-folder include-nesting-folder-back
+------------------------------------------------------------------------
+r340 | godev@laposte.net | 2010-10-28 17:41:20 -0200 (Qui, 28 Out 2010) | 3 lines
+
+Partial fix for issue 27:
+handle image in recursive includes
+Needs Python > 2.6 for relpath method
+------------------------------------------------------------------------
+r339 | godev@laposte.net | 2010-10-28 17:41:16 -0200 (Qui, 28 Out 2010) | 2 lines
+
+New macro %%CURRENTFILE, similar to %%INFILE, but reflects the current file being read during parsing. This is specially usefull when using the %!include command, so you can know from which file those contents are.
+
+------------------------------------------------------------------------
+r338 | godev@laposte.net | 2010-10-28 17:17:42 -0200 (Qui, 28 Out 2010) | 4 lines
+
+Partial fix for issue 27:
+  Add a '%!currentfile' special (internal) command.
+  This command is used to track the recursive includes.
+
+------------------------------------------------------------------------
+r337 | eforgeot | 2010-10-24 10:11:41 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: added svn link
+
+------------------------------------------------------------------------
+r336 | eforgeot | 2010-10-24 10:03:18 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: improved deflists
+
+------------------------------------------------------------------------
+r335 | eforgeot | 2010-10-24 08:56:13 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: forgot one directive for heading 1
+
+------------------------------------------------------------------------
+r334 | eforgeot | 2010-10-24 08:53:28 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: allowing whitespaces to begin a heading line
+
+------------------------------------------------------------------------
+r333 | eforgeot | 2010-10-24 08:20:49 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: TOC is now itemize by default
+
+------------------------------------------------------------------------
+r332 | eforgeot | 2010-10-24 08:15:15 -0200 (Dom, 24 Out 2010) | 2 lines
+
+extra: pmwiki: improved toc support
+
+------------------------------------------------------------------------
+r331 | eforgeot | 2010-10-23 21:16:52 -0200 (Sáb, 23 Out 2010) | 2 lines
+
+extra: pmwiki: corrected headings
+
+------------------------------------------------------------------------
+r330 | eforgeot | 2010-10-23 14:05:43 -0200 (Sáb, 23 Out 2010) | 3 lines
+
+extra: pmwiki: now raw area behave like verbatim area for the pmwiki cookbook
+
+
+------------------------------------------------------------------------
+r329 | eforgeot | 2010-10-23 09:30:30 -0200 (Sáb, 23 Out 2010) | 2 lines
+
+extra: added the pmwiki cookbook for writing txt2tags syntax within a pmwiki website.
+
+------------------------------------------------------------------------
+r328 | aureliojargas | 2010-10-22 21:21:46 -0200 (Sex, 22 Out 2010) | 1 line
+
+Combo update (36 files): Changed pmWiki to PmWiki.
+------------------------------------------------------------------------
+r327 | aureliojargas | 2010-10-22 20:14:04 -0200 (Sex, 22 Out 2010) | 1 line
+
+extra: pagemaker.vim: fixed URL
+------------------------------------------------------------------------
+r326 | aureliojargas | 2010-10-22 20:13:32 -0200 (Sex, 22 Out 2010) | 1 line
+
+extra/README: fixed typos
+------------------------------------------------------------------------
+r325 | aureliojargas | 2010-10-22 20:10:54 -0200 (Sex, 22 Out 2010) | 1 line
+
+extra: txt2tagsrc: corrected typo, improved headers, new sample for %!encoding, using UTF-8 instead iso-8859-1, removed trick to insert HTML since now we have the tagged mark.
+------------------------------------------------------------------------
+r324 | aureliojargas | 2010-10-22 19:56:06 -0200 (Sex, 22 Out 2010) | 1 line
+
+extra: Web interface: target list in alphabetical order, new $dfttarget to choose the default target at first page load.
+------------------------------------------------------------------------
+r323 | aureliojargas | 2010-10-22 19:39:08 -0200 (Sex, 22 Out 2010) | 1 line
+
+extra: Web interface: added new targets, added TXT target that was missing.
+------------------------------------------------------------------------
+r322 | aureliojargas | 2010-10-22 19:27:23 -0200 (Sex, 22 Out 2010) | 2 lines
+
+extra: Vim syntax file: Added new targets, changed property name from "Passthru" to "Tagged".
+
+------------------------------------------------------------------------
+r321 | aureliojargas | 2010-10-21 21:22:50 -0200 (Qui, 21 Out 2010) | 1 line
+
+README file updated
+------------------------------------------------------------------------
+r320 | aureliojargas | 2010-10-21 21:14:28 -0200 (Qui, 21 Out 2010) | 1 line
+
+Adding main README file to SVN.
+------------------------------------------------------------------------
+r319 | aureliojargas | 2010-10-21 21:08:05 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: generated PDF and HTML for the upcoming v2.6 release.
+------------------------------------------------------------------------
+r318 | aureliojargas | 2010-10-21 21:06:54 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: last adjustments for the release.
+------------------------------------------------------------------------
+r317 | aureliojargas | 2010-10-21 20:31:14 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: updated PDF cover with txt2tags version and date.
+------------------------------------------------------------------------
+r316 | aureliojargas | 2010-10-21 20:17:56 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: new topic to describe new tagged mark.
+------------------------------------------------------------------------
+r315 | aureliojargas | 2010-10-21 19:32:25 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: added information about the new tagged mark.
+------------------------------------------------------------------------
+r314 | aureliojargas | 2010-10-21 19:15:58 -0200 (Qui, 21 Out 2010) | 2 lines
+
+doc: User Guide: added new targets to the big table Status of Supported Structures by Target.
+
+------------------------------------------------------------------------
+r313 | aureliojargas | 2010-10-21 16:14:38 -0200 (Qui, 21 Out 2010) | 1 line
+
+DocBook: sample file updated with changes made in r312.
+------------------------------------------------------------------------
+r312 | aureliojargas | 2010-10-21 16:07:38 -0200 (Qui, 21 Out 2010) | 1 line
+
+DocBook: The table tags are missing, map it to verbatim for now (tableable=0).
+------------------------------------------------------------------------
+r311 | aureliojargas | 2010-10-21 15:49:45 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: updated the list of available targets.
+------------------------------------------------------------------------
+r310 | aureliojargas | 2010-10-21 15:46:36 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: updated --help output in topic Command Line Interface.
+------------------------------------------------------------------------
+r309 | aureliojargas | 2010-10-21 15:42:21 -0200 (Qui, 21 Out 2010) | 1 line
+
+--help: Removed URLs for the bug tracker and SVN. Undo r130.
+------------------------------------------------------------------------
+r308 | aureliojargas | 2010-10-21 15:17:44 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: added new topic Comment Block in Part V - Mastering Marks.
+------------------------------------------------------------------------
+r307 | aureliojargas | 2010-10-21 14:07:55 -0200 (Qui, 21 Out 2010) | 1 line
+
+doc: User Guide: full review was made, looking for typos, broken URLs, confuse sentences and old/incorrect information. A lot of little quick fixes, no substantial new content was added.
+------------------------------------------------------------------------
+r306 | aureliojargas | 2010-10-20 23:45:58 -0200 (Qua, 20 Out 2010) | 1 line
+
+doc: User Guide: removed the Txt2tags History topic, it's not very useful inside the User Guide and it's hard/boring to translate. Maybe this topic will go to the website.
+------------------------------------------------------------------------
+r305 | aureliojargas | 2010-10-20 23:13:07 -0200 (Qua, 20 Out 2010) | 1 line
+
+doc: quickref: changed program URL to txt2tags.org in recent translations. Note: the hungarian PDF conversion resulted in missing accented characters, so I'm not including it.
+------------------------------------------------------------------------
+r304 | aureliojargas | 2010-10-20 21:01:28 -0200 (Qua, 20 Out 2010) | 2 lines
+
+Mega combo update (196 files): changed program URL to txt2tags.org in all files (program, test-suite, docs, samples, extras)
+
+------------------------------------------------------------------------
+r303 | aureliojargas | 2010-10-20 14:38:47 -0200 (Qua, 20 Out 2010) | 1 line
+
+doc: User Guide: added missing ":" at preproc sample, improved description of pre/postproc filters.
+------------------------------------------------------------------------
+r302 | aureliojargas | 2010-10-20 14:35:55 -0200 (Qua, 20 Out 2010) | 1 line
+
+doc: Markup Demo: updated HTML document.
+------------------------------------------------------------------------
+r301 | fgallaire | 2010-10-20 00:52:35 -0200 (Qua, 20 Out 2010) | 2 lines
+
+Fix import on win.
+
+------------------------------------------------------------------------
+r300 | fgallaire | 2010-10-06 00:01:25 -0300 (Qua, 06 Out 2010) | 2 lines
+
+extra : dynartslides, clearest.
+
+------------------------------------------------------------------------
+r299 | fgallaire | 2010-10-05 23:38:05 -0300 (Ter, 05 Out 2010) | 2 lines
+
+extra : dynartslides, clearer.
+
+------------------------------------------------------------------------
+r298 | fgallaire | 2010-10-05 17:37:20 -0300 (Ter, 05 Out 2010) | 2 lines
+
+extra : dynartslides, the best python way on posix platform.
+
+------------------------------------------------------------------------
+r297 | fgallaire | 2010-09-02 22:59:16 -0300 (Qui, 02 Set 2010) | 2 lines
+
+add COPYING file.
+
+------------------------------------------------------------------------
+r296 | aureliojargas | 2010-08-31 17:10:54 -0300 (Ter, 31 Ago 2010) | 1 line
+
+doc: Markup Demo: added tagged area
+------------------------------------------------------------------------
+r295 | aureliojargas | 2010-08-31 17:10:10 -0300 (Ter, 31 Ago 2010) | 1 line
+
+doc: Markup Demo: removed raw line (part 2 - see r293)
+------------------------------------------------------------------------
+r294 | aureliojargas | 2010-08-31 11:51:36 -0300 (Ter, 31 Ago 2010) | 1 line
+
+doc: Markup Demo: verbatim line moved before verbatim area
+------------------------------------------------------------------------
+r293 | aureliojargas | 2010-08-31 11:48:57 -0300 (Ter, 31 Ago 2010) | 1 line
+
+doc: Markup Demo: removed raw line
+------------------------------------------------------------------------
+r292 | aureliojargas | 2010-08-31 11:43:21 -0300 (Ter, 31 Ago 2010) | 1 line
+
+doc: Markup Demo: added strike mark.
+------------------------------------------------------------------------
+r291 | aureliojargas | 2010-08-31 09:01:00 -0300 (Ter, 31 Ago 2010) | 1 line
+
+i18n: zh_CN.po updated for v2.6, by wfifi
+------------------------------------------------------------------------
+r290 | aureliojargas | 2010-08-23 20:17:35 -0300 (Seg, 23 Ago 2010) | 1 line
+
+i18n: updated Spanish quickref to 2.6, by Antoni Serra Devecchi.
+------------------------------------------------------------------------
+r289 | aureliojargas | 2010-08-23 20:11:26 -0300 (Seg, 23 Ago 2010) | 1 line
+
+i18n: updated Catalan quickref to 2.6, by Antoni Serra Devecchi.
+------------------------------------------------------------------------
+r288 | aureliojargas | 2010-08-23 19:26:52 -0300 (Seg, 23 Ago 2010) | 1 line
+
+i18n: updated Spanish manpage to 2.6, by Antoni Serra Devecchi.
+------------------------------------------------------------------------
+r287 | aureliojargas | 2010-08-23 19:19:34 -0300 (Seg, 23 Ago 2010) | 1 line
+
+i18n: updated Catalan manpage to 2.6, by Antoni Serra Devecchi.
+------------------------------------------------------------------------
+r286 | aureliojargas | 2010-08-23 19:02:16 -0300 (Seg, 23 Ago 2010) | 1 line
+
+i18n: manpage-zh: Added --art-chars option, by Abby Pan.
+------------------------------------------------------------------------
+r285 | fgallaire | 2010-08-23 17:56:22 -0300 (Seg, 23 Ago 2010) | 2 lines
+
+extra: dynartslides change, simpler is better.
+
+------------------------------------------------------------------------
+r284 | fgallaire | 2010-08-23 10:54:52 -0300 (Seg, 23 Ago 2010) | 2 lines
+
+extra: dynartslides change, use installed txt2tags.
+
+------------------------------------------------------------------------
+r283 | fgallaire | 2010-08-23 08:41:09 -0300 (Seg, 23 Ago 2010) | 2 lines
+
+extra: dynartslides change, simpler and better.
+
+------------------------------------------------------------------------
+r282 | fgallaire | 2010-08-22 22:50:08 -0300 (Dom, 22 Ago 2010) | 2 lines
+
+extra: new Python script "dynartslides", to generate art slides dynamicaly.
+
+------------------------------------------------------------------------
+r281 | aureliojargas | 2010-08-20 15:44:43 -0300 (Sex, 20 Ago 2010) | 1 line
+
+i18n: quickref-eu: Updating PDF file.
+------------------------------------------------------------------------
+r280 | shagi.refugio | 2010-08-20 15:33:22 -0300 (Sex, 20 Ago 2010) | 2 lines
+
+i18n: add credits to basque quickref
+
+------------------------------------------------------------------------
+r279 | aureliojargas | 2010-08-20 14:59:24 -0300 (Sex, 20 Ago 2010) | 1 line
+
+i18n: quickref-eu: Adding PDF file, generated from .odt file. This concludes r276.
+------------------------------------------------------------------------
+r278 | aureliojargas | 2010-08-20 11:29:47 -0300 (Sex, 20 Ago 2010) | 1 line
+
+po: Updating stats
+------------------------------------------------------------------------
+r277 | shagi.refugio | 2010-08-19 21:42:40 -0300 (Qui, 19 Ago 2010) | 2 lines
+
+i18n: complete basque translation of pot file
+
+------------------------------------------------------------------------
+r276 | shagi.refugio | 2010-08-19 21:39:05 -0300 (Qui, 19 Ago 2010) | 2 lines
+
+i18n: quick reference translated to basque. Pdf not generated, uses 2 pages in my computer and not confortable with ooo :-(
+
+------------------------------------------------------------------------
+r275 | shagi.refugio | 2010-08-19 21:04:01 -0300 (Qui, 19 Ago 2010) | 2 lines
+
+i18n: HTML version of the basque manpage
+
+------------------------------------------------------------------------
+r274 | shagi.refugio | 2010-08-19 20:55:56 -0300 (Qui, 19 Ago 2010) | 2 lines
+
+i18n: Updated basque translation of the manpage
+
+------------------------------------------------------------------------
+r272 | ivantomi@gmail.com | 2010-08-19 01:54:36 -0300 (Qui, 19 Ago 2010) | 1 line
+
+Reducing font size to fit in a single page
+------------------------------------------------------------------------
+r271 | eforgeot | 2010-08-18 06:48:01 -0300 (Qua, 18 Ago 2010) | 2 lines
+
+French: more updates to the manual and quickref
+
+------------------------------------------------------------------------
+r270 | eforgeot | 2010-08-18 06:17:07 -0300 (Qua, 18 Ago 2010) | 2 lines
+
+French: updated quickref to 2.6
+
+------------------------------------------------------------------------
+r269 | ivantomi@gmail.com | 2010-08-18 04:36:40 -0300 (Qua, 18 Ago 2010) | 2 lines
+
+i18n: quickref-hu: Oops: I forgot some changes
+
+------------------------------------------------------------------------
+r268 | ivantomi@gmail.com | 2010-08-18 04:30:47 -0300 (Qua, 18 Ago 2010) | 6 lines
+
+i18n: quickref-hu: Adapting to v2.6
+
+Note that the generated pdf has an improper layout (2 pages instead of 1).
+It is probably due to a missing font.
+Aurelio, would you please fix/regenerate it?
+
+------------------------------------------------------------------------
+r267 | aureliojargas | 2010-08-17 20:01:23 -0300 (Ter, 17 Ago 2010) | 1 line
+
+quickref: Under INCLUDE, added %!csv command. Spacing between sections SETTINGS, INCLUDE and OTHER had to be reduced from 2 lines to 1.
+------------------------------------------------------------------------
+r266 | aureliojargas | 2010-08-17 19:48:56 -0300 (Ter, 17 Ago 2010) | 14 lines
+
+quickref: Updated to v2.6.
+
+These are the changes:
+Program version was updated to v2.6 at the header.
+Section MARKS renamed to MARKUP.
+Under MARKUP, the ""raw"" mark was changed to ''<b>tagged</b>''.
+Under OPTIONS, the --mask-email was replaced by --targets.
+Under OPTIONS, the -t listing was updated with the new targets, and reordered to alphabetical.
+Under OPTIONS, the table rows were reordered, following the new --help order.
+Under INCLUDE, %!Include: ""F"" was replaced by %!Include: ''F'', raw was changed to tagged.
+
+Thanks to OpenOffice improvements, the file sizes are now considerably smaller:
+odt: 89K -> 18K,
+pdf: 53K -> 9K
+------------------------------------------------------------------------
+r265 | eforgeot | 2010-08-17 03:21:33 -0300 (Ter, 17 Ago 2010) | 2 lines
+
+French: updated manpage
+
+------------------------------------------------------------------------
+r264 | aureliojargas | 2010-08-16 19:03:54 -0300 (Seg, 16 Ago 2010) | 1 line
+
+manpage: restored description of option --art-chars, that got lost in r250.
+------------------------------------------------------------------------
+r263 | aureliojargas | 2010-08-16 18:44:12 -0300 (Seg, 16 Ago 2010) | 2 lines
+
+i18n: updated Chinese manpage to 2.6, by Abby Pan
+
+------------------------------------------------------------------------
+r262 | aureliojargas | 2010-08-16 18:00:55 -0300 (Seg, 16 Ago 2010) | 2 lines
+
+manpage: Added commented line for translator's name under AUTHOR section
+
+------------------------------------------------------------------------
+r261 | aureliojargas | 2010-08-16 17:59:42 -0300 (Seg, 16 Ago 2010) | 1 line
+
+i18n: hu.po: Updated PO-Revision-Date
+------------------------------------------------------------------------
+r260 | eforgeot | 2010-08-16 14:52:51 -0300 (Seg, 16 Ago 2010) | 2 lines
+
+French: corrected some more parts.
+
+------------------------------------------------------------------------
+r259 | aureliojargas | 2010-08-16 09:42:16 -0300 (Seg, 16 Ago 2010) | 1 line
+
+i18n: po: updating stats
+------------------------------------------------------------------------
+r258 | aureliojargas | 2010-08-16 09:29:48 -0300 (Seg, 16 Ago 2010) | 1 line
+
+i18n: fr.po: removed duplicate messages
+------------------------------------------------------------------------
+r257 | ivantomi@gmail.com | 2010-08-16 03:00:09 -0300 (Seg, 16 Ago 2010) | 2 lines
+
+i18n: hu.po: Adding messages for v2.6 and improving old ones
+
+------------------------------------------------------------------------
+r256 | eforgeot | 2010-08-15 17:12:38 -0300 (Dom, 15 Ago 2010) | 2 lines
+
+French: reviewed typo in manpage
+
+------------------------------------------------------------------------
+r255 | eforgeot | 2010-08-15 17:04:57 -0300 (Dom, 15 Ago 2010) | 2 lines
+
+French: finished translation of the man page. Updated the quickref to odt and to txt2tags 2.5.
+
+------------------------------------------------------------------------
+r254 | eforgeot | 2010-08-15 07:35:56 -0300 (Dom, 15 Ago 2010) | 2 lines
+
+French: more translation of the manpage
+
+------------------------------------------------------------------------
+r253 | eforgeot | 2010-08-14 06:07:08 -0300 (Sáb, 14 Ago 2010) | 2 lines
+
+French: corrected mixed up .po file
+
+------------------------------------------------------------------------
+r252 | eforgeot | 2010-08-14 03:31:33 -0300 (Sáb, 14 Ago 2010) | 2 lines
+
+French: updated .po and began the translation of the new manpage
+
+------------------------------------------------------------------------
+r251 | aureliojargas | 2010-08-13 12:40:45 -0300 (Sex, 13 Ago 2010) | 1 line
+
+manpage: MARKUP section moved before OPTIONS, MACROS section moved after COMMANDS.
+------------------------------------------------------------------------
+r250 | aureliojargas | 2010-08-13 12:34:14 -0300 (Sex, 13 Ago 2010) | 6 lines
+
+manpage: Rewritten. Sentences were rephrased, sections were renamed/added/removed, formatting has changed. Now manpage is more like a reference than a guide, as it should always be. The HTML version now has a Table of Contents, with named anchors (not toc1, toc2, etc.).
+
+New sections: FILES, ENVIRONMENT, BUGS, COMMANDS
+Renamed sections: STRUCTURE -> SOURCE FILES, SYNTAX -> MARKUP
+Removed sections: TIPS, SETTINGS RULES
+
+------------------------------------------------------------------------
+r249 | aureliojargas | 2010-08-13 12:08:06 -0300 (Sex, 13 Ago 2010) | 1 line
+
+i18n: Reworded some sentences from the --help message. Potfile and .po files were updated. There are new messages to translate.
+------------------------------------------------------------------------
+r248 | aureliojargas | 2010-08-13 11:49:32 -0300 (Sex, 13 Ago 2010) | 1 line
+
+Reordered --help message options, to make the listing more logic and useful.
+------------------------------------------------------------------------
+r247 | aureliojargas | 2010-08-13 11:34:44 -0300 (Sex, 13 Ago 2010) | 1 line
+
+Removed --header and --rc from the --help message. They are default ON, not needed by the average user. Advanced users can refer to the man page or other documentation to find them.
+------------------------------------------------------------------------
+r246 | aureliojargas | 2010-08-13 11:18:57 -0300 (Sex, 13 Ago 2010) | 1 line
+
+Removed --art-chars from the --help message. It's too specific, and it's best to promote the default behavior (chars) in this case. The option is still working for those who need it, it's just hidden, such as --show-config-value.
+------------------------------------------------------------------------
+r245 | aureliojargas | 2010-08-13 11:05:11 -0300 (Sex, 13 Ago 2010) | 1 line
+
+man: Removed indentation in verbatim blocks. Man format is already structured and indented, the indentverbblock rule breaks the default alignment.
+------------------------------------------------------------------------
+r244 | eforgeot | 2010-08-13 08:29:00 -0300 (Sex, 13 Ago 2010) | 2 lines
+
+i18n: French po file corrected
+
+------------------------------------------------------------------------
+r243 | eforgeot | 2010-08-13 07:58:35 -0300 (Sex, 13 Ago 2010) | 2 lines
+
+i18n: corrected French doc. (Now everything will be present indicative except when it's implicitly imperative)
+
+------------------------------------------------------------------------
+r242 | eforgeot | 2010-08-12 19:39:15 -0300 (Qui, 12 Ago 2010) | 2 lines
+
+i18n: reviewed the French po translation
+
+------------------------------------------------------------------------
+r241 | aureliojargas | 2010-08-12 19:07:30 -0300 (Qui, 12 Ago 2010) | 2 lines
+
+i18n: French messages updated to 2.6b1, by Claude Hiebel
+
+------------------------------------------------------------------------
+r240 | eforgeot | 2010-08-12 19:07:06 -0300 (Qui, 12 Ago 2010) | 2 lines
+
+i18n: updated French man page (accented letters)
+
+------------------------------------------------------------------------
+r239 | aureliojargas | 2010-08-12 15:16:58 -0300 (Qui, 12 Ago 2010) | 1 line
+
+manpage: more readable list of targets under --target
+------------------------------------------------------------------------
+r238 | aureliojargas | 2010-08-12 14:59:41 -0300 (Qui, 12 Ago 2010) | 1 line
+
+manpage: macro names in bold under the MACROS section 
+------------------------------------------------------------------------
+r237 | aureliojargas | 2010-08-12 14:53:43 -0300 (Qui, 12 Ago 2010) | 1 line
+
+manpage: All sentences now start with an uppercase letter and ends with a period.
+------------------------------------------------------------------------
+r236 | shagi.refugio | 2010-08-12 14:35:29 -0300 (Qui, 12 Ago 2010) | 2 lines
+
+i18n: Updated basque man page
+
+------------------------------------------------------------------------
+r235 | shagi.refugio | 2010-08-12 13:01:22 -0300 (Qui, 12 Ago 2010) | 2 lines
+
+i18n: Basque translation updated to 2.6b1
+
+------------------------------------------------------------------------
+r234 | aureliojargas | 2010-08-12 11:59:44 -0300 (Qui, 12 Ago 2010) | 1 line
+
+i18n: New file po/stats.txt with translation statistics. It's generated by po/tools/stats.sh.
+------------------------------------------------------------------------
+r233 | aureliojargas | 2010-08-12 11:11:55 -0300 (Qui, 12 Ago 2010) | 1 line
+
+i18n: all po files and potfile updated, there are new messages to translate
+------------------------------------------------------------------------
+r232 | aureliojargas | 2010-08-12 11:08:15 -0300 (Qui, 12 Ago 2010) | 1 line
+
+i18n: po tools now using diff -u
+------------------------------------------------------------------------
+r231 | aureliojargas | 2010-08-12 09:41:13 -0300 (Qui, 12 Ago 2010) | 1 line
+
+2.6 BETA 1: Program version changed from 2.6b to 2.6b1
+------------------------------------------------------------------------
+r230 | aureliojargas | 2010-08-12 09:02:02 -0300 (Qui, 12 Ago 2010) | 1 line
+
+Option --list-targets renamed to --targets. Code, tests and man pages were updated.
+------------------------------------------------------------------------
+r229 | aureliojargas | 2010-08-11 17:51:44 -0300 (Qua, 11 Ago 2010) | 1 line
+
+Bugfix: Now -C,--config-file respects (target) in the configuration file settings. CommandLine.get_raw_config() was rewritten in part and cleaned/commented. Closes issue 23.
+------------------------------------------------------------------------
+r228 | aureliojargas | 2010-08-11 16:48:58 -0300 (Qua, 11 Ago 2010) | 2 lines
+
+test-suite: includeconf: New tests to expose the bug related in issue 23
+
+------------------------------------------------------------------------
+r227 | aureliojargas | 2010-08-11 16:21:40 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: includeconf: Added "-o-" option to tests that catch errors in stderr
+------------------------------------------------------------------------
+r226 | aureliojargas | 2010-08-11 16:18:10 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: Added new tests for the include module, regarding empty files and nesting back.
+------------------------------------------------------------------------
+r225 | aureliojargas | 2010-08-11 15:47:39 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: Removed all 'string' Python module calls, changed by direct methods.
+------------------------------------------------------------------------
+r224 | aureliojargas | 2010-08-11 15:36:01 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: Added new module includeconf to test the %!includeconf command and the -C, --config-file command line options. The test suite core (lib.py) was updated to accept the ok file with a different name, needed by these new tests. We're now with 250 tests in the suite.
+------------------------------------------------------------------------
+r223 | aureliojargas | 2010-08-11 11:32:43 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: include: added a little note to compare buggy behavior to %!includeconf
+------------------------------------------------------------------------
+r222 | aureliojargas | 2010-08-11 11:14:42 -0300 (Qua, 11 Ago 2010) | 1 line
+
+test-suite: options: undo changes mistakenly committed by r221 in run.py
+------------------------------------------------------------------------
+r221 | aureliojargas | 2010-08-11 11:08:58 -0300 (Qua, 11 Ago 2010) | 1 line
+
+Raise error when using (target) in %!target and %!includeconf. Closes issue 48.
+------------------------------------------------------------------------
+r220 | aureliojargas | 2010-08-11 10:41:18 -0300 (Qua, 11 Ago 2010) | 1 line
+
+userguide: removed old junk comments from the end of the source file (does not affect generated document)
+------------------------------------------------------------------------
+r219 | aureliojargas | 2010-08-11 10:32:09 -0300 (Qua, 11 Ago 2010) | 1 line
+
+userguide: always referring to %!settings as lowercase and without spaces.
+------------------------------------------------------------------------
+r218 | aureliojargas | 2010-08-11 10:24:33 -0300 (Qua, 11 Ago 2010) | 1 line
+
+userguide: some little fixes, improvements and new crosslinks (see also style)
+------------------------------------------------------------------------
+r217 | aureliojargas | 2010-08-10 18:41:10 -0300 (Ter, 10 Ago 2010) | 1 line
+
+AsciiDoc: Updated header template. Closes issue 17.
+------------------------------------------------------------------------
+r216 | aureliojargas | 2010-08-10 18:39:13 -0300 (Ter, 10 Ago 2010) | 1 line
+
+test-suite: sample: Now handling exceptions for Lout escapes
+------------------------------------------------------------------------
+r215 | aureliojargas | 2010-08-10 18:30:32 -0300 (Ter, 10 Ago 2010) | 1 line
+
+test-suite: options: Templates updated to respect changes in the --help message made by r213
+------------------------------------------------------------------------
+r214 | aureliojargas | 2010-08-10 18:27:30 -0300 (Ter, 10 Ago 2010) | 1 line
+
+samples: html, xhtml, tex, docbook: Updated from iso-8859-1 to utf-8, as changed by r208.
+------------------------------------------------------------------------
+r213 | aureliojargas | 2010-08-10 18:17:18 -0300 (Ter, 10 Ago 2010) | 1 line
+
+--help: Added --no-slides, reordered the turn-off options list to alphabetical.
+------------------------------------------------------------------------
+r212 | aureliojargas | 2010-08-10 18:06:53 -0300 (Ter, 10 Ago 2010) | 1 line
+
+Art: declaring global AA_TITLE
+------------------------------------------------------------------------
+r211 | aureliojargas | 2010-08-10 18:04:29 -0300 (Ter, 10 Ago 2010) | 1 line
+
+Undoing changes from r209 (HTML strict support). It will be included again after the txt2tags v2.6 release.
+------------------------------------------------------------------------
+r210 | eforgeot | 2010-08-08 17:48:03 -0300 (Dom, 08 Ago 2010) | 2 lines
+
+updated documentation (man pages)
+
+------------------------------------------------------------------------
+r209 | eforgeot | 2010-08-07 18:25:55 -0300 (Sáb, 07 Ago 2010) | 3 lines
+
+added new target xhtmls: xhtml strict
+see http://code.google.com/p/txt2tags/issues/detail?id=5
+
+------------------------------------------------------------------------
+r208 | eforgeot | 2010-08-07 04:57:03 -0300 (Sáb, 07 Ago 2010) | 2 lines
+
+updated some of the documentation
+
+------------------------------------------------------------------------
+r207 | aureliojargas | 2010-08-06 19:59:41 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Changing global TARGET to local variable.
+------------------------------------------------------------------------
+r206 | aureliojargas | 2010-08-06 19:56:46 -0300 (Sex, 06 Ago 2010) | 1 line
+
+toc_formatter(): cosmetic changes, changed TARGET to config['target'] (always prefer the local reference)
+------------------------------------------------------------------------
+r205 | aureliojargas | 2010-08-06 19:54:06 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: art: template updated to reflect the fixed bug in r201
+------------------------------------------------------------------------
+r204 | aureliojargas | 2010-08-06 19:41:37 -0300 (Sex, 06 Ago 2010) | 1 line
+
+doFooter(): Improved footer generation code and comments. No more several blank lines at the end of the document, for targets that do not have a comment tag. The affected sample files are also updated on this commit.
+------------------------------------------------------------------------
+r203 | aureliojargas | 2010-08-06 19:30:27 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: art: updated header information for run.sh
+------------------------------------------------------------------------
+r202 | aureliojargas | 2010-08-06 19:27:15 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: Adding new tests to spot changes in sample files. Must be run alone, they are still not integrated to the suite tests.
+------------------------------------------------------------------------
+r201 | aureliojargas | 2010-08-06 19:04:44 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Art: fixing a bug at command line options handling, where slides default sizes must be set *before* setting the default text width. Before this commit, slides default width was set to DFT_TEXT_WIDTH instead DFT_SLIDE_WIDTH.
+------------------------------------------------------------------------
+r200 | aureliojargas | 2010-08-06 18:38:00 -0300 (Sex, 06 Ago 2010) | 5 lines
+
+All samples regenerated to reflect all the changes since v2.5:
+New spacing rules (r52, r101)
+LaTeX: compact lists (r59)
+HTML: <p></p> removed (r47), new headers (r66)
+Lout: removed list indent (r63)
+------------------------------------------------------------------------
+r199 | aureliojargas | 2010-08-06 17:59:23 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: art: new tests added for --noheader and %%TOC manual placement.
+------------------------------------------------------------------------
+r198 | aureliojargas | 2010-08-06 16:21:52 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Close last slide process moved before doFooter(), just in case we need to close slide AND footer someday.
+------------------------------------------------------------------------
+r197 | aureliojargas | 2010-08-06 16:01:35 -0300 (Sex, 06 Ago 2010) | 1 line
+
+doHeader(): Art processing moved after Debug line that shows head_data, so we can also debug Art header contents.
+------------------------------------------------------------------------
+r196 | aureliojargas | 2010-08-06 15:45:17 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Improved comments for dump_marked_toc()
+------------------------------------------------------------------------
+r195 | aureliojargas | 2010-08-06 13:53:33 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: Adding quick tests for the Art target. Must be run alone, they are still not integrated to the suite tests.
+------------------------------------------------------------------------
+r194 | aureliojargas | 2010-08-06 13:18:58 -0300 (Sex, 06 Ago 2010) | 1 line
+
+sample.part renamed to sample-slides-80x25.art
+------------------------------------------------------------------------
+r193 | aureliojargas | 2010-08-06 13:15:43 -0300 (Sex, 06 Ago 2010) | 1 line
+
+test-suite: updated templates to reflect the changes made in r188.
+------------------------------------------------------------------------
+r192 | aureliojargas | 2010-08-06 12:42:08 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Art: Undo r191 (can't quote that because it's a command not a string) and fix the bug reported by Eric: AA global variable needed a default value at startup.
+------------------------------------------------------------------------
+r191 | eforgeot | 2010-08-06 06:01:38 -0300 (Sex, 06 Ago 2010) | 6 lines
+
+couln't run txt2tags using Python 2.6.5: File "./txt2tags", line 654, in getTags
+    'bar1'                 : aa_line(AA['bar1'], config['width']),
+KeyError: 'bar1'
+
+Added quotes.
+
+------------------------------------------------------------------------
+r190 | aureliojargas | 2010-08-06 02:40:26 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Automatic TOC now using DFT_TEXT_WIDTH constant instead hardcoded number.
+------------------------------------------------------------------------
+r189 | aureliojargas | 2010-08-06 02:37:28 -0300 (Sex, 06 Ago 2010) | 1 line
+
+Art: The slides extension are back to .art, not .part. Being slides or not, it's still an Ascii Art document and should have its default extension. The user can easily change the output filename and extension if she wants to.
+------------------------------------------------------------------------
+r188 | aureliojargas | 2010-08-06 02:29:24 -0300 (Sex, 06 Ago 2010) | 13 lines
+
+Art target code and command line options clean up:
+Option --art-present changed to --slide.
+Option --art-size changed to --width.
+New option --height.
+Now --slide, --width and --height can be used by other targets.
+Now using less global variables, removed AA_COLUMNS, AA_PRESENT, AA_LINES.
+AA_LCHARS renamed to AA_KEYS.
+AA_CHARS renamed to AA.
+Improved --help messages.
+Removed system call to stty, please avoid using system commands.
+Options parsing moved from exec_command_line() to ConfigMaster().sanity().
+New constants for screen sizes: DFT_TEXT_WIDTH, DFT_SLIDE_WIDTH, DFT_SLIDE_HEIGHT.
+
+------------------------------------------------------------------------
+r187 | aureliojargas | 2010-08-05 19:53:15 -0300 (Qui, 05 Ago 2010) | 2 lines
+
+Art: When not using --art-present, removed "Table of Contents" header from the TOC because no other targets sets TOC header and the user can set her own with =foo= followed by %%TOC. Now the --toc-only output is the same as the txt target, with no heading nor bars, like other targets. Removed global var AA_TOC.
+
+------------------------------------------------------------------------
+r186 | mjp.ttc | 2010-08-05 19:02:41 -0300 (Qui, 05 Ago 2010) | 1 line
+
+test svn 
+------------------------------------------------------------------------
+r185 | aureliojargas | 2010-08-05 18:26:59 -0300 (Qui, 05 Ago 2010) | 1 line
+
+Improved comments on toc_tagger()
+------------------------------------------------------------------------
+r184 | aureliojargas | 2010-08-05 11:27:45 -0300 (Qui, 05 Ago 2010) | 1 line
+
+The ":" char is now allowed in the query component of a URI. This complies with RFC 3986, section 3.4. Thanks sphaira and chris0. Closes issue 9.
+------------------------------------------------------------------------
+r183 | aureliojargas | 2010-08-04 22:19:06 -0300 (Qua, 04 Ago 2010) | 1 line
+
+New translation: Sample File in Ukrainian, by Bunyk Taras
+------------------------------------------------------------------------
+r182 | aureliojargas | 2010-08-04 22:05:23 -0300 (Qua, 04 Ago 2010) | 1 line
+
+New translation: program messages in Ukrainian, by Bunyk Taras
+------------------------------------------------------------------------
+r181 | aureliojargas | 2010-08-04 21:42:06 -0300 (Qua, 04 Ago 2010) | 1 line
+
+pmWiki: Changed tag for nested lists, now using repeated chars instead indentation. Sample file was updated. Closes issue 37.
+------------------------------------------------------------------------
+r180 | fgallaire | 2010-08-04 21:34:42 -0300 (Qua, 04 Ago 2010) | 2 lines
+
+Adding sample file for the -p art target, with --art-size="80 25"
+
+------------------------------------------------------------------------
+r179 | aureliojargas | 2010-08-04 21:22:44 -0300 (Qua, 04 Ago 2010) | 1 line
+
+Adding sample files for the new targets: DocBook, pmWiki, AsciiDoc, Creole
+------------------------------------------------------------------------
+r177 | aureliojargas | 2010-08-04 20:31:55 -0300 (Qua, 04 Ago 2010) | 1 line
+
+extra: t2tmake.rb: Now compatible with ruby 1.9, fixing the error "formal argument cannot be an instance variable: {|@ext|}". Thanks Lucas Buchala for the patch. Closes issue 26.
+------------------------------------------------------------------------
+r176 | aureliojargas | 2010-08-04 20:00:11 -0300 (Qua, 04 Ago 2010) | 1 line
+
+test-suite: csv: modified tests to ignore csv-macro bug (see issue 31). This test should be restored when the bug is fixed. Tests are now back to 100% ok.
+------------------------------------------------------------------------
+r175 | fgallaire | 2010-08-04 18:43:09 -0300 (Qua, 04 Ago 2010) | 2 lines
+
+Generator expressions replaced by less performant lists (Python 2.4 feature)
+
+------------------------------------------------------------------------
+r174 | fgallaire | 2010-08-04 18:27:15 -0300 (Qua, 04 Ago 2010) | 2 lines
+
+Remove conditionnal expression (Python 2.5 feature)
+
+------------------------------------------------------------------------
+r173 | aureliojargas | 2010-08-04 17:10:24 -0300 (Qua, 04 Ago 2010) | 2 lines
+
+--help: Target list for -t option now in alphabetical order. Test-suite updated accordingly.
+
+------------------------------------------------------------------------
+r172 | aureliojargas | 2010-08-04 17:00:17 -0300 (Qua, 04 Ago 2010) | 1 line
+
+test-suite: Updated --list-targets checking for the new Creole target
+------------------------------------------------------------------------
+r171 | aureliojargas | 2010-08-04 16:59:30 -0300 (Qua, 04 Ago 2010) | 1 line
+
+test-suite: Updated --help checking for the new Art options
+------------------------------------------------------------------------
+r169 | eforgeot | 2010-08-04 04:44:13 -0300 (Qua, 04 Ago 2010) | 2 lines
+
+New target Creole 1.0 (-t creole). See http://www.wikicreole.org
+
+------------------------------------------------------------------------
+r165 | fgallaire | 2010-07-20 03:18:09 -0300 (Ter, 20 Jul 2010) | 2 lines
+
+Art: --toc-only support for all ascii art stuff
+
+------------------------------------------------------------------------
+r164 | fgallaire | 2010-07-19 09:28:58 -0300 (Seg, 19 Jul 2010) | 2 lines
+
+Art: fix --toc-only bug with --art-present
+
+------------------------------------------------------------------------
+r163 | fgallaire | 2010-07-19 01:00:23 -0300 (Seg, 19 Jul 2010) | 2 lines
+
+Art: homogeneous header and TOC rendering
+
+------------------------------------------------------------------------
+r162 | fgallaire | 2010-07-19 00:21:41 -0300 (Seg, 19 Jul 2010) | 2 lines
+
+Art: improve TOC support
+
+------------------------------------------------------------------------
+r161 | fgallaire | 2010-07-18 23:23:47 -0300 (Dom, 18 Jul 2010) | 2 lines
+
+Art: simple TOC support for --art-present
+
+------------------------------------------------------------------------
+r160 | fgallaire | 2010-07-15 23:18:07 -0300 (Qui, 15 Jul 2010) | 2 lines
+
+Art: not too much short options
+
+------------------------------------------------------------------------
+r159 | fgallaire | 2010-07-15 16:27:48 -0300 (Qui, 15 Jul 2010) | 2 lines
+
+Art: fix two little bugs.
+
+------------------------------------------------------------------------
+r158 | fgallaire | 2010-07-15 16:11:05 -0300 (Qui, 15 Jul 2010) | 2 lines
+
+Art: new option --art-size,-s
+
+------------------------------------------------------------------------
+r157 | fgallaire | 2010-07-15 13:19:32 -0300 (Qui, 15 Jul 2010) | 2 lines
+
+Art: fix numtitle bug
+
+------------------------------------------------------------------------
+r156 | fgallaire | 2010-07-13 21:34:19 -0300 (Ter, 13 Jul 2010) | 2 lines
+
+Art: fix help typo
+
+------------------------------------------------------------------------
+r155 | fgallaire | 2010-07-13 21:28:10 -0300 (Ter, 13 Jul 2010) | 2 lines
+
+Art: Change options --ascii-art,-a in --art-chars,-c and --aa-present,-p in --art-present,-p
+
+------------------------------------------------------------------------
+r154 | fgallaire | 2010-07-12 03:17:40 -0300 (Seg, 12 Jul 2010) | 2 lines
+
+Art: New incredible -p, --aa-present option for presentation slides in Ascii Art !
+
+------------------------------------------------------------------------
+r153 | fgallaire | 2010-07-08 19:38:52 -0300 (Qui, 08 Jul 2010) | 2 lines
+
+Art: fix a little bug in art header generation.
+
+------------------------------------------------------------------------
+r152 | fgallaire | 2010-07-08 14:12:51 -0300 (Qui, 08 Jul 2010) | 2 lines
+
+Art: rewrite of aa_table for best integration (list and not string, map verb as txt target).
+
+------------------------------------------------------------------------
+r151 | fgallaire | 2010-07-08 12:48:38 -0300 (Qui, 08 Jul 2010) | 2 lines
+
+Art: rewrite of aa_functions for best integration (list and not string).
+
+------------------------------------------------------------------------
+r150 | fgallaire | 2010-07-08 12:20:42 -0300 (Qui, 08 Jul 2010) | 2 lines
+
+Art: fix typos, end.
+
+------------------------------------------------------------------------
+r149 | fgallaire | 2010-07-08 12:16:32 -0300 (Qui, 08 Jul 2010) | 2 lines
+
+Art: fix typos.
+
+------------------------------------------------------------------------
+r148 | fgallaire | 2010-06-23 22:19:08 -0300 (Qua, 23 Jun 2010) | 2 lines
+
+Art: finish CSV support.
+
+------------------------------------------------------------------------
+r147 | fgallaire | 2010-06-23 21:32:58 -0300 (Qua, 23 Jun 2010) | 2 lines
+
+Art: added CSV support (but not classical table).
+
+------------------------------------------------------------------------
+r146 | aureliojargas | 2010-06-22 17:37:38 -0300 (Ter, 22 Jun 2010) | 6 lines
+
+New command %!csv to include an external CSV file as a table. Includes test-suite. (Thanks Florent Gallaire)
+
+Example:
+%!csv: contacts.csv
+or
+%!csv(html): contacts.csv
+------------------------------------------------------------------------
+r145 | aureliojargas | 2010-06-22 16:32:57 -0300 (Ter, 22 Jun 2010) | 1 line
+
+test-suite: include: Fixed typo
+------------------------------------------------------------------------
+r144 | aureliojargas | 2010-06-22 15:18:18 -0300 (Ter, 22 Jun 2010) | 1 line
+
+PEP 8: aa_box(), aa_header()
+------------------------------------------------------------------------
+r143 | aureliojargas | 2010-06-22 14:56:27 -0300 (Ter, 22 Jun 2010) | 1 line
+
+test-suite: New module "include" added to main run.py
+------------------------------------------------------------------------
+r142 | aureliojargas | 2010-06-22 14:53:54 -0300 (Ter, 22 Jun 2010) | 1 line
+
+test-suite: Adding new "include" module to test the %!include command
+------------------------------------------------------------------------
+r141 | aureliojargas | 2010-06-22 12:44:35 -0300 (Ter, 22 Jun 2010) | 1 line
+
+Improvements on %! commands parsing (currently only %!include is available) to make it easier to add new comands.
+------------------------------------------------------------------------
+r140 | aureliojargas | 2010-06-22 12:39:44 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (filter) shadows builtin -- changed to filter_
+------------------------------------------------------------------------
+r139 | aureliojargas | 2010-06-22 12:35:33 -0300 (Ter, 22 Jun 2010) | 1 line
+
+test-suite: crossing: New tests for %!include crossing blocks
+------------------------------------------------------------------------
+r138 | aureliojargas | 2010-06-22 11:29:39 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (long) shadows builtin -- changed to long_
+------------------------------------------------------------------------
+r137 | aureliojargas | 2010-06-22 11:26:35 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (open) shadows builtin -- changed to open_
+------------------------------------------------------------------------
+r136 | aureliojargas | 2010-06-22 11:21:26 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (id) shadows builtin -- changed to id_
+------------------------------------------------------------------------
+r135 | aureliojargas | 2010-06-22 11:16:17 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (dir) shadows builtin -- changed to dir_
+------------------------------------------------------------------------
+r134 | aureliojargas | 2010-06-22 11:12:30 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: (file) shadows builtin -- changed to file_
+------------------------------------------------------------------------
+r133 | aureliojargas | 2010-06-22 11:02:31 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: Global variables (askopenfilename, showinfo, showwarning, showerror) not defined in module scope
+------------------------------------------------------------------------
+r132 | aureliojargas | 2010-06-22 10:52:53 -0300 (Ter, 22 Jun 2010) | 1 line
+
+pychecker: Fixed: Global variable (TITLE) not defined in module scope
+------------------------------------------------------------------------
+r131 | aureliojargas | 2010-06-18 23:48:29 -0300 (Sex, 18 Jun 2010) | 1 line
+
+test-suite: 32 new tests added to the options module, covering -h, -V, -v (and its variations) and common erros like missing or invalid infile/target.
+------------------------------------------------------------------------
+r130 | aureliojargas | 2010-06-18 21:48:47 -0300 (Sex, 18 Jun 2010) | 1 line
+
+--help: Added URLs for the bug tracker and SVN
+------------------------------------------------------------------------
+r129 | aureliojargas | 2010-06-18 21:39:59 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Fixed a little syntax error in string expansion
+------------------------------------------------------------------------
+r128 | aureliojargas | 2010-06-18 21:38:31 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Readfile/Savefile(): safer variable name (s/file/file_path/) and better indentation of code
+------------------------------------------------------------------------
+r127 | aureliojargas | 2010-06-18 18:48:43 -0300 (Sex, 18 Jun 2010) | 21 lines
+
+New option --list-targets to get a list of all the available targets. The option --no-list-targets was also added. Included are two tests for them on the test-suite.
+
+$ txt2tags --list-targets
+adoc	AsciiDoc document
+art	Ascii Art text
+dbk	DocBook document
+doku	DokuWiki page
+gwiki	Google Wiki page
+html	HTML page
+lout	Lout document
+man	UNIX Manual page
+mgp	MagicPoint presentation
+moin	MoinMoin page
+pm6	PageMaker document
+pmw	pmWiki page
+sgml	SGML document
+tex	LaTeX document
+txt	Plain Text
+wiki	Wikipedia page
+xhtml	XHTML page
+
+------------------------------------------------------------------------
+r126 | aureliojargas | 2010-06-18 17:57:26 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+test-suite: Now by default runs txt2tags from SVN (whose path is ../txt2tags) instead system's installed txt2tags. Just change lib.py if you want to test other locations. (Thanks Emmanuel Godard)
+
+------------------------------------------------------------------------
+r125 | aureliojargas | 2010-06-18 17:11:18 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+i18n: README file improved with information for translators on how to update the existing translation when a new potfile come out.
+
+------------------------------------------------------------------------
+r124 | aureliojargas | 2010-06-18 17:08:18 -0300 (Sex, 18 Jun 2010) | 1 line
+
+i18n: All .po files were updated and converted to UTF-8. There are new messages to translate.
+------------------------------------------------------------------------
+r123 | aureliojargas | 2010-06-18 17:00:38 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+i18n: Added po/tools/ folder with the i18n related tools.
+
+------------------------------------------------------------------------
+r122 | aureliojargas | 2010-06-18 16:59:34 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Improved the description of some targets
+------------------------------------------------------------------------
+r121 | aureliojargas | 2010-06-18 16:58:01 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+i18n: The potfile was updated with new messages (see next commits)
+
+------------------------------------------------------------------------
+r120 | aureliojargas | 2010-06-18 15:04:35 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Ascii Art: improved error message for --ascii-art
+------------------------------------------------------------------------
+r119 | aureliojargas | 2010-06-18 14:35:10 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+Improved error messages when target is missing (closes issue 6) and when input file is missing. Also improves --help i18n. (Thanks Leonardo Rosa)
+
+------------------------------------------------------------------------
+r118 | aureliojargas | 2010-06-18 14:16:03 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Now when called without arguments, don't try to load the graphical Tk interface. User must specify --gui if that interface is desired.
+------------------------------------------------------------------------
+r117 | aureliojargas | 2010-06-18 12:16:26 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+DocBook: Fixing the TOC, the correct is <index/> (Thanks chris0@lavabit) (closes issue 28)
+
+------------------------------------------------------------------------
+r116 | aureliojargas | 2010-06-18 12:12:10 -0300 (Sex, 18 Jun 2010) | 2 lines
+
+DocBook: Now special chars are escaped: &, <, > (Thanks chris0@lavabit) (closes issue 28)
+
+------------------------------------------------------------------------
+r115 | aureliojargas | 2010-06-18 11:21:12 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Added ugly hack to allow target's image tag to have the pattern [file.png]. This avoids infinite loop in parse_images() function. (Thanks Justin Vander Ziel)
+------------------------------------------------------------------------
+r114 | aureliojargas | 2010-06-18 11:09:43 -0300 (Sex, 18 Jun 2010) | 1 line
+
+Updating docs to use .toc instead #toc in CSS rules, to respect changes in r94
+------------------------------------------------------------------------
+r113 | aureliojargas | 2010-06-18 09:57:52 -0300 (Sex, 18 Jun 2010) | 1 line
+
+test-suite: updated crossing/list.t2t test to not allow bars inside lists anymore, as changed by r42
+------------------------------------------------------------------------
+r112 | aureliojargas | 2010-06-17 21:07:38 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: Added new folder test/bugs/unfixed to register known bugs that affects the test routines. The files inside this folder have comments inside, explaining the bug and how it affects the tests. The affected test files are also updated now, to pass the tests even with the bug unsolved.
+------------------------------------------------------------------------
+r111 | aureliojargas | 2010-06-17 20:05:26 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated TeX templates to the new spacing rules (blanksaroundpara:1 from r52 and footer spacing from r101) and for the new header package {paralist} for compact lists (see r59)
+------------------------------------------------------------------------
+r110 | aureliojargas | 2010-06-17 20:00:19 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated TeX template to use {compactitem} instead {itemize} for lists with no spaced items, to follow changes from r59
+------------------------------------------------------------------------
+r109 | aureliojargas | 2010-06-17 19:50:18 -0300 (Qui, 17 Jun 2010) | 1 line
+
+Added commented code for the future, to avoid blank line before the first block
+------------------------------------------------------------------------
+r108 | aureliojargas | 2010-06-17 18:54:08 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: more templates updated to reflect the new spacing rules, added by r52
+------------------------------------------------------------------------
+r107 | aureliojargas | 2010-06-17 18:52:06 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to remove spaces around bars from the TOC. These bars don't respect the blanksaroundbar rules, so the test template must reflect it.
+------------------------------------------------------------------------
+r106 | aureliojargas | 2010-06-17 18:44:03 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: Updating note added by r98
+------------------------------------------------------------------------
+r105 | aureliojargas | 2010-06-17 18:33:37 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to remove the ID=toc from the toc DIV, respecting changes by r94
+------------------------------------------------------------------------
+r104 | aureliojargas | 2010-06-17 18:26:53 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: HTML templates updated to remove the useless <P></P>, removed on r47 (this commit the completes the task started at r48)
+------------------------------------------------------------------------
+r103 | aureliojargas | 2010-06-17 18:17:35 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to the new spacing around lists, verbatim and table blocks  (rules blanksaroundlist, blanksaroundnumlist, blanksarounddeflist, blanksaroundverb, blanksaroundtable), added by r52 - also update the templates to remove double blanks lines before footer (respecting changes in r101)
+------------------------------------------------------------------------
+r102 | aureliojargas | 2010-06-17 18:12:04 -0300 (Qui, 17 Jun 2010) | 1 line
+
+Compose footer before TOC, so TOC won't affect BLOCK.last, needed by doFooter() since r101
+------------------------------------------------------------------------
+r101 | aureliojargas | 2010-06-17 17:30:23 -0300 (Qui, 17 Jun 2010) | 1 line
+
+Footer: only add blank line before if needed, avoiding two consecutive blank lines
+------------------------------------------------------------------------
+r100 | aureliojargas | 2010-06-17 16:58:26 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to the new spacing around bars (rule blanksaroundbar), added by r52
+------------------------------------------------------------------------
+r99 | aureliojargas | 2010-06-17 13:06:36 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to the new spacing around titles (rule blanksaroundtitle), added by r52
+------------------------------------------------------------------------
+r98 | aureliojargas | 2010-06-17 12:46:16 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: new note in run.py with command to generate full diff with all errors
+------------------------------------------------------------------------
+r97 | aureliojargas | 2010-06-17 12:13:21 -0300 (Qui, 17 Jun 2010) | 1 line
+
+test-suite: updated HTML templates to the new header format added by r66
+------------------------------------------------------------------------
+r96 | aureliojargas | 2010-06-17 12:09:33 -0300 (Qui, 17 Jun 2010) | 1 line
+
+Undoing changes committed in r95
+------------------------------------------------------------------------
+r95 | aureliojargas | 2010-06-17 11:51:23 -0300 (Qui, 17 Jun 2010) | 2 lines
+
+test-suite: updated HTML templates to the new header format added by r66 (UPDATE: this commit added an undesired extra blank line after </CENTER> - it was undone in r96 and redone right in r97)
+
+------------------------------------------------------------------------
+r94 | aureliojargas | 2010-06-17 10:52:13 -0300 (Qui, 17 Jun 2010) | 2 lines
+
+HTML: removed the id="toc" from the toc DIV, since it can appear more than once on the page. The class="toc" still remains.
+
+------------------------------------------------------------------------
+r93 | aureliojargas | 2010-06-17 10:47:08 -0300 (Qui, 17 Jun 2010) | 2 lines
+
+extra: unhtml.vim: Commented dangerous command that removes all unrecognized HTML tags
+
+------------------------------------------------------------------------
+r92 | shagi.refugio | 2010-05-07 00:43:01 -0300 (Sex, 07 Mai 2010) | 2 lines
+
+i18n: eu.po: fix typos
+
+------------------------------------------------------------------------
+r88 | aureliojargas | 2009-12-04 15:47:31 -0200 (Sex, 04 Dez 2009) | 1 line
+
+Minor correction in User Guide (raw mark was """")
+------------------------------------------------------------------------
+r87 | fgallaire | 2009-10-21 00:07:35 -0200 (Qua, 21 Out 2009) | 2 lines
+
+extra: markitup: Add etxt2tags links
+
+------------------------------------------------------------------------
+r86 | aureliojargas | 2009-07-10 21:36:13 -0300 (Sex, 10 Jul 2009) | 1 line
+
+Renaming the Basque manpage files to add the -eu suffix
+------------------------------------------------------------------------
+r85 | fgallaire | 2009-06-17 06:01:23 -0300 (Qua, 17 Jun 2009) | 2 lines
+
+extra: A Txt2tags markup set for markItUp!
+
+------------------------------------------------------------------------
+r84 | shagi.refugio | 2009-05-07 11:57:27 -0300 (Qui, 07 Mai 2009) | 2 lines
+
+New translation: Manual Page in Basque
+
+------------------------------------------------------------------------
+r83 | shagi.refugio | 2009-04-18 11:40:14 -0300 (Sáb, 18 Abr 2009) | 2 lines
+
+New translation: program messages in Basque
+
+------------------------------------------------------------------------
+r82 | aureliojargas | 2009-04-07 18:05:55 -0300 (Ter, 07 Abr 2009) | 2 lines
+
+LaTeX: UTF-8 encoding is now correctly set as 'utf8' instead 'utf-8' [closes issue #10] (Thanks Aad Mathijssen)
+
+------------------------------------------------------------------------
+r81 | aureliojargas | 2009-03-31 10:28:25 -0300 (Ter, 31 Mar 2009) | 1 line
+
+extra: Added syntax file for "le" text editor, by Stefano D'Archino
+------------------------------------------------------------------------
+r80 | aureliojargas | 2009-03-31 10:26:17 -0300 (Ter, 31 Mar 2009) | 1 line
+
+extra: Added syntax file for JOE and "ne" text editors, by Stefano D'Archino
+------------------------------------------------------------------------
+r79 | aureliojargas | 2009-03-30 01:38:58 -0300 (Seg, 30 Mar 2009) | 2 lines
+
+extra: txt2tags.vim: Added the "default" keyword to all syntax rules, so now you can override the default colors in your .vimrc config file. And the new default color for comments in gVim with dark background is Bisque instead Brown (Thanks Ritesh Sood)
+
+------------------------------------------------------------------------
+r78 | aureliojargas | 2009-03-29 23:49:46 -0300 (Dom, 29 Mar 2009) | 1 line
+
+New translation: User Guide in Chinese (simplified), by Chris Leng
+------------------------------------------------------------------------
+r77 | aureliojargas | 2009-03-06 21:30:44 -0300 (Sex, 06 Mar 2009) | 1 line
+
+Lout: Now paragraphs are allowed inside lists (Thanks Barrie Stott)
+------------------------------------------------------------------------
+r76 | aureliojargas | 2009-03-06 21:18:44 -0300 (Sex, 06 Mar 2009) | 1 line
+
+Improved markup demo to make clear that the two blank lines closes ALL the open lists.
+------------------------------------------------------------------------
+r75 | aureliojargas | 2009-03-06 20:35:40 -0300 (Sex, 06 Mar 2009) | 1 line
+
+Improved module sample to show how to format the Table Of Contents (TOC) (Thanks Jendrik Seipp)
+------------------------------------------------------------------------
+r74 | aureliojargas | 2009-03-06 18:07:44 -0300 (Sex, 06 Mar 2009) | 1 line
+
+Bugfix: Now anchors are working for pmWiki and DocBook.
+------------------------------------------------------------------------
+r73 | aureliojargas | 2009-03-06 17:48:04 -0300 (Sex, 06 Mar 2009) | 1 line
+
+pmWiki: Fixed the link tag, for URL and emails.
+------------------------------------------------------------------------
+r72 | aureliojargas | 2009-03-06 17:45:29 -0300 (Sex, 06 Mar 2009) | 1 line
+
+New rule 'labelbeforelink', used to specify label/url order on the target link tag (needed by pmWiki)
+------------------------------------------------------------------------
+r71 | aureliojargas | 2009-03-06 17:36:45 -0300 (Sex, 06 Mar 2009) | 1 line
+
+Mentioning Mediawiki in the documentation (man page, User Guide).
+------------------------------------------------------------------------
+r70 | aureliojargas | 2009-03-06 17:25:10 -0300 (Sex, 06 Mar 2009) | 1 line
+
+New target pmWiki (-t pmw), by Ritesh Sood
+------------------------------------------------------------------------
+r69 | aureliojargas | 2009-03-06 16:23:14 -0300 (Sex, 06 Mar 2009) | 1 line
+
+New target AsciiDoc (-t adoc), by Neil Voss
+------------------------------------------------------------------------
+r68 | aureliojargas | 2009-02-10 17:12:29 -0200 (Ter, 10 Fev 2009) | 1 line
+
+Fixed little typo on the User Guide
+------------------------------------------------------------------------
+r67 | aureliojargas | 2009-02-10 17:09:15 -0200 (Ter, 10 Fev 2009) | 1 line
+
+Updated URL and information for SGML on the User Guide. (Thanks wjaguar)
+------------------------------------------------------------------------
+r66 | aureliojargas | 2009-02-10 16:42:49 -0200 (Ter, 10 Fev 2009) | 1 line
+
+HTML: Reworked the tags for the default headers (when not using --css-sugar) to avoid orphan open/close tags when some of the heading lines are missing (Thanks Thomas Hafner)
+------------------------------------------------------------------------
+r65 | aureliojargas | 2009-02-10 15:53:27 -0200 (Ter, 10 Fev 2009) | 1 line
+
+Spacing normalization: changing indentation spaces to TABs, joining/splitting lines, making things prettier
+------------------------------------------------------------------------
+r64 | aureliojargas | 2009-02-10 14:44:25 -0200 (Ter, 10 Fev 2009) | 1 line
+
+New target DocBook (-t dbk), by David Hajage
+------------------------------------------------------------------------
+r63 | aureliojargas | 2009-02-10 14:11:54 -0200 (Ter, 10 Fev 2009) | 2 lines
+
+Lout: Removed list indent to avoid gaps in text (Thanks Barrie Stott)
+
+------------------------------------------------------------------------
+r62 | mark@celos.net | 2008-12-17 22:15:39 -0200 (Qua, 17 Dez 2008) | 2 lines
+
+LaTeX: Add span and cell alignment to tables.  New rule "tablecellmulticol" wraps cells in tableCellMulticol{Open,Close} if they span columns or are aligned differently to their column header.  Multicolumn cells in the first row also now generate reasonable column specifications.  HTML rendering of test/marks/table.t2t is unchanged.
+
+------------------------------------------------------------------------
+r59 | mark@celos.net | 2008-12-11 22:27:37 -0200 (Qui, 11 Dez 2008) | 2 lines
+
+LaTeX: Compact lists.  Paragraph breaks in lists now control item spacing: lists with no breaks within/between items use compactitem, while lists with breaks use itemize, and similarly for desc and enum lists.  Adds rule compactlist and tags <listtype>OpenCompact and <listtype>CloseCompact.
+
+------------------------------------------------------------------------
+r54 | aureliojargas | 2008-12-10 17:08:12 -0200 (Qua, 10 Dez 2008) | 1 line
+
+Bugfix: Now inline verbatim, raw and tagged marks are really mutually exclusive, so no marks is interpreted inside them. In ``foo ''bar'' ""baz""`` it's just a big verbatim mark with no parsing inside. Test-suite updated to check it.
+------------------------------------------------------------------------
+r53 | aureliojargas | 2008-12-10 13:49:34 -0200 (Qua, 10 Dez 2008) | 1 line
+
+Little code adjustments: now using += and -= operators for increments
+------------------------------------------------------------------------
+r52 | aureliojargas | 2008-12-10 02:53:46 -0200 (Qua, 10 Dez 2008) | 3 lines
+
+Now all targets use the new spacing rules.
+The txt2tags generated code has changed, adding or removing blank lines.
+Two rules were obsoleted: blankendmotherlist, blankendtable.
+------------------------------------------------------------------------
+r51 | aureliojargas | 2008-12-10 01:36:08 -0200 (Qua, 10 Dez 2008) | 1 line
+
+Ops, forgot to add a file on (r50)
+------------------------------------------------------------------------
+r50 | aureliojargas | 2008-12-10 01:35:16 -0200 (Qua, 10 Dez 2008) | 1 line
+
+test-suite: New test for the new blanksaround rules
+------------------------------------------------------------------------
+r49 | aureliojargas | 2008-12-10 01:17:14 -0200 (Qua, 10 Dez 2008) | 1 line
+
+test-suite: New tests for the horizontal line (bar) tag
+------------------------------------------------------------------------
+r48 | aureliojargas | 2008-12-10 01:10:05 -0200 (Qua, 10 Dez 2008) | 2 lines
+
+test-suite: HTML templates updated to remove the useless <P></P>, removed on r47
+
+------------------------------------------------------------------------
+r47 | aureliojargas | 2008-12-10 01:06:12 -0200 (Qua, 10 Dez 2008) | 1 line
+
+HTML/XHTML: Removed those random <P></P> that used to appear on the output.
+------------------------------------------------------------------------
+r46 | aureliojargas | 2008-12-10 00:28:21 -0200 (Qua, 10 Dez 2008) | 1 line
+
+More blanksaround* fixes: Omit the second extra blank line before the very first title of the document; BlockMaster.last now stores only the top level blocks (those that produced output), fixing some inconsistencies (Thanks Mark White)
+------------------------------------------------------------------------
+r45 | aureliojargas | 2008-12-09 23:10:05 -0200 (Ter, 09 Dez 2008) | 1 line
+
+Now using string.startswith() and string.endswith() instead direct index references to find substrings.
+------------------------------------------------------------------------
+r44 | aureliojargas | 2008-12-09 23:00:58 -0200 (Ter, 09 Dez 2008) | 1 line
+
+Title handling added to BlockMaster, integrating titles with the other blocks. Titles now respect the blanksaroundtitle and blanksaroundnumtitle rules. Obsoleted the breaktitleopen rule.
+------------------------------------------------------------------------
+r43 | aureliojargas | 2008-12-09 21:50:02 -0200 (Ter, 09 Dez 2008) | 2 lines
+
+Fixed handling of strong bars inside quotes.
+
+------------------------------------------------------------------------
+r42 | aureliojargas | 2008-12-09 21:26:31 -0200 (Ter, 09 Dez 2008) | 1 line
+
+Rewritten the code to process horizontal lines (bars), both plain and quoted. Now respecting the blanksaroundbar rule ensuring visual separation in text based targets. Now subquotes also respect blanksaroundquote rule.
+------------------------------------------------------------------------
+r41 | aureliojargas | 2008-12-09 17:21:34 -0200 (Ter, 09 Dez 2008) | 1 line
+
+Implemented new rules called blanksaround<blockname> for paragraph, verbatim, quote, lists and table. They control if blank lines are added before and after the blocks. These blank lines are important for textual targets as txt, TeX and wikis to identify paragraphs. Currently only the txt target is using them.
+------------------------------------------------------------------------
+r40 | aureliojargas | 2008-12-09 15:55:40 -0200 (Ter, 09 Dez 2008) | 1 line
+
+BlockMaster.blockout() now setting self.last at the end of all the processing, as it was meant to be since day zero. (Thanks Mark White)
+------------------------------------------------------------------------
+r39 | aureliojargas | 2008-12-09 11:32:03 -0200 (Ter, 09 Dez 2008) | 1 line
+
+test-suite: Little spacing fix on test result. Should be on r25.
+------------------------------------------------------------------------
+r37 | aureliojargas | 2008-12-08 14:56:09 -0200 (Seg, 08 Dez 2008) | 1 line
+
+Fixed images path
+------------------------------------------------------------------------
+r36 | shagi.refugio | 2008-12-08 14:20:07 -0200 (Seg, 08 Dez 2008) | 2 lines
+
+New translation: Sample File in Basque
+
+------------------------------------------------------------------------
+r35 | aureliojargas | 2008-12-08 12:47:47 -0200 (Seg, 08 Dez 2008) | 1 line
+
+New translation: Markup Demo in Basque, by Ales Zabala Alava
+------------------------------------------------------------------------
+r30 | fgallaire | 2008-11-03 16:03:24 -0200 (Seg, 03 Nov 2008) | 2 lines
+
+Removed 2 bloated lines
+
+------------------------------------------------------------------------
+r29 | fgallaire | 2008-11-03 12:23:30 -0200 (Seg, 03 Nov 2008) | 2 lines
+
+Fixed Footer for txt and art targets
+
+------------------------------------------------------------------------
+r28 | fgallaire | 2008-10-29 16:40:05 -0200 (Qua, 29 Out 2008) | 2 lines
+
+Adding sample.art to SVN
+
+------------------------------------------------------------------------
+r27 | fgallaire | 2008-10-28 03:49:28 -0200 (Ter, 28 Out 2008) | 2 lines
+
+New target Ascii Art (-t art), by Florent Gallaire.
+
+------------------------------------------------------------------------
+r26 | aureliojargas | 2008-10-27 23:03:09 -0200 (Seg, 27 Out 2008) | 1 line
+
+Added some internal files to the SVN exception list
+------------------------------------------------------------------------
+r25 | aureliojargas | 2008-10-27 23:02:09 -0200 (Seg, 27 Out 2008) | 1 line
+
+test-suite: Added tests for the new ''tagged'' mark
+------------------------------------------------------------------------
+r24 | aureliojargas | 2008-10-27 22:49:36 -0200 (Seg, 27 Out 2008) | 1 line
+
+Added some internal files to the SVN exception list
+------------------------------------------------------------------------
+r23 | aureliojargas | 2008-10-27 22:28:05 -0200 (Seg, 27 Out 2008) | 1 line
+
+Test-suite now exits with 1 if any error is found (thanks Rudá Moura)
+------------------------------------------------------------------------
+r22 | aureliojargas | 2008-10-27 22:23:11 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding CSS samples generator to SVN
+------------------------------------------------------------------------
+r21 | aureliojargas | 2008-10-27 21:42:42 -0200 (Seg, 27 Out 2008) | 1 line
+
+Removing markup ZIP file from SVN
+------------------------------------------------------------------------
+r20 | aureliojargas | 2008-10-27 21:37:44 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding documentation to SVN
+------------------------------------------------------------------------
+r19 | aureliojargas | 2008-10-27 19:24:28 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding samples folder to SVN
+------------------------------------------------------------------------
+r18 | aureliojargas | 2008-10-27 18:12:30 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding test-suite to SVN
+------------------------------------------------------------------------
+r17 | aureliojargas | 2008-10-27 18:07:39 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding extras folder to SVN
+------------------------------------------------------------------------
+r16 | aureliojargas | 2008-10-27 18:05:28 -0200 (Seg, 27 Out 2008) | 1 line
+
+Adding po files to SVN
+------------------------------------------------------------------------
+r15 | aureliojargas | 2008-10-27 17:38:44 -0200 (Seg, 27 Out 2008) | 2 lines
+
+Raw blocks, raw lines, tagged blocks and tagged lines are now allowed inside paragraphs, so they don't close it. If you want to force the paragraph closing, just add a blank line before the raw/tagged block. (thanks Kruzslicz Ferenc)
+
+------------------------------------------------------------------------
+r13 | aureliojargas | 2008-09-11 00:06:55 -0300 (Qui, 11 Set 2008) | 1 line
+
+Raw blocks and raw lines now closes the previous paragraph.
+------------------------------------------------------------------------
+r12 | aureliojargas | 2008-09-10 23:58:42 -0300 (Qua, 10 Set 2008) | 1 line
+
+New mark: ''tagged'' to insert tags on the source file. The tagged block ''' ... ''' and tagged 1-liner ''' ... are also available. For example, you can easily add an HTML ''<br>'' line break or define DIVs.
+------------------------------------------------------------------------
+r11 | aureliojargas | 2008-09-10 22:11:55 -0300 (Qua, 10 Set 2008) | 1 line
+
+Removed all the direct string module calls, since now we don't support Python 1.5.2 anymore. All string.FOO(txt) were changed to txt.FOO()
+------------------------------------------------------------------------
+r10 | aureliojargas | 2008-09-10 21:02:31 -0300 (Qua, 10 Set 2008) | 1 line
+
+Reminders for future fix on included image path
+------------------------------------------------------------------------
+r9 | aureliojargas | 2008-09-10 20:50:45 -0300 (Qua, 10 Set 2008) | 1 line
+
+Version bumped to 2.6b
+------------------------------------------------------------------------
+r2 | aureliojargas | 2008-07-27 00:36:52 -0300 (Dom, 27 Jul 2008) | 1 line
+
+Initial commit (v2.5)
+------------------------------------------------------------------------
+r1 | (no author) | 2008-07-26 16:22:26 -0300 (Sáb, 26 Jul 2008) | 1 line
+
+Initial directory structure.
+------------------------------------------------------------------------
