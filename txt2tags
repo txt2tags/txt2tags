@@ -7830,7 +7830,7 @@ class MacroMaster:
         self.infile   = self.config['sourcefile']
         self.outfile  = self.config['outfile']
         self.currentfile = self.config['currentsourcefile']
-        self.currdate = self.currdate = time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
+        self.currdate = time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
         self.rgx      = regex.get('macros') or getRegexes()['macros']
         self.fileinfo = {'infile': None, 'outfile': None}
         self.dft_fmt  = MACROS
