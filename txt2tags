@@ -8660,6 +8660,11 @@ def expandLineBreaks(mylist):
 
 def compile_filters(filters, errmsg='Filter'):
     if filters:
+        if CONF.get('encoding') and CONF.get('encoding').lower() == 'utf-8':
+            decode = []
+            for filter_ in filters:
+                decode.append((filter_[0].decode('utf-8'), filter_[1].decode('utf-8')))
+            filters = decode
         for i in xrange(len(filters)):
             patt, repl = filters[i]
             try:
