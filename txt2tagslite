@@ -5585,7 +5585,11 @@ def convert(bodylines, config, firstlinenr=1):
         # Defaults
         results_box = ''
 
-        untouchedline = bodylines[lineref]
+        if CONF.get('encoding') and CONF.get('encoding').lower() == 'utf-8' and not isinstance(bodylines[lineref], unicode):
+            untouchedline = bodylines[lineref].decode('utf-8')
+        else:
+            untouchedline = bodylines[lineref]
+
         dump_source.append(untouchedline)
 
         line = re.sub('[\n\r]+$', '', untouchedline)   # del line break
