@@ -7893,6 +7893,8 @@ class MacroMaster:
         self.fileinfo[macroname] = {'path': path, 'dir': dir_, 'name': name}
 
     def expand(self, line=''):
+        if CONF.get('encoding') and CONF.get('encoding').lower() == 'utf-8' and not isinstance(line, unicode):
+            line = line.decode('utf-8')
         "Expand all macros found on the line"
         while self.rgx.search(line):
             m = self.rgx.search(line)
