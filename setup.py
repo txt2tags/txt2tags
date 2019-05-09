@@ -25,7 +25,7 @@ class PyTest(TestCommand):
 
 setup(
     name = "txt2tags",
-    version = '2.6',
+    version = '3.0',
     url = 'http://txt2tags.org',
     author = 'Aurelio Jargas',
     author_email = 'verde@aurelio.net',

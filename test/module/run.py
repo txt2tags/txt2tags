@@ -25,17 +25,17 @@ lib.ERROR_FILES = []
 
 def run():
     for script in SCRIPTS:
-        print '  Testing %s ...' % script,
+        print('  Testing %s ...' % script, end=' ')
         retcode = subprocess.call(['python', script], cwd=SCRIPTS_DIR,
                                   stdout=subprocess.PIPE)
         if retcode == 0:
             lib.OK += 1
-            print 'OK'
+            print('OK')
         else:
             lib.FAILED += 1
-            print 'FAILED'
+            print('FAILED')
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    print(lib.MSG_RUN_ALONE)

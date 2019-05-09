@@ -1,5 +1,5 @@
-import aap
-from aap import TYPE, EXTENSION, TAGS
+from . import aap
+from .aap import TYPE, EXTENSION, TAGS
 from targets import _
 
 NAME = _('ASCII Art Presentation Print')

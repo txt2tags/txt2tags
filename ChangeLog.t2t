@@ -32,6 +32,10 @@ HTML: The full version, used in the txt2tags website. This file contents
 
 % ----------------------------------------------------------------------------
 
+= Version 3.0 (2019-##-##) =
+
+Began Python3 port of txt2tags 2.7.
+
 
 = Version 2.7 (2012-##-##) =
 

@@ -3,7 +3,7 @@
 # See also: run.py, */run.py
 #
 
-from __future__ import with_statement
+
 import os
 import platform
 import re
@@ -13,7 +13,7 @@ import time
 
 PYTHON = sys.executable
 
-print "Testing txt2tags on Python", platform.python_version()
+print("Testing txt2tags on Python", platform.python_version())
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
 TXT2TAGS = '../txt2tags'
@@ -61,9 +61,9 @@ def MoveFile(orig, target):
 def initTest(name, infile, outfile, okfile=None):
     if not okfile:
         okfile  = os.path.join(DIR_OK, outfile)
-    print '  %s' % name,
+    print('  %s' % name, end=' ')
     if not os.path.isfile(okfile):
-        print 'Skipping test (missing %s)' % okfile
+        print('Skipping test (missing %s)' % okfile)
         return False
     return True
 
@@ -91,7 +91,7 @@ def remove_version(text):
 
 def mark_failed(outfile):
     global FAILED
-    print 'FAILED'
+    print('FAILED')
     FAILED += 1
     if not os.path.isdir(DIR_ERROR):
         os.mkdir(DIR_ERROR)
@@ -103,14 +103,20 @@ def _diff(outfile, okfile=None):
     global OK, FAILED, ERROR_FILES
     if not okfile:
         okfile = os.path.join(DIR_OK, outfile)
-    out = ReadFile(outfile)
+
+    try:
+        out = ReadFile(outfile)
+    except FileNotFoundError:
+        mark_failed(outfile)
+        return
+
     out = remove_version(out)
     ok = ReadFile(okfile)
     ok = remove_version(ok)
     if out != ok:
         mark_failed(outfile)
     else:
-        print 'OK'
+        print('OK')
         OK = OK + 1
         os.remove(outfile)
 

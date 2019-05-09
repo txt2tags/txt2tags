@@ -1,6 +1,6 @@
 from lib import aa
-import aatw
-from aatw import TYPE, EXTENSION
+from . import aatw
+from .aatw import TYPE, EXTENSION
 import targets
 from targets import _
 

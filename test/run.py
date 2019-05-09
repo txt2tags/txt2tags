@@ -43,18 +43,18 @@ if len(sys.argv) > 1:
     PYTHON_TEST_MODULES = sys.argv[1:]
 
 # Show which version is being tested
-print "Tested txt2tags version:", lib.get_output(lib.TXT2TAGS + ["-V"])
-print "Tested txt2tagslite version:", lib.get_output(lib.TXT2TAGSLITE + ["-V"])
-print
-print 'Base commands used for all tests:'
-print lib.TXT2TAGS
-print lib.TXT2TAGSLITE
-print
+print("Tested txt2tags version:", lib.get_output(lib.TXT2TAGS + ["-V"]))
+print("Tested txt2tagslite version:", lib.get_output(lib.TXT2TAGSLITE + ["-V"]))
+print()
+print('Base commands used for all tests:')
+print(lib.TXT2TAGS)
+print(lib.TXT2TAGSLITE)
+print()
 
 for module in PYTHON_TEST_MODULES:
     os.chdir(DIR)
 
-    print 'Entering module', module
+    print('Entering module', module)
     if not os.path.isdir(module):
         sys.exit('ERROR: Invalid module %s' % module)
 
@@ -81,17 +81,17 @@ if TOTAL_FAILED:
     stats = "%d ok / %d failed" % (TOTAL_OK, TOTAL_FAILED)
 else:
     stats = "100% ok"
-print
-print "Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats)
+print()
+print("Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats))
 
 if ERRORS:
-    print
-    print "Check out the files with errors:"
-    print '\n'.join(ERRORS)
+    print()
+    print("Check out the files with errors:")
+    print('\n'.join(ERRORS))
     sys.exit(1)
 
 if len(sys.argv) == 1:
-    print
-    print "Don't forget to run the extra tests:"
+    print()
+    print("Don't forget to run the extra tests:")
     for module in BASH_TEST_MODULES:
-        print '%s/run.sh' % module
+        print('%s/run.sh' % module)

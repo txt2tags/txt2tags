@@ -1,5 +1,5 @@
 from lib import aa
-import txt
+from . import txt
 import targets
 from targets import _
 

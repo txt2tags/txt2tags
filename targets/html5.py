@@ -3,8 +3,8 @@ A HTML5 target.
 """
 
 from targets import _
-from html import TYPE
-import html
+from . import html
+from .html import TYPE
 
 NAME = _('HTML5 page')
 

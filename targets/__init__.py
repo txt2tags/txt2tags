@@ -1,4 +1,4 @@
-from config import TARGETS_LIST, USE_I18N, COLOR_DEBUG, BG_LIGHT
+from .config import TARGETS_LIST, USE_I18N, COLOR_DEBUG, BG_LIGHT
 
 
 ################################################################################
@@ -51,4 +51,4 @@ else:
 # Targets import
 
 for target in TARGETS_LIST:
-    exec('import ' + target)
+    exec('from . import ' + target)

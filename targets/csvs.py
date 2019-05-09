@@ -3,8 +3,8 @@ A CSV Spreadsheet target.
 """
 
 # inherits from the CSV table target
-from csv import TYPE, TAGS
-import csv
+from .csv import TYPE, TAGS
+from . import csv
 from targets import _
 
 NAME = _('CSV Spreadsheet')

@@ -248,7 +248,7 @@ def lencjk(txt, web=False):
         return len(txt)
     l = 0
     for char in txt:
-        if unicodedata.east_asian_width(unicode(char)) in ('F', 'W'):
+        if unicodedata.east_asian_width(str(char)) in ('F', 'W'):
             l = l + 2
         else:
             l = l + 1
@@ -317,4 +317,4 @@ class TextWrapperCJK(textwrap.TextWrapper):
 def center(txt, width, web=False):
     n_before = (width - lencjk(txt, web)) / 2
     n_after = width - lencjk(txt, web) - n_before
-    return ' ' * n_before + txt + ' ' * n_after
+    return ' ' * int(n_before) + txt + ' ' * int(n_after)

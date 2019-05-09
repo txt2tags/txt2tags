@@ -3,8 +3,8 @@ A HTML Spreadsheet target.
 """
 
 from targets import _
-from html5 import TYPE, TAGS
-import html5
+from . import html5
+from .html5 import TYPE, TAGS
 
 NAME =  _('HTML Spreadsheet')
 

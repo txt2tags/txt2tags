@@ -1,5 +1,5 @@
-import aatw
-from aatw import TYPE, EXTENSION, TAGS
+from . import aatw
+from .aatw import TYPE, EXTENSION, TAGS
 from targets import _
 
 NAME = _('ASCII Art Spreadsheet Web')

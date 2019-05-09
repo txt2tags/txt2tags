@@ -3,8 +3,8 @@ A WordPress target.
 http://wordpress.org
 """
 
+from . import html
 from targets import _
-import html
 
 NAME = _('WordPress post')
 

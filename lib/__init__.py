@@ -1,1 +1,2 @@
-__all__ = ['aa', 'spread']
+from . import aa
+from . import spread

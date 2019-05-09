@@ -42,7 +42,7 @@ class SpreadSheet:
         if self._cells[key].strip()[0] == '=':
             try:
                 return eval(self._cells[key].strip()[1:], globals(), self)
-            except Exception, e:
+            except Exception as e:
                 return e
         else:
             return self._cells[key].strip()

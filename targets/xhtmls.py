@@ -3,8 +3,8 @@ A XHTML Strict target.
 """
 
 from targets import _
-from html import TYPE, RULES
-import html
+from . import html
+from .html import TYPE, RULES
 
 NAME = _('XHTML Strict page')
 

@@ -1,5 +1,5 @@
-import aat
-import html
+from . import aat
+from . import html
 from targets import _
 
 NAME = _('ASCII Art Text Web')

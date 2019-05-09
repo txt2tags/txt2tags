@@ -58,7 +58,7 @@ def run():
         lib.test(cmdline, outfile)
 
     # using smart filters, same files generate more than one output
-    for alias in ALIASES.keys():
+    for alias in list(ALIASES.keys()):
         infile = ALIASES[alias] + '.t2t'
         outfile = alias + '.html'
         if lib.initTest(alias, infile, outfile):
@@ -85,4 +85,4 @@ def run():
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    print(lib.MSG_RUN_ALONE)

@@ -24,19 +24,19 @@ def run():
     for infile in glob.glob("*.t2t"):
         basename = infile.replace('.t2t', '')
         outfile = basename + '.html'
-        print '  Testing %s ...' % basename,
+        print('  Testing %s ...' % basename, end=' ')
         for txt2tags in [lib.TXT2TAGS, lib.TXT2TAGSLITE]:
             cmdline = txt2tags + [infile]
             output = lib.get_output(cmdline)
             if not output:
-                print "OK"
+                print("OK")
                 lib.OK = lib.OK + 1
                 os.remove(outfile)
             else:
-                print "FAILED"
+                print("FAILED")
                 lib.FAILED = lib.FAILED + 1
                 continue
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    print(lib.MSG_RUN_ALONE)

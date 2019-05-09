@@ -4,7 +4,7 @@ A HTML 4.0 target.
 
 from targets import _
 import targets
-from config import HTML_LOWER
+from .config import HTML_LOWER
 
 NAME = _('HTML page')
 
