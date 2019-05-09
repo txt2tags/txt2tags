@@ -2950,14 +2950,21 @@ class TableMaster:
             # Make sure we will pop from some filled lists
             # Fixes empty line bug '| |'
             this_align = this_cell = this_span = this_mcopen = ''
+
             if calign:
                 this_align = calign.pop(0)
+
             if caligntag:
                 this_cell = caligntag.pop(0)
+
             if cspan:
                 this_span = cspan.pop(0)
+
             if ccovered:
                 this_covered = ccovered.pop(0)
+            else:
+                this_covered = ""
+
             if multicol:
                 this_mcopen = multicol.pop(0)
 
@@ -4763,11 +4770,6 @@ def expandLineBreaks(mylist):
 
 def compile_filters(filters, errmsg='Filter'):
     if filters:
-        if CONF.get('encoding') and CONF.get('encoding').lower() == 'utf-8':
-            decode = []
-            for filter_ in filters:
-                decode.append((filter_[0].decode('utf-8'), filter_[1].decode('utf-8')))
-            filters = decode
         for i in range(len(filters)):
             patt, repl = filters[i]
             try:
