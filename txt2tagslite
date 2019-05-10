@@ -103,6 +103,7 @@ import unicodedata
 import base64  # embedImage()
 import shlex  # CommandLine.tokenize()
 import importlib
+import binascii
 
 # import urllib  # read remote files (URLs) -- postponed, see issue 96
 # import email  # %%mtime for remote files -- postponed, see issue 96
@@ -1163,9 +1164,10 @@ class CommandLine:
         ret = []
 
         # We need lists, not strings (such as from %!options)
-        if type(cmdline) in (type(''), type('')):
+        if type(cmdline) in (type(''), ):
             if not isinstance(cmdline, str):
                 cmdline = str(cmdline)
+
             cmdline = self.tokenize(cmdline)
 
         # Extract name/value pair of all configs, check for invalid names
@@ -2247,7 +2249,9 @@ class MaskMaster:
         # If none is found (else), we get out of the loop.
         #
         while True:
-            t = r = v = m = len(line) + 1 #fixme: Py3 valid solution?
+
+            # Try to match the line for the three marks
+            t = r = v = m = len(line) + 1  #fixme: Py3 valid solution?
 
             try:
                 t = regex['tagged'].search(line).start()
@@ -5244,17 +5248,18 @@ def getImageInfo(filename):
         # Default DPI (if none specified in image metadata) of 72
         dpix = 72
         dpiy = 72
-        if head == '\x89\x50':  # PNG format image
+
+        if head == b'\x89\x50':  # PNG format image
             imgtype = 'png'
             magic, length, chunkid, width, height, bit_depth, colour_type = struct.unpack('!6sI4sIIBBxxxxxxx', f.read(31))
-            if (magic == '\x4e\x47\x0d\x0a\x1a\x0a') and \
+            if (magic == b'\x4e\x47\x0d\x0a\x1a\x0a') and \
                     (length > 0) and \
-                    (chunkid == 'IHDR'):
+                    (chunkid == b'IHDR'):
                         chunk = f.read(8)
                         # Now to find the DPI / Pixel dimensions
                         while chunk:
                             length, chunkid = struct.unpack('!I4s', chunk)
-                            if chunkid == 'pHYs':
+                            if chunkid == b'pHYs':
                                 dpix, dpiy, units = struct.unpack('!IIbxxxx', f.read(13))
                                 if units == 1:
                                     # PNG images have pixel dimensions in pixels per meter,
@@ -5265,7 +5270,7 @@ def getImageInfo(filename):
                                     # No pixel dimensions, set back to default
                                     dpix = 72
                                     dpiy = 72
-                            elif chunkid == 'IDAT':
+                            elif chunkid == b'IDAT':
                                 data = f.read(length)
                                 f.seek(4, 1)
                             else:
@@ -5277,7 +5282,7 @@ def getImageInfo(filename):
                 f.close()
                 Error('Cannot embed PNG image ' + filename + '. Badly formatted.')
 
-        elif head == '\xff\xd8':  # JPG format image
+        elif head == b'\xff\xd8':  # JPG format image
             imgtype = 'jpeg'
             # Jpeg format is insane. The image size chunk could be anywhere,
             # so we need to search the whole file.
@@ -5285,16 +5290,16 @@ def getImageInfo(filename):
             while (b != ''):
                 # Each chunk in a jpeg file is delimited by at least one
                 # \xff character, and possibly more for padding. Seek past 'em
-                while (b != '\xff'):
+                while (b != b'\xff'):
                     b = f.read(1)
-                while (b == '\xff'):
+                while (b == b'\xff'):
                     b = f.read(1)
 
                 # Past them, now to find the type of this particular chunk
-                if b == '\xe0':
+                if b == b'\xe0':
                     # Header, should be the first chunk in the file.
                     size = struct.unpack('!H', f.read(2))
-                    if f.read(5) == 'JFIF\0':
+                    if f.read(5) == b'JFIF\0':
                         # This Jpeg has JFIF metadata, which should include pixel dimensions
                         units, dpix, dpiy = struct.unpack('!xxbHH', f.read(7))
                         if units == 0:
@@ -5313,7 +5318,7 @@ def getImageInfo(filename):
                         # find the image size.
                         f.seek(size[0] - 7, 1)
                     b = f.read(1)
-                elif (b >= '\xc0') and (b <= '\xc3'):
+                elif (b >= b'\xc0') and (b <= b'\xc3'):
                     # Image info chunk, which should include size in pixels
                     height, width = struct.unpack('!xxxHH', f.read(7))
                     f.close()
@@ -5361,7 +5366,7 @@ def embedImage(filename):
             # probably truncated to 0 in most cases. This behavior is changed in Python3.
             line = r'\\%sblip\\picw%d\\pich%d\\picwgoal%d\\picscalex100\\pichgoal%d\\picscaley100\\bliptag%d{\\*\\blipuid%016x}' \
                     % (mytype, width, height, int(float(width) / float(dpix) * 1440.0), int(float(height) / float(dpiy) * 1440.0), RTFIMGID, RTFIMGID)
-            line = line + filein.read().encode('hex')
+            line = line + str(binascii.hexlify(filein.read()))
             filein.close()
             return line
         except:
