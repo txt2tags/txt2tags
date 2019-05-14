@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # txt2tags test-suite (http://txt2tags.org)
 # See also: lib.py, */run.py
