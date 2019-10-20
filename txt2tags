@@ -90,6 +90,8 @@
 # Two complete body scans will be *slow*, don't know if it worths.
 # One solution may be add the titles as postproc rules
 
+from __future__ import print_function
+
 
 ##############################################################################
 
