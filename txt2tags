@@ -2823,7 +2823,7 @@ class ConfigMaster:
         raw = self.get_target_raw()
         for target, key, value in raw:
             self.add(key, value)
-        Message(_("Added the following keys: %s") % ', '.join(self.parsed.keys()), 2)
+        Message(_("Added the following keys: %s") % ', '.join(sorted(self.parsed)), 2)
         return self.parsed.copy()
 
     def find_value(self, key='', target=''):
