@@ -13,20 +13,22 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, '..')
+sys.path.insert(0, "..")
 import lib
+
 del sys.path[0]
 
 # sux
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
+
 def run():
     # test all .t2t files found
     for infile in glob.glob("*.t2t"):
-        basename = infile.replace('.t2t', '')
-        outfile = basename + '.html'
-        print('  Testing %s ...' % basename, end=' ')
+        basename = infile.replace(".t2t", "")
+        outfile = basename + ".html"
+        print("  Testing %s ..." % basename, end=" ")
         cmdline = lib.TXT2TAGS + [infile]
         output = lib.get_output(cmdline)
         if not output:
@@ -39,5 +41,6 @@ def run():
             continue
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print(lib.MSG_RUN_ALONE)

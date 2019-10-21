@@ -8,8 +8,9 @@
 
 import sys, os
 
-sys.path.insert(0, '..')
+sys.path.insert(0, "..")
 import lib
+
 del sys.path[0]
 
 # sux
@@ -18,15 +19,15 @@ lib.ERROR_FILES = []
 
 # text patterns to compose source files
 txt = {
-  'e': '',                                           # Empty line
-  '1': 'Header 1',                                   # Header line 1
-  '2': 'Header 2',                                   # Header line 2
-  '3': 'Header 3',                                   # Header line 3
-  'c': '% comment',                                  # Comment line
-  'k': '%%%\ncomment\n%%%',                          # Comment block
-  'b': 'Text.',                                      # Body line
-  'f': '%!encoding: enc',                            # Config line
-  'm': '%%date(!)%%mtime(!)%%infile(!)%%outfile(!)'  # Macros
+    "e": "",  # Empty line
+    "1": "Header 1",  # Header line 1
+    "2": "Header 2",  # Header line 2
+    "3": "Header 3",  # Header line 3
+    "c": "% comment",  # Comment line
+    "k": "%%%\ncomment\n%%%",  # Comment block
+    "b": "Text.",  # Body line
+    "f": "%!encoding: enc",  # Config line
+    "m": "%%date(!)%%mtime(!)%%infile(!)%%outfile(!)",  # Macros
 }
 
 # the registered tests
@@ -41,17 +42,18 @@ ekb   123kb ek     123k   ekkkb
 m     mm    mmm    1mm    12m
 """
 
+
 def run():
     for testid in tests.split():
-        infile  = testid + '.t2t'
-        outfile = testid + '.html'
-        cmdline = ['-t html --css-sugar -C test.conf', infile]
+        infile = testid + ".t2t"
+        outfile = testid + ".html"
+        cmdline = ["-t html --css-sugar -C test.conf", infile]
         if lib.initTest(testid, infile, outfile):
             # compose source file contents
             infile_txt = []
             for letter in testid:
                 infile_txt.append(txt[letter])
-            infile_txt = '\n'.join(infile_txt)
+            infile_txt = "\n".join(infile_txt)
             # create the source file
             lib.WriteFile(infile, infile_txt)
             # convert and check results
@@ -59,4 +61,3 @@ def run():
             # remove the trash
             os.remove(infile)
     return lib.OK, lib.FAILED, lib.ERROR_FILES
-

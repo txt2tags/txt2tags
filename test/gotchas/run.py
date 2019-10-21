@@ -5,24 +5,26 @@
 
 import os, sys, re, glob
 
-sys.path.insert(0, '..')
+sys.path.insert(0, "..")
 import lib
+
 del sys.path[0]
 
 # sux
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
+
 def run():
     # test all OK files found
     for outfile in glob.glob("ok/*"):
-        basename = re.sub('\..*?$', '', outfile.replace('ok/', ''))
-        target = re.sub('.*\.', '', outfile)
+        basename = re.sub("\..*?$", "", outfile.replace("ok/", ""))
+        target = re.sub(".*\.", "", outfile)
         infile = basename + ".t2t"
-        outfile = outfile.replace('ok/', '')
+        outfile = outfile.replace("ok/", "")
         if lib.initTest(basename, infile, outfile):
-            cmdline = ['-H']
-            cmdline.extend(['-t', target])
+            cmdline = ["-H"]
+            cmdline.extend(["-t", target])
             cmdline.append(infile)
             lib.test(cmdline, outfile)
     # clean up

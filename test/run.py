@@ -29,14 +29,14 @@ os.chdir(DIR)
 PYTHON_TEST_MODULES = []
 BASH_TEST_MODULES = []
 for path in sorted(os.listdir(DIR)):
-    if path.startswith('__') or not os.path.isdir(path):
+    if path.startswith("__") or not os.path.isdir(path):
         continue
-    if os.path.exists(os.path.join(path, 'run.py')):
+    if os.path.exists(os.path.join(path, "run.py")):
         PYTHON_TEST_MODULES.append(path)
-    elif os.path.exists(os.path.join(path, 'run.sh')):
+    elif os.path.exists(os.path.join(path, "run.sh")):
         BASH_TEST_MODULES.append(path)
     else:
-        sys.exit('test module %s contains neither run.py nor run.sh' % path)
+        sys.exit("test module %s contains neither run.py nor run.sh" % path)
 
 TOTAL_OK = TOTAL_FAILED = 0
 ERRORS = []
@@ -48,16 +48,16 @@ if len(sys.argv) > 1:
 # Show which version is being tested
 print("Testing txt2tags version", lib.get_output(lib.TXT2TAGS + ["-V"]))
 print()
-print('Base commands used for all tests:')
+print("Base commands used for all tests:")
 print(lib.TXT2TAGS)
 print()
 
 for module in PYTHON_TEST_MODULES:
     os.chdir(DIR)
 
-    print('Entering module', module)
+    print("Entering module", module)
     if not os.path.isdir(module):
-        sys.exit('ERROR: Invalid module %s' % module)
+        sys.exit("ERROR: Invalid module %s" % module)
 
     # load test module
     sys.path.insert(0, module)
@@ -75,7 +75,7 @@ for module in PYTHON_TEST_MODULES:
     # cleanup
     del sys.path[0]
     del run
-    del sys.modules['run']
+    del sys.modules["run"]
 
 # show report at the end
 if TOTAL_FAILED:
@@ -88,11 +88,11 @@ print("Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats))
 if ERRORS:
     print()
     print("Check out the files with errors:")
-    print('\n'.join(ERRORS))
+    print("\n".join(ERRORS))
     sys.exit(1)
 
 if BASH_TEST_MODULES:
     print()
     print("Don't forget to run the extra tests:")
     for module in BASH_TEST_MODULES:
-        print('%s/run.sh' % module)
+        print("%s/run.sh" % module)
