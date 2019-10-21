@@ -1,3 +1,16 @@
+# Version 3.0 (2019-10-21)
+
+ * Convert changelog file to Markdown (Jendrik Seipp).
+ * Add travis-ci config file (Jendrik Seipp).
+ * Add tox.ini file for testing multiple Python versions (Jendrik Seipp).
+ * Reformat test suite with black (Jendrik Seipp).
+ * Support running test suite under Python 3 (Jendrik Seipp).
+ * Fix and refactor tests (Jendrik Seipp).
+ * Add support for SVG images (Jendrik Seipp).
+ * Don't escape underscores in tagged and raw LaTeX text (Jendrik Seipp).
+ * Support Python 3 (Jendrik Seipp).
+ * Use spaces instead of tabs (Jendrik Seipp).
+
 # Version 2.6 (2010-11-05)
 
  * New target: art (ASCII Art). (Florent Gallaire)
