@@ -42,24 +42,23 @@ m     mm    mmm    1mm    12m
 """
 
 def run():
-	for testid in tests.split():
-		infile  = testid + '.t2t'
-		outfile = testid + '.html'
-		cmdline = ['-t html --css-sugar -C test.conf', infile]
-		if lib.initTest(testid, infile, outfile):
-			# compose source file contents
-			infile_txt = []
-			for letter in testid:
-				infile_txt.append(txt[letter])
-			infile_txt = '\n'.join(infile_txt)
-			# create the source file
-			lib.WriteFile(infile, infile_txt)
-			# convert and check results
-			lib.convert(cmdline)
-			lib.diff(outfile)
-			# remove the trash
-			os.remove(infile)
-	return lib.OK, lib.FAILED, lib.ERROR_FILES
+    for testid in tests.split():
+        infile  = testid + '.t2t'
+        outfile = testid + '.html'
+        cmdline = ['-t html --css-sugar -C test.conf', infile]
+        if lib.initTest(testid, infile, outfile):
+            # compose source file contents
+            infile_txt = []
+            for letter in testid:
+                infile_txt.append(txt[letter])
+            infile_txt = '\n'.join(infile_txt)
+            # create the source file
+            lib.WriteFile(infile, infile_txt)
+            # convert and check results
+            lib.test(cmdline, outfile)
+            # remove the trash
+            os.remove(infile)
+    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-	print lib.MSG_RUN_ALONE
+    print lib.MSG_RUN_ALONE

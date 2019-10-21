@@ -614,37 +614,38 @@ tests = [
 ]
 
 def run():
-	for test in tests:
-		infile  = test['name'] + '.t2t'
-		outfile = test['name'] + '.' + (test.get('target') or 'out')
-		extra   = test.get('extra') or []
-		cmdline = test['cmdline']
-		if not 'noinfile' in extra:
-			cmdline = test['cmdline'] + [infile]
-		if lib.initTest(test['name'], infile, outfile):
-			# create the extra files (if needed for this test)
-			if 'config' in extra:
-				lib.WriteFile(lib.CONFIG_FILE, CONFIG_FILE_TXT)
-			if 'css' in extra:
-				lib.WriteFile(lib.CSS_FILE, CSS_FILE_TXT)
-			# may I add the -t target automatically?
-			if not 'notarget' in extra:
-				cmdline = ['-t', test['target']] + cmdline
-			# may I redirect the output to a file?
-			if test.get('redir'):
-				cmdline = cmdline + test['redir']
-			# always catch the error output
-			cmdline = cmdline + ['2>&1']
-			# create the source file
-			lib.WriteFile(infile, test['content'])
-			# convert and check results
-			lib.convert(cmdline)
-			lib.diff(outfile)
-			# remove the trash
-			os.remove(infile)
-			if os.path.isfile(lib.CSS_FILE): os.remove(lib.CSS_FILE)
-			if os.path.isfile(lib.CONFIG_FILE): os.remove(lib.CONFIG_FILE)
-	return lib.OK, lib.FAILED, lib.ERROR_FILES
+    for test in tests:
+        infile  = test['name'] + '.t2t'
+        outfile = test['name'] + '.' + (test.get('target') or 'out')
+        extra   = test.get('extra') or []
+        cmdline = test['cmdline']
+        if not 'noinfile' in extra:
+            cmdline = test['cmdline'] + [infile]
+        if lib.initTest(test['name'], infile, outfile):
+            # create the extra files (if needed for this test)
+            if 'config' in extra:
+                lib.WriteFile(lib.CONFIG_FILE, CONFIG_FILE_TXT)
+            if 'css' in extra:
+                lib.WriteFile(lib.CSS_FILE, CSS_FILE_TXT)
+            # may I add the -t target automatically?
+            if not 'notarget' in extra:
+                cmdline = ['-t', test['target']] + cmdline
+            # may I redirect the output to a file?
+            if test.get('redir'):
+                cmdline.extend(test['redir'])
+            # always catch the error output
+            cmdline.append('2>&1')
+            # create the source file
+            lib.WriteFile(infile, test['content'])
+            # convert and check results
+            lib.test(cmdline, outfile)
+            # remove the trash
+            os.remove(infile)
+            if os.path.isfile(lib.CSS_FILE):
+                os.remove(lib.CSS_FILE)
+            if os.path.isfile(lib.CONFIG_FILE):
+                os.remove(lib.CONFIG_FILE)
+    return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-	print lib.MSG_RUN_ALONE
+    print lib.MSG_RUN_ALONE
