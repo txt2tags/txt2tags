@@ -6,6 +6,8 @@
 # In older releases they dump an ugly Error Traceback.
 #
 
+from __future__ import print_function
+
 import glob
 import os
 import subprocess
@@ -24,18 +26,18 @@ def run():
     for infile in glob.glob("*.t2t"):
         basename = infile.replace('.t2t', '')
         outfile = basename + '.html'
-        print '  Testing %s ...' % basename,
+        print('  Testing %s ...' % basename, end=' ')
         cmdline = lib.TXT2TAGS + [infile]
         output = lib.get_output(cmdline)
         if not output:
-            print "OK"
+            print("OK")
             lib.OK = lib.OK + 1
             os.remove(outfile)
         else:
-            print "FAILED"
+            print("FAILED")
             lib.FAILED = lib.FAILED + 1
             continue
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    print(lib.MSG_RUN_ALONE)

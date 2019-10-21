@@ -115,7 +115,7 @@ def run():
 				cmdline = test['cmdline']
 			else:
 				name = test['name'].replace('C', 'config-file')
-				cmdline = map(lambda x: x.replace('-C', '--config-file'), test['cmdline'])
+				cmdline = [x.replace('-C', '--config-file') for x in test['cmdline']]
 			
 			outfile = name + '.html'
 			
@@ -135,5 +135,3 @@ def run():
 	
 	return lib.OK, lib.FAILED, lib.ERROR_FILES
 
-if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE

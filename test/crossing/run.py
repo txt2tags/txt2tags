@@ -3,6 +3,8 @@
 # See also: ../run.py ../lib.py
 #
 
+from __future__ import print_function
+
 import os, sys, glob
 
 sys.path.insert(0, '..')
@@ -58,7 +60,7 @@ def run():
         lib.test(cmdline, outfile)
 
     # using smart filters, same files generate more than one output
-    for alias in ALIASES.keys():
+    for alias in ALIASES:
         infile = ALIASES[alias] + '.t2t'
         outfile = alias + '.html'
         if lib.initTest(alias, infile, outfile):
@@ -85,4 +87,4 @@ def run():
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
 if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
+    print(lib.MSG_RUN_ALONE)

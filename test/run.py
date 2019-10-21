@@ -15,6 +15,8 @@
 # TIP: To quickly check the errors, run:
 #      for f in */error/*; do diff -u ${f/error/ok} $f; done
 
+from __future__ import print_function
+
 import os.path
 import subprocess
 import sys
@@ -44,16 +46,16 @@ if len(sys.argv) > 1:
     BASH_TEST_MODULES = sorted(set(sys.argv[1:]) & set(BASH_TEST_MODULES))
 
 # Show which version is being tested
-print "Testing txt2tags version", lib.get_output(lib.TXT2TAGS + ["-V"])
-print
-print 'Base commands used for all tests:'
-print lib.TXT2TAGS
-print
+print("Testing txt2tags version", lib.get_output(lib.TXT2TAGS + ["-V"]))
+print()
+print('Base commands used for all tests:')
+print(lib.TXT2TAGS)
+print()
 
 for module in PYTHON_TEST_MODULES:
     os.chdir(DIR)
 
-    print 'Entering module', module
+    print('Entering module', module)
     if not os.path.isdir(module):
         sys.exit('ERROR: Invalid module %s' % module)
 
@@ -80,17 +82,17 @@ if TOTAL_FAILED:
     stats = "%d ok / %d failed" % (TOTAL_OK, TOTAL_FAILED)
 else:
     stats = "100% ok"
-print
-print "Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats)
+print()
+print("Totals: %d tests (%s)" % (TOTAL_OK + TOTAL_FAILED, stats))
 
 if ERRORS:
-    print
-    print "Check out the files with errors:"
-    print '\n'.join(ERRORS)
+    print()
+    print("Check out the files with errors:")
+    print('\n'.join(ERRORS))
     sys.exit(1)
 
 if BASH_TEST_MODULES:
-    print
-    print "Don't forget to run the extra tests:"
+    print()
+    print("Don't forget to run the extra tests:")
     for module in BASH_TEST_MODULES:
-        print '%s/run.sh' % module
+        print('%s/run.sh' % module)

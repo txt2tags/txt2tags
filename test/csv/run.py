@@ -40,5 +40,3 @@ def run():
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
 
-if __name__ == '__main__':
-    print lib.MSG_RUN_ALONE
