@@ -12,28 +12,28 @@ HTML: The full version, used in the txt2tags website. This file contents
       are included by another web/changelog.t2t file, who have some
       filters to improve the formatting. That's why you don't see html
       filters here.
-%%% 
+%%%
 
-%!target: txt
+%!target: md
 %!encoding: utf-8
 
 % Output file name contains no .txt extension
-%!options(txt): -o ChangeLog
+%!options(md): -o CHANGELOG.md
 
 % Stars as list bullets are nicer
-%!postproc(txt): '^-'	'*'
+%%%!postproc: '^-'	'*'
 
 % Remove "thank you" messages
-%!preproc(txt): ' <thanks .*'	''
+%!preproc: '<thanks (.*)>'	(\1)
 
 % Remove revision [r123] and issue [#123] numbers
-%!preproc(txt): ' ?\[r\d+\]'	''
-%!preproc(txt): ' ?\[#\d+\]'	''
+%!preproc: ' ?\[r\d+\]'	''
+%!preproc: ' ?\[#\d+\]'	''
 
 % Remove links
-%!preproc(txt): '\[(How to add.*?) http://.*?new-target.html]'	\1
-%!preproc(txt): '\[(Dmitri Popov) http://.*?]'			\1
-%!preproc(txt): '\[(Rubens Queiroz de Almeida) http://.*?]'	\1
+%!preproc: '\[(How to add.*?) http://.*?new-target.html]'	\1
+%!preproc: '\[(Dmitri Popov) http://.*?]'			\1
+%!preproc: '\[(Rubens Queiroz de Almeida) http://.*?]'	\1
 
 % ----------------------------------------------------------------------------
 
@@ -90,7 +90,7 @@ HTML: The full version, used in the txt2tags website. This file contents
 - i18n: Manual Pages converted to UTF-8. [r208][r287][r288][r361][r362]
 - i18n: All .po files converted to UTF-8. [r124]
 - i18n: Added po/tools folder and po/stats.txt file. [r123][r234]
-- i18n: Added Basque translations. <thanks Ales Zabala Alava> [r83]
+- i18n: Added Basque translations. <thanks Ales Zabala Alava> [r83][r662]
 - i18n: Added Ukrainian translations. <thanks Bunyk Taras> [r182]
 - Docs: the Manual Page was rewritten: now a reference not a guide. [r250]
 - Docs: Markup Demo, Sample File, Manual Page translated to Basque. <thanks Ales Zabala Alava> [r35][r36][r84]
@@ -110,14 +110,14 @@ HTML: The full version, used in the txt2tags website. This file contents
 - No more several blank lines at the end of the document. [r204]
 - Raw and tagged blocks are allowed inside paragraphs, they don't close it. <thanks Kruzslicz Ferenc> [r15]
 - If called with no arguments, don't load the Gui. Must use ``--gui`` to load it. [r118]
-- The ":" char is now allowed in the query component of a URI (link). [r184][#9]
+- The ":" char is now allowed in the query component of a URI (link). <thanks sphaira, Chris lavabit> [r184][#9]
 - Added TOC formatting example in samples/module/module-body.py file. <thanks Jendrik Seipp> [r75]
 - Test-suite: 256 tests. New modules: art, csv, include, includeconf, sample. [r142][r146][r195][r202][r224]
-- Improved some error messages. <thanks Leonardo Rosa> [r119][#6]
+- Improved some error messages. <thanks Leo Rosa> [r119][#6]
 - Raise error when using ``(target)`` in ``%!target`` and ``%!includeconf``. [r221][#48]
 - The program code is now cleaner/safer with the help of ``pychecker``. [r132][r133][r134][r135][r136][r137][r138][r140]
 - Removed string module import: using ``foo.upper()`` instead ``string.upper(foo)``. [r11]
-- Bugfix: Now ``-C``,``--config-file`` respects ``(target)`` in the config file settings. [r229][#23]
+- Bugfix: Now ``-C``,``--config-file`` respects ``(target)`` in the config file settings. <thanks Emmanuel Godard> [r229][#23]
 - Bugfix: Now inline verbatim, raw and tagged marks are really mutually
   exclusive. No marks are interpreted inside them. [r54]
 
@@ -243,7 +243,7 @@ HTML: The full version, used in the txt2tags website. This file contents
   HTML/XHTML headers
 - New T2TCONFIG environment variable to specify RC file location
 - The strong bar (===) now is mapped to a page break in paged targets <thanks Sandor Markon @ .com for requesting>
-- tex: Now links are blue and clickable on PDF, using 'hyperref' package <thanks Rahul Bhargava @ ? for the patch>
+- tex: Now links are blue and clickable on PDF, using 'hyperref' package <thanks Rahul Bhargava for the patch>
 
 - Debug messages revamped: categorized with IDs, background color setting
 - The ``--help`` message was improved with metavars (i.e. ``--target=TYPE``)
