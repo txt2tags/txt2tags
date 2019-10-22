@@ -1,6 +1,7 @@
 # Version 3.1 (unreleased)
 
  * Lout: fix email markup (Martin Michel, backported by Jendrik Seipp).
+ * Man: fix closing lists (Matteo Cypriani, backported by Jendrik Seipp).
 
 # Version 3.0 (2019-10-21)
 
