@@ -134,13 +134,10 @@ else:
 # FLAGS and OPTIONS are configs that affect the converted document.
 # They usually have also a --no-<option> to turn them OFF.
 #
-# ACTIONS are needed because when doing multiple input files, strange
-# behavior would be found, as use command line interface for the
+# ACTIONS are needed because when handling multiple input files, strange
+# behavior may occur, such as use command line interface for the
 # first file and gui for the second. There is no --no-<action>.
-# --version and --help inside %!options are also odd
-#
-TARGETS  = 'html xhtml sgml dbk tex lout man mgp wiki gwiki doku pmw moin pm6 txt art adoc creole'.split()
-TARGETS.sort()
+# Options --version and --help inside %!options are odd.
 
 FLAGS    = {'headers'    :1 , 'enum-title' :0 , 'mask-email' :0 ,
             'toc-only'   :0 , 'toc'        :0 , 'rc'         :1 ,
@@ -183,6 +180,8 @@ TARGET_NAMES = {
   'adoc'   : _('AsciiDoc document'),
   'creole' : _('Creole 1.0 document')
 }
+
+TARGETS = sorted(TARGET_NAMES)
 
 DEBUG = 0     # do not edit here, please use --debug
 VERBOSE = 0   # do not edit here, please use -v, -vv or -vvv
