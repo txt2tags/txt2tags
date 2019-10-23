@@ -45,7 +45,7 @@ Simple example for command line usage:
    `txt2tags --target html --no-headers file.t2t`
 
 3. The result is:
-   
+
    ```
    <H1>Hello</H1>
    <P>
@@ -56,13 +56,18 @@ Simple example for command line usage:
 
 # History
 
-Aurelio Jargas started the development of Txt2tags in 2001. The program saw several releases from 2001 to 2010, the last of which was version 2.6. Afterwards, Aurelio became less involved in the development. Still, many new features were added in the main repository (https://github.com/txt2tags/txt2tags), but they were never officially released. In my opinion, many of the new features are only useful for a very small set of users. The extra code adds bloat to the program and makes it hard to maintain the code. Unfortunately, these concerns are not shared by the whole Txt2tags development team. Therefore, I decided to branch off version 2.6 with the following goals
+Aurelio Jargas started the development of Txt2tags in 2001. The program
+saw several releases from 2001 to 2010, the last of which was version
+2.6. Afterwards, Aurelio became less involved in the development. Still,
+many new features were added in the main repository
+(https://github.com/txt2tags/txt2tags), but they were never officially
+released. In my opinion, many of the new features are only useful for a
+very small set of users. The extra code adds bloat to the program and
+makes it hard to maintain the code. Unfortunately, these concerns are
+not shared by the whole Txt2tags development team. Therefore, I decided
+to branch off version 2.6 and maintain a simpler txt2tags version that
+works on Python 3. The file [TODO.md](TODO.md) lists the goals for the
+project.
 
- * Support Python 3 (done)
- * Clean up the code code (in progress)
- * Make the code faster (not started)
- * Remove seldom-used features (not started)
- * Fix test suite (done)
- * Reintegrate bugfixes and useful features from main Txt2tags repo (not started)
-
- If you'd like to help out with any of these tasks, please get in touch. Pull requests are very welcome!
+If you'd like to help out with any of the tasks, please get in touch.
+Pull requests are very welcome!
