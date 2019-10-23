@@ -6,6 +6,7 @@
  * man: fix extra line (Nicolas Delvaux, backported by Jendrik Seipp).
  * Improve comments inside doHeader() (Aurelio Jargas, backported by Jendrik Seipp).
  * Don't list targets manually (Aurelio Jargas, backported by Jendrik Seipp).
+ * Canonicalize paths before checking whether input and output files match (Jason Seeley, backported by Jendrik Seipp).
 
 # Version 3.0 (2019-10-21)
 
