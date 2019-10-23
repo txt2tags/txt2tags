@@ -4,6 +4,7 @@
  * man: fix closing lists (Matteo Cypriani, backported by Jendrik Seipp).
  * Improve table regex (Aurelio Jargas, backported by Jendrik Seipp).
  * man: fix extra line (Nicolas Delvaux, backported by Jendrik Seipp).
+ * Improve comments inside doHeader() (Aurelio Jargas, backported by Jendrik Seipp).
 
 # Version 3.0 (2019-10-21)
 
