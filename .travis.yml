@@ -13,4 +13,4 @@ install:
   - pip install tox
 script:
   - python --version
-  - tox -e py
+  - tox -e py,style
