@@ -1,6 +1,7 @@
 # Version 3.1 (unreleased)
 
  * Check format with black (Jendrik Seipp)
+ * Correctly compute title length under Python 3 for txt target (Jendrik Seipp).
  * lout: fix email markup (Martin Michel, backported by Jendrik Seipp).
  * man: fix closing lists (Matteo Cypriani, backported by Jendrik Seipp).
  * Improve table regex (Aurelio Jargas, backported by Jendrik Seipp).

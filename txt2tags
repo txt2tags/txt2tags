@@ -3419,11 +3419,9 @@ class TitleMaster:
                 ret.append("")  # blank line before
             ret.append(tagged)
             # Get the right letter count for UTF
-            if CONF["encoding"].lower() == "utf-8":
-                i = len(full_title.decode("utf-8"))
-            else:
-                i = len(full_title)
-            ret.append(regex["x"].sub("=" * i, self.tag))
+            if isinstance(full_title, bytes):
+                full_title = full_title.decode("utf-8")
+            ret.append(regex["x"].sub("=" * len(full_title), self.tag))
         elif TARGET == "art" and self.level == 1:
             if CONF["slides"]:
                 AA_TITLE = tagged
