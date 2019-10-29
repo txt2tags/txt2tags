@@ -7,6 +7,8 @@
 # Tip: regenerate affected samples:
 # cd ../../ && for t in TARGETS; do txt2tags -t $t samples/sample.t2t; done
 
+cd "$(dirname "$0")"
+
 errors=0
 svn_root='../..'
 txt2tags=$svn_root/txt2tags
@@ -21,6 +23,10 @@ filter() {
         s,[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9],DATE,
         # lout escapes / with "/" in headers
         s,[0-9][0-9]"/"[0-9][0-9]"/"[0-9][0-9][0-9][0-9],DATE,
+
+        # remove pm6 control character
+        s/\xc2\x95/control/
+        s/\x95/control/
 
         # avoids macro expansion differences
         s/today is [0-9]\{8\}/today is TODAY/
