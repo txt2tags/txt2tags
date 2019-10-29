@@ -1,6 +1,7 @@
 # Version 3.2 (unreleased)
 
  * Rename txt2tags to txt2tags.py (Jendrik Seipp).
+ * Add setup.py file (Jendrik Seipp).
 
 # Version 3.1 (2019-10-29)
 
