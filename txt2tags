@@ -2046,7 +2046,7 @@ def aa_line(char, length):
 
 def aa_box(txt, length):
     len_txt = len(txt)
-    nspace = (length - len_txt - 4) / 2
+    nspace = (length - len_txt - 4) // 2
     line_box = " " * nspace + AA["corner"] + AA["border"] * (len_txt + 2) + AA["corner"]
     # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
     #                           +-------------------------------+
@@ -4646,7 +4646,7 @@ def doHeader(headers, config):
             return []
         if config["slides"]:
             x = config["height"] - 3 - (n_h * 3)
-            n = x / (n_h + 1)
+            n = x // (n_h + 1)
             end = x % (n_h + 1)
             template = aa_header(head_data, config["width"], n, end)
         else:
