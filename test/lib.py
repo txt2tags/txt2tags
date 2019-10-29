@@ -17,7 +17,7 @@ PYTHON = sys.executable
 print("Testing txt2tags on Python", platform.python_version())
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
-TXT2TAGS = "../txt2tags"
+TXT2TAGS = "../txt2tags.py"
 
 CONFIG_FILE = "config"
 CSS_FILE = "css"

@@ -7,7 +7,7 @@ cd "$(dirname "$0")/../../"
 
 cd samples/module/
 
-ln -sf ../../txt2tags txt2tags.py
+ln -sf ../../txt2tags.py txt2tags.py
 
 python module-body.py > /dev/null
 python module-full.py > /dev/null
