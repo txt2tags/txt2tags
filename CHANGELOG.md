@@ -1,4 +1,4 @@
-# Version 3.1 (unreleased)
+# Version 3.1 (2019-10-29)
 
  * Check code format with black (Jendrik Seipp).
  * Correctly compute title length under Python 3 for txt target (Jendrik Seipp).
