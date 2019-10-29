@@ -108,7 +108,7 @@ except ImportError:
 my_url = "http://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
-__version__ = "3.0"
+__version__ = "3.1"
 
 # i18n - just use if available
 if USE_I18N:
