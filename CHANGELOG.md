@@ -1,7 +1,8 @@
 # Version 3.1 (unreleased)
 
- * Check format with black (Jendrik Seipp).
+ * Check code format with black (Jendrik Seipp).
  * Correctly compute title length under Python 3 for txt target (Jendrik Seipp).
+ * Update and continuously check Python sample scripts under samples/module (Jendrik Seipp).
  * Check that sample file is converted to all targets correctly in CI (Jendrik Seipp).
  * lout: fix email markup (Martin Michel, backported by Jendrik Seipp).
  * man: fix closing lists (Matteo Cypriani, backported by Jendrik Seipp).
