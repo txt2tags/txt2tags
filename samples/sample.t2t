@@ -166,7 +166,7 @@ Because things were too simple.
 
 The image mark is as simple as it can be: ``[filename]``.
 
-                      [img/photo.jpg]  
+                      [img/photo.jpg]
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
