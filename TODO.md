@@ -1,4 +1,3 @@
-* Run test/sample/run.sh in CI
 * Upload txt2tags to PyPI
 * Support running txt2tags with pipx
 * Rename txt2tags file to txt2tags.py
