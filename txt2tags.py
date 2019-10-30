@@ -224,12 +224,6 @@ regex = {}
 TAGS = {}
 rules = {}
 
-# Gui globals
-askopenfilename = None
-showinfo = None
-showwarning = None
-showerror = None
-
 lang = "english"
 TARGET = ""
 
@@ -2051,37 +2045,11 @@ def aa_slide(title, length):
     return res
 
 
-def aa_table(table):
-    data = [row[2:-2].split(" | ") for row in table]
-    n = max([len(line) for line in data])
-    data = [line + (n - len(line)) * [""] for line in data]
-    tab = []
-    for i in range(n):
-        tab.append([line[i] for line in data])
-    length = [max([len(el) for el in line]) for line in tab]
-    res = "+"
-    for i in range(n):
-        res = res + (length[i] + 2) * "-" + "+"
-    ret = []
-    for line in data:
-        aff = "|"
-        ret.append(res)
-        for j, el in enumerate(line):
-            aff = aff + " " + el + (length[j] - len(el) + 1) * " " + "|"
-        ret.append(aff)
-    ret.append(res)
-    return ret
-
-
 ##############################################################################
 
 
 class error(Exception):
     pass
-
-
-def echo(msg):  # for quick debug
-    print("\033[32;1m%s\033[m" % msg)
 
 
 def Quit(msg=""):
@@ -2172,11 +2140,6 @@ def Savefile(file_path, lines):
         Error(_("Cannot open file for writing:") + " " + file_path)
 
 
-def showdic(dic):
-    for k in dic.keys():
-        print("%15s : %s" % (k, dic[k]))
-
-
 def dotted_spaces(txt=""):
     return txt.replace(" ", ".")
 
@@ -2238,12 +2201,6 @@ class CommandLine:
             format. See ConfigMaster class to the RAW format description.
             Optional 'ignore' and 'filter_' arguments are used to filter
             in or out specified keys.
-
-    compose_cmdline(dict) -> [Command line]
-            Compose a command line list from an already parsed config
-            dictionary, generated from RAW by ConfigMaster(). Use
-            this to compose an optimal command line for a group of
-            options.
 
     The get_raw_config() calls parse(), so the typical use of this
     class is:
@@ -2372,60 +2329,6 @@ class CommandLine:
         ret.append(["all", "realcmdline", cmdline])
 
         return ret
-
-    def compose_cmdline(self, conf={}, no_check=0):
-        "compose a full (and diet) command line from CONF dict"
-        if not conf:
-            return []
-        args = []
-        dft_options = OPTIONS.copy()
-        cfg = conf.copy()
-        valid_opts = self.all_options + self.all_flags
-        use_short = {"no-headers": "H", "enum-title": "n"}
-        # Remove useless options
-        if not no_check and cfg.get("toc-only"):
-            if "no-headers" in cfg:
-                del cfg["no-headers"]
-            if "outfile" in cfg:
-                del cfg["outfile"]  # defaults to STDOUT
-            if cfg.get("target") == "txt":
-                del cfg["target"]  # already default
-            args.append("--toc-only")  # must be the first
-            del cfg["toc-only"]
-        # Add target type
-        if "target" in cfg:
-            args.append("-t " + cfg["target"])
-            del cfg["target"]
-        # Add other options
-        for key in cfg.keys():
-            if key not in valid_opts:
-                continue  # may be a %!setting
-            if key == "outfile" or key == "infile":
-                continue  # later
-            val = cfg[key]
-            if not val:
-                continue
-            # Default values are useless on cmdline
-            if val == dft_options.get(key):
-                continue
-            # -short format
-            if key in use_short.keys():
-                args.append("-" + use_short[key])
-                continue
-            # --long format
-            if key in self.all_flags:  # add --option
-                args.append("--" + key)
-            else:  # add --option=value
-                args.append("--%s=%s" % (key, val))
-        # The outfile using -o
-        if "outfile" in cfg and cfg["outfile"] != dft_options.get("outfile"):
-            args.append("-o " + cfg["outfile"])
-        # Place input file(s) always at the end
-        if "infile" in cfg:
-            args.append(" ".join(cfg["infile"]))
-        # Return as a nice list
-        Debug("Diet command line: %s" % " ".join(args), 1)
-        return args
 
 
 ##############################################################################
@@ -3187,7 +3090,6 @@ class TitleMaster:
         self.tag_hold = []
         self.last_level = 0
         self.count_id = ""
-        self.user_labels = {}
         self.anchor_count = 0
         self.anchor_prefix = "toc"
 
@@ -4206,7 +4108,7 @@ class BlockMaster:
             # Tag it
             item[0] = self._last_escapes(item[0])
             if name == "deflist":
-                z, term, rest = item[0].split(SEPARATOR, 2)
+                _, term, rest = item[0].split(SEPARATOR, 2)
                 item[0] = rest
                 if not item[0]:
                     del item[0]  # to avoid <p>
@@ -4501,7 +4403,7 @@ def toc_tagger(toc, config):
         fakeconf[
             "art-no-title"
         ] = 1  # needed for --toc and --slides together, avoids slide title before TOC
-        ret, foo = convert(toc, fakeconf)
+        ret, _ = convert(toc, fakeconf)
         set_global_config(config)  # restore config
     # Our TOC list is not needed, the target already knows how to do a TOC
     elif config["toc"] and TAGS["TOC"]:
