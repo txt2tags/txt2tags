@@ -1,3 +1,7 @@
+# Version 3.3 (unreleased)
+
+* Explain how to install txt2tags with pipx in README file (Jendrik Seipp).
+
 # Version 3.2 (2019-10-30)
 
  * Remove GUI (Jendrik Seipp).

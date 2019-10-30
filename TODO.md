@@ -1,5 +1,3 @@
-* Support running txt2tags with pipx
-* Document installation instructions
 * Clean up repo
 * Clean up the code
 * Make the code faster
