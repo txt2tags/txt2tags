@@ -1,2 +1,4 @@
 *.py[cod]
 .tox
+samples/module/txt2tags.py
+txt2tags.egg-info/
