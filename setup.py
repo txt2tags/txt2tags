@@ -25,6 +25,7 @@ setuptools.setup(
     version=find_version("txt2tags.py"),
     description="Convert between markup languages",
     long_description=open("README.md").read(),
+    long_description_content_type='text/markdown',
     keywords="markup",
     url="https://txt2tags.org",
     author="Aurelio Jargas",
