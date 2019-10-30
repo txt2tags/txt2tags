@@ -28,6 +28,19 @@ to the following formats:
 
 You can use it as a command line program or in a Python application.
 
+# Installation
+
+We recommend using [pipx](https://pipxproject.github.io/pipx/) to install and run txt2tags in an isolated environment without affecting any system packages:
+
+    python3 -m pip install --user pipx
+    python3 -m pipx ensurepath
+    pipx install txt2tags
+    txt2tags --help
+    
+Of course you can also use pip to install txt2tags globally or in a virtual environment:
+
+    pip install -U txt2tags
+
 # Usage
 
 Simple example for command line usage:
