@@ -1,5 +1,6 @@
 # Version 3.3 (unreleased)
 
+* Remove %!csv macro (Jendrik Seipp).
 * Explain how to install txt2tags with pipx in README file (Jendrik Seipp).
 
 # Version 3.2 (2019-10-30)

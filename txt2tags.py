@@ -98,12 +98,6 @@ HTML_LOWER = 0  # use lowercased HTML tags instead upper? (default is 0)
 # These are all the core Python modules used by txt2tags (KISS!)
 import re, os, sys, time, getopt
 
-# The CSV module is new in Python version 2.3
-try:
-    import csv
-except ImportError:
-    csv = None
-
 # Program information
 my_url = "http://txt2tags.org"
 my_name = "txt2tags"
@@ -2550,7 +2544,6 @@ class SourceDocument:
                 or rgx["macros"].match(buf[i])  # ... not comment or
                 or rgx["toc"].match(buf[i])  # ... %%macro
                 or cfg_parser(buf[i], "include")[1]  # ... %%toc
-                or cfg_parser(buf[i], "csv")[1]  # ... %!include  # ... %!csv
             ):
                 ref[2] = i
                 break
@@ -5471,52 +5464,6 @@ def convert(bodylines, config, firstlinenr=1):
                     # Remove %!include call
                     if CONF["dump-source"]:
                         dump_source.pop()
-
-                # This line is done, go to next
-                continue
-
-            # %!csv command
-            elif key == "csv":
-
-                if not csv:
-                    Error("Python module 'csv' not found, but needed for %!csv")
-
-                table = []
-                filename = val
-                reader = csv.reader(Readfile(filename))
-
-                # Convert each CSV line to a txt2tags' table line
-                # foo,bar,baz -> | foo | bar | baz |
-                try:
-                    for row in reader:
-                        table.append("| %s |" % " | ".join(row))
-                except csv.Error as e:
-                    Error("CSV: file %s: %s" % (filename, e))
-
-                # Parse and convert the new table
-                # Note: cell contents is raw, no t2t marks are parsed
-                if rules["tableable"]:
-                    ret.extend(BLOCK.blockin("table"))
-                    if table:
-                        BLOCK.tableparser.__init__(table[0])
-                        for row in table:
-                            tablerow = TableMaster().parse_row(row)
-                            BLOCK.tableparser.add_row(tablerow)
-
-                            # Very ugly, but necessary for escapes
-                            line = SEPARATOR.join(tablerow["cells"])
-                            BLOCK.holdadd(doEscape(target, line))
-                        ret.extend(BLOCK.blockout())
-
-                # Tables are mapped to verb when target is not table-aware
-                else:
-                    if target == "art" and table:
-                        table = aa_table(table)
-                    ret.extend(BLOCK.blockin("verb"))
-                    BLOCK.propset("mapped", "table")
-                    for row in table:
-                        BLOCK.holdadd(row)
-                    ret.extend(BLOCK.blockout())
 
                 # This line is done, go to next
                 continue
