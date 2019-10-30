@@ -1,5 +1,6 @@
 # Version 3.3 (unreleased)
 
+* Remove ASCII art target (Jendrik Seipp).
 * Remove %!csv macro (Jendrik Seipp).
 * Remove plugins and tools that now live in their own repositories (Jendrik Seipp).
 * Explain how to install txt2tags with pipx in README file (Jendrik Seipp).

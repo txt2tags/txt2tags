@@ -129,20 +129,6 @@ tests = [
         "extra": ["notarget", "noinfile"],
     },
     {
-        "name": "help",  # t2t --help
-        "content": "",
-        "cmdline": ["--help"],
-        "redir": ["> help.out"],
-        "extra": ["notarget", "noinfile"],
-    },
-    {
-        "name": "h",  # t2t -h
-        "content": "",
-        "cmdline": ["-h"],
-        "redir": ["> h.out"],
-        "extra": ["notarget", "noinfile"],
-    },
-    {
         "name": "verbose-1",  # t2t --verbose infile.t2t
         "target": "txt",
         "content": EMPTY_HEADER + SIMPLE_BODY,
@@ -701,13 +687,6 @@ tests = [
         "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
         "cmdline": ["-H -o- --dump-source --no-dump-source"],
         "redir": ["> no-dump-source.out"],
-        "extra": ["notarget"],
-    },
-    {
-        "name": "targets",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["--targets"],
-        "redir": ["> targets.out"],
         "extra": ["notarget"],
     },
     {

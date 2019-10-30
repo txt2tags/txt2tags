@@ -55,7 +55,6 @@ def run():
     outfile = basename + ".txt"
     if lib.initTest(basename, infile, outfile):
         cmdline = ["-t", "txt", "-i", infile]
-        cmdline.extend(["--width", "150"])  # to avoid wrapping
         lib.test(cmdline, outfile)
 
     # using smart filters, same files generate more than one output
@@ -75,7 +74,6 @@ def run():
     if lib.initTest(alias, infile, outfile):
         cmdline = addFilters(FILTERS.get(alias))
         cmdline.append("-H")
-        cmdline.extend(["--width", "150"])  # to avoid wrapping
         cmdline.extend(["-t", "txt", "-o", outfile, infile])
         lib.test(cmdline, outfile)
 

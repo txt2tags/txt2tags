@@ -7,7 +7,6 @@ Txt2tags is a document generator. It reads a text file with
 minimal markup such as `**bold**` and `//italic//` and converts it
 to the following formats:
 
- * ASCII Art
  * AsciiDoc
  * Creole 1.0
  * DocBook
@@ -36,7 +35,7 @@ We recommend using [pipx](https://pipxproject.github.io/pipx/) to install and ru
     python3 -m pipx ensurepath
     pipx install txt2tags
     txt2tags --help
-    
+
 Of course you can also use pip to install txt2tags globally or in a virtual environment:
 
     pip install -U txt2tags

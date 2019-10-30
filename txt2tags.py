@@ -156,9 +156,6 @@ OPTIONS = {
     "config-file": "",
     "split": 0,
     "lang": "",
-    "width": 0,
-    "height": 0,
-    "art-chars": "",
     "show-config-value": "",
 }
 ACTIONS = {
@@ -192,7 +189,6 @@ TARGET_NAMES = {
     "moin": _("MoinMoin page"),
     "pm6": _("PageMaker document"),
     "txt": _("Plain Text"),
-    "art": _("ASCII Art text"),
     "adoc": _("AsciiDoc document"),
     "creole": _("Creole 1.0 document"),
 }
@@ -204,16 +200,7 @@ VERBOSE = 0  # do not edit here, please use -v, -vv or -vvv
 QUIET = 0  # do not edit here, please use --quiet
 AUTOTOC = 1  # do not edit here, please use --no-toc or %%toc
 
-DFT_TEXT_WIDTH = 72  # do not edit here, please use --width
-DFT_SLIDE_WIDTH = 80  # do not edit here, please use --width
-DFT_SLIDE_HEIGHT = 25  # do not edit here, please use --height
-
-# ASCII Art config
-AA_KEYS = "corner border side bar1 bar2 level2 level3 level4 level5".split()
-AA_VALUES = '+-|-==-^"'  # do not edit here, please use --art-chars
-AA = dict(zip(AA_KEYS, AA_VALUES))
-AA_COUNT = 0
-AA_TITLE = ""
+DFT_TEXT_WIDTH = 72
 
 RC_RAW = []
 CMDLINE_RAW = []
@@ -260,11 +247,6 @@ USAGE = "\n".join(
         _("      --css-inside    insert CSS file contents inside HTML/XHTML headers"),
         _("  -H, --no-headers    suppress header and footer from the output"),
         _("      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"),
-        _(
-            "      --slides        format output as presentation slides (used by -t art)"
-        ),
-        _("      --width=N       set the output's width to N columns (used by -t art)"),
-        _("      --height=N      set the output's height to N rows (used by -t art)"),
         _("  -C, --config-file=F read configuration from file F"),
         _("  -q, --quiet         quiet mode, suppress all output (except errors)"),
         _("  -v, --verbose       print informative messages during conversion"),
@@ -305,9 +287,6 @@ USAGE = "\n".join(
 #  - use %% to represent a literal %
 #
 HEADER_TEMPLATE = {
-    "art": """
-Fake template to respect the general process.
-""",
     "txt": """\
 %(HEADER1)s
 %(HEADER2)s
@@ -623,23 +602,6 @@ def getTags(config):
     # TIP: ~A~, ~B~ and ~C~ are expanded to other tags parts
 
     alltags = {
-        "art": {
-            "title1": "\a",
-            "title2": "\a",
-            "title3": "\a",
-            "title4": "\a",
-            "title5": "\a",
-            "blockQuoteLine": "\t",
-            "listItemOpen": "- ",
-            "numlistItemOpen": "\a. ",
-            "bar1": aa_line(AA["bar1"], config["width"]),
-            "bar2": aa_line(AA["bar2"], config["width"]),
-            "url": "\a",
-            "urlMark": "\a (\a)",
-            "email": "\a",
-            "emailMark": "\a (\a)",
-            "img": "[\a]",
-        },
         "txt": {
             "title1": "  \a",
             "title2": "\t\a",
@@ -1501,9 +1463,6 @@ def getRules(config):
             "blanksaroundtitle": 1,
             "blanksaroundnumtitle": 1,
         },
-        "art": {
-            # TIP art inherits all TXT rules
-        },
         "html": {
             "indentverbblock": 1,
             "linkable": 1,
@@ -1844,11 +1803,6 @@ def getRules(config):
     if config["target"] == "xhtml":
         myrules = rules_bank["html"].copy()  # inheritance
         myrules.update(rules_bank["xhtml"])  # get XHTML specific
-    elif config["target"] == "art":
-        myrules = rules_bank["txt"].copy()  # inheritance
-        if config["slides"]:
-            myrules["blanksaroundtitle"] = 0
-            myrules["blanksaroundnumtitle"] = 0
     else:
         myrules = rules_bank[config["target"]].copy()
 
@@ -2004,48 +1958,6 @@ def getRegexes():
 
 
 ### END OF regex nightmares
-
-################# functions for the ASCII Art backend ########################
-
-
-def aa_line(char, length):
-    return char * length
-
-
-def aa_box(txt, length):
-    len_txt = len(txt)
-    nspace = (length - len_txt - 4) // 2
-    line_box = " " * nspace + AA["corner"] + AA["border"] * (len_txt + 2) + AA["corner"]
-    # <----- nspace " " -----> "+" <----- len_txt+2 "-" -----> "+"
-    #                           +-------------------------------+
-    #                           | all theeeeeeeeeeeeeeeeee text |
-    # <----- nspace " " -----> "| " <--------- txt ---------> " |"
-    line_txt = " " * nspace + AA["side"] + " " + txt + " " + AA["side"]
-    return [line_box, line_txt, line_box]
-
-
-def aa_header(header_data, length, n, end):
-    header = [aa_line(AA["bar2"], length)]
-    header.extend([""] * n)
-    for h in "HEADER1", "HEADER2", "HEADER3":
-        if header_data[h]:
-            header.extend(aa_box(header_data[h], length))
-            header.extend([""] * n)
-    header.extend([""] * end)
-    header.append(aa_line(AA["bar2"], length))
-    return header
-
-
-def aa_slide(title, length):
-    res = [aa_line(AA["bar2"], length)]
-    res.append("")
-    res.append(title.center(length))
-    res.append("")
-    res.append(aa_line(AA["bar2"], length))
-    return res
-
-
-##############################################################################
 
 
 class error(Exception):
@@ -2539,7 +2451,7 @@ class ConfigMaster:
         self.defaults = self._get_defaults()
         self.off = self._get_off()
         self.incremental = ["verbose"]
-        self.numeric = ["toc-level", "split", "width", "height"]
+        self.numeric = ["toc-level", "split"]
         self.multi = ["infile", "preproc", "postproc", "options", "style"]
 
     def _get_defaults(self):
@@ -2652,7 +2564,6 @@ class ConfigMaster:
 
     def sanity(self, config):
         "Basic config sanity checking"
-        global AA
         if not config:
             return {}
         target = config.get("target")
@@ -2702,24 +2613,6 @@ class ConfigMaster:
         # Check split level value
         if config["split"] not in (0, 1, 2):
             Error(_("Option --split must be 0, 1 or 2"))
-        # Slides needs width and height
-        if config["slides"] and target == "art":
-            if not config["width"]:
-                config["width"] = DFT_SLIDE_WIDTH
-            if not config["height"]:
-                config["height"] = DFT_SLIDE_HEIGHT
-        # ASCII Art needs a width
-        if target == "art" and not config["width"]:
-            config["width"] = DFT_TEXT_WIDTH
-        # Check/set user ASCII Art formatting characters
-        if config["art-chars"]:
-            if len(config["art-chars"]) != len(AA_VALUES):
-                Error(
-                    _("--art-chars: Expected %i chars, got %i")
-                    % (len(AA_VALUES), len(config["art-chars"]))
-                )
-            else:
-                AA = dict(zip(AA_KEYS, config["art-chars"]))
         # --toc-only is stronger than others
         if config["toc-only"]:
             config["headers"] = 0
@@ -3260,7 +3153,6 @@ class TitleMaster:
 
     def get(self):
         "Returns the tagged title as a list."
-        global AA_TITLE
         ret = []
 
         # Maybe some anchoring before?
@@ -3285,19 +3177,6 @@ class TitleMaster:
             if isinstance(full_title, bytes):
                 full_title = full_title.decode("utf-8")
             ret.append(regex["x"].sub("=" * len(full_title), self.tag))
-        elif TARGET == "art" and self.level == 1:
-            if CONF["slides"]:
-                AA_TITLE = tagged
-            else:
-                if BLOCK.count > 1:
-                    ret.append("")  # blank line before
-                ret.extend(aa_box(tagged, CONF["width"]))
-        elif TARGET == "art":
-            level = "level" + str(self.level)
-            if BLOCK.count > 1:
-                ret.append("")  # blank line before
-            ret.append(tagged)
-            ret.append(AA[level] * len(full_title))
         else:
             ret.append(tagged)
         return ret
@@ -3325,7 +3204,7 @@ class TitleMaster:
 
             # TOC will be plain text (no links)
             else:
-                if TARGET in ["txt", "man", "art"]:
+                if TARGET in ["txt", "man"]:
                     # For these, the list is not necessary, just dump the text
                     tocitem = '%s""%s""' % (indent, id_txt)
                 else:
@@ -3727,8 +3606,6 @@ class BlockMaster:
         return ret
 
     def blockout(self):
-        global AA_COUNT
-
         if not self.BLK:
             Error("No block to pop")
         blockname = self.BLK.pop()
@@ -3757,33 +3634,6 @@ class BlockMaster:
         if result:
             self.last = blockname
             Debug("BLOCK: %s" % result, 6)
-
-        # ASCII Art processing
-        if (
-            TARGET == "art"
-            and CONF["slides"]
-            and not CONF["toc-only"]
-            and not CONF.get("art-no-title")
-        ):
-            n = (CONF["height"] - 1) - (AA_COUNT % (CONF["height"] - 1) + 1)
-            if n < len(result) and not (
-                TITLE.level == 1 and blockname in ["title", "numtitle"]
-            ):
-                result = (
-                    ([""] * n)
-                    + [aa_line(AA["bar1"], CONF["width"])]
-                    + aa_slide(AA_TITLE, CONF["width"])
-                    + [""]
-                    + result
-                )
-            if blockname in ["title", "numtitle"] and TITLE.level == 1:
-                aa_title = aa_slide(AA_TITLE, CONF["width"]) + [""]
-                if AA_COUNT:
-                    aa_title = (
-                        ([""] * n) + [aa_line(AA["bar2"], CONF["width"])] + aa_title
-                    )
-                result = aa_title + result
-            AA_COUNT += len(result)
 
         return result
 
@@ -4400,9 +4250,6 @@ def toc_tagger(toc, config):
         fakeconf["preproc"] = []
         fakeconf["postproc"] = []
         fakeconf["css-sugar"] = 0
-        fakeconf[
-            "art-no-title"
-        ] = 1  # needed for --toc and --slides together, avoids slide title before TOC
         ret, _ = convert(toc, fakeconf)
         set_global_config(config)  # restore config
     # Our TOC list is not needed, the target already knows how to do a TOC
@@ -4420,13 +4267,6 @@ def toc_formatter(toc, config):
         return []  # TOC disabled
     ret = toc
 
-    # Art: An automatic "Table of Contents" header is added to the TOC slide
-    if config["target"] == "art" and config["slides"]:
-        n = (config["height"] - 1) - (len(toc) + 6) % (config["height"] - 1)
-        toc = aa_slide(_("Table of Contents"), config["width"]) + toc + ([""] * n)
-        toc.append(aa_line(AA["bar2"], config["width"]))
-        return toc
-
     # TOC open/close tags (if any)
     if TAGS["tocOpen"]:
         ret.insert(0, TAGS["tocOpen"])
@@ -4439,11 +4279,7 @@ def toc_formatter(toc, config):
             para = TAGS["paragraphOpen"] + TAGS["paragraphClose"]
             bar = regex["x"].sub("-" * DFT_TEXT_WIDTH, TAGS["bar1"])
             tocbar = [para, bar, para]
-            if config["target"] == "art" and config["headers"]:
-                # exception: header already printed a bar
-                ret = [para] + ret + tocbar
-            else:
-                ret = tocbar + ret + tocbar
+            ret = tocbar + ret + tocbar
         if rules["blankendautotoc"]:  # blank line after TOC
             ret.append("")
         if rules["autotocnewpagebefore"]:  # page break before TOC
@@ -4496,21 +4332,6 @@ def doHeader(headers, config):
         head_data["STYLE"] = []
 
     Debug("Header Data: %s" % head_data, 1)
-
-    # ASCII Art does not use a header template, aa_header() formats the header
-    if target == "art":
-        n_h = len([v for v in head_data if v.startswith("HEADER") and head_data[v]])
-        if not n_h:
-            return []
-        if config["slides"]:
-            x = config["height"] - 3 - (n_h * 3)
-            n = x // (n_h + 1)
-            end = x % (n_h + 1)
-            template = aa_header(head_data, config["width"], n, end)
-        else:
-            template = [""] + aa_header(head_data, config["width"], 2, 0)
-        # Header done, let's get out
-        return template
 
     # Scan for empty dictionary keys
     # If found, scan template lines for that key reference
@@ -5011,13 +4832,6 @@ def convert_this_files(configs):
             for line in source_head + source_conf + target_body:
                 print(line)
             return
-
-        # Close the last slide
-        if myconf["slides"] and not myconf["toc-only"] and myconf["target"] == "art":
-            n = (myconf["height"] - 1) - (AA_COUNT % (myconf["height"] - 1) + 1)
-            target_body = (
-                target_body + ([""] * n) + [aa_line(AA["bar2"], myconf["width"])]
-            )
 
         # Compose the target file Footer
         Message(_("Composing target Footer"), 1)
