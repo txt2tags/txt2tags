@@ -1,5 +1,6 @@
 # Version 3.2 (unreleased)
 
+ * Remove GUI (Jendrik Seipp).
  * Rename txt2tags to txt2tags.py (Jendrik Seipp).
  * Add setup.py file (Jendrik Seipp).
 

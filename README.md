@@ -26,8 +26,7 @@ to the following formats:
  * Wikipedia / MediaWiki
  * XHTML
 
-You can use it as a Web component (PHP), as a GUI application
-(windows and buttons), as a command line program or in a Python application.
+You can use it as a command line program or in a Python application.
 
 # Usage
 

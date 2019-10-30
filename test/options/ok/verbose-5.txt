@@ -17,7 +17,6 @@
 --------------- Added config ......infile : verbose-5.t2t
 --------------- Added config .realcmdline : ['-q', '--no-rc', '-t', 'txt', '--no-quiet', '--verbose', '--verbose', '--verbose', '--verbose', '--verbose', '-o-', 'verbose-5.t2t']
 ---------- Added the following keys: infile, outfile, rc, realcmdline, target, verbose
------ We are on Command Line interface
 ----- Composing target Headers
 ----- Composing target Body
 ----- Composing target Footer

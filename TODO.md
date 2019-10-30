@@ -1,6 +1,5 @@
 * Upload txt2tags to PyPI
 * Support running txt2tags with pipx
-* Rename txt2tags file to txt2tags.py
 * Clean up the code
 * Make the code faster
 * Remove seldom-used features

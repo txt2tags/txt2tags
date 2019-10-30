@@ -21,7 +21,6 @@ Usage: txt2tags [OPTIONS] [infile.t2t ...]
       --width=N       set the output's width to N columns (used by -t art)
       --height=N      set the output's height to N rows (used by -t art)
   -C, --config-file=F read configuration from file F
-      --gui           invoke Graphical Tk Interface
   -q, --quiet         quiet mode, suppress all output (except errors)
   -v, --verbose       print informative messages during conversion
   -h, --help          print this help information and exit
