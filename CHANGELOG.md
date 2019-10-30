@@ -1,8 +1,9 @@
-# Version 3.2 (unreleased)
+# Version 3.2 (2019-10-30)
 
  * Remove GUI (Jendrik Seipp).
  * Rename txt2tags to txt2tags.py (Jendrik Seipp).
  * Add setup.py file (Jendrik Seipp).
+ * Upload txt2tags to PyPI (Jendrik Seipp).
 
 # Version 3.1 (2019-10-29)
 
