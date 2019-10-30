@@ -82,6 +82,13 @@
 
 from __future__ import print_function
 
+# These are all the core Python modules used by txt2tags (KISS!)
+import getopt
+import os
+import re
+import sys
+import time
+
 
 ##############################################################################
 
@@ -94,17 +101,18 @@ HTML_LOWER = 0  # use lowercased HTML tags instead upper? (default is 0)
 
 ##############################################################################
 
-
-# These are all the core Python modules used by txt2tags (KISS!)
-import re, os, sys, time, getopt
-
 # Program information
 my_url = "http://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
 __version__ = "3.2"
 
+
 # i18n - just use if available
+def no_translation(x):
+    return x
+
+
 if USE_I18N:
     try:
         import gettext
@@ -112,10 +120,10 @@ if USE_I18N:
         # If your locale dir is different, change it here
         cat = gettext.Catalog("txt2tags", localedir="/usr/share/locale/")
         _ = cat.gettext
-    except:
-        _ = lambda x: x
+    except Exception:
+        _ = no_translation
 else:
-    _ = lambda x: x
+    _ = no_translation
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
@@ -787,11 +795,15 @@ def getTags(config):
             "urlMark": '<ulink url="\a">\a</ulink>',
             "email": "<email>\a</email>",
             "emailMark": "<email>\a</email>",
-            "img": '<mediaobject><imageobject><imagedata fileref="\a"/></imageobject></mediaobject>',
+            "img": (
+                '<mediaobject><imageobject><imagedata fileref="\a"/>'
+                "</imageobject></mediaobject>"
+            ),
             # '_imgAlignLeft'        : ''                                 , # Don't know
             # '_imgAlignCenter'      : ''                                 , # Don't know
             # '_imgAlignRight'       : ''                                 , # Don't know
-            # 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>', # Don't work, need to know number of cols
+            # Don't work, need to know number of cols
+            # 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>',
             # 'tableClose'           : '</tbody></tgroup></informaltable>' ,
             # 'tableRowOpen'         : '<row>'                             ,
             # 'tableRowClose'        : '</row>'                            ,
@@ -809,13 +821,13 @@ def getTags(config):
             "EOD": "</article>",
         },
         "tex": {
-            "title1": "~A~\section*{\a}",
+            "title1": "~A~\\section*{\a}",
             "title2": "~A~\\subsection*{\a}",
             "title3": "~A~\\subsubsection*{\a}",
             # title 4/5: DIRTY: para+BF+\\+\n
             "title4": "~A~\\paragraph{}\\textbf{\a}\\\\\n",
             "title5": "~A~\\paragraph{}\\textbf{\a}\\\\\n",
-            "numtitle1": "\n~A~\section{\a}",
+            "numtitle1": "\n~A~\\section{\a}",
             "numtitle2": "~A~\\subsection{\a}",
             "numtitle3": "~A~\\subsubsection{\a}",
             "anchor": "\\hypertarget{\a}{}\n",
@@ -850,7 +862,7 @@ def getTags(config):
             "deflistItem1Open": "\\item[",
             "deflistItem1Close": "]",
             "bar1": "\\hrulefill{}",
-            "bar2": "\\rule{\linewidth}{1mm}",
+            "bar2": "\\rule{\\linewidth}{1mm}",
             "url": "\\htmladdnormallink{\a}{\a}",
             "urlMark": "\\htmladdnormallink{\a}{\a}",
             "email": "\\htmladdnormallink{\a}{mailto:\a}",
@@ -930,15 +942,15 @@ def getTags(config):
             "_imgAlignLeft": "@LeftDisplay ",
             "_imgAlignRight": "@RightDisplay ",
             "_imgAlignCenter": "@CentredDisplay ",
-            # lout tables are *way* complicated, no support for now
-            #'tableOpen'            : '~A~@Tbl~B~\naformat{ @Cell A | @Cell B } {',
-            #'tableClose'           : '}'     ,
-            #'tableRowOpen'         : '@Rowa\n'       ,
-            #'tableTitleRowOpen'    : '@HeaderRowa'       ,
-            #'tableCenterAlign'     : '@CentredDisplay '         ,
-            #'tableCellOpen'        : '\a {'                     ,  # A, B, ...
-            #'tableCellClose'       : '}'                        ,
-            #'_tableBorder'         : '\nrule {yes}'             ,
+            # lout tables are *way* too complicated, no support for now
+            # 'tableOpen'            : '~A~@Tbl~B~\naformat{ @Cell A | @Cell B } {',
+            # 'tableClose'           : '}'     ,
+            # 'tableRowOpen'         : '@Rowa\n'       ,
+            # 'tableTitleRowOpen'    : '@HeaderRowa'       ,
+            # 'tableCenterAlign'     : '@CentredDisplay '         ,
+            # 'tableCellOpen'        : '\a {'                     ,  # A, B, ...
+            # 'tableCellClose'       : '}'                        ,
+            # '_tableBorder'         : '\nrule {yes}'             ,
             "comment": "# \a",
             # @MakeContents must be on the config file
             "TOC": "@DP @ContentsGoesHere @DP",
@@ -1100,8 +1112,8 @@ def getTags(config):
             "fontLargerClose": "++]",
             "fontSmallOpen": "[-",
             "fontSmallClose": "-]",
-            "fontLargerOpen": "[--",
-            "fontLargerClose": "--]",
+            "fontSmallerOpen": "[--",
+            "fontSmallerClose": "--]",
             "fontMonoOpen": "@@",
             "fontMonoClose": "@@",
             "fontBoldOpen": "'''",
@@ -1131,9 +1143,9 @@ def getTags(config):
             "anchor": "[[#\a]]\n",
             # Image markup
             "img": "\a",
-            #'imgAlignLeft'         : '{{\a }}'       ,
-            #'imgAlignRight'        : '{{ \a}}'       ,
-            #'imgAlignCenter'       : '{{ \a }}'      ,
+            # 'imgAlignLeft'         : '{{\a }}'       ,
+            # 'imgAlignRight'        : '{{ \a}}'       ,
+            # 'imgAlignCenter'       : '{{ \a }}'      ,
             # Table attributes
             "tableTitleRowOpen": "||! ",
             "tableTitleRowClose": "||",
@@ -1173,7 +1185,8 @@ def getTags(config):
             "urlMark": "[\a \a]",
             "email": "mailto:\a",
             "emailMark": "[mailto:\a \a]",
-            # [[Image:foo.png|right|Optional alt/caption text]] (right, left, center, none)
+            # [[Image:foo.png|right|Optional alt/caption text]]
+            # (right, left, center, none)
             "img": "[[Image:\a~A~]]",
             "_imgAlignLeft": "|left",
             "_imgAlignCenter": "|center",
@@ -1247,7 +1260,7 @@ def getTags(config):
             "fontItalicOpen": "\\fI",
             "fontItalicClose": "\\fR",
             "listOpen": ".RS",
-            "listItemOpen": ".IP \(bu 3\n",
+            "listItemOpen": ".IP \\(bu 3\n",
             "listClose": ".RE\n.IP",
             "numlistOpen": ".RS",
             "numlistItemOpen": ".IP \a. 3\n",
@@ -1877,11 +1890,11 @@ def getRegexes():
     bank["title"] = re.compile(titskel % ("[=]{1,5}", "[^=](|.*[^=])"))
     bank["numtitle"] = re.compile(titskel % ("[+]{1,5}", "[^+](|.*[^+])"))
 
-    ### Complicated regexes begin here ;)
+    # Complicated regexes begin here ;)
     #
     # Textual descriptions on --help's style: [...] is optional, | is OR
 
-    ### First, some auxiliary variables
+    # First, some auxiliary variables
     #
 
     # [image.EXT]
@@ -1934,8 +1947,7 @@ def getRegexes():
     # Saving for future use
     bank["_urlskel"] = urlskel
 
-    ### And now the real regexes
-    #
+    # And now the real regexes
 
     bank["email"] = re.compile(patt_email, re.I)
 
@@ -1957,7 +1969,7 @@ def getRegexes():
     return bank
 
 
-### END OF regex nightmares
+# END OF regex nightmares
 
 
 class error(Exception):
@@ -1981,7 +1993,7 @@ def getTraceback():
 
         etype, value, tb = sys.exc_info()
         return "".join(format_exception(etype, value, tb))
-    except:
+    except Exception:
         pass
 
 
@@ -2022,12 +2034,12 @@ def Debug(msg, id_=0, linenr=None):
     print("++ %s: %s" % (ids[id_], msg))
 
 
-def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
+def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
     data = []
     if file_path == "-":
         try:
             data = sys.stdin.readlines()
-        except:
+        except Exception:
             if not ignore_error:
                 Error(_("You must feed me with data on STDIN!"))
     else:
@@ -2035,7 +2047,7 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
             f = open(file_path)
             data = f.readlines()
             f.close()
-        except:
+        except Exception:
             if not ignore_error:
                 Error(_("Cannot read file:") + " " + file_path)
     if remove_linebreaks:
@@ -2472,11 +2484,11 @@ class ConfigMaster:
         off = {}
         for key in self.defaults.keys():
             kind = type(self.defaults[key])
-            if kind == type(9):
+            if kind == int:
                 off[key] = 0
-            elif kind == type(""):
+            elif kind == str:
                 off[key] = ""
-            elif kind == type([]):
+            elif kind == list:
                 off[key] = []
             else:
                 Error("ConfigMaster: %s: Unknown type" % key)
@@ -2556,7 +2568,7 @@ class ConfigMaster:
         if infile == MODULEIN and not outfile:
             outfile = MODULEOUT
         if not outfile and (infile and config.get("target")):
-            basename = re.sub("\.(txt|t2t)$", "", infile)
+            basename = re.sub(r"\.(txt|t2t)$", "", infile)
             outfile = "%s.%s" % (basename, config["target"])
         Debug(" infile: '%s'" % infile, 1)
         Debug("outfile: '%s'" % outfile, 1)
@@ -2755,7 +2767,7 @@ class ConfigLines:
         re_target = target or "[a-z]*"
         # XXX TODO <value>\S.+?  requires TWO chars, breaks %!include:a
         cfgregex = re.compile(
-            """
+            r"""
                 ^%%!\s*               # leading id with opt spaces
                 (?P<name>%s)\s*       # config name
                 (\((?P<target>%s)\))? # optional target spec inside ()
@@ -2767,7 +2779,7 @@ class ConfigLines:
             re.I + re.VERBOSE,
         )
         prepostregex = re.compile(
-            """
+            r"""
                                       # ---[ PATTERN ]---
                 ^( "([^"]*)"          # "double quoted" or
                 | '([^']*)'           # 'single quoted' or
@@ -2854,23 +2866,22 @@ class MaskMaster:
         while True:
             try:
                 t = regex["tagged"].search(line).start()
-            except:
+            except Exception:
                 t = -1
 
             try:
                 r = regex["raw"].search(line).start()
-            except:
+            except Exception:
                 r = -1
 
             try:
                 v = regex["fontMono"].search(line).start()
-            except:
+            except Exception:
                 v = -1
 
             # Protect tagged text
             if t >= 0 and (r == -1 or t < r) and (v == -1 or t < v):
                 txt = regex["tagged"].search(line).group(1)
-                ## JS
                 if TARGET == "tex":
                     txt = txt.replace("_", "vvvUnderscoreInTaggedTextvvv")
                 self.taggedbank.append(txt)
@@ -2880,7 +2891,6 @@ class MaskMaster:
             elif r >= 0 and (t == -1 or r < t) and (v == -1 or r < v):
                 txt = regex["raw"].search(line).group(1)
                 txt = doEscape(TARGET, txt)
-                ## JS
                 if TARGET == "tex":
                     txt = txt.replace("_", "vvvUnderscoreInRawTextvvv")
                 self.rawbank.append(txt)
@@ -3159,7 +3169,7 @@ class TitleMaster:
         anchor = self._get_tagged_anchor()
         self.tag = regex["_anchor"].sub(anchor, self.tag)
 
-        ### Compose & escape title text (TOC uses unescaped)
+        # Compose & escape title text (TOC uses unescaped)
         full_title = self._get_full_title_text()
 
         # Close previous section area
@@ -3282,7 +3292,7 @@ class TableMaster:
         ret = []
         for cell in cells:
             span = 1
-            m = re.search("\a(\|+)$", cell)
+            m = re.search(r"\a(\|+)$", cell)
             if m:
                 span = len(m.group(1)) + 1
             ret.append(span)
@@ -3397,7 +3407,7 @@ class TableMaster:
         if line[1] == "|":
             ret["title"] = 1
         # Detect border mark and normalize the EOL
-        m = re.search(" (\|+) *$", line)
+        m = re.search(r" (\|+) *$", line)
         if m:
             line = line + " "
             ret["border"] = 1
@@ -3406,13 +3416,13 @@ class TableMaster:
         # Delete table mark
         line = regex["table"].sub("", line)
         # Detect colspan  | foo | bar baz |||
-        line = re.sub(" (\|+)\| ", "\a\\1 | ", line)
+        line = re.sub(r" (\|+)\| ", "\a\\1 | ", line)
         # Split cells (the last is fake)
         ret["cells"] = line.split(" | ")[:-1]
         # Find cells span
         ret["cellspan"] = self._get_cell_span(ret["cells"])
         # Remove span ID
-        ret["cells"] = [re.sub("\a\|+$", "", x) for x in ret["cells"]]
+        ret["cells"] = [re.sub(r"\a\|+$", "", x) for x in ret["cells"]]
         # Find cells align
         ret["cellalign"] = self._get_cell_align(ret["cells"])
         # Hooray!
@@ -3450,10 +3460,7 @@ class TableMaster:
         # Add row separator tags between lines
         tagged_rows = []
         if rowsep:
-            #!py15
-            # tagged_rows = map(lambda x:x+rowsep, tagged_cells)
-            for cell in tagged_cells:
-                tagged_rows.append(cell + rowsep)
+            tagged_rows = [cell + rowsep for cell in tagged_cells]
             # Remove last rowsep, because the table is over
             tagged_rows[-1] = tagged_rows[-1].replace(rowsep, "")
         # Add row BEGIN/END tags for each line
@@ -3742,10 +3749,10 @@ class BlockMaster:
             if (
                 len(lines) == 1
                 and TARGET in ("html", "xhtml")
-                and re.match("^\s*<center>.*</center>\s*$", lines[0])
+                and re.match(r"^\s*<center>.*</center>\s*$", lines[0])
             ):
                 result = [lines[0]]
-        except:
+        except Exception:
             pass
 
         return result
@@ -3848,7 +3855,7 @@ class BlockMaster:
 
         # Get contents
         for item in self.hold():
-            if type(item) == type([]):
+            if isinstance(item, list):
                 result.extend(item)  # subquotes
             else:
                 item = regex["quote"].sub("", item)  # del TABs
@@ -3970,7 +3977,7 @@ class BlockMaster:
 
             # Process next lines for this item (if any)
             for line in item:
-                if type(line) == type([]):  # sublist inside
+                if isinstance(line, list):  # sublist inside
                     listbody.extend(line)
                 else:
                     line = self._last_escapes(line)
@@ -4063,7 +4070,7 @@ class MacroMaster:
         elif flag == "f":
             x = info["name"]
         elif flag == "F":
-            x = re.sub("\.[^.]*$", "", info["name"])
+            x = re.sub(r"\.[^.]*$", "", info["name"])
         elif flag == "d":
             x = info["dir"]
         elif flag == "D":
@@ -4071,7 +4078,7 @@ class MacroMaster:
         elif flag == "p":
             x = info["path"]
         elif flag == "e":
-            x = re.search(".(\.([^.]+))?$", info["name"]).group(2) or ""
+            x = re.search(r".(\.([^.]+))?$", info["name"]).group(2) or ""
         # TODO simpler way for %e ?
         else:
             x = "%" + flag  # false alarm
@@ -4154,7 +4161,7 @@ def dumpConfig(source_raw, parsed_config):
         if key in list(FLAGS.keys()) or key in list(ACTIONS.keys()):
             val = onoff.get(val) or val
         # List beautifier
-        if type(val) == type([]):
+        if isinstance(val, list):
             if key == "options":
                 sep = " "
             else:
@@ -4193,7 +4200,7 @@ def finish_him(outlist, config):
             for rgx, repl in filters:
                 try:
                     line = rgx.sub(repl, line)
-                except:
+                except Exception:
                     Error("%s: '%s'" % (errmsg, repl))
             postoutlist.append(line)
         outlist = postoutlist[:]
@@ -4309,7 +4316,7 @@ def doHeader(headers, config):
         # Remove .sty extension from each style filename (freaking tex)
         # XXX Can't handle --style foo.sty,bar.sty
         if target == "tex" and key == "STYLE":
-            val = [re.sub("(?i)\.sty$", "", x) for x in val]
+            val = [re.sub(r"(?i)\.sty$", "", x) for x in val]
         if key == "ENCODING":
             val = get_encoding_string(val, target)
         head_data[key] = val
@@ -4384,7 +4391,7 @@ def doHeader(headers, config):
                 )
                 # Style now is content, needs escaping (tex)
                 # css = maskEscapeChar(css)
-            except:
+            except Exception:
                 errmsg = "CSS include failed for %s" % cssfile
                 css = "\n%s\n" % (doCommentLine(errmsg))
             # Insert this CSS file contents on the template
@@ -4457,7 +4464,7 @@ def doEscape(target, txt):
         if target == "sgml":
             txt = re.sub("\xff", "&yuml;", txt)  # "+y
     elif target == "pm6":
-        txt = re.sub("<", "<\#60>", txt)
+        txt = re.sub("<", "<\\#60>", txt)
     elif target == "mgp":
         txt = re.sub("^%", " %", txt)  # add leading blank to avoid parse
     elif target == "man":
@@ -4495,7 +4502,6 @@ def doFinalEscape(target, txt):
     elif target == "tex":
         txt = txt.replace("_", r"\_")
         txt = txt.replace("vvvvTexUndervvvv", "_")  # shame!
-        ## JS
         txt = txt.replace("vvvUnderscoreInRawTextvvv", "_")
         txt = txt.replace("vvvUnderscoreInTaggedTextvvv", "_")
     return txt
@@ -4514,15 +4520,15 @@ def EscapeCharHandler(action, data):
 
 
 def maskEscapeChar(data):
-    "Replace any Escape Char \ with a text mask (Input: str or list)"
-    if type(data) == type([]):
+    "Replace any escape char with a text mask (Input: str or list)"
+    if isinstance(data, list):
         return [EscapeCharHandler("mask", x) for x in data]
     return EscapeCharHandler("mask", data)
 
 
 def unmaskEscapeChar(data):
-    "Undo the Escape char \ masking (Input: str or list)"
-    if type(data) == type([]):
+    "Undo the escape char masking (Input: str or list)"
+    if isinstance(data, list):
         return [EscapeCharHandler("unmask", x) for x in data]
     return EscapeCharHandler("unmask", data)
 
@@ -4550,7 +4556,7 @@ def compile_filters(filters, errmsg="Filter"):
             patt, repl = filters[i]
             try:
                 rgx = re.compile(patt)
-            except:
+            except Exception:
                 Error("%s: '%s'" % (errmsg, patt))
             filters[i] = (rgx, repl)
     return filters
@@ -4631,7 +4637,8 @@ def get_tagged_link(label, url):
         if image_re.match(label):
             if rules["imglinkable"]:  # get image tag
                 label = parse_images(label)
-            else:  #  img@link !supported
+            else:
+                # img@link !supported
                 label = "(%s)" % image_re.match(label).group(1)
 
         # Putting data on the right appearance order
@@ -4726,14 +4733,9 @@ def get_encoding_string(enc, target):
     # Apply translation table
     try:
         enc = translate[target][enc.lower()]
-    except:
+    except Exception:
         pass
     return enc
-
-
-##############################################################################
-##MerryChristmas,IdontwanttofighttonightwithyouImissyourbodyandIneedyourlove##
-##############################################################################
 
 
 def process_source_file(file_="", noconf=0, contents=[]):
@@ -4786,7 +4788,7 @@ def process_source_file(file_="", noconf=0, contents=[]):
         elif full_parsed.get("show-config-value"):
             config_value = full_parsed.get(full_parsed["show-config-value"])
             if config_value:
-                if type(config_value) == type([]):
+                if isinstance(config_value, list):
                     print("\n".join(config_value))
                 else:
                     print(config_value)
@@ -4877,7 +4879,7 @@ def parse_images(line):
             # Dirty fix to allow centered solo images
             if align == "center" and TARGET in ("html", "xhtml"):
                 rest = regex["img"].sub("", line, 1)
-                if re.match("^\s+$", rest):
+                if re.match(r"^\s+$", rest):
                     tag = "<center>%s</center>" % tag
 
         if TARGET == "tex":
@@ -4924,8 +4926,10 @@ def get_include_contents(file_, path=""):
     # Default txt2tags marked text, just BODY matters
     if id_ == "t2t":
         lines = get_file_body(filepath)
-        # TODO fix images relative path if file has a path, ie.: chapter1/index.t2t (wait until tree parsing)
-        # TODO for the images path fix, also respect outfile path, if different from infile (wait until tree parsing)
+        # TODO fix images relative path if file has a path, ie.:
+        # chapter1/index.t2t (wait until tree parsing)
+        # TODO for the images path fix, also respect outfile path,
+        # if different from infile (wait until tree parsing)
         lines.insert(0, "%%INCLUDED(%s) starts here: %s" % (id_, file_))
         # This appears when included hit EOF with verbatim area open
         # lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
@@ -4977,7 +4981,7 @@ def convert(bodylines, config, firstlinenr=1):
             for rgx, repl in pre_filter:
                 try:
                     line = rgx.sub(repl, line)
-                except:
+                except Exception:
                     Error("%s: '%s'" % (errmsg, repl))
 
         line = maskEscapeChar(line)  # protect \ char
@@ -5418,7 +5422,7 @@ def convert(bodylines, config, firstlinenr=1):
 
         # ---------------------[ Hold or Return? ]-------------------
 
-        ### Now we must choose where to put the parsed line
+        # Now we must choose where to put the parsed line
         #
         if not results_box:
             # List item extra lines
@@ -5536,7 +5540,7 @@ if __name__ == "__main__":
         sys.exit(1)
     except SystemExit:
         pass
-    except:
+    except Exception:
         sys.stderr.write(getUnknownErrorMessage())
         sys.stderr.flush()
         sys.exit(1)
