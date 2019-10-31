@@ -6,7 +6,8 @@
 #       Each character is expanded to a 'txt' dict text.
 #
 
-import sys, os
+import os
+import sys
 
 sys.path.insert(0, "..")
 import lib

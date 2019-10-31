@@ -5,7 +5,9 @@
 
 from __future__ import print_function
 
-import os, sys, glob
+import glob
+import os
+import sys
 
 sys.path.insert(0, "..")
 import lib
@@ -25,6 +27,7 @@ FILTERS = {
     "numlist": [("pre", "^-( |$)", r"+\1")],
     "bar2": [("pre", "--", r"==")],
 }
+
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
 def addFilters(filters):

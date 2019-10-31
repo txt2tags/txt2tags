@@ -3,7 +3,9 @@
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, glob
+import glob
+import os
+import sys
 
 sys.path.insert(0, "..")
 import lib
@@ -22,6 +24,7 @@ FILTERS = {
     "deflist": [("pre", "^-( |$)", r":\1")],
     "numlist": [("pre", "^-( |$)", r"+\1")],
 }
+
 
 # convert FILTERS tuples to txt2tags pre/postproc rules
 def addFilters(filters):

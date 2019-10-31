@@ -3,7 +3,10 @@
 # See also: ../run.py ../lib.py
 #
 
-import os, sys, re, glob
+import glob
+import os
+import re
+import sys
 
 sys.path.insert(0, "..")
 import lib
@@ -19,8 +22,8 @@ def run():
     # test all OK files found
     for outfile in glob.glob("ok/*"):
         stderr = 0
-        basename = re.sub("\..*?$", "", outfile.replace("ok/", ""))
-        target = re.sub(".*\.", "", outfile)
+        basename = re.sub(r"\..*?$", "", outfile.replace("ok/", ""))
+        target = re.sub(r".*\.", "", outfile)
         if target == "out":
             target = "txt"
             stderr = 1

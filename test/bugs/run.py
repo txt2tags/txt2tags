@@ -10,7 +10,6 @@ from __future__ import print_function
 
 import glob
 import os
-import subprocess
 import sys
 
 sys.path.insert(0, "..")
@@ -18,7 +17,6 @@ import lib
 
 del sys.path[0]
 
-# sux
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
@@ -33,14 +31,10 @@ def run():
         output = lib.get_output(cmdline)
         if not output:
             print("OK")
-            lib.OK = lib.OK + 1
+            lib.OK += 1
             os.remove(outfile)
         else:
             print("FAILED")
-            lib.FAILED = lib.FAILED + 1
+            lib.FAILED += 1
             continue
     return lib.OK, lib.FAILED, lib.ERROR_FILES
-
-
-if __name__ == "__main__":
-    print(lib.MSG_RUN_ALONE)

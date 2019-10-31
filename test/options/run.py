@@ -5,14 +5,14 @@
 # Note: The .t2t files are generated dynamicaly, based on 'tests' dict data
 #
 
-import sys, os
+import os
+import sys
 
 sys.path.insert(0, "..")
 import lib
 
 del sys.path[0]
 
-# sux
 lib.OK = lib.FAILED = 0
 lib.ERROR_FILES = []
 
@@ -646,20 +646,7 @@ tests = [
         "target": "html",
         "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
         "cmdline": ["--css-inside --no-css-inside --style", lib.CSS_FILE],
-        "extra": ["css"]
-        ### Now fully tested in test/includeconf
-        # }, {
-        # 'name'   : 'config-file',
-        # 'target' : 'html',
-        # 'content': EMPTY_HEADER+SIMPLE_BODY,
-        # 'cmdline': ["-H --config-file", lib.CONFIG_FILE],
-        # 'extra'  : ['config', 'notarget']
-        # }, {
-        # 'name'   : 'C',
-        # 'target' : 'html',
-        # 'content': EMPTY_HEADER+SIMPLE_BODY,
-        # 'cmdline': ["-H -C", lib.CONFIG_FILE],
-        # 'extra'  : ['config', 'notarget']
+        "extra": ["css"],
     },
     {
         "name": "dump-config",
@@ -705,7 +692,7 @@ def run():
         outfile = test["name"] + "." + (test.get("target") or "out")
         extra = test.get("extra") or []
         cmdline = test["cmdline"]
-        if not "noinfile" in extra:
+        if "noinfile" not in extra:
             cmdline = test["cmdline"] + [infile]
         if lib.initTest(test["name"], infile, outfile):
             # create the extra files (if needed for this test)
@@ -714,7 +701,7 @@ def run():
             if "css" in extra:
                 lib.WriteFile(lib.CSS_FILE, CSS_FILE_TXT)
             # may I add the -t target automatically?
-            if not "notarget" in extra:
+            if "notarget" not in extra:
                 cmdline = ["-t", test["target"]] + cmdline
             # may I redirect the output to a file?
             if test.get("redir"):
