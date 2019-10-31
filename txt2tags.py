@@ -2184,7 +2184,7 @@ class CommandLine:
         # TODO protect quotes contents -- Don't use it, pass cmdline as list
         return cmd_string.split()
 
-    def parse(self, cmdline=[]):
+    def parse(self, cmdline):
         "Check/Parse a command line list     TIP: no program name!"
         # Get the valid options
         short, long_ = self.short_opts, self.long_opts
@@ -2195,11 +2195,14 @@ class CommandLine:
             Error(_("%s (try --help)") % errmsg)
         return (opts, args)
 
-    def get_raw_config(self, cmdline=[], ignore=[], filter_=[], relative=0):
+    def get_raw_config(self, cmdline=None, ignore=None, filter_=None, relative=False):
         "Returns the options/arguments found as RAW config"
 
         if not cmdline:
             return []
+        ignore = ignore or []
+        filter_ = filter_ or []
+
         ret = []
 
         # We need lists, not strings (such as from %!options)
@@ -2294,7 +2297,7 @@ class SourceDocument:
         header info, so the Head Area is just the first line.
     """
 
-    def __init__(self, filename="", contents=[]):
+    def __init__(self, filename="", contents=None):
         self.areas = ["head", "conf", "body"]
         self.arearef = []
         self.areas_fancy = ""
@@ -2452,8 +2455,8 @@ class ConfigMaster:
         {'enum-title': 1, 'headers': 0}
     """
 
-    def __init__(self, raw=[], target=""):
-        self.raw = raw
+    def __init__(self, raw=None, target=""):
+        self.raw = raw or []
         self.target = target
         self.parsed = {}
         self.dft_options = OPTIONS.copy()
@@ -2517,7 +2520,7 @@ class ConfigMaster:
             ignoreme.remove("dump-source")
             ignoreme.remove("targets")
             raw_opts = CommandLine().get_raw_config(val, ignore=ignoreme)
-            for target, key, val in raw_opts:
+            for _target, key, val in raw_opts:
                 self.add(key, val)
             return
         # The no- prefix turns OFF this key
@@ -2554,7 +2557,7 @@ class ConfigMaster:
         fancykey = dotted_spaces("%12s" % key)
         Message(_("Added config %s : %s") % (fancykey, val), 3)
 
-    def get_outfile_name(self, config={}):
+    def get_outfile_name(self, config):
         "Dirname is the same for {in,out}file"
         infile, outfile = config["sourcefile"], config["outfile"]
         if (
@@ -2647,7 +2650,7 @@ class ConfigMaster:
     def parse(self):
         "Returns the parsed config for the current target"
         raw = self.get_target_raw()
-        for target, key, value in raw:
+        for _target, key, value in raw:
             self.add(key, value)
         Message(_("Added the following keys: %s") % ", ".join(sorted(self.parsed)), 2)
         return self.parsed.copy()
@@ -2696,9 +2699,9 @@ class ConfigLines:
             target, key, value = ConfigLines().parse_line(body_line)
     """
 
-    def __init__(self, file_="", lines=[], first_line=1):
+    def __init__(self, file_="", lines=None, first_line=1):
         self.file = file_ or "NOFILE"
-        self.lines = lines
+        self.lines = lines or []
         self.first_line = first_line
 
     def load_lines(self):
@@ -4032,7 +4035,7 @@ class BlockMaster:
 
 
 class MacroMaster:
-    def __init__(self, config={}):
+    def __init__(self, config=None):
         self.name = ""
         self.config = config or CONF
         self.infile = self.config["sourcefile"]
@@ -4738,7 +4741,7 @@ def get_encoding_string(enc, target):
     return enc
 
 
-def process_source_file(file_="", noconf=0, contents=[]):
+def process_source_file(file_="", noconf=0, contents=None):
     """
     Find and Join all the configuration available for a source file.
     No sanity checking is done on this step.
@@ -5464,12 +5467,12 @@ def convert(bodylines, config, firstlinenr=1):
     return ret, marked_toc
 
 
-def exec_command_line(user_cmdline=[]):
+def exec_command_line(user_cmdline=None):
     global CMDLINE_RAW, RC_RAW, DEBUG, VERBOSE, QUIET, Error
 
     # Extract command line data
     cmdline_data = user_cmdline or sys.argv[1:]
-    CMDLINE_RAW = CommandLine().get_raw_config(cmdline_data, relative=1)
+    CMDLINE_RAW = CommandLine().get_raw_config(cmdline_data, relative=True)
     cmdline_parsed = ConfigMaster(CMDLINE_RAW).parse()
     DEBUG = cmdline_parsed.get("debug") or 0
     VERBOSE = cmdline_parsed.get("verbose") or 0
