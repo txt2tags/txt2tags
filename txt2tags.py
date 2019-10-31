@@ -94,7 +94,6 @@ import time
 
 # User config (1=ON, 0=OFF)
 
-USE_I18N = 1  # use gettext for i18ned messages?        (default is 1)
 COLOR_DEBUG = 1  # show debug messages in colors?          (default is 1)
 BG_LIGHT = 0  # your terminal background color is light (default is 0)
 HTML_LOWER = 0  # use lowercased HTML tags instead upper? (default is 0)
@@ -106,24 +105,6 @@ my_url = "http://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
 __version__ = "3.2"
-
-
-# i18n - just use if available
-def no_translation(x):
-    return x
-
-
-if USE_I18N:
-    try:
-        import gettext
-
-        # If your locale dir is different, change it here
-        cat = gettext.Catalog("txt2tags", localedir="/usr/share/locale/")
-        _ = cat.gettext
-    except Exception:
-        _ = no_translation
-else:
-    _ = no_translation
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
@@ -182,23 +163,23 @@ NO_MULTI_INPUT = ["dump-config", "dump-source"]
 CONFIG_KEYWORDS = ["target", "encoding", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
-    "html": _("HTML page"),
-    "xhtml": _("XHTML page"),
-    "sgml": _("SGML document"),
-    "dbk": _("DocBook document"),
-    "tex": _("LaTeX document"),
-    "lout": _("Lout document"),
-    "man": _("UNIX Manual page"),
-    "mgp": _("MagicPoint presentation"),
-    "wiki": _("Wikipedia page"),
-    "gwiki": _("Google Wiki page"),
-    "doku": _("DokuWiki page"),
-    "pmw": _("PmWiki page"),
-    "moin": _("MoinMoin page"),
-    "pm6": _("PageMaker document"),
-    "txt": _("Plain Text"),
-    "adoc": _("AsciiDoc document"),
-    "creole": _("Creole 1.0 document"),
+    "html": "HTML page",
+    "xhtml": "XHTML page",
+    "sgml": "SGML document",
+    "dbk": "DocBook document",
+    "tex": "LaTeX document",
+    "lout": "Lout document",
+    "man": "UNIX Manual page",
+    "mgp": "MagicPoint presentation",
+    "wiki": "Wikipedia page",
+    "gwiki": "Google Wiki page",
+    "doku": "DokuWiki page",
+    "pmw": "PmWiki page",
+    "moin": "MoinMoin page",
+    "pm6": "PageMaker document",
+    "txt": "Plain Text",
+    "adoc": "AsciiDoc document",
+    "creole": "Creole 1.0 document",
 }
 
 TARGETS = sorted(TARGET_NAMES)
@@ -232,50 +213,50 @@ LINEBREAK = {"default": "\n", "win": "\r\n", "mac": "\r"}
 # Platform specific settings
 LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK["default"]
 
-VERSIONSTR = _("%s version %s <%s>") % (my_name, __version__, my_url)
+VERSIONSTR = "%s version %s <%s>" % (my_name, __version__, my_url)
 
 USAGE = "\n".join(
     [
         "",
-        _("Usage: %s [OPTIONS] [infile.t2t ...]") % my_name,
+        "Usage: %s [OPTIONS] [infile.t2t ...]" % my_name,
         "",
-        _("      --targets       print a list of all the available targets and exit"),
-        _("  -t, --target=TYPE   set target document type. currently supported:"),
+        "      --targets       print a list of all the available targets and exit",
+        "  -t, --target=TYPE   set target document type. currently supported:",
         "                      %s," % ", ".join(TARGETS[:9]),
         "                      %s" % ", ".join(TARGETS[9:]),
-        _("  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)"),
-        _("  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)"),
-        _("      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)"),
-        _("      --toc           add an automatic Table of Contents to the output"),
-        _("      --toc-level=N   set maximum TOC level (depth) to N"),
-        _("      --toc-only      print the Table of Contents and exit"),
-        _("  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc"),
-        _("      --style=FILE    use FILE as the document style (like HTML CSS)"),
-        _("      --css-sugar     insert CSS-friendly tags for HTML/XHTML"),
-        _("      --css-inside    insert CSS file contents inside HTML/XHTML headers"),
-        _("  -H, --no-headers    suppress header and footer from the output"),
-        _("      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>"),
-        _("  -C, --config-file=F read configuration from file F"),
-        _("  -q, --quiet         quiet mode, suppress all output (except errors)"),
-        _("  -v, --verbose       print informative messages during conversion"),
-        _("  -h, --help          print this help information and exit"),
-        _("  -V, --version       print program version and exit"),
-        _("      --dump-config   print all the configuration found and exit"),
-        _("      --dump-source   print the document source, with includes expanded"),
+        "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)",
+        "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)",
+        "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)",
+        "      --toc           add an automatic Table of Contents to the output",
+        "      --toc-level=N   set maximum TOC level (depth) to N",
+        "      --toc-only      print the Table of Contents and exit",
+        "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
+        "      --style=FILE    use FILE as the document style (like HTML CSS)",
+        "      --css-sugar     insert CSS-friendly tags for HTML/XHTML",
+        "      --css-inside    insert CSS file contents inside HTML/XHTML headers",
+        "  -H, --no-headers    suppress header and footer from the output",
+        "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>",
+        "  -C, --config-file=F read configuration from file F",
+        "  -q, --quiet         quiet mode, suppress all output (except errors)",
+        "  -v, --verbose       print informative messages during conversion",
+        "  -h, --help          print this help information and exit",
+        "  -V, --version       print program version and exit",
+        "      --dump-config   print all the configuration found and exit",
+        "      --dump-source   print the document source, with includes expanded",
         "",
-        _("Turn OFF options:"),
+        "Turn OFF options:",
         "     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
         "     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
         "",
-        _("Example:"),
-        "     %s -t html --toc %s" % (my_name, _("file.t2t")),
+        "Example:",
+        "     %s -t html --toc %s" % (my_name, "file.t2t"),
         "",
-        _("By default, converted output is saved to 'infile.<target>'."),
-        _("Use --outfile to force an output file name."),
-        _("If  input file is '-', reads from STDIN."),
-        _("If output file is '-', dumps output to STDOUT."),
+        "By default, converted output is saved to 'infile.<target>'.",
+        "Use --outfile to force an output file name.",
+        "If  input file is '-', reads from STDIN.",
+        "If output file is '-', dumps output to STDOUT.",
         "",
         my_url,
         "",
@@ -1983,7 +1964,7 @@ def Quit(msg=""):
 
 
 def Error(msg):
-    msg = _("%s: Error: ") % my_name + msg
+    msg = "%s: Error: " % my_name + msg
     raise error(msg)
 
 
@@ -1999,8 +1980,8 @@ def getTraceback():
 
 def getUnknownErrorMessage():
     msg = "%s\n%s (%s):\n\n%s" % (
-        _("Sorry! Txt2tags aborted by an unknown error."),
-        _("Please send the following Error Traceback to the author"),
+        "Sorry! Txt2tags aborted by an unknown error.",
+        "Please send the following Error Traceback to the author",
         my_email,
         getTraceback(),
     )
@@ -2041,7 +2022,7 @@ def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
             data = sys.stdin.readlines()
         except Exception:
             if not ignore_error:
-                Error(_("You must feed me with data on STDIN!"))
+                Error("You must feed me with data on STDIN!")
     else:
         try:
             f = open(file_path)
@@ -2049,10 +2030,10 @@ def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
             f.close()
         except Exception:
             if not ignore_error:
-                Error(_("Cannot read file:") + " " + file_path)
+                Error("Cannot read file:" + " " + file_path)
     if remove_linebreaks:
         data = [re.sub("[\n\r]+$", "", x) for x in data]
-    Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
+    Message("File read (%d lines): %s" % (len(data), file_path), 2)
     return data
 
 
@@ -2061,7 +2042,7 @@ def Savefile(file_path, lines):
         with open(file_path, "w") as f:
             f.writelines(lines)
     except IOError:
-        Error(_("Cannot open file for writing:") + " " + file_path)
+        Error("Cannot open file for writing:" + " " + file_path)
 
 
 def dotted_spaces(txt=""):
@@ -2192,7 +2173,7 @@ class CommandLine:
         try:
             opts, args = getopt.getopt(cmdline, short, long_)
         except getopt.error as errmsg:
-            Error(_("%s (try --help)") % errmsg)
+            Error("%s (try --help)" % errmsg)
         return (opts, args)
 
     def get_raw_config(self, cmdline=None, ignore=None, filter_=None, relative=False):
@@ -2341,7 +2322,7 @@ class SourceDocument:
 
     def scan_file(self, filename):
         Debug("source file: %s" % filename)
-        Message(_("Loading source document"), 1)
+        Message("Loading source document", 1)
         buf = Readfile(filename, remove_linebreaks=1)
         self.scan(buf)
 
@@ -2349,7 +2330,7 @@ class SourceDocument:
         "Run through source file and identify head/conf/body areas"
         buf = lines
         if len(buf) == 0:
-            Error(_("The input file is empty: %s") % self.filename)
+            Error("The input file is empty: %s" % self.filename)
         cfg_parser = ConfigLines().parse_line
         buf.insert(0, "")  # text start at pos 1
         ref = [1, 4, 0]
@@ -2392,13 +2373,13 @@ class SourceDocument:
             " ".join(self.areas),
             " ".join(map(str, [x or "" for x in ref])),
         )
-        Message(_("Areas found: %s") % self.areas_fancy, 2)
+        Message("Areas found: %s" % self.areas_fancy, 2)
 
     def get_raw_config(self):
         "Handy method to get the CONF area RAW config (if any)"
         if not self.areas.count("conf"):
             return []
-        Message(_("Scanning source document CONF area"), 1)
+        Message("Scanning source document CONF area", 1)
         raw = ConfigLines(
             file_=self.filename, lines=self.get("conf"), first_line=self.arearef[1]
         ).get_raw_config()
@@ -2555,7 +2536,7 @@ class ConfigMaster:
         else:
             self.parsed[key] = val
         fancykey = dotted_spaces("%12s" % key)
-        Message(_("Added config %s : %s") % (fancykey, val), 3)
+        Message("Added config %s : %s" % (fancykey, val), 3)
 
     def get_outfile_name(self, config):
         "Dirname is the same for {in,out}file"
@@ -2592,27 +2573,25 @@ class ConfigMaster:
         # We *need* a target
         if not target:
             Error(
-                _("No target specified (try --help)")
+                "No target specified (try --help)."
                 + "\n\n"
-                + _(
-                    "Please inform a target using the -t option or the %!target command."
-                )
+                + "Please select a target using the -t option or the %!target command."
                 + "\n"
-                + _("Example:")
-                + " %s -t html %s" % (my_name, _("file.t2t"))
+                + "Example:"
+                + " %s -t html %s" % (my_name, "file.t2t")
                 + "\n\n"
-                + _("Run 'txt2tags --targets' to see all the available targets.")
+                + "Run 'txt2tags --targets' to see all available targets."
             )
         # And of course, an infile also
         # TODO#1: It seems that this checking is never reached
         if not config.get("infile"):
-            Error(_("Missing input file (try --help)"))
+            Error("Missing input file (try --help)")
         # Is the target valid?
         if not TARGETS.count(target):
             Error(
-                _("Invalid target '%s'") % target
+                "Invalid target '%s'" % target
                 + "\n\n"
-                + _("Run 'txt2tags --targets' to see all the available targets.")
+                + "Run 'txt2tags --targets' to see all the available targets."
             )
         # Ensure all keys are present
         empty = self.defaults.copy()
@@ -2624,10 +2603,10 @@ class ConfigMaster:
                 try:
                     config[key] = int(config[key])
                 except ValueError:
-                    Error(_("--%s value must be a number") % key)
+                    Error("--%s value must be a number" % key)
         # Check split level value
         if config["split"] not in (0, 1, 2):
-            Error(_("Option --split must be 0, 1 or 2"))
+            Error("Option --split must be 0, 1 or 2")
         # --toc-only is stronger than others
         if config["toc-only"]:
             config["headers"] = 0
@@ -2644,7 +2623,7 @@ class ConfigMaster:
         if os.path.abspath(config["sourcefile"]) == os.path.abspath(
             config["outfile"]
         ) and config["outfile"] not in [STDOUT, MODULEOUT]:
-            Error(_("Input and Output files are the same: %s") % config["outfile"])
+            Error("Input and Output files are the same: %s" % config["outfile"])
         return config
 
     def parse(self):
@@ -2652,7 +2631,7 @@ class ConfigMaster:
         raw = self.get_target_raw()
         for _target, key, value in raw:
             self.add(key, value)
-        Message(_("Added the following keys: %s") % ", ".join(sorted(self.parsed)), 2)
+        Message("Added the following keys: %s" % ", ".join(sorted(self.parsed)), 2)
         return self.parsed.copy()
 
     def find_value(self, key="", target=""):
@@ -2715,7 +2694,7 @@ class ConfigLines:
         "Read a Config File contents, aborting on invalid line"
         if not filename:
             return []
-        errormsg = _("Invalid CONFIG line on %s") + "\n%03d:%s"
+        errormsg = "Invalid CONFIG line on %s" + "\n%03d:%s"
         lines = Readfile(filename, remove_linebreaks=1)
         # Sanity: try to find invalid config lines
         for i in range(len(lines)):
@@ -2744,20 +2723,20 @@ class ConfigLines:
         first = self.first_line
         for i in range(len(self.lines)):
             line = self.lines[i]
-            Message(_("Processing line %03d: %s") % (first + i, line), 2)
+            Message("Processing line %03d: %s" % (first + i, line), 2)
             target, key, val = self.parse_line(line)
             if not key:
                 continue  # no config on this line
             if key == "includeconf":
-                err = _("A file cannot include itself (loop!)")
+                err = "A file cannot include itself (loop!)"
                 if val == self.file:
                     Error("%s: %%!includeconf: %s" % (err, self.file))
                 more_raw = self.include_config_file(val)
                 ret.extend(more_raw)
-                Message(_("Finished Config file inclusion: %s") % val, 2)
+                Message("Finished Config file inclusion: %s" % val, 2)
             else:
                 ret.append([target, key, val])
-                Message(_("Added %s") % key, 3)
+                Message("Added %s" % key, 3)
         return ret
 
     def parse_line(self, line="", keyname="", target=""):
@@ -2812,7 +2791,7 @@ class ConfigLines:
 
         # %!keyword(target) not allowed for these
         if name in no_target and match.group("target"):
-            Error(_("You can't use (target) with %s") % ("%!" + name) + "\n%s" % line)
+            Error("You can't use (target) with %s" % ("%!" + name) + "\n%s" % line)
 
         # Force no_target keywords to be valid for all targets
         if name in no_target:
@@ -4136,23 +4115,23 @@ def listTargets():
 
 
 def dumpConfig(source_raw, parsed_config):
-    onoff = {1: _("ON"), 0: _("OFF")}
+    onoff = {1: "ON", 0: "OFF"}
     data = [
-        (_("RC file"), RC_RAW),
-        (_("source document"), source_raw),
-        (_("command line"), CMDLINE_RAW),
+        ("RC file", RC_RAW),
+        ("source document", source_raw),
+        ("command line", CMDLINE_RAW),
     ]
     # First show all RAW data found
     for label, cfg in data:
-        print(_("RAW config for %s") % label)
+        print("RAW config for %s" % label)
         for target, key, val in cfg:
             target = "(%s)" % target
             key = dotted_spaces("%-14s" % key)
-            val = val or _("ON")
+            val = val or "ON"
             print("  %-8s %s: %s" % (target, key, val))
         print()
     # Then the parsed results of all of them
-    print(_("Full PARSED config"))
+    print("Full PARSED config")
     keys = list(parsed_config.keys())
     keys.sort()  # sorted
     for key in keys:
@@ -4172,7 +4151,7 @@ def dumpConfig(source_raw, parsed_config):
             val = sep.join(val)
         print("%25s: %s" % (dotted_spaces("%-14s" % key), val))
     print()
-    print(_("Active filters"))
+    print("Active filters")
     for filter_ in ["preproc", "postproc"]:
         for rule in parsed_config.get(filter_) or []:
             print(
@@ -4194,11 +4173,9 @@ def finish_him(outlist, config):
 
     # Apply PostProc filters
     if config["postproc"]:
-        filters = compile_filters(
-            config["postproc"], _("Invalid PostProc filter regex")
-        )
+        filters = compile_filters(config["postproc"], "Invalid PostProc filter regex")
         postoutlist = []
-        errmsg = _("Invalid PostProc filter replacement")
+        errmsg = "Invalid PostProc filter replacement"
         for line in outlist:
             for rgx, repl in filters:
                 try:
@@ -4216,7 +4193,7 @@ def finish_him(outlist, config):
     else:
         Savefile(outfile, addLineBreaks(outlist))
         if not QUIET:
-            print(_("%s wrote %s") % (my_name, outfile))
+            print("%s wrote %s" % (my_name, outfile))
 
     if config["split"]:
         if not QUIET:
@@ -4432,11 +4409,8 @@ def doFooter(config):
 
     # Add txt2tags info at footer, if target supports comments
     if TAGS["comment"]:
-
-        # Not using TARGET_NAMES because it's i18n'ed.
-        # It's best to always present this info in english.
         target = config["target"]
-        if config["target"] == "tex":
+        if target == "tex":
             target = "LaTeX2e"
 
         t2t_version = "%s code generated by %s %s (%s)" % (
@@ -4765,15 +4739,13 @@ def process_source_file(file_="", noconf=0, contents=None):
     else:
         source = SourceDocument(file_)
     head, conf, body = source.split()
-    Message(_("Source document contents stored"), 2)
+    Message("Source document contents stored", 2)
     if not noconf:
         # Read document config
         source_raw = source.get_raw_config()
         # Join all the config directives found, then parse it
         full_raw = RC_RAW + source_raw + CMDLINE_RAW
-        Message(
-            _("Parsing and saving all config found (%03d items)") % (len(full_raw)), 1
-        )
+        Message("Parsing and saving all config found (%03d items)" % (len(full_raw)), 1)
         full_parsed = ConfigMaster(full_raw).parse()
         # Add manually the filename to the conf dic
         if contents:
@@ -4824,11 +4796,11 @@ def convert_this_files(configs):
         # Compose the target file Headers
         # TODO escape line before?
         # TODO see exceptions by tex and mgp
-        Message(_("Composing target Headers"), 1)
+        Message("Composing target Headers", 1)
         target_head = doHeader(source_head, myconf)
         # Parse the full marked body into tagged target
         first_body_line = (len(source_head) or 1) + len(source_conf) + 1
-        Message(_("Composing target Body"), 1)
+        Message("Composing target Body", 1)
         target_body, marked_toc = convert(
             source_body, myconf, firstlinenr=first_body_line
         )
@@ -4839,11 +4811,11 @@ def convert_this_files(configs):
             return
 
         # Compose the target file Footer
-        Message(_("Composing target Footer"), 1)
+        Message("Composing target Footer", 1)
         target_foot = doFooter(myconf)
 
         # Make TOC (if needed)
-        Message(_("Composing target TOC"), 1)
+        Message("Composing target TOC", 1)
         tagged_toc = toc_tagger(marked_toc, myconf)
         target_toc = toc_formatter(tagged_toc, myconf)
         target_body = toc_inside_body(target_body, target_toc, myconf)
@@ -4856,7 +4828,7 @@ def convert_this_files(configs):
         if myconf.get("outfile") == MODULEOUT:
             return finish_him(outlist, myconf), myconf
         else:
-            Message(_("Saving results to the output file"), 1)
+            Message("Saving results to the output file", 1)
             finish_him(outlist, myconf)
 
 
@@ -4963,7 +4935,7 @@ def convert(bodylines, config, firstlinenr=1):
     f_lastwasblank = 0
 
     # Compiling all PreProc regexes
-    pre_filter = compile_filters(CONF["preproc"], _("Invalid PreProc filter regex"))
+    pre_filter = compile_filters(CONF["preproc"], "Invalid PreProc filter regex")
 
     # Let's mark it up!
     linenr = firstlinenr - 1
@@ -4980,7 +4952,7 @@ def convert(bodylines, config, firstlinenr=1):
 
         # Apply PreProc filters
         if pre_filter:
-            errmsg = _("Invalid PreProc filter replacement")
+            errmsg = "Invalid PreProc filter replacement"
             for rgx, repl in pre_filter:
                 try:
                     line = rgx.sub(repl, line)
@@ -5169,7 +5141,7 @@ def convert(bodylines, config, firstlinenr=1):
 
                 incpath = os.path.dirname(CONF["sourcefile"])
                 incfile = val
-                err = _("A file cannot include itself (loop!)")
+                err = "A file cannot include itself (loop!)"
                 if CONF["sourcefile"] == incfile:
                     Error("%s: %s" % (err, incfile))
                 inctype, inclines = get_include_contents(incfile, incpath)
@@ -5479,7 +5451,7 @@ def exec_command_line(user_cmdline=None):
     QUIET = cmdline_parsed.get("quiet") or 0
     infiles = cmdline_parsed.get("infile") or []
 
-    Message(_("Txt2tags %s processing begins") % __version__, 1)
+    Message("Txt2tags %s processing begins" % __version__, 1)
 
     # The easy ones
     if cmdline_parsed.get("help"):
@@ -5492,7 +5464,7 @@ def exec_command_line(user_cmdline=None):
 
     # Multifile haters
     if len(infiles) > 1:
-        errmsg = _("Option --%s can't be used with multiple input files")
+        errmsg = "Option --%s can't be used with multiple input files"
         for option in NO_MULTI_INPUT:
             if cmdline_parsed.get(option):
                 Error(errmsg % option)
@@ -5505,11 +5477,11 @@ def exec_command_line(user_cmdline=None):
 
     # Extract RC file config
     if cmdline_parsed.get("rc") == 0:
-        Message(_("Ignoring user configuration file"), 1)
+        Message("Ignoring user configuration file", 1)
     else:
         rc_file = get_rc_path()
         if os.path.isfile(rc_file):
-            Message(_("Loading user configuration file"), 1)
+            Message("Loading user configuration file", 1)
             RC_RAW = ConfigLines(file_=rc_file).get_raw_config()
 
         Debug("rc file: %s" % rc_file)
@@ -5521,17 +5493,17 @@ def exec_command_line(user_cmdline=None):
     # TODO#1: this checking should be only in ConfigMaster.sanity()
     if not infiles:
         Error(
-            _("Missing input file (try --help)")
+            "Missing input file (try --help)"
             + "\n\n"
-            + _("Please inform an input file (.t2t) at the end of the command.")
+            + "Please inform an input file (.t2t) at the end of the command."
             + "\n"
-            + _("Example:")
-            + " %s -t html %s" % (my_name, _("file.t2t"))
+            + "Example:"
+            + " %s -t html %s" % (my_name, "file.t2t")
         )
 
     convert_this_files(infiles_config)
 
-    Message(_("Txt2tags finished successfully"), 1)
+    Message("Txt2tags finished successfully", 1)
 
 
 if __name__ == "__main__":

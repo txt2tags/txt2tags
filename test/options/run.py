@@ -80,13 +80,6 @@ tests = [
         "extra": ["notarget"],
     },
     {
-        "name": "target-missing",  # t2t infile.t2t
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": [""],
-        "redir": ["> target-missing.out"],
-        "extra": ["notarget"],
-    },
-    {
         "name": "invalid-short-1",  # t2t -z
         "content": "",
         "cmdline": ["-z"],
