@@ -10,12 +10,6 @@
 #
 ########################################################################
 #
-#   BORING CODE EXPLANATION AHEAD
-#
-# Just read it if you wish to understand how the txt2tags code works.
-#
-########################################################################
-#
 # The code that [1] parses the marked text is separated from the
 # code that [2] insert the target tags.
 #
@@ -51,13 +45,6 @@
 # get_infiles_config(), process_source_file() and convert_this_files()
 #
 ########################################################################
-
-# XXX Python coding warning
-# Avoid common mistakes:
-# - do NOT use newlist=list instead newlist=list[:]
-# - do NOT use newdic=dic   instead newdic=dic.copy()
-# - do NOT use dic[key]     instead dic.get(key)
-# - do NOT use del dic[key] without has_key() before
 
 # XXX Smart Image Align don't work if the image is a link
 # Can't fix that because the image is expanded together with the
