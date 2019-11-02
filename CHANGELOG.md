@@ -5,6 +5,7 @@
 * Remove i18n (Jendrik Seipp).
 * Remove plugins and tools that now live in their own repositories (Jendrik Seipp).
 * Remove code for unused split feature (Jendrik Seipp).
+* Use \n for linebreaks on all platforms as recommended by Python docs (Jendrik Seipp).
 * Fix errors detected by flake8 (Jendrik Seipp).
 * Explain how to install txt2tags with pipx in README file (Jendrik Seipp).
 

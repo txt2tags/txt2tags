@@ -190,10 +190,6 @@ MODULEIN = MODULEOUT = "-module-"
 ESCCHAR = "\x00"
 SEPARATOR = "\x01"
 LISTNAMES = {"-": "list", "+": "numlist", ":": "deflist"}
-LINEBREAK = {"default": "\n", "win": "\r\n", "mac": "\r"}
-
-# Platform specific settings
-LB = LINEBREAK.get(sys.platform[:3]) or LINEBREAK["default"]
 
 VERSIONSTR = "%s version %s <%s>" % (my_name, __version__, my_url)
 
@@ -1732,7 +1728,6 @@ def getRules(config):
             "keeplistindent": 1,
             "verbblockfinalescape": 1,
             # TODO add support for these
-            # maybe set a JOINNEXT char and do it on addLineBreaks()
             "notbreaklistopen": 1,
             "barinsidequote": 1,
             "autotocwithbars": 1,
@@ -2011,7 +2006,8 @@ def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
 def Savefile(file_path, lines):
     try:
         with open(file_path, "w") as f:
-            f.writelines(lines)
+            for line in lines:
+                f.write(line + "\n")
     except IOError:
         Error("Cannot open file for writing:" + " " + file_path)
 
@@ -4156,7 +4152,7 @@ def finish_him(outlist, config):
         for line in outlist:
             print(line)
     else:
-        Savefile(outfile, addLineBreaks(outlist))
+        Savefile(outfile, outlist)
         if not QUIET:
             print("%s wrote %s" % (my_name, outfile))
 
@@ -4461,15 +4457,6 @@ def unmaskEscapeChar(data):
     if isinstance(data, list):
         return [EscapeCharHandler("unmask", x) for x in data]
     return EscapeCharHandler("unmask", data)
-
-
-def addLineBreaks(mylist):
-    "use LB to respect sys.platform"
-    ret = []
-    for line in mylist:
-        line = line.replace("\n", LB)  # embedded \n's
-        ret.append(line + LB)  # add final line break
-    return ret
 
 
 # Convert ['foo\nbar'] to ['foo', 'bar']
@@ -5423,7 +5410,6 @@ def exec_command_line(user_cmdline=None):
 
     Debug("system platform: %s" % sys.platform)
     Debug("python version: %s" % (sys.version.split("(")[0]))
-    Debug("line break char: %s" % repr(LB))
     Debug("command line: %s" % sys.argv)
     Debug("command line raw config: %s" % CMDLINE_RAW, 1)
 
