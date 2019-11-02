@@ -2,9 +2,9 @@
 * Clean up the code
 * Remove seldom-used features
 * Make the code faster
-* Use HTML5 for html target
-* Drop xhtml target
 * Always use CSS sugar and drop --css-sugar option
+* Drop HTML4 target and use XHTML instead for `--target html`
+* Possibly use HTML5 for `--target html` later
 * Drop --encoding option and always use UTF-8
 * Inspect the following commits from https://github.com/txt2tags/txt2tags and backport useful changes:
 
