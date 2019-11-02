@@ -69,7 +69,7 @@
 
 from __future__ import print_function
 
-# These are all the core Python modules used by txt2tags (KISS!)
+import collections
 import getopt
 import os
 import re
@@ -567,7 +567,6 @@ def getTags(config):
 
     # TIP: \a represents the current text inside the mark
     # TIP: ~A~, ~B~ and ~C~ are expanded to other tags parts
-
     alltags = {
         "txt": {
             "title1": "  \a",
@@ -1330,14 +1329,10 @@ def getTags(config):
     xhtml.update(alltags["xhtml"])
     alltags["xhtml"] = xhtml.copy()
 
-    # Compose the target tags dictionary
-    tags = {}
-    target_tags = alltags[config["target"]].copy()
-
-    for key in keys:
-        tags[key] = ""  # create empty keys
-    for key in target_tags.keys():
-        tags[key] = maskEscapeChar(target_tags[key])  # populate
+    # Compose the target tags dictionary.
+    tags = collections.defaultdict(str)
+    for key, value in alltags[config["target"]].items():
+        tags[key] = maskEscapeChar(value)
 
     # Map strong line to pagebreak
     if rules["mapbar2pagebreak"] and tags["pageBreak"]:
