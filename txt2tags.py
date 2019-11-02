@@ -4660,7 +4660,6 @@ def get_image_align(line):
     # Some special cases
     if BLOCK.isblock("table"):
         align = "center"  # ignore when table
-    #       if TARGET == 'mgp' and align == 'center': align = 'center'
 
     return align
 

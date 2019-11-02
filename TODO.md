@@ -1,7 +1,11 @@
-* Clean up repo
+* Clean up doc/ directory
 * Clean up the code
-* Make the code faster
 * Remove seldom-used features
+* Make the code faster
+* Use HTML5 for html target
+* Drop xhtml target
+* Always use CSS sugar and drop --css-sugar option
+* Drop --encoding option and always use UTF-8
 * Inspect the following commits from https://github.com/txt2tags/txt2tags and backport useful changes:
 
   * Escaping:
