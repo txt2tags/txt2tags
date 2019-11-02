@@ -130,7 +130,6 @@ OPTIONS = {
     "outfile": "",
     "encoding": "",
     "config-file": "",
-    "split": 0,
     "lang": "",
     "show-config-value": "",
 }
@@ -2434,7 +2433,7 @@ class ConfigMaster:
         self.defaults = self._get_defaults()
         self.off = self._get_off()
         self.incremental = ["verbose"]
-        self.numeric = ["toc-level", "split"]
+        self.numeric = ["toc-level"]
         self.multi = ["infile", "preproc", "postproc", "options", "style"]
 
     def _get_defaults(self):
@@ -2591,17 +2590,11 @@ class ConfigMaster:
                     config[key] = int(config[key])
                 except ValueError:
                     Error("--%s value must be a number" % key)
-        # Check split level value
-        if config["split"] not in (0, 1, 2):
-            Error("Option --split must be 0, 1 or 2")
         # --toc-only is stronger than others
         if config["toc-only"]:
             config["headers"] = 0
             config["toc"] = 0
-            config["split"] = 0
             config["outfile"] = config["outfile"] or STDOUT
-        # Splitting is disable for now (future: HTML only, no STDOUT)
-        config["split"] = 0
         # Restore target
         config["target"] = target
         # Set output file name
@@ -4181,18 +4174,6 @@ def finish_him(outlist, config):
         Savefile(outfile, addLineBreaks(outlist))
         if not QUIET:
             print("%s wrote %s" % (my_name, outfile))
-
-    if config["split"]:
-        if not QUIET:
-            print("--- html...")
-        sgml2html = "sgml2html -s %s -l %s %s" % (
-            config["split"],
-            config["lang"] or lang,
-            outfile,
-        )
-        if not QUIET:
-            print("Running system command:", sgml2html)
-        os.system(sgml2html)
 
 
 def toc_inside_body(body, toc, config):
