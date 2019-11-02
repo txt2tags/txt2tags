@@ -183,7 +183,6 @@ regex = {}
 TAGS = {}
 rules = {}
 
-lang = "english"
 TARGET = ""
 
 STDIN = STDOUT = "-"
