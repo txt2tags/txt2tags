@@ -80,9 +80,6 @@ import time
 ##############################################################################
 
 # User config (1=ON, 0=OFF)
-
-COLOR_DEBUG = 1  # show debug messages in colors?          (default is 1)
-BG_LIGHT = 0  # your terminal background color is light (default is 0)
 HTML_LOWER = 0  # use lowercased HTML tags instead upper? (default is 0)
 
 ##############################################################################
@@ -1981,23 +1978,12 @@ def Message(msg, level):
 
 
 def Debug(msg, id_=0, linenr=None):
-    "Show debug messages, categorized (colored or not)"
+    """Show debug messages, categorized."""
     if QUIET or not DEBUG:
         return
-    if int(id_) not in range(8):
-        id_ = 0
-    # 0:black 1:red 2:green 3:yellow 4:blue 5:pink 6:cyan 7:white ;1:light
     ids = ["INI", "CFG", "SRC", "BLK", "HLD", "GUI", "OUT", "DET"]
-    colors_bgdark = ["7;1", "1;1", "3;1", "6;1", "4;1", "5;1", "2;1", "7;1"]
-    colors_bglight = ["0", "1", "3", "6", "4", "5", "2", "0"]
     if linenr is not None:
         msg = "LINE %04d: %s" % (linenr, msg)
-    if COLOR_DEBUG:
-        if BG_LIGHT:
-            color = colors_bglight[id_]
-        else:
-            color = colors_bgdark[id_]
-        msg = "\033[3%sm%s\033[m" % (color, msg)
     print("++ %s: %s" % (ids[id_], msg))
 
 
