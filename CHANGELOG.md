@@ -3,6 +3,7 @@
 * Remove ASCII art target (Jendrik Seipp).
 * Update html target to HTML5 and drop xhtml target (Jendrik Seipp).
 * Remove %!csv macro (Jendrik Seipp).
+* Drop `--css-inside` option (Jendrik Seipp).
 * Always use CSS sugar and drop `--css-sugar` option (Jendrik Seipp).
 * Remove i18n (Jendrik Seipp).
 * Remove plugins and tools that now live in their own repositories (Jendrik Seipp).

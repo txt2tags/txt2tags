@@ -107,7 +107,6 @@ FLAGS = {
     "toc-only": 0,
     "toc": 0,
     "rc": 1,
-    "css-inside": 0,
     "quiet": 0,
     "slides": 0,
 }
@@ -201,7 +200,6 @@ USAGE = "\n".join(
         "      --toc-only      print the Table of Contents and exit",
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
-        "      --css-inside    insert CSS file contents inside HTML headers",
         "  -H, --no-headers    suppress header and footer from the output",
         "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>",
         "  -C, --config-file=F read configuration from file F",
@@ -213,7 +211,7 @@ USAGE = "\n".join(
         "      --dump-source   print the document source, with includes expanded",
         "",
         "Turn OFF options:",
-        "     --no-css-inside, --no-dump-config, --no-dump-source,",
+        "     --no-dump-config, --no-dump-source,",
         "     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
@@ -4148,12 +4146,6 @@ def doHeader(headers, config):
 
         head_data["HEADER%d" % (i + 1)] = contents
 
-    # When using --css-inside, the template's <STYLE> line must be removed.
-    # Template line removal for empty header keys is made some lines above.
-    # That's why we will clean STYLE now.
-    if target == "html" and config.get("css-inside") and config.get("style"):
-        head_data["STYLE"] = []
-
     Debug("Header Data: %s" % head_data, 1)
 
     # Scan for empty dictionary keys
@@ -4187,36 +4179,6 @@ def doHeader(headers, config):
                 break
     # Populate template with data (dict expansion)
     template = "\n".join(template) % head_data
-
-    # Adding CSS contents into template (for --css-inside)
-    # This code sux. Dirty++
-    if target == "html" and config.get("css-inside") and config.get("style"):
-        set_global_config(config)  # usually on convert(), needed here
-        for i in range(len(config["style"])):
-            cssfile = config["style"][i]
-            if not os.path.isabs(cssfile):
-                infile = config.get("sourcefile")
-                cssfile = os.path.join(os.path.dirname(infile), cssfile)
-            try:
-                contents = Readfile(cssfile, 1)
-                css = "\n%s\n%s\n%s\n%s\n" % (
-                    doCommentLine("Included %s" % cssfile),
-                    TAGS["cssOpen"],
-                    "\n".join(contents),
-                    TAGS["cssClose"],
-                )
-                # Style now is content, needs escaping (tex)
-                # css = maskEscapeChar(css)
-            except Exception:
-                errmsg = "CSS include failed for %s" % cssfile
-                css = "\n%s\n" % (doCommentLine(errmsg))
-            # Insert this CSS file contents on the template
-            template = re.sub("(?i)(</HEAD>)", css + r"\1", template)
-            # template = re.sub(r'(?i)(\\begin{document})',
-            #               css+'\n'+r'\1', template) # tex
-
-        # The last blank line to keep everything separated
-        template = re.sub("(?i)(</HEAD>)", "\n" + r"\1", template)
 
     return template.split("\n")
 

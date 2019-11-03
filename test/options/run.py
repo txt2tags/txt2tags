@@ -577,55 +577,6 @@ tests = [
         "cmdline": ["-H"],
     },
     {
-        "name": "css-inside-1",
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-inside --style", lib.CSS_FILE],
-        "extra": ["css"],
-    },
-    {
-        "name": "css-inside-3",  # missing CSS file
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-inside --style", lib.CSS_FILE],
-    },
-    {
-        "name": "css-inside-4",  # no --style
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-inside"],
-    },
-    {
-        "name": "css-inside-5",  # two CSS files
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": [
-            "--css-inside --style " + lib.CSS_FILE + " --style " + lib.CSS_FILE
-        ],
-        "extra": ["css"],
-    },
-    {
-        "name": "css-inside-6",  # two CSS files, one missing
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-inside --style missing.css --style " + lib.CSS_FILE],
-        "extra": ["css"],
-    },
-    {
-        "name": "no-css-inside-1",  # useless
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--no-css-inside --style", lib.CSS_FILE],
-        "extra": ["css"],
-    },
-    {
-        "name": "no-css-inside-2",  # turning OFF
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-inside --no-css-inside --style", lib.CSS_FILE],
-        "extra": ["css"],
-    },
-    {
         "name": "dump-config",
         "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
         "cmdline": ["--dump-config"],
