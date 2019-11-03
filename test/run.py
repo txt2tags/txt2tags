@@ -23,12 +23,13 @@ import sys
 
 import lib
 
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("modules", nargs="*")
-    parser.add_argument(
-        "--override", action="store_true", help="override test files")
+    parser.add_argument("--override", action="store_true", help="override test files")
     return parser.parse_args()
+
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIR)
