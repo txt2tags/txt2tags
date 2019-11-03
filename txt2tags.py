@@ -256,25 +256,43 @@ HEADER_TEMPLATE = {
 <author>%(HEADER2)s
 <date>%(HEADER3)s
 """,
+    # HTML5 reference code:
+    # https://github.com/h5bp/html5-boilerplate/blob/master/index.html
+    # https://github.com/murtaugh/HTML5-Reset/blob/master/index.html
     "html": """\
-<?xml version="1.0"
-      encoding="%(ENCODING)s"
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"\
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org" />
-<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
+<meta name="generator" content="http://txt2tags.org">
+<link rel="stylesheet" href="%(STYLE)s">
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+img.center{border:0;margin:0 auto;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+table.center {margin-left:auto; margin-right:auto;}
+.right{text-align:right;}
+.left{text-align:left;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
 </head>
 <body>
-
-<div class="header" id="header">
+<header>
+<hgroup>
 <h1>%(HEADER1)s</h1>
 <h2>%(HEADER2)s</h2>
 <h3>%(HEADER3)s</h3>
-</div>
+</hgroup>
+</header>
+<article>
 """,
     "dbk": """\
 <?xml version="1.0"
@@ -524,76 +542,79 @@ def getTags(config):
             "emailMark": "\a (\a)",
             "img": "[\a]",
         },
-        # TIP http://www.w3.org/TR/xhtml1/#guidelines
-        # TIP http://www.htmlref.com/samples/Chapt17/17_08.htm
         "html": {
-            "tocOpen": '<div class="toc">',
-            "tocClose": "</div>",
-            "bodyOpen": '<div class="body" id="body">',
-            "bodyClose": "</div>",
-            "paragraphOpen": "<p>",
-            "paragraphClose": "</p>",
-            "title1": "~A~<h1>\a</h1>",
-            "title2": "~A~<h2>\a</h2>",
-            "title3": "~A~<h3>\a</h3>",
-            "title4": "~A~<h4>\a</h4>",
-            "title5": "~A~<h5>\a</h5>",
-            "blockVerbOpen": "<pre>",
-            "blockVerbClose": "</pre>",
-            "blockQuoteOpen": "<blockquote>",
+            "anchor": '<a id="\a" name="\a"></a>\n',
+            "bar1": '<hr class="light">',
+            "bar2": '<hr class="heavy">',
             "blockQuoteClose": "</blockquote>",
-            "fontMonoOpen": "<code>",
-            "fontMonoClose": "</code>",
-            "fontBoldOpen": "<b>",
-            "fontBoldClose": "</b>",
-            "fontItalicOpen": "<i>",
-            "fontItalicClose": "</i>",
-            "fontUnderlineOpen": "<u>",
-            "fontUnderlineClose": "</u>",
-            "fontStrikeOpen": "<s>",
-            "fontStrikeClose": "</s>",
-            "listOpen": "<ul>",
-            "listClose": "</ul>",
-            "listItemOpen": "<li>",
-            "numlistOpen": "<ol>",
-            "numlistClose": "</ol>",
-            "numlistItemOpen": "<li>",
-            "deflistOpen": "<dl>",
+            "blockQuoteOpen": "<blockquote>",
+            "blockVerbClose": "</pre>",
+            "blockVerbOpen": "<pre>",
+            "bodyClose": "</div>",
+            "bodyOpen": '<div class="body" id="body">',
+            "comment": "<!-- \a -->",
+            "cssClose": "</style>",
+            "cssOpen": "<style>",
             "deflistClose": "</dl>",
-            "deflistItem1Open": "<dt>",
             "deflistItem1Close": "</dt>",
+            "deflistItem1Open": "<dt>",
+            "deflistItem2Close": "</dd>",
             "deflistItem2Open": "<dd>",
-            "url": '<a href="\a">\a</a>',
-            "urlMark": '<a href="\a">\a</a>',
+            "deflistOpen": "<dl>",
             "email": '<a href="mailto:\a">\a</a>',
             "emailMark": '<a href="mailto:\a">\a</a>',
-            "_imgAlignLeft": ' align="left"',
-            "_imgAlignCenter": ' align="middle"',
-            "_imgAlignRight": ' align="right"',
-            "tableOpen": "<table~A~~B~>",
-            "tableClose": "</table>",
-            "tableRowOpen": "<tr>",
-            "tableRowClose": "</tr>",
-            "tableCellOpen": "<td~A~~S~>",
-            "tableCellClose": "</td>",
-            "tableTitleCellOpen": "<th~S~>",
-            "tableTitleCellClose": "</th>",
-            "_tableBorder": ' border="1"',
-            "_tableAlignCenter": ' align="center"',
-            "_tableCellAlignRight": ' align="right"',
-            "_tableCellAlignCenter": ' align="center"',
-            "_tableCellColSpan": ' colspan="\a"',
-            "cssOpen": '<style type="text/css">',
-            "cssClose": "</style>",
-            "comment": "<!-- \a -->",
-            "EOD": "</body></html>",
+            "EOD": "</article></body></html>",
+            "fontBoldClose": "</strong>",
+            "fontBoldOpen": "<strong>",
+            "fontItalicClose": "</em>",
+            "fontItalicOpen": "<em>",
+            "fontMonoClose": "</code>",
+            "fontMonoOpen": "<code>",
+            "fontStrikeClose": "</del>",
+            "fontStrikeOpen": "<del>",
+            "fontUnderlineClose": "</span>",
+            "fontUnderlineOpen": '<span class="underline">',
+            "_imgAlignCenter": ' class="center"',
+            "_imgAlignLeft": ' class="left"',
+            "_imgAlignRight": ' class="right"',
+            "img": '<img~a~ src="\a" alt="">',
+            "listClose": "</ul>",
             "listItemClose": "</li>",
+            "listItemOpen": "<li>",
+            "listOpen": "<ul>",
+            "numlistClose": "</ol>",
             "numlistItemClose": "</li>",
-            "deflistItem2Close": "</dd>",
-            "bar1": '<hr class="light" />',
-            "bar2": '<hr class="heavy" />',
-            "anchor": '<a id="\a" name="\a"></a>\n',
-            "img": '<img~A~ src="\a" border="0" alt=""/>',
+            "numlistItemOpen": "<li>",
+            "numlistOpen": "<ol>",
+            "paragraphClose": "</p>",
+            "paragraphOpen": "<p>",
+            "_tableAlignCenter": ' style="margin-left: auto; margin-right: auto;"',
+            "_tableBorder": ' class="tableborder"',
+            "_tableCellAlignCenter": ' class="center"',
+            "_tableCellAlignRight": ' class="right"',
+            "tableCellClose": "</td>",
+            "_tableCellColSpan": ' colspan="\a"',
+            "tableCellOpen": "<td~a~~s~>",
+            "tableClose": "</table>",
+            "tableOpen": "<table~a~~b~>",
+            "tableRowClose": "</tr>",
+            "tableRowOpen": "<tr>",
+            "tableTitleCellClose": "</th>",
+            "tableTitleCellOpen": "<th~s~>",
+            "title1Close": "</section>",
+            "title1Open": "<section~A~>\n<h1>\a</h1>",
+            "title2Close": "</section>",
+            "title2Open": "<section~A~>\n<h2>\a</h2>",
+            "title3Close": "</section>",
+            "title3Open": "<section~A~>\n<h3>\a</h3>",
+            "title4Close": "</section>",
+            "title4Open": "<section~A~>\n<h4>\a</h4>",
+            "title5Close": "</section>",
+            "title5Open": "<section~A~>\n<h5>\a</h5>",
+            "tocClose": "</nav>",
+            "tocOpen": "<nav>",
+            "url": '<a href="\a">\a</a>',
+            "urlMark": '<a href="\a">\a</a>',
         },
         "sgml": {
             "paragraphOpen": "<p>",
@@ -1370,6 +1391,7 @@ def getRules(config):
             "blanksaroundbar": 1,
             "blanksaroundtitle": 1,
             "blanksaroundnumtitle": 1,
+            "titleblocks": 1,
         },
         "sgml": {
             "linkable": 1,

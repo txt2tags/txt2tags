@@ -1,42 +1,65 @@
-<?xml version="1.0"
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta name="generator" content="http://txt2tags.org" />
+<meta name="generator" content="http://txt2tags.org">
+<style>
+body{background-color:#fff;color:#000;}
+hr{background-color:#000;border:0;color:#000;}
+hr.heavy{height:5px;}
+hr.light{height:1px;}
+img{border:0;display:block;}
+img.right{margin:0 0 0 auto;}
+img.center{border:0;margin:0 auto;}
+table th,table td{padding:4px;}
+.center,header{text-align:center;}
+table.center {margin-left:auto; margin-right:auto;}
+.right{text-align:right;}
+.left{text-align:left;}
+.tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
+.underline{text-decoration:underline;}
+</style>
 </head>
 <body>
-
-<div class="header" id="header">
-</div>
+<header>
+<hgroup>
+</hgroup>
+</header>
+<article>
 
 <div class="body" id="body">
 
+<section~A~>
+<h1></h1>
+<section>
 <h2>Syntax: Marks are greedy and must be "glued" with contents</h2>
 
 <p>
-<br> <b>b</b>         <i>i</i>         <u>u</u>         <s>s</s>         <code>m</code>         r        t
-<br> <b>bo</b>        <i>it</i>        <u>un</u>        <s>st</s>        <code>mo</code>        ra       tg
-<br> <b>bold</b>      <i>ital</i>      <u>undr</u>      <s>strk</s>      <code>mono</code>      raw      tggd
-<br> <b>bo ld</b>     <i>it al</i>     <u>un dr</u>     <s>st rk</s>     <code>mo no</code>     r aw     tg gd
-<br> <b>bo * ld</b>   <i>it / al</i>   <u>un _ dr</u>   <s>st - rk</s>   <code>mo ` no</code>   r " aw   tg ' gd
-<br> <b>bo **ld</b>   <i>it //al</i>   <u>un __dr</u>   <s>st --rk</s>   <code>mo ``no</code>   r ""aw   tg ''gd
-<br> <b>bo ** ld</b>  <i>it // al</i>  <u>un __ dr</u>  <s>st -- rk</s>  <code>mo `` no</code>  r "" aw  tg '' gd
-<br> <b>**bold**</b>  <i>//ital//</i>  <u>__undr__</u>  <s>--strk--</s>  <code>``mono``</code>  ""raw""  ''tggd''
-<br> <b>*bold*</b>    <i>/ital/</i>    <u>_undr_</u>    <s>-strk-</s>    <code>`mono`</code>    "raw"    'tggd'
+<br> <strong>b</strong>         <em>i</em>         <span class="underline">u</span>         <del>s</del>         <code>m</code>         r        t
+<br> <strong>bo</strong>        <em>it</em>        <span class="underline">un</span>        <del>st</del>        <code>mo</code>        ra       tg
+<br> <strong>bold</strong>      <em>ital</em>      <span class="underline">undr</span>      <del>strk</del>      <code>mono</code>      raw      tggd
+<br> <strong>bo ld</strong>     <em>it al</em>     <span class="underline">un dr</span>     <del>st rk</del>     <code>mo no</code>     r aw     tg gd
+<br> <strong>bo * ld</strong>   <em>it / al</em>   <span class="underline">un _ dr</span>   <del>st - rk</del>   <code>mo ` no</code>   r " aw   tg ' gd
+<br> <strong>bo **ld</strong>   <em>it //al</em>   <span class="underline">un __dr</span>   <del>st --rk</del>   <code>mo ``no</code>   r ""aw   tg ''gd
+<br> <strong>bo ** ld</strong>  <em>it // al</em>  <span class="underline">un __ dr</span>  <del>st -- rk</del>  <code>mo `` no</code>  r "" aw  tg '' gd
+<br> <strong>**bold**</strong>  <em>//ital//</em>  <span class="underline">__undr__</span>  <del>--strk--</del>  <code>``mono``</code>  ""raw""  ''tggd''
+<br> <strong>*bold*</strong>    <em>/ital/</em>    <span class="underline">_undr_</span>    <del>-strk-</del>    <code>`mono`</code>    "raw"    'tggd'
 </p>
 
+</section>
+<section>
 <h2>Syntax: Repetition is greedy</h2>
 
 <p>
-<br>  <b>*</b>         <i>/</i>         <u>_</u>         <s>-</s>         <code>`</code>        "        '
-<br>  <b>**</b>        <i>//</i>        <u>__</u>        <s>--</s>        <code>``</code>       ""       ''
-<br>  <b>***</b>       <i>///</i>       <u>___</u>       <s>---</s>       <code>```</code>      """      '''
-<br>  <b>****</b>      <i>////</i>      <u>____</u>      <s>----</s>      <code>````</code>     """"     ''''
-<br>  <b>*****</b>     <i>/////</i>     <u>_____</u>     <s>-----</s>     <code>`````</code>    """""    '''''
-<br>  <b>******</b>    <i>//////</i>    <u>______</u>    <s>------</s>    <code>``````</code>   """"""   ''''''
+<br>  <strong>*</strong>         <em>/</em>         <span class="underline">_</span>         <del>-</del>         <code>`</code>        "        '
+<br>  <strong>**</strong>        <em>//</em>        <span class="underline">__</span>        <del>--</del>        <code>``</code>       ""       ''
+<br>  <strong>***</strong>       <em>///</em>       <span class="underline">___</span>       <del>---</del>       <code>```</code>      """      '''
+<br>  <strong>****</strong>      <em>////</em>      <span class="underline">____</span>      <del>----</del>      <code>````</code>     """"     ''''
+<br>  <strong>*****</strong>     <em>/////</em>     <span class="underline">_____</span>     <del>-----</del>     <code>`````</code>    """""    '''''
+<br>  <strong>******</strong>    <em>//////</em>    <span class="underline">______</span>    <del>------</del>    <code>``````</code>   """"""   ''''''
 </p>
 
+</section>
+<section>
 <h2>Invalid: No contents</h2>
 
 <p>
@@ -44,6 +67,8 @@
 <br>     ** **         // //         __ __         -- --         `` ``        "" ""        '' ''
 </p>
 
+</section>
+<section>
 <h2>Invalid: Contents not "glued" with marks</h2>
 
 <p>
@@ -51,8 +76,10 @@
 <br>  **bold **     //ital //     __undr __     --strk --     ``mono ``    ""raw ""     ''tggd ''
 <br>  ** bold **    // ital //    __ undr __    -- strk --    `` mono ``   "" raw ""    '' tggd ''
 </p>
+</section>
+</section>
 </div>
 
 <!-- html code generated by txt2tags (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -q -\-no-rc inline.t2t -->
-</body></html>
+</article></body></html>
