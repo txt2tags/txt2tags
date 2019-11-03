@@ -3549,16 +3549,6 @@ class BlockMaster:
         if where == "after" and rules["blanksaround" + blockname]:
             return True
 
-        # # No blank before if it's the first block of the body
-        # elif where == 'before' \
-        #       and BLOCK.count == 1:
-        #       return False
-
-        # # No blank before if it's the first block of this level (nested)
-        # elif where == 'before' \
-        #       and self.count == 1:
-        #       return False
-
         # The blank line before the block is only added if
         # the previous block haven't added a blank line
         # (to avoid consecutive blanks)
