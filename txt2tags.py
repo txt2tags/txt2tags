@@ -1709,6 +1709,13 @@ def getRules(config):
         },
     }
 
+    for target, rules in rules_bank.items():
+        for rule in rules:
+            if rule not in allrules:
+                raise AssertionError(
+                    "{} target has invalid rule {}".format(target, rule)
+                )
+
     # Get the target specific rules
     if config["target"] == "xhtml":
         myrules = rules_bank["html"].copy()  # inheritance
