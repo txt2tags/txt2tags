@@ -1266,9 +1266,7 @@ def getTags(config):
     for target, tags in alltags.items():
         for key in tags:
             if key not in keys:
-                raise AssertionError(
-                    "{target} target has invalid key {key}".format(**locals())
-                )
+                raise AssertionError("{} target has invalid key {}".format(target, key))
 
     # Make the HTML -> XHTML inheritance
     xhtml = alltags["html"].copy()

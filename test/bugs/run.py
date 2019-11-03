@@ -9,7 +9,6 @@
 from __future__ import print_function
 
 import glob
-import os
 import sys
 
 sys.path.insert(0, "..")
