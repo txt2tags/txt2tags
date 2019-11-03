@@ -32,11 +32,7 @@ TXT2TAGS = [os.path.abspath(TXT2TAGS), "-q", "--no-rc"]
 
 
 def get_output(cmd):
-    return (
-        subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        .communicate()[0]
-        .strip()
-    )
+    return subprocess.check_output(cmd, stderr=subprocess.STDOUT).strip()
 
 
 #
@@ -124,7 +120,6 @@ def _diff(outfile, okfile=None):
 
 
 def test(cmdline, outfile, okfile=None):
+    okfile = okfile or os.path.join(DIR_OK, outfile)
     _convert(cmdline)
-    if not okfile:
-        okfile = os.path.join(DIR_OK, outfile)
     _diff(outfile, okfile=okfile)
