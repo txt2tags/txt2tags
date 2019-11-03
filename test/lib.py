@@ -27,6 +27,8 @@ DIR_ERROR = "error"
 OK = FAILED = 0
 ERROR_FILES = []
 
+OVERRIDE = False
+
 # force absolute path to avoid problems, set default options
 TXT2TAGS = [os.path.abspath(TXT2TAGS), "-q", "--no-rc"]
 
@@ -111,6 +113,14 @@ def mark_failed(outfile):
         ERROR_FILES.append(os.path.join(module, DIR_ERROR, outfile))
 
 
+def override(okfile, outfile):
+    global FAILED
+    print("OVERRIDE")
+    FAILED += 1
+    if os.path.exists(outfile):
+        MoveFile(outfile, okfile)
+
+
 def _diff(outfile, okfile=None):
     global OK, FAILED, ERROR_FILES
     if not okfile:
@@ -120,7 +130,10 @@ def _diff(outfile, okfile=None):
     ok = ReadFile(okfile)
     ok = remove_version(ok)
     if out != ok:
-        mark_failed(outfile)
+        if OVERRIDE:
+            override(okfile, outfile)
+        else:
+            mark_failed(outfile)
     else:
         mark_ok(outfile)
 

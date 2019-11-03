@@ -26,6 +26,8 @@ import lib
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("modules", nargs="*")
+    parser.add_argument(
+        "--override", action="store_true", help="override test files")
     return parser.parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +46,7 @@ for path in sorted(os.listdir(DIR)):
         sys.exit("test module %s contains neither run.py nor run.sh" % path)
 
 ARGS = parse_args()
+lib.OVERRIDE = ARGS.override
 
 if ARGS.modules:
     PYTHON_TEST_MODULES = sorted(set(ARGS.modules) & set(PYTHON_TEST_MODULES))
