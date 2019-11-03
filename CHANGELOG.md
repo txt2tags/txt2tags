@@ -1,7 +1,7 @@
 # Version 3.3 (unreleased)
 
 * Remove ASCII art target (Jendrik Seipp).
-* Use XHTML for `--target html` (Jendrik Seipp).
+* Use XHTML for html target and drop xhtml target (Jendrik Seipp).
 * Remove %!csv macro (Jendrik Seipp).
 * Always use CSS sugar and drop `--css-sugar` option (Jendrik Seipp).
 * Remove i18n (Jendrik Seipp).
