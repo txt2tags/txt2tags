@@ -1,129 +1,180 @@
-<DIV CLASS="body" ID="body">
+<div class="body" id="body">
 
-<H2>Nesting: Title inside is ignored</H2>
+<h2>Nesting: Title inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>= No title tags here. =
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>= No title tags here. =
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Paragraph inside is normal</H2>
+<h2>Nesting: Paragraph inside is normal</h2>
 
-<UL>
-<LI>Line 1.
-<LI>Line 2.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>Line 2.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Macro inside is normal</H2>
+<h2>Nesting: Macro inside is normal</h2>
 
-<UL>
-<LI>Line 1.
-<LI>Line 2.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>Line 2.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Line inside is ignored (becomes strike)</H2>
+<h2>Nesting: Line inside is ignored (becomes strike)</h2>
 
-<UL>
-<LI>Line 1.
-<LI><S>---------------------------------------</S>
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li><s>---------------------------------------</s>
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Comment Line inside is ignored</H2>
+<h2>Nesting: Comment Line inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>% You're seeing this.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>% You're seeing this.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Comment Block inside is ignored</H2>
+<h2>Nesting: Comment Block inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>%%%
-<LI>You're seeing this.
-<LI>%%%
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>%%%
+</li>
+<li>You're seeing this.
+</li>
+<li>%%%
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Raw Line inside is ignored</H2>
+<h2>Nesting: Raw Line inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>""" No raw here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>""" No raw here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Raw Block inside is ignored</H2>
+<h2>Nesting: Raw Block inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>"""
-<LI>No raw here.
-<LI>"""
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>"""
+</li>
+<li>No raw here.
+</li>
+<li>"""
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Verbatim Line inside is ignored</H2>
+<h2>Nesting: Verbatim Line inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>``` No verbatim line here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>``` No verbatim line here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Verbatim Block inside is ignored</H2>
+<h2>Nesting: Verbatim Block inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>```
-<LI>No verbatim here.
-<LI>```
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>```
+</li>
+<li>No verbatim here.
+</li>
+<li>```
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Quote inside is ignored</H2>
+<h2>Nesting: Quote inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>	No quote here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>	No quote here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: List inside is ignored</H2>
+<h2>Nesting: List inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>- No list tags here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>- No list tags here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Numbered List inside is ignored</H2>
+<h2>Nesting: Numbered List inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>+ No numbered list tags here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>+ No numbered list tags here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Definition List inside is ignored</H2>
+<h2>Nesting: Definition List inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>: No definition term tags here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>: No definition term tags here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-<H2>Nesting: Table inside is ignored</H2>
+<h2>Nesting: Table inside is ignored</h2>
 
-<UL>
-<LI>Line 1.
-<LI>| No table here.
-<LI>Line 3.
-</UL>
+<ul>
+<li>Line 1.
+</li>
+<li>| No table here.
+</li>
+<li>Line 3.
+</li>
+</ul>
 
-</DIV>
+</div>

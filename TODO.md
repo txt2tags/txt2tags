@@ -2,8 +2,7 @@
 * Clean up the code
 * Remove seldom-used features
 * Make the code faster
-* Drop HTML4 target and use XHTML instead for `--target html`
-* Possibly use HTML5 for `--target html` later
+* Use HTML5 for `--target html`
 * Drop --encoding option and always use UTF-8
 * Inspect the following commits from https://github.com/txt2tags/txt2tags and backport useful changes:
 

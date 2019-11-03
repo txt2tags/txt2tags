@@ -1,288 +1,376 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.org">
-</HEAD>
-<BODY>
+<?xml version="1.0"
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="http://txt2tags.org" />
+</head>
+<body>
 
-<DIV CLASS="header" ID="header">
-</DIV>
+<div class="header" id="header">
+</div>
 
-<DIV CLASS="body" ID="body">
+<div class="body" id="body">
 
-<H2>Items: Prefixed by plus</H2>
+<h2>Items: Prefixed by plus</h2>
 
-<OL>
-<LI>Use the plus to prefix list items.
-<LI>There must be one space after the plus.
-<LI>The list is closed by two consecutive blank lines.
-</OL>
+<ol>
+<li>Use the plus to prefix list items.
+</li>
+<li>There must be one space after the plus.
+</li>
+<li>The list is closed by two consecutive blank lines.
+</li>
+</ol>
 
-<H2>Items: Free leading spacing (indentation)</H2>
+<h2>Items: Free leading spacing (indentation)</h2>
 
-     <OL>
-     <LI>The list can be indented on the source document.
-     <LI>You can use any number of spaces.
-     <LI>The result will be the same.
-     </OL>
+     <ol>
+     <li>The list can be indented on the source document.
+     </li>
+     <li>You can use any number of spaces.
+     </li>
+     <li>The result will be the same.
+     </li>
+     </ol>
 
-<H2>Items: Vertical spacing between items</H2>
+<h2>Items: Vertical spacing between items</h2>
 
-<OL>
-<LI>Let one blank line between the list items.
-<P></P>
-<LI>It will be maintained on the conversion.
-<P></P>
-<LI>Some targets don't support this behavior.
-<P></P>
-<LI>This one was separated by a line with blanks.
+<ol>
+<li>Let one blank line between the list items.
+<p></p>
+</li>
+<li>It will be maintained on the conversion.
+<p></p>
+</li>
+<li>Some targets don't support this behavior.
+<p></p>
+</li>
+<li>This one was separated by a line with blanks.
   You can also put a blank line inside
-<P></P>
+<p></p>
   the item contents and it will be preserved.
-</OL>
+</li>
+</ol>
 
-<H2>Items: Exactly ONE space after the plus</H2>
+<h2>Items: Exactly ONE space after the plus</h2>
 
-<P>
+<p>
 +This is not a list (no space)
-</P>
-<P>
+</p>
+<p>
 +    This is not a list (more than one space)
-</P>
-<P>
+</p>
+<p>
 +	This is not a list (a TAB instead the space)
-</P>
+</p>
 
-<H2>Items: Catchy cases</H2>
+<h2>Items: Catchy cases</h2>
 
-<OL>
-<LI>- This is a list
-<LI>+ This is a list
-<LI>: This is a list
-</OL>
+<ol>
+<li>- This is a list
+</li>
+<li>+ This is a list
+</li>
+<li>: This is a list
+</li>
+</ol>
 
-<H2>Nesting: Creating sublists</H2>
+<h2>Nesting: Creating sublists</h2>
 
-<OL>
-<LI>This is the "mother" list first item.
-<LI>Here is the second, but inside this item,
-  <OL>
-  <LI>there is a sublist, with its own items.
-  <LI>Note that the items of the same sublist
-  <LI>must have the same indentation.
-    <OL>
-    <LI>And this can go on, opening sublists.
-      <OL>
-      <LI>Just add leading spaces before the
-      <LI>plus and sublists will be opened.
-      <LI>The two blank lines closes them all.
-      </OL>
-    </OL>
-  </OL>
-</OL>
+<ol>
+<li>This is the "mother" list first item.
+</li>
+<li>Here is the second, but inside this item,
+  <ol>
+  <li>there is a sublist, with its own items.
+  </li>
+  <li>Note that the items of the same sublist
+  </li>
+  <li>must have the same indentation.
+    <ol>
+    <li>And this can go on, opening sublists.
+      <ol>
+      <li>Just add leading spaces before the
+      </li>
+      <li>plus and sublists will be opened.
+      </li>
+      <li>The two blank lines closes them all.
+      </li>
+      </ol>
+    </li>
+    </ol>
+  </li>
+  </ol>
+</li>
+</ol>
 
-<H2>Nesting: Free leading spacing (indentation)</H2>
+<h2>Nesting: Free leading spacing (indentation)</h2>
 
-<OL>
-<LI>When nesting lists, the additional spaces are free.
- <OL>
- <LI>You can add just one,
-        <OL>
-        <LI>or many.
-          <OL>
-          <LI>What matters is to put more than the previous.
-          <LI>But remember that the other items of the same list
-          <LI>must use the same indentation.
-          </OL>
-        </OL>
- </OL>
-</OL>
+<ol>
+<li>When nesting lists, the additional spaces are free.
+ <ol>
+ <li>You can add just one,
+        <ol>
+        <li>or many.
+          <ol>
+          <li>What matters is to put more than the previous.
+          </li>
+          <li>But remember that the other items of the same list
+          </li>
+          <li>must use the same indentation.
+          </li>
+          </ol>
+        </li>
+        </ol>
+ </li>
+ </ol>
+</li>
+</ol>
 
-<H2>Nesting: Maximum depth</H2>
+<h2>Nesting: Maximum depth</h2>
 
-<OL>
-<LI>There is not a depth limit,
-  <OL>
-  <LI>you can go deeper and deeper.
-    <OL>
-    <LI>But some targets may have restrictions.
-      <OL>
-      <LI>The LaTeX maximum is here, 4 levels.
-        <OL>
-        <LI>This one and the following sublists
-          <OL>
-          <LI>are moved up to the level 4
-            <OL>
-            <LI>when converting to LaTeX.
-              <OL>
-              <LI>On the other targets,
-                <OL>
-                <LI>it is just fine
-                  <OL>
-                  <LI>to have a very deep list.
-                  </OL>
-                </OL>
-              </OL>
-            </OL>
-          </OL>
-        </OL>
-      </OL>
-    </OL>
-  </OL>
-</OL>
+<ol>
+<li>There is not a depth limit,
+  <ol>
+  <li>you can go deeper and deeper.
+    <ol>
+    <li>But some targets may have restrictions.
+      <ol>
+      <li>The LaTeX maximum is here, 4 levels.
+        <ol>
+        <li>This one and the following sublists
+          <ol>
+          <li>are moved up to the level 4
+            <ol>
+            <li>when converting to LaTeX.
+              <ol>
+              <li>On the other targets,
+                <ol>
+                <li>it is just fine
+                  <ol>
+                  <li>to have a very deep list.
+                  </li>
+                  </ol>
+                </li>
+                </ol>
+              </li>
+              </ol>
+            </li>
+            </ol>
+          </li>
+          </ol>
+        </li>
+        </ol>
+      </li>
+      </ol>
+    </li>
+    </ol>
+  </li>
+  </ol>
+</li>
+</ol>
 
-<H2>Nesting: Reverse doesn't work</H2>
+<h2>Nesting: Reverse doesn't work</h2>
 
-        <OL>
-        <LI>Reverse nesting doesn't work.
-        </OL>
+        <ol>
+        <li>Reverse nesting doesn't work.
+        </li>
+        </ol>
 
-      <OL>
-      <LI>Because a sublist *must* have a mother list.
-      </OL>
+      <ol>
+      <li>Because a sublist *must* have a mother list.
+      </li>
+      </ol>
 
-    <OL>
-    <LI>It's the list concept, not a txt2tags limitation.
-    </OL>
+    <ol>
+    <li>It's the list concept, not a txt2tags limitation.
+    </li>
+    </ol>
 
-  <OL>
-  <LI>All this sublists will be bumped to mother lists.
-  </OL>
+  <ol>
+  <li>All this sublists will be bumped to mother lists.
+  </li>
+  </ol>
 
-<OL>
-<LI>At level 1, like this one.
-</OL>
+<ol>
+<li>At level 1, like this one.
+</li>
+</ol>
 
-<H2>Nesting: Going deeper and back</H2>
+<h2>Nesting: Going deeper and back</h2>
 
-<OL>
-<LI>Level 1
-  <OL>
-  <LI>Level 2
-    <OL>
-    <LI>Level 3
-      <OL>
-      <LI>Level 4
-      </OL>
-    <LI>Level 3 -- (closed Level 4)
-    </OL>
-  <LI>Level 2 -- (closed Level 3)
-  </OL>
-<LI>Level 1 -- (closed Level 2)
-</OL>
+<ol>
+<li>Level 1
+  <ol>
+  <li>Level 2
+    <ol>
+    <li>Level 3
+      <ol>
+      <li>Level 4
+      </li>
+      </ol>
+    </li>
+    <li>Level 3 -- (closed Level 4)
+    </li>
+    </ol>
+  </li>
+  <li>Level 2 -- (closed Level 3)
+  </li>
+  </ol>
+</li>
+<li>Level 1 -- (closed Level 2)
+</li>
+</ol>
 
-<OL>
-<LI>Level 1
-  <OL>
-  <LI>Level 2
-    <OL>
-    <LI>Level 3
-      <OL>
-      <LI>Level 4
-      </OL>
-    </OL>
-  </OL>
-<LI>Level 1 -- (closed Level 4, Level 3 and Level 2)
-</OL>
+<ol>
+<li>Level 1
+  <ol>
+  <li>Level 2
+    <ol>
+    <li>Level 3
+      <ol>
+      <li>Level 4
+      </li>
+      </ol>
+    </li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>Level 1 -- (closed Level 4, Level 3 and Level 2)
+</li>
+</ol>
 
-<H2>Nesting: Vertical spacing between lists</H2>
+<h2>Nesting: Vertical spacing between lists</h2>
 
-<OL>
-<LI>Level 1
-<P></P>
-  <OL>
-  <LI>Level 2 -- blank BEFORE and AFTER (in)
-  <P></P>
-    <OL>
-    <LI>Level 3
-      <OL>
-      <LI>Level 4
-      </OL>
-    <LI>Level 3
-    <P></P>
-    </OL>
-  <LI>Level 2 -- blank BEFORE and AFTER (out)
-  <P></P>
-  </OL>
-<LI>Level 1
-<P></P>
-  <OL>
-  <LI>Level 2 -- blank BEFORE (spaces) and AFTER (TAB)
-  <P></P>
-    <OL>
-    <LI>Level 3
-    </OL>
-  </OL>
-</OL>
+<ol>
+<li>Level 1
+<p></p>
+  <ol>
+  <li>Level 2 -- blank BEFORE and AFTER (in)
+  <p></p>
+    <ol>
+    <li>Level 3
+      <ol>
+      <li>Level 4
+      </li>
+      </ol>
+    </li>
+    <li>Level 3
+    <p></p>
+    </li>
+    </ol>
+  </li>
+  <li>Level 2 -- blank BEFORE and AFTER (out)
+  <p></p>
+  </li>
+  </ol>
+</li>
+<li>Level 1
+<p></p>
+  <ol>
+  <li>Level 2 -- blank BEFORE (spaces) and AFTER (TAB)
+  <p></p>
+    <ol>
+    <li>Level 3
+    </li>
+    </ol>
+  </li>
+  </ol>
+</li>
+</ol>
 
-<H2>Nesting: Messing up</H2>
+<h2>Nesting: Messing up</h2>
 
-<OL>
-<LI>Level 1
-    <OL>
-    <LI>Level 2
-        <OL>
-        <LI>Level 3
-            <OL>
-            <LI>Level 4
-            </OL>
-        <LI>Level 3.5 ???
-        <LI>Level 3
-        </OL>
-    <LI>Level 2.5 ???
-    <LI>Level 2
-    </OL>
-<LI>Level 1.5 ???
-<LI>Level 1
-</OL>
+<ol>
+<li>Level 1
+    <ol>
+    <li>Level 2
+        <ol>
+        <li>Level 3
+            <ol>
+            <li>Level 4
+            </li>
+            </ol>
+        </li>
+        <li>Level 3.5 ???
+        </li>
+        <li>Level 3
+        </li>
+        </ol>
+    </li>
+    <li>Level 2.5 ???
+    </li>
+    <li>Level 2
+    </li>
+    </ol>
+</li>
+<li>Level 1.5 ???
+</li>
+<li>Level 1
+</li>
+</ol>
 
-<H2>Closing: Two (not so) empty lines</H2>
+<h2>Closing: Two (not so) empty lines</h2>
 
-<OL>
-<LI>This list is closed by a line with spaces and other with TABs
-</OL>
+<ol>
+<li>This list is closed by a line with spaces and other with TABs
+</li>
+</ol>
 
-<OL>
-<LI>This list is NOT closed by two comment lines
-<LI>This list is closed by a line with spaces and TAB,
-<LI>then a comment line, then an empty line.
-</OL>
+<ol>
+<li>This list is NOT closed by two comment lines
+</li>
+<li>This list is closed by a line with spaces and TAB,
+</li>
+<li>then a comment line, then an empty line.
+</li>
+</ol>
 
-<H2>Closing: Empty item closes current (sub)list</H2>
+<h2>Closing: Empty item closes current (sub)list</h2>
 
-<OL>
-<LI>Level 1
-  <OL>
-  <LI>Level 2
-    <OL>
-    <LI>Level 3
-    </OL>
+<ol>
+<li>Level 1
+  <ol>
+  <li>Level 2
+    <ol>
+    <li>Level 3
+    </li>
+    </ol>
     Level 2
-  </OL>
+  </li>
+  </ol>
   Level 1
-</OL>
+</li>
+</ol>
 
-<OL>
-<LI>Empty item with trailing spaces.
-</OL>
+<ol>
+<li>Empty item with trailing spaces.
+</li>
+</ol>
 
-<OL>
-<LI>Empty item with trailing TAB.
-</OL>
+<ol>
+<li>Empty item with trailing TAB.
+</li>
+</ol>
 
-<H2>Closing: EOF closes the lists</H2>
+<h2>Closing: EOF closes the lists</h2>
 
-<OL>
-<LI>If the end of the file (EOF) is hit,
-  <OL>
-  <LI>all the currently opened list are closed,
-    <OL>
-    <LI>just like when using the two blank lines.
-    </OL>
-  </OL>
-</OL>
+<ol>
+<li>If the end of the file (EOF) is hit,
+  <ol>
+  <li>all the currently opened list are closed,
+    <ol>
+    <li>just like when using the two blank lines.
+    </li>
+    </ol>
+  </li>
+  </ol>
+</li>
+</ol>
 
-</DIV>
+</div>
 <!-- html code generated by txt2tags (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -q -\-no-rc -C config -o numlist.html list.t2t -->
-</BODY></HTML>
+</body></html>

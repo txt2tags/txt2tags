@@ -139,7 +139,6 @@ CONFIG_KEYWORDS = ["target", "encoding", "style", "options", "preproc", "postpro
 
 TARGET_NAMES = {
     "html": "HTML page",
-    "xhtml": "XHTML page",
     "sgml": "SGML document",
     "dbk": "DocBook document",
     "tex": "LaTeX document",
@@ -202,7 +201,7 @@ USAGE = "\n".join(
         "      --toc-only      print the Table of Contents and exit",
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
-        "      --css-inside    insert CSS file contents inside HTML/XHTML headers",
+        "      --css-inside    insert CSS file contents inside HTML headers",
         "  -H, --no-headers    suppress header and footer from the output",
         "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>",
         "  -C, --config-file=F read configuration from file F",
@@ -258,23 +257,6 @@ HEADER_TEMPLATE = {
 <date>%(HEADER3)s
 """,
     "html": """\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.org">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=%(ENCODING)s">
-<LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
-<TITLE>%(HEADER1)s</TITLE>
-</HEAD>
-<BODY>
-
-<DIV CLASS="header" ID="header">
-<H1>%(HEADER1)s</H1>
-<H2>%(HEADER2)s</H2>
-<H3>%(HEADER3)s</H3>
-</DIV>
-""",
-    "xhtml": """\
 <?xml version="1.0"
       encoding="%(ENCODING)s"
 ?>
@@ -541,6 +523,8 @@ def getTags(config):
             "emailMark": "\a (\a)",
             "img": "[\a]",
         },
+        # TIP http://www.w3.org/TR/xhtml1/#guidelines
+        # TIP http://www.htmlref.com/samples/Chapt17/17_08.htm
         "html": {
             "tocOpen": '<DIV CLASS="toc">',
             "tocClose": "</DIV>",
@@ -606,11 +590,6 @@ def getTags(config):
             "cssClose": "</STYLE>",
             "comment": "<!-- \a -->",
             "EOD": "</BODY></HTML>",
-        },
-        # TIP xhtml inherits all HTML definitions (lowercased)
-        # TIP http://www.w3.org/TR/xhtml1/#guidelines
-        # TIP http://www.htmlref.com/samples/Chapt17/17_08.htm
-        "xhtml": {
             "listItemClose": "</li>",
             "numlistItemClose": "</li>",
             "deflistItem2Close": "</dd>",
@@ -1257,17 +1236,16 @@ def getTags(config):
             # if possible: http://www.wikicreole.org/wiki/Placeholder
         },
     }
+
+    html = alltags["html"]
+    for key, value in html.items():
+        html[key] = value.lower()
+    alltags["html"] = html
+
     for target, tags in alltags.items():
         for key in tags:
             if key not in keys:
                 raise AssertionError("{} target has invalid key {}".format(target, key))
-
-    # Make the HTML -> XHTML inheritance
-    xhtml = alltags["html"].copy()
-    for key in xhtml.keys():
-        xhtml[key] = xhtml[key].lower()
-    xhtml.update(alltags["xhtml"])
-    alltags["xhtml"] = xhtml.copy()
 
     # Compose the target tags dictionary.
     tags = collections.defaultdict(str)
@@ -1401,9 +1379,6 @@ def getRules(config):
             "blanksaroundbar": 1,
             "blanksaroundtitle": 1,
             "blanksaroundnumtitle": 1,
-        },
-        "xhtml": {
-            # TIP xhtml inherits all HTML rules
         },
         "sgml": {
             "linkable": 1,
@@ -1707,17 +1682,10 @@ def getRules(config):
                     "{} target has invalid rule {}".format(target, rule)
                 )
 
-    # Get the target specific rules
-    if config["target"] == "xhtml":
-        myrules = rules_bank["html"].copy()  # inheritance
-        myrules.update(rules_bank["xhtml"])  # get XHTML specific
-    else:
-        myrules = rules_bank[config["target"]].copy()
-
     # Populate return dictionary
     for key in allrules:
         ret[key] = 0  # reset all
-    ret.update(myrules)  # get rules
+    ret.update(rules_bank[config["target"]])
 
     return ret
 
@@ -3615,7 +3583,7 @@ class BlockMaster:
         try:
             if (
                 len(lines) == 1
-                and TARGET in ("html", "xhtml")
+                and TARGET == "html"
                 and re.match(r"^\s*<center>.*</center>\s*$", lines[0])
             ):
                 result = [lines[0]]
@@ -4184,7 +4152,7 @@ def doHeader(headers, config):
     # When using --css-inside, the template's <STYLE> line must be removed.
     # Template line removal for empty header keys is made some lines above.
     # That's why we will clean STYLE now.
-    if target in ("html", "xhtml") and config.get("css-inside") and config.get("style"):
+    if target == "html" and config.get("css-inside") and config.get("style"):
         head_data["STYLE"] = []
 
     Debug("Header Data: %s" % head_data, 1)
@@ -4223,7 +4191,7 @@ def doHeader(headers, config):
 
     # Adding CSS contents into template (for --css-inside)
     # This code sux. Dirty++
-    if target in ("html", "xhtml") and config.get("css-inside") and config.get("style"):
+    if target == "html" and config.get("css-inside") and config.get("style"):
         set_global_config(config)  # usually on convert(), needed here
         for i in range(len(config["style"])):
             cssfile = config["style"][i]
@@ -4303,7 +4271,7 @@ def doFooter(config):
 def doEscape(target, txt):
     "Target-specific special escapes. Apply *before* insert any tag."
     tmpmask = "vvvvThisEscapingSuxvvvv"
-    if target in ("html", "sgml", "xhtml", "dbk"):
+    if target in ("html", "sgml", "dbk"):
         txt = re.sub("&", "&amp;", txt)
         txt = re.sub("<", "&lt;", txt)
         txt = re.sub(">", "&gt;", txt)
@@ -4711,7 +4679,7 @@ def parse_images(line):
                 tag = regex["_imgAlign"].sub(align_tag, tag, 1)
 
             # Dirty fix to allow centered solo images
-            if align == "center" and TARGET in ("html", "xhtml"):
+            if align == "center" and TARGET == "html":
                 rest = regex["img"].sub("", line, 1)
                 if re.match(r"^\s+$", rest):
                     tag = "<center>%s</center>" % tag
@@ -5373,4 +5341,3 @@ if __name__ == "__main__":
         sys.exit(getUnknownErrorMessage())
     else:
         Quit()
-
