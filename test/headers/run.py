@@ -14,10 +14,6 @@ import lib
 
 del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
-
 # text patterns to compose source files
 txt = {
     "e": "",  # Empty line
@@ -61,4 +57,4 @@ def run():
             lib.test(cmdline, outfile)
             # remove the trash
             os.remove(infile)
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+    return 0, 0, []

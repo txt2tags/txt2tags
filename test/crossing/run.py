@@ -14,10 +14,6 @@ import lib
 
 del sys.path[0]
 
-# sux
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
-
 # left files are generated from right ones (using smart filters)
 ALIASES = {"numlist": "list", "deflist": "list", "bar2": "bar"}
 
@@ -84,4 +80,4 @@ def run():
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+    return 0, 0, []

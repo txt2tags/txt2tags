@@ -13,9 +13,6 @@ import lib
 
 del sys.path[0]
 
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
-
 
 def run():
     # test all OK files found
@@ -33,4 +30,4 @@ def run():
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
 
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+    return 0, 0, []

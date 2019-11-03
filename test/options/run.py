@@ -13,9 +13,6 @@ import lib
 
 del sys.path[0]
 
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
-
 # text patterns to compose source files
 EMPTY_HEADER = "\n"
 FULL_HEADER = "Header 1\nHeader 2\nHeader 3\n"
@@ -711,4 +708,4 @@ def run():
                 os.remove(lib.CSS_FILE)
             if os.path.isfile(lib.CONFIG_FILE):
                 os.remove(lib.CONFIG_FILE)
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+    return 0, 0, []

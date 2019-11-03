@@ -17,11 +17,9 @@ import lib
 
 del sys.path[0]
 
-lib.OK = lib.FAILED = 0
-lib.ERROR_FILES = []
-
 
 def run():
+    ok = failed = 0
     # test all .t2t files found
     for infile in glob.glob("*.t2t"):
         basename = infile.replace(".t2t", "")
@@ -31,10 +29,10 @@ def run():
         output = lib.get_output(cmdline)
         if not output:
             print("OK")
-            lib.OK += 1
+            ok += 1
             os.remove(outfile)
         else:
             print("FAILED")
-            lib.FAILED += 1
+            failed += 1
             continue
-    return lib.OK, lib.FAILED, lib.ERROR_FILES
+    return ok, failed, []
