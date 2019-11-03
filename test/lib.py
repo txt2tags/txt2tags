@@ -92,6 +92,13 @@ def remove_version(text):
     return text
 
 
+def mark_ok(outfile):
+    global OK
+    print("OK")
+    OK += 1
+    os.remove(outfile)
+
+
 def mark_failed(outfile):
     global FAILED
     print("FAILED")
@@ -100,7 +107,8 @@ def mark_failed(outfile):
         os.mkdir(DIR_ERROR)
     if os.path.exists(outfile):
         MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
-        ERROR_FILES.append(outfile)
+        module = os.path.basename(os.getcwd())
+        ERROR_FILES.append(os.path.join(module, DIR_ERROR, outfile))
 
 
 def _diff(outfile, okfile=None):
@@ -114,9 +122,7 @@ def _diff(outfile, okfile=None):
     if out != ok:
         mark_failed(outfile)
     else:
-        print("OK")
-        OK = OK + 1
-        os.remove(outfile)
+        mark_ok(outfile)
 
 
 def test(cmdline, outfile, okfile=None):

@@ -57,4 +57,3 @@ def run():
             lib.test(cmdline, outfile)
             # remove the trash
             os.remove(infile)
-    return 0, 0, []

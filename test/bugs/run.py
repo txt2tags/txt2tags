@@ -19,7 +19,6 @@ del sys.path[0]
 
 
 def run():
-    ok = failed = 0
     # test all .t2t files found
     for infile in glob.glob("*.t2t"):
         basename = infile.replace(".t2t", "")
@@ -28,11 +27,6 @@ def run():
         cmdline = lib.TXT2TAGS + [infile]
         output = lib.get_output(cmdline)
         if not output:
-            print("OK")
-            ok += 1
-            os.remove(outfile)
+            lib.mark_ok(outfile)
         else:
-            print("FAILED")
-            failed += 1
-            continue
-    return ok, failed, []
+            lib.mark_failed(outfile)

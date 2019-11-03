@@ -56,5 +56,3 @@ def run():
     # clean up
     if os.path.isfile(lib.CONFIG_FILE):
         os.remove(lib.CONFIG_FILE)
-
-    return 0, 0, []
