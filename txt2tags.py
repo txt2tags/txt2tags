@@ -76,12 +76,6 @@ import re
 import sys
 import time
 
-
-##############################################################################
-
-# User config (1=ON, 0=OFF)
-HTML_LOWER = 0  # use lowercased HTML tags instead upper? (default is 0)
-
 ##############################################################################
 
 # Program information
@@ -1272,9 +1266,6 @@ def getTags(config):
     xhtml = alltags["html"].copy()
     for key in xhtml.keys():
         xhtml[key] = xhtml[key].lower()
-    # Some like HTML tags as lowercase, some don't... (headers out)
-    if HTML_LOWER:
-        alltags["html"] = xhtml.copy()
     xhtml.update(alltags["xhtml"])
     alltags["xhtml"] = xhtml.copy()
 
