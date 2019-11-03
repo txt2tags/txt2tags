@@ -3957,11 +3957,9 @@ class MacroMaster:
 
 
 def listTargets():
-    """list all available targets"""
-    targets = TARGETS
-    targets.sort()
-    for target in targets:
-        print("%s\t%s" % (target, TARGET_NAMES.get(target)))
+    """List available targets."""
+    for target, name in sorted(TARGET_NAMES.items()):
+        print("{target:8}{name}".format(**locals()))
 
 
 def dumpConfig(source_raw, parsed_config):
