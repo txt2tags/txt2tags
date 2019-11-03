@@ -113,8 +113,6 @@ FLAGS = {
     "toc-only": 0,
     "toc": 0,
     "rc": 1,
-    "css-sugar": 0,
-    "css-suggar": 0,
     "css-inside": 0,
     "quiet": 0,
     "slides": 0,
@@ -210,7 +208,6 @@ USAGE = "\n".join(
         "      --toc-only      print the Table of Contents and exit",
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
-        "      --css-sugar     insert CSS-friendly tags for HTML/XHTML",
         "      --css-inside    insert CSS file contents inside HTML/XHTML headers",
         "  -H, --no-headers    suppress header and footer from the output",
         "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>",
@@ -223,7 +220,7 @@ USAGE = "\n".join(
         "      --dump-source   print the document source, with includes expanded",
         "",
         "Turn OFF options:",
-        "     --no-css-inside, --no-css-sugar, --no-dump-config, --no-dump-source,",
+        "     --no-css-inside, --no-dump-config, --no-dump-source,",
         "     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
@@ -274,21 +271,6 @@ HEADER_TEMPLATE = {
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=%(ENCODING)s">
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
 <TITLE>%(HEADER1)s</TITLE>
-</HEAD><BODY BGCOLOR="white" TEXT="black">
-<CENTER>
-<H1>%(HEADER1)s</H1>
-<FONT SIZE="4"><I>%(HEADER2)s</I></FONT><BR>
-<FONT SIZE="4">%(HEADER3)s</FONT>
-</CENTER>
-""",
-    "htmlcss": """\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-<META NAME="generator" CONTENT="http://txt2tags.org">
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=%(ENCODING)s">
-<LINK REL="stylesheet" TYPE="text/css" HREF="%(STYLE)s">
-<TITLE>%(HEADER1)s</TITLE>
 </HEAD>
 <BODY>
 
@@ -299,25 +281,6 @@ HEADER_TEMPLATE = {
 </DIV>
 """,
     "xhtml": """\
-<?xml version="1.0"
-      encoding="%(ENCODING)s"
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"\
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org" />
-<link rel="stylesheet" type="text/css" href="%(STYLE)s" />
-</head>
-<body bgcolor="white" text="black">
-<div align="center">
-<h1>%(HEADER1)s</h1>
-<h2>%(HEADER2)s</h2>
-<h3>%(HEADER3)s</h3>
-</div>
-""",
-    "xhtmlcss": """\
 <?xml version="1.0"
       encoding="%(ENCODING)s"
 ?>
@@ -585,6 +548,10 @@ def getTags(config):
             "img": "[\a]",
         },
         "html": {
+            "tocOpen": '<DIV CLASS="toc">',
+            "tocClose": "</DIV>",
+            "bodyOpen": '<DIV CLASS="body" ID="body">',
+            "bodyClose": "</DIV>",
             "paragraphOpen": "<P>",
             "paragraphClose": "</P>",
             "title1": "~A~<H1>\a</H1>",
@@ -628,7 +595,7 @@ def getTags(config):
             "_imgAlignLeft": ' ALIGN="left"',
             "_imgAlignCenter": ' ALIGN="middle"',
             "_imgAlignRight": ' ALIGN="right"',
-            "tableOpen": '<TABLE~A~~B~ CELLPADDING="4">',
+            "tableOpen": "<TABLE~A~~B~>",
             "tableClose": "</TABLE>",
             "tableRowOpen": "<TR>",
             "tableRowClose": "</TR>",
@@ -1303,18 +1270,6 @@ def getTags(config):
                     "{target} target has invalid key {key}".format(**locals())
                 )
 
-    # Exceptions for --css-sugar
-    if config["css-sugar"] and config["target"] in ("html", "xhtml"):
-        # Change just HTML because XHTML inherits it
-        htmltags = alltags["html"]
-        # Table with no cellpadding
-        htmltags["tableOpen"] = htmltags["tableOpen"].replace(' CELLPADDING="4"', "")
-        # DIVs
-        htmltags["tocOpen"] = '<DIV CLASS="toc">'
-        htmltags["tocClose"] = "</DIV>"
-        htmltags["bodyOpen"] = '<DIV CLASS="body" ID="body">'
-        htmltags["bodyClose"] = "</DIV>"
-
     # Make the HTML -> XHTML inheritance
     xhtml = alltags["html"].copy()
     for key in xhtml.keys():
@@ -1427,7 +1382,7 @@ def getRules(config):
             "blanksaroundnumtitle": 1,
         },
         "html": {
-            "indentverbblock": 1,
+            "indentverbblock": 0,
             "linkable": 1,
             "stylable": 1,
             "escapeurl": 1,
@@ -1444,7 +1399,7 @@ def getRules(config):
             "keeplistindent": 1,
             "keepquoteindent": 1,
             "barinsidequote": 1,
-            "autotocwithbars": 1,
+            "autotocwithbars": 0,
             "tablecellspannable": 1,
             "tablecellaligntype": "cell",
             # 'blanksaroundpara':1,
@@ -1755,11 +1710,6 @@ def getRules(config):
             "blanksaroundtitle": 1,
         },
     }
-
-    # Exceptions for --css-sugar
-    if config["css-sugar"] and config["target"] in ("html", "xhtml"):
-        rules_bank["html"]["indentverbblock"] = 0
-        rules_bank["html"]["autotocwithbars"] = 0
 
     # Get the target specific rules
     if config["target"] == "xhtml":
@@ -2156,9 +2106,6 @@ class CommandLine:
 
             # Remove leading - and --
             name = re.sub("^--?", "", name)
-
-            # Fix old misspelled --suGGar, --no-suGGar
-            name = name.replace("suggar", "sugar")
 
             # Translate short option to long
             if len(name) == 1:
@@ -4176,7 +4123,6 @@ def toc_tagger(toc, config):
         fakeconf["mask-email"] = 0
         fakeconf["preproc"] = []
         fakeconf["postproc"] = []
-        fakeconf["css-sugar"] = 0
         ret, _ = convert(toc, fakeconf)
         set_global_config(config)  # restore config
     # Our TOC list is not needed, the target already knows how to do a TOC
@@ -4225,10 +4171,7 @@ def doHeader(headers, config):
     if target not in HEADER_TEMPLATE:
         Error("doHeader: Unknown target '%s'" % target)
 
-    if target in ("html", "xhtml") and config.get("css-sugar"):
-        template = HEADER_TEMPLATE[target + "css"].split("\n")
-    else:
-        template = HEADER_TEMPLATE[target].split("\n")
+    template = HEADER_TEMPLATE[target].split("\n")
 
     head_data = {"STYLE": [], "ENCODING": ""}
     for key in head_data.keys():

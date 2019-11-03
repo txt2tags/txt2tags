@@ -2,7 +2,6 @@
 * Clean up the code
 * Remove seldom-used features
 * Make the code faster
-* Always use CSS sugar and drop --css-sugar option
 * Drop HTML4 target and use XHTML instead for `--target html`
 * Possibly use HTML5 for `--target html` later
 * Drop --encoding option and always use UTF-8

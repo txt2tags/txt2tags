@@ -44,7 +44,7 @@ def run():
     for testid in tests.split():
         infile = testid + ".t2t"
         outfile = testid + ".html"
-        cmdline = ["-t html --css-sugar -C test.conf", infile]
+        cmdline = ["-t html -C test.conf", infile]
         if lib.initTest(testid, infile, outfile):
             # compose source file contents
             infile_txt = []

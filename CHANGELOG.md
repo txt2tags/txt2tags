@@ -2,6 +2,7 @@
 
 * Remove ASCII art target (Jendrik Seipp).
 * Remove %!csv macro (Jendrik Seipp).
+* Always use CSS sugar and drop `--css-sugar` option (Jendrik Seipp).
 * Remove i18n (Jendrik Seipp).
 * Remove plugins and tools that now live in their own repositories (Jendrik Seipp).
 * Remove code for unused split feature (Jendrik Seipp).

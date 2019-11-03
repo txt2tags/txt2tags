@@ -556,44 +556,31 @@ tests = [
         "name": "css-sugar-1",  # just body
         "target": "html",
         "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H --css-sugar"],
+        "cmdline": ["-H"],
     },
     {
         "name": "css-sugar-2",  # empty toc & body
         "target": "html",
         "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H --toc --css-sugar"],
+        "cmdline": ["-H --toc"],
     },
     {
         "name": "css-sugar-3",  # headers, toc & body
         "target": "html",
         "content": FULL_HEADER + VERSION_GOTCHA + TITLED_BODY,
-        "cmdline": ["--toc --css-sugar"],
+        "cmdline": ["--toc"],
     },
     {
         "name": "no-css-sugar-1",  # useless
         "target": "html",
         "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H --no-css-sugar"],
-    },
-    {
-        "name": "no-css-sugar-2",  # turning OFF
-        "target": "html",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H --css-sugar --no-css-sugar"],
+        "cmdline": ["-H"],
     },
     {
         "name": "css-inside-1",
         "target": "html",
         "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
         "cmdline": ["--css-inside --style", lib.CSS_FILE],
-        "extra": ["css"],
-    },
-    {
-        "name": "css-inside-2",  # with --css-sugar
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-sugar --css-inside --style", lib.CSS_FILE],
         "extra": ["css"],
     },
     {
@@ -606,7 +593,7 @@ tests = [
         "name": "css-inside-4",  # no --style
         "target": "html",
         "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--css-sugar --css-inside"],
+        "cmdline": ["--css-inside"],
     },
     {
         "name": "css-inside-5",  # two CSS files
