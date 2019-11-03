@@ -432,6 +432,7 @@ _%(HEADER3)s_
     # setup: @MakeContents { Yes }          # show TOC
     # setup: @SectionGap                    # break page at each section
 }
+assert set(HEADER_TEMPLATE) == set(TARGETS)
 
 
 ##############################################################################
@@ -1242,6 +1243,8 @@ def getTags(config):
         html[key] = value.lower()
     alltags["html"] = html
 
+    assert set(alltags) == set(TARGETS)
+
     for target, tags in alltags.items():
         for key in tags:
             if key not in keys:
@@ -1674,6 +1677,7 @@ def getRules(config):
             "blanksaroundtitle": 1,
         },
     }
+    assert set(rules_bank) == set(TARGETS)
 
     for target, rules in rules_bank.items():
         for rule in rules:
