@@ -22,8 +22,7 @@ to the following formats:
  * Plain Text
  * SGML
  * UNIX Manpage
- * Wikipedia / MediaWiki
- * XHTML
+ * Wikipedia/MediaWiki
 
 You can use it as a command line program or in a Python application.
 
