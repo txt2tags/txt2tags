@@ -17,10 +17,16 @@
 
 from __future__ import print_function
 
+import argparse
 import os.path
 import sys
 
 import lib
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("modules", nargs="*")
+    return parser.parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIR)
@@ -37,9 +43,11 @@ for path in sorted(os.listdir(DIR)):
     else:
         sys.exit("test module %s contains neither run.py nor run.sh" % path)
 
-if len(sys.argv) > 1:
-    PYTHON_TEST_MODULES = sorted(set(sys.argv[1:]) & set(PYTHON_TEST_MODULES))
-    BASH_TEST_MODULES = sorted(set(sys.argv[1:]) & set(BASH_TEST_MODULES))
+ARGS = parse_args()
+
+if ARGS.modules:
+    PYTHON_TEST_MODULES = sorted(set(ARGS.modules) & set(PYTHON_TEST_MODULES))
+    BASH_TEST_MODULES = sorted(set(ARGS.modules) & set(BASH_TEST_MODULES))
 
 # Show which version is being tested
 print("Testing txt2tags version", lib.get_output(lib.TXT2TAGS + ["-V"]))
