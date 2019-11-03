@@ -27,19 +27,8 @@ DIR_ERROR = "error"
 OK = FAILED = 0
 ERROR_FILES = []
 
-MSG_RUN_ALONE = "No No No. Call me with ../run.py\nI can't be run alone."
-
 # force absolute path to avoid problems, set default options
 TXT2TAGS = [os.path.abspath(TXT2TAGS), "-q", "--no-rc"]
-
-EXTENSION = {
-    "txt": "txt",
-    "html5": "html",
-    "htmls": "html",
-    "xhtml": "html",
-    "xhtmls": "html",
-    "texs": "tex",
-}
 
 
 def get_output(cmd):

@@ -85,7 +85,3 @@ def run():
         os.remove(lib.CONFIG_FILE)
 
     return lib.OK, lib.FAILED, lib.ERROR_FILES
-
-
-if __name__ == "__main__":
-    print(lib.MSG_RUN_ALONE)
