@@ -512,9 +512,9 @@ def getTags(config):
     title3Open          title3Close
     title4Open          title4Close
     title5Open          title5Close
-    blocktitle1Open     blocktitle1Close
-    blocktitle2Open     blocktitle2Close
-    blocktitle3Open     blocktitle3Close
+    blockTitle1Open     blockTitle1Close
+    blockTitle2Open     blockTitle2Close
+    blockTitle3Open     blockTitle3Close
 
     paragraphOpen       paragraphClose
     blockVerbOpen       blockVerbClose
@@ -1064,14 +1064,6 @@ def getTags(config):
             "blockQuoteOpen": "->",
             "blockQuoteClose": "\n",
             # In-text font
-            "fontLargeOpen": "[+",
-            "fontLargeClose": "+]",
-            "fontLargerOpen": "[++",
-            "fontLargerClose": "++]",
-            "fontSmallOpen": "[-",
-            "fontSmallClose": "-]",
-            "fontSmallerOpen": "[--",
-            "fontSmallerClose": "--]",
             "fontMonoOpen": "@@",
             "fontMonoClose": "@@",
             "fontBoldOpen": "'''",
@@ -1087,8 +1079,6 @@ def getTags(config):
             "numlistItemLine": "#",
             "deflistItem1Open": ": ",
             "deflistItem1Close": ":",
-            "deflistItem2LineOpen": "::",
-            "deflistItem2LineClose": ":",
             # Verbatim block
             "blockVerbOpen": "[@",
             "blockVerbClose": "@]",
@@ -1306,6 +1296,12 @@ def getTags(config):
             # if possible: http://www.wikicreole.org/wiki/Placeholder
         },
     }
+    for target, tags in alltags.items():
+        for key in tags:
+            if key not in keys:
+                raise AssertionError(
+                    "{target} target has invalid key {key}".format(**locals())
+                )
 
     # Exceptions for --css-sugar
     if config["css-sugar"] and config["target"] in ("html", "xhtml"):
