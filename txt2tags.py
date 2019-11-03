@@ -3589,18 +3589,6 @@ class BlockMaster:
         if self._should_add_blank_line("after", "para"):
             result.append("")
 
-        # Very very very very very very very very very UGLY fix
-        # Needed because <center> can't appear inside <p>
-        try:
-            if (
-                len(lines) == 1
-                and TARGET == "html"
-                and re.match(r"^\s*<center>.*</center>\s*$", lines[0])
-            ):
-                result = [lines[0]]
-        except Exception:
-            pass
-
         return result
 
     def verb(self):
@@ -4688,12 +4676,6 @@ def parse_images(line):
             else:
                 align_tag = TAGS["_imgAlign" + align_name]
                 tag = regex["_imgAlign"].sub(align_tag, tag, 1)
-
-            # Dirty fix to allow centered solo images
-            if align == "center" and TARGET == "html":
-                rest = regex["img"].sub("", line, 1)
-                if re.match(r"^\s+$", rest):
-                    tag = "<center>%s</center>" % tag
 
         if TARGET == "tex":
             tag = re.sub(r"\\b", r"\\\\b", tag)
