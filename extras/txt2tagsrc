@@ -43,13 +43,6 @@
 %   The default is 3
 %%!options: --toc-level 2
 
-% Always use CSS-friendly tags in HTML and XHTML
-%   This uses H1, H2 and H3 for document top title and
-%   defines the following DIV areas: header, toc, body
-%   This can be turned off later with --no-css-sugar
-%%!options( html): --css-sugar
-%%!options(xhtml): --css-sugar
-
 % Always mask e-mails from robots in HTML and MOIN documents
 %   Example: john@company.com turns to <john (a) company com>
 %   This can be turned off later with --no-mask-email
