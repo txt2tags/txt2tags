@@ -5368,15 +5368,9 @@ if __name__ == "__main__":
     try:
         exec_command_line()
     except error as msg:
-        sys.stderr.write("%s\n" % msg)
-        sys.stderr.flush()
-        sys.exit(1)
-    except SystemExit:
-        pass
+        sys.exit(msg)
     except Exception:
-        sys.stderr.write(getUnknownErrorMessage())
-        sys.stderr.flush()
-        sys.exit(1)
-    Quit()
+        sys.exit(getUnknownErrorMessage())
+    else:
+        Quit()
 
-# The End.
