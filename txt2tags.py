@@ -1260,9 +1260,7 @@ def getTags(config):
 
 
 def getRules(config):
-    "Returns all the target-specific syntax rules"
-
-    ret = {}
+    """Return all the target-specific syntax rules."""
     allrules = [
         # target rules (ON/OFF)
         "linkable",  # target supports external links
@@ -1676,11 +1674,8 @@ def getRules(config):
                     "{} target has invalid rule {}".format(target, rule)
                 )
 
-    # Populate return dictionary
-    for key in allrules:
-        ret[key] = 0  # reset all
+    ret = collections.defaultdict(int)
     ret.update(rules_bank[config["target"]])
-
     return ret
 
 
