@@ -1,6 +1,5 @@
 from __future__ import print_function
 
-import glob
 import os.path
 import sys
 
@@ -9,10 +8,12 @@ REPO = os.path.dirname(os.path.dirname(DIR))
 
 sys.path.insert(0, "..")
 import lib
+
 del sys.path[0]
 
 sys.path.insert(0, REPO)
 import txt2tags
+
 del sys.path[0]
 
 
