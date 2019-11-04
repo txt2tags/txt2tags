@@ -1,6 +1,7 @@
 # Version 3.3 (unreleased)
 
 * Remove ASCII art target (Jendrik Seipp).
+* Remove PageMaker target (Jendrik Seipp).
 * Update html target to HTML5 and drop xhtml target (Jendrik Seipp).
 * Remove %!csv macro (Jendrik Seipp).
 * Drop `--css-inside` option (Jendrik Seipp).

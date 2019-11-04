@@ -149,7 +149,6 @@ TARGET_NAMES = {
     "doku": "DokuWiki page",
     "pmw": "PmWiki page",
     "moin": "MoinMoin page",
-    "pm6": "PageMaker document",
     "txt": "Plain Text",
     "adoc": "AsciiDoc document",
     "creole": "Creole 1.0 document",
@@ -309,33 +308,6 @@ table.center {margin-left:auto; margin-right:auto;}
 """,
     "man": """\
 .TH "%(HEADER1)s" 1 "%(HEADER3)s" "%(HEADER2)s"
-""",
-    # TODO style to <HR>
-    "pm6": """\
-<PMTags1.0 win><C-COLORTABLE ("Preto" 1 0 0 0)
-><@Normal=
-  <FONT "Times New Roman"><CCOLOR "Preto"><SIZE 11>
-  <HORIZONTAL 100><LETTERSPACE 0><CTRACK 127><CSSIZE 70><C+SIZE 58.3>
-  <C-POSITION 33.3><C+POSITION 33.3><P><CBASELINE 0><CNOBREAK 0><CLEADING -0.05>
-  <GGRID 0><GLEFT 7.2><GRIGHT 0><GFIRST 0><G+BEFORE 7.2><G+AFTER 0>
-  <GALIGNMENT "justify"><GMETHOD "proportional"><G& "ENGLISH">
-  <GPAIRS 12><G%% 120><GKNEXT 0><GKWIDOW 0><GKORPHAN 0><GTABS $>
-  <GHYPHENATION 2 34 0><GWORDSPACE 75 100 150><GSPACE -5 0 25>
-><@Bullet=<@-PARENT "Normal"><FONT "Abadi MT Condensed Light">
-  <GLEFT 14.4><G+BEFORE 2.15><G%% 110><GTABS(25.2 l "")>
-><@PreFormat=<@-PARENT "Normal"><FONT "Lucida Console"><SIZE 8><CTRACK 0>
-  <GLEFT 0><G+BEFORE 0><GALIGNMENT "left"><GWORDSPACE 100 100 100><GSPACE 0 0 0>
-><@Title1=<@-PARENT "Normal"><FONT "Arial"><SIZE 14><B>
-  <GCONTENTS><GLEFT 0><G+BEFORE 0><GALIGNMENT "left">
-><@Title2=<@-PARENT "Title1"><SIZE 12><G+BEFORE 3.6>
-><@Title3=<@-PARENT "Title1"><SIZE 10><GLEFT 7.2><G+BEFORE 7.2>
-><@Title4=<@-PARENT "Title3">
-><@Title5=<@-PARENT "Title3">
-><@Quote=<@-PARENT "Normal"><SIZE 10><I>>
-
-%(HEADER1)s
-%(HEADER2)s
-%(HEADER3)s
 """,
     "mgp": """\
 #!/usr/X11R6/bin/mgp -t 90
@@ -1187,34 +1159,6 @@ def getTags(config):
             "_tableColAlignCenter": "c",
             "comment": '.\\" \a',
         },
-        "pm6": {
-            "paragraphOpen": "<@Normal:>",
-            "title1": "<@Title1:>\a",
-            "title2": "<@Title2:>\a",
-            "title3": "<@Title3:>\a",
-            "title4": "<@Title4:>\a",
-            "title5": "<@Title5:>\a",
-            "blockVerbOpen": "<@PreFormat:>",
-            "blockQuoteLine": "<@Quote:>",
-            "fontMonoOpen": '<FONT "Lucida Console"><SIZE 9>',
-            "fontMonoClose": "<SIZE$><FONT$>",
-            "fontBoldOpen": "<B>",
-            "fontBoldClose": "<P>",
-            "fontItalicOpen": "<I>",
-            "fontItalicClose": "<P>",
-            "fontUnderlineOpen": "<U>",
-            "fontUnderlineClose": "<P>",
-            "listOpen": "<@Bullet:>",
-            "listItemOpen": "\x95\t",  # \x95 == ~U
-            "numlistOpen": "<@Bullet:>",
-            "numlistItemOpen": "\x95\t",
-            "bar1": "\a",
-            "url": "<U>\a<P>",  # underline
-            "urlMark": "\a <U>\a<P>",
-            "email": "\a",
-            "emailMark": "\a \a",
-            "img": "\a",
-        },
         # http://www.wikicreole.org/wiki/AllMarkup
         "creole": {
             "title1": "= \a =",
@@ -1643,25 +1587,6 @@ def getRules(config):
             "blanksaroundtable": 1,
             # 'blanksaroundbar':1,
             "blanksaroundtitle": 0,
-            "blanksaroundnumtitle": 1,
-        },
-        "pm6": {
-            "keeplistindent": 1,
-            "verbblockfinalescape": 1,
-            # TODO add support for these
-            "notbreaklistopen": 1,
-            "barinsidequote": 1,
-            "autotocwithbars": 1,
-            "onelinepara": 1,
-            "blanksaroundpara": 1,
-            "blanksaroundverb": 1,
-            # 'blanksaroundquote':1,
-            "blanksaroundlist": 1,
-            "blanksaroundnumlist": 1,
-            "blanksarounddeflist": 1,
-            # 'blanksaroundtable':1,
-            # 'blanksaroundbar':1,
-            "blanksaroundtitle": 1,
             "blanksaroundnumtitle": 1,
         },
         "creole": {
@@ -4236,8 +4161,6 @@ def doEscape(target, txt):
         txt = re.sub(">", "&gt;", txt)
         if target == "sgml":
             txt = re.sub("\xff", "&yuml;", txt)  # "+y
-    elif target == "pm6":
-        txt = re.sub("<", "<\\#60>", txt)
     elif target == "mgp":
         txt = re.sub("^%", " %", txt)  # add leading blank to avoid parse
     elif target == "man":
@@ -4264,9 +4187,7 @@ def doEscape(target, txt):
 # TODO man: where - really needs to be escaped?
 def doFinalEscape(target, txt):
     "Last escapes of each line"
-    if target == "pm6":
-        txt = txt.replace(ESCCHAR + "<", r"<\#92><")
-    elif target == "man":
+    if target == "man":
         txt = txt.replace("-", r"\-")
     elif target == "sgml":
         txt = txt.replace("[", "&lsqb;")
@@ -5143,7 +5064,6 @@ def convert(bodylines, config, firstlinenr=1):
         # ---------------------[ Table ]-----------------------------
 
         # TODO escape undesired format inside table
-        # TODO add pm6 target
         if regex["table"].search(line):
 
             if not BLOCK.isblock("table"):  # first table line!

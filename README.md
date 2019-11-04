@@ -17,7 +17,6 @@ to the following formats:
  * Lout
  * MagicPoint
  * MoinMoin
- * PageMaker
  * PmWiki
  * Plain Text
  * SGML
