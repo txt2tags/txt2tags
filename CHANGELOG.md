@@ -11,6 +11,7 @@
 * Use \n for linebreaks on all platforms as recommended by Python docs (Jendrik Seipp).
 * Fix errors detected by flake8 (Jendrik Seipp).
 * Fix test statistics (Jendrik Seipp).
+* Fold sample tests into main test suite (Jendrik Seipp).
 * Explain how to install txt2tags with pipx in README file (Jendrik Seipp).
 
 # Version 3.2 (2019-10-30)

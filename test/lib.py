@@ -5,6 +5,7 @@
 
 from __future__ import print_function
 
+import difflib
 import os
 import platform
 import re
@@ -13,6 +14,7 @@ import sys
 import time
 
 PYTHON = sys.executable
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
 print("Testing txt2tags on Python", platform.python_version())
 
@@ -83,14 +85,27 @@ def _convert(options):
     return subprocess.call(cmdline, shell=True)
 
 
-def remove_version(text):
-    version_re = r"\d+\.\d+\.?(\d+)?"
+def remove_version_and_dates(text):
+    version_re = r"\d+\.\d+(\.\d+)?"
     for regex in [
-        r"(Txt2tags) %(version_re)s",
-        r"(txt2tags version) %(version_re)s",
-        r'(%%%%appversion) "%(version_re)s"',
+        r"Txt2tags {version_re}",
+        r"txt2tags {version_re}",
+        r"txt2tags version {version_re}",
+
+        # Remove date from header.
+        r"\d{{2}}/\d{{2}}/\d{{4}}",
+        # lout escapes / with "/" in headers
+        r'\d{{2}}"/"\d{{2}}"/"\d{{4}}',
+
+        # Remove dates.
+        r"today is \d{{8}}",
+        r"which gives: \d{{2}}-\d{{2}}-\d{{4}}",
+        # man escapes - with \-
+        r"which gives: \d{{2}}\\-\d{{2}}\\-\d{{4}}",
+
+        r"cmdline: txt2tags .*\n"
     ]:
-        text = re.sub(regex % locals(), "\1", text)
+        text = re.sub(regex.format(**locals()), "", text)
     return text
 
 
@@ -101,16 +116,17 @@ def mark_ok(outfile):
     os.remove(outfile)
 
 
-def mark_failed(outfile):
+def mark_failed(outfile, okfile=None):
     global FAILED
     print("FAILED")
     FAILED += 1
     if not os.path.isdir(DIR_ERROR):
         os.mkdir(DIR_ERROR)
-    if os.path.exists(outfile):
-        MoveFile(outfile, os.path.join(DIR_ERROR, outfile))
-        module = os.path.basename(os.getcwd())
-        ERROR_FILES.append(os.path.join(module, DIR_ERROR, outfile))
+    module = os.path.basename(os.getcwd())
+    errfile = os.path.join(TEST_DIR, module, DIR_ERROR, outfile)
+    MoveFile(outfile, errfile)
+    ERROR_FILES.append(errfile)
+    print("meld {okfile} {errfile}".format(**locals()))
 
 
 def override(okfile, outfile):
@@ -121,19 +137,18 @@ def override(okfile, outfile):
         MoveFile(outfile, okfile)
 
 
-def _diff(outfile, okfile=None):
-    global OK, FAILED, ERROR_FILES
-    if not okfile:
-        okfile = os.path.join(DIR_OK, outfile)
+def _diff(outfile, okfile):
     out = ReadFile(outfile)
-    out = remove_version(out)
+    out = remove_version_and_dates(out)
     ok = ReadFile(okfile)
-    ok = remove_version(ok)
+    ok = remove_version_and_dates(ok)
     if out != ok:
         if OVERRIDE:
             override(okfile, outfile)
         else:
-            mark_failed(outfile)
+            mark_failed(outfile, okfile=okfile)
+            for line in difflib.unified_diff(ok.splitlines(), out.splitlines()):
+                print(line)
     else:
         mark_ok(outfile)
 
@@ -141,4 +156,4 @@ def _diff(outfile, okfile=None):
 def test(cmdline, outfile, okfile=None):
     okfile = okfile or os.path.join(DIR_OK, outfile)
     _convert(cmdline)
-    _diff(outfile, okfile=okfile)
+    _diff(outfile, okfile)
