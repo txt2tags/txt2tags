@@ -82,7 +82,7 @@ import time
 my_url = "http://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
-__version__ = "3.2"
+__version__ = "3.3"
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
