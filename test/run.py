@@ -34,24 +34,20 @@ def parse_args():
 DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIR)
 
-PYTHON_TEST_MODULES = []
-BASH_TEST_MODULES = []
+MODULES = []
 for path in sorted(os.listdir(DIR)):
     if path.startswith("__") or not os.path.isdir(path):
         continue
     if os.path.exists(os.path.join(path, "run.py")):
-        PYTHON_TEST_MODULES.append(path)
-    elif os.path.exists(os.path.join(path, "run.sh")):
-        BASH_TEST_MODULES.append(path)
+        MODULES.append(path)
     else:
-        sys.exit("test module %s contains neither run.py nor run.sh" % path)
+        sys.exit("test module %s does not contain run.py file" % path)
 
 ARGS = parse_args()
 lib.OVERRIDE = ARGS.override
 
 if ARGS.modules:
-    PYTHON_TEST_MODULES = sorted(set(ARGS.modules) & set(PYTHON_TEST_MODULES))
-    BASH_TEST_MODULES = sorted(set(ARGS.modules) & set(BASH_TEST_MODULES))
+    MODULES = sorted(set(ARGS.modules) & set(MODULES))
 
 # Show which version is being tested
 print("Testing txt2tags version", lib.get_output(lib.TXT2TAGS + ["-V"]))
@@ -60,7 +56,7 @@ print("Base commands used for all tests:")
 print(lib.TXT2TAGS)
 print()
 
-for module in PYTHON_TEST_MODULES:
+for module in MODULES:
     os.chdir(DIR)
 
     print("Entering module", module)
@@ -92,9 +88,3 @@ if lib.ERROR_FILES:
     print("Check out the files with errors:")
     print("\n".join(lib.ERROR_FILES))
     sys.exit(1)
-
-if BASH_TEST_MODULES:
-    print()
-    print("Don't forget to run the extra tests:")
-    for module in BASH_TEST_MODULES:
-        print("%s/run.sh" % module)
