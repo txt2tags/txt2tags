@@ -122,28 +122,8 @@ purpose and features.
 
 Txt2tags is a text formatting and conversion tool.
 
-Txt2tags converts a plain text file with little marks, to any
-of the supported targets:
-
-- HTML document
-- XHTML document
-- SGML document
-- DocBook document
-- LaTeX document
-- Lout document
-- UNIX man page
-- MagicPoint presentation
-- Creole 1.0 document
-- Wikipedia page (MediaWiki)
-- Google Wiki page
-- PmWiki page
-- DokuWiki page
-- MoinMoin page
-- PageMaker 6.0 document
-- AsciiDoc document
-- ASCII Art text
-- Plain Text (no marks)
--
+Txt2tags converts a plain text file with markup to a number of
+target formats (see below for the list of targets).
 
 ------------------------------------------------------------------------
 
@@ -244,23 +224,13 @@ The following is a list of all the structures supported by txt2tags.
 == Supported Targets ==[targets]
 
 : **HTML**
-  Everybody knows what HTML is. (hint: Internet)
-
+  
   Txt2tags generates clean HTML documents, that look pretty and have
   its source readable. It DOES NOT use javascript, frames or other
   futile formatting techniques, that aren't required for simple, techie
-  documents. But a separate CSS file can be used if wanted. Txt2tags
-  generates "//HTML 4.0 Transitional//" code.
+  documents. But a separate CSS file can be used if wanted.
 
   Txt2tags HTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
-
-: **XHTML**
-  It is the new generation of HTML, with more strict rules.
-  This makes the code easier to parse and
-  understand. For the general purpose, consider it HTML. Txt2tags
-  generates "//XHTML 1.0 Transitional//" code.
-
-  Txt2tags XHTML generated code is 100% approved by the [w3c validator http://validator.w3.org/].
 
 : **SGML**
   It is a common document format which has powerful conversion applications
@@ -341,22 +311,6 @@ The following is a list of all the structures supported by txt2tags.
   Moin syntax is kinda boring when you need to keep
   ``{{{'''''adding braces and quotes'''''}}}``, so txt2tags comes with the
   simplified marks and unified solution: one source, multi targets.
-
-: **PM6**
-  Adobe PageMaker 6.0 has its own tagged
-  language. Styles, color table, beautifiers, and most of all the
-  PageMaker mouse-clicking features are also available on its tagged language.
-  You just need to access the "Import tagged text" menu item. Just for
-  the records, it's an <HTML "like"> tag format.
-
-  Txt2tags generates all the tags and already defines a extensive and
-  working header, setting paragraph styles and formatting. This is the
-  hard part.
-
-  **Author's note:**
-  My entire portuguese [regular expression's book http://guia-er.sf.net]
-  was written in VI, then converted to PageMaker with txt2tags and went to
-  the publisher. It works :)
 
 : **TXT**
   TXT is text. Simple, pure, beautiful.
@@ -828,7 +782,7 @@ marks on the [Txt2tags Markup Demo URLWEBSITE/markup.html].
 
 == The .t2t document Areas ==[areas]
 
-Txt2tags marked files are divided in 3 areas. Each area have its own
+Txt2tags marked files are divided in 3 areas. Each area has its own
 rules and purpose. They are:
 
 : //HEADAREA//

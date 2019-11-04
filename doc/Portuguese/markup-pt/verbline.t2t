@@ -1,4 +1,0 @@
-
-Uma linha formatada para comandos:
-``` $ cat /etc/passwd | tr : ,
-Basta colocar 3 crases no início.

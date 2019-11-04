@@ -1,4 +1,0 @@
-
-Una línia verbatim es adequada per anotar ordres:
-``` $ cat /etc/passwd | tr : ,
-Está precedida per tres accents oberts.

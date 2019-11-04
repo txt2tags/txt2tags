@@ -1,4 +1,0 @@
-
-Une ligne verbatim c'est bien pour les commandes:
-``` $ cat /etc/passwd | tr : ,
-Commencer la ligne avec 3 backquotes.

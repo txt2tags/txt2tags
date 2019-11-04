@@ -1,8 +1,0 @@
-
-"""
-             Une zone brute est comprise
- entre 2 ligne avec 3 guillemets doubles
-
-**Les Marques** ne sont pas interprétées
-          et les espaces sont conservés.
-"""
