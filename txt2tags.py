@@ -513,7 +513,7 @@ def getTags(config):
             "img": "[\a]",
         },
         "html": {
-            "anchor": '<a id="\a" name="\a"></a>\n',
+            "anchor": ' id="\a"',
             "bar1": '<hr class="light">',
             "bar2": '<hr class="heavy">',
             "blockQuoteClose": "</blockquote>",
