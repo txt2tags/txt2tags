@@ -3,7 +3,7 @@ See marks converted to HTML
 
 %!target: html
 %!encoding: UTF-8
-%!preproc: t2t\.png	../img/t2tpowered.png
+%!preproc: t2t\.png ../../samples/img/t2tpowered.png
 %!options: -o markup.html
 
 ''' <table>

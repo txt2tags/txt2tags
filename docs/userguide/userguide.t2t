@@ -298,32 +298,32 @@ all the available targets.
 
 == Status of Supported Structures by Target ==[struct-support]
 
-  || Structure        | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
-  | headers           |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   -    |  -   |   -   |  Y  |  -   |  -   |  N  |  -   |  Y  |  Y  |
-  | section title     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
-  | paragraphs        |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
-  | bold              |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
-  | italic            |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
-  | underline         |  Y   |   Y   |  -   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   -   |  Y  |  Y   |  Y   |  Y  |  N   |  -  |  -  |
-  | strike            |  Y   |   Y   |  N   |  N  |  Y  |  -   |  -  |  -  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  -  |  -  |
-  | monospaced font   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
-  | verbatim line     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
-  | verbatim area     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  -  |  -  |
-  | quoted area       |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  N   |  Y  |  Y  |
-  | internet links    |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
-  | e-mail links      |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
-  | local links       |  Y   |   Y   |  Y   |  Y  |  N  |  N   |  -  |  -  |   N    |  N   |   N   |  Y  |  Y   |  Y   |  -  |  N   |  -  |  -  |
-  | named links       |  Y   |   Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  -  |  Y   |  -  |  -  |
-  | bulleted list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
-  | numbered list     |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y  |  Y   |  Y  |  Y  |
-  | definition list   |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  N  |   Y    |  Y   |   -   |  Y  |  -   |  Y   |  N  |  N   |  Y  |  Y  |
-  | horizontal line   |  Y   |   Y   |  -   |  N  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   -   |  Y  |  Y   |  Y   |  N  |  N   |  Y  |  Y  |
-  | image             |  Y   |   Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  Y   |  -  |  -  |
-  | table             |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N  |  N   |  N  |  N  |
-  || Extras           | html | xhtml | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | pm6 | adoc | art | txt |
-  | image align       |  Y   |   Y   |  N   |  N  |  N  |  Y   |  -  |  Y  |   N    |  Y   |   -   |  N  |  Y   |  N   |  N  |  N   |  -  |  -  |
-  | table cell align  |  Y   |   Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   N    |  N   |   -   |  N  |  -   |  Y   |  N  |  N   |  N  |  N  |
-  | table column span |  Y   |   Y   |  N   |  N  |  Y  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N  |  N   |  N  |  N  |
+  || Structure        | html | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | adoc | txt |
+  | headers           |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   -    |  -   |   -   |  Y  |  -   |  -   |  -   |  Y  |
+  | section title     |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  Y  |
+  | paragraphs        |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  Y  |
+  | bold              |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | italic            |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | underline         |  Y   |  -   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   -   |  Y  |  Y   |  Y   |  N   |  -  |
+  | strike            |  Y   |  N   |  N  |  Y  |  -   |  -  |  -  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  N   |  -  |
+  | monospaced font   |  Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   -    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | verbatim line     |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | verbatim area     |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | quoted area       |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N   |  Y  |
+  | internet links    |  Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | e-mail links      |  Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | local links       |  Y   |  Y   |  Y  |  N  |  N   |  -  |  -  |   N    |  N   |   N   |  Y  |  Y   |  Y   |  N   |  -  |
+  | named links       |  Y   |  Y   |  Y  |  -  |  -   |  -  |  -  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | bulleted list     |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  Y  |
+  | numbered list     |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  Y  |
+  | definition list   |  Y   |  Y   |  Y  |  Y  |  Y   |  Y  |  N  |   Y    |  Y   |   -   |  Y  |  -   |  Y   |  N   |  Y  |
+  | horizontal line   |  Y   |  -   |  N  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   -   |  Y  |  Y   |  Y   |  N   |  Y  |
+  | image             |  Y   |  Y   |  Y  |  Y  |  Y   |  -  |  Y  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  Y   |  -  |
+  | table             |  Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   Y    |  Y   |   Y   |  Y  |  Y   |  Y   |  N   |  N  |
+  || Extras           | html | sgml | dbk | tex | lout | man | mgp | creole | wiki | gwiki | pmw | doku | moin | adoc | txt |
+  | image align       |  Y   |  N   |  N  |  N  |  Y   |  -  |  Y  |   N    |  Y   |   -   |  N  |  Y   |  N   |  N   |  -  |
+  | table cell align  |  Y   |  Y   |  N  |  Y  |  N   |  Y  |  N  |   N    |  N   |   -   |  N  |  -   |  Y   |  N   |  N  |
+  | table column span |  Y   |  N   |  N  |  Y  |  N   |  N  |  N  |   N    |  N   |   -   |  N  |  -   |  N   |  N   |  N  |
 
   ||      | Legend
   | **Y** | //Supported//
@@ -2134,8 +2134,6 @@ TABs and txt2tags will recognize the Quote mark.
 
 =======================================================================
 
-
-
 = The End =
 
 Thanks for reading! :)
@@ -2143,65 +2141,3 @@ Thanks for reading! :)
 URLWEBSITE
 
 %nopdf([see source userguide.t2t])
-%nopdf[../../img/t2tpowered.png]
-
-
-% TRANSLATOR: You can stop here.
-
-
-
-%%%% OLD TEXTS, NOT USED ANYMORE
-%
-% ==   Split and language features (only for HTML target)   ==
-%
-% ---
-% usage: txt2tags -t html --split <split level> --lang <lang> file.t2t
-%
-%    --split   split documents. values: 0, 1, 2 (default 0)
-%    --lang    document language (default english)
-% ---
-%
-% For those who have [sgml-tools http://www.sgmltools.org] installed and
-% running on the system, when generating HTML documents, the split and
-% language features are available. First a SGML text is generated and the
-% sgml2html binary is called.
-%
-% From sgml2html man page:
-%    | 0 | don't split             |
-%    | 1 | split by major sections |
-%    | 2 | split by subsections    |
-%
-%
-% ------------------------------------------------------------------------
-%
-% ==   EXTRA I   ==
-%
-% Cool Vim and Emacs syntax files sync'ed with all the rules.
-% See `txt2tags.vim` and `txt2tags-mode.el` on the `extras` dir.
-%
-% BONUS: there's also a `pagemaker.vim` for the .pm6 files.
-%
-% ------------------------------------------------------------------------
-%
-% ==   EXTRA II   ==
-%
-% For those who have the (1) package installed, the (2) target
-% is available! The package is found here: (3)
-%
-% | 1           | 2   | 3                             |
-% | sgml-tools  | ps  | http://www.sgmltools.org      |
-% | ghostscript | pdf | http://www.cs.wisc.edu/~ghost |
-%
-%
-% And remember, from SGML you can convert to lots of types, see sgml2* on
-% the sgml-tools package.
-%
-% PostScript Example:
-% --- prompt$ sgml2latex -o ps --language=english file.sgml
-%
-% PDF Example:
-% --- prompt$ ps2pdf file.ps
-%
-%
-% ------------------------------------------------------------------------
-
