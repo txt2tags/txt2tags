@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Generate the HTML version of the User Guide.
-
-cd $(dirname "$0")
-
-# Regenerate HTML version (if needed)
-test userguide.t2t -nt userguide.html && txt2tags userguide.t2t
-

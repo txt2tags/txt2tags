@@ -2,44 +2,13 @@ Txt2tags User Guide
 
 Aurelio, %%mtime(%c)
 %!target: html
-%!options: --toc --toc-level 2 --css-sugar 
+%!options: --toc --toc-level 2 --style userguide.css
 
-% TRANSLATOR:
-% - The HTML output is optimized for the htmldoc tool
-% - Just comment the following lines when translating
-%!options: --css-sugar --no-toc --style userguide.css
 %!postproc: '<H1>Txt2tags User Guide.*'  ''
 %!postproc: '<H3>Aurelio, .*'  ''
 
-% TRANSLATOR:
-% - Don't worry about the PDF cover page
-% - Don't worry about PDF at all, translate and check on HTML
-% - Don't worry about the images
-
-% TRANSLATOR:
-% You can take new screenshots and make new images for the program
-% interface and "first conversion" section. Remember to send them
-% to the author!
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% activate those lines when converting to HTML for PDF generation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% htmldoc does TOC
-%pdf%!options(html): --no-toc --no-css-sugar -o userguide-pdf.html
-%%% mask the 'nopdf' marks so they will not be removed
-%pdf%!preproc(html): ^%nopdf  %yespdf
-%%% border for all images
-%pdf%!postproc: '(<IMG [^>]*BORDER)="0"'    '\1="1"'
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % easy way to change all image locations once, when changing file location
 %!preproc: IMGPATH .
-
-% TRANSLATOR
-% - Please translate the following macro contents and leave them alone 
-% - Remember they are expanded in conversion time, don't remove them 
 
 % normalizing common text
 %!preproc: CONFAREA	Config Area
@@ -72,7 +41,7 @@ Aurelio, %%mtime(%c)
 
 
 % 26/Nov/2003: revised by anamimts
-% 26/Jun/2004: updated to v2, new embedded CSS 
+% 26/Jun/2004: updated to v2, new embedded CSS
 % 17/Jul/2004: revised by anamimts
 % 01/Nov/2004: updated to v2.0 and 2.1, new chapters, PDF version
 % 31/Aug/2006: little changes to use htmldoc for splitted HTML
@@ -86,7 +55,7 @@ Aurelio, %%mtime(%c)
 %%nopdf	find my latest version at URLWEBSITE/userguide/. For
 %%nopdf	more information please visit
 %%nopdf	[the txt2tags website URLWEBSITE]. Enjoy!"
-%%nopdf  
+%%nopdf
 %%nopdf	[Download PDF version URLWEBSITE/userguide/userguide.pdf]
 
 %nopdf= About =
@@ -173,7 +142,7 @@ It's free, GPL licensed.
 
 % It's free, GPL, open source, public domain,
 % //<put-your-favorite-buzzword-here>//.
-% 
+%
 % You can copy, use, modify, sell, release as yours. Software
 % politics/copyright is not one of the author's major concerns.
 
@@ -224,7 +193,7 @@ The following is a list of all the structures supported by txt2tags.
 == Supported Targets ==[targets]
 
 : **HTML**
-  
+
   Txt2tags generates clean HTML documents, that look pretty and have
   its source readable. It DOES NOT use javascript, frames or other
   futile formatting techniques, that aren't required for simple, techie
@@ -387,13 +356,13 @@ Linux, Windows, Mac and others. Just call txt2tags with the ``--gui``
 option to open it.
 
 % If some resources are missing, the program will tell.
-% 
+%
 % 	**Note:** The Tkinter module is needed. As it comes with the
 % 	standard Python distribution, you may already have it.
 
 The interface is pretty simple and intuitive:
 
-                     [IMGPATH/gui.png]  
+                     [IMGPATH/gui.png]
 
 + You locate the source .t2t file on the disk and its options are
   loaded.
@@ -426,7 +395,7 @@ The Web Interface is up and running on the Internet at
 URLWEBSITE/online.php, so you can use and test the program
 instantly, before download.
 
-          [IMGPATH/web.png]  
+          [IMGPATH/web.png]
 
 One can also put this interface on the local intranet avoiding to
 install txt2tags in all machines.
@@ -565,16 +534,16 @@ After that, you can create an icon on your desktop for it, if you want to
 use the program's Graphical Interface.
 
 % === Special Packages for Windows Users ===
-% 
+%
 % There is also two .EXE distribution files for txt2tags, which install
 % the program on Windows machines with just a few clicks:
-% 
+%
 % - The single txt2tags script for those who already have the Python
 %   interpreted installed
 % - The stand alone version, which doesn't require Python interpreter to
 %   run (it has a diet version embedded)
-% 
-% 
+%
+%
 % Please visit the //Txt2tags-Win// site to download this packages:
 % http://txt2tags-win.sf.net
 
@@ -598,8 +567,8 @@ This syntax highlighting files have all the txt2tags rules and marks
 registered, helping the user to write error-free documents. Showing the
 marks in colors, you see on-the-fly if you wrote it right.
 
-           |  [IMGPATH/vim.png]  
-           |  Sample file opened in Vim Editor 
+           |  [IMGPATH/vim.png]
+           |  Sample file opened in Vim Editor
 
 Each editor has a different install procedure for a syntax highlighting
 file, please read the syntax file headers and the editor documentation.
@@ -671,7 +640,7 @@ the next one.
 
 If you are in the Gui Interface, follow this steps:
 
-    [IMGPATH/firstdoc.png] 
+    [IMGPATH/firstdoc.png]
 
 + Press the "Browse" button and choose the ``test.txt`` you just saved
   (remember the folder!).
@@ -680,7 +649,7 @@ If you are in the Gui Interface, follow this steps:
 + Press the "Convert!" button.
 
 
-   [IMGPATH/firstdoc-done.png] 
+   [IMGPATH/firstdoc-done.png]
 
 A dialog box will appear, telling you that the file was converted
 successfully. Note that the generated HTML page was saved on the same
@@ -718,7 +687,7 @@ prompt$
 Open the ``test.html`` file on the web browser to check if everything
 is ok.
 
-   [IMGPATH/firstdoc-html.png] 
+   [IMGPATH/firstdoc-html.png]
 
 Here it is! You just typed three simple lines of text and txt2tags made
 all the work to set the HTML page heading information, text alignment,
@@ -761,7 +730,7 @@ Mmmmmm, I know what I need to do now:
 - Sleep
 ```
 
-   [IMGPATH/firstdoc-fullhtml.png] 
+   [IMGPATH/firstdoc-fullhtml.png]
 
 
 You can write a full homepage with 0% of HTML knowledge. You don't need
@@ -1173,22 +1142,22 @@ Note that the optional target specification is NOT supported for this command.
 
 Overview of all txt2tags marks:
  ||                   Basic                   ||               Beautifiers          ||
- |          //Headers// |  First 3 lines       |            //Bold// |  ""**words**"" 
- |            //Title// |  = words =           |          //Italic// |  ""//words//"" 
- |   //Numbered title// |  + words +           |       //Underline// |  ""__words__"" 
- |        //Paragraph// |  words               |          //Strike// |  ""--words--"" 
- |            //Links// |  ""[label url]""     |      //Monospaced// |  ""``words``"" 
- |            //Image// |  ""[filename.jpg]""  |        //Raw text// |  """"words"""" 
- |                                            ||     //Tagged text// |  ""''words''"" 
+ |          //Headers// |  First 3 lines       |            //Bold// |  ""**words**""
+ |            //Title// |  = words =           |          //Italic// |  ""//words//""
+ |   //Numbered title// |  + words +           |       //Underline// |  ""__words__""
+ |        //Paragraph// |  words               |          //Strike// |  ""--words--""
+ |            //Links// |  ""[label url]""     |      //Monospaced// |  ""``words``""
+ |            //Image// |  ""[filename.jpg]""  |        //Raw text// |  """"words""""
+ |                                            ||     //Tagged text// |  ""''words''""
  ||                                          Other                                ||||
- |            //Quote// |  <TAB>words          |  //Separator line// |  ------------... 
- |             //List// |  - words             |     //Strong line// |  ============... 
- |    //Numbered list// |  + words             |           //Table// |  ""| cell1 | cell2 | cell3..."" 
- |  //Definition list// |  : words             |          //Anchor// |  = title =[anchor] 
- |     //Comment line// |  % comments          |    //Comment area// |  %%%\n comments \n%%% 
- |    //Verbatim line// |  ""```"" word        |   //Verbatim area// |  ""```\n lines \n```"" 
- |         //Raw line// |  """"""" words       |        //Raw area// |  """""""\n lines \n""""""" 
- |      //Tagged line// |  ""'''"" words       |     //Tagged area// |  ""'''""\n lines \n""'''"" 
+ |            //Quote// |  <TAB>words          |  //Separator line// |  ------------...
+ |             //List// |  - words             |     //Strong line// |  ============...
+ |    //Numbered list// |  + words             |           //Table// |  ""| cell1 | cell2 | cell3...""
+ |  //Definition list// |  : words             |          //Anchor// |  = title =[anchor]
+ |     //Comment line// |  % comments          |    //Comment area// |  %%%\n comments \n%%%
+ |    //Verbatim line// |  ""```"" word        |   //Verbatim area// |  ""```\n lines \n```""
+ |         //Raw line// |  """"""" words       |        //Raw area// |  """""""\n lines \n"""""""
+ |      //Tagged line// |  ""'''"" words       |     //Tagged area// |  ""'''""\n lines \n""'''""
 
 
 General Rules:
@@ -1600,11 +1569,11 @@ percent sign % followed by an identification character. If no format
 string is given, the default format is used.
 
   || Macro Name   | Expands to...                        | Default Format |
-  | ""%%date""    | The current date                     |  %Y%m%d 
-  | ""%%mtime""   | The source file modification time    |  %Y%m%d 
-  | ""%%infile""  | The source file path                 |    %f 
-  | ""%%outfile"" | The output file path                 |    %f 
-  | ""%%toc""     | The document TOC (Table of Contents) |    - 
+  | ""%%date""    | The current date                     |  %Y%m%d
+  | ""%%mtime""   | The source file modification time    |  %Y%m%d
+  | ""%%infile""  | The source file path                 |    %f
+  | ""%%outfile"" | The output file path                 |    %f
+  | ""%%toc""     | The document TOC (Table of Contents) |    -
 
 General rules:
 
@@ -2187,52 +2156,52 @@ URLWEBSITE
 %
 % ---
 % usage: txt2tags -t html --split <split level> --lang <lang> file.t2t
-% 
+%
 %    --split   split documents. values: 0, 1, 2 (default 0)
 %    --lang    document language (default english)
 % ---
-% 
+%
 % For those who have [sgml-tools http://www.sgmltools.org] installed and
 % running on the system, when generating HTML documents, the split and
 % language features are available. First a SGML text is generated and the
 % sgml2html binary is called.
-% 
+%
 % From sgml2html man page:
 %    | 0 | don't split             |
 %    | 1 | split by major sections |
 %    | 2 | split by subsections    |
-% 
-% 
+%
+%
 % ------------------------------------------------------------------------
-% 
+%
 % ==   EXTRA I   ==
-% 
+%
 % Cool Vim and Emacs syntax files sync'ed with all the rules.
 % See `txt2tags.vim` and `txt2tags-mode.el` on the `extras` dir.
-% 
+%
 % BONUS: there's also a `pagemaker.vim` for the .pm6 files.
-% 
+%
 % ------------------------------------------------------------------------
-% 
+%
 % ==   EXTRA II   ==
-% 
+%
 % For those who have the (1) package installed, the (2) target
 % is available! The package is found here: (3)
-% 
+%
 % | 1           | 2   | 3                             |
 % | sgml-tools  | ps  | http://www.sgmltools.org      |
 % | ghostscript | pdf | http://www.cs.wisc.edu/~ghost |
-% 
-% 
+%
+%
 % And remember, from SGML you can convert to lots of types, see sgml2* on
 % the sgml-tools package.
-% 
+%
 % PostScript Example:
 % --- prompt$ sgml2latex -o ps --language=english file.sgml
-% 
+%
 % PDF Example:
 % --- prompt$ ps2pdf file.ps
-% 
-% 
+%
+%
 % ------------------------------------------------------------------------
 
