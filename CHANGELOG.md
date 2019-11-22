@@ -1,3 +1,7 @@
+# Version 3.1 (unreleased)
+
+* Fix MoinMoin URL and email syntax (Jendrik Seipp).
+
 # Version 3.3 (2019-11-04)
 
 * Update html target to HTML5 and drop xhtml target (Jendrik Seipp).

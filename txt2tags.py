@@ -843,7 +843,7 @@ def getTags(config):
             "pageBreak": "@NP",
             "EOD": "@End @Text",
         },
-        # http://moinmo.in/SyntaxReference
+        # https://moinmo.in/HelpOnMoinWikiSyntax
         "moin": {
             "title1": "= \a =",
             "title2": "== \a ==",
@@ -870,10 +870,10 @@ def getTags(config):
             "deflistItem2LinePrefix": " :: ",
             "bar1": "----",
             "bar2": "--------",
-            "url": "[\a]",
-            "urlMark": "[\a \a]",
-            "email": "[\a]",
-            "emailMark": "[\a \a]",
+            "url": "[[\a]]",
+            "urlMark": "[[\a|\a]]",
+            "email": "\a",
+            "emailMark": "[[mailto:\a|\a]]",
             "img": "[\a]",
             "tableRowOpen": "||",
             "tableCellOpen": "~A~",
