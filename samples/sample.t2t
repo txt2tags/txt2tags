@@ -68,10 +68,9 @@ Or use ``pre-formatted`` inside sentences.
 
 Special entities like email (duh@somewhere.com) and
 URL (http://www.duh.com) are detected automagically,
-as long as the horizontal line:
+as well as horizontal lines:
 
 --------------------------------------------------------
-^ thin or large v
 ========================================================
 
 You can also specify an [explicit link http://duh.org]
@@ -166,7 +165,7 @@ Because things were too simple.
 
 The image mark is as simple as it can be: ``[filename]``.
 
-                      [img/photo.jpg]  
+                      [img/photo.jpg]
 
 - The filename must end in PNG, JPG, GIF, or similar.
 - No spaces inside the brackets!
