@@ -2,7 +2,7 @@
 
 Aurelio Jargas
 
-_11/22/2019_
+_11/24/2019_
 
 
 = Introduction =
@@ -158,7 +158,7 @@ Because things were too simple.
 
 The image mark is as simple as it can be: {{{[filename]}}}.
 
-                      [img/photo.jpg]
+[img/photo.jpg]
 
  * The filename must end in PNG, JPG, GIF, or similar.
  * No spaces inside the brackets!
@@ -167,10 +167,10 @@ The image mark is as simple as it can be: {{{[filename]}}}.
 
 The handy {{{%%date}}} macro expands to the current date.
 
-So today is 20191122 on the ISO {{{YYYYMMDD}}} format.
+So today is 20191124 on the ISO {{{YYYYMMDD}}} format.
 
 You can also specify the date format with the %? flags,
-as {{{%%date(%m-%d-%Y)}}} which gives: 11-22-2019.
+as {{{%%date(%m-%d-%Y)}}} which gives: 11-24-2019.
 
 That's all for now.
 

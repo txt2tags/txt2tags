@@ -2,7 +2,7 @@
 
 Aurelio Jargas
 
-''11/22/2019''
+''11/24/2019''
 
 
 == Introduction ==
@@ -173,7 +173,7 @@ Because things were too simple.
 
 The image mark is as simple as it can be: <tt>[filename]</tt>.
 
-                      [[Image:img/photo.jpg|right]]
+[[Image:img/photo.jpg|center]]
 
 * The filename must end in PNG, JPG, GIF, or similar.
 * No spaces inside the brackets!
@@ -182,10 +182,10 @@ The image mark is as simple as it can be: <tt>[filename]</tt>.
 
 The handy <tt>%%date</tt> macro expands to the current date.
 
-So today is 20191122 on the ISO <tt>YYYYMMDD</tt> format.
+So today is 20191124 on the ISO <tt>YYYYMMDD</tt> format.
 
 You can also specify the date format with the %? flags,
-as <tt>%%date(%m-%d-%Y)</tt> which gives: 11-22-2019.
+as <tt>%%date(%m-%d-%Y)</tt> which gives: 11-24-2019.
 
 That's all for now.
 

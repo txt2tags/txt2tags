@@ -1,6 +1,6 @@
 = TXT2TAGS SAMPLE
 Aurelio Jargas
-11/22/2019
+11/24/2019
 
 
 == Introduction
@@ -160,7 +160,7 @@ Because things were too simple.
 
 The image mark is as simple as it can be: +[filename]+.
 
-                      image::img/photo.jpg[]
+image::img/photo.jpg[]
 
 	- The filename must end in PNG, JPG, GIF, or similar.
 	- No spaces inside the brackets!
@@ -169,10 +169,10 @@ The image mark is as simple as it can be: +[filename]+.
 
 The handy +%%date+ macro expands to the current date.
 
-So today is 20191122 on the ISO +YYYYMMDD+ format.
+So today is 20191124 on the ISO +YYYYMMDD+ format.
 
 You can also specify the date format with the %? flags,
-as +%%date(%m-%d-%Y)+ which gives: 11-22-2019.
+as +%%date(%m-%d-%Y)+ which gives: 11-24-2019.
 
 That's all for now.
 

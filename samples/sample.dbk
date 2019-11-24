@@ -8,7 +8,7 @@
     <authorgroup>
       <author><othername>Aurelio Jargas</othername></author>
     </authorgroup>
-    <date>11/22/2019</date>
+    <date>11/24/2019</date>
   </articleinfo>
 
 <sect1><title>Introduction</title>
@@ -238,7 +238,7 @@ Because things were too simple.
 The image mark is as simple as it can be: <code>[filename]</code>.
 </para>
 <para>
-                      <mediaobject><imageobject><imagedata fileref="img/photo.jpg"/></imageobject></mediaobject>
+<mediaobject><imageobject><imagedata fileref="img/photo.jpg"/></imageobject></mediaobject>
 </para>
 <itemizedlist>
 <listitem><para>The filename must end in PNG, JPG, GIF, or similar.
@@ -252,11 +252,11 @@ The image mark is as simple as it can be: <code>[filename]</code>.
 The handy <code>%%date</code> macro expands to the current date.
 </para>
 <para>
-So today is 20191122 on the ISO <code>YYYYMMDD</code> format.
+So today is 20191124 on the ISO <code>YYYYMMDD</code> format.
 </para>
 <para>
 You can also specify the date format with the %? flags,
-as <code>%%date(%m-%d-%Y)</code> which gives: 11-22-2019.
+as <code>%%date(%m-%d-%Y)</code> which gives: 11-24-2019.
 </para>
 <para>
 That's all for now.

@@ -2,7 +2,7 @@
 <article>
 <title>TXT2TAGS SAMPLE
 <author>Aurelio Jargas
-<date>11/22/2019
+<date>11/24/2019
 
 
 <sect>Introduction<p>
@@ -219,7 +219,7 @@ Because things were too simple.
 The image mark is as simple as it can be: <tt>&lsqb;filename]</tt>.
 
 <p>
-                      <figure><ph vspace=""><img src="img/photo.jpg"></figure>
+<figure><ph vspace=""><img src="img/photo.jpg"></figure>
 
 <itemize>
 <item>The filename must end in PNG, JPG, GIF, or similar.
@@ -232,11 +232,11 @@ The image mark is as simple as it can be: <tt>&lsqb;filename]</tt>.
 The handy <tt>%%date</tt> macro expands to the current date.
 
 <p>
-So today is 20191122 on the ISO <tt>YYYYMMDD</tt> format.
+So today is 20191124 on the ISO <tt>YYYYMMDD</tt> format.
 
 <p>
 You can also specify the date format with the %? flags,
-as <tt>%%date(%m-%d-%Y)</tt> which gives: 11-22-2019.
+as <tt>%%date(%m-%d-%Y)</tt> which gives: 11-24-2019.
 
 <p>
 That's all for now.

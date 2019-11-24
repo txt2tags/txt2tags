@@ -26,7 +26,7 @@ TXT2TAGS SAMPLE
 Aurelio Jargas
 
 %font "mono", size 7, center
-11/22/2019
+11/24/2019
 
 %page
 
@@ -322,8 +322,8 @@ The image mark is as simple as it can be:
 .
 
 %font "normal", size 5
-                      
-%right
+
+%center
 %newimage "img/photo.jpg"
 %left
 
@@ -344,7 +344,7 @@ The handy
  macro expands to the current date.
 
 %font "normal", size 5
-So today is 20191122 on the ISO 
+So today is 20191124 on the ISO 
 %cont, font "mono"
 YYYYMMDD
 %cont, font "normal"
@@ -356,7 +356,7 @@ as
 %cont, font "mono"
  %%date(%m-%d-%Y)
 %cont, font "normal"
- which gives: 11-22-2019.
+ which gives: 11-24-2019.
 
 %font "normal", size 5
 That's all for now.
