@@ -180,7 +180,7 @@ ESCCHAR = "\x00"
 SEPARATOR = "\x01"
 LISTNAMES = {"-": "list", "+": "numlist", ":": "deflist"}
 
-VERSIONSTR = "%s version %s <%s>" % (my_name, __version__, my_url)
+VERSIONSTR = "{} version {} <{}>".format(my_name, __version__, my_url)
 
 USAGE = "\n".join(
     [
@@ -216,7 +216,7 @@ USAGE = "\n".join(
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
         "",
         "Example:",
-        "     %s -t html --toc %s" % (my_name, "file.t2t"),
+        "     {} -t html --toc {}".format(my_name, "file.t2t"),
         "",
         "By default, converted output is saved to 'infile.<target>'.",
         "Use --outfile to force an output file name.",
@@ -1715,11 +1715,11 @@ def getRegexes():
     }
 
     # username [ :password ] @
-    patt_url_login = r"([%s]+(:%s)?@)?" % (urlskel["login"], urlskel["pass"])
+    patt_url_login = r"([{}]+(:{})?@)?".format(urlskel["login"], urlskel["pass"])
 
     # [ http:// ] [ username:password@ ] domain.com [ / ]
     #     [ #anchor | ?form=data ]
-    retxt_url = r"\b(%s%s|%s)[%s]+\b/*(\?[%s]+)?(#[%s]*)?" % (
+    retxt_url = r"\b({}{}|{})[{}]+\b/*(\?[{}]+)?(#[{}]*)?".format(
         urlskel["proto"],
         patt_url_login,
         urlskel["guess"],
@@ -1729,16 +1729,13 @@ def getRegexes():
     )
 
     # filename | [ filename ] #anchor
-    retxt_url_local = r"[%s]+|[%s]*(#[%s]*)" % (
-        urlskel["chars"],
-        urlskel["chars"],
-        urlskel["anchor"],
+    retxt_url_local = r"[{}]+|[{}]*(#[{}]*)".format(
+        urlskel["chars"], urlskel["chars"], urlskel["anchor"]
     )
 
     # user@domain [ ?form=data ]
-    patt_email = r"\b[%s]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b(\?[%s]+)?" % (
-        urlskel["login"],
-        urlskel["form"],
+    patt_email = r"\b[{}]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{{2,4}}\b(\?[{}]+)?".format(
+        urlskel["login"], urlskel["form"]
     )
 
     # Saving for future use
@@ -1749,7 +1746,7 @@ def getRegexes():
     bank["email"] = re.compile(patt_email, re.I)
 
     # email | url
-    bank["link"] = re.compile(r"%s|%s" % (retxt_url, patt_email), re.I)
+    bank["link"] = re.compile(r"{}|{}".format(retxt_url, patt_email), re.I)
 
     # \[ label | imagetag    url | email | filename \]
     bank["linkmark"] = re.compile(
@@ -1795,7 +1792,7 @@ def getTraceback():
 
 
 def getUnknownErrorMessage():
-    msg = "%s\n%s (%s):\n\n%s" % (
+    msg = "{}\n{} ({}):\n\n{}".format(
         "Sorry! Txt2tags aborted by an unknown error.",
         "Please send the following Error Traceback to the author",
         my_email,
@@ -1807,7 +1804,7 @@ def getUnknownErrorMessage():
 def Message(msg, level):
     if level <= VERBOSE and not QUIET:
         prefix = "-" * 5
-        print("%s %s" % (prefix * level, msg))
+        print("{} {}".format(prefix * level, msg))
 
 
 def Debug(msg, id_=0, linenr=None):
@@ -1817,7 +1814,7 @@ def Debug(msg, id_=0, linenr=None):
     ids = ["INI", "CFG", "SRC", "BLK", "HLD", "GUI", "OUT", "DET"]
     if linenr is not None:
         msg = "LINE %04d: %s" % (linenr, msg)
-    print("++ %s: %s" % (ids[id_], msg))
+    print("++ {}: {}".format(ids[id_], msg))
 
 
 def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
@@ -2172,9 +2169,8 @@ class SourceDocument:
         self.arearef = ref  # save results
         self.buffer = buf
         # Fancyness sample: head conf body (1 4 8)
-        self.areas_fancy = "%s (%s)" % (
-            " ".join(self.areas),
-            " ".join(map(str, [x or "" for x in ref])),
+        self.areas_fancy = "{} ({})".format(
+            " ".join(self.areas), " ".join(map(str, [x or "" for x in ref]))
         )
         Message("Areas found: %s" % self.areas_fancy, 2)
 
@@ -2313,7 +2309,7 @@ class ConfigMaster:
             val = self.off.get(key)  # turn key OFF
         # Is this key valid?
         if key not in self.defaults.keys():
-            Debug("Bogus Config %s:%s" % (key, val), 1)
+            Debug("Bogus Config {}:{}".format(key, val), 1)
             return
         # Is this value the default one?
         if val == self.defaults.get(key):
@@ -2339,7 +2335,7 @@ class ConfigMaster:
         else:
             self.parsed[key] = val
         fancykey = dotted_spaces("%12s" % key)
-        Message("Added config %s : %s" % (fancykey, val), 3)
+        Message("Added config {} : {}".format(fancykey, val), 3)
 
     def get_outfile_name(self, config):
         "Dirname is the same for {in,out}file"
@@ -2356,7 +2352,7 @@ class ConfigMaster:
             outfile = MODULEOUT
         if not outfile and (infile and config.get("target")):
             basename = re.sub(r"\.(txt|t2t)$", "", infile)
-            outfile = "%s.%s" % (basename, config["target"])
+            outfile = "{}.{}".format(basename, config["target"])
         Debug(" infile: '%s'" % infile, 1)
         Debug("outfile: '%s'" % outfile, 1)
         return outfile
@@ -2381,7 +2377,7 @@ class ConfigMaster:
                 + "Please select a target using the -t option or the %!target command."
                 + "\n"
                 + "Example:"
-                + " %s -t html %s" % (my_name, "file.t2t")
+                + " {} -t html {}".format(my_name, "file.t2t")
                 + "\n\n"
                 + "Run 'txt2tags --targets' to see all available targets."
             )
@@ -2527,7 +2523,7 @@ class ConfigLines:
             if key == "includeconf":
                 err = "A file cannot include itself (loop!)"
                 if val == self.file:
-                    Error("%s: %%!includeconf: %s" % (err, self.file))
+                    Error("{}: %!includeconf: {}".format(err, self.file))
                 more_raw = self.include_config_file(val)
                 ret.extend(more_raw)
                 Message("Finished Config file inclusion: %s" % val, 2)
@@ -2921,7 +2917,7 @@ class TitleMaster:
             # so we can't use self.toc length to number anchors
             self.anchor_count += 1
             # Autonumber label (if needed)
-            label = label or "%s%s" % (self.anchor_prefix, self.anchor_count)
+            label = label or "{}{}".format(self.anchor_prefix, self.anchor_count)
         if label and TAGS["anchor"]:
             ret = regex["x"].sub(label, TAGS["anchor"])
         return ret
@@ -2931,7 +2927,7 @@ class TitleMaster:
         ret = self.txt
         # Insert count_id (if any) before text
         if self.count_id:
-            ret = "%s %s" % (self.count_id, ret)
+            ret = "{} {}".format(self.count_id, ret)
         # Escape specials
         ret = doEscape(TARGET, ret)
         # Same targets needs final escapes on title lines
@@ -2978,7 +2974,7 @@ class TitleMaster:
             if level > max_level:
                 continue  # ignore
             indent = "  " * level
-            id_txt = ("%s %s" % (count_id, txt)).lstrip()
+            id_txt = ("{} {}".format(count_id, txt)).lstrip()
             label = label or self.anchor_prefix + repr(toc_count)
             toc_count += 1
 
@@ -2987,17 +2983,17 @@ class TitleMaster:
                 if CONF["enum-title"] and level == 1:
                     # 1. [Foo #anchor] is more readable than [1. Foo #anchor] in level 1.
                     # This is a stoled idea from Windows .CHM help files.
-                    tocitem = '%s+ [""%s"" #%s]' % (indent, txt, label)
+                    tocitem = '{}+ [""{}"" #{}]'.format(indent, txt, label)
                 else:
-                    tocitem = '%s- [""%s"" #%s]' % (indent, id_txt, label)
+                    tocitem = '{}- [""{}"" #{}]'.format(indent, id_txt, label)
 
             # TOC will be plain text (no links)
             else:
                 if TARGET in ["txt", "man"]:
                     # For these, the list is not necessary, just dump the text
-                    tocitem = '%s""%s""' % (indent, id_txt)
+                    tocitem = '{}""{}""'.format(indent, id_txt)
                 else:
-                    tocitem = '%s- ""%s""' % (indent, id_txt)
+                    tocitem = '{}- ""{}""'.format(indent, id_txt)
             ret.append(tocitem)
         return ret
 
@@ -3388,7 +3384,7 @@ class BlockMaster:
             self.tableparser = TableMaster()
         # Deeper and deeper
         self.depth = len(self.BLK)
-        Debug("block ++ (%s): %s" % (block, self.BLK), 3)
+        Debug("block ++ ({}): {}".format(block, self.BLK), 3)
         return ret
 
     def blockout(self):
@@ -3412,8 +3408,8 @@ class BlockMaster:
             # Reset now. Mother block will have it all
             result = []
 
-        Debug("block -- (%s): %s" % (blockname, self.BLK), 3)
-        Debug("RELEASED (%s): %s" % (blockname, parsed), 3)
+        Debug("block -- ({}): {}".format(blockname, self.BLK), 3)
+        Debug("RELEASED ({}): {}".format(blockname, parsed), 3)
 
         # Save this top level block name (produced output)
         # The next block will use it
@@ -3901,7 +3897,7 @@ def dumpConfig(source_raw, parsed_config):
             target = "(%s)" % target
             key = dotted_spaces("%-14s" % key)
             val = val or "ON"
-            print("  %-8s %s: %s" % (target, key, val))
+            print("  {:<8} {}: {}".format(target, key, val))
         print()
     # Then the parsed results of all of them
     print("Full PARSED config")
@@ -3922,7 +3918,7 @@ def dumpConfig(source_raw, parsed_config):
             else:
                 sep = ", "
             val = sep.join(val)
-        print("%25s: %s" % (dotted_spaces("%-14s" % key), val))
+        print("{:>25}: {}".format(dotted_spaces("%-14s" % key), val))
     print()
     print("Active filters")
     for filter_ in ["preproc", "postproc"]:
@@ -3954,7 +3950,7 @@ def finish_him(outlist, config):
                 try:
                     line = rgx.sub(repl, line)
                 except Exception:
-                    Error("%s: '%s'" % (errmsg, repl))
+                    Error("{}: '{}'".format(errmsg, repl))
             postoutlist.append(line)
         outlist = postoutlist[:]
 
@@ -3966,7 +3962,7 @@ def finish_him(outlist, config):
     else:
         Savefile(outfile, outlist)
         if not QUIET:
-            print("%s wrote %s" % (my_name, outfile))
+            print("{} wrote {}".format(my_name, outfile))
 
 
 def toc_inside_body(body, toc, config):
@@ -4134,13 +4130,10 @@ def doFooter(config):
         if target == "tex":
             target = "LaTeX2e"
 
-        t2t_version = "%s code generated by %s %s (%s)" % (
-            target,
-            my_name,
-            __version__,
-            my_url,
+        t2t_version = "{} code generated by {} {} ({})".format(
+            target, my_name, __version__, my_url
         )
-        cmdline = "cmdline: %s %s" % (my_name, " ".join(config["realcmdline"]))
+        cmdline = "cmdline: {} {}".format(my_name, " ".join(config["realcmdline"]))
 
         ret.append(doCommentLine(t2t_version))
         ret.append(doCommentLine(cmdline))
@@ -4242,7 +4235,7 @@ def compile_filters(filters, errmsg="Filter"):
             try:
                 rgx = re.compile(patt)
             except Exception:
-                Error("%s: '%s'" % (errmsg, patt))
+                Error("{}: '{}'".format(errmsg, patt))
             filters[i] = (rgx, repl)
     return filters
 
@@ -4260,7 +4253,7 @@ def beautify_me(name, font, line):
 
     open_ = TAGS["%sOpen" % font]
     close = TAGS["%sClose" % font]
-    txt = r"%s\1%s" % (open_, close)
+    txt = r"{}\1{}".format(open_, close)
     line = regex[font].sub(txt, line)
     return line
 
@@ -4606,7 +4599,7 @@ def get_include_contents(file_, path=""):
         # chapter1/index.t2t (wait until tree parsing)
         # TODO for the images path fix, also respect outfile path,
         # if different from infile (wait until tree parsing)
-        lines.insert(0, "%%INCLUDED(%s) starts here: %s" % (id_, file_))
+        lines.insert(0, "%INCLUDED({}) starts here: {}".format(id_, file_))
         # This appears when included hit EOF with verbatim area open
         # lines.append('%%INCLUDED(%s) ends here: %s'%(id_,file_))
     return id_, lines
@@ -4658,7 +4651,7 @@ def convert(bodylines, config, firstlinenr=1):
                 try:
                     line = rgx.sub(repl, line)
                 except Exception:
-                    Error("%s: '%s'" % (errmsg, repl))
+                    Error("{}: '{}'".format(errmsg, repl))
 
         line = maskEscapeChar(line)  # protect \ char
         linenr += 1
@@ -4833,7 +4826,7 @@ def convert(bodylines, config, firstlinenr=1):
             targ, key, val = ConfigLines().parse_line(line, None, target)
 
             if key:
-                Debug("Found config '%s', value '%s'" % (key, val), 1, linenr)
+                Debug("Found config '{}', value '{}'".format(key, val), 1, linenr)
             else:
                 Debug("Bogus Special Line", 1, linenr)
 
@@ -4844,7 +4837,7 @@ def convert(bodylines, config, firstlinenr=1):
                 incfile = val
                 err = "A file cannot include itself (loop!)"
                 if CONF["sourcefile"] == incfile:
-                    Error("%s: %s" % (err, incfile))
+                    Error("{}: {}".format(err, incfile))
                 inctype, inclines = get_include_contents(incfile, incpath)
 
                 # Verb, raw and tagged are easy
@@ -5197,7 +5190,7 @@ def exec_command_line(user_cmdline=None):
             + "Please inform an input file (.t2t) at the end of the command."
             + "\n"
             + "Example:"
-            + " %s -t html %s" % (my_name, "file.t2t")
+            + " {} -t html {}".format(my_name, "file.t2t")
         )
 
     convert_this_files(infiles_config)
