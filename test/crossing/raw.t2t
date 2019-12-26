@@ -10,10 +10,6 @@ BODYINIT
 """
 No paragraph tags here.
 """
-%%% Crossing: Macro is ignored
-"""
-%%date(No macros here.)
-"""
 %%% Crossing: Command is ignored
 """
 %!include: ''include.txt''

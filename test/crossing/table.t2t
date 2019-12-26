@@ -10,10 +10,6 @@ BODYINIT
 | Line 1. |
 Closed
 | Line 3. |
-%%% Crossing: Macro closes it
-| Line 1. |
-%%date(Closed)
-| Line 3. |
 %%% Crossing: Command closes it
 | Line 1. |
 %!include: ''include.txt''

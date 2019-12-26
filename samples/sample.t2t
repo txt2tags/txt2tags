@@ -1,6 +1,6 @@
 TXT2TAGS SAMPLE
 Aurelio Jargas
-%%mtime(%m/%d/%Y)
+
 
 %!encoding: utf-8
 
@@ -171,21 +171,5 @@ The image mark is as simple as it can be: ``[filename]``.
 - No spaces inside the brackets!
 
 
-                     ==  Other  ==
-
-The handy ``%%date`` macro expands to the current date.
-
-So today is %%date on the ISO ``YYYYMMDD`` format.
-
-You can also specify the date format with the %? flags,
-as ``%%date(%m-%d-%Y)`` which gives: %%date(%m-%d-%Y).
-
-That's all for now.
-
 -------------------------------------------------------
-%%% TRANSLATOR: Uncomment and translate the next two lines
-%Translated by John Smith.
-%-------------------------------------------------------
-[img/t2tpowered.png] ([%%infile %%infile])
-
-% vim: tw=55
+[img/t2tpowered.png]

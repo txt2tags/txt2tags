@@ -10,10 +10,6 @@ BODYINIT
 | Line 1. |
 | Line 2.
 | Line 3.
-%%% Nesting: Macro inside is normal
-| Line 1. |
-| %%date(Line 2.)
-| Line 3.
 %%% Nesting: Line inside is ignored
 | Line 1. |
 | -------------------------------------------

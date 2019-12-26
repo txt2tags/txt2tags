@@ -57,7 +57,7 @@
 # different background color. Still don't know how to fix it.
 
 # XXX TODO (maybe)
-# New mark or macro which expands to an anchor full title.
+# New mark which expands to an anchor full title.
 # It is necessary to parse the full document in this order:
 #  DONE  1st scan: HEAD: get all settings, including %!includeconf
 #  DONE  2nd scan: BODY: expand includes & apply %!preproc
@@ -74,7 +74,6 @@ import getopt
 import os
 import re
 import sys
-import time
 
 ##############################################################################
 
@@ -87,7 +86,6 @@ __version__ = "3.3"
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
 # ACTIONS : the other behavior modifiers, valid on command line only
-# MACROS  : the valid macros with their default values for formatting
 # SETTINGS: global miscellaneous settings, valid on RC file only
 # NO_TARGET: actions that don't require a target specification
 # NO_MULTI_INPUT: actions that don't accept more than one input file
@@ -130,7 +128,6 @@ ACTIONS = {
     "dump-source": 0,
     "targets": 0,
 }
-MACROS = {"date": "%Y%m%d", "infile": "%f", "mtime": "%Y%m%d", "outfile": "%f"}
 SETTINGS = {}  # for future use
 NO_TARGET = ["help", "version", "toc-only", "dump-config", "dump-source", "targets"]
 NO_MULTI_INPUT = ["dump-config", "dump-source"]
@@ -159,7 +156,6 @@ TARGETS = sorted(TARGET_NAMES)
 DEBUG = 0  # do not edit here, please use --debug
 VERBOSE = 0  # do not edit here, please use -v, -vv or -vvv
 QUIET = 0  # do not edit here, please use --quiet
-AUTOTOC = 1  # do not edit here, please use --no-toc or %%toc
 
 DFT_TEXT_WIDTH = 72
 
@@ -1674,14 +1670,6 @@ def getRegexes():
     # Special char to place data on TAGs contents  (\a == bell)
     bank["x"] = re.compile("\a")
 
-    # %%macroname [ (formatting) ]
-    bank["macros"] = re.compile(
-        r"%%%%(?P<name>%s)\b(\((?P<fmt>.*?)\))?" % ("|".join(MACROS.keys())), re.I
-    )
-
-    # %%TOC special macro for TOC positioning
-    bank["toc"] = re.compile(r"^ *%%toc\s*$", re.I)
-
     # Almost complicated title regexes ;)
     titskel = r"^ *(?P<id>%s)(?P<txt>%s)\1(\[(?P<label>[\w-]*)\])?\s*$"
     bank["title"] = re.compile(titskel % ("[=]{1,5}", "[^=](|.*[^=])"))
@@ -2150,11 +2138,8 @@ class SourceDocument:
             if on_comment_block:
                 continue
 
-            if buf[i].strip() and (  # ... not blank and
-                buf[i][0] != "%"
-                or rgx["macros"].match(buf[i])  # ... not comment or
-                or rgx["toc"].match(buf[i])  # ... %%macro
-                or cfg_parser(buf[i], "include")[1]  # ... %%toc
+            if buf[i].strip() and (
+                buf[i][0] != "%" or cfg_parser(buf[i], "include")[1]
             ):
                 ref[2] = i
                 break
@@ -2611,23 +2596,17 @@ class MaskMaster:
     def __init__(self):
         self.linkmask = "vvvLINKvvv"
         self.monomask = "vvvMONOvvv"
-        self.macromask = "vvvMACROvvv"
         self.rawmask = "vvvRAWvvv"
         self.taggedmask = "vvvTAGGEDvvv"
-        self.tocmask = "vvvTOCvvv"
-        self.macroman = MacroMaster()
         self.reset()
 
     def reset(self):
         self.linkbank = []
         self.monobank = []
-        self.macrobank = []
         self.rawbank = []
         self.taggedbank = []
 
     def mask(self, line=""):
-        global AUTOTOC
-
         # The verbatim, raw and tagged inline marks are mutually exclusive.
         # This means that one can't appear inside the other.
         # If found, the inner marks must be ignored.
@@ -2680,17 +2659,6 @@ class MaskMaster:
             else:
                 break
 
-        # Protect macros
-        while regex["macros"].search(line):
-            txt = regex["macros"].search(line).group()
-            self.macrobank.append(txt)
-            line = regex["macros"].sub(self.macromask, line, 1)
-
-        # Protect TOC location
-        while regex["toc"].search(line):
-            line = regex["toc"].sub(self.tocmask, line)
-            AUTOTOC = 0
-
         # Protect URLs and emails
         while regex["linkmark"].search(line) or regex["link"].search(line):
 
@@ -2724,16 +2692,10 @@ class MaskMaster:
         return line
 
     def undo(self, line):
-
         # url & email
         for label, url in self.linkbank:
             link = get_tagged_link(label, url)
             line = line.replace(self.linkmask, link, 1)
-
-        # Expand macros
-        for macro in self.macrobank:
-            macro = self.macroman.expand(macro)
-            line = line.replace(self.macromask, macro, 1)
 
         # Expand verb
         for mono in self.monobank:
@@ -3526,8 +3488,6 @@ class BlockMaster:
 
         # Get contents
         for line in self.hold():
-            if self.prop("mapped") == "table":
-                line = MacroMaster().expand(line)
             if not rules["verbblocknotescaped"]:
                 line = doEscape(TARGET, line)
             if rules["indentverbblock"]:
@@ -3784,99 +3744,6 @@ class BlockMaster:
 ##############################################################################
 
 
-class MacroMaster:
-    def __init__(self, config=None):
-        self.name = ""
-        self.config = config or CONF
-        self.infile = self.config["sourcefile"]
-        self.outfile = self.config["outfile"]
-        self.currdate = time.localtime(time.time())
-        self.rgx = regex.get("macros") or getRegexes()["macros"]
-        self.fileinfo = {"infile": None, "outfile": None}
-        self.dft_fmt = MACROS
-
-    def walk_file_format(self, fmt):
-        "Walks the %%{in/out}file format string, expanding the % flags"
-        i = 0
-        ret = ""  # counter/hold
-        while i < len(fmt):  # char by char
-            c = fmt[i]
-            i += 1
-            if c == "%":  # hot char!
-                if i == len(fmt):  # % at the end
-                    ret = ret + c
-                    break
-                c = fmt[i]
-                i += 1  # read next
-                ret = ret + self.expand_file_flag(c)
-            else:
-                ret = ret + c  # common char
-        return ret
-
-    def expand_file_flag(self, flag):
-        "%f: filename          %F: filename (w/o extension)"
-        "%d: dirname           %D: dirname (only parent dir)"
-        "%p: file path         %e: extension"
-        info = self.fileinfo[self.name]  # get dict
-        if flag == "%":
-            x = "%"  # %% -> %
-        elif flag == "f":
-            x = info["name"]
-        elif flag == "F":
-            x = re.sub(r"\.[^.]*$", "", info["name"])
-        elif flag == "d":
-            x = info["dir"]
-        elif flag == "D":
-            x = os.path.split(info["dir"])[-1]
-        elif flag == "p":
-            x = info["path"]
-        elif flag == "e":
-            x = re.search(r".(\.([^.]+))?$", info["name"]).group(2) or ""
-        # TODO simpler way for %e ?
-        else:
-            x = "%" + flag  # false alarm
-        return x
-
-    def set_file_info(self, macroname):
-        if self.fileinfo.get(macroname):
-            return  # already done
-        file_ = getattr(self, self.name)  # self.infile
-        if file_ == STDOUT or file_ == MODULEOUT:
-            dir_ = ""
-            path = name = file_
-        else:
-            path = os.path.abspath(file_)
-            dir_ = os.path.dirname(path)
-            name = os.path.basename(path)
-        self.fileinfo[macroname] = {"path": path, "dir": dir_, "name": name}
-
-    def expand(self, line=""):
-        "Expand all macros found on the line"
-        while self.rgx.search(line):
-            m = self.rgx.search(line)
-            name = self.name = m.group("name").lower()
-            fmt = m.group("fmt") or self.dft_fmt.get(name)
-            if name == "date":
-                txt = time.strftime(fmt, self.currdate)
-            elif name == "mtime":
-                if self.infile in (STDIN, MODULEIN):
-                    fdate = self.currdate
-                else:
-                    mtime = os.path.getmtime(self.infile)
-                    fdate = time.localtime(mtime)
-                txt = time.strftime(fmt, fdate)
-            elif name == "infile" or name == "outfile":
-                self.set_file_info(name)
-                txt = self.walk_file_format(fmt)
-            else:
-                Error("Unknown macro name '%s'" % name)
-            line = self.rgx.sub(txt, line, 1)
-        return line
-
-
-##############################################################################
-
-
 def listTargets():
     """List available targets."""
     for target, name in sorted(TARGET_NAMES.items()):
@@ -3965,23 +3832,6 @@ def finish_him(outlist, config):
             print("{} wrote {}".format(my_name, outfile))
 
 
-def toc_inside_body(body, toc, config):
-    ret = []
-    if AUTOTOC:
-        return body  # nothing to expand
-    toc_mark = MaskMaster().tocmask
-    # Expand toc mark with TOC contents
-    for line in body:
-        if line.count(toc_mark):  # toc mark found
-            if config["toc"]:
-                ret.extend(toc)  # include if --toc
-            else:
-                pass  # or remove %%toc line
-        else:
-            ret.append(line)  # common line
-    return ret
-
-
 def toc_tagger(toc, config):
     "Returns the tagged TOC, as a single tag or a tagged list"
     ret = []
@@ -4017,18 +3867,17 @@ def toc_formatter(toc, config):
         ret.append(TAGS["tocClose"])
 
     # Autotoc specific formatting
-    if AUTOTOC:
-        if rules["autotocwithbars"]:  # TOC between bars
-            para = TAGS["paragraphOpen"] + TAGS["paragraphClose"]
-            bar = regex["x"].sub("-" * DFT_TEXT_WIDTH, TAGS["bar1"])
-            tocbar = [para, bar, para]
-            ret = tocbar + ret + tocbar
-        if rules["blankendautotoc"]:  # blank line after TOC
-            ret.append("")
-        if rules["autotocnewpagebefore"]:  # page break before TOC
-            ret.insert(0, TAGS["pageBreak"])
-        if rules["autotocnewpageafter"]:  # page break after TOC
-            ret.append(TAGS["pageBreak"])
+    if rules["autotocwithbars"]:  # TOC between bars
+        para = TAGS["paragraphOpen"] + TAGS["paragraphClose"]
+        bar = regex["x"].sub("-" * DFT_TEXT_WIDTH, TAGS["bar1"])
+        tocbar = [para, bar, para]
+        ret = tocbar + ret + tocbar
+    if rules["blankendautotoc"]:  # blank line after TOC
+        ret.append("")
+    if rules["autotocnewpagebefore"]:  # page break before TOC
+        ret.insert(0, TAGS["pageBreak"])
+    if rules["autotocnewpageafter"]:  # page break after TOC
+        ret.append(TAGS["pageBreak"])
     return ret
 
 
@@ -4055,8 +3904,7 @@ def doHeader(headers, config):
         head_data[key] = val
     # Parse header contents
     for i in 0, 1, 2:
-        # Expand macros
-        contents = MacroMaster(config=config).expand(headers[i])
+        contents = headers[i]
         # Escapes - on tex, just do it if any \tag{} present
         if target != "tex" or (target == "tex" and re.search(r"\\\w+{", contents)):
             contents = doEscape(target, contents)
@@ -4518,9 +4366,7 @@ def convert_this_files(configs):
         Message("Composing target TOC", 1)
         tagged_toc = toc_tagger(marked_toc, myconf)
         target_toc = toc_formatter(tagged_toc, myconf)
-        target_body = toc_inside_body(target_body, target_toc, myconf)
-        if not AUTOTOC and not myconf["toc-only"]:
-            target_toc = []
+
         # Finally, we have our document
         outlist = target_head + target_toc + target_body + target_foot
         # If module, return finish_him as list
@@ -4865,12 +4711,8 @@ def convert(bodylines, config, firstlinenr=1):
 
         # ---------------------[ Comments ]--------------------------
 
-        # Just skip them (if not macro)
-        if (
-            regex["comment"].search(line)
-            and not regex["macros"].match(line)
-            and not regex["toc"].match(line)
-        ):
+        # Just skip them
+        if regex["comment"].search(line):
             continue
 
         # ---------------------[ Triggers ]--------------------------
@@ -4933,12 +4775,6 @@ def convert(bodylines, config, firstlinenr=1):
 
             # We're done, nothing more to process
             continue
-
-        # ---------------------[ %%toc ]-----------------------
-
-        # %%toc line closes paragraph
-        if BLOCK.block() == "para" and regex["toc"].search(line):
-            ret.extend(BLOCK.blockout())
 
         # ---------------------[ apply masks ]-----------------------
 
@@ -5073,7 +4909,7 @@ def convert(bodylines, config, firstlinenr=1):
 
         # ---------------------[ Paragraph ]-------------------------
 
-        if not BLOCK.block() and not line.count(MASK.tocmask):  # new para!
+        if not BLOCK.block():  # new para!
             ret.extend(BLOCK.blockin("para"))
 
         ############################################################

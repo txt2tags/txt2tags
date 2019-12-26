@@ -17,7 +17,6 @@ Aurelio Jargas
 %!preproc: MARKSYN  **Syntax:**
 %!preproc: MARKDET  **Details:**
 %!preproc: NOMARKS  Marks are NOT interpreted
-%!preproc: NOMACRO  Macros are NOT interpreted
 
 %!preproc: URLMARKUP    URLWEBSITE/markup.html
 %!preproc: URLWEBSITE   http://txt2tags.org
@@ -131,11 +130,6 @@ The following is a list of all the structures supported by txt2tags.
 - horizontal separator line
 - image (with smart alignment)
 - table (with or without border, smart alignment, column span)
-- macros (with flexible formatting):
-  - current date
-  - file modification time
-  - input and output file name and path
-  - automatic table of contents
 - special mark for raw text (no marks parsed inside)
 - special mark for tagged text (no parsing, sent directly to output)
 - comments (for self notes, TODO, FIXME)
@@ -917,14 +911,13 @@ General Rules:
 
 ------------------------------------------------------------------------
 %- MARKPROP Multiline, FreeSpaces, Align, Nesting
-%- MARKCONT Macros, Beautifiers, Quote, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
+%- MARKCONT Beautifiers, Quote, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
 %-----------------------------------------------------------------------
 
 == Headers ==[mark-headers]
 
 - MARKDESC Identifies the document headers
 - MARKPROP Multiline, FreeSpaces, !Align, !Nesting
-- MARKCONT Macros
 - MARKSYN
   - The first 3 lines of the source file.
   - Leave the first line blank to not specify headers at all.
@@ -963,7 +956,6 @@ General Rules:
     and hyphen (A-Za-z0-9_-)
 - MARKDET
   - NOMARKS
-  - NOMACRO
 
 
 ------------------------------------------------------------------------
@@ -972,7 +964,7 @@ General Rules:
 
 - MARKDESC Identifies a paragraph of text
 - MARKPROP Multiline, FreeSpaces, !Align, !Nesting
-- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
+- MARKCONT Beautifiers, Raw, Tagged, Links, Image, Comment
 - MARKSYN
   - Paragraphs are groups of lines delimited by blank lines
   - Other blocks like lists, quote, table or verbatim also ends a
@@ -1023,7 +1015,7 @@ General Rules:
 - MARKDESC Used to insert a bold/italic/underline/strike text inside a
   paragraph, table, list or quote
 - MARKPROP !Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image
+- MARKCONT Beautifiers, Raw, Tagged, Links, Image
 - MARKSYN
   - Two starts around for bold, ``**like this**``
   - Two slashes around for italic, ``//like this//``
@@ -1034,7 +1026,6 @@ General Rules:
 - MARKDET
   - All the beautified text must be on a single line of the source file,
     no line breaks inside
-  - Macros are allowed inside beautifiers: ``**%%date**``
   - You can mix beautifiers one inside another,
     ``""**__like__ //this//**""``
 
@@ -1053,7 +1044,6 @@ General Rules:
     ```` this `` is invalid``
 - MARKDET
   - NOMARKS
-  - NOMACRO
   - All the monospaced text must be on a single line of the source file,
     no line breaks inside
   - In some targets, the internal spacing is maintained, in others the
@@ -1082,7 +1072,6 @@ General Rules:
   - NO spaces allowed before or after the marks
 - MARKDET
   - NOMARKS
-  - NOMACRO
   - If the end of the source file (EOF) is hit, the opened Verbatim Area
     is closed
 
@@ -1115,15 +1104,13 @@ General Rules:
 
 - MARKDESC Identifies a remote (Internet) or local link
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
-- MARKCONT Macros, Raw, Tagged, Image
+- MARKCONT Raw, Tagged, Image
 - MARKSYN
   - Any valid internet URL, ftp, news or email address is detected and
     converted automatically
   - The protocol (http, https, ftp) is optional, ``www.likethis.com``
   - A name can be used for a link: ``[click here www.url.com]``
   - An image can point to a link: ``[[image.jpg] www.url.com]``
-  - Macros are allowed on the link address: ``[see source %%infile]``
-  - Macros are allowed on the link name: ``[mirror of %%outfile www.url.com]``
 % - Beautifiers are allowed on the link name: ``[**click** here www.url.com]``
   - All the link specification must be on a single line of the source
     file, no line breaks inside
@@ -1137,7 +1124,7 @@ General Rules:
 
 - MARKDESC Identifies a quoted (indented) line
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Quote, Raw, Tagged, Bars, Links, Image, Comment
+- MARKCONT Beautifiers, Quote, Raw, Tagged, Bars, Links, Image, Comment
 - MARKSYN
   - A line that starts with a tabulation (TAB) character
   - More TABs at the start increase the quote depth
@@ -1158,7 +1145,7 @@ General Rules:
 
 - MARKDESC Identifies the start of a list item
 - MARKPROP Multiline, !FreeSpaces, !Align, Nesting
-- MARKCONT Macros, Beautifiers, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
+- MARKCONT Beautifiers, Lists, Table, Verbatim, Raw, Tagged, Bars, Links, Image, Comment
 - MARKSYN
   - A line that starts with a dash/plus/colon followed by exactly one
     space
@@ -1186,13 +1173,11 @@ General Rules:
 
 - MARKDESC Identifies an image
 - MARKPROP !Multiline, !FreeSpaces, Align, !Nesting
-- MARKCONT Macros
 - MARKSYN
   - An image filename enclosed between brackets, ``[likethis.jpg]``
   - The filename must end in an image extension like PNG, JPG, GIF,
     ... (case doesn't matter)
   - Symbols are allowed on the filename, ``[likethis!~1.jpg]``
-  - Macros are allowed on the filename, ``[report-%%date(%Y-%m-%d).png]``
   - NO spaces allowed on the filename, ``[like this.jpg]``
   - NO spaces allowed on the brackets, ``[ likethis.jpg ]``
 - MARKDET
@@ -1210,7 +1195,7 @@ General Rules:
 
 - MARKDESC Delimits a table row, with any number of columns
 - MARKPROP Multiline, FreeSpaces, Align, !Nesting
-- MARKCONT Macros, Beautifiers, Raw, Tagged, Links, Image, Comment
+- MARKCONT Beautifiers, Raw, Tagged, Links, Image, Comment
 - MARKSYN
   - A leading pipe "|" identifies a table row
   - A leading double pipe "||" identifies a table title row
@@ -1239,7 +1224,7 @@ General Rules:
 
 == Raw, Raw Line, Raw Area ==[mark-raw]
 
-- MARKDESC Used to "protect" some text from parsing, so marks and macros inside
+- MARKDESC Used to "protect" some text from parsing, so marks inside
   it will not be expanded. But escapes are applied.
 - MARKPROP !Multiline, !FreeSpaces, !Align, !Nesting
 - MARKCONT -
@@ -1257,7 +1242,6 @@ General Rules:
   - NO spaces allowed before or after the marks
 - MARKDET
   - NOMARKS
-  - NOMACRO
   - If the end of the source file (EOF) is hit, the opened Raw Area is
     closed
 
@@ -1283,7 +1267,6 @@ General Rules:
   - NO spaces allowed before or after the marks
 - MARKDET
   - NOMARKS
-  - NOMACRO
   - If the end of the source file (EOF) is hit, the opened Tagged Area is
     closed
   - Use this mark to insert target code. For example, in HTML you could use
@@ -1296,174 +1279,7 @@ General Rules:
 
 
 
-= Part VI - Mastering Macros =[macros]
-
-Macros are special purpose keywords, that are expanded on conversion
-time. They are used to insert dynamic information, for example the
-current date or information about the document source.
-
-A macro is represented by the ``%%`` chars followed by its name, such as
-``%%date``. Some macros do accept an optional formatting string inside
-parenthesis, right after the macro name, such as ``%%date(%Y-%m-%d)``. This
-format string mixes common text with special directives, identified by a
-percent sign % followed by an identification character. If no format
-string is given, the default format is used.
-
-  || Macro Name   | Expands to...                        | Default Format |
-  | ""%%date""    | The current date                     |  %Y%m%d
-  | ""%%mtime""   | The source file modification time    |  %Y%m%d
-  | ""%%infile""  | The source file path                 |    %f
-  | ""%%outfile"" | The output file path                 |    %f
-  | ""%%toc""     | The document TOC (Table of Contents) |    -
-
-General rules:
-
-- The macro name is case-insensitive, so ``%%date``, ``%%DaTe`` and
-  ``%%DATE`` are identical
-- Macros are valid at the document HEADAREA and BODYAREA, except
-  %%toc that is valid on BODYAREA only
-- A macro starts the BODYAREA if it is found in the CONFAREA
-- A macro can be placed at any part of the line, including various per line
-  (except %%toc, valid when alone in a line)
-- A macro can be used inside links and images marks (except %%toc)
-- Macros are not expanded in Titles, Verbatim, Raw and Tagged Areas
-
-
-Full example (bold text are expanded macros):
-
-This is the Txt2tags User Guide, converted to **%%outfile(%e)**
-by txt2tags from the **%%infile** source file. The conversion
-was done at **%%date(%Y-%m-%d %X)**, but the last change on the
-source document was made on **%%mtime(%Y-%m-%d %X)**. Both
-source and converted file reside on the **%%infile(%D)**
-directory.
-
------------------------------------------------------------------------
-
-== %%date ==[macro-date]
-
-The ``%%date`` macro expands to the current date and time. It is very
-useful on the document headers or footer, to register the date when the
-document was generated. To expand to the source document last
-modification time, see the [""%%mtime"" macro #macro-mtime].
-
-This macros accepts several formatting directives. The full list can be
-found in the
-[Python site http://docs.python.org/library/time.html].
-Here are the most commonly used:
-
- || Directive | Description |
-  |  %a  | Locale's abbreviated weekday name.
-  |  %A  | Locale's full weekday name.
-  |  %b  | Locale's abbreviated month name.
-  |  %B  | Locale's full month name.
-  |  %c  | Locale's appropriate date and time representation.
-  |  %d  | Day of the month as a decimal number [01,31].
-  |  %H  | Hour (24-hour clock) as a decimal number [00,23].
-  |  %I  | Hour (12-hour clock) as a decimal number [01,12].
-  |  %m  | Month as a decimal number [01,12].
-  |  %M  | Minute as a decimal number [00,59].
-  |  %p  | Locale's equivalent of either AM or PM.
-  |  %S  | Second as a decimal number [00,61].  (1)
-  |  %x  | Locale's appropriate date representation.
-  |  %X  | Locale's appropriate time representation.
-  |  %y  | Year without century as a decimal number [00,99].
-  |  %Y  | Year with century as a decimal number.
-  |  %%  | A literal "%" character.
-
-Examples:
-
- || Macro                           |  -->  | Results for on %%date(%Y, %b %d at %H:%M) |
-  | ""%%date(Converted on: %c)""    |  -->  | %%date(Converted on: %c)
-  | ""%%date(%Y-%m-%d)""            |  -->  | %%date(%Y-%m-%d)
-  | ""%%date(%I:%M %p)""            |  -->  | %%date(%I:%M %p)
-  | ""%%date(Today is %A, on %B.)"" |  -->  | %%date(Today is %A, on %B.)
-
------------------------------------------------------------------------
-
-== %%mtime ==[macro-mtime]
-
-The ``%%mtime`` macro expands to last modification time of the source
-document. It is useful to register when the file was last changed.
-This macro is a "sister" of the [""%%date"" macro #macro-date], so it
-accepts exactly the same formatting directives.
-
-As an example, this User Guide source file was last edited on
-**%%mtime(%c)**. This date was expanded from ``%%mtime(%c)``.
-
------------------------------------------------------------------------
-
-== %%infile ==[macro-infile]
-
-The ``%%infile`` macro expands to the source file location on the
-system. It is useful to make those "//see the source of this file//"
-links on HTML pages. Providing such link is a friendly attitude with
-beginners, so they can use your source as a sample for their own page.
-
-This macro accepts the following formatting directives:
-
- || %<char> | Description | Output for this User Guide source |
- |    %f    | File name                     | %%infile(%f)
- |    %F    | File name (without extension) | %%infile(%F)
- |    %e    | File extension                | %%infile(%e)
- |    %p    | Absolute file path            | %%infile(%p)
- |    %d    | File path (directories only)  | %%infile(%d)
- |    %D    | File path (parent dir only)   | %%infile(%D)
- |    %%    | Literal percent char          | %%infile(%%)
-
-Examples:
-
- || Source                                       |  -->  | Expanded  |
- | This Guide parent dir is ""%%infile(%D)"".    |  -->  | This Guide parent dir is %%infile(%D). |
- | I do use the ""%%infile(%e)"" file extension. |  -->  | I do use the %%infile(%e) file extension. |
- | ""[See the source %%infile]""                 |  -->  | [See the source %%infile]
- | Converted to XHTML, I'll be ""%%infile(%F)"".xhtml |  -->  | Converted to XHTML, I'll be %%infile(%F).xhtml
-
-    **Note:** The macro is expanded to "-" if the source file is STDIN.
-
------------------------------------------------------------------------
-
-== %%outfile ==[macro-outfile]
-
-The ``%%outfile`` macro expands to the converted file location on the
-system. It is useful to its name inside the document Body or Headers.
-This macro is a sister of the [""%%infile"" macro #macro-infile] and
-do accept exactly the same formatting directives.
-
-Examples:
-
- || Source                                    |  -->  | Expanded  |
- | You are reading the ""%%outfile"" file.    |  -->  | You are reading the %%outfile file.
- | txt2tags -t ""%%outfile(%e)"" -i ""%%infile"" -o ""%%outfile"" |  -->  | txt2tags -t %%outfile(%e) -i %%infile -o %%outfile
-
-    **Note:** The macro is expanded to "-" if the output file is STDOUT.
-
------------------------------------------------------------------------
-
-== %%toc ==[macro-toc]
-
-The ``%%toc`` macro expands to the document's Table of Contents. It is
-useful for you to specify exactly where you want the TOC to be placed.
-You can even use the macro more than one time and place the TOC at the
-end of the document also, for example. This Guide is using ""%%toc""
-to position the TOC.
-
-Different from the other macros, this one does not accept a format
-string and has its own special rules:
-
-- Valid at the document BODYAREA only
-- Must be alone on the line (leading and trailing spaces are allowed)
-- Must be used together with --toc command line option, or it will be
-  ignored
-- The default automatic TOC positioning/formatting is disabled when a
-  %%toc is found
-
-
-=======================================================================
-
-
-
-= Part VII - Mastering Settings =[settings]
+= Part VI - Mastering Settings =[settings]
 
 Settings are special configurations placed at the source document's
 CONFAREA that can affect the conversion process. The Settings are all
@@ -1765,7 +1581,7 @@ have no TOC.
 
 
 
-= Part VIII - Black Magic =[black-magic]
+= Part VII - Black Magic =[black-magic]
 
 This chapter is really not recommended for newbies. It demonstrates how
 to do strange things with txt2tags filters, abusing of complex

@@ -28,13 +28,6 @@ FILTERS = {
     "numtitle": [("pre", "equal", "plus"), ("pre", "=", "+")],
     "raw": [("pre", "verbatim", "raw"), ("pre", "`", '"')],
     "tagged": [("pre", "verbatim", "tagged"), ("pre", "`", "'")],
-    "macro": [
-        ("post", os.path.abspath(""), "@DIRNAME@"),
-        ("post", lib.getFileMtime("marks/macro.t2t"), "@MTIME@"),
-        ("post", lib.getCurrentDate(), "@DATE@"),
-        ("post", "^(Date.*)@MTIME@", r"\1@DATE@"),
-        ("post", "^(Date.*)@MTIME@", r"\1@DATE@"),
-    ],
 }
 
 

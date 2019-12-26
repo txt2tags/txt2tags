@@ -8,7 +8,6 @@
     <authorgroup>
       <author><othername>Aurelio Jargas</othername></author>
     </authorgroup>
-    <date>11/24/2019</date>
   </articleinfo>
 
 <sect1><title>Introduction</title>
@@ -246,24 +245,9 @@ The image mark is as simple as it can be: <code>[filename]</code>.
 <listitem><para>No spaces inside the brackets!
 </para></listitem>
 </itemizedlist>
-  </sect2>
-  <sect2><title>Other</title>
-<para>
-The handy <code>%%date</code> macro expands to the current date.
-</para>
-<para>
-So today is 20191124 on the ISO <code>YYYYMMDD</code> format.
-</para>
-<para>
-You can also specify the date format with the %? flags,
-as <code>%%date(%m-%d-%Y)</code> which gives: 11-24-2019.
-</para>
-<para>
-That's all for now.
-</para>
 
 <para>
-<mediaobject><imageobject><imagedata fileref="img/t2tpowered.png"/></imageobject></mediaobject> (<ulink url="sample.t2t">sample.t2t</ulink>)
+<mediaobject><imageobject><imagedata fileref="img/t2tpowered.png"/></imageobject></mediaobject>
 </para>
   </sect2>
 </sect1>

@@ -48,10 +48,6 @@ Table of Contents:
 
 %!include: TESTPATH/image.t2t
 
-= Macro =[macro]
-
-%!include: TESTPATH/macro.t2t
-
 = Numbered Title =[numtitle]
 
 See [Title #title], the same rules apply.

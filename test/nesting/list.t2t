@@ -12,11 +12,6 @@ BODYINIT
 - Line 2.
 - Line 3.
 -
-%%% Nesting: Macro inside is normal
-- Line 1.
-- %%date(Line 2.)
-- Line 3.
--
 %%% Nesting: Line inside is ignored (becomes strike)
 - Line 1.
 - -------------------------------------------

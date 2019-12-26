@@ -1,6 +1,5 @@
 * Clean up the code
 * Remove more seldom-used features
-  * Remove support for macros (they make the code and reproducible builds complicated)
 * Make the code faster
 * Drop --encoding option and always use UTF-8
 * Inspect the following commits from https://github.com/txt2tags/txt2tags and backport useful changes:

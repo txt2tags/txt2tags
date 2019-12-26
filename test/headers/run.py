@@ -24,7 +24,6 @@ txt = {
     "k": "%%%\ncomment\n%%%",  # Comment block
     "b": "Text.",  # Body line
     "f": "%!encoding: enc",  # Config line
-    "m": "%%date(!)%%mtime(!)%%infile(!)%%outfile(!)",  # Macros
 }
 
 # the registered tests
@@ -36,7 +35,6 @@ eb    efb   ecb
 1     c     1e     12
 ce3b  cc3b  c2eb   c2cb   c23b
 ekb   123kb ek     123k   ekkkb
-m     mm    mmm    1mm    12m
 """
 
 

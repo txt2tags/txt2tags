@@ -7,11 +7,6 @@ Paragraph 1.
 = Title =
 Paragraph 2.
 
-%%% Paragraph: Macro between
-Paragraph 1.
-%%date(Macro)
-Still paragraph 1.
-
 %%% Paragraph: Line between
 Paragraph 1.
 ----------------------------------------------
@@ -98,13 +93,6 @@ Paragraph 2.
 Paragraph 1.
 
 = Title =
-
-Paragraph 2.
-
-%%% Paragraph: Macro between (spaced)
-Paragraph 1.
-
-%%date(Macro)
 
 Paragraph 2.
 

@@ -12,11 +12,6 @@ BODYINIT
 You're not seeing this.
 %%%
 
-%%% Crossing: Macro is ignored
-%%%
-%%date(You're not seeing this.)
-%%%
-
 %%% Crossing: Command is ignored
 %%%
 %!include: ''include.txt''

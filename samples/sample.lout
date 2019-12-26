@@ -10,7 +10,6 @@
 @Text @Begin
 @Display @Heading { TXT2TAGS SAMPLE }
 @Display @I { Aurelio Jargas }
-@Display { 11"/"24"/"2019 }
 #@NP                               # Break page after Headers
 
 
@@ -279,26 +278,10 @@ The image mark is as simple as it can be: {@F {[filename]}}.
 }
 @EndList
 
- @End @SubSection
- @SubSection @Title { Other } @Begin
-
-@LP
-The handy {@F {%%date}} macro expands to the current date.
-
-@LP
-So today is 20191124 on the ISO {@F {YYYYMMDD}} format.
-
-@LP
-You can also specify the date format with the %? flags,
-as {@F {%%date(%m-%d-%Y)}} which gives: 11-24-2019.
-
-@LP
-That's all for now.
-
 @DP @FullWidthRule
 
 @LP
-@LeftDisplay @IncludeGraphic { img"/"t2tpowered.png } (sample.t2t ({blue @Colour { sample.t2t }}))
+@CentredDisplay @IncludeGraphic { img"/"t2tpowered.png }
 
  @End @SubSection
  @EndSubSections

@@ -15,7 +15,7 @@ del sys.path[0]
 # left files are generated from right ones (using smart filters)
 ALIASES = {"numlist": "list", "deflist": "list"}
 
-# smart filters to allow source inheritance and macros normalization
+# smart filters to allow source inheritance
 FILTERS = {
     "deflist": [("pre", "^-( |$)", r":\1")],
     "numlist": [("pre", "^-( |$)", r"+\1")],
