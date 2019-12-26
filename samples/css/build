@@ -1,0 +1,11 @@
+#! /bin/bash
+# Convert the CSS samples
+
+set -euo pipefail
+
+cd $(dirname "$0")
+
+for file in *.css ; do
+  base=${file%.*}
+  sed 's|img/|../&|' ../sample.t2t | python ../../txt2tags.py --style $base.css -o $base.html --toc -t html -
+done
