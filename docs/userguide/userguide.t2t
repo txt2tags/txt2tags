@@ -34,10 +34,6 @@ complete manual about the program.
 
 ========================================================================
 
-%%toc
-
-========================================================================
-
 = Part I - Introducing Txt2tags =[intro]
 
 == The First Questions You May Have ==[1st-questions]
@@ -532,7 +528,7 @@ In short, this is how the areas are defined:
 ```
 My nice doc Title
 Mr. John Doe
-Last Updated: %%mtime(%c)
+My Date
 
 %!target  : html
 %!style   : fancy.css
@@ -562,7 +558,6 @@ But the following is recommended:
 - //line 1//: document title
 - //line 2//: author name and/or email
 - //line 3//: document date and/or version
-              (nice place for ``%%date``)
 
 
 Keep in mind that the first 3 lines of the source document will be the
@@ -932,7 +927,7 @@ General Rules:
     needed. But the following is recommended for the most documents:
     - Line 1: Document title
     - Line 2: Author name and/or email
-    - Line 3: Document date and/or version (nice place for ""%%mtime"")
+    - Line 3: Document date and/or version
 
 
 ------------------------------------------------------------------------
