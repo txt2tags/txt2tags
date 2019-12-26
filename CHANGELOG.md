@@ -1,4 +1,4 @@
-# Version 3.4 (unreleased)
+# Version 3.4 (2019-12-25)
 
 * Remove macros (Jendrik Seipp).
 * Fix MoinMoin URL and email syntax (Jendrik Seipp).
