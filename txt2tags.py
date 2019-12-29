@@ -3892,16 +3892,17 @@ def doHeader(headers, config):
 
     template = HEADER_TEMPLATE[target].split("\n")
 
-    head_data = {"STYLE": [], "ENCODING": ""}
-    for key in head_data.keys():
-        val = config.get(key.lower())
-        # Remove .sty extension from each style filename (freaking tex)
-        # XXX Can't handle --style foo.sty,bar.sty
-        if target == "tex" and key == "STYLE":
-            val = [re.sub(r"(?i)\.sty$", "", x) for x in val]
-        if key == "ENCODING":
-            val = get_encoding_string(val, target)
-        head_data[key] = val
+    style = config.get("style")
+    # Tex: strip .sty extension from each style filename.
+    # XXX Can't handle --style foo.sty,bar.sty
+    if target == "tex":
+        style = [re.sub(r"(?i)\.sty$", "", x) for x in style]
+
+    head_data = {
+        "STYLE": style,
+        "ENCODING": get_encoding_string(config.get("encoding"), target),
+    }
+
     # Parse header contents
     for i in 0, 1, 2:
         contents = headers[i]
