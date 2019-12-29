@@ -3894,9 +3894,8 @@ def doHeader(headers, config):
 
     style = config.get("style")
     # Tex: strip .sty extension from each style filename.
-    # XXX Can't handle --style foo.sty,bar.sty
     if target == "tex":
-        style = [re.sub(r"(?i)\.sty$", "", x) for x in style]
+        style = [os.path.splitext(x)[0] for x in style]
 
     head_data = {
         "STYLE": style,
