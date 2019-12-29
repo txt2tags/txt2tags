@@ -2,7 +2,6 @@ Txt2tags Markup Demo
 See marks converted to HTML
 
 %!target: html
-%!encoding: UTF-8
 %!preproc: t2t\.png ../../samples/img/t2tpowered.png
 %!options: -o markup.html
 

@@ -1,3 +1,7 @@
+# Version 3.5 (unreleased)
+
+* Drop `--encoding` option and always use UTF-8.
+
 # Version 3.4 (2019-12-25)
 
 * Remove macros (Jendrik Seipp).

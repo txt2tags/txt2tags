@@ -475,42 +475,6 @@ tests = [
         "cmdline": ["-H"],
     },
     {
-        "name": "encoding-1",
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--encoding iso-8859-1"],
-    },
-    {
-        "name": "encoding-2",  # normalization
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--encoding ISO88591"],
-    },
-    {
-        "name": "encoding-3",  # customized
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--encoding fake-999"],
-    },
-    {
-        "name": "encoding-4",  # LaTeX translation
-        "target": "tex",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--encoding iso-8859-1"],
-    },
-    {
-        "name": "no-encoding-1",  # useless
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--no-encoding"],
-    },
-    {
-        "name": "no-encoding-2",  # turning OFF
-        "target": "html",
-        "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,
-        "cmdline": ["--encoding iso-8859-1 --no-encoding"],
-    },
-    {
         "name": "style-1",
         "target": "html",
         "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,

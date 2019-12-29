@@ -114,7 +114,6 @@ OPTIONS = {
     "style": "",
     "infile": "",
     "outfile": "",
-    "encoding": "",
     "config-file": "",
     "lang": "",
     "show-config-value": "",
@@ -131,7 +130,7 @@ ACTIONS = {
 SETTINGS = {}  # for future use
 NO_TARGET = ["help", "version", "toc-only", "dump-config", "dump-source", "targets"]
 NO_MULTI_INPUT = ["dump-config", "dump-source"]
-CONFIG_KEYWORDS = ["target", "encoding", "style", "options", "preproc", "postproc"]
+CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
     "html": "HTML page",
@@ -189,7 +188,6 @@ USAGE = "\n".join(
         "                      %s" % ", ".join(TARGETS[9:]),
         "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)",
         "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)",
-        "      --encoding=ENC  set target file encoding (utf-8, iso-8859-1, etc)",
         "      --toc           add an automatic Table of Contents to the output",
         "      --toc-level=N   set maximum TOC level (depth) to N",
         "      --toc-only      print the Table of Contents and exit",
@@ -207,7 +205,7 @@ USAGE = "\n".join(
         "",
         "Turn OFF options:",
         "     --no-dump-config, --no-dump-source,",
-        "     --no-encoding, --no-enum-title, --no-headers, --no-infile,",
+        "     --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
         "",
@@ -232,7 +230,7 @@ USAGE = "\n".join(
 # You may edit them to fit your needs
 #  - the %(HEADERn)s strings represent the Header lines
 #  - the %(STYLE)s string is changed by --style contents
-#  - the %(ENCODING)s string is changed by --encoding contents
+#  - the %(ENCODING)s string is changed to "utf-8"
 #  - if any of the above is empty, the full line is removed
 #  - use %% to represent a literal %
 #
@@ -1944,7 +1942,7 @@ class CommandLine:
         ret.extend(self.all_flags)  # flag ON
         ret.extend(self.all_actions)  # actions
         ret.extend(["no-" + x for x in self.all_flags])  # add no-*
-        ret.extend(["no-style", "no-encoding"])  # turn OFF
+        ret.extend(["no-style"])  # turn OFF
         ret.extend(["no-outfile", "no-infile"])  # turn OFF
         ret.extend(["no-dump-config", "no-dump-source"])  # turn OFF
         ret.extend(["no-targets"])  # turn OFF
@@ -3897,10 +3895,7 @@ def doHeader(headers, config):
     if target == "tex":
         style = [os.path.splitext(x)[0] for x in style]
 
-    head_data = {
-        "STYLE": style,
-        "ENCODING": get_encoding_string(config.get("encoding"), target),
-    }
+    head_data = {"STYLE": style, "ENCODING": get_encoding_string(target)}
 
     # Parse header contents
     for i in 0, 1, 2:
@@ -4226,41 +4221,8 @@ def get_image_align(line):
     return align
 
 
-# Reference: http://www.iana.org/assignments/character-sets
-# http://www.drclue.net/F1.cgi/HTML/META/META.html
-def get_encoding_string(enc, target):
-    if not enc:
-        return ""
-    # Target specific translation table
-    translate = {
-        "tex": {
-            # missing: ansinew , applemac , cp437 , cp437de , cp865
-            "utf-8": "utf8",
-            "us-ascii": "ascii",
-            "windows-1250": "cp1250",
-            "windows-1252": "cp1252",
-            "ibm850": "cp850",
-            "ibm852": "cp852",
-            "iso-8859-1": "latin1",
-            "iso-8859-2": "latin2",
-            "iso-8859-3": "latin3",
-            "iso-8859-4": "latin4",
-            "iso-8859-5": "latin5",
-            "iso-8859-9": "latin9",
-            "koi8-r": "koi8-r",
-        }
-    }
-    # Normalization
-    enc = re.sub("(?i)(us[-_]?)?ascii|us|ibm367", "us-ascii", enc)
-    enc = re.sub("(?i)(ibm|cp)?85([02])", "ibm85\\2", enc)
-    enc = re.sub("(?i)(iso[_-]?)?8859[_-]?", "iso-8859-", enc)
-    enc = re.sub("iso-8859-($|[^1-9]).*", "iso-8859-1", enc)
-    # Apply translation table
-    try:
-        enc = translate[target][enc.lower()]
-    except Exception:
-        pass
-    return enc
+def get_encoding_string(target):
+    return "utf8" if target == "tex" else "utf-8"
 
 
 def process_source_file(file_="", noconf=0, contents=None):

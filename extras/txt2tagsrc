@@ -14,8 +14,7 @@
 %            %!keyword  (target)  :  value
 %
 % Keywords:
-%    target, options, encoding, style, preproc, postproc,
-%    guicolors
+%    target, options, style, preproc, postproc
 % Targets:
 %    The valid txt2tags targets (i.e.: html, man, tex)
 %
@@ -32,11 +31,6 @@
 % Set a default target if none specified
 %   Useful if you always use the same target for all documents
 %%!target: html
-
-% Set the default encoding for all documents
-%   Examples: iso-8859-1, UTF-8
-%   This can be turned off later with --no-encoding
-%%!encoding: UTF-8
 
 % Set the TOC depth for all targets
 %   Valid values: 1, 2, 3, 4, 5

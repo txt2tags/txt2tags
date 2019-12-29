@@ -532,7 +532,6 @@ My Date
 
 %!target  : html
 %!style   : fancy.css
-%!encoding: UTF-8
 %!options : --toc --enum-title
 
 Hi! This is my test document.
@@ -609,7 +608,7 @@ enjoy the power and control it provides.
 
 The CONFAREA is used to store document-specific settings, so you don't
 have to type them on the command line when converting the document. For
-example, you can set the default document target type and encoding.
+example, you can set the default document target type.
 
 Please read the [Settings section #settings-overview] for more
 information about them.
@@ -649,7 +648,6 @@ List of valid keywords:
  |   Target   | Set the default target to the document be converted to.
  |  Options   | Set the default options to be used on the conversion. The format is the same as the command line options.
  |   Style    | Set the document style. Used to define a CSS file for HTML/XHTML and to load a package in LaTeX.
- |  Encoding  | Set the document Character Set. Used if the document contains accented letters or other not-ASCII characters.
  |   PreProc  | Input filter. Sets "find and replace" rules to be applied on the BODYAREA of the source document.
  |  PostProc  | Output filter. Sets "find and replace" rules to be applied on the converted document.
 
@@ -659,7 +657,6 @@ Example:
 %!target  : html
 %!options : --toc --toc-level 3
 %!style   : fancy.css
-%!encoding: UTF-8
 %!preproc : "AMJ"        "Aurelio Marinho Jargas"
 %!postproc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
 ```
@@ -682,10 +679,9 @@ hyphens followed by one or more words, like ``-t`` and ``--target``.
 % are optional.
 
 Options that are generally used are ``--outfile`` to define a customized
-output file name, ``--toc`` to turn on the automatic TOC generation and
-``--encoding`` to set the document character set. Most of the options
-can be turned off prefixing a "no-" before its name, for example:
-``--no-encoding`` and ``--no-toc``.
+output file name and ``--toc`` to turn on the automatic TOC generation.
+Most of the options can be turned off prefixing a "no-" before its name,
+for example: ``--no-toc``.
 
 You can register the desired options for a source file inside its
 CONFAREA, using the ``%!options`` setting. This way you don't have to
@@ -734,9 +730,6 @@ The format of the settings is exactly the same as the ones used on the
 
 %%% Change the default TOC depth for all targets
 %!options: --toc-level 4
-
-%%% Set the default encoding for all documents
-%!options: --encoding UTF-8
 ```
 
 Any line that is not blank, a comment or a valid config line will raise
@@ -761,9 +754,6 @@ configurations on the current source file. Then it scans the source
 document CONFAREA for settings and if found, they are applied also,
 overriding the RC ones in case of conflict. Finally comes the command
 line options, stronger than the other two.
-
-So, if the document encoding was defined on the three resources, the
-command line will be the one used.
 
 -----------------------------------------------------------------------
 
@@ -1363,37 +1353,6 @@ Now the options are registered inside the source file, so you can convert it wit
 ``` $ txt2tags file.t2t
 
     Tip for Vim users: To convert the document right inside the editor, just run ``:!txt2tags %``
-
------------------------------------------------------------------------
-
-== %!encoding ==[setting-encoding]
-
-The Encoding setting is needed by non-english writers, who uses
-accented letters and other locale specific details, so the target
-document //Character Set// must be customized (if allowed).
-
-The valid values for the Encoding setting are the same charset names
-valid for HTML documents, like //iso-8859-1// and //koi8-r//. If
-you're not sure which encoding you should use, try //utf-8//. If that doesn't work,
-[this complete (and long!) list http://www.iana.org/assignments/character-sets]
-should help.
-
-The LaTeX target uses alias names for encoding. This is not a problem
-for the user, because txt2tags translate the names internally. Some
-examples:
-
-      || txt2tags/HTML   |  >  | LaTeX  |
-       | windows-1250    | >>> | cp1250 |
-       | windows-1252    | >>> | cp1252 |
-       | ibm850          | >>> | cp850  |
-       | ibm852          | >>> | cp852  |
-       | iso-8859-1      | >>> | latin1 |
-       | iso-8859-2      | >>> | latin2 |
-       | koi8-r          | >>> | koi8-r |
-
-
-If the value is unknown to txt2tags, it will be passed "as is",
-allowing the user to specify custom encodings.
 
 -----------------------------------------------------------------------
 

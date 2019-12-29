@@ -23,15 +23,14 @@ txt = {
     "c": "% comment",  # Comment line
     "k": "%%%\ncomment\n%%%",  # Comment block
     "b": "Text.",  # Body line
-    "f": "%!encoding: enc",  # Config line
 }
 
 # the registered tests
 tests = """
-eb    efb   ecb
-1ee   1ef   1ec    1eeb   1e3b   1c3b    1ccb
-12e   12eb  12fb   12cb
-123   123b  123eb  123fb  123cf  123cfb  123ecefeb
+eb    ecb
+1ee   1ec   1eeb   1e3b   1c3b    1ccb
+12e   12eb  12cb
+123   123b  123eb
 1     c     1e     12
 ce3b  cc3b  c2eb   c2cb   c23b
 ekb   123kb ek     123k   ekkkb
