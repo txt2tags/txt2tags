@@ -3920,8 +3920,8 @@ def doHeader(headers, config):
     # If found, remove the reference
     # If there isn't any other key reference on the same line, remove it
     # TODO loop by template line > key
-    for key in head_data.keys():
-        if head_data.get(key):
+    for key, value in head_data.items():
+        if value:
             continue
         for line in template:
             if line.count("%%(%s)s" % key):
