@@ -148,6 +148,7 @@ TARGET_NAMES = {
     "txt": "Plain Text",
     "adoc": "AsciiDoc document",
     "creole": "Creole 1.0 document",
+    "md": "Markdown document",
 }
 
 TARGETS = sorted(TARGET_NAMES)
@@ -409,6 +410,11 @@ _%(HEADER3)s_
 %(HEADER1)s
 %(HEADER2)s
 %(HEADER3)s
+""",
+    "md": """\
+%(HEADER1)s
+%(HEADER2)s
+%(HEADER3)s
 """
     # @SysInclude { tbl }                   # Tables support
     # setup: @MakeContents { Yes }          # show TOC
@@ -439,7 +445,7 @@ def getTags(config):
     blockTitle3Open     blockTitle3Close
 
     paragraphOpen       paragraphClose
-    blockVerbOpen       blockVerbClose
+    blockVerbOpen       blockVerbClose  blockVerbLine
     blockQuoteOpen      blockQuoteClose blockQuoteLine
     blockCommentOpen    blockCommentClose
 
@@ -1189,6 +1195,60 @@ def getTags(config):
             # TODO: placeholder (mark for unknown syntax)
             # if possible: http://www.wikicreole.org/wiki/Placeholder
         },
+            # regular markdown: http://daringfireball.net/projects/markdown/syntax
+            # markdown extra:   http://michelf.com/projects/php-markdown/extra/
+        "md": {
+            "title1"               : "# \a "         ,
+            "title2"               : "## \a "        ,
+            "title3"               : "### \a "       ,
+            "title4"               : "#### \a "      ,
+            "title5"               : "##### \a "     ,
+            "blockVerbLine"        : "    "          ,
+            "blockQuoteLine"       : "> "            ,
+            "fontMonoOpen"         : "`"             ,
+            "fontMonoClose"        : "`"             ,
+            "fontBoldOpen"         : "**"            ,
+            "fontBoldClose"        : "**"            ,
+            "fontItalicOpen"       : "*"             ,
+            "fontItalicClose"      : "*"             ,
+            "fontUnderlineOpen"    : ""              ,
+            "fontUnderlineClose"   : ""              ,
+            "fontStrikeOpen"       : "~~"            ,
+            "fontStrikeClose"      : "~~"            ,
+            # Lists
+            #"listOpenCompact"     : "*"             ,
+            "listItemLine"         : " "             ,
+            "listItemOpen"         : "*"             ,
+            #"numlistItemLine"     : "1."            ,
+            "numlistItemOpen"      : "1."            ,
+            "deflistItem1Open"     : ": "            ,
+            #"deflistItem1Close"     : ":"           ,
+            #"deflistItem2LineOpen"  : "::"          ,
+            #"deflistItem2LineClose" : ":"           ,
+            # Verbatim block
+            #"blockVerbOpen"        : ""             ,
+            #"blockVerbClose"       : ""             ,
+            "bar1"                 : "---"           ,
+            "bar2"                 : "---"           ,
+            # URL, email and anchor
+            "url"                   : "\a"           ,
+            "urlMark"               : "[\a](\a)"     ,
+            "email"                 : "\a"           ,
+            #"emailMark"             : "[[\a -> mailto:\a]]",
+            #"anchor"                : "[[#\a]]\n"   ,
+            # Image markup
+            "img"                   : "![](\a)"      ,
+            #"imgAlignLeft"         : "{{\a }}"      ,
+            #"imgAlignRight"        : "{{ \a}}"      ,
+            #"imgAlignCenter"       : "{{ \a }}"     ,
+            # Table attributes
+            "tableTitleRowOpen"    : "| "            ,
+            "tableTitleRowClose"   : "|\n|---------------|"            ,
+            "tableTitleCellSep"    : " |"            ,
+            "tableRowOpen"         : "|"             ,
+            "tableRowClose"        : "|"             ,
+            "tableCellSep"         : " |"            ,
+        },
     }
     assert set(alltags) == set(TARGETS)
 
@@ -1599,6 +1659,25 @@ def getRules(config):
             "blanksaroundlist": 1,
             "blanksaroundnumlist": 1,
             "blanksarounddeflist": 1,
+            "blanksaroundtable": 1,
+            "blanksaroundbar": 1,
+            "blanksaroundtitle": 1,
+        },
+        "md": {
+            #"keeplistindent": 1,
+            "linkable": 1,
+            "labelbeforelink": 1,
+            "tableable": 1,
+            "imglinkable": 1,
+            "tablecellstrip": 1,
+            "autonumberlist": 1,
+            "spacedlistitemopen": 1,
+            "spacednumlistitemopen": 1,
+            "deflisttextstrip": 1,
+            "blanksaroundpara": 1,
+            "blanksaroundlist": 1,
+            "blanksaroundnumlist": 1,
+            #"blanksarounddeflist": 1,
             "blanksaroundtable": 1,
             "blanksaroundbar": 1,
             "blanksaroundtitle": 1,
@@ -3488,6 +3567,8 @@ class BlockMaster:
         for line in self.hold():
             if not rules["verbblocknotescaped"]:
                 line = doEscape(TARGET, line)
+            if TAGS['blockVerbLine']:
+                line = TAGS['blockVerbLine'] + line
             if rules["indentverbblock"]:
                 line = "  " + line
             if rules["verbblockfinalescape"]:
