@@ -1830,8 +1830,8 @@ def Savefile(file_path, lines):
         with open(file_path, "w") as f:
             for line in lines:
                 f.write(line + "\n")
-    except IOError:
-        Error("Cannot open file for writing:" + " " + file_path)
+    except IOError as exception:
+        Error("Cannot open file for writing: {}\n{}".format(file_path, exception))
 
 
 def dotted_spaces(txt=""):
