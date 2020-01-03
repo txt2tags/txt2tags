@@ -1812,7 +1812,7 @@ def Readfile(file_path, remove_linebreaks=False):
             Error("You must feed me with data on STDIN!")
     else:
         try:
-            f = open(file_path)
+            f = open(file_path, encoding="utf-8")
             data = f.readlines()
             f.close()
         except FileNotFoundError:
@@ -1825,7 +1825,7 @@ def Readfile(file_path, remove_linebreaks=False):
 
 def Savefile(file_path, lines):
     try:
-        with open(file_path, "w") as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             for line in lines:
                 f.write(line + "\n")
     except IOError as exception:
