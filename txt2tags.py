@@ -1803,22 +1803,20 @@ def Debug(msg, id_=0, linenr=None):
     print("++ {}: {}".format(ids[id_], msg))
 
 
-def Readfile(file_path, remove_linebreaks=False, ignore_error=False):
+def Readfile(file_path, remove_linebreaks=False):
     data = []
     if file_path == "-":
         try:
             data = sys.stdin.readlines()
         except Exception:
-            if not ignore_error:
-                Error("You must feed me with data on STDIN!")
+            Error("You must feed me with data on STDIN!")
     else:
         try:
             f = open(file_path)
             data = f.readlines()
             f.close()
         except Exception:
-            if not ignore_error:
-                Error("Cannot read file:" + " " + file_path)
+            Error("Cannot read file:" + " " + file_path)
     if remove_linebreaks:
         data = [re.sub("[\n\r]+$", "", x) for x in data]
     Message("File read (%d lines): %s" % (len(data), file_path), 2)
