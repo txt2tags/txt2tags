@@ -1,6 +1,8 @@
 # Version 3.5 (unreleased)
 
-* Drop `--encoding` option and always use UTF-8.
+* Drop `--encoding` option and always use UTF-8 (Jendrik Seipp).
+* When writing the output file fails, show the original error message (Aurelio Jargas, #216)
+* Remove unused ignore_error parameter from Readfile function (Aurelio Jargas)
 
 # Version 3.4 (2019-12-25)
 
