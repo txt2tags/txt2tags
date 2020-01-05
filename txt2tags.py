@@ -1815,8 +1815,8 @@ def Readfile(file_path, remove_linebreaks=False):
             f = open(file_path)
             data = f.readlines()
             f.close()
-        except Exception:
-            Error("Cannot read file:" + " " + file_path)
+        except Exception as exception:
+            Error("Cannot read file: {}\n{}".format(file_path, exception))
     if remove_linebreaks:
         data = [re.sub("[\n\r]+$", "", x) for x in data]
     Message("File read (%d lines): %s" % (len(data), file_path), 2)
