@@ -1803,7 +1803,7 @@ def Debug(msg, id_=0, linenr=None):
     print("++ {}: {}".format(ids[id_], msg))
 
 
-def Readfile(file_path, remove_linebreaks=False):
+def Readfile(file_path):
     data = []
     if file_path == "-":
         try:
@@ -1816,8 +1816,7 @@ def Readfile(file_path, remove_linebreaks=False):
                 data = f.readlines()
         except Exception as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
-    if remove_linebreaks:
-        data = [re.sub("[\n\r]+$", "", x) for x in data]
+    data = [re.sub("[\n\r]+$", "", x) for x in data]
     Message("File read (%d lines): %s" % (len(data), file_path), 2)
     return data
 
@@ -2106,7 +2105,7 @@ class SourceDocument:
     def scan_file(self, filename):
         Debug("source file: %s" % filename)
         Message("Loading source document", 1)
-        buf = Readfile(filename, remove_linebreaks=True)
+        buf = Readfile(filename)
         self.scan(buf)
 
     def scan(self, lines):
@@ -2468,7 +2467,7 @@ class ConfigLines:
         if not filename:
             return []
         errormsg = "Invalid CONFIG line on %s" + "\n%03d:%s"
-        lines = Readfile(filename, remove_linebreaks=True)
+        lines = Readfile(filename)
         # Sanity: try to find invalid config lines
         for i in range(len(lines)):
             line = lines[i].rstrip()
@@ -4396,7 +4395,7 @@ def get_include_contents(file_, path=""):
     # Handle remote dir execution
     filepath = os.path.join(path, file_)
     # Read included file contents
-    lines = Readfile(filepath, remove_linebreaks=True)
+    lines = Readfile(filepath)
     # Default txt2tags marked text, just BODY matters
     if id_ == "t2t":
         lines = get_file_body(filepath)
