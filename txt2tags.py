@@ -1808,7 +1808,7 @@ def Readfile(file_path, remove_linebreaks=False):
     if file_path == "-":
         try:
             data = sys.stdin.readlines()
-        except Exception:
+        except KeyboardInterrupt:
             Error("You must feed me with data on STDIN!")
     else:
         try:
