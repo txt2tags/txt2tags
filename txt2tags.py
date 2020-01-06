@@ -1804,21 +1804,20 @@ def Debug(msg, id_=0, linenr=None):
 
 
 def Readfile(file_path):
-    data = []
     if file_path == "-":
         try:
-            data = sys.stdin.readlines()
+            contents = sys.stdin.read()
         except KeyboardInterrupt:
             Error("You must feed me with data on STDIN!")
     else:
         try:
             with open(file_path) as f:
-                data = f.readlines()
+                contents = f.read()
         except IOError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
-    data = [re.sub("[\n\r]+$", "", x) for x in data]
-    Message("File read (%d lines): %s" % (len(data), file_path), 2)
-    return data
+    lines = contents.splitlines()
+    Message("File read (%d lines): %s" % (len(lines), file_path), 2)
+    return lines
 
 
 def Savefile(file_path, lines):
