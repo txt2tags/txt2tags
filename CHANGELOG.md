@@ -1,10 +1,8 @@
 # Version 3.5 (unreleased)
 
 * Drop `--encoding` option and always use UTF-8 (Jendrik Seipp).
-* Remove unused ignore_error parameter from Readfile function (Aurelio Jargas, #215).
-* When writing the output file fails, show the original error message (Aurelio Jargas, #216).
-* If reading the input file fails, show the original error message (Aurelio Jargas, #217).
-* Fix exception type for STDIN reading (Aurelio Jargas, #218).
+* Show the original error message when a file read/write operation fails (Aurelio Jargas, #216 #217).
+* Improve the exception handling when reading input data from files and from STDIN (Aurelio Jargas, #218 #219).
 
 # Version 3.4 (2019-12-25)
 

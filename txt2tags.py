@@ -1814,7 +1814,7 @@ def Readfile(file_path):
         try:
             with open(file_path) as f:
                 data = f.readlines()
-        except Exception as exception:
+        except IOError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
     data = [re.sub("[\n\r]+$", "", x) for x in data]
     Message("File read (%d lines): %s" % (len(data), file_path), 2)
