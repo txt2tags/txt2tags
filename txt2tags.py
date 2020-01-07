@@ -1211,36 +1211,36 @@ def getTags(config):
             "fontBoldClose": "**",
             "fontItalicOpen": "*",
             "fontItalicClose": "*",
-            # "fontUnderlineOpen": "",
-            # "fontUnderlineClose": "",
+            "fontUnderlineOpen": None,
+            "fontUnderlineClose": None,
             "fontStrikeOpen": "~~",
             "fontStrikeClose": "~~",
             # Lists
-            # "listOpenCompact"     : "*"             ,
+            "listOpenCompact": None,
             "listItemLine": " ",
             "listItemOpen": "*",
-            # "numlistItemLine"     : "1."            ,
+            "numlistItemLine": None,
             "numlistItemOpen": "1.",
             "deflistItem1Open": ": ",
-            # "deflistItem1Close"     : ":"           ,
-            # "deflistItem2LineOpen"  : "::"          ,
-            # "deflistItem2LineClose" : ":"           ,
+            "deflistItem1Close": None,
+            "deflistItem2Open": None,
+            "deflistItem2Close": None,
             # Verbatim block
-            # "blockVerbOpen"        : ""             ,
-            # "blockVerbClose"       : ""             ,
+            "blockVerbOpen": None,
+            "blockVerbClose": None,
             "bar1": "---",
             "bar2": "---",
             # URL, email and anchor
             "url": "\a",
             "urlMark": "[\a](\a)",
             "email": "\a",
-            # "emailMark"             : "[[\a -> mailto:\a]]",
-            # "anchor"                : "[[#\a]]\n"   ,
+            "emailMark": None,
+            "anchor": None,
             # Image markup
             "img": "![](\a)",
-            # "imgAlignLeft"         : "{{\a }}"      ,
-            # "imgAlignRight"        : "{{ \a}}"      ,
-            # "imgAlignCenter"       : "{{ \a }}"     ,
+            "imgAlignLeft": None,
+            "imgAlignRight": None,
+            "imgAlignCenter": None,
             # Table attributes
             "tableTitleRowOpen": "| ",
             "tableTitleRowClose": "|\n|---------------|",
@@ -1256,13 +1256,14 @@ def getTags(config):
         for key, value in tags.items():
             if key not in keys:
                 raise AssertionError("{} target has invalid key {}".format(target, key))
-            if not value:
+            if value is not None and not value:
                 raise AssertionError("{} target drops {}".format(target, key))
 
     # Compose the target tags dictionary.
     tags = collections.defaultdict(str)
     for key, value in alltags[config["target"]].items():
-        tags[key] = maskEscapeChar(value)
+        if value:  # Skip unsupported markup.
+            tags[key] = maskEscapeChar(value)
 
     # Map strong line to pagebreak
     if rules["mapbar2pagebreak"] and tags["pageBreak"]:
