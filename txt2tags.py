@@ -659,8 +659,8 @@ def getTags(config):
             "fontItalicClose": "</emphasis>",
             "fontUnderlineOpen": '<emphasis role="underline">',
             "fontUnderlineClose": "</emphasis>",
-            # 'fontStrikeOpen'       : '<emphasis role="strikethrough">'   , # Don't know
-            # 'fontStrikeClose'      : '</emphasis>'                       ,
+            "fontStrikeOpen": None,  # Maybe <emphasis role="strikethrough">
+            "fontStrikeClose": None,  # Maybe </emphasis>
             "listOpen": "<itemizedlist>",
             "listClose": "</itemizedlist>",
             "listItemOpen": "<listitem><para>",
@@ -675,8 +675,8 @@ def getTags(config):
             "deflistItem1Close": "</term>",
             "deflistItem2Open": "<listitem><para>",
             "deflistItem2Close": "</para></listitem></varlistentry>",
-            # 'bar1'                 : '<>'                                , # Don't know
-            # 'bar2'                 : '<>'                                , # Don't know
+            "bar1": None,
+            "bar2": None,
             "url": '<ulink url="\a">\a</ulink>',
             "urlMark": '<ulink url="\a">\a</ulink>',
             "email": "<email>\a</email>",
@@ -685,10 +685,7 @@ def getTags(config):
                 '<mediaobject><imageobject><imagedata fileref="\a"/>'
                 "</imageobject></mediaobject>"
             ),
-            # '_imgAlignLeft'        : ''                                 , # Don't know
-            # '_imgAlignCenter'      : ''                                 , # Don't know
-            # '_imgAlignRight'       : ''                                 , # Don't know
-            # Don't work, need to know number of cols
+            # Tables not supported, need to know number of columns.
             # 'tableOpen'            : '<informaltable><tgroup cols=""><tbody>',
             # 'tableClose'           : '</tbody></tgroup></informaltable>' ,
             # 'tableRowOpen'         : '<row>'                             ,
@@ -1019,9 +1016,6 @@ def getTags(config):
             "anchor": "[[#\a]]\n",
             # Image markup
             "img": "\a",
-            # 'imgAlignLeft'         : '{{\a }}'       ,
-            # 'imgAlignRight'        : '{{ \a}}'       ,
-            # 'imgAlignCenter'       : '{{ \a }}'      ,
             # Table attributes
             "tableTitleRowOpen": "||! ",
             "tableTitleRowClose": "||",
@@ -1169,16 +1163,16 @@ def getTags(config):
             "blockVerbOpen": "{{{",
             "blockVerbClose": "}}}",
             "blockQuoteLine": "  ",
-            #       'fontMonoOpen'         : '##'            ,  # planned for 2.0,
-            #       'fontMonoClose'        : '##'            ,  # meanwhile we disable it
+            "fontMonoOpen": None,  # planned for 2.0,
+            "fontMonoClose": None,  # meanwhile we disable it
             "fontBoldOpen": "**",
             "fontBoldClose": "**",
             "fontItalicOpen": "//",
             "fontItalicClose": "//",
             "fontUnderlineOpen": "//",  # no underline in 1.0, planned for 2.0,
-            "fontUnderlineClose": "//",  # meanwhile we can use italic (emphasized)
-            #       'fontStrikeOpen'       : '--'            ,  # planned for 2.0,
-            #       'fontStrikeClose'      : '--'            ,  # meanwhile we disable it
+            "fontUnderlineClose": "//",  # meanwhile we use italic (emphasized)
+            "fontStrikeOpen": None,  # planned for 2.0,
+            "fontStrikeClose": None,  # meanwhile we disable it
             "listItemLine": "*",
             "numlistItemLine": "#",
             "deflistItem2LinePrefix": ":",
