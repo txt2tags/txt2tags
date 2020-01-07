@@ -1211,8 +1211,8 @@ def getTags(config):
             "fontBoldClose": "**",
             "fontItalicOpen": "*",
             "fontItalicClose": "*",
-            "fontUnderlineOpen": "",
-            "fontUnderlineClose": "",
+            # "fontUnderlineOpen": "",
+            # "fontUnderlineClose": "",
             "fontStrikeOpen": "~~",
             "fontStrikeClose": "~~",
             # Lists
@@ -1253,9 +1253,11 @@ def getTags(config):
     assert set(alltags) == set(TARGETS)
 
     for target, tags in alltags.items():
-        for key in tags:
+        for key, value in tags.items():
             if key not in keys:
                 raise AssertionError("{} target has invalid key {}".format(target, key))
+            if not value:
+                raise AssertionError("{} target drops {}".format(target, key))
 
     # Compose the target tags dictionary.
     tags = collections.defaultdict(str)
