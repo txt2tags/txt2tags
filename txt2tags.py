@@ -1233,8 +1233,8 @@ def getTags(config):
             # URL, email and anchor
             "url": "\a",
             "urlMark": "[\a](\a)",
-            "email": "\a",
-            "emailMark": None,
+            "email": "<\a>",
+            "emailMark": "<\a>",
             "anchor": None,
             # Image markup
             "img": "![](\a)",

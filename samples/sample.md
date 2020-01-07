@@ -56,7 +56,7 @@ Or use `pre-formatted` inside sentences.
 
 ## More Cosmetics 
 
-Special entities like email (duh@somewhere.com) and
+Special entities like email (<duh@somewhere.com>) and
 URL (http://www.duh.com) are detected automagically,
 as well as horizontal lines:
 
