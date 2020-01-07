@@ -16,6 +16,7 @@ to the following formats:
  * LaTeX
  * Lout
  * MagicPoint
+ * Markdown
  * MoinMoin
  * PmWiki
  * Plain Text
