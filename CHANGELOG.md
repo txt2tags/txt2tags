@@ -1,5 +1,6 @@
 # Version 3.5 (unreleased)
 
+* Add Markdown target (Eric Forgeot, #213).
 * Drop `--encoding` option and always use UTF-8 (Jendrik Seipp).
 * Show the original error message when a file read/write operation fails (Aurelio Jargas, #216 #217).
 * Improve the exception handling when reading input data from files and from STDIN (Aurelio Jargas, #218 #219).
