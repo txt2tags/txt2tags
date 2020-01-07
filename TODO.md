@@ -1,5 +1,4 @@
-* Don't remove markup just because the target doesn't support it (for example, keep double underscores in Markdown text)
-* Map unsupported syntax to None and remove commented-out code.
+* Don't remove markup just because the target doesn't support it.
 * Clean up the code
 * Remove more seldom-used features (for example, --mask-email, --toc-only, --toc-level)?
 * Make the code faster
