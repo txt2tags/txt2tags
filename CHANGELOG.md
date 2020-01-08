@@ -9,7 +9,6 @@
 
 * Remove macros (Jendrik Seipp).
 * Fix MoinMoin URL and email syntax (Jendrik Seipp).
-* Adding Markdown export support (Eric Forgeot).
 
 # Version 3.3 (2019-11-04)
 
