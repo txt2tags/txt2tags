@@ -76,8 +76,6 @@ import os
 import re
 import sys
 
-is_python2 = sys.version_info[0] == 2
-
 ##############################################################################
 
 # Program information
@@ -160,6 +158,7 @@ DEBUG = 0  # do not edit here, please use --debug
 VERBOSE = 0  # do not edit here, please use -v, -vv or -vvv
 QUIET = 0  # do not edit here, please use --quiet
 
+ENCODING = "utf-8"
 DFT_TEXT_WIDTH = 72
 
 RC_RAW = []
@@ -1890,7 +1889,7 @@ def Readfile(file_path):
             Error("You must feed me with data on STDIN!")
     else:
         try:
-            with io.open(file_path, encoding="utf-8") as f:
+            with io.open(file_path, encoding=ENCODING) as f:
                 contents = f.read()
         except IOError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
@@ -1900,13 +1899,13 @@ def Readfile(file_path):
 
 
 def Savefile(file_path, lines):
+    contents = "\n".join(lines) + "\n"
     try:
-        with io.open(file_path, "w", encoding="utf-8") as f:
-            for line in lines:
-                if is_python2:
-                    f.write((line + "\n").decode("utf-8"))
-                else:
-                    f.write(line + "\n")
+        with io.open(file_path, "w", encoding=ENCODING) as f:
+            try:
+                f.write(contents)
+            except TypeError:
+                f.write(contents.decode(ENCODING))
     except IOError as exception:
         Error("Cannot open file for writing: {}\n{}".format(file_path, exception))
 
@@ -2997,7 +2996,7 @@ class TitleMaster:
             ret.append(tagged)
             # Get the right letter count for UTF
             if isinstance(full_title, bytes):
-                full_title = full_title.decode("utf-8")
+                full_title = full_title.decode(ENCODING)
             ret.append(regex["x"].sub("=" * len(full_title), self.tag))
         else:
             ret.append(tagged)
