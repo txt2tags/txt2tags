@@ -71,9 +71,12 @@ from __future__ import print_function
 
 import collections
 import getopt
+import io
 import os
 import re
 import sys
+
+is_python2 = sys.version_info[0] == 2
 
 ##############################################################################
 
@@ -1887,7 +1890,7 @@ def Readfile(file_path):
             Error("You must feed me with data on STDIN!")
     else:
         try:
-            with open(file_path) as f:
+            with io.open(file_path, encoding="utf-8") as f:
                 contents = f.read()
         except IOError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
@@ -1898,9 +1901,12 @@ def Readfile(file_path):
 
 def Savefile(file_path, lines):
     try:
-        with open(file_path, "w") as f:
+        with io.open(file_path, "w", encoding="utf-8") as f:
             for line in lines:
-                f.write(line + "\n")
+                if is_python2:
+                    f.write((line + "\n").decode("utf-8"))
+                else:
+                    f.write(line + "\n")
     except IOError as exception:
         Error("Cannot open file for writing: {}\n{}".format(file_path, exception))
 
@@ -2047,7 +2053,7 @@ class CommandLine:
         ret = []
 
         # We need lists, not strings (such as from %!options)
-        if isinstance(cmdline, str):
+        if not isinstance(cmdline, list):
             cmdline = self._tokenize(cmdline)
 
         # Extract name/value pair of all configs, check for invalid names
