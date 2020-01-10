@@ -71,6 +71,7 @@ from __future__ import print_function
 
 import collections
 import getopt
+import io
 import os
 import re
 import sys
@@ -157,6 +158,7 @@ DEBUG = 0  # do not edit here, please use --debug
 VERBOSE = 0  # do not edit here, please use -v, -vv or -vvv
 QUIET = 0  # do not edit here, please use --quiet
 
+ENCODING = "utf-8"
 DFT_TEXT_WIDTH = 72
 
 RC_RAW = []
@@ -1887,7 +1889,7 @@ def Readfile(file_path):
             Error("You must feed me with data on STDIN!")
     else:
         try:
-            with open(file_path) as f:
+            with io.open(file_path, encoding=ENCODING) as f:
                 contents = f.read()
         except IOError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
@@ -1897,10 +1899,13 @@ def Readfile(file_path):
 
 
 def Savefile(file_path, lines):
+    contents = "\n".join(lines) + "\n"
     try:
-        with open(file_path, "w") as f:
-            for line in lines:
-                f.write(line + "\n")
+        with io.open(file_path, "w", encoding=ENCODING) as f:
+            try:
+                f.write(contents)
+            except TypeError:
+                f.write(contents.decode(ENCODING))
     except IOError as exception:
         Error("Cannot open file for writing: {}\n{}".format(file_path, exception))
 
@@ -2047,7 +2052,7 @@ class CommandLine:
         ret = []
 
         # We need lists, not strings (such as from %!options)
-        if isinstance(cmdline, str):
+        if not isinstance(cmdline, list):
             cmdline = self._tokenize(cmdline)
 
         # Extract name/value pair of all configs, check for invalid names
@@ -2991,7 +2996,7 @@ class TitleMaster:
             ret.append(tagged)
             # Get the right letter count for UTF
             if isinstance(full_title, bytes):
-                full_title = full_title.decode("utf-8")
+                full_title = full_title.decode(ENCODING)
             ret.append(regex["x"].sub("=" * len(full_title), self.tag))
         else:
             ret.append(tagged)

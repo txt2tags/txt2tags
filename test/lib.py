@@ -134,6 +134,20 @@ def override(okfile, outfile):
         MoveFile(outfile, okfile)
 
 
+def _grep(okfile, outfile):
+    """grep if the okfile snippet is contained in outfile"""
+    ok = ReadFile(okfile)
+    out = ReadFile(outfile)
+    if ok not in out:
+        if OVERRIDE:
+            override(okfile, outfile)
+        else:
+            mark_failed(outfile, okfile=okfile)
+            print("_grep: {okfile} contents not found in {outfile}".format(**locals()))
+    else:
+        mark_ok(outfile)
+
+
 def _diff(outfile, okfile):
     out = ReadFile(outfile)
     out = remove_version_and_dates(out)

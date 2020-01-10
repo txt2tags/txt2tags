@@ -70,7 +70,11 @@ def run():
             cmdline = ["-H", "-i", infile, "-o", outfile]
 
         if lib.initTest(basename, infile, outfile, okfile):
-            lib.test(cmdline, outfile, okfile)
+            if basename in errors:
+                lib._convert(cmdline)
+                lib._grep(okfile, outfile)
+            else:
+                lib.test(cmdline, outfile, okfile)
 
     # Now test -C and --config-file command line options.
     errors = ["C-not-found", "C-text"]
