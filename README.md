@@ -33,8 +33,69 @@ Simpler txt2tags version that works on Python 3, branched off from txt2tags vers
 
 - Runs on Python versions 2.7 and 3.x.
 
-- Removed less used features (GUI, ASCII Art/PageMaker/XHTML targets, CSV macro, i18n, translations) to achieve easier maintenance ([see changelog](https://github.com/txt2tags/txt2tags/blob/v3/CHANGELOG.md)).
+- Removed features (GUI, macros, i18n, translations, ASCII Art/PageMaker/XHTML targets) and only supports UTF-8 files, to achieve easier maintenance ([see changelog](https://github.com/txt2tags/txt2tags/blob/v3/CHANGELOG.md)).
 
 - New releases are available as [PyPI packages](https://pypi.org/project/txt2tags/).
 
 - The maintainer is [Jendrik Seipp](https://github.com/jendrikseipp).
+
+
+## Feature differences between versions
+
+Feature                             | v2.6  | v2.7-dev | v3.x
+----------------------------------- | :---: | :------: | :---:
+Supported encodings                 | All   | All      | UTF-8
+GUI interface                       | ✅ | ✅ | ❌
+Internationalization (i18n)         | ✅ | ✅ | ❌
+Translations                        | ✅ | ✅ | ❌
+Remote HTTP files                   | ❌ | ✅ | ❌
+User-defined templates              | ❌ | ✅ | ❌
+Command: `%!csv`                    | ✅ | ✅ | ❌
+Macro: `%%date`                     | ✅ | ✅ | ❌
+Macro: `%%mtime`                    | ✅ | ✅ | ❌
+Macro: `%%infile`                   | ✅ | ✅ | ❌
+Macro: `%%outfile`                  | ✅ | ✅ | ❌
+Macro: `%%toc`                      | ✅ | ✅ | ❌
+Macro: `%%appname`                  | ❌ | ✅ | ❌
+Macro: `%%appurl`                   | ❌ | ✅ | ❌
+Macro: `%%appversion`               | ❌ | ✅ | ❌
+Macro: `%%cmdline`                  | ❌ | ✅ | ❌
+Macro: `%%encoding`                 | ❌ | ✅ | ❌
+Macro: `%%header1`                  | ❌ | ✅ | ❌
+Macro: `%%header2`                  | ❌ | ✅ | ❌
+Macro: `%%header3`                  | ❌ | ✅ | ❌
+Macro: `%%target`                   | ❌ | ✅ | ❌
+Option: `--encoding`                | ✅ | ✅ | ❌
+Option: `--css-inside`              | ✅ | ✅ | ❌
+Setting: `%!postvoodoo`             | ❌ | ✅ | ❌
+Setting: `%!encoding`               | ✅ | ✅ | ❌
+Target: ASCII Art                   | ✅ | ✅ | ❌
+Target: HTML                        | ✅ | ✅ | ❌
+Target: PageMaker                   | ✅ | ✅ | ❌
+Target: XHTML                       | ✅ | ✅ | ❌
+Target: Markdown                    | ❌ | ✅ | ✅
+Target: HTML5                       | ❌ | ✅ | ✅
+Target: ASCII Art Presentation      | ❌ | ✅ | ❌
+Target: ASCII Art Presentation Web  | ❌ | ✅ | ❌
+Target: ASCII Art Spreadsheet       | ❌ | ✅ | ❌
+Target: ASCII Art Web               | ❌ | ✅ | ❌
+Target: BBCode                      | ❌ | ✅ | ❌
+Target: CSV                         | ❌ | ✅ | ❌
+Target: Foswiki / TWiki             | ❌ | ✅ | ❌
+Target: HTML Spreadsheet            | ❌ | ✅ | ❌
+Target: LaTeX Spreadsheet           | ❌ | ✅ | ❌
+Target: MOM groff macro             | ❌ | ✅ | ❌
+Target: Open Document Spreadsheet   | ❌ | ✅ | ❌
+Target: Redmine Wiki                | ❌ | ✅ | ❌
+Target: ReStructuredText            | ❌ | ✅ | ❌
+Target: RTF                         | ❌ | ✅ | ❌
+Target: Slidy slides                | ❌ | ✅ | ❌
+Target: SPIP                        | ❌ | ✅ | ❌
+Target: SQLite database             | ❌ | ✅ | ❌
+Target: Txt2tags                    | ❌ | ✅ | ❌
+Target: Utmac (utroff)              | ❌ | ✅ | ❌
+Target: Vimwiki                     | ❌ | ✅ | ❌
+Target: WordPress                   | ❌ | ✅ | ❌
+Target: XHTML strict                | ❌ | ✅ | ❌
+
+Unlisted features are available in all versions.
