@@ -42,8 +42,8 @@ Simpler txt2tags version that works on Python 3, branched off from txt2tags vers
 
 ## Feature differences between versions
 
-Feature                             | v2.6  | v2.7-dev | v3.x
------------------------------------ | :---: | :------: | :---:
+Feature                             | [v2.6][] | v2.7-dev | v3.x
+----------------------------------- | :------: | :------: | :---:
 Runs on Python <2.5                 | ✅ | ❌ | ❌
 Runs on Python 2.5                  | ✅ | ✅ | ❌
 Runs on Python 2.6                  | ✅ | ✅ | ❌
@@ -104,3 +104,5 @@ Target: WordPress                   | ❌ | ✅ | ❌
 Target: XHTML strict                | ❌ | ✅ | ❌
 
 Unlisted features are available in all versions.
+
+[v2.6]: https://txt2tags.org/download.html
