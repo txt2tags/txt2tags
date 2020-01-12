@@ -18,7 +18,7 @@ Txt2tags is available in two different versions, which are branches inside this 
 
 Full featured txt2tags version that works on Python 2.
 
-- Runs on Python versions 2.6 and 2.7.
+- Runs on Python versions 2.5, 2.6 and 2.7.
 
 - Many years of development and contributions since txt2tags version 2.6 from 2010: bug fixes, new features (templates, remote files, more macros), new targets (bbcode, CSV, HTML5, Markdown, RTF, ReStructuredText, …) - [see changelog](https://github.com/txt2tags/txt2tags/blob/v2/ChangeLog.t2t)
 
@@ -44,7 +44,12 @@ Simpler txt2tags version that works on Python 3, branched off from txt2tags vers
 
 Feature                             | v2.6  | v2.7-dev | v3.x
 ----------------------------------- | :---: | :------: | :---:
-Supported encodings                 | All   | All      | UTF-8
+Runs on Python <2.5                 | ✅ | ❌ | ❌
+Runs on Python 2.5                  | ✅ | ✅ | ❌
+Runs on Python 2.6                  | ✅ | ✅ | ❌
+Runs on Python 2.7                  | ✅ | ✅ | ✅
+Runs on Python 3                    | ❌ | ❌ | ✅
+Supported encodings                 | All | All | UTF-8
 GUI interface                       | ✅ | ✅ | ❌
 Internationalization (i18n)         | ✅ | ✅ | ❌
 Translations                        | ✅ | ✅ | ❌
