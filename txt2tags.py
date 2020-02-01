@@ -2229,7 +2229,7 @@ class SourceDocument:
         self.buffer = buf
         # Fancyness sample: head conf body (1 4 8)
         self.areas_fancy = "{} ({})".format(
-            " ".join(self.areas), " ".join(map(str, [x or "" for x in ref]))
+            " ".join(self.areas), " ".join(str(x or "") for x in ref)
         )
         Message("Areas found: %s" % self.areas_fancy, 2)
 
