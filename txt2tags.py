@@ -125,11 +125,10 @@ ACTIONS = {
     "verbose": 0,
     "debug": 0,
     "dump-config": 0,
-    "dump-source": 0,
     "targets": 0,
 }
 SETTINGS = {}  # for future use
-NO_TARGET = ["help", "version", "toc-only", "dump-config", "dump-source", "targets"]
+NO_TARGET = ["help", "version", "toc-only", "dump-config", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
@@ -203,10 +202,9 @@ USAGE = "\n".join(
         "  -h, --help          print this help information and exit",
         "  -V, --version       print program version and exit",
         "      --dump-config   print all the configuration found and exit",
-        "      --dump-source   print the document source, with includes expanded",
         "",
         "Turn OFF options:",
-        "     --no-dump-config, --no-dump-source,",
+        "     --no-dump-config,",
         "     --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
@@ -2019,7 +2017,7 @@ class CommandLine:
         ret.extend(["no-" + x for x in self.all_flags])  # add no-*
         ret.extend(["no-style"])  # turn OFF
         ret.extend(["no-outfile", "no-infile"])  # turn OFF
-        ret.extend(["no-dump-config", "no-dump-source"])  # turn OFF
+        ret.extend(["no-dump-config"])  # turn OFF
         ret.extend(["no-targets"])  # turn OFF
         # Debug('Valid LONG options: %s'%ret)
         return ret
@@ -2355,7 +2353,6 @@ class ConfigMaster:
         if key == "options":
             ignoreme = list(self.dft_actions.keys()) + ["target"]
             ignoreme.remove("dump-config")
-            ignoreme.remove("dump-source")
             ignoreme.remove("targets")
             raw_opts = CommandLine().get_raw_config(val, ignore=ignoreme)
             for _target, key, val in raw_opts:
@@ -4373,11 +4370,6 @@ def convert_file(headers, body, config, first_body_lineno=1):
     Message("Composing target Body", 1)
     target_body, marked_toc = convert(body, config, firstlinenr=first_body_lineno)
 
-    if config["dump-source"]:
-        for line in target_body:
-            print(line)
-        return
-
     # Compose the target file Footer
     Message("Composing target Footer", 1)
     target_foot = doFooter(config)
@@ -4485,7 +4477,6 @@ def convert(bodylines, config, firstlinenr=1):
     TITLE = TitleMaster()
 
     ret = []
-    dump_source = []
     f_lastwasblank = 0
 
     # Compiling all PreProc regexes
@@ -4500,7 +4491,6 @@ def convert(bodylines, config, firstlinenr=1):
         results_box = ""
 
         untouchedline = bodylines[lineref]
-        dump_source.append(untouchedline)
 
         line = re.sub("[\n\r]+$", "", untouchedline)  # del line break
 
@@ -4709,19 +4699,9 @@ def convert(bodylines, config, firstlinenr=1):
                     # Insert include lines into body
                     # TODO include maxdepth limit
                     bodylines = bodylines[:lineref] + inclines + bodylines[lineref:]
-                    # TODO fix path if include@include
-                    # Remove %!include call
-                    if CONF["dump-source"]:
-                        dump_source.pop()
 
                 # This line is done, go to next
                 continue
-
-        # ---------------------[ dump-source ]-----------------------
-
-        # We don't need to go any further
-        if CONF["dump-source"]:
-            continue
 
         # ---------------------[ Comments ]--------------------------
 
@@ -4975,10 +4955,6 @@ def convert(bodylines, config, firstlinenr=1):
         ret = []
     marked_toc = TITLE.dump_marked_toc(CONF["toc-level"])
 
-    # If dump-source, all parsing is ignored
-    if CONF["dump-source"]:
-        ret = dump_source[:]
-
     return ret, marked_toc
 
 
@@ -5034,11 +5010,6 @@ def exec_command_line(user_cmdline=None):
     config, doc = process_source_file(infile)
     config = ConfigMaster().sanity(config)
     headers, config_source, body = doc
-
-    # TODO: remove once we remove support for --dump-source.
-    if config["dump-source"]:
-        for line in headers + config_source:
-            print(line)
 
     first_body_lineno = (len(headers) or 1) + len(config_source) + 1
     convert_file(headers, body, config, first_body_lineno=first_body_lineno)

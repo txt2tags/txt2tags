@@ -555,20 +555,6 @@ tests = [
         "extra": ["notarget"],
     },
     {
-        "name": "dump-source",
-        "content": FULL_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
-        "cmdline": ["--dump-source"],
-        "redir": ["> dump-source.out"],
-        "extra": ["notarget"],
-    },
-    {
-        "name": "no-dump-source",
-        "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
-        "cmdline": ["-H -o- --dump-source --no-dump-source"],
-        "redir": ["> no-dump-source.out"],
-        "extra": ["notarget"],
-    },
-    {
         "name": "no-targets",
         "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
         "cmdline": ["-H -o- --targets --no-targets"],
