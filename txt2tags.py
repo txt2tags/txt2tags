@@ -3899,9 +3899,11 @@ def finish_him(outlist, config):
     if outfile == MODULEOUT:
         return outlist
     elif outfile == STDOUT:
+        Message("Saving results to the output file", 1)
         for line in outlist:
             print(line)
     else:
+        Message("Saving results to the output file", 1)
         Savefile(outfile, outlist)
         if not QUIET:
             print("{} wrote {}".format(my_name, outfile))
@@ -3962,8 +3964,6 @@ def doHeader(headers, config):
     if not headers:
         headers = ["", "", ""]
     target = config["target"]
-    if target not in HEADER_TEMPLATE:
-        Error("doHeader: Unknown target '%s'" % target)
 
     template = HEADER_TEMPLATE[target].split("\n")
 
@@ -4395,13 +4395,7 @@ def convert_file(myconf, doc):
 
     # Finally, we have our document
     outlist = target_head + target_toc + target_body + target_foot
-    # If module, return finish_him as list
-    # Else, write results to file or STDOUT
-    if myconf.get("outfile") == MODULEOUT:
-        return finish_him(outlist, myconf), myconf
-    else:
-        Message("Saving results to the output file", 1)
-        finish_him(outlist, myconf)
+    return finish_him(outlist, myconf)
 
 
 def parse_images(line):
