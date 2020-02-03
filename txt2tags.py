@@ -4362,40 +4362,34 @@ def process_source_file(file_="", noconf=0, contents=None):
     return full_parsed, (head, conf, body)
 
 
-def convert_file(myconf, doc):
-    target_head = []
-    target_toc = []
-    target_body = []
-    target_foot = []
-    source_head, source_conf, source_body = doc
-    myconf = ConfigMaster().sanity(myconf)
+def convert_file(headers, body, config, first_body_lineno=1):
     # Compose the target file Headers
     # TODO escape line before?
     # TODO see exceptions by tex and mgp
     Message("Composing target Headers", 1)
-    target_head = doHeader(source_head, myconf)
+    target_head = doHeader(headers, config)
     # Parse the full marked body into tagged target
-    first_body_line = (len(source_head) or 1) + len(source_conf) + 1
+
     Message("Composing target Body", 1)
-    target_body, marked_toc = convert(source_body, myconf, firstlinenr=first_body_line)
-    # If dump-source, we're done
-    if myconf["dump-source"]:
-        for line in source_head + source_conf + target_body:
+    target_body, marked_toc = convert(body, config, firstlinenr=first_body_lineno)
+
+    if config["dump-source"]:
+        for line in target_body:
             print(line)
         return
 
     # Compose the target file Footer
     Message("Composing target Footer", 1)
-    target_foot = doFooter(myconf)
+    target_foot = doFooter(config)
 
     # Make TOC (if needed)
     Message("Composing target TOC", 1)
-    tagged_toc = toc_tagger(marked_toc, myconf)
-    target_toc = toc_formatter(tagged_toc, myconf)
+    tagged_toc = toc_tagger(marked_toc, config)
+    target_toc = toc_formatter(tagged_toc, config)
 
     # Finally, we have our document
     outlist = target_head + target_toc + target_body + target_foot
-    return finish_him(outlist, myconf)
+    return finish_him(outlist, config)
 
 
 def parse_images(line):
@@ -5038,7 +5032,16 @@ def exec_command_line(user_cmdline=None):
         )
 
     config, doc = process_source_file(infile)
-    convert_file(config, doc)
+    config = ConfigMaster().sanity(config)
+    headers, config_source, body = doc
+
+    # TODO: remove once we remove support for --dump-source.
+    if config["dump-source"]:
+        for line in headers + config_source:
+            print(line)
+
+    first_body_lineno = (len(headers) or 1) + len(config_source) + 1
+    convert_file(headers, body, config, first_body_lineno=first_body_lineno)
 
     Message("Txt2tags finished successfully", 1)
 
