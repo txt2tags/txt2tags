@@ -3,9 +3,12 @@
 set -exuo pipefail
 
 VERSION="$1"
+CHANGES="/tmp/txt2tags-$VERSION-changes"
+
+cd "$(dirname ${0})/../"
 
 # Check dependencies.
-twine -h > /dev/null
+python3 -m twine -h > /dev/null
 
 # Check for uncommited changes.
 set +e
@@ -28,10 +31,14 @@ tox
 # Bump version.
 sed -i -e "s/__version__ = \".*\"/__version__ = \"${VERSION}\"/" txt2tags.py
 git commit -am "Update version number to ${VERSION} for release."
-git tag "$VERSION"
+git tag -a "$VERSION" -m "$VERSION"
 
 python3 setup.py sdist bdist_wheel --universal
 python3 -m twine upload dist/txt2tags-${VERSION}.tar.gz dist/txt2tags-${VERSION}-py2.py3-none-any.whl
 
 git push
-git push --tags
+git push origin "$VERSION"  # push new tag
+
+# Add changelog to Github release.
+./dev/make-release-notes.py "$VERSION" CHANGELOG.md "$CHANGES"
+hub release edit "$VERSION" --file "$CHANGES"
