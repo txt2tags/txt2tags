@@ -42,7 +42,7 @@
 #
 # These functions get information about the input file(s) and take
 # care of the init processing:
-# get_infiles_config(), process_source_file() and convert_this_files()
+# process_source_file() and convert_file()
 #
 ########################################################################
 
@@ -130,7 +130,6 @@ ACTIONS = {
 }
 SETTINGS = {}  # for future use
 NO_TARGET = ["help", "version", "toc-only", "dump-config", "dump-source", "targets"]
-NO_MULTI_INPUT = ["dump-config", "dump-source"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
@@ -4320,7 +4319,7 @@ def process_source_file(file_="", noconf=0, contents=None):
 
     All the conversion process will be based on the data and
     configuration returned by this function.
-    The source files is read on this step only.
+    The source file is read in this step only.
     """
     if contents:
         source = SourceDocument(contents=contents)
@@ -4363,59 +4362,46 @@ def process_source_file(file_="", noconf=0, contents=None):
     return full_parsed, (head, conf, body)
 
 
-def get_infiles_config(infiles):
-    """
-    Find and Join into a single list, all configuration available
-    for each input file. This function is supposed to be the very
-    first one to be called, before any processing.
-    """
-    return list(map(process_source_file, infiles))
+def convert_file(myconf, doc):
+    target_head = []
+    target_toc = []
+    target_body = []
+    target_foot = []
+    source_head, source_conf, source_body = doc
+    myconf = ConfigMaster().sanity(myconf)
+    # Compose the target file Headers
+    # TODO escape line before?
+    # TODO see exceptions by tex and mgp
+    Message("Composing target Headers", 1)
+    target_head = doHeader(source_head, myconf)
+    # Parse the full marked body into tagged target
+    first_body_line = (len(source_head) or 1) + len(source_conf) + 1
+    Message("Composing target Body", 1)
+    target_body, marked_toc = convert(source_body, myconf, firstlinenr=first_body_line)
+    # If dump-source, we're done
+    if myconf["dump-source"]:
+        for line in source_head + source_conf + target_body:
+            print(line)
+        return
 
+    # Compose the target file Footer
+    Message("Composing target Footer", 1)
+    target_foot = doFooter(myconf)
 
-def convert_this_files(configs):
-    global CONF
-    for myconf, doc in configs:  # multifile support
-        target_head = []
-        target_toc = []
-        target_body = []
-        target_foot = []
-        source_head, source_conf, source_body = doc
-        myconf = ConfigMaster().sanity(myconf)
-        # Compose the target file Headers
-        # TODO escape line before?
-        # TODO see exceptions by tex and mgp
-        Message("Composing target Headers", 1)
-        target_head = doHeader(source_head, myconf)
-        # Parse the full marked body into tagged target
-        first_body_line = (len(source_head) or 1) + len(source_conf) + 1
-        Message("Composing target Body", 1)
-        target_body, marked_toc = convert(
-            source_body, myconf, firstlinenr=first_body_line
-        )
-        # If dump-source, we're done
-        if myconf["dump-source"]:
-            for line in source_head + source_conf + target_body:
-                print(line)
-            return
+    # Make TOC (if needed)
+    Message("Composing target TOC", 1)
+    tagged_toc = toc_tagger(marked_toc, myconf)
+    target_toc = toc_formatter(tagged_toc, myconf)
 
-        # Compose the target file Footer
-        Message("Composing target Footer", 1)
-        target_foot = doFooter(myconf)
-
-        # Make TOC (if needed)
-        Message("Composing target TOC", 1)
-        tagged_toc = toc_tagger(marked_toc, myconf)
-        target_toc = toc_formatter(tagged_toc, myconf)
-
-        # Finally, we have our document
-        outlist = target_head + target_toc + target_body + target_foot
-        # If module, return finish_him as list
-        # Else, write results to file or STDOUT
-        if myconf.get("outfile") == MODULEOUT:
-            return finish_him(outlist, myconf), myconf
-        else:
-            Message("Saving results to the output file", 1)
-            finish_him(outlist, myconf)
+    # Finally, we have our document
+    outlist = target_head + target_toc + target_body + target_foot
+    # If module, return finish_him as list
+    # Else, write results to file or STDOUT
+    if myconf.get("outfile") == MODULEOUT:
+        return finish_him(outlist, myconf), myconf
+    else:
+        Message("Saving results to the output file", 1)
+        finish_him(outlist, myconf)
 
 
 def parse_images(line):
@@ -5031,13 +5017,6 @@ def exec_command_line(user_cmdline=None):
         listTargets()
         Quit()
 
-    # Multifile haters
-    if len(infiles) > 1:
-        errmsg = "Option --%s can't be used with multiple input files"
-        for option in NO_MULTI_INPUT:
-            if cmdline_parsed.get(option):
-                Error(errmsg % option)
-
     Debug("system platform: %s" % sys.platform)
     Debug("python version: %s" % (sys.version.split("(")[0]))
     Debug("command line: %s" % sys.argv)
@@ -5055,21 +5034,17 @@ def exec_command_line(user_cmdline=None):
         Debug("rc file: %s" % rc_file)
         Debug("rc file raw config: %s" % RC_RAW, 1)
 
-    # Get all infiles config (if any)
-    infiles_config = get_infiles_config(infiles)
-
     # TODO#1: this checking should be only in ConfigMaster.sanity()
-    if not infiles:
+    if len(infiles) == 1:
+        infile = infiles[0]
+    else:
         Error(
-            "Missing input file (try --help)"
-            + "\n\n"
-            + "Please inform an input file (.t2t) at the end of the command."
-            + "\n"
-            + "Example:"
-            + " {} -t html {}".format(my_name, "file.t2t")
+            "Pass exactly one input file (see --help). "
+            "Example: {} -t html file.t2t".format(my_name)
         )
 
-    convert_this_files(infiles_config)
+    config, doc = process_source_file(infile)
+    convert_file(config, doc)
 
     Message("Txt2tags finished successfully", 1)
 

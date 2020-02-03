@@ -1,3 +1,7 @@
+# next (unreleased)
+
+* Remove support for multiple input files (Jendrik Seipp).
+
 # 3.5 (2020-02-01)
 
 * Add Markdown target (Eric Forgeot, #213).
