@@ -3980,7 +3980,7 @@ def doHeader(headers, config):
         # Escapes - on tex, just do it if any \tag{} present
         if target != "tex" or (target == "tex" and re.search(r"\\\w+{", contents)):
             contents = doEscape(target, contents)
-        if target == "lout":
+        if target in ["lout", "tex"]:
             contents = doFinalEscape(target, contents)
 
         head_data["HEADER%d" % (i + 1)] = contents

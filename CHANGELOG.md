@@ -1,5 +1,6 @@
 # next (unreleased)
 
+* Escape underscores in Latex headers (Jendrik Seipp).
 * Remove support for multiple input files (Jendrik Seipp).
 
 # 3.5 (2020-02-01)
