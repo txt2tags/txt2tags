@@ -4360,6 +4360,7 @@ def process_source_file(file_="", noconf=0, contents=None):
 
 
 def convert_file(headers, body, config, first_body_lineno=1):
+    config = ConfigMaster().sanity(config)
     # Compose the target file Headers
     # TODO escape line before?
     # TODO see exceptions by tex and mgp
@@ -5008,7 +5009,6 @@ def exec_command_line(user_cmdline=None):
         )
 
     config, doc = process_source_file(infile)
-    config = ConfigMaster().sanity(config)
     headers, config_source, body = doc
 
     first_body_lineno = (len(headers) or 1) + len(config_source) + 1
