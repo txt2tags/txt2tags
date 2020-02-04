@@ -3259,10 +3259,7 @@ class TableMaster:
                 close = rowopen + close
 
         # Now we tag all the table cells on each row
-        # tagged_cells = map(lambda x: self._tag_cells(x), rows) #!py15
-        tagged_cells = []
-        for cell in rows:
-            tagged_cells.append(self._tag_cells(cell))
+        tagged_cells = [self._tag_cells(cell) for cell in rows]
 
         # Add row separator tags between lines
         tagged_rows = []
