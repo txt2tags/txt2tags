@@ -3038,7 +3038,7 @@ class TitleMaster:
 class TableMaster:
     def __init__(self, line=""):
         self.rows = []
-        self.border = 0
+        self.border = False
         self.align = "Left"
         self.cellalign = []
         self.colalign = []
@@ -3053,7 +3053,7 @@ class TableMaster:
 
     def _get_col_align(self):
         colalign = []
-        for cell in range(0, len(self.cellalign)):
+        for cell in range(len(self.cellalign)):
             align = self.cellalign[cell]
             span = self.cellspan[cell]
             colalign.extend([align] * span)
@@ -3199,8 +3199,8 @@ class TableMaster:
     def parse_row(self, line):
         # Default table properties
         ret = {
-            "border": 0,
-            "title": 0,
+            "border": False,
+            "title": False,
             "align": "Left",
             "cells": [],
             "cellalign": [],
@@ -3212,14 +3212,14 @@ class TableMaster:
         line = line.lstrip()
         # Detect title mark
         if line[1] == "|":
-            ret["title"] = 1
+            ret["title"] = True
         # Detect border mark and normalize the EOL
         m = re.search(r" (\|+) *$", line)
         if m:
-            line = line + " "
-            ret["border"] = 1
+            line += " "
+            ret["border"] = True
         else:
-            line = line + " | "
+            line += " | "
         # Delete table mark
         line = regex["table"].sub("", line)
         # Detect colspan  | foo | bar baz |||
