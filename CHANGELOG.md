@@ -3,6 +3,7 @@
 * Escape underscores in Latex headers (Jendrik Seipp).
 * Don't center Latex tables (Jendrik Seipp).
 * Remove `--dump-source` option (Jendrik Seipp).
+* Remove txt2tags version from output. (Jendrik Seipp).
 * Remove support for multiple input files (Jendrik Seipp).
 
 # 3.5 (2020-02-01)

@@ -88,8 +88,6 @@ def _convert(options):
 def remove_version_and_dates(text):
     version_re = r"\d+\.\d+(\.\d+)?"
     for regex in [
-        r"Txt2tags {version_re}",
-        r"txt2tags {version_re}",
         r"txt2tags version {version_re}",
         # Remove date from header.
         r"\d{{2}}/\d{{2}}/\d{{4}}",
@@ -100,7 +98,6 @@ def remove_version_and_dates(text):
         r"which gives: \d{{2}}-\d{{2}}-\d{{4}}",
         # man escapes - with \-
         r"which gives: \d{{2}}\\-\d{{2}}\\-\d{{4}}",
-        r"cmdline: txt2tags .*\n",
     ]:
         text = re.sub(regex.format(**locals()), "", text)
     return text
