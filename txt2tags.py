@@ -375,6 +375,7 @@ _%(HEADER3)s_
 ''%(HEADER3)s''
 """,
     "tex": r"""\documentclass{article}
+\usepackage{booktabs} %% needed for tables
 \usepackage{graphicx}
 \usepackage{paralist} %% needed for compact lists
 \usepackage[normalem]{ulem} %% needed by strike
@@ -750,10 +751,11 @@ def getTags(config):
             "email": "\\htmladdnormallink{\a}{mailto:\a}",
             "emailMark": "\\htmladdnormallink{\a}{mailto:\a}",
             "img": "\\includegraphics{\a}",
-            "tableOpen": "\\begin{tabular}{|~C~|}",
+            "tableOpen": "\\begin{tabular}{@{}~C~@{}}",
             "tableClose": "\\end{tabular}",
-            "tableRowOpen": "\\hline ",
+            "tableRowOpen": None,
             "tableRowClose": " \\\\",
+            "tableTitleRowClose": " \\\\\n\\midrule",
             "tableCellSep": " & ",
             "_tableColAlignLeft": "l",
             "_tableColAlignRight": "r",
@@ -764,7 +766,7 @@ def getTags(config):
             "_tableCellColSpan": "\a",
             "_tableCellMulticolOpen": "\\multicolumn{\a}{|~C~|}{",
             "_tableCellMulticolClose": "}",
-            "tableColAlignSep": "|",
+            "tableColAlignSep": None,
             "comment": "% \a",
             "TOC": "\\tableofcontents",
             "pageBreak": "\\clearpage",
