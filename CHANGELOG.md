@@ -1,4 +1,4 @@
-# next (unreleased)
+# 3.6 (2020-02-05)
 
 * Escape underscores in Latex headers (Jendrik Seipp).
 * Don't center Latex tables (Jendrik Seipp).
