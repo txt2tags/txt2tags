@@ -117,18 +117,16 @@ OPTIONS = {
     "outfile": "",
     "config-file": "",
     "lang": "",
-    "show-config-value": "",
 }
 ACTIONS = {
     "help": 0,
     "version": 0,
     "verbose": 0,
     "debug": 0,
-    "dump-config": 0,
     "targets": 0,
 }
 SETTINGS = {}  # for future use
-NO_TARGET = ["help", "version", "toc-only", "dump-config", "targets"]
+NO_TARGET = ["help", "version", "toc-only", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
@@ -201,10 +199,8 @@ USAGE = "\n".join(
         "  -v, --verbose       print informative messages during conversion",
         "  -h, --help          print this help information and exit",
         "  -V, --version       print program version and exit",
-        "      --dump-config   print all the configuration found and exit",
         "",
         "Turn OFF options:",
-        "     --no-dump-config,",
         "     --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc, --no-toc-only",
@@ -2019,7 +2015,6 @@ class CommandLine:
         ret.extend(["no-" + x for x in self.all_flags])  # add no-*
         ret.extend(["no-style"])  # turn OFF
         ret.extend(["no-outfile", "no-infile"])  # turn OFF
-        ret.extend(["no-dump-config"])  # turn OFF
         ret.extend(["no-targets"])  # turn OFF
         # Debug('Valid LONG options: %s'%ret)
         return ret
@@ -2354,7 +2349,6 @@ class ConfigMaster:
         # %!options
         if key == "options":
             ignoreme = list(self.dft_actions.keys()) + ["target"]
-            ignoreme.remove("dump-config")
             ignoreme.remove("targets")
             raw_opts = CommandLine().get_raw_config(val, ignore=ignoreme)
             for _target, key, val in raw_opts:
@@ -4312,22 +4306,7 @@ def process_source_file(file_="", noconf=0, contents=None):
             full_parsed["outfile"] = MODULEOUT
         else:
             full_parsed["sourcefile"] = file_
-        # Maybe should we dump the config found?
-        if full_parsed.get("dump-config"):
-            dumpConfig(source_raw, full_parsed)
-            Quit()
-        # The user just want to know a single config value (hidden feature)
-        # TODO pick a better name than --show-config-value
-        elif full_parsed.get("show-config-value"):
-            config_value = full_parsed.get(full_parsed["show-config-value"])
-            if config_value:
-                if isinstance(config_value, list):
-                    print("\n".join(config_value))
-                else:
-                    print(config_value)
-            Quit()
-        # Okay, all done
-        Debug("FULL config for this file: %s" % full_parsed, 1)
+        Debug("Complete config: %s" % full_parsed, 1)
     else:
         full_parsed = {}
     return full_parsed, (head, conf, body)

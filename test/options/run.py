@@ -541,20 +541,6 @@ tests = [
         "cmdline": ["-H"],
     },
     {
-        "name": "dump-config",
-        "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
-        "cmdline": ["--dump-config"],
-        "redir": ["> dump-config.out"],
-        "extra": ["notarget"],
-    },
-    {
-        "name": "no-dump-config",
-        "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
-        "cmdline": ["-H -o- --dump-config --no-dump-config"],
-        "redir": ["> no-dump-config.out"],
-        "extra": ["notarget"],
-    },
-    {
         "name": "no-targets",
         "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
         "cmdline": ["-H -o- --targets --no-targets"],
