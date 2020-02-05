@@ -3,6 +3,7 @@
 * Escape underscores in Latex headers (Jendrik Seipp).
 * Don't center Latex tables (Jendrik Seipp).
 * Use booktabs package for prettier Latex tables (Jendrik Seipp).
+* Use normal font for Latex table headers (Jendrik Seipp).
 * Remove `--dump-source` option (Jendrik Seipp).
 * Remove txt2tags version from output. (Jendrik Seipp).
 * Remove support for multiple input files (Jendrik Seipp).

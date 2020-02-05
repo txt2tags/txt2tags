@@ -1450,7 +1450,7 @@ def getRules(config):
             "parainsidelist": 1,
             "tableable": 1,
             "tablecellstrip": 1,
-            "tabletitlerowinbold": 1,
+            "tabletitlerowinbold": 0,
             "verbblocknotescaped": 1,
             "keeplistindent": 1,
             "listmaxdepth": 4,  # deflist is 6
