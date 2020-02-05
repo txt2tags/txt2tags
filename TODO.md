@@ -1,4 +1,5 @@
 * Use argparse.
+* Expose all rules and set tabletitlerowinbold=1 for Latex again.
 * Don't remove markup just because the target doesn't support it.
 * Clean up the code
 * Remove more seldom-used features (for example, --mask-email, --toc-only, --toc-level)?
