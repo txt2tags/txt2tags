@@ -41,4 +41,4 @@ git push origin "$VERSION"  # push new tag
 
 # Add changelog to Github release.
 ./dev/make-release-notes.py "$VERSION" CHANGELOG.md "$CHANGES"
-hub release edit "$VERSION" --file "$CHANGES"
+hub release create "$VERSION" --file "$CHANGES"
