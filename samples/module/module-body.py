@@ -24,7 +24,6 @@ headers = ["Header 1", "Header 2", "Header 3"]
 config = txt2tags.ConfigMaster()._get_defaults()
 config["outfile"] = txt2tags.MODULEOUT  # results as list
 config["target"] = "html"  # target type: HTML
-config["css-sugar"] = 1  # CSS friendly
 config["toc"] = 1  # show Table Of Contents
 
 # The Pre (and Post) processing config is a list of lists:

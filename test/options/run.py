@@ -474,30 +474,6 @@ tests = [
         "cmdline": ["--style fake.css --no-style"],
     },
     {
-        "name": "css-sugar-1",  # just body
-        "target": "html",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H"],
-    },
-    {
-        "name": "css-sugar-2",  # empty toc & body
-        "target": "html",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H --toc"],
-    },
-    {
-        "name": "css-sugar-3",  # headers, toc & body
-        "target": "html",
-        "content": FULL_HEADER + VERSION_GOTCHA + TITLED_BODY,
-        "cmdline": ["--toc"],
-    },
-    {
-        "name": "no-css-sugar-1",  # useless
-        "target": "html",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["-H"],
-    },
-    {
         "name": "no-targets",
         "content": EMPTY_HEADER + CONFIG_FILE_TXT + SIMPLE_BODY,
         "cmdline": ["-H -o- --targets --no-targets"],

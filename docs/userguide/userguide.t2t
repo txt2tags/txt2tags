@@ -722,9 +722,6 @@ The format of the settings is exactly the same as the ones used on the
 ```
 % my configs
 
-%%% Always use CSS-friendly tags in HTML
-%!options(html): --css-sugar
-
 %%% Change the default TOC depth for all targets
 %!options: --toc-level 4
 ```
