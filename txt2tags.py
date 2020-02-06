@@ -3810,52 +3810,6 @@ def listTargets():
         print("{:8}{}".format(target, name))
 
 
-def dumpConfig(source_raw, parsed_config):
-    onoff = {1: "ON", 0: "OFF"}
-    data = [
-        ("RC file", RC_RAW),
-        ("source document", source_raw),
-        ("command line", CMDLINE_RAW),
-    ]
-    # First show all RAW data found
-    for label, cfg in data:
-        print("RAW config for %s" % label)
-        for target, key, val in cfg:
-            target = "(%s)" % target
-            key = dotted_spaces("%-14s" % key)
-            val = val or "ON"
-            print("  {:<8} {}: {}".format(target, key, val))
-        print()
-    # Then the parsed results of all of them
-    print("Full PARSED config")
-    keys = list(parsed_config.keys())
-    keys.sort()  # sorted
-    for key in keys:
-        val = parsed_config[key]
-        # Filters are the last
-        if key == "preproc" or key == "postproc":
-            continue
-        # Flag beautifier
-        if key in list(FLAGS.keys()) or key in list(ACTIONS.keys()):
-            val = onoff.get(val) or val
-        # List beautifier
-        if isinstance(val, list):
-            if key == "options":
-                sep = " "
-            else:
-                sep = ", "
-            val = sep.join(val)
-        print("{:>25}: {}".format(dotted_spaces("%-14s" % key), val))
-    print()
-    print("Active filters")
-    for filter_ in ["preproc", "postproc"]:
-        for rule in parsed_config.get(filter_) or []:
-            print(
-                "%25s: %s  ->  %s"
-                % (dotted_spaces("%-14s" % filter_), rule[0], rule[1])
-            )
-
-
 def get_file_body(file_):
     "Returns all the document BODY lines"
     return process_source_file(file_, noconf=1)[1][2]
