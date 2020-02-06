@@ -87,7 +87,6 @@ __version__ = "3.6"
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
 # ACTIONS : the other behavior modifiers, valid on command line only
-# SETTINGS: global miscellaneous settings, valid on RC file only
 # NO_TARGET: actions that don't require a target specification
 # NO_MULTI_INPUT: actions that don't accept more than one input file
 # CONFIG_KEYWORDS: the valid %!key:val keywords
@@ -124,7 +123,6 @@ ACTIONS = {
     "debug": 0,
     "targets": 0,
 }
-SETTINGS = {}  # for future use
 NO_TARGET = ["help", "version", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
@@ -2296,7 +2294,6 @@ class ConfigMaster:
         self.dft_options = OPTIONS.copy()
         self.dft_flags = FLAGS.copy()
         self.dft_actions = ACTIONS.copy()
-        self.dft_settings = SETTINGS.copy()
         self.defaults = self._get_defaults()
         self.off = self._get_off()
         self.incremental = ["verbose"]
@@ -2311,7 +2308,6 @@ class ConfigMaster:
         empty.update(self.dft_options)
         empty.update(self.dft_flags)
         empty.update(self.dft_actions)
-        empty.update(self.dft_settings)
         empty["realcmdline"] = ""  # internal use only
         empty["sourcefile"] = ""  # internal use only
         return empty
