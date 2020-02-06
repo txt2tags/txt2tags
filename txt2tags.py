@@ -243,28 +243,31 @@ HEADER_TEMPLATE = {
 <author>%(HEADER2)s
 <date>%(HEADER3)s
 """,
-    # HTML5 reference code:
-    # https://github.com/h5bp/html5-boilerplate/blob/master/index.html
-    # https://github.com/murtaugh/HTML5-Reset/blob/master/index.html
     "html": """\
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
-<meta name="generator" content="http://txt2tags.org">
+<meta name="generator" content="https://txt2tags.org">
 <link rel="stylesheet" href="%(STYLE)s">
-<style>
-body{background-color:#fff;color:#000;}
+<style type="text/css">
+blockquote{margin: 1em 2em; border-left: 2px solid #999;
+  font-style: oblique; padding-left: 1em;}
+blockquote:first-letter{margin: .2em .1em .1em 0; font-size: 160%%; font-weight: bold;}
+blockquote:first-line{font-weight: bold;}
+body{font-family: sans-serif;}
 hr{background-color:#000;border:0;color:#000;}
-hr.heavy{height:5px;}
+hr.heavy{height:2px;}
 hr.light{height:1px;}
 img{border:0;display:block;}
 img.right{margin:0 0 0 auto;}
 img.center{border:0;margin:0 auto;}
-table th,table td{padding:4px;}
-.center,header{text-align:center;}
-table.center {margin-left:auto; margin-right:auto;}
+table{border-collapse: collapse;}
+table th,table td{padding: 3px 7px 2px 7px;}
+table th{background-color: lightgrey;}
+table.center{margin-left:auto; margin-right:auto;}
+.center{text-align:center;}
 .right{text-align:right;}
 .left{text-align:left;}
 .tableborder,.tableborder td,.tableborder th{border:1px solid #000;}
@@ -2433,8 +2436,7 @@ class ConfigMaster:
                 + "Run 'txt2tags --targets' to see all available targets."
             )
         # And of course, an infile also
-        # TODO#1: It seems that this checking is never reached
-        if not config.get("infile"):
+        if "infile" not in config:
             Error("Missing input file (try --help)")
         # Is the target valid?
         if not TARGETS.count(target):

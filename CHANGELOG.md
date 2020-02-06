@@ -1,3 +1,7 @@
+# next (unreleased)
+
+* Make CSS style prettier (Jendrik Seipp).
+
 # 3.6 (2020-02-05)
 
 * Escape underscores in Latex headers (Jendrik Seipp).
