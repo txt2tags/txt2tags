@@ -1,4 +1,4 @@
-* Use argparse.
+* Use argparse (https://stackoverflow.com/a/31347222/1277298).
 * Expose all rules and set tabletitlerowinbold=1 for Latex again.
 * Don't remove markup just because the target doesn't support it.
 * Clean up the code
