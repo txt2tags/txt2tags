@@ -1,6 +1,6 @@
 
 %!includeconf: test.conf
-%!options: -n --toc-only -o subtitle-before-title-toc.html
+%!options: -n -o subtitle-before-title-toc.html
 
 %!postproc: title$	title on TOC
 

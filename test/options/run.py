@@ -390,49 +390,6 @@ tests = [
         "cmdline": ["-H --toc-level 1"],
     },
     {
-        "name": "toc-only-1",
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["--toc-only -o toc-only-1.html"],
-    },
-    {
-        "name": "toc-only-2",  # empty toc (no title)
-        "target": "html",
-        "content": EMPTY_HEADER + SIMPLE_BODY,
-        "cmdline": ["--toc-only -o toc-only-2.html"],
-    },
-    {
-        "name": "toc-only-3",  # no target, defaults to txt
-        "target": "out",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["--toc-only -o toc-only-3.out"],
-        "extra": ["notarget"],
-    },
-    {
-        "name": "toc-only-4",  # with --toc-level
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["--toc-only --toc-level 1 -o toc-only-4.html"],
-    },
-    {
-        "name": "toc-only-5",  # with --enum-title
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["--toc-only --enum-title -o toc-only-5.html"],
-    },
-    {
-        "name": "no-toc-only-1",  # useless
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["-H --no-toc-only"],
-    },
-    {
-        "name": "no-toc-only-2",  # turning OFF
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["-H --toc-only --no-toc-only"],
-    },
-    {
         "name": "mask-email",
         "target": "html",
         "content": EMPTY_HEADER + EMAIL,

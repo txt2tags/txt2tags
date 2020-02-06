@@ -287,9 +287,6 @@ Examples:
 | **Including Table Of Contents** | ``$ txt2tags -t html --toc file.t2t``
 | **And also, numbering titles**  | ``$ txt2tags -t html --toc --enum-title file.t2t``
 |  | .
-| **Contents quick view**         | ``$ txt2tags --toc-only file.t2t``
-| **Maybe enumerate them?**       | ``$ txt2tags --toc-only --enum-title file.t2t``
-|  | .
 | **One liners from STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
 | **Testing Mask Email feature**  | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
 
@@ -1460,7 +1457,6 @@ document:
 %!target: sgml
 %!options(sgml): --toc
 %!options(html): --style foo.css
-%!options(txt ): --toc-only --toc-level 2
 ```
 
 In this example, the default target is Sgml and it will use TOC. If the

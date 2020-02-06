@@ -103,7 +103,6 @@ FLAGS = {
     "headers": 1,
     "enum-title": 0,
     "mask-email": 0,
-    "toc-only": 0,
     "toc": 0,
     "rc": 1,
     "quiet": 0,
@@ -126,7 +125,7 @@ ACTIONS = {
     "targets": 0,
 }
 SETTINGS = {}  # for future use
-NO_TARGET = ["help", "version", "toc-only", "targets"]
+NO_TARGET = ["help", "version", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
 TARGET_NAMES = {
@@ -189,7 +188,6 @@ USAGE = "\n".join(
         "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)",
         "      --toc           add an automatic Table of Contents to the output",
         "      --toc-level=N   set maximum TOC level (depth) to N",
-        "      --toc-only      print the Table of Contents and exit",
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
         "  -H, --no-headers    suppress header and footer from the output",
@@ -203,7 +201,7 @@ USAGE = "\n".join(
         "Turn OFF options:",
         "     --no-enum-title, --no-headers, --no-infile,",
         "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
-        "     --no-style, --no-targets, --no-toc, --no-toc-only",
+        "     --no-style, --no-targets, --no-toc",
         "",
         "Example:",
         "     {} -t html --toc {}".format(my_name, "file.t2t"),
@@ -2456,11 +2454,6 @@ class ConfigMaster:
                     config[key] = int(config[key])
                 except ValueError:
                     Error("--%s value must be a number" % key)
-        # --toc-only is stronger than others
-        if config["toc-only"]:
-            config["headers"] = 0
-            config["toc"] = 0
-            config["outfile"] = config["outfile"] or STDOUT
         # Restore target
         config["target"] = target
         # Set output file name
@@ -3903,28 +3896,26 @@ def finish_him(outlist, config):
 
 def toc_tagger(toc, config):
     "Returns the tagged TOC, as a single tag or a tagged list"
-    ret = []
+    if not config["toc"]:
+        return []
+    elif TAGS["TOC"]:
+        # Our TOC list is not needed, the target already knows how to do a TOC
+        ret = [TAGS["TOC"]]
     # Convert the TOC list (t2t-marked) to the target's list format
-    if config["toc-only"] or (config["toc"] and not TAGS["TOC"]):
+    else:
         fakeconf = config.copy()
         fakeconf["headers"] = 0
-        fakeconf["toc-only"] = 0
         fakeconf["mask-email"] = 0
         fakeconf["preproc"] = []
         fakeconf["postproc"] = []
         ret, _ = convert(toc, fakeconf)
         set_global_config(config)  # restore config
-    # Our TOC list is not needed, the target already knows how to do a TOC
-    elif config["toc"] and TAGS["TOC"]:
-        ret = [TAGS["TOC"]]
     return ret
 
 
 def toc_formatter(toc, config):
     "Formats TOC for automatic placement between headers and body"
 
-    if config["toc-only"]:
-        return toc  # no formatting needed
     if not config["toc"]:
         return []  # TOC disabled
     ret = toc
@@ -4907,8 +4898,6 @@ def convert(bodylines, config, firstlinenr=1):
     if TAGS["bodyClose"]:
         ret.append(TAGS["bodyClose"])
 
-    if CONF["toc-only"]:
-        ret = []
     marked_toc = TITLE.dump_marked_toc(CONF["toc-level"])
 
     return ret, marked_toc

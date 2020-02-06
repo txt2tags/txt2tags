@@ -1,6 +1,7 @@
 # next (unreleased)
 
 * Make CSS style prettier (Jendrik Seipp).
+* Remove `--toc-only` option (Jendrik Seipp).
 
 # 3.6 (2020-02-05)
 
