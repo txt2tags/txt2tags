@@ -101,7 +101,6 @@ __version__ = "3.6"
 FLAGS = {
     "headers": 1,
     "enum-title": 0,
-    "mask-email": 0,
     "toc": 0,
     "rc": 1,
     "quiet": 0,
@@ -187,7 +186,6 @@ USAGE = "\n".join(
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
         "  -H, --no-headers    suppress header and footer from the output",
-        "      --mask-email    hide email from spam robots. x@y.z turns <x (a) y z>",
         "  -C, --config-file=F read configuration from file F",
         "  -q, --quiet         quiet mode, suppress all output (except errors)",
         "  -v, --verbose       print informative messages during conversion",
@@ -196,7 +194,7 @@ USAGE = "\n".join(
         "",
         "Turn OFF options:",
         "     --no-enum-title, --no-headers, --no-infile,",
-        "     --no-mask-email, --no-outfile, --no-quiet, --no-rc, --no-slides,",
+        "     --no-outfile, --no-quiet, --no-rc, --no-slides,",
         "     --no-style, --no-targets, --no-toc",
         "",
         "Example:",
@@ -3834,7 +3832,6 @@ def toc_tagger(toc, config):
     else:
         fakeconf = config.copy()
         fakeconf["headers"] = 0
-        fakeconf["mask-email"] = 0
         fakeconf["preproc"] = []
         fakeconf["postproc"] = []
         ret, _ = convert(toc, fakeconf)
@@ -4097,24 +4094,15 @@ def get_tagged_link(label, url):
 
     # Simple link (not guessed)
     if not label and not guessurl:
-        if CONF["mask-email"] and linktype == "email":
-            # Do the email mask feature (no TAGs, just text)
-            url = url.replace("@", " (a) ")
-            url = url.replace(".", " ")
-            url = "<%s>" % url
-            if rules["linkable"]:
-                url = doEscape(target, url)
-            ret = url
-        else:
-            # Just add link data to tag
-            tag = TAGS[linktype]
-            ret = regex["x"].sub(url, tag)
+        # Just add link data to tag
+        tag = TAGS[linktype]
+        ret = regex["x"].sub(url, tag)
 
     # Named link or guessed simple link
     else:
         # Adjusts for guessed link
         if not label:
-            label = url  # no   protocol
+            label = url  # no protocol
         if guessurl:
             url = guessurl  # with protocol
 

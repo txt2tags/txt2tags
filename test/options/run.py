@@ -372,24 +372,6 @@ tests = [
         "cmdline": ["-H --toc --no-toc"],
     },
     {
-        "name": "mask-email",
-        "target": "html",
-        "content": EMPTY_HEADER + EMAIL,
-        "cmdline": ["-H --mask-email"],
-    },
-    {
-        "name": "no-mask-email-1",  # useless
-        "target": "html",
-        "content": EMPTY_HEADER + EMAIL,
-        "cmdline": ["-H --no-mask-email"],
-    },
-    {
-        "name": "no-mask-email-2",  # turning OFF
-        "target": "html",
-        "content": EMPTY_HEADER + EMAIL,
-        "cmdline": ["-H --mask-email --no-mask-email"],
-    },
-    {
         "name": "headers-1",  # useless
         "target": "html",
         "content": EMPTY_HEADER + VERSION_GOTCHA + SIMPLE_BODY,

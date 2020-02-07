@@ -32,12 +32,6 @@
 %   Useful if you always use the same target for all documents
 %%!target: html
 
-% Always mask e-mails from robots in HTML and MOIN documents
-%   Example: john@company.com turns to <john (a) company com>
-%   This can be turned off later with --no-mask-email
-%%!options(html): --mask-email
-%%!options(moin): --mask-email
-
 % Always enumerate all title lines for text output
 %   This can be turned off later with --no-enum-title
 %%!options(txt): --enum-title

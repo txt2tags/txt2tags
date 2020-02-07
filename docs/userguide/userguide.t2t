@@ -288,7 +288,6 @@ Examples:
 | **And also, numbering titles**  | ``$ txt2tags -t html --toc --enum-title file.t2t``
 |  | .
 | **One liners from STDIN**       | ``$ echo -e "\n**bold**" | txt2tags -t html --no-headers -``
-| **Testing Mask Email feature**  | ``$ echo -e "\njohn.wayne@farwest.com" | txt2tags -t txt --mask-email --no-headers -``
 
 
 ========================================================================
@@ -302,7 +301,7 @@ Just download the program and run it on your machine.
 == Download & Install Python ==[download-python]
 
 First of all, you must download and install [Python http://www.python.org] on
-your system. Txt2tags requires Python version 2.2 or newer.
+your system.
 
 Note that Python is already installed by default in Linux and Mac systems. If you're using those, you're done, just skip this step.
 

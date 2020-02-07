@@ -2,6 +2,7 @@
 
 * Make CSS style prettier (Jendrik Seipp).
 * Remove `--toc-only` and `--toc-level` options (Jendrik Seipp).
+* Remove `--mask-email` option (Jendrik Seipp).
 
 # 3.6 (2020-02-05)
 
@@ -9,8 +10,7 @@
 * Don't center Latex tables (Jendrik Seipp).
 * Use booktabs package for prettier Latex tables (Jendrik Seipp).
 * Use normal font for Latex table headers (Jendrik Seipp).
-* Remove `--dump-config` option (Jendrik Seipp).
-* Remove `--dump-source` option (Jendrik Seipp).
+* Remove `--dump-config` and `--dump-source` options (Jendrik Seipp).
 * Remove txt2tags version from output. (Jendrik Seipp).
 * Remove support for multiple input files (Jendrik Seipp).
 
