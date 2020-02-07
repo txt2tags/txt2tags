@@ -109,7 +109,6 @@ FLAGS = {
 }
 OPTIONS = {
     "target": "",
-    "toc-level": 3,
     "style": "",
     "infile": "",
     "outfile": "",
@@ -185,7 +184,6 @@ USAGE = "\n".join(
         "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)",
         "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)",
         "      --toc           add an automatic Table of Contents to the output",
-        "      --toc-level=N   set maximum TOC level (depth) to N",
         "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
         "      --style=FILE    use FILE as the document style (like HTML CSS)",
         "  -H, --no-headers    suppress header and footer from the output",
@@ -2255,7 +2253,6 @@ class ConfigMaster:
       self.defaults    - Stores the default values for all keys
       self.off         - Stores the OFF values for all keys
       self.multi       - List of keys which can have multiple values
-      self.numeric     - List of keys which value must be a number
       self.incremental - List of keys which are incremental
 
     RAW FORMAT:
@@ -2297,7 +2294,6 @@ class ConfigMaster:
         self.defaults = self._get_defaults()
         self.off = self._get_off()
         self.incremental = ["verbose"]
-        self.numeric = ["toc-level"]
         self.multi = ["infile", "preproc", "postproc", "options", "style"]
 
     def _get_defaults(self):
@@ -2443,13 +2439,6 @@ class ConfigMaster:
         empty = self.defaults.copy()
         empty.update(config)
         config = empty.copy()
-        # Check integers options
-        for key in config.keys():
-            if key in self.numeric:
-                try:
-                    config[key] = int(config[key])
-                except ValueError:
-                    Error("--%s value must be a number" % key)
         # Restore target
         config["target"] = target
         # Set output file name
@@ -2920,20 +2909,12 @@ class TitleMaster:
         "Compose and save title label, used by anchors."
         # Remove invalid chars from label set by user
         self.label = re.sub("[^A-Za-z0-9_-]", "", self.label or "")
-        # Generate name as 15 first :alnum: chars
-        # TODO how to translate safely accented chars to plain?
-        # self.label = re.sub('[^A-Za-z0-9]', '', self.txt)[:15]
-        # 'tocN' label - sequential count, ignoring 'toc-level'
-        # self.label = self.anchor_prefix + str(len(self.toc)+1)
 
     def _get_tagged_anchor(self):
         "Return anchor if user defined a label, or TOC is on."
         ret = ""
         label = self.label
-        if CONF["toc"] and self.level <= CONF["toc-level"]:
-            # This count is needed bcos self.toc stores all
-            # titles, regardless of the 'toc-level' setting,
-            # so we can't use self.toc length to number anchors
+        if CONF["toc"]:
             self.anchor_count += 1
             # Autonumber label (if needed)
             label = label or "{}{}".format(self.anchor_prefix, self.anchor_count)
@@ -2985,13 +2966,11 @@ class TitleMaster:
             ret.append(tagged)
         return ret
 
-    def dump_marked_toc(self, max_level=99):
+    def dump_marked_toc(self):
         "Dumps all toc itens as a valid t2t-marked list"
         ret = []
         toc_count = 1
         for level, count_id, txt, label in self.toc:
-            if level > max_level:
-                continue  # ignore
             indent = "  " * level
             id_txt = ("{} {}".format(count_id, txt)).lstrip()
             label = label or self.anchor_prefix + repr(toc_count)
@@ -3001,7 +2980,7 @@ class TitleMaster:
             if TAGS["anchor"]:
                 if CONF["enum-title"] and level == 1:
                     # 1. [Foo #anchor] is more readable than [1. Foo #anchor] in level 1.
-                    # This is a stoled idea from Windows .CHM help files.
+                    # This is an idea stolen from Windows .CHM help files.
                     tocitem = '{}+ [""{}"" #{}]'.format(indent, txt, label)
                 else:
                     tocitem = '{}- [""{}"" #{}]'.format(indent, id_txt, label)
@@ -4848,7 +4827,7 @@ def convert(bodylines, config, firstlinenr=1):
     if TAGS["bodyClose"]:
         ret.append(TAGS["bodyClose"])
 
-    marked_toc = TITLE.dump_marked_toc(CONF["toc-level"])
+    marked_toc = TITLE.dump_marked_toc()
 
     return ret, marked_toc
 

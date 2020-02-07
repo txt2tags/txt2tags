@@ -2,7 +2,7 @@ Txt2tags User Guide
 
 Aurelio Jargas
 %!target: html
-%!options: --toc --toc-level 2 --style userguide.css
+%!options: --toc --style userguide.css
 
 % easy way to change all image locations once, when changing file location
 %!preproc: IMGPATH .
@@ -652,7 +652,7 @@ Example:
 
 ```
 %!target  : html
-%!options : --toc --toc-level 3
+%!options : --toc
 %!style   : fancy.css
 %!preproc : "AMJ"        "Aurelio Marinho Jargas"
 %!postproc: '<BODY.*?>'  '<BODY bgcolor="yellow">'
@@ -722,8 +722,8 @@ The format of the settings is exactly the same as the ones used on the
 ```
 % my configs
 
-%%% Change the default TOC depth for all targets
-%!options: --toc-level 4
+%%% Add a TOC for all targets.
+%!options: --toc
 ```
 
 Any line that is not blank, a comment or a valid config line will raise
@@ -1332,14 +1332,14 @@ specification and the source filename from the ending.
 
 For example, if you do use this command line to convert your document:
 
-``` $ txt2tags -t html --toc --toc-level 2 --enum-title file.t2t
+``` $ txt2tags -t html --toc --enum-title file.t2t
 
 You can save yourself from typing pain using this Options setting inside
 the document source:
 
 ```
 %!target: html
-%!options(html): --toc --toc-level 2 --enum-title
+%!options(html): --toc --enum-title
 ```
 
 Now the options are registered inside the source file, so you can convert it with this simple command:

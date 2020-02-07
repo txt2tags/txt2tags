@@ -2,7 +2,7 @@
 * Expose all rules and set tabletitlerowinbold=1 for Latex again.
 * Don't remove markup just because the target doesn't support it.
 * Clean up the code
-* Remove more seldom-used features (for example, --mask-email, --toc-level)?
+* Remove more seldom-used features (for example, --mask-email)?
 * Make the code faster
 * Inspect the following commits from https://github.com/txt2tags/txt2tags and backport useful changes:
 

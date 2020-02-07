@@ -372,24 +372,6 @@ tests = [
         "cmdline": ["-H --toc --no-toc"],
     },
     {
-        "name": "toc-level-1",
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["-H --toc --toc-level 1"],
-    },
-    {
-        "name": "toc-level-2",  # very deep
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["-H --toc --toc-level 999"],
-    },
-    {
-        "name": "toc-level-3",  # useless (no --toc)
-        "target": "html",
-        "content": EMPTY_HEADER + TITLED_BODY,
-        "cmdline": ["-H --toc-level 1"],
-    },
-    {
         "name": "mask-email",
         "target": "html",
         "content": EMPTY_HEADER + EMAIL,
