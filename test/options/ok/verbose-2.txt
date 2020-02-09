@@ -4,8 +4,8 @@
 ---------- File read (2 lines): verbose-2.t2t
 ---------- Areas found:   body (  2)
 ---------- Source document contents stored
------ Parsing and saving all config found (009 items)
----------- Added the following keys: infile, outfile, rc, realcmdline, target, verbose
+----- Parsing and saving all config found (008 items)
+---------- Added the following keys: infile, outfile, rc, target, verbose
 ----- Composing target Headers
 ----- Composing target Body
 ----- Composing target Footer

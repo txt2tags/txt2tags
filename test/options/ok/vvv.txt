@@ -4,7 +4,7 @@
 ---------- File read (2 lines): vvv.t2t
 ---------- Areas found:   body (  2)
 ---------- Source document contents stored
------ Parsing and saving all config found (010 items)
+----- Parsing and saving all config found (009 items)
 --------------- Added config .......quiet : 1
 --------------- Added config ..........rc : 0
 --------------- Added config ......target : txt
@@ -13,8 +13,7 @@
 --------------- Added config .....verbose : 1
 --------------- Added config .....outfile : -
 --------------- Added config ......infile : vvv.t2t
---------------- Added config .realcmdline : ['-q', '--no-rc', '-t', 'txt', '--no-quiet', '-vvv', '-o-', 'vvv.t2t']
----------- Added the following keys: infile, outfile, rc, realcmdline, target, verbose
+---------- Added the following keys: infile, outfile, rc, target, verbose
 ----- Composing target Headers
 ----- Composing target Body
 ----- Composing target Footer

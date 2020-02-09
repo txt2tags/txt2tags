@@ -2082,9 +2082,6 @@ class CommandLine:
                     filtered.append([target, name, value])
             ret = filtered[:]
 
-        # Add the original command line string as 'realcmdline'
-        ret.append(["all", "realcmdline", cmdline])
-
         return ret
 
 
@@ -2300,7 +2297,6 @@ class ConfigMaster:
         empty.update(self.dft_options)
         empty.update(self.dft_flags)
         empty.update(self.dft_actions)
-        empty["realcmdline"] = ""  # internal use only
         empty["sourcefile"] = ""  # internal use only
         return empty
 
@@ -4544,7 +4540,6 @@ def convert(bodylines, config, firstlinenr=1):
 
             # %!include command
             if key == "include":
-
                 incpath = os.path.dirname(CONF["sourcefile"])
                 incfile = val
                 err = "A file cannot include itself (loop!)"
