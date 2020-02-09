@@ -79,7 +79,7 @@ import sys
 ##############################################################################
 
 # Program information
-my_url = "http://txt2tags.org"
+my_url = "https://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
 __version__ = "3.6"
@@ -174,36 +174,34 @@ VERSIONSTR = "{} version {} <{}>".format(my_name, __version__, my_url)
 USAGE = "\n".join(
     [
         "",
-        "Usage: %s [OPTIONS] [infile.t2t ...]" % my_name,
+        "Usage: %s [OPTIONS] infile.t2t" % my_name,
         "",
-        "      --targets       print a list of all the available targets and exit",
+        "      --targets       list available targets and exit",
         "  -t, --target=TYPE   set target document type. currently supported:",
-        "                      %s," % ", ".join(TARGETS[:9]),
-        "                      %s" % ", ".join(TARGETS[9:]),
+        "                      %s" % ", ".join(TARGETS),
         "  -i, --infile=FILE   set FILE as the input file name ('-' for STDIN)",
         "  -o, --outfile=FILE  set FILE as the output file name ('-' for STDOUT)",
-        "      --toc           add an automatic Table of Contents to the output",
-        "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc",
-        "      --style=FILE    use FILE as the document style (like HTML CSS)",
-        "  -H, --no-headers    suppress header and footer from the output",
+        "      --toc           add a table of contents to the output",
+        "  -n, --enum-title    enumerate all titles as 1, 1.1, 1.1.1, etc.",
+        "      --style=FILE    use FILE as the document style (e.g., a CSS file)",
+        "  -H, --no-headers    omit header and footer from output",
         "  -C, --config-file=F read configuration from file F",
-        "  -q, --quiet         quiet mode, suppress all output (except errors)",
+        "  -q, --quiet         suppress all output (except errors)",
         "  -v, --verbose       print informative messages during conversion",
-        "  -h, --help          print this help information and exit",
+        "  -h, --help          print this help text and exit",
         "  -V, --version       print program version and exit",
         "",
-        "Turn OFF options:",
-        "     --no-enum-title, --no-headers, --no-infile,",
-        "     --no-outfile, --no-quiet, --no-rc, --no-slides,",
-        "     --no-style, --no-targets, --no-toc",
+        "Turn off options:",
+        "     --no-enum-title, --headers, --no-quiet,",
+        "     --no-rc, --no-style, --no-toc",
         "",
         "Example:",
         "     {} -t html --toc {}".format(my_name, "file.t2t"),
         "",
         "By default, converted output is saved to 'infile.<target>'.",
         "Use --outfile to force an output file name.",
-        "If  input file is '-', reads from STDIN.",
-        "If output file is '-', dumps output to STDOUT.",
+        "If  input file is '-', read from STDIN.",
+        "If output file is '-', dump output to STDOUT.",
         "",
         my_url,
         "",

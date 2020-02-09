@@ -3,6 +3,7 @@
 * Make CSS style prettier (Jendrik Seipp).
 * Remove `--toc-only` and `--toc-level` options (Jendrik Seipp).
 * Remove `--mask-email` option (Jendrik Seipp).
+* Polish help text (Jendrik Seipp).
 
 # 3.6 (2020-02-05)
 
