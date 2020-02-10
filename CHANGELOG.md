@@ -1,4 +1,4 @@
-# next (unreleased)
+# 3.7 (2020-02-10)
 
 * Make CSS style prettier (Jendrik Seipp).
 * Remove `--toc-only` and `--toc-level` options (Jendrik Seipp).
