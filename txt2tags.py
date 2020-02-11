@@ -82,7 +82,7 @@ import sys
 my_url = "https://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
-__version__ = "3.7"
+__version__ = "3.7.2"
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
@@ -235,13 +235,13 @@ HEADER_TEMPLATE = {
 """,
     "html": """\
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="https://txt2tags.org">
 <link rel="stylesheet" href="%(STYLE)s">
-<style type="text/css">
+<style>  
 blockquote{margin: 1em 2em; border-left: 2px solid #999;
   font-style: oblique; padding-left: 1em;}
 blockquote:first-letter{margin: .2em .1em .1em 0; font-size: 160%%; font-weight: bold;}
@@ -272,7 +272,7 @@ table.center{margin-left:auto; margin-right:auto;}
 <h3>%(HEADER3)s</h3>
 </hgroup>
 </header>
-<article>
+
 """,
     "dbk": """\
 <?xml version="1.0"
@@ -510,7 +510,7 @@ def getTags(config):
             "blockVerbClose": "</pre>",
             "blockVerbOpen": "<pre>",
             "bodyClose": "</div>",
-            "bodyOpen": '<div class="body" id="body">',
+            "bodyOpen": '<div class="body">',
             "comment": "<!-- \a -->",
             "cssClose": "</style>",
             "cssOpen": "<style>",
@@ -522,7 +522,7 @@ def getTags(config):
             "deflistOpen": "<dl>",
             "email": '<a href="mailto:\a">\a</a>',
             "emailMark": '<a href="mailto:\a">\a</a>',
-            "EOD": "</article></body></html>",
+            "EOD": "</body></html>",
             "fontBoldClose": "</strong>",
             "fontBoldOpen": "<strong>",
             "fontItalicClose": "</em>",
@@ -561,13 +561,13 @@ def getTags(config):
             "tableTitleCellClose": "</th>",
             "tableTitleCellOpen": "<th~s~>",
             "title1Close": "</section>",
-            "title1Open": "<section~A~>\n<h1>\a</h1>",
+            "title1Open": "<section~A~>\n<h2>\a</h2>", #www3 validator: h1 only for top level
             "title2Close": "</section>",
-            "title2Open": "<section~A~>\n<h2>\a</h2>",
+            "title2Open": "<section~A~>\n<h3>\a</h3>",
             "title3Close": "</section>",
-            "title3Open": "<section~A~>\n<h3>\a</h3>",
+            "title3Open": "<section~A~>\n<h4>\a</h4>",
             "title4Close": "</section>",
-            "title4Open": "<section~A~>\n<h4>\a</h4>",
+            "title4Open": "<section~A~>\n<h5>\a</h5>",
             "title5Close": "</section>",
             "title5Open": "<section~A~>\n<h5>\a</h5>",
             "tocClose": "</nav>",
