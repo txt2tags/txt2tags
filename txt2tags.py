@@ -82,7 +82,7 @@ import sys
 my_url = "https://txt2tags.org"
 my_name = "txt2tags"
 my_email = "jendrikseipp@gmail.com"
-__version__ = "3.7.2"
+__version__ = "3.7"
 
 # FLAGS   : the conversion related flags  , may be used in %!options
 # OPTIONS : the conversion related options, may be used in %!options
@@ -561,13 +561,13 @@ def getTags(config):
             "tableTitleCellClose": "</th>",
             "tableTitleCellOpen": "<th~s~>",
             "title1Close": "</section>",
-            "title1Open": "<section~A~>\n<h2>\a</h2>", #www3 validator: h1 only for top level
+            "title1Open": "<section~A~>\n<h1>\a</h1>", 
             "title2Close": "</section>",
-            "title2Open": "<section~A~>\n<h3>\a</h3>",
+            "title2Open": "<section~A~>\n<h2>\a</h2>",
             "title3Close": "</section>",
-            "title3Open": "<section~A~>\n<h4>\a</h4>",
+            "title3Open": "<section~A~>\n<h3>\a</h3>",
             "title4Close": "</section>",
-            "title4Open": "<section~A~>\n<h5>\a</h5>",
+            "title4Open": "<section~A~>\n<h4>\a</h4>",
             "title5Close": "</section>",
             "title5Open": "<section~A~>\n<h5>\a</h5>",
             "tocClose": "</nav>",
