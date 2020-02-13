@@ -98,14 +98,7 @@ __version__ = "3.7"
 # behavior may occur. There is no --no-<action>.
 # Options --version and --help inside %!options are odd.
 
-FLAGS = {
-    "headers": 1,
-    "enum-title": 0,
-    "toc": 0,
-    "rc": 1,
-    "quiet": 0,
-    "slides": 0,
-}
+FLAGS = {"headers": 1, "enum-title": 0, "toc": 0, "rc": 1, "quiet": 0, "slides": 0}
 OPTIONS = {
     "target": "",
     "style": "",
@@ -114,13 +107,7 @@ OPTIONS = {
     "config-file": "",
     "lang": "",
 }
-ACTIONS = {
-    "help": 0,
-    "version": 0,
-    "verbose": 0,
-    "debug": 0,
-    "targets": 0,
-}
+ACTIONS = {"help": 0, "version": 0, "verbose": 0, "debug": 0, "targets": 0}
 NO_TARGET = ["help", "version", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
@@ -241,7 +228,7 @@ HEADER_TEMPLATE = {
 <title>%(HEADER1)s</title>
 <meta name="generator" content="https://txt2tags.org">
 <link rel="stylesheet" href="%(STYLE)s">
-<style>  
+<style>
 blockquote{margin: 1em 2em; border-left: 2px solid #999;
   font-style: oblique; padding-left: 1em;}
 blockquote:first-letter{margin: .2em .1em .1em 0; font-size: 160%%; font-weight: bold;}
@@ -561,7 +548,7 @@ def getTags(config):
             "tableTitleCellClose": "</th>",
             "tableTitleCellOpen": "<th~s~>",
             "title1Close": "</section>",
-            "title1Open": "<section~A~>\n<h1>\a</h1>", 
+            "title1Open": "<section~A~>\n<h1>\a</h1>",
             "title2Close": "</section>",
             "title2Open": "<section~A~>\n<h2>\a</h2>",
             "title3Close": "</section>",
