@@ -98,14 +98,7 @@ __version__ = "3.7"
 # behavior may occur. There is no --no-<action>.
 # Options --version and --help inside %!options are odd.
 
-FLAGS = {
-    "headers": 1,
-    "enum-title": 0,
-    "toc": 0,
-    "rc": 1,
-    "quiet": 0,
-    "slides": 0,
-}
+FLAGS = {"headers": 1, "enum-title": 0, "toc": 0, "rc": 1, "quiet": 0, "slides": 0}
 OPTIONS = {
     "target": "",
     "style": "",
@@ -114,13 +107,7 @@ OPTIONS = {
     "config-file": "",
     "lang": "",
 }
-ACTIONS = {
-    "help": 0,
-    "version": 0,
-    "verbose": 0,
-    "debug": 0,
-    "targets": 0,
-}
+ACTIONS = {"help": 0, "version": 0, "verbose": 0, "debug": 0, "targets": 0}
 NO_TARGET = ["help", "version", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
@@ -235,13 +222,13 @@ HEADER_TEMPLATE = {
 """,
     "html": """\
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="https://txt2tags.org">
 <link rel="stylesheet" href="%(STYLE)s">
-<style type="text/css">
+<style>
 blockquote{margin: 1em 2em; border-left: 2px solid #999;
   font-style: oblique; padding-left: 1em;}
 blockquote:first-letter{margin: .2em .1em .1em 0; font-size: 160%%; font-weight: bold;}
@@ -272,7 +259,7 @@ table.center{margin-left:auto; margin-right:auto;}
 <h3>%(HEADER3)s</h3>
 </hgroup>
 </header>
-<article>
+
 """,
     "dbk": """\
 <?xml version="1.0"
@@ -510,7 +497,7 @@ def getTags(config):
             "blockVerbClose": "</pre>",
             "blockVerbOpen": "<pre>",
             "bodyClose": "</div>",
-            "bodyOpen": '<div class="body" id="body">',
+            "bodyOpen": '<div class="body">',
             "comment": "<!-- \a -->",
             "cssClose": "</style>",
             "cssOpen": "<style>",
@@ -522,7 +509,7 @@ def getTags(config):
             "deflistOpen": "<dl>",
             "email": '<a href="mailto:\a">\a</a>',
             "emailMark": '<a href="mailto:\a">\a</a>',
-            "EOD": "</article></body></html>",
+            "EOD": "</body></html>",
             "fontBoldClose": "</strong>",
             "fontBoldOpen": "<strong>",
             "fontItalicClose": "</em>",
