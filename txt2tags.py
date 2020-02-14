@@ -98,14 +98,7 @@ __version__ = "3.7"
 # behavior may occur. There is no --no-<action>.
 # Options --version and --help inside %!options are odd.
 
-FLAGS = {
-    "headers": 1,
-    "enum-title": 0,
-    "toc": 0,
-    "rc": 1,
-    "quiet": 0,
-    "slides": 0,
-}
+FLAGS = {"headers": 1, "enum-title": 0, "toc": 0, "rc": 1, "quiet": 0, "slides": 0}
 OPTIONS = {
     "target": "",
     "style": "",
@@ -114,13 +107,7 @@ OPTIONS = {
     "config-file": "",
     "lang": "",
 }
-ACTIONS = {
-    "help": 0,
-    "version": 0,
-    "verbose": 0,
-    "debug": 0,
-    "targets": 0,
-}
+ACTIONS = {"help": 0, "version": 0, "verbose": 0, "debug": 0, "targets": 0}
 NO_TARGET = ["help", "version", "targets"]
 CONFIG_KEYWORDS = ["target", "style", "options", "preproc", "postproc"]
 
@@ -141,7 +128,7 @@ TARGET_NAMES = {
     "adoc": "AsciiDoc document",
     "creole": "Creole 1.0 document",
     "md": "Markdown document",
-    "ctx": "ConTeXt document"
+    "ctx": "ConTeXt document",
 }
 
 TARGETS = sorted(TARGET_NAMES)
@@ -406,8 +393,7 @@ _%(HEADER3)s_
 %(HEADER2)s
 %(HEADER3)s
 """,
-   "ctx": \
-r"""\mainlanguage[en]
+    "ctx": r"""\mainlanguage[en]
 \definecolor[linkcolor][h=0007F0]
 \setupcolors[state=start]
 \setupinteraction[state=start,
@@ -1341,7 +1327,7 @@ def getTags(config):
             "_tableCellAlignCenter": "align=middle",
             "_tableCellAlignRight": "align=left",
             "tableCellClose": "\\eTD",
-            "_tableCellColSpan": ',nc=\a',
+            "_tableCellColSpan": ",nc=\a",
             "tableCellOpen": "\\bTD[~A~~s~]",
             "tableClose": "\\eTABLE}\\stopalignment",
             "tableOpen": "\\blank[medium]\\startalignment[~A~]{\\bTABLE[~B~]",
@@ -1361,7 +1347,7 @@ def getTags(config):
             "title5Open": None,
             "tocClose": None,
             "tocOpen": None,
-            "TOC": "\\subsubject{Contents}  \\placecontent",	
+            "TOC": "\\subsubject{Contents}  \\placecontent",
             "url": "\\goto{\a}[url(\a)]",
             "urlMark": "\\goto{\a}[url(\a)]",
         },
@@ -1802,11 +1788,11 @@ def getRules(config):
             "blanksaroundtitle": 1,
         },
         "ctx": {
-            "autonumberlist" : 1,  # target supports numbered lists natively
+            "autonumberlist": 1,  # target supports numbered lists natively
             "autonumbertitle": 0,  # ???target supports numbered titles natively
             "autotocnewpageafter": 0,  # break page after automatic TOC
-            "autotocnewpagebefore": 0,  # break page before automatic TOC            
-            "autotocwithbars": 0,  # automatic TOC surrounded by bars 
+            "autotocnewpagebefore": 0,  # break page before automatic TOC
+            "autotocwithbars": 0,  # automatic TOC surrounded by bars
             "barinsidequote": 0,  # ???bars are allowed inside quote blocks
             "compactlist": 1,  # separate enclosing tags for compact lists
             "escapeurl": 1,  # escape special in link URL
@@ -1818,38 +1804,38 @@ def getRules(config):
             "linkable": 1,  # target supports external links
             "listnotnested": 0,  # lists cannot be nested
             "mapbar2pagebreak": 1,  # map the strong bar to a page break
-            "onelinepara": 0,  #??? dump paragraph as a single long line
-            "parainsidelist": 1,  #???lists items supports paragraph
+            "onelinepara": 0,  # ??? dump paragraph as a single long line
+            "parainsidelist": 1,  # ???lists items supports paragraph
             "quotenotnested": 0,  # quotes cannot be nested
             "spacedlistitem": 1,  # lists support blank lines between items
-            "stylable": 1,  #???target supports external style files
+            "stylable": 1,  # ???target supports external style files
             "tableable": 1,  # target supports tables
-            "tablecellmulticol": 0,  #??? separate open+close tags for multicol cells
-            "tablecellspannable": 1,  # the table cells can have span attribute   
+            "tablecellmulticol": 0,  # ??? separate open+close tags for multicol cells
+            "tablecellspannable": 1,  # the table cells can have span attribute
             "tablecellstrip": 1,  # strip extra spaces from each table cell
             "tabletitlerowinbold": 1,  # manually bold any cell on table titles
             "titleblocks": 1,  # titles must be on open/close section blocks
-            "verbblockfinalescape": 0,  #??? do final escapes in verb block
-            "verbblocknotescaped": 1,  #??? don't escape specials in verb block
+            "verbblockfinalescape": 0,  # ??? do final escapes in verb block
+            "verbblocknotescaped": 1,  # ??? don't escape specials in verb block
             # Target code beautify (ON/OFF)
-            "blankendautotoc": 1,  # append a blank line at the auto TOC end            
+            "blankendautotoc": 1,  # append a blank line at the auto TOC end
             "blanksaroundbar": 1,  # put a blank line before and after bars
             "blanksarounddeflist": 1,  # put a blank line before and after deflists
             "blanksaroundlist": 1,  # put a blank line before and after lists
             "blanksaroundnumlist": 1,  # put a blank line before and after numlists
-            "blanksaroundnumtitle": 0,  #??? put a blank line before and after numtitles
-            "blanksaroundpara": 1,  #??? put a blank line before and after paragraphs
+            "blanksaroundnumtitle": 0,  # ??? put a blank line before and after numtitles
+            "blanksaroundpara": 1,  # ??? put a blank line before and after paragraphs
             "blanksaroundquote": 1,  # put a blank line before and after quotes
             "blanksaroundtable": 1,  # put a blank line before and after tables
             "blanksaroundtitle": 0,  # put a blank line before and after titles
             "blanksaroundverb": 1,  # put a blank line before and after verb blocks
             "breaktablecell": 0,  # break lines after any table cell
-            "breaktablelineopen" :0,  # break line after opening table line            
-            # "deflisttextstrip": 0,  #??? strip the contents of the deflist 
-            "indentverbblock": 0,  #???add leading spaces to verb block lines
+            "breaktablelineopen": 0,  # break line after opening table line
+            # "deflisttextstrip": 0,  #??? strip the contents of the deflist
+            "indentverbblock": 0,  # ???add leading spaces to verb block lines
             "keeplistindent": 1,  # don't remove the leading spaces on lists
-            "keepquoteindent": 0,  # don't remove the leading TABs on quotes 
-            "notbreaklistopen": 0,  #??? don't break line after opening a new list
+            "keepquoteindent": 0,  # don't remove the leading TABs on quotes
+            "notbreaklistopen": 0,  # ??? don't break line after opening a new list
             # "spacedlistitemopen",  # append a space after the list item open tag
             # "spacednumlistitemopen",  # append a space after the numlist item open tag
             "tagnotindentable": 0,  # tags must be placed at the line beginning
@@ -1857,7 +1843,7 @@ def getRules(config):
             # "listmaxdepth",  # maximum depth for lists
             # "quotemaxdepth",  # maximum depth for quotes
             "tablecellaligntype": "cell",  # type of table cell align: cell, column
-        },        
+        },
     }
     assert set(rules_bank) == set(TARGETS)
 
@@ -4153,7 +4139,7 @@ def doEscape(target, txt):
         txt = txt.replace('"', '"%s""' % ESCCHAR)  # "\""
         txt = re.sub("([|&{}@#^~])", '"\\1"', txt)  # "@"
         txt = txt.replace(tmpmask, '"%s"' % (ESCCHAR * 2))  # "\\"
-    elif target in ("tex","ctx"):
+    elif target in ("tex", "ctx"):
         # Mark literal \ to be changed to $\backslash$ later
         txt = txt.replace(ESCCHAR, tmpmask)
         txt = re.sub("([#$&%{}])", ESCCHAR + r"\1", txt)  # \%
