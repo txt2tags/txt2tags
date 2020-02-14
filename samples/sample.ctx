@@ -1,0 +1,272 @@
+\mainlanguage[en]
+\definecolor[linkcolor][h=0007F0]
+\setupcolors[state=start]
+\setupinteraction[state=start,
+    title={TXT2TAGS SAMPLE},
+    author={Aurelio Jargas},
+    contrastcolor=linkcolor,
+    color=linkcolor,
+    ]
+\placebookmarks[section,subsection,subsubsection]
+\definehead[myheaderone][title]
+\setuphead
+  [myheaderone]
+  [textstyle=cap,
+   align=middle,
+   after=\nowhitespace
+  ]
+\definehead[myheadertwo][subject]
+\setuphead
+  [myheadertwo]
+  [ before=\nowhitespace,
+   align=middle,
+   after=\nowhitespace
+  ]
+\definehead[myheaderthree][subsubject]
+\setuphead
+  [myheaderthree]
+  [before=\nowhitespace,
+   align=middle,
+  ]
+\definedescription
+   [compdesc]
+   [alternative=serried,
+    headstyle=bold,
+    width=broad,
+    ]
+\setupTABLE[frame=off]
+\setupexternalfigures[maxwidth=0.7\textwidth]
+\setupheadertexts[]
+\setupfootertexts[pagenumber]
+\setupwhitespace[medium]
+\setupheads[number=no]
+\starttext
+
+\myheaderone{TXT2TAGS SAMPLE}
+\myheadertwo{Aurelio Jargas}
+
+
+\startsection[title=Introduction, reference=]
+
+Welcome to the txt2tags sample file.
+
+Here you have examples and a brief explanation of all
+marks.
+
+The first 3 lines of the this file are used as headers,
+on the following format:
+
+\starttyping
+line1: document title
+line2: author name, email
+line3: date, version
+\stoptyping
+
+Lines with balanced equal signs = around are titles.
+
+\stopsection
+
+\startsection[title=Fonts and Beautifiers, reference=]
+
+We have two sets of fonts:
+
+The NORMAL type that can be improved with beautifiers.
+
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+
+We will now enter on a subtitle...
+
+\startsubsection[title=Beautifiers, reference=]
+
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+
+We use double *, /, - and _ to represent {\bf bold},
+{\em italic}, \overstrike{strike} and \overstrike{underline}.
+
+The {\bf {\em bold italic}} style is also supported as a
+combination.
+
+\stopsubsection
+
+\startsubsection[title=Pre-Formatted Text, reference=]
+
+We can put a code sample or other pre-formatted text:
+
+\starttyping
+  here    is     pre-formatted
+//marks// are  **not**  ``interpreted``
+\stoptyping
+
+And also, it's easy to put a one line pre-formatted
+text:
+
+\starttyping
+prompt$ ls /etc
+\stoptyping
+
+Or use {\tt pre-formatted} inside sentences.
+
+\stopsubsection
+
+\startsubsection[title=More Cosmetics, reference=]
+
+Special entities like email (\goto{duh@somewhere.com}[url(mailto:duh@somewhere.com)]) and
+URL (\goto{http://www.duh.com}[url(http://www.duh.com)]) are detected automagically,
+as well as horizontal lines:
+
+\hairline
+
+\pagebreak
+
+You can also specify an \goto{explicit link}[url(http://duh.org)]
+with label.
+
+And remember,
+
+	\startblockquote
+A TAB in front of the line does a quotation.
+
+		\startblockquote
+More TABs, more depth (if allowed).
+		\stopblockquote
+
+	\stopblockquote
+
+Nice.
+
+\stopsubsection
+
+\stopsection
+
+\startsection[title=Lists, reference=]
+
+A list of items is natural, just putting a {\bf dash} or
+a {\bf plus} at the beginning of the line.
+
+\startsubsection[title=Plain List, reference=]
+
+The dash is the default list identifier. For sublists,
+just add {\bf spaces} at the beginning of the line. More
+spaces, more sublists.
+
+\startitemize[joinedup,nowhite]
+\item earth
+  \startitemize[joinedup,nowhite]
+  \item america
+    \startitemize[joinedup,nowhite]
+    \item south america
+      \startitemize[joinedup,nowhite]
+      \item brazil
+        \startitemize[joinedup,nowhite]
+        \item how deep can i go?
+        \stopitemize
+      \stopitemize
+    \stopitemize
+  \item europe
+    \startitemize[joinedup,nowhite]
+    \item lots of countries
+    \stopitemize
+  \stopitemize
+\item mars
+  \startitemize[joinedup,nowhite]
+  \item who knows?
+  \stopitemize
+\stopitemize
+
+The list ends with {\bf two} consecutive blank lines.
+
+\stopsubsection
+
+\startsubsection[title=Numbered List, reference=]
+
+The same rules as the plain list, just a different
+identifier (plus).
+
+\startitemize[n,joinedup,nowhite]
+\item one
+\item two
+\item three
+  \startitemize[joinedup,nowhite]
+  \item mixed lists!
+  \item what a mess
+    \startitemize[n,joinedup,nowhite]
+    \item counting again
+    \item ...
+    \stopitemize
+  \stopitemize
+\item four
+\stopitemize
+
+\stopsubsection
+
+\startsubsection[title=Definition List, reference=]
+
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+
+\compdesc{orange}
+  a yellow fruit
+\compdesc{apple}
+  a green or red fruit
+\compdesc{other fruits}
+  \startitemize[joinedup,nowhite]
+  \item wee!
+  \item mixing lists
+    \startitemize[n,joinedup,nowhite]
+    \item again!
+    \item and again!
+    \stopitemize
+  \stopitemize
+
+\stopsubsection
+
+\stopsection
+
+\startsection[title=Tables, reference=]
+
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+
+\blank[medium]\startalignment[middle]{\bTABLE[frame=on]
+\bTR\bTH{\bf heading 1}\eTH\bTH{\bf heading 2}\eTH\bTH{\bf heading 3}\eTH\eTR
+\bTR\bTD[]cell 1.1\eTD\bTD[align=middle]cell 1.2\eTD\bTD[align=left]cell 1.3\eTD\eTR
+\bTR\bTD[]cell 2.1\eTD\bTD[align=middle]cell 2.2\eTD\bTD[align=left]cell 2.3\eTD\eTR
+\eTABLE}\stopalignment
+
+Without the last pipe, no border:
+
+\blank[medium]\startalignment[middle]{\bTABLE[]
+\bTR\bTH{\bf heading 1}\eTH\bTH{\bf heading 2}\eTH\bTH{\bf heading 3}\eTH\eTR
+\bTR\bTD[]cell 1.1\eTD\bTD[align=middle]cell 1.2\eTD\bTD[align=left]cell 1.3\eTD\eTR
+\bTR\bTD[]cell 2.1\eTD\bTD[align=middle]cell 2.2\eTD\bTD[align=left]cell 2.3\eTD\eTR
+\eTABLE}\stopalignment
+
+\stopsection
+
+\startsection[title=Special Entities, reference=]
+
+Because things were too simple.
+
+\startsubsection[title=Images, reference=]
+
+The image mark is as simple as it can be: {\tt [filename]}.
+
+\startalignment[middle]\dontleavehmode{\externalfigure[img/photo.jpg]}\stopalignment
+
+\startitemize[joinedup,nowhite]
+\item The filename must end in PNG, JPG, GIF, or similar.
+\item No spaces inside the brackets!
+\stopitemize
+
+\hairline
+
+\startalignment[middle]\dontleavehmode{\externalfigure[img/t2tpowered.png]}\stopalignment
+
+\stopsubsection
+
+\stopsection
+
+\stoptext
