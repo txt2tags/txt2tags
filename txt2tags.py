@@ -1304,7 +1304,8 @@ def getTags(config):
             "_imgAlignCenter": "middle",
             "_imgAlignLeft": "flushleft",
             "_imgAlignRight": "flushright",
-            "img": "\\startalignment[~A~]\dontleavehmode{\\externalfigure[\a]}\\stopalignment",
+            "img": "\\startalignment[~A~]\\dontleavehmode{"
+            "\\externalfigure[\a]}\\stopalignment",
             "listClose": "\\stopitemize",
             "listCloseCompact": "\\stopitemize",
             "listItemClose": None,
