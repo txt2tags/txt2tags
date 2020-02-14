@@ -7,7 +7,7 @@
     contrastcolor=linkcolor,
     color=linkcolor,
     ]
-\placebookmarks[section,subsection,subsubsection]	
+\placebookmarks[section,subsection,subsubsection]
 \definehead[myheaderone][title]
 \setuphead
   [myheaderone]
@@ -44,7 +44,7 @@
 
 \myheaderone{TXT2TAGS SAMPLE}
 \myheadertwo{Aurelio Jargas}
-  
+
 
 \startsection[title=Introduction, reference=]
 
