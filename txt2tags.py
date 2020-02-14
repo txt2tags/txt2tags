@@ -402,7 +402,7 @@ _%(HEADER3)s_
     contrastcolor=linkcolor,
     color=linkcolor,
     ]
-\placebookmarks[section,subsection,subsubsection]	
+\placebookmarks[section,subsection,subsubsection]
 \definehead[myheaderone][title]
 \setuphead
   [myheaderone]
@@ -441,7 +441,7 @@ _%(HEADER3)s_
 \myheaderone{%(HEADER1)s}
 \myheadertwo{%(HEADER2)s}
 \myheaderthree{%(HEADER3)s}
-  
+
 """,
     # @SysInclude { tbl }                   # Tables support
     # setup: @MakeContents { Yes }          # show TOC
@@ -1789,59 +1789,51 @@ def getRules(config):
         },
         "ctx": {
             "autonumberlist": 1,  # target supports numbered lists natively
-            "autonumbertitle": 0,  # ???target supports numbered titles natively
+            "autonumbertitle": 0,  # target supports numbered titles natively
             "autotocnewpageafter": 0,  # break page after automatic TOC
             "autotocnewpagebefore": 0,  # break page before automatic TOC
             "autotocwithbars": 0,  # automatic TOC surrounded by bars
-            "barinsidequote": 0,  # ???bars are allowed inside quote blocks
+            "barinsidequote": 0,  # bars are allowed inside quote blocks
             "compactlist": 1,  # separate enclosing tags for compact lists
             "escapeurl": 1,  # escape special in link URL
             "finalescapetitle": 1,  # perform final escapes on title lines
             "imgalignable": 1,  # target supports image alignment
-            # "imgasdefterm": 0,  # target supports image as definition term
             "imglinkable": 1,  # target supports images as links
             "labelbeforelink": 1,  # label comes before the link on the tag
             "linkable": 1,  # target supports external links
             "listnotnested": 0,  # lists cannot be nested
             "mapbar2pagebreak": 1,  # map the strong bar to a page break
-            "onelinepara": 0,  # ??? dump paragraph as a single long line
-            "parainsidelist": 1,  # ???lists items supports paragraph
+            "onelinepara": 0,  # dump paragraph as a single long line
+            "parainsidelist": 1,  # lists items supports paragraph
             "quotenotnested": 0,  # quotes cannot be nested
             "spacedlistitem": 1,  # lists support blank lines between items
-            "stylable": 1,  # ???target supports external style files
+            "stylable": 1,  # target supports external style files
             "tableable": 1,  # target supports tables
-            "tablecellmulticol": 0,  # ??? separate open+close tags for multicol cells
+            "tablecellmulticol": 0,  # separate open+close tags for multicol cells
             "tablecellspannable": 1,  # the table cells can have span attribute
             "tablecellstrip": 1,  # strip extra spaces from each table cell
             "tabletitlerowinbold": 1,  # manually bold any cell on table titles
             "titleblocks": 1,  # titles must be on open/close section blocks
-            "verbblockfinalescape": 0,  # ??? do final escapes in verb block
-            "verbblocknotescaped": 1,  # ??? don't escape specials in verb block
-            # Target code beautify (ON/OFF)
+            "verbblockfinalescape": 0,  # do final escapes in verb block
+            "verbblocknotescaped": 1,  # don't escape specials in verb block
             "blankendautotoc": 1,  # append a blank line at the auto TOC end
             "blanksaroundbar": 1,  # put a blank line before and after bars
             "blanksarounddeflist": 1,  # put a blank line before and after deflists
             "blanksaroundlist": 1,  # put a blank line before and after lists
             "blanksaroundnumlist": 1,  # put a blank line before and after numlists
-            "blanksaroundnumtitle": 0,  # ??? put a blank line before and after numtitles
-            "blanksaroundpara": 1,  # ??? put a blank line before and after paragraphs
+            "blanksaroundnumtitle": 0,  # put a blank line before and after numtitles
+            "blanksaroundpara": 1,  # put a blank line before and after paragraphs
             "blanksaroundquote": 1,  # put a blank line before and after quotes
             "blanksaroundtable": 1,  # put a blank line before and after tables
             "blanksaroundtitle": 0,  # put a blank line before and after titles
             "blanksaroundverb": 1,  # put a blank line before and after verb blocks
             "breaktablecell": 0,  # break lines after any table cell
             "breaktablelineopen": 0,  # break line after opening table line
-            # "deflisttextstrip": 0,  #??? strip the contents of the deflist
-            "indentverbblock": 0,  # ???add leading spaces to verb block lines
+            "indentverbblock": 0,  # add leading spaces to verb block lines
             "keeplistindent": 1,  # don't remove the leading spaces on lists
             "keepquoteindent": 0,  # don't remove the leading TABs on quotes
-            "notbreaklistopen": 0,  # ??? don't break line after opening a new list
-            # "spacedlistitemopen",  # append a space after the list item open tag
-            # "spacednumlistitemopen",  # append a space after the numlist item open tag
+            "notbreaklistopen": 0,  # don't break line after opening a new list
             "tagnotindentable": 0,  # tags must be placed at the line beginning
-            # Value settings
-            # "listmaxdepth",  # maximum depth for lists
-            # "quotemaxdepth",  # maximum depth for quotes
             "tablecellaligntype": "cell",  # type of table cell align: cell, column
         },
     }
