@@ -791,7 +791,7 @@ def getTags(config):
             "_tableCellAlignRight": "r",
             "_tableCellAlignCenter": "c",
             "_tableCellColSpan": "\a",
-            "_tableCellMulticolOpen": "\\multicolumn{\a}{|~C~|}{",
+            "_tableCellMulticolOpen": "\\multicolumn{\a}{~C~}{",
             "_tableCellMulticolClose": "}",
             "tableColAlignSep": None,
             "comment": "% \a",
