@@ -3239,16 +3239,13 @@ class TableMaster:
         sep = TAGS["tableCellSep"]
         calign = [TAGS["_tableCellAlign" + x] for x in rowdata["cellalign"]]
         calignsep = TAGS["tableColAlignSep"]
-        ncolumns = len(self.colalign)
 
         # Populate the span and multicol open tags
         cspan = []
         multicol = []
         colindex = 0
         for cellindex in range(0, len(rowdata["cellspan"])):
-
             span = rowdata["cellspan"][cellindex]
-            align = rowdata["cellalign"][cellindex]
 
             if span > 1:
                 cspan.append(regex["x"].sub(str(span), TAGS["_tableCellColSpan"]))
@@ -3257,12 +3254,7 @@ class TableMaster:
                 multicol.append(mcopen)
             else:
                 cspan.append("")
-
-                if colindex < ncolumns and align != self.colalign[colindex]:
-                    mcopen = regex["x"].sub("1", TAGS["_tableCellMulticolOpen"])
-                    multicol.append(mcopen)
-                else:
-                    multicol.append("")
+                multicol.append("")
 
             if not self.border:
                 multicol[-1] = multicol[-1].replace(calignsep, "")

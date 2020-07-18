@@ -1,3 +1,7 @@
+# unreleased
+
+* Don't use \multicolumn for single LaTeX table cells (Jendrik Seipp).
+
 # 3.7 (2020-02-10)
 
 * Make CSS style prettier (Jendrik Seipp).
