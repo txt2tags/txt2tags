@@ -75,34 +75,46 @@ Option: `--css-inside`              | ✅ | ✅ | ❌
 Setting: `%!postvoodoo`             | ❌ | ✅ | ❌
 Setting: `%!encoding`               | ✅ | ✅ | ❌
 Target: ASCII Art                   | ✅ | ✅ | ❌
-Target: HTML                        | ✅ | ✅ | ❌
-Target: PageMaker                   | ✅ | ✅ | ❌
-Target: XHTML                       | ✅ | ✅ | ❌
-Target: Markdown                    | ❌ | ✅ | ✅
-Target: HTML5                       | ❌ | ✅ | ✅
 Target: ASCII Art Presentation      | ❌ | ✅ | ❌
 Target: ASCII Art Presentation Web  | ❌ | ✅ | ❌
 Target: ASCII Art Spreadsheet       | ❌ | ✅ | ❌
 Target: ASCII Art Web               | ❌ | ✅ | ❌
+Target: AsciiDoc document           | ✅ | ✅ | ✅
 Target: BBCode                      | ❌ | ✅ | ❌
 Target: CSV                         | ❌ | ✅ | ❌
+Target: Creole 1.0 document         | ✅ | ✅ | ✅
+Target: DocBook document            | ✅ | ✅ | ✅
+Target: DokuWiki page               | ✅ | ✅ | ✅
 Target: Foswiki / TWiki             | ❌ | ✅ | ❌
+Target: Google Wiki page            | ✅ | ✅ | ✅
+Target: HTML                        | ✅ | ✅ | ❌
 Target: HTML Spreadsheet            | ❌ | ✅ | ❌
+Target: HTML5                       | ❌ | ✅ | ✅
 Target: LaTeX Spreadsheet           | ❌ | ✅ | ❌
+Target: LaTeX document              | ✅ | ✅ | ✅
+Target: Lout document               | ✅ | ✅ | ✅
 Target: MOM groff macro             | ❌ | ✅ | ❌
+Target: MagicPoint presentation     | ✅ | ✅ | ✅
+Target: Markdown                    | ❌ | ✅ | ✅
+Target: MoinMoin page               | ✅ | ✅ | ✅
 Target: Open Document Spreadsheet   | ❌ | ✅ | ❌
-Target: Redmine Wiki                | ❌ | ✅ | ❌
-Target: ReStructuredText            | ❌ | ✅ | ❌
+Target: PageMaker                   | ✅ | ✅ | ❌
+Target: Plain Text                  | ✅ | ✅ | ✅
+Target: PmWiki page                 | ✅ | ✅ | ✅
 Target: RTF                         | ❌ | ✅ | ❌
-Target: Slidy slides                | ❌ | ✅ | ❌
+Target: ReStructuredText            | ❌ | ✅ | ❌
+Target: Redmine Wiki                | ❌ | ✅ | ❌
+Target: SGML document               | ✅ | ✅ | ✅
 Target: SPIP                        | ❌ | ✅ | ❌
 Target: SQLite database             | ❌ | ✅ | ❌
+Target: Slidy slides                | ❌ | ✅ | ❌
 Target: Txt2tags                    | ❌ | ✅ | ❌
+Target: UNIX Manual page            | ✅ | ✅ | ✅
 Target: Utmac (utroff)              | ❌ | ✅ | ❌
 Target: Vimwiki                     | ❌ | ✅ | ❌
+Target: Wikipedia page              | ✅ | ✅ | ✅
 Target: WordPress                   | ❌ | ✅ | ❌
+Target: XHTML                       | ✅ | ✅ | ❌
 Target: XHTML strict                | ❌ | ✅ | ❌
-
-Unlisted features are available in all versions.
 
 [v2.6]: https://txt2tags.org/download.html
