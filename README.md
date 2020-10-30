@@ -83,6 +83,7 @@ Target: AsciiDoc document           | ✅ | ✅ | ✅
 Target: BBCode                      | ❌ | ✅ | ❌
 Target: CSV                         | ❌ | ✅ | ❌
 Target: Creole 1.0 document         | ✅ | ✅ | ✅
+Target: ConTeXt document            | ❌ | ❌ | ✅
 Target: DocBook document            | ✅ | ✅ | ✅
 Target: DokuWiki page               | ✅ | ✅ | ✅
 Target: Foswiki / TWiki             | ❌ | ✅ | ❌
