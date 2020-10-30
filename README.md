@@ -117,4 +117,6 @@ Target: WordPress                   | ❌ | ✅ | ❌
 Target: XHTML                       | ✅ | ✅ | ❌
 Target: XHTML strict                | ❌ | ✅ | ❌
 
+Unlisted features are available in all versions.
+
 [v2.6]: https://txt2tags.org/download.html
