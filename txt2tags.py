@@ -1997,8 +1997,7 @@ def Quit(msg=""):
 
 
 def Error(msg):
-    msg = "%s: Error: " % my_name + msg
-    raise error(msg)
+    sys.exit("Error: {}".format(msg))
 
 
 def getTraceback():
@@ -3536,7 +3535,7 @@ class BlockMaster:
 
     def blockout(self):
         if not self.BLK:
-            Error("No block to pop")
+            raise AssertionError("No block to pop")
         blockname = self.BLK.pop()
         result = getattr(self, blockname)()
         parsed = self.HLD.pop()
@@ -5017,7 +5016,10 @@ def exec_command_line(user_cmdline=None):
     if len(infiles) == 1:
         infile = infiles[0]
     else:
-        Quit(USAGE)
+        Error(
+            "Pass exactly one input file (see --help). "
+            "Example: {} -t html file.t2t".format(my_name)
+        )
 
     config, doc = process_source_file(infile)
     headers, config_source, body = doc
