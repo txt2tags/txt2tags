@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # Run daily (* needs quotes).
+    - cron: '0 4 * * *'
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9]
+        os: [macos-10.15, ubuntu-20.04, windows-2019]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade setuptools tox wheel
+
+    - name: Build wheel
+      run: python setup.py bdist_wheel
+
+    - name: Install from wheel (for Linux and MacOS)
+      if: ${{ matrix.os != 'windows-2019' }}
+      run: "python -m pip install --only-binary=:all: ./dist/txt2tags-*.whl"
+
+    - name: Install from wheel (for Windows)
+      if: ${{ matrix.os == 'windows-2019' }}
+      run: "python -m pip install --only-binary=:all: --ignore-installed --find-links=dist/ txt2tags"
+
+    - name: Run
+      run: |
+        txt2tags -t html samples/sample.t2t
+        python -m txt2tags -t html samples/sample.t2t
+
+    - name: Run tests
+      run: python -m tox -e py
+
+    - name: Check for style issues
+      if: ${{ matrix.python-version == 3.6 && matrix.os == 'ubuntu-20.04' }}
+      run: python -m tox -e style
