@@ -1,2 +1,2 @@
-txt2tags: Error: You can't use (target) with %!includeconf
+Error: You can't use (target) with %!includeconf
 %!includeconf(html): _failed.inc

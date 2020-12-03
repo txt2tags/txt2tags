@@ -1,1 +1,1 @@
-txt2tags: Error: A file cannot include itself (loop!): include-itself.t2t
+Error: A file cannot include itself (loop!): include-itself.t2t
