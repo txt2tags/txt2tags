@@ -5017,10 +5017,7 @@ def exec_command_line(user_cmdline=None):
     if len(infiles) == 1:
         infile = infiles[0]
     else:
-        Error(
-            "Pass exactly one input file (see --help). "
-            "Example: {} -t html file.t2t".format(my_name)
-        )
+        Quit(USAGE)
 
     config, doc = process_source_file(infile)
     headers, config_source, body = doc
