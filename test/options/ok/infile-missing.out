@@ -1,1 +1,1 @@
-txt2tags: Error: Pass exactly one input file (see --help). Example: txt2tags -t html file.t2t
+Error: Pass exactly one input file (see --help). Example: txt2tags -t html file.t2t
