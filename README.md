@@ -104,7 +104,7 @@ Target: Plain Text                  | ✅ | ✅ | ✅
 Target: PmWiki page                 | ✅ | ✅ | ✅
 Target: RTF                         | ❌ | ✅ | ❌
 Target: ReStructuredText            | ❌ | ✅ | ❌
-Target: Redmine Wiki                | ❌ | ✅ | ❌
+Target: Redmine Wiki (Textile)      | ❌ | ✅ | ❌
 Target: SGML document               | ✅ | ✅ | ✅
 Target: SPIP                        | ❌ | ✅ | ❌
 Target: SQLite database             | ❌ | ✅ | ❌
@@ -113,7 +113,7 @@ Target: Txt2tags                    | ❌ | ✅ | ❌
 Target: UNIX Manual page            | ✅ | ✅ | ✅
 Target: Utmac (utroff)              | ❌ | ✅ | ❌
 Target: Vimwiki                     | ❌ | ✅ | ❌
-Target: Wikipedia page              | ✅ | ✅ | ✅
+Target: Wikipedia page (MediaWiki)  | ✅ | ✅ | ✅
 Target: WordPress                   | ❌ | ✅ | ❌
 Target: XHTML                       | ✅ | ✅ | ❌
 Target: XHTML strict                | ❌ | ✅ | ❌
