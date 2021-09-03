@@ -246,8 +246,7 @@ blockquote:first-line{font-weight: bold;}
 body{font-family: sans-serif;}
 hr{background-color:#000;border:0;color:#000;}
 hr.heavy{height:2px;}
-hr.light{height:1px;}
-img{border:0;display:block;}
+hr.light{height:1px;{border:0;display:block;}
 img.right{margin:0 0 0 auto;}
 img.center{border:0;margin:0 auto;}
 table{border-collapse: collapse;}
@@ -583,7 +582,7 @@ def getTags(config):
             "_imgAlignCenter": ' class="center"',
             "_imgAlignLeft": ' class="left"',
             "_imgAlignRight": ' class="right"',
-            "img": '<img~a~ src="\a" alt="">',
+            "img": '<img~a~ src="\a" alt=""/>',
             "listClose": "</ul>",
             "listItemClose": "</li>",
             "listItemOpen": "<li>",
@@ -657,7 +656,7 @@ def getTags(config):
             "_imgAlignCenter": ' class="center"',
             "_imgAlignLeft": ' class="left"',
             "_imgAlignRight": ' class="right"',
-            "img": '<img~a~ src="\a" alt="">',
+            "img": '<img~a~ src="\a" alt=""/>',
             "listClose": "</ul>",
             "listItemClose": "</li>",
             "listItemOpen": "<li>",
