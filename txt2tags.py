@@ -574,7 +574,7 @@ def getTags(config):
             "_imgAlignCenter": ' class="center"',
             "_imgAlignLeft": ' class="left"',
             "_imgAlignRight": ' class="right"',
-            "img": '<img~a~ src="\a" alt="">',
+            "img": '<img~a~ src="\a" alt=""/>',
             "listClose": "</ul>",
             "listItemClose": "</li>",
             "listItemOpen": "<li>",
