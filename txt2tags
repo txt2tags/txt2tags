@@ -423,8 +423,8 @@ ESCAPES = {  'pm6':  [(ESCCHAR + '<', 'vvvvPm6Bracketvvvv', r'<\#92><')],
              'man':  [('-', 'vvvvManDashvvvv', r'\-')],
              'sgml': [('[', 'vvvvSgmlBracketvvvv', '&lsqb;')],
              'lout': [('/', 'vvvvLoutSlashvvvv', '"/"')],
-             'tex':  [('_', 'vvvvTexUndervvvv', r'\_'),
-                      ('\\', 'vvvvTexBackslashvvvv', r'$\backslash$')],
+             'tex':  [('\\', 'vvvvTexBackslashvvvv', r'$\backslash$'),
+                      ('_', 'vvvvTexUndervvvv', r'\_')],
              'rtf':  [('\t', 'vvvvRtfTabvvvv', ESCCHAR + 'tab')],
           }
 
