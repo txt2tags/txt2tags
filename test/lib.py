@@ -3,7 +3,6 @@
 # See also: run.py, */run.py
 #
 
-from __future__ import print_function
 
 import difflib
 import os
@@ -43,7 +42,7 @@ def get_output(cmd):
 # file tools
 #
 def ReadFile(filename):
-    with open(filename, "r") as f:
+    with open(filename) as f:
         return f.read()
 
 

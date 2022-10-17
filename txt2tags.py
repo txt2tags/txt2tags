@@ -67,11 +67,9 @@
 # Two complete body scans will be *slow*, don't know if it worths.
 # One solution may be add the titles as postproc rules
 
-from __future__ import print_function
 
 import collections
 import getopt
-import io
 import os
 import re
 import sys
@@ -2044,9 +2042,9 @@ def Readfile(file_path):
             Error("You must feed me with data on STDIN!")
     else:
         try:
-            with io.open(file_path, encoding=ENCODING) as f:
+            with open(file_path, encoding=ENCODING) as f:
                 contents = f.read()
-        except IOError as exception:
+        except OSError as exception:
             Error("Cannot read file: {}\n{}".format(file_path, exception))
     lines = contents.splitlines()
     Message("File read (%d lines): %s" % (len(lines), file_path), 2)
@@ -2056,12 +2054,12 @@ def Readfile(file_path):
 def Savefile(file_path, lines):
     contents = "\n".join(lines) + "\n"
     try:
-        with io.open(file_path, "w", encoding=ENCODING) as f:
+        with open(file_path, "w", encoding=ENCODING) as f:
             try:
                 f.write(contents)
             except TypeError:
                 f.write(contents.decode(ENCODING))
-    except IOError as exception:
+    except OSError as exception:
         Error("Cannot open file for writing: {}\n{}".format(file_path, exception))
 
 
@@ -3395,7 +3393,7 @@ class TableMaster:
                 tagged_rows.append(o + row + c)
                 if rowdata["title"] and TARGET == "md":
                     titrowcloserow = "|"
-                    for cell in rowdata["cells"]:
+                    for _cell in rowdata["cells"]:
                         titrowcloserow += "---|"
                     tagged_rows.append(titrowcloserow)
 

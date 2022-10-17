@@ -15,7 +15,6 @@
 # TIP: To quickly check the errors, run:
 #      for f in */error/*; do diff -u ${f/error/ok} $f; done
 
-from __future__ import print_function
 
 import argparse
 import os.path
@@ -87,5 +86,8 @@ if lib.ERROR_FILES:
     print()
     print("Check out the files with errors:")
     print("\n".join(lib.ERROR_FILES))
-    print("\nIf the diffs look fine, run \"./test/run.py --override\" to update the reference files.")
+    print(
+        '\nIf the diffs look fine, run "./test/run.py --override" '
+        "to update the reference files."
+    )
     sys.exit(1)

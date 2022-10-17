@@ -3,7 +3,6 @@
 # See also: ../run.py ../lib.py
 #
 
-from __future__ import print_function
 
 import glob
 import os

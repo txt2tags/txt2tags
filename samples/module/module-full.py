@@ -7,7 +7,6 @@
 #   No post config or setting is made.
 #
 
-from __future__ import print_function
 
 # Remember to place the 'txt2tags.py' file on the same dir
 import txt2tags

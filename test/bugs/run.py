@@ -6,7 +6,6 @@
 # In older releases they dump an ugly Error Traceback.
 #
 
-from __future__ import print_function
 
 import glob
 import sys
