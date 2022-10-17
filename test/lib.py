@@ -19,7 +19,7 @@ TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 print("Testing txt2tags on Python", platform.python_version())
 
 # Path for txt2tags (change here if your txt2tags is in a different location)
-TXT2TAGS = "../txt2tags.py"
+TXT2TAGS = os.path.join(TEST_DIR, "..", "txt2tags.py")
 
 CONFIG_FILE = "config"
 CSS_FILE = "css"

@@ -87,4 +87,5 @@ if lib.ERROR_FILES:
     print()
     print("Check out the files with errors:")
     print("\n".join(lib.ERROR_FILES))
+    print("\nIf the diffs look fine, run \"./test/run.py --override\" to update the reference files.")
     sys.exit(1)
