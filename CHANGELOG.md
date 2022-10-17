@@ -1,6 +1,7 @@
 # unreleased
 
 * Don't use \multicolumn for single LaTeX table cells (Jendrik Seipp).
+* Use correct table title separators for Markdown target (#243, @db-inf).
 
 # 3.7 (2020-02-10)
 
