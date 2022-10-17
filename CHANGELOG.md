@@ -1,5 +1,6 @@
 # unreleased
 
+* Raise minimum supported Python version to 3.6 (Jendrik Seipp).
 * Don't use \multicolumn for single LaTeX table cells (Jendrik Seipp).
 * Use correct table title separators for Markdown target (#243, @db-inf).
 
