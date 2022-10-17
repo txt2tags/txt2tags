@@ -1265,7 +1265,7 @@ def getTags(config):
             "imgAlignCenter": None,
             # Table attributes
             "tableTitleRowOpen": "| ",
-            "tableTitleRowClose": "|\n|---------------|",
+            "tableTitleRowClose": None,
             "tableTitleCellSep": " |",
             "tableRowOpen": "|",
             "tableRowClose": "|",
@@ -3393,6 +3393,11 @@ class TableMaster:
                     o, c = rowopen, rowclose
                 row = tagged_cells.pop(0)
                 tagged_rows.append(o + row + c)
+                if rowdata["title"] and TARGET == "md":
+                    titrowcloserow = "|"
+                    for cell in rowdata["cells"]:
+                        titrowcloserow += "---|"
+                    tagged_rows.append(titrowcloserow)
 
         # Join the pieces together
         fulltable = []
