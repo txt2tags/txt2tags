@@ -1,7 +1,9 @@
-# unreleased
+# 3.8 (2023-02-17)
 
 * Raise minimum supported Python version to 3.7 (Jendrik Seipp).
 * Add continuous integration tests for Python 3.10 and 3.11 (Jendrik Seipp).
+* Add ConTeXt target (#224, @goetzschnell).
+* Fix W3C validator warnings (#225, @goetzschnell).
 * Don't use \multicolumn for single LaTeX table cells (Jendrik Seipp).
 * Fix LaTeX escapes (#244, @ThexXTURBOXx).
 * Use correct table title separators for Markdown target (#243, @db-inf).
