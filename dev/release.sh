@@ -8,7 +8,9 @@ CHANGES="/tmp/txt2tags-$VERSION-changes"
 cd "$(dirname ${0})/../"
 
 # Check dependencies.
+hub --version > /dev/null
 python3 -m twine -h > /dev/null
+tox --version > /dev/null
 
 # Check for uncommited changes.
 set +e
@@ -26,6 +28,8 @@ git pull
 # Check that changelog file is up-to-date.
 grep "$VERSION" CHANGELOG.md || (echo "Version $VERSION missing in changelog." && exit 1)
 
+./dev/make-release-notes.py "$VERSION" CHANGELOG.md "$CHANGES"
+
 tox
 
 # Bump version.
@@ -40,5 +44,4 @@ git push
 git push origin "$VERSION"  # push new tag
 
 # Add changelog to Github release.
-./dev/make-release-notes.py "$VERSION" CHANGELOG.md "$CHANGES"
 hub release create "$VERSION" --file "$CHANGES"
