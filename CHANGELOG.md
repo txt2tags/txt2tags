@@ -1,7 +1,9 @@
 # unreleased
 
-* Raise minimum supported Python version to 3.6 (Jendrik Seipp).
+* Raise minimum supported Python version to 3.7 (Jendrik Seipp).
+* Add continuous integration tests for Python 3.10 and 3.11 (Jendrik Seipp).
 * Don't use \multicolumn for single LaTeX table cells (Jendrik Seipp).
+* Fix LaTeX escapes (#244, @ThexXTURBOXx).
 * Use correct table title separators for Markdown target (#243, @db-inf).
 
 # 3.7 (2020-02-10)
