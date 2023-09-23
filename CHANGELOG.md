@@ -1,3 +1,7 @@
+# next (unreleased)
+
+* Add viewport in HTML output (@patrick-g).
+
 # 3.8 (2023-02-17)
 
 * Raise minimum supported Python version to 3.7 (Jendrik Seipp).
