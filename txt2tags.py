@@ -226,6 +226,7 @@ HEADER_TEMPLATE = {
 <meta charset="%(ENCODING)s">
 <title>%(HEADER1)s</title>
 <meta name="generator" content="https://txt2tags.org">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="%(STYLE)s">
 <style>
 blockquote{margin: 1em 2em; border-left: 2px solid #999;
