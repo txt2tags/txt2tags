@@ -85,14 +85,14 @@ The dash is the default list identifier. For sublists,
 just add **spaces** at the beginning of the line. More
 spaces, more sublists.
 
- * earth
+* earth
   * america
-   * south america
-    * brazil
-     * how deep can i go?
+    * south america
+      * brazil
+        * how deep can i go?
   * europe
-   * lots of countries
- * mars
+    * lots of countries
+* mars
   * who knows?
 
 The list ends with **two** consecutive blank lines.
@@ -107,8 +107,8 @@ identifier (plus).
 1. three
   * mixed lists!
   * what a mess
-1. counting again
-1. ...
+    1. counting again
+    1. ...
 1. four
 
 ## Definition List 
@@ -123,8 +123,8 @@ a green or red fruit
 : other fruits
   * wee!
   * mixing lists
-1. again!
-1. and again!
+    1. again!
+    1. and again!
 
 # Tables 
 
@@ -154,8 +154,8 @@ The image mark is as simple as it can be: `[filename]`.
 
 ![](img/photo.jpg)
 
- * The filename must end in PNG, JPG, GIF, or similar.
- * No spaces inside the brackets!
+* The filename must end in PNG, JPG, GIF, or similar.
+* No spaces inside the brackets!
 
 ---
 

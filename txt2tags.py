@@ -1238,7 +1238,7 @@ def getTags(config):
             "fontStrikeClose": "~~",
             # Lists
             "listOpenCompact": None,
-            "listItemLine": " ",
+            "listItemLine": None,
             "listItemOpen": "*",
             "numlistItemLine": None,
             "numlistItemOpen": "1.",
@@ -1769,7 +1769,7 @@ def getRules(config):
             "blanksaroundtitle": 1,
         },
         "md": {
-            # "keeplistindent": 1,
+            "keeplistindent": 1,
             "linkable": 1,
             "labelbeforelink": 1,
             "tableable": 1,
