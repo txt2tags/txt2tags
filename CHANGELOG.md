@@ -1,4 +1,4 @@
-# next (unreleased)
+# 3.9 (2023-10-06)
 
 * Add viewport in HTML output (@patrick-g).
 * Fix Markdown lists (Jendrik Seipp).
