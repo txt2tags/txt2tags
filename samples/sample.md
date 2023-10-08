@@ -116,15 +116,22 @@ identifier (plus).
 The definition list identifier is a colon, followed by
 the term. The term contents is placed on the next line.
 
-: orange
-a yellow fruit
-: apple
-a green or red fruit
-: other fruits
-  * wee!
+orange
+
+:   a yellow fruit
+
+apple
+
+:   a green or red fruit
+
+other fruits
+
+:     * wee!
   * mixing lists
     1. again!
     1. and again!
+
+
 
 # Tables 
 

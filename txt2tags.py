@@ -1242,10 +1242,12 @@ def getTags(config):
             "listItemOpen": "*",
             "numlistItemLine": None,
             "numlistItemOpen": "1.",
-            "deflistItem1Open": ": ",
-            "deflistItem1Close": None,
-            "deflistItem2Open": None,
-            "deflistItem2Close": None,
+            "deflistItem1Open": None,
+            "deflistItem1Close": "\n\n",
+            "deflistItem2Open": ":   ",
+              # Following PanDoc, https://pandoc.org/MANUAL.html#definition-lists
+              # PanDoc in turn follows PHP Markdown Extra: https://michelf.ca/projects/php-markdown/extra/#def-list
+            "deflistItem2Close": "\n",
             # Verbatim block
             "blockVerbOpen": None,
             "blockVerbClose": None,
