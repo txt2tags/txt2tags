@@ -1,0 +1,27 @@
+
+%!target: html
+%!options: --no-headers
+
+: one
+ two
+ - three
+- four
+
+
+- bullet
+  + numbered child
+: term
+ definition
+
+
++ numbered
+  : nested term
+   definition
+    - deep child
+- after two levels
+
+
+- same type
+  : child term
+   description
+- sibling

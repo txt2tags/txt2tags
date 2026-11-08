@@ -4899,7 +4899,12 @@ def convert(bodylines, config, firstlinenr=1):
 
             # O-oh, sublist before list ("\n\n  - foo\n- foo")
             # Fix: close sublist (as mother), open another list
-            if not BLOCK.block().endswith("list"):
+            # Dedenting can also expose a parent with a different list type.
+            if not BLOCK.block().endswith("list") or (
+                listname != BLOCK.block() and listitemindent == BLOCK.prop("indent")
+            ):
+                if BLOCK.block().endswith("list"):
+                    ret.extend(BLOCK.blockout())
                 ret.extend(BLOCK.blockin(listname))
                 BLOCK.propset("indent", listitemindent)
                 BLOCK.propset("type", listtype)

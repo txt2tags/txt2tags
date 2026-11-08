@@ -1,3 +1,7 @@
+# next (unreleased)
+
+* Fix switching list types after closing an indented sublist (#173).
+
 # 3.9 (2023-10-06)
 
 * Add viewport in HTML output (@patrick-g).
